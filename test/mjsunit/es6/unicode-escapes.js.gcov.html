@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - test/mjsunit/es6/unicode-escapes.js</title>
+  <link rel="stylesheet" type="text/css" href="../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../index.html">top level</a> - <a href="index.html">test/mjsunit/es6</a> - unicode-escapes.js<span style="font-size: 80%;"> (source / <a href="unicode-escapes.js.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">45</td>
+            <td class="headerCovTableEntry">45</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2017-02-14</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">5</td>
+            <td class="headerCovTableEntry">5</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span><span class="lineCov">          1 : // Copyright 2014 the V8 project authors. All rights reserved.</span></a>
+<span class="lineNum">       2 </span><span class="lineCov">          1 : // Use of this source code is governed by a BSD-style license that can be</span>
+<span class="lineNum">       3 </span><span class="lineCov">          1 : // found in the LICENSE file.</span>
+<span class="lineNum">       4 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">       5 </span><span class="lineCov">          1 : // ES6 extends the \uxxxx escape and also allows \u{xxxxx}.</span>
+<span class="lineNum">       6 </span><span class="lineCov">          1 : </span>
+<a name="7"><span class="lineNum">       7 </span><span class="lineCov">          1 : // Unicode escapes in variable names.</span></a>
+<span class="lineNum">       8 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">       9 </span><span class="lineCov">          1 : (function TestVariableNames1() {</span>
+<span class="lineNum">      10 </span><span class="lineCov">          1 :   var foobar = 1;</span>
+<span class="lineNum">      11 </span><span class="lineCov">          1 :   assertEquals(foob\u0061r, 1);</span>
+<span class="lineNum">      12 </span><span class="lineCov">          1 :   assertEquals(foob\u{0061}r, 1);</span>
+<span class="lineNum">      13 </span><span class="lineCov">          1 :   assertEquals(foob\u{61}r, 1);</span>
+<span class="lineNum">      14 </span><span class="lineCov">          1 :   assertEquals(foob\u{0000000061}r, 1);</span>
+<a name="15"><span class="lineNum">      15 </span><span class="lineCov">          1 : })();</span></a>
+<span class="lineNum">      16 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      17 </span><span class="lineCov">          1 : (function TestVariableNames2() {</span>
+<span class="lineNum">      18 </span><span class="lineCov">          1 :   var foobar = 1;</span>
+<span class="lineNum">      19 </span><span class="lineCov">          1 :   assertEquals(\u0066oobar, 1);</span>
+<span class="lineNum">      20 </span><span class="lineCov">          1 :   assertEquals(\u{0066}oobar, 1);</span>
+<span class="lineNum">      21 </span><span class="lineCov">          1 :   assertEquals(\u{66}oobar, 1);</span>
+<span class="lineNum">      22 </span><span class="lineCov">          1 :   assertEquals(\u{0000000066}oobar, 1);</span>
+<span class="lineNum">      23 </span><span class="lineCov">          1 : })();</span>
+<span class="lineNum">      24 </span><span class="lineCov">          1 : </span>
+<a name="25"><span class="lineNum">      25 </span><span class="lineCov">          1 : // Unicode escapes in strings.</span></a>
+<span class="lineNum">      26 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      27 </span><span class="lineCov">          1 : (function TestStrings() {</span>
+<span class="lineNum">      28 </span><span class="lineCov">          1 :   var s1 = &quot;foob\u0061r&quot;;</span>
+<span class="lineNum">      29 </span><span class="lineCov">          1 :   assertEquals(s1, &quot;foobar&quot;);</span>
+<span class="lineNum">      30 </span><span class="lineCov">          1 :   var s2 = &quot;foob\u{0061}r&quot;;</span>
+<span class="lineNum">      31 </span><span class="lineCov">          1 :   assertEquals(s2, &quot;foobar&quot;);</span>
+<span class="lineNum">      32 </span><span class="lineCov">          1 :   var s3 = &quot;foob\u{61}r&quot;;</span>
+<span class="lineNum">      33 </span><span class="lineCov">          1 :   assertEquals(s3, &quot;foobar&quot;);</span>
+<span class="lineNum">      34 </span><span class="lineCov">          1 :   var s4 = &quot;foob\u{0000000061}r&quot;;</span>
+<span class="lineNum">      35 </span><span class="lineCov">          1 :   assertEquals(s4, &quot;foobar&quot;);</span>
+<span class="lineNum">      36 </span><span class="lineCov">          1 : })();</span>
+<a name="37"><span class="lineNum">      37 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      38 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      39 </span><span class="lineCov">          1 : (function TestSurrogates() {</span>
+<span class="lineNum">      40 </span><span class="lineCov">          1 :   // U+10E6D corresponds to the surrogate pair [U+D803, U+DE6D].</span>
+<span class="lineNum">      41 </span><span class="lineCov">          1 :   var s1 = &quot;foo\u{10e6d}&quot;;</span>
+<span class="lineNum">      42 </span><span class="lineCov">          1 :   var s2 = &quot;foo\u{d803}\u{de6d}&quot;;</span>
+<span class="lineNum">      43 </span><span class="lineCov">          1 :   assertEquals(s1, s2);</span>
+<span class="lineNum">      44 </span><span class="lineCov">          1 : })();</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

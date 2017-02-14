@@ -1,0 +1,283 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - test/mjsunit/es6/block-for.js</title>
+  <link rel="stylesheet" type="text/css" href="../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../index.html">top level</a> - <a href="index.html">test/mjsunit/es6</a> - block-for.js<span style="font-size: 80%;"> (source / <a href="block-for.js.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">208</td>
+            <td class="headerCovTableEntry">208</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2017-02-14</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">15</td>
+            <td class="headerCovTableEntry">19</td>
+            <td class="headerCovTableEntryMed">78.9 %</td>
+          </tr>
+          <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span><span class="lineCov">          1 : // Copyright 2011 the V8 project authors. All rights reserved.</span></a>
+<span class="lineNum">       2 </span><span class="lineCov">          1 : // Redistribution and use in source and binary forms, with or without</span>
+<span class="lineNum">       3 </span><span class="lineCov">          1 : // modification, are permitted provided that the following conditions are</span>
+<span class="lineNum">       4 </span><span class="lineCov">          1 : // met:</span>
+<span class="lineNum">       5 </span><span class="lineCov">          1 : //</span>
+<span class="lineNum">       6 </span><span class="lineCov">          1 : //     * Redistributions of source code must retain the above copyright</span>
+<span class="lineNum">       7 </span><span class="lineCov">          1 : //       notice, this list of conditions and the following disclaimer.</span>
+<span class="lineNum">       8 </span><span class="lineCov">          1 : //     * Redistributions in binary form must reproduce the above</span>
+<span class="lineNum">       9 </span><span class="lineCov">          1 : //       copyright notice, this list of conditions and the following</span>
+<span class="lineNum">      10 </span><span class="lineCov">          1 : //       disclaimer in the documentation and/or other materials provided</span>
+<span class="lineNum">      11 </span><span class="lineCov">          1 : //       with the distribution.</span>
+<span class="lineNum">      12 </span><span class="lineCov">          1 : //     * Neither the name of Google Inc. nor the names of its</span>
+<span class="lineNum">      13 </span><span class="lineCov">          1 : //       contributors may be used to endorse or promote products derived</span>
+<span class="lineNum">      14 </span><span class="lineCov">          1 : //       from this software without specific prior written permission.</span>
+<span class="lineNum">      15 </span><span class="lineCov">          1 : //</span>
+<span class="lineNum">      16 </span><span class="lineCov">          1 : // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="lineNum">      17 </span><span class="lineCov">          1 : // &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="lineNum">      18 </span><span class="lineCov">          1 : // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR</span>
+<span class="lineNum">      19 </span><span class="lineCov">          1 : // A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT</span>
+<span class="lineNum">      20 </span><span class="lineCov">          1 : // OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,</span>
+<span class="lineNum">      21 </span><span class="lineCov">          1 : // SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT</span>
+<span class="lineNum">      22 </span><span class="lineCov">          1 : // LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,</span>
+<span class="lineNum">      23 </span><span class="lineCov">          1 : // DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY</span>
+<span class="lineNum">      24 </span><span class="lineCov">          1 : // THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT</span>
+<span class="lineNum">      25 </span><span class="lineCov">          1 : // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE</span>
+<span class="lineNum">      26 </span><span class="lineCov">          1 : // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="lineNum">      27 </span><span class="lineCov">          1 : </span>
+<a name="28"><span class="lineNum">      28 </span><span class="lineCov">          1 : &quot;use strict&quot;;</span></a>
+<span class="lineNum">      29 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      30 </span><span class="lineCov">         17 : function props(x) {</span>
+<span class="lineNum">      31 </span><span class="lineCov">         17 :   var array = [];</span>
+<span class="lineNum">      32 </span><span class="lineCov">         17 :   for (let p in x) array.push(p);</span>
+<span class="lineNum">      33 </span><span class="lineCov">         17 :   return array.sort();</span>
+<span class="lineNum">      34 </span><span class="lineCov">         17 : }</span>
+<span class="lineNum">      35 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      36 </span><span class="lineCov">          1 : assertEquals(0, props({}).length);</span>
+<span class="lineNum">      37 </span><span class="lineCov">          1 : assertEquals(1, props({x:1}).length);</span>
+<span class="lineNum">      38 </span><span class="lineCov">          1 : assertEquals(2, props({x:1, y:2}).length);</span>
+<span class="lineNum">      39 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      40 </span><span class="lineCov">          1 : assertArrayEquals([&quot;x&quot;], props({x:1}));</span>
+<span class="lineNum">      41 </span><span class="lineCov">          1 : assertArrayEquals([&quot;x&quot;, &quot;y&quot;], props({x:1, y:2}));</span>
+<span class="lineNum">      42 </span><span class="lineCov">          1 : assertArrayEquals([&quot;x&quot;, &quot;y&quot;, &quot;zoom&quot;], props({x:1, y:2, zoom:3}));</span>
+<span class="lineNum">      43 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      44 </span><span class="lineCov">          1 : assertEquals(0, props([]).length);</span>
+<span class="lineNum">      45 </span><span class="lineCov">          1 : assertEquals(1, props([1]).length);</span>
+<span class="lineNum">      46 </span><span class="lineCov">          1 : assertEquals(2, props([1,2]).length);</span>
+<span class="lineNum">      47 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      48 </span><span class="lineCov">          1 : assertArrayEquals([&quot;0&quot;], props([1]));</span>
+<span class="lineNum">      49 </span><span class="lineCov">          1 : assertArrayEquals([&quot;0&quot;, &quot;1&quot;], props([1,2]));</span>
+<span class="lineNum">      50 </span><span class="lineCov">          1 : assertArrayEquals([&quot;0&quot;, &quot;1&quot;, &quot;2&quot;], props([1,2,3]));</span>
+<span class="lineNum">      51 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      52 </span><span class="lineCov">          1 : var o = {};</span>
+<span class="lineNum">      53 </span><span class="lineCov">          1 : var a = [];</span>
+<span class="lineNum">      54 </span><span class="lineCov">          1 : let i = &quot;outer_i&quot;;</span>
+<span class="lineNum">      55 </span><span class="lineCov">          1 : let s = &quot;outer_s&quot;;</span>
+<span class="lineNum">      56 </span><span class="lineCov">          1 : for (let i = 0x0020; i &lt; 0x01ff; i+=2) {</span>
+<span class="lineNum">      57 </span><span class="lineCov">          1 :   let s = 'char:' + String.fromCharCode(i);</span>
+<span class="lineNum">      58 </span><span class="lineCov">          1 :   a.push(s);</span>
+<span class="lineNum">      59 </span><span class="lineCov">          1 :   o[s] = i;</span>
+<span class="lineNum">      60 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      61 </span><span class="lineCov">          1 : assertArrayEquals(a, props(o));</span>
+<span class="lineNum">      62 </span><span class="lineCov">          1 : assertEquals(i, &quot;outer_i&quot;);</span>
+<span class="lineNum">      63 </span><span class="lineCov">          1 : assertEquals(s, &quot;outer_s&quot;);</span>
+<span class="lineNum">      64 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      65 </span><span class="lineCov">          1 : var a = [];</span>
+<span class="lineNum">      66 </span><span class="lineCov">          1 : assertEquals(0, props(a).length);</span>
+<span class="lineNum">      67 </span><span class="lineCov">          1 : a[Math.pow(2,30)-1] = 0;</span>
+<span class="lineNum">      68 </span><span class="lineCov">          1 : assertEquals(1, props(a).length);</span>
+<span class="lineNum">      69 </span><span class="lineCov">          1 : a[Math.pow(2,31)-1] = 0;</span>
+<span class="lineNum">      70 </span><span class="lineCov">          1 : assertEquals(2, props(a).length);</span>
+<span class="lineNum">      71 </span><span class="lineCov">          1 : a[1] = 0;</span>
+<span class="lineNum">      72 </span><span class="lineCov">          1 : assertEquals(3, props(a).length);</span>
+<span class="lineNum">      73 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      74 </span><span class="lineCov">          1 : var result = '';</span>
+<span class="lineNum">      75 </span><span class="lineCov">          1 : for (let p in {a : [0], b : 1}) { result += p; }</span>
+<span class="lineNum">      76 </span><span class="lineCov">          1 : assertEquals('ab', result);</span>
+<span class="lineNum">      77 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      78 </span><span class="lineCov">          1 : var result = '';</span>
+<span class="lineNum">      79 </span><span class="lineCov">          1 : for (let p in {a : {v:1}, b : 1}) { result += p; }</span>
+<span class="lineNum">      80 </span><span class="lineCov">          1 : assertEquals('ab', result);</span>
+<span class="lineNum">      81 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      82 </span><span class="lineCov">          1 : var result = '';</span>
+<span class="lineNum">      83 </span><span class="lineCov">          1 : for (let p in { get a() {}, b : 1}) { result += p; }</span>
+<span class="lineNum">      84 </span><span class="lineCov">          1 : assertEquals('ab', result);</span>
+<a name="85"><span class="lineNum">      85 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      86 </span><span class="lineCov">          1 : var result = '';</span>
+<span class="lineNum">      87 </span><span class="lineCov">          1 : for (let p in { get a() {}, set a(x) {}, b : 1}) { result += p; }</span>
+<span class="lineNum">      88 </span><span class="lineCov">          1 : assertEquals('ab', result);</span>
+<span class="lineNum">      89 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      90 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      91 </span><span class="lineCov">          1 : // Check that there is exactly one variable without initializer</span>
+<span class="lineNum">      92 </span><span class="lineCov">          1 : // in a for-in statement with let variables.</span>
+<span class="lineNum">      93 </span><span class="lineCov">          1 : assertThrows(&quot;function foo() { 'use strict'; for (let in {}) { } }&quot;, SyntaxError);</span>
+<span class="lineNum">      94 </span><span class="lineCov">          1 : assertThrows(&quot;function foo() { 'use strict'; for (let x = 3 in {}) { } }&quot;, SyntaxError);</span>
+<span class="lineNum">      95 </span><span class="lineCov">          1 : assertThrows(&quot;function foo() { 'use strict'; for (let x, y in {}) { } }&quot;, SyntaxError);</span>
+<span class="lineNum">      96 </span><span class="lineCov">          1 : assertThrows(&quot;function foo() { 'use strict'; for (let x = 3, y in {}) { } }&quot;, SyntaxError);</span>
+<span class="lineNum">      97 </span><span class="lineCov">          1 : assertThrows(&quot;function foo() { 'use strict'; for (let x, y = 4 in {}) { } }&quot;, SyntaxError);</span>
+<span class="lineNum">      98 </span><span class="lineCov">          1 : assertThrows(&quot;function foo() { 'use strict'; for (let x = 3, y = 4 in {}) { } }&quot;, SyntaxError);</span>
+<span class="lineNum">      99 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     100 </span><span class="lineCov">          1 : </span>
+<a name="101"><span class="lineNum">     101 </span><span class="lineCov">          1 : // In a normal for statement the iteration variable is</span></a>
+<span class="lineNum">     102 </span><span class="lineCov">          1 : // freshly allocated for each iteration.</span>
+<span class="lineNum">     103 </span><span class="lineCov">          1 : function closures1() {</span>
+<a name="104"><span class="lineNum">     104 </span><span class="lineCov">          1 :   let a = [];</span></a>
+<span class="lineNum">     105 </span><span class="lineCov">          1 :   for (let i = 0; i &lt; 5; ++i) {</span>
+<span class="lineNum">     106 </span><span class="lineCov">          5 :     a.push(function () { return i; });</span>
+<span class="lineNum">     107 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     108 </span><span class="lineCov">          1 :   for (let j = 0; j &lt; 5; ++j) {</span>
+<span class="lineNum">     109 </span><span class="lineCov">          1 :     assertEquals(j, a[j]());</span>
+<span class="lineNum">     110 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     111 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     112 </span><span class="lineCov">          1 : closures1();</span>
+<a name="113"><span class="lineNum">     113 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     114 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     115 </span><span class="lineCov">          1 : function closures2() {</span>
+<a name="116"><span class="lineNum">     116 </span><span class="lineCov">          1 :   let a = [], b = [];</span></a>
+<a name="117"><span class="lineNum">     117 </span><span class="lineCov">          1 :   for (let i = 0, j = 10; i &lt; 5; ++i, ++j) {</span></a>
+<span class="lineNum">     118 </span><span class="lineCov">          5 :     a.push(function () { return i; });</span>
+<span class="lineNum">     119 </span><span class="lineCov">          5 :     b.push(function () { return j; });</span>
+<span class="lineNum">     120 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     121 </span><span class="lineCov">          1 :   for (let k = 0; k &lt; 5; ++k) {</span>
+<span class="lineNum">     122 </span><span class="lineCov">          1 :     assertEquals(k, a[k]());</span>
+<span class="lineNum">     123 </span><span class="lineCov">          1 :     assertEquals(k + 10, b[k]());</span>
+<span class="lineNum">     124 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     125 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     126 </span><span class="lineCov">          1 : closures2();</span>
+<a name="127"><span class="lineNum">     127 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     128 </span><span class="lineCov">          1 : </span>
+<a name="129"><span class="lineNum">     129 </span><span class="lineCov">          1 : function closure_in_for_init() {</span></a>
+<span class="lineNum">     130 </span><span class="lineCov">          1 :   let a = [];</span>
+<span class="lineNum">     131 </span><span class="lineCov">          5 :   for (let i = 0, f = function() { return i }; i &lt; 5; ++i) {</span>
+<span class="lineNum">     132 </span><span class="lineCov">          1 :     a.push(f);</span>
+<span class="lineNum">     133 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     134 </span><span class="lineCov">          1 :   for (let k = 0; k &lt; 5; ++k) {</span>
+<span class="lineNum">     135 </span><span class="lineCov">          1 :     assertEquals(0, a[k]());</span>
+<span class="lineNum">     136 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     137 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     138 </span><span class="lineCov">          1 : closure_in_for_init();</span>
+<a name="139"><span class="lineNum">     139 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     140 </span><span class="lineCov">          1 : </span>
+<a name="141"><span class="lineNum">     141 </span><span class="lineCov">          1 : function closure_in_for_cond() {</span></a>
+<span class="lineNum">     142 </span><span class="lineCov">          1 :   let a = [];</span>
+<span class="lineNum">     143 </span><span class="lineCov">          5 :   for (let i = 0; a.push(function () { return i; }), i &lt; 5; ++i) { }</span>
+<span class="lineNum">     144 </span><span class="lineCov">          1 :   for (let k = 0; k &lt; 5; ++k) {</span>
+<span class="lineNum">     145 </span><span class="lineCov">          1 :     assertEquals(k, a[k]());</span>
+<span class="lineNum">     146 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     147 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     148 </span><span class="lineCov">          1 : closure_in_for_cond();</span>
+<a name="149"><span class="lineNum">     149 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     150 </span><span class="lineCov">          1 : </span>
+<a name="151"><span class="lineNum">     151 </span><span class="lineCov">          1 : function closure_in_for_next() {</span></a>
+<span class="lineNum">     152 </span><span class="lineCov">          1 :   let a = [];</span>
+<span class="lineNum">     153 </span><span class="lineCov">          5 :   for (let i = 0; i &lt; 5; a.push(function () { return i; }), ++i) { }</span>
+<span class="lineNum">     154 </span><span class="lineCov">          1 :   for (let k = 0; k &lt; 5; ++k) {</span>
+<span class="lineNum">     155 </span><span class="lineCov">          1 :     assertEquals(k + 1, a[k]());</span>
+<span class="lineNum">     156 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     157 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     158 </span><span class="lineCov">          1 : closure_in_for_next();</span>
+<span class="lineNum">     159 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     160 </span><span class="lineCov">          1 : </span>
+<a name="161"><span class="lineNum">     161 </span><span class="lineCov">          1 : // In a for-in statement the iteration variable is fresh</span></a>
+<span class="lineNum">     162 </span><span class="lineCov">          1 : // for each iteration.</span>
+<span class="lineNum">     163 </span><span class="lineCov">          1 : function closures3(x) {</span>
+<a name="164"><span class="lineNum">     164 </span><span class="lineCov">          1 :   let a = [];</span></a>
+<span class="lineNum">     165 </span><span class="lineCov">          1 :   for (let p in x) {</span>
+<span class="lineNum">     166 </span><span class="lineCov">          5 :     a.push(function () { return p; });</span>
+<span class="lineNum">     167 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     168 </span><span class="lineCov">          1 :   let k = 0;</span>
+<span class="lineNum">     169 </span><span class="lineCov">          1 :   for (let q in x) {</span>
+<span class="lineNum">     170 </span><span class="lineCov">          1 :     assertEquals(q, a[k]());</span>
+<span class="lineNum">     171 </span><span class="lineCov">          1 :     ++k;</span>
+<a name="172"><span class="lineNum">     172 </span><span class="lineCov">          1 :   }</span></a>
+<span class="lineNum">     173 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     174 </span><span class="lineCov">          1 : closures3({a : [0], b : 1, c : {v : 1}, get d() {}, set e(x) {}});</span>
+<span class="lineNum">     175 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     176 </span><span class="lineCov">          1 : // Check normal for statement completion values.</span>
+<span class="lineNum">     177 </span><span class="lineCov">          1 : assertEquals(1, eval(&quot;for (let i = 0; i &lt; 10; i++) { 1; }&quot;));</span>
+<span class="lineNum">     178 </span><span class="lineCov">          1 : assertEquals(9, eval(&quot;for (let i = 0; i &lt; 10; i++) { i; }&quot;));</span>
+<span class="lineNum">     179 </span><span class="lineCov">          1 : assertEquals(undefined, eval(&quot;for (let i = 0; false;) { }&quot;));</span>
+<span class="lineNum">     180 </span><span class="lineCov">          1 : assertEquals(undefined, eval(&quot;for (const i = 0; false;) { }&quot;));</span>
+<span class="lineNum">     181 </span><span class="lineCov">          1 : assertEquals(undefined, eval(&quot;for (let i = 0; i &lt; 10; i++) { }&quot;));</span>
+<span class="lineNum">     182 </span><span class="lineCov">          1 : assertEquals(undefined, eval(&quot;for (let i = 0; false;) { i; }&quot;));</span>
+<span class="lineNum">     183 </span><span class="lineCov">          1 : assertEquals(undefined, eval(&quot;for (const i = 0; false;) { i; }&quot;));</span>
+<span class="lineNum">     184 </span><span class="lineCov">          1 : assertEquals(undefined, eval(&quot;for (let i = 0; true;) { break; }&quot;));</span>
+<span class="lineNum">     185 </span><span class="lineCov">          1 : assertEquals(undefined, eval(&quot;for (const i = 0; true;) { break; }&quot;));</span>
+<span class="lineNum">     186 </span><span class="lineCov">          1 : assertEquals(undefined, eval(&quot;for (let i = 0; i &lt; 10; i++) { continue; }&quot;));</span>
+<span class="lineNum">     187 </span><span class="lineCov">          1 : assertEquals(undefined, eval(&quot;for (let i = 0; true;) { break; i; }&quot;));</span>
+<span class="lineNum">     188 </span><span class="lineCov">          1 : assertEquals(undefined, eval(&quot;for (const i = 0; true;) { break; i; }&quot;));</span>
+<span class="lineNum">     189 </span><span class="lineCov">          1 : assertEquals(undefined, eval(&quot;for (let i = 0; i &lt; 10; i++) { continue; i; }&quot;));</span>
+<span class="lineNum">     190 </span><span class="lineCov">          1 : assertEquals(0, eval(&quot;for (let i = 0; true;) { i; break; }&quot;));</span>
+<span class="lineNum">     191 </span><span class="lineCov">          1 : assertEquals(0, eval(&quot;for (const i = 0; true;) { i; break; }&quot;));</span>
+<span class="lineNum">     192 </span><span class="lineCov">          1 : assertEquals(9, eval(&quot;for (let i = 0; i &lt; 10; i++) { i; continue; }&quot;));</span>
+<span class="lineNum">     193 </span><span class="lineCov">          1 : assertEquals(undefined,</span>
+<span class="lineNum">     194 </span><span class="lineCov">          1 :   eval(&quot;for (let i = 0; true; i++) { i; if (i &gt;= 3) break; }&quot;));</span>
+<span class="lineNum">     195 </span><span class="lineCov">          1 : assertEquals(3,</span>
+<span class="lineNum">     196 </span><span class="lineCov">          1 :   eval(&quot;for (let i = 0; true; i++) { i; if (i &gt;= 3) { i; break; } }&quot;));</span>
+<span class="lineNum">     197 </span><span class="lineCov">          1 : assertEquals(undefined,</span>
+<span class="lineNum">     198 </span><span class="lineCov">          1 :   eval(&quot;for (let i = 0; true; i++) { if (i &gt;= 3) break; i; }&quot;));</span>
+<span class="lineNum">     199 </span><span class="lineCov">          1 : assertEquals(3,</span>
+<span class="lineNum">     200 </span><span class="lineCov">          1 :   eval(&quot;for (let i = 0; true; i++) { if (i &gt;= 3) { i; break; }; i; }&quot;));</span>
+<span class="lineNum">     201 </span><span class="lineCov">          1 : assertEquals(undefined,</span>
+<span class="lineNum">     202 </span><span class="lineCov">          1 :   eval(&quot;for (let i = 0; i &lt; 10; i++) { if (i &gt;= 3) continue; i; }&quot;));</span>
+<span class="lineNum">     203 </span><span class="lineCov">          1 : assertEquals(9,</span>
+<span class="lineNum">     204 </span><span class="lineCov">          1 :   eval(&quot;for (let i = 0; i &lt; 10; i++) { if (i &gt;= 3) {i; continue; }; i; }&quot;));</span>
+<span class="lineNum">     205 </span><span class="lineCov">          1 : assertEquals(undefined, eval(&quot;foo: for (let i = 0; true;) { break foo; }&quot;));</span>
+<span class="lineNum">     206 </span><span class="lineCov">          1 : assertEquals(undefined, eval(&quot;foo: for (const i = 0; true;) { break foo; }&quot;));</span>
+<span class="lineNum">     207 </span><span class="lineCov">          1 : assertEquals(3, eval(&quot;foo: for (let i = 3; true;) { i; break foo; }&quot;));</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

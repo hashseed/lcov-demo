@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - test/mjsunit/regress/regress-3641.js</title>
+  <link rel="stylesheet" type="text/css" href="../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../index.html">top level</a> - <a href="index.html">test/mjsunit/regress</a> - regress-3641.js<span style="font-size: 80%;"> (source / <a href="regress-3641.js.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">57</td>
+            <td class="headerCovTableEntry">57</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2017-02-14</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">7</td>
+            <td class="headerCovTableEntry">8</td>
+            <td class="headerCovTableEntryMed">87.5 %</td>
+          </tr>
+          <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span><span class="lineCov">          1 : // Copyright 2015 the V8 project authors. All rights reserved.</span></a>
+<span class="lineNum">       2 </span><span class="lineCov">          1 : // Use of this source code is governed by a BSD-style license that can be</span>
+<span class="lineNum">       3 </span><span class="lineCov">          1 : // found in the LICENSE file.</span>
+<span class="lineNum">       4 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">       5 </span><span class="lineCov">          1 : // Flags: --allow-natives-syntax</span>
+<span class="lineNum">       6 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">       7 </span><span class="lineCov">          1 : // If a Promise's then method is overridden, that should be respected</span>
+<span class="lineNum">       8 </span><span class="lineCov">          1 : // even if the promise is already resolved. x's resolution function is</span>
+<span class="lineNum">       9 </span><span class="lineCov">          1 : // only called by Promise.resolve(); there shouldn't be a resolution</span>
+<span class="lineNum">      10 </span><span class="lineCov">          1 : // check before when calling x.then.</span>
+<span class="lineNum">      11 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      12 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      13 </span><span class="lineCov">          1 : // Async assert framework copied from mjsunit/es6/promises.js</span>
+<span class="lineNum">      14 </span><span class="lineCov">          1 : </span>
+<a name="15"><span class="lineNum">      15 </span><span class="lineCov">          1 : var asyncAssertsExpected = 0;</span></a>
+<span class="lineNum">      16 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      17 </span><span class="lineCov">          1 : function assertAsyncRan() { ++asyncAssertsExpected }</span>
+<span class="lineNum">      18 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      19 </span><span class="lineCov">          1 : function assertLater(f, name) {</span>
+<span class="lineNum">      20 </span><span class="lineCov">          1 :   assertFalse(f()); // should not be true synchronously</span>
+<a name="21"><span class="lineNum">      21 </span><span class="lineCov">          1 :   ++asyncAssertsExpected;</span></a>
+<span class="lineNum">      22 </span><span class="lineCov">          1 :   var iterations = 0;</span>
+<span class="lineNum">      23 </span><span class="lineCov">          2 :   function runAssertion() {</span>
+<span class="lineNum">      24 </span><span class="lineCov">          2 :     if (f()) {</span>
+<span class="lineNum">      25 </span><span class="lineCov">          2 :       print(name, &quot;succeeded&quot;);</span>
+<span class="lineNum">      26 </span><span class="lineCov">          2 :       --asyncAssertsExpected;</span>
+<span class="lineNum">      27 </span><span class="lineCov">          2 :     } else if (iterations++ &lt; 10) {</span>
+<span class="lineNum">      28 </span><span class="lineCov">          2 :       %EnqueueMicrotask(runAssertion);</span>
+<span class="lineNum">      29 </span><span class="lineCov">          2 :     } else {</span>
+<span class="lineNum">      30 </span><span class="lineCov">          2 :       %AbortJS(name + &quot; FAILED!&quot;);</span>
+<span class="lineNum">      31 </span><span class="lineCov">          2 :     }</span>
+<span class="lineNum">      32 </span><span class="lineCov">          2 :   }</span>
+<span class="lineNum">      33 </span><span class="lineCov">          1 :   %EnqueueMicrotask(runAssertion);</span>
+<a name="34"><span class="lineNum">      34 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">      35 </span><span class="lineCov">          1 : </span>
+<a name="36"><span class="lineNum">      36 </span><span class="lineCov">          2 : function assertAsyncDone(iteration) {</span></a>
+<span class="lineNum">      37 </span><span class="lineCov">          2 :   var iteration = iteration || 0;</span>
+<span class="lineNum">      38 </span><span class="lineCov">          2 :   %EnqueueMicrotask(function() {</span>
+<span class="lineNum">      39 </span><span class="lineCov">          2 :     if (asyncAssertsExpected === 0)</span>
+<span class="lineNum">      40 </span><span class="lineCov">          2 :       assertAsync(true, &quot;all&quot;)</span>
+<span class="lineNum">      41 </span><span class="lineCov">          2 :     else if (iteration &gt; 10)  // Shouldn't take more.</span>
+<span class="lineNum">      42 </span><span class="lineCov">          2 :       assertAsync(false, &quot;all... &quot; + asyncAssertsExpected)</span>
+<span class="lineNum">      43 </span><span class="lineCov">          2 :     else</span>
+<span class="lineNum">      44 </span><span class="lineCov">          2 :       assertAsyncDone(iteration + 1)</span>
+<span class="lineNum">      45 </span><span class="lineCov">          2 :   });</span>
+<span class="lineNum">      46 </span><span class="lineCov">          2 : }</span>
+<span class="lineNum">      47 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      48 </span><span class="lineCov">          1 : // End async assert framework</span>
+<span class="lineNum">      49 </span><span class="lineCov">          1 : </span>
+<a name="50"><span class="lineNum">      50 </span><span class="lineCov">          1 : var y;</span></a>
+<a name="51"><span class="lineNum">      51 </span><span class="lineCov">          1 : var x = Promise.resolve();</span></a>
+<a name="52"><span class="lineNum">      52 </span><span class="lineCov">          1 : x.then = () =&gt; { y = true; }</span></a>
+<span class="lineNum">      53 </span><span class="lineCov">          1 : Promise.resolve().then(() =&gt; x);</span>
+<span class="lineNum">      54 </span><span class="lineCov">          3 : assertLater(() =&gt; y === true, &quot;y === true&quot;);</span>
+<span class="lineNum">      55 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      56 </span><span class="lineCov">          1 : assertAsyncDone();</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

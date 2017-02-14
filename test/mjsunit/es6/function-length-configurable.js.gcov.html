@@ -1,0 +1,195 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - test/mjsunit/es6/function-length-configurable.js</title>
+  <link rel="stylesheet" type="text/css" href="../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../index.html">top level</a> - <a href="index.html">test/mjsunit/es6</a> - function-length-configurable.js<span style="font-size: 80%;"> (source / <a href="function-length-configurable.js.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">120</td>
+            <td class="headerCovTableEntry">120</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2017-02-14</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">16</td>
+            <td class="headerCovTableEntry">17</td>
+            <td class="headerCovTableEntryHi">94.1 %</td>
+          </tr>
+          <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span><span class="lineCov">          1 : // Copyright 2015 the V8 project authors. All rights reserved.</span></a>
+<span class="lineNum">       2 </span><span class="lineCov">          1 : // Use of this source code is governed by a BSD-style license that can be</span>
+<a name="3"><span class="lineNum">       3 </span><span class="lineCov">          1 : // found in the LICENSE file.</span></a>
+<span class="lineNum">       4 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">       5 </span><span class="lineCov">          5 : function getStrictF() {</span>
+<span class="lineNum">       6 </span><span class="lineCov">          5 :   'use strict';</span>
+<span class="lineNum">       7 </span><span class="lineCov">          5 :   return function f(x) {};</span>
+<span class="lineNum">       8 </span><span class="lineCov">          5 : }</span>
+<a name="9"><span class="lineNum">       9 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      10 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      11 </span><span class="lineCov">          5 : function getSloppyF() {</span>
+<span class="lineNum">      12 </span><span class="lineCov">          5 :   return function f(x) {};</span>
+<span class="lineNum">      13 </span><span class="lineCov">          5 : }</span>
+<a name="14"><span class="lineNum">      14 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      15 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      16 </span><span class="lineCov">          5 : function getStrictGenerator() {</span>
+<span class="lineNum">      17 </span><span class="lineCov">          5 :   'use strict';</span>
+<span class="lineNum">      18 </span><span class="lineCov">          5 :   return function* f(x) {};</span>
+<span class="lineNum">      19 </span><span class="lineCov">          5 : }</span>
+<a name="20"><span class="lineNum">      20 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      21 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      22 </span><span class="lineCov">          5 : function getSloppyGenerator() {</span>
+<span class="lineNum">      23 </span><span class="lineCov">          5 :   return function* f(x) {};</span>
+<span class="lineNum">      24 </span><span class="lineCov">          5 : }</span>
+<a name="25"><span class="lineNum">      25 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      26 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      27 </span><span class="lineCov">          5 : function test(testFunction) {</span>
+<span class="lineNum">      28 </span><span class="lineCov">          5 :   testFunction(getStrictF());</span>
+<span class="lineNum">      29 </span><span class="lineCov">          5 :   testFunction(getSloppyF());</span>
+<span class="lineNum">      30 </span><span class="lineCov">          5 :   testFunction(getStrictGenerator());</span>
+<span class="lineNum">      31 </span><span class="lineCov">          5 :   testFunction(getSloppyGenerator());</span>
+<span class="lineNum">      32 </span><span class="lineCov">          5 : }</span>
+<a name="33"><span class="lineNum">      33 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      34 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      35 </span><span class="lineCov">          4 : function testDescriptor(f) {</span>
+<span class="lineNum">      36 </span><span class="lineCov">          4 :   var descr = Object.getOwnPropertyDescriptor(f, 'length');</span>
+<span class="lineNum">      37 </span><span class="lineCov">          4 :   assertTrue(descr.configurable);</span>
+<span class="lineNum">      38 </span><span class="lineCov">          4 :   assertFalse(descr.enumerable);</span>
+<span class="lineNum">      39 </span><span class="lineCov">          4 :   assertEquals(1, descr.value);</span>
+<span class="lineNum">      40 </span><span class="lineCov">          4 :   assertFalse(descr.writable);</span>
+<span class="lineNum">      41 </span><span class="lineCov">          4 : }</span>
+<span class="lineNum">      42 </span><span class="lineCov">          1 : test(testDescriptor);</span>
+<a name="43"><span class="lineNum">      43 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      44 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      45 </span><span class="lineCov">          4 : function testSet(f) {</span>
+<span class="lineNum">      46 </span><span class="lineCov">          4 :   f.length = 2;</span>
+<span class="lineNum">      47 </span><span class="lineCov">          4 :   assertEquals(1, f.length);</span>
+<span class="lineNum">      48 </span><span class="lineCov">          4 : }</span>
+<span class="lineNum">      49 </span><span class="lineCov">          1 : test(testSet);</span>
+<a name="50"><span class="lineNum">      50 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      51 </span><span class="lineCov">          1 : </span>
+<a name="52"><span class="lineNum">      52 </span><span class="lineCov">          4 : function testSetStrict(f) {</span></a>
+<span class="lineNum">      53 </span><span class="lineCov">          4 :   'use strict';</span>
+<span class="lineNum">      54 </span><span class="lineCov">          4 :   assertThrows(function() {</span>
+<span class="lineNum">      55 </span><span class="lineCov">          4 :     f.length = 2;</span>
+<span class="lineNum">      56 </span><span class="lineCov">          4 :   }, TypeError);</span>
+<span class="lineNum">      57 </span><span class="lineCov">          4 : }</span>
+<span class="lineNum">      58 </span><span class="lineCov">          1 : test(testSetStrict);</span>
+<a name="59"><span class="lineNum">      59 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      60 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      61 </span><span class="lineCov">          4 : function testReconfigureAsDataProperty(f) {</span>
+<span class="lineNum">      62 </span><span class="lineCov">          4 :   Object.defineProperty(f, 'length', {</span>
+<span class="lineNum">      63 </span><span class="lineCov">          4 :     value: 2,</span>
+<span class="lineNum">      64 </span><span class="lineCov">          4 :   });</span>
+<span class="lineNum">      65 </span><span class="lineCov">          4 :   assertEquals(2, f.length);</span>
+<span class="lineNum">      66 </span><span class="lineCov">          4 :   Object.defineProperty(f, 'length', {</span>
+<span class="lineNum">      67 </span><span class="lineCov">          4 :     writable: true</span>
+<span class="lineNum">      68 </span><span class="lineCov">          4 :   });</span>
+<span class="lineNum">      69 </span><span class="lineCov">          4 :   f.length = 3;</span>
+<span class="lineNum">      70 </span><span class="lineCov">          4 :   assertEquals(3, f.length);</span>
+<span class="lineNum">      71 </span><span class="lineCov">          4 : </span>
+<span class="lineNum">      72 </span><span class="lineCov">          4 :   f.length = 42;</span>
+<span class="lineNum">      73 </span><span class="lineCov">          4 :   assertEquals(42, f.length);</span>
+<span class="lineNum">      74 </span><span class="lineCov">          4 : }</span>
+<span class="lineNum">      75 </span><span class="lineCov">          1 : test(testReconfigureAsDataProperty);</span>
+<a name="76"><span class="lineNum">      76 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      77 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      78 </span><span class="lineCov">          4 : function testReconfigureAsAccessorProperty(f) {</span>
+<a name="79"><span class="lineNum">      79 </span><span class="lineCov">          4 :   var length = 2;</span></a>
+<a name="80"><span class="lineNum">      80 </span><span class="lineCov">          4 :   Object.defineProperty(f, 'length', {</span></a>
+<span class="lineNum">      81 </span><span class="lineCov">          8 :     get: function() { return length; },</span>
+<span class="lineNum">      82 </span><span class="lineCov">          4 :     set: function(v) { length = v; }</span>
+<span class="lineNum">      83 </span><span class="lineCov">          4 :   });</span>
+<span class="lineNum">      84 </span><span class="lineCov">          4 :   assertEquals(2, f.length);</span>
+<span class="lineNum">      85 </span><span class="lineCov">          4 :   f.length = 3;</span>
+<span class="lineNum">      86 </span><span class="lineCov">          4 :   assertEquals(3, f.length);</span>
+<span class="lineNum">      87 </span><span class="lineCov">          4 : }</span>
+<span class="lineNum">      88 </span><span class="lineCov">          1 : test(testReconfigureAsAccessorProperty);</span>
+<a name="89"><span class="lineNum">      89 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      90 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      91 </span><span class="lineCov">          1 : (function testSetOnInstance() {</span>
+<span class="lineNum">      92 </span><span class="lineCov">          1 :   // This needs to come before testDelete below</span>
+<span class="lineNum">      93 </span><span class="lineCov">          1 :   assertTrue(Function.prototype.hasOwnProperty('length'));</span>
+<span class="lineNum">      94 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      95 </span><span class="lineCov">          1 :   function f() {}</span>
+<span class="lineNum">      96 </span><span class="lineCov">          1 :   delete f.length;</span>
+<span class="lineNum">      97 </span><span class="lineCov">          1 :   assertEquals(0, f.length);</span>
+<span class="lineNum">      98 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      99 </span><span class="lineCov">          1 :   f.length = 42;</span>
+<span class="lineNum">     100 </span><span class="lineCov">          1 :   assertEquals(0, f.length);  // non writable prototype property.</span>
+<span class="lineNum">     101 </span><span class="lineCov">          1 :   assertFalse(f.hasOwnProperty('length'));</span>
+<span class="lineNum">     102 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     103 </span><span class="lineCov">          1 :   Object.defineProperty(Function.prototype, 'length', {writable: true});</span>
+<span class="lineNum">     104 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     105 </span><span class="lineCov">          1 :   f.length = 123;</span>
+<span class="lineNum">     106 </span><span class="lineCov">          1 :   assertTrue(f.hasOwnProperty('length'));</span>
+<span class="lineNum">     107 </span><span class="lineCov">          1 :   assertEquals(123, f.length);</span>
+<span class="lineNum">     108 </span><span class="lineCov">          1 : })();</span>
+<a name="109"><span class="lineNum">     109 </span><span class="lineCov">          1 : </span></a>
+<a name="110"><span class="lineNum">     110 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     111 </span><span class="lineCov">          1 : (function testDelete() {</span>
+<span class="lineNum">     112 </span><span class="lineCov">          1 :   function f(x) {}</span>
+<span class="lineNum">     113 </span><span class="lineCov">          1 :   assertTrue(delete f.length);</span>
+<span class="lineNum">     114 </span><span class="lineCov">          1 :   assertFalse(f.hasOwnProperty('length'));</span>
+<span class="lineNum">     115 </span><span class="lineCov">          1 :   assertEquals(0, f.length);</span>
+<span class="lineNum">     116 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     117 </span><span class="lineCov">          1 :   assertTrue(delete Function.prototype.length);</span>
+<span class="lineNum">     118 </span><span class="lineCov">          1 :   assertEquals(undefined, f.length);</span>
+<span class="lineNum">     119 </span><span class="lineCov">          1 : })();</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

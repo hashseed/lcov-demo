@@ -1,0 +1,368 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - test/benchmarks/data/sunspider/crypto-md5.js</title>
+  <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../index.html">top level</a> - <a href="index.html">test/benchmarks/data/sunspider</a> - crypto-md5.js<span style="font-size: 80%;"> (source / <a href="crypto-md5.js.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">257</td>
+            <td class="headerCovTableEntry">293</td>
+            <td class="headerCovTableEntryMed">87.7 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2017-02-14</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">12</td>
+            <td class="headerCovTableEntry">21</td>
+            <td class="headerCovTableEntryLo">57.1 %</td>
+          </tr>
+          <tr><td><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span><span class="lineCov">          1 : /*</span></a>
+<span class="lineNum">       2 </span><span class="lineCov">          1 :  * A JavaScript implementation of the RSA Data Security, Inc. MD5 Message</span>
+<span class="lineNum">       3 </span><span class="lineCov">          1 :  * Digest Algorithm, as defined in RFC 1321.</span>
+<span class="lineNum">       4 </span><span class="lineCov">          1 :  * Version 2.1 Copyright (C) Paul Johnston 1999 - 2002.</span>
+<span class="lineNum">       5 </span><span class="lineCov">          1 :  * Other contributors: Greg Holt, Andrew Kepert, Ydnar, Lostinet</span>
+<span class="lineNum">       6 </span><span class="lineCov">          1 :  * Distributed under the BSD License</span>
+<span class="lineNum">       7 </span><span class="lineCov">          1 :  * See http://pajhome.org.uk/crypt/md5 for more info.</span>
+<span class="lineNum">       8 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">       9 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      10 </span><span class="lineCov">          1 : /*</span>
+<span class="lineNum">      11 </span><span class="lineCov">          1 :  * Configurable variables. You may need to tweak these to be compatible with</span>
+<span class="lineNum">      12 </span><span class="lineCov">          1 :  * the server-side, but the defaults work in most cases.</span>
+<span class="lineNum">      13 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">      14 </span><span class="lineCov">          1 : var hexcase = 0;  /* hex output format. 0 - lowercase; 1 - uppercase        */</span>
+<span class="lineNum">      15 </span><span class="lineCov">          1 : var b64pad  = &quot;&quot;; /* base-64 pad character. &quot;=&quot; for strict RFC compliance   */</span>
+<span class="lineNum">      16 </span><span class="lineCov">          1 : var chrsz   = 8;  /* bits per input character. 8 - ASCII; 16 - Unicode      */</span>
+<span class="lineNum">      17 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      18 </span><span class="lineCov">          1 : /*</span>
+<span class="lineNum">      19 </span><span class="lineCov">          1 :  * These are the functions you'll usually want to call</span>
+<a name="20"><span class="lineNum">      20 </span><span class="lineCov">          1 :  * They take string arguments and return either hex or base-64 encoded strings</span></a>
+<a name="21"><span class="lineNum">      21 </span><span class="lineCov">          1 :  */</span></a>
+<a name="22"><span class="lineNum">      22 </span><span class="lineCov">          1 : function hex_md5(s){ return binl2hex(core_md5(str2binl(s), s.length * chrsz));}</span></a>
+<a name="23"><span class="lineNum">      23 </span><span class="lineCov">          1 : function b64_md5(s){ return binl2b64(core_md5(str2binl(s), s.length * chrsz));}</span></a>
+<a name="24"><span class="lineNum">      24 </span><span class="lineCov">          1 : function str_md5(s){ return binl2str(core_md5(str2binl(s), s.length * chrsz));}</span></a>
+<a name="25"><span class="lineNum">      25 </span><span class="lineCov">          1 : function hex_hmac_md5(key, data) { return binl2hex(core_hmac_md5(key, data)); }</span></a>
+<span class="lineNum">      26 </span><span class="lineCov">          1 : function b64_hmac_md5(key, data) { return binl2b64(core_hmac_md5(key, data)); }</span>
+<span class="lineNum">      27 </span><span class="lineCov">          1 : function str_hmac_md5(key, data) { return binl2str(core_hmac_md5(key, data)); }</span>
+<span class="lineNum">      28 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      29 </span><span class="lineCov">          1 : /*</span>
+<a name="30"><span class="lineNum">      30 </span><span class="lineCov">          1 :  * Perform a simple self-test to see if the VM is working</span></a>
+<span class="lineNum">      31 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">      32 </span><span class="lineCov">          1 : function md5_vm_test()</span>
+<span class="lineNum">      33 </span><span class="lineNoCov">          0 : {</span>
+<span class="lineNum">      34 </span><span class="lineNoCov">          0 :   return hex_md5(&quot;abc&quot;) == &quot;900150983cd24fb0d6963f7d28e17f72&quot;;</span>
+<span class="lineNum">      35 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      36 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      37 </span><span class="lineCov">          1 : /*</span>
+<a name="38"><span class="lineNum">      38 </span><span class="lineCov">          1 :  * Calculate the MD5 of an array of little-endian words, and a bit length</span></a>
+<span class="lineNum">      39 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">      40 </span><span class="lineCov">          1 : function core_md5(x, len)</span>
+<span class="lineNum">      41 </span><span class="lineCov">          1 : {</span>
+<span class="lineNum">      42 </span><span class="lineCov">          1 :   /* append padding */</span>
+<span class="lineNum">      43 </span><span class="lineCov">          1 :   x[len &gt;&gt; 5] |= 0x80 &lt;&lt; ((len) % 32);</span>
+<span class="lineNum">      44 </span><span class="lineCov">          1 :   x[(((len + 64) &gt;&gt;&gt; 9) &lt;&lt; 4) + 14] = len;</span>
+<span class="lineNum">      45 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      46 </span><span class="lineCov">          1 :   var a =  1732584193;</span>
+<span class="lineNum">      47 </span><span class="lineCov">          1 :   var b = -271733879;</span>
+<span class="lineNum">      48 </span><span class="lineCov">          1 :   var c = -1732584194;</span>
+<span class="lineNum">      49 </span><span class="lineCov">          1 :   var d =  271733878;</span>
+<span class="lineNum">      50 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      51 </span><span class="lineCov">          1 :   for(var i = 0; i &lt; x.length; i += 16)</span>
+<span class="lineNum">      52 </span><span class="lineCov">          1 :   {</span>
+<span class="lineNum">      53 </span><span class="lineCov">          1 :     var olda = a;</span>
+<span class="lineNum">      54 </span><span class="lineCov">          1 :     var oldb = b;</span>
+<span class="lineNum">      55 </span><span class="lineCov">          1 :     var oldc = c;</span>
+<span class="lineNum">      56 </span><span class="lineCov">          1 :     var oldd = d;</span>
+<span class="lineNum">      57 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      58 </span><span class="lineCov">          1 :     a = md5_ff(a, b, c, d, x[i+ 0], 7 , -680876936);</span>
+<span class="lineNum">      59 </span><span class="lineCov">          1 :     d = md5_ff(d, a, b, c, x[i+ 1], 12, -389564586);</span>
+<span class="lineNum">      60 </span><span class="lineCov">          1 :     c = md5_ff(c, d, a, b, x[i+ 2], 17,  606105819);</span>
+<span class="lineNum">      61 </span><span class="lineCov">          1 :     b = md5_ff(b, c, d, a, x[i+ 3], 22, -1044525330);</span>
+<span class="lineNum">      62 </span><span class="lineCov">          1 :     a = md5_ff(a, b, c, d, x[i+ 4], 7 , -176418897);</span>
+<span class="lineNum">      63 </span><span class="lineCov">          1 :     d = md5_ff(d, a, b, c, x[i+ 5], 12,  1200080426);</span>
+<span class="lineNum">      64 </span><span class="lineCov">          1 :     c = md5_ff(c, d, a, b, x[i+ 6], 17, -1473231341);</span>
+<span class="lineNum">      65 </span><span class="lineCov">          1 :     b = md5_ff(b, c, d, a, x[i+ 7], 22, -45705983);</span>
+<span class="lineNum">      66 </span><span class="lineCov">          1 :     a = md5_ff(a, b, c, d, x[i+ 8], 7 ,  1770035416);</span>
+<span class="lineNum">      67 </span><span class="lineCov">          1 :     d = md5_ff(d, a, b, c, x[i+ 9], 12, -1958414417);</span>
+<span class="lineNum">      68 </span><span class="lineCov">          1 :     c = md5_ff(c, d, a, b, x[i+10], 17, -42063);</span>
+<span class="lineNum">      69 </span><span class="lineCov">          1 :     b = md5_ff(b, c, d, a, x[i+11], 22, -1990404162);</span>
+<span class="lineNum">      70 </span><span class="lineCov">          1 :     a = md5_ff(a, b, c, d, x[i+12], 7 ,  1804603682);</span>
+<span class="lineNum">      71 </span><span class="lineCov">          1 :     d = md5_ff(d, a, b, c, x[i+13], 12, -40341101);</span>
+<span class="lineNum">      72 </span><span class="lineCov">          1 :     c = md5_ff(c, d, a, b, x[i+14], 17, -1502002290);</span>
+<span class="lineNum">      73 </span><span class="lineCov">          1 :     b = md5_ff(b, c, d, a, x[i+15], 22,  1236535329);</span>
+<span class="lineNum">      74 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      75 </span><span class="lineCov">          1 :     a = md5_gg(a, b, c, d, x[i+ 1], 5 , -165796510);</span>
+<span class="lineNum">      76 </span><span class="lineCov">          1 :     d = md5_gg(d, a, b, c, x[i+ 6], 9 , -1069501632);</span>
+<span class="lineNum">      77 </span><span class="lineCov">          1 :     c = md5_gg(c, d, a, b, x[i+11], 14,  643717713);</span>
+<span class="lineNum">      78 </span><span class="lineCov">          1 :     b = md5_gg(b, c, d, a, x[i+ 0], 20, -373897302);</span>
+<span class="lineNum">      79 </span><span class="lineCov">          1 :     a = md5_gg(a, b, c, d, x[i+ 5], 5 , -701558691);</span>
+<span class="lineNum">      80 </span><span class="lineCov">          1 :     d = md5_gg(d, a, b, c, x[i+10], 9 ,  38016083);</span>
+<span class="lineNum">      81 </span><span class="lineCov">          1 :     c = md5_gg(c, d, a, b, x[i+15], 14, -660478335);</span>
+<span class="lineNum">      82 </span><span class="lineCov">          1 :     b = md5_gg(b, c, d, a, x[i+ 4], 20, -405537848);</span>
+<span class="lineNum">      83 </span><span class="lineCov">          1 :     a = md5_gg(a, b, c, d, x[i+ 9], 5 ,  568446438);</span>
+<span class="lineNum">      84 </span><span class="lineCov">          1 :     d = md5_gg(d, a, b, c, x[i+14], 9 , -1019803690);</span>
+<span class="lineNum">      85 </span><span class="lineCov">          1 :     c = md5_gg(c, d, a, b, x[i+ 3], 14, -187363961);</span>
+<span class="lineNum">      86 </span><span class="lineCov">          1 :     b = md5_gg(b, c, d, a, x[i+ 8], 20,  1163531501);</span>
+<span class="lineNum">      87 </span><span class="lineCov">          1 :     a = md5_gg(a, b, c, d, x[i+13], 5 , -1444681467);</span>
+<span class="lineNum">      88 </span><span class="lineCov">          1 :     d = md5_gg(d, a, b, c, x[i+ 2], 9 , -51403784);</span>
+<span class="lineNum">      89 </span><span class="lineCov">          1 :     c = md5_gg(c, d, a, b, x[i+ 7], 14,  1735328473);</span>
+<span class="lineNum">      90 </span><span class="lineCov">          1 :     b = md5_gg(b, c, d, a, x[i+12], 20, -1926607734);</span>
+<span class="lineNum">      91 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      92 </span><span class="lineCov">          1 :     a = md5_hh(a, b, c, d, x[i+ 5], 4 , -378558);</span>
+<span class="lineNum">      93 </span><span class="lineCov">          1 :     d = md5_hh(d, a, b, c, x[i+ 8], 11, -2022574463);</span>
+<span class="lineNum">      94 </span><span class="lineCov">          1 :     c = md5_hh(c, d, a, b, x[i+11], 16,  1839030562);</span>
+<span class="lineNum">      95 </span><span class="lineCov">          1 :     b = md5_hh(b, c, d, a, x[i+14], 23, -35309556);</span>
+<span class="lineNum">      96 </span><span class="lineCov">          1 :     a = md5_hh(a, b, c, d, x[i+ 1], 4 , -1530992060);</span>
+<span class="lineNum">      97 </span><span class="lineCov">          1 :     d = md5_hh(d, a, b, c, x[i+ 4], 11,  1272893353);</span>
+<span class="lineNum">      98 </span><span class="lineCov">          1 :     c = md5_hh(c, d, a, b, x[i+ 7], 16, -155497632);</span>
+<span class="lineNum">      99 </span><span class="lineCov">          1 :     b = md5_hh(b, c, d, a, x[i+10], 23, -1094730640);</span>
+<span class="lineNum">     100 </span><span class="lineCov">          1 :     a = md5_hh(a, b, c, d, x[i+13], 4 ,  681279174);</span>
+<span class="lineNum">     101 </span><span class="lineCov">          1 :     d = md5_hh(d, a, b, c, x[i+ 0], 11, -358537222);</span>
+<span class="lineNum">     102 </span><span class="lineCov">          1 :     c = md5_hh(c, d, a, b, x[i+ 3], 16, -722521979);</span>
+<span class="lineNum">     103 </span><span class="lineCov">          1 :     b = md5_hh(b, c, d, a, x[i+ 6], 23,  76029189);</span>
+<span class="lineNum">     104 </span><span class="lineCov">          1 :     a = md5_hh(a, b, c, d, x[i+ 9], 4 , -640364487);</span>
+<span class="lineNum">     105 </span><span class="lineCov">          1 :     d = md5_hh(d, a, b, c, x[i+12], 11, -421815835);</span>
+<span class="lineNum">     106 </span><span class="lineCov">          1 :     c = md5_hh(c, d, a, b, x[i+15], 16,  530742520);</span>
+<span class="lineNum">     107 </span><span class="lineCov">          1 :     b = md5_hh(b, c, d, a, x[i+ 2], 23, -995338651);</span>
+<span class="lineNum">     108 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     109 </span><span class="lineCov">          1 :     a = md5_ii(a, b, c, d, x[i+ 0], 6 , -198630844);</span>
+<span class="lineNum">     110 </span><span class="lineCov">          1 :     d = md5_ii(d, a, b, c, x[i+ 7], 10,  1126891415);</span>
+<span class="lineNum">     111 </span><span class="lineCov">          1 :     c = md5_ii(c, d, a, b, x[i+14], 15, -1416354905);</span>
+<span class="lineNum">     112 </span><span class="lineCov">          1 :     b = md5_ii(b, c, d, a, x[i+ 5], 21, -57434055);</span>
+<span class="lineNum">     113 </span><span class="lineCov">          1 :     a = md5_ii(a, b, c, d, x[i+12], 6 ,  1700485571);</span>
+<span class="lineNum">     114 </span><span class="lineCov">          1 :     d = md5_ii(d, a, b, c, x[i+ 3], 10, -1894986606);</span>
+<span class="lineNum">     115 </span><span class="lineCov">          1 :     c = md5_ii(c, d, a, b, x[i+10], 15, -1051523);</span>
+<span class="lineNum">     116 </span><span class="lineCov">          1 :     b = md5_ii(b, c, d, a, x[i+ 1], 21, -2054922799);</span>
+<span class="lineNum">     117 </span><span class="lineCov">          1 :     a = md5_ii(a, b, c, d, x[i+ 8], 6 ,  1873313359);</span>
+<span class="lineNum">     118 </span><span class="lineCov">          1 :     d = md5_ii(d, a, b, c, x[i+15], 10, -30611744);</span>
+<span class="lineNum">     119 </span><span class="lineCov">          1 :     c = md5_ii(c, d, a, b, x[i+ 6], 15, -1560198380);</span>
+<span class="lineNum">     120 </span><span class="lineCov">          1 :     b = md5_ii(b, c, d, a, x[i+13], 21,  1309151649);</span>
+<span class="lineNum">     121 </span><span class="lineCov">          1 :     a = md5_ii(a, b, c, d, x[i+ 4], 6 , -145523070);</span>
+<span class="lineNum">     122 </span><span class="lineCov">          1 :     d = md5_ii(d, a, b, c, x[i+11], 10, -1120210379);</span>
+<span class="lineNum">     123 </span><span class="lineCov">          1 :     c = md5_ii(c, d, a, b, x[i+ 2], 15,  718787259);</span>
+<span class="lineNum">     124 </span><span class="lineCov">          1 :     b = md5_ii(b, c, d, a, x[i+ 9], 21, -343485551);</span>
+<span class="lineNum">     125 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     126 </span><span class="lineCov">          1 :     a = safe_add(a, olda);</span>
+<span class="lineNum">     127 </span><span class="lineCov">          1 :     b = safe_add(b, oldb);</span>
+<span class="lineNum">     128 </span><span class="lineCov">          1 :     c = safe_add(c, oldc);</span>
+<span class="lineNum">     129 </span><span class="lineCov">          1 :     d = safe_add(d, oldd);</span>
+<span class="lineNum">     130 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     131 </span><span class="lineCov">          1 :   return Array(a, b, c, d);</span>
+<span class="lineNum">     132 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     133 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     134 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     135 </span><span class="lineCov">          1 : /*</span>
+<a name="136"><span class="lineNum">     136 </span><span class="lineCov">          1 :  * These functions implement the four basic operations the algorithm uses.</span></a>
+<span class="lineNum">     137 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">     138 </span><span class="lineCov">      15872 : function md5_cmn(q, a, b, x, s, t)</span>
+<span class="lineNum">     139 </span><span class="lineCov">      15872 : {</span>
+<a name="140"><span class="lineNum">     140 </span><span class="lineCov">      15872 :   return safe_add(bit_rol(safe_add(safe_add(a, q), safe_add(x, t)), s),b);</span></a>
+<span class="lineNum">     141 </span><span class="lineCov">      15872 : }</span>
+<span class="lineNum">     142 </span><span class="lineCov">       3968 : function md5_ff(a, b, c, d, x, s, t)</span>
+<span class="lineNum">     143 </span><span class="lineCov">       3968 : {</span>
+<a name="144"><span class="lineNum">     144 </span><span class="lineCov">       3968 :   return md5_cmn((b &amp; c) | ((~b) &amp; d), a, b, x, s, t);</span></a>
+<span class="lineNum">     145 </span><span class="lineCov">       3968 : }</span>
+<span class="lineNum">     146 </span><span class="lineCov">       3968 : function md5_gg(a, b, c, d, x, s, t)</span>
+<span class="lineNum">     147 </span><span class="lineCov">       3968 : {</span>
+<a name="148"><span class="lineNum">     148 </span><span class="lineCov">       3968 :   return md5_cmn((b &amp; d) | (c &amp; (~d)), a, b, x, s, t);</span></a>
+<span class="lineNum">     149 </span><span class="lineCov">       3968 : }</span>
+<span class="lineNum">     150 </span><span class="lineCov">       3968 : function md5_hh(a, b, c, d, x, s, t)</span>
+<span class="lineNum">     151 </span><span class="lineCov">       3968 : {</span>
+<a name="152"><span class="lineNum">     152 </span><span class="lineCov">       3968 :   return md5_cmn(b ^ c ^ d, a, b, x, s, t);</span></a>
+<span class="lineNum">     153 </span><span class="lineCov">       3968 : }</span>
+<span class="lineNum">     154 </span><span class="lineCov">       3968 : function md5_ii(a, b, c, d, x, s, t)</span>
+<span class="lineNum">     155 </span><span class="lineCov">       3968 : {</span>
+<span class="lineNum">     156 </span><span class="lineCov">       3968 :   return md5_cmn(c ^ (b | (~d)), a, b, x, s, t);</span>
+<span class="lineNum">     157 </span><span class="lineCov">       3968 : }</span>
+<span class="lineNum">     158 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     159 </span><span class="lineCov">          1 : /*</span>
+<a name="160"><span class="lineNum">     160 </span><span class="lineCov">          1 :  * Calculate the HMAC-MD5, of a key and some data</span></a>
+<span class="lineNum">     161 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">     162 </span><span class="lineCov">          1 : function core_hmac_md5(key, data)</span>
+<span class="lineNum">     163 </span><span class="lineNoCov">          0 : {</span>
+<span class="lineNum">     164 </span><span class="lineNoCov">          0 :   var bkey = str2binl(key);</span>
+<span class="lineNum">     165 </span><span class="lineNoCov">          0 :   if(bkey.length &gt; 16) bkey = core_md5(bkey, key.length * chrsz);</span>
+<span class="lineNum">     166 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     167 </span><span class="lineNoCov">          0 :   var ipad = Array(16), opad = Array(16);</span>
+<span class="lineNum">     168 </span><span class="lineNoCov">          0 :   for(var i = 0; i &lt; 16; i++)</span>
+<span class="lineNum">     169 </span><span class="lineNoCov">          0 :   {</span>
+<span class="lineNum">     170 </span><span class="lineNoCov">          0 :     ipad[i] = bkey[i] ^ 0x36363636;</span>
+<span class="lineNum">     171 </span><span class="lineNoCov">          0 :     opad[i] = bkey[i] ^ 0x5C5C5C5C;</span>
+<span class="lineNum">     172 </span><span class="lineNoCov">          0 :   }</span>
+<span class="lineNum">     173 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     174 </span><span class="lineNoCov">          0 :   var hash = core_md5(ipad.concat(str2binl(data)), 512 + data.length * chrsz);</span>
+<span class="lineNum">     175 </span><span class="lineNoCov">          0 :   return core_md5(opad.concat(hash), 512 + 128);</span>
+<span class="lineNum">     176 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     177 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     178 </span><span class="lineCov">          1 : /*</span>
+<span class="lineNum">     179 </span><span class="lineCov">          1 :  * Add integers, wrapping at 2^32. This uses 16-bit operations internally</span>
+<a name="180"><span class="lineNum">     180 </span><span class="lineCov">          1 :  * to work around bugs in some JS interpreters.</span></a>
+<span class="lineNum">     181 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">     182 </span><span class="lineCov">      64480 : function safe_add(x, y)</span>
+<span class="lineNum">     183 </span><span class="lineCov">      64480 : {</span>
+<span class="lineNum">     184 </span><span class="lineCov">      64480 :   var lsw = (x &amp; 0xFFFF) + (y &amp; 0xFFFF);</span>
+<span class="lineNum">     185 </span><span class="lineCov">      64480 :   var msw = (x &gt;&gt; 16) + (y &gt;&gt; 16) + (lsw &gt;&gt; 16);</span>
+<span class="lineNum">     186 </span><span class="lineCov">      64480 :   return (msw &lt;&lt; 16) | (lsw &amp; 0xFFFF);</span>
+<span class="lineNum">     187 </span><span class="lineCov">      64480 : }</span>
+<span class="lineNum">     188 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     189 </span><span class="lineCov">          1 : /*</span>
+<a name="190"><span class="lineNum">     190 </span><span class="lineCov">          1 :  * Bitwise rotate a 32-bit number to the left.</span></a>
+<span class="lineNum">     191 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">     192 </span><span class="lineCov">      15872 : function bit_rol(num, cnt)</span>
+<span class="lineNum">     193 </span><span class="lineCov">      15872 : {</span>
+<span class="lineNum">     194 </span><span class="lineCov">      15872 :   return (num &lt;&lt; cnt) | (num &gt;&gt;&gt; (32 - cnt));</span>
+<span class="lineNum">     195 </span><span class="lineCov">      15872 : }</span>
+<span class="lineNum">     196 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     197 </span><span class="lineCov">          1 : /*</span>
+<span class="lineNum">     198 </span><span class="lineCov">          1 :  * Convert a string to an array of little-endian words</span>
+<a name="199"><span class="lineNum">     199 </span><span class="lineCov">          1 :  * If chrsz is ASCII, characters &gt;255 have their hi-byte silently ignored.</span></a>
+<span class="lineNum">     200 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">     201 </span><span class="lineCov">          1 : function str2binl(str)</span>
+<span class="lineNum">     202 </span><span class="lineCov">          1 : {</span>
+<span class="lineNum">     203 </span><span class="lineCov">          1 :   var bin = Array();</span>
+<span class="lineNum">     204 </span><span class="lineCov">          1 :   var mask = (1 &lt;&lt; chrsz) - 1;</span>
+<span class="lineNum">     205 </span><span class="lineCov">          1 :   for(var i = 0; i &lt; str.length * chrsz; i += chrsz)</span>
+<span class="lineNum">     206 </span><span class="lineCov">          1 :     bin[i&gt;&gt;5] |= (str.charCodeAt(i / chrsz) &amp; mask) &lt;&lt; (i%32);</span>
+<span class="lineNum">     207 </span><span class="lineCov">          1 :   return bin;</span>
+<span class="lineNum">     208 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     209 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     210 </span><span class="lineCov">          1 : /*</span>
+<a name="211"><span class="lineNum">     211 </span><span class="lineCov">          1 :  * Convert an array of little-endian words to a string</span></a>
+<span class="lineNum">     212 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">     213 </span><span class="lineCov">          1 : function binl2str(bin)</span>
+<span class="lineNum">     214 </span><span class="lineNoCov">          0 : {</span>
+<span class="lineNum">     215 </span><span class="lineNoCov">          0 :   var str = &quot;&quot;;</span>
+<span class="lineNum">     216 </span><span class="lineNoCov">          0 :   var mask = (1 &lt;&lt; chrsz) - 1;</span>
+<span class="lineNum">     217 </span><span class="lineNoCov">          0 :   for(var i = 0; i &lt; bin.length * 32; i += chrsz)</span>
+<span class="lineNum">     218 </span><span class="lineNoCov">          0 :     str += String.fromCharCode((bin[i&gt;&gt;5] &gt;&gt;&gt; (i % 32)) &amp; mask);</span>
+<span class="lineNum">     219 </span><span class="lineNoCov">          0 :   return str;</span>
+<span class="lineNum">     220 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     221 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     222 </span><span class="lineCov">          1 : /*</span>
+<a name="223"><span class="lineNum">     223 </span><span class="lineCov">          1 :  * Convert an array of little-endian words to a hex string.</span></a>
+<span class="lineNum">     224 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">     225 </span><span class="lineCov">          1 : function binl2hex(binarray)</span>
+<span class="lineNum">     226 </span><span class="lineCov">          1 : {</span>
+<span class="lineNum">     227 </span><span class="lineCov">          1 :   var hex_tab = hexcase ? &quot;0123456789ABCDEF&quot; : &quot;0123456789abcdef&quot;;</span>
+<span class="lineNum">     228 </span><span class="lineCov">          1 :   var str = &quot;&quot;;</span>
+<span class="lineNum">     229 </span><span class="lineCov">          1 :   for(var i = 0; i &lt; binarray.length * 4; i++)</span>
+<span class="lineNum">     230 </span><span class="lineCov">          1 :   {</span>
+<span class="lineNum">     231 </span><span class="lineCov">          1 :     str += hex_tab.charAt((binarray[i&gt;&gt;2] &gt;&gt; ((i%4)*8+4)) &amp; 0xF) +</span>
+<span class="lineNum">     232 </span><span class="lineCov">          1 :            hex_tab.charAt((binarray[i&gt;&gt;2] &gt;&gt; ((i%4)*8  )) &amp; 0xF);</span>
+<span class="lineNum">     233 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     234 </span><span class="lineCov">          1 :   return str;</span>
+<span class="lineNum">     235 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     236 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     237 </span><span class="lineCov">          1 : /*</span>
+<a name="238"><span class="lineNum">     238 </span><span class="lineCov">          1 :  * Convert an array of little-endian words to a base-64 string</span></a>
+<span class="lineNum">     239 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">     240 </span><span class="lineCov">          1 : function binl2b64(binarray)</span>
+<span class="lineNum">     241 </span><span class="lineNoCov">          0 : {</span>
+<span class="lineNum">     242 </span><span class="lineNoCov">          0 :   var tab = &quot;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/&quot;;</span>
+<span class="lineNum">     243 </span><span class="lineNoCov">          0 :   var str = &quot;&quot;;</span>
+<span class="lineNum">     244 </span><span class="lineNoCov">          0 :   for(var i = 0; i &lt; binarray.length * 4; i += 3)</span>
+<span class="lineNum">     245 </span><span class="lineNoCov">          0 :   {</span>
+<span class="lineNum">     246 </span><span class="lineNoCov">          0 :     var triplet = (((binarray[i   &gt;&gt; 2] &gt;&gt; 8 * ( i   %4)) &amp; 0xFF) &lt;&lt; 16)</span>
+<span class="lineNum">     247 </span><span class="lineNoCov">          0 :                 | (((binarray[i+1 &gt;&gt; 2] &gt;&gt; 8 * ((i+1)%4)) &amp; 0xFF) &lt;&lt; 8 )</span>
+<span class="lineNum">     248 </span><span class="lineNoCov">          0 :                 |  ((binarray[i+2 &gt;&gt; 2] &gt;&gt; 8 * ((i+2)%4)) &amp; 0xFF);</span>
+<span class="lineNum">     249 </span><span class="lineNoCov">          0 :     for(var j = 0; j &lt; 4; j++)</span>
+<span class="lineNum">     250 </span><span class="lineNoCov">          0 :     {</span>
+<span class="lineNum">     251 </span><span class="lineNoCov">          0 :       if(i * 8 + j * 6 &gt; binarray.length * 32) str += b64pad;</span>
+<span class="lineNum">     252 </span><span class="lineNoCov">          0 :       else str += tab.charAt((triplet &gt;&gt; 6*(3-j)) &amp; 0x3F);</span>
+<span class="lineNum">     253 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     254 </span><span class="lineNoCov">          0 :   }</span>
+<span class="lineNum">     255 </span><span class="lineNoCov">          0 :   return str;</span>
+<span class="lineNum">     256 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     257 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     258 </span><span class="lineCov">          1 : var plainText = &quot;Rebellious subjects, enemies to peace,\n\</span>
+<span class="lineNum">     259 </span><span class="lineCov">          1 : Profaners of this neighbour-stained steel,--\n\</span>
+<span class="lineNum">     260 </span><span class="lineCov">          1 : Will they not hear? What, ho! you men, you beasts,\n\</span>
+<span class="lineNum">     261 </span><span class="lineCov">          1 : That quench the fire of your pernicious rage\n\</span>
+<span class="lineNum">     262 </span><span class="lineCov">          1 : With purple fountains issuing from your veins,\n\</span>
+<span class="lineNum">     263 </span><span class="lineCov">          1 : On pain of torture, from those bloody hands\n\</span>
+<span class="lineNum">     264 </span><span class="lineCov">          1 : Throw your mistemper'd weapons to the ground,\n\</span>
+<span class="lineNum">     265 </span><span class="lineCov">          1 : And hear the sentence of your moved prince.\n\</span>
+<span class="lineNum">     266 </span><span class="lineCov">          1 : Three civil brawls, bred of an airy word,\n\</span>
+<span class="lineNum">     267 </span><span class="lineCov">          1 : By thee, old Capulet, and Montague,\n\</span>
+<span class="lineNum">     268 </span><span class="lineCov">          1 : Have thrice disturb'd the quiet of our streets,\n\</span>
+<span class="lineNum">     269 </span><span class="lineCov">          1 : And made Verona's ancient citizens\n\</span>
+<span class="lineNum">     270 </span><span class="lineCov">          1 : Cast by their grave beseeming ornaments,\n\</span>
+<span class="lineNum">     271 </span><span class="lineCov">          1 : To wield old partisans, in hands as old,\n\</span>
+<span class="lineNum">     272 </span><span class="lineCov">          1 : Canker'd with peace, to part your canker'd hate:\n\</span>
+<span class="lineNum">     273 </span><span class="lineCov">          1 : If ever you disturb our streets again,\n\</span>
+<span class="lineNum">     274 </span><span class="lineCov">          1 : Your lives shall pay the forfeit of the peace.\n\</span>
+<span class="lineNum">     275 </span><span class="lineCov">          1 : For this time, all the rest depart away:\n\</span>
+<span class="lineNum">     276 </span><span class="lineCov">          1 : You Capulet; shall go along with me:\n\</span>
+<span class="lineNum">     277 </span><span class="lineCov">          1 : And, Montague, come you this afternoon,\n\</span>
+<span class="lineNum">     278 </span><span class="lineCov">          1 : To know our further pleasure in this case,\n\</span>
+<span class="lineNum">     279 </span><span class="lineCov">          1 : To old Free-town, our common judgment-place.\n\</span>
+<span class="lineNum">     280 </span><span class="lineCov">          1 : Once more, on pain of death, all men depart.&quot;</span>
+<span class="lineNum">     281 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     282 </span><span class="lineCov">          1 : for (var i = 0; i &lt;4; i++) {</span>
+<span class="lineNum">     283 </span><span class="lineCov">          1 :     plainText += plainText;</span>
+<span class="lineNum">     284 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     285 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     286 </span><span class="lineCov">          1 : var md5Output = hex_md5(plainText);</span>
+<span class="lineNum">     287 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     288 </span><span class="lineCov">          1 : var expected = &quot;a831e91e0f70eddcb70dc61c6f82f6cd&quot;;</span>
+<span class="lineNum">     289 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     290 </span><span class="lineCov">          1 : if (md5Output != expected)</span>
+<span class="lineNum">     291 </span><span class="lineCov">          1 :     throw &quot;ERROR: bad result: expected &quot; + expected + &quot; but got &quot; + md5Output;</span>
+<span class="lineNum">     292 </span><span class="lineCov">          1 : </span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

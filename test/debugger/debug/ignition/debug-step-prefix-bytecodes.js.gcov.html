@@ -1,0 +1,448 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - test/debugger/debug/ignition/debug-step-prefix-bytecodes.js</title>
+  <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../index.html">top level</a> - <a href="index.html">test/debugger/debug/ignition</a> - debug-step-prefix-bytecodes.js<span style="font-size: 80%;"> (source / <a href="debug-step-prefix-bytecodes.js.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">373</td>
+            <td class="headerCovTableEntry">373</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2017-02-14</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">5</td>
+            <td class="headerCovTableEntry">5</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr><td><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span><span class="lineCov">          1 : // Copyright 2011 the V8 project authors. All rights reserved.</span></a>
+<span class="lineNum">       2 </span><span class="lineCov">          1 : // Redistribution and use in source and binary forms, with or without</span>
+<span class="lineNum">       3 </span><span class="lineCov">          1 : // modification, are permitted provided that the following conditions are</span>
+<span class="lineNum">       4 </span><span class="lineCov">          1 : // met:</span>
+<span class="lineNum">       5 </span><span class="lineCov">          1 : //</span>
+<span class="lineNum">       6 </span><span class="lineCov">          1 : //     * Redistributions of source code must retain the above copyright</span>
+<span class="lineNum">       7 </span><span class="lineCov">          1 : //       notice, this list of conditions and the following disclaimer.</span>
+<span class="lineNum">       8 </span><span class="lineCov">          1 : //     * Redistributions in binary form must reproduce the above</span>
+<span class="lineNum">       9 </span><span class="lineCov">          1 : //       copyright notice, this list of conditions and the following</span>
+<span class="lineNum">      10 </span><span class="lineCov">          1 : //       disclaimer in the documentation and/or other materials provided</span>
+<span class="lineNum">      11 </span><span class="lineCov">          1 : //       with the distribution.</span>
+<span class="lineNum">      12 </span><span class="lineCov">          1 : //     * Neither the name of Google Inc. nor the names of its</span>
+<span class="lineNum">      13 </span><span class="lineCov">          1 : //       contributors may be used to endorse or promote products derived</span>
+<span class="lineNum">      14 </span><span class="lineCov">          1 : //       from this software without specific prior written permission.</span>
+<span class="lineNum">      15 </span><span class="lineCov">          1 : //</span>
+<span class="lineNum">      16 </span><span class="lineCov">          1 : // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="lineNum">      17 </span><span class="lineCov">          1 : // &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="lineNum">      18 </span><span class="lineCov">          1 : // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR</span>
+<span class="lineNum">      19 </span><span class="lineCov">          1 : // A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT</span>
+<span class="lineNum">      20 </span><span class="lineCov">          1 : // OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,</span>
+<span class="lineNum">      21 </span><span class="lineCov">          1 : // SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT</span>
+<span class="lineNum">      22 </span><span class="lineCov">          1 : // LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,</span>
+<span class="lineNum">      23 </span><span class="lineCov">          1 : // DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY</span>
+<span class="lineNum">      24 </span><span class="lineCov">          1 : // THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT</span>
+<span class="lineNum">      25 </span><span class="lineCov">          1 : // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE</span>
+<span class="lineNum">      26 </span><span class="lineCov">          1 : // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="lineNum">      27 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      28 </span><span class="lineCov">          1 : // This test tests that full code compiled without debug break slots</span>
+<span class="lineNum">      29 </span><span class="lineCov">          1 : // is recompiled with debug break slots when debugging is started.</span>
+<span class="lineNum">      30 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      31 </span><span class="lineCov">          1 : Debug = debug.Debug</span>
+<span class="lineNum">      32 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      33 </span><span class="lineCov">          1 : var done = false;</span>
+<span class="lineNum">      34 </span><span class="lineCov">          1 : var step_count = 0;</span>
+<span class="lineNum">      35 </span><span class="lineCov">          1 : var values = [];</span>
+<a name="36"><span class="lineNum">      36 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      37 </span><span class="lineCov">          1 : // Debug event listener which steps until the global variable done is true.</span>
+<span class="lineNum">      38 </span><span class="lineCov">        580 : function listener(event, exec_state, event_data, data) {</span>
+<span class="lineNum">      39 </span><span class="lineCov">        580 :   if (event == Debug.DebugEvent.Break) {</span>
+<span class="lineNum">      40 </span><span class="lineCov">        580 :     if (!done) exec_state.prepareStep(Debug.StepAction.StepNext);</span>
+<span class="lineNum">      41 </span><span class="lineCov">        580 :     step_count++;</span>
+<span class="lineNum">      42 </span><span class="lineCov">        580 :   }</span>
+<span class="lineNum">      43 </span><span class="lineCov">        580 : };</span>
+<a name="44"><span class="lineNum">      44 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      45 </span><span class="lineCov">          1 : // Set the global variables state to prpare the stepping test.</span>
+<span class="lineNum">      46 </span><span class="lineCov">          3 : function prepare_step_test() {</span>
+<span class="lineNum">      47 </span><span class="lineCov">          3 :   done = false;</span>
+<span class="lineNum">      48 </span><span class="lineCov">          3 :   step_count = 0;</span>
+<span class="lineNum">      49 </span><span class="lineCov">          3 : }</span>
+<a name="50"><span class="lineNum">      50 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      51 </span><span class="lineCov">          1 : // Test function to step through, uses widended bytecodes.</span>
+<span class="lineNum">      52 </span><span class="lineCov">          3 : function f() {</span>
+<span class="lineNum">      53 </span><span class="lineCov">          3 : var x = 10000000;</span>
+<span class="lineNum">      54 </span><span class="lineCov">          3 : var y = x + 1;</span>
+<span class="lineNum">      55 </span><span class="lineCov">          3 : var _aa = 0; values[_aa] = _aa;</span>
+<span class="lineNum">      56 </span><span class="lineCov">          3 : var _ab = 1; values[_ab] = _ab;</span>
+<span class="lineNum">      57 </span><span class="lineCov">          3 : var _ac = 2; values[_ac] = _ac;</span>
+<span class="lineNum">      58 </span><span class="lineCov">          3 : var _ad = 3; values[_ad] = _ad;</span>
+<span class="lineNum">      59 </span><span class="lineCov">          3 : var _ae = 4; values[_ae] = _ae;</span>
+<span class="lineNum">      60 </span><span class="lineCov">          3 : var _af = 5; values[_af] = _af;</span>
+<span class="lineNum">      61 </span><span class="lineCov">          3 : var _ag = 6; values[_ag] = _ag;</span>
+<span class="lineNum">      62 </span><span class="lineCov">          3 : var _ah = 7; values[_ah] = _ah;</span>
+<span class="lineNum">      63 </span><span class="lineCov">          3 : var _ai = 8; values[_ai] = _ai;</span>
+<span class="lineNum">      64 </span><span class="lineCov">          3 : var _aj = 9; values[_aj] = _aj;</span>
+<span class="lineNum">      65 </span><span class="lineCov">          3 : var _ak = 10; values[_ak] = _ak;</span>
+<span class="lineNum">      66 </span><span class="lineCov">          3 : var _al = 11; values[_al] = _al;</span>
+<span class="lineNum">      67 </span><span class="lineCov">          3 : var _am = 12; values[_am] = _am;</span>
+<span class="lineNum">      68 </span><span class="lineCov">          3 : var _an = 13; values[_an] = _an;</span>
+<span class="lineNum">      69 </span><span class="lineCov">          3 : var _ao = 14; values[_ao] = _ao;</span>
+<span class="lineNum">      70 </span><span class="lineCov">          3 : var _ap = 15; values[_ap] = _ap;</span>
+<span class="lineNum">      71 </span><span class="lineCov">          3 : var _ba = 16; values[_ba] = _ba;</span>
+<span class="lineNum">      72 </span><span class="lineCov">          3 : var _bb = 17; values[_bb] = _bb;</span>
+<span class="lineNum">      73 </span><span class="lineCov">          3 : var _bc = 18; values[_bc] = _bc;</span>
+<span class="lineNum">      74 </span><span class="lineCov">          3 : var _bd = 19; values[_bd] = _bd;</span>
+<span class="lineNum">      75 </span><span class="lineCov">          3 : var _be = 20; values[_be] = _be;</span>
+<span class="lineNum">      76 </span><span class="lineCov">          3 : var _bf = 21; values[_bf] = _bf;</span>
+<span class="lineNum">      77 </span><span class="lineCov">          3 : var _bg = 22; values[_bg] = _bg;</span>
+<span class="lineNum">      78 </span><span class="lineCov">          3 : var _bh = 23; values[_bh] = _bh;</span>
+<span class="lineNum">      79 </span><span class="lineCov">          3 : var _bi = 24; values[_bi] = _bi;</span>
+<span class="lineNum">      80 </span><span class="lineCov">          3 : var _bj = 25; values[_bj] = _bj;</span>
+<span class="lineNum">      81 </span><span class="lineCov">          3 : var _bk = 26; values[_bk] = _bk;</span>
+<span class="lineNum">      82 </span><span class="lineCov">          3 : var _bl = 27; values[_bl] = _bl;</span>
+<span class="lineNum">      83 </span><span class="lineCov">          3 : var _bm = 28; values[_bm] = _bm;</span>
+<span class="lineNum">      84 </span><span class="lineCov">          3 : var _bn = 29; values[_bn] = _bn;</span>
+<span class="lineNum">      85 </span><span class="lineCov">          3 : var _bo = 30; values[_bo] = _bo;</span>
+<span class="lineNum">      86 </span><span class="lineCov">          3 : var _bp = 31; values[_bp] = _bp;</span>
+<span class="lineNum">      87 </span><span class="lineCov">          3 : var _ca = 32; values[_ca] = _ca;</span>
+<span class="lineNum">      88 </span><span class="lineCov">          3 : var _cb = 33; values[_cb] = _cb;</span>
+<span class="lineNum">      89 </span><span class="lineCov">          3 : var _cc = 34; values[_cc] = _cc;</span>
+<span class="lineNum">      90 </span><span class="lineCov">          3 : var _cd = 35; values[_cd] = _cd;</span>
+<span class="lineNum">      91 </span><span class="lineCov">          3 : var _ce = 36; values[_ce] = _ce;</span>
+<span class="lineNum">      92 </span><span class="lineCov">          3 : var _cf = 37; values[_cf] = _cf;</span>
+<span class="lineNum">      93 </span><span class="lineCov">          3 : var _cg = 38; values[_cg] = _cg;</span>
+<span class="lineNum">      94 </span><span class="lineCov">          3 : var _ch = 39; values[_ch] = _ch;</span>
+<span class="lineNum">      95 </span><span class="lineCov">          3 : var _ci = 40; values[_ci] = _ci;</span>
+<span class="lineNum">      96 </span><span class="lineCov">          3 : var _cj = 41; values[_cj] = _cj;</span>
+<span class="lineNum">      97 </span><span class="lineCov">          3 : var _ck = 42; values[_ck] = _ck;</span>
+<span class="lineNum">      98 </span><span class="lineCov">          3 : var _cl = 43; values[_cl] = _cl;</span>
+<span class="lineNum">      99 </span><span class="lineCov">          3 : var _cm = 44; values[_cm] = _cm;</span>
+<span class="lineNum">     100 </span><span class="lineCov">          3 : var _cn = 45; values[_cn] = _cn;</span>
+<span class="lineNum">     101 </span><span class="lineCov">          3 : var _co = 46; values[_co] = _co;</span>
+<span class="lineNum">     102 </span><span class="lineCov">          3 : var _cp = 47; values[_cp] = _cp;</span>
+<span class="lineNum">     103 </span><span class="lineCov">          3 : var _da = 48; values[_da] = _da;</span>
+<span class="lineNum">     104 </span><span class="lineCov">          3 : var _db = 49; values[_db] = _db;</span>
+<span class="lineNum">     105 </span><span class="lineCov">          3 : var _dc = 50; values[_dc] = _dc;</span>
+<span class="lineNum">     106 </span><span class="lineCov">          3 : var _dd = 51; values[_dd] = _dd;</span>
+<span class="lineNum">     107 </span><span class="lineCov">          3 : var _de = 52; values[_de] = _de;</span>
+<span class="lineNum">     108 </span><span class="lineCov">          3 : var _df = 53; values[_df] = _df;</span>
+<span class="lineNum">     109 </span><span class="lineCov">          3 : var _dg = 54; values[_dg] = _dg;</span>
+<span class="lineNum">     110 </span><span class="lineCov">          3 : var _dh = 55; values[_dh] = _dh;</span>
+<span class="lineNum">     111 </span><span class="lineCov">          3 : var _di = 56; values[_di] = _di;</span>
+<span class="lineNum">     112 </span><span class="lineCov">          3 : var _dj = 57; values[_dj] = _dj;</span>
+<span class="lineNum">     113 </span><span class="lineCov">          3 : var _dk = 58; values[_dk] = _dk;</span>
+<span class="lineNum">     114 </span><span class="lineCov">          3 : var _dl = 59; values[_dl] = _dl;</span>
+<span class="lineNum">     115 </span><span class="lineCov">          3 : var _dm = 60; values[_dm] = _dm;</span>
+<span class="lineNum">     116 </span><span class="lineCov">          3 : var _dn = 61; values[_dn] = _dn;</span>
+<span class="lineNum">     117 </span><span class="lineCov">          3 : var _do = 62; values[_do] = _do;</span>
+<span class="lineNum">     118 </span><span class="lineCov">          3 : var _dp = 63; values[_dp] = _dp;</span>
+<span class="lineNum">     119 </span><span class="lineCov">          3 : var _ea = 64; values[_ea] = _ea;</span>
+<span class="lineNum">     120 </span><span class="lineCov">          3 : var _eb = 65; values[_eb] = _eb;</span>
+<span class="lineNum">     121 </span><span class="lineCov">          3 : var _ec = 66; values[_ec] = _ec;</span>
+<span class="lineNum">     122 </span><span class="lineCov">          3 : var _ed = 67; values[_ed] = _ed;</span>
+<span class="lineNum">     123 </span><span class="lineCov">          3 : var _ee = 68; values[_ee] = _ee;</span>
+<span class="lineNum">     124 </span><span class="lineCov">          3 : var _ef = 69; values[_ef] = _ef;</span>
+<span class="lineNum">     125 </span><span class="lineCov">          3 : var _eg = 70; values[_eg] = _eg;</span>
+<span class="lineNum">     126 </span><span class="lineCov">          3 : var _eh = 71; values[_eh] = _eh;</span>
+<span class="lineNum">     127 </span><span class="lineCov">          3 : var _ei = 72; values[_ei] = _ei;</span>
+<span class="lineNum">     128 </span><span class="lineCov">          3 : var _ej = 73; values[_ej] = _ej;</span>
+<span class="lineNum">     129 </span><span class="lineCov">          3 : var _ek = 74; values[_ek] = _ek;</span>
+<span class="lineNum">     130 </span><span class="lineCov">          3 : var _el = 75; values[_el] = _el;</span>
+<span class="lineNum">     131 </span><span class="lineCov">          3 : var _em = 76; values[_em] = _em;</span>
+<span class="lineNum">     132 </span><span class="lineCov">          3 : var _en = 77; values[_en] = _en;</span>
+<span class="lineNum">     133 </span><span class="lineCov">          3 : var _eo = 78; values[_eo] = _eo;</span>
+<span class="lineNum">     134 </span><span class="lineCov">          3 : var _ep = 79; values[_ep] = _ep;</span>
+<span class="lineNum">     135 </span><span class="lineCov">          3 : var _fa = 80; values[_fa] = _fa;</span>
+<span class="lineNum">     136 </span><span class="lineCov">          3 : var _fb = 81; values[_fb] = _fb;</span>
+<span class="lineNum">     137 </span><span class="lineCov">          3 : var _fc = 82; values[_fc] = _fc;</span>
+<span class="lineNum">     138 </span><span class="lineCov">          3 : var _fd = 83; values[_fd] = _fd;</span>
+<span class="lineNum">     139 </span><span class="lineCov">          3 : var _fe = 84; values[_fe] = _fe;</span>
+<span class="lineNum">     140 </span><span class="lineCov">          3 : var _ff = 85; values[_ff] = _ff;</span>
+<span class="lineNum">     141 </span><span class="lineCov">          3 : var _fg = 86; values[_fg] = _fg;</span>
+<span class="lineNum">     142 </span><span class="lineCov">          3 : var _fh = 87; values[_fh] = _fh;</span>
+<span class="lineNum">     143 </span><span class="lineCov">          3 : var _fi = 88; values[_fi] = _fi;</span>
+<span class="lineNum">     144 </span><span class="lineCov">          3 : var _fj = 89; values[_fj] = _fj;</span>
+<span class="lineNum">     145 </span><span class="lineCov">          3 : var _fk = 90; values[_fk] = _fk;</span>
+<span class="lineNum">     146 </span><span class="lineCov">          3 : var _fl = 91; values[_fl] = _fl;</span>
+<span class="lineNum">     147 </span><span class="lineCov">          3 : var _fm = 92; values[_fm] = _fm;</span>
+<span class="lineNum">     148 </span><span class="lineCov">          3 : var _fn = 93; values[_fn] = _fn;</span>
+<span class="lineNum">     149 </span><span class="lineCov">          3 : var _fo = 94; values[_fo] = _fo;</span>
+<span class="lineNum">     150 </span><span class="lineCov">          3 : var _fp = 95; values[_fp] = _fp;</span>
+<span class="lineNum">     151 </span><span class="lineCov">          3 : var _ga = 96; values[_ga] = _ga;</span>
+<span class="lineNum">     152 </span><span class="lineCov">          3 : var _gb = 97; values[_gb] = _gb;</span>
+<span class="lineNum">     153 </span><span class="lineCov">          3 : var _gc = 98; values[_gc] = _gc;</span>
+<span class="lineNum">     154 </span><span class="lineCov">          3 : var _gd = 99; values[_gd] = _gd;</span>
+<span class="lineNum">     155 </span><span class="lineCov">          3 : var _ge = 100; values[_ge] = _ge;</span>
+<span class="lineNum">     156 </span><span class="lineCov">          3 : var _gf = 101; values[_gf] = _gf;</span>
+<span class="lineNum">     157 </span><span class="lineCov">          3 : var _gg = 102; values[_gg] = _gg;</span>
+<span class="lineNum">     158 </span><span class="lineCov">          3 : var _gh = 103; values[_gh] = _gh;</span>
+<span class="lineNum">     159 </span><span class="lineCov">          3 : var _gi = 104; values[_gi] = _gi;</span>
+<span class="lineNum">     160 </span><span class="lineCov">          3 : var _gj = 105; values[_gj] = _gj;</span>
+<span class="lineNum">     161 </span><span class="lineCov">          3 : var _gk = 106; values[_gk] = _gk;</span>
+<span class="lineNum">     162 </span><span class="lineCov">          3 : var _gl = 107; values[_gl] = _gl;</span>
+<span class="lineNum">     163 </span><span class="lineCov">          3 : var _gm = 108; values[_gm] = _gm;</span>
+<span class="lineNum">     164 </span><span class="lineCov">          3 : var _gn = 109; values[_gn] = _gn;</span>
+<span class="lineNum">     165 </span><span class="lineCov">          3 : var _go = 110; values[_go] = _go;</span>
+<span class="lineNum">     166 </span><span class="lineCov">          3 : var _gp = 111; values[_gp] = _gp;</span>
+<span class="lineNum">     167 </span><span class="lineCov">          3 : var _ha = 112; values[_ha] = _ha;</span>
+<span class="lineNum">     168 </span><span class="lineCov">          3 : var _hb = 113; values[_hb] = _hb;</span>
+<span class="lineNum">     169 </span><span class="lineCov">          3 : var _hc = 114; values[_hc] = _hc;</span>
+<span class="lineNum">     170 </span><span class="lineCov">          3 : var _hd = 115; values[_hd] = _hd;</span>
+<span class="lineNum">     171 </span><span class="lineCov">          3 : var _he = 116; values[_he] = _he;</span>
+<span class="lineNum">     172 </span><span class="lineCov">          3 : var _hf = 117; values[_hf] = _hf;</span>
+<span class="lineNum">     173 </span><span class="lineCov">          3 : var _hg = 118; values[_hg] = _hg;</span>
+<span class="lineNum">     174 </span><span class="lineCov">          3 : var _hh = 119; values[_hh] = _hh;</span>
+<span class="lineNum">     175 </span><span class="lineCov">          3 : var _hi = 120; values[_hi] = _hi;</span>
+<span class="lineNum">     176 </span><span class="lineCov">          3 : var _hj = 121; values[_hj] = _hj;</span>
+<span class="lineNum">     177 </span><span class="lineCov">          3 : var _hk = 122; values[_hk] = _hk;</span>
+<span class="lineNum">     178 </span><span class="lineCov">          3 : var _hl = 123; values[_hl] = _hl;</span>
+<span class="lineNum">     179 </span><span class="lineCov">          3 : var _hm = 124; values[_hm] = _hm;</span>
+<span class="lineNum">     180 </span><span class="lineCov">          3 : var _hn = 125; values[_hn] = _hn;</span>
+<span class="lineNum">     181 </span><span class="lineCov">          3 : var _ho = 126; values[_ho] = _ho;</span>
+<span class="lineNum">     182 </span><span class="lineCov">          3 : var _hp = 127; values[_hp] = _hp;</span>
+<span class="lineNum">     183 </span><span class="lineCov">          3 : var _ia = 128; values[_ia] = _ia;</span>
+<span class="lineNum">     184 </span><span class="lineCov">          3 : var _ib = 129; values[_ib] = _ib;</span>
+<span class="lineNum">     185 </span><span class="lineCov">          3 : var _ic = 130; values[_ic] = _ic;</span>
+<span class="lineNum">     186 </span><span class="lineCov">          3 : var _id = 131; values[_id] = _id;</span>
+<span class="lineNum">     187 </span><span class="lineCov">          3 : var _ie = 132; values[_ie] = _ie;</span>
+<span class="lineNum">     188 </span><span class="lineCov">          3 : var _if = 133; values[_if] = _if;</span>
+<span class="lineNum">     189 </span><span class="lineCov">          3 : var _ig = 134; values[_ig] = _ig;</span>
+<span class="lineNum">     190 </span><span class="lineCov">          3 : var _ih = 135; values[_ih] = _ih;</span>
+<span class="lineNum">     191 </span><span class="lineCov">          3 : var _ii = 136; values[_ii] = _ii;</span>
+<span class="lineNum">     192 </span><span class="lineCov">          3 : var _ij = 137; values[_ij] = _ij;</span>
+<span class="lineNum">     193 </span><span class="lineCov">          3 : var _ik = 138; values[_ik] = _ik;</span>
+<span class="lineNum">     194 </span><span class="lineCov">          3 : var _il = 139; values[_il] = _il;</span>
+<span class="lineNum">     195 </span><span class="lineCov">          3 : var _im = 140; values[_im] = _im;</span>
+<span class="lineNum">     196 </span><span class="lineCov">          3 : var _in = 141; values[_in] = _in;</span>
+<span class="lineNum">     197 </span><span class="lineCov">          3 : var _io = 142; values[_io] = _io;</span>
+<span class="lineNum">     198 </span><span class="lineCov">          3 : var _ip = 143; values[_ip] = _ip;</span>
+<span class="lineNum">     199 </span><span class="lineCov">          3 : var _ja = 144; values[_ja] = _ja;</span>
+<span class="lineNum">     200 </span><span class="lineCov">          3 : var _jb = 145; values[_jb] = _jb;</span>
+<span class="lineNum">     201 </span><span class="lineCov">          3 : var _jc = 146; values[_jc] = _jc;</span>
+<span class="lineNum">     202 </span><span class="lineCov">          3 : var _jd = 147; values[_jd] = _jd;</span>
+<span class="lineNum">     203 </span><span class="lineCov">          3 : var _je = 148; values[_je] = _je;</span>
+<span class="lineNum">     204 </span><span class="lineCov">          3 : var _jf = 149; values[_jf] = _jf;</span>
+<span class="lineNum">     205 </span><span class="lineCov">          3 : var _jg = 150; values[_jg] = _jg;</span>
+<span class="lineNum">     206 </span><span class="lineCov">          3 : var _jh = 151; values[_jh] = _jh;</span>
+<span class="lineNum">     207 </span><span class="lineCov">          3 : var _ji = 152; values[_ji] = _ji;</span>
+<span class="lineNum">     208 </span><span class="lineCov">          3 : var _jj = 153; values[_jj] = _jj;</span>
+<span class="lineNum">     209 </span><span class="lineCov">          3 : var _jk = 154; values[_jk] = _jk;</span>
+<span class="lineNum">     210 </span><span class="lineCov">          3 : var _jl = 155; values[_jl] = _jl;</span>
+<span class="lineNum">     211 </span><span class="lineCov">          3 : var _jm = 156; values[_jm] = _jm;</span>
+<span class="lineNum">     212 </span><span class="lineCov">          3 : var _jn = 157; values[_jn] = _jn;</span>
+<span class="lineNum">     213 </span><span class="lineCov">          3 : var _jo = 158; values[_jo] = _jo;</span>
+<span class="lineNum">     214 </span><span class="lineCov">          3 : var _jp = 159; values[_jp] = _jp;</span>
+<span class="lineNum">     215 </span><span class="lineCov">          3 : var _ka = 160; values[_ka] = _ka;</span>
+<span class="lineNum">     216 </span><span class="lineCov">          3 : var _kb = 161; values[_kb] = _kb;</span>
+<span class="lineNum">     217 </span><span class="lineCov">          3 : var _kc = 162; values[_kc] = _kc;</span>
+<span class="lineNum">     218 </span><span class="lineCov">          3 : var _kd = 163; values[_kd] = _kd;</span>
+<span class="lineNum">     219 </span><span class="lineCov">          3 : var _ke = 164; values[_ke] = _ke;</span>
+<span class="lineNum">     220 </span><span class="lineCov">          3 : var _kf = 165; values[_kf] = _kf;</span>
+<span class="lineNum">     221 </span><span class="lineCov">          3 : var _kg = 166; values[_kg] = _kg;</span>
+<span class="lineNum">     222 </span><span class="lineCov">          3 : var _kh = 167; values[_kh] = _kh;</span>
+<span class="lineNum">     223 </span><span class="lineCov">          3 : var _ki = 168; values[_ki] = _ki;</span>
+<span class="lineNum">     224 </span><span class="lineCov">          3 : var _kj = 169; values[_kj] = _kj;</span>
+<span class="lineNum">     225 </span><span class="lineCov">          3 : var _kk = 170; values[_kk] = _kk;</span>
+<span class="lineNum">     226 </span><span class="lineCov">          3 : var _kl = 171; values[_kl] = _kl;</span>
+<span class="lineNum">     227 </span><span class="lineCov">          3 : var _km = 172; values[_km] = _km;</span>
+<span class="lineNum">     228 </span><span class="lineCov">          3 : var _kn = 173; values[_kn] = _kn;</span>
+<span class="lineNum">     229 </span><span class="lineCov">          3 : var _ko = 174; values[_ko] = _ko;</span>
+<span class="lineNum">     230 </span><span class="lineCov">          3 : var _kp = 175; values[_kp] = _kp;</span>
+<span class="lineNum">     231 </span><span class="lineCov">          3 : var _la = 176; values[_la] = _la;</span>
+<span class="lineNum">     232 </span><span class="lineCov">          3 : var _lb = 177; values[_lb] = _lb;</span>
+<span class="lineNum">     233 </span><span class="lineCov">          3 : var _lc = 178; values[_lc] = _lc;</span>
+<span class="lineNum">     234 </span><span class="lineCov">          3 : var _ld = 179; values[_ld] = _ld;</span>
+<span class="lineNum">     235 </span><span class="lineCov">          3 : var _le = 180; values[_le] = _le;</span>
+<span class="lineNum">     236 </span><span class="lineCov">          3 : var _lf = 181; values[_lf] = _lf;</span>
+<span class="lineNum">     237 </span><span class="lineCov">          3 : var _lg = 182; values[_lg] = _lg;</span>
+<span class="lineNum">     238 </span><span class="lineCov">          3 : var _lh = 183; values[_lh] = _lh;</span>
+<span class="lineNum">     239 </span><span class="lineCov">          3 : var _li = 184; values[_li] = _li;</span>
+<span class="lineNum">     240 </span><span class="lineCov">          3 : var _lj = 185; values[_lj] = _lj;</span>
+<span class="lineNum">     241 </span><span class="lineCov">          3 : var _lk = 186; values[_lk] = _lk;</span>
+<span class="lineNum">     242 </span><span class="lineCov">          3 : var _ll = 187; values[_ll] = _ll;</span>
+<span class="lineNum">     243 </span><span class="lineCov">          3 : var _lm = 188; values[_lm] = _lm;</span>
+<span class="lineNum">     244 </span><span class="lineCov">          3 : var _ln = 189; values[_ln] = _ln;</span>
+<span class="lineNum">     245 </span><span class="lineCov">          3 : var _lo = 190; values[_lo] = _lo;</span>
+<span class="lineNum">     246 </span><span class="lineCov">          3 : var _lp = 191; values[_lp] = _lp;</span>
+<span class="lineNum">     247 </span><span class="lineCov">          3 : var _ma = 192; values[_ma] = _ma;</span>
+<span class="lineNum">     248 </span><span class="lineCov">          3 : var _mb = 193; values[_mb] = _mb;</span>
+<span class="lineNum">     249 </span><span class="lineCov">          3 : var _mc = 194; values[_mc] = _mc;</span>
+<span class="lineNum">     250 </span><span class="lineCov">          3 : var _md = 195; values[_md] = _md;</span>
+<span class="lineNum">     251 </span><span class="lineCov">          3 : var _me = 196; values[_me] = _me;</span>
+<span class="lineNum">     252 </span><span class="lineCov">          3 : var _mf = 197; values[_mf] = _mf;</span>
+<span class="lineNum">     253 </span><span class="lineCov">          3 : var _mg = 198; values[_mg] = _mg;</span>
+<span class="lineNum">     254 </span><span class="lineCov">          3 : var _mh = 199; values[_mh] = _mh;</span>
+<span class="lineNum">     255 </span><span class="lineCov">          3 : var _mi = 200; values[_mi] = _mi;</span>
+<span class="lineNum">     256 </span><span class="lineCov">          3 : var _mj = 201; values[_mj] = _mj;</span>
+<span class="lineNum">     257 </span><span class="lineCov">          3 : var _mk = 202; values[_mk] = _mk;</span>
+<span class="lineNum">     258 </span><span class="lineCov">          3 : var _ml = 203; values[_ml] = _ml;</span>
+<span class="lineNum">     259 </span><span class="lineCov">          3 : var _mm = 204; values[_mm] = _mm;</span>
+<span class="lineNum">     260 </span><span class="lineCov">          3 : var _mn = 205; values[_mn] = _mn;</span>
+<span class="lineNum">     261 </span><span class="lineCov">          3 : var _mo = 206; values[_mo] = _mo;</span>
+<span class="lineNum">     262 </span><span class="lineCov">          3 : var _mp = 207; values[_mp] = _mp;</span>
+<span class="lineNum">     263 </span><span class="lineCov">          3 : var _na = 208; values[_na] = _na;</span>
+<span class="lineNum">     264 </span><span class="lineCov">          3 : var _nb = 209; values[_nb] = _nb;</span>
+<span class="lineNum">     265 </span><span class="lineCov">          3 : var _nc = 210; values[_nc] = _nc;</span>
+<span class="lineNum">     266 </span><span class="lineCov">          3 : var _nd = 211; values[_nd] = _nd;</span>
+<span class="lineNum">     267 </span><span class="lineCov">          3 : var _ne = 212; values[_ne] = _ne;</span>
+<span class="lineNum">     268 </span><span class="lineCov">          3 : var _nf = 213; values[_nf] = _nf;</span>
+<span class="lineNum">     269 </span><span class="lineCov">          3 : var _ng = 214; values[_ng] = _ng;</span>
+<span class="lineNum">     270 </span><span class="lineCov">          3 : var _nh = 215; values[_nh] = _nh;</span>
+<span class="lineNum">     271 </span><span class="lineCov">          3 : var _ni = 216; values[_ni] = _ni;</span>
+<span class="lineNum">     272 </span><span class="lineCov">          3 : var _nj = 217; values[_nj] = _nj;</span>
+<span class="lineNum">     273 </span><span class="lineCov">          3 : var _nk = 218; values[_nk] = _nk;</span>
+<span class="lineNum">     274 </span><span class="lineCov">          3 : var _nl = 219; values[_nl] = _nl;</span>
+<span class="lineNum">     275 </span><span class="lineCov">          3 : var _nm = 220; values[_nm] = _nm;</span>
+<span class="lineNum">     276 </span><span class="lineCov">          3 : var _nn = 221; values[_nn] = _nn;</span>
+<span class="lineNum">     277 </span><span class="lineCov">          3 : var _no = 222; values[_no] = _no;</span>
+<span class="lineNum">     278 </span><span class="lineCov">          3 : var _np = 223; values[_np] = _np;</span>
+<span class="lineNum">     279 </span><span class="lineCov">          3 : var _oa = 224; values[_oa] = _oa;</span>
+<span class="lineNum">     280 </span><span class="lineCov">          3 : var _ob = 225; values[_ob] = _ob;</span>
+<span class="lineNum">     281 </span><span class="lineCov">          3 : var _oc = 226; values[_oc] = _oc;</span>
+<span class="lineNum">     282 </span><span class="lineCov">          3 : var _od = 227; values[_od] = _od;</span>
+<span class="lineNum">     283 </span><span class="lineCov">          3 : var _oe = 228; values[_oe] = _oe;</span>
+<span class="lineNum">     284 </span><span class="lineCov">          3 : var _of = 229; values[_of] = _of;</span>
+<span class="lineNum">     285 </span><span class="lineCov">          3 : var _og = 230; values[_og] = _og;</span>
+<span class="lineNum">     286 </span><span class="lineCov">          3 : var _oh = 231; values[_oh] = _oh;</span>
+<span class="lineNum">     287 </span><span class="lineCov">          3 : var _oi = 232; values[_oi] = _oi;</span>
+<span class="lineNum">     288 </span><span class="lineCov">          3 : var _oj = 233; values[_oj] = _oj;</span>
+<span class="lineNum">     289 </span><span class="lineCov">          3 : var _ok = 234; values[_ok] = _ok;</span>
+<span class="lineNum">     290 </span><span class="lineCov">          3 : var _ol = 235; values[_ol] = _ol;</span>
+<span class="lineNum">     291 </span><span class="lineCov">          3 : var _om = 236; values[_om] = _om;</span>
+<span class="lineNum">     292 </span><span class="lineCov">          3 : var _on = 237; values[_on] = _on;</span>
+<span class="lineNum">     293 </span><span class="lineCov">          3 : var _oo = 238; values[_oo] = _oo;</span>
+<span class="lineNum">     294 </span><span class="lineCov">          3 : var _op = 239; values[_op] = _op;</span>
+<span class="lineNum">     295 </span><span class="lineCov">          3 : var _pa = 240; values[_pa] = _pa;</span>
+<span class="lineNum">     296 </span><span class="lineCov">          3 : var _pb = 241; values[_pb] = _pb;</span>
+<span class="lineNum">     297 </span><span class="lineCov">          3 : var _pc = 242; values[_pc] = _pc;</span>
+<span class="lineNum">     298 </span><span class="lineCov">          3 : var _pd = 243; values[_pd] = _pd;</span>
+<span class="lineNum">     299 </span><span class="lineCov">          3 : var _pe = 244; values[_pe] = _pe;</span>
+<span class="lineNum">     300 </span><span class="lineCov">          3 : var _pf = 245; values[_pf] = _pf;</span>
+<span class="lineNum">     301 </span><span class="lineCov">          3 : var _pg = 246; values[_pg] = _pg;</span>
+<span class="lineNum">     302 </span><span class="lineCov">          3 : var _ph = 247; values[_ph] = _ph;</span>
+<span class="lineNum">     303 </span><span class="lineCov">          3 : var _pi = 248; values[_pi] = _pi;</span>
+<span class="lineNum">     304 </span><span class="lineCov">          3 : var _pj = 249; values[_pj] = _pj;</span>
+<span class="lineNum">     305 </span><span class="lineCov">          3 : var _pk = 250; values[_pk] = _pk;</span>
+<span class="lineNum">     306 </span><span class="lineCov">          3 : var _pl = 251; values[_pl] = _pl;</span>
+<span class="lineNum">     307 </span><span class="lineCov">          3 : var _pm = 252; values[_pm] = _pm;</span>
+<span class="lineNum">     308 </span><span class="lineCov">          3 : var _pn = 253; values[_pn] = _pn;</span>
+<span class="lineNum">     309 </span><span class="lineCov">          3 : var _po = 254; values[_po] = _po;</span>
+<span class="lineNum">     310 </span><span class="lineCov">          3 : var _pp = 255; values[_pp] = _pp;</span>
+<span class="lineNum">     311 </span><span class="lineCov">          3 : var _qa = 256; values[_qa] = _qa;</span>
+<span class="lineNum">     312 </span><span class="lineCov">          3 : var _qb = 257; values[_qb] = _qb;</span>
+<span class="lineNum">     313 </span><span class="lineCov">          3 : var _qc = 258; values[_qc] = _qc;</span>
+<span class="lineNum">     314 </span><span class="lineCov">          3 : var _qd = 259; values[_qd] = _qd;</span>
+<span class="lineNum">     315 </span><span class="lineCov">          3 : var _qe = 260; values[_qe] = _qe;</span>
+<span class="lineNum">     316 </span><span class="lineCov">          3 : var _qf = 261; values[_qf] = _qf;</span>
+<span class="lineNum">     317 </span><span class="lineCov">          3 : var _qg = 262; values[_qg] = _qg;</span>
+<span class="lineNum">     318 </span><span class="lineCov">          3 : var _qh = 263; values[_qh] = _qh;</span>
+<span class="lineNum">     319 </span><span class="lineCov">          3 : var _qi = 264; values[_qi] = _qi;</span>
+<span class="lineNum">     320 </span><span class="lineCov">          3 : var _qj = 265; values[_qj] = _qj;</span>
+<span class="lineNum">     321 </span><span class="lineCov">          3 : var _qk = 266; values[_qk] = _qk;</span>
+<span class="lineNum">     322 </span><span class="lineCov">          3 : var _ql = 267; values[_ql] = _ql;</span>
+<span class="lineNum">     323 </span><span class="lineCov">          3 : var _qm = 268; values[_qm] = _qm;</span>
+<span class="lineNum">     324 </span><span class="lineCov">          3 : var _qn = 269; values[_qn] = _qn;</span>
+<span class="lineNum">     325 </span><span class="lineCov">          3 : var _qo = 270; values[_qo] = _qo;</span>
+<span class="lineNum">     326 </span><span class="lineCov">          3 : var _qp = 271; values[_qp] = _qp;</span>
+<span class="lineNum">     327 </span><span class="lineCov">          3 : var _ra = 272; values[_ra] = _ra;</span>
+<span class="lineNum">     328 </span><span class="lineCov">          3 : var _rb = 273; values[_rb] = _rb;</span>
+<span class="lineNum">     329 </span><span class="lineCov">          3 : var _rc = 274; values[_rc] = _rc;</span>
+<span class="lineNum">     330 </span><span class="lineCov">          3 : var _rd = 275; values[_rd] = _rd;</span>
+<span class="lineNum">     331 </span><span class="lineCov">          3 : var _re = 276; values[_re] = _re;</span>
+<span class="lineNum">     332 </span><span class="lineCov">          3 : var _rf = 277; values[_rf] = _rf;</span>
+<span class="lineNum">     333 </span><span class="lineCov">          3 : var _rg = 278; values[_rg] = _rg;</span>
+<span class="lineNum">     334 </span><span class="lineCov">          3 : var _rh = 279; values[_rh] = _rh;</span>
+<span class="lineNum">     335 </span><span class="lineCov">          3 : var _ri = 280; values[_ri] = _ri;</span>
+<span class="lineNum">     336 </span><span class="lineCov">          3 : var _rj = 281; values[_rj] = _rj;</span>
+<span class="lineNum">     337 </span><span class="lineCov">          3 : var _rk = 282; values[_rk] = _rk;</span>
+<span class="lineNum">     338 </span><span class="lineCov">          3 : var _rl = 283; values[_rl] = _rl;</span>
+<span class="lineNum">     339 </span><span class="lineCov">          3 : var _rm = 284; values[_rm] = _rm;</span>
+<span class="lineNum">     340 </span><span class="lineCov">          3 : var _rn = 285; values[_rn] = _rn;</span>
+<span class="lineNum">     341 </span><span class="lineCov">          3 : var _ro = 286; values[_ro] = _ro;</span>
+<span class="lineNum">     342 </span><span class="lineCov">          3 : var _rp = 287; values[_rp] = _rp;</span>
+<span class="lineNum">     343 </span><span class="lineCov">          3 :   done = true;</span>
+<a name="344"><span class="lineNum">     344 </span><span class="lineCov">          3 : };</span></a>
+<span class="lineNum">     345 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     346 </span><span class="lineCov">          3 : function check_values() {</span>
+<span class="lineNum">     347 </span><span class="lineCov">          3 :   for (var i = 0; i &lt; values.length; i++) {</span>
+<span class="lineNum">     348 </span><span class="lineCov">          3 :     assertEquals(values[i], i);</span>
+<span class="lineNum">     349 </span><span class="lineCov">          3 :     values[i] = -i;</span>
+<span class="lineNum">     350 </span><span class="lineCov">          3 :   }</span>
+<span class="lineNum">     351 </span><span class="lineCov">          3 : }</span>
+<span class="lineNum">     352 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     353 </span><span class="lineCov">          1 : // Pass 1 - no debugger, no steps seen</span>
+<span class="lineNum">     354 </span><span class="lineCov">          1 : prepare_step_test();</span>
+<span class="lineNum">     355 </span><span class="lineCov">          1 : f();</span>
+<span class="lineNum">     356 </span><span class="lineCov">          1 : check_values();</span>
+<span class="lineNum">     357 </span><span class="lineCov">          1 : assertEquals(0, step_count);</span>
+<span class="lineNum">     358 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     359 </span><span class="lineCov">          1 : // Pass 2 - debugger attached and stepping from BP</span>
+<span class="lineNum">     360 </span><span class="lineCov">          1 : Debug.setListener(listener);</span>
+<span class="lineNum">     361 </span><span class="lineCov">          1 : var bp = Debug.setBreakPoint(f, 1);</span>
+<span class="lineNum">     362 </span><span class="lineCov">          1 : prepare_step_test();</span>
+<span class="lineNum">     363 </span><span class="lineCov">          1 : f();</span>
+<span class="lineNum">     364 </span><span class="lineCov">          1 : check_values();</span>
+<span class="lineNum">     365 </span><span class="lineCov">          1 : assertEquals(580, step_count);</span>
+<span class="lineNum">     366 </span><span class="lineCov">          1 : Debug.clearBreakPoint(bp);</span>
+<span class="lineNum">     367 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     368 </span><span class="lineCov">          1 : // Pass 3 - debugger attached and no BP</span>
+<span class="lineNum">     369 </span><span class="lineCov">          1 : prepare_step_test();</span>
+<span class="lineNum">     370 </span><span class="lineCov">          1 : f();</span>
+<span class="lineNum">     371 </span><span class="lineCov">          1 : check_values();</span>
+<span class="lineNum">     372 </span><span class="lineCov">          1 : assertEquals(0, step_count);</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

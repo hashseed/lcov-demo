@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - test/benchmarks/data/sunspider/3d-morph.js</title>
+  <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../index.html">top level</a> - <a href="index.html">test/benchmarks/data/sunspider</a> - 3d-morph.js<span style="font-size: 80%;"> (source / <a href="3d-morph.js.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">64</td>
+            <td class="headerCovTableEntry">64</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2017-02-14</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr><td><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span><span class="lineCov">          1 : /*</span></a>
+<span class="lineNum">       2 </span><span class="lineCov">          1 :  * Copyright (C) 2007 Apple Inc.  All rights reserved.</span>
+<span class="lineNum">       3 </span><span class="lineCov">          1 :  *</span>
+<span class="lineNum">       4 </span><span class="lineCov">          1 :  * Redistribution and use in source and binary forms, with or without</span>
+<span class="lineNum">       5 </span><span class="lineCov">          1 :  * modification, are permitted provided that the following conditions</span>
+<span class="lineNum">       6 </span><span class="lineCov">          1 :  * are met:</span>
+<span class="lineNum">       7 </span><span class="lineCov">          1 :  * 1. Redistributions of source code must retain the above copyright</span>
+<span class="lineNum">       8 </span><span class="lineCov">          1 :  *    notice, this list of conditions and the following disclaimer.</span>
+<span class="lineNum">       9 </span><span class="lineCov">          1 :  * 2. Redistributions in binary form must reproduce the above copyright</span>
+<span class="lineNum">      10 </span><span class="lineCov">          1 :  *    notice, this list of conditions and the following disclaimer in the</span>
+<span class="lineNum">      11 </span><span class="lineCov">          1 :  *    documentation and/or other materials provided with the distribution.</span>
+<span class="lineNum">      12 </span><span class="lineCov">          1 :  *</span>
+<span class="lineNum">      13 </span><span class="lineCov">          1 :  * THIS SOFTWARE IS PROVIDED BY APPLE COMPUTER, INC. ``AS IS'' AND ANY</span>
+<span class="lineNum">      14 </span><span class="lineCov">          1 :  * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE</span>
+<span class="lineNum">      15 </span><span class="lineCov">          1 :  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR</span>
+<span class="lineNum">      16 </span><span class="lineCov">          1 :  * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL APPLE COMPUTER, INC. OR</span>
+<span class="lineNum">      17 </span><span class="lineCov">          1 :  * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,</span>
+<span class="lineNum">      18 </span><span class="lineCov">          1 :  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,</span>
+<span class="lineNum">      19 </span><span class="lineCov">          1 :  * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR</span>
+<span class="lineNum">      20 </span><span class="lineCov">          1 :  * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY</span>
+<span class="lineNum">      21 </span><span class="lineCov">          1 :  * OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT</span>
+<span class="lineNum">      22 </span><span class="lineCov">          1 :  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE</span>
+<span class="lineNum">      23 </span><span class="lineCov">          1 :  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. </span>
+<span class="lineNum">      24 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">      25 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      26 </span><span class="lineCov">          1 : var loops = 15</span>
+<span class="lineNum">      27 </span><span class="lineCov">          1 : var nx = 120</span>
+<a name="28"><span class="lineNum">      28 </span><span class="lineCov">          1 : var nz = 120</span></a>
+<span class="lineNum">      29 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      30 </span><span class="lineCov">         15 : function morph(a, f) {</span>
+<span class="lineNum">      31 </span><span class="lineCov">         15 :     var PI2nx = Math.PI * 8/nx</span>
+<span class="lineNum">      32 </span><span class="lineCov">         15 :     var sin = Math.sin</span>
+<span class="lineNum">      33 </span><span class="lineCov">         15 :     var f30 = -(50 * sin(f*Math.PI*2))</span>
+<span class="lineNum">      34 </span><span class="lineCov">         15 :     </span>
+<span class="lineNum">      35 </span><span class="lineCov">         15 :     for (var i = 0; i &lt; nz; ++i) {</span>
+<span class="lineNum">      36 </span><span class="lineCov">         15 :         for (var j = 0; j &lt; nx; ++j) {</span>
+<span class="lineNum">      37 </span><span class="lineCov">         15 :             a[3*(i*nx+j)+1]    = sin((j-1) * PI2nx ) * -f30</span>
+<span class="lineNum">      38 </span><span class="lineCov">         15 :         }</span>
+<span class="lineNum">      39 </span><span class="lineCov">         15 :     }</span>
+<span class="lineNum">      40 </span><span class="lineCov">         15 : }</span>
+<span class="lineNum">      41 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      42 </span><span class="lineCov">          1 :     </span>
+<span class="lineNum">      43 </span><span class="lineCov">          1 : var a = Array()</span>
+<span class="lineNum">      44 </span><span class="lineCov">          1 : for (var i=0; i &lt; nx*nz*3; ++i) </span>
+<span class="lineNum">      45 </span><span class="lineCov">          1 :     a[i] = 0</span>
+<span class="lineNum">      46 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      47 </span><span class="lineCov">          1 : for (var i = 0; i &lt; loops; ++i) {</span>
+<span class="lineNum">      48 </span><span class="lineCov">          1 :     morph(a, i/loops)</span>
+<span class="lineNum">      49 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      50 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      51 </span><span class="lineCov">          1 : testOutput = 0;</span>
+<span class="lineNum">      52 </span><span class="lineCov">          1 : for (var i = 0; i &lt; nx; i++)</span>
+<span class="lineNum">      53 </span><span class="lineCov">          1 :     testOutput += a[3*(i*nx+i)+1];</span>
+<span class="lineNum">      54 </span><span class="lineCov">          1 : a = null;</span>
+<span class="lineNum">      55 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      56 </span><span class="lineCov">          1 : // This has to be an approximate test since ECMAscript doesn't formally specify</span>
+<span class="lineNum">      57 </span><span class="lineCov">          1 : // what sin() returns. Even if it did specify something like for example what Java 7</span>
+<span class="lineNum">      58 </span><span class="lineCov">          1 : // says - that sin() has to return a value within 1 ulp of exact - then we still</span>
+<span class="lineNum">      59 </span><span class="lineCov">          1 : // would not be able to do an exact test here since that would allow for just enough</span>
+<span class="lineNum">      60 </span><span class="lineCov">          1 : // low-bit slop to create possibly big errors due to testOutput being a sum.</span>
+<span class="lineNum">      61 </span><span class="lineCov">          1 : var epsilon = 1e-13;</span>
+<span class="lineNum">      62 </span><span class="lineCov">          1 : if (Math.abs(testOutput) &gt;= epsilon)</span>
+<span class="lineNum">      63 </span><span class="lineCov">          1 :     throw &quot;Error: bad test output: expected magnitude below &quot; + epsilon + &quot; but got &quot; + testOutput;</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

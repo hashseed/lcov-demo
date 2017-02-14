@@ -1,0 +1,170 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - test/mjsunit/es6/proxies-ownkeys.js</title>
+  <link rel="stylesheet" type="text/css" href="../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../index.html">top level</a> - <a href="index.html">test/mjsunit/es6</a> - proxies-ownkeys.js<span style="font-size: 80%;"> (source / <a href="proxies-ownkeys.js.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">95</td>
+            <td class="headerCovTableEntry">95</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2017-02-14</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">3</td>
+            <td class="headerCovTableEntry">4</td>
+            <td class="headerCovTableEntryMed">75.0 %</td>
+          </tr>
+          <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span><span class="lineCov">          1 : // Copyright 2015 the V8 project authors. All rights reserved.</span></a>
+<span class="lineNum">       2 </span><span class="lineCov">          1 : // Use of this source code is governed by a BSD-style license that can be</span>
+<span class="lineNum">       3 </span><span class="lineCov">          1 : // found in the LICENSE file.</span>
+<span class="lineNum">       4 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">       5 </span><span class="lineCov">          1 : var target = {</span>
+<span class="lineNum">       6 </span><span class="lineCov">          1 :   &quot;target_one&quot;: 1</span>
+<span class="lineNum">       7 </span><span class="lineCov">          1 : };</span>
+<span class="lineNum">       8 </span><span class="lineCov">          1 : target.__proto__ = {</span>
+<span class="lineNum">       9 </span><span class="lineCov">          1 :   &quot;target_proto_two&quot;: 2</span>
+<a name="10"><span class="lineNum">      10 </span><span class="lineCov">          1 : };</span></a>
+<span class="lineNum">      11 </span><span class="lineCov">          1 : var handler = {</span>
+<span class="lineNum">      12 </span><span class="lineCov">          1 :   ownKeys: function(target) {</span>
+<span class="lineNum">      13 </span><span class="lineCov">          1 :     return [&quot;foo&quot;, &quot;bar&quot;];</span>
+<span class="lineNum">      14 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">      15 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      16 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      17 </span><span class="lineCov">          1 : var proxy = new Proxy(target, handler);</span>
+<span class="lineNum">      18 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      19 </span><span class="lineCov">          1 : // Simple case.</span>
+<span class="lineNum">      20 </span><span class="lineCov">          1 : assertEquals([&quot;foo&quot;, &quot;bar&quot;], Reflect.ownKeys(proxy));</span>
+<span class="lineNum">      21 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      22 </span><span class="lineCov">          1 : // Test interesting steps of the algorithm:</span>
+<span class="lineNum">      23 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      24 </span><span class="lineCov">          1 : // Step 6: Fall through to target.[[OwnPropertyKeys]] if the trap is undefined.</span>
+<span class="lineNum">      25 </span><span class="lineCov">          1 : handler.ownKeys = undefined;</span>
+<span class="lineNum">      26 </span><span class="lineCov">          1 : assertEquals([&quot;target_one&quot;], Reflect.ownKeys(proxy));</span>
+<span class="lineNum">      27 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      28 </span><span class="lineCov">          1 : // Step 7: Throwing traps don't crash.</span>
+<span class="lineNum">      29 </span><span class="lineCov">          1 : handler.ownKeys = function(target) { throw 1; };</span>
+<span class="lineNum">      30 </span><span class="lineCov">          1 : assertThrows(&quot;Reflect.ownKeys(proxy)&quot;);</span>
+<span class="lineNum">      31 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      32 </span><span class="lineCov">          1 : // Step 8: CreateListFromArrayLike error cases:</span>
+<a name="33"><span class="lineNum">      33 </span><span class="lineCov">          1 : // Returning a non-Object throws.</span></a>
+<span class="lineNum">      34 </span><span class="lineCov">          1 : var keys = 1;</span>
+<span class="lineNum">      35 </span><span class="lineCov">         20 : handler.ownKeys = function(target) { return keys; };</span>
+<span class="lineNum">      36 </span><span class="lineCov">          1 : assertThrows(&quot;Reflect.ownKeys(proxy)&quot;, TypeError);</span>
+<span class="lineNum">      37 </span><span class="lineCov">          1 : keys = &quot;string&quot;;</span>
+<span class="lineNum">      38 </span><span class="lineCov">          1 : assertThrows(&quot;Reflect.ownKeys(proxy)&quot;, TypeError);</span>
+<span class="lineNum">      39 </span><span class="lineCov">          1 : keys = Symbol(&quot;foo&quot;);</span>
+<span class="lineNum">      40 </span><span class="lineCov">          1 : assertThrows(&quot;Reflect.ownKeys(proxy)&quot;, TypeError);</span>
+<span class="lineNum">      41 </span><span class="lineCov">          1 : keys = null;</span>
+<span class="lineNum">      42 </span><span class="lineCov">          1 : assertThrows(&quot;Reflect.ownKeys(proxy)&quot;, TypeError);</span>
+<span class="lineNum">      43 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      44 </span><span class="lineCov">          1 : // &quot;length&quot; property is honored.</span>
+<span class="lineNum">      45 </span><span class="lineCov">          1 : keys = { 0: &quot;a&quot;, 1: &quot;b&quot;, 2: &quot;c&quot; };</span>
+<span class="lineNum">      46 </span><span class="lineCov">          1 : keys.length = 0;</span>
+<span class="lineNum">      47 </span><span class="lineCov">          1 : assertEquals([], Reflect.ownKeys(proxy));</span>
+<span class="lineNum">      48 </span><span class="lineCov">          1 : keys.length = 1;</span>
+<span class="lineNum">      49 </span><span class="lineCov">          1 : assertEquals([&quot;a&quot;], Reflect.ownKeys(proxy));</span>
+<span class="lineNum">      50 </span><span class="lineCov">          1 : keys.length = 3;</span>
+<span class="lineNum">      51 </span><span class="lineCov">          1 : assertEquals([&quot;a&quot;, &quot;b&quot;, &quot;c&quot;], Reflect.ownKeys(proxy));</span>
+<span class="lineNum">      52 </span><span class="lineCov">          1 : // The spec wants to allow lengths up to 2^53, but we can't allocate arrays</span>
+<span class="lineNum">      53 </span><span class="lineCov">          1 : // of that size, so we throw even for smaller values.</span>
+<span class="lineNum">      54 </span><span class="lineCov">          1 : keys.length = Math.pow(2, 33);</span>
+<span class="lineNum">      55 </span><span class="lineCov">          1 : assertThrows(&quot;Reflect.ownKeys(proxy)&quot;, RangeError);</span>
+<span class="lineNum">      56 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      57 </span><span class="lineCov">          1 : // Check that we allow duplicated keys.</span>
+<span class="lineNum">      58 </span><span class="lineCov">          1 : keys  = ['a', 'a', 'a']</span>
+<span class="lineNum">      59 </span><span class="lineCov">          1 : assertEquals(keys, Reflect.ownKeys(proxy));</span>
+<span class="lineNum">      60 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      61 </span><span class="lineCov">          1 : // Non-Name results throw.</span>
+<span class="lineNum">      62 </span><span class="lineCov">          1 : keys = [1];</span>
+<span class="lineNum">      63 </span><span class="lineCov">          1 : assertThrows(&quot;Reflect.ownKeys(proxy)&quot;, TypeError);</span>
+<a name="64"><span class="lineNum">      64 </span><span class="lineCov">          1 : keys = [{}];</span></a>
+<span class="lineNum">      65 </span><span class="lineCov">          1 : assertThrows(&quot;Reflect.ownKeys(proxy)&quot;, TypeError);</span>
+<span class="lineNum">      66 </span><span class="lineCov">          1 : keys = [{toString: function() { return &quot;foo&quot;; }}];</span>
+<span class="lineNum">      67 </span><span class="lineCov">          1 : assertThrows(&quot;Reflect.ownKeys(proxy)&quot;, TypeError);</span>
+<span class="lineNum">      68 </span><span class="lineCov">          1 : keys = [null];</span>
+<span class="lineNum">      69 </span><span class="lineCov">          1 : assertThrows(&quot;Reflect.ownKeys(proxy)&quot;, TypeError);</span>
+<span class="lineNum">      70 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      71 </span><span class="lineCov">          1 : // Step 17a: The trap result must include all non-configurable keys.</span>
+<span class="lineNum">      72 </span><span class="lineCov">          1 : Object.defineProperty(target, &quot;nonconf&quot;, {value: 1, configurable: false});</span>
+<span class="lineNum">      73 </span><span class="lineCov">          1 : keys = [&quot;foo&quot;];</span>
+<span class="lineNum">      74 </span><span class="lineCov">          1 : assertThrows(&quot;Reflect.ownKeys(proxy)&quot;, TypeError);</span>
+<span class="lineNum">      75 </span><span class="lineCov">          1 : keys = [&quot;nonconf&quot;];</span>
+<span class="lineNum">      76 </span><span class="lineCov">          1 : assertEquals(keys, Reflect.ownKeys(proxy));</span>
+<span class="lineNum">      77 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      78 </span><span class="lineCov">          1 : // Check that we allow duplicated keys.</span>
+<span class="lineNum">      79 </span><span class="lineCov">          1 : keys  = ['nonconf', 'nonconf', 'nonconf']</span>
+<span class="lineNum">      80 </span><span class="lineCov">          1 : assertEquals(keys, Reflect.ownKeys(proxy));</span>
+<span class="lineNum">      81 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      82 </span><span class="lineCov">          1 : // Step 19a: The trap result must all keys of a non-extensible target.</span>
+<span class="lineNum">      83 </span><span class="lineCov">          1 : Object.preventExtensions(target);</span>
+<span class="lineNum">      84 </span><span class="lineCov">          1 : assertThrows(&quot;Reflect.ownKeys(proxy)&quot;, TypeError);</span>
+<span class="lineNum">      85 </span><span class="lineCov">          1 : keys = [&quot;nonconf&quot;, &quot;target_one&quot;];</span>
+<span class="lineNum">      86 </span><span class="lineCov">          1 : assertEquals(keys, Reflect.ownKeys(proxy));</span>
+<span class="lineNum">      87 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      88 </span><span class="lineCov">          1 : // Step 20: The trap result must not add keys to a non-extensible target.</span>
+<span class="lineNum">      89 </span><span class="lineCov">          1 : keys = [&quot;nonconf&quot;, &quot;target_one&quot;, &quot;fantasy&quot;];</span>
+<span class="lineNum">      90 </span><span class="lineCov">          1 : assertThrows(&quot;Reflect.ownKeys(proxy)&quot;, TypeError);</span>
+<span class="lineNum">      91 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      92 </span><span class="lineCov">          1 : // Check that we allow duplicated keys.</span>
+<span class="lineNum">      93 </span><span class="lineCov">          1 : keys  = ['nonconf', 'target_one', 'nonconf', 'nonconf', 'target_one',]</span>
+<span class="lineNum">      94 </span><span class="lineCov">          1 : assertEquals(keys, Reflect.ownKeys(proxy));</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

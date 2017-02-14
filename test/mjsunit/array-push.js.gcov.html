@@ -1,0 +1,237 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - test/mjsunit/array-push.js</title>
+  <link rel="stylesheet" type="text/css" href="../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../index.html">top level</a> - <a href="index.html">test/mjsunit</a> - array-push.js<span style="font-size: 80%;"> (source / <a href="array-push.js.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">162</td>
+            <td class="headerCovTableEntry">162</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2017-02-14</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">9</td>
+            <td class="headerCovTableEntry">9</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span><span class="lineCov">          1 : // Copyright 2010 the V8 project authors. All rights reserved.</span></a>
+<span class="lineNum">       2 </span><span class="lineCov">          1 : // Redistribution and use in source and binary forms, with or without</span>
+<span class="lineNum">       3 </span><span class="lineCov">          1 : // modification, are permitted provided that the following conditions are</span>
+<span class="lineNum">       4 </span><span class="lineCov">          1 : // met:</span>
+<span class="lineNum">       5 </span><span class="lineCov">          1 : //</span>
+<span class="lineNum">       6 </span><span class="lineCov">          1 : //     * Redistributions of source code must retain the above copyright</span>
+<span class="lineNum">       7 </span><span class="lineCov">          1 : //       notice, this list of conditions and the following disclaimer.</span>
+<span class="lineNum">       8 </span><span class="lineCov">          1 : //     * Redistributions in binary form must reproduce the above</span>
+<span class="lineNum">       9 </span><span class="lineCov">          1 : //       copyright notice, this list of conditions and the following</span>
+<span class="lineNum">      10 </span><span class="lineCov">          1 : //       disclaimer in the documentation and/or other materials provided</span>
+<span class="lineNum">      11 </span><span class="lineCov">          1 : //       with the distribution.</span>
+<span class="lineNum">      12 </span><span class="lineCov">          1 : //     * Neither the name of Google Inc. nor the names of its</span>
+<span class="lineNum">      13 </span><span class="lineCov">          1 : //       contributors may be used to endorse or promote products derived</span>
+<span class="lineNum">      14 </span><span class="lineCov">          1 : //       from this software without specific prior written permission.</span>
+<span class="lineNum">      15 </span><span class="lineCov">          1 : //</span>
+<span class="lineNum">      16 </span><span class="lineCov">          1 : // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="lineNum">      17 </span><span class="lineCov">          1 : // &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="lineNum">      18 </span><span class="lineCov">          1 : // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR</span>
+<span class="lineNum">      19 </span><span class="lineCov">          1 : // A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT</span>
+<span class="lineNum">      20 </span><span class="lineCov">          1 : // OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,</span>
+<span class="lineNum">      21 </span><span class="lineCov">          1 : // SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT</span>
+<span class="lineNum">      22 </span><span class="lineCov">          1 : // LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,</span>
+<span class="lineNum">      23 </span><span class="lineCov">          1 : // DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY</span>
+<span class="lineNum">      24 </span><span class="lineCov">          1 : // THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT</span>
+<span class="lineNum">      25 </span><span class="lineCov">          1 : // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE</span>
+<span class="lineNum">      26 </span><span class="lineCov">          1 : // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="lineNum">      27 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      28 </span><span class="lineCov">          1 : // Flags: --allow-natives-syntax</span>
+<a name="29"><span class="lineNum">      29 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      30 </span><span class="lineCov">          1 : // Check pushes with various number of arguments.</span>
+<span class="lineNum">      31 </span><span class="lineCov">          1 : (function() {</span>
+<span class="lineNum">      32 </span><span class="lineCov">          1 :   var a = [];</span>
+<span class="lineNum">      33 </span><span class="lineCov">          1 :   for (var i = 0; i &lt; 7; i++) {</span>
+<span class="lineNum">      34 </span><span class="lineCov">          1 :     a = [];</span>
+<span class="lineNum">      35 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      36 </span><span class="lineCov">          1 :     assertEquals(0, a.push());</span>
+<span class="lineNum">      37 </span><span class="lineCov">          1 :     assertEquals([], a, &quot;after .push()&quot;);</span>
+<span class="lineNum">      38 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      39 </span><span class="lineCov">          1 :     assertEquals(1, a.push(1), &quot;length after .push(1)&quot;);</span>
+<span class="lineNum">      40 </span><span class="lineCov">          1 :     assertEquals([1], a, &quot;after .push(1)&quot;);</span>
+<span class="lineNum">      41 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      42 </span><span class="lineCov">          1 :     assertEquals(3, a.push(2, 3), &quot;length after .push(2, 3)&quot;);</span>
+<span class="lineNum">      43 </span><span class="lineCov">          1 :     assertEquals([1, 2, 3], a, &quot;after .push(2, 3)&quot;);</span>
+<span class="lineNum">      44 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      45 </span><span class="lineCov">          1 :     assertEquals(6, a.push(4, 5, 6),</span>
+<span class="lineNum">      46 </span><span class="lineCov">          1 :       &quot;length after .push(4, 5, 6)&quot;);</span>
+<span class="lineNum">      47 </span><span class="lineCov">          1 :     assertEquals([1, 2, 3, 4, 5, 6], a,</span>
+<span class="lineNum">      48 </span><span class="lineCov">          1 :       &quot;after .push(4, 5, 5)&quot;);</span>
+<span class="lineNum">      49 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      50 </span><span class="lineCov">          1 :     assertEquals(10, a.push(7, 8, 9, 10),</span>
+<span class="lineNum">      51 </span><span class="lineCov">          1 :       &quot;length after .push(7, 8, 9, 10)&quot;);</span>
+<span class="lineNum">      52 </span><span class="lineCov">          1 :     assertEquals([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], a,</span>
+<span class="lineNum">      53 </span><span class="lineCov">          1 :       &quot;after .push(7, 8, 9, 10)&quot;);</span>
+<span class="lineNum">      54 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      55 </span><span class="lineCov">          1 :     assertEquals(15, a.push(11, 12, 13, 14, 15),</span>
+<span class="lineNum">      56 </span><span class="lineCov">          1 :       &quot;length after .push(11, 12, 13, 14, 15)&quot;);</span>
+<span class="lineNum">      57 </span><span class="lineCov">          1 :     assertEquals([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], a,</span>
+<span class="lineNum">      58 </span><span class="lineCov">          1 :       &quot;after .push(11, 12, 13, 14, 15)&quot;);</span>
+<span class="lineNum">      59 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      60 </span><span class="lineCov">          1 :     assertEquals(21, a.push(16, 17, 18, 19, 20, 21),</span>
+<span class="lineNum">      61 </span><span class="lineCov">          1 :       &quot;length after .push(16, 17, 18, 19, 20, 21)&quot;);</span>
+<span class="lineNum">      62 </span><span class="lineCov">          1 :     assertEquals([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21], a,</span>
+<span class="lineNum">      63 </span><span class="lineCov">          1 :       &quot;after .push(16, 17, 18, 19, 20, 21)&quot;);</span>
+<span class="lineNum">      64 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      65 </span><span class="lineCov">          1 :     assertEquals(28, a.push(22, 23, 24, 25, 26, 27, 28),</span>
+<span class="lineNum">      66 </span><span class="lineCov">          1 :       &quot;length hafter .push(22, 23, 24, 25, 26, 27, 28)&quot;);</span>
+<span class="lineNum">      67 </span><span class="lineCov">          1 :     assertEquals([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28], a,</span>
+<span class="lineNum">      68 </span><span class="lineCov">          1 :       &quot;after .push(22, 23, 24, 25, 26, 27, 28)&quot;);</span>
+<span class="lineNum">      69 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">      70 </span><span class="lineCov">          1 : })();</span>
+<a name="71"><span class="lineNum">      71 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      72 </span><span class="lineCov">          1 : // Excerises various pushes to the array at the end of new space.</span>
+<span class="lineNum">      73 </span><span class="lineCov">          1 : (function() {</span>
+<span class="lineNum">      74 </span><span class="lineCov">          1 :   var a = undefined;</span>
+<span class="lineNum">      75 </span><span class="lineCov">          1 :   for (var i = 0; i &lt; 7; i++) {</span>
+<span class="lineNum">      76 </span><span class="lineCov">          1 :     a = [];</span>
+<span class="lineNum">      77 </span><span class="lineCov">          1 :     assertEquals(1, a.push(1));</span>
+<span class="lineNum">      78 </span><span class="lineCov">          1 :     assertEquals(2, a.push(2));</span>
+<span class="lineNum">      79 </span><span class="lineCov">          1 :     assertEquals(3, a.push(3));</span>
+<span class="lineNum">      80 </span><span class="lineCov">          1 :     assertEquals(4, a.push(4));</span>
+<span class="lineNum">      81 </span><span class="lineCov">          1 :     assertEquals(5, a.push(5));</span>
+<span class="lineNum">      82 </span><span class="lineCov">          1 :     assertEquals(6, a.push(6));</span>
+<span class="lineNum">      83 </span><span class="lineCov">          1 :     assertEquals(7, a.push(7));</span>
+<span class="lineNum">      84 </span><span class="lineCov">          1 :     assertEquals(8, a.push(8));</span>
+<span class="lineNum">      85 </span><span class="lineCov">          1 :     assertEquals(9, a.push(9));</span>
+<span class="lineNum">      86 </span><span class="lineCov">          1 :     assertEquals(10, a.push(10));</span>
+<span class="lineNum">      87 </span><span class="lineCov">          1 :     assertEquals(11, a.push(11));</span>
+<span class="lineNum">      88 </span><span class="lineCov">          1 :     assertEquals(12, a.push(12));</span>
+<span class="lineNum">      89 </span><span class="lineCov">          1 :     assertEquals(13, a.push(13));</span>
+<span class="lineNum">      90 </span><span class="lineCov">          1 :     assertEquals(14, a.push(14));</span>
+<span class="lineNum">      91 </span><span class="lineCov">          1 :     assertEquals(15, a.push(15));</span>
+<span class="lineNum">      92 </span><span class="lineCov">          1 :     assertEquals(16, a.push(16));</span>
+<span class="lineNum">      93 </span><span class="lineCov">          1 :     assertEquals(17, a.push(17));</span>
+<span class="lineNum">      94 </span><span class="lineCov">          1 :     assertEquals(18, a.push(18));</span>
+<span class="lineNum">      95 </span><span class="lineCov">          1 :     assertEquals(19, a.push(19));</span>
+<span class="lineNum">      96 </span><span class="lineCov">          1 :     assertEquals(20, a.push(20));</span>
+<span class="lineNum">      97 </span><span class="lineCov">          1 :     assertEquals(21, a.push(21));</span>
+<span class="lineNum">      98 </span><span class="lineCov">          1 :     assertEquals(22, a.push(22));</span>
+<span class="lineNum">      99 </span><span class="lineCov">          1 :     assertEquals(23, a.push(23));</span>
+<span class="lineNum">     100 </span><span class="lineCov">          1 :     assertEquals(24, a.push(24));</span>
+<span class="lineNum">     101 </span><span class="lineCov">          1 :     assertEquals(25, a.push(25));</span>
+<span class="lineNum">     102 </span><span class="lineCov">          1 :     assertEquals(26, a.push(26));</span>
+<span class="lineNum">     103 </span><span class="lineCov">          1 :     assertEquals(27, a.push(27));</span>
+<span class="lineNum">     104 </span><span class="lineCov">          1 :     assertEquals(28, a.push(28));</span>
+<span class="lineNum">     105 </span><span class="lineCov">          1 :     assertEquals(29, a.push(29));</span>
+<span class="lineNum">     106 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     107 </span><span class="lineCov">          1 : })();</span>
+<span class="lineNum">     108 </span><span class="lineCov">          1 : </span>
+<a name="109"><span class="lineNum">     109 </span><span class="lineCov">          1 : // Test the case of not JSArray receiver.</span></a>
+<span class="lineNum">     110 </span><span class="lineCov">          1 : // Regression test for custom call generators, see issue 684.</span>
+<span class="lineNum">     111 </span><span class="lineCov">          1 : (function() {</span>
+<span class="lineNum">     112 </span><span class="lineCov">          1 :   var x = {__proto__: []};</span>
+<span class="lineNum">     113 </span><span class="lineCov">          1 :   for (var i = 0; i &lt; 100; i++) {</span>
+<span class="lineNum">     114 </span><span class="lineCov">          1 :     x.push(&quot;a&quot;);</span>
+<span class="lineNum">     115 </span><span class="lineCov">          1 :     assertEquals(i + 1, x.length, i + 'th iteration');</span>
+<span class="lineNum">     116 </span><span class="lineCov">          1 :   }</span>
+<a name="117"><span class="lineNum">     117 </span><span class="lineCov">          1 : })();</span></a>
+<span class="lineNum">     118 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     119 </span><span class="lineCov">          1 : (function() {</span>
+<span class="lineNum">     120 </span><span class="lineCov">          5 :   function f(a, i) {</span>
+<span class="lineNum">     121 </span><span class="lineCov">          5 :     a.push(i);</span>
+<span class="lineNum">     122 </span><span class="lineCov">          5 :   }</span>
+<span class="lineNum">     123 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     124 </span><span class="lineCov">          1 :   var a = [1,2,3];</span>
+<span class="lineNum">     125 </span><span class="lineCov">          1 :   a.f = function() { return 10; }</span>
+<span class="lineNum">     126 </span><span class="lineCov">          1 :   f(a, 4);</span>
+<span class="lineNum">     127 </span><span class="lineCov">          1 :   f(a, 5);</span>
+<span class="lineNum">     128 </span><span class="lineCov">          1 :   f(a, 6);</span>
+<span class="lineNum">     129 </span><span class="lineCov">          1 :   f(a, 7);</span>
+<span class="lineNum">     130 </span><span class="lineCov">          1 :   f(a, {});</span>
+<span class="lineNum">     131 </span><span class="lineCov">          1 :   assertEquals(10, a.f());</span>
+<a name="132"><span class="lineNum">     132 </span><span class="lineCov">          1 : })();</span></a>
+<a name="133"><span class="lineNum">     133 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     134 </span><span class="lineCov">          1 : (function() {</span>
+<span class="lineNum">     135 </span><span class="lineCov">          5 :   function f(a, i) {</span>
+<span class="lineNum">     136 </span><span class="lineCov">          5 :     a.push(i);</span>
+<span class="lineNum">     137 </span><span class="lineCov">          5 :   }</span>
+<a name="138"><span class="lineNum">     138 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     139 </span><span class="lineCov">          1 :   var a = [1,2,3];</span>
+<span class="lineNum">     140 </span><span class="lineCov">          1 :   a.f = function() { return 10; }</span>
+<span class="lineNum">     141 </span><span class="lineCov">          1 :   f(a, 4);</span>
+<span class="lineNum">     142 </span><span class="lineCov">          1 :   f(a, 5);</span>
+<span class="lineNum">     143 </span><span class="lineCov">          1 :   f(a, 6);</span>
+<span class="lineNum">     144 </span><span class="lineCov">          1 :   %OptimizeFunctionOnNextCall(f);</span>
+<span class="lineNum">     145 </span><span class="lineCov">          1 :   f(a, 7);</span>
+<span class="lineNum">     146 </span><span class="lineCov">          1 :   f(a, {});</span>
+<span class="lineNum">     147 </span><span class="lineCov">          1 :   assertEquals(10, a.f());</span>
+<span class="lineNum">     148 </span><span class="lineCov">          1 : })();</span>
+<a name="149"><span class="lineNum">     149 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     150 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     151 </span><span class="lineCov">          1 : (function testDoubleArrayPush() {</span>
+<span class="lineNum">     152 </span><span class="lineCov">          1 :   var a = [];</span>
+<span class="lineNum">     153 </span><span class="lineCov">          1 :   var max = 1000;</span>
+<span class="lineNum">     154 </span><span class="lineCov">          1 :   for (var i = 0; i &lt; max; i++) {</span>
+<span class="lineNum">     155 </span><span class="lineCov">          1 :     a.push(i + 0.1);</span>
+<span class="lineNum">     156 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     157 </span><span class="lineCov">          1 :   assertEquals(max, a.length);</span>
+<span class="lineNum">     158 </span><span class="lineCov">          1 :   for (var i = 0; i &lt; max; i++) {</span>
+<span class="lineNum">     159 </span><span class="lineCov">          1 :     assertEquals(i+0.1, a[i]);</span>
+<span class="lineNum">     160 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     161 </span><span class="lineCov">          1 : })();</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

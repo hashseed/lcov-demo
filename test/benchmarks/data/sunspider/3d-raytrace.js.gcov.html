@@ -1,0 +1,523 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - test/benchmarks/data/sunspider/3d-raytrace.js</title>
+  <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../index.html">top level</a> - <a href="index.html">test/benchmarks/data/sunspider</a> - 3d-raytrace.js<span style="font-size: 80%;"> (source / <a href="3d-raytrace.js.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">447</td>
+            <td class="headerCovTableEntry">448</td>
+            <td class="headerCovTableEntryHi">99.8 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2017-02-14</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">28</td>
+            <td class="headerCovTableEntry">29</td>
+            <td class="headerCovTableEntryHi">96.6 %</td>
+          </tr>
+          <tr><td><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span><span class="lineCov">          1 : /*</span></a>
+<span class="lineNum">       2 </span><span class="lineCov">          1 :  * Copyright (C) 2007 Apple Inc.  All rights reserved.</span>
+<span class="lineNum">       3 </span><span class="lineCov">          1 :  *</span>
+<span class="lineNum">       4 </span><span class="lineCov">          1 :  * Redistribution and use in source and binary forms, with or without</span>
+<span class="lineNum">       5 </span><span class="lineCov">          1 :  * modification, are permitted provided that the following conditions</span>
+<span class="lineNum">       6 </span><span class="lineCov">          1 :  * are met:</span>
+<span class="lineNum">       7 </span><span class="lineCov">          1 :  * 1. Redistributions of source code must retain the above copyright</span>
+<span class="lineNum">       8 </span><span class="lineCov">          1 :  *    notice, this list of conditions and the following disclaimer.</span>
+<span class="lineNum">       9 </span><span class="lineCov">          1 :  * 2. Redistributions in binary form must reproduce the above copyright</span>
+<span class="lineNum">      10 </span><span class="lineCov">          1 :  *    notice, this list of conditions and the following disclaimer in the</span>
+<span class="lineNum">      11 </span><span class="lineCov">          1 :  *    documentation and/or other materials provided with the distribution.</span>
+<span class="lineNum">      12 </span><span class="lineCov">          1 :  *</span>
+<span class="lineNum">      13 </span><span class="lineCov">          1 :  * THIS SOFTWARE IS PROVIDED BY APPLE COMPUTER, INC. ``AS IS'' AND ANY</span>
+<span class="lineNum">      14 </span><span class="lineCov">          1 :  * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE</span>
+<span class="lineNum">      15 </span><span class="lineCov">          1 :  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR</span>
+<span class="lineNum">      16 </span><span class="lineCov">          1 :  * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL APPLE COMPUTER, INC. OR</span>
+<span class="lineNum">      17 </span><span class="lineCov">          1 :  * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,</span>
+<span class="lineNum">      18 </span><span class="lineCov">          1 :  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,</span>
+<span class="lineNum">      19 </span><span class="lineCov">          1 :  * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR</span>
+<span class="lineNum">      20 </span><span class="lineCov">          1 :  * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY</span>
+<span class="lineNum">      21 </span><span class="lineCov">          1 :  * OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT</span>
+<span class="lineNum">      22 </span><span class="lineCov">          1 :  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE</span>
+<span class="lineNum">      23 </span><span class="lineCov">          1 :  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. </span>
+<a name="24"><span class="lineNum">      24 </span><span class="lineCov">          1 :  */</span></a>
+<span class="lineNum">      25 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      26 </span><span class="lineCov">         24 : function createVector(x,y,z) {</span>
+<span class="lineNum">      27 </span><span class="lineCov">         24 :     return new Array(x,y,z);</span>
+<a name="28"><span class="lineNum">      28 </span><span class="lineCov">         24 : }</span></a>
+<span class="lineNum">      29 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      30 </span><span class="lineCov">          1 : function sqrLengthVector(self) {</span>
+<span class="lineNum">      31 </span><span class="lineNoCov">          0 :     return self[0] * self[0] + self[1] * self[1] + self[2] * self[2];</span>
+<a name="32"><span class="lineNum">      32 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">      33 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      34 </span><span class="lineCov">       1338 : function lengthVector(self) {</span>
+<span class="lineNum">      35 </span><span class="lineCov">       1338 :     return Math.sqrt(self[0] * self[0] + self[1] * self[1] + self[2] * self[2]);</span>
+<a name="36"><span class="lineNum">      36 </span><span class="lineCov">       1338 : }</span></a>
+<span class="lineNum">      37 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      38 </span><span class="lineCov">       3332 : function addVector(self, v) {</span>
+<span class="lineNum">      39 </span><span class="lineCov">       3332 :     self[0] += v[0];</span>
+<span class="lineNum">      40 </span><span class="lineCov">       3332 :     self[1] += v[1];</span>
+<span class="lineNum">      41 </span><span class="lineCov">       3332 :     self[2] += v[2];</span>
+<span class="lineNum">      42 </span><span class="lineCov">       3332 :     return self;</span>
+<a name="43"><span class="lineNum">      43 </span><span class="lineCov">       3332 : }</span></a>
+<span class="lineNum">      44 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      45 </span><span class="lineCov">          2 : function subVector(self, v) {</span>
+<span class="lineNum">      46 </span><span class="lineCov">          2 :     self[0] -= v[0];</span>
+<span class="lineNum">      47 </span><span class="lineCov">          2 :     self[1] -= v[1];</span>
+<span class="lineNum">      48 </span><span class="lineCov">          2 :     self[2] -= v[2];</span>
+<span class="lineNum">      49 </span><span class="lineCov">          2 :     return self;</span>
+<a name="50"><span class="lineNum">      50 </span><span class="lineCov">          2 : }</span></a>
+<span class="lineNum">      51 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      52 </span><span class="lineCov">       1320 : function scaleVector(self, scale) {</span>
+<span class="lineNum">      53 </span><span class="lineCov">       1320 :     self[0] *= scale;</span>
+<span class="lineNum">      54 </span><span class="lineCov">       1320 :     self[1] *= scale;</span>
+<span class="lineNum">      55 </span><span class="lineCov">       1320 :     self[2] *= scale;</span>
+<span class="lineNum">      56 </span><span class="lineCov">       1320 :     return self;</span>
+<a name="57"><span class="lineNum">      57 </span><span class="lineCov">       1320 : }</span></a>
+<span class="lineNum">      58 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      59 </span><span class="lineCov">        903 : function normaliseVector(self) {</span>
+<span class="lineNum">      60 </span><span class="lineCov">        903 :     var len = Math.sqrt(self[0] * self[0] + self[1] * self[1] + self[2] * self[2]);</span>
+<span class="lineNum">      61 </span><span class="lineCov">        903 :     self[0] /= len;</span>
+<span class="lineNum">      62 </span><span class="lineCov">        903 :     self[1] /= len;</span>
+<span class="lineNum">      63 </span><span class="lineCov">        903 :     self[2] /= len;</span>
+<span class="lineNum">      64 </span><span class="lineCov">        903 :     return self;</span>
+<a name="65"><span class="lineNum">      65 </span><span class="lineCov">        903 : }</span></a>
+<span class="lineNum">      66 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      67 </span><span class="lineCov">        893 : function add(v1, v2) {</span>
+<span class="lineNum">      68 </span><span class="lineCov">        893 :     return new Array(v1[0] + v2[0], v1[1] + v2[1], v1[2] + v2[2]);</span>
+<a name="69"><span class="lineNum">      69 </span><span class="lineCov">        893 : }</span></a>
+<span class="lineNum">      70 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      71 </span><span class="lineCov">       1348 : function sub(v1, v2) {</span>
+<span class="lineNum">      72 </span><span class="lineCov">       1348 :     return new Array(v1[0] - v2[0], v1[1] - v2[1], v1[2] - v2[2]);</span>
+<a name="73"><span class="lineNum">      73 </span><span class="lineCov">       1348 : }</span></a>
+<span class="lineNum">      74 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      75 </span><span class="lineCov">        440 : function scalev(v1, v2) {</span>
+<span class="lineNum">      76 </span><span class="lineCov">        440 :     return new Array(v1[0] * v2[0], v1[1] * v2[1], v1[2] * v2[2]);</span>
+<a name="77"><span class="lineNum">      77 </span><span class="lineCov">        440 : }</span></a>
+<span class="lineNum">      78 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      79 </span><span class="lineCov">       2386 : function dot(v1, v2) {</span>
+<span class="lineNum">      80 </span><span class="lineCov">       2386 :     return v1[0] * v2[0] + v1[1] * v2[1] + v1[2] * v2[2];</span>
+<a name="81"><span class="lineNum">      81 </span><span class="lineCov">       2386 : }</span></a>
+<span class="lineNum">      82 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      83 </span><span class="lineCov">       6085 : function scale(v, scale) {</span>
+<span class="lineNum">      84 </span><span class="lineCov">       6085 :     return [v[0] * scale, v[1] * scale, v[2] * scale];</span>
+<a name="85"><span class="lineNum">      85 </span><span class="lineCov">       6085 : }</span></a>
+<span class="lineNum">      86 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      87 </span><span class="lineCov">         16 : function cross(v1, v2) {</span>
+<span class="lineNum">      88 </span><span class="lineCov">         16 :     return [v1[1] * v2[2] - v1[2] * v2[1], </span>
+<span class="lineNum">      89 </span><span class="lineCov">         16 :             v1[2] * v2[0] - v1[0] * v2[2],</span>
+<span class="lineNum">      90 </span><span class="lineCov">         16 :             v1[0] * v2[1] - v1[1] * v2[0]];</span>
+<span class="lineNum">      91 </span><span class="lineCov">         16 : </span>
+<a name="92"><span class="lineNum">      92 </span><span class="lineCov">         16 : }</span></a>
+<span class="lineNum">      93 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      94 </span><span class="lineCov">         18 : function normalise(v) {</span>
+<span class="lineNum">      95 </span><span class="lineCov">         18 :     var len = lengthVector(v);</span>
+<span class="lineNum">      96 </span><span class="lineCov">         18 :     return [v[0] / len, v[1] / len, v[2] / len];</span>
+<a name="97"><span class="lineNum">      97 </span><span class="lineCov">         18 : }</span></a>
+<span class="lineNum">      98 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      99 </span><span class="lineCov">          4 : function transformMatrix(self, v) {</span>
+<span class="lineNum">     100 </span><span class="lineCov">          4 :     var vals = self;</span>
+<span class="lineNum">     101 </span><span class="lineCov">          4 :     var x  = vals[0] * v[0] + vals[1] * v[1] + vals[2] * v[2] + vals[3];</span>
+<span class="lineNum">     102 </span><span class="lineCov">          4 :     var y  = vals[4] * v[0] + vals[5] * v[1] + vals[6] * v[2] + vals[7];</span>
+<span class="lineNum">     103 </span><span class="lineCov">          4 :     var z  = vals[8] * v[0] + vals[9] * v[1] + vals[10] * v[2] + vals[11];</span>
+<span class="lineNum">     104 </span><span class="lineCov">          4 :     return [x, y, z];</span>
+<a name="105"><span class="lineNum">     105 </span><span class="lineCov">          4 : }</span></a>
+<span class="lineNum">     106 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     107 </span><span class="lineCov">          1 : function invertMatrix(self) {</span>
+<span class="lineNum">     108 </span><span class="lineCov">          1 :     var temp = new Array(16);</span>
+<span class="lineNum">     109 </span><span class="lineCov">          1 :     var tx = -self[3];</span>
+<span class="lineNum">     110 </span><span class="lineCov">          1 :     var ty = -self[7];</span>
+<span class="lineNum">     111 </span><span class="lineCov">          1 :     var tz = -self[11];</span>
+<span class="lineNum">     112 </span><span class="lineCov">          1 :     for (h = 0; h &lt; 3; h++) </span>
+<span class="lineNum">     113 </span><span class="lineCov">          1 :         for (v = 0; v &lt; 3; v++) </span>
+<span class="lineNum">     114 </span><span class="lineCov">          1 :             temp[h + v * 4] = self[v + h * 4];</span>
+<span class="lineNum">     115 </span><span class="lineCov">          1 :     for (i = 0; i &lt; 11; i++)</span>
+<span class="lineNum">     116 </span><span class="lineCov">          1 :         self[i] = temp[i];</span>
+<span class="lineNum">     117 </span><span class="lineCov">          1 :     self[3] = tx * self[0] + ty * self[1] + tz * self[2];</span>
+<span class="lineNum">     118 </span><span class="lineCov">          1 :     self[7] = tx * self[4] + ty * self[5] + tz * self[6];</span>
+<span class="lineNum">     119 </span><span class="lineCov">          1 :     self[11] = tx * self[8] + ty * self[9] + tz * self[10];</span>
+<span class="lineNum">     120 </span><span class="lineCov">          1 :     return self;</span>
+<span class="lineNum">     121 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     122 </span><span class="lineCov">          1 : </span>
+<a name="123"><span class="lineNum">     123 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     124 </span><span class="lineCov">          1 : // Triangle intersection using barycentric coord method</span>
+<span class="lineNum">     125 </span><span class="lineCov">         14 : function Triangle(p1, p2, p3) {</span>
+<span class="lineNum">     126 </span><span class="lineCov">         14 :     var edge1 = sub(p3, p1);</span>
+<span class="lineNum">     127 </span><span class="lineCov">         14 :     var edge2 = sub(p2, p1);</span>
+<span class="lineNum">     128 </span><span class="lineCov">         14 :     var normal = cross(edge1, edge2);</span>
+<span class="lineNum">     129 </span><span class="lineCov">         14 :     if (Math.abs(normal[0]) &gt; Math.abs(normal[1]))</span>
+<span class="lineNum">     130 </span><span class="lineCov">         14 :         if (Math.abs(normal[0]) &gt; Math.abs(normal[2]))</span>
+<span class="lineNum">     131 </span><span class="lineCov">         14 :             this.axis = 0; </span>
+<span class="lineNum">     132 </span><span class="lineCov">         14 :         else </span>
+<span class="lineNum">     133 </span><span class="lineCov">         14 :             this.axis = 2;</span>
+<span class="lineNum">     134 </span><span class="lineCov">         14 :     else</span>
+<span class="lineNum">     135 </span><span class="lineCov">         14 :         if (Math.abs(normal[1]) &gt; Math.abs(normal[2])) </span>
+<span class="lineNum">     136 </span><span class="lineCov">         14 :             this.axis = 1;</span>
+<span class="lineNum">     137 </span><span class="lineCov">         14 :         else </span>
+<span class="lineNum">     138 </span><span class="lineCov">         14 :             this.axis = 2;</span>
+<span class="lineNum">     139 </span><span class="lineCov">         14 :     var u = (this.axis + 1) % 3;</span>
+<span class="lineNum">     140 </span><span class="lineCov">         14 :     var v = (this.axis + 2) % 3;</span>
+<span class="lineNum">     141 </span><span class="lineCov">         14 :     var u1 = edge1[u];</span>
+<span class="lineNum">     142 </span><span class="lineCov">         14 :     var v1 = edge1[v];</span>
+<span class="lineNum">     143 </span><span class="lineCov">         14 :     </span>
+<span class="lineNum">     144 </span><span class="lineCov">         14 :     var u2 = edge2[u];</span>
+<span class="lineNum">     145 </span><span class="lineCov">         14 :     var v2 = edge2[v];</span>
+<span class="lineNum">     146 </span><span class="lineCov">         14 :     this.normal = normalise(normal);</span>
+<span class="lineNum">     147 </span><span class="lineCov">         14 :     this.nu = normal[u] / normal[this.axis];</span>
+<span class="lineNum">     148 </span><span class="lineCov">         14 :     this.nv = normal[v] / normal[this.axis];</span>
+<span class="lineNum">     149 </span><span class="lineCov">         14 :     this.nd = dot(normal, p1) / normal[this.axis];</span>
+<span class="lineNum">     150 </span><span class="lineCov">         14 :     var det = u1 * v2 - v1 * u2;</span>
+<span class="lineNum">     151 </span><span class="lineCov">         14 :     this.eu = p1[u];</span>
+<span class="lineNum">     152 </span><span class="lineCov">         14 :     this.ev = p1[v]; </span>
+<span class="lineNum">     153 </span><span class="lineCov">         14 :     this.nu1 = u1 / det;</span>
+<span class="lineNum">     154 </span><span class="lineCov">         14 :     this.nv1 = -v1 / det;</span>
+<span class="lineNum">     155 </span><span class="lineCov">         14 :     this.nu2 = v2 / det;</span>
+<span class="lineNum">     156 </span><span class="lineCov">         14 :     this.nv2 = -u2 / det; </span>
+<span class="lineNum">     157 </span><span class="lineCov">         14 :     this.material = [0.7, 0.7, 0.7];</span>
+<a name="158"><span class="lineNum">     158 </span><span class="lineCov">         14 : }</span></a>
+<span class="lineNum">     159 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     160 </span><span class="lineCov">      35000 : Triangle.prototype.intersect = function(orig, dir, near, far) {</span>
+<span class="lineNum">     161 </span><span class="lineCov">      35000 :     var u = (this.axis + 1) % 3;</span>
+<span class="lineNum">     162 </span><span class="lineCov">      35000 :     var v = (this.axis + 2) % 3;</span>
+<span class="lineNum">     163 </span><span class="lineCov">      35000 :     var d = dir[this.axis] + this.nu * dir[u] + this.nv * dir[v];</span>
+<span class="lineNum">     164 </span><span class="lineCov">      35000 :     var t = (this.nd - orig[this.axis] - this.nu * orig[u] - this.nv * orig[v]) / d;</span>
+<span class="lineNum">     165 </span><span class="lineCov">      35000 :     if (t &lt; near || t &gt; far)</span>
+<span class="lineNum">     166 </span><span class="lineCov">      35000 :         return null;</span>
+<span class="lineNum">     167 </span><span class="lineCov">      35000 :     var Pu = orig[u] + t * dir[u] - this.eu;</span>
+<span class="lineNum">     168 </span><span class="lineCov">      35000 :     var Pv = orig[v] + t * dir[v] - this.ev;</span>
+<span class="lineNum">     169 </span><span class="lineCov">      35000 :     var a2 = Pv * this.nu1 + Pu * this.nv1;</span>
+<span class="lineNum">     170 </span><span class="lineCov">      35000 :     if (a2 &lt; 0) </span>
+<span class="lineNum">     171 </span><span class="lineCov">      35000 :         return null;</span>
+<span class="lineNum">     172 </span><span class="lineCov">      35000 :     var a3 = Pu * this.nu2 + Pv * this.nv2;</span>
+<span class="lineNum">     173 </span><span class="lineCov">      35000 :     if (a3 &lt; 0) </span>
+<span class="lineNum">     174 </span><span class="lineCov">      35000 :         return null;</span>
+<span class="lineNum">     175 </span><span class="lineCov">      35000 : </span>
+<span class="lineNum">     176 </span><span class="lineCov">      35000 :     if ((a2 + a3) &gt; 1) </span>
+<span class="lineNum">     177 </span><span class="lineCov">      35000 :         return null;</span>
+<span class="lineNum">     178 </span><span class="lineCov">      35000 :     return t;</span>
+<a name="179"><span class="lineNum">     179 </span><span class="lineCov">      35000 : }</span></a>
+<span class="lineNum">     180 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     181 </span><span class="lineCov">          1 : function Scene(a_triangles) {</span>
+<span class="lineNum">     182 </span><span class="lineCov">          1 :     this.triangles = a_triangles;</span>
+<span class="lineNum">     183 </span><span class="lineCov">          1 :     this.lights = [];</span>
+<span class="lineNum">     184 </span><span class="lineCov">          1 :     this.ambient = [0,0,0];</span>
+<span class="lineNum">     185 </span><span class="lineCov">          1 :     this.background = [0.8,0.8,1];</span>
+<span class="lineNum">     186 </span><span class="lineCov">          1 : }</span>
+<a name="187"><span class="lineNum">     187 </span><span class="lineCov">          1 : var zero = new Array(0,0,0);</span></a>
+<span class="lineNum">     188 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     189 </span><span class="lineCov">       1353 : Scene.prototype.intersect = function(origin, dir, near, far) {</span>
+<span class="lineNum">     190 </span><span class="lineCov">       1353 :     var closest = null;</span>
+<span class="lineNum">     191 </span><span class="lineCov">       1353 :     for (i = 0; i &lt; this.triangles.length; i++) {</span>
+<span class="lineNum">     192 </span><span class="lineCov">       1353 :         var triangle = this.triangles[i];   </span>
+<span class="lineNum">     193 </span><span class="lineCov">       1353 :         var d = triangle.intersect(origin, dir, near, far);</span>
+<span class="lineNum">     194 </span><span class="lineCov">       1353 :         if (d == null || d &gt; far || d &lt; near)</span>
+<span class="lineNum">     195 </span><span class="lineCov">       1353 :             continue;</span>
+<span class="lineNum">     196 </span><span class="lineCov">       1353 :         far = d;</span>
+<span class="lineNum">     197 </span><span class="lineCov">       1353 :         closest = triangle;</span>
+<span class="lineNum">     198 </span><span class="lineCov">       1353 :     }</span>
+<span class="lineNum">     199 </span><span class="lineCov">       1353 :     </span>
+<span class="lineNum">     200 </span><span class="lineCov">       1353 :     if (!closest)</span>
+<span class="lineNum">     201 </span><span class="lineCov">       1353 :         return [this.background[0],this.background[1],this.background[2]];</span>
+<span class="lineNum">     202 </span><span class="lineCov">       1353 :         </span>
+<span class="lineNum">     203 </span><span class="lineCov">       1353 :     var normal = closest.normal;</span>
+<span class="lineNum">     204 </span><span class="lineCov">       1353 :     var hit = add(origin, scale(dir, far)); </span>
+<span class="lineNum">     205 </span><span class="lineCov">       1353 :     if (dot(dir, normal) &gt; 0)</span>
+<span class="lineNum">     206 </span><span class="lineCov">       1353 :         normal = [-normal[0], -normal[1], -normal[2]];</span>
+<span class="lineNum">     207 </span><span class="lineCov">       1353 :     </span>
+<span class="lineNum">     208 </span><span class="lineCov">       1353 :     var colour = null;</span>
+<span class="lineNum">     209 </span><span class="lineCov">       1353 :     if (closest.shader) {</span>
+<span class="lineNum">     210 </span><span class="lineCov">       1353 :         colour = closest.shader(closest, hit, dir);</span>
+<span class="lineNum">     211 </span><span class="lineCov">       1353 :     } else {</span>
+<span class="lineNum">     212 </span><span class="lineCov">       1353 :         colour = closest.material;</span>
+<span class="lineNum">     213 </span><span class="lineCov">       1353 :     }</span>
+<span class="lineNum">     214 </span><span class="lineCov">       1353 :     </span>
+<span class="lineNum">     215 </span><span class="lineCov">       1353 :     // do reflection</span>
+<span class="lineNum">     216 </span><span class="lineCov">       1353 :     var reflected = null;</span>
+<span class="lineNum">     217 </span><span class="lineCov">       1353 :     if (colour.reflection &gt; 0.001) {</span>
+<span class="lineNum">     218 </span><span class="lineCov">       1353 :         var reflection = addVector(scale(normal, -2*dot(dir, normal)), dir);</span>
+<span class="lineNum">     219 </span><span class="lineCov">       1353 :         reflected = this.intersect(hit, reflection, 0.0001, 1000000);</span>
+<span class="lineNum">     220 </span><span class="lineCov">       1353 :         if (colour.reflection &gt;= 0.999999)</span>
+<span class="lineNum">     221 </span><span class="lineCov">       1353 :             return reflected;</span>
+<span class="lineNum">     222 </span><span class="lineCov">       1353 :     }</span>
+<span class="lineNum">     223 </span><span class="lineCov">       1353 :     </span>
+<span class="lineNum">     224 </span><span class="lineCov">       1353 :     var l = [this.ambient[0], this.ambient[1], this.ambient[2]];</span>
+<span class="lineNum">     225 </span><span class="lineCov">       1353 :     for (var i = 0; i &lt; this.lights.length; i++) {</span>
+<span class="lineNum">     226 </span><span class="lineCov">       1353 :         var light = this.lights[i];</span>
+<span class="lineNum">     227 </span><span class="lineCov">       1353 :         var toLight = sub(light, hit);</span>
+<span class="lineNum">     228 </span><span class="lineCov">       1353 :         var distance = lengthVector(toLight);</span>
+<span class="lineNum">     229 </span><span class="lineCov">       1353 :         scaleVector(toLight, 1.0/distance);</span>
+<span class="lineNum">     230 </span><span class="lineCov">       1353 :         distance -= 0.0001;</span>
+<span class="lineNum">     231 </span><span class="lineCov">       1353 :         if (this.blocked(hit, toLight, distance))</span>
+<span class="lineNum">     232 </span><span class="lineCov">       1353 :             continue;</span>
+<span class="lineNum">     233 </span><span class="lineCov">       1353 :         var nl = dot(normal, toLight);</span>
+<span class="lineNum">     234 </span><span class="lineCov">       1353 :         if (nl &gt; 0)</span>
+<span class="lineNum">     235 </span><span class="lineCov">       1353 :             addVector(l, scale(light.colour, nl));</span>
+<span class="lineNum">     236 </span><span class="lineCov">       1353 :     }</span>
+<span class="lineNum">     237 </span><span class="lineCov">       1353 :     l = scalev(l, colour);</span>
+<span class="lineNum">     238 </span><span class="lineCov">       1353 :     if (reflected) {</span>
+<span class="lineNum">     239 </span><span class="lineCov">       1353 :         l = addVector(scaleVector(l, 1 - colour.reflection), scaleVector(reflected, colour.reflection));</span>
+<span class="lineNum">     240 </span><span class="lineCov">       1353 :     }</span>
+<span class="lineNum">     241 </span><span class="lineCov">       1353 :     return l;</span>
+<a name="242"><span class="lineNum">     242 </span><span class="lineCov">       1353 : }</span></a>
+<span class="lineNum">     243 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     244 </span><span class="lineCov">       1320 : Scene.prototype.blocked = function(O, D, far) {</span>
+<span class="lineNum">     245 </span><span class="lineCov">       1320 :     var near = 0.0001;</span>
+<span class="lineNum">     246 </span><span class="lineCov">       1320 :     var closest = null;</span>
+<span class="lineNum">     247 </span><span class="lineCov">       1320 :     for (i = 0; i &lt; this.triangles.length; i++) {</span>
+<span class="lineNum">     248 </span><span class="lineCov">       1320 :         var triangle = this.triangles[i];   </span>
+<span class="lineNum">     249 </span><span class="lineCov">       1320 :         var d = triangle.intersect(O, D, near, far);</span>
+<span class="lineNum">     250 </span><span class="lineCov">       1320 :         if (d == null || d &gt; far || d &lt; near)</span>
+<span class="lineNum">     251 </span><span class="lineCov">       1320 :             continue;</span>
+<span class="lineNum">     252 </span><span class="lineCov">       1320 :         return true;</span>
+<span class="lineNum">     253 </span><span class="lineCov">       1320 :     }</span>
+<span class="lineNum">     254 </span><span class="lineCov">       1320 :     </span>
+<span class="lineNum">     255 </span><span class="lineCov">       1320 :     return false;</span>
+<span class="lineNum">     256 </span><span class="lineCov">       1320 : }</span>
+<span class="lineNum">     257 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     258 </span><span class="lineCov">          1 : </span>
+<a name="259"><span class="lineNum">     259 </span><span class="lineCov">          1 : // this camera code is from notes i made ages ago, it is from *somewhere* -- i cannot remember where</span></a>
+<span class="lineNum">     260 </span><span class="lineCov">          1 : // that somewhere is</span>
+<span class="lineNum">     261 </span><span class="lineCov">          1 : function Camera(origin, lookat, up) {</span>
+<span class="lineNum">     262 </span><span class="lineCov">          1 :     var zaxis = normaliseVector(subVector(lookat, origin));</span>
+<span class="lineNum">     263 </span><span class="lineCov">          1 :     var xaxis = normaliseVector(cross(up, zaxis));</span>
+<span class="lineNum">     264 </span><span class="lineCov">          1 :     var yaxis = normaliseVector(cross(xaxis, subVector([0,0,0], zaxis)));</span>
+<span class="lineNum">     265 </span><span class="lineCov">          1 :     var m = new Array(16);</span>
+<span class="lineNum">     266 </span><span class="lineCov">          1 :     m[0] = xaxis[0]; m[1] = xaxis[1]; m[2] = xaxis[2];</span>
+<span class="lineNum">     267 </span><span class="lineCov">          1 :     m[4] = yaxis[0]; m[5] = yaxis[1]; m[6] = yaxis[2];</span>
+<span class="lineNum">     268 </span><span class="lineCov">          1 :     m[8] = zaxis[0]; m[9] = zaxis[1]; m[10] = zaxis[2];</span>
+<span class="lineNum">     269 </span><span class="lineCov">          1 :     invertMatrix(m);</span>
+<span class="lineNum">     270 </span><span class="lineCov">          1 :     m[3] = 0; m[7] = 0; m[11] = 0;</span>
+<span class="lineNum">     271 </span><span class="lineCov">          1 :     this.origin = origin;</span>
+<span class="lineNum">     272 </span><span class="lineCov">          1 :     this.directions = new Array(4);</span>
+<span class="lineNum">     273 </span><span class="lineCov">          1 :     this.directions[0] = normalise([-0.7,  0.7, 1]);</span>
+<span class="lineNum">     274 </span><span class="lineCov">          1 :     this.directions[1] = normalise([ 0.7,  0.7, 1]);</span>
+<span class="lineNum">     275 </span><span class="lineCov">          1 :     this.directions[2] = normalise([ 0.7, -0.7, 1]);</span>
+<span class="lineNum">     276 </span><span class="lineCov">          1 :     this.directions[3] = normalise([-0.7, -0.7, 1]);</span>
+<span class="lineNum">     277 </span><span class="lineCov">          1 :     this.directions[0] = transformMatrix(m, this.directions[0]);</span>
+<span class="lineNum">     278 </span><span class="lineCov">          1 :     this.directions[1] = transformMatrix(m, this.directions[1]);</span>
+<span class="lineNum">     279 </span><span class="lineCov">          1 :     this.directions[2] = transformMatrix(m, this.directions[2]);</span>
+<span class="lineNum">     280 </span><span class="lineCov">          1 :     this.directions[3] = transformMatrix(m, this.directions[3]);</span>
+<a name="281"><span class="lineNum">     281 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">     282 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     283 </span><span class="lineCov">         30 : Camera.prototype.generateRayPair = function(y) {</span>
+<span class="lineNum">     284 </span><span class="lineCov">         30 :     rays = new Array(new Object(), new Object());</span>
+<span class="lineNum">     285 </span><span class="lineCov">         30 :     rays[0].origin = this.origin;</span>
+<span class="lineNum">     286 </span><span class="lineCov">         30 :     rays[1].origin = this.origin;</span>
+<span class="lineNum">     287 </span><span class="lineCov">         30 :     rays[0].dir = addVector(scale(this.directions[0], y), scale(this.directions[3], 1 - y));</span>
+<span class="lineNum">     288 </span><span class="lineCov">         30 :     rays[1].dir = addVector(scale(this.directions[1], y), scale(this.directions[2], 1 - y));</span>
+<span class="lineNum">     289 </span><span class="lineCov">         30 :     return rays;</span>
+<a name="290"><span class="lineNum">     290 </span><span class="lineCov">         30 : }</span></a>
+<span class="lineNum">     291 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     292 </span><span class="lineCov">          1 : function renderRows(camera, scene, pixels, width, height, starty, stopy) {</span>
+<span class="lineNum">     293 </span><span class="lineCov">          1 :     for (var y = starty; y &lt; stopy; y++) {</span>
+<span class="lineNum">     294 </span><span class="lineCov">          1 :         var rays = camera.generateRayPair(y / height);</span>
+<span class="lineNum">     295 </span><span class="lineCov">          1 :         for (var x = 0; x &lt; width; x++) {</span>
+<span class="lineNum">     296 </span><span class="lineCov">          1 :             var xp = x / width;</span>
+<span class="lineNum">     297 </span><span class="lineCov">          1 :             var origin = addVector(scale(rays[0].origin, xp), scale(rays[1].origin, 1 - xp));</span>
+<span class="lineNum">     298 </span><span class="lineCov">          1 :             var dir = normaliseVector(addVector(scale(rays[0].dir, xp), scale(rays[1].dir, 1 - xp)));</span>
+<span class="lineNum">     299 </span><span class="lineCov">          1 :             var l = scene.intersect(origin, dir);</span>
+<span class="lineNum">     300 </span><span class="lineCov">          1 :             pixels[y][x] = l;</span>
+<span class="lineNum">     301 </span><span class="lineCov">          1 :         }</span>
+<span class="lineNum">     302 </span><span class="lineCov">          1 :     }</span>
+<a name="303"><span class="lineNum">     303 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">     304 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     305 </span><span class="lineCov">          1 : Camera.prototype.render = function(scene, pixels, width, height) {</span>
+<span class="lineNum">     306 </span><span class="lineCov">          1 :     var cam = this;</span>
+<span class="lineNum">     307 </span><span class="lineCov">          1 :     var row = 0;</span>
+<span class="lineNum">     308 </span><span class="lineCov">          1 :     renderRows(cam, scene, pixels, width, height, 0, height);</span>
+<span class="lineNum">     309 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     310 </span><span class="lineCov">          1 : </span>
+<a name="311"><span class="lineNum">     311 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     312 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     313 </span><span class="lineCov">          1 : function raytraceScene()</span>
+<span class="lineNum">     314 </span><span class="lineCov">          1 : {</span>
+<span class="lineNum">     315 </span><span class="lineCov">          1 :     var startDate = new Date().getTime();</span>
+<span class="lineNum">     316 </span><span class="lineCov">          1 :     var numTriangles = 2 * 6;</span>
+<span class="lineNum">     317 </span><span class="lineCov">          1 :     var triangles = new Array();//numTriangles);</span>
+<span class="lineNum">     318 </span><span class="lineCov">          1 :     var tfl = createVector(-10,  10, -10);</span>
+<span class="lineNum">     319 </span><span class="lineCov">          1 :     var tfr = createVector( 10,  10, -10);</span>
+<span class="lineNum">     320 </span><span class="lineCov">          1 :     var tbl = createVector(-10,  10,  10);</span>
+<span class="lineNum">     321 </span><span class="lineCov">          1 :     var tbr = createVector( 10,  10,  10);</span>
+<span class="lineNum">     322 </span><span class="lineCov">          1 :     var bfl = createVector(-10, -10, -10);</span>
+<span class="lineNum">     323 </span><span class="lineCov">          1 :     var bfr = createVector( 10, -10, -10);</span>
+<span class="lineNum">     324 </span><span class="lineCov">          1 :     var bbl = createVector(-10, -10,  10);</span>
+<span class="lineNum">     325 </span><span class="lineCov">          1 :     var bbr = createVector( 10, -10,  10);</span>
+<span class="lineNum">     326 </span><span class="lineCov">          1 :     </span>
+<span class="lineNum">     327 </span><span class="lineCov">          1 :     // cube!!!</span>
+<span class="lineNum">     328 </span><span class="lineCov">          1 :     // front</span>
+<span class="lineNum">     329 </span><span class="lineCov">          1 :     var i = 0;</span>
+<span class="lineNum">     330 </span><span class="lineCov">          1 :     </span>
+<span class="lineNum">     331 </span><span class="lineCov">          1 :     triangles[i++] = new Triangle(tfl, tfr, bfr);</span>
+<span class="lineNum">     332 </span><span class="lineCov">          1 :     triangles[i++] = new Triangle(tfl, bfr, bfl);</span>
+<span class="lineNum">     333 </span><span class="lineCov">          1 :     // back</span>
+<span class="lineNum">     334 </span><span class="lineCov">          1 :     triangles[i++] = new Triangle(tbl, tbr, bbr);</span>
+<span class="lineNum">     335 </span><span class="lineCov">          1 :     triangles[i++] = new Triangle(tbl, bbr, bbl);</span>
+<span class="lineNum">     336 </span><span class="lineCov">          1 :     //        triangles[i-1].material = [0.7,0.2,0.2];</span>
+<span class="lineNum">     337 </span><span class="lineCov">          1 :     //            triangles[i-1].material.reflection = 0.8;</span>
+<span class="lineNum">     338 </span><span class="lineCov">          1 :     // left</span>
+<span class="lineNum">     339 </span><span class="lineCov">          1 :     triangles[i++] = new Triangle(tbl, tfl, bbl);</span>
+<span class="lineNum">     340 </span><span class="lineCov">          1 :     //            triangles[i-1].reflection = 0.6;</span>
+<span class="lineNum">     341 </span><span class="lineCov">          1 :     triangles[i++] = new Triangle(tfl, bfl, bbl);</span>
+<span class="lineNum">     342 </span><span class="lineCov">          1 :     //            triangles[i-1].reflection = 0.6;</span>
+<span class="lineNum">     343 </span><span class="lineCov">          1 :     // right</span>
+<span class="lineNum">     344 </span><span class="lineCov">          1 :     triangles[i++] = new Triangle(tbr, tfr, bbr);</span>
+<span class="lineNum">     345 </span><span class="lineCov">          1 :     triangles[i++] = new Triangle(tfr, bfr, bbr);</span>
+<span class="lineNum">     346 </span><span class="lineCov">          1 :     // top</span>
+<span class="lineNum">     347 </span><span class="lineCov">          1 :     triangles[i++] = new Triangle(tbl, tbr, tfr);</span>
+<span class="lineNum">     348 </span><span class="lineCov">          1 :     triangles[i++] = new Triangle(tbl, tfr, tfl);</span>
+<span class="lineNum">     349 </span><span class="lineCov">          1 :     // bottom</span>
+<span class="lineNum">     350 </span><span class="lineCov">          1 :     triangles[i++] = new Triangle(bbl, bbr, bfr);</span>
+<span class="lineNum">     351 </span><span class="lineCov">          1 :     triangles[i++] = new Triangle(bbl, bfr, bfl);</span>
+<span class="lineNum">     352 </span><span class="lineCov">          1 :     </span>
+<span class="lineNum">     353 </span><span class="lineCov">          1 :     //Floor!!!!</span>
+<span class="lineNum">     354 </span><span class="lineCov">          1 :     var green = createVector(0.0, 0.4, 0.0);</span>
+<a name="355"><span class="lineNum">     355 </span><span class="lineCov">          1 :     var grey = createVector(0.4, 0.4, 0.4);</span></a>
+<span class="lineNum">     356 </span><span class="lineCov">          1 :     grey.reflection = 1.0;</span>
+<span class="lineNum">     357 </span><span class="lineCov">        795 :     var floorShader = function(tri, pos, view) {</span>
+<span class="lineNum">     358 </span><span class="lineCov">        795 :         var x = ((pos[0]/32) % 2 + 2) % 2;</span>
+<span class="lineNum">     359 </span><span class="lineCov">        795 :         var z = ((pos[2]/32 + 0.3) % 2 + 2) % 2;</span>
+<span class="lineNum">     360 </span><span class="lineCov">        795 :         if (x &lt; 1 != z &lt; 1) {</span>
+<span class="lineNum">     361 </span><span class="lineCov">        795 :             //in the real world we use the fresnel term...</span>
+<span class="lineNum">     362 </span><span class="lineCov">        795 :             //    var angle = 1-dot(view, tri.normal);</span>
+<span class="lineNum">     363 </span><span class="lineCov">        795 :             //   angle *= angle;</span>
+<span class="lineNum">     364 </span><span class="lineCov">        795 :             //  angle *= angle;</span>
+<span class="lineNum">     365 </span><span class="lineCov">        795 :             // angle *= angle;</span>
+<span class="lineNum">     366 </span><span class="lineCov">        795 :             //grey.reflection = angle;</span>
+<span class="lineNum">     367 </span><span class="lineCov">        795 :             return grey;</span>
+<span class="lineNum">     368 </span><span class="lineCov">        795 :         } else </span>
+<span class="lineNum">     369 </span><span class="lineCov">        795 :             return green;</span>
+<span class="lineNum">     370 </span><span class="lineCov">        795 :     }</span>
+<span class="lineNum">     371 </span><span class="lineCov">          1 :     var ffl = createVector(-1000, -30, -1000);</span>
+<span class="lineNum">     372 </span><span class="lineCov">          1 :     var ffr = createVector( 1000, -30, -1000);</span>
+<span class="lineNum">     373 </span><span class="lineCov">          1 :     var fbl = createVector(-1000, -30,  1000);</span>
+<span class="lineNum">     374 </span><span class="lineCov">          1 :     var fbr = createVector( 1000, -30,  1000);</span>
+<span class="lineNum">     375 </span><span class="lineCov">          1 :     triangles[i++] = new Triangle(fbl, fbr, ffr);</span>
+<span class="lineNum">     376 </span><span class="lineCov">          1 :     triangles[i-1].shader = floorShader;</span>
+<span class="lineNum">     377 </span><span class="lineCov">          1 :     triangles[i++] = new Triangle(fbl, ffr, ffl);</span>
+<span class="lineNum">     378 </span><span class="lineCov">          1 :     triangles[i-1].shader = floorShader;</span>
+<span class="lineNum">     379 </span><span class="lineCov">          1 :     </span>
+<span class="lineNum">     380 </span><span class="lineCov">          1 :     var _scene = new Scene(triangles);</span>
+<span class="lineNum">     381 </span><span class="lineCov">          1 :     _scene.lights[0] = createVector(20, 38, -22);</span>
+<span class="lineNum">     382 </span><span class="lineCov">          1 :     _scene.lights[0].colour = createVector(0.7, 0.3, 0.3);</span>
+<span class="lineNum">     383 </span><span class="lineCov">          1 :     _scene.lights[1] = createVector(-23, 40, 17);</span>
+<span class="lineNum">     384 </span><span class="lineCov">          1 :     _scene.lights[1].colour = createVector(0.7, 0.3, 0.3);</span>
+<span class="lineNum">     385 </span><span class="lineCov">          1 :     _scene.lights[2] = createVector(23, 20, 17);</span>
+<span class="lineNum">     386 </span><span class="lineCov">          1 :     _scene.lights[2].colour = createVector(0.7, 0.7, 0.7);</span>
+<span class="lineNum">     387 </span><span class="lineCov">          1 :     _scene.ambient = createVector(0.1, 0.1, 0.1);</span>
+<span class="lineNum">     388 </span><span class="lineCov">          1 :     //  _scene.background = createVector(0.7, 0.7, 1.0);</span>
+<span class="lineNum">     389 </span><span class="lineCov">          1 :     </span>
+<span class="lineNum">     390 </span><span class="lineCov">          1 :     var size = 30;</span>
+<span class="lineNum">     391 </span><span class="lineCov">          1 :     var pixels = new Array();</span>
+<span class="lineNum">     392 </span><span class="lineCov">          1 :     for (var y = 0; y &lt; size; y++) {</span>
+<span class="lineNum">     393 </span><span class="lineCov">          1 :         pixels[y] = new Array();</span>
+<span class="lineNum">     394 </span><span class="lineCov">          1 :         for (var x = 0; x &lt; size; x++) {</span>
+<span class="lineNum">     395 </span><span class="lineCov">          1 :             pixels[y][x] = 0;</span>
+<span class="lineNum">     396 </span><span class="lineCov">          1 :         }</span>
+<span class="lineNum">     397 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">     398 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     399 </span><span class="lineCov">          1 :     var _camera = new Camera(createVector(-40, 40, 40), createVector(0, 0, 0), createVector(0, 1, 0));</span>
+<span class="lineNum">     400 </span><span class="lineCov">          1 :     _camera.render(_scene, pixels, size, size);</span>
+<span class="lineNum">     401 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     402 </span><span class="lineCov">          1 :     return pixels;</span>
+<a name="403"><span class="lineNum">     403 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">     404 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     405 </span><span class="lineCov">          1 : function arrayToCanvasCommands(pixels)</span>
+<span class="lineNum">     406 </span><span class="lineCov">          1 : {</span>
+<span class="lineNum">     407 </span><span class="lineCov">          1 :     var s = '&lt;canvas id=&quot;renderCanvas&quot; width=&quot;30px&quot; height=&quot;30px&quot;&gt;&lt;/canvas&gt;&lt;scr' + 'ipt&gt;\nvar pixels = [';</span>
+<span class="lineNum">     408 </span><span class="lineCov">          1 :     var size = 30;</span>
+<span class="lineNum">     409 </span><span class="lineCov">          1 :     for (var y = 0; y &lt; size; y++) {</span>
+<span class="lineNum">     410 </span><span class="lineCov">          1 :         s += &quot;[&quot;;</span>
+<span class="lineNum">     411 </span><span class="lineCov">          1 :         for (var x = 0; x &lt; size; x++) {</span>
+<span class="lineNum">     412 </span><span class="lineCov">          1 :             s += &quot;[&quot; + pixels[y][x] + &quot;],&quot;;</span>
+<span class="lineNum">     413 </span><span class="lineCov">          1 :         }</span>
+<span class="lineNum">     414 </span><span class="lineCov">          1 :         s+= &quot;],&quot;;</span>
+<span class="lineNum">     415 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">     416 </span><span class="lineCov">          1 :     s += '];\n    var canvas = document.getElementById(&quot;renderCanvas&quot;).getContext(&quot;2d&quot;);\n\</span>
+<span class="lineNum">     417 </span><span class="lineCov">          1 : \n\</span>
+<span class="lineNum">     418 </span><span class="lineCov">          1 : \n\</span>
+<span class="lineNum">     419 </span><span class="lineCov">          1 :     var size = 30;\n\</span>
+<span class="lineNum">     420 </span><span class="lineCov">          1 :     canvas.fillStyle = &quot;red&quot;;\n\</span>
+<span class="lineNum">     421 </span><span class="lineCov">          1 :     canvas.fillRect(0, 0, size, size);\n\</span>
+<span class="lineNum">     422 </span><span class="lineCov">          1 :     canvas.scale(1, -1);\n\</span>
+<span class="lineNum">     423 </span><span class="lineCov">          1 :     canvas.translate(0, -size);\n\</span>
+<span class="lineNum">     424 </span><span class="lineCov">          1 : \n\</span>
+<span class="lineNum">     425 </span><span class="lineCov">          1 :     if (!canvas.setFillColor)\n\</span>
+<span class="lineNum">     426 </span><span class="lineCov">          1 :         canvas.setFillColor = function(r, g, b, a) {\n\</span>
+<span class="lineNum">     427 </span><span class="lineCov">          1 :             this.fillStyle = &quot;rgb(&quot;+[Math.floor(r * 255), Math.floor(g * 255), Math.floor(b * 255)]+&quot;)&quot;;\n\</span>
+<span class="lineNum">     428 </span><span class="lineCov">          1 :     }\n\</span>
+<span class="lineNum">     429 </span><span class="lineCov">          1 : \n\</span>
+<span class="lineNum">     430 </span><span class="lineCov">          1 : for (var y = 0; y &lt; size; y++) {\n\</span>
+<span class="lineNum">     431 </span><span class="lineCov">          1 :   for (var x = 0; x &lt; size; x++) {\n\</span>
+<span class="lineNum">     432 </span><span class="lineCov">          1 :     var l = pixels[y][x];\n\</span>
+<span class="lineNum">     433 </span><span class="lineCov">          1 :     canvas.setFillColor(l[0], l[1], l[2], 1);\n\</span>
+<span class="lineNum">     434 </span><span class="lineCov">          1 :     canvas.fillRect(x, y, 1, 1);\n\</span>
+<span class="lineNum">     435 </span><span class="lineCov">          1 :   }\n\</span>
+<span class="lineNum">     436 </span><span class="lineCov">          1 : }&lt;/scr' + 'ipt&gt;';</span>
+<span class="lineNum">     437 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     438 </span><span class="lineCov">          1 :     return s;</span>
+<span class="lineNum">     439 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     440 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     441 </span><span class="lineCov">          1 : testOutput = arrayToCanvasCommands(raytraceScene());</span>
+<span class="lineNum">     442 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     443 </span><span class="lineCov">          1 : var expectedLength = 20970;</span>
+<span class="lineNum">     444 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     445 </span><span class="lineCov">          1 : if (testOutput.length != expectedLength)</span>
+<span class="lineNum">     446 </span><span class="lineCov">          1 :     throw &quot;Error: bad result: expected length &quot; + expectedLength + &quot; but got &quot; + testOutput.length;</span>
+<span class="lineNum">     447 </span><span class="lineCov">          1 : </span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

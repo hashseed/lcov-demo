@@ -1,0 +1,204 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - test/webkit/fast/js/regexp-unicode-handling.js</title>
+  <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../index.html">top level</a> - <a href="index.html">test/webkit/fast/js</a> - regexp-unicode-handling.js<span style="font-size: 80%;"> (source / <a href="regexp-unicode-handling.js.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">129</td>
+            <td class="headerCovTableEntry">129</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2017-02-14</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">3</td>
+            <td class="headerCovTableEntry">3</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr><td><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span><span class="lineCov">          1 : // Copyright 2013 the V8 project authors. All rights reserved.</span></a>
+<span class="lineNum">       2 </span><span class="lineCov">          1 : // Copyright (C) 2005, 2006, 2007, 2008, 2009 Apple Inc. All rights reserved.</span>
+<span class="lineNum">       3 </span><span class="lineCov">          1 : //</span>
+<span class="lineNum">       4 </span><span class="lineCov">          1 : // Redistribution and use in source and binary forms, with or without</span>
+<span class="lineNum">       5 </span><span class="lineCov">          1 : // modification, are permitted provided that the following conditions</span>
+<span class="lineNum">       6 </span><span class="lineCov">          1 : // are met:</span>
+<span class="lineNum">       7 </span><span class="lineCov">          1 : // 1.  Redistributions of source code must retain the above copyright</span>
+<span class="lineNum">       8 </span><span class="lineCov">          1 : //     notice, this list of conditions and the following disclaimer.</span>
+<span class="lineNum">       9 </span><span class="lineCov">          1 : // 2.  Redistributions in binary form must reproduce the above copyright</span>
+<span class="lineNum">      10 </span><span class="lineCov">          1 : //     notice, this list of conditions and the following disclaimer in the</span>
+<span class="lineNum">      11 </span><span class="lineCov">          1 : //     documentation and/or other materials provided with the distribution.</span>
+<span class="lineNum">      12 </span><span class="lineCov">          1 : //</span>
+<span class="lineNum">      13 </span><span class="lineCov">          1 : // THIS SOFTWARE IS PROVIDED BY APPLE INC. AND ITS CONTRIBUTORS ``AS IS'' AND ANY</span>
+<span class="lineNum">      14 </span><span class="lineCov">          1 : // EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED</span>
+<span class="lineNum">      15 </span><span class="lineCov">          1 : // WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE</span>
+<span class="lineNum">      16 </span><span class="lineCov">          1 : // DISCLAIMED. IN NO EVENT SHALL APPLE INC. OR ITS CONTRIBUTORS BE LIABLE FOR ANY</span>
+<span class="lineNum">      17 </span><span class="lineCov">          1 : // DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES</span>
+<span class="lineNum">      18 </span><span class="lineCov">          1 : // (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="lineNum">      19 </span><span class="lineCov">          1 : // LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON</span>
+<span class="lineNum">      20 </span><span class="lineCov">          1 : // ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT</span>
+<span class="lineNum">      21 </span><span class="lineCov">          1 : // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS</span>
+<span class="lineNum">      22 </span><span class="lineCov">          1 : // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="lineNum">      23 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      24 </span><span class="lineCov">          1 : description(</span>
+<span class="lineNum">      25 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      26 </span><span class="lineCov">          1 : 'Test for proper handling of Unicode RegExps and &lt;a href=&quot;http://bugzilla.webkit.org/show_bug.cgi?id=7445&quot;&gt;bug 7445&lt;/a&gt;: Gmail puts wrong subject in replies.'</span>
+<span class="lineNum">      27 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      28 </span><span class="lineCov">          1 : );</span>
+<span class="lineNum">      29 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      30 </span><span class="lineCov">          1 : // Regex to match Re in various languanges straight from Gmail source</span>
+<span class="lineNum">      31 </span><span class="lineCov">          1 : var I3=/^\s*(fwd|re|aw|antw|antwort|wg|sv|ang|odp|betreff|betr|transf|reenv\.|reenv|in|res|resp|resp\.|enc|\u8f6c\u53d1|\u56DE\u590D|\u041F\u0435\u0440\u0435\u0441\u043B|\u041E\u0442\u0432\u0435\u0442):\s*(.*)$/i;</span>
+<span class="lineNum">      32 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      33 </span><span class="lineCov">          1 : // Other RegExs from Gmail source</span>
+<span class="lineNum">      34 </span><span class="lineCov">          1 : var Ci=/\s+/g;</span>
+<span class="lineNum">      35 </span><span class="lineCov">          1 : var BC=/^ /;</span>
+<span class="lineNum">      36 </span><span class="lineCov">          1 : var BG=/ $/;</span>
+<a name="37"><span class="lineNum">      37 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      38 </span><span class="lineCov">          1 : // Strips leading Re or similar (from Gmail source)</span>
+<span class="lineNum">      39 </span><span class="lineCov">          2 : function cy(a) {</span>
+<span class="lineNum">      40 </span><span class="lineCov">          2 :     //var b = I3.exec(a);</span>
+<span class="lineNum">      41 </span><span class="lineCov">          2 :     var b = I3.exec(a);</span>
+<span class="lineNum">      42 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      43 </span><span class="lineCov">          2 :     if (b) {</span>
+<span class="lineNum">      44 </span><span class="lineCov">          2 :         a = b[2];</span>
+<span class="lineNum">      45 </span><span class="lineCov">          2 :     }</span>
+<span class="lineNum">      46 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      47 </span><span class="lineCov">          2 :     return Gn(a);</span>
+<span class="lineNum">      48 </span><span class="lineCov">          2 : }</span>
+<span class="lineNum">      49 </span><span class="lineCov">          1 : </span>
+<a name="50"><span class="lineNum">      50 </span><span class="lineCov">          1 : // This function replaces consecutive whitespace with a single space</span></a>
+<span class="lineNum">      51 </span><span class="lineCov">          1 : // then removes a leading and trailing space if they exist. (From Gmail)</span>
+<span class="lineNum">      52 </span><span class="lineCov">          2 : function Gn(a) {</span>
+<span class="lineNum">      53 </span><span class="lineCov">          2 :     return a.replace(Ci, &quot; &quot;).replace(BC, &quot;&quot;).replace(BG, &quot;&quot;);</span>
+<span class="lineNum">      54 </span><span class="lineCov">          2 : }</span>
+<span class="lineNum">      55 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      56 </span><span class="lineCov">          1 : shouldBe(&quot;cy('Re: Moose')&quot;, &quot;'Moose'&quot;)</span>
+<span class="lineNum">      57 </span><span class="lineCov">          1 : shouldBe(&quot;cy('\\u8f6c\\u53d1: Moose')&quot;, &quot;'Moose'&quot;)</span>
+<span class="lineNum">      58 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      59 </span><span class="lineCov">          1 : // Test handling of \u2820 (skull and crossbones)</span>
+<span class="lineNum">      60 </span><span class="lineCov">          1 : var sample=&quot;sample bm\u2820p cm\\u2820p&quot;;</span>
+<span class="lineNum">      61 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      62 </span><span class="lineCov">          1 : var inlineRe=/.m\u2820p/</span>
+<span class="lineNum">      63 </span><span class="lineCov">          1 : var evalInlineRe=eval(&quot;/.m\\u2820p/&quot;)</span>
+<span class="lineNum">      64 </span><span class="lineCov">          1 : var explicitRe=new RegExp(&quot;.m\\u2820p&quot;)</span>
+<span class="lineNum">      65 </span><span class="lineCov">          1 : var newFromInlineRe=new RegExp(inlineRe.source)</span>
+<span class="lineNum">      66 </span><span class="lineCov">          1 : var evalFromInlineRe=eval(inlineRe.toString())</span>
+<span class="lineNum">      67 </span><span class="lineCov">          1 : var newFromEvalInlineRe=new RegExp(evalInlineRe.source)</span>
+<span class="lineNum">      68 </span><span class="lineCov">          1 : var evalFromEvalInlineRe=eval(evalInlineRe.toString())</span>
+<span class="lineNum">      69 </span><span class="lineCov">          1 : var newFromExplicitRe=new RegExp(explicitRe.source)</span>
+<span class="lineNum">      70 </span><span class="lineCov">          1 : var evalFromExplicitRe=eval(explicitRe.toString())</span>
+<span class="lineNum">      71 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      72 </span><span class="lineCov">          1 : shouldBe(&quot;inlineRe.source&quot;, &quot;newFromInlineRe.source&quot;)</span>
+<span class="lineNum">      73 </span><span class="lineCov">          1 : shouldBe(&quot;inlineRe.source&quot;, &quot;evalFromInlineRe.source&quot;)</span>
+<span class="lineNum">      74 </span><span class="lineCov">          1 : shouldBe(&quot;inlineRe.source&quot;, &quot;evalInlineRe.source&quot;)</span>
+<span class="lineNum">      75 </span><span class="lineCov">          1 : shouldBe(&quot;inlineRe.source&quot;, &quot;newFromEvalInlineRe.source&quot;)</span>
+<span class="lineNum">      76 </span><span class="lineCov">          1 : shouldBe(&quot;inlineRe.source&quot;, &quot;evalFromEvalInlineRe.source&quot;)</span>
+<span class="lineNum">      77 </span><span class="lineCov">          1 : shouldBe(&quot;inlineRe.source&quot;, &quot;explicitRe.source&quot;)</span>
+<span class="lineNum">      78 </span><span class="lineCov">          1 : shouldBe(&quot;inlineRe.source&quot;, &quot;newFromExplicitRe.source&quot;)</span>
+<span class="lineNum">      79 </span><span class="lineCov">          1 : shouldBe(&quot;inlineRe.source&quot;, &quot;evalFromExplicitRe.source&quot;)</span>
+<span class="lineNum">      80 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      81 </span><span class="lineCov">          1 : shouldBe(&quot;inlineRe.toString()&quot;, &quot;newFromInlineRe.toString()&quot;)</span>
+<span class="lineNum">      82 </span><span class="lineCov">          1 : shouldBe(&quot;inlineRe.toString()&quot;, &quot;evalFromInlineRe.toString()&quot;)</span>
+<span class="lineNum">      83 </span><span class="lineCov">          1 : shouldBe(&quot;inlineRe.toString()&quot;, &quot;evalInlineRe.toString()&quot;)</span>
+<span class="lineNum">      84 </span><span class="lineCov">          1 : shouldBe(&quot;inlineRe.toString()&quot;, &quot;newFromEvalInlineRe.toString()&quot;)</span>
+<span class="lineNum">      85 </span><span class="lineCov">          1 : shouldBe(&quot;inlineRe.toString()&quot;, &quot;evalFromEvalInlineRe.toString()&quot;)</span>
+<span class="lineNum">      86 </span><span class="lineCov">          1 : shouldBe(&quot;inlineRe.toString()&quot;, &quot;explicitRe.toString()&quot;)</span>
+<span class="lineNum">      87 </span><span class="lineCov">          1 : shouldBe(&quot;inlineRe.toString()&quot;, &quot;newFromExplicitRe.toString()&quot;)</span>
+<span class="lineNum">      88 </span><span class="lineCov">          1 : shouldBe(&quot;inlineRe.toString()&quot;, &quot;evalFromExplicitRe.toString()&quot;)</span>
+<span class="lineNum">      89 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      90 </span><span class="lineCov">          1 : shouldBe(&quot;inlineRe.exec(sample)[0]&quot;, &quot;'bm\u2820p'&quot;)</span>
+<span class="lineNum">      91 </span><span class="lineCov">          1 : shouldBe(&quot;evalInlineRe.exec(sample)[0]&quot;, &quot;'bm\u2820p'&quot;)</span>
+<span class="lineNum">      92 </span><span class="lineCov">          1 : shouldBe(&quot;explicitRe.exec(sample)[0]&quot;, &quot;'bm\u2820p'&quot;)</span>
+<span class="lineNum">      93 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      94 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      95 </span><span class="lineCov">          1 : // Test handling of \u007c &quot;|&quot;</span>
+<span class="lineNum">      96 </span><span class="lineCov">          1 : var bsample=&quot;sample bm\u007cp cm\\u007cp&quot;;</span>
+<span class="lineNum">      97 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      98 </span><span class="lineCov">          1 : var binlineRe=/.m\u007cp/</span>
+<span class="lineNum">      99 </span><span class="lineCov">          1 : var bevalInlineRe=eval(&quot;/.m\\u007cp/&quot;)</span>
+<span class="lineNum">     100 </span><span class="lineCov">          1 : var bexplicitRe=new RegExp(&quot;.m\\u007cp&quot;)</span>
+<span class="lineNum">     101 </span><span class="lineCov">          1 : var bnewFromInlineRe=new RegExp(binlineRe.source)</span>
+<span class="lineNum">     102 </span><span class="lineCov">          1 : var bevalFromInlineRe=eval(binlineRe.toString())</span>
+<span class="lineNum">     103 </span><span class="lineCov">          1 : var bnewFromEvalInlineRe=new RegExp(bevalInlineRe.source)</span>
+<span class="lineNum">     104 </span><span class="lineCov">          1 : var bevalFromEvalInlineRe=eval(bevalInlineRe.toString())</span>
+<span class="lineNum">     105 </span><span class="lineCov">          1 : var bnewFromExplicitRe=new RegExp(bexplicitRe.source)</span>
+<span class="lineNum">     106 </span><span class="lineCov">          1 : var bevalFromExplicitRe=eval(bexplicitRe.toString())</span>
+<span class="lineNum">     107 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     108 </span><span class="lineCov">          1 : shouldBe(&quot;binlineRe.source&quot;, &quot;bnewFromInlineRe.source&quot;)</span>
+<span class="lineNum">     109 </span><span class="lineCov">          1 : shouldBe(&quot;binlineRe.source&quot;, &quot;bevalFromInlineRe.source&quot;)</span>
+<span class="lineNum">     110 </span><span class="lineCov">          1 : shouldBe(&quot;binlineRe.source&quot;, &quot;bevalInlineRe.source&quot;)</span>
+<span class="lineNum">     111 </span><span class="lineCov">          1 : shouldBe(&quot;binlineRe.source&quot;, &quot;bnewFromEvalInlineRe.source&quot;)</span>
+<span class="lineNum">     112 </span><span class="lineCov">          1 : shouldBe(&quot;binlineRe.source&quot;, &quot;bevalFromEvalInlineRe.source&quot;)</span>
+<span class="lineNum">     113 </span><span class="lineCov">          1 : shouldBe(&quot;binlineRe.source&quot;, &quot;bexplicitRe.source&quot;)</span>
+<span class="lineNum">     114 </span><span class="lineCov">          1 : shouldBe(&quot;binlineRe.source&quot;, &quot;bnewFromExplicitRe.source&quot;)</span>
+<span class="lineNum">     115 </span><span class="lineCov">          1 : shouldBe(&quot;binlineRe.source&quot;, &quot;bevalFromExplicitRe.source&quot;)</span>
+<span class="lineNum">     116 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     117 </span><span class="lineCov">          1 : shouldBe(&quot;binlineRe.toString()&quot;, &quot;bnewFromInlineRe.toString()&quot;)</span>
+<span class="lineNum">     118 </span><span class="lineCov">          1 : shouldBe(&quot;binlineRe.toString()&quot;, &quot;bevalFromInlineRe.toString()&quot;)</span>
+<span class="lineNum">     119 </span><span class="lineCov">          1 : shouldBe(&quot;binlineRe.toString()&quot;, &quot;bevalInlineRe.toString()&quot;)</span>
+<span class="lineNum">     120 </span><span class="lineCov">          1 : shouldBe(&quot;binlineRe.toString()&quot;, &quot;bnewFromEvalInlineRe.toString()&quot;)</span>
+<span class="lineNum">     121 </span><span class="lineCov">          1 : shouldBe(&quot;binlineRe.toString()&quot;, &quot;bevalFromEvalInlineRe.toString()&quot;)</span>
+<span class="lineNum">     122 </span><span class="lineCov">          1 : shouldBe(&quot;binlineRe.toString()&quot;, &quot;bexplicitRe.toString()&quot;)</span>
+<span class="lineNum">     123 </span><span class="lineCov">          1 : shouldBe(&quot;binlineRe.toString()&quot;, &quot;bnewFromExplicitRe.toString()&quot;)</span>
+<span class="lineNum">     124 </span><span class="lineCov">          1 : shouldBe(&quot;binlineRe.toString()&quot;, &quot;bevalFromExplicitRe.toString()&quot;)</span>
+<span class="lineNum">     125 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     126 </span><span class="lineCov">          1 : shouldBe(&quot;binlineRe.exec(bsample)[0]&quot;, &quot;'bm|p'&quot;)</span>
+<span class="lineNum">     127 </span><span class="lineCov">          1 : shouldBe(&quot;bevalInlineRe.exec(bsample)[0]&quot;, &quot;'bm|p'&quot;)</span>
+<span class="lineNum">     128 </span><span class="lineCov">          1 : shouldBe(&quot;bexplicitRe.exec(bsample)[0]&quot;, &quot;'bm|p'&quot;)</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

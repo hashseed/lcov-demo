@@ -1,0 +1,557 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - test/webkit/resources/json2-es5-compat.js</title>
+  <link rel="stylesheet" type="text/css" href="../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../index.html">top level</a> - <a href="index.html">test/webkit/resources</a> - json2-es5-compat.js<span style="font-size: 80%;"> (source / <a href="json2-es5-compat.js.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">398</td>
+            <td class="headerCovTableEntry">482</td>
+            <td class="headerCovTableEntryMed">82.6 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2017-02-14</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">6</td>
+            <td class="headerCovTableEntry">9</td>
+            <td class="headerCovTableEntryLo">66.7 %</td>
+          </tr>
+          <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span><span class="lineCov">          1 : // Copyright 2014 the V8 project authors. All rights reserved.</span></a>
+<span class="lineNum">       2 </span><span class="lineCov">          1 : // Use of this source code is governed by a BSD-style license that can be</span>
+<span class="lineNum">       3 </span><span class="lineCov">          1 : // found in the LICENSE file.</span>
+<span class="lineNum">       4 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">       5 </span><span class="lineCov">          1 : /*</span>
+<span class="lineNum">       6 </span><span class="lineCov">          1 :     http://www.JSON.org/json2.js</span>
+<span class="lineNum">       7 </span><span class="lineCov">          1 :     2009-04-16</span>
+<span class="lineNum">       8 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">       9 </span><span class="lineCov">          1 :     Public Domain.</span>
+<span class="lineNum">      10 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      11 </span><span class="lineCov">          1 :     NO WARRANTY EXPRESSED OR IMPLIED. USE AT YOUR OWN RISK.</span>
+<span class="lineNum">      12 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      13 </span><span class="lineCov">          1 :     See http://www.JSON.org/js.html</span>
+<span class="lineNum">      14 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      15 </span><span class="lineCov">          1 :     This file creates a global JSON object containing two methods: stringify</span>
+<span class="lineNum">      16 </span><span class="lineCov">          1 :     and parse.</span>
+<span class="lineNum">      17 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      18 </span><span class="lineCov">          1 :         JSON.stringify(value, replacer, space)</span>
+<span class="lineNum">      19 </span><span class="lineCov">          1 :             value       any JavaScript value, usually an object or array.</span>
+<span class="lineNum">      20 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      21 </span><span class="lineCov">          1 :             replacer    an optional parameter that determines how object</span>
+<span class="lineNum">      22 </span><span class="lineCov">          1 :                         values are stringified for objects. It can be a</span>
+<span class="lineNum">      23 </span><span class="lineCov">          1 :                         function or an array of strings.</span>
+<span class="lineNum">      24 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      25 </span><span class="lineCov">          1 :             space       an optional parameter that specifies the indentation</span>
+<span class="lineNum">      26 </span><span class="lineCov">          1 :                         of nested structures. If it is omitted, the text will</span>
+<span class="lineNum">      27 </span><span class="lineCov">          1 :                         be packed without extra whitespace. If it is a number,</span>
+<span class="lineNum">      28 </span><span class="lineCov">          1 :                         it will specify the number of spaces to indent at each</span>
+<span class="lineNum">      29 </span><span class="lineCov">          1 :                         level. If it is a string (such as '\t' or '&amp;nbsp;'),</span>
+<span class="lineNum">      30 </span><span class="lineCov">          1 :                         it contains the characters used to indent at each level.</span>
+<span class="lineNum">      31 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      32 </span><span class="lineCov">          1 :             This method produces a JSON text from a JavaScript value.</span>
+<span class="lineNum">      33 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      34 </span><span class="lineCov">          1 :             When an object value is found, if the object contains a toJSON</span>
+<span class="lineNum">      35 </span><span class="lineCov">          1 :             method, its toJSON method will be called and the result will be</span>
+<span class="lineNum">      36 </span><span class="lineCov">          1 :             stringified. A toJSON method does not serialize: it returns the</span>
+<span class="lineNum">      37 </span><span class="lineCov">          1 :             value represented by the name/value pair that should be serialized,</span>
+<span class="lineNum">      38 </span><span class="lineCov">          1 :             or undefined if nothing should be serialized. The toJSON method</span>
+<span class="lineNum">      39 </span><span class="lineCov">          1 :             will be passed the key associated with the value, and this will be</span>
+<span class="lineNum">      40 </span><span class="lineCov">          1 :             bound to the object holding the key.</span>
+<span class="lineNum">      41 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      42 </span><span class="lineCov">          1 :             For example, this would serialize Dates as ISO strings.</span>
+<span class="lineNum">      43 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      44 </span><span class="lineCov">          1 :                 Date.prototype.toJSON = function (key) {</span>
+<span class="lineNum">      45 </span><span class="lineCov">          1 :                     function f(n) {</span>
+<span class="lineNum">      46 </span><span class="lineCov">          1 :                         // Format integers to have at least two digits.</span>
+<span class="lineNum">      47 </span><span class="lineCov">          1 :                         return n &lt; 10 ? '0' + n : n;</span>
+<span class="lineNum">      48 </span><span class="lineCov">          1 :                     }</span>
+<span class="lineNum">      49 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      50 </span><span class="lineCov">          1 :                     return this.getUTCFullYear()   + '-' +</span>
+<span class="lineNum">      51 </span><span class="lineCov">          1 :                          f(this.getUTCMonth() + 1) + '-' +</span>
+<span class="lineNum">      52 </span><span class="lineCov">          1 :                          f(this.getUTCDate())      + 'T' +</span>
+<span class="lineNum">      53 </span><span class="lineCov">          1 :                          f(this.getUTCHours())     + ':' +</span>
+<span class="lineNum">      54 </span><span class="lineCov">          1 :                          f(this.getUTCMinutes())   + ':' +</span>
+<span class="lineNum">      55 </span><span class="lineCov">          1 :                          f(this.getUTCSeconds())   + 'Z';</span>
+<span class="lineNum">      56 </span><span class="lineCov">          1 :                 };</span>
+<span class="lineNum">      57 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      58 </span><span class="lineCov">          1 :             You can provide an optional replacer method. It will be passed the</span>
+<span class="lineNum">      59 </span><span class="lineCov">          1 :             key and value of each member, with this bound to the containing</span>
+<span class="lineNum">      60 </span><span class="lineCov">          1 :             object. The value that is returned from your method will be</span>
+<span class="lineNum">      61 </span><span class="lineCov">          1 :             serialized. If your method returns undefined, then the member will</span>
+<span class="lineNum">      62 </span><span class="lineCov">          1 :             be excluded from the serialization.</span>
+<span class="lineNum">      63 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      64 </span><span class="lineCov">          1 :             If the replacer parameter is an array of strings, then it will be</span>
+<span class="lineNum">      65 </span><span class="lineCov">          1 :             used to select the members to be serialized. It filters the results</span>
+<span class="lineNum">      66 </span><span class="lineCov">          1 :             such that only members with keys listed in the replacer array are</span>
+<span class="lineNum">      67 </span><span class="lineCov">          1 :             stringified.</span>
+<span class="lineNum">      68 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      69 </span><span class="lineCov">          1 :             Values that do not have JSON representations, such as undefined or</span>
+<span class="lineNum">      70 </span><span class="lineCov">          1 :             functions, will not be serialized. Such values in objects will be</span>
+<span class="lineNum">      71 </span><span class="lineCov">          1 :             dropped; in arrays they will be replaced with null. You can use</span>
+<span class="lineNum">      72 </span><span class="lineCov">          1 :             a replacer function to replace those with JSON values.</span>
+<span class="lineNum">      73 </span><span class="lineCov">          1 :             JSON.stringify(undefined) returns undefined.</span>
+<span class="lineNum">      74 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      75 </span><span class="lineCov">          1 :             The optional space parameter produces a stringification of the</span>
+<span class="lineNum">      76 </span><span class="lineCov">          1 :             value that is filled with line breaks and indentation to make it</span>
+<span class="lineNum">      77 </span><span class="lineCov">          1 :             easier to read.</span>
+<span class="lineNum">      78 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      79 </span><span class="lineCov">          1 :             If the space parameter is a non-empty string, then that string will</span>
+<span class="lineNum">      80 </span><span class="lineCov">          1 :             be used for indentation. If the space parameter is a number, then</span>
+<span class="lineNum">      81 </span><span class="lineCov">          1 :             the indentation will be that many spaces.</span>
+<span class="lineNum">      82 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      83 </span><span class="lineCov">          1 :             Example:</span>
+<span class="lineNum">      84 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      85 </span><span class="lineCov">          1 :             text = JSON.stringify(['e', {pluribus: 'unum'}]);</span>
+<span class="lineNum">      86 </span><span class="lineCov">          1 :             // text is '[&quot;e&quot;,{&quot;pluribus&quot;:&quot;unum&quot;}]'</span>
+<span class="lineNum">      87 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      88 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      89 </span><span class="lineCov">          1 :             text = JSON.stringify(['e', {pluribus: 'unum'}], null, '\t');</span>
+<span class="lineNum">      90 </span><span class="lineCov">          1 :             // text is '[\n\t&quot;e&quot;,\n\t{\n\t\t&quot;pluribus&quot;: &quot;unum&quot;\n\t}\n]'</span>
+<span class="lineNum">      91 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      92 </span><span class="lineCov">          1 :             text = JSON.stringify([new Date()], function (key, value) {</span>
+<span class="lineNum">      93 </span><span class="lineCov">          1 :                 return this[key] instanceof Date ?</span>
+<span class="lineNum">      94 </span><span class="lineCov">          1 :                     'Date(' + this[key] + ')' : value;</span>
+<span class="lineNum">      95 </span><span class="lineCov">          1 :             });</span>
+<span class="lineNum">      96 </span><span class="lineCov">          1 :             // text is '[&quot;Date(---current time---)&quot;]'</span>
+<span class="lineNum">      97 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      98 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      99 </span><span class="lineCov">          1 :         JSON.parse(text, reviver)</span>
+<span class="lineNum">     100 </span><span class="lineCov">          1 :             This method parses a JSON text to produce an object or array.</span>
+<span class="lineNum">     101 </span><span class="lineCov">          1 :             It can throw a SyntaxError exception.</span>
+<span class="lineNum">     102 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     103 </span><span class="lineCov">          1 :             The optional reviver parameter is a function that can filter and</span>
+<span class="lineNum">     104 </span><span class="lineCov">          1 :             transform the results. It receives each of the keys and values,</span>
+<span class="lineNum">     105 </span><span class="lineCov">          1 :             and its return value is used instead of the original value.</span>
+<span class="lineNum">     106 </span><span class="lineCov">          1 :             If it returns what it received, then the structure is not modified.</span>
+<span class="lineNum">     107 </span><span class="lineCov">          1 :             If it returns undefined then the member is deleted.</span>
+<span class="lineNum">     108 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     109 </span><span class="lineCov">          1 :             Example:</span>
+<span class="lineNum">     110 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     111 </span><span class="lineCov">          1 :             // Parse the text. Values that look like ISO date strings will</span>
+<span class="lineNum">     112 </span><span class="lineCov">          1 :             // be converted to Date objects.</span>
+<span class="lineNum">     113 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     114 </span><span class="lineCov">          1 :             myData = JSON.parse(text, function (key, value) {</span>
+<span class="lineNum">     115 </span><span class="lineCov">          1 :                 var a;</span>
+<span class="lineNum">     116 </span><span class="lineCov">          1 :                 if (typeof value === 'string') {</span>
+<span class="lineNum">     117 </span><span class="lineCov">          1 :                     a =</span>
+<span class="lineNum">     118 </span><span class="lineCov">          1 : /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2}(?:\.\d*)?)Z$/.exec(value);</span>
+<span class="lineNum">     119 </span><span class="lineCov">          1 :                     if (a) {</span>
+<span class="lineNum">     120 </span><span class="lineCov">          1 :                         return new Date(Date.UTC(+a[1], +a[2] - 1, +a[3], +a[4],</span>
+<span class="lineNum">     121 </span><span class="lineCov">          1 :                             +a[5], +a[6]));</span>
+<span class="lineNum">     122 </span><span class="lineCov">          1 :                     }</span>
+<span class="lineNum">     123 </span><span class="lineCov">          1 :                 }</span>
+<span class="lineNum">     124 </span><span class="lineCov">          1 :                 return value;</span>
+<span class="lineNum">     125 </span><span class="lineCov">          1 :             });</span>
+<span class="lineNum">     126 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     127 </span><span class="lineCov">          1 :             myData = JSON.parse('[&quot;Date(09/09/2001)&quot;]', function (key, value) {</span>
+<span class="lineNum">     128 </span><span class="lineCov">          1 :                 var d;</span>
+<span class="lineNum">     129 </span><span class="lineCov">          1 :                 if (typeof value === 'string' &amp;&amp;</span>
+<span class="lineNum">     130 </span><span class="lineCov">          1 :                         value.slice(0, 5) === 'Date(' &amp;&amp;</span>
+<span class="lineNum">     131 </span><span class="lineCov">          1 :                         value.slice(-1) === ')') {</span>
+<span class="lineNum">     132 </span><span class="lineCov">          1 :                     d = new Date(value.slice(5, -1));</span>
+<span class="lineNum">     133 </span><span class="lineCov">          1 :                     if (d) {</span>
+<span class="lineNum">     134 </span><span class="lineCov">          1 :                         return d;</span>
+<span class="lineNum">     135 </span><span class="lineCov">          1 :                     }</span>
+<span class="lineNum">     136 </span><span class="lineCov">          1 :                 }</span>
+<span class="lineNum">     137 </span><span class="lineCov">          1 :                 return value;</span>
+<span class="lineNum">     138 </span><span class="lineCov">          1 :             });</span>
+<span class="lineNum">     139 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     140 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     141 </span><span class="lineCov">          1 :     This is a reference implementation. You are free to copy, modify, or</span>
+<span class="lineNum">     142 </span><span class="lineCov">          1 :     redistribute.</span>
+<span class="lineNum">     143 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     144 </span><span class="lineCov">          1 :     This code should be minified before deployment.</span>
+<span class="lineNum">     145 </span><span class="lineCov">          1 :     See http://javascript.crockford.com/jsmin.html</span>
+<span class="lineNum">     146 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     147 </span><span class="lineCov">          1 :     USE YOUR OWN COPY. IT IS EXTREMELY UNWISE TO LOAD CODE FROM SERVERS YOU DO</span>
+<span class="lineNum">     148 </span><span class="lineCov">          1 :     NOT CONTROL.</span>
+<span class="lineNum">     149 </span><span class="lineCov">          1 : */</span>
+<span class="lineNum">     150 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     151 </span><span class="lineCov">          1 : /*jslint evil: true */</span>
+<span class="lineNum">     152 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     153 </span><span class="lineCov">          1 : /*global JSON */</span>
+<span class="lineNum">     154 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     155 </span><span class="lineCov">          1 : /*members &quot;&quot;, &quot;\b&quot;, &quot;\t&quot;, &quot;\n&quot;, &quot;\f&quot;, &quot;\r&quot;, &quot;\&quot;&quot;, JSON, &quot;\\&quot;, apply,</span>
+<span class="lineNum">     156 </span><span class="lineCov">          1 :     call, charCodeAt, getUTCDate, getUTCFullYear, getUTCHours,</span>
+<span class="lineNum">     157 </span><span class="lineCov">          1 :     getUTCMinutes, getUTCMonth, getUTCSeconds, hasOwnProperty, join,</span>
+<span class="lineNum">     158 </span><span class="lineCov">          1 :     lastIndex, length, parse, prototype, push, replace, slice, stringify,</span>
+<span class="lineNum">     159 </span><span class="lineCov">          1 :     test, toJSON, toString, valueOf</span>
+<span class="lineNum">     160 </span><span class="lineCov">          1 : */</span>
+<span class="lineNum">     161 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     162 </span><span class="lineCov">          1 : // Create a JSON object only if one does not already exist. We create the</span>
+<span class="lineNum">     163 </span><span class="lineCov">          1 : // methods in a closure to avoid creating global variables.</span>
+<span class="lineNum">     164 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     165 </span><span class="lineCov">          1 : if (!this.JSON) {</span>
+<a name="166"><span class="lineNum">     166 </span><span class="lineCov">          1 :     JSON = {};</span></a>
+<span class="lineNum">     167 </span><span class="lineCov">          1 : }</span>
+<a name="168"><span class="lineNum">     168 </span><span class="lineCov">          1 : (function () {</span></a>
+<span class="lineNum">     169 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     170 </span><span class="lineCov">          1 :     function f(n) {</span>
+<span class="lineNum">     171 </span><span class="lineNoCov">          0 :         // Format integers to have at least two digits.</span>
+<span class="lineNum">     172 </span><span class="lineNoCov">          0 :         return n &lt; 10 ? '0' + n : n;</span>
+<span class="lineNum">     173 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">     174 </span><span class="lineCov">          1 : </span>
+<a name="175"><span class="lineNum">     175 </span><span class="lineCov">          1 :     if (typeof Date.prototype.toJSON !== 'function') {</span></a>
+<span class="lineNum">     176 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     177 </span><span class="lineCov">          1 :         Date.prototype.toJSON = function (key) {</span>
+<span class="lineNum">     178 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     179 </span><span class="lineNoCov">          0 :             return this.getUTCFullYear()   + '-' +</span>
+<span class="lineNum">     180 </span><span class="lineNoCov">          0 :                  f(this.getUTCMonth() + 1) + '-' +</span>
+<span class="lineNum">     181 </span><span class="lineNoCov">          0 :                  f(this.getUTCDate())      + 'T' +</span>
+<span class="lineNum">     182 </span><span class="lineNoCov">          0 :                  f(this.getUTCHours())     + ':' +</span>
+<span class="lineNum">     183 </span><span class="lineNoCov">          0 :                  f(this.getUTCMinutes())   + ':' +</span>
+<span class="lineNum">     184 </span><span class="lineNoCov">          0 :                  f(this.getUTCSeconds())   + 'Z';</span>
+<span class="lineNum">     185 </span><span class="lineCov">          1 :         };</span>
+<span class="lineNum">     186 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">     187 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     188 </span><span class="lineCov">          1 :     var cx = /[\u0000\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g,</span>
+<span class="lineNum">     189 </span><span class="lineCov">          1 :         escapable = /[\\\&quot;\x00-\x1f]/g,</span>
+<span class="lineNum">     190 </span><span class="lineCov">          1 :         gap,</span>
+<span class="lineNum">     191 </span><span class="lineCov">          1 :         indent,</span>
+<span class="lineNum">     192 </span><span class="lineCov">          1 :         meta = {    // table of character substitutions</span>
+<span class="lineNum">     193 </span><span class="lineCov">          1 :             '\b': '\\b',</span>
+<span class="lineNum">     194 </span><span class="lineCov">          1 :             '\t': '\\t',</span>
+<span class="lineNum">     195 </span><span class="lineCov">          1 :             '\n': '\\n',</span>
+<span class="lineNum">     196 </span><span class="lineCov">          1 :             '\f': '\\f',</span>
+<span class="lineNum">     197 </span><span class="lineCov">          1 :             '\r': '\\r',</span>
+<span class="lineNum">     198 </span><span class="lineCov">          1 :             '&quot;' : '\\&quot;',</span>
+<span class="lineNum">     199 </span><span class="lineCov">          1 :             '\\': '\\\\'</span>
+<span class="lineNum">     200 </span><span class="lineCov">          1 :         },</span>
+<span class="lineNum">     201 </span><span class="lineCov">          1 :         rep;</span>
+<a name="202"><span class="lineNum">     202 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     203 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     204 </span><span class="lineCov">       2927 :     function quote(string) {</span>
+<span class="lineNum">     205 </span><span class="lineCov">       2927 : </span>
+<span class="lineNum">     206 </span><span class="lineCov">       2927 : // If the string contains no control characters, no quote characters, and no</span>
+<span class="lineNum">     207 </span><span class="lineCov">       2927 : // backslash characters, then we can safely slap some quotes around it.</span>
+<span class="lineNum">     208 </span><span class="lineCov">       2927 : // Otherwise we must also replace the offending characters with safe escape</span>
+<span class="lineNum">     209 </span><span class="lineCov">       2927 : // sequences.</span>
+<span class="lineNum">     210 </span><span class="lineCov">       2927 : </span>
+<a name="211"><span class="lineNum">     211 </span><span class="lineCov">       2927 :         escapable.lastIndex = 0;</span></a>
+<span class="lineNum">     212 </span><span class="lineCov">       2927 :         return escapable.test(string) ?</span>
+<span class="lineNum">     213 </span><span class="lineCov">       2927 :             '&quot;' + string.replace(escapable, function (a) {</span>
+<span class="lineNum">     214 </span><span class="lineCov">         34 :                 var c = meta[a];</span>
+<span class="lineNum">     215 </span><span class="lineCov">         34 :                 return typeof c === 'string' ? c :</span>
+<span class="lineNum">     216 </span><span class="lineCov">         34 :                     '\\u' + ('0000' + a.charCodeAt(0).toString(16)).slice(-4);</span>
+<span class="lineNum">     217 </span><span class="lineCov">       2927 :             }) + '&quot;' :</span>
+<span class="lineNum">     218 </span><span class="lineCov">       2927 :             '&quot;' + string + '&quot;';</span>
+<span class="lineNum">     219 </span><span class="lineCov">       2927 :     }</span>
+<a name="220"><span class="lineNum">     220 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     221 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     222 </span><span class="lineCov">       4095 :     function str(key, holder) {</span>
+<span class="lineNum">     223 </span><span class="lineCov">       4095 : </span>
+<span class="lineNum">     224 </span><span class="lineCov">       4095 : // Produce a string from holder[key].</span>
+<span class="lineNum">     225 </span><span class="lineCov">       4095 : </span>
+<span class="lineNum">     226 </span><span class="lineCov">       4095 :         var i,          // The loop counter.</span>
+<span class="lineNum">     227 </span><span class="lineCov">       4095 :             k,          // The member key.</span>
+<span class="lineNum">     228 </span><span class="lineCov">       4095 :             v,          // The member value.</span>
+<span class="lineNum">     229 </span><span class="lineCov">       4095 :             length,</span>
+<span class="lineNum">     230 </span><span class="lineCov">       4095 :             mind = gap,</span>
+<span class="lineNum">     231 </span><span class="lineCov">       4095 :             partial,</span>
+<span class="lineNum">     232 </span><span class="lineCov">       4095 :             value = holder[key];</span>
+<span class="lineNum">     233 </span><span class="lineCov">       4095 : </span>
+<span class="lineNum">     234 </span><span class="lineCov">       4095 : // If the value has a toJSON method, call it to obtain a replacement value.</span>
+<span class="lineNum">     235 </span><span class="lineCov">       4095 : </span>
+<span class="lineNum">     236 </span><span class="lineCov">       4095 :         if (value &amp;&amp; typeof value === 'object' &amp;&amp;</span>
+<span class="lineNum">     237 </span><span class="lineCov">       4095 :                 typeof value.toJSON === 'function') {</span>
+<span class="lineNum">     238 </span><span class="lineCov">       4095 :             value = value.toJSON(key);</span>
+<span class="lineNum">     239 </span><span class="lineCov">       4095 :         }</span>
+<span class="lineNum">     240 </span><span class="lineCov">       4095 : </span>
+<span class="lineNum">     241 </span><span class="lineCov">       4095 : // If we were called with a replacer function, then call the replacer to</span>
+<span class="lineNum">     242 </span><span class="lineCov">       4095 : // obtain a replacement value.</span>
+<span class="lineNum">     243 </span><span class="lineCov">       4095 : </span>
+<span class="lineNum">     244 </span><span class="lineCov">       4095 :         if (typeof rep === 'function') {</span>
+<span class="lineNum">     245 </span><span class="lineCov">       4095 :             value = rep.call(holder, key, value);</span>
+<span class="lineNum">     246 </span><span class="lineCov">       4095 :         }</span>
+<span class="lineNum">     247 </span><span class="lineCov">       4095 : </span>
+<span class="lineNum">     248 </span><span class="lineCov">       4095 : // What happens next depends on the value's type.</span>
+<span class="lineNum">     249 </span><span class="lineCov">       4095 : </span>
+<span class="lineNum">     250 </span><span class="lineCov">       4095 :         if (value &amp;&amp; ((typeof value) === &quot;object&quot;)) {</span>
+<span class="lineNum">     251 </span><span class="lineCov">       4095 :             if (value.constructor === String || value.constructor === Number || value.constructor === Boolean)</span>
+<span class="lineNum">     252 </span><span class="lineCov">       4095 :                 value = value.valueOf();</span>
+<span class="lineNum">     253 </span><span class="lineCov">       4095 :         }</span>
+<span class="lineNum">     254 </span><span class="lineCov">       4095 : </span>
+<span class="lineNum">     255 </span><span class="lineCov">       4095 :         switch (typeof value) {</span>
+<span class="lineNum">     256 </span><span class="lineCov">       4095 :         case 'string':</span>
+<span class="lineNum">     257 </span><span class="lineCov">       4095 :             return quote(value);</span>
+<span class="lineNum">     258 </span><span class="lineCov">       4095 : </span>
+<span class="lineNum">     259 </span><span class="lineCov">       4095 :         case 'number':</span>
+<span class="lineNum">     260 </span><span class="lineCov">       4095 : </span>
+<span class="lineNum">     261 </span><span class="lineCov">       4095 : // JSON numbers must be finite. Encode non-finite numbers as null.</span>
+<span class="lineNum">     262 </span><span class="lineCov">       4095 : </span>
+<span class="lineNum">     263 </span><span class="lineCov">       4095 :             return isFinite(value) ? String(value) : 'null';</span>
+<span class="lineNum">     264 </span><span class="lineCov">       4095 : </span>
+<span class="lineNum">     265 </span><span class="lineCov">       4095 :         case 'boolean':</span>
+<span class="lineNum">     266 </span><span class="lineCov">       4095 :         case 'null':</span>
+<span class="lineNum">     267 </span><span class="lineCov">       4095 : </span>
+<span class="lineNum">     268 </span><span class="lineCov">       4095 : // If the value is a boolean or null, convert it to a string. Note:</span>
+<span class="lineNum">     269 </span><span class="lineCov">       4095 : // typeof null does not produce 'null'. The case is included here in</span>
+<span class="lineNum">     270 </span><span class="lineCov">       4095 : // the remote chance that this gets fixed someday.</span>
+<span class="lineNum">     271 </span><span class="lineCov">       4095 : </span>
+<span class="lineNum">     272 </span><span class="lineCov">       4095 :             return String(value);</span>
+<span class="lineNum">     273 </span><span class="lineCov">       4095 : </span>
+<span class="lineNum">     274 </span><span class="lineCov">       4095 : // If the type is 'object', we might be dealing with an object or an array or</span>
+<span class="lineNum">     275 </span><span class="lineCov">       4095 : // null.</span>
+<span class="lineNum">     276 </span><span class="lineCov">       4095 : </span>
+<span class="lineNum">     277 </span><span class="lineCov">       4095 :         case 'object':</span>
+<span class="lineNum">     278 </span><span class="lineCov">       4095 : </span>
+<span class="lineNum">     279 </span><span class="lineCov">       4095 : // Due to a specification blunder in ECMAScript, typeof null is 'object',</span>
+<span class="lineNum">     280 </span><span class="lineCov">       4095 : // so watch out for that case.</span>
+<span class="lineNum">     281 </span><span class="lineCov">       4095 : </span>
+<span class="lineNum">     282 </span><span class="lineCov">       4095 :             if (!value) {</span>
+<span class="lineNum">     283 </span><span class="lineCov">       4095 :                 return 'null';</span>
+<span class="lineNum">     284 </span><span class="lineCov">       4095 :             }</span>
+<span class="lineNum">     285 </span><span class="lineCov">       4095 : </span>
+<span class="lineNum">     286 </span><span class="lineCov">       4095 : // Make an array to hold the partial results of stringifying this object value.</span>
+<span class="lineNum">     287 </span><span class="lineCov">       4095 : </span>
+<span class="lineNum">     288 </span><span class="lineCov">       4095 :             gap += indent;</span>
+<span class="lineNum">     289 </span><span class="lineCov">       4095 :             partial = [];</span>
+<span class="lineNum">     290 </span><span class="lineCov">       4095 : </span>
+<span class="lineNum">     291 </span><span class="lineCov">       4095 : // Is the value an array?</span>
+<span class="lineNum">     292 </span><span class="lineCov">       4095 : </span>
+<span class="lineNum">     293 </span><span class="lineCov">       4095 :             if (Object.prototype.toString.apply(value) === '[object Array]') {</span>
+<span class="lineNum">     294 </span><span class="lineCov">       4095 : </span>
+<span class="lineNum">     295 </span><span class="lineCov">       4095 : // The value is an array. Stringify every element. Use null as a placeholder</span>
+<span class="lineNum">     296 </span><span class="lineCov">       4095 : // for non-JSON values.</span>
+<span class="lineNum">     297 </span><span class="lineCov">       4095 : </span>
+<span class="lineNum">     298 </span><span class="lineCov">       4095 :                 length = value.length;</span>
+<span class="lineNum">     299 </span><span class="lineCov">       4095 :                 for (i = 0; i &lt; length; i += 1) {</span>
+<span class="lineNum">     300 </span><span class="lineCov">       4095 :                     partial[i] = str(i, value) || 'null';</span>
+<span class="lineNum">     301 </span><span class="lineCov">       4095 :                 }</span>
+<span class="lineNum">     302 </span><span class="lineCov">       4095 : </span>
+<span class="lineNum">     303 </span><span class="lineCov">       4095 : // Join all of the elements together, separated with commas, and wrap them in</span>
+<span class="lineNum">     304 </span><span class="lineCov">       4095 : // brackets.</span>
+<span class="lineNum">     305 </span><span class="lineCov">       4095 : </span>
+<span class="lineNum">     306 </span><span class="lineCov">       4095 :                 v = partial.length === 0 ? '[]' :</span>
+<span class="lineNum">     307 </span><span class="lineCov">       4095 :                     gap ? '[\n' + gap +</span>
+<span class="lineNum">     308 </span><span class="lineCov">       4095 :                             partial.join(',\n' + gap) + '\n' +</span>
+<span class="lineNum">     309 </span><span class="lineCov">       4095 :                                 mind + ']' :</span>
+<span class="lineNum">     310 </span><span class="lineCov">       4095 :                           '[' + partial.join(',') + ']';</span>
+<span class="lineNum">     311 </span><span class="lineCov">       4095 :                 gap = mind;</span>
+<span class="lineNum">     312 </span><span class="lineCov">       4095 :                 return v;</span>
+<span class="lineNum">     313 </span><span class="lineCov">       4095 :             }</span>
+<span class="lineNum">     314 </span><span class="lineCov">       4095 : </span>
+<span class="lineNum">     315 </span><span class="lineCov">       4095 : // If the replacer is an array, use it to select the members to be stringified.</span>
+<span class="lineNum">     316 </span><span class="lineCov">       4095 : </span>
+<span class="lineNum">     317 </span><span class="lineCov">       4095 :             if (rep &amp;&amp; typeof rep === 'object') {</span>
+<span class="lineNum">     318 </span><span class="lineCov">       4095 :                 length = rep.length;</span>
+<span class="lineNum">     319 </span><span class="lineCov">       4095 :                 for (i = 0; i &lt; length; i += 1) {</span>
+<span class="lineNum">     320 </span><span class="lineCov">       4095 :                     k = rep[i];</span>
+<span class="lineNum">     321 </span><span class="lineCov">       4095 :                     if (typeof k === 'string') {</span>
+<span class="lineNum">     322 </span><span class="lineCov">       4095 :                         v = str(k, value);</span>
+<span class="lineNum">     323 </span><span class="lineCov">       4095 :                         if (v) {</span>
+<span class="lineNum">     324 </span><span class="lineCov">       4095 :                             partial.push(quote(k) + (gap ? ': ' : ':') + v);</span>
+<span class="lineNum">     325 </span><span class="lineCov">       4095 :                         }</span>
+<span class="lineNum">     326 </span><span class="lineCov">       4095 :                     }</span>
+<span class="lineNum">     327 </span><span class="lineCov">       4095 :                 }</span>
+<span class="lineNum">     328 </span><span class="lineCov">       4095 :             } else {</span>
+<span class="lineNum">     329 </span><span class="lineCov">       4095 : </span>
+<span class="lineNum">     330 </span><span class="lineCov">       4095 : // Otherwise, iterate through all of the keys in the object.</span>
+<span class="lineNum">     331 </span><span class="lineCov">       4095 : </span>
+<span class="lineNum">     332 </span><span class="lineCov">       4095 :                 for (k in value) {</span>
+<span class="lineNum">     333 </span><span class="lineCov">       4095 :                     if (Object.hasOwnProperty.call(value, k)) {</span>
+<span class="lineNum">     334 </span><span class="lineCov">       4095 :                         v = str(k, value);</span>
+<span class="lineNum">     335 </span><span class="lineCov">       4095 :                         if (v) {</span>
+<span class="lineNum">     336 </span><span class="lineCov">       4095 :                             partial.push(quote(k) + (gap ? ': ' : ':') + v);</span>
+<span class="lineNum">     337 </span><span class="lineCov">       4095 :                         }</span>
+<span class="lineNum">     338 </span><span class="lineCov">       4095 :                     }</span>
+<span class="lineNum">     339 </span><span class="lineCov">       4095 :                 }</span>
+<span class="lineNum">     340 </span><span class="lineCov">       4095 :             }</span>
+<span class="lineNum">     341 </span><span class="lineCov">       4095 : </span>
+<span class="lineNum">     342 </span><span class="lineCov">       4095 : // Join all of the member texts together, separated with commas,</span>
+<span class="lineNum">     343 </span><span class="lineCov">       4095 : // and wrap them in braces.</span>
+<span class="lineNum">     344 </span><span class="lineCov">       4095 : </span>
+<span class="lineNum">     345 </span><span class="lineCov">       4095 :             v = partial.length === 0 ? '{}' :</span>
+<span class="lineNum">     346 </span><span class="lineCov">       4095 :                 gap ? '{\n' + gap + partial.join(',\n' + gap) + '\n' +</span>
+<span class="lineNum">     347 </span><span class="lineCov">       4095 :                         mind + '}' : '{' + partial.join(',') + '}';</span>
+<span class="lineNum">     348 </span><span class="lineCov">       4095 :             gap = mind;</span>
+<span class="lineNum">     349 </span><span class="lineCov">       4095 :             return v;</span>
+<span class="lineNum">     350 </span><span class="lineCov">       4095 :         }</span>
+<span class="lineNum">     351 </span><span class="lineCov">       4095 :     }</span>
+<span class="lineNum">     352 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     353 </span><span class="lineCov">          1 : // If the JSON object does not yet have a stringify method, give it one.</span>
+<a name="354"><span class="lineNum">     354 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     355 </span><span class="lineCov">          1 :     if (typeof JSON.stringify !== 'function') {</span>
+<span class="lineNum">     356 </span><span class="lineCov">        118 :         JSON.stringify = function (value, replacer, space) {</span>
+<span class="lineNum">     357 </span><span class="lineCov">        118 : </span>
+<span class="lineNum">     358 </span><span class="lineCov">        118 : // The stringify method takes a value and an optional replacer, and an optional</span>
+<span class="lineNum">     359 </span><span class="lineCov">        118 : // space parameter, and returns a JSON text. The replacer can be a function</span>
+<span class="lineNum">     360 </span><span class="lineCov">        118 : // that can replace values, or an array of strings that will select the keys.</span>
+<span class="lineNum">     361 </span><span class="lineCov">        118 : // A default replacer method can be provided. Use of the space parameter can</span>
+<span class="lineNum">     362 </span><span class="lineCov">        118 : // produce text that is more easily readable.</span>
+<span class="lineNum">     363 </span><span class="lineCov">        118 : </span>
+<span class="lineNum">     364 </span><span class="lineCov">        118 :             var i;</span>
+<span class="lineNum">     365 </span><span class="lineCov">        118 :             gap = '';</span>
+<span class="lineNum">     366 </span><span class="lineCov">        118 :             indent = '';</span>
+<span class="lineNum">     367 </span><span class="lineCov">        118 : </span>
+<span class="lineNum">     368 </span><span class="lineCov">        118 : // If the space parameter is a number, make an indent string containing that</span>
+<span class="lineNum">     369 </span><span class="lineCov">        118 : // many spaces.</span>
+<span class="lineNum">     370 </span><span class="lineCov">        118 : </span>
+<span class="lineNum">     371 </span><span class="lineCov">        118 :             if (typeof space === 'number') {</span>
+<span class="lineNum">     372 </span><span class="lineCov">        118 :                 for (i = 0; i &lt; space; i += 1) {</span>
+<span class="lineNum">     373 </span><span class="lineCov">        118 :                     indent += ' ';</span>
+<span class="lineNum">     374 </span><span class="lineCov">        118 :                 }</span>
+<span class="lineNum">     375 </span><span class="lineCov">        118 : </span>
+<span class="lineNum">     376 </span><span class="lineCov">        118 : // If the space parameter is a string, it will be used as the indent string.</span>
+<span class="lineNum">     377 </span><span class="lineCov">        118 : </span>
+<span class="lineNum">     378 </span><span class="lineCov">        118 :             } else if (typeof space === 'string') {</span>
+<span class="lineNum">     379 </span><span class="lineCov">        118 :                 indent = space;</span>
+<span class="lineNum">     380 </span><span class="lineCov">        118 :             }</span>
+<span class="lineNum">     381 </span><span class="lineCov">        118 : </span>
+<span class="lineNum">     382 </span><span class="lineCov">        118 : // If there is a replacer, it must be a function or an array.</span>
+<span class="lineNum">     383 </span><span class="lineCov">        118 : // Otherwise, throw an error.</span>
+<span class="lineNum">     384 </span><span class="lineCov">        118 : </span>
+<span class="lineNum">     385 </span><span class="lineCov">        118 :             rep = replacer;</span>
+<span class="lineNum">     386 </span><span class="lineCov">        118 :             if (replacer &amp;&amp; typeof replacer !== 'function' &amp;&amp;</span>
+<span class="lineNum">     387 </span><span class="lineCov">        118 :                     (typeof replacer !== 'object' ||</span>
+<span class="lineNum">     388 </span><span class="lineCov">        118 :                      typeof replacer.length !== 'number')) {</span>
+<span class="lineNum">     389 </span><span class="lineCov">        118 :                 throw new Error('JSON.stringify');</span>
+<span class="lineNum">     390 </span><span class="lineCov">        118 :             }</span>
+<span class="lineNum">     391 </span><span class="lineCov">        118 : </span>
+<span class="lineNum">     392 </span><span class="lineCov">        118 : // Make a fake root object containing our value under the key of ''.</span>
+<span class="lineNum">     393 </span><span class="lineCov">        118 : // Return the result of stringifying the value.</span>
+<span class="lineNum">     394 </span><span class="lineCov">        118 : </span>
+<span class="lineNum">     395 </span><span class="lineCov">        118 :             return str('', {'': value});</span>
+<span class="lineNum">     396 </span><span class="lineCov">        118 :         };</span>
+<span class="lineNum">     397 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">     398 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     399 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     400 </span><span class="lineCov">          1 : // If the JSON object does not yet have a parse method, give it one.</span>
+<a name="401"><span class="lineNum">     401 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     402 </span><span class="lineCov">          1 :     if (typeof JSON.parse !== 'function') {</span>
+<span class="lineNum">     403 </span><span class="lineCov">          1 :         JSON.parse = function (text, reviver) {</span>
+<span class="lineNum">     404 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     405 </span><span class="lineNoCov">          0 : // The parse method takes a text and an optional reviver function, and returns</span>
+<span class="lineNum">     406 </span><span class="lineNoCov">          0 : // a JavaScript value if the text is a valid JSON text.</span>
+<span class="lineNum">     407 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     408 </span><span class="lineNoCov">          0 :             var j;</span>
+<span class="lineNum">     409 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     410 </span><span class="lineNoCov">          0 :             function walk(holder, key) {</span>
+<span class="lineNum">     411 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     412 </span><span class="lineNoCov">          0 : // The walk method is used to recursively walk the resulting structure so</span>
+<span class="lineNum">     413 </span><span class="lineNoCov">          0 : // that modifications can be made.</span>
+<span class="lineNum">     414 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     415 </span><span class="lineNoCov">          0 :                 var k, v, value = holder[key];</span>
+<span class="lineNum">     416 </span><span class="lineNoCov">          0 :                 if (value &amp;&amp; typeof value === 'object') {</span>
+<span class="lineNum">     417 </span><span class="lineNoCov">          0 :                     for (k in value) {</span>
+<span class="lineNum">     418 </span><span class="lineNoCov">          0 :                         if (Object.hasOwnProperty.call(value, k)) {</span>
+<span class="lineNum">     419 </span><span class="lineNoCov">          0 :                             v = walk(value, k);</span>
+<span class="lineNum">     420 </span><span class="lineNoCov">          0 :                             if (v !== undefined) {</span>
+<span class="lineNum">     421 </span><span class="lineNoCov">          0 :                                 value[k] = v;</span>
+<span class="lineNum">     422 </span><span class="lineNoCov">          0 :                             } else {</span>
+<span class="lineNum">     423 </span><span class="lineNoCov">          0 :                                 delete value[k];</span>
+<span class="lineNum">     424 </span><span class="lineNoCov">          0 :                             }</span>
+<span class="lineNum">     425 </span><span class="lineNoCov">          0 :                         }</span>
+<span class="lineNum">     426 </span><span class="lineNoCov">          0 :                     }</span>
+<span class="lineNum">     427 </span><span class="lineNoCov">          0 :                 }</span>
+<span class="lineNum">     428 </span><span class="lineNoCov">          0 :                 return reviver.call(holder, key, value);</span>
+<span class="lineNum">     429 </span><span class="lineNoCov">          0 :             }</span>
+<span class="lineNum">     430 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     431 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     432 </span><span class="lineNoCov">          0 : // Parsing happens in four stages. In the first stage, we replace certain</span>
+<span class="lineNum">     433 </span><span class="lineNoCov">          0 : // Unicode characters with escape sequences. JavaScript handles many characters</span>
+<span class="lineNum">     434 </span><span class="lineNoCov">          0 : // incorrectly, either silently deleting them, or treating them as line endings.</span>
+<span class="lineNum">     435 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     436 </span><span class="lineNoCov">          0 :             cx.lastIndex = 0;</span>
+<span class="lineNum">     437 </span><span class="lineNoCov">          0 :             if (cx.test(text)) {</span>
+<span class="lineNum">     438 </span><span class="lineNoCov">          0 :                 text = text.replace(cx, function (a) {</span>
+<span class="lineNum">     439 </span><span class="lineNoCov">          0 :                     return '\\u' +</span>
+<span class="lineNum">     440 </span><span class="lineNoCov">          0 :                         ('0000' + a.charCodeAt(0).toString(16)).slice(-4);</span>
+<span class="lineNum">     441 </span><span class="lineNoCov">          0 :                 });</span>
+<span class="lineNum">     442 </span><span class="lineNoCov">          0 :             }</span>
+<span class="lineNum">     443 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     444 </span><span class="lineNoCov">          0 : // In the second stage, we run the text against regular expressions that look</span>
+<span class="lineNum">     445 </span><span class="lineNoCov">          0 : // for non-JSON patterns. We are especially concerned with '()' and 'new'</span>
+<span class="lineNum">     446 </span><span class="lineNoCov">          0 : // because they can cause invocation, and '=' because it can cause mutation.</span>
+<span class="lineNum">     447 </span><span class="lineNoCov">          0 : // But just to be safe, we want to reject all unexpected forms.</span>
+<span class="lineNum">     448 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     449 </span><span class="lineNoCov">          0 : // We split the second stage into 4 regexp operations in order to work around</span>
+<span class="lineNum">     450 </span><span class="lineNoCov">          0 : // crippling inefficiencies in IE's and Safari's regexp engines. First we</span>
+<span class="lineNum">     451 </span><span class="lineNoCov">          0 : // replace the JSON backslash pairs with '@' (a non-JSON character). Second, we</span>
+<span class="lineNum">     452 </span><span class="lineNoCov">          0 : // replace all simple value tokens with ']' characters. Third, we delete all</span>
+<span class="lineNum">     453 </span><span class="lineNoCov">          0 : // open brackets that follow a colon or comma or that begin the text. Finally,</span>
+<span class="lineNum">     454 </span><span class="lineNoCov">          0 : // we look to see that the remaining characters are only whitespace or ']' or</span>
+<span class="lineNum">     455 </span><span class="lineNoCov">          0 : // ',' or ':' or '{' or '}'. If that is so, then the text is safe for eval.</span>
+<span class="lineNum">     456 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     457 </span><span class="lineNoCov">          0 :             if (/^[\],:{}\s]*$/.</span>
+<span class="lineNum">     458 </span><span class="lineNoCov">          0 : test(text.replace(/\\(?:[&quot;\\\/bfnrt]|u[0-9a-fA-F]{4})/g, '@').</span>
+<span class="lineNum">     459 </span><span class="lineNoCov">          0 : replace(/&quot;[^&quot;\\\n\r]*&quot;|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g, ']').</span>
+<span class="lineNum">     460 </span><span class="lineNoCov">          0 : replace(/(?:^|:|,)(?:\s*\[)+/g, ''))) {</span>
+<span class="lineNum">     461 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     462 </span><span class="lineNoCov">          0 : // In the third stage we use the eval function to compile the text into a</span>
+<span class="lineNum">     463 </span><span class="lineNoCov">          0 : // JavaScript structure. The '{' operator is subject to a syntactic ambiguity</span>
+<span class="lineNum">     464 </span><span class="lineNoCov">          0 : // in JavaScript: it can begin a block or an object literal. We wrap the text</span>
+<span class="lineNum">     465 </span><span class="lineNoCov">          0 : // in parens to eliminate the ambiguity.</span>
+<span class="lineNum">     466 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     467 </span><span class="lineNoCov">          0 :                 j = eval('(' + text + ')');</span>
+<span class="lineNum">     468 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     469 </span><span class="lineNoCov">          0 : // In the optional fourth stage, we recursively walk the new structure, passing</span>
+<span class="lineNum">     470 </span><span class="lineNoCov">          0 : // each name/value pair to a reviver function for possible transformation.</span>
+<span class="lineNum">     471 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     472 </span><span class="lineNoCov">          0 :                 return typeof reviver === 'function' ?</span>
+<span class="lineNum">     473 </span><span class="lineNoCov">          0 :                     walk({'': j}, '') : j;</span>
+<span class="lineNum">     474 </span><span class="lineNoCov">          0 :             }</span>
+<span class="lineNum">     475 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     476 </span><span class="lineNoCov">          0 : // If the text is not JSON parseable, then a SyntaxError is thrown.</span>
+<span class="lineNum">     477 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     478 </span><span class="lineNoCov">          0 :             throw new SyntaxError('JSON.parse');</span>
+<span class="lineNum">     479 </span><span class="lineCov">          1 :         };</span>
+<span class="lineNum">     480 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">     481 </span><span class="lineCov">          1 : }());</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

@@ -1,0 +1,1307 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - test/mjsunit/strict-mode.js</title>
+  <link rel="stylesheet" type="text/css" href="../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../index.html">top level</a> - <a href="index.html">test/mjsunit</a> - strict-mode.js<span style="font-size: 80%;"> (source / <a href="strict-mode.js.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">1230</td>
+            <td class="headerCovTableEntry">1232</td>
+            <td class="headerCovTableEntryHi">99.8 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2017-02-14</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">185</td>
+            <td class="headerCovTableEntry">192</td>
+            <td class="headerCovTableEntryHi">96.4 %</td>
+          </tr>
+          <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span><span class="lineCov">          1 : // Copyright 2011 the V8 project authors. All rights reserved.</span></a>
+<span class="lineNum">       2 </span><span class="lineCov">          1 : // Redistribution and use in source and binary forms, with or without</span>
+<span class="lineNum">       3 </span><span class="lineCov">          1 : // modification, are permitted provided that the following conditions are</span>
+<span class="lineNum">       4 </span><span class="lineCov">          1 : // met:</span>
+<span class="lineNum">       5 </span><span class="lineCov">          1 : //</span>
+<span class="lineNum">       6 </span><span class="lineCov">          1 : //     * Redistributions of source code must retain the above copyright</span>
+<span class="lineNum">       7 </span><span class="lineCov">          1 : //       notice, this list of conditions and the following disclaimer.</span>
+<span class="lineNum">       8 </span><span class="lineCov">          1 : //     * Redistributions in binary form must reproduce the above</span>
+<span class="lineNum">       9 </span><span class="lineCov">          1 : //       copyright notice, this list of conditions and the following</span>
+<span class="lineNum">      10 </span><span class="lineCov">          1 : //       disclaimer in the documentation and/or other materials provided</span>
+<span class="lineNum">      11 </span><span class="lineCov">          1 : //       with the distribution.</span>
+<span class="lineNum">      12 </span><span class="lineCov">          1 : //     * Neither the name of Google Inc. nor the names of its</span>
+<span class="lineNum">      13 </span><span class="lineCov">          1 : //       contributors may be used to endorse or promote products derived</span>
+<span class="lineNum">      14 </span><span class="lineCov">          1 : //       from this software without specific prior written permission.</span>
+<span class="lineNum">      15 </span><span class="lineCov">          1 : //</span>
+<span class="lineNum">      16 </span><span class="lineCov">          1 : // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="lineNum">      17 </span><span class="lineCov">          1 : // &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="lineNum">      18 </span><span class="lineCov">          1 : // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR</span>
+<span class="lineNum">      19 </span><span class="lineCov">          1 : // A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT</span>
+<span class="lineNum">      20 </span><span class="lineCov">          1 : // OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,</span>
+<span class="lineNum">      21 </span><span class="lineCov">          1 : // SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT</span>
+<span class="lineNum">      22 </span><span class="lineCov">          1 : // LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,</span>
+<span class="lineNum">      23 </span><span class="lineCov">          1 : // DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY</span>
+<span class="lineNum">      24 </span><span class="lineCov">          1 : // THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT</span>
+<span class="lineNum">      25 </span><span class="lineCov">          1 : // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE</span>
+<a name="26"><span class="lineNum">      26 </span><span class="lineCov">          1 : // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span></a>
+<span class="lineNum">      27 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      28 </span><span class="lineCov">        155 : function CheckStrictMode(code, exception) {</span>
+<span class="lineNum">      29 </span><span class="lineCov">        155 :   assertDoesNotThrow(code);</span>
+<span class="lineNum">      30 </span><span class="lineCov">        155 :   assertThrows(&quot;'use strict';\n&quot; + code, exception);</span>
+<span class="lineNum">      31 </span><span class="lineCov">        155 :   assertThrows('&quot;use strict&quot;;\n' + code, exception);</span>
+<span class="lineNum">      32 </span><span class="lineCov">        155 :   assertDoesNotThrow(&quot;\</span>
+<span class="lineNum">      33 </span><span class="lineCov">        155 :     function outer() {\</span>
+<span class="lineNum">      34 </span><span class="lineCov">        155 :       function inner() {\n&quot;</span>
+<span class="lineNum">      35 </span><span class="lineCov">        155 :         + code +</span>
+<span class="lineNum">      36 </span><span class="lineCov">        155 :       &quot;\n}\</span>
+<span class="lineNum">      37 </span><span class="lineCov">        155 :     }&quot;);</span>
+<span class="lineNum">      38 </span><span class="lineCov">        155 :   assertThrows(&quot;\</span>
+<span class="lineNum">      39 </span><span class="lineCov">        155 :     function outer() {\</span>
+<span class="lineNum">      40 </span><span class="lineCov">        155 :       'use strict';\</span>
+<span class="lineNum">      41 </span><span class="lineCov">        155 :       function inner() {\n&quot;</span>
+<span class="lineNum">      42 </span><span class="lineCov">        155 :         + code +</span>
+<span class="lineNum">      43 </span><span class="lineCov">        155 :       &quot;\n}\</span>
+<span class="lineNum">      44 </span><span class="lineCov">        155 :     }&quot;, exception);</span>
+<a name="45"><span class="lineNum">      45 </span><span class="lineCov">        155 : }</span></a>
+<span class="lineNum">      46 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      47 </span><span class="lineCov">          4 : function CheckFunctionConstructorStrictMode() {</span>
+<span class="lineNum">      48 </span><span class="lineCov">          4 :   var args = [];</span>
+<span class="lineNum">      49 </span><span class="lineCov">          4 :   for (var i = 0; i &lt; arguments.length; i ++) {</span>
+<span class="lineNum">      50 </span><span class="lineCov">          4 :     args[i] = arguments[i];</span>
+<span class="lineNum">      51 </span><span class="lineCov">          4 :   }</span>
+<a name="52"><span class="lineNum">      52 </span><span class="lineCov">          4 :   // Create non-strict function. No exception.</span></a>
+<span class="lineNum">      53 </span><span class="lineCov">          4 :   args[arguments.length] = &quot;&quot;;</span>
+<span class="lineNum">      54 </span><span class="lineCov">          4 :   assertDoesNotThrow(function() {</span>
+<span class="lineNum">      55 </span><span class="lineCov">          4 :     Function.apply(this, args);</span>
+<span class="lineNum">      56 </span><span class="lineCov">          4 :   });</span>
+<a name="57"><span class="lineNum">      57 </span><span class="lineCov">          4 :   // Create strict mode function. Exception expected.</span></a>
+<span class="lineNum">      58 </span><span class="lineCov">          4 :   args[arguments.length] = &quot;'use strict';&quot;;</span>
+<span class="lineNum">      59 </span><span class="lineCov">          4 :   assertThrows(function() {</span>
+<span class="lineNum">      60 </span><span class="lineCov">          4 :     Function.apply(this, args);</span>
+<span class="lineNum">      61 </span><span class="lineCov">          4 :   }, SyntaxError);</span>
+<span class="lineNum">      62 </span><span class="lineCov">          4 : }</span>
+<a name="63"><span class="lineNum">      63 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      64 </span><span class="lineCov">          1 : // Incorrect 'use strict' directive.</span>
+<span class="lineNum">      65 </span><span class="lineCov">          1 : (function UseStrictEscape() {</span>
+<span class="lineNum">      66 </span><span class="lineCov">          1 :   &quot;use\\x20strict&quot;;</span>
+<span class="lineNum">      67 </span><span class="lineCov">          1 :   with ({}) {};</span>
+<span class="lineNum">      68 </span><span class="lineCov">          1 : })();</span>
+<span class="lineNum">      69 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      70 </span><span class="lineCov">          1 : // Incorrectly place 'use strict' directive.</span>
+<span class="lineNum">      71 </span><span class="lineCov">          1 : assertThrows(&quot;function foo (x) 'use strict'; {}&quot;, SyntaxError);</span>
+<a name="72"><span class="lineNum">      72 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      73 </span><span class="lineCov">          1 : // 'use strict' in non-directive position.</span>
+<span class="lineNum">      74 </span><span class="lineCov">          1 : (function UseStrictNonDirective() {</span>
+<span class="lineNum">      75 </span><span class="lineCov">          1 :   void(0);</span>
+<span class="lineNum">      76 </span><span class="lineCov">          1 :   &quot;use strict&quot;;</span>
+<span class="lineNum">      77 </span><span class="lineCov">          1 :   with ({}) {};</span>
+<span class="lineNum">      78 </span><span class="lineCov">          1 : })();</span>
+<span class="lineNum">      79 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      80 </span><span class="lineCov">          1 : // Multiple directives, including &quot;use strict&quot;.</span>
+<span class="lineNum">      81 </span><span class="lineCov">          1 : assertThrows('\</span>
+<span class="lineNum">      82 </span><span class="lineCov">          1 : &quot;directive 1&quot;;\</span>
+<span class="lineNum">      83 </span><span class="lineCov">          1 : &quot;another directive&quot;;\</span>
+<span class="lineNum">      84 </span><span class="lineCov">          1 : &quot;use strict&quot;;\</span>
+<span class="lineNum">      85 </span><span class="lineCov">          1 : &quot;directive after strict&quot;;\</span>
+<span class="lineNum">      86 </span><span class="lineCov">          1 : &quot;and one more&quot;;\</span>
+<span class="lineNum">      87 </span><span class="lineCov">          1 : with({}) {}', SyntaxError);</span>
+<span class="lineNum">      88 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      89 </span><span class="lineCov">          1 : // 'with' disallowed in strict mode.</span>
+<span class="lineNum">      90 </span><span class="lineCov">          1 : CheckStrictMode(&quot;with({}) {}&quot;, SyntaxError);</span>
+<span class="lineNum">      91 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      92 </span><span class="lineCov">          1 : // Function named 'eval'.</span>
+<span class="lineNum">      93 </span><span class="lineCov">          1 : CheckStrictMode(&quot;function eval() {}&quot;, SyntaxError);</span>
+<span class="lineNum">      94 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      95 </span><span class="lineCov">          1 : // Function named 'arguments'.</span>
+<span class="lineNum">      96 </span><span class="lineCov">          1 : CheckStrictMode(&quot;function arguments() {}&quot;, SyntaxError);</span>
+<span class="lineNum">      97 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      98 </span><span class="lineCov">          1 : // Function parameter named 'eval'.</span>
+<span class="lineNum">      99 </span><span class="lineCov">          1 : CheckStrictMode(&quot;function foo(a, b, eval, c, d) {}&quot;, SyntaxError);</span>
+<span class="lineNum">     100 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     101 </span><span class="lineCov">          1 : // Function parameter named 'arguments'.</span>
+<span class="lineNum">     102 </span><span class="lineCov">          1 : CheckStrictMode(&quot;function foo(a, b, arguments, c, d) {}&quot;, SyntaxError);</span>
+<span class="lineNum">     103 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     104 </span><span class="lineCov">          1 : // Property accessor parameter named 'eval'.</span>
+<span class="lineNum">     105 </span><span class="lineCov">          1 : CheckStrictMode(&quot;var o = { set foo(eval) {} }&quot;, SyntaxError);</span>
+<span class="lineNum">     106 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     107 </span><span class="lineCov">          1 : // Property accessor parameter named 'arguments'.</span>
+<span class="lineNum">     108 </span><span class="lineCov">          1 : CheckStrictMode(&quot;var o = { set foo(arguments) {} }&quot;, SyntaxError);</span>
+<span class="lineNum">     109 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     110 </span><span class="lineCov">          1 : // Duplicate function parameter name.</span>
+<span class="lineNum">     111 </span><span class="lineCov">          1 : CheckStrictMode(&quot;function foo(a, b, c, d, b) {}&quot;, SyntaxError);</span>
+<span class="lineNum">     112 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     113 </span><span class="lineCov">          1 : // Function constructor: eval parameter name.</span>
+<span class="lineNum">     114 </span><span class="lineCov">          1 : CheckFunctionConstructorStrictMode(&quot;eval&quot;);</span>
+<span class="lineNum">     115 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     116 </span><span class="lineCov">          1 : // Function constructor: arguments parameter name.</span>
+<span class="lineNum">     117 </span><span class="lineCov">          1 : CheckFunctionConstructorStrictMode(&quot;arguments&quot;);</span>
+<span class="lineNum">     118 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     119 </span><span class="lineCov">          1 : // Function constructor: duplicate parameter name.</span>
+<span class="lineNum">     120 </span><span class="lineCov">          1 : CheckFunctionConstructorStrictMode(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;b&quot;);</span>
+<span class="lineNum">     121 </span><span class="lineCov">          1 : CheckFunctionConstructorStrictMode(&quot;a,b,c,b&quot;);</span>
+<span class="lineNum">     122 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     123 </span><span class="lineCov">          1 : // catch(eval)</span>
+<span class="lineNum">     124 </span><span class="lineCov">          1 : CheckStrictMode(&quot;try{}catch(eval){};&quot;, SyntaxError);</span>
+<span class="lineNum">     125 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     126 </span><span class="lineCov">          1 : // catch(arguments)</span>
+<span class="lineNum">     127 </span><span class="lineCov">          1 : CheckStrictMode(&quot;try{}catch(arguments){};&quot;, SyntaxError);</span>
+<span class="lineNum">     128 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     129 </span><span class="lineCov">          1 : // var eval</span>
+<span class="lineNum">     130 </span><span class="lineCov">          1 : CheckStrictMode(&quot;var eval;&quot;, SyntaxError);</span>
+<span class="lineNum">     131 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     132 </span><span class="lineCov">          1 : // var arguments</span>
+<span class="lineNum">     133 </span><span class="lineCov">          1 : CheckStrictMode(&quot;var arguments;&quot;, SyntaxError);</span>
+<span class="lineNum">     134 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     135 </span><span class="lineCov">          1 : // Strict mode applies to the function in which the directive is used..</span>
+<span class="lineNum">     136 </span><span class="lineCov">          1 : assertThrows('\</span>
+<span class="lineNum">     137 </span><span class="lineCov">          1 : function foo(eval) {\</span>
+<span class="lineNum">     138 </span><span class="lineCov">          1 :   &quot;use strict&quot;;\</span>
+<span class="lineNum">     139 </span><span class="lineCov">          1 : }', SyntaxError);</span>
+<a name="140"><span class="lineNum">     140 </span><span class="lineCov">          1 : </span></a>
+<a name="141"><span class="lineNum">     141 </span><span class="lineCov">          1 : // Strict mode doesn't affect the outer stop of strict code.</span></a>
+<span class="lineNum">     142 </span><span class="lineCov">          1 : (function NotStrict(eval) {</span>
+<span class="lineNum">     143 </span><span class="lineCov">          1 :   function Strict() {</span>
+<span class="lineNum">     144 </span><span class="lineNoCov">          0 :     &quot;use strict&quot;;</span>
+<span class="lineNum">     145 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     146 </span><span class="lineCov">          1 :   with ({}) {};</span>
+<span class="lineNum">     147 </span><span class="lineCov">          1 : })();</span>
+<span class="lineNum">     148 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     149 </span><span class="lineCov">          1 : // Octal literal</span>
+<span class="lineNum">     150 </span><span class="lineCov">          1 : CheckStrictMode(&quot;var x = 012&quot;);</span>
+<span class="lineNum">     151 </span><span class="lineCov">          1 : CheckStrictMode(&quot;012&quot;);</span>
+<span class="lineNum">     152 </span><span class="lineCov">          1 : CheckStrictMode(&quot;'Hello octal\\032'&quot;);</span>
+<span class="lineNum">     153 </span><span class="lineCov">          1 : CheckStrictMode(&quot;function octal() { return 012; }&quot;);</span>
+<a name="154"><span class="lineNum">     154 </span><span class="lineCov">          1 : CheckStrictMode(&quot;function octal() { return '\\032'; }&quot;);</span></a>
+<span class="lineNum">     155 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     156 </span><span class="lineCov">          1 : (function ValidEscape() {</span>
+<span class="lineNum">     157 </span><span class="lineCov">          1 :   &quot;use strict&quot;;</span>
+<span class="lineNum">     158 </span><span class="lineCov">          1 :   var x = '\0';</span>
+<span class="lineNum">     159 </span><span class="lineCov">          1 :   var y = &quot;\0&quot;;</span>
+<span class="lineNum">     160 </span><span class="lineCov">          1 : })();</span>
+<span class="lineNum">     161 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     162 </span><span class="lineCov">          1 : // Octal before &quot;use strict&quot;</span>
+<span class="lineNum">     163 </span><span class="lineCov">          1 : assertThrows('\</span>
+<span class="lineNum">     164 </span><span class="lineCov">          1 :   function strict() {\</span>
+<span class="lineNum">     165 </span><span class="lineCov">          1 :     &quot;octal\\032directive&quot;;\</span>
+<span class="lineNum">     166 </span><span class="lineCov">          1 :     &quot;use strict&quot;;\</span>
+<a name="167"><span class="lineNum">     167 </span><span class="lineCov">          1 :   }', SyntaxError);</span></a>
+<span class="lineNum">     168 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     169 </span><span class="lineCov">          1 : (function StrictModeNonDuplicate() {</span>
+<span class="lineNum">     170 </span><span class="lineCov">          1 :   &quot;use strict&quot;;</span>
+<span class="lineNum">     171 </span><span class="lineCov">          1 :   var x = { 123 : 1, &quot;0123&quot; : 2 };</span>
+<span class="lineNum">     172 </span><span class="lineCov">          1 :   var x = {</span>
+<span class="lineNum">     173 </span><span class="lineCov">          1 :     123: 1,</span>
+<span class="lineNum">     174 </span><span class="lineCov">          1 :     '123.00000000000000000000000000000000000000000000000000000000000000000001':</span>
+<span class="lineNum">     175 </span><span class="lineCov">          1 :       2</span>
+<span class="lineNum">     176 </span><span class="lineCov">          1 :   };</span>
+<span class="lineNum">     177 </span><span class="lineCov">          1 : })();</span>
+<a name="178"><span class="lineNum">     178 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     179 </span><span class="lineCov">          1 : // Duplicate data properties are allowed in ES6</span>
+<span class="lineNum">     180 </span><span class="lineCov">          1 : (function StrictModeDuplicateES6() {</span>
+<span class="lineNum">     181 </span><span class="lineCov">          1 :   'use strict';</span>
+<span class="lineNum">     182 </span><span class="lineCov">          1 :   var x = {</span>
+<span class="lineNum">     183 </span><span class="lineCov">          1 :     123: 1,</span>
+<span class="lineNum">     184 </span><span class="lineCov">          1 :     123.00000000000000000000000000000000000000000000000000000000000000000001: 2</span>
+<span class="lineNum">     185 </span><span class="lineCov">          1 :   };</span>
+<span class="lineNum">     186 </span><span class="lineCov">          1 :   var x = { dupe : 1, nondupe: 3, dupe : 2 };</span>
+<span class="lineNum">     187 </span><span class="lineCov">          1 :   var x = { '1234' : 1, '2345' : 2, '1234' : 3 };</span>
+<span class="lineNum">     188 </span><span class="lineCov">          1 :   var x = { '1234' : 1, '2345' : 2, 1234 : 3 };</span>
+<span class="lineNum">     189 </span><span class="lineCov">          1 :   var x = { 3.14 : 1, 2.71 : 2, 3.14 : 3 };</span>
+<span class="lineNum">     190 </span><span class="lineCov">          1 :   var x = { 3.14 : 1, '3.14' : 2 };</span>
+<span class="lineNum">     191 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     192 </span><span class="lineCov">          1 :   var x = { get foo() { }, get foo() { } };</span>
+<span class="lineNum">     193 </span><span class="lineCov">          1 :   var x = { get foo(){}, get 'foo'(){}};</span>
+<span class="lineNum">     194 </span><span class="lineCov">          1 :   var x = { get 12(){}, get '12'(){}};</span>
+<span class="lineNum">     195 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     196 </span><span class="lineCov">          1 :   // Two setters</span>
+<a name="197"><span class="lineNum">     197 </span><span class="lineCov">          1 :   var x = { set foo(v) { }, set foo(v) { } };</span></a>
+<span class="lineNum">     198 </span><span class="lineCov">          1 :   var x = { set foo(v) { }, set 'foo'(v) { } };</span>
+<span class="lineNum">     199 </span><span class="lineCov">          1 :   var x = { set 13(v) { }, set '13'(v) { } };</span>
+<span class="lineNum">     200 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     201 </span><span class="lineCov">          1 :   // Setter and data</span>
+<span class="lineNum">     202 </span><span class="lineCov">          1 :   var x = { foo: 'data', set foo(v) { } };</span>
+<span class="lineNum">     203 </span><span class="lineCov">          1 :   var x = { set foo(v) { }, foo: 'data' };</span>
+<span class="lineNum">     204 </span><span class="lineCov">          1 :   var x = { foo: 'data', set 'foo'(v) { } };</span>
+<span class="lineNum">     205 </span><span class="lineCov">          1 :   var x = { set foo(v) { }, 'foo': 'data' };</span>
+<a name="206"><span class="lineNum">     206 </span><span class="lineCov">          1 :   var x = { 'foo': 'data', set foo(v) { } };</span></a>
+<span class="lineNum">     207 </span><span class="lineCov">          1 :   var x = { set 'foo'(v) { }, foo: 'data' };</span>
+<span class="lineNum">     208 </span><span class="lineCov">          1 :   var x = { 'foo': 'data', set 'foo'(v) { } };</span>
+<span class="lineNum">     209 </span><span class="lineCov">          1 :   var x = { set 'foo'(v) { }, 'foo': 'data' };</span>
+<span class="lineNum">     210 </span><span class="lineCov">          1 :   var x = { 12: 1, set '12'(v){}};</span>
+<a name="211"><span class="lineNum">     211 </span><span class="lineCov">          1 :   var x = { 12: 1, set 12(v){}};</span></a>
+<span class="lineNum">     212 </span><span class="lineCov">          1 :   var x = { '12': 1, set '12'(v){}};</span>
+<span class="lineNum">     213 </span><span class="lineCov">          1 :   var x = { '12': 1, set 12(v){}};</span>
+<span class="lineNum">     214 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     215 </span><span class="lineCov">          1 :   // Getter and data</span>
+<span class="lineNum">     216 </span><span class="lineCov">          1 :   var x = { foo: 'data', get foo() { } };</span>
+<span class="lineNum">     217 </span><span class="lineCov">          1 :   var x = { get foo() { }, foo: 'data' };</span>
+<span class="lineNum">     218 </span><span class="lineCov">          1 :   var x = { 'foo': 'data', get foo() { } };</span>
+<a name="219"><span class="lineNum">     219 </span><span class="lineCov">          1 :   var x = { get 'foo'() { }, 'foo': 'data' };</span></a>
+<span class="lineNum">     220 </span><span class="lineCov">          1 :   var x = { '12': 1, get '12'(){}};</span>
+<span class="lineNum">     221 </span><span class="lineCov">          1 :   var x = { '12': 1, get 12(){}};</span>
+<span class="lineNum">     222 </span><span class="lineCov">          1 : })();</span>
+<span class="lineNum">     223 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     224 </span><span class="lineCov">          1 : // Assignment to eval or arguments</span>
+<span class="lineNum">     225 </span><span class="lineCov">          1 : CheckStrictMode(&quot;function strict() { eval = undefined; }&quot;, SyntaxError);</span>
+<span class="lineNum">     226 </span><span class="lineCov">          1 : CheckStrictMode(&quot;function strict() { arguments = undefined; }&quot;, SyntaxError);</span>
+<span class="lineNum">     227 </span><span class="lineCov">          1 : CheckStrictMode(&quot;function strict() { print(eval = undefined); }&quot;, SyntaxError);</span>
+<span class="lineNum">     228 </span><span class="lineCov">          1 : CheckStrictMode(&quot;function strict() { print(arguments = undefined); }&quot;,</span>
+<span class="lineNum">     229 </span><span class="lineCov">          1 :                 SyntaxError);</span>
+<span class="lineNum">     230 </span><span class="lineCov">          1 : CheckStrictMode(&quot;function strict() { var x = eval = undefined; }&quot;, SyntaxError);</span>
+<span class="lineNum">     231 </span><span class="lineCov">          1 : CheckStrictMode(&quot;function strict() { var x = arguments = undefined; }&quot;,</span>
+<span class="lineNum">     232 </span><span class="lineCov">          1 :                 SyntaxError);</span>
+<span class="lineNum">     233 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     234 </span><span class="lineCov">          1 : // Compound assignment to eval or arguments</span>
+<span class="lineNum">     235 </span><span class="lineCov">          1 : CheckStrictMode(&quot;function strict() { eval *= undefined; }&quot;, SyntaxError);</span>
+<span class="lineNum">     236 </span><span class="lineCov">          1 : CheckStrictMode(&quot;function strict() { arguments /= undefined; }&quot;, SyntaxError);</span>
+<span class="lineNum">     237 </span><span class="lineCov">          1 : CheckStrictMode(&quot;function strict() { print(eval %= undefined); }&quot;, SyntaxError);</span>
+<span class="lineNum">     238 </span><span class="lineCov">          1 : CheckStrictMode(&quot;function strict() { print(arguments %= undefined); }&quot;,</span>
+<span class="lineNum">     239 </span><span class="lineCov">          1 :                 SyntaxError);</span>
+<span class="lineNum">     240 </span><span class="lineCov">          1 : CheckStrictMode(&quot;function strict() { var x = eval += undefined; }&quot;,</span>
+<span class="lineNum">     241 </span><span class="lineCov">          1 :                 SyntaxError);</span>
+<span class="lineNum">     242 </span><span class="lineCov">          1 : CheckStrictMode(&quot;function strict() { var x = arguments -= undefined; }&quot;,</span>
+<span class="lineNum">     243 </span><span class="lineCov">          1 :                 SyntaxError);</span>
+<span class="lineNum">     244 </span><span class="lineCov">          1 : CheckStrictMode(&quot;function strict() { eval &lt;&lt;= undefined; }&quot;, SyntaxError);</span>
+<span class="lineNum">     245 </span><span class="lineCov">          1 : CheckStrictMode(&quot;function strict() { arguments &gt;&gt;= undefined; }&quot;, SyntaxError);</span>
+<span class="lineNum">     246 </span><span class="lineCov">          1 : CheckStrictMode(&quot;function strict() { print(eval &gt;&gt;&gt;= undefined); }&quot;,</span>
+<span class="lineNum">     247 </span><span class="lineCov">          1 :                 SyntaxError);</span>
+<span class="lineNum">     248 </span><span class="lineCov">          1 : CheckStrictMode(&quot;function strict() { print(arguments &amp;= undefined); }&quot;,</span>
+<span class="lineNum">     249 </span><span class="lineCov">          1 :                 SyntaxError);</span>
+<span class="lineNum">     250 </span><span class="lineCov">          1 : CheckStrictMode(&quot;function strict() { var x = eval ^= undefined; }&quot;,</span>
+<span class="lineNum">     251 </span><span class="lineCov">          1 :                 SyntaxError);</span>
+<span class="lineNum">     252 </span><span class="lineCov">          1 : CheckStrictMode(&quot;function strict() { var x = arguments |= undefined; }&quot;,</span>
+<span class="lineNum">     253 </span><span class="lineCov">          1 :                 SyntaxError);</span>
+<span class="lineNum">     254 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     255 </span><span class="lineCov">          1 : // Postfix increment with eval or arguments</span>
+<span class="lineNum">     256 </span><span class="lineCov">          1 : CheckStrictMode(&quot;function strict() { eval++; }&quot;, SyntaxError);</span>
+<span class="lineNum">     257 </span><span class="lineCov">          1 : CheckStrictMode(&quot;function strict() { arguments++; }&quot;, SyntaxError);</span>
+<span class="lineNum">     258 </span><span class="lineCov">          1 : CheckStrictMode(&quot;function strict() { print(eval++); }&quot;, SyntaxError);</span>
+<span class="lineNum">     259 </span><span class="lineCov">          1 : CheckStrictMode(&quot;function strict() { print(arguments++); }&quot;, SyntaxError);</span>
+<span class="lineNum">     260 </span><span class="lineCov">          1 : CheckStrictMode(&quot;function strict() { var x = eval++; }&quot;, SyntaxError);</span>
+<span class="lineNum">     261 </span><span class="lineCov">          1 : CheckStrictMode(&quot;function strict() { var x = arguments++; }&quot;, SyntaxError);</span>
+<span class="lineNum">     262 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     263 </span><span class="lineCov">          1 : // Postfix decrement with eval or arguments</span>
+<span class="lineNum">     264 </span><span class="lineCov">          1 : CheckStrictMode(&quot;function strict() { eval--; }&quot;, SyntaxError);</span>
+<span class="lineNum">     265 </span><span class="lineCov">          1 : CheckStrictMode(&quot;function strict() { arguments--; }&quot;, SyntaxError);</span>
+<span class="lineNum">     266 </span><span class="lineCov">          1 : CheckStrictMode(&quot;function strict() { print(eval--); }&quot;, SyntaxError);</span>
+<span class="lineNum">     267 </span><span class="lineCov">          1 : CheckStrictMode(&quot;function strict() { print(arguments--); }&quot;, SyntaxError);</span>
+<span class="lineNum">     268 </span><span class="lineCov">          1 : CheckStrictMode(&quot;function strict() { var x = eval--; }&quot;, SyntaxError);</span>
+<span class="lineNum">     269 </span><span class="lineCov">          1 : CheckStrictMode(&quot;function strict() { var x = arguments--; }&quot;, SyntaxError);</span>
+<span class="lineNum">     270 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     271 </span><span class="lineCov">          1 : // Prefix increment with eval or arguments</span>
+<span class="lineNum">     272 </span><span class="lineCov">          1 : CheckStrictMode(&quot;function strict() { ++eval; }&quot;, SyntaxError);</span>
+<span class="lineNum">     273 </span><span class="lineCov">          1 : CheckStrictMode(&quot;function strict() { ++arguments; }&quot;, SyntaxError);</span>
+<span class="lineNum">     274 </span><span class="lineCov">          1 : CheckStrictMode(&quot;function strict() { print(++eval); }&quot;, SyntaxError);</span>
+<span class="lineNum">     275 </span><span class="lineCov">          1 : CheckStrictMode(&quot;function strict() { print(++arguments); }&quot;, SyntaxError);</span>
+<span class="lineNum">     276 </span><span class="lineCov">          1 : CheckStrictMode(&quot;function strict() { var x = ++eval; }&quot;, SyntaxError);</span>
+<span class="lineNum">     277 </span><span class="lineCov">          1 : CheckStrictMode(&quot;function strict() { var x = ++arguments; }&quot;, SyntaxError);</span>
+<span class="lineNum">     278 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     279 </span><span class="lineCov">          1 : // Prefix decrement with eval or arguments</span>
+<span class="lineNum">     280 </span><span class="lineCov">          1 : CheckStrictMode(&quot;function strict() { --eval; }&quot;, SyntaxError);</span>
+<span class="lineNum">     281 </span><span class="lineCov">          1 : CheckStrictMode(&quot;function strict() { --arguments; }&quot;, SyntaxError);</span>
+<span class="lineNum">     282 </span><span class="lineCov">          1 : CheckStrictMode(&quot;function strict() { print(--eval); }&quot;, SyntaxError);</span>
+<span class="lineNum">     283 </span><span class="lineCov">          1 : CheckStrictMode(&quot;function strict() { print(--arguments); }&quot;, SyntaxError);</span>
+<span class="lineNum">     284 </span><span class="lineCov">          1 : CheckStrictMode(&quot;function strict() { var x = --eval; }&quot;, SyntaxError);</span>
+<span class="lineNum">     285 </span><span class="lineCov">          1 : CheckStrictMode(&quot;function strict() { var x = --arguments; }&quot;, SyntaxError);</span>
+<span class="lineNum">     286 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     287 </span><span class="lineCov">          1 : // Delete of an unqualified identifier</span>
+<span class="lineNum">     288 </span><span class="lineCov">          1 : CheckStrictMode(&quot;delete unqualified;&quot;, SyntaxError);</span>
+<span class="lineNum">     289 </span><span class="lineCov">          1 : CheckStrictMode(&quot;function strict() { delete unqualified; }&quot;, SyntaxError);</span>
+<span class="lineNum">     290 </span><span class="lineCov">          1 : CheckStrictMode(&quot;function function_name() { delete function_name; }&quot;,</span>
+<span class="lineNum">     291 </span><span class="lineCov">          1 :                 SyntaxError);</span>
+<span class="lineNum">     292 </span><span class="lineCov">          1 : CheckStrictMode(&quot;function strict(parameter) { delete parameter; }&quot;,</span>
+<span class="lineNum">     293 </span><span class="lineCov">          1 :                 SyntaxError);</span>
+<span class="lineNum">     294 </span><span class="lineCov">          1 : CheckStrictMode(&quot;function strict() { var variable; delete variable; }&quot;,</span>
+<span class="lineNum">     295 </span><span class="lineCov">          1 :                 SyntaxError);</span>
+<a name="296"><span class="lineNum">     296 </span><span class="lineCov">          1 : CheckStrictMode(&quot;var variable; delete variable;&quot;, SyntaxError);</span></a>
+<span class="lineNum">     297 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     298 </span><span class="lineCov">          1 : (function TestStrictDelete() {</span>
+<a name="299"><span class="lineNum">     299 </span><span class="lineCov">          1 :   &quot;use strict&quot;;</span></a>
+<span class="lineNum">     300 </span><span class="lineCov">          1 :   // &quot;delete this&quot; is allowed in strict mode and should work.</span>
+<span class="lineNum">     301 </span><span class="lineCov">          1 :   function strict_delete() { delete this; }</span>
+<span class="lineNum">     302 </span><span class="lineCov">          1 :   strict_delete();</span>
+<span class="lineNum">     303 </span><span class="lineCov">          1 : })();</span>
+<a name="304"><span class="lineNum">     304 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     305 </span><span class="lineCov">          1 : // Prefix unary operators other than delete, ++, -- are valid in strict mode</span>
+<span class="lineNum">     306 </span><span class="lineCov">          1 : (function StrictModeUnaryOperators() {</span>
+<span class="lineNum">     307 </span><span class="lineCov">          1 :   &quot;use strict&quot;;</span>
+<span class="lineNum">     308 </span><span class="lineCov">          1 :   var x = [void eval, typeof eval, +eval, -eval, ~eval, !eval];</span>
+<span class="lineNum">     309 </span><span class="lineCov">          1 :   var y = [void arguments, typeof arguments,</span>
+<span class="lineNum">     310 </span><span class="lineCov">          1 :            +arguments, -arguments, ~arguments, !arguments];</span>
+<span class="lineNum">     311 </span><span class="lineCov">          1 : })();</span>
+<span class="lineNum">     312 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     313 </span><span class="lineCov">          1 : // 7.6.1.2 Future Reserved Words in strict mode</span>
+<span class="lineNum">     314 </span><span class="lineCov">          1 : var future_strict_reserved_words = [</span>
+<span class="lineNum">     315 </span><span class="lineCov">          1 :   &quot;implements&quot;,</span>
+<span class="lineNum">     316 </span><span class="lineCov">          1 :   &quot;interface&quot;,</span>
+<span class="lineNum">     317 </span><span class="lineCov">          1 :   &quot;let&quot;,</span>
+<span class="lineNum">     318 </span><span class="lineCov">          1 :   &quot;package&quot;,</span>
+<span class="lineNum">     319 </span><span class="lineCov">          1 :   &quot;private&quot;,</span>
+<span class="lineNum">     320 </span><span class="lineCov">          1 :   &quot;protected&quot;,</span>
+<span class="lineNum">     321 </span><span class="lineCov">          1 :   &quot;public&quot;,</span>
+<span class="lineNum">     322 </span><span class="lineCov">          1 :   &quot;static&quot;,</span>
+<a name="323"><span class="lineNum">     323 </span><span class="lineCov">          1 :   &quot;yield&quot; ];</span></a>
+<span class="lineNum">     324 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     325 </span><span class="lineCov">          9 : function testFutureStrictReservedWord(word) {</span>
+<span class="lineNum">     326 </span><span class="lineCov">          9 :   // Simple use of each reserved word</span>
+<span class="lineNum">     327 </span><span class="lineCov">          9 :   CheckStrictMode(&quot;var &quot; + word + &quot; = 1;&quot;, SyntaxError);</span>
+<span class="lineNum">     328 </span><span class="lineCov">          9 :   CheckStrictMode(&quot;typeof (&quot; + word + &quot;);&quot;, SyntaxError);</span>
+<span class="lineNum">     329 </span><span class="lineCov">          9 : </span>
+<span class="lineNum">     330 </span><span class="lineCov">          9 :   // object literal properties</span>
+<span class="lineNum">     331 </span><span class="lineCov">          9 :   eval(&quot;var x = { &quot; + word + &quot; : 42 };&quot;);</span>
+<span class="lineNum">     332 </span><span class="lineCov">          9 :   eval(&quot;var x = { get &quot; + word + &quot; () {} };&quot;);</span>
+<span class="lineNum">     333 </span><span class="lineCov">          9 :   eval(&quot;var x = { set &quot; + word + &quot; (value) {} };&quot;);</span>
+<span class="lineNum">     334 </span><span class="lineCov">          9 :   eval(&quot;var x = { get &quot; + word + &quot; () { 'use strict'; } };&quot;);</span>
+<span class="lineNum">     335 </span><span class="lineCov">          9 :   eval(&quot;var x = { set &quot; + word + &quot; (value) { 'use strict'; } };&quot;);</span>
+<span class="lineNum">     336 </span><span class="lineCov">          9 : </span>
+<span class="lineNum">     337 </span><span class="lineCov">          9 :   // object literal with string literal property names</span>
+<span class="lineNum">     338 </span><span class="lineCov">          9 :   eval(&quot;var x = { '&quot; + word + &quot;' : 42 };&quot;);</span>
+<span class="lineNum">     339 </span><span class="lineCov">          9 :   eval(&quot;var x = { get '&quot; + word + &quot;' () { } };&quot;);</span>
+<span class="lineNum">     340 </span><span class="lineCov">          9 :   eval(&quot;var x = { set '&quot; + word + &quot;' (value) { } };&quot;);</span>
+<span class="lineNum">     341 </span><span class="lineCov">          9 :   eval(&quot;var x = { get '&quot; + word + &quot;' () { 'use strict'; } };&quot;);</span>
+<span class="lineNum">     342 </span><span class="lineCov">          9 :   eval(&quot;var x = { set '&quot; + word + &quot;' (value) { 'use strict'; } };&quot;);</span>
+<span class="lineNum">     343 </span><span class="lineCov">          9 : </span>
+<span class="lineNum">     344 </span><span class="lineCov">          9 :   // Function names and arguments, strict and non-strict contexts</span>
+<span class="lineNum">     345 </span><span class="lineCov">          9 :   CheckStrictMode(&quot;function &quot; + word + &quot; () {}&quot;, SyntaxError);</span>
+<span class="lineNum">     346 </span><span class="lineCov">          9 :   CheckStrictMode(&quot;function foo (&quot; + word + &quot;) {}&quot;, SyntaxError);</span>
+<span class="lineNum">     347 </span><span class="lineCov">          9 :   CheckStrictMode(&quot;function foo (&quot; + word + &quot;, &quot; + word + &quot;) {}&quot;, SyntaxError);</span>
+<span class="lineNum">     348 </span><span class="lineCov">          9 :   CheckStrictMode(&quot;function foo (a, &quot; + word + &quot;) {}&quot;, SyntaxError);</span>
+<span class="lineNum">     349 </span><span class="lineCov">          9 :   CheckStrictMode(&quot;function foo (&quot; + word + &quot;, a) {}&quot;, SyntaxError);</span>
+<span class="lineNum">     350 </span><span class="lineCov">          9 :   CheckStrictMode(&quot;function foo (a, &quot; + word + &quot;, b) {}&quot;, SyntaxError);</span>
+<span class="lineNum">     351 </span><span class="lineCov">          9 :   CheckStrictMode(&quot;var foo = function (&quot; + word + &quot;) {}&quot;, SyntaxError);</span>
+<span class="lineNum">     352 </span><span class="lineCov">          9 : </span>
+<span class="lineNum">     353 </span><span class="lineCov">          9 :   // Function names and arguments when the body is strict</span>
+<span class="lineNum">     354 </span><span class="lineCov">          9 :   assertThrows(&quot;function &quot; + word + &quot; () { 'use strict'; }&quot;, SyntaxError);</span>
+<span class="lineNum">     355 </span><span class="lineCov">          9 :   assertThrows(&quot;function foo (&quot; + word + &quot;, &quot; + word + &quot;) { 'use strict'; }&quot;,</span>
+<span class="lineNum">     356 </span><span class="lineCov">          9 :                SyntaxError);</span>
+<span class="lineNum">     357 </span><span class="lineCov">          9 :   assertThrows(&quot;function foo (a, &quot; + word + &quot;) { 'use strict'; }&quot;, SyntaxError);</span>
+<span class="lineNum">     358 </span><span class="lineCov">          9 :   assertThrows(&quot;function foo (&quot; + word + &quot;, a) { 'use strict'; }&quot;, SyntaxError);</span>
+<span class="lineNum">     359 </span><span class="lineCov">          9 :   assertThrows(&quot;function foo (a, &quot; + word + &quot;, b) { 'use strict'; }&quot;,</span>
+<span class="lineNum">     360 </span><span class="lineCov">          9 :                SyntaxError);</span>
+<span class="lineNum">     361 </span><span class="lineCov">          9 :   assertThrows(&quot;var foo = function (&quot; + word + &quot;) { 'use strict'; }&quot;,</span>
+<span class="lineNum">     362 </span><span class="lineCov">          9 :                SyntaxError);</span>
+<span class="lineNum">     363 </span><span class="lineCov">          9 : </span>
+<span class="lineNum">     364 </span><span class="lineCov">          9 :   // setter parameter when the body is strict</span>
+<span class="lineNum">     365 </span><span class="lineCov">          9 :   CheckStrictMode(&quot;var x = { set foo(&quot; + word + &quot;) {} };&quot;, SyntaxError);</span>
+<span class="lineNum">     366 </span><span class="lineCov">          9 :   assertThrows(&quot;var x = { set foo(&quot; + word + &quot;) { 'use strict'; } };&quot;,</span>
+<span class="lineNum">     367 </span><span class="lineCov">          9 :                SyntaxError);</span>
+<span class="lineNum">     368 </span><span class="lineCov">          9 : }</span>
+<span class="lineNum">     369 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     370 </span><span class="lineCov">          1 : for (var i = 0; i &lt; future_strict_reserved_words.length; i++) {</span>
+<span class="lineNum">     371 </span><span class="lineCov">          1 :   testFutureStrictReservedWord(future_strict_reserved_words[i]);</span>
+<a name="372"><span class="lineNum">     372 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">     373 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     374 </span><span class="lineCov">         98 : function testAssignToUndefined(test, should_throw) {</span>
+<span class="lineNum">     375 </span><span class="lineCov">         98 :   try {</span>
+<span class="lineNum">     376 </span><span class="lineCov">         98 :     test();</span>
+<span class="lineNum">     377 </span><span class="lineCov">         98 :   } catch (e) {</span>
+<span class="lineNum">     378 </span><span class="lineCov">         98 :     assertTrue(should_throw, &quot;strict mode&quot;);</span>
+<span class="lineNum">     379 </span><span class="lineCov">         98 :     assertInstanceof(e, ReferenceError, &quot;strict mode&quot;);</span>
+<span class="lineNum">     380 </span><span class="lineCov">         98 :     return;</span>
+<span class="lineNum">     381 </span><span class="lineCov">         98 :   }</span>
+<span class="lineNum">     382 </span><span class="lineCov">         98 :   assertFalse(should_throw, &quot;strict mode&quot;);</span>
+<a name="383"><span class="lineNum">     383 </span><span class="lineCov">         98 : }</span></a>
+<span class="lineNum">     384 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     385 </span><span class="lineCov">          8 : function repeat(n, f) {</span>
+<span class="lineNum">     386 </span><span class="lineCov">          8 :   for (var i = 0; i &lt; n; i ++) { f(); }</span>
+<a name="387"><span class="lineNum">     387 </span><span class="lineCov">          8 : }</span></a>
+<span class="lineNum">     388 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     389 </span><span class="lineCov">         49 : function assignToUndefined() {</span>
+<span class="lineNum">     390 </span><span class="lineCov">         49 :   &quot;use strict&quot;;</span>
+<span class="lineNum">     391 </span><span class="lineCov">         49 :   possibly_undefined_variable_for_strict_mode_test = &quot;should throw?&quot;;</span>
+<span class="lineNum">     392 </span><span class="lineCov">         49 : }</span>
+<span class="lineNum">     393 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     394 </span><span class="lineCov">          1 : testAssignToUndefined(assignToUndefined, true);</span>
+<span class="lineNum">     395 </span><span class="lineCov">          1 : testAssignToUndefined(assignToUndefined, true);</span>
+<span class="lineNum">     396 </span><span class="lineCov">          1 : testAssignToUndefined(assignToUndefined, true);</span>
+<span class="lineNum">     397 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     398 </span><span class="lineCov">          1 : possibly_undefined_variable_for_strict_mode_test = &quot;value&quot;;</span>
+<span class="lineNum">     399 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     400 </span><span class="lineCov">          1 : testAssignToUndefined(assignToUndefined, false);</span>
+<span class="lineNum">     401 </span><span class="lineCov">          1 : testAssignToUndefined(assignToUndefined, false);</span>
+<span class="lineNum">     402 </span><span class="lineCov">          1 : testAssignToUndefined(assignToUndefined, false);</span>
+<span class="lineNum">     403 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     404 </span><span class="lineCov">          1 : delete possibly_undefined_variable_for_strict_mode_test;</span>
+<span class="lineNum">     405 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     406 </span><span class="lineCov">          1 : testAssignToUndefined(assignToUndefined, true);</span>
+<span class="lineNum">     407 </span><span class="lineCov">          1 : testAssignToUndefined(assignToUndefined, true);</span>
+<a name="408"><span class="lineNum">     408 </span><span class="lineCov">          1 : testAssignToUndefined(assignToUndefined, true);</span></a>
+<span class="lineNum">     409 </span><span class="lineCov">          1 : </span>
+<a name="410"><span class="lineNum">     410 </span><span class="lineCov">         10 : repeat(10, function() { testAssignToUndefined(assignToUndefined, true); });</span></a>
+<span class="lineNum">     411 </span><span class="lineCov">          1 : possibly_undefined_variable_for_strict_mode_test = &quot;value&quot;;</span>
+<a name="412"><span class="lineNum">     412 </span><span class="lineCov">         10 : repeat(10, function() { testAssignToUndefined(assignToUndefined, false); });</span></a>
+<span class="lineNum">     413 </span><span class="lineCov">          1 : delete possibly_undefined_variable_for_strict_mode_test;</span>
+<a name="414"><span class="lineNum">     414 </span><span class="lineCov">         10 : repeat(10, function() { testAssignToUndefined(assignToUndefined, true); });</span></a>
+<span class="lineNum">     415 </span><span class="lineCov">          1 : possibly_undefined_variable_for_strict_mode_test = undefined;</span>
+<a name="416"><span class="lineNum">     416 </span><span class="lineCov">         10 : repeat(10, function() { testAssignToUndefined(assignToUndefined, false); });</span></a>
+<span class="lineNum">     417 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     418 </span><span class="lineCov">         49 : function assignToUndefinedWithEval() {</span>
+<span class="lineNum">     419 </span><span class="lineCov">         49 :   &quot;use strict&quot;;</span>
+<span class="lineNum">     420 </span><span class="lineCov">         49 :   possibly_undefined_variable_for_strict_mode_test_with_eval = &quot;should throw?&quot;;</span>
+<span class="lineNum">     421 </span><span class="lineCov">         49 :   eval(&quot;&quot;);</span>
+<span class="lineNum">     422 </span><span class="lineCov">         49 : }</span>
+<span class="lineNum">     423 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     424 </span><span class="lineCov">          1 : testAssignToUndefined(assignToUndefinedWithEval, true);</span>
+<span class="lineNum">     425 </span><span class="lineCov">          1 : testAssignToUndefined(assignToUndefinedWithEval, true);</span>
+<span class="lineNum">     426 </span><span class="lineCov">          1 : testAssignToUndefined(assignToUndefinedWithEval, true);</span>
+<span class="lineNum">     427 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     428 </span><span class="lineCov">          1 : possibly_undefined_variable_for_strict_mode_test_with_eval = &quot;value&quot;;</span>
+<span class="lineNum">     429 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     430 </span><span class="lineCov">          1 : testAssignToUndefined(assignToUndefinedWithEval, false);</span>
+<span class="lineNum">     431 </span><span class="lineCov">          1 : testAssignToUndefined(assignToUndefinedWithEval, false);</span>
+<span class="lineNum">     432 </span><span class="lineCov">          1 : testAssignToUndefined(assignToUndefinedWithEval, false);</span>
+<span class="lineNum">     433 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     434 </span><span class="lineCov">          1 : delete possibly_undefined_variable_for_strict_mode_test_with_eval;</span>
+<span class="lineNum">     435 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     436 </span><span class="lineCov">          1 : testAssignToUndefined(assignToUndefinedWithEval, true);</span>
+<span class="lineNum">     437 </span><span class="lineCov">          1 : testAssignToUndefined(assignToUndefinedWithEval, true);</span>
+<a name="438"><span class="lineNum">     438 </span><span class="lineCov">          1 : testAssignToUndefined(assignToUndefinedWithEval, true);</span></a>
+<span class="lineNum">     439 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     440 </span><span class="lineCov">         10 : repeat(10, function() {</span>
+<span class="lineNum">     441 </span><span class="lineCov">         10 :              testAssignToUndefined(assignToUndefinedWithEval, true);</span>
+<a name="442"><span class="lineNum">     442 </span><span class="lineCov">         10 :            });</span></a>
+<span class="lineNum">     443 </span><span class="lineCov">          1 : possibly_undefined_variable_for_strict_mode_test_with_eval = &quot;value&quot;;</span>
+<span class="lineNum">     444 </span><span class="lineCov">         10 : repeat(10, function() {</span>
+<span class="lineNum">     445 </span><span class="lineCov">         10 :              testAssignToUndefined(assignToUndefinedWithEval, false);</span>
+<a name="446"><span class="lineNum">     446 </span><span class="lineCov">         10 :            });</span></a>
+<span class="lineNum">     447 </span><span class="lineCov">          1 : delete possibly_undefined_variable_for_strict_mode_test_with_eval;</span>
+<span class="lineNum">     448 </span><span class="lineCov">         10 : repeat(10, function() {</span>
+<span class="lineNum">     449 </span><span class="lineCov">         10 :              testAssignToUndefined(assignToUndefinedWithEval, true);</span>
+<a name="450"><span class="lineNum">     450 </span><span class="lineCov">         10 :            });</span></a>
+<span class="lineNum">     451 </span><span class="lineCov">          1 : possibly_undefined_variable_for_strict_mode_test_with_eval = undefined;</span>
+<span class="lineNum">     452 </span><span class="lineCov">         10 : repeat(10, function() {</span>
+<span class="lineNum">     453 </span><span class="lineCov">         10 :              testAssignToUndefined(assignToUndefinedWithEval, false);</span>
+<span class="lineNum">     454 </span><span class="lineCov">         10 :            });</span>
+<span class="lineNum">     455 </span><span class="lineCov">          1 : </span>
+<a name="456"><span class="lineNum">     456 </span><span class="lineCov">          1 : </span></a>
+<a name="457"><span class="lineNum">     457 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     458 </span><span class="lineCov">          1 : (function testDeleteNonConfigurable() {</span>
+<span class="lineNum">     459 </span><span class="lineCov">          1 :   function delete_property(o) {</span>
+<span class="lineNum">     460 </span><span class="lineCov">          1 :     &quot;use strict&quot;;</span>
+<a name="461"><span class="lineNum">     461 </span><span class="lineCov">          1 :     delete o.property;</span></a>
+<span class="lineNum">     462 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     463 </span><span class="lineCov">          6 :   function delete_element(o, i) {</span>
+<span class="lineNum">     464 </span><span class="lineCov">          6 :     &quot;use strict&quot;;</span>
+<span class="lineNum">     465 </span><span class="lineCov">          6 :     delete o[i];</span>
+<span class="lineNum">     466 </span><span class="lineCov">          6 :   }</span>
+<span class="lineNum">     467 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     468 </span><span class="lineCov">          1 :   var object = {};</span>
+<span class="lineNum">     469 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     470 </span><span class="lineCov">          1 :   Object.defineProperty(object, &quot;property&quot;, { value: &quot;property_value&quot; });</span>
+<span class="lineNum">     471 </span><span class="lineCov">          1 :   Object.defineProperty(object, &quot;1&quot;, { value: &quot;one&quot; });</span>
+<span class="lineNum">     472 </span><span class="lineCov">          1 :   Object.defineProperty(object, 7, { value: &quot;seven&quot; });</span>
+<a name="473"><span class="lineNum">     473 </span><span class="lineCov">          1 :   Object.defineProperty(object, 3.14, { value: &quot;pi&quot; });</span></a>
+<span class="lineNum">     474 </span><span class="lineCov">          1 : </span>
+<a name="475"><span class="lineNum">     475 </span><span class="lineCov">          1 :   assertThrows(function() { delete_property(object); }, TypeError);</span></a>
+<a name="476"><span class="lineNum">     476 </span><span class="lineCov">          1 :   assertEquals(object.property, &quot;property_value&quot;);</span></a>
+<span class="lineNum">     477 </span><span class="lineCov">          1 :   assertThrows(function() { delete_element(object, &quot;1&quot;); }, TypeError);</span>
+<a name="478"><span class="lineNum">     478 </span><span class="lineCov">          1 :   assertThrows(function() { delete_element(object, 1); }, TypeError);</span></a>
+<a name="479"><span class="lineNum">     479 </span><span class="lineCov">          1 :   assertEquals(object[1], &quot;one&quot;);</span></a>
+<span class="lineNum">     480 </span><span class="lineCov">          1 :   assertThrows(function() { delete_element(object, &quot;7&quot;); }, TypeError);</span>
+<a name="481"><span class="lineNum">     481 </span><span class="lineCov">          1 :   assertThrows(function() { delete_element(object, 7); }, TypeError);</span></a>
+<a name="482"><span class="lineNum">     482 </span><span class="lineCov">          1 :   assertEquals(object[7], &quot;seven&quot;);</span></a>
+<span class="lineNum">     483 </span><span class="lineCov">          1 :   assertThrows(function() { delete_element(object, &quot;3.14&quot;); }, TypeError);</span>
+<span class="lineNum">     484 </span><span class="lineCov">          1 :   assertThrows(function() { delete_element(object, 3.14); }, TypeError);</span>
+<span class="lineNum">     485 </span><span class="lineCov">          1 :   assertEquals(object[3.14], &quot;pi&quot;);</span>
+<span class="lineNum">     486 </span><span class="lineCov">          1 : })();</span>
+<a name="487"><span class="lineNum">     487 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     488 </span><span class="lineCov">          1 : // Not transforming this in Function.call and Function.apply.</span>
+<span class="lineNum">     489 </span><span class="lineCov">          1 : (function testThisTransformCallApply() {</span>
+<span class="lineNum">     490 </span><span class="lineCov">         10 :   function non_strict() {</span>
+<span class="lineNum">     491 </span><span class="lineCov">         10 :     return this;</span>
+<span class="lineNum">     492 </span><span class="lineCov">         10 :   }</span>
+<span class="lineNum">     493 </span><span class="lineCov">         10 :   function strict() {</span>
+<span class="lineNum">     494 </span><span class="lineCov">         10 :     &quot;use strict&quot;;</span>
+<span class="lineNum">     495 </span><span class="lineCov">         10 :     return this;</span>
+<a name="496"><span class="lineNum">     496 </span><span class="lineCov">         10 :   }</span></a>
+<span class="lineNum">     497 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     498 </span><span class="lineCov">          1 :   var global_object = (function() { return this; })();</span>
+<span class="lineNum">     499 </span><span class="lineCov">          1 :   var object = {};</span>
+<span class="lineNum">     500 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     501 </span><span class="lineCov">          1 :   // Non-strict call.</span>
+<span class="lineNum">     502 </span><span class="lineCov">          1 :   assertTrue(non_strict.call(null) === global_object);</span>
+<span class="lineNum">     503 </span><span class="lineCov">          1 :   assertTrue(non_strict.call(undefined) === global_object);</span>
+<span class="lineNum">     504 </span><span class="lineCov">          1 :   assertEquals(typeof non_strict.call(7), &quot;object&quot;);</span>
+<span class="lineNum">     505 </span><span class="lineCov">          1 :   assertEquals(typeof non_strict.call(&quot;Hello&quot;), &quot;object&quot;);</span>
+<span class="lineNum">     506 </span><span class="lineCov">          1 :   assertTrue(non_strict.call(object) === object);</span>
+<span class="lineNum">     507 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     508 </span><span class="lineCov">          1 :   // Non-strict apply.</span>
+<span class="lineNum">     509 </span><span class="lineCov">          1 :   assertTrue(non_strict.apply(null) === global_object);</span>
+<span class="lineNum">     510 </span><span class="lineCov">          1 :   assertTrue(non_strict.apply(undefined) === global_object);</span>
+<span class="lineNum">     511 </span><span class="lineCov">          1 :   assertEquals(typeof non_strict.apply(7), &quot;object&quot;);</span>
+<span class="lineNum">     512 </span><span class="lineCov">          1 :   assertEquals(typeof non_strict.apply(&quot;Hello&quot;), &quot;object&quot;);</span>
+<span class="lineNum">     513 </span><span class="lineCov">          1 :   assertTrue(non_strict.apply(object) === object);</span>
+<span class="lineNum">     514 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     515 </span><span class="lineCov">          1 :   // Strict call.</span>
+<span class="lineNum">     516 </span><span class="lineCov">          1 :   assertTrue(strict.call(null) === null);</span>
+<span class="lineNum">     517 </span><span class="lineCov">          1 :   assertTrue(strict.call(undefined) === undefined);</span>
+<span class="lineNum">     518 </span><span class="lineCov">          1 :   assertEquals(typeof strict.call(7), &quot;number&quot;);</span>
+<span class="lineNum">     519 </span><span class="lineCov">          1 :   assertEquals(typeof strict.call(&quot;Hello&quot;), &quot;string&quot;);</span>
+<span class="lineNum">     520 </span><span class="lineCov">          1 :   assertTrue(strict.call(object) === object);</span>
+<span class="lineNum">     521 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     522 </span><span class="lineCov">          1 :   // Strict apply.</span>
+<span class="lineNum">     523 </span><span class="lineCov">          1 :   assertTrue(strict.apply(null) === null);</span>
+<span class="lineNum">     524 </span><span class="lineCov">          1 :   assertTrue(strict.apply(undefined) === undefined);</span>
+<span class="lineNum">     525 </span><span class="lineCov">          1 :   assertEquals(typeof strict.apply(7), &quot;number&quot;);</span>
+<span class="lineNum">     526 </span><span class="lineCov">          1 :   assertEquals(typeof strict.apply(&quot;Hello&quot;), &quot;string&quot;);</span>
+<span class="lineNum">     527 </span><span class="lineCov">          1 :   assertTrue(strict.apply(object) === object);</span>
+<a name="528"><span class="lineNum">     528 </span><span class="lineCov">          1 : })();</span></a>
+<span class="lineNum">     529 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     530 </span><span class="lineCov">          1 : (function testThisTransform() {</span>
+<span class="lineNum">     531 </span><span class="lineCov">          1 :   try {</span>
+<span class="lineNum">     532 </span><span class="lineCov">        480 :     function strict() {</span>
+<span class="lineNum">     533 </span><span class="lineCov">        480 :       &quot;use strict&quot;;</span>
+<span class="lineNum">     534 </span><span class="lineCov">        480 :       return typeof(this);</span>
+<span class="lineNum">     535 </span><span class="lineCov">        480 :     }</span>
+<span class="lineNum">     536 </span><span class="lineCov">        480 :     function nonstrict() {</span>
+<span class="lineNum">     537 </span><span class="lineCov">        480 :       return typeof(this);</span>
+<span class="lineNum">     538 </span><span class="lineCov">        480 :     }</span>
+<span class="lineNum">     539 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     540 </span><span class="lineCov">          1 :     // Concat to avoid symbol.</span>
+<span class="lineNum">     541 </span><span class="lineCov">          1 :     var strict_name = &quot;str&quot; + &quot;ict&quot;;</span>
+<span class="lineNum">     542 </span><span class="lineCov">          1 :     var nonstrict_name = &quot;non&quot; + &quot;str&quot; + &quot;ict&quot;;</span>
+<span class="lineNum">     543 </span><span class="lineCov">          1 :     var strict_number = 17;</span>
+<span class="lineNum">     544 </span><span class="lineCov">          1 :     var nonstrict_number = 19;</span>
+<span class="lineNum">     545 </span><span class="lineCov">          1 :     var strict_name_get = &quot;str&quot; + &quot;ict&quot; + &quot;get&quot;;</span>
+<span class="lineNum">     546 </span><span class="lineCov">          1 :     var nonstrict_name_get = &quot;non&quot; + &quot;str&quot; + &quot;ict&quot; + &quot;get&quot;</span>
+<span class="lineNum">     547 </span><span class="lineCov">          1 :     var strict_number_get = 23;</span>
+<a name="548"><span class="lineNum">     548 </span><span class="lineCov">          1 :     var nonstrict_number_get = 29;</span></a>
+<span class="lineNum">     549 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     550 </span><span class="lineCov">          3 :     function install(t) {</span>
+<span class="lineNum">     551 </span><span class="lineCov">          3 :       t.prototype.strict = strict;</span>
+<span class="lineNum">     552 </span><span class="lineCov">          3 :       t.prototype.nonstrict = nonstrict;</span>
+<span class="lineNum">     553 </span><span class="lineCov">          3 :       t.prototype[strict_number] = strict;</span>
+<span class="lineNum">     554 </span><span class="lineCov">          3 :       t.prototype[nonstrict_number] = nonstrict;</span>
+<span class="lineNum">     555 </span><span class="lineCov">          3 :       Object.defineProperty(t.prototype, strict_name_get,</span>
+<span class="lineNum">     556 </span><span class="lineCov">        160 :                             { get: function() { return strict; },</span>
+<span class="lineNum">     557 </span><span class="lineCov">          3 :                               configurable: true });</span>
+<span class="lineNum">     558 </span><span class="lineCov">          3 :       Object.defineProperty(t.prototype, nonstrict_name_get,</span>
+<span class="lineNum">     559 </span><span class="lineCov">        160 :                             { get: function() { return nonstrict; },</span>
+<span class="lineNum">     560 </span><span class="lineCov">          3 :                               configurable: true });</span>
+<span class="lineNum">     561 </span><span class="lineCov">          3 :       Object.defineProperty(t.prototype, strict_number_get,</span>
+<span class="lineNum">     562 </span><span class="lineCov">         80 :                             { get: function() { return strict; },</span>
+<span class="lineNum">     563 </span><span class="lineCov">          3 :                               configurable: true });</span>
+<span class="lineNum">     564 </span><span class="lineCov">          3 :       Object.defineProperty(t.prototype, nonstrict_number_get,</span>
+<span class="lineNum">     565 </span><span class="lineCov">         80 :                             { get: function() { return nonstrict; },</span>
+<span class="lineNum">     566 </span><span class="lineCov">          3 :                               configurable: true });</span>
+<a name="567"><span class="lineNum">     567 </span><span class="lineCov">          3 :     }</span></a>
+<span class="lineNum">     568 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     569 </span><span class="lineCov">          3 :     function cleanup(t) {</span>
+<span class="lineNum">     570 </span><span class="lineCov">          3 :       delete t.prototype.strict;</span>
+<span class="lineNum">     571 </span><span class="lineCov">          3 :       delete t.prototype.nonstrict;</span>
+<span class="lineNum">     572 </span><span class="lineCov">          3 :       delete t.prototype[strict_number];</span>
+<span class="lineNum">     573 </span><span class="lineCov">          3 :       delete t.prototype[nonstrict_number];</span>
+<span class="lineNum">     574 </span><span class="lineCov">          3 :       delete t.prototype[strict_name_get];</span>
+<span class="lineNum">     575 </span><span class="lineCov">          3 :       delete t.prototype[nonstrict_name_get];</span>
+<span class="lineNum">     576 </span><span class="lineCov">          3 :       delete t.prototype[strict_number_get];</span>
+<span class="lineNum">     577 </span><span class="lineCov">          3 :       delete t.prototype[nonstrict_number_get];</span>
+<span class="lineNum">     578 </span><span class="lineCov">          3 :     }</span>
+<span class="lineNum">     579 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     580 </span><span class="lineCov">          1 :     // Set up fakes</span>
+<span class="lineNum">     581 </span><span class="lineCov">          1 :     install(String);</span>
+<span class="lineNum">     582 </span><span class="lineCov">          1 :     install(Number);</span>
+<a name="583"><span class="lineNum">     583 </span><span class="lineCov">          1 :     install(Boolean)</span></a>
+<span class="lineNum">     584 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     585 </span><span class="lineCov">         40 :     function callStrict(o) {</span>
+<a name="586"><span class="lineNum">     586 </span><span class="lineCov">         40 :       return o.strict();</span></a>
+<span class="lineNum">     587 </span><span class="lineCov">         40 :     }</span>
+<span class="lineNum">     588 </span><span class="lineCov">         40 :     function callNonStrict(o) {</span>
+<a name="589"><span class="lineNum">     589 </span><span class="lineCov">         40 :       return o.nonstrict();</span></a>
+<span class="lineNum">     590 </span><span class="lineCov">         40 :     }</span>
+<span class="lineNum">     591 </span><span class="lineCov">         40 :     function callKeyedStrict(o) {</span>
+<a name="592"><span class="lineNum">     592 </span><span class="lineCov">         40 :       return o[strict_name]();</span></a>
+<span class="lineNum">     593 </span><span class="lineCov">         40 :     }</span>
+<span class="lineNum">     594 </span><span class="lineCov">         40 :     function callKeyedNonStrict(o) {</span>
+<a name="595"><span class="lineNum">     595 </span><span class="lineCov">         40 :       return o[nonstrict_name]();</span></a>
+<span class="lineNum">     596 </span><span class="lineCov">         40 :     }</span>
+<span class="lineNum">     597 </span><span class="lineCov">         40 :     function callIndexedStrict(o) {</span>
+<a name="598"><span class="lineNum">     598 </span><span class="lineCov">         40 :       return o[strict_number]();</span></a>
+<span class="lineNum">     599 </span><span class="lineCov">         40 :     }</span>
+<span class="lineNum">     600 </span><span class="lineCov">         40 :     function callIndexedNonStrict(o) {</span>
+<a name="601"><span class="lineNum">     601 </span><span class="lineCov">         40 :       return o[nonstrict_number]();</span></a>
+<span class="lineNum">     602 </span><span class="lineCov">         40 :     }</span>
+<span class="lineNum">     603 </span><span class="lineCov">         40 :     function callStrictGet(o) {</span>
+<a name="604"><span class="lineNum">     604 </span><span class="lineCov">         40 :       return o.strictget();</span></a>
+<span class="lineNum">     605 </span><span class="lineCov">         40 :     }</span>
+<span class="lineNum">     606 </span><span class="lineCov">         40 :     function callNonStrictGet(o) {</span>
+<a name="607"><span class="lineNum">     607 </span><span class="lineCov">         40 :       return o.nonstrictget();</span></a>
+<span class="lineNum">     608 </span><span class="lineCov">         40 :     }</span>
+<span class="lineNum">     609 </span><span class="lineCov">         40 :     function callKeyedStrictGet(o) {</span>
+<a name="610"><span class="lineNum">     610 </span><span class="lineCov">         40 :       return o[strict_name_get]();</span></a>
+<span class="lineNum">     611 </span><span class="lineCov">         40 :     }</span>
+<span class="lineNum">     612 </span><span class="lineCov">         40 :     function callKeyedNonStrictGet(o) {</span>
+<a name="613"><span class="lineNum">     613 </span><span class="lineCov">         40 :       return o[nonstrict_name_get]();</span></a>
+<span class="lineNum">     614 </span><span class="lineCov">         40 :     }</span>
+<span class="lineNum">     615 </span><span class="lineCov">         40 :     function callIndexedStrictGet(o) {</span>
+<a name="616"><span class="lineNum">     616 </span><span class="lineCov">         40 :       return o[strict_number_get]();</span></a>
+<span class="lineNum">     617 </span><span class="lineCov">         40 :     }</span>
+<span class="lineNum">     618 </span><span class="lineCov">         40 :     function callIndexedNonStrictGet(o) {</span>
+<span class="lineNum">     619 </span><span class="lineCov">         40 :       return o[nonstrict_number_get]();</span>
+<span class="lineNum">     620 </span><span class="lineCov">         40 :     }</span>
+<span class="lineNum">     621 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     622 </span><span class="lineCov">          1 :     for (var i = 0; i &lt; 10; i ++) {</span>
+<span class="lineNum">     623 </span><span class="lineCov">          1 :       assertEquals((&quot;hello&quot;).strict(), &quot;string&quot;);</span>
+<span class="lineNum">     624 </span><span class="lineCov">          1 :       assertEquals((&quot;hello&quot;).nonstrict(), &quot;object&quot;);</span>
+<span class="lineNum">     625 </span><span class="lineCov">          1 :       assertEquals((&quot;hello&quot;)[strict_name](), &quot;string&quot;);</span>
+<span class="lineNum">     626 </span><span class="lineCov">          1 :       assertEquals((&quot;hello&quot;)[nonstrict_name](), &quot;object&quot;);</span>
+<span class="lineNum">     627 </span><span class="lineCov">          1 :       assertEquals((&quot;hello&quot;)[strict_number](), &quot;string&quot;);</span>
+<span class="lineNum">     628 </span><span class="lineCov">          1 :       assertEquals((&quot;hello&quot;)[nonstrict_number](), &quot;object&quot;);</span>
+<span class="lineNum">     629 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     630 </span><span class="lineCov">          1 :       assertEquals((10 + i).strict(), &quot;number&quot;);</span>
+<span class="lineNum">     631 </span><span class="lineCov">          1 :       assertEquals((10 + i).nonstrict(), &quot;object&quot;);</span>
+<span class="lineNum">     632 </span><span class="lineCov">          1 :       assertEquals((10 + i)[strict_name](), &quot;number&quot;);</span>
+<span class="lineNum">     633 </span><span class="lineCov">          1 :       assertEquals((10 + i)[nonstrict_name](), &quot;object&quot;);</span>
+<span class="lineNum">     634 </span><span class="lineCov">          1 :       assertEquals((10 + i)[strict_number](), &quot;number&quot;);</span>
+<span class="lineNum">     635 </span><span class="lineCov">          1 :       assertEquals((10 + i)[nonstrict_number](), &quot;object&quot;);</span>
+<span class="lineNum">     636 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     637 </span><span class="lineCov">          1 :       assertEquals((true).strict(), &quot;boolean&quot;);</span>
+<span class="lineNum">     638 </span><span class="lineCov">          1 :       assertEquals((true).nonstrict(), &quot;object&quot;);</span>
+<span class="lineNum">     639 </span><span class="lineCov">          1 :       assertEquals((true)[strict_name](), &quot;boolean&quot;);</span>
+<span class="lineNum">     640 </span><span class="lineCov">          1 :       assertEquals((true)[nonstrict_name](), &quot;object&quot;);</span>
+<span class="lineNum">     641 </span><span class="lineCov">          1 :       assertEquals((true)[strict_number](), &quot;boolean&quot;);</span>
+<span class="lineNum">     642 </span><span class="lineCov">          1 :       assertEquals((true)[nonstrict_number](), &quot;object&quot;);</span>
+<span class="lineNum">     643 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     644 </span><span class="lineCov">          1 :       assertEquals((false).strict(), &quot;boolean&quot;);</span>
+<span class="lineNum">     645 </span><span class="lineCov">          1 :       assertEquals((false).nonstrict(), &quot;object&quot;);</span>
+<span class="lineNum">     646 </span><span class="lineCov">          1 :       assertEquals((false)[strict_name](), &quot;boolean&quot;);</span>
+<span class="lineNum">     647 </span><span class="lineCov">          1 :       assertEquals((false)[nonstrict_name](), &quot;object&quot;);</span>
+<span class="lineNum">     648 </span><span class="lineCov">          1 :       assertEquals((false)[strict_number](), &quot;boolean&quot;);</span>
+<span class="lineNum">     649 </span><span class="lineCov">          1 :       assertEquals((false)[nonstrict_number](), &quot;object&quot;);</span>
+<span class="lineNum">     650 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     651 </span><span class="lineCov">          1 :       assertEquals(callStrict(&quot;howdy&quot;), &quot;string&quot;);</span>
+<span class="lineNum">     652 </span><span class="lineCov">          1 :       assertEquals(callNonStrict(&quot;howdy&quot;), &quot;object&quot;);</span>
+<span class="lineNum">     653 </span><span class="lineCov">          1 :       assertEquals(callKeyedStrict(&quot;howdy&quot;), &quot;string&quot;);</span>
+<span class="lineNum">     654 </span><span class="lineCov">          1 :       assertEquals(callKeyedNonStrict(&quot;howdy&quot;), &quot;object&quot;);</span>
+<span class="lineNum">     655 </span><span class="lineCov">          1 :       assertEquals(callIndexedStrict(&quot;howdy&quot;), &quot;string&quot;);</span>
+<span class="lineNum">     656 </span><span class="lineCov">          1 :       assertEquals(callIndexedNonStrict(&quot;howdy&quot;), &quot;object&quot;);</span>
+<span class="lineNum">     657 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     658 </span><span class="lineCov">          1 :       assertEquals(callStrict(17 + i), &quot;number&quot;);</span>
+<span class="lineNum">     659 </span><span class="lineCov">          1 :       assertEquals(callNonStrict(17 + i), &quot;object&quot;);</span>
+<span class="lineNum">     660 </span><span class="lineCov">          1 :       assertEquals(callKeyedStrict(17 + i), &quot;number&quot;);</span>
+<span class="lineNum">     661 </span><span class="lineCov">          1 :       assertEquals(callKeyedNonStrict(17 + i), &quot;object&quot;);</span>
+<span class="lineNum">     662 </span><span class="lineCov">          1 :       assertEquals(callIndexedStrict(17 + i), &quot;number&quot;);</span>
+<span class="lineNum">     663 </span><span class="lineCov">          1 :       assertEquals(callIndexedNonStrict(17 + i), &quot;object&quot;);</span>
+<span class="lineNum">     664 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     665 </span><span class="lineCov">          1 :       assertEquals(callStrict(true), &quot;boolean&quot;);</span>
+<span class="lineNum">     666 </span><span class="lineCov">          1 :       assertEquals(callNonStrict(true), &quot;object&quot;);</span>
+<span class="lineNum">     667 </span><span class="lineCov">          1 :       assertEquals(callKeyedStrict(true), &quot;boolean&quot;);</span>
+<span class="lineNum">     668 </span><span class="lineCov">          1 :       assertEquals(callKeyedNonStrict(true), &quot;object&quot;);</span>
+<span class="lineNum">     669 </span><span class="lineCov">          1 :       assertEquals(callIndexedStrict(true), &quot;boolean&quot;);</span>
+<span class="lineNum">     670 </span><span class="lineCov">          1 :       assertEquals(callIndexedNonStrict(true), &quot;object&quot;);</span>
+<span class="lineNum">     671 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     672 </span><span class="lineCov">          1 :       assertEquals(callStrict(false), &quot;boolean&quot;);</span>
+<span class="lineNum">     673 </span><span class="lineCov">          1 :       assertEquals(callNonStrict(false), &quot;object&quot;);</span>
+<span class="lineNum">     674 </span><span class="lineCov">          1 :       assertEquals(callKeyedStrict(false), &quot;boolean&quot;);</span>
+<span class="lineNum">     675 </span><span class="lineCov">          1 :       assertEquals(callKeyedNonStrict(false), &quot;object&quot;);</span>
+<span class="lineNum">     676 </span><span class="lineCov">          1 :       assertEquals(callIndexedStrict(false), &quot;boolean&quot;);</span>
+<span class="lineNum">     677 </span><span class="lineCov">          1 :       assertEquals(callIndexedNonStrict(false), &quot;object&quot;);</span>
+<span class="lineNum">     678 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     679 </span><span class="lineCov">          1 :       // All of the above, with getters</span>
+<span class="lineNum">     680 </span><span class="lineCov">          1 :       assertEquals((&quot;hello&quot;).strictget(), &quot;string&quot;);</span>
+<span class="lineNum">     681 </span><span class="lineCov">          1 :       assertEquals((&quot;hello&quot;).nonstrictget(), &quot;object&quot;);</span>
+<span class="lineNum">     682 </span><span class="lineCov">          1 :       assertEquals((&quot;hello&quot;)[strict_name_get](), &quot;string&quot;);</span>
+<span class="lineNum">     683 </span><span class="lineCov">          1 :       assertEquals((&quot;hello&quot;)[nonstrict_name_get](), &quot;object&quot;);</span>
+<span class="lineNum">     684 </span><span class="lineCov">          1 :       assertEquals((&quot;hello&quot;)[strict_number_get](), &quot;string&quot;);</span>
+<span class="lineNum">     685 </span><span class="lineCov">          1 :       assertEquals((&quot;hello&quot;)[nonstrict_number_get](), &quot;object&quot;);</span>
+<span class="lineNum">     686 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     687 </span><span class="lineCov">          1 :       assertEquals((10 + i).strictget(), &quot;number&quot;);</span>
+<span class="lineNum">     688 </span><span class="lineCov">          1 :       assertEquals((10 + i).nonstrictget(), &quot;object&quot;);</span>
+<span class="lineNum">     689 </span><span class="lineCov">          1 :       assertEquals((10 + i)[strict_name_get](), &quot;number&quot;);</span>
+<span class="lineNum">     690 </span><span class="lineCov">          1 :       assertEquals((10 + i)[nonstrict_name_get](), &quot;object&quot;);</span>
+<span class="lineNum">     691 </span><span class="lineCov">          1 :       assertEquals((10 + i)[strict_number_get](), &quot;number&quot;);</span>
+<span class="lineNum">     692 </span><span class="lineCov">          1 :       assertEquals((10 + i)[nonstrict_number_get](), &quot;object&quot;);</span>
+<span class="lineNum">     693 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     694 </span><span class="lineCov">          1 :       assertEquals((true).strictget(), &quot;boolean&quot;);</span>
+<span class="lineNum">     695 </span><span class="lineCov">          1 :       assertEquals((true).nonstrictget(), &quot;object&quot;);</span>
+<span class="lineNum">     696 </span><span class="lineCov">          1 :       assertEquals((true)[strict_name_get](), &quot;boolean&quot;);</span>
+<span class="lineNum">     697 </span><span class="lineCov">          1 :       assertEquals((true)[nonstrict_name_get](), &quot;object&quot;);</span>
+<span class="lineNum">     698 </span><span class="lineCov">          1 :       assertEquals((true)[strict_number_get](), &quot;boolean&quot;);</span>
+<span class="lineNum">     699 </span><span class="lineCov">          1 :       assertEquals((true)[nonstrict_number_get](), &quot;object&quot;);</span>
+<span class="lineNum">     700 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     701 </span><span class="lineCov">          1 :       assertEquals((false).strictget(), &quot;boolean&quot;);</span>
+<span class="lineNum">     702 </span><span class="lineCov">          1 :       assertEquals((false).nonstrictget(), &quot;object&quot;);</span>
+<span class="lineNum">     703 </span><span class="lineCov">          1 :       assertEquals((false)[strict_name_get](), &quot;boolean&quot;);</span>
+<span class="lineNum">     704 </span><span class="lineCov">          1 :       assertEquals((false)[nonstrict_name_get](), &quot;object&quot;);</span>
+<span class="lineNum">     705 </span><span class="lineCov">          1 :       assertEquals((false)[strict_number_get](), &quot;boolean&quot;);</span>
+<span class="lineNum">     706 </span><span class="lineCov">          1 :       assertEquals((false)[nonstrict_number_get](), &quot;object&quot;);</span>
+<span class="lineNum">     707 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     708 </span><span class="lineCov">          1 :       assertEquals(callStrictGet(&quot;howdy&quot;), &quot;string&quot;);</span>
+<span class="lineNum">     709 </span><span class="lineCov">          1 :       assertEquals(callNonStrictGet(&quot;howdy&quot;), &quot;object&quot;);</span>
+<span class="lineNum">     710 </span><span class="lineCov">          1 :       assertEquals(callKeyedStrictGet(&quot;howdy&quot;), &quot;string&quot;);</span>
+<span class="lineNum">     711 </span><span class="lineCov">          1 :       assertEquals(callKeyedNonStrictGet(&quot;howdy&quot;), &quot;object&quot;);</span>
+<span class="lineNum">     712 </span><span class="lineCov">          1 :       assertEquals(callIndexedStrictGet(&quot;howdy&quot;), &quot;string&quot;);</span>
+<span class="lineNum">     713 </span><span class="lineCov">          1 :       assertEquals(callIndexedNonStrictGet(&quot;howdy&quot;), &quot;object&quot;);</span>
+<span class="lineNum">     714 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     715 </span><span class="lineCov">          1 :       assertEquals(callStrictGet(17 + i), &quot;number&quot;);</span>
+<span class="lineNum">     716 </span><span class="lineCov">          1 :       assertEquals(callNonStrictGet(17 + i), &quot;object&quot;);</span>
+<span class="lineNum">     717 </span><span class="lineCov">          1 :       assertEquals(callKeyedStrictGet(17 + i), &quot;number&quot;);</span>
+<span class="lineNum">     718 </span><span class="lineCov">          1 :       assertEquals(callKeyedNonStrictGet(17 + i), &quot;object&quot;);</span>
+<span class="lineNum">     719 </span><span class="lineCov">          1 :       assertEquals(callIndexedStrictGet(17 + i), &quot;number&quot;);</span>
+<span class="lineNum">     720 </span><span class="lineCov">          1 :       assertEquals(callIndexedNonStrictGet(17 + i), &quot;object&quot;);</span>
+<span class="lineNum">     721 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     722 </span><span class="lineCov">          1 :       assertEquals(callStrictGet(true), &quot;boolean&quot;);</span>
+<span class="lineNum">     723 </span><span class="lineCov">          1 :       assertEquals(callNonStrictGet(true), &quot;object&quot;);</span>
+<span class="lineNum">     724 </span><span class="lineCov">          1 :       assertEquals(callKeyedStrictGet(true), &quot;boolean&quot;);</span>
+<span class="lineNum">     725 </span><span class="lineCov">          1 :       assertEquals(callKeyedNonStrictGet(true), &quot;object&quot;);</span>
+<span class="lineNum">     726 </span><span class="lineCov">          1 :       assertEquals(callIndexedStrictGet(true), &quot;boolean&quot;);</span>
+<span class="lineNum">     727 </span><span class="lineCov">          1 :       assertEquals(callIndexedNonStrictGet(true), &quot;object&quot;);</span>
+<span class="lineNum">     728 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     729 </span><span class="lineCov">          1 :       assertEquals(callStrictGet(false), &quot;boolean&quot;);</span>
+<span class="lineNum">     730 </span><span class="lineCov">          1 :       assertEquals(callNonStrictGet(false), &quot;object&quot;);</span>
+<span class="lineNum">     731 </span><span class="lineCov">          1 :       assertEquals(callKeyedStrictGet(false), &quot;boolean&quot;);</span>
+<span class="lineNum">     732 </span><span class="lineCov">          1 :       assertEquals(callKeyedNonStrictGet(false), &quot;object&quot;);</span>
+<span class="lineNum">     733 </span><span class="lineCov">          1 :       assertEquals(callIndexedStrictGet(false), &quot;boolean&quot;);</span>
+<span class="lineNum">     734 </span><span class="lineCov">          1 :       assertEquals(callIndexedNonStrictGet(false), &quot;object&quot;);</span>
+<span class="lineNum">     735 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     736 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">     737 </span><span class="lineCov">          1 :   } finally {</span>
+<span class="lineNum">     738 </span><span class="lineCov">          1 :     // Cleanup</span>
+<span class="lineNum">     739 </span><span class="lineCov">          1 :     cleanup(String);</span>
+<span class="lineNum">     740 </span><span class="lineCov">          1 :     cleanup(Number);</span>
+<span class="lineNum">     741 </span><span class="lineCov">          1 :     cleanup(Boolean);</span>
+<span class="lineNum">     742 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     743 </span><span class="lineCov">          1 : })();</span>
+<a name="744"><span class="lineNum">     744 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     745 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     746 </span><span class="lineCov">          1 : (function ObjectEnvironment() {</span>
+<span class="lineNum">     747 </span><span class="lineCov">          1 :   var o = {};</span>
+<a name="748"><span class="lineNum">     748 </span><span class="lineCov">          1 :   Object.defineProperty(o, &quot;foo&quot;, { value: &quot;FOO&quot;, writable: false });</span></a>
+<span class="lineNum">     749 </span><span class="lineCov">          1 :   assertThrows(</span>
+<a name="750"><span class="lineNum">     750 </span><span class="lineCov">          1 :     function () {</span></a>
+<span class="lineNum">     751 </span><span class="lineCov">          1 :       with (o) {</span>
+<span class="lineNum">     752 </span><span class="lineCov">          1 :         (function() {</span>
+<span class="lineNum">     753 </span><span class="lineCov">          1 :           &quot;use strict&quot;;</span>
+<span class="lineNum">     754 </span><span class="lineCov">          1 :           foo = &quot;Hello&quot;;</span>
+<span class="lineNum">     755 </span><span class="lineCov">          1 :         })();</span>
+<span class="lineNum">     756 </span><span class="lineCov">          1 :       }</span>
+<span class="lineNum">     757 </span><span class="lineCov">          1 :     },</span>
+<span class="lineNum">     758 </span><span class="lineCov">          1 :     TypeError);</span>
+<span class="lineNum">     759 </span><span class="lineCov">          1 : })();</span>
+<a name="760"><span class="lineNum">     760 </span><span class="lineCov">          1 : </span></a>
+<a name="761"><span class="lineNum">     761 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     762 </span><span class="lineCov">          1 : (function TestSetPropertyWithoutSetter() {</span>
+<a name="763"><span class="lineNum">     763 </span><span class="lineCov">          1 :   var o = { get foo() { return &quot;Yey&quot;; } };</span></a>
+<span class="lineNum">     764 </span><span class="lineCov">          1 :   assertThrows(</span>
+<span class="lineNum">     765 </span><span class="lineCov">          1 :     function broken() {</span>
+<span class="lineNum">     766 </span><span class="lineCov">          1 :       &quot;use strict&quot;;</span>
+<span class="lineNum">     767 </span><span class="lineCov">          1 :       o.foo = (0xBADBAD00 &gt;&gt; 1);</span>
+<span class="lineNum">     768 </span><span class="lineCov">          1 :     },</span>
+<span class="lineNum">     769 </span><span class="lineCov">          1 :     TypeError);</span>
+<span class="lineNum">     770 </span><span class="lineCov">          1 : })();</span>
+<a name="771"><span class="lineNum">     771 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     772 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     773 </span><span class="lineCov">          1 : (function TestSetPropertyNonConfigurable() {</span>
+<span class="lineNum">     774 </span><span class="lineCov">          1 :   var frozen = Object.freeze({});</span>
+<span class="lineNum">     775 </span><span class="lineCov">          1 :   var sealed = Object.seal({});</span>
+<span class="lineNum">     776 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     777 </span><span class="lineCov">          2 :   function strict(o) {</span>
+<span class="lineNum">     778 </span><span class="lineCov">          2 :     &quot;use strict&quot;;</span>
+<span class="lineNum">     779 </span><span class="lineCov">          2 :     o.property = &quot;value&quot;;</span>
+<a name="780"><span class="lineNum">     780 </span><span class="lineCov">          2 :   }</span></a>
+<a name="781"><span class="lineNum">     781 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     782 </span><span class="lineCov">          1 :   assertThrows(function() { strict(frozen); }, TypeError);</span>
+<span class="lineNum">     783 </span><span class="lineCov">          1 :   assertThrows(function() { strict(sealed); }, TypeError);</span>
+<span class="lineNum">     784 </span><span class="lineCov">          1 : })();</span>
+<a name="785"><span class="lineNum">     785 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     786 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     787 </span><span class="lineCov">          1 : (function TestAssignmentToReadOnlyProperty() {</span>
+<span class="lineNum">     788 </span><span class="lineCov">          1 :   &quot;use strict&quot;;</span>
+<span class="lineNum">     789 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     790 </span><span class="lineCov">          1 :   var o = {};</span>
+<a name="791"><span class="lineNum">     791 </span><span class="lineCov">          1 :   Object.defineProperty(o, &quot;property&quot;, { value: 7 });</span></a>
+<a name="792"><span class="lineNum">     792 </span><span class="lineCov">          1 : </span></a>
+<a name="793"><span class="lineNum">     793 </span><span class="lineCov">          1 :   assertThrows(function() { o.property = &quot;new value&quot;; }, TypeError);</span></a>
+<a name="794"><span class="lineNum">     794 </span><span class="lineCov">          1 :   assertThrows(function() { o.property += 10; }, TypeError);</span></a>
+<a name="795"><span class="lineNum">     795 </span><span class="lineCov">          1 :   assertThrows(function() { o.property -= 10; }, TypeError);</span></a>
+<a name="796"><span class="lineNum">     796 </span><span class="lineCov">          1 :   assertThrows(function() { o.property *= 10; }, TypeError);</span></a>
+<a name="797"><span class="lineNum">     797 </span><span class="lineCov">          1 :   assertThrows(function() { o.property /= 10; }, TypeError);</span></a>
+<a name="798"><span class="lineNum">     798 </span><span class="lineCov">          1 :   assertThrows(function() { o.property++; }, TypeError);</span></a>
+<a name="799"><span class="lineNum">     799 </span><span class="lineCov">          1 :   assertThrows(function() { o.property--; }, TypeError);</span></a>
+<span class="lineNum">     800 </span><span class="lineCov">          1 :   assertThrows(function() { ++o.property; }, TypeError);</span>
+<span class="lineNum">     801 </span><span class="lineCov">          1 :   assertThrows(function() { --o.property; }, TypeError);</span>
+<a name="802"><span class="lineNum">     802 </span><span class="lineCov">          1 : </span></a>
+<a name="803"><span class="lineNum">     803 </span><span class="lineCov">          1 :   var name = &quot;prop&quot; + &quot;erty&quot;; // to avoid symbol path.</span></a>
+<a name="804"><span class="lineNum">     804 </span><span class="lineCov">          1 :   assertThrows(function() { o[name] = &quot;new value&quot;; }, TypeError);</span></a>
+<a name="805"><span class="lineNum">     805 </span><span class="lineCov">          1 :   assertThrows(function() { o[name] += 10; }, TypeError);</span></a>
+<a name="806"><span class="lineNum">     806 </span><span class="lineCov">          1 :   assertThrows(function() { o[name] -= 10; }, TypeError);</span></a>
+<a name="807"><span class="lineNum">     807 </span><span class="lineCov">          1 :   assertThrows(function() { o[name] *= 10; }, TypeError);</span></a>
+<a name="808"><span class="lineNum">     808 </span><span class="lineCov">          1 :   assertThrows(function() { o[name] /= 10; }, TypeError);</span></a>
+<a name="809"><span class="lineNum">     809 </span><span class="lineCov">          1 :   assertThrows(function() { o[name]++; }, TypeError);</span></a>
+<a name="810"><span class="lineNum">     810 </span><span class="lineCov">          1 :   assertThrows(function() { o[name]--; }, TypeError);</span></a>
+<span class="lineNum">     811 </span><span class="lineCov">          1 :   assertThrows(function() { ++o[name]; }, TypeError);</span>
+<span class="lineNum">     812 </span><span class="lineCov">          1 :   assertThrows(function() { --o[name]; }, TypeError);</span>
+<span class="lineNum">     813 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     814 </span><span class="lineCov">          1 :   assertEquals(o.property, 7);</span>
+<span class="lineNum">     815 </span><span class="lineCov">          1 : })();</span>
+<span class="lineNum">     816 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     817 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     818 </span><span class="lineCov">          1 : (function TestAssignmentToReadOnlyLoop() {</span>
+<span class="lineNum">     819 </span><span class="lineCov">          1 :   var name = &quot;prop&quot; + &quot;erty&quot;; // to avoid symbol path.</span>
+<span class="lineNum">     820 </span><span class="lineCov">          1 :   var o = {};</span>
+<span class="lineNum">     821 </span><span class="lineCov">          1 :   Object.defineProperty(o, &quot;property&quot;, { value: 7 });</span>
+<span class="lineNum">     822 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     823 </span><span class="lineCov">         10 :   function strict(o, name) {</span>
+<span class="lineNum">     824 </span><span class="lineCov">         10 :     &quot;use strict&quot;;</span>
+<span class="lineNum">     825 </span><span class="lineCov">         10 :     o[name] = &quot;new value&quot;;</span>
+<span class="lineNum">     826 </span><span class="lineCov">         10 :   }</span>
+<span class="lineNum">     827 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     828 </span><span class="lineCov">          1 :   for (var i = 0; i &lt; 10; i ++) {</span>
+<span class="lineNum">     829 </span><span class="lineCov">          1 :     var exception = false;</span>
+<span class="lineNum">     830 </span><span class="lineCov">          1 :     try {</span>
+<span class="lineNum">     831 </span><span class="lineCov">          1 :       strict(o, name);</span>
+<span class="lineNum">     832 </span><span class="lineCov">          1 :     } catch(e) {</span>
+<span class="lineNum">     833 </span><span class="lineCov">          1 :       exception = true;</span>
+<span class="lineNum">     834 </span><span class="lineCov">          1 :       assertInstanceof(e, TypeError);</span>
+<span class="lineNum">     835 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">     836 </span><span class="lineCov">          1 :     assertTrue(exception);</span>
+<span class="lineNum">     837 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     838 </span><span class="lineCov">          1 : })();</span>
+<span class="lineNum">     839 </span><span class="lineCov">          1 : </span>
+<a name="840"><span class="lineNum">     840 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     841 </span><span class="lineCov">          1 : // Specialized KeyedStoreIC experiencing miss.</span>
+<span class="lineNum">     842 </span><span class="lineCov">          1 : (function testKeyedStoreICStrict() {</span>
+<span class="lineNum">     843 </span><span class="lineCov">          1 :   var o = [9,8,7,6,5,4,3,2,1];</span>
+<span class="lineNum">     844 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     845 </span><span class="lineCov">         40 :   function test(o, i, v) {</span>
+<span class="lineNum">     846 </span><span class="lineCov">         40 :     &quot;use strict&quot;;</span>
+<span class="lineNum">     847 </span><span class="lineCov">         40 :     o[i] = v;</span>
+<span class="lineNum">     848 </span><span class="lineCov">         40 :   }</span>
+<span class="lineNum">     849 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     850 </span><span class="lineCov">          1 :   for (var i = 0; i &lt; 10; i ++) {</span>
+<span class="lineNum">     851 </span><span class="lineCov">          1 :     test(o, 5, 17);        // start specialized for smi indices</span>
+<span class="lineNum">     852 </span><span class="lineCov">          1 :     assertEquals(o[5], 17);</span>
+<span class="lineNum">     853 </span><span class="lineCov">          1 :     test(o, &quot;a&quot;, 19);</span>
+<span class="lineNum">     854 </span><span class="lineCov">          1 :     assertEquals(o[&quot;a&quot;], 19);</span>
+<span class="lineNum">     855 </span><span class="lineCov">          1 :     test(o, &quot;5&quot;, 29);</span>
+<span class="lineNum">     856 </span><span class="lineCov">          1 :     assertEquals(o[5], 29);</span>
+<span class="lineNum">     857 </span><span class="lineCov">          1 :     test(o, 100000, 31);</span>
+<span class="lineNum">     858 </span><span class="lineCov">          1 :     assertEquals(o[100000], 31);</span>
+<span class="lineNum">     859 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     860 </span><span class="lineCov">          1 : })();</span>
+<a name="861"><span class="lineNum">     861 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     862 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     863 </span><span class="lineCov">          1 : (function TestSetElementWithoutSetter() {</span>
+<span class="lineNum">     864 </span><span class="lineCov">          1 :   &quot;use strict&quot;;</span>
+<a name="865"><span class="lineNum">     865 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     866 </span><span class="lineCov">          1 :   var o = { };</span>
+<span class="lineNum">     867 </span><span class="lineCov">          1 :   Object.defineProperty(o, 0, { get : function() { } });</span>
+<span class="lineNum">     868 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     869 </span><span class="lineCov">          1 :   var zero_smi = 0;</span>
+<span class="lineNum">     870 </span><span class="lineCov">          1 :   var zero_number = new Number(0);</span>
+<span class="lineNum">     871 </span><span class="lineCov">          1 :   var zero_symbol = &quot;0&quot;;</span>
+<a name="872"><span class="lineNum">     872 </span><span class="lineCov">          1 :   var zero_string = &quot;-0-&quot;.substring(1,2);</span></a>
+<a name="873"><span class="lineNum">     873 </span><span class="lineCov">          1 : </span></a>
+<a name="874"><span class="lineNum">     874 </span><span class="lineCov">          1 :   assertThrows(function() { o[zero_smi] = &quot;new value&quot;; }, TypeError);</span></a>
+<a name="875"><span class="lineNum">     875 </span><span class="lineCov">          1 :   assertThrows(function() { o[zero_number] = &quot;new value&quot;; }, TypeError);</span></a>
+<span class="lineNum">     876 </span><span class="lineCov">          1 :   assertThrows(function() { o[zero_symbol] = &quot;new value&quot;; }, TypeError);</span>
+<span class="lineNum">     877 </span><span class="lineCov">          1 :   assertThrows(function() { o[zero_string] = &quot;new value&quot;; }, TypeError);</span>
+<span class="lineNum">     878 </span><span class="lineCov">          1 : })();</span>
+<a name="879"><span class="lineNum">     879 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     880 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     881 </span><span class="lineCov">          1 : (function TestSetElementNonConfigurable() {</span>
+<span class="lineNum">     882 </span><span class="lineCov">          1 :   &quot;use strict&quot;;</span>
+<span class="lineNum">     883 </span><span class="lineCov">          1 :   var frozen = Object.freeze({});</span>
+<span class="lineNum">     884 </span><span class="lineCov">          1 :   var sealed = Object.seal({});</span>
+<span class="lineNum">     885 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     886 </span><span class="lineCov">          1 :   var zero_number = 0;</span>
+<span class="lineNum">     887 </span><span class="lineCov">          1 :   var zero_symbol = &quot;0&quot;;</span>
+<a name="888"><span class="lineNum">     888 </span><span class="lineCov">          1 :   var zero_string = &quot;-0-&quot;.substring(1,2);</span></a>
+<a name="889"><span class="lineNum">     889 </span><span class="lineCov">          1 : </span></a>
+<a name="890"><span class="lineNum">     890 </span><span class="lineCov">          1 :   assertThrows(function() { frozen[zero_number] = &quot;value&quot;; }, TypeError);</span></a>
+<a name="891"><span class="lineNum">     891 </span><span class="lineCov">          1 :   assertThrows(function() { sealed[zero_number] = &quot;value&quot;; }, TypeError);</span></a>
+<a name="892"><span class="lineNum">     892 </span><span class="lineCov">          1 :   assertThrows(function() { frozen[zero_symbol] = &quot;value&quot;; }, TypeError);</span></a>
+<a name="893"><span class="lineNum">     893 </span><span class="lineCov">          1 :   assertThrows(function() { sealed[zero_symbol] = &quot;value&quot;; }, TypeError);</span></a>
+<span class="lineNum">     894 </span><span class="lineCov">          1 :   assertThrows(function() { frozen[zero_string] = &quot;value&quot;; }, TypeError);</span>
+<span class="lineNum">     895 </span><span class="lineCov">          1 :   assertThrows(function() { sealed[zero_string] = &quot;value&quot;; }, TypeError);</span>
+<span class="lineNum">     896 </span><span class="lineCov">          1 : })();</span>
+<a name="897"><span class="lineNum">     897 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     898 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     899 </span><span class="lineCov">          1 : (function TestAssignmentToReadOnlyElement() {</span>
+<span class="lineNum">     900 </span><span class="lineCov">          1 :   &quot;use strict&quot;;</span>
+<span class="lineNum">     901 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     902 </span><span class="lineCov">          1 :   var o = {};</span>
+<span class="lineNum">     903 </span><span class="lineCov">          1 :   Object.defineProperty(o, 7, { value: 17 });</span>
+<span class="lineNum">     904 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     905 </span><span class="lineCov">          1 :   var seven_smi = 7;</span>
+<span class="lineNum">     906 </span><span class="lineCov">          1 :   var seven_number = new Number(7);</span>
+<span class="lineNum">     907 </span><span class="lineCov">          1 :   var seven_symbol = &quot;7&quot;;</span>
+<span class="lineNum">     908 </span><span class="lineCov">          1 :   var seven_string = &quot;-7-&quot;.substring(1,2);</span>
+<a name="909"><span class="lineNum">     909 </span><span class="lineCov">          1 : </span></a>
+<a name="910"><span class="lineNum">     910 </span><span class="lineCov">          1 :   // Index with number.</span></a>
+<a name="911"><span class="lineNum">     911 </span><span class="lineCov">          1 :   assertThrows(function() { o[seven_smi] = &quot;value&quot;; }, TypeError);</span></a>
+<a name="912"><span class="lineNum">     912 </span><span class="lineCov">          1 :   assertThrows(function() { o[seven_smi] += 10; }, TypeError);</span></a>
+<a name="913"><span class="lineNum">     913 </span><span class="lineCov">          1 :   assertThrows(function() { o[seven_smi] -= 10; }, TypeError);</span></a>
+<a name="914"><span class="lineNum">     914 </span><span class="lineCov">          1 :   assertThrows(function() { o[seven_smi] *= 10; }, TypeError);</span></a>
+<a name="915"><span class="lineNum">     915 </span><span class="lineCov">          1 :   assertThrows(function() { o[seven_smi] /= 10; }, TypeError);</span></a>
+<a name="916"><span class="lineNum">     916 </span><span class="lineCov">          1 :   assertThrows(function() { o[seven_smi]++; }, TypeError);</span></a>
+<a name="917"><span class="lineNum">     917 </span><span class="lineCov">          1 :   assertThrows(function() { o[seven_smi]--; }, TypeError);</span></a>
+<span class="lineNum">     918 </span><span class="lineCov">          1 :   assertThrows(function() { ++o[seven_smi]; }, TypeError);</span>
+<a name="919"><span class="lineNum">     919 </span><span class="lineCov">          1 :   assertThrows(function() { --o[seven_smi]; }, TypeError);</span></a>
+<a name="920"><span class="lineNum">     920 </span><span class="lineCov">          1 : </span></a>
+<a name="921"><span class="lineNum">     921 </span><span class="lineCov">          1 :   assertThrows(function() { o[seven_number] = &quot;value&quot;; }, TypeError);</span></a>
+<a name="922"><span class="lineNum">     922 </span><span class="lineCov">          1 :   assertThrows(function() { o[seven_number] += 10; }, TypeError);</span></a>
+<a name="923"><span class="lineNum">     923 </span><span class="lineCov">          1 :   assertThrows(function() { o[seven_number] -= 10; }, TypeError);</span></a>
+<a name="924"><span class="lineNum">     924 </span><span class="lineCov">          1 :   assertThrows(function() { o[seven_number] *= 10; }, TypeError);</span></a>
+<a name="925"><span class="lineNum">     925 </span><span class="lineCov">          1 :   assertThrows(function() { o[seven_number] /= 10; }, TypeError);</span></a>
+<a name="926"><span class="lineNum">     926 </span><span class="lineCov">          1 :   assertThrows(function() { o[seven_number]++; }, TypeError);</span></a>
+<a name="927"><span class="lineNum">     927 </span><span class="lineCov">          1 :   assertThrows(function() { o[seven_number]--; }, TypeError);</span></a>
+<span class="lineNum">     928 </span><span class="lineCov">          1 :   assertThrows(function() { ++o[seven_number]; }, TypeError);</span>
+<a name="929"><span class="lineNum">     929 </span><span class="lineCov">          1 :   assertThrows(function() { --o[seven_number]; }, TypeError);</span></a>
+<a name="930"><span class="lineNum">     930 </span><span class="lineCov">          1 : </span></a>
+<a name="931"><span class="lineNum">     931 </span><span class="lineCov">          1 :   assertThrows(function() { o[seven_symbol] = &quot;value&quot;; }, TypeError);</span></a>
+<a name="932"><span class="lineNum">     932 </span><span class="lineCov">          1 :   assertThrows(function() { o[seven_symbol] += 10; }, TypeError);</span></a>
+<a name="933"><span class="lineNum">     933 </span><span class="lineCov">          1 :   assertThrows(function() { o[seven_symbol] -= 10; }, TypeError);</span></a>
+<a name="934"><span class="lineNum">     934 </span><span class="lineCov">          1 :   assertThrows(function() { o[seven_symbol] *= 10; }, TypeError);</span></a>
+<a name="935"><span class="lineNum">     935 </span><span class="lineCov">          1 :   assertThrows(function() { o[seven_symbol] /= 10; }, TypeError);</span></a>
+<a name="936"><span class="lineNum">     936 </span><span class="lineCov">          1 :   assertThrows(function() { o[seven_symbol]++; }, TypeError);</span></a>
+<a name="937"><span class="lineNum">     937 </span><span class="lineCov">          1 :   assertThrows(function() { o[seven_symbol]--; }, TypeError);</span></a>
+<span class="lineNum">     938 </span><span class="lineCov">          1 :   assertThrows(function() { ++o[seven_symbol]; }, TypeError);</span>
+<a name="939"><span class="lineNum">     939 </span><span class="lineCov">          1 :   assertThrows(function() { --o[seven_symbol]; }, TypeError);</span></a>
+<a name="940"><span class="lineNum">     940 </span><span class="lineCov">          1 : </span></a>
+<a name="941"><span class="lineNum">     941 </span><span class="lineCov">          1 :   assertThrows(function() { o[seven_string] = &quot;value&quot;; }, TypeError);</span></a>
+<a name="942"><span class="lineNum">     942 </span><span class="lineCov">          1 :   assertThrows(function() { o[seven_string] += 10; }, TypeError);</span></a>
+<a name="943"><span class="lineNum">     943 </span><span class="lineCov">          1 :   assertThrows(function() { o[seven_string] -= 10; }, TypeError);</span></a>
+<a name="944"><span class="lineNum">     944 </span><span class="lineCov">          1 :   assertThrows(function() { o[seven_string] *= 10; }, TypeError);</span></a>
+<a name="945"><span class="lineNum">     945 </span><span class="lineCov">          1 :   assertThrows(function() { o[seven_string] /= 10; }, TypeError);</span></a>
+<a name="946"><span class="lineNum">     946 </span><span class="lineCov">          1 :   assertThrows(function() { o[seven_string]++; }, TypeError);</span></a>
+<a name="947"><span class="lineNum">     947 </span><span class="lineCov">          1 :   assertThrows(function() { o[seven_string]--; }, TypeError);</span></a>
+<span class="lineNum">     948 </span><span class="lineCov">          1 :   assertThrows(function() { ++o[seven_string]; }, TypeError);</span>
+<span class="lineNum">     949 </span><span class="lineCov">          1 :   assertThrows(function() { --o[seven_string]; }, TypeError);</span>
+<span class="lineNum">     950 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     951 </span><span class="lineCov">          1 :   assertEquals(o[seven_number], 17);</span>
+<span class="lineNum">     952 </span><span class="lineCov">          1 :   assertEquals(o[seven_symbol], 17);</span>
+<span class="lineNum">     953 </span><span class="lineCov">          1 :   assertEquals(o[seven_string], 17);</span>
+<span class="lineNum">     954 </span><span class="lineCov">          1 : })();</span>
+<a name="955"><span class="lineNum">     955 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     956 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     957 </span><span class="lineCov">          1 : (function TestAssignmentToReadOnlyLoop() {</span>
+<span class="lineNum">     958 </span><span class="lineCov">          1 :   &quot;use strict&quot;;</span>
+<span class="lineNum">     959 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     960 </span><span class="lineCov">          1 :   var o = {};</span>
+<span class="lineNum">     961 </span><span class="lineCov">          1 :   Object.defineProperty(o, 7, { value: 17 });</span>
+<span class="lineNum">     962 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     963 </span><span class="lineCov">          1 :   var seven_smi = 7;</span>
+<span class="lineNum">     964 </span><span class="lineCov">          1 :   var seven_number = new Number(7);</span>
+<span class="lineNum">     965 </span><span class="lineCov">          1 :   var seven_symbol = &quot;7&quot;;</span>
+<span class="lineNum">     966 </span><span class="lineCov">          1 :   var seven_string = &quot;-7-&quot;.substring(1,2);</span>
+<a name="967"><span class="lineNum">     967 </span><span class="lineCov">          1 : </span></a>
+<a name="968"><span class="lineNum">     968 </span><span class="lineCov">          1 :   for (var i = 0; i &lt; 10; i ++) {</span></a>
+<a name="969"><span class="lineNum">     969 </span><span class="lineCov">         10 :     assertThrows(function() { o[seven_smi] = &quot;value&quot; }, TypeError);</span></a>
+<a name="970"><span class="lineNum">     970 </span><span class="lineCov">         10 :     assertThrows(function() { o[seven_number] = &quot;value&quot; }, TypeError);</span></a>
+<span class="lineNum">     971 </span><span class="lineCov">         10 :     assertThrows(function() { o[seven_symbol] = &quot;value&quot; }, TypeError);</span>
+<span class="lineNum">     972 </span><span class="lineCov">         10 :     assertThrows(function() { o[seven_string] = &quot;value&quot; }, TypeError);</span>
+<span class="lineNum">     973 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     974 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     975 </span><span class="lineCov">          1 :   assertEquals(o[7], 17);</span>
+<span class="lineNum">     976 </span><span class="lineCov">          1 : })();</span>
+<a name="977"><span class="lineNum">     977 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     978 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     979 </span><span class="lineCov">          1 : (function TestAssignmentToStringLength() {</span>
+<span class="lineNum">     980 </span><span class="lineCov">          1 :   &quot;use strict&quot;;</span>
+<span class="lineNum">     981 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     982 </span><span class="lineCov">          1 :   var str_val = &quot;string&quot;;</span>
+<span class="lineNum">     983 </span><span class="lineCov">          1 :   var str_obj = new String(str_val);</span>
+<a name="984"><span class="lineNum">     984 </span><span class="lineCov">          1 :   var str_cat = str_val + str_val + str_obj;</span></a>
+<a name="985"><span class="lineNum">     985 </span><span class="lineCov">          1 : </span></a>
+<a name="986"><span class="lineNum">     986 </span><span class="lineCov">          1 :   assertThrows(function() { str_val.length = 1; }, TypeError);</span></a>
+<span class="lineNum">     987 </span><span class="lineCov">          1 :   assertThrows(function() { str_obj.length = 1; }, TypeError);</span>
+<span class="lineNum">     988 </span><span class="lineCov">          1 :   assertThrows(function() { str_cat.length = 1; }, TypeError);</span>
+<span class="lineNum">     989 </span><span class="lineCov">          1 : })();</span>
+<a name="990"><span class="lineNum">     990 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     991 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     992 </span><span class="lineCov">          1 : (function TestArgumentsAliasing() {</span>
+<span class="lineNum">     993 </span><span class="lineCov">          1 :   function strict(a, b) {</span>
+<span class="lineNum">     994 </span><span class="lineCov">          1 :     &quot;use strict&quot;;</span>
+<span class="lineNum">     995 </span><span class="lineCov">          1 :     a = &quot;c&quot;;</span>
+<span class="lineNum">     996 </span><span class="lineCov">          1 :     b = &quot;d&quot;;</span>
+<span class="lineNum">     997 </span><span class="lineCov">          1 :     return [a, b, arguments[0], arguments[1]];</span>
+<a name="998"><span class="lineNum">     998 </span><span class="lineCov">          1 :   }</span></a>
+<span class="lineNum">     999 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">    1000 </span><span class="lineCov">          1 :   function nonstrict(a, b) {</span>
+<span class="lineNum">    1001 </span><span class="lineCov">          1 :     a = &quot;c&quot;;</span>
+<span class="lineNum">    1002 </span><span class="lineCov">          1 :     b = &quot;d&quot;;</span>
+<span class="lineNum">    1003 </span><span class="lineCov">          1 :     return [a, b, arguments[0], arguments[1]];</span>
+<span class="lineNum">    1004 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">    1005 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">    1006 </span><span class="lineCov">          1 :   assertEquals([&quot;c&quot;, &quot;d&quot;, &quot;a&quot;, &quot;b&quot;], strict(&quot;a&quot;, &quot;b&quot;));</span>
+<span class="lineNum">    1007 </span><span class="lineCov">          1 :   assertEquals([&quot;c&quot;, &quot;d&quot;, &quot;c&quot;, &quot;d&quot;], nonstrict(&quot;a&quot;, &quot;b&quot;));</span>
+<span class="lineNum">    1008 </span><span class="lineCov">          1 : })();</span>
+<a name="1009"><span class="lineNum">    1009 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">    1010 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">    1011 </span><span class="lineCov">          6 : function CheckFunctionPillDescriptor(func, name) {</span>
+<span class="lineNum">    1012 </span><span class="lineCov">          6 : </span>
+<span class="lineNum">    1013 </span><span class="lineCov">         12 :   function CheckPill(pill) {</span>
+<span class="lineNum">    1014 </span><span class="lineCov">         12 :     assertEquals(&quot;function&quot;, typeof pill);</span>
+<span class="lineNum">    1015 </span><span class="lineCov">         12 :     assertInstanceof(pill, Function);</span>
+<a name="1016"><span class="lineNum">    1016 </span><span class="lineCov">         12 :     pill.property = &quot;value&quot;;</span></a>
+<span class="lineNum">    1017 </span><span class="lineCov">         12 :     assertEquals(pill.value, undefined);</span>
+<span class="lineNum">    1018 </span><span class="lineCov">         12 :     assertThrows(function() { 'use strict'; pill.property = &quot;value&quot;; },</span>
+<span class="lineNum">    1019 </span><span class="lineCov">         12 :                  TypeError);</span>
+<span class="lineNum">    1020 </span><span class="lineCov">         12 :     assertThrows(pill, TypeError);</span>
+<span class="lineNum">    1021 </span><span class="lineCov">         12 :     assertEquals(undefined, pill.prototype);</span>
+<span class="lineNum">    1022 </span><span class="lineCov">         12 :   }</span>
+<span class="lineNum">    1023 </span><span class="lineCov">          6 : </span>
+<span class="lineNum">    1024 </span><span class="lineCov">          6 :   // Poisoned accessors are no longer own properties</span>
+<span class="lineNum">    1025 </span><span class="lineCov">          6 :   func = Object.getPrototypeOf(func);</span>
+<span class="lineNum">    1026 </span><span class="lineCov">          6 :   var descriptor = Object.getOwnPropertyDescriptor(func, name);</span>
+<span class="lineNum">    1027 </span><span class="lineCov">          6 :   CheckPill(descriptor.get)</span>
+<span class="lineNum">    1028 </span><span class="lineCov">          6 :   CheckPill(descriptor.set);</span>
+<span class="lineNum">    1029 </span><span class="lineCov">          6 :   assertFalse(descriptor.enumerable);</span>
+<span class="lineNum">    1030 </span><span class="lineCov">          6 :   // In ES6, restricted function properties are configurable</span>
+<span class="lineNum">    1031 </span><span class="lineCov">          6 :   assertTrue(descriptor.configurable);</span>
+<span class="lineNum">    1032 </span><span class="lineCov">          6 : }</span>
+<a name="1033"><span class="lineNum">    1033 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">    1034 </span><span class="lineCov">          1 : </span>
+<a name="1035"><span class="lineNum">    1035 </span><span class="lineCov">          4 : function CheckArgumentsPillDescriptor(func, name) {</span></a>
+<span class="lineNum">    1036 </span><span class="lineCov">          4 : </span>
+<span class="lineNum">    1037 </span><span class="lineCov">          8 :   function CheckPill(pill) {</span>
+<span class="lineNum">    1038 </span><span class="lineCov">          8 :     assertEquals(&quot;function&quot;, typeof pill);</span>
+<span class="lineNum">    1039 </span><span class="lineCov">          8 :     assertInstanceof(pill, Function);</span>
+<a name="1040"><span class="lineNum">    1040 </span><span class="lineCov">          8 :     pill.property = &quot;value&quot;;</span></a>
+<span class="lineNum">    1041 </span><span class="lineCov">          8 :     assertEquals(pill.value, undefined);</span>
+<span class="lineNum">    1042 </span><span class="lineCov">          8 :     assertThrows(function() { 'use strict'; pill.property = &quot;value&quot;; },</span>
+<span class="lineNum">    1043 </span><span class="lineCov">          8 :                  TypeError);</span>
+<span class="lineNum">    1044 </span><span class="lineCov">          8 :     assertThrows(pill, TypeError);</span>
+<span class="lineNum">    1045 </span><span class="lineCov">          8 :     assertEquals(undefined, pill.prototype);</span>
+<span class="lineNum">    1046 </span><span class="lineCov">          8 :   }</span>
+<span class="lineNum">    1047 </span><span class="lineCov">          4 : </span>
+<span class="lineNum">    1048 </span><span class="lineCov">          4 :   var descriptor = Object.getOwnPropertyDescriptor(func, name);</span>
+<span class="lineNum">    1049 </span><span class="lineCov">          4 :   CheckPill(descriptor.get)</span>
+<span class="lineNum">    1050 </span><span class="lineCov">          4 :   CheckPill(descriptor.set);</span>
+<span class="lineNum">    1051 </span><span class="lineCov">          4 :   assertFalse(descriptor.enumerable);</span>
+<span class="lineNum">    1052 </span><span class="lineCov">          4 :   assertFalse(descriptor.configurable);</span>
+<span class="lineNum">    1053 </span><span class="lineCov">          4 : }</span>
+<a name="1054"><span class="lineNum">    1054 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">    1055 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">    1056 </span><span class="lineCov">          1 : (function TestStrictFunctionPills() {</span>
+<span class="lineNum">    1057 </span><span class="lineCov">          1 :   function strict() {</span>
+<a name="1058"><span class="lineNum">    1058 </span><span class="lineNoCov">          0 :     &quot;use strict&quot;;</span></a>
+<a name="1059"><span class="lineNum">    1059 </span><span class="lineCov">          1 :   }</span></a>
+<a name="1060"><span class="lineNum">    1060 </span><span class="lineCov">          1 :   assertThrows(function() { strict.caller; }, TypeError);</span></a>
+<a name="1061"><span class="lineNum">    1061 </span><span class="lineCov">          1 :   assertThrows(function() { strict.arguments; }, TypeError);</span></a>
+<span class="lineNum">    1062 </span><span class="lineCov">          1 :   assertThrows(function() { strict.caller = 42; }, TypeError);</span>
+<span class="lineNum">    1063 </span><span class="lineCov">          1 :   assertThrows(function() { strict.arguments = 42; }, TypeError);</span>
+<a name="1064"><span class="lineNum">    1064 </span><span class="lineCov">          1 : </span></a>
+<a name="1065"><span class="lineNum">    1065 </span><span class="lineCov">          1 :   var another = new Function(&quot;'use strict'&quot;);</span></a>
+<a name="1066"><span class="lineNum">    1066 </span><span class="lineCov">          1 :   assertThrows(function() { another.caller; }, TypeError);</span></a>
+<a name="1067"><span class="lineNum">    1067 </span><span class="lineCov">          1 :   assertThrows(function() { another.arguments; }, TypeError);</span></a>
+<span class="lineNum">    1068 </span><span class="lineCov">          1 :   assertThrows(function() { another.caller = 42; }, TypeError);</span>
+<a name="1069"><span class="lineNum">    1069 </span><span class="lineCov">          1 :   assertThrows(function() { another.arguments = 42; }, TypeError);</span></a>
+<a name="1070"><span class="lineNum">    1070 </span><span class="lineCov">          1 : </span></a>
+<a name="1071"><span class="lineNum">    1071 </span><span class="lineCov">          1 :   var third = (function() { &quot;use strict&quot;; return function() {}; })();</span></a>
+<a name="1072"><span class="lineNum">    1072 </span><span class="lineCov">          1 :   assertThrows(function() { third.caller; }, TypeError);</span></a>
+<a name="1073"><span class="lineNum">    1073 </span><span class="lineCov">          1 :   assertThrows(function() { third.arguments; }, TypeError);</span></a>
+<span class="lineNum">    1074 </span><span class="lineCov">          1 :   assertThrows(function() { third.caller = 42; }, TypeError);</span>
+<span class="lineNum">    1075 </span><span class="lineCov">          1 :   assertThrows(function() { third.arguments = 42; }, TypeError);</span>
+<span class="lineNum">    1076 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">    1077 </span><span class="lineCov">          1 :   CheckFunctionPillDescriptor(strict, &quot;caller&quot;);</span>
+<span class="lineNum">    1078 </span><span class="lineCov">          1 :   CheckFunctionPillDescriptor(strict, &quot;arguments&quot;);</span>
+<span class="lineNum">    1079 </span><span class="lineCov">          1 :   CheckFunctionPillDescriptor(another, &quot;caller&quot;);</span>
+<span class="lineNum">    1080 </span><span class="lineCov">          1 :   CheckFunctionPillDescriptor(another, &quot;arguments&quot;);</span>
+<span class="lineNum">    1081 </span><span class="lineCov">          1 :   CheckFunctionPillDescriptor(third, &quot;caller&quot;);</span>
+<span class="lineNum">    1082 </span><span class="lineCov">          1 :   CheckFunctionPillDescriptor(third, &quot;arguments&quot;);</span>
+<span class="lineNum">    1083 </span><span class="lineCov">          1 : })();</span>
+<a name="1084"><span class="lineNum">    1084 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">    1085 </span><span class="lineCov">          1 : </span>
+<a name="1086"><span class="lineNum">    1086 </span><span class="lineCov">          1 : (function TestStrictFunctionWritablePrototype() {</span></a>
+<span class="lineNum">    1087 </span><span class="lineCov">          1 :   &quot;use strict&quot;;</span>
+<a name="1088"><span class="lineNum">    1088 </span><span class="lineCov">          1 :   function TheClass() {</span></a>
+<a name="1089"><span class="lineNum">    1089 </span><span class="lineCov">          1 :   }</span></a>
+<span class="lineNum">    1090 </span><span class="lineCov">          1 :   assertThrows(function() { TheClass.caller; }, TypeError);</span>
+<span class="lineNum">    1091 </span><span class="lineCov">          1 :   assertThrows(function() { TheClass.arguments; }, TypeError);</span>
+<span class="lineNum">    1092 </span><span class="lineCov">          1 : </span>
+<a name="1093"><span class="lineNum">    1093 </span><span class="lineCov">          1 :   // Strict functions must have writable prototype.</span></a>
+<a name="1094"><span class="lineNum">    1094 </span><span class="lineCov">          1 :   TheClass.prototype = {</span></a>
+<span class="lineNum">    1095 </span><span class="lineCov">          1 :     func: function() { return &quot;func_value&quot;; },</span>
+<span class="lineNum">    1096 </span><span class="lineCov">          1 :     get accessor() { return &quot;accessor_value&quot;; },</span>
+<span class="lineNum">    1097 </span><span class="lineCov">          1 :     property: &quot;property_value&quot;,</span>
+<span class="lineNum">    1098 </span><span class="lineCov">          1 :   };</span>
+<span class="lineNum">    1099 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">    1100 </span><span class="lineCov">          1 :   var o = new TheClass();</span>
+<span class="lineNum">    1101 </span><span class="lineCov">          1 :   assertEquals(o.func(), &quot;func_value&quot;);</span>
+<span class="lineNum">    1102 </span><span class="lineCov">          1 :   assertEquals(o.accessor, &quot;accessor_value&quot;);</span>
+<span class="lineNum">    1103 </span><span class="lineCov">          1 :   assertEquals(o.property, &quot;property_value&quot;);</span>
+<span class="lineNum">    1104 </span><span class="lineCov">          1 : })();</span>
+<a name="1105"><span class="lineNum">    1105 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">    1106 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">    1107 </span><span class="lineCov">          1 : (function TestStrictArgumentPills() {</span>
+<span class="lineNum">    1108 </span><span class="lineCov">          2 :   function strict() {</span>
+<span class="lineNum">    1109 </span><span class="lineCov">          2 :     &quot;use strict&quot;;</span>
+<span class="lineNum">    1110 </span><span class="lineCov">          2 :     return arguments;</span>
+<span class="lineNum">    1111 </span><span class="lineCov">          2 :   }</span>
+<span class="lineNum">    1112 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">    1113 </span><span class="lineCov">          1 :   var args = strict();</span>
+<span class="lineNum">    1114 </span><span class="lineCov">          1 :   assertEquals(undefined, Object.getOwnPropertyDescriptor(args, &quot;caller&quot;));</span>
+<span class="lineNum">    1115 </span><span class="lineCov">          1 :   CheckArgumentsPillDescriptor(args, &quot;callee&quot;);</span>
+<span class="lineNum">    1116 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">    1117 </span><span class="lineCov">          1 :   args = strict(17, &quot;value&quot;, strict);</span>
+<span class="lineNum">    1118 </span><span class="lineCov">          1 :   assertEquals(17, args[0])</span>
+<span class="lineNum">    1119 </span><span class="lineCov">          1 :   assertEquals(&quot;value&quot;, args[1])</span>
+<span class="lineNum">    1120 </span><span class="lineCov">          1 :   assertEquals(strict, args[2]);</span>
+<span class="lineNum">    1121 </span><span class="lineCov">          1 :   assertEquals(undefined, Object.getOwnPropertyDescriptor(args, &quot;caller&quot;));</span>
+<a name="1122"><span class="lineNum">    1122 </span><span class="lineCov">          1 :   CheckArgumentsPillDescriptor(args, &quot;callee&quot;);</span></a>
+<span class="lineNum">    1123 </span><span class="lineCov">          1 : </span>
+<a name="1124"><span class="lineNum">    1124 </span><span class="lineCov">          2 :   function outer() {</span></a>
+<span class="lineNum">    1125 </span><span class="lineCov">          2 :     &quot;use strict&quot;;</span>
+<span class="lineNum">    1126 </span><span class="lineCov">          2 :     function inner() {</span>
+<span class="lineNum">    1127 </span><span class="lineCov">          2 :       return arguments;</span>
+<span class="lineNum">    1128 </span><span class="lineCov">          2 :     }</span>
+<span class="lineNum">    1129 </span><span class="lineCov">          2 :     return inner;</span>
+<span class="lineNum">    1130 </span><span class="lineCov">          2 :   }</span>
+<span class="lineNum">    1131 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">    1132 </span><span class="lineCov">          1 :   var args = outer()();</span>
+<span class="lineNum">    1133 </span><span class="lineCov">          1 :   assertEquals(undefined, Object.getOwnPropertyDescriptor(args, &quot;caller&quot;));</span>
+<span class="lineNum">    1134 </span><span class="lineCov">          1 :   CheckArgumentsPillDescriptor(args, &quot;callee&quot;);</span>
+<span class="lineNum">    1135 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">    1136 </span><span class="lineCov">          1 :   args = outer()(17, &quot;value&quot;, strict);</span>
+<span class="lineNum">    1137 </span><span class="lineCov">          1 :   assertEquals(17, args[0])</span>
+<span class="lineNum">    1138 </span><span class="lineCov">          1 :   assertEquals(&quot;value&quot;, args[1])</span>
+<span class="lineNum">    1139 </span><span class="lineCov">          1 :   assertEquals(strict, args[2]);</span>
+<span class="lineNum">    1140 </span><span class="lineCov">          1 :   assertEquals(undefined, Object.getOwnPropertyDescriptor(args, &quot;caller&quot;));</span>
+<span class="lineNum">    1141 </span><span class="lineCov">          1 :   CheckArgumentsPillDescriptor(args, &quot;callee&quot;);</span>
+<span class="lineNum">    1142 </span><span class="lineCov">          1 : })();</span>
+<a name="1143"><span class="lineNum">    1143 </span><span class="lineCov">          1 : </span></a>
+<a name="1144"><span class="lineNum">    1144 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">    1145 </span><span class="lineCov">          1 : (function TestNonStrictFunctionCallerPillSimple() {</span>
+<span class="lineNum">    1146 </span><span class="lineCov">          2 :   function return_my_caller() {</span>
+<span class="lineNum">    1147 </span><span class="lineCov">          2 :     return return_my_caller.caller;</span>
+<span class="lineNum">    1148 </span><span class="lineCov">          2 :   }</span>
+<span class="lineNum">    1149 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">    1150 </span><span class="lineCov">          1 :   function strict() {</span>
+<span class="lineNum">    1151 </span><span class="lineCov">          1 :     &quot;use strict&quot;;</span>
+<span class="lineNum">    1152 </span><span class="lineCov">          1 :     // Returning result via local variable to avoid tail call elimination.</span>
+<span class="lineNum">    1153 </span><span class="lineCov">          1 :     var res = return_my_caller();</span>
+<span class="lineNum">    1154 </span><span class="lineCov">          1 :     return res;</span>
+<span class="lineNum">    1155 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">    1156 </span><span class="lineCov">          1 :   assertSame(null, strict());</span>
+<span class="lineNum">    1157 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">    1158 </span><span class="lineCov">          1 :   function non_strict() {</span>
+<span class="lineNum">    1159 </span><span class="lineCov">          1 :     return return_my_caller();</span>
+<span class="lineNum">    1160 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">    1161 </span><span class="lineCov">          1 :   assertSame(non_strict(), non_strict);</span>
+<span class="lineNum">    1162 </span><span class="lineCov">          1 : })();</span>
+<a name="1163"><span class="lineNum">    1163 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">    1164 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">    1165 </span><span class="lineCov">          1 : (function TestNonStrictFunctionCallerPill() {</span>
+<span class="lineNum">    1166 </span><span class="lineCov">         10 :   function strict(n) {</span>
+<span class="lineNum">    1167 </span><span class="lineCov">         10 :     &quot;use strict&quot;;</span>
+<span class="lineNum">    1168 </span><span class="lineCov">         10 :     // Returning result via local variable to avoid tail call elimination.</span>
+<span class="lineNum">    1169 </span><span class="lineCov">         10 :     var res = non_strict(n);</span>
+<span class="lineNum">    1170 </span><span class="lineCov">         10 :     return res;</span>
+<span class="lineNum">    1171 </span><span class="lineCov">         10 :   }</span>
+<span class="lineNum">    1172 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">    1173 </span><span class="lineCov">        110 :   function recurse(n, then) {</span>
+<span class="lineNum">    1174 </span><span class="lineCov">        110 :     if (n &gt; 0) {</span>
+<span class="lineNum">    1175 </span><span class="lineCov">        110 :       return recurse(n - 1, then);</span>
+<span class="lineNum">    1176 </span><span class="lineCov">        110 :     } else {</span>
+<span class="lineNum">    1177 </span><span class="lineCov">        110 :       return then();</span>
+<span class="lineNum">    1178 </span><span class="lineCov">        110 :     }</span>
+<span class="lineNum">    1179 </span><span class="lineCov">        110 :   }</span>
+<a name="1180"><span class="lineNum">    1180 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">    1181 </span><span class="lineCov">         10 :   function non_strict(n) {</span>
+<span class="lineNum">    1182 </span><span class="lineCov">         10 :     return recurse(n, function() { return non_strict.caller; });</span>
+<span class="lineNum">    1183 </span><span class="lineCov">         10 :   }</span>
+<a name="1184"><span class="lineNum">    1184 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">    1185 </span><span class="lineCov">         10 :   function test(n) {</span>
+<span class="lineNum">    1186 </span><span class="lineCov">         10 :     return recurse(n, function() { return strict(n); });</span>
+<span class="lineNum">    1187 </span><span class="lineCov">         10 :   }</span>
+<span class="lineNum">    1188 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">    1189 </span><span class="lineCov">          1 :   for (var i = 0; i &lt; 10; i ++) {</span>
+<span class="lineNum">    1190 </span><span class="lineCov">          1 :     assertSame(null, test(i));</span>
+<span class="lineNum">    1191 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">    1192 </span><span class="lineCov">          1 : })();</span>
+<a name="1193"><span class="lineNum">    1193 </span><span class="lineCov">          1 : </span></a>
+<a name="1194"><span class="lineNum">    1194 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">    1195 </span><span class="lineCov">          1 : (function TestNonStrictFunctionCallerDescriptorPill() {</span>
+<span class="lineNum">    1196 </span><span class="lineCov">         10 :   function strict(n) {</span>
+<span class="lineNum">    1197 </span><span class="lineCov">         10 :     &quot;use strict&quot;;</span>
+<span class="lineNum">    1198 </span><span class="lineCov">         10 :     // Returning result via local variable to avoid tail call elimination.</span>
+<span class="lineNum">    1199 </span><span class="lineCov">         10 :     var res = non_strict(n);</span>
+<span class="lineNum">    1200 </span><span class="lineCov">         10 :     return res;</span>
+<a name="1201"><span class="lineNum">    1201 </span><span class="lineCov">         10 :   }</span></a>
+<span class="lineNum">    1202 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">    1203 </span><span class="lineCov">        110 :   function recurse(n, then) {</span>
+<span class="lineNum">    1204 </span><span class="lineCov">        110 :     if (n &gt; 0) {</span>
+<span class="lineNum">    1205 </span><span class="lineCov">        110 :       return recurse(n - 1, then);</span>
+<span class="lineNum">    1206 </span><span class="lineCov">        110 :     } else {</span>
+<span class="lineNum">    1207 </span><span class="lineCov">        110 :       return then();</span>
+<span class="lineNum">    1208 </span><span class="lineCov">        110 :     }</span>
+<a name="1209"><span class="lineNum">    1209 </span><span class="lineCov">        110 :   }</span></a>
+<a name="1210"><span class="lineNum">    1210 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">    1211 </span><span class="lineCov">         10 :   function non_strict(n) {</span>
+<span class="lineNum">    1212 </span><span class="lineCov">         10 :     return recurse(n, function() {</span>
+<span class="lineNum">    1213 </span><span class="lineCov">         10 :       return Object.getOwnPropertyDescriptor(non_strict, &quot;caller&quot;).value;</span>
+<span class="lineNum">    1214 </span><span class="lineCov">         10 :     });</span>
+<a name="1215"><span class="lineNum">    1215 </span><span class="lineCov">         10 :   }</span></a>
+<a name="1216"><span class="lineNum">    1216 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">    1217 </span><span class="lineCov">         10 :   function test(n) {</span>
+<span class="lineNum">    1218 </span><span class="lineCov">         10 :     return recurse(n, function() { return strict(n); });</span>
+<span class="lineNum">    1219 </span><span class="lineCov">         10 :   }</span>
+<span class="lineNum">    1220 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">    1221 </span><span class="lineCov">          1 :   for (var i = 0; i &lt; 10; i ++) {</span>
+<span class="lineNum">    1222 </span><span class="lineCov">          1 :     assertSame(null, test(i));</span>
+<span class="lineNum">    1223 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">    1224 </span><span class="lineCov">          1 : })();</span>
+<a name="1225"><span class="lineNum">    1225 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">    1226 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">    1227 </span><span class="lineCov">          1 : (function TestStrictModeEval() {</span>
+<a name="1228"><span class="lineNum">    1228 </span><span class="lineCov">          1 :   &quot;use strict&quot;;</span></a>
+<span class="lineNum">    1229 </span><span class="lineCov">          1 :   eval(&quot;var eval_local = 10;&quot;);</span>
+<span class="lineNum">    1230 </span><span class="lineCov">          1 :   assertThrows(function() { return eval_local; }, ReferenceError);</span>
+<span class="lineNum">    1231 </span><span class="lineCov">          1 : })();</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

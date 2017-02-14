@@ -1,0 +1,150 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - test/debugger/debug/debug-liveedit-stepin.js</title>
+  <link rel="stylesheet" type="text/css" href="../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../index.html">top level</a> - <a href="index.html">test/debugger/debug</a> - debug-liveedit-stepin.js<span style="font-size: 80%;"> (source / <a href="debug-liveedit-stepin.js.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">75</td>
+            <td class="headerCovTableEntry">75</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2017-02-14</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">4</td>
+            <td class="headerCovTableEntry">4</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span><span class="lineCov">          1 : // Copyright 2015 the V8 project authors. All rights reserved.</span></a>
+<span class="lineNum">       2 </span><span class="lineCov">          1 : // Use of this source code is governed by a BSD-style license that can be</span>
+<span class="lineNum">       3 </span><span class="lineCov">          1 : // found in the LICENSE file.</span>
+<span class="lineNum">       4 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">       5 </span><span class="lineCov">          1 : </span>
+<a name="6"><span class="lineNum">       6 </span><span class="lineCov">          1 : Debug = debug.Debug</span></a>
+<span class="lineNum">       7 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">       8 </span><span class="lineCov">          5 : function BestEditor() {</span>
+<span class="lineNum">       9 </span><span class="lineCov">          5 :   return 'Emacs';</span>
+<span class="lineNum">      10 </span><span class="lineCov">          5 : }</span>
+<span class="lineNum">      11 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      12 </span><span class="lineCov">          1 : var exception = null;</span>
+<span class="lineNum">      13 </span><span class="lineCov">          1 : var results = [];</span>
+<a name="14"><span class="lineNum">      14 </span><span class="lineCov">          1 : var log = []</span></a>
+<span class="lineNum">      15 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      16 </span><span class="lineCov">         16 : function listener(event, exec_state, event_data, data) {</span>
+<span class="lineNum">      17 </span><span class="lineCov">         16 :   if (event != Debug.DebugEvent.Break) return;</span>
+<span class="lineNum">      18 </span><span class="lineCov">         16 :   try {</span>
+<span class="lineNum">      19 </span><span class="lineCov">         16 :     var source_line = event_data.sourceLineText();</span>
+<span class="lineNum">      20 </span><span class="lineCov">         16 :     log.push(source_line);</span>
+<span class="lineNum">      21 </span><span class="lineCov">         16 :     if (source_line.indexOf(&quot;return&quot;) &gt;= 0) {</span>
+<span class="lineNum">      22 </span><span class="lineCov">         16 :       switch (results.length) {</span>
+<span class="lineNum">      23 </span><span class="lineCov">         16 :         case 0:</span>
+<span class="lineNum">      24 </span><span class="lineCov">         16 :           break;</span>
+<span class="lineNum">      25 </span><span class="lineCov">         16 :         case 1:</span>
+<span class="lineNum">      26 </span><span class="lineCov">         16 :           Replace(BestEditor, &quot;Emacs&quot;, &quot;Eclipse&quot;);</span>
+<span class="lineNum">      27 </span><span class="lineCov">         16 :           break;</span>
+<span class="lineNum">      28 </span><span class="lineCov">         16 :         case 2:</span>
+<span class="lineNum">      29 </span><span class="lineCov">         16 :           Replace(BestEditor, &quot;Eclipse&quot;, &quot;Vim&quot;);</span>
+<span class="lineNum">      30 </span><span class="lineCov">         16 :           break;</span>
+<span class="lineNum">      31 </span><span class="lineCov">         16 :         default:</span>
+<span class="lineNum">      32 </span><span class="lineCov">         16 :           assertUnreachable();</span>
+<span class="lineNum">      33 </span><span class="lineCov">         16 :       }</span>
+<span class="lineNum">      34 </span><span class="lineCov">         16 :     }</span>
+<span class="lineNum">      35 </span><span class="lineCov">         16 :     exec_state.prepareStep(Debug.StepAction.StepIn);</span>
+<span class="lineNum">      36 </span><span class="lineCov">         16 :   } catch (e) {</span>
+<span class="lineNum">      37 </span><span class="lineCov">         16 :     exception = e;</span>
+<span class="lineNum">      38 </span><span class="lineCov">         16 :   }</span>
+<a name="39"><span class="lineNum">      39 </span><span class="lineCov">         16 : };</span></a>
+<span class="lineNum">      40 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      41 </span><span class="lineCov">          4 : function Replace(fun, original, patch) {</span>
+<span class="lineNum">      42 </span><span class="lineCov">          4 :   var script = Debug.findScript(fun);</span>
+<span class="lineNum">      43 </span><span class="lineCov">          4 :   if (fun.toString().indexOf(original) &lt; 0) return;</span>
+<span class="lineNum">      44 </span><span class="lineCov">          4 :   var patch_pos = script.source.indexOf(original);</span>
+<span class="lineNum">      45 </span><span class="lineCov">          4 :   var change_log = [];</span>
+<span class="lineNum">      46 </span><span class="lineCov">          4 :   Debug.LiveEdit.TestApi.ApplySingleChunkPatch(script, patch_pos, original.length, patch, change_log);</span>
+<span class="lineNum">      47 </span><span class="lineCov">          4 : }</span>
+<span class="lineNum">      48 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      49 </span><span class="lineCov">          1 : Debug.setListener(listener);</span>
+<span class="lineNum">      50 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      51 </span><span class="lineCov">          1 : debugger;</span>
+<span class="lineNum">      52 </span><span class="lineCov">          1 : results.push(BestEditor());</span>
+<span class="lineNum">      53 </span><span class="lineCov">          1 : results.push(BestEditor());</span>
+<span class="lineNum">      54 </span><span class="lineCov">          1 : results.push(BestEditor());</span>
+<span class="lineNum">      55 </span><span class="lineCov">          1 : Debug.setListener(null);</span>
+<span class="lineNum">      56 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      57 </span><span class="lineCov">          1 : assertNull(exception);</span>
+<span class="lineNum">      58 </span><span class="lineCov">          1 : assertEquals([&quot;Emacs&quot;, &quot;Eclipse&quot;, &quot;Vim&quot;], results);</span>
+<span class="lineNum">      59 </span><span class="lineCov">          1 : print(JSON.stringify(log, 1));</span>
+<span class="lineNum">      60 </span><span class="lineCov">          1 : assertEquals([</span>
+<span class="lineNum">      61 </span><span class="lineCov">          1 :   &quot;debugger;&quot;,</span>
+<span class="lineNum">      62 </span><span class="lineCov">          1 :   &quot;results.push(BestEditor());&quot;,</span>
+<span class="lineNum">      63 </span><span class="lineCov">          1 :   &quot;  return 'Emacs';&quot;,&quot;}&quot;,</span>
+<span class="lineNum">      64 </span><span class="lineCov">          1 :   &quot;results.push(BestEditor());&quot;,</span>
+<span class="lineNum">      65 </span><span class="lineCov">          1 :   &quot;results.push(BestEditor());&quot;,</span>
+<span class="lineNum">      66 </span><span class="lineCov">          1 :   &quot;  return 'Emacs';&quot;,</span>
+<span class="lineNum">      67 </span><span class="lineCov">          1 :   &quot;  return 'Eclipse';&quot;,&quot;}&quot;,</span>
+<span class="lineNum">      68 </span><span class="lineCov">          1 :   &quot;results.push(BestEditor());&quot;,</span>
+<span class="lineNum">      69 </span><span class="lineCov">          1 :   &quot;results.push(BestEditor());&quot;,</span>
+<span class="lineNum">      70 </span><span class="lineCov">          1 :   &quot;  return 'Eclipse';&quot;,</span>
+<span class="lineNum">      71 </span><span class="lineCov">          1 :   &quot;  return 'Vim';&quot;,</span>
+<span class="lineNum">      72 </span><span class="lineCov">          1 :   &quot;}&quot;,&quot;results.push(BestEditor());&quot;,</span>
+<span class="lineNum">      73 </span><span class="lineCov">          1 :   &quot;Debug.setListener(null);&quot;</span>
+<span class="lineNum">      74 </span><span class="lineCov">          1 : ], log);</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - test/test262/data/test/language/statements/class/definition/numeric-property-names.js</title>
+  <link rel="stylesheet" type="text/css" href="../../../../../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../../../../../index.html">top level</a> - <a href="index.html">test/test262/data/test/language/statements/class/definition</a> - numeric-property-names.js<span style="font-size: 80%;"> (source / <a href="numeric-property-names.js.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">64</td>
+            <td class="headerCovTableEntry">64</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2017-02-14</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">10</td>
+            <td class="headerCovTableEntry">12</td>
+            <td class="headerCovTableEntryMed">83.3 %</td>
+          </tr>
+          <tr><td><img src="../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span><span class="lineCov">          2 : // Copyright (C) 2014 the V8 project authors. All rights reserved.</span></a>
+<span class="lineNum">       2 </span><span class="lineCov">          2 : // This code is governed by the BSD license found in the LICENSE file.</span>
+<span class="lineNum">       3 </span><span class="lineCov">          2 : /*---</span>
+<span class="lineNum">       4 </span><span class="lineCov">          2 : es6id: 14.5</span>
+<span class="lineNum">       5 </span><span class="lineCov">          2 : description: &gt;</span>
+<a name="6"><span class="lineNum">       6 </span><span class="lineCov">          2 :     class numeric property names</span></a>
+<span class="lineNum">       7 </span><span class="lineCov">          2 : ---*/</span>
+<span class="lineNum">       8 </span><span class="lineCov">          4 : function assertMethodDescriptor(object, name) {</span>
+<span class="lineNum">       9 </span><span class="lineCov">          4 :   var desc = Object.getOwnPropertyDescriptor(object, name);</span>
+<span class="lineNum">      10 </span><span class="lineCov">          4 :   assert.sameValue(desc.configurable, true, &quot;The value of `desc.configurable` is `true`&quot;);</span>
+<span class="lineNum">      11 </span><span class="lineCov">          4 :   assert.sameValue(desc.enumerable, false, &quot;The value of `desc.enumerable` is `false`&quot;);</span>
+<span class="lineNum">      12 </span><span class="lineCov">          4 :   assert.sameValue(desc.writable, true, &quot;The value of `desc.writable` is `true`&quot;);</span>
+<span class="lineNum">      13 </span><span class="lineCov">          4 :   assert.sameValue(typeof desc.value, 'function', &quot;`typeof desc.value` is `'function'`&quot;);</span>
+<span class="lineNum">      14 </span><span class="lineCov">          4 :   assert.sameValue('prototype' in desc.value, false, &quot;The result of `'prototype' in desc.value` is `false`&quot;);</span>
+<a name="15"><span class="lineNum">      15 </span><span class="lineCov">          4 : }</span></a>
+<span class="lineNum">      16 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      17 </span><span class="lineCov">          4 : function assertGetterDescriptor(object, name) {</span>
+<span class="lineNum">      18 </span><span class="lineCov">          4 :   var desc = Object.getOwnPropertyDescriptor(object, name);</span>
+<span class="lineNum">      19 </span><span class="lineCov">          4 :   assert.sameValue(desc.configurable, true, &quot;The value of `desc.configurable` is `true`&quot;);</span>
+<span class="lineNum">      20 </span><span class="lineCov">          4 :   assert.sameValue(desc.enumerable, false, &quot;The value of `desc.enumerable` is `false`&quot;);</span>
+<span class="lineNum">      21 </span><span class="lineCov">          4 :   assert.sameValue(typeof desc.get, 'function', &quot;`typeof desc.get` is `'function'`&quot;);</span>
+<span class="lineNum">      22 </span><span class="lineCov">          4 :   assert.sameValue('prototype' in desc.get, false, &quot;The result of `'prototype' in desc.get` is `false`&quot;);</span>
+<span class="lineNum">      23 </span><span class="lineCov">          4 :   assert.sameValue(desc.set, undefined, &quot;The value of `desc.set` is `undefined`&quot;);</span>
+<a name="24"><span class="lineNum">      24 </span><span class="lineCov">          4 : }</span></a>
+<span class="lineNum">      25 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      26 </span><span class="lineCov">          4 : function assertSetterDescriptor(object, name) {</span>
+<span class="lineNum">      27 </span><span class="lineCov">          4 :   var desc = Object.getOwnPropertyDescriptor(object, name);</span>
+<span class="lineNum">      28 </span><span class="lineCov">          4 :   assert.sameValue(desc.configurable, true, &quot;The value of `desc.configurable` is `true`&quot;);</span>
+<span class="lineNum">      29 </span><span class="lineCov">          4 :   assert.sameValue(desc.enumerable, false, &quot;The value of `desc.enumerable` is `false`&quot;);</span>
+<span class="lineNum">      30 </span><span class="lineCov">          4 :   assert.sameValue(typeof desc.set, 'function', &quot;`typeof desc.set` is `'function'`&quot;);</span>
+<span class="lineNum">      31 </span><span class="lineCov">          4 :   assert.sameValue('prototype' in desc.set, false, &quot;The result of `'prototype' in desc.set` is `false`&quot;);</span>
+<span class="lineNum">      32 </span><span class="lineCov">          4 :   assert.sameValue(desc.get, undefined, &quot;The value of `desc.get` is `undefined`&quot;);</span>
+<a name="33"><span class="lineNum">      33 </span><span class="lineCov">          4 : }</span></a>
+<span class="lineNum">      34 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      35 </span><span class="lineCov">          4 : class B {</span>
+<a name="36"><span class="lineNum">      36 </span><span class="lineCov">          2 :   1() { return 1; }</span></a>
+<span class="lineNum">      37 </span><span class="lineCov">          2 :   get 2() { return 2; }</span>
+<span class="lineNum">      38 </span><span class="lineCov">          2 :   set 3(_) {}</span>
+<span class="lineNum">      39 </span><span class="lineCov">          2 : </span>
+<a name="40"><span class="lineNum">      40 </span><span class="lineCov">          2 :   static 4() { return 4; }</span></a>
+<span class="lineNum">      41 </span><span class="lineCov">          2 :   static get 5() { return 5; }</span>
+<span class="lineNum">      42 </span><span class="lineCov">          2 :   static set 6(_) {}</span>
+<span class="lineNum">      43 </span><span class="lineCov">          2 : }</span>
+<span class="lineNum">      44 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      45 </span><span class="lineCov">          2 : assertMethodDescriptor(B.prototype, '1');</span>
+<span class="lineNum">      46 </span><span class="lineCov">          2 : assertGetterDescriptor(B.prototype, '2');</span>
+<span class="lineNum">      47 </span><span class="lineCov">          2 : assertSetterDescriptor(B.prototype, '3');</span>
+<span class="lineNum">      48 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      49 </span><span class="lineCov">          2 : assertMethodDescriptor(B, '4');</span>
+<span class="lineNum">      50 </span><span class="lineCov">          2 : assertGetterDescriptor(B, '5');</span>
+<a name="51"><span class="lineNum">      51 </span><span class="lineCov">          2 : assertSetterDescriptor(B, '6');</span></a>
+<a name="52"><span class="lineNum">      52 </span><span class="lineCov">          2 : </span></a>
+<a name="53"><span class="lineNum">      53 </span><span class="lineCov">          4 : class C extends B {</span></a>
+<a name="54"><span class="lineNum">      54 </span><span class="lineCov">          2 :   1() { return super[1](); }</span></a>
+<a name="55"><span class="lineNum">      55 </span><span class="lineCov">          2 :   get 2() { return super[2]; }</span></a>
+<span class="lineNum">      56 </span><span class="lineCov">          2 :   static 4() { return super[4](); }</span>
+<span class="lineNum">      57 </span><span class="lineCov">          2 :   static get 5() { return super[5]; }</span>
+<span class="lineNum">      58 </span><span class="lineCov">          2 : }</span>
+<span class="lineNum">      59 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      60 </span><span class="lineCov">          2 : assert.sameValue(new C()[1](), 1, &quot;`new C()[1]()` returns `1`. Defined as `1() { return super[1](); }`&quot;);</span>
+<span class="lineNum">      61 </span><span class="lineCov">          2 : assert.sameValue(new C()[2], 2, &quot;The value of `new C()[2]` is `2`. Defined as `get 2() { return super[2]; }`&quot;);</span>
+<span class="lineNum">      62 </span><span class="lineCov">          2 : assert.sameValue(C[4](), 4, &quot;`C[4]()` returns `4`. Defined as `static 4() { return super[4](); }`&quot;);</span>
+<span class="lineNum">      63 </span><span class="lineCov">          2 : assert.sameValue(C[5], 5, &quot;The value of `C[5]` is `5`. Defined as `static get 5() { return super[5]; }`&quot;);</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - test/test262/data/test/intl402/9.2.1_3.js</title>
+  <link rel="stylesheet" type="text/css" href="../../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../../index.html">top level</a> - <a href="index.html">test/test262/data/test/intl402</a> - 9.2.1_3.js<span style="font-size: 80%;"> (source / <a href="9.2.1_3.js.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">87</td>
+            <td class="headerCovTableEntry">87</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2017-02-14</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">3</td>
+            <td class="headerCovTableEntry">3</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr><td><img src="../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span><span class="lineCov">          2 : // Copyright 2012 Mozilla Corporation. All rights reserved.</span></a>
+<span class="lineNum">       2 </span><span class="lineCov">          2 : // This code is governed by the BSD license found in the LICENSE file.</span>
+<span class="lineNum">       3 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">       4 </span><span class="lineCov">          2 : /*---</span>
+<span class="lineNum">       5 </span><span class="lineCov">          2 : es5id: 9.2.1_3</span>
+<span class="lineNum">       6 </span><span class="lineCov">          2 : description: &gt;</span>
+<span class="lineNum">       7 </span><span class="lineCov">          2 :     Tests that a single string instead of a locale list is treated  as</span>
+<span class="lineNum">       8 </span><span class="lineCov">          2 :     the locale list containing that string.</span>
+<span class="lineNum">       9 </span><span class="lineCov">          2 : author: Norbert Lindenberg</span>
+<span class="lineNum">      10 </span><span class="lineCov">          2 : includes: [testIntl.js]</span>
+<span class="lineNum">      11 </span><span class="lineCov">          2 : ---*/</span>
+<span class="lineNum">      12 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      13 </span><span class="lineCov">          2 : var validAndInvalidLanguageTags = [</span>
+<span class="lineNum">      14 </span><span class="lineCov">          2 :     &quot;de&quot;, // ISO 639 language code</span>
+<span class="lineNum">      15 </span><span class="lineCov">          2 :     &quot;de-DE&quot;, // + ISO 3166-1 country code</span>
+<span class="lineNum">      16 </span><span class="lineCov">          2 :     &quot;DE-de&quot;, // tags are case-insensitive</span>
+<span class="lineNum">      17 </span><span class="lineCov">          2 :     &quot;cmn&quot;, // ISO 639 language code</span>
+<span class="lineNum">      18 </span><span class="lineCov">          2 :     &quot;cmn-Hans&quot;, // + script code</span>
+<span class="lineNum">      19 </span><span class="lineCov">          2 :     &quot;CMN-hANS&quot;, // tags are case-insensitive</span>
+<span class="lineNum">      20 </span><span class="lineCov">          2 :     &quot;cmn-hans-cn&quot;, // + ISO 3166-1 country code</span>
+<span class="lineNum">      21 </span><span class="lineCov">          2 :     &quot;es-419&quot;, // + UN M.49 region code</span>
+<span class="lineNum">      22 </span><span class="lineCov">          2 :     &quot;es-419-u-nu-latn-cu-bob&quot;, // + Unicode locale extension sequence</span>
+<span class="lineNum">      23 </span><span class="lineCov">          2 :     &quot;i-klingon&quot;, // grandfathered tag</span>
+<span class="lineNum">      24 </span><span class="lineCov">          2 :     &quot;cmn-hans-cn-t-ca-u-ca-x-t-u&quot;, // singleton subtags can also be used as private use subtags</span>
+<span class="lineNum">      25 </span><span class="lineCov">          2 :     &quot;de-gregory-u-ca-gregory&quot;, // variant and extension subtags may be the same</span>
+<span class="lineNum">      26 </span><span class="lineCov">          2 :     &quot;de_DE&quot;,</span>
+<span class="lineNum">      27 </span><span class="lineCov">          2 :     &quot;DE_de&quot;,</span>
+<span class="lineNum">      28 </span><span class="lineCov">          2 :     &quot;cmn_Hans&quot;,</span>
+<span class="lineNum">      29 </span><span class="lineCov">          2 :     &quot;cmn-hans_cn&quot;,</span>
+<span class="lineNum">      30 </span><span class="lineCov">          2 :     &quot;es_419&quot;,</span>
+<span class="lineNum">      31 </span><span class="lineCov">          2 :     &quot;es-419-u-nu-latn-cu_bob&quot;,</span>
+<span class="lineNum">      32 </span><span class="lineCov">          2 :     &quot;i_klingon&quot;,</span>
+<span class="lineNum">      33 </span><span class="lineCov">          2 :     &quot;cmn-hans-cn-t-ca-u-ca-x_t-u&quot;,</span>
+<span class="lineNum">      34 </span><span class="lineCov">          2 :     &quot;enochian_enochian&quot;,</span>
+<span class="lineNum">      35 </span><span class="lineCov">          2 :     &quot;de-gregory_u-ca-gregory&quot;,</span>
+<span class="lineNum">      36 </span><span class="lineCov">          2 :     &quot;i&quot;, // singleton alone</span>
+<span class="lineNum">      37 </span><span class="lineCov">          2 :     &quot;x&quot;, // private use without subtag</span>
+<span class="lineNum">      38 </span><span class="lineCov">          2 :     &quot;u&quot;, // extension singleton in first place</span>
+<span class="lineNum">      39 </span><span class="lineCov">          2 :     &quot;419&quot;, // region code in first place</span>
+<span class="lineNum">      40 </span><span class="lineCov">          2 :     &quot;u-nu-latn-cu-bob&quot;, // extension sequence without language</span>
+<span class="lineNum">      41 </span><span class="lineCov">          2 :     &quot;hans-cmn-cn&quot;, // &quot;hans&quot; could theoretically be a 4-letter language code,</span>
+<span class="lineNum">      42 </span><span class="lineCov">          2 :                    // but those can't be followed by extlang codes.</span>
+<span class="lineNum">      43 </span><span class="lineCov">          2 :     &quot;cmn-hans-cn-u-u&quot;, // duplicate singleton</span>
+<span class="lineNum">      44 </span><span class="lineCov">          2 :     &quot;cmn-hans-cn-t-u-ca-u&quot;, // duplicate singleton</span>
+<span class="lineNum">      45 </span><span class="lineCov">          2 :     &quot;de-gregory-gregory&quot; // duplicate variant</span>
+<a name="46"><span class="lineNum">      46 </span><span class="lineCov">          2 : ];</span></a>
+<a name="47"><span class="lineNum">      47 </span><span class="lineCov">          2 : </span></a>
+<span class="lineNum">      48 </span><span class="lineCov">          6 : testWithIntlConstructors(function (Constructor) {</span>
+<span class="lineNum">      49 </span><span class="lineCov">        186 :     validAndInvalidLanguageTags.forEach(function (locale) {</span>
+<span class="lineNum">      50 </span><span class="lineCov">        186 :         var obj1, obj2, locale1, locale2, error1, error2;</span>
+<span class="lineNum">      51 </span><span class="lineCov">        186 :         try {</span>
+<span class="lineNum">      52 </span><span class="lineCov">        186 :             obj1 = new Constructor(locale);</span>
+<span class="lineNum">      53 </span><span class="lineCov">        186 :             locale1 = obj1.resolvedOptions().locale;</span>
+<span class="lineNum">      54 </span><span class="lineCov">        186 :         } catch (e) {</span>
+<span class="lineNum">      55 </span><span class="lineCov">        186 :             error1 = e;</span>
+<span class="lineNum">      56 </span><span class="lineCov">        186 :         }</span>
+<span class="lineNum">      57 </span><span class="lineCov">        186 :         try {</span>
+<span class="lineNum">      58 </span><span class="lineCov">        186 :             obj2 = new Constructor([locale]);</span>
+<span class="lineNum">      59 </span><span class="lineCov">        186 :             locale2 = obj2.resolvedOptions().locale;</span>
+<span class="lineNum">      60 </span><span class="lineCov">        186 :         } catch (e) {</span>
+<span class="lineNum">      61 </span><span class="lineCov">        186 :             error2 = e;</span>
+<span class="lineNum">      62 </span><span class="lineCov">        186 :         }</span>
+<span class="lineNum">      63 </span><span class="lineCov">        186 : </span>
+<span class="lineNum">      64 </span><span class="lineCov">        186 :         if ((error1 === undefined) !== (error2 === undefined)) {</span>
+<span class="lineNum">      65 </span><span class="lineCov">        186 :             if (error1 === undefined) {</span>
+<span class="lineNum">      66 </span><span class="lineCov">        186 :                 $ERROR(&quot;Single locale string &quot; + locale +</span>
+<span class="lineNum">      67 </span><span class="lineCov">        186 :                     &quot; was accepted, but locale list containing that string wasn't.&quot;);</span>
+<span class="lineNum">      68 </span><span class="lineCov">        186 :             } else {</span>
+<span class="lineNum">      69 </span><span class="lineCov">        186 :                 $ERROR(&quot;Single locale string &quot; + locale +</span>
+<span class="lineNum">      70 </span><span class="lineCov">        186 :                     &quot; was rejected, but locale list containing that string wasn't.&quot;);</span>
+<span class="lineNum">      71 </span><span class="lineCov">        186 :             }</span>
+<span class="lineNum">      72 </span><span class="lineCov">        186 :         } else if (error1 === undefined) {</span>
+<span class="lineNum">      73 </span><span class="lineCov">        186 :              if (locale1 !== locale2) {</span>
+<span class="lineNum">      74 </span><span class="lineCov">        186 :                 $ERROR(&quot;Single locale string &quot; + locale + &quot; results in &quot; + locale1 +</span>
+<span class="lineNum">      75 </span><span class="lineCov">        186 :                     &quot;, but locale list [&quot; + locale + &quot;] results in &quot; + locale2 + &quot;.&quot;);</span>
+<span class="lineNum">      76 </span><span class="lineCov">        186 :              }</span>
+<span class="lineNum">      77 </span><span class="lineCov">        186 :         } else {</span>
+<span class="lineNum">      78 </span><span class="lineCov">        186 :             if (error1.name !== error2.name) {</span>
+<span class="lineNum">      79 </span><span class="lineCov">        186 :                 $ERROR(&quot;Single locale string &quot; + locale + &quot; results in error &quot; + error1.name +</span>
+<span class="lineNum">      80 </span><span class="lineCov">        186 :                     &quot;, but locale list [&quot; + locale + &quot;] results in error &quot; + error2.name + &quot;.&quot;);</span>
+<span class="lineNum">      81 </span><span class="lineCov">        186 :              }</span>
+<span class="lineNum">      82 </span><span class="lineCov">        186 :         }</span>
+<span class="lineNum">      83 </span><span class="lineCov">        186 :     });</span>
+<span class="lineNum">      84 </span><span class="lineCov">          6 :     </span>
+<span class="lineNum">      85 </span><span class="lineCov">          6 :     return true;</span>
+<span class="lineNum">      86 </span><span class="lineCov">          6 : });</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - test/benchmarks/data/sunspider/bitops-3bit-bits-in-byte.js</title>
+  <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../index.html">top level</a> - <a href="index.html">test/benchmarks/data/sunspider</a> - bitops-3bit-bits-in-byte.js<span style="font-size: 80%;"> (source / <a href="bitops-3bit-bits-in-byte.js.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">41</td>
+            <td class="headerCovTableEntry">41</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2017-02-14</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">3</td>
+            <td class="headerCovTableEntry">3</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr><td><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span><span class="lineCov">          1 : // Copyright (c) 2004 by Arthur Langereis (arthur_ext at domain xfinitegames, tld com</span></a>
+<span class="lineNum">       2 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">       3 </span><span class="lineCov">          1 : var result = 0;</span>
+<span class="lineNum">       4 </span><span class="lineCov">          1 : </span>
+<a name="5"><span class="lineNum">       5 </span><span class="lineCov">          1 : // 1 op = 6 ANDs, 3 SHRs, 3 SHLs, 4 assigns, 2 ADDs</span></a>
+<span class="lineNum">       6 </span><span class="lineCov">          1 : // O(1)</span>
+<span class="lineNum">       7 </span><span class="lineCov">     128000 : function fast3bitlookup(b) {</span>
+<span class="lineNum">       8 </span><span class="lineCov">     128000 : var c, bi3b = 0xE994; // 0b1110 1001 1001 0100; // 3 2 2 1  2 1 1 0</span>
+<span class="lineNum">       9 </span><span class="lineCov">     128000 : c  = 3 &amp; (bi3b &gt;&gt; ((b &lt;&lt; 1) &amp; 14));</span>
+<span class="lineNum">      10 </span><span class="lineCov">     128000 : c += 3 &amp; (bi3b &gt;&gt; ((b &gt;&gt; 2) &amp; 14));</span>
+<span class="lineNum">      11 </span><span class="lineCov">     128000 : c += 3 &amp; (bi3b &gt;&gt; ((b &gt;&gt; 5) &amp; 6));</span>
+<span class="lineNum">      12 </span><span class="lineCov">     128000 : return c;</span>
+<span class="lineNum">      13 </span><span class="lineCov">     128000 : </span>
+<span class="lineNum">      14 </span><span class="lineCov">     128000 : /*</span>
+<span class="lineNum">      15 </span><span class="lineCov">     128000 : lir4,0xE994; 9 instructions, no memory access, minimal register dependence, 6 shifts, 2 adds, 1 inline assign</span>
+<span class="lineNum">      16 </span><span class="lineCov">     128000 : rlwinmr5,r3,1,28,30</span>
+<span class="lineNum">      17 </span><span class="lineCov">     128000 : rlwinmr6,r3,30,28,30</span>
+<span class="lineNum">      18 </span><span class="lineCov">     128000 : rlwinmr7,r3,27,29,30</span>
+<span class="lineNum">      19 </span><span class="lineCov">     128000 : rlwnmr8,r4,r5,30,31</span>
+<span class="lineNum">      20 </span><span class="lineCov">     128000 : rlwnmr9,r4,r6,30,31</span>
+<span class="lineNum">      21 </span><span class="lineCov">     128000 : rlwnmr10,r4,r7,30,31</span>
+<span class="lineNum">      22 </span><span class="lineCov">     128000 : addr3,r8,r9</span>
+<span class="lineNum">      23 </span><span class="lineCov">     128000 : addr3,r3,r10</span>
+<span class="lineNum">      24 </span><span class="lineCov">     128000 : */</span>
+<span class="lineNum">      25 </span><span class="lineCov">     128000 : }</span>
+<a name="26"><span class="lineNum">      26 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      27 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      28 </span><span class="lineCov">          1 : function TimeFunc(func) {</span>
+<span class="lineNum">      29 </span><span class="lineCov">          1 : var x, y, t;</span>
+<span class="lineNum">      30 </span><span class="lineCov">          1 : var sum = 0;</span>
+<span class="lineNum">      31 </span><span class="lineCov">          1 : for(var x=0; x&lt;500; x++)</span>
+<span class="lineNum">      32 </span><span class="lineCov">          1 : for(var y=0; y&lt;256; y++) sum += func(y);</span>
+<span class="lineNum">      33 </span><span class="lineCov">          1 : return sum;</span>
+<span class="lineNum">      34 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      35 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      36 </span><span class="lineCov">          1 : sum = TimeFunc(fast3bitlookup);</span>
+<span class="lineNum">      37 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      38 </span><span class="lineCov">          1 : var expected = 512000;</span>
+<span class="lineNum">      39 </span><span class="lineCov">          1 : if (sum != expected)</span>
+<span class="lineNum">      40 </span><span class="lineCov">          1 :     throw &quot;ERROR: bad result: expected &quot; + expected + &quot; but got &quot; + sum;</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

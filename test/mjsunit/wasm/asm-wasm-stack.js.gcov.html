@@ -1,0 +1,223 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - test/mjsunit/wasm/asm-wasm-stack.js</title>
+  <link rel="stylesheet" type="text/css" href="../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../index.html">top level</a> - <a href="index.html">test/mjsunit/wasm</a> - asm-wasm-stack.js<span style="font-size: 80%;"> (source / <a href="asm-wasm-stack.js.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">128</td>
+            <td class="headerCovTableEntry">148</td>
+            <td class="headerCovTableEntryMed">86.5 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2017-02-14</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">11</td>
+            <td class="headerCovTableEntry">16</td>
+            <td class="headerCovTableEntryLo">68.8 %</td>
+          </tr>
+          <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span><span class="lineCov">          1 : // Copyright 2016 the V8 project authors. All rights reserved.</span></a>
+<span class="lineNum">       2 </span><span class="lineCov">          1 : // Use of this source code is governed by a BSD-style license that can be</span>
+<span class="lineNum">       3 </span><span class="lineCov">          1 : // found in the LICENSE file.</span>
+<span class="lineNum">       4 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">       5 </span><span class="lineCov">          1 : // Flags: --validate-asm --allow-natives-syntax</span>
+<span class="lineNum">       6 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">       7 </span><span class="lineCov">          1 : var filename = '(?:[^ ]+/)?test/mjsunit/wasm/asm-wasm-stack.js';</span>
+<a name="8"><span class="lineNum">       8 </span><span class="lineCov">          1 : filename = filename.replace(/\//g, '[/\\\\]');</span></a>
+<span class="lineNum">       9 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      10 </span><span class="lineCov">          1 : function checkPreformattedStack(e, expected_lines) {</span>
+<span class="lineNum">      11 </span><span class="lineCov">          1 :   print('preformatted stack: ' + e.stack);</span>
+<span class="lineNum">      12 </span><span class="lineCov">          1 :   var lines = e.stack.split('\n');</span>
+<span class="lineNum">      13 </span><span class="lineCov">          1 :   assertEquals(expected_lines.length, lines.length);</span>
+<span class="lineNum">      14 </span><span class="lineCov">          1 :   for (var i = 0; i &lt; lines.length; ++i) {</span>
+<span class="lineNum">      15 </span><span class="lineCov">          1 :     assertMatches(expected_lines[i], lines[i], 'line ' + i);</span>
+<span class="lineNum">      16 </span><span class="lineCov">          1 :   }</span>
+<a name="17"><span class="lineNum">      17 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">      18 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      19 </span><span class="lineCov">          2 : function printCallsites(stack) {</span>
+<span class="lineNum">      20 </span><span class="lineCov">          2 :   print('callsite objects (size ' + stack.length + '):');</span>
+<span class="lineNum">      21 </span><span class="lineCov">          2 :   for (var i = 0; i &lt; stack.length; ++i) {</span>
+<span class="lineNum">      22 </span><span class="lineCov">          2 :     var s = stack[i];</span>
+<span class="lineNum">      23 </span><span class="lineCov">          2 :     print(</span>
+<span class="lineNum">      24 </span><span class="lineCov">          2 :         ' [' + i + '] ' + s.getFunctionName() + ' (' + s.getFileName() + ':' +</span>
+<span class="lineNum">      25 </span><span class="lineCov">          2 :         s.getLineNumber() + ':' + s.getColumnNumber() + ')');</span>
+<span class="lineNum">      26 </span><span class="lineCov">          2 :   }</span>
+<a name="27"><span class="lineNum">      27 </span><span class="lineCov">          2 : }</span></a>
+<span class="lineNum">      28 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      29 </span><span class="lineCov">          2 : function checkCallsiteArray(stack, expected) {</span>
+<span class="lineNum">      30 </span><span class="lineCov">          2 :   assertEquals(expected.length, stack.length, 'stack size');</span>
+<span class="lineNum">      31 </span><span class="lineCov">          2 :   for (var i = 0; i &lt; expected.length; ++i) {</span>
+<span class="lineNum">      32 </span><span class="lineCov">          2 :     var cs = stack[i];</span>
+<span class="lineNum">      33 </span><span class="lineCov">          2 :     assertMatches('^' + filename + '$', cs.getFileName(), 'file name at ' + i);</span>
+<span class="lineNum">      34 </span><span class="lineCov">          2 :     assertEquals(expected[i][0], cs.getFunctionName(), 'function name at ' + i);</span>
+<span class="lineNum">      35 </span><span class="lineCov">          2 :     assertEquals(expected[i][1], cs.getLineNumber(), 'line number at ' + i);</span>
+<span class="lineNum">      36 </span><span class="lineCov">          2 :     assertEquals(expected[i][2], cs.getColumnNumber(), 'column number at ' + i);</span>
+<span class="lineNum">      37 </span><span class="lineCov">          2 :     assertNotNull(cs.getThis(), 'receiver should be global');</span>
+<span class="lineNum">      38 </span><span class="lineCov">          2 :     assertEquals(stack[0].getThis(), cs.getThis(), 'receiver should be global');</span>
+<span class="lineNum">      39 </span><span class="lineCov">          2 :   }</span>
+<a name="40"><span class="lineNum">      40 </span><span class="lineCov">          2 : }</span></a>
+<span class="lineNum">      41 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      42 </span><span class="lineCov">          1 : function checkFunctionsOnCallsites(e, expected) {</span>
+<span class="lineNum">      43 </span><span class="lineCov">          1 :   printCallsites(e.stack);</span>
+<span class="lineNum">      44 </span><span class="lineCov">          1 :   checkCallsiteArray(e.stack, expected);</span>
+<a name="45"><span class="lineNum">      45 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">      46 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      47 </span><span class="lineCov">          1 : function checkTopFunctionsOnCallsites(e, expected) {</span>
+<span class="lineNum">      48 </span><span class="lineCov">          1 :   printCallsites(e.stack);</span>
+<span class="lineNum">      49 </span><span class="lineCov">          1 :   assertTrue(</span>
+<span class="lineNum">      50 </span><span class="lineCov">          1 :       e.stack.length &gt;= expected.length, 'expected at least ' +</span>
+<span class="lineNum">      51 </span><span class="lineCov">          1 :           expected.length + ' callsites, got ' + e.stack.length);</span>
+<span class="lineNum">      52 </span><span class="lineCov">          1 :   checkCallsiteArray(e.stack.slice(0, expected.length), expected);</span>
+<a name="53"><span class="lineNum">      53 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">      54 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      55 </span><span class="lineCov">          2 : function throwException() {</span>
+<span class="lineNum">      56 </span><span class="lineCov">          2 :   throw new Error('exception from JS');</span>
+<a name="57"><span class="lineNum">      57 </span><span class="lineCov">          2 : }</span></a>
+<span class="lineNum">      58 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      59 </span><span class="lineCov">          1 : function generateWasmFromAsmJs(stdlib, foreign) {</span>
+<a name="60"><span class="lineNum">      60 </span><span class="lineNoCov">          0 :   'use asm';</span></a>
+<span class="lineNum">      61 </span><span class="lineNoCov">          0 :   var throwFunc = foreign.throwFunc;</span>
+<span class="lineNum">      62 </span><span class="lineNoCov">          0 :   function callThrow() {</span>
+<a name="63"><span class="lineNum">      63 </span><span class="lineNoCov">          0 :     throwFunc();</span></a>
+<span class="lineNum">      64 </span><span class="lineNoCov">          0 :   }</span>
+<span class="lineNum">      65 </span><span class="lineNoCov">          0 :   function redirectFun(i) {</span>
+<span class="lineNum">      66 </span><span class="lineNoCov">          0 :     i = i | 0;</span>
+<span class="lineNum">      67 </span><span class="lineNoCov">          0 :     switch (i | 0) {</span>
+<span class="lineNum">      68 </span><span class="lineNoCov">          0 :       case 0: callThrow(); break;</span>
+<span class="lineNum">      69 </span><span class="lineNoCov">          0 :       case 1: redirectFun(0); break;</span>
+<span class="lineNum">      70 </span><span class="lineNoCov">          0 :       case 2: redirectFun(1); break;</span>
+<span class="lineNum">      71 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">      72 </span><span class="lineNoCov">          0 :   }</span>
+<span class="lineNum">      73 </span><span class="lineNoCov">          0 :   return redirectFun;</span>
+<a name="74"><span class="lineNum">      74 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">      75 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      76 </span><span class="lineCov">          1 : (function PreformattedStackTraceFromJS() {</span>
+<span class="lineNum">      77 </span><span class="lineCov">          1 :   var fun = generateWasmFromAsmJs(this, {throwFunc: throwException});</span>
+<span class="lineNum">      78 </span><span class="lineCov">          1 :   assertTrue(%IsWasmCode(fun));</span>
+<span class="lineNum">      79 </span><span class="lineCov">          1 :   var e = null;</span>
+<span class="lineNum">      80 </span><span class="lineCov">          1 :   try {</span>
+<span class="lineNum">      81 </span><span class="lineCov">          1 :     fun(0);</span>
+<span class="lineNum">      82 </span><span class="lineCov">          1 :   } catch (ex) {</span>
+<span class="lineNum">      83 </span><span class="lineCov">          1 :     e = ex;</span>
+<span class="lineNum">      84 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">      85 </span><span class="lineCov">          1 :   assertInstanceof(e, Error, 'exception should have been thrown');</span>
+<span class="lineNum">      86 </span><span class="lineCov">          1 :   checkPreformattedStack(e, [</span>
+<span class="lineNum">      87 </span><span class="lineCov">          1 :     '^Error: exception from JS$',</span>
+<span class="lineNum">      88 </span><span class="lineCov">          1 :     '^ *at throwException \\(' + filename + ':56:9\\)$',</span>
+<span class="lineNum">      89 </span><span class="lineCov">          1 :     '^ *at callThrow \\(' + filename + ':63:5\\)$',</span>
+<span class="lineNum">      90 </span><span class="lineCov">          1 :     '^ *at redirectFun \\(' + filename + ':68:15\\)$',</span>
+<span class="lineNum">      91 </span><span class="lineCov">          1 :     '^ *at PreformattedStackTraceFromJS \\(' + filename + ':81:5\\)$',</span>
+<span class="lineNum">      92 </span><span class="lineCov">          1 :     '^ *at ' + filename + ':94:3$'</span>
+<span class="lineNum">      93 </span><span class="lineCov">          1 :   ]);</span>
+<span class="lineNum">      94 </span><span class="lineCov">          1 : })();</span>
+<a name="95"><span class="lineNum">      95 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      96 </span><span class="lineCov">          1 : // Now collect the Callsite objects instead of just a string.</span>
+<span class="lineNum">      97 </span><span class="lineCov">          2 : Error.prepareStackTrace = function(error, frames) {</span>
+<span class="lineNum">      98 </span><span class="lineCov">          2 :   return frames;</span>
+<a name="99"><span class="lineNum">      99 </span><span class="lineCov">          2 : };</span></a>
+<span class="lineNum">     100 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     101 </span><span class="lineCov">          1 : (function CallsiteObjectsFromJS() {</span>
+<span class="lineNum">     102 </span><span class="lineCov">          1 :   var fun = generateWasmFromAsmJs(this, {throwFunc: throwException});</span>
+<span class="lineNum">     103 </span><span class="lineCov">          1 :   assertTrue(%IsWasmCode(fun));</span>
+<span class="lineNum">     104 </span><span class="lineCov">          1 :   var e = null;</span>
+<span class="lineNum">     105 </span><span class="lineCov">          1 :   try {</span>
+<span class="lineNum">     106 </span><span class="lineCov">          1 :     fun(2);</span>
+<span class="lineNum">     107 </span><span class="lineCov">          1 :   } catch (ex) {</span>
+<span class="lineNum">     108 </span><span class="lineCov">          1 :     e = ex;</span>
+<span class="lineNum">     109 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     110 </span><span class="lineCov">          1 :   assertInstanceof(e, Error, 'exception should have been thrown');</span>
+<span class="lineNum">     111 </span><span class="lineCov">          1 :   checkFunctionsOnCallsites(e, [</span>
+<span class="lineNum">     112 </span><span class="lineCov">          1 :     ['throwException', 56, 9],          // --</span>
+<span class="lineNum">     113 </span><span class="lineCov">          1 :     ['callThrow', 63, 5],               // --</span>
+<span class="lineNum">     114 </span><span class="lineCov">          1 :     ['redirectFun', 68, 15],            // --</span>
+<span class="lineNum">     115 </span><span class="lineCov">          1 :     ['redirectFun', 69, 15],            // --</span>
+<span class="lineNum">     116 </span><span class="lineCov">          1 :     ['redirectFun', 70, 15],            // --</span>
+<span class="lineNum">     117 </span><span class="lineCov">          1 :     ['CallsiteObjectsFromJS', 106, 5],  // --</span>
+<span class="lineNum">     118 </span><span class="lineCov">          1 :     [null, 120, 3]</span>
+<span class="lineNum">     119 </span><span class="lineCov">          1 :   ]);</span>
+<a name="120"><span class="lineNum">     120 </span><span class="lineCov">          1 : })();</span></a>
+<span class="lineNum">     121 </span><span class="lineCov">          1 : </span>
+<a name="122"><span class="lineNum">     122 </span><span class="lineCov">          1 : function generateOverflowWasmFromAsmJs() {</span></a>
+<span class="lineNum">     123 </span><span class="lineNoCov">          0 :   'use asm';</span>
+<span class="lineNum">     124 </span><span class="lineNoCov">          0 :   function f(a) {</span>
+<span class="lineNum">     125 </span><span class="lineNoCov">          0 :     a = a | 0;</span>
+<span class="lineNum">     126 </span><span class="lineNoCov">          0 :     return f(a) | 0;</span>
+<span class="lineNum">     127 </span><span class="lineNoCov">          0 :   }</span>
+<span class="lineNum">     128 </span><span class="lineNoCov">          0 :   return f;</span>
+<a name="129"><span class="lineNum">     129 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">     130 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     131 </span><span class="lineCov">          1 : (function StackOverflowPosition() {</span>
+<span class="lineNum">     132 </span><span class="lineCov">          1 :   var fun = generateOverflowWasmFromAsmJs();</span>
+<span class="lineNum">     133 </span><span class="lineCov">          1 :   assertTrue(%IsWasmCode(fun));</span>
+<span class="lineNum">     134 </span><span class="lineCov">          1 :   var e = null;</span>
+<span class="lineNum">     135 </span><span class="lineCov">          1 :   try {</span>
+<span class="lineNum">     136 </span><span class="lineCov">          1 :     fun(2);</span>
+<span class="lineNum">     137 </span><span class="lineCov">          1 :   } catch (ex) {</span>
+<span class="lineNum">     138 </span><span class="lineCov">          1 :     e = ex;</span>
+<span class="lineNum">     139 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     140 </span><span class="lineCov">          1 :   assertInstanceof(e, RangeError, 'RangeError should have been thrown');</span>
+<span class="lineNum">     141 </span><span class="lineCov">          1 :   checkTopFunctionsOnCallsites(e, [</span>
+<span class="lineNum">     142 </span><span class="lineCov">          1 :     ['f', 124, 13],  // --</span>
+<span class="lineNum">     143 </span><span class="lineCov">          1 :     ['f', 126, 12],  // --</span>
+<span class="lineNum">     144 </span><span class="lineCov">          1 :     ['f', 126, 12],  // --</span>
+<span class="lineNum">     145 </span><span class="lineCov">          1 :     ['f', 126, 12]   // --</span>
+<span class="lineNum">     146 </span><span class="lineCov">          1 :   ]);</span>
+<span class="lineNum">     147 </span><span class="lineCov">          1 : })();</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

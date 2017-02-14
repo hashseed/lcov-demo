@@ -1,0 +1,1426 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - test/benchmarks/data/octane/gbemu-part1.js</title>
+  <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../index.html">top level</a> - <a href="index.html">test/benchmarks/data/octane</a> - gbemu-part1.js<span style="font-size: 80%;"> (source / <a href="gbemu-part1.js.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">812</td>
+            <td class="headerCovTableEntry">1351</td>
+            <td class="headerCovTableEntryLo">60.1 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2017-02-14</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">45</td>
+            <td class="headerCovTableEntry">88</td>
+            <td class="headerCovTableEntryLo">51.1 %</td>
+          </tr>
+          <tr><td><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span><span class="lineCov">          1 : // Portions copyright 2013 Google, Inc</span></a>
+<span class="lineNum">       2 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">       3 </span><span class="lineCov">          1 : // Copyright (C) 2010 - 2012 Grant Galitz</span>
+<span class="lineNum">       4 </span><span class="lineCov">          1 : // This program is free software; you can redistribute it and/or modify</span>
+<span class="lineNum">       5 </span><span class="lineCov">          1 : // it under the terms of the GNU General Public License version 2 as</span>
+<span class="lineNum">       6 </span><span class="lineCov">          1 : // published by the Free Software Foundation.</span>
+<span class="lineNum">       7 </span><span class="lineCov">          1 : // The full license is available at http://www.gnu.org/licenses/gpl.html</span>
+<span class="lineNum">       8 </span><span class="lineCov">          1 : // This program is distributed in the hope that it will be useful, but</span>
+<span class="lineNum">       9 </span><span class="lineCov">          1 : // WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="lineNum">      10 </span><span class="lineCov">          1 : // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.</span>
+<span class="lineNum">      11 </span><span class="lineCov">          1 : // See the GNU General Public License for more details.</span>
+<span class="lineNum">      12 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      13 </span><span class="lineCov">          1 : // The code has been adapted for use as a benchmark by Google.</span>
+<span class="lineNum">      14 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      15 </span><span class="lineCov">          1 : var GameboyBenchmark = new BenchmarkSuite('Gameboy', [26288412],</span>
+<span class="lineNum">      16 </span><span class="lineCov">          1 :                                           [new Benchmark('Gameboy',</span>
+<span class="lineNum">      17 </span><span class="lineCov">          1 :                                                          false,</span>
+<span class="lineNum">      18 </span><span class="lineCov">          1 :                                                          false,</span>
+<span class="lineNum">      19 </span><span class="lineCov">          1 :                                                          runGameboy,</span>
+<span class="lineNum">      20 </span><span class="lineCov">          1 :                                                          setupGameboy,</span>
+<span class="lineNum">      21 </span><span class="lineCov">          1 :                                                          tearDownGameboy,</span>
+<span class="lineNum">      22 </span><span class="lineCov">          1 :                                                          null,</span>
+<span class="lineNum">      23 </span><span class="lineCov">          1 :                                                          4)]);</span>
+<span class="lineNum">      24 </span><span class="lineCov">          1 : </span>
+<a name="25"><span class="lineNum">      25 </span><span class="lineCov">          1 : var decoded_gameboy_rom = null;</span></a>
+<span class="lineNum">      26 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      27 </span><span class="lineCov">          1 : function setupGameboy() {</span>
+<span class="lineNum">      28 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      29 </span><span class="lineCov">          1 :   // Check if all the types required by the code are supported.</span>
+<span class="lineNum">      30 </span><span class="lineCov">          1 :   // If not, throw exception and quit.</span>
+<span class="lineNum">      31 </span><span class="lineCov">          1 :   if (!(typeof Uint8Array != &quot;undefined&quot; &amp;&amp;</span>
+<span class="lineNum">      32 </span><span class="lineCov">          1 :       typeof Int8Array != &quot;undefined&quot; &amp;&amp;</span>
+<span class="lineNum">      33 </span><span class="lineCov">          1 :       typeof Float32Array != &quot;undefined&quot; &amp;&amp;</span>
+<span class="lineNum">      34 </span><span class="lineCov">          1 :       typeof Int32Array != &quot;undefined&quot;) ) {</span>
+<span class="lineNum">      35 </span><span class="lineCov">          1 :     throw &quot;TypedArrayUnsupported&quot;;</span>
+<span class="lineNum">      36 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">      37 </span><span class="lineCov">          1 :   decoded_gameboy_rom = base64_decode(gameboy_rom);</span>
+<span class="lineNum">      38 </span><span class="lineCov">          1 :   rom = null;</span>
+<a name="39"><span class="lineNum">      39 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">      40 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      41 </span><span class="lineCov">          5 : function runGameboy() {</span>
+<span class="lineNum">      42 </span><span class="lineCov">          5 :   start(new GameBoyCanvas(), decoded_gameboy_rom);</span>
+<span class="lineNum">      43 </span><span class="lineCov">          5 : </span>
+<span class="lineNum">      44 </span><span class="lineCov">          5 :   gameboy.instructions = 0;</span>
+<span class="lineNum">      45 </span><span class="lineCov">          5 :   gameboy.totalInstructions = 250000;</span>
+<span class="lineNum">      46 </span><span class="lineCov">          5 : </span>
+<span class="lineNum">      47 </span><span class="lineCov">          5 :   while (gameboy.instructions &lt;= gameboy.totalInstructions) {</span>
+<span class="lineNum">      48 </span><span class="lineCov">          5 :     gameboy.run();</span>
+<span class="lineNum">      49 </span><span class="lineCov">          5 :     GameBoyAudioNode.run();</span>
+<span class="lineNum">      50 </span><span class="lineCov">          5 :   }</span>
+<span class="lineNum">      51 </span><span class="lineCov">          5 : </span>
+<span class="lineNum">      52 </span><span class="lineCov">          5 :   resetGlobalVariables();</span>
+<a name="53"><span class="lineNum">      53 </span><span class="lineCov">          5 : }</span></a>
+<span class="lineNum">      54 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      55 </span><span class="lineCov">          1 : function tearDownGameboy() {</span>
+<span class="lineNum">      56 </span><span class="lineCov">          1 :   decoded_gameboy_rom = null;</span>
+<span class="lineNum">      57 </span><span class="lineCov">          1 :   expectedGameboyStateStr = null;</span>
+<span class="lineNum">      58 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      59 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      60 </span><span class="lineCov">          1 : var expectedGameboyStateStr =</span>
+<span class="lineNum">      61 </span><span class="lineCov">          1 :   '{&quot;registerA&quot;:160,&quot;registerB&quot;:255,&quot;registerC&quot;:255,&quot;registerE&quot;:11,' +</span>
+<span class="lineNum">      62 </span><span class="lineCov">          1 :   '&quot;registersHL&quot;:51600,&quot;programCounter&quot;:24309,&quot;stackPointer&quot;:49706,' +</span>
+<span class="lineNum">      63 </span><span class="lineCov">          1 :   '&quot;sumROM&quot;:10171578,&quot;sumMemory&quot;:3435856,&quot;sumMBCRam&quot;:234598,&quot;sumVRam&quot;:0}';</span>
+<span class="lineNum">      64 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      65 </span><span class="lineCov">          1 : // Start of browser emulation.</span>
+<span class="lineNum">      66 </span><span class="lineCov">          1 : </span>
+<a name="67"><span class="lineNum">      67 </span><span class="lineCov">          1 : var GameBoyWindow = { };</span></a>
+<a name="68"><span class="lineNum">      68 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      69 </span><span class="lineCov">         10 : function GameBoyContext() {</span>
+<span class="lineNum">      70 </span><span class="lineCov">         10 :   this.createBuffer = function() {</span>
+<a name="71"><span class="lineNum">      71 </span><span class="lineNoCov">          0 :     return new Buffer();</span></a>
+<span class="lineNum">      72 </span><span class="lineCov">         10 :   }</span>
+<span class="lineNum">      73 </span><span class="lineCov">         10 :   this.createImageData = function (w, h) {</span>
+<span class="lineNum">      74 </span><span class="lineCov">          5 :     var result = {};</span>
+<span class="lineNum">      75 </span><span class="lineCov">          5 :     // The following line was updated since Octane 1.0 to avoid OOB access.</span>
+<span class="lineNum">      76 </span><span class="lineCov">          5 :     result.data = new Uint8Array(w * h * 4);</span>
+<a name="77"><span class="lineNum">      77 </span><span class="lineCov">          5 :     return result;</span></a>
+<span class="lineNum">      78 </span><span class="lineCov">         10 :   }</span>
+<span class="lineNum">      79 </span><span class="lineCov">         46 :   this.putImageData = function (buffer, x, y) {</span>
+<span class="lineNum">      80 </span><span class="lineCov">         46 :     var sum = 0;</span>
+<span class="lineNum">      81 </span><span class="lineCov">         46 :     for (var i = 0; i &lt; buffer.data.length; i++) {</span>
+<span class="lineNum">      82 </span><span class="lineCov">         46 :       sum += i * buffer.data[i];</span>
+<span class="lineNum">      83 </span><span class="lineCov">         46 :       sum = sum % 1000;</span>
+<a name="84"><span class="lineNum">      84 </span><span class="lineCov">         46 :     }</span></a>
+<span class="lineNum">      85 </span><span class="lineCov">         46 :   }</span>
+<span class="lineNum">      86 </span><span class="lineCov">         46 :   this.drawImage = function () { }</span>
+<a name="87"><span class="lineNum">      87 </span><span class="lineCov">         10 : };</span></a>
+<a name="88"><span class="lineNum">      88 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      89 </span><span class="lineCov">         10 : function GameBoyCanvas() {</span>
+<span class="lineNum">      90 </span><span class="lineCov">         10 :   this.getContext = function() {</span>
+<span class="lineNum">      91 </span><span class="lineCov">         10 :     return new GameBoyContext();</span>
+<span class="lineNum">      92 </span><span class="lineCov">         10 :   }</span>
+<span class="lineNum">      93 </span><span class="lineCov">         10 :   this.width = 160;</span>
+<span class="lineNum">      94 </span><span class="lineCov">         10 :   this.height = 144;</span>
+<span class="lineNum">      95 </span><span class="lineCov">         10 :   this.style = { visibility: &quot;visibile&quot; };</span>
+<a name="96"><span class="lineNum">      96 </span><span class="lineCov">         10 : }</span></a>
+<span class="lineNum">      97 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      98 </span><span class="lineCov">         71 : function cout(message, colorIndex) {</span>
+<a name="99"><span class="lineNum">      99 </span><span class="lineCov">         71 : }</span></a>
+<span class="lineNum">     100 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     101 </span><span class="lineCov">          1 : function clear_terminal() {</span>
+<span class="lineNum">     102 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     103 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     104 </span><span class="lineCov">          1 : var GameBoyAudioNode = {</span>
+<span class="lineNum">     105 </span><span class="lineCov">          1 :   bufferSize : 0,</span>
+<a name="106"><span class="lineNum">     106 </span><span class="lineCov">          1 :   onaudioprocess : null ,</span></a>
+<span class="lineNum">     107 </span><span class="lineCov">          1 :   connect : function () {},</span>
+<span class="lineNum">     108 </span><span class="lineCov">        293 :   run: function() {</span>
+<span class="lineNum">     109 </span><span class="lineCov">        293 :     var event = {outputBuffer : this.outputBuffer};</span>
+<span class="lineNum">     110 </span><span class="lineCov">        293 :     this.onaudioprocess(event);</span>
+<span class="lineNum">     111 </span><span class="lineCov">        293 :   }</span>
+<a name="112"><span class="lineNum">     112 </span><span class="lineCov">          1 : };</span></a>
+<a name="113"><span class="lineNum">     113 </span><span class="lineCov">          1 : </span></a>
+<a name="114"><span class="lineNum">     114 </span><span class="lineCov">          1 : function GameBoyAudioContext () {</span></a>
+<span class="lineNum">     115 </span><span class="lineCov">          1 :   this.createBufferSource = function() {</span>
+<span class="lineNum">     116 </span><span class="lineCov">          1 :     return { noteOn : function () {}, connect : function() {}};</span>
+<span class="lineNum">     117 </span><span class="lineCov">          1 :   }</span>
+<a name="118"><span class="lineNum">     118 </span><span class="lineCov">          1 :   this.sampleRate = 48000;</span></a>
+<span class="lineNum">     119 </span><span class="lineCov">          1 :   this.destination = {}</span>
+<span class="lineNum">     120 </span><span class="lineCov">          1 :   this.createBuffer = function (channels, len, sampleRate) {</span>
+<span class="lineNum">     121 </span><span class="lineCov">          1 :     return { gain : 1,</span>
+<span class="lineNum">     122 </span><span class="lineCov">          1 :              numberOfChannels : 1,</span>
+<span class="lineNum">     123 </span><span class="lineCov">          1 :              length : 1,</span>
+<span class="lineNum">     124 </span><span class="lineCov">          1 :              duration : 0.000020833333110203966,</span>
+<a name="125"><span class="lineNum">     125 </span><span class="lineCov">          1 :              sampleRate : 48000}</span></a>
+<span class="lineNum">     126 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     127 </span><span class="lineCov">          1 :   this.createJavaScriptNode = function (bufferSize, inputChannels, outputChannels) {</span>
+<a name="128"><span class="lineNum">     128 </span><span class="lineCov">          1 :     GameBoyAudioNode.bufferSize = bufferSize;</span></a>
+<span class="lineNum">     129 </span><span class="lineCov">          1 :     GameBoyAudioNode.outputBuffer = {</span>
+<span class="lineNum">     130 </span><span class="lineCov">        586 :         getChannelData : function (i) {return this.channelData[i];},</span>
+<span class="lineNum">     131 </span><span class="lineCov">          1 :         channelData    : []</span>
+<span class="lineNum">     132 </span><span class="lineCov">          1 :     };</span>
+<span class="lineNum">     133 </span><span class="lineCov">          1 :     for (var i = 0; i &lt; outputChannels; i++) {</span>
+<span class="lineNum">     134 </span><span class="lineCov">          1 :       GameBoyAudioNode.outputBuffer.channelData[i] = new Float32Array(bufferSize);</span>
+<span class="lineNum">     135 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">     136 </span><span class="lineCov">          1 :     return GameBoyAudioNode;</span>
+<span class="lineNum">     137 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     138 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     139 </span><span class="lineCov">          1 : </span>
+<a name="140"><span class="lineNum">     140 </span><span class="lineCov">          1 : var mock_date_time_counter = 0;</span></a>
+<span class="lineNum">     141 </span><span class="lineCov">          1 : </span>
+<a name="142"><span class="lineNum">     142 </span><span class="lineCov">         15 : function new_Date() {</span></a>
+<span class="lineNum">     143 </span><span class="lineCov">         15 :   return {</span>
+<span class="lineNum">     144 </span><span class="lineCov">         15 :     getTime: function() {</span>
+<span class="lineNum">     145 </span><span class="lineCov">         15 :       mock_date_time_counter += 16;</span>
+<span class="lineNum">     146 </span><span class="lineCov">         15 :       return mock_date_time_counter;</span>
+<span class="lineNum">     147 </span><span class="lineCov">         15 :     }</span>
+<span class="lineNum">     148 </span><span class="lineCov">         15 :   };</span>
+<span class="lineNum">     149 </span><span class="lineCov">         15 : }</span>
+<span class="lineNum">     150 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     151 </span><span class="lineCov">          1 : // End of browser emulation.</span>
+<span class="lineNum">     152 </span><span class="lineCov">          1 : </span>
+<a name="153"><span class="lineNum">     153 </span><span class="lineCov">          1 : // Start of helper functions.</span></a>
+<a name="154"><span class="lineNum">     154 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     155 </span><span class="lineCov">          5 : function checkFinalState() {</span>
+<span class="lineNum">     156 </span><span class="lineCov">         20 :   function sum(a) {</span>
+<span class="lineNum">     157 </span><span class="lineCov">         20 :     var result = 0;</span>
+<span class="lineNum">     158 </span><span class="lineCov">         20 :     for (var i = 0; i &lt; a.length; i++) {</span>
+<span class="lineNum">     159 </span><span class="lineCov">         20 :       result += a[i];</span>
+<span class="lineNum">     160 </span><span class="lineCov">         20 :     }</span>
+<span class="lineNum">     161 </span><span class="lineCov">         20 :     return result;</span>
+<span class="lineNum">     162 </span><span class="lineCov">         20 :   }</span>
+<span class="lineNum">     163 </span><span class="lineCov">          5 :   var state = {</span>
+<span class="lineNum">     164 </span><span class="lineCov">          5 :     registerA: gameboy.registerA,</span>
+<span class="lineNum">     165 </span><span class="lineCov">          5 :     registerB: gameboy.registerB,</span>
+<span class="lineNum">     166 </span><span class="lineCov">          5 :     registerC: gameboy.registerC,</span>
+<span class="lineNum">     167 </span><span class="lineCov">          5 :     registerE: gameboy.registerE,</span>
+<span class="lineNum">     168 </span><span class="lineCov">          5 :     registerF: gameboy.registerF,</span>
+<span class="lineNum">     169 </span><span class="lineCov">          5 :     registersHL: gameboy.registersHL,</span>
+<span class="lineNum">     170 </span><span class="lineCov">          5 :     programCounter: gameboy.programCounter,</span>
+<span class="lineNum">     171 </span><span class="lineCov">          5 :     stackPointer: gameboy.stackPointer,</span>
+<span class="lineNum">     172 </span><span class="lineCov">          5 :     sumROM : sum(gameboy.fromTypedArray(gameboy.ROM)),</span>
+<span class="lineNum">     173 </span><span class="lineCov">          5 :     sumMemory: sum(gameboy.fromTypedArray(gameboy.memory)),</span>
+<span class="lineNum">     174 </span><span class="lineCov">          5 :     sumMBCRam: sum(gameboy.fromTypedArray(gameboy.MBCRam)),</span>
+<span class="lineNum">     175 </span><span class="lineCov">          5 :     sumVRam: sum(gameboy.fromTypedArray(gameboy.VRam))</span>
+<span class="lineNum">     176 </span><span class="lineCov">          5 :   }</span>
+<span class="lineNum">     177 </span><span class="lineCov">          5 :   var stateStr = JSON.stringify(state);</span>
+<span class="lineNum">     178 </span><span class="lineCov">          5 :   if (typeof expectedGameboyStateStr != &quot;undefined&quot;) {</span>
+<span class="lineNum">     179 </span><span class="lineCov">          5 :     if (stateStr != expectedGameboyStateStr) {</span>
+<span class="lineNum">     180 </span><span class="lineCov">          5 :       alert(&quot;Incorrect final state of processor:\n&quot; +</span>
+<span class="lineNum">     181 </span><span class="lineCov">          5 :             &quot; actual   &quot; + stateStr + &quot;\n&quot; +</span>
+<span class="lineNum">     182 </span><span class="lineCov">          5 :             &quot; expected &quot; + expectedGameboyStateStr);</span>
+<span class="lineNum">     183 </span><span class="lineCov">          5 :     }</span>
+<span class="lineNum">     184 </span><span class="lineCov">          5 :   } else {</span>
+<span class="lineNum">     185 </span><span class="lineCov">          5 :     alert(stateStr);</span>
+<span class="lineNum">     186 </span><span class="lineCov">          5 :   }</span>
+<span class="lineNum">     187 </span><span class="lineCov">          5 : }</span>
+<a name="188"><span class="lineNum">     188 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     189 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     190 </span><span class="lineCov">          5 : function resetGlobalVariables () {</span>
+<span class="lineNum">     191 </span><span class="lineCov">          5 :   //Audio API Event Handler:</span>
+<span class="lineNum">     192 </span><span class="lineCov">          5 :   audioContextHandle = null;</span>
+<span class="lineNum">     193 </span><span class="lineCov">          5 :   audioNode = null;</span>
+<span class="lineNum">     194 </span><span class="lineCov">          5 :   audioSource = null;</span>
+<span class="lineNum">     195 </span><span class="lineCov">          5 :   launchedContext = false;</span>
+<span class="lineNum">     196 </span><span class="lineCov">          5 :   audioContextSampleBuffer = [];</span>
+<span class="lineNum">     197 </span><span class="lineCov">          5 :   resampled = [];</span>
+<span class="lineNum">     198 </span><span class="lineCov">          5 :   webAudioMinBufferSize = 15000;</span>
+<span class="lineNum">     199 </span><span class="lineCov">          5 :   webAudioMaxBufferSize = 25000;</span>
+<span class="lineNum">     200 </span><span class="lineCov">          5 :   webAudioActualSampleRate = 44100;</span>
+<span class="lineNum">     201 </span><span class="lineCov">          5 :   XAudioJSSampleRate = 0;</span>
+<span class="lineNum">     202 </span><span class="lineCov">          5 :   webAudioMono = false;</span>
+<span class="lineNum">     203 </span><span class="lineCov">          5 :   XAudioJSVolume = 1;</span>
+<span class="lineNum">     204 </span><span class="lineCov">          5 :   resampleControl = null;</span>
+<span class="lineNum">     205 </span><span class="lineCov">          5 :   audioBufferSize = 0;</span>
+<span class="lineNum">     206 </span><span class="lineCov">          5 :   resampleBufferStart = 0;</span>
+<span class="lineNum">     207 </span><span class="lineCov">          5 :   resampleBufferEnd = 0;</span>
+<span class="lineNum">     208 </span><span class="lineCov">          5 :   resampleBufferSize = 2;</span>
+<span class="lineNum">     209 </span><span class="lineCov">          5 : </span>
+<span class="lineNum">     210 </span><span class="lineCov">          5 :   gameboy = null;           //GameBoyCore object.</span>
+<span class="lineNum">     211 </span><span class="lineCov">          5 :   gbRunInterval = null;       //GameBoyCore Timer</span>
+<span class="lineNum">     212 </span><span class="lineCov">          5 : }</span>
+<span class="lineNum">     213 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     214 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     215 </span><span class="lineCov">          1 : // End of helper functions.</span>
+<span class="lineNum">     216 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     217 </span><span class="lineCov">          1 : // Original code from Grant Galitz follows.</span>
+<span class="lineNum">     218 </span><span class="lineCov">          1 : // Modifications by Google are marked in comments.</span>
+<span class="lineNum">     219 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     220 </span><span class="lineCov">          1 : // Start of js/other/base64.js file.</span>
+<span class="lineNum">     221 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     222 </span><span class="lineCov">          1 : var toBase64 = [&quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;, &quot;E&quot;, &quot;F&quot;, &quot;G&quot;, &quot;H&quot;, &quot;I&quot;, &quot;J&quot;, &quot;K&quot;, &quot;L&quot;, &quot;M&quot;, &quot;N&quot;, &quot;O&quot;, &quot;P&quot;, &quot;Q&quot;, &quot;R&quot;, &quot;S&quot;, &quot;T&quot;, &quot;U&quot;, &quot;V&quot;, &quot;W&quot;, &quot;X&quot;, &quot;Y&quot;, &quot;Z&quot;,</span>
+<span class="lineNum">     223 </span><span class="lineCov">          1 :   &quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot;, &quot;f&quot;, &quot;g&quot;, &quot;h&quot;, &quot;i&quot;, &quot;j&quot;, &quot;k&quot;, &quot;l&quot;, &quot;m&quot;, &quot;n&quot;, &quot;o&quot;, &quot;p&quot;, &quot;q&quot;, &quot;r&quot;, &quot;s&quot;, &quot;t&quot;, &quot;u&quot;, &quot;v&quot;, &quot;w&quot;, &quot;x&quot;, &quot;y&quot;, &quot;z&quot;,</span>
+<a name="224"><span class="lineNum">     224 </span><span class="lineCov">          1 :   &quot;0&quot;, &quot;1&quot;, &quot;2&quot;, &quot;3&quot;, &quot;4&quot;, &quot;5&quot;, &quot;6&quot;, &quot;7&quot;, &quot;8&quot;, &quot;9&quot;, &quot;+&quot; , &quot;/&quot;, &quot;=&quot;];</span></a>
+<span class="lineNum">     225 </span><span class="lineCov">          1 : var fromBase64 = &quot;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=&quot;;</span>
+<span class="lineNum">     226 </span><span class="lineCov">          1 : function base64(data) {</span>
+<span class="lineNum">     227 </span><span class="lineNoCov">          0 :   try {</span>
+<span class="lineNum">     228 </span><span class="lineNoCov">          0 :     // The following line was modified for benchmarking:</span>
+<span class="lineNum">     229 </span><span class="lineNoCov">          0 :     var base64 = GameBoyWindow.btoa(data);  //Use this native function when it's available, as it's a magnitude faster than the non-native code below.</span>
+<span class="lineNum">     230 </span><span class="lineNoCov">          0 :   }</span>
+<span class="lineNum">     231 </span><span class="lineNoCov">          0 :   catch (error) {</span>
+<span class="lineNum">     232 </span><span class="lineNoCov">          0 :     //Defaulting to non-native base64 encoding...</span>
+<span class="lineNum">     233 </span><span class="lineNoCov">          0 :     var base64 = &quot;&quot;;</span>
+<span class="lineNum">     234 </span><span class="lineNoCov">          0 :     var dataLength = data.length;</span>
+<span class="lineNum">     235 </span><span class="lineNoCov">          0 :     if (dataLength &gt; 0) {</span>
+<span class="lineNum">     236 </span><span class="lineNoCov">          0 :       var bytes = [0, 0, 0];</span>
+<span class="lineNum">     237 </span><span class="lineNoCov">          0 :       var index = 0;</span>
+<span class="lineNum">     238 </span><span class="lineNoCov">          0 :       var remainder = dataLength % 3;</span>
+<span class="lineNum">     239 </span><span class="lineNoCov">          0 :       while (data.length % 3 &gt; 0) {</span>
+<span class="lineNum">     240 </span><span class="lineNoCov">          0 :         //Make sure we don't do fuzzy math in the next loop...</span>
+<span class="lineNum">     241 </span><span class="lineNoCov">          0 :         data[data.length] = &quot; &quot;;</span>
+<span class="lineNum">     242 </span><span class="lineNoCov">          0 :       }</span>
+<span class="lineNum">     243 </span><span class="lineNoCov">          0 :       while (index &lt; dataLength) {</span>
+<span class="lineNum">     244 </span><span class="lineNoCov">          0 :         //Keep this loop small for speed.</span>
+<span class="lineNum">     245 </span><span class="lineNoCov">          0 :         bytes = [data.charCodeAt(index++) &amp; 0xFF, data.charCodeAt(index++) &amp; 0xFF, data.charCodeAt(index++) &amp; 0xFF];</span>
+<span class="lineNum">     246 </span><span class="lineNoCov">          0 :         base64 += toBase64[bytes[0] &gt;&gt; 2] + toBase64[((bytes[0] &amp; 0x3) &lt;&lt; 4) | (bytes[1] &gt;&gt; 4)] + toBase64[((bytes[1] &amp; 0xF) &lt;&lt; 2) | (bytes[2] &gt;&gt; 6)] + toBase64[bytes[2] &amp; 0x3F];</span>
+<span class="lineNum">     247 </span><span class="lineNoCov">          0 :       }</span>
+<span class="lineNum">     248 </span><span class="lineNoCov">          0 :       if (remainder &gt; 0) {</span>
+<span class="lineNum">     249 </span><span class="lineNoCov">          0 :         //Fill in the padding and recalulate the trailing six-bit group...</span>
+<span class="lineNum">     250 </span><span class="lineNoCov">          0 :         base64[base64.length - 1] = &quot;=&quot;;</span>
+<span class="lineNum">     251 </span><span class="lineNoCov">          0 :         if (remainder == 2) {</span>
+<span class="lineNum">     252 </span><span class="lineNoCov">          0 :           base64[base64.length - 2] = &quot;=&quot;;</span>
+<span class="lineNum">     253 </span><span class="lineNoCov">          0 :           base64[base64.length - 3] = toBase64[(bytes[0] &amp; 0x3) &lt;&lt; 4];</span>
+<span class="lineNum">     254 </span><span class="lineNoCov">          0 :         }</span>
+<span class="lineNum">     255 </span><span class="lineNoCov">          0 :         else {</span>
+<span class="lineNum">     256 </span><span class="lineNoCov">          0 :           base64[base64.length - 2] = toBase64[(bytes[1] &amp; 0xF) &lt;&lt; 2];</span>
+<span class="lineNum">     257 </span><span class="lineNoCov">          0 :         }</span>
+<span class="lineNum">     258 </span><span class="lineNoCov">          0 :       }</span>
+<span class="lineNum">     259 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     260 </span><span class="lineNoCov">          0 :   }</span>
+<a name="261"><span class="lineNum">     261 </span><span class="lineNoCov">          0 :   return base64;</span></a>
+<span class="lineNum">     262 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     263 </span><span class="lineCov">          1 : function base64_decode(data) {</span>
+<span class="lineNum">     264 </span><span class="lineCov">          1 :   try {</span>
+<span class="lineNum">     265 </span><span class="lineCov">          1 :     // The following line was modified for benchmarking:</span>
+<span class="lineNum">     266 </span><span class="lineCov">          1 :     var decode64 = GameBoyWindow.atob(data);  //Use this native function when it's available, as it's a magnitude faster than the non-native code below.</span>
+<span class="lineNum">     267 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     268 </span><span class="lineCov">          1 :   catch (error) {</span>
+<span class="lineNum">     269 </span><span class="lineCov">          1 :     //Defaulting to non-native base64 decoding...</span>
+<span class="lineNum">     270 </span><span class="lineCov">          1 :     var decode64 = &quot;&quot;;</span>
+<span class="lineNum">     271 </span><span class="lineCov">          1 :     var dataLength = data.length;</span>
+<span class="lineNum">     272 </span><span class="lineCov">          1 :     if (dataLength &gt; 3 &amp;&amp; dataLength % 4 == 0) {</span>
+<span class="lineNum">     273 </span><span class="lineCov">          1 :       var sixbits = [0, 0, 0, 0];  //Declare this out of the loop, to speed up the ops.</span>
+<span class="lineNum">     274 </span><span class="lineCov">          1 :       var index = 0;</span>
+<span class="lineNum">     275 </span><span class="lineCov">          1 :       while (index &lt; dataLength) {</span>
+<span class="lineNum">     276 </span><span class="lineCov">          1 :         //Keep this loop small for speed.</span>
+<span class="lineNum">     277 </span><span class="lineCov">          1 :         sixbits = [fromBase64.indexOf(data.charAt(index++)), fromBase64.indexOf(data.charAt(index++)), fromBase64.indexOf(data.charAt(index++)), fromBase64.indexOf(data.charAt(index++))];</span>
+<span class="lineNum">     278 </span><span class="lineCov">          1 :         decode64 += String.fromCharCode((sixbits[0] &lt;&lt; 2) | (sixbits[1] &gt;&gt; 4)) + String.fromCharCode(((sixbits[1] &amp; 0x0F) &lt;&lt; 4) | (sixbits[2] &gt;&gt; 2)) + String.fromCharCode(((sixbits[2] &amp; 0x03) &lt;&lt; 6) | sixbits[3]);</span>
+<span class="lineNum">     279 </span><span class="lineCov">          1 :       }</span>
+<span class="lineNum">     280 </span><span class="lineCov">          1 :       //Check for the '=' character after the loop, so we don't hose it up.</span>
+<span class="lineNum">     281 </span><span class="lineCov">          1 :       if (sixbits[3] &gt;= 0x40) {</span>
+<span class="lineNum">     282 </span><span class="lineCov">          1 :         decode64.length -= 1;</span>
+<span class="lineNum">     283 </span><span class="lineCov">          1 :         if (sixbits[2] &gt;= 0x40) {</span>
+<span class="lineNum">     284 </span><span class="lineCov">          1 :           decode64.length -= 1;</span>
+<span class="lineNum">     285 </span><span class="lineCov">          1 :         }</span>
+<span class="lineNum">     286 </span><span class="lineCov">          1 :       }</span>
+<span class="lineNum">     287 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">     288 </span><span class="lineCov">          1 :   }</span>
+<a name="289"><span class="lineNum">     289 </span><span class="lineCov">          1 :   return decode64;</span></a>
+<span class="lineNum">     290 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     291 </span><span class="lineCov">          1 : function to_little_endian_dword(str) {</span>
+<a name="292"><span class="lineNum">     292 </span><span class="lineNoCov">          0 :   return to_little_endian_word(str) + String.fromCharCode((str &gt;&gt; 16) &amp; 0xFF, (str &gt;&gt; 24) &amp; 0xFF);</span></a>
+<span class="lineNum">     293 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     294 </span><span class="lineCov">          1 : function to_little_endian_word(str) {</span>
+<a name="295"><span class="lineNum">     295 </span><span class="lineNoCov">          0 :   return to_byte(str) + String.fromCharCode((str &gt;&gt; 8) &amp; 0xFF);</span></a>
+<span class="lineNum">     296 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     297 </span><span class="lineCov">          1 : function to_byte(str) {</span>
+<a name="298"><span class="lineNum">     298 </span><span class="lineNoCov">          0 :   return String.fromCharCode(str &amp; 0xFF);</span></a>
+<span class="lineNum">     299 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     300 </span><span class="lineCov">          1 : function arrayToBase64(arrayIn) {</span>
+<span class="lineNum">     301 </span><span class="lineNoCov">          0 :   var binString = &quot;&quot;;</span>
+<span class="lineNum">     302 </span><span class="lineNoCov">          0 :   var length = arrayIn.length;</span>
+<span class="lineNum">     303 </span><span class="lineNoCov">          0 :   for (var index = 0; index &lt; length; ++index) {</span>
+<span class="lineNum">     304 </span><span class="lineNoCov">          0 :     if (typeof arrayIn[index] == &quot;number&quot;) {</span>
+<span class="lineNum">     305 </span><span class="lineNoCov">          0 :       binString += String.fromCharCode(arrayIn[index]);</span>
+<span class="lineNum">     306 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     307 </span><span class="lineNoCov">          0 :   }</span>
+<a name="308"><span class="lineNum">     308 </span><span class="lineNoCov">          0 :   return base64(binString);</span></a>
+<span class="lineNum">     309 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     310 </span><span class="lineCov">          1 : function base64ToArray(b64String) {</span>
+<span class="lineNum">     311 </span><span class="lineNoCov">          0 :   var binString = base64_decode(b64String);</span>
+<span class="lineNum">     312 </span><span class="lineNoCov">          0 :   var outArray = [];</span>
+<span class="lineNum">     313 </span><span class="lineNoCov">          0 :   var length = binString.length;</span>
+<span class="lineNum">     314 </span><span class="lineNoCov">          0 :   for (var index = 0; index &lt; length;) {</span>
+<span class="lineNum">     315 </span><span class="lineNoCov">          0 :     outArray.push(binString.charCodeAt(index++) &amp; 0xFF);</span>
+<span class="lineNum">     316 </span><span class="lineNoCov">          0 :   }</span>
+<span class="lineNum">     317 </span><span class="lineNoCov">          0 :   return outArray;</span>
+<span class="lineNum">     318 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     319 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     320 </span><span class="lineCov">          1 : // End of js/other/base64.js file.</span>
+<span class="lineNum">     321 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     322 </span><span class="lineCov">          1 : // Start of js/other/resampler.js file.</span>
+<a name="323"><span class="lineNum">     323 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     324 </span><span class="lineCov">          1 : //JavaScript Audio Resampler (c) 2011 - Grant Galitz</span>
+<span class="lineNum">     325 </span><span class="lineCov">          1 : function Resampler(fromSampleRate, toSampleRate, channels, outputBufferSize, noReturn) {</span>
+<span class="lineNum">     326 </span><span class="lineCov">          1 :   this.fromSampleRate = fromSampleRate;</span>
+<span class="lineNum">     327 </span><span class="lineCov">          1 :   this.toSampleRate = toSampleRate;</span>
+<span class="lineNum">     328 </span><span class="lineCov">          1 :   this.channels = channels | 0;</span>
+<span class="lineNum">     329 </span><span class="lineCov">          1 :   this.outputBufferSize = outputBufferSize;</span>
+<span class="lineNum">     330 </span><span class="lineCov">          1 :   this.noReturn = !!noReturn;</span>
+<a name="331"><span class="lineNum">     331 </span><span class="lineCov">          1 :   this.initialize();</span></a>
+<span class="lineNum">     332 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     333 </span><span class="lineCov">          1 : Resampler.prototype.initialize = function () {</span>
+<span class="lineNum">     334 </span><span class="lineCov">          1 :   //Perform some checks:</span>
+<span class="lineNum">     335 </span><span class="lineCov">          1 :   if (this.fromSampleRate &gt; 0 &amp;&amp; this.toSampleRate &gt; 0 &amp;&amp; this.channels &gt; 0) {</span>
+<span class="lineNum">     336 </span><span class="lineCov">          1 :     if (this.fromSampleRate == this.toSampleRate) {</span>
+<span class="lineNum">     337 </span><span class="lineCov">          1 :       //Setup a resampler bypass:</span>
+<span class="lineNum">     338 </span><span class="lineCov">          1 :       this.resampler = this.bypassResampler;    //Resampler just returns what was passed through.</span>
+<span class="lineNum">     339 </span><span class="lineCov">          1 :       this.ratioWeight = 1;</span>
+<span class="lineNum">     340 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">     341 </span><span class="lineCov">          1 :     else {</span>
+<span class="lineNum">     342 </span><span class="lineCov">          1 :       //Setup the interpolation resampler:</span>
+<span class="lineNum">     343 </span><span class="lineCov">          1 :       this.compileInterpolationFunction();</span>
+<span class="lineNum">     344 </span><span class="lineCov">          1 :       this.resampler = this.interpolate;      //Resampler is a custom quality interpolation algorithm.</span>
+<span class="lineNum">     345 </span><span class="lineCov">          1 :       this.ratioWeight = this.fromSampleRate / this.toSampleRate;</span>
+<span class="lineNum">     346 </span><span class="lineCov">          1 :       this.tailExists = false;</span>
+<span class="lineNum">     347 </span><span class="lineCov">          1 :       this.lastWeight = 0;</span>
+<span class="lineNum">     348 </span><span class="lineCov">          1 :       this.initializeBuffers();</span>
+<span class="lineNum">     349 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">     350 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     351 </span><span class="lineCov">          1 :   else {</span>
+<span class="lineNum">     352 </span><span class="lineCov">          1 :     throw(new Error(&quot;Invalid settings specified for the resampler.&quot;));</span>
+<a name="353"><span class="lineNum">     353 </span><span class="lineCov">          1 :   }</span></a>
+<span class="lineNum">     354 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     355 </span><span class="lineCov">          1 : Resampler.prototype.compileInterpolationFunction = function () {</span>
+<span class="lineNum">     356 </span><span class="lineCov">          1 :   var toCompile = &quot;var bufferLength = Math.min(buffer.length, this.outputBufferSize);\</span>
+<span class="lineNum">     357 </span><span class="lineCov">          1 :   if ((bufferLength % &quot; + this.channels + &quot;) == 0) {\</span>
+<span class="lineNum">     358 </span><span class="lineCov">          1 :     if (bufferLength &gt; 0) {\</span>
+<span class="lineNum">     359 </span><span class="lineCov">          1 :       var ratioWeight = this.ratioWeight;\</span>
+<span class="lineNum">     360 </span><span class="lineCov">          1 :       var weight = 0;&quot;;</span>
+<span class="lineNum">     361 </span><span class="lineCov">          1 :   for (var channel = 0; channel &lt; this.channels; ++channel) {</span>
+<span class="lineNum">     362 </span><span class="lineCov">          1 :     toCompile += &quot;var output&quot; + channel + &quot; = 0;&quot;</span>
+<span class="lineNum">     363 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     364 </span><span class="lineCov">          1 :   toCompile += &quot;var actualPosition = 0;\</span>
+<span class="lineNum">     365 </span><span class="lineCov">          1 :       var amountToNext = 0;\</span>
+<span class="lineNum">     366 </span><span class="lineCov">          1 :       var alreadyProcessedTail = !this.tailExists;\</span>
+<span class="lineNum">     367 </span><span class="lineCov">          1 :       this.tailExists = false;\</span>
+<span class="lineNum">     368 </span><span class="lineCov">          1 :       var outputBuffer = this.outputBuffer;\</span>
+<span class="lineNum">     369 </span><span class="lineCov">          1 :       var outputOffset = 0;\</span>
+<span class="lineNum">     370 </span><span class="lineCov">          1 :       var currentPosition = 0;\</span>
+<span class="lineNum">     371 </span><span class="lineCov">          1 :       do {\</span>
+<span class="lineNum">     372 </span><span class="lineCov">          1 :         if (alreadyProcessedTail) {\</span>
+<span class="lineNum">     373 </span><span class="lineCov">          1 :           weight = ratioWeight;&quot;;</span>
+<span class="lineNum">     374 </span><span class="lineCov">          1 :   for (channel = 0; channel &lt; this.channels; ++channel) {</span>
+<span class="lineNum">     375 </span><span class="lineCov">          1 :     toCompile += &quot;output&quot; + channel + &quot; = 0;&quot;</span>
+<span class="lineNum">     376 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     377 </span><span class="lineCov">          1 :   toCompile += &quot;}\</span>
+<span class="lineNum">     378 </span><span class="lineCov">          1 :         else {\</span>
+<span class="lineNum">     379 </span><span class="lineCov">          1 :           weight = this.lastWeight;&quot;;</span>
+<span class="lineNum">     380 </span><span class="lineCov">          1 :   for (channel = 0; channel &lt; this.channels; ++channel) {</span>
+<span class="lineNum">     381 </span><span class="lineCov">          1 :     toCompile += &quot;output&quot; + channel + &quot; = this.lastOutput[&quot; + channel + &quot;];&quot;</span>
+<span class="lineNum">     382 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     383 </span><span class="lineCov">          1 :   toCompile += &quot;alreadyProcessedTail = true;\</span>
+<span class="lineNum">     384 </span><span class="lineCov">          1 :         }\</span>
+<span class="lineNum">     385 </span><span class="lineCov">          1 :         while (weight &gt; 0 &amp;&amp; actualPosition &lt; bufferLength) {\</span>
+<span class="lineNum">     386 </span><span class="lineCov">          1 :           amountToNext = 1 + actualPosition - currentPosition;\</span>
+<span class="lineNum">     387 </span><span class="lineCov">          1 :           if (weight &gt;= amountToNext) {&quot;;</span>
+<span class="lineNum">     388 </span><span class="lineCov">          1 :   for (channel = 0; channel &lt; this.channels; ++channel) {</span>
+<span class="lineNum">     389 </span><span class="lineCov">          1 :     toCompile += &quot;output&quot; + channel + &quot; += buffer[actualPosition++] * amountToNext;&quot;</span>
+<span class="lineNum">     390 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     391 </span><span class="lineCov">          1 :   toCompile += &quot;currentPosition = actualPosition;\</span>
+<span class="lineNum">     392 </span><span class="lineCov">          1 :             weight -= amountToNext;\</span>
+<span class="lineNum">     393 </span><span class="lineCov">          1 :           }\</span>
+<span class="lineNum">     394 </span><span class="lineCov">          1 :           else {&quot;;</span>
+<span class="lineNum">     395 </span><span class="lineCov">          1 :   for (channel = 0; channel &lt; this.channels; ++channel) {</span>
+<span class="lineNum">     396 </span><span class="lineCov">          1 :     toCompile += &quot;output&quot; + channel + &quot; += buffer[actualPosition&quot; + ((channel &gt; 0) ? (&quot; + &quot; + channel) : &quot;&quot;) + &quot;] * weight;&quot;</span>
+<span class="lineNum">     397 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     398 </span><span class="lineCov">          1 :   toCompile += &quot;currentPosition += weight;\</span>
+<span class="lineNum">     399 </span><span class="lineCov">          1 :             weight = 0;\</span>
+<span class="lineNum">     400 </span><span class="lineCov">          1 :             break;\</span>
+<span class="lineNum">     401 </span><span class="lineCov">          1 :           }\</span>
+<span class="lineNum">     402 </span><span class="lineCov">          1 :         }\</span>
+<span class="lineNum">     403 </span><span class="lineCov">          1 :         if (weight == 0) {&quot;;</span>
+<span class="lineNum">     404 </span><span class="lineCov">          1 :   for (channel = 0; channel &lt; this.channels; ++channel) {</span>
+<span class="lineNum">     405 </span><span class="lineCov">          1 :     toCompile += &quot;outputBuffer[outputOffset++] = output&quot; + channel + &quot; / ratioWeight;&quot;</span>
+<span class="lineNum">     406 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     407 </span><span class="lineCov">          1 :   toCompile += &quot;}\</span>
+<span class="lineNum">     408 </span><span class="lineCov">          1 :         else {\</span>
+<span class="lineNum">     409 </span><span class="lineCov">          1 :           this.lastWeight = weight;&quot;;</span>
+<span class="lineNum">     410 </span><span class="lineCov">          1 :   for (channel = 0; channel &lt; this.channels; ++channel) {</span>
+<span class="lineNum">     411 </span><span class="lineCov">          1 :     toCompile += &quot;this.lastOutput[&quot; + channel + &quot;] = output&quot; + channel + &quot;;&quot;</span>
+<span class="lineNum">     412 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     413 </span><span class="lineCov">          1 :   toCompile += &quot;this.tailExists = true;\</span>
+<span class="lineNum">     414 </span><span class="lineCov">          1 :           break;\</span>
+<span class="lineNum">     415 </span><span class="lineCov">          1 :         }\</span>
+<span class="lineNum">     416 </span><span class="lineCov">          1 :       } while (actualPosition &lt; bufferLength);\</span>
+<span class="lineNum">     417 </span><span class="lineCov">          1 :       return this.bufferSlice(outputOffset);\</span>
+<span class="lineNum">     418 </span><span class="lineCov">          1 :     }\</span>
+<span class="lineNum">     419 </span><span class="lineCov">          1 :     else {\</span>
+<span class="lineNum">     420 </span><span class="lineCov">          1 :       return (this.noReturn) ? 0 : [];\</span>
+<span class="lineNum">     421 </span><span class="lineCov">          1 :     }\</span>
+<span class="lineNum">     422 </span><span class="lineCov">          1 :   }\</span>
+<span class="lineNum">     423 </span><span class="lineCov">          1 :   else {\</span>
+<span class="lineNum">     424 </span><span class="lineCov">          1 :     throw(new Error(\&quot;Buffer was of incorrect sample length.\&quot;));\</span>
+<span class="lineNum">     425 </span><span class="lineCov">          1 :   }&quot;;</span>
+<a name="426"><span class="lineNum">     426 </span><span class="lineCov">          1 :   this.interpolate = Function(&quot;buffer&quot;, toCompile);</span></a>
+<span class="lineNum">     427 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     428 </span><span class="lineCov">          1 : Resampler.prototype.bypassResampler = function (buffer) {</span>
+<span class="lineNum">     429 </span><span class="lineNoCov">          0 :   if (this.noReturn) {</span>
+<span class="lineNum">     430 </span><span class="lineNoCov">          0 :     //Set the buffer passed as our own, as we don't need to resample it:</span>
+<span class="lineNum">     431 </span><span class="lineNoCov">          0 :     this.outputBuffer = buffer;</span>
+<span class="lineNum">     432 </span><span class="lineNoCov">          0 :     return buffer.length;</span>
+<span class="lineNum">     433 </span><span class="lineNoCov">          0 :   }</span>
+<span class="lineNum">     434 </span><span class="lineNoCov">          0 :   else {</span>
+<span class="lineNum">     435 </span><span class="lineNoCov">          0 :     //Just return the buffer passsed:</span>
+<span class="lineNum">     436 </span><span class="lineNoCov">          0 :     return buffer;</span>
+<a name="437"><span class="lineNum">     437 </span><span class="lineNoCov">          0 :   }</span></a>
+<span class="lineNum">     438 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     439 </span><span class="lineCov">          9 : Resampler.prototype.bufferSlice = function (sliceAmount) {</span>
+<span class="lineNum">     440 </span><span class="lineCov">          9 :   if (this.noReturn) {</span>
+<span class="lineNum">     441 </span><span class="lineCov">          9 :     //If we're going to access the properties directly from this object:</span>
+<span class="lineNum">     442 </span><span class="lineCov">          9 :     return sliceAmount;</span>
+<span class="lineNum">     443 </span><span class="lineCov">          9 :   }</span>
+<span class="lineNum">     444 </span><span class="lineCov">          9 :   else {</span>
+<span class="lineNum">     445 </span><span class="lineCov">          9 :     //Typed array and normal array buffer section referencing:</span>
+<span class="lineNum">     446 </span><span class="lineCov">          9 :     try {</span>
+<span class="lineNum">     447 </span><span class="lineCov">          9 :       return this.outputBuffer.subarray(0, sliceAmount);</span>
+<span class="lineNum">     448 </span><span class="lineCov">          9 :     }</span>
+<span class="lineNum">     449 </span><span class="lineCov">          9 :     catch (error) {</span>
+<span class="lineNum">     450 </span><span class="lineCov">          9 :       try {</span>
+<span class="lineNum">     451 </span><span class="lineCov">          9 :         //Regular array pass:</span>
+<span class="lineNum">     452 </span><span class="lineCov">          9 :         this.outputBuffer.length = sliceAmount;</span>
+<span class="lineNum">     453 </span><span class="lineCov">          9 :         return this.outputBuffer;</span>
+<span class="lineNum">     454 </span><span class="lineCov">          9 :       }</span>
+<span class="lineNum">     455 </span><span class="lineCov">          9 :       catch (error) {</span>
+<span class="lineNum">     456 </span><span class="lineCov">          9 :         //Nightly Firefox 4 used to have the subarray function named as slice:</span>
+<span class="lineNum">     457 </span><span class="lineCov">          9 :         return this.outputBuffer.slice(0, sliceAmount);</span>
+<span class="lineNum">     458 </span><span class="lineCov">          9 :       }</span>
+<span class="lineNum">     459 </span><span class="lineCov">          9 :     }</span>
+<a name="460"><span class="lineNum">     460 </span><span class="lineCov">          9 :   }</span></a>
+<span class="lineNum">     461 </span><span class="lineCov">          9 : }</span>
+<span class="lineNum">     462 </span><span class="lineCov">          1 : Resampler.prototype.initializeBuffers = function () {</span>
+<span class="lineNum">     463 </span><span class="lineCov">          1 :   //Initialize the internal buffer:</span>
+<span class="lineNum">     464 </span><span class="lineCov">          1 :   try {</span>
+<span class="lineNum">     465 </span><span class="lineCov">          1 :     this.outputBuffer = new Float32Array(this.outputBufferSize);</span>
+<span class="lineNum">     466 </span><span class="lineCov">          1 :     this.lastOutput = new Float32Array(this.channels);</span>
+<span class="lineNum">     467 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     468 </span><span class="lineCov">          1 :   catch (error) {</span>
+<span class="lineNum">     469 </span><span class="lineCov">          1 :     this.outputBuffer = [];</span>
+<span class="lineNum">     470 </span><span class="lineCov">          1 :     this.lastOutput = [];</span>
+<span class="lineNum">     471 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     472 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     473 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     474 </span><span class="lineCov">          1 : // End of js/other/resampler.js file.</span>
+<span class="lineNum">     475 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     476 </span><span class="lineCov">          1 : // Start of js/other/XAudioServer.js file.</span>
+<span class="lineNum">     477 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     478 </span><span class="lineCov">          1 : /*Initialize here first:</span>
+<span class="lineNum">     479 </span><span class="lineCov">          1 :   Example:</span>
+<span class="lineNum">     480 </span><span class="lineCov">          1 :     Stereo audio with a sample rate of 70 khz, a minimum buffer of 15000 samples total, a maximum buffer of 25000 samples total and a starting volume level of 1.</span>
+<span class="lineNum">     481 </span><span class="lineCov">          1 :       var parentObj = this;</span>
+<span class="lineNum">     482 </span><span class="lineCov">          1 :       this.audioHandle = new XAudioServer(2, 70000, 15000, 25000, function (sampleCount) {</span>
+<span class="lineNum">     483 </span><span class="lineCov">          1 :         return parentObj.audioUnderRun(sampleCount);</span>
+<span class="lineNum">     484 </span><span class="lineCov">          1 :       }, 1);</span>
+<span class="lineNum">     485 </span><span class="lineCov">          1 : </span>
+<a name="486"><span class="lineNum">     486 </span><span class="lineCov">          1 :   The callback is passed the number of samples requested, while it can return any number of samples it wants back.</span></a>
+<span class="lineNum">     487 </span><span class="lineCov">          1 : */</span>
+<span class="lineNum">     488 </span><span class="lineCov">          2 : function XAudioServer(channels, sampleRate, minBufferSize, maxBufferSize, underRunCallback, volume) {</span>
+<span class="lineNum">     489 </span><span class="lineCov">          2 :   this.audioChannels = (channels == 2) ? 2 : 1;</span>
+<span class="lineNum">     490 </span><span class="lineCov">          2 :   webAudioMono = (this.audioChannels == 1);</span>
+<span class="lineNum">     491 </span><span class="lineCov">          2 :   XAudioJSSampleRate = (sampleRate &gt; 0 &amp;&amp; sampleRate &lt;= 0xFFFFFF) ? sampleRate : 44100;</span>
+<a name="492"><span class="lineNum">     492 </span><span class="lineCov">          2 :   webAudioMinBufferSize = (minBufferSize &gt;= (samplesPerCallback &lt;&lt; 1) &amp;&amp; minBufferSize &lt; maxBufferSize) ? (minBufferSize &amp; ((webAudioMono) ? 0xFFFFFFFF : 0xFFFFFFFE)) : (samplesPerCallback &lt;&lt; 1);</span></a>
+<span class="lineNum">     493 </span><span class="lineCov">          2 :   webAudioMaxBufferSize = (Math.floor(maxBufferSize) &gt; webAudioMinBufferSize + this.audioChannels) ? (maxBufferSize &amp; ((webAudioMono) ? 0xFFFFFFFF : 0xFFFFFFFE)) : (minBufferSize &lt;&lt; 1);</span>
+<span class="lineNum">     494 </span><span class="lineCov">          2 :   this.underRunCallback = (typeof underRunCallback == &quot;function&quot;) ? underRunCallback : function () {};</span>
+<span class="lineNum">     495 </span><span class="lineCov">          2 :   XAudioJSVolume = (volume &gt;= 0 &amp;&amp; volume &lt;= 1) ? volume : 1;</span>
+<span class="lineNum">     496 </span><span class="lineCov">          2 :   this.audioType = -1;</span>
+<span class="lineNum">     497 </span><span class="lineCov">          2 :   this.mozAudioTail = [];</span>
+<span class="lineNum">     498 </span><span class="lineCov">          2 :   this.audioHandleMoz = null;</span>
+<span class="lineNum">     499 </span><span class="lineCov">          2 :   this.audioHandleFlash = null;</span>
+<span class="lineNum">     500 </span><span class="lineCov">          2 :   this.flashInitialized = false;</span>
+<span class="lineNum">     501 </span><span class="lineCov">          2 :   this.mozAudioFound = false;</span>
+<a name="502"><span class="lineNum">     502 </span><span class="lineCov">          2 :   this.initializeAudio();</span></a>
+<span class="lineNum">     503 </span><span class="lineCov">          2 : }</span>
+<span class="lineNum">     504 </span><span class="lineCov">          1 : XAudioServer.prototype.MOZWriteAudio = function (buffer) {</span>
+<span class="lineNum">     505 </span><span class="lineNoCov">          0 :   //mozAudio:</span>
+<span class="lineNum">     506 </span><span class="lineNoCov">          0 :   this.MOZWriteAudioNoCallback(buffer);</span>
+<a name="507"><span class="lineNum">     507 </span><span class="lineNoCov">          0 :   this.MOZExecuteCallback();</span></a>
+<span class="lineNum">     508 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     509 </span><span class="lineCov">          1 : XAudioServer.prototype.MOZWriteAudioNoCallback = function (buffer) {</span>
+<span class="lineNum">     510 </span><span class="lineNoCov">          0 :   //mozAudio:</span>
+<a name="511"><span class="lineNum">     511 </span><span class="lineNoCov">          0 :   this.writeMozAudio(buffer);</span></a>
+<span class="lineNum">     512 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     513 </span><span class="lineCov">          1 : XAudioServer.prototype.callbackBasedWriteAudio = function (buffer) {</span>
+<span class="lineNum">     514 </span><span class="lineNoCov">          0 :   //Callback-centered audio APIs:</span>
+<span class="lineNum">     515 </span><span class="lineNoCov">          0 :   this.callbackBasedWriteAudioNoCallback(buffer);</span>
+<a name="516"><span class="lineNum">     516 </span><span class="lineNoCov">          0 :   this.callbackBasedExecuteCallback();</span></a>
+<span class="lineNum">     517 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     518 </span><span class="lineCov">         70 : XAudioServer.prototype.callbackBasedWriteAudioNoCallback = function (buffer) {</span>
+<span class="lineNum">     519 </span><span class="lineCov">         70 :   //Callback-centered audio APIs:</span>
+<span class="lineNum">     520 </span><span class="lineCov">         70 :   var length = buffer.length;</span>
+<span class="lineNum">     521 </span><span class="lineCov">         70 :   for (var bufferCounter = 0; bufferCounter &lt; length &amp;&amp; audioBufferSize &lt; webAudioMaxBufferSize;) {</span>
+<span class="lineNum">     522 </span><span class="lineCov">         70 :     audioContextSampleBuffer[audioBufferSize++] = buffer[bufferCounter++];</span>
+<span class="lineNum">     523 </span><span class="lineCov">         70 :   }</span>
+<span class="lineNum">     524 </span><span class="lineCov">         70 : }</span>
+<span class="lineNum">     525 </span><span class="lineCov">          1 : /*Pass your samples into here!</span>
+<span class="lineNum">     526 </span><span class="lineCov">          1 : Pack your samples as a one-dimenional array</span>
+<span class="lineNum">     527 </span><span class="lineCov">          1 : With the channel samplea packed uniformly.</span>
+<span class="lineNum">     528 </span><span class="lineCov">          1 : examples:</span>
+<span class="lineNum">     529 </span><span class="lineCov">          1 :     mono - [left, left, left, left]</span>
+<a name="530"><span class="lineNum">     530 </span><span class="lineCov">          1 :     stereo - [left, right, left, right, left, right, left, right]</span></a>
+<span class="lineNum">     531 </span><span class="lineCov">          1 : */</span>
+<span class="lineNum">     532 </span><span class="lineCov">          1 : XAudioServer.prototype.writeAudio = function (buffer) {</span>
+<span class="lineNum">     533 </span><span class="lineNoCov">          0 :   if (this.audioType == 0) {</span>
+<span class="lineNum">     534 </span><span class="lineNoCov">          0 :     this.MOZWriteAudio(buffer);</span>
+<span class="lineNum">     535 </span><span class="lineNoCov">          0 :   }</span>
+<span class="lineNum">     536 </span><span class="lineNoCov">          0 :   else if (this.audioType == 1) {</span>
+<span class="lineNum">     537 </span><span class="lineNoCov">          0 :     this.callbackBasedWriteAudio(buffer);</span>
+<span class="lineNum">     538 </span><span class="lineNoCov">          0 :   }</span>
+<span class="lineNum">     539 </span><span class="lineNoCov">          0 :   else if (this.audioType == 2) {</span>
+<span class="lineNum">     540 </span><span class="lineNoCov">          0 :     if (this.checkFlashInit() || launchedContext) {</span>
+<span class="lineNum">     541 </span><span class="lineNoCov">          0 :       this.callbackBasedWriteAudio(buffer);</span>
+<span class="lineNum">     542 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     543 </span><span class="lineNoCov">          0 :     else if (this.mozAudioFound) {</span>
+<span class="lineNum">     544 </span><span class="lineNoCov">          0 :       this.MOZWriteAudio(buffer);</span>
+<span class="lineNum">     545 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     546 </span><span class="lineNoCov">          0 :   }</span>
+<span class="lineNum">     547 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     548 </span><span class="lineCov">          1 : /*Pass your samples into here if you don't want automatic callback calling:</span>
+<span class="lineNum">     549 </span><span class="lineCov">          1 : Pack your samples as a one-dimenional array</span>
+<span class="lineNum">     550 </span><span class="lineCov">          1 : With the channel samplea packed uniformly.</span>
+<span class="lineNum">     551 </span><span class="lineCov">          1 : examples:</span>
+<span class="lineNum">     552 </span><span class="lineCov">          1 :     mono - [left, left, left, left]</span>
+<span class="lineNum">     553 </span><span class="lineCov">          1 :     stereo - [left, right, left, right, left, right, left, right]</span>
+<a name="554"><span class="lineNum">     554 </span><span class="lineCov">          1 : Useful in preventing infinite recursion issues with calling writeAudio inside your callback.</span></a>
+<span class="lineNum">     555 </span><span class="lineCov">          1 : */</span>
+<span class="lineNum">     556 </span><span class="lineCov">         70 : XAudioServer.prototype.writeAudioNoCallback = function (buffer) {</span>
+<span class="lineNum">     557 </span><span class="lineCov">         70 :   if (this.audioType == 0) {</span>
+<span class="lineNum">     558 </span><span class="lineCov">         70 :     this.MOZWriteAudioNoCallback(buffer);</span>
+<span class="lineNum">     559 </span><span class="lineCov">         70 :   }</span>
+<span class="lineNum">     560 </span><span class="lineCov">         70 :   else if (this.audioType == 1) {</span>
+<span class="lineNum">     561 </span><span class="lineCov">         70 :     this.callbackBasedWriteAudioNoCallback(buffer);</span>
+<span class="lineNum">     562 </span><span class="lineCov">         70 :   }</span>
+<span class="lineNum">     563 </span><span class="lineCov">         70 :   else if (this.audioType == 2) {</span>
+<span class="lineNum">     564 </span><span class="lineCov">         70 :     if (this.checkFlashInit() || launchedContext) {</span>
+<span class="lineNum">     565 </span><span class="lineCov">         70 :       this.callbackBasedWriteAudioNoCallback(buffer);</span>
+<span class="lineNum">     566 </span><span class="lineCov">         70 :     }</span>
+<span class="lineNum">     567 </span><span class="lineCov">         70 :     else if (this.mozAudioFound) {</span>
+<span class="lineNum">     568 </span><span class="lineCov">         70 :       this.MOZWriteAudioNoCallback(buffer);</span>
+<span class="lineNum">     569 </span><span class="lineCov">         70 :     }</span>
+<span class="lineNum">     570 </span><span class="lineCov">         70 :   }</span>
+<span class="lineNum">     571 </span><span class="lineCov">         70 : }</span>
+<a name="572"><span class="lineNum">     572 </span><span class="lineCov">          1 : //Developer can use this to see how many samples to write (example: minimum buffer allotment minus remaining samples left returned from this function to make sure maximum buffering is done...)</span></a>
+<span class="lineNum">     573 </span><span class="lineCov">          1 : //If -1 is returned, then that means metric could not be done.</span>
+<span class="lineNum">     574 </span><span class="lineCov">          9 : XAudioServer.prototype.remainingBuffer = function () {</span>
+<span class="lineNum">     575 </span><span class="lineCov">          9 :   if (this.audioType == 0) {</span>
+<span class="lineNum">     576 </span><span class="lineCov">          9 :     //mozAudio:</span>
+<span class="lineNum">     577 </span><span class="lineCov">          9 :     return this.samplesAlreadyWritten - this.audioHandleMoz.mozCurrentSampleOffset();</span>
+<span class="lineNum">     578 </span><span class="lineCov">          9 :   }</span>
+<span class="lineNum">     579 </span><span class="lineCov">          9 :   else if (this.audioType == 1) {</span>
+<span class="lineNum">     580 </span><span class="lineCov">          9 :     //WebKit Audio:</span>
+<span class="lineNum">     581 </span><span class="lineCov">          9 :     return (((resampledSamplesLeft() * resampleControl.ratioWeight) &gt;&gt; (this.audioChannels - 1)) &lt;&lt; (this.audioChannels - 1)) + audioBufferSize;</span>
+<span class="lineNum">     582 </span><span class="lineCov">          9 :   }</span>
+<span class="lineNum">     583 </span><span class="lineCov">          9 :   else if (this.audioType == 2) {</span>
+<span class="lineNum">     584 </span><span class="lineCov">          9 :     if (this.checkFlashInit() || launchedContext) {</span>
+<span class="lineNum">     585 </span><span class="lineCov">          9 :       //Webkit Audio / Flash Plugin Audio:</span>
+<span class="lineNum">     586 </span><span class="lineCov">          9 :       return (((resampledSamplesLeft() * resampleControl.ratioWeight) &gt;&gt; (this.audioChannels - 1)) &lt;&lt; (this.audioChannels - 1)) + audioBufferSize;</span>
+<span class="lineNum">     587 </span><span class="lineCov">          9 :     }</span>
+<span class="lineNum">     588 </span><span class="lineCov">          9 :     else if (this.mozAudioFound) {</span>
+<span class="lineNum">     589 </span><span class="lineCov">          9 :       //mozAudio:</span>
+<span class="lineNum">     590 </span><span class="lineCov">          9 :       return this.samplesAlreadyWritten - this.audioHandleMoz.mozCurrentSampleOffset();</span>
+<span class="lineNum">     591 </span><span class="lineCov">          9 :     }</span>
+<span class="lineNum">     592 </span><span class="lineCov">          9 :   }</span>
+<span class="lineNum">     593 </span><span class="lineCov">          9 :   //Default return:</span>
+<a name="594"><span class="lineNum">     594 </span><span class="lineCov">          9 :   return 0;</span></a>
+<span class="lineNum">     595 </span><span class="lineCov">          9 : }</span>
+<span class="lineNum">     596 </span><span class="lineCov">          1 : XAudioServer.prototype.MOZExecuteCallback = function () {</span>
+<span class="lineNum">     597 </span><span class="lineNoCov">          0 :   //mozAudio:</span>
+<span class="lineNum">     598 </span><span class="lineNoCov">          0 :   var samplesRequested = webAudioMinBufferSize - this.remainingBuffer();</span>
+<span class="lineNum">     599 </span><span class="lineNoCov">          0 :   if (samplesRequested &gt; 0) {</span>
+<span class="lineNum">     600 </span><span class="lineNoCov">          0 :     this.writeMozAudio(this.underRunCallback(samplesRequested));</span>
+<a name="601"><span class="lineNum">     601 </span><span class="lineNoCov">          0 :   }</span></a>
+<span class="lineNum">     602 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     603 </span><span class="lineCov">          1 : XAudioServer.prototype.callbackBasedExecuteCallback = function () {</span>
+<span class="lineNum">     604 </span><span class="lineNoCov">          0 :   //WebKit /Flash Audio:</span>
+<span class="lineNum">     605 </span><span class="lineNoCov">          0 :   var samplesRequested = webAudioMinBufferSize - this.remainingBuffer();</span>
+<span class="lineNum">     606 </span><span class="lineNoCov">          0 :   if (samplesRequested &gt; 0) {</span>
+<span class="lineNum">     607 </span><span class="lineNoCov">          0 :     this.callbackBasedWriteAudioNoCallback(this.underRunCallback(samplesRequested));</span>
+<span class="lineNum">     608 </span><span class="lineNoCov">          0 :   }</span>
+<a name="609"><span class="lineNum">     609 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">     610 </span><span class="lineCov">          1 : //If you just want your callback called for any possible refill (Execution of callback is still conditional):</span>
+<span class="lineNum">     611 </span><span class="lineCov">          1 : XAudioServer.prototype.executeCallback = function () {</span>
+<span class="lineNum">     612 </span><span class="lineNoCov">          0 :   if (this.audioType == 0) {</span>
+<span class="lineNum">     613 </span><span class="lineNoCov">          0 :     this.MOZExecuteCallback();</span>
+<span class="lineNum">     614 </span><span class="lineNoCov">          0 :   }</span>
+<span class="lineNum">     615 </span><span class="lineNoCov">          0 :   else if (this.audioType == 1) {</span>
+<span class="lineNum">     616 </span><span class="lineNoCov">          0 :     this.callbackBasedExecuteCallback();</span>
+<span class="lineNum">     617 </span><span class="lineNoCov">          0 :   }</span>
+<span class="lineNum">     618 </span><span class="lineNoCov">          0 :   else if (this.audioType == 2) {</span>
+<span class="lineNum">     619 </span><span class="lineNoCov">          0 :     if (this.checkFlashInit() || launchedContext) {</span>
+<span class="lineNum">     620 </span><span class="lineNoCov">          0 :       this.callbackBasedExecuteCallback();</span>
+<span class="lineNum">     621 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     622 </span><span class="lineNoCov">          0 :     else if (this.mozAudioFound) {</span>
+<span class="lineNum">     623 </span><span class="lineNoCov">          0 :       this.MOZExecuteCallback();</span>
+<span class="lineNum">     624 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     625 </span><span class="lineNoCov">          0 :   }</span>
+<a name="626"><span class="lineNum">     626 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">     627 </span><span class="lineCov">          1 : //DO NOT CALL THIS, the lib calls this internally!</span>
+<span class="lineNum">     628 </span><span class="lineCov">          2 : XAudioServer.prototype.initializeAudio = function () {</span>
+<span class="lineNum">     629 </span><span class="lineCov">          2 :   try {</span>
+<span class="lineNum">     630 </span><span class="lineCov">          2 :     throw (new Error(&quot;Select initializeWebAudio case&quot;));  // Line added for benchmarking.</span>
+<span class="lineNum">     631 </span><span class="lineCov">          2 :     this.preInitializeMozAudio();</span>
+<span class="lineNum">     632 </span><span class="lineCov">          2 :     if (navigator.platform == &quot;Linux i686&quot;) {</span>
+<span class="lineNum">     633 </span><span class="lineCov">          2 :       //Block out mozaudio usage for Linux Firefox due to moz bugs:</span>
+<span class="lineNum">     634 </span><span class="lineCov">          2 :       throw(new Error(&quot;&quot;));</span>
+<span class="lineNum">     635 </span><span class="lineCov">          2 :     }</span>
+<span class="lineNum">     636 </span><span class="lineCov">          2 :     this.initializeMozAudio();</span>
+<span class="lineNum">     637 </span><span class="lineCov">          2 :   }</span>
+<span class="lineNum">     638 </span><span class="lineCov">          2 :   catch (error) {</span>
+<span class="lineNum">     639 </span><span class="lineCov">          2 :     try {</span>
+<span class="lineNum">     640 </span><span class="lineCov">          2 :       this.initializeWebAudio();</span>
+<span class="lineNum">     641 </span><span class="lineCov">          2 :     }</span>
+<span class="lineNum">     642 </span><span class="lineCov">          2 :     catch (error) {</span>
+<span class="lineNum">     643 </span><span class="lineCov">          2 :       try {</span>
+<span class="lineNum">     644 </span><span class="lineCov">          2 :         this.initializeFlashAudio();</span>
+<span class="lineNum">     645 </span><span class="lineCov">          2 :       }</span>
+<span class="lineNum">     646 </span><span class="lineCov">          2 :       catch (error) {</span>
+<span class="lineNum">     647 </span><span class="lineCov">          2 :         throw(new Error(&quot;Browser does not support real time audio output.&quot;));</span>
+<span class="lineNum">     648 </span><span class="lineCov">          2 :       }</span>
+<span class="lineNum">     649 </span><span class="lineCov">          2 :     }</span>
+<a name="650"><span class="lineNum">     650 </span><span class="lineCov">          2 :   }</span></a>
+<span class="lineNum">     651 </span><span class="lineCov">          2 : }</span>
+<span class="lineNum">     652 </span><span class="lineCov">          1 : XAudioServer.prototype.preInitializeMozAudio = function () {</span>
+<span class="lineNum">     653 </span><span class="lineNoCov">          0 :   //mozAudio - Synchronous Audio API</span>
+<span class="lineNum">     654 </span><span class="lineNoCov">          0 :   this.audioHandleMoz = new Audio();</span>
+<span class="lineNum">     655 </span><span class="lineNoCov">          0 :   this.audioHandleMoz.mozSetup(this.audioChannels, XAudioJSSampleRate);</span>
+<span class="lineNum">     656 </span><span class="lineNoCov">          0 :   this.samplesAlreadyWritten = 0;</span>
+<span class="lineNum">     657 </span><span class="lineNoCov">          0 :   var emptySampleFrame = (this.audioChannels == 2) ? [0, 0] : [0];</span>
+<span class="lineNum">     658 </span><span class="lineNoCov">          0 :   var prebufferAmount = 0;</span>
+<span class="lineNum">     659 </span><span class="lineNoCov">          0 :   if (navigator.platform != &quot;MacIntel&quot; &amp;&amp; navigator.platform != &quot;MacPPC&quot;) {  //Mac OS X doesn't experience this moz-bug!</span>
+<span class="lineNum">     660 </span><span class="lineNoCov">          0 :     while (this.audioHandleMoz.mozCurrentSampleOffset() == 0) {</span>
+<span class="lineNum">     661 </span><span class="lineNoCov">          0 :       //Mozilla Audio Bugginess Workaround (Firefox freaks out if we don't give it a prebuffer under certain OSes):</span>
+<span class="lineNum">     662 </span><span class="lineNoCov">          0 :       prebufferAmount += this.audioHandleMoz.mozWriteAudio(emptySampleFrame);</span>
+<span class="lineNum">     663 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     664 </span><span class="lineNoCov">          0 :     var samplesToDoubleBuffer = prebufferAmount / this.audioChannels;</span>
+<span class="lineNum">     665 </span><span class="lineNoCov">          0 :     //Double the prebuffering for windows:</span>
+<span class="lineNum">     666 </span><span class="lineNoCov">          0 :     for (var index = 0; index &lt; samplesToDoubleBuffer; index++) {</span>
+<span class="lineNum">     667 </span><span class="lineNoCov">          0 :       this.samplesAlreadyWritten += this.audioHandleMoz.mozWriteAudio(emptySampleFrame);</span>
+<span class="lineNum">     668 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     669 </span><span class="lineNoCov">          0 :   }</span>
+<span class="lineNum">     670 </span><span class="lineNoCov">          0 :   this.samplesAlreadyWritten += prebufferAmount;</span>
+<span class="lineNum">     671 </span><span class="lineNoCov">          0 :   webAudioMinBufferSize += this.samplesAlreadyWritten;</span>
+<a name="672"><span class="lineNum">     672 </span><span class="lineNoCov">          0 :   this.mozAudioFound = true;</span></a>
+<span class="lineNum">     673 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     674 </span><span class="lineCov">          1 : XAudioServer.prototype.initializeMozAudio = function () {</span>
+<span class="lineNum">     675 </span><span class="lineNoCov">          0 :   //Fill in our own buffering up to the minimum specified:</span>
+<span class="lineNum">     676 </span><span class="lineNoCov">          0 :   this.writeMozAudio(getFloat32(webAudioMinBufferSize));</span>
+<a name="677"><span class="lineNum">     677 </span><span class="lineNoCov">          0 :   this.audioType = 0;</span></a>
+<span class="lineNum">     678 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     679 </span><span class="lineCov">          2 : XAudioServer.prototype.initializeWebAudio = function () {</span>
+<span class="lineNum">     680 </span><span class="lineCov">          2 :   if (launchedContext) {</span>
+<span class="lineNum">     681 </span><span class="lineCov">          2 :     resetCallbackAPIAudioBuffer(webAudioActualSampleRate, samplesPerCallback);</span>
+<span class="lineNum">     682 </span><span class="lineCov">          2 :     this.audioType = 1;</span>
+<span class="lineNum">     683 </span><span class="lineCov">          2 :   }</span>
+<span class="lineNum">     684 </span><span class="lineCov">          2 :   else {</span>
+<span class="lineNum">     685 </span><span class="lineCov">          2 :     throw(new Error(&quot;&quot;));</span>
+<a name="686"><span class="lineNum">     686 </span><span class="lineCov">          2 :   }</span></a>
+<span class="lineNum">     687 </span><span class="lineCov">          2 : }</span>
+<span class="lineNum">     688 </span><span class="lineCov">          1 : XAudioServer.prototype.initializeFlashAudio = function () {</span>
+<span class="lineNum">     689 </span><span class="lineCov">          1 :   var existingFlashload = document.getElementById(&quot;XAudioJS&quot;);</span>
+<span class="lineNum">     690 </span><span class="lineCov">          1 :   if (existingFlashload == null) {</span>
+<span class="lineNum">     691 </span><span class="lineCov">          1 :     var thisObj = this;</span>
+<span class="lineNum">     692 </span><span class="lineCov">          1 :     var mainContainerNode = document.createElement(&quot;div&quot;);</span>
+<span class="lineNum">     693 </span><span class="lineCov">          1 :     mainContainerNode.setAttribute(&quot;style&quot;, &quot;position: fixed; bottom: 0px; right: 0px; margin: 0px; padding: 0px; border: none; width: 8px; height: 8px; overflow: hidden; z-index: -1000; &quot;);</span>
+<span class="lineNum">     694 </span><span class="lineCov">          1 :     var containerNode = document.createElement(&quot;div&quot;);</span>
+<span class="lineNum">     695 </span><span class="lineCov">          1 :     containerNode.setAttribute(&quot;style&quot;, &quot;position: static; border: none; width: 0px; height: 0px; visibility: hidden; margin: 8px; padding: 0px;&quot;);</span>
+<span class="lineNum">     696 </span><span class="lineCov">          1 :     containerNode.setAttribute(&quot;id&quot;, &quot;XAudioJS&quot;);</span>
+<span class="lineNum">     697 </span><span class="lineCov">          1 :     mainContainerNode.appendChild(containerNode);</span>
+<span class="lineNum">     698 </span><span class="lineCov">          1 :     document.getElementsByTagName(&quot;body&quot;)[0].appendChild(mainContainerNode);</span>
+<span class="lineNum">     699 </span><span class="lineCov">          1 :     swfobject.embedSWF(</span>
+<span class="lineNum">     700 </span><span class="lineCov">          1 :       &quot;XAudioJS.swf&quot;,</span>
+<span class="lineNum">     701 </span><span class="lineCov">          1 :       &quot;XAudioJS&quot;,</span>
+<span class="lineNum">     702 </span><span class="lineCov">          1 :       &quot;8&quot;,</span>
+<span class="lineNum">     703 </span><span class="lineCov">          1 :       &quot;8&quot;,</span>
+<span class="lineNum">     704 </span><span class="lineCov">          1 :       &quot;9.0.0&quot;,</span>
+<span class="lineNum">     705 </span><span class="lineCov">          1 :       &quot;&quot;,</span>
+<span class="lineNum">     706 </span><span class="lineCov">          1 :       {},</span>
+<a name="707"><span class="lineNum">     707 </span><span class="lineCov">          1 :       {&quot;allowscriptaccess&quot;:&quot;always&quot;},</span></a>
+<span class="lineNum">     708 </span><span class="lineCov">          1 :       {&quot;style&quot;:&quot;position: static; visibility: hidden; margin: 8px; padding: 0px; border: none&quot;},</span>
+<span class="lineNum">     709 </span><span class="lineCov">          1 :       function (event) {</span>
+<span class="lineNum">     710 </span><span class="lineNoCov">          0 :         if (event.success) {</span>
+<span class="lineNum">     711 </span><span class="lineNoCov">          0 :           thisObj.audioHandleFlash = event.ref;</span>
+<span class="lineNum">     712 </span><span class="lineNoCov">          0 :         }</span>
+<span class="lineNum">     713 </span><span class="lineNoCov">          0 :         else {</span>
+<span class="lineNum">     714 </span><span class="lineNoCov">          0 :           thisObj.audioType = 1;</span>
+<span class="lineNum">     715 </span><span class="lineNoCov">          0 :         }</span>
+<span class="lineNum">     716 </span><span class="lineCov">          1 :       }</span>
+<span class="lineNum">     717 </span><span class="lineCov">          1 :     );</span>
+<span class="lineNum">     718 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     719 </span><span class="lineCov">          1 :   else {</span>
+<span class="lineNum">     720 </span><span class="lineCov">          1 :     this.audioHandleFlash = existingFlashload;</span>
+<span class="lineNum">     721 </span><span class="lineCov">          1 :   }</span>
+<a name="722"><span class="lineNum">     722 </span><span class="lineCov">          1 :   this.audioType = 2;</span></a>
+<span class="lineNum">     723 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     724 </span><span class="lineCov">          1 : XAudioServer.prototype.changeVolume = function (newVolume) {</span>
+<span class="lineNum">     725 </span><span class="lineNoCov">          0 :   if (newVolume &gt;= 0 &amp;&amp; newVolume &lt;= 1) {</span>
+<span class="lineNum">     726 </span><span class="lineNoCov">          0 :     XAudioJSVolume = newVolume;</span>
+<span class="lineNum">     727 </span><span class="lineNoCov">          0 :     if (this.checkFlashInit()) {</span>
+<span class="lineNum">     728 </span><span class="lineNoCov">          0 :       this.audioHandleFlash.changeVolume(XAudioJSVolume);</span>
+<span class="lineNum">     729 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     730 </span><span class="lineNoCov">          0 :     if (this.mozAudioFound) {</span>
+<span class="lineNum">     731 </span><span class="lineNoCov">          0 :       this.audioHandleMoz.volume = XAudioJSVolume;</span>
+<span class="lineNum">     732 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     733 </span><span class="lineNoCov">          0 :   }</span>
+<a name="734"><span class="lineNum">     734 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">     735 </span><span class="lineCov">          1 : //Moz Audio Buffer Writing Handler:</span>
+<span class="lineNum">     736 </span><span class="lineCov">          1 : XAudioServer.prototype.writeMozAudio = function (buffer) {</span>
+<span class="lineNum">     737 </span><span class="lineNoCov">          0 :   var length = this.mozAudioTail.length;</span>
+<span class="lineNum">     738 </span><span class="lineNoCov">          0 :   if (length &gt; 0) {</span>
+<span class="lineNum">     739 </span><span class="lineNoCov">          0 :     var samplesAccepted = this.audioHandleMoz.mozWriteAudio(this.mozAudioTail);</span>
+<span class="lineNum">     740 </span><span class="lineNoCov">          0 :     this.samplesAlreadyWritten += samplesAccepted;</span>
+<span class="lineNum">     741 </span><span class="lineNoCov">          0 :     this.mozAudioTail.splice(0, samplesAccepted);</span>
+<span class="lineNum">     742 </span><span class="lineNoCov">          0 :   }</span>
+<span class="lineNum">     743 </span><span class="lineNoCov">          0 :   length = Math.min(buffer.length, webAudioMaxBufferSize - this.samplesAlreadyWritten + this.audioHandleMoz.mozCurrentSampleOffset());</span>
+<span class="lineNum">     744 </span><span class="lineNoCov">          0 :   var samplesAccepted = this.audioHandleMoz.mozWriteAudio(buffer);</span>
+<span class="lineNum">     745 </span><span class="lineNoCov">          0 :   this.samplesAlreadyWritten += samplesAccepted;</span>
+<span class="lineNum">     746 </span><span class="lineNoCov">          0 :   for (var index = 0; length &gt; samplesAccepted; --length) {</span>
+<span class="lineNum">     747 </span><span class="lineNoCov">          0 :     //Moz Audio wants us saving the tail:</span>
+<span class="lineNum">     748 </span><span class="lineNoCov">          0 :     this.mozAudioTail.push(buffer[index++]);</span>
+<span class="lineNum">     749 </span><span class="lineNoCov">          0 :   }</span>
+<a name="750"><span class="lineNum">     750 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">     751 </span><span class="lineCov">          1 : //Checks to see if the NPAPI Adobe Flash bridge is ready yet:</span>
+<span class="lineNum">     752 </span><span class="lineCov">          1 : XAudioServer.prototype.checkFlashInit = function () {</span>
+<span class="lineNum">     753 </span><span class="lineNoCov">          0 :   if (!this.flashInitialized &amp;&amp; this.audioHandleFlash &amp;&amp; this.audioHandleFlash.initialize) {</span>
+<span class="lineNum">     754 </span><span class="lineNoCov">          0 :     this.flashInitialized = true;</span>
+<span class="lineNum">     755 </span><span class="lineNoCov">          0 :     this.audioHandleFlash.initialize(this.audioChannels, XAudioJSVolume);</span>
+<span class="lineNum">     756 </span><span class="lineNoCov">          0 :     resetCallbackAPIAudioBuffer(44100, samplesPerCallback);</span>
+<span class="lineNum">     757 </span><span class="lineNoCov">          0 :   }</span>
+<span class="lineNum">     758 </span><span class="lineNoCov">          0 :   return this.flashInitialized;</span>
+<a name="759"><span class="lineNum">     759 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">     760 </span><span class="lineCov">          1 : /////////END LIB</span>
+<span class="lineNum">     761 </span><span class="lineCov">          1 : function getFloat32(size) {</span>
+<span class="lineNum">     762 </span><span class="lineCov">          1 :   try {</span>
+<span class="lineNum">     763 </span><span class="lineCov">          1 :     return new Float32Array(size);</span>
+<span class="lineNum">     764 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     765 </span><span class="lineCov">          1 :   catch (error) {</span>
+<span class="lineNum">     766 </span><span class="lineCov">          1 :     return new Array(size);</span>
+<a name="767"><span class="lineNum">     767 </span><span class="lineCov">          1 :   }</span></a>
+<span class="lineNum">     768 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     769 </span><span class="lineCov">          1 : function getFloat32Flat(size) {</span>
+<span class="lineNum">     770 </span><span class="lineCov">          1 :   try {</span>
+<span class="lineNum">     771 </span><span class="lineCov">          1 :     var newBuffer = new Float32Array(size);</span>
+<span class="lineNum">     772 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     773 </span><span class="lineCov">          1 :   catch (error) {</span>
+<span class="lineNum">     774 </span><span class="lineCov">          1 :     var newBuffer = new Array(size);</span>
+<span class="lineNum">     775 </span><span class="lineCov">          1 :     var audioSampleIndice = 0;</span>
+<span class="lineNum">     776 </span><span class="lineCov">          1 :     do {</span>
+<span class="lineNum">     777 </span><span class="lineCov">          1 :       newBuffer[audioSampleIndice] = 0;</span>
+<span class="lineNum">     778 </span><span class="lineCov">          1 :     } while (++audioSampleIndice &lt; size);</span>
+<span class="lineNum">     779 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     780 </span><span class="lineCov">          1 :   return newBuffer;</span>
+<span class="lineNum">     781 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     782 </span><span class="lineCov">          1 : //Flash NPAPI Event Handler:</span>
+<a name="783"><span class="lineNum">     783 </span><span class="lineCov">          1 : var samplesPerCallback = 2048;      //Has to be between 2048 and 4096 (If over, then samples are ignored, if under then silence is added).</span></a>
+<span class="lineNum">     784 </span><span class="lineCov">          1 : var outputConvert = null;</span>
+<span class="lineNum">     785 </span><span class="lineCov">          1 : function audioOutputFlashEvent() {    //The callback that flash calls...</span>
+<span class="lineNum">     786 </span><span class="lineNoCov">          0 :   resampleRefill();</span>
+<a name="787"><span class="lineNum">     787 </span><span class="lineNoCov">          0 :   return outputConvert();</span></a>
+<span class="lineNum">     788 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     789 </span><span class="lineCov">          1 : function generateFlashStereoString() {  //Convert the arrays to one long string for speed.</span>
+<span class="lineNum">     790 </span><span class="lineNoCov">          0 :   var copyBinaryStringLeft = &quot;&quot;;</span>
+<span class="lineNum">     791 </span><span class="lineNoCov">          0 :   var copyBinaryStringRight = &quot;&quot;;</span>
+<span class="lineNum">     792 </span><span class="lineNoCov">          0 :   for (var index = 0; index &lt; samplesPerCallback &amp;&amp; resampleBufferStart != resampleBufferEnd; ++index) {</span>
+<span class="lineNum">     793 </span><span class="lineNoCov">          0 :     //Sanitize the buffer:</span>
+<span class="lineNum">     794 </span><span class="lineNoCov">          0 :     copyBinaryStringLeft += String.fromCharCode(((Math.min(Math.max(resampled[resampleBufferStart++] + 1, 0), 2) * 0x3FFF) | 0) + 0x3000);</span>
+<span class="lineNum">     795 </span><span class="lineNoCov">          0 :     copyBinaryStringRight += String.fromCharCode(((Math.min(Math.max(resampled[resampleBufferStart++] + 1, 0), 2) * 0x3FFF) | 0) + 0x3000);</span>
+<span class="lineNum">     796 </span><span class="lineNoCov">          0 :     if (resampleBufferStart == resampleBufferSize) {</span>
+<span class="lineNum">     797 </span><span class="lineNoCov">          0 :       resampleBufferStart = 0;</span>
+<span class="lineNum">     798 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     799 </span><span class="lineNoCov">          0 :   }</span>
+<a name="800"><span class="lineNum">     800 </span><span class="lineNoCov">          0 :   return copyBinaryStringLeft + copyBinaryStringRight;</span></a>
+<span class="lineNum">     801 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     802 </span><span class="lineCov">          1 : function generateFlashMonoString() {  //Convert the array to one long string for speed.</span>
+<span class="lineNum">     803 </span><span class="lineNoCov">          0 :   var copyBinaryString = &quot;&quot;;</span>
+<span class="lineNum">     804 </span><span class="lineNoCov">          0 :   for (var index = 0; index &lt; samplesPerCallback &amp;&amp; resampleBufferStart != resampleBufferEnd; ++index) {</span>
+<span class="lineNum">     805 </span><span class="lineNoCov">          0 :     //Sanitize the buffer:</span>
+<span class="lineNum">     806 </span><span class="lineNoCov">          0 :     copyBinaryString += String.fromCharCode(((Math.min(Math.max(resampled[resampleBufferStart++] + 1, 0), 2) * 0x3FFF) | 0) + 0x3000);</span>
+<span class="lineNum">     807 </span><span class="lineNoCov">          0 :     if (resampleBufferStart == resampleBufferSize) {</span>
+<span class="lineNum">     808 </span><span class="lineNoCov">          0 :       resampleBufferStart = 0;</span>
+<span class="lineNum">     809 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     810 </span><span class="lineNoCov">          0 :   }</span>
+<span class="lineNum">     811 </span><span class="lineNoCov">          0 :   return copyBinaryString;</span>
+<span class="lineNum">     812 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     813 </span><span class="lineCov">          1 : //Audio API Event Handler:</span>
+<span class="lineNum">     814 </span><span class="lineCov">          1 : var audioContextHandle = null;</span>
+<span class="lineNum">     815 </span><span class="lineCov">          1 : var audioNode = null;</span>
+<span class="lineNum">     816 </span><span class="lineCov">          1 : var audioSource = null;</span>
+<span class="lineNum">     817 </span><span class="lineCov">          1 : var launchedContext = false;</span>
+<span class="lineNum">     818 </span><span class="lineCov">          1 : var audioContextSampleBuffer = [];</span>
+<span class="lineNum">     819 </span><span class="lineCov">          1 : var resampled = [];</span>
+<span class="lineNum">     820 </span><span class="lineCov">          1 : var webAudioMinBufferSize = 15000;</span>
+<span class="lineNum">     821 </span><span class="lineCov">          1 : var webAudioMaxBufferSize = 25000;</span>
+<span class="lineNum">     822 </span><span class="lineCov">          1 : var webAudioActualSampleRate = 44100;</span>
+<span class="lineNum">     823 </span><span class="lineCov">          1 : var XAudioJSSampleRate = 0;</span>
+<span class="lineNum">     824 </span><span class="lineCov">          1 : var webAudioMono = false;</span>
+<span class="lineNum">     825 </span><span class="lineCov">          1 : var XAudioJSVolume = 1;</span>
+<span class="lineNum">     826 </span><span class="lineCov">          1 : var resampleControl = null;</span>
+<span class="lineNum">     827 </span><span class="lineCov">          1 : var audioBufferSize = 0;</span>
+<span class="lineNum">     828 </span><span class="lineCov">          1 : var resampleBufferStart = 0;</span>
+<a name="829"><span class="lineNum">     829 </span><span class="lineCov">          1 : var resampleBufferEnd = 0;</span></a>
+<span class="lineNum">     830 </span><span class="lineCov">          1 : var resampleBufferSize = 2;</span>
+<span class="lineNum">     831 </span><span class="lineCov">        293 : function audioOutputEvent(event) {    //Web Audio API callback...</span>
+<span class="lineNum">     832 </span><span class="lineCov">        293 :   var index = 0;</span>
+<span class="lineNum">     833 </span><span class="lineCov">        293 :   var buffer1 = event.outputBuffer.getChannelData(0);</span>
+<span class="lineNum">     834 </span><span class="lineCov">        293 :   var buffer2 = event.outputBuffer.getChannelData(1);</span>
+<span class="lineNum">     835 </span><span class="lineCov">        293 :   resampleRefill();</span>
+<span class="lineNum">     836 </span><span class="lineCov">        293 :   if (!webAudioMono) {</span>
+<span class="lineNum">     837 </span><span class="lineCov">        293 :     //STEREO:</span>
+<span class="lineNum">     838 </span><span class="lineCov">        293 :     while (index &lt; samplesPerCallback &amp;&amp; resampleBufferStart != resampleBufferEnd) {</span>
+<span class="lineNum">     839 </span><span class="lineCov">        293 :       buffer1[index] = resampled[resampleBufferStart++] * XAudioJSVolume;</span>
+<span class="lineNum">     840 </span><span class="lineCov">        293 :       buffer2[index++] = resampled[resampleBufferStart++] * XAudioJSVolume;</span>
+<span class="lineNum">     841 </span><span class="lineCov">        293 :       if (resampleBufferStart == resampleBufferSize) {</span>
+<span class="lineNum">     842 </span><span class="lineCov">        293 :         resampleBufferStart = 0;</span>
+<span class="lineNum">     843 </span><span class="lineCov">        293 :       }</span>
+<span class="lineNum">     844 </span><span class="lineCov">        293 :     }</span>
+<span class="lineNum">     845 </span><span class="lineCov">        293 :   }</span>
+<span class="lineNum">     846 </span><span class="lineCov">        293 :   else {</span>
+<span class="lineNum">     847 </span><span class="lineCov">        293 :     //MONO:</span>
+<span class="lineNum">     848 </span><span class="lineCov">        293 :     while (index &lt; samplesPerCallback &amp;&amp; resampleBufferStart != resampleBufferEnd) {</span>
+<span class="lineNum">     849 </span><span class="lineCov">        293 :       buffer2[index] = buffer1[index] = resampled[resampleBufferStart++] * XAudioJSVolume;</span>
+<span class="lineNum">     850 </span><span class="lineCov">        293 :       ++index;</span>
+<span class="lineNum">     851 </span><span class="lineCov">        293 :       if (resampleBufferStart == resampleBufferSize) {</span>
+<span class="lineNum">     852 </span><span class="lineCov">        293 :         resampleBufferStart = 0;</span>
+<span class="lineNum">     853 </span><span class="lineCov">        293 :       }</span>
+<span class="lineNum">     854 </span><span class="lineCov">        293 :     }</span>
+<span class="lineNum">     855 </span><span class="lineCov">        293 :   }</span>
+<span class="lineNum">     856 </span><span class="lineCov">        293 :   //Pad with silence if we're underrunning:</span>
+<span class="lineNum">     857 </span><span class="lineCov">        293 :   while (index &lt; samplesPerCallback) {</span>
+<span class="lineNum">     858 </span><span class="lineCov">        293 :     buffer2[index] = buffer1[index] = 0;</span>
+<span class="lineNum">     859 </span><span class="lineCov">        293 :     ++index;</span>
+<a name="860"><span class="lineNum">     860 </span><span class="lineCov">        293 :   }</span></a>
+<span class="lineNum">     861 </span><span class="lineCov">        293 : }</span>
+<span class="lineNum">     862 </span><span class="lineCov">        293 : function resampleRefill() {</span>
+<span class="lineNum">     863 </span><span class="lineCov">        293 :   if (audioBufferSize &gt; 0) {</span>
+<span class="lineNum">     864 </span><span class="lineCov">        293 :     //Resample a chunk of audio:</span>
+<span class="lineNum">     865 </span><span class="lineCov">        293 :     var resampleLength = resampleControl.resampler(getBufferSamples());</span>
+<span class="lineNum">     866 </span><span class="lineCov">        293 :     var resampledResult = resampleControl.outputBuffer;</span>
+<span class="lineNum">     867 </span><span class="lineCov">        293 :     for (var index2 = 0; index2 &lt; resampleLength; ++index2) {</span>
+<span class="lineNum">     868 </span><span class="lineCov">        293 :       resampled[resampleBufferEnd++] = resampledResult[index2];</span>
+<span class="lineNum">     869 </span><span class="lineCov">        293 :       if (resampleBufferEnd == resampleBufferSize) {</span>
+<span class="lineNum">     870 </span><span class="lineCov">        293 :         resampleBufferEnd = 0;</span>
+<span class="lineNum">     871 </span><span class="lineCov">        293 :       }</span>
+<span class="lineNum">     872 </span><span class="lineCov">        293 :       if (resampleBufferStart == resampleBufferEnd) {</span>
+<span class="lineNum">     873 </span><span class="lineCov">        293 :         ++resampleBufferStart;</span>
+<span class="lineNum">     874 </span><span class="lineCov">        293 :         if (resampleBufferStart == resampleBufferSize) {</span>
+<span class="lineNum">     875 </span><span class="lineCov">        293 :           resampleBufferStart = 0;</span>
+<span class="lineNum">     876 </span><span class="lineCov">        293 :         }</span>
+<span class="lineNum">     877 </span><span class="lineCov">        293 :       }</span>
+<span class="lineNum">     878 </span><span class="lineCov">        293 :     }</span>
+<span class="lineNum">     879 </span><span class="lineCov">        293 :     audioBufferSize = 0;</span>
+<a name="880"><span class="lineNum">     880 </span><span class="lineCov">        293 :   }</span></a>
+<span class="lineNum">     881 </span><span class="lineCov">        293 : }</span>
+<span class="lineNum">     882 </span><span class="lineCov">          9 : function resampledSamplesLeft() {</span>
+<a name="883"><span class="lineNum">     883 </span><span class="lineCov">          9 :   return ((resampleBufferStart &lt;= resampleBufferEnd) ? 0 : resampleBufferSize) + resampleBufferEnd - resampleBufferStart;</span></a>
+<span class="lineNum">     884 </span><span class="lineCov">          9 : }</span>
+<span class="lineNum">     885 </span><span class="lineCov">          9 : function getBufferSamples() {</span>
+<span class="lineNum">     886 </span><span class="lineCov">          9 :   //Typed array and normal array buffer section referencing:</span>
+<span class="lineNum">     887 </span><span class="lineCov">          9 :   try {</span>
+<span class="lineNum">     888 </span><span class="lineCov">          9 :     return audioContextSampleBuffer.subarray(0, audioBufferSize);</span>
+<span class="lineNum">     889 </span><span class="lineCov">          9 :   }</span>
+<span class="lineNum">     890 </span><span class="lineCov">          9 :   catch (error) {</span>
+<span class="lineNum">     891 </span><span class="lineCov">          9 :     try {</span>
+<span class="lineNum">     892 </span><span class="lineCov">          9 :       //Regular array pass:</span>
+<span class="lineNum">     893 </span><span class="lineCov">          9 :       audioContextSampleBuffer.length = audioBufferSize;</span>
+<span class="lineNum">     894 </span><span class="lineCov">          9 :       return audioContextSampleBuffer;</span>
+<span class="lineNum">     895 </span><span class="lineCov">          9 :     }</span>
+<span class="lineNum">     896 </span><span class="lineCov">          9 :     catch (error) {</span>
+<span class="lineNum">     897 </span><span class="lineCov">          9 :       //Nightly Firefox 4 used to have the subarray function named as slice:</span>
+<span class="lineNum">     898 </span><span class="lineCov">          9 :       return audioContextSampleBuffer.slice(0, audioBufferSize);</span>
+<span class="lineNum">     899 </span><span class="lineCov">          9 :     }</span>
+<span class="lineNum">     900 </span><span class="lineCov">          9 :   }</span>
+<a name="901"><span class="lineNum">     901 </span><span class="lineCov">          9 : }</span></a>
+<span class="lineNum">     902 </span><span class="lineCov">          1 : //Initialize WebKit Audio /Flash Audio Buffer:</span>
+<span class="lineNum">     903 </span><span class="lineCov">          1 : function resetCallbackAPIAudioBuffer(APISampleRate, bufferAlloc) {</span>
+<span class="lineNum">     904 </span><span class="lineCov">          1 :   audioContextSampleBuffer = getFloat32(webAudioMaxBufferSize);</span>
+<span class="lineNum">     905 </span><span class="lineCov">          1 :   audioBufferSize = webAudioMaxBufferSize;</span>
+<span class="lineNum">     906 </span><span class="lineCov">          1 :   resampleBufferStart = 0;</span>
+<span class="lineNum">     907 </span><span class="lineCov">          1 :   resampleBufferEnd = 0;</span>
+<span class="lineNum">     908 </span><span class="lineCov">          1 :   resampleBufferSize = Math.max(webAudioMaxBufferSize * Math.ceil(XAudioJSSampleRate / APISampleRate), samplesPerCallback) &lt;&lt; 1;</span>
+<span class="lineNum">     909 </span><span class="lineCov">          1 :   if (webAudioMono) {</span>
+<span class="lineNum">     910 </span><span class="lineCov">          1 :     //MONO Handling:</span>
+<span class="lineNum">     911 </span><span class="lineCov">          1 :     resampled = getFloat32Flat(resampleBufferSize);</span>
+<span class="lineNum">     912 </span><span class="lineCov">          1 :     resampleControl = new Resampler(XAudioJSSampleRate, APISampleRate, 1, resampleBufferSize, true);</span>
+<span class="lineNum">     913 </span><span class="lineCov">          1 :     outputConvert = generateFlashMonoString;</span>
+<span class="lineNum">     914 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     915 </span><span class="lineCov">          1 :   else {</span>
+<span class="lineNum">     916 </span><span class="lineCov">          1 :     //STEREO Handling:</span>
+<span class="lineNum">     917 </span><span class="lineCov">          1 :     resampleBufferSize  &lt;&lt;= 1;</span>
+<span class="lineNum">     918 </span><span class="lineCov">          1 :     resampled = getFloat32Flat(resampleBufferSize);</span>
+<span class="lineNum">     919 </span><span class="lineCov">          1 :     resampleControl = new Resampler(XAudioJSSampleRate, APISampleRate, 2, resampleBufferSize, true);</span>
+<span class="lineNum">     920 </span><span class="lineCov">          1 :     outputConvert = generateFlashStereoString;</span>
+<span class="lineNum">     921 </span><span class="lineCov">          1 :   }</span>
+<a name="922"><span class="lineNum">     922 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">     923 </span><span class="lineCov">          1 : //Initialize WebKit Audio:</span>
+<span class="lineNum">     924 </span><span class="lineCov">          1 : (function () {</span>
+<span class="lineNum">     925 </span><span class="lineCov">          1 :   if (!launchedContext) {</span>
+<span class="lineNum">     926 </span><span class="lineCov">          1 :     try {</span>
+<span class="lineNum">     927 </span><span class="lineCov">          1 :       // The following line was modified for benchmarking:</span>
+<span class="lineNum">     928 </span><span class="lineCov">          1 :       audioContextHandle = new GameBoyAudioContext();              //Create a system audio context.</span>
+<span class="lineNum">     929 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">     930 </span><span class="lineCov">          1 :     catch (error) {</span>
+<span class="lineNum">     931 </span><span class="lineCov">          1 :       try {</span>
+<span class="lineNum">     932 </span><span class="lineCov">          1 :         audioContextHandle = new AudioContext();                //Create a system audio context.</span>
+<span class="lineNum">     933 </span><span class="lineCov">          1 :       }</span>
+<span class="lineNum">     934 </span><span class="lineCov">          1 :       catch (error) {</span>
+<span class="lineNum">     935 </span><span class="lineCov">          1 :         return;</span>
+<span class="lineNum">     936 </span><span class="lineCov">          1 :       }</span>
+<span class="lineNum">     937 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">     938 </span><span class="lineCov">          1 :     try {</span>
+<span class="lineNum">     939 </span><span class="lineCov">          1 :       audioSource = audioContextHandle.createBufferSource();            //We need to create a false input to get the chain started.</span>
+<span class="lineNum">     940 </span><span class="lineCov">          1 :       audioSource.loop = false;  //Keep this alive forever (Event handler will know when to ouput.)</span>
+<span class="lineNum">     941 </span><span class="lineCov">          1 :       XAudioJSSampleRate = webAudioActualSampleRate = audioContextHandle.sampleRate;</span>
+<span class="lineNum">     942 </span><span class="lineCov">          1 :       audioSource.buffer = audioContextHandle.createBuffer(1, 1, webAudioActualSampleRate);  //Create a zero'd input buffer for the input to be valid.</span>
+<span class="lineNum">     943 </span><span class="lineCov">          1 :       audioNode = audioContextHandle.createJavaScriptNode(samplesPerCallback, 1, 2);      //Create 2 outputs and ignore the input buffer (Just copy buffer 1 over if mono)</span>
+<span class="lineNum">     944 </span><span class="lineCov">          1 :       audioNode.onaudioprocess = audioOutputEvent;                //Connect the audio processing event to a handling function so we can manipulate output</span>
+<span class="lineNum">     945 </span><span class="lineCov">          1 :       audioSource.connect(audioNode);                        //Send and chain the input to the audio manipulation.</span>
+<span class="lineNum">     946 </span><span class="lineCov">          1 :       audioNode.connect(audioContextHandle.destination);              //Send and chain the output of the audio manipulation to the system audio output.</span>
+<span class="lineNum">     947 </span><span class="lineCov">          1 :       audioSource.noteOn(0);                            //Start the loop!</span>
+<span class="lineNum">     948 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">     949 </span><span class="lineCov">          1 :     catch (error) {</span>
+<span class="lineNum">     950 </span><span class="lineCov">          1 :       return;</span>
+<span class="lineNum">     951 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">     952 </span><span class="lineCov">          1 :     launchedContext = true;</span>
+<span class="lineNum">     953 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     954 </span><span class="lineCov">          1 : })();</span>
+<span class="lineNum">     955 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     956 </span><span class="lineCov">          1 : // End of js/other/XAudioServer.js file.</span>
+<span class="lineNum">     957 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     958 </span><span class="lineCov">          1 : // Start of js/other/resize.js file.</span>
+<a name="959"><span class="lineNum">     959 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     960 </span><span class="lineCov">          1 : //JavaScript Image Resizer (c) 2012 - Grant Galitz</span>
+<span class="lineNum">     961 </span><span class="lineCov">          1 : function Resize(widthOriginal, heightOriginal, targetWidth, targetHeight, blendAlpha, interpolationPass) {</span>
+<span class="lineNum">     962 </span><span class="lineNoCov">          0 :   this.widthOriginal = Math.abs(parseInt(widthOriginal) || 0);</span>
+<span class="lineNum">     963 </span><span class="lineNoCov">          0 :   this.heightOriginal = Math.abs(parseInt(heightOriginal) || 0);</span>
+<span class="lineNum">     964 </span><span class="lineNoCov">          0 :   this.targetWidth = Math.abs(parseInt(targetWidth) || 0);</span>
+<span class="lineNum">     965 </span><span class="lineNoCov">          0 :   this.targetHeight = Math.abs(parseInt(targetHeight) || 0);</span>
+<span class="lineNum">     966 </span><span class="lineNoCov">          0 :   this.colorChannels = (!!blendAlpha) ? 4 : 3;</span>
+<span class="lineNum">     967 </span><span class="lineNoCov">          0 :   this.interpolationPass = !!interpolationPass;</span>
+<span class="lineNum">     968 </span><span class="lineNoCov">          0 :   this.targetWidthMultipliedByChannels = this.targetWidth * this.colorChannels;</span>
+<span class="lineNum">     969 </span><span class="lineNoCov">          0 :   this.originalWidthMultipliedByChannels = this.widthOriginal * this.colorChannels;</span>
+<span class="lineNum">     970 </span><span class="lineNoCov">          0 :   this.originalHeightMultipliedByChannels = this.heightOriginal * this.colorChannels;</span>
+<span class="lineNum">     971 </span><span class="lineNoCov">          0 :   this.widthPassResultSize = this.targetWidthMultipliedByChannels * this.heightOriginal;</span>
+<span class="lineNum">     972 </span><span class="lineNoCov">          0 :   this.finalResultSize = this.targetWidthMultipliedByChannels * this.targetHeight;</span>
+<a name="973"><span class="lineNum">     973 </span><span class="lineNoCov">          0 :   this.initialize();</span></a>
+<span class="lineNum">     974 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     975 </span><span class="lineCov">          1 : Resize.prototype.initialize = function () {</span>
+<span class="lineNum">     976 </span><span class="lineNoCov">          0 :   //Perform some checks:</span>
+<span class="lineNum">     977 </span><span class="lineNoCov">          0 :   if (this.widthOriginal &gt; 0 &amp;&amp; this.heightOriginal &gt; 0 &amp;&amp; this.targetWidth &gt; 0 &amp;&amp; this.targetHeight &gt; 0) {</span>
+<span class="lineNum">     978 </span><span class="lineNoCov">          0 :     if (this.widthOriginal == this.targetWidth) {</span>
+<span class="lineNum">     979 </span><span class="lineNoCov">          0 :       //Bypass the width resizer pass:</span>
+<span class="lineNum">     980 </span><span class="lineNoCov">          0 :       this.resizeWidth = this.bypassResizer;</span>
+<span class="lineNum">     981 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     982 </span><span class="lineNoCov">          0 :     else {</span>
+<span class="lineNum">     983 </span><span class="lineNoCov">          0 :       //Setup the width resizer pass:</span>
+<span class="lineNum">     984 </span><span class="lineNoCov">          0 :       this.ratioWeightWidthPass = this.widthOriginal / this.targetWidth;</span>
+<span class="lineNum">     985 </span><span class="lineNoCov">          0 :       if (this.ratioWeightWidthPass &lt; 1 &amp;&amp; this.interpolationPass) {</span>
+<span class="lineNum">     986 </span><span class="lineNoCov">          0 :         this.initializeFirstPassBuffers(true);</span>
+<span class="lineNum">     987 </span><span class="lineNoCov">          0 :         this.resizeWidth = (this.colorChannels == 4) ? this.resizeWidthInterpolatedRGBA : this.resizeWidthInterpolatedRGB;</span>
+<span class="lineNum">     988 </span><span class="lineNoCov">          0 :       }</span>
+<span class="lineNum">     989 </span><span class="lineNoCov">          0 :       else {</span>
+<span class="lineNum">     990 </span><span class="lineNoCov">          0 :         this.initializeFirstPassBuffers(false);</span>
+<span class="lineNum">     991 </span><span class="lineNoCov">          0 :         this.resizeWidth = (this.colorChannels == 4) ? this.resizeWidthRGBA : this.resizeWidthRGB;</span>
+<span class="lineNum">     992 </span><span class="lineNoCov">          0 :       }</span>
+<span class="lineNum">     993 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     994 </span><span class="lineNoCov">          0 :     if (this.heightOriginal == this.targetHeight) {</span>
+<span class="lineNum">     995 </span><span class="lineNoCov">          0 :       //Bypass the height resizer pass:</span>
+<span class="lineNum">     996 </span><span class="lineNoCov">          0 :       this.resizeHeight = this.bypassResizer;</span>
+<span class="lineNum">     997 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     998 </span><span class="lineNoCov">          0 :     else {</span>
+<span class="lineNum">     999 </span><span class="lineNoCov">          0 :       //Setup the height resizer pass:</span>
+<span class="lineNum">    1000 </span><span class="lineNoCov">          0 :       this.ratioWeightHeightPass = this.heightOriginal / this.targetHeight;</span>
+<span class="lineNum">    1001 </span><span class="lineNoCov">          0 :       if (this.ratioWeightHeightPass &lt; 1 &amp;&amp; this.interpolationPass) {</span>
+<span class="lineNum">    1002 </span><span class="lineNoCov">          0 :         this.initializeSecondPassBuffers(true);</span>
+<span class="lineNum">    1003 </span><span class="lineNoCov">          0 :         this.resizeHeight = this.resizeHeightInterpolated;</span>
+<span class="lineNum">    1004 </span><span class="lineNoCov">          0 :       }</span>
+<span class="lineNum">    1005 </span><span class="lineNoCov">          0 :       else {</span>
+<span class="lineNum">    1006 </span><span class="lineNoCov">          0 :         this.initializeSecondPassBuffers(false);</span>
+<span class="lineNum">    1007 </span><span class="lineNoCov">          0 :         this.resizeHeight = (this.colorChannels == 4) ? this.resizeHeightRGBA : this.resizeHeightRGB;</span>
+<span class="lineNum">    1008 </span><span class="lineNoCov">          0 :       }</span>
+<span class="lineNum">    1009 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">    1010 </span><span class="lineNoCov">          0 :   }</span>
+<span class="lineNum">    1011 </span><span class="lineNoCov">          0 :   else {</span>
+<span class="lineNum">    1012 </span><span class="lineNoCov">          0 :     throw(new Error(&quot;Invalid settings specified for the resizer.&quot;));</span>
+<a name="1013"><span class="lineNum">    1013 </span><span class="lineNoCov">          0 :   }</span></a>
+<span class="lineNum">    1014 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">    1015 </span><span class="lineCov">          1 : Resize.prototype.resizeWidthRGB = function (buffer) {</span>
+<span class="lineNum">    1016 </span><span class="lineNoCov">          0 :   var ratioWeight = this.ratioWeightWidthPass;</span>
+<span class="lineNum">    1017 </span><span class="lineNoCov">          0 :   var weight = 0;</span>
+<span class="lineNum">    1018 </span><span class="lineNoCov">          0 :   var amountToNext = 0;</span>
+<span class="lineNum">    1019 </span><span class="lineNoCov">          0 :   var actualPosition = 0;</span>
+<span class="lineNum">    1020 </span><span class="lineNoCov">          0 :   var currentPosition = 0;</span>
+<span class="lineNum">    1021 </span><span class="lineNoCov">          0 :   var line = 0;</span>
+<span class="lineNum">    1022 </span><span class="lineNoCov">          0 :   var pixelOffset = 0;</span>
+<span class="lineNum">    1023 </span><span class="lineNoCov">          0 :   var outputOffset = 0;</span>
+<span class="lineNum">    1024 </span><span class="lineNoCov">          0 :   var nextLineOffsetOriginalWidth = this.originalWidthMultipliedByChannels - 2;</span>
+<span class="lineNum">    1025 </span><span class="lineNoCov">          0 :   var nextLineOffsetTargetWidth = this.targetWidthMultipliedByChannels - 2;</span>
+<span class="lineNum">    1026 </span><span class="lineNoCov">          0 :   var output = this.outputWidthWorkBench;</span>
+<span class="lineNum">    1027 </span><span class="lineNoCov">          0 :   var outputBuffer = this.widthBuffer;</span>
+<span class="lineNum">    1028 </span><span class="lineNoCov">          0 :   do {</span>
+<span class="lineNum">    1029 </span><span class="lineNoCov">          0 :     for (line = 0; line &lt; this.originalHeightMultipliedByChannels;) {</span>
+<span class="lineNum">    1030 </span><span class="lineNoCov">          0 :       output[line++] = 0;</span>
+<span class="lineNum">    1031 </span><span class="lineNoCov">          0 :       output[line++] = 0;</span>
+<span class="lineNum">    1032 </span><span class="lineNoCov">          0 :       output[line++] = 0;</span>
+<span class="lineNum">    1033 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">    1034 </span><span class="lineNoCov">          0 :     weight = ratioWeight;</span>
+<span class="lineNum">    1035 </span><span class="lineNoCov">          0 :     do {</span>
+<span class="lineNum">    1036 </span><span class="lineNoCov">          0 :       amountToNext = 1 + actualPosition - currentPosition;</span>
+<span class="lineNum">    1037 </span><span class="lineNoCov">          0 :       if (weight &gt;= amountToNext) {</span>
+<span class="lineNum">    1038 </span><span class="lineNoCov">          0 :         for (line = 0, pixelOffset = actualPosition; line &lt; this.originalHeightMultipliedByChannels; pixelOffset += nextLineOffsetOriginalWidth) {</span>
+<span class="lineNum">    1039 </span><span class="lineNoCov">          0 :           output[line++] += buffer[pixelOffset++] * amountToNext;</span>
+<span class="lineNum">    1040 </span><span class="lineNoCov">          0 :           output[line++] += buffer[pixelOffset++] * amountToNext;</span>
+<span class="lineNum">    1041 </span><span class="lineNoCov">          0 :           output[line++] += buffer[pixelOffset] * amountToNext;</span>
+<span class="lineNum">    1042 </span><span class="lineNoCov">          0 :         }</span>
+<span class="lineNum">    1043 </span><span class="lineNoCov">          0 :         currentPosition = actualPosition = actualPosition + 3;</span>
+<span class="lineNum">    1044 </span><span class="lineNoCov">          0 :         weight -= amountToNext;</span>
+<span class="lineNum">    1045 </span><span class="lineNoCov">          0 :       }</span>
+<span class="lineNum">    1046 </span><span class="lineNoCov">          0 :       else {</span>
+<span class="lineNum">    1047 </span><span class="lineNoCov">          0 :         for (line = 0, pixelOffset = actualPosition; line &lt; this.originalHeightMultipliedByChannels; pixelOffset += nextLineOffsetOriginalWidth) {</span>
+<span class="lineNum">    1048 </span><span class="lineNoCov">          0 :           output[line++] += buffer[pixelOffset++] * weight;</span>
+<span class="lineNum">    1049 </span><span class="lineNoCov">          0 :           output[line++] += buffer[pixelOffset++] * weight;</span>
+<span class="lineNum">    1050 </span><span class="lineNoCov">          0 :           output[line++] += buffer[pixelOffset] * weight;</span>
+<span class="lineNum">    1051 </span><span class="lineNoCov">          0 :         }</span>
+<span class="lineNum">    1052 </span><span class="lineNoCov">          0 :         currentPosition += weight;</span>
+<span class="lineNum">    1053 </span><span class="lineNoCov">          0 :         break;</span>
+<span class="lineNum">    1054 </span><span class="lineNoCov">          0 :       }</span>
+<span class="lineNum">    1055 </span><span class="lineNoCov">          0 :     } while (weight &gt; 0 &amp;&amp; actualPosition &lt; this.originalWidthMultipliedByChannels);</span>
+<span class="lineNum">    1056 </span><span class="lineNoCov">          0 :     for (line = 0, pixelOffset = outputOffset; line &lt; this.originalHeightMultipliedByChannels; pixelOffset += nextLineOffsetTargetWidth) {</span>
+<span class="lineNum">    1057 </span><span class="lineNoCov">          0 :       outputBuffer[pixelOffset++] = output[line++] / ratioWeight;</span>
+<span class="lineNum">    1058 </span><span class="lineNoCov">          0 :       outputBuffer[pixelOffset++] = output[line++] / ratioWeight;</span>
+<span class="lineNum">    1059 </span><span class="lineNoCov">          0 :       outputBuffer[pixelOffset] = output[line++] / ratioWeight;</span>
+<span class="lineNum">    1060 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">    1061 </span><span class="lineNoCov">          0 :     outputOffset += 3;</span>
+<span class="lineNum">    1062 </span><span class="lineNoCov">          0 :   } while (outputOffset &lt; this.targetWidthMultipliedByChannels);</span>
+<a name="1063"><span class="lineNum">    1063 </span><span class="lineNoCov">          0 :   return outputBuffer;</span></a>
+<span class="lineNum">    1064 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">    1065 </span><span class="lineCov">          1 : Resize.prototype.resizeWidthInterpolatedRGB = function (buffer) {</span>
+<span class="lineNum">    1066 </span><span class="lineNoCov">          0 :   var ratioWeight = (this.widthOriginal - 1) / this.targetWidth;</span>
+<span class="lineNum">    1067 </span><span class="lineNoCov">          0 :   var weight = 0;</span>
+<span class="lineNum">    1068 </span><span class="lineNoCov">          0 :   var finalOffset = 0;</span>
+<span class="lineNum">    1069 </span><span class="lineNoCov">          0 :   var pixelOffset = 0;</span>
+<span class="lineNum">    1070 </span><span class="lineNoCov">          0 :   var outputBuffer = this.widthBuffer;</span>
+<span class="lineNum">    1071 </span><span class="lineNoCov">          0 :   for (var targetPosition = 0; targetPosition &lt; this.targetWidthMultipliedByChannels; targetPosition += 3, weight += ratioWeight) {</span>
+<span class="lineNum">    1072 </span><span class="lineNoCov">          0 :     //Calculate weightings:</span>
+<span class="lineNum">    1073 </span><span class="lineNoCov">          0 :     secondWeight = weight % 1;</span>
+<span class="lineNum">    1074 </span><span class="lineNoCov">          0 :     firstWeight = 1 - secondWeight;</span>
+<span class="lineNum">    1075 </span><span class="lineNoCov">          0 :     //Interpolate:</span>
+<span class="lineNum">    1076 </span><span class="lineNoCov">          0 :     for (finalOffset = targetPosition, pixelOffset = Math.floor(weight) * 3; finalOffset &lt; this.widthPassResultSize; pixelOffset += this.originalWidthMultipliedByChannels, finalOffset += this.targetWidthMultipliedByChannels) {</span>
+<span class="lineNum">    1077 </span><span class="lineNoCov">          0 :       outputBuffer[finalOffset] = (buffer[pixelOffset] * firstWeight) + (buffer[pixelOffset + 3] * secondWeight);</span>
+<span class="lineNum">    1078 </span><span class="lineNoCov">          0 :       outputBuffer[finalOffset + 1] = (buffer[pixelOffset + 1] * firstWeight) + (buffer[pixelOffset + 4] * secondWeight);</span>
+<span class="lineNum">    1079 </span><span class="lineNoCov">          0 :       outputBuffer[finalOffset + 2] = (buffer[pixelOffset + 2] * firstWeight) + (buffer[pixelOffset + 5] * secondWeight);</span>
+<span class="lineNum">    1080 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">    1081 </span><span class="lineNoCov">          0 :   }</span>
+<a name="1082"><span class="lineNum">    1082 </span><span class="lineNoCov">          0 :   return outputBuffer;</span></a>
+<span class="lineNum">    1083 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">    1084 </span><span class="lineCov">          1 : Resize.prototype.resizeWidthRGBA = function (buffer) {</span>
+<span class="lineNum">    1085 </span><span class="lineNoCov">          0 :   var ratioWeight = this.ratioWeightWidthPass;</span>
+<span class="lineNum">    1086 </span><span class="lineNoCov">          0 :   var weight = 0;</span>
+<span class="lineNum">    1087 </span><span class="lineNoCov">          0 :   var amountToNext = 0;</span>
+<span class="lineNum">    1088 </span><span class="lineNoCov">          0 :   var actualPosition = 0;</span>
+<span class="lineNum">    1089 </span><span class="lineNoCov">          0 :   var currentPosition = 0;</span>
+<span class="lineNum">    1090 </span><span class="lineNoCov">          0 :   var line = 0;</span>
+<span class="lineNum">    1091 </span><span class="lineNoCov">          0 :   var pixelOffset = 0;</span>
+<span class="lineNum">    1092 </span><span class="lineNoCov">          0 :   var outputOffset = 0;</span>
+<span class="lineNum">    1093 </span><span class="lineNoCov">          0 :   var nextLineOffsetOriginalWidth = this.originalWidthMultipliedByChannels - 3;</span>
+<span class="lineNum">    1094 </span><span class="lineNoCov">          0 :   var nextLineOffsetTargetWidth = this.targetWidthMultipliedByChannels - 3;</span>
+<span class="lineNum">    1095 </span><span class="lineNoCov">          0 :   var output = this.outputWidthWorkBench;</span>
+<span class="lineNum">    1096 </span><span class="lineNoCov">          0 :   var outputBuffer = this.widthBuffer;</span>
+<span class="lineNum">    1097 </span><span class="lineNoCov">          0 :   do {</span>
+<span class="lineNum">    1098 </span><span class="lineNoCov">          0 :     for (line = 0; line &lt; this.originalHeightMultipliedByChannels;) {</span>
+<span class="lineNum">    1099 </span><span class="lineNoCov">          0 :       output[line++] = 0;</span>
+<span class="lineNum">    1100 </span><span class="lineNoCov">          0 :       output[line++] = 0;</span>
+<span class="lineNum">    1101 </span><span class="lineNoCov">          0 :       output[line++] = 0;</span>
+<span class="lineNum">    1102 </span><span class="lineNoCov">          0 :       output[line++] = 0;</span>
+<span class="lineNum">    1103 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">    1104 </span><span class="lineNoCov">          0 :     weight = ratioWeight;</span>
+<span class="lineNum">    1105 </span><span class="lineNoCov">          0 :     do {</span>
+<span class="lineNum">    1106 </span><span class="lineNoCov">          0 :       amountToNext = 1 + actualPosition - currentPosition;</span>
+<span class="lineNum">    1107 </span><span class="lineNoCov">          0 :       if (weight &gt;= amountToNext) {</span>
+<span class="lineNum">    1108 </span><span class="lineNoCov">          0 :         for (line = 0, pixelOffset = actualPosition; line &lt; this.originalHeightMultipliedByChannels; pixelOffset += nextLineOffsetOriginalWidth) {</span>
+<span class="lineNum">    1109 </span><span class="lineNoCov">          0 :           output[line++] += buffer[pixelOffset++] * amountToNext;</span>
+<span class="lineNum">    1110 </span><span class="lineNoCov">          0 :           output[line++] += buffer[pixelOffset++] * amountToNext;</span>
+<span class="lineNum">    1111 </span><span class="lineNoCov">          0 :           output[line++] += buffer[pixelOffset++] * amountToNext;</span>
+<span class="lineNum">    1112 </span><span class="lineNoCov">          0 :           output[line++] += buffer[pixelOffset] * amountToNext;</span>
+<span class="lineNum">    1113 </span><span class="lineNoCov">          0 :         }</span>
+<span class="lineNum">    1114 </span><span class="lineNoCov">          0 :         currentPosition = actualPosition = actualPosition + 4;</span>
+<span class="lineNum">    1115 </span><span class="lineNoCov">          0 :         weight -= amountToNext;</span>
+<span class="lineNum">    1116 </span><span class="lineNoCov">          0 :       }</span>
+<span class="lineNum">    1117 </span><span class="lineNoCov">          0 :       else {</span>
+<span class="lineNum">    1118 </span><span class="lineNoCov">          0 :         for (line = 0, pixelOffset = actualPosition; line &lt; this.originalHeightMultipliedByChannels; pixelOffset += nextLineOffsetOriginalWidth) {</span>
+<span class="lineNum">    1119 </span><span class="lineNoCov">          0 :           output[line++] += buffer[pixelOffset++] * weight;</span>
+<span class="lineNum">    1120 </span><span class="lineNoCov">          0 :           output[line++] += buffer[pixelOffset++] * weight;</span>
+<span class="lineNum">    1121 </span><span class="lineNoCov">          0 :           output[line++] += buffer[pixelOffset++] * weight;</span>
+<span class="lineNum">    1122 </span><span class="lineNoCov">          0 :           output[line++] += buffer[pixelOffset] * weight;</span>
+<span class="lineNum">    1123 </span><span class="lineNoCov">          0 :         }</span>
+<span class="lineNum">    1124 </span><span class="lineNoCov">          0 :         currentPosition += weight;</span>
+<span class="lineNum">    1125 </span><span class="lineNoCov">          0 :         break;</span>
+<span class="lineNum">    1126 </span><span class="lineNoCov">          0 :       }</span>
+<span class="lineNum">    1127 </span><span class="lineNoCov">          0 :     } while (weight &gt; 0 &amp;&amp; actualPosition &lt; this.originalWidthMultipliedByChannels);</span>
+<span class="lineNum">    1128 </span><span class="lineNoCov">          0 :     for (line = 0, pixelOffset = outputOffset; line &lt; this.originalHeightMultipliedByChannels; pixelOffset += nextLineOffsetTargetWidth) {</span>
+<span class="lineNum">    1129 </span><span class="lineNoCov">          0 :       outputBuffer[pixelOffset++] = output[line++] / ratioWeight;</span>
+<span class="lineNum">    1130 </span><span class="lineNoCov">          0 :       outputBuffer[pixelOffset++] = output[line++] / ratioWeight;</span>
+<span class="lineNum">    1131 </span><span class="lineNoCov">          0 :       outputBuffer[pixelOffset++] = output[line++] / ratioWeight;</span>
+<span class="lineNum">    1132 </span><span class="lineNoCov">          0 :       outputBuffer[pixelOffset] = output[line++] / ratioWeight;</span>
+<span class="lineNum">    1133 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">    1134 </span><span class="lineNoCov">          0 :     outputOffset += 4;</span>
+<span class="lineNum">    1135 </span><span class="lineNoCov">          0 :   } while (outputOffset &lt; this.targetWidthMultipliedByChannels);</span>
+<a name="1136"><span class="lineNum">    1136 </span><span class="lineNoCov">          0 :   return outputBuffer;</span></a>
+<span class="lineNum">    1137 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">    1138 </span><span class="lineCov">          1 : Resize.prototype.resizeWidthInterpolatedRGBA = function (buffer) {</span>
+<span class="lineNum">    1139 </span><span class="lineNoCov">          0 :   var ratioWeight = (this.widthOriginal - 1) / this.targetWidth;</span>
+<span class="lineNum">    1140 </span><span class="lineNoCov">          0 :   var weight = 0;</span>
+<span class="lineNum">    1141 </span><span class="lineNoCov">          0 :   var finalOffset = 0;</span>
+<span class="lineNum">    1142 </span><span class="lineNoCov">          0 :   var pixelOffset = 0;</span>
+<span class="lineNum">    1143 </span><span class="lineNoCov">          0 :   var outputBuffer = this.widthBuffer;</span>
+<span class="lineNum">    1144 </span><span class="lineNoCov">          0 :   for (var targetPosition = 0; targetPosition &lt; this.targetWidthMultipliedByChannels; targetPosition += 4, weight += ratioWeight) {</span>
+<span class="lineNum">    1145 </span><span class="lineNoCov">          0 :     //Calculate weightings:</span>
+<span class="lineNum">    1146 </span><span class="lineNoCov">          0 :     secondWeight = weight % 1;</span>
+<span class="lineNum">    1147 </span><span class="lineNoCov">          0 :     firstWeight = 1 - secondWeight;</span>
+<span class="lineNum">    1148 </span><span class="lineNoCov">          0 :     //Interpolate:</span>
+<span class="lineNum">    1149 </span><span class="lineNoCov">          0 :     for (finalOffset = targetPosition, pixelOffset = Math.floor(weight) * 4; finalOffset &lt; this.widthPassResultSize; pixelOffset += this.originalWidthMultipliedByChannels, finalOffset += this.targetWidthMultipliedByChannels) {</span>
+<span class="lineNum">    1150 </span><span class="lineNoCov">          0 :       outputBuffer[finalOffset] = (buffer[pixelOffset] * firstWeight) + (buffer[pixelOffset + 4] * secondWeight);</span>
+<span class="lineNum">    1151 </span><span class="lineNoCov">          0 :       outputBuffer[finalOffset + 1] = (buffer[pixelOffset + 1] * firstWeight) + (buffer[pixelOffset + 5] * secondWeight);</span>
+<span class="lineNum">    1152 </span><span class="lineNoCov">          0 :       outputBuffer[finalOffset + 2] = (buffer[pixelOffset + 2] * firstWeight) + (buffer[pixelOffset + 6] * secondWeight);</span>
+<span class="lineNum">    1153 </span><span class="lineNoCov">          0 :       outputBuffer[finalOffset + 3] = (buffer[pixelOffset + 3] * firstWeight) + (buffer[pixelOffset + 7] * secondWeight);</span>
+<span class="lineNum">    1154 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">    1155 </span><span class="lineNoCov">          0 :   }</span>
+<a name="1156"><span class="lineNum">    1156 </span><span class="lineNoCov">          0 :   return outputBuffer;</span></a>
+<span class="lineNum">    1157 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">    1158 </span><span class="lineCov">          1 : Resize.prototype.resizeHeightRGB = function (buffer) {</span>
+<span class="lineNum">    1159 </span><span class="lineNoCov">          0 :   var ratioWeight = this.ratioWeightHeightPass;</span>
+<span class="lineNum">    1160 </span><span class="lineNoCov">          0 :   var weight = 0;</span>
+<span class="lineNum">    1161 </span><span class="lineNoCov">          0 :   var amountToNext = 0;</span>
+<span class="lineNum">    1162 </span><span class="lineNoCov">          0 :   var actualPosition = 0;</span>
+<span class="lineNum">    1163 </span><span class="lineNoCov">          0 :   var currentPosition = 0;</span>
+<span class="lineNum">    1164 </span><span class="lineNoCov">          0 :   var pixelOffset = 0;</span>
+<span class="lineNum">    1165 </span><span class="lineNoCov">          0 :   var outputOffset = 0;</span>
+<span class="lineNum">    1166 </span><span class="lineNoCov">          0 :   var output = this.outputHeightWorkBench;</span>
+<span class="lineNum">    1167 </span><span class="lineNoCov">          0 :   var outputBuffer = this.heightBuffer;</span>
+<span class="lineNum">    1168 </span><span class="lineNoCov">          0 :   do {</span>
+<span class="lineNum">    1169 </span><span class="lineNoCov">          0 :     for (pixelOffset = 0; pixelOffset &lt; this.targetWidthMultipliedByChannels;) {</span>
+<span class="lineNum">    1170 </span><span class="lineNoCov">          0 :       output[pixelOffset++] = 0;</span>
+<span class="lineNum">    1171 </span><span class="lineNoCov">          0 :       output[pixelOffset++] = 0;</span>
+<span class="lineNum">    1172 </span><span class="lineNoCov">          0 :       output[pixelOffset++] = 0;</span>
+<span class="lineNum">    1173 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">    1174 </span><span class="lineNoCov">          0 :     weight = ratioWeight;</span>
+<span class="lineNum">    1175 </span><span class="lineNoCov">          0 :     do {</span>
+<span class="lineNum">    1176 </span><span class="lineNoCov">          0 :       amountToNext = 1 + actualPosition - currentPosition;</span>
+<span class="lineNum">    1177 </span><span class="lineNoCov">          0 :       if (weight &gt;= amountToNext) {</span>
+<span class="lineNum">    1178 </span><span class="lineNoCov">          0 :         for (pixelOffset = 0; pixelOffset &lt; this.targetWidthMultipliedByChannels;) {</span>
+<span class="lineNum">    1179 </span><span class="lineNoCov">          0 :           output[pixelOffset++] += buffer[actualPosition++] * amountToNext;</span>
+<span class="lineNum">    1180 </span><span class="lineNoCov">          0 :           output[pixelOffset++] += buffer[actualPosition++] * amountToNext;</span>
+<span class="lineNum">    1181 </span><span class="lineNoCov">          0 :           output[pixelOffset++] += buffer[actualPosition++] * amountToNext;</span>
+<span class="lineNum">    1182 </span><span class="lineNoCov">          0 :         }</span>
+<span class="lineNum">    1183 </span><span class="lineNoCov">          0 :         currentPosition = actualPosition;</span>
+<span class="lineNum">    1184 </span><span class="lineNoCov">          0 :         weight -= amountToNext;</span>
+<span class="lineNum">    1185 </span><span class="lineNoCov">          0 :       }</span>
+<span class="lineNum">    1186 </span><span class="lineNoCov">          0 :       else {</span>
+<span class="lineNum">    1187 </span><span class="lineNoCov">          0 :         for (pixelOffset = 0, amountToNext = actualPosition; pixelOffset &lt; this.targetWidthMultipliedByChannels;) {</span>
+<span class="lineNum">    1188 </span><span class="lineNoCov">          0 :           output[pixelOffset++] += buffer[amountToNext++] * weight;</span>
+<span class="lineNum">    1189 </span><span class="lineNoCov">          0 :           output[pixelOffset++] += buffer[amountToNext++] * weight;</span>
+<span class="lineNum">    1190 </span><span class="lineNoCov">          0 :           output[pixelOffset++] += buffer[amountToNext++] * weight;</span>
+<span class="lineNum">    1191 </span><span class="lineNoCov">          0 :         }</span>
+<span class="lineNum">    1192 </span><span class="lineNoCov">          0 :         currentPosition += weight;</span>
+<span class="lineNum">    1193 </span><span class="lineNoCov">          0 :         break;</span>
+<span class="lineNum">    1194 </span><span class="lineNoCov">          0 :       }</span>
+<span class="lineNum">    1195 </span><span class="lineNoCov">          0 :     } while (weight &gt; 0 &amp;&amp; actualPosition &lt; this.widthPassResultSize);</span>
+<span class="lineNum">    1196 </span><span class="lineNoCov">          0 :     for (pixelOffset = 0; pixelOffset &lt; this.targetWidthMultipliedByChannels;) {</span>
+<span class="lineNum">    1197 </span><span class="lineNoCov">          0 :       outputBuffer[outputOffset++] = Math.round(output[pixelOffset++] / ratioWeight);</span>
+<span class="lineNum">    1198 </span><span class="lineNoCov">          0 :       outputBuffer[outputOffset++] = Math.round(output[pixelOffset++] / ratioWeight);</span>
+<span class="lineNum">    1199 </span><span class="lineNoCov">          0 :       outputBuffer[outputOffset++] = Math.round(output[pixelOffset++] / ratioWeight);</span>
+<span class="lineNum">    1200 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">    1201 </span><span class="lineNoCov">          0 :   } while (outputOffset &lt; this.finalResultSize);</span>
+<a name="1202"><span class="lineNum">    1202 </span><span class="lineNoCov">          0 :   return outputBuffer;</span></a>
+<span class="lineNum">    1203 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">    1204 </span><span class="lineCov">          1 : Resize.prototype.resizeHeightInterpolated = function (buffer) {</span>
+<span class="lineNum">    1205 </span><span class="lineNoCov">          0 :   var ratioWeight = (this.heightOriginal - 1) / this.targetHeight;</span>
+<span class="lineNum">    1206 </span><span class="lineNoCov">          0 :   var weight = 0;</span>
+<span class="lineNum">    1207 </span><span class="lineNoCov">          0 :   var finalOffset = 0;</span>
+<span class="lineNum">    1208 </span><span class="lineNoCov">          0 :   var pixelOffset = 0;</span>
+<span class="lineNum">    1209 </span><span class="lineNoCov">          0 :   var pixelOffsetAccumulated = 0;</span>
+<span class="lineNum">    1210 </span><span class="lineNoCov">          0 :   var pixelOffsetAccumulated2 = 0;</span>
+<span class="lineNum">    1211 </span><span class="lineNoCov">          0 :   var outputBuffer = this.heightBuffer;</span>
+<span class="lineNum">    1212 </span><span class="lineNoCov">          0 :   do {</span>
+<span class="lineNum">    1213 </span><span class="lineNoCov">          0 :     //Calculate weightings:</span>
+<span class="lineNum">    1214 </span><span class="lineNoCov">          0 :     secondWeight = weight % 1;</span>
+<span class="lineNum">    1215 </span><span class="lineNoCov">          0 :     firstWeight = 1 - secondWeight;</span>
+<span class="lineNum">    1216 </span><span class="lineNoCov">          0 :     //Interpolate:</span>
+<span class="lineNum">    1217 </span><span class="lineNoCov">          0 :     pixelOffsetAccumulated = Math.floor(weight) * this.targetWidthMultipliedByChannels;</span>
+<span class="lineNum">    1218 </span><span class="lineNoCov">          0 :     pixelOffsetAccumulated2 = pixelOffsetAccumulated + this.targetWidthMultipliedByChannels;</span>
+<span class="lineNum">    1219 </span><span class="lineNoCov">          0 :     for (pixelOffset = 0; pixelOffset &lt; this.targetWidthMultipliedByChannels; ++pixelOffset) {</span>
+<span class="lineNum">    1220 </span><span class="lineNoCov">          0 :       outputBuffer[finalOffset++] = (buffer[pixelOffsetAccumulated + pixelOffset] * firstWeight) + (buffer[pixelOffsetAccumulated2 + pixelOffset] * secondWeight);</span>
+<span class="lineNum">    1221 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">    1222 </span><span class="lineNoCov">          0 :     weight += ratioWeight;</span>
+<span class="lineNum">    1223 </span><span class="lineNoCov">          0 :   } while (finalOffset &lt; this.finalResultSize);</span>
+<a name="1224"><span class="lineNum">    1224 </span><span class="lineNoCov">          0 :   return outputBuffer;</span></a>
+<span class="lineNum">    1225 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">    1226 </span><span class="lineCov">          1 : Resize.prototype.resizeHeightRGBA = function (buffer) {</span>
+<span class="lineNum">    1227 </span><span class="lineNoCov">          0 :   var ratioWeight = this.ratioWeightHeightPass;</span>
+<span class="lineNum">    1228 </span><span class="lineNoCov">          0 :   var weight = 0;</span>
+<span class="lineNum">    1229 </span><span class="lineNoCov">          0 :   var amountToNext = 0;</span>
+<span class="lineNum">    1230 </span><span class="lineNoCov">          0 :   var actualPosition = 0;</span>
+<span class="lineNum">    1231 </span><span class="lineNoCov">          0 :   var currentPosition = 0;</span>
+<span class="lineNum">    1232 </span><span class="lineNoCov">          0 :   var pixelOffset = 0;</span>
+<span class="lineNum">    1233 </span><span class="lineNoCov">          0 :   var outputOffset = 0;</span>
+<span class="lineNum">    1234 </span><span class="lineNoCov">          0 :   var output = this.outputHeightWorkBench;</span>
+<span class="lineNum">    1235 </span><span class="lineNoCov">          0 :   var outputBuffer = this.heightBuffer;</span>
+<span class="lineNum">    1236 </span><span class="lineNoCov">          0 :   do {</span>
+<span class="lineNum">    1237 </span><span class="lineNoCov">          0 :     for (pixelOffset = 0; pixelOffset &lt; this.targetWidthMultipliedByChannels;) {</span>
+<span class="lineNum">    1238 </span><span class="lineNoCov">          0 :       output[pixelOffset++] = 0;</span>
+<span class="lineNum">    1239 </span><span class="lineNoCov">          0 :       output[pixelOffset++] = 0;</span>
+<span class="lineNum">    1240 </span><span class="lineNoCov">          0 :       output[pixelOffset++] = 0;</span>
+<span class="lineNum">    1241 </span><span class="lineNoCov">          0 :       output[pixelOffset++] = 0;</span>
+<span class="lineNum">    1242 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">    1243 </span><span class="lineNoCov">          0 :     weight = ratioWeight;</span>
+<span class="lineNum">    1244 </span><span class="lineNoCov">          0 :     do {</span>
+<span class="lineNum">    1245 </span><span class="lineNoCov">          0 :       amountToNext = 1 + actualPosition - currentPosition;</span>
+<span class="lineNum">    1246 </span><span class="lineNoCov">          0 :       if (weight &gt;= amountToNext) {</span>
+<span class="lineNum">    1247 </span><span class="lineNoCov">          0 :         for (pixelOffset = 0; pixelOffset &lt; this.targetWidthMultipliedByChannels;) {</span>
+<span class="lineNum">    1248 </span><span class="lineNoCov">          0 :           output[pixelOffset++] += buffer[actualPosition++] * amountToNext;</span>
+<span class="lineNum">    1249 </span><span class="lineNoCov">          0 :           output[pixelOffset++] += buffer[actualPosition++] * amountToNext;</span>
+<span class="lineNum">    1250 </span><span class="lineNoCov">          0 :           output[pixelOffset++] += buffer[actualPosition++] * amountToNext;</span>
+<span class="lineNum">    1251 </span><span class="lineNoCov">          0 :           output[pixelOffset++] += buffer[actualPosition++] * amountToNext;</span>
+<span class="lineNum">    1252 </span><span class="lineNoCov">          0 :         }</span>
+<span class="lineNum">    1253 </span><span class="lineNoCov">          0 :         currentPosition = actualPosition;</span>
+<span class="lineNum">    1254 </span><span class="lineNoCov">          0 :         weight -= amountToNext;</span>
+<span class="lineNum">    1255 </span><span class="lineNoCov">          0 :       }</span>
+<span class="lineNum">    1256 </span><span class="lineNoCov">          0 :       else {</span>
+<span class="lineNum">    1257 </span><span class="lineNoCov">          0 :         for (pixelOffset = 0, amountToNext = actualPosition; pixelOffset &lt; this.targetWidthMultipliedByChannels;) {</span>
+<span class="lineNum">    1258 </span><span class="lineNoCov">          0 :           output[pixelOffset++] += buffer[amountToNext++] * weight;</span>
+<span class="lineNum">    1259 </span><span class="lineNoCov">          0 :           output[pixelOffset++] += buffer[amountToNext++] * weight;</span>
+<span class="lineNum">    1260 </span><span class="lineNoCov">          0 :           output[pixelOffset++] += buffer[amountToNext++] * weight;</span>
+<span class="lineNum">    1261 </span><span class="lineNoCov">          0 :           output[pixelOffset++] += buffer[amountToNext++] * weight;</span>
+<span class="lineNum">    1262 </span><span class="lineNoCov">          0 :         }</span>
+<span class="lineNum">    1263 </span><span class="lineNoCov">          0 :         currentPosition += weight;</span>
+<span class="lineNum">    1264 </span><span class="lineNoCov">          0 :         break;</span>
+<span class="lineNum">    1265 </span><span class="lineNoCov">          0 :       }</span>
+<span class="lineNum">    1266 </span><span class="lineNoCov">          0 :     } while (weight &gt; 0 &amp;&amp; actualPosition &lt; this.widthPassResultSize);</span>
+<span class="lineNum">    1267 </span><span class="lineNoCov">          0 :     for (pixelOffset = 0; pixelOffset &lt; this.targetWidthMultipliedByChannels;) {</span>
+<span class="lineNum">    1268 </span><span class="lineNoCov">          0 :       outputBuffer[outputOffset++] = Math.round(output[pixelOffset++] / ratioWeight);</span>
+<span class="lineNum">    1269 </span><span class="lineNoCov">          0 :       outputBuffer[outputOffset++] = Math.round(output[pixelOffset++] / ratioWeight);</span>
+<span class="lineNum">    1270 </span><span class="lineNoCov">          0 :       outputBuffer[outputOffset++] = Math.round(output[pixelOffset++] / ratioWeight);</span>
+<span class="lineNum">    1271 </span><span class="lineNoCov">          0 :       outputBuffer[outputOffset++] = Math.round(output[pixelOffset++] / ratioWeight);</span>
+<span class="lineNum">    1272 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">    1273 </span><span class="lineNoCov">          0 :   } while (outputOffset &lt; this.finalResultSize);</span>
+<a name="1274"><span class="lineNum">    1274 </span><span class="lineNoCov">          0 :   return outputBuffer;</span></a>
+<span class="lineNum">    1275 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">    1276 </span><span class="lineCov">          1 : Resize.prototype.resizeHeightInterpolatedRGBA = function (buffer) {</span>
+<span class="lineNum">    1277 </span><span class="lineNoCov">          0 :   var ratioWeight = (this.heightOriginal - 1) / this.targetHeight;</span>
+<span class="lineNum">    1278 </span><span class="lineNoCov">          0 :   var weight = 0;</span>
+<span class="lineNum">    1279 </span><span class="lineNoCov">          0 :   var finalOffset = 0;</span>
+<span class="lineNum">    1280 </span><span class="lineNoCov">          0 :   var pixelOffset = 0;</span>
+<span class="lineNum">    1281 </span><span class="lineNoCov">          0 :   var outputBuffer = this.heightBuffer;</span>
+<span class="lineNum">    1282 </span><span class="lineNoCov">          0 :   while (pixelOffset &lt; this.finalResultSize) {</span>
+<span class="lineNum">    1283 </span><span class="lineNoCov">          0 :     //Calculate weightings:</span>
+<span class="lineNum">    1284 </span><span class="lineNoCov">          0 :     secondWeight = weight % 1;</span>
+<span class="lineNum">    1285 </span><span class="lineNoCov">          0 :     firstWeight = 1 - secondWeight;</span>
+<span class="lineNum">    1286 </span><span class="lineNoCov">          0 :     //Interpolate:</span>
+<span class="lineNum">    1287 </span><span class="lineNoCov">          0 :     for (pixelOffset = Math.floor(weight) * 4; pixelOffset &lt; this.targetWidthMultipliedByChannels; pixelOffset += 4) {</span>
+<span class="lineNum">    1288 </span><span class="lineNoCov">          0 :       outputBuffer[finalOffset++] = (buffer[pixelOffset] * firstWeight) + (buffer[pixelOffset + 4] * secondWeight);</span>
+<span class="lineNum">    1289 </span><span class="lineNoCov">          0 :       outputBuffer[finalOffset++] = (buffer[pixelOffset + 1] * firstWeight) + (buffer[pixelOffset + 5] * secondWeight);</span>
+<span class="lineNum">    1290 </span><span class="lineNoCov">          0 :       outputBuffer[finalOffset++] = (buffer[pixelOffset + 2] * firstWeight) + (buffer[pixelOffset + 6] * secondWeight);</span>
+<span class="lineNum">    1291 </span><span class="lineNoCov">          0 :       outputBuffer[finalOffset++] = (buffer[pixelOffset + 3] * firstWeight) + (buffer[pixelOffset + 7] * secondWeight);</span>
+<span class="lineNum">    1292 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">    1293 </span><span class="lineNoCov">          0 :     weight += ratioWeight;</span>
+<span class="lineNum">    1294 </span><span class="lineNoCov">          0 :   }</span>
+<a name="1295"><span class="lineNum">    1295 </span><span class="lineNoCov">          0 :   return outputBuffer;</span></a>
+<span class="lineNum">    1296 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">    1297 </span><span class="lineCov">          1 : Resize.prototype.resize = function (buffer) {</span>
+<a name="1298"><span class="lineNum">    1298 </span><span class="lineNoCov">          0 :   return this.resizeHeight(this.resizeWidth(buffer));</span></a>
+<span class="lineNum">    1299 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">    1300 </span><span class="lineCov">          1 : Resize.prototype.bypassResizer = function (buffer) {</span>
+<span class="lineNum">    1301 </span><span class="lineNoCov">          0 :   //Just return the buffer passsed:</span>
+<a name="1302"><span class="lineNum">    1302 </span><span class="lineNoCov">          0 :   return buffer;</span></a>
+<span class="lineNum">    1303 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">    1304 </span><span class="lineCov">          1 : Resize.prototype.initializeFirstPassBuffers = function (BILINEARAlgo) {</span>
+<span class="lineNum">    1305 </span><span class="lineNoCov">          0 :   //Initialize the internal width pass buffers:</span>
+<span class="lineNum">    1306 </span><span class="lineNoCov">          0 :   this.widthBuffer = this.generateFloatBuffer(this.widthPassResultSize);</span>
+<span class="lineNum">    1307 </span><span class="lineNoCov">          0 :   if (!BILINEARAlgo) {</span>
+<span class="lineNum">    1308 </span><span class="lineNoCov">          0 :     this.outputWidthWorkBench = this.generateFloatBuffer(this.originalHeightMultipliedByChannels);</span>
+<a name="1309"><span class="lineNum">    1309 </span><span class="lineNoCov">          0 :   }</span></a>
+<span class="lineNum">    1310 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">    1311 </span><span class="lineCov">          1 : Resize.prototype.initializeSecondPassBuffers = function (BILINEARAlgo) {</span>
+<span class="lineNum">    1312 </span><span class="lineNoCov">          0 :   //Initialize the internal height pass buffers:</span>
+<span class="lineNum">    1313 </span><span class="lineNoCov">          0 :   this.heightBuffer = this.generateUint8Buffer(this.finalResultSize);</span>
+<span class="lineNum">    1314 </span><span class="lineNoCov">          0 :   if (!BILINEARAlgo) {</span>
+<span class="lineNum">    1315 </span><span class="lineNoCov">          0 :     this.outputHeightWorkBench = this.generateFloatBuffer(this.targetWidthMultipliedByChannels);</span>
+<a name="1316"><span class="lineNum">    1316 </span><span class="lineNoCov">          0 :   }</span></a>
+<span class="lineNum">    1317 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">    1318 </span><span class="lineCov">          1 : Resize.prototype.generateFloatBuffer = function (bufferLength) {</span>
+<span class="lineNum">    1319 </span><span class="lineNoCov">          0 :   //Generate a float32 typed array buffer:</span>
+<span class="lineNum">    1320 </span><span class="lineNoCov">          0 :   try {</span>
+<span class="lineNum">    1321 </span><span class="lineNoCov">          0 :     return new Float32Array(bufferLength);</span>
+<span class="lineNum">    1322 </span><span class="lineNoCov">          0 :   }</span>
+<span class="lineNum">    1323 </span><span class="lineNoCov">          0 :   catch (error) {</span>
+<span class="lineNum">    1324 </span><span class="lineNoCov">          0 :     return [];</span>
+<a name="1325"><span class="lineNum">    1325 </span><span class="lineNoCov">          0 :   }</span></a>
+<span class="lineNum">    1326 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">    1327 </span><span class="lineCov">          1 : Resize.prototype.generateUint8Buffer = function (bufferLength) {</span>
+<span class="lineNum">    1328 </span><span class="lineNoCov">          0 :   //Generate a uint8 typed array buffer:</span>
+<span class="lineNum">    1329 </span><span class="lineNoCov">          0 :   try {</span>
+<span class="lineNum">    1330 </span><span class="lineNoCov">          0 :     return this.checkForOperaMathBug(new Uint8Array(bufferLength));</span>
+<span class="lineNum">    1331 </span><span class="lineNoCov">          0 :   }</span>
+<span class="lineNum">    1332 </span><span class="lineNoCov">          0 :   catch (error) {</span>
+<span class="lineNum">    1333 </span><span class="lineNoCov">          0 :     return [];</span>
+<a name="1334"><span class="lineNum">    1334 </span><span class="lineNoCov">          0 :   }</span></a>
+<span class="lineNum">    1335 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">    1336 </span><span class="lineCov">          1 : Resize.prototype.checkForOperaMathBug = function (typedArray) {</span>
+<span class="lineNum">    1337 </span><span class="lineNoCov">          0 :   typedArray[0] = -1;</span>
+<span class="lineNum">    1338 </span><span class="lineNoCov">          0 :   typedArray[0] &gt;&gt;= 0;</span>
+<span class="lineNum">    1339 </span><span class="lineNoCov">          0 :   if (typedArray[0] != 0xFF) {</span>
+<span class="lineNum">    1340 </span><span class="lineNoCov">          0 :     return [];</span>
+<span class="lineNum">    1341 </span><span class="lineNoCov">          0 :   }</span>
+<span class="lineNum">    1342 </span><span class="lineNoCov">          0 :   else {</span>
+<span class="lineNum">    1343 </span><span class="lineNoCov">          0 :     return typedArray;</span>
+<span class="lineNum">    1344 </span><span class="lineNoCov">          0 :   }</span>
+<span class="lineNum">    1345 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">    1346 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">    1347 </span><span class="lineCov">          1 : // End of js/other/resize.js file.</span>
+<span class="lineNum">    1348 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">    1349 </span><span class="lineCov">          1 : // Remaining files are in gbemu-part2.js, since they run in strict mode.</span>
+<span class="lineNum">    1350 </span><span class="lineCov">          1 : </span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

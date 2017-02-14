@@ -1,0 +1,207 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - test/test262/data/test/built-ins/Array/prototype/reverse/S15.4.4.8_A2_T1.js</title>
+  <link rel="stylesheet" type="text/css" href="../../../../../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../../../../../index.html">top level</a> - <a href="index.html">test/test262/data/test/built-ins/Array/prototype/reverse</a> - S15.4.4.8_A2_T1.js<span style="font-size: 80%;"> (source / <a href="S15.4.4.8_A2_T1.js.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">132</td>
+            <td class="headerCovTableEntry">132</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2017-02-14</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr><td><img src="../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span><span class="lineCov">          2 : // Copyright 2009 the Sputnik authors.  All rights reserved.</span></a>
+<span class="lineNum">       2 </span><span class="lineCov">          2 : // This code is governed by the BSD license found in the LICENSE file.</span>
+<span class="lineNum">       3 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">       4 </span><span class="lineCov">          2 : /*---</span>
+<span class="lineNum">       5 </span><span class="lineCov">          2 : info: &gt;</span>
+<span class="lineNum">       6 </span><span class="lineCov">          2 :     The reverse function is intentionally generic.</span>
+<span class="lineNum">       7 </span><span class="lineCov">          2 :     It does not require that its this value be an Array object</span>
+<span class="lineNum">       8 </span><span class="lineCov">          2 : es5id: 15.4.4.8_A2_T1</span>
+<span class="lineNum">       9 </span><span class="lineCov">          2 : description: &gt;</span>
+<span class="lineNum">      10 </span><span class="lineCov">          2 :     Checking this for Object object, elements are objects and</span>
+<span class="lineNum">      11 </span><span class="lineCov">          2 :     primitives, length is integer</span>
+<span class="lineNum">      12 </span><span class="lineCov">          2 : ---*/</span>
+<span class="lineNum">      13 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      14 </span><span class="lineCov">          2 : //CHECK#1</span>
+<span class="lineNum">      15 </span><span class="lineCov">          2 : var obj = {};</span>
+<span class="lineNum">      16 </span><span class="lineCov">          2 : obj.length = 10;</span>
+<span class="lineNum">      17 </span><span class="lineCov">          2 : obj.reverse = Array.prototype.reverse;</span>
+<span class="lineNum">      18 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      19 </span><span class="lineCov">          2 : obj[0] = true;</span>
+<span class="lineNum">      20 </span><span class="lineCov">          2 : obj[2] = Infinity;</span>
+<span class="lineNum">      21 </span><span class="lineCov">          2 : obj[4] = undefined;</span>
+<span class="lineNum">      22 </span><span class="lineCov">          2 : obj[5] = undefined;</span>
+<span class="lineNum">      23 </span><span class="lineCov">          2 : obj[8] = &quot;NaN&quot;;</span>
+<span class="lineNum">      24 </span><span class="lineCov">          2 : obj[9] = &quot;-1&quot;;</span>
+<span class="lineNum">      25 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      26 </span><span class="lineCov">          2 : var reverse = obj.reverse();</span>
+<span class="lineNum">      27 </span><span class="lineCov">          2 : if (reverse !== obj) {</span>
+<span class="lineNum">      28 </span><span class="lineCov">          2 :   $ERROR('#1: var obj = {}; obj.reverse = Array.prototype.reverse; obj.length = 10; obj[0] = true; obj[2] = Infinity; obj[4] = undefined; obj[5] = undefined; obj[8] = &quot;NaN&quot;; obj[9] = &quot;-1&quot;; obj.reverse() === obj. Actual: ' + (reverse));</span>
+<span class="lineNum">      29 </span><span class="lineCov">          2 : }</span>
+<span class="lineNum">      30 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      31 </span><span class="lineCov">          2 : //CHECK#2</span>
+<span class="lineNum">      32 </span><span class="lineCov">          2 : if (obj[0] !== &quot;-1&quot;) {</span>
+<span class="lineNum">      33 </span><span class="lineCov">          2 :    $ERROR('#2: var obj = {}; obj.reverse = Array.prototype.reverse; obj.length = 10; obj[0] = true; obj[2] = Infinity; obj[4] = undefined; obj[5] = undefined; obj[8] = &quot;NaN&quot;; obj[9] = &quot;-1&quot;; obj.reverse(); obj[0] === &quot;-1&quot;. Actual: ' + (obj[0]));</span>
+<span class="lineNum">      34 </span><span class="lineCov">          2 : }</span>
+<span class="lineNum">      35 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      36 </span><span class="lineCov">          2 : //CHECK#3</span>
+<span class="lineNum">      37 </span><span class="lineCov">          2 : if (obj[1] !== &quot;NaN&quot;) {</span>
+<span class="lineNum">      38 </span><span class="lineCov">          2 :    $ERROR('#3: var obj = {}; obj.reverse = Array.prototype.reverse; obj.length = 10; obj[0] = true; obj[2] = Infinity; obj[4] = undefined; obj[5] = undefined; obj[8] = &quot;NaN&quot;; obj[9] = &quot;-1&quot;; obj.reverse(); obj[1] === &quot;NaN&quot;. Actual: ' + (obj[1]));</span>
+<span class="lineNum">      39 </span><span class="lineCov">          2 : }    </span>
+<span class="lineNum">      40 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      41 </span><span class="lineCov">          2 : //CHECK#4</span>
+<span class="lineNum">      42 </span><span class="lineCov">          2 : if (obj[2] !== undefined) {</span>
+<span class="lineNum">      43 </span><span class="lineCov">          2 :    $ERROR('#4: var obj = {}; obj.reverse = Array.prototype.reverse; obj.length = 10; obj[0] = true; obj[2] = Infinity; obj[4] = undefined; obj[5] = undefined; obj[8] = &quot;NaN&quot;; obj[9] = &quot;-1&quot;; obj.reverse(); obj[2] === undefined. Actual: ' + (obj[2]));</span>
+<span class="lineNum">      44 </span><span class="lineCov">          2 : }</span>
+<span class="lineNum">      45 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      46 </span><span class="lineCov">          2 : //CHECK#5</span>
+<span class="lineNum">      47 </span><span class="lineCov">          2 : if (obj[3] !== undefined) {</span>
+<span class="lineNum">      48 </span><span class="lineCov">          2 :    $ERROR('#5: var obj = {}; obj.reverse = Array.prototype.reverse; obj.length = 10; obj[0] = true; obj[2] = Infinity; obj[4] = undefined; obj[5] = undefined; obj[8] = &quot;NaN&quot;; obj[9] = &quot;-1&quot;; obj.reverse(); obj[3] === undefined. Actual: ' + (obj[3]));</span>
+<span class="lineNum">      49 </span><span class="lineCov">          2 : }    </span>
+<span class="lineNum">      50 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      51 </span><span class="lineCov">          2 : //CHECK#6</span>
+<span class="lineNum">      52 </span><span class="lineCov">          2 : if (obj[4] !== undefined) {</span>
+<span class="lineNum">      53 </span><span class="lineCov">          2 :    $ERROR('#6: var obj = {}; obj.reverse = Array.prototype.reverse; obj.length = 10; obj[0] = true; obj[2] = Infinity; obj[4] = undefined; obj[5] = undefined; obj[8] = &quot;NaN&quot;; obj[9] = &quot;-1&quot;; obj.reverse(); obj[4] === undefined. Actual: ' + (obj[4]));</span>
+<span class="lineNum">      54 </span><span class="lineCov">          2 : }</span>
+<span class="lineNum">      55 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      56 </span><span class="lineCov">          2 : //CHECK#7</span>
+<span class="lineNum">      57 </span><span class="lineCov">          2 : if (obj[5] !== undefined) {</span>
+<span class="lineNum">      58 </span><span class="lineCov">          2 :    $ERROR('#7: var obj = {}; obj.reverse = Array.prototype.reverse; obj.length = 10; obj[0] = true; obj[2] = Infinity; obj[4] = undefined; obj[5] = undefined; obj[8] = &quot;NaN&quot;; obj[9] = &quot;-1&quot;; obj.reverse(); obj[5] === undefined. Actual: ' + (obj[5]));</span>
+<span class="lineNum">      59 </span><span class="lineCov">          2 : }</span>
+<span class="lineNum">      60 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      61 </span><span class="lineCov">          2 : //CHECK#8</span>
+<span class="lineNum">      62 </span><span class="lineCov">          2 : if (obj[6] !== undefined) {</span>
+<span class="lineNum">      63 </span><span class="lineCov">          2 :    $ERROR('#8: var obj = {}; obj.reverse = Array.prototype.reverse; obj.length = 10; obj[0] = true; obj[2] = Infinity; obj[4] = undefined; obj[5] = undefined; obj[8] = &quot;NaN&quot;; obj[9] = &quot;-1&quot;; obj.reverse(); obj[6] === undefined. Actual: ' + (obj[6]));</span>
+<span class="lineNum">      64 </span><span class="lineCov">          2 : }      </span>
+<span class="lineNum">      65 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      66 </span><span class="lineCov">          2 : //CHECK#9</span>
+<span class="lineNum">      67 </span><span class="lineCov">          2 : if (obj[7] !== Infinity) {</span>
+<span class="lineNum">      68 </span><span class="lineCov">          2 :    $ERROR('#9: var obj = {}; obj.reverse = Array.prototype.reverse; obj.length = 10; obj[0] = true; obj[2] = Infinity; obj[4] = undefined; obj[5] = undefined; obj[8] = &quot;NaN&quot;; obj[9] = &quot;-1&quot;; obj.reverse(); obj[7] === Infinity. Actual: ' + (obj[7]));</span>
+<span class="lineNum">      69 </span><span class="lineCov">          2 : }</span>
+<span class="lineNum">      70 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      71 </span><span class="lineCov">          2 : //CHECK#10</span>
+<span class="lineNum">      72 </span><span class="lineCov">          2 : if (obj[8] !== undefined) {</span>
+<span class="lineNum">      73 </span><span class="lineCov">          2 :    $ERROR('#10: var obj = {}; obj.reverse = Array.prototype.reverse; obj.length = 10; obj[0] = true; obj[2] = Infinity; obj[4] = undefined; obj[5] = undefined; obj[8] = &quot;NaN&quot;; obj[9] = &quot;-1&quot;; obj.reverse(); obj[8] === undefined. Actual: ' + (obj[8]));</span>
+<span class="lineNum">      74 </span><span class="lineCov">          2 : }</span>
+<span class="lineNum">      75 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      76 </span><span class="lineCov">          2 : //CHECK#11</span>
+<span class="lineNum">      77 </span><span class="lineCov">          2 : if (obj[9] !== true) {</span>
+<span class="lineNum">      78 </span><span class="lineCov">          2 :    $ERROR('#11: var obj = {}; obj.reverse = Array.prototype.reverse; obj.length = 10; obj[0] = true; obj[2] = Infinity; obj[4] = undefined; obj[5] = undefined; obj[8] = &quot;NaN&quot;; obj[9] = &quot;-1&quot;; obj.reverse(); obj[9] === true. Actual: ' + (obj[9]));</span>
+<span class="lineNum">      79 </span><span class="lineCov">          2 : }   </span>
+<span class="lineNum">      80 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      81 </span><span class="lineCov">          2 : obj.length = 9;</span>
+<span class="lineNum">      82 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      83 </span><span class="lineCov">          2 : var reverse = obj.reverse();</span>
+<span class="lineNum">      84 </span><span class="lineCov">          2 : if (reverse !== obj) {</span>
+<span class="lineNum">      85 </span><span class="lineCov">          2 :   $ERROR('#1: var obj = {}; obj.reverse = Array.prototype.reverse; obj.length = 10; obj[0] = true; obj[2] = Infinity; obj[4] = undefined; obj[5] = undefined; obj[8] = &quot;NaN&quot;; obj[9] = &quot;-1&quot;; obj.reverse(); obj.length = 9; obj.reverse() === obj. Actual: ' + (reverse));</span>
+<span class="lineNum">      86 </span><span class="lineCov">          2 : }</span>
+<span class="lineNum">      87 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      88 </span><span class="lineCov">          2 : //CHECK#12</span>
+<span class="lineNum">      89 </span><span class="lineCov">          2 : if (obj[0] !== undefined) {</span>
+<span class="lineNum">      90 </span><span class="lineCov">          2 :    $ERROR('#12: var obj = {}; obj.reverse = Array.prototype.reverse; obj.length = 10; obj[0] = true; obj[2] = Infinity; obj[4] = undefined; obj[5] = undefined; obj[8] = &quot;NaN&quot;; obj[9] = &quot;-1&quot;; obj.reverse(); obj.length = 9; obj.reverse(); obj[0] === undefined. Actual: ' + (obj[0]));</span>
+<span class="lineNum">      91 </span><span class="lineCov">          2 : }</span>
+<span class="lineNum">      92 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      93 </span><span class="lineCov">          2 : //CHECK#13</span>
+<span class="lineNum">      94 </span><span class="lineCov">          2 : if (obj[1] !== Infinity) {</span>
+<span class="lineNum">      95 </span><span class="lineCov">          2 :    $ERROR('#13: var obj = {}; obj.reverse = Array.prototype.reverse; obj.length = 10; obj[0] = true; obj[2] = Infinity; obj[4] = undefined; obj[5] = undefined; obj[8] = &quot;NaN&quot;; obj[9] = &quot;-1&quot;; obj.reverse(); obj.length = 9; obj.reverse(); obj[1] === Infinity. Actual: ' + (obj[1]));</span>
+<span class="lineNum">      96 </span><span class="lineCov">          2 : }    </span>
+<span class="lineNum">      97 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      98 </span><span class="lineCov">          2 : //CHECK#14</span>
+<span class="lineNum">      99 </span><span class="lineCov">          2 : if (obj[2] !== undefined) {</span>
+<span class="lineNum">     100 </span><span class="lineCov">          2 :    $ERROR('#14: var obj = {}; obj.reverse = Array.prototype.reverse; obj.length = 10; obj[0] = true; obj[2] = Infinity; obj[4] = undefined; obj[5] = undefined; obj[8] = &quot;NaN&quot;; obj[9] = &quot;-1&quot;; obj.reverse(); obj.length = 9; obj.reverse(); obj[2] === undefined. Actual: ' + (obj[2]));</span>
+<span class="lineNum">     101 </span><span class="lineCov">          2 : }</span>
+<span class="lineNum">     102 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">     103 </span><span class="lineCov">          2 : //CHECK#15</span>
+<span class="lineNum">     104 </span><span class="lineCov">          2 : if (obj[3] !== undefined) {</span>
+<span class="lineNum">     105 </span><span class="lineCov">          2 :    $ERROR('#15: var obj = {}; obj.reverse = Array.prototype.reverse; obj.length = 10; obj[0] = true; obj[2] = Infinity; obj[4] = undefined; obj[5] = undefined; obj[8] = &quot;NaN&quot;; obj[9] = &quot;-1&quot;; obj.reverse(); obj.length = 9; obj.reverse(); obj[3] === undefined. Actual: ' + (obj[3]));</span>
+<span class="lineNum">     106 </span><span class="lineCov">          2 : }    </span>
+<span class="lineNum">     107 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">     108 </span><span class="lineCov">          2 : //CHECK#16</span>
+<span class="lineNum">     109 </span><span class="lineCov">          2 : if (obj[4] !== undefined) {</span>
+<span class="lineNum">     110 </span><span class="lineCov">          2 :    $ERROR('#16: var obj = {}; obj.reverse = Array.prototype.reverse; obj.length = 10; obj[0] = true; obj[2] = Infinity; obj[4] = undefined; obj[5] = undefined; obj[8] = &quot;NaN&quot;; obj[9] = &quot;-1&quot;; obj.reverse(); obj.length = 9; obj.reverse(); obj[4] === undefined. Actual: ' + (obj[4]));</span>
+<span class="lineNum">     111 </span><span class="lineCov">          2 : }</span>
+<span class="lineNum">     112 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">     113 </span><span class="lineCov">          2 : //CHECK#17</span>
+<span class="lineNum">     114 </span><span class="lineCov">          2 : if (obj[5] !== undefined) {</span>
+<span class="lineNum">     115 </span><span class="lineCov">          2 :    $ERROR('#17: var obj = {}; obj.reverse = Array.prototype.reverse; obj.length = 10; obj[0] = true; obj[2] = Infinity; obj[4] = undefined; obj[5] = undefined; obj[8] = &quot;NaN&quot;; obj[9] = &quot;-1&quot;; obj.reverse(); obj.length = 9; obj.reverse(); obj[5] === undefined. Actual: ' + (obj[5]));</span>
+<span class="lineNum">     116 </span><span class="lineCov">          2 : }</span>
+<span class="lineNum">     117 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">     118 </span><span class="lineCov">          2 : //CHECK#18</span>
+<span class="lineNum">     119 </span><span class="lineCov">          2 : if (obj[6] !== undefined) {</span>
+<span class="lineNum">     120 </span><span class="lineCov">          2 :    $ERROR('#18: var obj = {}; obj.reverse = Array.prototype.reverse; obj.length = 10; obj[0] = true; obj[2] = Infinity; obj[4] = undefined; obj[5] = undefined; obj[8] = &quot;NaN&quot;; obj[9] = &quot;-1&quot;; obj.reverse(); obj.length = 9; obj.reverse(); obj[6] === undefined. Actual: ' + (obj[6]));</span>
+<span class="lineNum">     121 </span><span class="lineCov">          2 : }      </span>
+<span class="lineNum">     122 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">     123 </span><span class="lineCov">          2 : //CHECK#19</span>
+<span class="lineNum">     124 </span><span class="lineCov">          2 : if (obj[7] !== &quot;NaN&quot;) {</span>
+<span class="lineNum">     125 </span><span class="lineCov">          2 :    $ERROR('#19: var obj = {}; obj.reverse = Array.prototype.reverse; obj.length = 10; obj[0] = true; obj[2] = Infinity; obj[4] = undefined; obj[5] = undefined; obj[8] = &quot;NaN&quot;; obj[9] = &quot;-1&quot;; obj.reverse(); obj.length = 9; obj.reverse(); obj[7] === &quot;NaN&quot;. Actual: ' + (obj[7]));</span>
+<span class="lineNum">     126 </span><span class="lineCov">          2 : }</span>
+<span class="lineNum">     127 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">     128 </span><span class="lineCov">          2 : //CHECK#20</span>
+<span class="lineNum">     129 </span><span class="lineCov">          2 : if (obj[8] !== &quot;-1&quot;) {</span>
+<span class="lineNum">     130 </span><span class="lineCov">          2 :    $ERROR('#20: var obj = {}; obj.reverse = Array.prototype.reverse; obj.length = 10; obj[0] = true; obj[2] = Infinity; obj[4] = undefined; obj[5] = undefined; obj[8] = &quot;NaN&quot;; obj[9] = &quot;-1&quot;; obj.reverse(); obj.length = 9; obj.reverse(); obj[8] === &quot;-1&quot;. Actual: ' + (obj[8]));</span>
+<span class="lineNum">     131 </span><span class="lineCov">          2 : }</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

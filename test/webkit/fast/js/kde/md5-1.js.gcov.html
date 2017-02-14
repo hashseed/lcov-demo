@@ -1,0 +1,489 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - test/webkit/fast/js/kde/md5-1.js</title>
+  <link rel="stylesheet" type="text/css" href="../../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../../index.html">top level</a> - <a href="index.html">test/webkit/fast/js/kde</a> - md5-1.js<span style="font-size: 80%;"> (source / <a href="md5-1.js.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">414</td>
+            <td class="headerCovTableEntry">414</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2017-02-14</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">25</td>
+            <td class="headerCovTableEntry">25</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr><td><img src="../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span><span class="lineCov">          1 : // Copyright 2013 the V8 project authors. All rights reserved.</span></a>
+<span class="lineNum">       2 </span><span class="lineCov">          1 : // Copyright (C) 2005, 2006, 2007, 2008, 2009 Apple Inc. All rights reserved.</span>
+<span class="lineNum">       3 </span><span class="lineCov">          1 : //</span>
+<span class="lineNum">       4 </span><span class="lineCov">          1 : // Redistribution and use in source and binary forms, with or without</span>
+<span class="lineNum">       5 </span><span class="lineCov">          1 : // modification, are permitted provided that the following conditions</span>
+<span class="lineNum">       6 </span><span class="lineCov">          1 : // are met:</span>
+<span class="lineNum">       7 </span><span class="lineCov">          1 : // 1.  Redistributions of source code must retain the above copyright</span>
+<span class="lineNum">       8 </span><span class="lineCov">          1 : //     notice, this list of conditions and the following disclaimer.</span>
+<span class="lineNum">       9 </span><span class="lineCov">          1 : // 2.  Redistributions in binary form must reproduce the above copyright</span>
+<span class="lineNum">      10 </span><span class="lineCov">          1 : //     notice, this list of conditions and the following disclaimer in the</span>
+<span class="lineNum">      11 </span><span class="lineCov">          1 : //     documentation and/or other materials provided with the distribution.</span>
+<span class="lineNum">      12 </span><span class="lineCov">          1 : //</span>
+<span class="lineNum">      13 </span><span class="lineCov">          1 : // THIS SOFTWARE IS PROVIDED BY APPLE INC. AND ITS CONTRIBUTORS ``AS IS'' AND ANY</span>
+<span class="lineNum">      14 </span><span class="lineCov">          1 : // EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED</span>
+<span class="lineNum">      15 </span><span class="lineCov">          1 : // WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE</span>
+<span class="lineNum">      16 </span><span class="lineCov">          1 : // DISCLAIMED. IN NO EVENT SHALL APPLE INC. OR ITS CONTRIBUTORS BE LIABLE FOR ANY</span>
+<span class="lineNum">      17 </span><span class="lineCov">          1 : // DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES</span>
+<span class="lineNum">      18 </span><span class="lineCov">          1 : // (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="lineNum">      19 </span><span class="lineCov">          1 : // LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON</span>
+<span class="lineNum">      20 </span><span class="lineCov">          1 : // ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT</span>
+<span class="lineNum">      21 </span><span class="lineCov">          1 : // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS</span>
+<span class="lineNum">      22 </span><span class="lineCov">          1 : // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="lineNum">      23 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      24 </span><span class="lineCov">          1 : description(&quot;KDE JS Test&quot;);</span>
+<span class="lineNum">      25 </span><span class="lineCov">          1 : // shouldBe() (base.js) test at very end of this file (Harri)</span>
+<span class="lineNum">      26 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      27 </span><span class="lineCov">          1 : /*</span>
+<span class="lineNum">      28 </span><span class="lineCov">          1 : * md5.jvs 1.0b 27/06/96</span>
+<span class="lineNum">      29 </span><span class="lineCov">          1 : *</span>
+<span class="lineNum">      30 </span><span class="lineCov">          1 : * Javascript implementation of the RSA Data Security, Inc. MD5</span>
+<span class="lineNum">      31 </span><span class="lineCov">          1 : * Message-Digest Algorithm.</span>
+<span class="lineNum">      32 </span><span class="lineCov">          1 : *</span>
+<span class="lineNum">      33 </span><span class="lineCov">          1 : * Copyright (c) 1996 Henri Torgemane. All Rights Reserved.</span>
+<span class="lineNum">      34 </span><span class="lineCov">          1 : *</span>
+<span class="lineNum">      35 </span><span class="lineCov">          1 : * Permission to use, copy, modify, and distribute this software</span>
+<span class="lineNum">      36 </span><span class="lineCov">          1 : * and its documentation for any purposes and without</span>
+<span class="lineNum">      37 </span><span class="lineCov">          1 : * fee is hereby granted provided that this copyright notice</span>
+<span class="lineNum">      38 </span><span class="lineCov">          1 : * appears in all copies.</span>
+<span class="lineNum">      39 </span><span class="lineCov">          1 : *</span>
+<span class="lineNum">      40 </span><span class="lineCov">          1 : * Of course, this soft is provided &quot;as is&quot; without express or implied</span>
+<span class="lineNum">      41 </span><span class="lineCov">          1 : * warranty of any kind.</span>
+<span class="lineNum">      42 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      43 </span><span class="lineCov">          1 : */</span>
+<span class="lineNum">      44 </span><span class="lineCov">          1 : </span>
+<a name="45"><span class="lineNum">      45 </span><span class="lineCov">          1 : // $Id: md5-1.js 11771 2005-12-26 23:07:31Z mjs $</span></a>
+<span class="lineNum">      46 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      47 </span><span class="lineCov">          7 : function array(n) {</span>
+<span class="lineNum">      48 </span><span class="lineCov">          7 :     for(i=0;i&lt;n;i++) this[i]=0;</span>
+<span class="lineNum">      49 </span><span class="lineCov">          7 :     this.length=n;</span>
+<span class="lineNum">      50 </span><span class="lineCov">          7 : }</span>
+<span class="lineNum">      51 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      52 </span><span class="lineCov">          1 : /* Some basic logical functions had to be rewritten because of a bug in</span>
+<span class="lineNum">      53 </span><span class="lineCov">          1 : * Javascript.. Just try to compute 0xffffffff &gt;&gt; 4 with it..</span>
+<span class="lineNum">      54 </span><span class="lineCov">          1 : * Of course, these functions are slower than the original would be, but</span>
+<span class="lineNum">      55 </span><span class="lineCov">          1 : * at least, they work!</span>
+<a name="56"><span class="lineNum">      56 </span><span class="lineCov">          1 : */</span></a>
+<span class="lineNum">      57 </span><span class="lineCov">          1 : </span>
+<a name="58"><span class="lineNum">      58 </span><span class="lineCov">       1492 : function integer(n) { return n%(0xffffffff+1); }</span></a>
+<span class="lineNum">      59 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      60 </span><span class="lineCov">        153 : function shr(a,b) {</span>
+<span class="lineNum">      61 </span><span class="lineCov">        153 :     a=integer(a);</span>
+<span class="lineNum">      62 </span><span class="lineCov">        153 :     b=integer(b);</span>
+<span class="lineNum">      63 </span><span class="lineCov">        153 :     if (a-0x80000000&gt;=0) {</span>
+<span class="lineNum">      64 </span><span class="lineCov">        153 :         a=a%0x80000000;</span>
+<span class="lineNum">      65 </span><span class="lineCov">        153 :         a&gt;&gt;=b;</span>
+<span class="lineNum">      66 </span><span class="lineCov">        153 :         a+=0x40000000&gt;&gt;(b-1);</span>
+<span class="lineNum">      67 </span><span class="lineCov">        153 :     } else</span>
+<span class="lineNum">      68 </span><span class="lineCov">        153 :         a&gt;&gt;=b;</span>
+<span class="lineNum">      69 </span><span class="lineCov">        153 :     return a;</span>
+<a name="70"><span class="lineNum">      70 </span><span class="lineCov">        153 : }</span></a>
+<span class="lineNum">      71 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      72 </span><span class="lineCov">       1808 : function shl1(a) {</span>
+<span class="lineNum">      73 </span><span class="lineCov">       1808 :     a=a%0x80000000;</span>
+<span class="lineNum">      74 </span><span class="lineCov">       1808 :     if (a&amp;0x40000000==0x40000000)</span>
+<span class="lineNum">      75 </span><span class="lineCov">       1808 :         {</span>
+<span class="lineNum">      76 </span><span class="lineCov">       1808 :             a-=0x40000000;</span>
+<span class="lineNum">      77 </span><span class="lineCov">       1808 :             a*=2;</span>
+<span class="lineNum">      78 </span><span class="lineCov">       1808 :             a+=0x80000000;</span>
+<span class="lineNum">      79 </span><span class="lineCov">       1808 :         } else</span>
+<span class="lineNum">      80 </span><span class="lineCov">       1808 :             a*=2;</span>
+<span class="lineNum">      81 </span><span class="lineCov">       1808 :     return a;</span>
+<a name="82"><span class="lineNum">      82 </span><span class="lineCov">       1808 : }</span></a>
+<span class="lineNum">      83 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      84 </span><span class="lineCov">        128 : function shl(a,b) {</span>
+<span class="lineNum">      85 </span><span class="lineCov">        128 :     a=integer(a);</span>
+<span class="lineNum">      86 </span><span class="lineCov">        128 :     b=integer(b);</span>
+<span class="lineNum">      87 </span><span class="lineCov">        128 :     for (var i=0;i&lt;b;i++) a=shl1(a);</span>
+<span class="lineNum">      88 </span><span class="lineCov">        128 :     return a;</span>
+<a name="89"><span class="lineNum">      89 </span><span class="lineCov">        128 : }</span></a>
+<span class="lineNum">      90 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      91 </span><span class="lineCov">        281 : function and(a,b) {</span>
+<span class="lineNum">      92 </span><span class="lineCov">        281 :     a=integer(a);</span>
+<span class="lineNum">      93 </span><span class="lineCov">        281 :     b=integer(b);</span>
+<span class="lineNum">      94 </span><span class="lineCov">        281 :     var t1=(a-0x80000000);</span>
+<span class="lineNum">      95 </span><span class="lineCov">        281 :     var t2=(b-0x80000000);</span>
+<span class="lineNum">      96 </span><span class="lineCov">        281 :     if (t1&gt;=0)</span>
+<span class="lineNum">      97 </span><span class="lineCov">        281 :         if (t2&gt;=0)</span>
+<span class="lineNum">      98 </span><span class="lineCov">        281 :             return ((t1&amp;t2)+0x80000000);</span>
+<span class="lineNum">      99 </span><span class="lineCov">        281 :         else</span>
+<span class="lineNum">     100 </span><span class="lineCov">        281 :             return (t1&amp;b);</span>
+<span class="lineNum">     101 </span><span class="lineCov">        281 :     else</span>
+<span class="lineNum">     102 </span><span class="lineCov">        281 :         if (t2&gt;=0)</span>
+<span class="lineNum">     103 </span><span class="lineCov">        281 :             return (a&amp;t2);</span>
+<span class="lineNum">     104 </span><span class="lineCov">        281 :         else</span>
+<span class="lineNum">     105 </span><span class="lineCov">        281 :             return (a&amp;b);</span>
+<a name="106"><span class="lineNum">     106 </span><span class="lineCov">        281 : }</span></a>
+<span class="lineNum">     107 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     108 </span><span class="lineCov">        112 : function or(a,b) {</span>
+<span class="lineNum">     109 </span><span class="lineCov">        112 :     a=integer(a);</span>
+<span class="lineNum">     110 </span><span class="lineCov">        112 :     b=integer(b);</span>
+<span class="lineNum">     111 </span><span class="lineCov">        112 :     var t1=(a-0x80000000);</span>
+<span class="lineNum">     112 </span><span class="lineCov">        112 :     var t2=(b-0x80000000);</span>
+<span class="lineNum">     113 </span><span class="lineCov">        112 :     if (t1&gt;=0)</span>
+<span class="lineNum">     114 </span><span class="lineCov">        112 :         if (t2&gt;=0)</span>
+<span class="lineNum">     115 </span><span class="lineCov">        112 :             return ((t1|t2)+0x80000000);</span>
+<span class="lineNum">     116 </span><span class="lineCov">        112 :         else</span>
+<span class="lineNum">     117 </span><span class="lineCov">        112 :             return ((t1|b)+0x80000000);</span>
+<span class="lineNum">     118 </span><span class="lineCov">        112 :     else</span>
+<span class="lineNum">     119 </span><span class="lineCov">        112 :         if (t2&gt;=0)</span>
+<span class="lineNum">     120 </span><span class="lineCov">        112 :             return ((a|t2)+0x80000000);</span>
+<span class="lineNum">     121 </span><span class="lineCov">        112 :         else</span>
+<span class="lineNum">     122 </span><span class="lineCov">        112 :             return (a|b);</span>
+<a name="123"><span class="lineNum">     123 </span><span class="lineCov">        112 : }</span></a>
+<span class="lineNum">     124 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     125 </span><span class="lineCov">         48 : function xor(a,b) {</span>
+<span class="lineNum">     126 </span><span class="lineCov">         48 :     a=integer(a);</span>
+<span class="lineNum">     127 </span><span class="lineCov">         48 :     b=integer(b);</span>
+<span class="lineNum">     128 </span><span class="lineCov">         48 :     var t1=(a-0x80000000);</span>
+<span class="lineNum">     129 </span><span class="lineCov">         48 :     var t2=(b-0x80000000);</span>
+<span class="lineNum">     130 </span><span class="lineCov">         48 :     if (t1&gt;=0)</span>
+<span class="lineNum">     131 </span><span class="lineCov">         48 :         if (t2&gt;=0)</span>
+<span class="lineNum">     132 </span><span class="lineCov">         48 :             return (t1^t2);</span>
+<span class="lineNum">     133 </span><span class="lineCov">         48 :         else</span>
+<span class="lineNum">     134 </span><span class="lineCov">         48 :             return ((t1^b)+0x80000000);</span>
+<span class="lineNum">     135 </span><span class="lineCov">         48 :     else</span>
+<span class="lineNum">     136 </span><span class="lineCov">         48 :         if (t2&gt;=0)</span>
+<span class="lineNum">     137 </span><span class="lineCov">         48 :             return ((a^t2)+0x80000000);</span>
+<span class="lineNum">     138 </span><span class="lineCov">         48 :         else</span>
+<span class="lineNum">     139 </span><span class="lineCov">         48 :             return (a^b);</span>
+<span class="lineNum">     140 </span><span class="lineCov">         48 : }</span>
+<a name="141"><span class="lineNum">     141 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     142 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     143 </span><span class="lineCov">         48 : function not(a) {</span>
+<span class="lineNum">     144 </span><span class="lineCov">         48 :     a=integer(a);</span>
+<span class="lineNum">     145 </span><span class="lineCov">         48 :     return (0xffffffff-a);</span>
+<span class="lineNum">     146 </span><span class="lineCov">         48 : }</span>
+<span class="lineNum">     147 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     148 </span><span class="lineCov">          1 : /* Here begin the real algorithm */</span>
+<span class="lineNum">     149 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     150 </span><span class="lineCov">          1 : var state = new array(4);</span>
+<span class="lineNum">     151 </span><span class="lineCov">          1 : var count = new array(2);</span>
+<span class="lineNum">     152 </span><span class="lineCov">          1 : count[0] = 0;</span>
+<span class="lineNum">     153 </span><span class="lineCov">          1 : count[1] = 0;</span>
+<span class="lineNum">     154 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     155 </span><span class="lineCov">          1 : var buffer = new array(64);</span>
+<span class="lineNum">     156 </span><span class="lineCov">          1 : var transformBuffer = new array(16);</span>
+<span class="lineNum">     157 </span><span class="lineCov">          1 : var digestBits = new array(16);</span>
+<span class="lineNum">     158 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     159 </span><span class="lineCov">          1 : var S11 = 7;</span>
+<span class="lineNum">     160 </span><span class="lineCov">          1 : var S12 = 12;</span>
+<span class="lineNum">     161 </span><span class="lineCov">          1 : var S13 = 17;</span>
+<span class="lineNum">     162 </span><span class="lineCov">          1 : var S14 = 22;</span>
+<span class="lineNum">     163 </span><span class="lineCov">          1 : var S21 = 5;</span>
+<span class="lineNum">     164 </span><span class="lineCov">          1 : var S22 = 9;</span>
+<span class="lineNum">     165 </span><span class="lineCov">          1 : var S23 = 14;</span>
+<span class="lineNum">     166 </span><span class="lineCov">          1 : var S24 = 20;</span>
+<span class="lineNum">     167 </span><span class="lineCov">          1 : var S31 = 4;</span>
+<span class="lineNum">     168 </span><span class="lineCov">          1 : var S32 = 11;</span>
+<span class="lineNum">     169 </span><span class="lineCov">          1 : var S33 = 16;</span>
+<span class="lineNum">     170 </span><span class="lineCov">          1 : var S34 = 23;</span>
+<span class="lineNum">     171 </span><span class="lineCov">          1 : var S41 = 6;</span>
+<span class="lineNum">     172 </span><span class="lineCov">          1 : var S42 = 10;</span>
+<span class="lineNum">     173 </span><span class="lineCov">          1 : var S43 = 15;</span>
+<span class="lineNum">     174 </span><span class="lineCov">          1 : var S44 = 21;</span>
+<a name="175"><span class="lineNum">     175 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     176 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     177 </span><span class="lineCov">         16 : function F(x,y,z) {</span>
+<span class="lineNum">     178 </span><span class="lineCov">         16 :     return or(and(x,y),and(not(x),z));</span>
+<a name="179"><span class="lineNum">     179 </span><span class="lineCov">         16 : }</span></a>
+<span class="lineNum">     180 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     181 </span><span class="lineCov">         16 : function G(x,y,z) {</span>
+<span class="lineNum">     182 </span><span class="lineCov">         16 :     return or(and(x,z),and(y,not(z)));</span>
+<a name="183"><span class="lineNum">     183 </span><span class="lineCov">         16 : }</span></a>
+<span class="lineNum">     184 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     185 </span><span class="lineCov">         16 : function H(x,y,z) {</span>
+<span class="lineNum">     186 </span><span class="lineCov">         16 :     return xor(xor(x,y),z);</span>
+<a name="187"><span class="lineNum">     187 </span><span class="lineCov">         16 : }</span></a>
+<span class="lineNum">     188 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     189 </span><span class="lineCov">         16 : function I(x,y,z) {</span>
+<span class="lineNum">     190 </span><span class="lineCov">         16 :     return xor(y ,or(x , not(z)));</span>
+<a name="191"><span class="lineNum">     191 </span><span class="lineCov">         16 : }</span></a>
+<span class="lineNum">     192 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     193 </span><span class="lineCov">         64 : function rotateLeft(a,n) {</span>
+<span class="lineNum">     194 </span><span class="lineCov">         64 :     return or(shl(a, n),(shr(a,(32 - n))));</span>
+<a name="195"><span class="lineNum">     195 </span><span class="lineCov">         64 : }</span></a>
+<span class="lineNum">     196 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     197 </span><span class="lineCov">         16 : function FF(a,b,c,d,x,s,ac) {</span>
+<span class="lineNum">     198 </span><span class="lineCov">         16 :     a = a+F(b, c, d) + x + ac;</span>
+<span class="lineNum">     199 </span><span class="lineCov">         16 :     a = rotateLeft(a, s);</span>
+<span class="lineNum">     200 </span><span class="lineCov">         16 :     a = a+b;</span>
+<span class="lineNum">     201 </span><span class="lineCov">         16 :     return a;</span>
+<a name="202"><span class="lineNum">     202 </span><span class="lineCov">         16 : }</span></a>
+<span class="lineNum">     203 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     204 </span><span class="lineCov">         16 : function GG(a,b,c,d,x,s,ac) {</span>
+<span class="lineNum">     205 </span><span class="lineCov">         16 :     a = a+G(b, c, d) +x + ac;</span>
+<span class="lineNum">     206 </span><span class="lineCov">         16 :     a = rotateLeft(a, s);</span>
+<span class="lineNum">     207 </span><span class="lineCov">         16 :     a = a+b;</span>
+<span class="lineNum">     208 </span><span class="lineCov">         16 :     return a;</span>
+<a name="209"><span class="lineNum">     209 </span><span class="lineCov">         16 : }</span></a>
+<span class="lineNum">     210 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     211 </span><span class="lineCov">         16 : function HH(a,b,c,d,x,s,ac) {</span>
+<span class="lineNum">     212 </span><span class="lineCov">         16 :     a = a+H(b, c, d) + x + ac;</span>
+<span class="lineNum">     213 </span><span class="lineCov">         16 :     a = rotateLeft(a, s);</span>
+<span class="lineNum">     214 </span><span class="lineCov">         16 :     a = a+b;</span>
+<span class="lineNum">     215 </span><span class="lineCov">         16 :     return a;</span>
+<a name="216"><span class="lineNum">     216 </span><span class="lineCov">         16 : }</span></a>
+<span class="lineNum">     217 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     218 </span><span class="lineCov">         16 : function II(a,b,c,d,x,s,ac) {</span>
+<span class="lineNum">     219 </span><span class="lineCov">         16 :     a = a+I(b, c, d) + x + ac;</span>
+<span class="lineNum">     220 </span><span class="lineCov">         16 :     a = rotateLeft(a, s);</span>
+<span class="lineNum">     221 </span><span class="lineCov">         16 :     a = a+b;</span>
+<span class="lineNum">     222 </span><span class="lineCov">         16 :     return a;</span>
+<a name="223"><span class="lineNum">     223 </span><span class="lineCov">         16 : }</span></a>
+<span class="lineNum">     224 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     225 </span><span class="lineCov">          1 : function transform(buf,offset) {</span>
+<span class="lineNum">     226 </span><span class="lineCov">          1 :     var a=0, b=0, c=0, d=0;</span>
+<span class="lineNum">     227 </span><span class="lineCov">          1 :     var x = transformBuffer;</span>
+<span class="lineNum">     228 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     229 </span><span class="lineCov">          1 :     a = state[0];</span>
+<span class="lineNum">     230 </span><span class="lineCov">          1 :     b = state[1];</span>
+<span class="lineNum">     231 </span><span class="lineCov">          1 :     c = state[2];</span>
+<span class="lineNum">     232 </span><span class="lineCov">          1 :     d = state[3];</span>
+<span class="lineNum">     233 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     234 </span><span class="lineCov">          1 :     for (i = 0; i &lt; 16; i++) {</span>
+<span class="lineNum">     235 </span><span class="lineCov">          1 :         x[i] = and(buf[i*4+offset],0xff);</span>
+<span class="lineNum">     236 </span><span class="lineCov">          1 :         for (j = 1; j &lt; 4; j++) {</span>
+<span class="lineNum">     237 </span><span class="lineCov">          1 :             x[i]+=shl(and(buf[i*4+j+offset] ,0xff), j * 8);</span>
+<span class="lineNum">     238 </span><span class="lineCov">          1 :         }</span>
+<span class="lineNum">     239 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">     240 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     241 </span><span class="lineCov">          1 :     /* Round 1 */</span>
+<span class="lineNum">     242 </span><span class="lineCov">          1 :     a = FF ( a, b, c, d, x[ 0], S11, 0xd76aa478); /* 1 */</span>
+<span class="lineNum">     243 </span><span class="lineCov">          1 :     d = FF ( d, a, b, c, x[ 1], S12, 0xe8c7b756); /* 2 */</span>
+<span class="lineNum">     244 </span><span class="lineCov">          1 :     c = FF ( c, d, a, b, x[ 2], S13, 0x242070db); /* 3 */</span>
+<span class="lineNum">     245 </span><span class="lineCov">          1 :     b = FF ( b, c, d, a, x[ 3], S14, 0xc1bdceee); /* 4 */</span>
+<span class="lineNum">     246 </span><span class="lineCov">          1 :     a = FF ( a, b, c, d, x[ 4], S11, 0xf57c0faf); /* 5 */</span>
+<span class="lineNum">     247 </span><span class="lineCov">          1 :     d = FF ( d, a, b, c, x[ 5], S12, 0x4787c62a); /* 6 */</span>
+<span class="lineNum">     248 </span><span class="lineCov">          1 :     c = FF ( c, d, a, b, x[ 6], S13, 0xa8304613); /* 7 */</span>
+<span class="lineNum">     249 </span><span class="lineCov">          1 :     b = FF ( b, c, d, a, x[ 7], S14, 0xfd469501); /* 8 */</span>
+<span class="lineNum">     250 </span><span class="lineCov">          1 :     a = FF ( a, b, c, d, x[ 8], S11, 0x698098d8); /* 9 */</span>
+<span class="lineNum">     251 </span><span class="lineCov">          1 :     d = FF ( d, a, b, c, x[ 9], S12, 0x8b44f7af); /* 10 */</span>
+<span class="lineNum">     252 </span><span class="lineCov">          1 :     c = FF ( c, d, a, b, x[10], S13, 0xffff5bb1); /* 11 */</span>
+<span class="lineNum">     253 </span><span class="lineCov">          1 :     b = FF ( b, c, d, a, x[11], S14, 0x895cd7be); /* 12 */</span>
+<span class="lineNum">     254 </span><span class="lineCov">          1 :     a = FF ( a, b, c, d, x[12], S11, 0x6b901122); /* 13 */</span>
+<span class="lineNum">     255 </span><span class="lineCov">          1 :     d = FF ( d, a, b, c, x[13], S12, 0xfd987193); /* 14 */</span>
+<span class="lineNum">     256 </span><span class="lineCov">          1 :     c = FF ( c, d, a, b, x[14], S13, 0xa679438e); /* 15 */</span>
+<span class="lineNum">     257 </span><span class="lineCov">          1 :     b = FF ( b, c, d, a, x[15], S14, 0x49b40821); /* 16 */</span>
+<span class="lineNum">     258 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     259 </span><span class="lineCov">          1 :     /* Round 2 */</span>
+<span class="lineNum">     260 </span><span class="lineCov">          1 :     a = GG ( a, b, c, d, x[ 1], S21, 0xf61e2562); /* 17 */</span>
+<span class="lineNum">     261 </span><span class="lineCov">          1 :     d = GG ( d, a, b, c, x[ 6], S22, 0xc040b340); /* 18 */</span>
+<span class="lineNum">     262 </span><span class="lineCov">          1 :     c = GG ( c, d, a, b, x[11], S23, 0x265e5a51); /* 19 */</span>
+<span class="lineNum">     263 </span><span class="lineCov">          1 :     b = GG ( b, c, d, a, x[ 0], S24, 0xe9b6c7aa); /* 20 */</span>
+<span class="lineNum">     264 </span><span class="lineCov">          1 :     a = GG ( a, b, c, d, x[ 5], S21, 0xd62f105d); /* 21 */</span>
+<span class="lineNum">     265 </span><span class="lineCov">          1 :     d = GG ( d, a, b, c, x[10], S22, 0x2441453); /* 22 */</span>
+<span class="lineNum">     266 </span><span class="lineCov">          1 :     c = GG ( c, d, a, b, x[15], S23, 0xd8a1e681); /* 23 */</span>
+<span class="lineNum">     267 </span><span class="lineCov">          1 :     b = GG ( b, c, d, a, x[ 4], S24, 0xe7d3fbc8); /* 24 */</span>
+<span class="lineNum">     268 </span><span class="lineCov">          1 :     a = GG ( a, b, c, d, x[ 9], S21, 0x21e1cde6); /* 25 */</span>
+<span class="lineNum">     269 </span><span class="lineCov">          1 :     d = GG ( d, a, b, c, x[14], S22, 0xc33707d6); /* 26 */</span>
+<span class="lineNum">     270 </span><span class="lineCov">          1 :     c = GG ( c, d, a, b, x[ 3], S23, 0xf4d50d87); /* 27 */</span>
+<span class="lineNum">     271 </span><span class="lineCov">          1 :     b = GG ( b, c, d, a, x[ 8], S24, 0x455a14ed); /* 28 */</span>
+<span class="lineNum">     272 </span><span class="lineCov">          1 :     a = GG ( a, b, c, d, x[13], S21, 0xa9e3e905); /* 29 */</span>
+<span class="lineNum">     273 </span><span class="lineCov">          1 :     d = GG ( d, a, b, c, x[ 2], S22, 0xfcefa3f8); /* 30 */</span>
+<span class="lineNum">     274 </span><span class="lineCov">          1 :     c = GG ( c, d, a, b, x[ 7], S23, 0x676f02d9); /* 31 */</span>
+<span class="lineNum">     275 </span><span class="lineCov">          1 :     b = GG ( b, c, d, a, x[12], S24, 0x8d2a4c8a); /* 32 */</span>
+<span class="lineNum">     276 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     277 </span><span class="lineCov">          1 :     /* Round 3 */</span>
+<span class="lineNum">     278 </span><span class="lineCov">          1 :     a = HH ( a, b, c, d, x[ 5], S31, 0xfffa3942); /* 33 */</span>
+<span class="lineNum">     279 </span><span class="lineCov">          1 :     d = HH ( d, a, b, c, x[ 8], S32, 0x8771f681); /* 34 */</span>
+<span class="lineNum">     280 </span><span class="lineCov">          1 :     c = HH ( c, d, a, b, x[11], S33, 0x6d9d6122); /* 35 */</span>
+<span class="lineNum">     281 </span><span class="lineCov">          1 :     b = HH ( b, c, d, a, x[14], S34, 0xfde5380c); /* 36 */</span>
+<span class="lineNum">     282 </span><span class="lineCov">          1 :     a = HH ( a, b, c, d, x[ 1], S31, 0xa4beea44); /* 37 */</span>
+<span class="lineNum">     283 </span><span class="lineCov">          1 :     d = HH ( d, a, b, c, x[ 4], S32, 0x4bdecfa9); /* 38 */</span>
+<span class="lineNum">     284 </span><span class="lineCov">          1 :     c = HH ( c, d, a, b, x[ 7], S33, 0xf6bb4b60); /* 39 */</span>
+<span class="lineNum">     285 </span><span class="lineCov">          1 :     b = HH ( b, c, d, a, x[10], S34, 0xbebfbc70); /* 40 */</span>
+<span class="lineNum">     286 </span><span class="lineCov">          1 :     a = HH ( a, b, c, d, x[13], S31, 0x289b7ec6); /* 41 */</span>
+<span class="lineNum">     287 </span><span class="lineCov">          1 :     d = HH ( d, a, b, c, x[ 0], S32, 0xeaa127fa); /* 42 */</span>
+<span class="lineNum">     288 </span><span class="lineCov">          1 :     c = HH ( c, d, a, b, x[ 3], S33, 0xd4ef3085); /* 43 */</span>
+<span class="lineNum">     289 </span><span class="lineCov">          1 :     b = HH ( b, c, d, a, x[ 6], S34, 0x4881d05); /* 44 */</span>
+<span class="lineNum">     290 </span><span class="lineCov">          1 :     a = HH ( a, b, c, d, x[ 9], S31, 0xd9d4d039); /* 45 */</span>
+<span class="lineNum">     291 </span><span class="lineCov">          1 :     d = HH ( d, a, b, c, x[12], S32, 0xe6db99e5); /* 46 */</span>
+<span class="lineNum">     292 </span><span class="lineCov">          1 :     c = HH ( c, d, a, b, x[15], S33, 0x1fa27cf8); /* 47 */</span>
+<span class="lineNum">     293 </span><span class="lineCov">          1 :     b = HH ( b, c, d, a, x[ 2], S34, 0xc4ac5665); /* 48 */</span>
+<span class="lineNum">     294 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     295 </span><span class="lineCov">          1 :     /* Round 4 */</span>
+<span class="lineNum">     296 </span><span class="lineCov">          1 :     a = II ( a, b, c, d, x[ 0], S41, 0xf4292244); /* 49 */</span>
+<span class="lineNum">     297 </span><span class="lineCov">          1 :     d = II ( d, a, b, c, x[ 7], S42, 0x432aff97); /* 50 */</span>
+<span class="lineNum">     298 </span><span class="lineCov">          1 :     c = II ( c, d, a, b, x[14], S43, 0xab9423a7); /* 51 */</span>
+<span class="lineNum">     299 </span><span class="lineCov">          1 :     b = II ( b, c, d, a, x[ 5], S44, 0xfc93a039); /* 52 */</span>
+<span class="lineNum">     300 </span><span class="lineCov">          1 :     a = II ( a, b, c, d, x[12], S41, 0x655b59c3); /* 53 */</span>
+<span class="lineNum">     301 </span><span class="lineCov">          1 :     d = II ( d, a, b, c, x[ 3], S42, 0x8f0ccc92); /* 54 */</span>
+<span class="lineNum">     302 </span><span class="lineCov">          1 :     c = II ( c, d, a, b, x[10], S43, 0xffeff47d); /* 55 */</span>
+<span class="lineNum">     303 </span><span class="lineCov">          1 :     b = II ( b, c, d, a, x[ 1], S44, 0x85845dd1); /* 56 */</span>
+<span class="lineNum">     304 </span><span class="lineCov">          1 :     a = II ( a, b, c, d, x[ 8], S41, 0x6fa87e4f); /* 57 */</span>
+<span class="lineNum">     305 </span><span class="lineCov">          1 :     d = II ( d, a, b, c, x[15], S42, 0xfe2ce6e0); /* 58 */</span>
+<span class="lineNum">     306 </span><span class="lineCov">          1 :     c = II ( c, d, a, b, x[ 6], S43, 0xa3014314); /* 59 */</span>
+<span class="lineNum">     307 </span><span class="lineCov">          1 :     b = II ( b, c, d, a, x[13], S44, 0x4e0811a1); /* 60 */</span>
+<span class="lineNum">     308 </span><span class="lineCov">          1 :     a = II ( a, b, c, d, x[ 4], S41, 0xf7537e82); /* 61 */</span>
+<span class="lineNum">     309 </span><span class="lineCov">          1 :     d = II ( d, a, b, c, x[11], S42, 0xbd3af235); /* 62 */</span>
+<span class="lineNum">     310 </span><span class="lineCov">          1 :     c = II ( c, d, a, b, x[ 2], S43, 0x2ad7d2bb); /* 63 */</span>
+<span class="lineNum">     311 </span><span class="lineCov">          1 :     b = II ( b, c, d, a, x[ 9], S44, 0xeb86d391); /* 64 */</span>
+<span class="lineNum">     312 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     313 </span><span class="lineCov">          1 :     state[0] +=a;</span>
+<span class="lineNum">     314 </span><span class="lineCov">          1 :     state[1] +=b;</span>
+<span class="lineNum">     315 </span><span class="lineCov">          1 :     state[2] +=c;</span>
+<span class="lineNum">     316 </span><span class="lineCov">          1 :     state[3] +=d;</span>
+<a name="317"><span class="lineNum">     317 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">     318 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     319 </span><span class="lineCov">          1 : function init() {</span>
+<span class="lineNum">     320 </span><span class="lineCov">          1 :     count[0]=count[1] = 0;</span>
+<span class="lineNum">     321 </span><span class="lineCov">          1 :     state[0] = 0x67452301;</span>
+<span class="lineNum">     322 </span><span class="lineCov">          1 :     state[1] = 0xefcdab89;</span>
+<span class="lineNum">     323 </span><span class="lineCov">          1 :     state[2] = 0x98badcfe;</span>
+<span class="lineNum">     324 </span><span class="lineCov">          1 :     state[3] = 0x10325476;</span>
+<span class="lineNum">     325 </span><span class="lineCov">          1 :     for (i = 0; i &lt; digestBits.length; i++)</span>
+<span class="lineNum">     326 </span><span class="lineCov">          1 :         digestBits[i] = 0;</span>
+<a name="327"><span class="lineNum">     327 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">     328 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     329 </span><span class="lineCov">         64 : function update(b) {</span>
+<span class="lineNum">     330 </span><span class="lineCov">         64 :     var index,i;</span>
+<span class="lineNum">     331 </span><span class="lineCov">         64 : </span>
+<span class="lineNum">     332 </span><span class="lineCov">         64 :     index = and(shr(count[0],3) , 0x3f);</span>
+<span class="lineNum">     333 </span><span class="lineCov">         64 :     if (count[0]&lt;0xffffffff-7)</span>
+<span class="lineNum">     334 </span><span class="lineCov">         64 :         count[0] += 8;</span>
+<span class="lineNum">     335 </span><span class="lineCov">         64 :     else {</span>
+<span class="lineNum">     336 </span><span class="lineCov">         64 :         count[1]++;</span>
+<span class="lineNum">     337 </span><span class="lineCov">         64 :         count[0]-=0xffffffff+1;</span>
+<span class="lineNum">     338 </span><span class="lineCov">         64 :         count[0]+=8;</span>
+<span class="lineNum">     339 </span><span class="lineCov">         64 :     }</span>
+<span class="lineNum">     340 </span><span class="lineCov">         64 : </span>
+<span class="lineNum">     341 </span><span class="lineCov">         64 :     buffer[index] = and(b,0xff);</span>
+<span class="lineNum">     342 </span><span class="lineCov">         64 :     if (index &gt;= 63) {</span>
+<span class="lineNum">     343 </span><span class="lineCov">         64 :         transform(buffer, 0);</span>
+<span class="lineNum">     344 </span><span class="lineCov">         64 :     }</span>
+<a name="345"><span class="lineNum">     345 </span><span class="lineCov">         64 : }</span></a>
+<span class="lineNum">     346 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     347 </span><span class="lineCov">          1 : function finish() {</span>
+<span class="lineNum">     348 </span><span class="lineCov">          1 :     var bits = new array(8);</span>
+<span class="lineNum">     349 </span><span class="lineCov">          1 :     var padding;</span>
+<span class="lineNum">     350 </span><span class="lineCov">          1 :     var i=0, index=0, padLen=0;</span>
+<span class="lineNum">     351 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     352 </span><span class="lineCov">          1 :     for (i = 0; i &lt; 4; i++) {</span>
+<span class="lineNum">     353 </span><span class="lineCov">          1 :         bits[i] = and(shr(count[0],(i * 8)), 0xff);</span>
+<span class="lineNum">     354 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">     355 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     356 </span><span class="lineCov">          1 :     for (i = 0; i &lt; 4; i++) {</span>
+<span class="lineNum">     357 </span><span class="lineCov">          1 :         bits[i+4]=and(shr(count[1],(i * 8)), 0xff);</span>
+<span class="lineNum">     358 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">     359 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     360 </span><span class="lineCov">          1 :     index = and(shr(count[0], 3) ,0x3f);</span>
+<span class="lineNum">     361 </span><span class="lineCov">          1 :     padLen = (index &lt; 56) ? (56 - index) : (120 - index);</span>
+<span class="lineNum">     362 </span><span class="lineCov">          1 :     padding = new array(64);</span>
+<span class="lineNum">     363 </span><span class="lineCov">          1 :     padding[0] = 0x80;</span>
+<span class="lineNum">     364 </span><span class="lineCov">          1 :     for (i=0;i&lt;padLen;i++)</span>
+<span class="lineNum">     365 </span><span class="lineCov">          1 :         update(padding[i]);</span>
+<span class="lineNum">     366 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     367 </span><span class="lineCov">          1 :     for (i=0;i&lt;8;i++)</span>
+<span class="lineNum">     368 </span><span class="lineCov">          1 :         update(bits[i]);</span>
+<span class="lineNum">     369 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     370 </span><span class="lineCov">          1 :     for (i = 0; i &lt; 4; i++) {</span>
+<span class="lineNum">     371 </span><span class="lineCov">          1 :         for (j = 0; j &lt; 4; j++) {</span>
+<span class="lineNum">     372 </span><span class="lineCov">          1 :             digestBits[i*4+j] = and(shr(state[i], (j * 8)) , 0xff);</span>
+<span class="lineNum">     373 </span><span class="lineCov">          1 :         }</span>
+<span class="lineNum">     374 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">     375 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     376 </span><span class="lineCov">          1 : </span>
+<a name="377"><span class="lineNum">     377 </span><span class="lineCov">          1 : /* End of the MD5 algorithm */</span></a>
+<span class="lineNum">     378 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     379 </span><span class="lineCov">          4 : function hexa(n) {</span>
+<span class="lineNum">     380 </span><span class="lineCov">          4 :     var hexa_h = &quot;0123456789abcdef&quot;;</span>
+<span class="lineNum">     381 </span><span class="lineCov">          4 :     var hexa_c=&quot;&quot;;</span>
+<span class="lineNum">     382 </span><span class="lineCov">          4 :     var hexa_m=n;</span>
+<span class="lineNum">     383 </span><span class="lineCov">          4 :     for (hexa_i=0;hexa_i&lt;8;hexa_i++) {</span>
+<span class="lineNum">     384 </span><span class="lineCov">          4 :         hexa_c=hexa_h.charAt(Math.abs(hexa_m)%16)+hexa_c;</span>
+<span class="lineNum">     385 </span><span class="lineCov">          4 :         hexa_m=Math.floor(hexa_m/16);</span>
+<span class="lineNum">     386 </span><span class="lineCov">          4 :     }</span>
+<span class="lineNum">     387 </span><span class="lineCov">          4 :     return hexa_c;</span>
+<span class="lineNum">     388 </span><span class="lineCov">          4 : }</span>
+<span class="lineNum">     389 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     390 </span><span class="lineCov">          1 : var ascii=&quot;01234567890123456789012345678901&quot; +</span>
+<span class="lineNum">     391 </span><span class="lineCov">          1 : &quot; !\&quot;#$%&amp;'()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;+</span>
+<a name="392"><span class="lineNum">     392 </span><span class="lineCov">          1 : &quot;[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~&quot;;</span></a>
+<span class="lineNum">     393 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     394 </span><span class="lineCov">          1 : function MD5(entree)</span>
+<span class="lineNum">     395 </span><span class="lineCov">          1 : {</span>
+<span class="lineNum">     396 </span><span class="lineCov">          1 :     var l,s,k,ka,kb,kc,kd;</span>
+<span class="lineNum">     397 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     398 </span><span class="lineCov">          1 :     init();</span>
+<span class="lineNum">     399 </span><span class="lineCov">          1 :     for (k=0;k&lt;entree.length;k++) {</span>
+<span class="lineNum">     400 </span><span class="lineCov">          1 :         l=entree.charAt(k);</span>
+<span class="lineNum">     401 </span><span class="lineCov">          1 :         update(ascii.lastIndexOf(l));</span>
+<span class="lineNum">     402 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">     403 </span><span class="lineCov">          1 :     finish();</span>
+<span class="lineNum">     404 </span><span class="lineCov">          1 :     ka=kb=kc=kd=0;</span>
+<span class="lineNum">     405 </span><span class="lineCov">          1 :     for (i=0;i&lt;4;i++) ka+=shl(digestBits[15-i], (i*8));</span>
+<span class="lineNum">     406 </span><span class="lineCov">          1 :     for (i=4;i&lt;8;i++) kb+=shl(digestBits[15-i], ((i-4)*8));</span>
+<span class="lineNum">     407 </span><span class="lineCov">          1 :     for (i=8;i&lt;12;i++) kc+=shl(digestBits[15-i], ((i-8)*8));</span>
+<span class="lineNum">     408 </span><span class="lineCov">          1 :     for (i=12;i&lt;16;i++) kd+=shl(digestBits[15-i], ((i-12)*8));</span>
+<span class="lineNum">     409 </span><span class="lineCov">          1 :     s=hexa(kd)+hexa(kc)+hexa(kb)+hexa(ka);</span>
+<span class="lineNum">     410 </span><span class="lineCov">          1 :     return s;</span>
+<span class="lineNum">     411 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     412 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     413 </span><span class="lineCov">          1 : shouldBe(&quot;MD5('kde')&quot;, &quot;'186cf28b76f2264e9fea8fcf91cb4f5d'&quot;);</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

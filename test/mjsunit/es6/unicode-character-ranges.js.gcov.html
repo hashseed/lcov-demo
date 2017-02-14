@@ -1,0 +1,234 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - test/mjsunit/es6/unicode-character-ranges.js</title>
+  <link rel="stylesheet" type="text/css" href="../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../index.html">top level</a> - <a href="index.html">test/mjsunit/es6</a> - unicode-character-ranges.js<span style="font-size: 80%;"> (source / <a href="unicode-character-ranges.js.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">159</td>
+            <td class="headerCovTableEntry">159</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2017-02-14</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">5</td>
+            <td class="headerCovTableEntry">5</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span><span class="lineCov">          1 : // Copyright 2016 the V8 project authors. All rights reserved.</span></a>
+<span class="lineNum">       2 </span><span class="lineCov">          1 : // Use of this source code is governed by a BSD-style license that can be</span>
+<span class="lineNum">       3 </span><span class="lineCov">          1 : // found in the LICENSE file.</span>
+<span class="lineNum">       4 </span><span class="lineCov">          1 : </span>
+<a name="5"><span class="lineNum">       5 </span><span class="lineCov">          1 : // Flags: --harmony-regexp-lookbehind</span></a>
+<span class="lineNum">       6 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">       7 </span><span class="lineCov">         71 : function execl(expectation, regexp, subject) {</span>
+<span class="lineNum">       8 </span><span class="lineCov">         71 :   if (regexp instanceof String) regexp = new RegExp(regexp, &quot;u&quot;);</span>
+<span class="lineNum">       9 </span><span class="lineCov">         71 :   assertEquals(expectation, regexp.exec(subject));</span>
+<a name="10"><span class="lineNum">      10 </span><span class="lineCov">         71 : }</span></a>
+<span class="lineNum">      11 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      12 </span><span class="lineCov">         21 : function execs(expectation, regexp_source, subject) {</span>
+<span class="lineNum">      13 </span><span class="lineCov">         21 :   execl(expectation, new RegExp(regexp_source, &quot;u&quot;), subject);</span>
+<span class="lineNum">      14 </span><span class="lineCov">         21 : }</span>
+<span class="lineNum">      15 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      16 </span><span class="lineCov">          1 : // Character ranges.</span>
+<span class="lineNum">      17 </span><span class="lineCov">          1 : execl([&quot;A&quot;], /[A-D]/u, &quot;A&quot;);</span>
+<span class="lineNum">      18 </span><span class="lineCov">          1 : execs([&quot;A&quot;], &quot;[A-D]&quot;, &quot;A&quot;);</span>
+<span class="lineNum">      19 </span><span class="lineCov">          1 : execl([&quot;ABCD&quot;], /[A-D]+/u, &quot;ZABCDEF&quot;);</span>
+<span class="lineNum">      20 </span><span class="lineCov">          1 : execs([&quot;ABCD&quot;], &quot;[A-D]+&quot;, &quot;ZABCDEF&quot;);</span>
+<span class="lineNum">      21 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      22 </span><span class="lineCov">          1 : execl([&quot;\u{12345}&quot;], /[\u1234-\u{12345}]/u, &quot;\u{12345}&quot;);</span>
+<span class="lineNum">      23 </span><span class="lineCov">          1 : execs([&quot;\u{12345}&quot;], &quot;[\u1234-\u{12345}]&quot;, &quot;\u{12345}&quot;);</span>
+<span class="lineNum">      24 </span><span class="lineCov">          1 : execl(null, /[^\u1234-\u{12345}]/u, &quot;\u{12345}&quot;);</span>
+<span class="lineNum">      25 </span><span class="lineCov">          1 : execs(null, &quot;[^\u1234-\u{12345}]&quot;, &quot;\u{12345}&quot;);</span>
+<span class="lineNum">      26 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      27 </span><span class="lineCov">          1 : execl([&quot;\u{1234}&quot;], /[\u1234-\u{12345}]/u, &quot;\u{1234}&quot;);</span>
+<span class="lineNum">      28 </span><span class="lineCov">          1 : execs([&quot;\u{1234}&quot;], &quot;[\u1234-\u{12345}]&quot;, &quot;\u{1234}&quot;);</span>
+<span class="lineNum">      29 </span><span class="lineCov">          1 : execl(null, /[^\u1234-\u{12345}]/u, &quot;\u{1234}&quot;);</span>
+<span class="lineNum">      30 </span><span class="lineCov">          1 : execs(null, &quot;[^\u1234-\u{12345}]&quot;, &quot;\u{1234}&quot;);</span>
+<span class="lineNum">      31 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      32 </span><span class="lineCov">          1 : execl(null, /[\u1234-\u{12345}]/u, &quot;\u{1233}&quot;);</span>
+<span class="lineNum">      33 </span><span class="lineCov">          1 : execs(null, &quot;[\u1234-\u{12345}]&quot;, &quot;\u{1233}&quot;);</span>
+<span class="lineNum">      34 </span><span class="lineCov">          1 : execl([&quot;\u{1233}&quot;], /[^\u1234-\u{12345}]/u, &quot;\u{1233}&quot;);</span>
+<span class="lineNum">      35 </span><span class="lineCov">          1 : execs([&quot;\u{1233}&quot;], &quot;[^\u1234-\u{12345}]&quot;, &quot;\u{1233}&quot;);</span>
+<span class="lineNum">      36 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      37 </span><span class="lineCov">          1 : execl([&quot;\u{12346}&quot;], /[^\u1234-\u{12345}]/u, &quot;\u{12346}&quot;);</span>
+<span class="lineNum">      38 </span><span class="lineCov">          1 : execs([&quot;\u{12346}&quot;], &quot;[^\u1234-\u{12345}]&quot;, &quot;\u{12346}&quot;);</span>
+<span class="lineNum">      39 </span><span class="lineCov">          1 : execl(null, /[\u1234-\u{12345}]/u, &quot;\u{12346}&quot;);</span>
+<span class="lineNum">      40 </span><span class="lineCov">          1 : execs(null, &quot;[\u1234-\u{12345}]&quot;, &quot;\u{12346}&quot;);</span>
+<span class="lineNum">      41 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      42 </span><span class="lineCov">          1 : execl([&quot;\u{12342}&quot;], /[\u{12340}-\u{12345}]/u, &quot;\u{12342}&quot;);</span>
+<span class="lineNum">      43 </span><span class="lineCov">          1 : execs([&quot;\u{12342}&quot;], &quot;[\u{12340}-\u{12345}]&quot;, &quot;\u{12342}&quot;);</span>
+<span class="lineNum">      44 </span><span class="lineCov">          1 : execl([&quot;\u{12342}&quot;], /[\ud808\udf40-\ud808\udf45]/u, &quot;\u{12342}&quot;);</span>
+<span class="lineNum">      45 </span><span class="lineCov">          1 : execs([&quot;\u{12342}&quot;], &quot;[\ud808\udf40-\ud808\udf45]&quot;, &quot;\u{12342}&quot;);</span>
+<span class="lineNum">      46 </span><span class="lineCov">          1 : execl(null, /[^\u{12340}-\u{12345}]/u, &quot;\u{12342}&quot;);</span>
+<span class="lineNum">      47 </span><span class="lineCov">          1 : execs(null, &quot;[^\u{12340}-\u{12345}]&quot;, &quot;\u{12342}&quot;);</span>
+<span class="lineNum">      48 </span><span class="lineCov">          1 : execl(null, /[^\ud808\udf40-\ud808\udf45]/u, &quot;\u{12342}&quot;);</span>
+<span class="lineNum">      49 </span><span class="lineCov">          1 : execs(null, &quot;[^\ud808\udf40-\ud808\udf45]&quot;, &quot;\u{12342}&quot;);</span>
+<span class="lineNum">      50 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      51 </span><span class="lineCov">          1 : execl([&quot;\u{ffff}&quot;], /[\u{ff80}-\u{12345}]/u, &quot;\u{ffff}&quot;);</span>
+<span class="lineNum">      52 </span><span class="lineCov">          1 : execs([&quot;\u{ffff}&quot;], &quot;[\u{ff80}-\u{12345}]&quot;, &quot;\u{ffff}&quot;);</span>
+<span class="lineNum">      53 </span><span class="lineCov">          1 : execl([&quot;\u{ffff}&quot;], /[\u{ff80}-\ud808\udf45]/u, &quot;\u{ffff}&quot;);</span>
+<span class="lineNum">      54 </span><span class="lineCov">          1 : execs([&quot;\u{ffff}&quot;], &quot;[\u{ff80}-\ud808\udf45]&quot;, &quot;\u{ffff}&quot;);</span>
+<span class="lineNum">      55 </span><span class="lineCov">          1 : execl(null, /[^\u{ff80}-\u{12345}]/u, &quot;\u{ffff}&quot;);</span>
+<span class="lineNum">      56 </span><span class="lineCov">          1 : execs(null, &quot;[^\u{ff80}-\u{12345}]&quot;, &quot;\u{ffff}&quot;);</span>
+<span class="lineNum">      57 </span><span class="lineCov">          1 : execl(null, /[^\u{ff80}-\ud808\udf45]/u, &quot;\u{ffff}&quot;);</span>
+<span class="lineNum">      58 </span><span class="lineCov">          1 : execs(null, &quot;[^\u{ff80}-\ud808\udf45]&quot;, &quot;\u{ffff}&quot;);</span>
+<span class="lineNum">      59 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      60 </span><span class="lineCov">          1 : // Lone surrogate</span>
+<span class="lineNum">      61 </span><span class="lineCov">          1 : execl([&quot;\ud800&quot;], /[^\u{ff80}-\u{12345}]/u, &quot;\uff99\u{d800}A&quot;);</span>
+<span class="lineNum">      62 </span><span class="lineCov">          1 : execs([&quot;\udc00&quot;], &quot;[^\u{ff80}-\u{12345}]&quot;, &quot;\uff99\u{dc00}A&quot;);</span>
+<span class="lineNum">      63 </span><span class="lineCov">          1 : execl([&quot;\udc01&quot;], /[\u0100-\u{10ffff}]/u, &quot;A\udc01&quot;);</span>
+<span class="lineNum">      64 </span><span class="lineCov">          1 : execl([&quot;\udc03&quot;], /[\udc01-\udc03]/u, &quot;\ud801\udc02\udc03&quot;);</span>
+<span class="lineNum">      65 </span><span class="lineCov">          1 : execl([&quot;\ud801&quot;], /[\ud801-\ud803]/u, &quot;\ud802\udc01\ud801&quot;);</span>
+<span class="lineNum">      66 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      67 </span><span class="lineCov">          1 : // Paired sorrogate.</span>
+<span class="lineNum">      68 </span><span class="lineCov">          1 : execl(null, /[^\u{ff80}-\u{12345}]/u, &quot;\u{d800}\u{dc00}&quot;);</span>
+<span class="lineNum">      69 </span><span class="lineCov">          1 : execs(null, &quot;[^\u{ff80}-\u{12345}]&quot;, &quot;\u{d800}\u{dc00}&quot;);</span>
+<span class="lineNum">      70 </span><span class="lineCov">          1 : execl([&quot;\ud800\udc00&quot;], /[\u{ff80}-\u{12345}]/u, &quot;\u{d800}\u{dc00}&quot;);</span>
+<span class="lineNum">      71 </span><span class="lineCov">          1 : execs([&quot;\ud800\udc00&quot;], &quot;[\u{ff80}-\u{12345}]&quot;, &quot;\u{d800}\u{dc00}&quot;);</span>
+<span class="lineNum">      72 </span><span class="lineCov">          1 : execl([&quot;foo\u{10e6d}bar&quot;], /foo\ud803\ude6dbar/u, &quot;foo\u{10e6d}bar&quot;);</span>
+<span class="lineNum">      73 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      74 </span><span class="lineCov">          1 : // Lone surrogates</span>
+<span class="lineNum">      75 </span><span class="lineCov">          1 : execl([&quot;\ud801\ud801&quot;], /\ud801+/u, &quot;\ud801\udc01\ud801\ud801&quot;);</span>
+<span class="lineNum">      76 </span><span class="lineCov">          1 : execl([&quot;\udc01\udc01&quot;], /\udc01+/u, &quot;\ud801\ud801\udc01\udc01\udc01&quot;);</span>
+<span class="lineNum">      77 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      78 </span><span class="lineCov">          1 : execl([&quot;\udc02\udc03A&quot;], /\W\WA/u, &quot;\ud801\udc01A\udc02\udc03A&quot;);</span>
+<span class="lineNum">      79 </span><span class="lineCov">          1 : execl([&quot;\ud801\ud802&quot;], /\ud801./u, &quot;\ud801\udc01\ud801\ud802&quot;);</span>
+<span class="lineNum">      80 </span><span class="lineCov">          1 : execl([&quot;\udc02\udc03A&quot;], /[\ud800-\udfff][\ud800-\udfff]A/u,</span>
+<span class="lineNum">      81 </span><span class="lineCov">          1 :       &quot;\ud801\udc01A\udc02\udc03A&quot;);</span>
+<span class="lineNum">      82 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      83 </span><span class="lineCov">          1 : // Character classes</span>
+<span class="lineNum">      84 </span><span class="lineCov">          1 : execl(null, /\w/u, &quot;\ud801\udc01&quot;);</span>
+<span class="lineNum">      85 </span><span class="lineCov">          1 : execl([&quot;\ud801&quot;], /[^\w]/, &quot;\ud801\udc01&quot;);</span>
+<span class="lineNum">      86 </span><span class="lineCov">          1 : execl([&quot;\ud801\udc01&quot;], /[^\w]/u, &quot;\ud801\udc01&quot;);</span>
+<span class="lineNum">      87 </span><span class="lineCov">          1 : execl([&quot;\ud801&quot;], /\W/, &quot;\ud801\udc01&quot;);</span>
+<span class="lineNum">      88 </span><span class="lineCov">          1 : execl([&quot;\ud801\udc01&quot;], /\W/u, &quot;\ud801\udc01&quot;);</span>
+<span class="lineNum">      89 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      90 </span><span class="lineCov">          1 : execl([&quot;\ud800X&quot;], /.X/u, &quot;\ud800XaX&quot;);</span>
+<span class="lineNum">      91 </span><span class="lineCov">          1 : execl([&quot;aX&quot;], /.(?&lt;!\ud800)X/u, &quot;\ud800XaX&quot;);</span>
+<span class="lineNum">      92 </span><span class="lineCov">          1 : execl([&quot;aX&quot;], /.(?&lt;![\ud800-\ud900])X/u, &quot;\ud800XaX&quot;);</span>
+<span class="lineNum">      93 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      94 </span><span class="lineCov">          1 : execl(null, /[]/u, &quot;\u1234&quot;);</span>
+<span class="lineNum">      95 </span><span class="lineCov">          1 : execl([&quot;0abc&quot;], /[^]abc/u, &quot;0abc&quot;);</span>
+<span class="lineNum">      96 </span><span class="lineCov">          1 : execl([&quot;\u1234abc&quot;], /[^]abc/u, &quot;\u1234abc&quot;);</span>
+<span class="lineNum">      97 </span><span class="lineCov">          1 : execl([&quot;\u{12345}abc&quot;], /[^]abc/u, &quot;\u{12345}abc&quot;);</span>
+<span class="lineNum">      98 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      99 </span><span class="lineCov">          1 : execl(null, /[\u{0}-\u{1F444}]/u, &quot;\ud83d\udfff&quot;);</span>
+<span class="lineNum">     100 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     101 </span><span class="lineCov">          1 : // Backward matches of lone surrogates.</span>
+<span class="lineNum">     102 </span><span class="lineCov">          1 : execl([&quot;B&quot;, &quot;\ud803A&quot;], /(?&lt;=([\ud800-\ud900]A))B/u,</span>
+<span class="lineNum">     103 </span><span class="lineCov">          1 :       &quot;\ud801\udc00AB\udc00AB\ud802\ud803AB&quot;);</span>
+<span class="lineNum">     104 </span><span class="lineCov">          1 : execl([&quot;B&quot;, &quot;\udc00A&quot;], /(?&lt;=([\ud800-\u{10300}]A))B/u,</span>
+<span class="lineNum">     105 </span><span class="lineCov">          1 :        &quot;\ud801\udc00AB\udc00AB\ud802\ud803AB&quot;);</span>
+<span class="lineNum">     106 </span><span class="lineCov">          1 : execl([&quot;B&quot;, &quot;\udc11A&quot;], /(?&lt;=([\udc00-\udd00]A))B/u,</span>
+<span class="lineNum">     107 </span><span class="lineCov">          1 :       &quot;\ud801\udc00AB\udc11AB\ud802\ud803AB&quot;);</span>
+<span class="lineNum">     108 </span><span class="lineCov">          1 : execl([&quot;X&quot;, &quot;\ud800C&quot;], /(?&lt;=(\ud800\w))X/u,</span>
+<span class="lineNum">     109 </span><span class="lineCov">          1 :       &quot;\ud800\udc00AX\udc11BX\ud800\ud800CX&quot;);</span>
+<span class="lineNum">     110 </span><span class="lineCov">          1 : execl([&quot;C&quot;, &quot;\ud800\ud800&quot;], /(?&lt;=(\ud800.))\w/u,</span>
+<span class="lineNum">     111 </span><span class="lineCov">          1 :       &quot;\ud800\udc00AX\udc11BX\ud800\ud800CX&quot;);</span>
+<span class="lineNum">     112 </span><span class="lineCov">          1 : execl([&quot;X&quot;, &quot;\udc01C&quot;], /(?&lt;=(\udc01\w))X/u,</span>
+<span class="lineNum">     113 </span><span class="lineCov">          1 :       &quot;\ud800\udc01AX\udc11BX\udc01\udc01CX&quot;);</span>
+<span class="lineNum">     114 </span><span class="lineCov">          1 : execl([&quot;C&quot;, &quot;\udc01\udc01&quot;], /(?&lt;=(\udc01.))./u,</span>
+<span class="lineNum">     115 </span><span class="lineCov">          1 :       &quot;\ud800\udc01AX\udc11BX\udc01\udc01CX&quot;);</span>
+<span class="lineNum">     116 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     117 </span><span class="lineCov">          1 : var L = &quot;\ud800&quot;;</span>
+<span class="lineNum">     118 </span><span class="lineCov">          1 : var T = &quot;\udc00&quot;;</span>
+<span class="lineNum">     119 </span><span class="lineCov">          1 : var X = &quot;X&quot;;</span>
+<a name="120"><span class="lineNum">     120 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     121 </span><span class="lineCov">          1 : // Test string contains only match.</span>
+<span class="lineNum">     122 </span><span class="lineCov">         11 : function testw(expect, src, subject) {</span>
+<span class="lineNum">     123 </span><span class="lineCov">         11 :   var re = new RegExp(&quot;^&quot; + src + &quot;$&quot;, &quot;u&quot;);</span>
+<span class="lineNum">     124 </span><span class="lineCov">         11 :   assertEquals(expect, re.test(subject));</span>
+<span class="lineNum">     125 </span><span class="lineCov">         11 : }</span>
+<a name="126"><span class="lineNum">     126 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     127 </span><span class="lineCov">          1 : // Test string starts with match.</span>
+<span class="lineNum">     128 </span><span class="lineCov">         15 : function tests(expect, src, subject) {</span>
+<span class="lineNum">     129 </span><span class="lineCov">         15 :   var re = new RegExp(&quot;^&quot; + src, &quot;u&quot;);</span>
+<span class="lineNum">     130 </span><span class="lineCov">         15 :   assertEquals(expect, re.test(subject));</span>
+<span class="lineNum">     131 </span><span class="lineCov">         15 : }</span>
+<span class="lineNum">     132 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     133 </span><span class="lineCov">          1 : testw(true, X, X);</span>
+<span class="lineNum">     134 </span><span class="lineCov">          1 : testw(true, L, L);</span>
+<span class="lineNum">     135 </span><span class="lineCov">          1 : testw(true, T, T);</span>
+<span class="lineNum">     136 </span><span class="lineCov">          1 : testw(true, L + T, L + T);</span>
+<span class="lineNum">     137 </span><span class="lineCov">          1 : testw(true, T + L, T + L);</span>
+<span class="lineNum">     138 </span><span class="lineCov">          1 : testw(false, T, L + T);</span>
+<span class="lineNum">     139 </span><span class="lineCov">          1 : testw(false, L, L + T);</span>
+<span class="lineNum">     140 </span><span class="lineCov">          1 : testw(true, &quot;.(?&lt;=&quot; + L + &quot;)&quot;, L);</span>
+<span class="lineNum">     141 </span><span class="lineCov">          1 : testw(true, &quot;.(?&lt;=&quot; + T + &quot;)&quot;, T);</span>
+<span class="lineNum">     142 </span><span class="lineCov">          1 : testw(true, &quot;.(?&lt;=&quot; + L + T + &quot;)&quot;, L + T);</span>
+<span class="lineNum">     143 </span><span class="lineCov">          1 : testw(true, &quot;.(?&lt;=&quot; + L + T + &quot;)&quot;, L + T);</span>
+<span class="lineNum">     144 </span><span class="lineCov">          1 : tests(true, &quot;.(?&lt;=&quot; + T + &quot;)&quot;, T + L);</span>
+<span class="lineNum">     145 </span><span class="lineCov">          1 : tests(false, &quot;.(?&lt;=&quot; + L + &quot;)&quot;, L + T);</span>
+<span class="lineNum">     146 </span><span class="lineCov">          1 : tests(false, &quot;.(?&lt;=&quot; + T + &quot;)&quot;, L + T);</span>
+<span class="lineNum">     147 </span><span class="lineCov">          1 : tests(true, &quot;..(?&lt;=&quot; + T + &quot;)&quot;, T + T + L);</span>
+<span class="lineNum">     148 </span><span class="lineCov">          1 : tests(true, &quot;..(?&lt;=&quot; + T + &quot;)&quot;, X + T + L);</span>
+<span class="lineNum">     149 </span><span class="lineCov">          1 : tests(true, &quot;...(?&lt;=&quot; + L + &quot;)&quot;, X + T + L);</span>
+<span class="lineNum">     150 </span><span class="lineCov">          1 : tests(false, &quot;...(?&lt;=&quot; + T + &quot;)&quot;, X + L + T)</span>
+<span class="lineNum">     151 </span><span class="lineCov">          1 : tests(true, &quot;..(?&lt;=&quot; + L + T + &quot;)&quot;, X + L + T)</span>
+<span class="lineNum">     152 </span><span class="lineCov">          1 : tests(true, &quot;..(?&lt;=&quot; + L + T + &quot;(?&lt;=&quot; + L + T + &quot;))&quot;, X + L + T);</span>
+<span class="lineNum">     153 </span><span class="lineCov">          1 : tests(false, &quot;..(?&lt;=&quot; + L + &quot;(&quot; + T + &quot;))&quot;, X + L + T);</span>
+<span class="lineNum">     154 </span><span class="lineCov">          1 : tests(false, &quot;.*&quot; + L, X + L + T);</span>
+<span class="lineNum">     155 </span><span class="lineCov">          1 : tests(true, &quot;.*&quot; + L, X + L + L + T);</span>
+<span class="lineNum">     156 </span><span class="lineCov">          1 : tests(false, &quot;.*&quot; + L, X + L + T + L + T);</span>
+<span class="lineNum">     157 </span><span class="lineCov">          1 : tests(false, &quot;.*&quot; + T, X + L + T + L + T);</span>
+<span class="lineNum">     158 </span><span class="lineCov">          1 : tests(true, &quot;.*&quot; + T, X + L + T + T + L + T);</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

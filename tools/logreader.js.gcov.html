@@ -1,0 +1,311 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - tools/logreader.js</title>
+  <link rel="stylesheet" type="text/css" href="../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../index.html">top level</a> - <a href="index.html">tools</a> - logreader.js<span style="font-size: 80%;"> (source / <a href="logreader.js.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">236</td>
+            <td class="headerCovTableEntry">236</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2017-02-14</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">9</td>
+            <td class="headerCovTableEntry">9</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr><td><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span><span class="lineCov">          3 : // Copyright 2011 the V8 project authors. All rights reserved.</span></a>
+<span class="lineNum">       2 </span><span class="lineCov">          3 : // Redistribution and use in source and binary forms, with or without</span>
+<span class="lineNum">       3 </span><span class="lineCov">          3 : // modification, are permitted provided that the following conditions are</span>
+<span class="lineNum">       4 </span><span class="lineCov">          3 : // met:</span>
+<span class="lineNum">       5 </span><span class="lineCov">          3 : //</span>
+<span class="lineNum">       6 </span><span class="lineCov">          3 : //     * Redistributions of source code must retain the above copyright</span>
+<span class="lineNum">       7 </span><span class="lineCov">          3 : //       notice, this list of conditions and the following disclaimer.</span>
+<span class="lineNum">       8 </span><span class="lineCov">          3 : //     * Redistributions in binary form must reproduce the above</span>
+<span class="lineNum">       9 </span><span class="lineCov">          3 : //       copyright notice, this list of conditions and the following</span>
+<span class="lineNum">      10 </span><span class="lineCov">          3 : //       disclaimer in the documentation and/or other materials provided</span>
+<span class="lineNum">      11 </span><span class="lineCov">          3 : //       with the distribution.</span>
+<span class="lineNum">      12 </span><span class="lineCov">          3 : //     * Neither the name of Google Inc. nor the names of its</span>
+<span class="lineNum">      13 </span><span class="lineCov">          3 : //       contributors may be used to endorse or promote products derived</span>
+<span class="lineNum">      14 </span><span class="lineCov">          3 : //       from this software without specific prior written permission.</span>
+<span class="lineNum">      15 </span><span class="lineCov">          3 : //</span>
+<span class="lineNum">      16 </span><span class="lineCov">          3 : // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="lineNum">      17 </span><span class="lineCov">          3 : // &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="lineNum">      18 </span><span class="lineCov">          3 : // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR</span>
+<span class="lineNum">      19 </span><span class="lineCov">          3 : // A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT</span>
+<span class="lineNum">      20 </span><span class="lineCov">          3 : // OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,</span>
+<span class="lineNum">      21 </span><span class="lineCov">          3 : // SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT</span>
+<span class="lineNum">      22 </span><span class="lineCov">          3 : // LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,</span>
+<span class="lineNum">      23 </span><span class="lineCov">          3 : // DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY</span>
+<span class="lineNum">      24 </span><span class="lineCov">          3 : // THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT</span>
+<span class="lineNum">      25 </span><span class="lineCov">          3 : // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE</span>
+<span class="lineNum">      26 </span><span class="lineCov">          3 : // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="lineNum">      27 </span><span class="lineCov">          3 : </span>
+<span class="lineNum">      28 </span><span class="lineCov">          3 : /**</span>
+<span class="lineNum">      29 </span><span class="lineCov">          3 :  * @fileoverview Log Reader is used to process log file produced by V8.</span>
+<span class="lineNum">      30 </span><span class="lineCov">          3 :  */</span>
+<span class="lineNum">      31 </span><span class="lineCov">          3 : </span>
+<span class="lineNum">      32 </span><span class="lineCov">          3 : </span>
+<span class="lineNum">      33 </span><span class="lineCov">          3 : /**</span>
+<span class="lineNum">      34 </span><span class="lineCov">          3 :  * Base class for processing log files.</span>
+<span class="lineNum">      35 </span><span class="lineCov">          3 :  *</span>
+<span class="lineNum">      36 </span><span class="lineCov">          3 :  * @param {Array.&lt;Object&gt;} dispatchTable A table used for parsing and processing</span>
+<span class="lineNum">      37 </span><span class="lineCov">          3 :  *     log records.</span>
+<span class="lineNum">      38 </span><span class="lineCov">          3 :  * @param {boolean} timedRange Ignore ticks outside timed range.</span>
+<span class="lineNum">      39 </span><span class="lineCov">          3 :  * @param {boolean} pairwiseTimedRange Ignore ticks outside pairs of timer</span>
+<span class="lineNum">      40 </span><span class="lineCov">          3 :  *     markers.</span>
+<a name="41"><span class="lineNum">      41 </span><span class="lineCov">          3 :  * @constructor</span></a>
+<span class="lineNum">      42 </span><span class="lineCov">          3 :  */</span>
+<span class="lineNum">      43 </span><span class="lineCov">          8 : function LogReader(dispatchTable, timedRange, pairwiseTimedRange) {</span>
+<span class="lineNum">      44 </span><span class="lineCov">          8 :   /**</span>
+<span class="lineNum">      45 </span><span class="lineCov">          8 :    * @type {Array.&lt;Object&gt;}</span>
+<span class="lineNum">      46 </span><span class="lineCov">          8 :    */</span>
+<span class="lineNum">      47 </span><span class="lineCov">          8 :   this.dispatchTable_ = dispatchTable;</span>
+<span class="lineNum">      48 </span><span class="lineCov">          8 : </span>
+<span class="lineNum">      49 </span><span class="lineCov">          8 :   /**</span>
+<span class="lineNum">      50 </span><span class="lineCov">          8 :    * @type {boolean}</span>
+<span class="lineNum">      51 </span><span class="lineCov">          8 :    */</span>
+<span class="lineNum">      52 </span><span class="lineCov">          8 :   this.timedRange_ = timedRange;</span>
+<span class="lineNum">      53 </span><span class="lineCov">          8 : </span>
+<span class="lineNum">      54 </span><span class="lineCov">          8 :   /**</span>
+<span class="lineNum">      55 </span><span class="lineCov">          8 :    * @type {boolean}</span>
+<span class="lineNum">      56 </span><span class="lineCov">          8 :    */</span>
+<span class="lineNum">      57 </span><span class="lineCov">          8 :   this.pairwiseTimedRange_ = pairwiseTimedRange;</span>
+<span class="lineNum">      58 </span><span class="lineCov">          8 :   if (pairwiseTimedRange) {</span>
+<span class="lineNum">      59 </span><span class="lineCov">          8 :     this.timedRange_ = true;</span>
+<span class="lineNum">      60 </span><span class="lineCov">          8 :   }</span>
+<span class="lineNum">      61 </span><span class="lineCov">          8 : </span>
+<span class="lineNum">      62 </span><span class="lineCov">          8 :   /**</span>
+<span class="lineNum">      63 </span><span class="lineCov">          8 :    * Current line.</span>
+<span class="lineNum">      64 </span><span class="lineCov">          8 :    * @type {number}</span>
+<span class="lineNum">      65 </span><span class="lineCov">          8 :    */</span>
+<span class="lineNum">      66 </span><span class="lineCov">          8 :   this.lineNum_ = 0;</span>
+<span class="lineNum">      67 </span><span class="lineCov">          8 : </span>
+<span class="lineNum">      68 </span><span class="lineCov">          8 :   /**</span>
+<span class="lineNum">      69 </span><span class="lineCov">          8 :    * CSV lines parser.</span>
+<span class="lineNum">      70 </span><span class="lineCov">          8 :    * @type {CsvParser}</span>
+<span class="lineNum">      71 </span><span class="lineCov">          8 :    */</span>
+<span class="lineNum">      72 </span><span class="lineCov">          8 :   this.csvParser_ = new CsvParser();</span>
+<span class="lineNum">      73 </span><span class="lineCov">          8 : </span>
+<span class="lineNum">      74 </span><span class="lineCov">          8 :   /**</span>
+<span class="lineNum">      75 </span><span class="lineCov">          8 :    * Keeps track of whether we've seen a &quot;current-time&quot; tick yet.</span>
+<span class="lineNum">      76 </span><span class="lineCov">          8 :    * @type {boolean}</span>
+<span class="lineNum">      77 </span><span class="lineCov">          8 :    */</span>
+<span class="lineNum">      78 </span><span class="lineCov">          8 :   this.hasSeenTimerMarker_ = false;</span>
+<span class="lineNum">      79 </span><span class="lineCov">          8 : </span>
+<span class="lineNum">      80 </span><span class="lineCov">          8 :   /**</span>
+<span class="lineNum">      81 </span><span class="lineCov">          8 :    * List of log lines seen since last &quot;current-time&quot; tick.</span>
+<span class="lineNum">      82 </span><span class="lineCov">          8 :    * @type {Array.&lt;String&gt;}</span>
+<span class="lineNum">      83 </span><span class="lineCov">          8 :    */</span>
+<span class="lineNum">      84 </span><span class="lineCov">          8 :   this.logLinesSinceLastTimerMarker_ = [];</span>
+<span class="lineNum">      85 </span><span class="lineCov">          8 : };</span>
+<span class="lineNum">      86 </span><span class="lineCov">          3 : </span>
+<span class="lineNum">      87 </span><span class="lineCov">          3 : </span>
+<span class="lineNum">      88 </span><span class="lineCov">          3 : /**</span>
+<span class="lineNum">      89 </span><span class="lineCov">          3 :  * Used for printing error messages.</span>
+<span class="lineNum">      90 </span><span class="lineCov">          3 :  *</span>
+<a name="91"><span class="lineNum">      91 </span><span class="lineCov">          3 :  * @param {string} str Error message.</span></a>
+<span class="lineNum">      92 </span><span class="lineCov">          3 :  */</span>
+<span class="lineNum">      93 </span><span class="lineCov">         92 : LogReader.prototype.printError = function(str) {</span>
+<span class="lineNum">      94 </span><span class="lineCov">         90 :   // Do nothing.</span>
+<span class="lineNum">      95 </span><span class="lineCov">         92 : };</span>
+<span class="lineNum">      96 </span><span class="lineCov">          3 : </span>
+<span class="lineNum">      97 </span><span class="lineCov">          3 : </span>
+<span class="lineNum">      98 </span><span class="lineCov">          3 : /**</span>
+<span class="lineNum">      99 </span><span class="lineCov">          3 :  * Processes a portion of V8 profiler event log.</span>
+<span class="lineNum">     100 </span><span class="lineCov">          3 :  *</span>
+<a name="101"><span class="lineNum">     101 </span><span class="lineCov">          3 :  * @param {string} chunk A portion of log.</span></a>
+<span class="lineNum">     102 </span><span class="lineCov">          3 :  */</span>
+<span class="lineNum">     103 </span><span class="lineCov">          8 : LogReader.prototype.processLogChunk = function(chunk) {</span>
+<span class="lineNum">     104 </span><span class="lineCov">          6 :   this.processLog_(chunk.split('\n'));</span>
+<span class="lineNum">     105 </span><span class="lineCov">          8 : };</span>
+<span class="lineNum">     106 </span><span class="lineCov">          3 : </span>
+<span class="lineNum">     107 </span><span class="lineCov">          3 : </span>
+<span class="lineNum">     108 </span><span class="lineCov">          3 : /**</span>
+<span class="lineNum">     109 </span><span class="lineCov">          3 :  * Processes a line of V8 profiler event log.</span>
+<span class="lineNum">     110 </span><span class="lineCov">          3 :  *</span>
+<a name="111"><span class="lineNum">     111 </span><span class="lineCov">          3 :  * @param {string} line A line of log.</span></a>
+<span class="lineNum">     112 </span><span class="lineCov">          3 :  */</span>
+<span class="lineNum">     113 </span><span class="lineCov">       2615 : LogReader.prototype.processLogLine = function(line) {</span>
+<span class="lineNum">     114 </span><span class="lineCov">       2613 :   if (!this.timedRange_) {</span>
+<span class="lineNum">     115 </span><span class="lineCov">       2613 :     this.processLog_([line]);</span>
+<span class="lineNum">     116 </span><span class="lineCov">       2613 :     return;</span>
+<span class="lineNum">     117 </span><span class="lineCov">       2613 :   }</span>
+<span class="lineNum">     118 </span><span class="lineCov">       2613 :   if (line.startsWith(&quot;current-time&quot;)) {</span>
+<span class="lineNum">     119 </span><span class="lineCov">       2613 :     if (this.hasSeenTimerMarker_) {</span>
+<span class="lineNum">     120 </span><span class="lineCov">       2613 :       this.processLog_(this.logLinesSinceLastTimerMarker_);</span>
+<span class="lineNum">     121 </span><span class="lineCov">       2613 :       this.logLinesSinceLastTimerMarker_ = [];</span>
+<span class="lineNum">     122 </span><span class="lineCov">       2613 :       // In pairwise mode, a &quot;current-time&quot; line ends the timed range.</span>
+<span class="lineNum">     123 </span><span class="lineCov">       2613 :       if (this.pairwiseTimedRange_) {</span>
+<span class="lineNum">     124 </span><span class="lineCov">       2613 :         this.hasSeenTimerMarker_ = false;</span>
+<span class="lineNum">     125 </span><span class="lineCov">       2613 :       }</span>
+<span class="lineNum">     126 </span><span class="lineCov">       2613 :     } else {</span>
+<span class="lineNum">     127 </span><span class="lineCov">       2613 :       this.hasSeenTimerMarker_ = true;</span>
+<span class="lineNum">     128 </span><span class="lineCov">       2613 :     }</span>
+<span class="lineNum">     129 </span><span class="lineCov">       2613 :   } else {</span>
+<span class="lineNum">     130 </span><span class="lineCov">       2613 :     if (this.hasSeenTimerMarker_) {</span>
+<span class="lineNum">     131 </span><span class="lineCov">       2613 :       this.logLinesSinceLastTimerMarker_.push(line);</span>
+<span class="lineNum">     132 </span><span class="lineCov">       2613 :     } else if (!line.startsWith(&quot;tick&quot;)) {</span>
+<span class="lineNum">     133 </span><span class="lineCov">       2613 :       this.processLog_([line]);</span>
+<span class="lineNum">     134 </span><span class="lineCov">       2613 :     }</span>
+<span class="lineNum">     135 </span><span class="lineCov">       2613 :   }</span>
+<span class="lineNum">     136 </span><span class="lineCov">       2615 : };</span>
+<span class="lineNum">     137 </span><span class="lineCov">          3 : </span>
+<span class="lineNum">     138 </span><span class="lineCov">          3 : </span>
+<span class="lineNum">     139 </span><span class="lineCov">          3 : /**</span>
+<span class="lineNum">     140 </span><span class="lineCov">          3 :  * Processes stack record.</span>
+<span class="lineNum">     141 </span><span class="lineCov">          3 :  *</span>
+<span class="lineNum">     142 </span><span class="lineCov">          3 :  * @param {number} pc Program counter.</span>
+<span class="lineNum">     143 </span><span class="lineCov">          3 :  * @param {number} func JS Function.</span>
+<span class="lineNum">     144 </span><span class="lineCov">          3 :  * @param {Array.&lt;string&gt;} stack String representation of a stack.</span>
+<a name="145"><span class="lineNum">     145 </span><span class="lineCov">          3 :  * @return {Array.&lt;number&gt;} Processed stack.</span></a>
+<span class="lineNum">     146 </span><span class="lineCov">          3 :  */</span>
+<span class="lineNum">     147 </span><span class="lineCov">         57 : LogReader.prototype.processStack = function(pc, func, stack) {</span>
+<span class="lineNum">     148 </span><span class="lineCov">         55 :   var fullStack = func ? [pc, func] : [pc];</span>
+<span class="lineNum">     149 </span><span class="lineCov">         55 :   var prevFrame = pc;</span>
+<span class="lineNum">     150 </span><span class="lineCov">         55 :   for (var i = 0, n = stack.length; i &lt; n; ++i) {</span>
+<span class="lineNum">     151 </span><span class="lineCov">         55 :     var frame = stack[i];</span>
+<span class="lineNum">     152 </span><span class="lineCov">         55 :     var firstChar = frame.charAt(0);</span>
+<span class="lineNum">     153 </span><span class="lineCov">         55 :     if (firstChar == '+' || firstChar == '-') {</span>
+<span class="lineNum">     154 </span><span class="lineCov">         55 :       // An offset from the previous frame.</span>
+<span class="lineNum">     155 </span><span class="lineCov">         55 :       prevFrame += parseInt(frame, 16);</span>
+<span class="lineNum">     156 </span><span class="lineCov">         55 :       fullStack.push(prevFrame);</span>
+<span class="lineNum">     157 </span><span class="lineCov">         55 :     // Filter out possible 'overflow' string.</span>
+<span class="lineNum">     158 </span><span class="lineCov">         55 :     } else if (firstChar != 'o') {</span>
+<span class="lineNum">     159 </span><span class="lineCov">         55 :       fullStack.push(parseInt(frame, 16));</span>
+<span class="lineNum">     160 </span><span class="lineCov">         55 :     } else {</span>
+<span class="lineNum">     161 </span><span class="lineCov">         55 :       print(&quot;dropping: &quot; + frame);</span>
+<span class="lineNum">     162 </span><span class="lineCov">         55 :     }</span>
+<span class="lineNum">     163 </span><span class="lineCov">         55 :   }</span>
+<span class="lineNum">     164 </span><span class="lineCov">         55 :   return fullStack;</span>
+<span class="lineNum">     165 </span><span class="lineCov">         57 : };</span>
+<span class="lineNum">     166 </span><span class="lineCov">          3 : </span>
+<span class="lineNum">     167 </span><span class="lineCov">          3 : </span>
+<span class="lineNum">     168 </span><span class="lineCov">          3 : /**</span>
+<span class="lineNum">     169 </span><span class="lineCov">          3 :  * Returns whether a particular dispatch must be skipped.</span>
+<span class="lineNum">     170 </span><span class="lineCov">          3 :  *</span>
+<span class="lineNum">     171 </span><span class="lineCov">          3 :  * @param {!Object} dispatch Dispatch record.</span>
+<a name="172"><span class="lineNum">     172 </span><span class="lineCov">          3 :  * @return {boolean} True if dispatch must be skipped.</span></a>
+<span class="lineNum">     173 </span><span class="lineCov">          3 :  */</span>
+<span class="lineNum">     174 </span><span class="lineCov">       2731 : LogReader.prototype.skipDispatch = function(dispatch) {</span>
+<span class="lineNum">     175 </span><span class="lineCov">       2730 :   return false;</span>
+<span class="lineNum">     176 </span><span class="lineCov">       2731 : };</span>
+<span class="lineNum">     177 </span><span class="lineCov">          3 : </span>
+<span class="lineNum">     178 </span><span class="lineCov">          3 : </span>
+<span class="lineNum">     179 </span><span class="lineCov">          3 : /**</span>
+<span class="lineNum">     180 </span><span class="lineCov">          3 :  * Does a dispatch of a log record.</span>
+<span class="lineNum">     181 </span><span class="lineCov">          3 :  *</span>
+<span class="lineNum">     182 </span><span class="lineCov">          3 :  * @param {Array.&lt;string&gt;} fields Log record.</span>
+<a name="183"><span class="lineNum">     183 </span><span class="lineCov">          3 :  * @private</span></a>
+<span class="lineNum">     184 </span><span class="lineCov">          3 :  */</span>
+<span class="lineNum">     185 </span><span class="lineCov">       2750 : LogReader.prototype.dispatchLogRow_ = function(fields) {</span>
+<span class="lineNum">     186 </span><span class="lineCov">       2749 :   // Obtain the dispatch.</span>
+<span class="lineNum">     187 </span><span class="lineCov">       2749 :   var command = fields[0];</span>
+<span class="lineNum">     188 </span><span class="lineCov">       2749 :   if (!(command in this.dispatchTable_)) return;</span>
+<span class="lineNum">     189 </span><span class="lineCov">       2749 : </span>
+<span class="lineNum">     190 </span><span class="lineCov">       2749 :   var dispatch = this.dispatchTable_[command];</span>
+<span class="lineNum">     191 </span><span class="lineCov">       2749 : </span>
+<span class="lineNum">     192 </span><span class="lineCov">       2749 :   if (dispatch === null || this.skipDispatch(dispatch)) {</span>
+<span class="lineNum">     193 </span><span class="lineCov">       2749 :     return;</span>
+<span class="lineNum">     194 </span><span class="lineCov">       2749 :   }</span>
+<span class="lineNum">     195 </span><span class="lineCov">       2749 : </span>
+<span class="lineNum">     196 </span><span class="lineCov">       2749 :   // Parse fields.</span>
+<span class="lineNum">     197 </span><span class="lineCov">       2749 :   var parsedFields = [];</span>
+<span class="lineNum">     198 </span><span class="lineCov">       2749 :   for (var i = 0; i &lt; dispatch.parsers.length; ++i) {</span>
+<span class="lineNum">     199 </span><span class="lineCov">       2749 :     var parser = dispatch.parsers[i];</span>
+<span class="lineNum">     200 </span><span class="lineCov">       2749 :     if (parser === null) {</span>
+<span class="lineNum">     201 </span><span class="lineCov">       2749 :       parsedFields.push(fields[1 + i]);</span>
+<span class="lineNum">     202 </span><span class="lineCov">       2749 :     } else if (typeof parser == 'function') {</span>
+<span class="lineNum">     203 </span><span class="lineCov">       2749 :       parsedFields.push(parser(fields[1 + i]));</span>
+<span class="lineNum">     204 </span><span class="lineCov">       2749 :     } else {</span>
+<span class="lineNum">     205 </span><span class="lineCov">       2749 :       // var-args</span>
+<span class="lineNum">     206 </span><span class="lineCov">       2749 :       parsedFields.push(fields.slice(1 + i));</span>
+<span class="lineNum">     207 </span><span class="lineCov">       2749 :       break;</span>
+<span class="lineNum">     208 </span><span class="lineCov">       2749 :     }</span>
+<span class="lineNum">     209 </span><span class="lineCov">       2749 :   }</span>
+<span class="lineNum">     210 </span><span class="lineCov">       2749 : </span>
+<span class="lineNum">     211 </span><span class="lineCov">       2749 :   // Run the processor.</span>
+<span class="lineNum">     212 </span><span class="lineCov">       2749 :   dispatch.processor.apply(this, parsedFields);</span>
+<span class="lineNum">     213 </span><span class="lineCov">       2750 : };</span>
+<span class="lineNum">     214 </span><span class="lineCov">          3 : </span>
+<span class="lineNum">     215 </span><span class="lineCov">          3 : </span>
+<span class="lineNum">     216 </span><span class="lineCov">          3 : /**</span>
+<span class="lineNum">     217 </span><span class="lineCov">          3 :  * Processes log lines.</span>
+<span class="lineNum">     218 </span><span class="lineCov">          3 :  *</span>
+<span class="lineNum">     219 </span><span class="lineCov">          3 :  * @param {Array.&lt;string&gt;} lines Log lines.</span>
+<a name="220"><span class="lineNum">     220 </span><span class="lineCov">          3 :  * @private</span></a>
+<span class="lineNum">     221 </span><span class="lineCov">          3 :  */</span>
+<span class="lineNum">     222 </span><span class="lineCov">       2620 : LogReader.prototype.processLog_ = function(lines) {</span>
+<span class="lineNum">     223 </span><span class="lineCov">       2619 :   for (var i = 0, n = lines.length; i &lt; n; ++i, ++this.lineNum_) {</span>
+<span class="lineNum">     224 </span><span class="lineCov">       2619 :     var line = lines[i];</span>
+<span class="lineNum">     225 </span><span class="lineCov">       2619 :     if (!line) {</span>
+<span class="lineNum">     226 </span><span class="lineCov">       2619 :       continue;</span>
+<span class="lineNum">     227 </span><span class="lineCov">       2619 :     }</span>
+<span class="lineNum">     228 </span><span class="lineCov">       2619 :     try {</span>
+<span class="lineNum">     229 </span><span class="lineCov">       2619 :       var fields = this.csvParser_.parseLine(line);</span>
+<span class="lineNum">     230 </span><span class="lineCov">       2619 :       this.dispatchLogRow_(fields);</span>
+<span class="lineNum">     231 </span><span class="lineCov">       2619 :     } catch (e) {</span>
+<span class="lineNum">     232 </span><span class="lineCov">       2619 :       this.printError('line ' + (this.lineNum_ + 1) + ': ' + (e.message || e));</span>
+<span class="lineNum">     233 </span><span class="lineCov">       2619 :     }</span>
+<span class="lineNum">     234 </span><span class="lineCov">       2619 :   }</span>
+<span class="lineNum">     235 </span><span class="lineCov">       2620 : };</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

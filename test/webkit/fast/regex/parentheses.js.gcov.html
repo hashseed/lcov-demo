@@ -1,0 +1,352 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - test/webkit/fast/regex/parentheses.js</title>
+  <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../index.html">top level</a> - <a href="index.html">test/webkit/fast/regex</a> - parentheses.js<span style="font-size: 80%;"> (source / <a href="parentheses.js.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">277</td>
+            <td class="headerCovTableEntry">277</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2017-02-14</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr><td><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span><span class="lineCov">          1 : // Copyright 2013 the V8 project authors. All rights reserved.</span></a>
+<span class="lineNum">       2 </span><span class="lineCov">          1 : // Copyright (C) 2005, 2006, 2007, 2008, 2009 Apple Inc. All rights reserved.</span>
+<span class="lineNum">       3 </span><span class="lineCov">          1 : //</span>
+<span class="lineNum">       4 </span><span class="lineCov">          1 : // Redistribution and use in source and binary forms, with or without</span>
+<span class="lineNum">       5 </span><span class="lineCov">          1 : // modification, are permitted provided that the following conditions</span>
+<span class="lineNum">       6 </span><span class="lineCov">          1 : // are met:</span>
+<span class="lineNum">       7 </span><span class="lineCov">          1 : // 1.  Redistributions of source code must retain the above copyright</span>
+<span class="lineNum">       8 </span><span class="lineCov">          1 : //     notice, this list of conditions and the following disclaimer.</span>
+<span class="lineNum">       9 </span><span class="lineCov">          1 : // 2.  Redistributions in binary form must reproduce the above copyright</span>
+<span class="lineNum">      10 </span><span class="lineCov">          1 : //     notice, this list of conditions and the following disclaimer in the</span>
+<span class="lineNum">      11 </span><span class="lineCov">          1 : //     documentation and/or other materials provided with the distribution.</span>
+<span class="lineNum">      12 </span><span class="lineCov">          1 : //</span>
+<span class="lineNum">      13 </span><span class="lineCov">          1 : // THIS SOFTWARE IS PROVIDED BY APPLE INC. AND ITS CONTRIBUTORS ``AS IS'' AND ANY</span>
+<span class="lineNum">      14 </span><span class="lineCov">          1 : // EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED</span>
+<span class="lineNum">      15 </span><span class="lineCov">          1 : // WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE</span>
+<span class="lineNum">      16 </span><span class="lineCov">          1 : // DISCLAIMED. IN NO EVENT SHALL APPLE INC. OR ITS CONTRIBUTORS BE LIABLE FOR ANY</span>
+<span class="lineNum">      17 </span><span class="lineCov">          1 : // DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES</span>
+<span class="lineNum">      18 </span><span class="lineCov">          1 : // (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="lineNum">      19 </span><span class="lineCov">          1 : // LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON</span>
+<span class="lineNum">      20 </span><span class="lineCov">          1 : // ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT</span>
+<span class="lineNum">      21 </span><span class="lineCov">          1 : // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS</span>
+<span class="lineNum">      22 </span><span class="lineCov">          1 : // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="lineNum">      23 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      24 </span><span class="lineCov">          1 : description(&quot;This page tests handling of parentheses subexpressions.&quot;);</span>
+<span class="lineNum">      25 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      26 </span><span class="lineCov">          1 : var regexp1 = /(a|A)(b|B)/;</span>
+<span class="lineNum">      27 </span><span class="lineCov">          1 : shouldBe(&quot;regexp1.exec('abc')&quot;, &quot;['ab','a','b']&quot;);</span>
+<span class="lineNum">      28 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      29 </span><span class="lineCov">          1 : var regexp2 = /(a((b)|c|d))e/;</span>
+<span class="lineNum">      30 </span><span class="lineCov">          1 : shouldBe(&quot;regexp2.exec('abacadabe')&quot;, &quot;['abe','ab','b','b']&quot;);</span>
+<span class="lineNum">      31 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      32 </span><span class="lineCov">          1 : var regexp3 = /(a(b|(c)|d))e/;</span>
+<span class="lineNum">      33 </span><span class="lineCov">          1 : shouldBe(&quot;regexp3.exec('abacadabe')&quot;, &quot;['abe','ab','b',undefined]&quot;);</span>
+<span class="lineNum">      34 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      35 </span><span class="lineCov">          1 : var regexp4 = /(a(b|c|(d)))e/;</span>
+<span class="lineNum">      36 </span><span class="lineCov">          1 : shouldBe(&quot;regexp4.exec('abacadabe')&quot;, &quot;['abe','ab','b',undefined]&quot;);</span>
+<span class="lineNum">      37 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      38 </span><span class="lineCov">          1 : var regexp5 = /(a((b)|(c)|(d)))e/;</span>
+<span class="lineNum">      39 </span><span class="lineCov">          1 : shouldBe(&quot;regexp5.exec('abacadabe')&quot;, &quot;['abe','ab','b','b',undefined,undefined]&quot;);</span>
+<span class="lineNum">      40 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      41 </span><span class="lineCov">          1 : var regexp6 = /(a((b)|(c)|(d)))/;</span>
+<span class="lineNum">      42 </span><span class="lineCov">          1 : shouldBe(&quot;regexp6.exec('abcde')&quot;, &quot;['ab','ab','b','b',undefined,undefined]&quot;);</span>
+<span class="lineNum">      43 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      44 </span><span class="lineCov">          1 : var regexp7 = /(a(b)??)??c/;</span>
+<span class="lineNum">      45 </span><span class="lineCov">          1 : shouldBe(&quot;regexp7.exec('abc')&quot;, &quot;['abc','ab','b']&quot;);</span>
+<span class="lineNum">      46 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      47 </span><span class="lineCov">          1 : var regexp8 = /(a|(e|q))(x|y)/;</span>
+<span class="lineNum">      48 </span><span class="lineCov">          1 : shouldBe(&quot;regexp8.exec('bcaddxqy')&quot; , &quot;['qy','q','q','y']&quot;);</span>
+<span class="lineNum">      49 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      50 </span><span class="lineCov">          1 : var regexp9 = /((t|b)?|a)$/;</span>
+<span class="lineNum">      51 </span><span class="lineCov">          1 : shouldBe(&quot;regexp9.exec('asdfjejgsdflaksdfjkeljghkjea')&quot;, &quot;['a','a',undefined]&quot;);</span>
+<span class="lineNum">      52 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      53 </span><span class="lineCov">          1 : var regexp10 = /(?:h|e?(?:t|b)?|a?(?:t|b)?)(?:$)/;</span>
+<span class="lineNum">      54 </span><span class="lineCov">          1 : shouldBe(&quot;regexp10.exec('asdfjejgsdflaksdfjkeljghat')&quot;, &quot;['at']&quot;);</span>
+<span class="lineNum">      55 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      56 </span><span class="lineCov">          1 : var regexp11 = /([Jj]ava([Ss]cript)?)\sis\s(fun\w*)/;</span>
+<span class="lineNum">      57 </span><span class="lineCov">          1 : shouldBeNull(&quot;regexp11.exec('Developing with JavaScript is dangerous, do not try it without assistance')&quot;);</span>
+<span class="lineNum">      58 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      59 </span><span class="lineCov">          1 : var regexp12 = /(?:(.+), )?(.+), (..) to (?:(.+), )?(.+), (..)/;</span>
+<span class="lineNum">      60 </span><span class="lineCov">          1 : shouldBe(&quot;regexp12.exec('Seattle, WA to Buckley, WA')&quot;, &quot;['Seattle, WA to Buckley, WA', undefined, 'Seattle', 'WA', undefined, 'Buckley', 'WA']&quot;);</span>
+<span class="lineNum">      61 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      62 </span><span class="lineCov">          1 : var regexp13 = /(A)?(A.*)/;</span>
+<span class="lineNum">      63 </span><span class="lineCov">          1 : shouldBe(&quot;regexp13.exec('zxcasd;fl\ ^AaaAAaaaf;lrlrzs')&quot;, &quot;['AaaAAaaaf;lrlrzs',undefined,'AaaAAaaaf;lrlrzs']&quot;);</span>
+<span class="lineNum">      64 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      65 </span><span class="lineCov">          1 : var regexp14 = /(a)|(b)/;</span>
+<span class="lineNum">      66 </span><span class="lineCov">          1 : shouldBe(&quot;regexp14.exec('b')&quot;, &quot;['b',undefined,'b']&quot;);</span>
+<span class="lineNum">      67 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      68 </span><span class="lineCov">          1 : var regexp15 = /^(?!(ab)de|x)(abd)(f)/;</span>
+<span class="lineNum">      69 </span><span class="lineCov">          1 : shouldBe(&quot;regexp15.exec('abdf')&quot;, &quot;['abdf',undefined,'abd','f']&quot;);</span>
+<span class="lineNum">      70 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      71 </span><span class="lineCov">          1 : var regexp16 = /(a|A)(b|B)/;</span>
+<span class="lineNum">      72 </span><span class="lineCov">          1 : shouldBe(&quot;regexp16.exec('abc')&quot;, &quot;['ab','a','b']&quot;);</span>
+<span class="lineNum">      73 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      74 </span><span class="lineCov">          1 : var regexp17 = /(a|d|q|)x/i;</span>
+<span class="lineNum">      75 </span><span class="lineCov">          1 : shouldBe(&quot;regexp17.exec('bcaDxqy')&quot;, &quot;['Dx','D']&quot;);</span>
+<span class="lineNum">      76 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      77 </span><span class="lineCov">          1 : var regexp18 = /^.*?(:|$)/;</span>
+<span class="lineNum">      78 </span><span class="lineCov">          1 : shouldBe(&quot;regexp18.exec('Hello: World')&quot;, &quot;['Hello:',':']&quot;);</span>
+<span class="lineNum">      79 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      80 </span><span class="lineCov">          1 : var regexp19 = /(ab|^.{0,2})bar/;</span>
+<span class="lineNum">      81 </span><span class="lineCov">          1 : shouldBe(&quot;regexp19.exec('barrel')&quot;, &quot;['bar','']&quot;);</span>
+<span class="lineNum">      82 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      83 </span><span class="lineCov">          1 : var regexp20 = /(?:(?!foo)...|^.{0,2})bar(.*)/;</span>
+<span class="lineNum">      84 </span><span class="lineCov">          1 : shouldBe(&quot;regexp20.exec('barrel')&quot;, &quot;['barrel','rel']&quot;);</span>
+<span class="lineNum">      85 </span><span class="lineCov">          1 : shouldBe(&quot;regexp20.exec('2barrel')&quot;, &quot;['2barrel','rel']&quot;);</span>
+<span class="lineNum">      86 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      87 </span><span class="lineCov">          1 : var regexp21 = /([a-g](b|B)|xyz)/;</span>
+<span class="lineNum">      88 </span><span class="lineCov">          1 : shouldBe(&quot;regexp21.exec('abc')&quot;, &quot;['ab','ab','b']&quot;);</span>
+<span class="lineNum">      89 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      90 </span><span class="lineCov">          1 : var regexp22 = /(?:^|;)\s*abc=([^;]*)/;</span>
+<span class="lineNum">      91 </span><span class="lineCov">          1 : shouldBeNull(&quot;regexp22.exec('abcdlskfgjdslkfg')&quot;);</span>
+<span class="lineNum">      92 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      93 </span><span class="lineCov">          1 : var regexp23 = /&quot;[^&lt;&quot;]*&quot;|'[^&lt;']*'/;</span>
+<span class="lineNum">      94 </span><span class="lineCov">          1 : shouldBe(&quot;regexp23.exec('&lt;html xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot;')&quot;, &quot;['\&quot;http://www.w3.org/1999/xhtml\&quot;']&quot;);</span>
+<span class="lineNum">      95 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      96 </span><span class="lineCov">          1 : var regexp24 = /^(?:(?=abc)\w{3}:|\d\d)$/;</span>
+<span class="lineNum">      97 </span><span class="lineCov">          1 : shouldBeNull(&quot;regexp24.exec('123')&quot;);</span>
+<span class="lineNum">      98 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      99 </span><span class="lineCov">          1 : var regexp25 = /^\s*(\*|[\w\-]+)(\b|$)?/;</span>
+<span class="lineNum">     100 </span><span class="lineCov">          1 : shouldBe(&quot;regexp25.exec('this is a test')&quot;, &quot;['this','this',undefined]&quot;);</span>
+<span class="lineNum">     101 </span><span class="lineCov">          1 : shouldBeNull(&quot;regexp25.exec('!this is a test')&quot;);</span>
+<span class="lineNum">     102 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     103 </span><span class="lineCov">          1 : var regexp26 = /a(b)(a*)|aaa/;</span>
+<span class="lineNum">     104 </span><span class="lineCov">          1 : shouldBe(&quot;regexp26.exec('aaa')&quot;, &quot;['aaa',undefined,undefined]&quot;);</span>
+<span class="lineNum">     105 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     106 </span><span class="lineCov">          1 : var regexp27 = new RegExp(</span>
+<span class="lineNum">     107 </span><span class="lineCov">          1 :     &quot;^&quot; +</span>
+<span class="lineNum">     108 </span><span class="lineCov">          1 :     &quot;(?:&quot; +</span>
+<span class="lineNum">     109 </span><span class="lineCov">          1 :         &quot;([^:/?#]+):&quot; + /* scheme */</span>
+<span class="lineNum">     110 </span><span class="lineCov">          1 :     &quot;)?&quot; +</span>
+<span class="lineNum">     111 </span><span class="lineCov">          1 :     &quot;(?:&quot; +</span>
+<span class="lineNum">     112 </span><span class="lineCov">          1 :         &quot;(//)&quot; + /* authorityRoot */</span>
+<span class="lineNum">     113 </span><span class="lineCov">          1 :         &quot;(&quot; + /* authority */</span>
+<span class="lineNum">     114 </span><span class="lineCov">          1 :             &quot;(?:&quot; +</span>
+<span class="lineNum">     115 </span><span class="lineCov">          1 :                 &quot;(&quot; + /* userInfo */</span>
+<span class="lineNum">     116 </span><span class="lineCov">          1 :                     &quot;([^:@]*)&quot; + /* user */</span>
+<span class="lineNum">     117 </span><span class="lineCov">          1 :                     &quot;:?&quot; +</span>
+<span class="lineNum">     118 </span><span class="lineCov">          1 :                     &quot;([^:@]*)&quot; + /* password */</span>
+<span class="lineNum">     119 </span><span class="lineCov">          1 :                 &quot;)?&quot; +</span>
+<span class="lineNum">     120 </span><span class="lineCov">          1 :                 &quot;@&quot; +</span>
+<span class="lineNum">     121 </span><span class="lineCov">          1 :             &quot;)?&quot; +</span>
+<span class="lineNum">     122 </span><span class="lineCov">          1 :             &quot;([^:/?#]*)&quot; + /* domain */</span>
+<span class="lineNum">     123 </span><span class="lineCov">          1 :             &quot;(?::(\\d*))?&quot; + /* port */</span>
+<span class="lineNum">     124 </span><span class="lineCov">          1 :         &quot;)&quot; +</span>
+<span class="lineNum">     125 </span><span class="lineCov">          1 :     &quot;)?&quot; +</span>
+<span class="lineNum">     126 </span><span class="lineCov">          1 :     &quot;([^?#]*)&quot; + /*path*/</span>
+<span class="lineNum">     127 </span><span class="lineCov">          1 :     &quot;(?:\\?([^#]*))?&quot; + /* queryString */</span>
+<span class="lineNum">     128 </span><span class="lineCov">          1 :     &quot;(?:#(.*))?&quot; /*fragment */</span>
+<span class="lineNum">     129 </span><span class="lineCov">          1 : );</span>
+<span class="lineNum">     130 </span><span class="lineCov">          1 : shouldBe(&quot;regexp27.exec('file:///Users/Someone/Desktop/HelloWorld/index.html')&quot;, &quot;['file:///Users/Someone/Desktop/HelloWorld/index.html','file','//','',undefined,undefined,undefined,'',undefined,'/Users/Someone/Desktop/HelloWorld/index.html',undefined,undefined]&quot;);</span>
+<span class="lineNum">     131 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     132 </span><span class="lineCov">          1 : var regexp28 = new RegExp(</span>
+<span class="lineNum">     133 </span><span class="lineCov">          1 :     &quot;^&quot; +</span>
+<span class="lineNum">     134 </span><span class="lineCov">          1 :     &quot;(?:&quot; +</span>
+<span class="lineNum">     135 </span><span class="lineCov">          1 :         &quot;([^:/?#]+):&quot; + /* scheme */</span>
+<span class="lineNum">     136 </span><span class="lineCov">          1 :     &quot;)?&quot; +</span>
+<span class="lineNum">     137 </span><span class="lineCov">          1 :     &quot;(?:&quot; +</span>
+<span class="lineNum">     138 </span><span class="lineCov">          1 :         &quot;(//)&quot; + /* authorityRoot */</span>
+<span class="lineNum">     139 </span><span class="lineCov">          1 :         &quot;(&quot; + /* authority */</span>
+<span class="lineNum">     140 </span><span class="lineCov">          1 :             &quot;(&quot; + /* userInfo */</span>
+<span class="lineNum">     141 </span><span class="lineCov">          1 :                 &quot;([^:@]*)&quot; + /* user */</span>
+<span class="lineNum">     142 </span><span class="lineCov">          1 :                 &quot;:?&quot; +</span>
+<span class="lineNum">     143 </span><span class="lineCov">          1 :                 &quot;([^:@]*)&quot; + /* password */</span>
+<span class="lineNum">     144 </span><span class="lineCov">          1 :             &quot;)?&quot; +</span>
+<span class="lineNum">     145 </span><span class="lineCov">          1 :             &quot;@&quot; +</span>
+<span class="lineNum">     146 </span><span class="lineCov">          1 :         &quot;)&quot; +</span>
+<span class="lineNum">     147 </span><span class="lineCov">          1 :     &quot;)?&quot;</span>
+<span class="lineNum">     148 </span><span class="lineCov">          1 : );</span>
+<span class="lineNum">     149 </span><span class="lineCov">          1 : shouldBe(&quot;regexp28.exec('file:///Users/Someone/Desktop/HelloWorld/index.html')&quot;, &quot;['file:','file',undefined,undefined,undefined,undefined,undefined]&quot;);</span>
+<span class="lineNum">     150 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     151 </span><span class="lineCov">          1 : var regexp29 = /^\s*((\[[^\]]+\])|(u?)(&quot;[^&quot;]+&quot;))\s*/;</span>
+<span class="lineNum">     152 </span><span class="lineCov">          1 : shouldBeNull(&quot;regexp29.exec('Committer:')&quot;);</span>
+<span class="lineNum">     153 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     154 </span><span class="lineCov">          1 : var regexp30 = /^\s*((\[[^\]]+\])|m(u?)(&quot;[^&quot;]+&quot;))\s*/;</span>
+<span class="lineNum">     155 </span><span class="lineCov">          1 : shouldBeNull(&quot;regexp30.exec('Committer:')&quot;);</span>
+<span class="lineNum">     156 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     157 </span><span class="lineCov">          1 : var regexp31 = /^\s*(m(\[[^\]]+\])|m(u?)(&quot;[^&quot;]+&quot;))\s*/;</span>
+<span class="lineNum">     158 </span><span class="lineCov">          1 : shouldBeNull(&quot;regexp31.exec('Committer:')&quot;);</span>
+<span class="lineNum">     159 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     160 </span><span class="lineCov">          1 : var regexp32 = /\s*(m(\[[^\]]+\])|m(u?)(&quot;[^&quot;]+&quot;))\s*/;</span>
+<span class="lineNum">     161 </span><span class="lineCov">          1 : shouldBeNull(&quot;regexp32.exec('Committer:')&quot;);</span>
+<span class="lineNum">     162 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     163 </span><span class="lineCov">          1 : var regexp33 = RegExp('^(?:(?:(a)(xyz|[^&gt;&quot;\'\s]*)?)|(/?&gt;)|.[^\w\s&gt;]*)');</span>
+<span class="lineNum">     164 </span><span class="lineCov">          1 : shouldBe(&quot;regexp33.exec('&gt; &lt;head&gt;')&quot;,&quot;['&gt;',undefined,undefined,'&gt;']&quot;);</span>
+<span class="lineNum">     165 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     166 </span><span class="lineCov">          1 : var regexp34 = /(?:^|\b)btn-\S+/;</span>
+<span class="lineNum">     167 </span><span class="lineCov">          1 : shouldBeNull(&quot;regexp34.exec('xyz123')&quot;);</span>
+<span class="lineNum">     168 </span><span class="lineCov">          1 : shouldBe(&quot;regexp34.exec('btn-abc')&quot;,&quot;['btn-abc']&quot;);</span>
+<span class="lineNum">     169 </span><span class="lineCov">          1 : shouldBeNull(&quot;regexp34.exec('btn- abc')&quot;);</span>
+<span class="lineNum">     170 </span><span class="lineCov">          1 : shouldBeNull(&quot;regexp34.exec('XXbtn-abc')&quot;);</span>
+<span class="lineNum">     171 </span><span class="lineCov">          1 : shouldBe(&quot;regexp34.exec('XX btn-abc')&quot;,&quot;['btn-abc']&quot;);</span>
+<span class="lineNum">     172 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     173 </span><span class="lineCov">          1 : var regexp35 = /^((a|b)(x|xxx)|)$/;</span>
+<span class="lineNum">     174 </span><span class="lineCov">          1 : shouldBe(&quot;regexp35.exec('ax')&quot;, &quot;['ax','ax','a','x']&quot;);</span>
+<span class="lineNum">     175 </span><span class="lineCov">          1 : shouldBeNull(&quot;regexp35.exec('axx')&quot;);</span>
+<span class="lineNum">     176 </span><span class="lineCov">          1 : shouldBe(&quot;regexp35.exec('axxx')&quot;, &quot;['axxx','axxx','a','xxx']&quot;);</span>
+<span class="lineNum">     177 </span><span class="lineCov">          1 : shouldBe(&quot;regexp35.exec('bx')&quot;, &quot;['bx','bx','b','x']&quot;);</span>
+<span class="lineNum">     178 </span><span class="lineCov">          1 : shouldBeNull(&quot;regexp35.exec('bxx')&quot;);</span>
+<span class="lineNum">     179 </span><span class="lineCov">          1 : shouldBe(&quot;regexp35.exec('bxxx')&quot;, &quot;['bxxx','bxxx','b','xxx']&quot;);</span>
+<span class="lineNum">     180 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     181 </span><span class="lineCov">          1 : var regexp36 = /^((\/|\.|\-)(\d\d|\d\d\d\d)|)$/;</span>
+<span class="lineNum">     182 </span><span class="lineCov">          1 : shouldBe(&quot;regexp36.exec('/2011')&quot;, &quot;['/2011','/2011','/','2011']&quot;);</span>
+<span class="lineNum">     183 </span><span class="lineCov">          1 : shouldBe(&quot;regexp36.exec('/11')&quot;, &quot;['/11','/11','/','11']&quot;);</span>
+<span class="lineNum">     184 </span><span class="lineCov">          1 : shouldBeNull(&quot;regexp36.exec('/123')&quot;);</span>
+<span class="lineNum">     185 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     186 </span><span class="lineCov">          1 : var regexp37 = /^([1][0-2]|[0]\d|\d)(\/|\.|\-)([0-2]\d|[3][0-1]|\d)((\/|\.|\-)(\d\d|\d\d\d\d)|)$/;</span>
+<span class="lineNum">     187 </span><span class="lineCov">          1 : shouldBe(&quot;regexp37.exec('7/4/1776')&quot;, &quot;['7/4/1776','7','/','4','/1776','/','1776']&quot;);</span>
+<span class="lineNum">     188 </span><span class="lineCov">          1 : shouldBe(&quot;regexp37.exec('07-04-1776')&quot;, &quot;['07-04-1776','07','-','04','-1776','-','1776']&quot;);</span>
+<span class="lineNum">     189 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     190 </span><span class="lineCov">          1 : var regexp38 = /^(z|(x|xx)|b|)$/;</span>
+<span class="lineNum">     191 </span><span class="lineCov">          1 : shouldBe(&quot;regexp38.exec('xx')&quot;, &quot;['xx','xx','xx']&quot;);</span>
+<span class="lineNum">     192 </span><span class="lineCov">          1 : shouldBe(&quot;regexp38.exec('b')&quot;, &quot;['b','b',undefined]&quot;);</span>
+<span class="lineNum">     193 </span><span class="lineCov">          1 : shouldBe(&quot;regexp38.exec('z')&quot;, &quot;['z','z',undefined]&quot;);</span>
+<span class="lineNum">     194 </span><span class="lineCov">          1 : shouldBe(&quot;regexp38.exec('')&quot;, &quot;['','',undefined]&quot;);</span>
+<span class="lineNum">     195 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     196 </span><span class="lineCov">          1 : var regexp39 = /(8|((?=P)))?/;</span>
+<span class="lineNum">     197 </span><span class="lineCov">          1 : shouldBe(&quot;regexp39.exec('')&quot;, &quot;['',undefined,undefined]&quot;);</span>
+<span class="lineNum">     198 </span><span class="lineCov">          1 : shouldBe(&quot;regexp39.exec('8')&quot;, &quot;['8','8',undefined]&quot;);</span>
+<span class="lineNum">     199 </span><span class="lineCov">          1 : shouldBe(&quot;regexp39.exec('zP')&quot;, &quot;['',undefined,undefined]&quot;);</span>
+<span class="lineNum">     200 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     201 </span><span class="lineCov">          1 : var regexp40 = /((8)|((?=P){4}))?()/;</span>
+<span class="lineNum">     202 </span><span class="lineCov">          1 : shouldBe(&quot;regexp40.exec('')&quot;, &quot;['',undefined,undefined,undefined,'']&quot;);</span>
+<span class="lineNum">     203 </span><span class="lineCov">          1 : shouldBe(&quot;regexp40.exec('8')&quot;, &quot;['8','8','8',undefined,'']&quot;);</span>
+<span class="lineNum">     204 </span><span class="lineCov">          1 : shouldBe(&quot;regexp40.exec('zPz')&quot;, &quot;['',undefined,undefined,undefined,'']&quot;);</span>
+<span class="lineNum">     205 </span><span class="lineCov">          1 : shouldBe(&quot;regexp40.exec('zPPz')&quot;, &quot;['',undefined,undefined,undefined,'']&quot;);</span>
+<span class="lineNum">     206 </span><span class="lineCov">          1 : shouldBe(&quot;regexp40.exec('zPPPz')&quot;, &quot;['',undefined,undefined,undefined,'']&quot;);</span>
+<span class="lineNum">     207 </span><span class="lineCov">          1 : shouldBe(&quot;regexp40.exec('zPPPPz')&quot;, &quot;['',undefined,undefined,undefined,'']&quot;);</span>
+<span class="lineNum">     208 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     209 </span><span class="lineCov">          1 : var regexp41 = /(([\w\-]+:\/\/?|www[.])[^\s()&lt;&gt;]+(?:([\w\d]+)|([^\[:punct:\]\s()&lt;&gt;\W]|\/)))/;</span>
+<span class="lineNum">     210 </span><span class="lineCov">          1 : shouldBe(&quot;regexp41.exec('Here is a link: http://www.acme.com/our_products/index.html. That is all we want!')&quot;, &quot;['http://www.acme.com/our_products/index.html','http://www.acme.com/our_products/index.html','http://','l',undefined]&quot;);</span>
+<span class="lineNum">     211 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     212 </span><span class="lineCov">          1 : var regexp42 = /((?:(4)?))?/;</span>
+<span class="lineNum">     213 </span><span class="lineCov">          1 : shouldBe(&quot;regexp42.exec('')&quot;, &quot;['',undefined,undefined]&quot;);</span>
+<span class="lineNum">     214 </span><span class="lineCov">          1 : shouldBe(&quot;regexp42.exec('4')&quot;, &quot;['4','4','4']&quot;);</span>
+<span class="lineNum">     215 </span><span class="lineCov">          1 : shouldBe(&quot;regexp42.exec('4321')&quot;, &quot;['4','4','4']&quot;);</span>
+<span class="lineNum">     216 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     217 </span><span class="lineCov">          1 : shouldBeTrue(&quot;/(?!(?=r{0}){2,})|((z)?)?/gi.test('')&quot;);</span>
+<span class="lineNum">     218 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     219 </span><span class="lineCov">          1 : var regexp43 = /(?!(?:\1+s))/;</span>
+<span class="lineNum">     220 </span><span class="lineCov">          1 : shouldBe(&quot;regexp43.exec('SSS')&quot;, &quot;['']&quot;);</span>
+<span class="lineNum">     221 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     222 </span><span class="lineCov">          1 : var regexp44 = /(?!(?:\3+(s+?)))/g;</span>
+<span class="lineNum">     223 </span><span class="lineCov">          1 : shouldBe(&quot;regexp44.exec('SSS')&quot;, &quot;['',undefined]&quot;);</span>
+<span class="lineNum">     224 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     225 </span><span class="lineCov">          1 : var regexp45 = /((?!(?:|)v{2,}|))/;</span>
+<span class="lineNum">     226 </span><span class="lineCov">          1 : shouldBeNull(&quot;regexp45.exec('vt')&quot;);</span>
+<span class="lineNum">     227 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     228 </span><span class="lineCov">          1 : var regexp46 = /(w)(?:5{3}|())|pk/;</span>
+<span class="lineNum">     229 </span><span class="lineCov">          1 : shouldBeNull(&quot;regexp46.exec('5')&quot;);</span>
+<span class="lineNum">     230 </span><span class="lineCov">          1 : shouldBe(&quot;regexp46.exec('pk')&quot;, &quot;['pk',undefined,undefined]&quot;);</span>
+<span class="lineNum">     231 </span><span class="lineCov">          1 : shouldBe(&quot;regexp46.exec('Xw555')&quot;, &quot;['w555','w',undefined]&quot;);</span>
+<span class="lineNum">     232 </span><span class="lineCov">          1 : shouldBe(&quot;regexp46.exec('Xw55pk5')&quot;, &quot;['w','w','']&quot;);</span>
+<span class="lineNum">     233 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     234 </span><span class="lineCov">          1 : var regexp47 = /(.*?)(?:(?:\?(.*?)?)?)(?:(?:#)?)$/;</span>
+<span class="lineNum">     235 </span><span class="lineCov">          1 : shouldBe(&quot;regexp47.exec('/www.acme.com/this/is/a/path/file.txt')&quot;, &quot;['/www.acme.com/this/is/a/path/file.txt','/www.acme.com/this/is/a/path/file.txt',undefined]&quot;);</span>
+<span class="lineNum">     236 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     237 </span><span class="lineCov">          1 : var regexp48 = /^(?:(\w+):\/*([\w\.\-\d]+)(?::(\d+)|)(?=(?:\/|$))|)(?:$|\/?(.*?)(?:\?(.*?)?|)(?:#(.*)|)$)/;</span>
+<span class="lineNum">     238 </span><span class="lineCov">          1 : /* The regexp on the prior line confuses Xcode syntax highlighting, this coment fixes it! */</span>
+<span class="lineNum">     239 </span><span class="lineCov">          1 : shouldBe(&quot;regexp48.exec('http://www.acme.com/this/is/a/path/file.txt')&quot;, &quot;['http://www.acme.com/this/is/a/path/file.txt','http','www.acme.com',undefined,'this/is/a/path/file.txt',undefined,undefined]&quot;);</span>
+<span class="lineNum">     240 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     241 </span><span class="lineCov">          1 : var regexp49 = /(?:([^:]*?)(?:(?:\?(.*?)?)?)(?:(?:#)?)$)|(?:^(?:(\w+):\/*([\w\.\-\d]+)(?::(\d+)|)(?=(?:\/|$))|)(?:$|\/?(.*?)(?:\?(.*?)?|)(?:#(.*)|)$))/;</span>
+<span class="lineNum">     242 </span><span class="lineCov">          1 : /* The regexp on the prior line confuses Xcode syntax highlighting, this coment fixes it! */</span>
+<span class="lineNum">     243 </span><span class="lineCov">          1 : shouldBe(&quot;regexp49.exec('http://www.acme.com/this/is/a/path/file.txt')&quot;, &quot;['http://www.acme.com/this/is/a/path/file.txt',undefined,undefined,'http','www.acme.com',undefined,'this/is/a/path/file.txt',undefined,undefined]&quot;);</span>
+<span class="lineNum">     244 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     245 </span><span class="lineCov">          1 : var regexp50 = /((a)b{28,}c|d)x/;</span>
+<span class="lineNum">     246 </span><span class="lineCov">          1 : shouldBeNull(&quot;regexp50.exec('((a)b{28,}c|d)x')&quot;);</span>
+<span class="lineNum">     247 </span><span class="lineCov">          1 : shouldBe(&quot;regexp50.exec('abbbbbbbbbbbbbbbbbbbbbbbbbbbbcx')&quot;, &quot;['abbbbbbbbbbbbbbbbbbbbbbbbbbbbcx', 'abbbbbbbbbbbbbbbbbbbbbbbbbbbbc', 'a']&quot;);</span>
+<span class="lineNum">     248 </span><span class="lineCov">          1 : shouldBe(&quot;regexp50.exec('dx')&quot;, &quot;['dx', 'd', undefined]&quot;);</span>
+<span class="lineNum">     249 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     250 </span><span class="lineCov">          1 : var s = &quot;((.\s{-}).{28,}\P{Yi}?{,30}\|.)\x9e{-,}\P{Any}&quot;;</span>
+<span class="lineNum">     251 </span><span class="lineCov">          1 : var regexp51 = new RegExp(s);</span>
+<span class="lineNum">     252 </span><span class="lineCov">          1 : shouldBeNull(&quot;regexp51.exec('abc')&quot;);</span>
+<span class="lineNum">     253 </span><span class="lineCov">          1 : shouldBe(&quot;regexp51.exec(s)&quot;, &quot;[')\x9e{-,}P{Any}',')',undefined]&quot;);</span>
+<span class="lineNum">     254 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     255 </span><span class="lineCov">          1 : var regexp52 = /(Rob)|(Bob)|(Robert)|(Bobby)/;</span>
+<span class="lineNum">     256 </span><span class="lineCov">          1 : shouldBe(&quot;'Hi Bob'.match(regexp52)&quot;, &quot;['Bob',undefined,'Bob',undefined,undefined]&quot;);</span>
+<span class="lineNum">     257 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     258 </span><span class="lineCov">          1 : // Test cases discovered by fuzzing that crashed the compiler.</span>
+<span class="lineNum">     259 </span><span class="lineCov">          1 : var regexp53 = /(?=(?:(?:(gB)|(?!cs|&lt;))((?=(?!v6){0,})))|(?=#)+?)/m;</span>
+<span class="lineNum">     260 </span><span class="lineCov">          1 : shouldBe(&quot;regexp53.exec('#')&quot;, &quot;['',undefined,'']&quot;);</span>
+<span class="lineNum">     261 </span><span class="lineCov">          1 : var regexp54 = /((?:(?:()|(?!))((?=(?!))))|())/m;</span>
+<span class="lineNum">     262 </span><span class="lineCov">          1 : shouldBe(&quot;regexp54.exec('#')&quot;, &quot;['','',undefined,undefined,'']&quot;);</span>
+<span class="lineNum">     263 </span><span class="lineCov">          1 : var regexp55 = /(?:(?:(?:a?|(?:))((?:)))|a?)/m;</span>
+<span class="lineNum">     264 </span><span class="lineCov">          1 : shouldBe(&quot;regexp55.exec('#')&quot;, &quot;['','']&quot;);</span>
+<span class="lineNum">     265 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     266 </span><span class="lineCov">          1 : // Test evaluation order of empty subpattern alternatives.</span>
+<span class="lineNum">     267 </span><span class="lineCov">          1 : var regexp56 = /(|a)/;</span>
+<span class="lineNum">     268 </span><span class="lineCov">          1 : shouldBe(&quot;regexp56.exec('a')&quot;, &quot;['','']&quot;);</span>
+<span class="lineNum">     269 </span><span class="lineCov">          1 : var regexp57 = /(a|)/;</span>
+<span class="lineNum">     270 </span><span class="lineCov">          1 : shouldBe(&quot;regexp57.exec('a')&quot;, &quot;['a','a']&quot;);</span>
+<span class="lineNum">     271 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     272 </span><span class="lineCov">          1 : // Tests that non-greedy repeat quantified parentheses will backtrack through multiple frames of subpattern matches.</span>
+<span class="lineNum">     273 </span><span class="lineCov">          1 : var regexp58 = /a|b(?:[^b])*?c/;</span>
+<span class="lineNum">     274 </span><span class="lineCov">          1 : shouldBe(&quot;regexp58.exec('badbc')&quot;, &quot;['a']&quot;);</span>
+<span class="lineNum">     275 </span><span class="lineCov">          1 : var regexp59 = /(X(?:.(?!X))*?Y)|(Y(?:.(?!Y))*?Z)/g;</span>
+<span class="lineNum">     276 </span><span class="lineCov">          1 : shouldBe(&quot;'Y aaa X Match1 Y aaa Y Match2 Z'.match(regexp59)&quot;, &quot;['X Match1 Y','Y Match2 Z']&quot;);</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

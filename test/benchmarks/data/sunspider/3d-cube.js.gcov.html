@@ -1,0 +1,431 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - test/benchmarks/data/sunspider/3d-cube.js</title>
+  <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../index.html">top level</a> - <a href="index.html">test/benchmarks/data/sunspider</a> - 3d-cube.js<span style="font-size: 80%;"> (source / <a href="3d-cube.js.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">348</td>
+            <td class="headerCovTableEntry">356</td>
+            <td class="headerCovTableEntryHi">97.8 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2017-02-14</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">15</td>
+            <td class="headerCovTableEntry">16</td>
+            <td class="headerCovTableEntryHi">93.8 %</td>
+          </tr>
+          <tr><td><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span><span class="lineCov">          1 : // 3D Cube Rotation</span></a>
+<span class="lineNum">       2 </span><span class="lineCov">          1 : // http://www.speich.net/computer/moztesting/3d.htm</span>
+<span class="lineNum">       3 </span><span class="lineCov">          1 : // Created by Simon Speich</span>
+<span class="lineNum">       4 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">       5 </span><span class="lineCov">          1 : var Q = new Array();</span>
+<span class="lineNum">       6 </span><span class="lineCov">          1 : var MTrans = new Array();  // transformation matrix</span>
+<span class="lineNum">       7 </span><span class="lineCov">          1 : var MQube = new Array();  // position information of qube</span>
+<span class="lineNum">       8 </span><span class="lineCov">          1 : var I = new Array();      // entity matrix</span>
+<span class="lineNum">       9 </span><span class="lineCov">          1 : var Origin = new Object();</span>
+<span class="lineNum">      10 </span><span class="lineCov">          1 : var Testing = new Object();</span>
+<span class="lineNum">      11 </span><span class="lineCov">          1 : var LoopTimer;</span>
+<span class="lineNum">      12 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      13 </span><span class="lineCov">          1 : var validation = {</span>
+<span class="lineNum">      14 </span><span class="lineCov">          1 :  20: 2889.0000000000045,</span>
+<span class="lineNum">      15 </span><span class="lineCov">          1 :  40: 2889.0000000000055,</span>
+<span class="lineNum">      16 </span><span class="lineCov">          1 :  80: 2889.000000000005,</span>
+<span class="lineNum">      17 </span><span class="lineCov">          1 :  160: 2889.0000000000055</span>
+<span class="lineNum">      18 </span><span class="lineCov">          1 : };</span>
+<span class="lineNum">      19 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      20 </span><span class="lineCov">          1 : var DisplArea = new Object();</span>
+<span class="lineNum">      21 </span><span class="lineCov">          1 : DisplArea.Width = 300;</span>
+<a name="22"><span class="lineNum">      22 </span><span class="lineCov">          1 : DisplArea.Height = 300;</span></a>
+<span class="lineNum">      23 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      24 </span><span class="lineCov">       1852 : function DrawLine(From, To) {</span>
+<span class="lineNum">      25 </span><span class="lineCov">       1852 :   var x1 = From.V[0];</span>
+<span class="lineNum">      26 </span><span class="lineCov">       1852 :   var x2 = To.V[0];</span>
+<span class="lineNum">      27 </span><span class="lineCov">       1852 :   var y1 = From.V[1];</span>
+<span class="lineNum">      28 </span><span class="lineCov">       1852 :   var y2 = To.V[1];</span>
+<span class="lineNum">      29 </span><span class="lineCov">       1852 :   var dx = Math.abs(x2 - x1);</span>
+<span class="lineNum">      30 </span><span class="lineCov">       1852 :   var dy = Math.abs(y2 - y1);</span>
+<span class="lineNum">      31 </span><span class="lineCov">       1852 :   var x = x1;</span>
+<span class="lineNum">      32 </span><span class="lineCov">       1852 :   var y = y1;</span>
+<span class="lineNum">      33 </span><span class="lineCov">       1852 :   var IncX1, IncY1;</span>
+<span class="lineNum">      34 </span><span class="lineCov">       1852 :   var IncX2, IncY2;  </span>
+<span class="lineNum">      35 </span><span class="lineCov">       1852 :   var Den;</span>
+<span class="lineNum">      36 </span><span class="lineCov">       1852 :   var Num;</span>
+<span class="lineNum">      37 </span><span class="lineCov">       1852 :   var NumAdd;</span>
+<span class="lineNum">      38 </span><span class="lineCov">       1852 :   var NumPix;</span>
+<span class="lineNum">      39 </span><span class="lineCov">       1852 : </span>
+<span class="lineNum">      40 </span><span class="lineCov">       1852 :   if (x2 &gt;= x1) {  IncX1 = 1; IncX2 = 1;  }</span>
+<span class="lineNum">      41 </span><span class="lineCov">       1852 :   else { IncX1 = -1; IncX2 = -1; }</span>
+<span class="lineNum">      42 </span><span class="lineCov">       1852 :   if (y2 &gt;= y1)  {  IncY1 = 1; IncY2 = 1; }</span>
+<span class="lineNum">      43 </span><span class="lineCov">       1852 :   else { IncY1 = -1; IncY2 = -1; }</span>
+<span class="lineNum">      44 </span><span class="lineCov">       1852 :   if (dx &gt;= dy) {</span>
+<span class="lineNum">      45 </span><span class="lineCov">       1852 :     IncX1 = 0;</span>
+<span class="lineNum">      46 </span><span class="lineCov">       1852 :     IncY2 = 0;</span>
+<span class="lineNum">      47 </span><span class="lineCov">       1852 :     Den = dx;</span>
+<span class="lineNum">      48 </span><span class="lineCov">       1852 :     Num = dx / 2;</span>
+<span class="lineNum">      49 </span><span class="lineCov">       1852 :     NumAdd = dy;</span>
+<span class="lineNum">      50 </span><span class="lineCov">       1852 :     NumPix = dx;</span>
+<span class="lineNum">      51 </span><span class="lineCov">       1852 :   }</span>
+<span class="lineNum">      52 </span><span class="lineCov">       1852 :   else {</span>
+<span class="lineNum">      53 </span><span class="lineCov">       1852 :     IncX2 = 0;</span>
+<span class="lineNum">      54 </span><span class="lineCov">       1852 :     IncY1 = 0;</span>
+<span class="lineNum">      55 </span><span class="lineCov">       1852 :     Den = dy;</span>
+<span class="lineNum">      56 </span><span class="lineCov">       1852 :     Num = dy / 2;</span>
+<span class="lineNum">      57 </span><span class="lineCov">       1852 :     NumAdd = dx;</span>
+<span class="lineNum">      58 </span><span class="lineCov">       1852 :     NumPix = dy;</span>
+<span class="lineNum">      59 </span><span class="lineCov">       1852 :   }</span>
+<span class="lineNum">      60 </span><span class="lineCov">       1852 : </span>
+<span class="lineNum">      61 </span><span class="lineCov">       1852 :   NumPix = Math.round(Q.LastPx + NumPix);</span>
+<span class="lineNum">      62 </span><span class="lineCov">       1852 : </span>
+<span class="lineNum">      63 </span><span class="lineCov">       1852 :   var i = Q.LastPx;</span>
+<span class="lineNum">      64 </span><span class="lineCov">       1852 :   for (; i &lt; NumPix; i++) {</span>
+<span class="lineNum">      65 </span><span class="lineCov">       1852 :     Num += NumAdd;</span>
+<span class="lineNum">      66 </span><span class="lineCov">       1852 :     if (Num &gt;= Den) {</span>
+<span class="lineNum">      67 </span><span class="lineCov">       1852 :       Num -= Den;</span>
+<span class="lineNum">      68 </span><span class="lineCov">       1852 :       x += IncX1;</span>
+<span class="lineNum">      69 </span><span class="lineCov">       1852 :       y += IncY1;</span>
+<span class="lineNum">      70 </span><span class="lineCov">       1852 :     }</span>
+<span class="lineNum">      71 </span><span class="lineCov">       1852 :     x += IncX2;</span>
+<span class="lineNum">      72 </span><span class="lineCov">       1852 :     y += IncY2;</span>
+<span class="lineNum">      73 </span><span class="lineCov">       1852 :   }</span>
+<span class="lineNum">      74 </span><span class="lineCov">       1852 :   Q.LastPx = NumPix;</span>
+<a name="75"><span class="lineNum">      75 </span><span class="lineCov">       1852 : }</span></a>
+<span class="lineNum">      76 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      77 </span><span class="lineCov">         24 : function CalcCross(V0, V1) {</span>
+<span class="lineNum">      78 </span><span class="lineCov">         24 :   var Cross = new Array();</span>
+<span class="lineNum">      79 </span><span class="lineCov">         24 :   Cross[0] = V0[1]*V1[2] - V0[2]*V1[1];</span>
+<span class="lineNum">      80 </span><span class="lineCov">         24 :   Cross[1] = V0[2]*V1[0] - V0[0]*V1[2];</span>
+<span class="lineNum">      81 </span><span class="lineCov">         24 :   Cross[2] = V0[0]*V1[1] - V0[1]*V1[0];</span>
+<span class="lineNum">      82 </span><span class="lineCov">         24 :   return Cross;</span>
+<a name="83"><span class="lineNum">      83 </span><span class="lineCov">         24 : }</span></a>
+<span class="lineNum">      84 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      85 </span><span class="lineCov">         24 : function CalcNormal(V0, V1, V2) {</span>
+<span class="lineNum">      86 </span><span class="lineCov">         24 :   var A = new Array();   var B = new Array(); </span>
+<span class="lineNum">      87 </span><span class="lineCov">         24 :   for (var i = 0; i &lt; 3; i++) {</span>
+<span class="lineNum">      88 </span><span class="lineCov">         24 :     A[i] = V0[i] - V1[i];</span>
+<span class="lineNum">      89 </span><span class="lineCov">         24 :     B[i] = V2[i] - V1[i];</span>
+<span class="lineNum">      90 </span><span class="lineCov">         24 :   }</span>
+<span class="lineNum">      91 </span><span class="lineCov">         24 :   A = CalcCross(A, B);</span>
+<span class="lineNum">      92 </span><span class="lineCov">         24 :   var Length = Math.sqrt(A[0]*A[0] + A[1]*A[1] + A[2]*A[2]); </span>
+<span class="lineNum">      93 </span><span class="lineCov">         24 :   for (var i = 0; i &lt; 3; i++) A[i] = A[i] / Length;</span>
+<span class="lineNum">      94 </span><span class="lineCov">         24 :   A[3] = 1;</span>
+<span class="lineNum">      95 </span><span class="lineCov">         24 :   return A;</span>
+<a name="96"><span class="lineNum">      96 </span><span class="lineCov">         24 : }</span></a>
+<span class="lineNum">      97 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      98 </span><span class="lineCov">       5436 : function CreateP(X,Y,Z) {</span>
+<span class="lineNum">      99 </span><span class="lineCov">       5436 :   this.V = [X,Y,Z,1];</span>
+<span class="lineNum">     100 </span><span class="lineCov">       5436 : }</span>
+<a name="101"><span class="lineNum">     101 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     102 </span><span class="lineCov">          1 : // multiplies two matrices</span>
+<span class="lineNum">     103 </span><span class="lineCov">       1232 : function MMulti(M1, M2) {</span>
+<span class="lineNum">     104 </span><span class="lineCov">       1232 :   var M = [[],[],[],[]];</span>
+<span class="lineNum">     105 </span><span class="lineCov">       1232 :   var i = 0;</span>
+<span class="lineNum">     106 </span><span class="lineCov">       1232 :   var j = 0;</span>
+<span class="lineNum">     107 </span><span class="lineCov">       1232 :   for (; i &lt; 4; i++) {</span>
+<span class="lineNum">     108 </span><span class="lineCov">       1232 :     j = 0;</span>
+<span class="lineNum">     109 </span><span class="lineCov">       1232 :     for (; j &lt; 4; j++) M[i][j] = M1[i][0] * M2[0][j] + M1[i][1] * M2[1][j] + M1[i][2] * M2[2][j] + M1[i][3] * M2[3][j];</span>
+<span class="lineNum">     110 </span><span class="lineCov">       1232 :   }</span>
+<span class="lineNum">     111 </span><span class="lineCov">       1232 :   return M;</span>
+<span class="lineNum">     112 </span><span class="lineCov">       1232 : }</span>
+<a name="113"><span class="lineNum">     113 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     114 </span><span class="lineCov">          1 : //multiplies matrix with vector</span>
+<span class="lineNum">     115 </span><span class="lineCov">       1872 : function VMulti(M, V) {</span>
+<span class="lineNum">     116 </span><span class="lineCov">       1872 :   var Vect = new Array();</span>
+<span class="lineNum">     117 </span><span class="lineCov">       1872 :   var i = 0;</span>
+<span class="lineNum">     118 </span><span class="lineCov">       1872 :   for (;i &lt; 4; i++) Vect[i] = M[i][0] * V[0] + M[i][1] * V[1] + M[i][2] * V[2] + M[i][3] * V[3];</span>
+<span class="lineNum">     119 </span><span class="lineCov">       1872 :   return Vect;</span>
+<a name="120"><span class="lineNum">     120 </span><span class="lineCov">       1872 : }</span></a>
+<span class="lineNum">     121 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     122 </span><span class="lineCov">       1248 : function VMulti2(M, V) {</span>
+<span class="lineNum">     123 </span><span class="lineCov">       1248 :   var Vect = new Array();</span>
+<span class="lineNum">     124 </span><span class="lineCov">       1248 :   var i = 0;</span>
+<span class="lineNum">     125 </span><span class="lineCov">       1248 :   for (;i &lt; 3; i++) Vect[i] = M[i][0] * V[0] + M[i][1] * V[1] + M[i][2] * V[2];</span>
+<span class="lineNum">     126 </span><span class="lineCov">       1248 :   return Vect;</span>
+<span class="lineNum">     127 </span><span class="lineCov">       1248 : }</span>
+<a name="128"><span class="lineNum">     128 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     129 </span><span class="lineCov">          1 : // add to matrices</span>
+<span class="lineNum">     130 </span><span class="lineCov">          1 : function MAdd(M1, M2) {</span>
+<span class="lineNum">     131 </span><span class="lineNoCov">          0 :   var M = [[],[],[],[]];</span>
+<span class="lineNum">     132 </span><span class="lineNoCov">          0 :   var i = 0;</span>
+<span class="lineNum">     133 </span><span class="lineNoCov">          0 :   var j = 0;</span>
+<span class="lineNum">     134 </span><span class="lineNoCov">          0 :   for (; i &lt; 4; i++) {</span>
+<span class="lineNum">     135 </span><span class="lineNoCov">          0 :     j = 0;</span>
+<span class="lineNum">     136 </span><span class="lineNoCov">          0 :     for (; j &lt; 4; j++) M[i][j] = M1[i][j] + M2[i][j];</span>
+<span class="lineNum">     137 </span><span class="lineNoCov">          0 :   }</span>
+<span class="lineNum">     138 </span><span class="lineNoCov">          0 :   return M;</span>
+<a name="139"><span class="lineNum">     139 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">     140 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     141 </span><span class="lineCov">        412 : function Translate(M, Dx, Dy, Dz) {</span>
+<span class="lineNum">     142 </span><span class="lineCov">        412 :   var T = [</span>
+<span class="lineNum">     143 </span><span class="lineCov">        412 :   [1,0,0,Dx],</span>
+<span class="lineNum">     144 </span><span class="lineCov">        412 :   [0,1,0,Dy],</span>
+<span class="lineNum">     145 </span><span class="lineCov">        412 :   [0,0,1,Dz],</span>
+<span class="lineNum">     146 </span><span class="lineCov">        412 :   [0,0,0,1]</span>
+<span class="lineNum">     147 </span><span class="lineCov">        412 :   ];</span>
+<span class="lineNum">     148 </span><span class="lineCov">        412 :   return MMulti(T, M);</span>
+<a name="149"><span class="lineNum">     149 </span><span class="lineCov">        412 : }</span></a>
+<span class="lineNum">     150 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     151 </span><span class="lineCov">        204 : function RotateX(M, Phi) {</span>
+<span class="lineNum">     152 </span><span class="lineCov">        204 :   var a = Phi;</span>
+<span class="lineNum">     153 </span><span class="lineCov">        204 :   a *= Math.PI / 180;</span>
+<span class="lineNum">     154 </span><span class="lineCov">        204 :   var Cos = Math.cos(a);</span>
+<span class="lineNum">     155 </span><span class="lineCov">        204 :   var Sin = Math.sin(a);</span>
+<span class="lineNum">     156 </span><span class="lineCov">        204 :   var R = [</span>
+<span class="lineNum">     157 </span><span class="lineCov">        204 :   [1,0,0,0],</span>
+<span class="lineNum">     158 </span><span class="lineCov">        204 :   [0,Cos,-Sin,0],</span>
+<span class="lineNum">     159 </span><span class="lineCov">        204 :   [0,Sin,Cos,0],</span>
+<span class="lineNum">     160 </span><span class="lineCov">        204 :   [0,0,0,1]</span>
+<span class="lineNum">     161 </span><span class="lineCov">        204 :   ];</span>
+<span class="lineNum">     162 </span><span class="lineCov">        204 :   return MMulti(R, M);</span>
+<a name="163"><span class="lineNum">     163 </span><span class="lineCov">        204 : }</span></a>
+<span class="lineNum">     164 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     165 </span><span class="lineCov">        204 : function RotateY(M, Phi) {</span>
+<span class="lineNum">     166 </span><span class="lineCov">        204 :   var a = Phi;</span>
+<span class="lineNum">     167 </span><span class="lineCov">        204 :   a *= Math.PI / 180;</span>
+<span class="lineNum">     168 </span><span class="lineCov">        204 :   var Cos = Math.cos(a);</span>
+<span class="lineNum">     169 </span><span class="lineCov">        204 :   var Sin = Math.sin(a);</span>
+<span class="lineNum">     170 </span><span class="lineCov">        204 :   var R = [</span>
+<span class="lineNum">     171 </span><span class="lineCov">        204 :   [Cos,0,Sin,0],</span>
+<span class="lineNum">     172 </span><span class="lineCov">        204 :   [0,1,0,0],</span>
+<span class="lineNum">     173 </span><span class="lineCov">        204 :   [-Sin,0,Cos,0],</span>
+<span class="lineNum">     174 </span><span class="lineCov">        204 :   [0,0,0,1]</span>
+<span class="lineNum">     175 </span><span class="lineCov">        204 :   ];</span>
+<span class="lineNum">     176 </span><span class="lineCov">        204 :   return MMulti(R, M);</span>
+<a name="177"><span class="lineNum">     177 </span><span class="lineCov">        204 : }</span></a>
+<span class="lineNum">     178 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     179 </span><span class="lineCov">        204 : function RotateZ(M, Phi) {</span>
+<span class="lineNum">     180 </span><span class="lineCov">        204 :   var a = Phi;</span>
+<span class="lineNum">     181 </span><span class="lineCov">        204 :   a *= Math.PI / 180;</span>
+<span class="lineNum">     182 </span><span class="lineCov">        204 :   var Cos = Math.cos(a);</span>
+<span class="lineNum">     183 </span><span class="lineCov">        204 :   var Sin = Math.sin(a);</span>
+<span class="lineNum">     184 </span><span class="lineCov">        204 :   var R = [</span>
+<span class="lineNum">     185 </span><span class="lineCov">        204 :   [Cos,-Sin,0,0],</span>
+<span class="lineNum">     186 </span><span class="lineCov">        204 :   [Sin,Cos,0,0],</span>
+<span class="lineNum">     187 </span><span class="lineCov">        204 :   [0,0,1,0],   </span>
+<span class="lineNum">     188 </span><span class="lineCov">        204 :   [0,0,0,1]</span>
+<span class="lineNum">     189 </span><span class="lineCov">        204 :   ];</span>
+<span class="lineNum">     190 </span><span class="lineCov">        204 :   return MMulti(R, M);</span>
+<a name="191"><span class="lineNum">     191 </span><span class="lineCov">        204 : }</span></a>
+<span class="lineNum">     192 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     193 </span><span class="lineCov">        208 : function DrawQube() {</span>
+<span class="lineNum">     194 </span><span class="lineCov">        208 :   // calc current normals</span>
+<span class="lineNum">     195 </span><span class="lineCov">        208 :   var CurN = new Array();</span>
+<span class="lineNum">     196 </span><span class="lineCov">        208 :   var i = 5;</span>
+<span class="lineNum">     197 </span><span class="lineCov">        208 :   Q.LastPx = 0;</span>
+<span class="lineNum">     198 </span><span class="lineCov">        208 :   for (; i &gt; -1; i--) CurN[i] = VMulti2(MQube, Q.Normal[i]);</span>
+<span class="lineNum">     199 </span><span class="lineCov">        208 :   if (CurN[0][2] &lt; 0) {</span>
+<span class="lineNum">     200 </span><span class="lineCov">        208 :     if (!Q.Line[0]) { DrawLine(Q[0], Q[1]); Q.Line[0] = true; };</span>
+<span class="lineNum">     201 </span><span class="lineCov">        208 :     if (!Q.Line[1]) { DrawLine(Q[1], Q[2]); Q.Line[1] = true; };</span>
+<span class="lineNum">     202 </span><span class="lineCov">        208 :     if (!Q.Line[2]) { DrawLine(Q[2], Q[3]); Q.Line[2] = true; };</span>
+<span class="lineNum">     203 </span><span class="lineCov">        208 :     if (!Q.Line[3]) { DrawLine(Q[3], Q[0]); Q.Line[3] = true; };</span>
+<span class="lineNum">     204 </span><span class="lineCov">        208 :   }</span>
+<span class="lineNum">     205 </span><span class="lineCov">        208 :   if (CurN[1][2] &lt; 0) {</span>
+<span class="lineNum">     206 </span><span class="lineCov">        208 :     if (!Q.Line[2]) { DrawLine(Q[3], Q[2]); Q.Line[2] = true; };</span>
+<span class="lineNum">     207 </span><span class="lineCov">        208 :     if (!Q.Line[9]) { DrawLine(Q[2], Q[6]); Q.Line[9] = true; };</span>
+<span class="lineNum">     208 </span><span class="lineCov">        208 :     if (!Q.Line[6]) { DrawLine(Q[6], Q[7]); Q.Line[6] = true; };</span>
+<span class="lineNum">     209 </span><span class="lineCov">        208 :     if (!Q.Line[10]) { DrawLine(Q[7], Q[3]); Q.Line[10] = true; };</span>
+<span class="lineNum">     210 </span><span class="lineCov">        208 :   }</span>
+<span class="lineNum">     211 </span><span class="lineCov">        208 :   if (CurN[2][2] &lt; 0) {</span>
+<span class="lineNum">     212 </span><span class="lineCov">        208 :     if (!Q.Line[4]) { DrawLine(Q[4], Q[5]); Q.Line[4] = true; };</span>
+<span class="lineNum">     213 </span><span class="lineCov">        208 :     if (!Q.Line[5]) { DrawLine(Q[5], Q[6]); Q.Line[5] = true; };</span>
+<span class="lineNum">     214 </span><span class="lineCov">        208 :     if (!Q.Line[6]) { DrawLine(Q[6], Q[7]); Q.Line[6] = true; };</span>
+<span class="lineNum">     215 </span><span class="lineCov">        208 :     if (!Q.Line[7]) { DrawLine(Q[7], Q[4]); Q.Line[7] = true; };</span>
+<span class="lineNum">     216 </span><span class="lineCov">        208 :   }</span>
+<span class="lineNum">     217 </span><span class="lineCov">        208 :   if (CurN[3][2] &lt; 0) {</span>
+<span class="lineNum">     218 </span><span class="lineCov">        208 :     if (!Q.Line[4]) { DrawLine(Q[4], Q[5]); Q.Line[4] = true; };</span>
+<span class="lineNum">     219 </span><span class="lineCov">        208 :     if (!Q.Line[8]) { DrawLine(Q[5], Q[1]); Q.Line[8] = true; };</span>
+<span class="lineNum">     220 </span><span class="lineCov">        208 :     if (!Q.Line[0]) { DrawLine(Q[1], Q[0]); Q.Line[0] = true; };</span>
+<span class="lineNum">     221 </span><span class="lineCov">        208 :     if (!Q.Line[11]) { DrawLine(Q[0], Q[4]); Q.Line[11] = true; };</span>
+<span class="lineNum">     222 </span><span class="lineCov">        208 :   }</span>
+<span class="lineNum">     223 </span><span class="lineCov">        208 :   if (CurN[4][2] &lt; 0) {</span>
+<span class="lineNum">     224 </span><span class="lineCov">        208 :     if (!Q.Line[11]) { DrawLine(Q[4], Q[0]); Q.Line[11] = true; };</span>
+<span class="lineNum">     225 </span><span class="lineCov">        208 :     if (!Q.Line[3]) { DrawLine(Q[0], Q[3]); Q.Line[3] = true; };</span>
+<span class="lineNum">     226 </span><span class="lineCov">        208 :     if (!Q.Line[10]) { DrawLine(Q[3], Q[7]); Q.Line[10] = true; };</span>
+<span class="lineNum">     227 </span><span class="lineCov">        208 :     if (!Q.Line[7]) { DrawLine(Q[7], Q[4]); Q.Line[7] = true; };</span>
+<span class="lineNum">     228 </span><span class="lineCov">        208 :   }</span>
+<span class="lineNum">     229 </span><span class="lineCov">        208 :   if (CurN[5][2] &lt; 0) {</span>
+<span class="lineNum">     230 </span><span class="lineCov">        208 :     if (!Q.Line[8]) { DrawLine(Q[1], Q[5]); Q.Line[8] = true; };</span>
+<span class="lineNum">     231 </span><span class="lineCov">        208 :     if (!Q.Line[5]) { DrawLine(Q[5], Q[6]); Q.Line[5] = true; };</span>
+<span class="lineNum">     232 </span><span class="lineCov">        208 :     if (!Q.Line[9]) { DrawLine(Q[6], Q[2]); Q.Line[9] = true; };</span>
+<span class="lineNum">     233 </span><span class="lineCov">        208 :     if (!Q.Line[1]) { DrawLine(Q[2], Q[1]); Q.Line[1] = true; };</span>
+<span class="lineNum">     234 </span><span class="lineCov">        208 :   }</span>
+<span class="lineNum">     235 </span><span class="lineCov">        208 :   Q.Line = [false,false,false,false,false,false,false,false,false,false,false,false];</span>
+<span class="lineNum">     236 </span><span class="lineCov">        208 :   Q.LastPx = 0;</span>
+<a name="237"><span class="lineNum">     237 </span><span class="lineCov">        208 : }</span></a>
+<span class="lineNum">     238 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     239 </span><span class="lineCov">        208 : function Loop() {</span>
+<span class="lineNum">     240 </span><span class="lineCov">        208 :   if (Testing.LoopCount &gt; Testing.LoopMax) return;</span>
+<span class="lineNum">     241 </span><span class="lineCov">        208 :   var TestingStr = String(Testing.LoopCount);</span>
+<span class="lineNum">     242 </span><span class="lineCov">        208 :   while (TestingStr.length &lt; 3) TestingStr = &quot;0&quot; + TestingStr;</span>
+<span class="lineNum">     243 </span><span class="lineCov">        208 :   MTrans = Translate(I, -Q[8].V[0], -Q[8].V[1], -Q[8].V[2]);</span>
+<span class="lineNum">     244 </span><span class="lineCov">        208 :   MTrans = RotateX(MTrans, 1);</span>
+<span class="lineNum">     245 </span><span class="lineCov">        208 :   MTrans = RotateY(MTrans, 3);</span>
+<span class="lineNum">     246 </span><span class="lineCov">        208 :   MTrans = RotateZ(MTrans, 5);</span>
+<span class="lineNum">     247 </span><span class="lineCov">        208 :   MTrans = Translate(MTrans, Q[8].V[0], Q[8].V[1], Q[8].V[2]);</span>
+<span class="lineNum">     248 </span><span class="lineCov">        208 :   MQube = MMulti(MTrans, MQube);</span>
+<span class="lineNum">     249 </span><span class="lineCov">        208 :   var i = 8;</span>
+<span class="lineNum">     250 </span><span class="lineCov">        208 :   for (; i &gt; -1; i--) {</span>
+<span class="lineNum">     251 </span><span class="lineCov">        208 :     Q[i].V = VMulti(MTrans, Q[i].V);</span>
+<span class="lineNum">     252 </span><span class="lineCov">        208 :   }</span>
+<span class="lineNum">     253 </span><span class="lineCov">        208 :   DrawQube();</span>
+<span class="lineNum">     254 </span><span class="lineCov">        208 :   Testing.LoopCount++;</span>
+<span class="lineNum">     255 </span><span class="lineCov">        208 :   Loop();</span>
+<a name="256"><span class="lineNum">     256 </span><span class="lineCov">        208 : }</span></a>
+<span class="lineNum">     257 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     258 </span><span class="lineCov">          4 : function Init(CubeSize) {</span>
+<span class="lineNum">     259 </span><span class="lineCov">          4 :   // init/reset vars</span>
+<span class="lineNum">     260 </span><span class="lineCov">          4 :   Origin.V = [150,150,20,1];</span>
+<span class="lineNum">     261 </span><span class="lineCov">          4 :   Testing.LoopCount = 0;</span>
+<span class="lineNum">     262 </span><span class="lineCov">          4 :   Testing.LoopMax = 50;</span>
+<span class="lineNum">     263 </span><span class="lineCov">          4 :   Testing.TimeMax = 0;</span>
+<span class="lineNum">     264 </span><span class="lineCov">          4 :   Testing.TimeAvg = 0;</span>
+<span class="lineNum">     265 </span><span class="lineCov">          4 :   Testing.TimeMin = 0;</span>
+<span class="lineNum">     266 </span><span class="lineCov">          4 :   Testing.TimeTemp = 0;</span>
+<span class="lineNum">     267 </span><span class="lineCov">          4 :   Testing.TimeTotal = 0;</span>
+<span class="lineNum">     268 </span><span class="lineCov">          4 :   Testing.Init = false;</span>
+<span class="lineNum">     269 </span><span class="lineCov">          4 : </span>
+<span class="lineNum">     270 </span><span class="lineCov">          4 :   // transformation matrix</span>
+<span class="lineNum">     271 </span><span class="lineCov">          4 :   MTrans = [</span>
+<span class="lineNum">     272 </span><span class="lineCov">          4 :   [1,0,0,0],</span>
+<span class="lineNum">     273 </span><span class="lineCov">          4 :   [0,1,0,0],</span>
+<span class="lineNum">     274 </span><span class="lineCov">          4 :   [0,0,1,0],</span>
+<span class="lineNum">     275 </span><span class="lineCov">          4 :   [0,0,0,1]</span>
+<span class="lineNum">     276 </span><span class="lineCov">          4 :   ];</span>
+<span class="lineNum">     277 </span><span class="lineCov">          4 :   </span>
+<span class="lineNum">     278 </span><span class="lineCov">          4 :   // position information of qube</span>
+<span class="lineNum">     279 </span><span class="lineCov">          4 :   MQube = [</span>
+<span class="lineNum">     280 </span><span class="lineCov">          4 :   [1,0,0,0],</span>
+<span class="lineNum">     281 </span><span class="lineCov">          4 :   [0,1,0,0],</span>
+<span class="lineNum">     282 </span><span class="lineCov">          4 :   [0,0,1,0],</span>
+<span class="lineNum">     283 </span><span class="lineCov">          4 :   [0,0,0,1]</span>
+<span class="lineNum">     284 </span><span class="lineCov">          4 :   ];</span>
+<span class="lineNum">     285 </span><span class="lineCov">          4 :   </span>
+<span class="lineNum">     286 </span><span class="lineCov">          4 :   // entity matrix</span>
+<span class="lineNum">     287 </span><span class="lineCov">          4 :   I = [</span>
+<span class="lineNum">     288 </span><span class="lineCov">          4 :   [1,0,0,0],</span>
+<span class="lineNum">     289 </span><span class="lineCov">          4 :   [0,1,0,0],</span>
+<span class="lineNum">     290 </span><span class="lineCov">          4 :   [0,0,1,0],</span>
+<span class="lineNum">     291 </span><span class="lineCov">          4 :   [0,0,0,1]</span>
+<span class="lineNum">     292 </span><span class="lineCov">          4 :   ];</span>
+<span class="lineNum">     293 </span><span class="lineCov">          4 :   </span>
+<span class="lineNum">     294 </span><span class="lineCov">          4 :   // create qube</span>
+<span class="lineNum">     295 </span><span class="lineCov">          4 :   Q[0] = new CreateP(-CubeSize,-CubeSize, CubeSize);</span>
+<span class="lineNum">     296 </span><span class="lineCov">          4 :   Q[1] = new CreateP(-CubeSize, CubeSize, CubeSize);</span>
+<span class="lineNum">     297 </span><span class="lineCov">          4 :   Q[2] = new CreateP( CubeSize, CubeSize, CubeSize);</span>
+<span class="lineNum">     298 </span><span class="lineCov">          4 :   Q[3] = new CreateP( CubeSize,-CubeSize, CubeSize);</span>
+<span class="lineNum">     299 </span><span class="lineCov">          4 :   Q[4] = new CreateP(-CubeSize,-CubeSize,-CubeSize);</span>
+<span class="lineNum">     300 </span><span class="lineCov">          4 :   Q[5] = new CreateP(-CubeSize, CubeSize,-CubeSize);</span>
+<span class="lineNum">     301 </span><span class="lineCov">          4 :   Q[6] = new CreateP( CubeSize, CubeSize,-CubeSize);</span>
+<span class="lineNum">     302 </span><span class="lineCov">          4 :   Q[7] = new CreateP( CubeSize,-CubeSize,-CubeSize);</span>
+<span class="lineNum">     303 </span><span class="lineCov">          4 :   </span>
+<span class="lineNum">     304 </span><span class="lineCov">          4 :   // center of gravity</span>
+<span class="lineNum">     305 </span><span class="lineCov">          4 :   Q[8] = new CreateP(0, 0, 0);</span>
+<span class="lineNum">     306 </span><span class="lineCov">          4 :   </span>
+<span class="lineNum">     307 </span><span class="lineCov">          4 :   // anti-clockwise edge check</span>
+<span class="lineNum">     308 </span><span class="lineCov">          4 :   Q.Edge = [[0,1,2],[3,2,6],[7,6,5],[4,5,1],[4,0,3],[1,5,6]];</span>
+<span class="lineNum">     309 </span><span class="lineCov">          4 :   </span>
+<span class="lineNum">     310 </span><span class="lineCov">          4 :   // calculate squad normals</span>
+<span class="lineNum">     311 </span><span class="lineCov">          4 :   Q.Normal = new Array();</span>
+<span class="lineNum">     312 </span><span class="lineCov">          4 :   for (var i = 0; i &lt; Q.Edge.length; i++) Q.Normal[i] = CalcNormal(Q[Q.Edge[i][0]].V, Q[Q.Edge[i][1]].V, Q[Q.Edge[i][2]].V);</span>
+<span class="lineNum">     313 </span><span class="lineCov">          4 :   </span>
+<span class="lineNum">     314 </span><span class="lineCov">          4 :   // line drawn ?</span>
+<span class="lineNum">     315 </span><span class="lineCov">          4 :   Q.Line = [false,false,false,false,false,false,false,false,false,false,false,false];</span>
+<span class="lineNum">     316 </span><span class="lineCov">          4 :   </span>
+<span class="lineNum">     317 </span><span class="lineCov">          4 :   // create line pixels</span>
+<span class="lineNum">     318 </span><span class="lineCov">          4 :   Q.NumPx = 9 * 2 * CubeSize;</span>
+<span class="lineNum">     319 </span><span class="lineCov">          4 :   for (var i = 0; i &lt; Q.NumPx; i++) CreateP(0,0,0);</span>
+<span class="lineNum">     320 </span><span class="lineCov">          4 :   </span>
+<span class="lineNum">     321 </span><span class="lineCov">          4 :   MTrans = Translate(MTrans, Origin.V[0], Origin.V[1], Origin.V[2]);</span>
+<span class="lineNum">     322 </span><span class="lineCov">          4 :   MQube = MMulti(MTrans, MQube);</span>
+<span class="lineNum">     323 </span><span class="lineCov">          4 : </span>
+<span class="lineNum">     324 </span><span class="lineCov">          4 :   var i = 0;</span>
+<span class="lineNum">     325 </span><span class="lineCov">          4 :   for (; i &lt; 9; i++) {</span>
+<span class="lineNum">     326 </span><span class="lineCov">          4 :     Q[i].V = VMulti(MTrans, Q[i].V);</span>
+<span class="lineNum">     327 </span><span class="lineCov">          4 :   }</span>
+<span class="lineNum">     328 </span><span class="lineCov">          4 :   DrawQube();</span>
+<span class="lineNum">     329 </span><span class="lineCov">          4 :   Testing.Init = true;</span>
+<span class="lineNum">     330 </span><span class="lineCov">          4 :   Loop();</span>
+<span class="lineNum">     331 </span><span class="lineCov">          4 :   </span>
+<span class="lineNum">     332 </span><span class="lineCov">          4 :   // Perform a simple sum-based verification.</span>
+<span class="lineNum">     333 </span><span class="lineCov">          4 :   var sum = 0;</span>
+<span class="lineNum">     334 </span><span class="lineCov">          4 :   for (var i = 0; i &lt; Q.length; ++i) {</span>
+<span class="lineNum">     335 </span><span class="lineCov">          4 :     var vector = Q[i].V;</span>
+<span class="lineNum">     336 </span><span class="lineCov">          4 :     for (var j = 0; j &lt; vector.length; ++j)</span>
+<span class="lineNum">     337 </span><span class="lineCov">          4 :       sum += vector[j];</span>
+<span class="lineNum">     338 </span><span class="lineCov">          4 :   }</span>
+<span class="lineNum">     339 </span><span class="lineCov">          4 :   if (sum != validation[CubeSize])</span>
+<span class="lineNum">     340 </span><span class="lineCov">          4 :     throw &quot;Error: bad vector sum for CubeSize = &quot; + CubeSize + &quot;; expected &quot; + validation[CubeSize] + &quot; but got &quot; + sum;</span>
+<span class="lineNum">     341 </span><span class="lineCov">          4 : }</span>
+<span class="lineNum">     342 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     343 </span><span class="lineCov">          1 : for ( var i = 20; i &lt;= 160; i *= 2 ) {</span>
+<span class="lineNum">     344 </span><span class="lineCov">          1 :   Init(i);</span>
+<span class="lineNum">     345 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     346 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     347 </span><span class="lineCov">          1 : Q = null;</span>
+<span class="lineNum">     348 </span><span class="lineCov">          1 : MTrans = null;</span>
+<span class="lineNum">     349 </span><span class="lineCov">          1 : MQube = null;</span>
+<span class="lineNum">     350 </span><span class="lineCov">          1 : I = null;</span>
+<span class="lineNum">     351 </span><span class="lineCov">          1 : Origin = null;</span>
+<span class="lineNum">     352 </span><span class="lineCov">          1 : Testing = null;</span>
+<span class="lineNum">     353 </span><span class="lineCov">          1 : LoopTime = null;</span>
+<span class="lineNum">     354 </span><span class="lineCov">          1 : DisplArea = null;</span>
+<span class="lineNum">     355 </span><span class="lineCov">          1 : </span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - test/mjsunit/regress/regress-4800.js</title>
+  <link rel="stylesheet" type="text/css" href="../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../index.html">top level</a> - <a href="index.html">test/mjsunit/regress</a> - regress-4800.js<span style="font-size: 80%;"> (source / <a href="regress-4800.js.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">77</td>
+            <td class="headerCovTableEntry">77</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2017-02-14</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span><span class="lineCov">          1 : // Copyright 2016 the V8 project authors. All rights reserved.</span></a>
+<span class="lineNum">       2 </span><span class="lineCov">          1 : // Use of this source code is governed by a BSD-style license that can be</span>
+<span class="lineNum">       3 </span><span class="lineCov">          1 : // found in the LICENSE file.</span>
+<span class="lineNum">       4 </span><span class="lineCov">          1 : </span>
+<a name="5"><span class="lineNum">       5 </span><span class="lineCov">          1 : // Flags: --allow-natives-syntax</span></a>
+<span class="lineNum">       6 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">       7 </span><span class="lineCov">          3 : function f(x, len) {</span>
+<span class="lineNum">       8 </span><span class="lineCov">          3 :   var distraction = [];</span>
+<span class="lineNum">       9 </span><span class="lineCov">          3 :   var result = new Array(25);</span>
+<span class="lineNum">      10 </span><span class="lineCov">          3 : </span>
+<span class="lineNum">      11 </span><span class="lineCov">          3 :   // Create a bunch of double values with long live ranges.</span>
+<span class="lineNum">      12 </span><span class="lineCov">          3 :   var d0 = x + 0.5;</span>
+<span class="lineNum">      13 </span><span class="lineCov">          3 :   var d1 = x + 1.5;</span>
+<span class="lineNum">      14 </span><span class="lineCov">          3 :   var d2 = x + 2.5;</span>
+<span class="lineNum">      15 </span><span class="lineCov">          3 :   var d3 = x + 3.5;</span>
+<span class="lineNum">      16 </span><span class="lineCov">          3 :   var d4 = x + 4.5;</span>
+<span class="lineNum">      17 </span><span class="lineCov">          3 :   var d5 = x + 5.5;</span>
+<span class="lineNum">      18 </span><span class="lineCov">          3 :   var d6 = x + 6.5;</span>
+<span class="lineNum">      19 </span><span class="lineCov">          3 :   var d7 = x + 7.5;</span>
+<span class="lineNum">      20 </span><span class="lineCov">          3 :   var d8 = x + 8.5;</span>
+<span class="lineNum">      21 </span><span class="lineCov">          3 :   var d9 = x + 9.5;</span>
+<span class="lineNum">      22 </span><span class="lineCov">          3 :   var d10 = x + 10.5;</span>
+<span class="lineNum">      23 </span><span class="lineCov">          3 :   var d11 = x + 11.5;</span>
+<span class="lineNum">      24 </span><span class="lineCov">          3 :   var d12 = x + 12.5;</span>
+<span class="lineNum">      25 </span><span class="lineCov">          3 :   var d13 = x + 13.5;</span>
+<span class="lineNum">      26 </span><span class="lineCov">          3 :   var d14 = x + 14.5;</span>
+<span class="lineNum">      27 </span><span class="lineCov">          3 :   var d15 = x + 15.5;</span>
+<span class="lineNum">      28 </span><span class="lineCov">          3 :   var d16 = x + 16.5;</span>
+<span class="lineNum">      29 </span><span class="lineCov">          3 :   var d17 = x + 17.5;</span>
+<span class="lineNum">      30 </span><span class="lineCov">          3 :   var d18 = x + 18.5;</span>
+<span class="lineNum">      31 </span><span class="lineCov">          3 :   var d19 = x + 19.5;</span>
+<span class="lineNum">      32 </span><span class="lineCov">          3 :   var d20 = x + 20.5;</span>
+<span class="lineNum">      33 </span><span class="lineCov">          3 :   var d21 = x + 21.5;</span>
+<span class="lineNum">      34 </span><span class="lineCov">          3 :   var d22 = x + 22.5;</span>
+<span class="lineNum">      35 </span><span class="lineCov">          3 :   var d23 = x + 23.5;</span>
+<span class="lineNum">      36 </span><span class="lineCov">          3 :   var d24 = x + 24.5;</span>
+<span class="lineNum">      37 </span><span class="lineCov">          3 : </span>
+<span class="lineNum">      38 </span><span class="lineCov">          3 :   // Trigger a stub failure when the array grows too big.</span>
+<span class="lineNum">      39 </span><span class="lineCov">          3 :   distraction[len] = 0;</span>
+<span class="lineNum">      40 </span><span class="lineCov">          3 : </span>
+<span class="lineNum">      41 </span><span class="lineCov">          3 :   // Write the long-lived doubles to memory and verify them.</span>
+<span class="lineNum">      42 </span><span class="lineCov">          3 :   result[0] = d0;</span>
+<span class="lineNum">      43 </span><span class="lineCov">          3 :   result[1] = d1;</span>
+<span class="lineNum">      44 </span><span class="lineCov">          3 :   result[2] = d2;</span>
+<span class="lineNum">      45 </span><span class="lineCov">          3 :   result[3] = d3;</span>
+<span class="lineNum">      46 </span><span class="lineCov">          3 :   result[4] = d4;</span>
+<span class="lineNum">      47 </span><span class="lineCov">          3 :   result[5] = d5;</span>
+<span class="lineNum">      48 </span><span class="lineCov">          3 :   result[6] = d6;</span>
+<span class="lineNum">      49 </span><span class="lineCov">          3 :   result[7] = d7;</span>
+<span class="lineNum">      50 </span><span class="lineCov">          3 :   result[8] = d8;</span>
+<span class="lineNum">      51 </span><span class="lineCov">          3 :   result[9] = d9;</span>
+<span class="lineNum">      52 </span><span class="lineCov">          3 :   result[10] = d10;</span>
+<span class="lineNum">      53 </span><span class="lineCov">          3 :   result[11] = d11;</span>
+<span class="lineNum">      54 </span><span class="lineCov">          3 :   result[12] = d12;</span>
+<span class="lineNum">      55 </span><span class="lineCov">          3 :   result[13] = d13;</span>
+<span class="lineNum">      56 </span><span class="lineCov">          3 :   result[14] = d14;</span>
+<span class="lineNum">      57 </span><span class="lineCov">          3 :   result[15] = d15;</span>
+<span class="lineNum">      58 </span><span class="lineCov">          3 :   result[16] = d16;</span>
+<span class="lineNum">      59 </span><span class="lineCov">          3 :   result[17] = d17;</span>
+<span class="lineNum">      60 </span><span class="lineCov">          3 :   result[18] = d18;</span>
+<span class="lineNum">      61 </span><span class="lineCov">          3 :   result[19] = d19;</span>
+<span class="lineNum">      62 </span><span class="lineCov">          3 :   result[20] = d20;</span>
+<span class="lineNum">      63 </span><span class="lineCov">          3 :   result[21] = d21;</span>
+<span class="lineNum">      64 </span><span class="lineCov">          3 :   result[22] = d22;</span>
+<span class="lineNum">      65 </span><span class="lineCov">          3 :   result[23] = d23;</span>
+<span class="lineNum">      66 </span><span class="lineCov">          3 :   result[24] = d24;</span>
+<span class="lineNum">      67 </span><span class="lineCov">          3 : </span>
+<span class="lineNum">      68 </span><span class="lineCov">          3 :   for (var i = 0; i &lt; result.length; i++) {</span>
+<span class="lineNum">      69 </span><span class="lineCov">          3 :     assertEquals(x + i + 0.5, result[i]);</span>
+<span class="lineNum">      70 </span><span class="lineCov">          3 :   }</span>
+<span class="lineNum">      71 </span><span class="lineCov">          3 : }</span>
+<span class="lineNum">      72 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      73 </span><span class="lineCov">          1 : f(0, 10);</span>
+<span class="lineNum">      74 </span><span class="lineCov">          1 : f(0, 10);</span>
+<span class="lineNum">      75 </span><span class="lineCov">          1 : %OptimizeFunctionOnNextCall(f);</span>
+<span class="lineNum">      76 </span><span class="lineCov">          1 : f(0, 80000);</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - test/webkit/fast/js/number-toString.js</title>
+  <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../index.html">top level</a> - <a href="index.html">test/webkit/fast/js</a> - number-toString.js<span style="font-size: 80%;"> (source / <a href="number-toString.js.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">94</td>
+            <td class="headerCovTableEntry">94</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2017-02-14</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr><td><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span><span class="lineCov">          1 : // Copyright 2013 the V8 project authors. All rights reserved.</span></a>
+<span class="lineNum">       2 </span><span class="lineCov">          1 : // Copyright (C) 2005, 2006, 2007, 2008, 2009 Apple Inc. All rights reserved.</span>
+<span class="lineNum">       3 </span><span class="lineCov">          1 : //</span>
+<span class="lineNum">       4 </span><span class="lineCov">          1 : // Redistribution and use in source and binary forms, with or without</span>
+<span class="lineNum">       5 </span><span class="lineCov">          1 : // modification, are permitted provided that the following conditions</span>
+<span class="lineNum">       6 </span><span class="lineCov">          1 : // are met:</span>
+<span class="lineNum">       7 </span><span class="lineCov">          1 : // 1.  Redistributions of source code must retain the above copyright</span>
+<span class="lineNum">       8 </span><span class="lineCov">          1 : //     notice, this list of conditions and the following disclaimer.</span>
+<span class="lineNum">       9 </span><span class="lineCov">          1 : // 2.  Redistributions in binary form must reproduce the above copyright</span>
+<span class="lineNum">      10 </span><span class="lineCov">          1 : //     notice, this list of conditions and the following disclaimer in the</span>
+<span class="lineNum">      11 </span><span class="lineCov">          1 : //     documentation and/or other materials provided with the distribution.</span>
+<span class="lineNum">      12 </span><span class="lineCov">          1 : //</span>
+<span class="lineNum">      13 </span><span class="lineCov">          1 : // THIS SOFTWARE IS PROVIDED BY APPLE INC. AND ITS CONTRIBUTORS ``AS IS'' AND ANY</span>
+<span class="lineNum">      14 </span><span class="lineCov">          1 : // EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED</span>
+<span class="lineNum">      15 </span><span class="lineCov">          1 : // WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE</span>
+<span class="lineNum">      16 </span><span class="lineCov">          1 : // DISCLAIMED. IN NO EVENT SHALL APPLE INC. OR ITS CONTRIBUTORS BE LIABLE FOR ANY</span>
+<span class="lineNum">      17 </span><span class="lineCov">          1 : // DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES</span>
+<span class="lineNum">      18 </span><span class="lineCov">          1 : // (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="lineNum">      19 </span><span class="lineCov">          1 : // LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON</span>
+<span class="lineNum">      20 </span><span class="lineCov">          1 : // ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT</span>
+<span class="lineNum">      21 </span><span class="lineCov">          1 : // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS</span>
+<span class="lineNum">      22 </span><span class="lineCov">          1 : // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="lineNum">      23 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      24 </span><span class="lineCov">          1 : var posInf = 1/0;</span>
+<span class="lineNum">      25 </span><span class="lineCov">          1 : var negInf = -1/0;</span>
+<span class="lineNum">      26 </span><span class="lineCov">          1 : var nan = 0/0;</span>
+<span class="lineNum">      27 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      28 </span><span class="lineCov">          1 : shouldBeEqualToString(&quot;(0.0).toString(4)&quot;, &quot;0&quot;);</span>
+<span class="lineNum">      29 </span><span class="lineCov">          1 : shouldBeEqualToString(&quot;(-0.0).toString(4)&quot;, &quot;0&quot;);</span>
+<span class="lineNum">      30 </span><span class="lineCov">          1 : shouldBeEqualToString(&quot;(0.0).toString()&quot;, &quot;0&quot;);</span>
+<span class="lineNum">      31 </span><span class="lineCov">          1 : shouldBeEqualToString(&quot;(-0.0).toString()&quot;, &quot;0&quot;);</span>
+<span class="lineNum">      32 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      33 </span><span class="lineCov">          1 : // From http://bugs.webkit.org/show_bug.cgi?id=5258</span>
+<span class="lineNum">      34 </span><span class="lineCov">          1 : shouldBeEqualToString(&quot;(1234.567).toString()&quot;, &quot;1234.567&quot;);</span>
+<span class="lineNum">      35 </span><span class="lineCov">          1 : shouldThrow(&quot;(1234.567).toString(0)&quot;);</span>
+<span class="lineNum">      36 </span><span class="lineCov">          1 : // 0 equivilents</span>
+<span class="lineNum">      37 </span><span class="lineCov">          1 : shouldThrow(&quot;(1234.567).toString(null)&quot;);</span>
+<span class="lineNum">      38 </span><span class="lineCov">          1 : shouldThrow(&quot;(1234.567).toString(false)&quot;);</span>
+<span class="lineNum">      39 </span><span class="lineCov">          1 : shouldThrow(&quot;(1234.567).toString('foo')&quot;);</span>
+<span class="lineNum">      40 </span><span class="lineCov">          1 : shouldThrow(&quot;(1234.567).toString(nan)&quot;); // nan is treated like 0</span>
+<span class="lineNum">      41 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      42 </span><span class="lineCov">          1 : shouldThrow(&quot;(1234.567).toString(1)&quot;);</span>
+<span class="lineNum">      43 </span><span class="lineCov">          1 : shouldThrow(&quot;(1234.567).toString(true)&quot;);</span>
+<span class="lineNum">      44 </span><span class="lineCov">          1 : shouldThrow(&quot;(1234.567).toString('1')&quot;);</span>
+<span class="lineNum">      45 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      46 </span><span class="lineCov">          1 : // These test for Firefox compatibility, the spec is &quot;implementation defined&quot;</span>
+<span class="lineNum">      47 </span><span class="lineCov">          1 : shouldBeEqualToString(&quot;(1234.567).toString(2)&quot;, &quot;10011010010.1001000100100110111010010111100011010101&quot;);</span>
+<span class="lineNum">      48 </span><span class="lineCov">          1 : shouldBeEqualToString(&quot;(1234.567).toString(3)&quot;, &quot;1200201.120022100021001021021002202&quot;);</span>
+<span class="lineNum">      49 </span><span class="lineCov">          1 : shouldBeEqualToString(&quot;(1234.567).toString(4)&quot;, &quot;103102.21010212322113203111&quot;);</span>
+<span class="lineNum">      50 </span><span class="lineCov">          1 : shouldBeEqualToString(&quot;(1234.567).toString(4.9)&quot;, &quot;103102.21010212322113203111&quot;);</span>
+<span class="lineNum">      51 </span><span class="lineCov">          1 : shouldBeEqualToString(&quot;(1234.567).toString(5)&quot;, &quot;14414.240414141414141414&quot;);</span>
+<span class="lineNum">      52 </span><span class="lineCov">          1 : shouldBeEqualToString(&quot;(1234.567).toString(6)&quot;, &quot;5414.32224554134430233&quot;);</span>
+<span class="lineNum">      53 </span><span class="lineCov">          1 : shouldBeEqualToString(&quot;(1234.567).toString(7)&quot;, &quot;3412.365323661111653&quot;);</span>
+<span class="lineNum">      54 </span><span class="lineCov">          1 : shouldBeEqualToString(&quot;(1234.567).toString(8)&quot;, &quot;2322.44223351361524&quot;);</span>
+<span class="lineNum">      55 </span><span class="lineCov">          1 : shouldBeEqualToString(&quot;(1234.567).toString(9)&quot;, &quot;1621.50830703723265&quot;);</span>
+<span class="lineNum">      56 </span><span class="lineCov">          1 : shouldBeEqualToString(&quot;(1234.567).toString(10)&quot;, &quot;1234.567&quot;);</span>
+<span class="lineNum">      57 </span><span class="lineCov">          1 : shouldBeEqualToString(&quot;(1234.567).toString(11)&quot;, &quot;a22.62674a0a5885&quot;);</span>
+<span class="lineNum">      58 </span><span class="lineCov">          1 : shouldBeEqualToString(&quot;(1234.567).toString(12)&quot;, &quot;86a.697938b17701&quot;);</span>
+<span class="lineNum">      59 </span><span class="lineCov">          1 : shouldBeEqualToString(&quot;(1234.567).toString(13)&quot;, &quot;73c.74a91191a65&quot;);</span>
+<span class="lineNum">      60 </span><span class="lineCov">          1 : shouldBeEqualToString(&quot;(1234.567).toString(14)&quot;, &quot;642.7d1bc2caa757&quot;);</span>
+<span class="lineNum">      61 </span><span class="lineCov">          1 : shouldBeEqualToString(&quot;(1234.567).toString(15)&quot;, &quot;574.87895959596&quot;);</span>
+<span class="lineNum">      62 </span><span class="lineCov">          1 : shouldBeEqualToString(&quot;(1234.567).toString(16)&quot;, &quot;4d2.9126e978d5&quot;);</span>
+<span class="lineNum">      63 </span><span class="lineCov">          1 : shouldBeEqualToString(&quot;(1234.567).toString(17)&quot;, &quot;44a.9aeb6faa0da&quot;);</span>
+<span class="lineNum">      64 </span><span class="lineCov">          1 : shouldBeEqualToString(&quot;(1234.567).toString(18)&quot;, &quot;3ea.a3cd7102ac&quot;);</span>
+<span class="lineNum">      65 </span><span class="lineCov">          1 : shouldBeEqualToString(&quot;(1234.567).toString(19)&quot;, &quot;37i.aed102a04d&quot;);</span>
+<span class="lineNum">      66 </span><span class="lineCov">          1 : shouldBeEqualToString(&quot;(1234.567).toString(20)&quot;, &quot;31e.b6g&quot;);</span>
+<span class="lineNum">      67 </span><span class="lineCov">          1 : shouldBeEqualToString(&quot;(1234.567).toString(21)&quot;, &quot;2gg.bj0kf5cfe9&quot;);</span>
+<span class="lineNum">      68 </span><span class="lineCov">          1 : shouldBeEqualToString(&quot;(1234.567).toString(22)&quot;, &quot;2c2.ca9937cak&quot;);</span>
+<span class="lineNum">      69 </span><span class="lineCov">          1 : shouldBeEqualToString(&quot;(1234.567).toString(23)&quot;, &quot;27f.d0lfjb1a7c&quot;);</span>
+<span class="lineNum">      70 </span><span class="lineCov">          1 : shouldBeEqualToString(&quot;(1234.567).toString(24)&quot;, &quot;23a.dee4nj99j&quot;);</span>
+<span class="lineNum">      71 </span><span class="lineCov">          1 : shouldBeEqualToString(&quot;(1234.567).toString(25)&quot;, &quot;1o9.e49999999&quot;);</span>
+<span class="lineNum">      72 </span><span class="lineCov">          1 : shouldBeEqualToString(&quot;(1234.567).toString(26)&quot;, &quot;1lc.ej7fa4pkf&quot;);</span>
+<span class="lineNum">      73 </span><span class="lineCov">          1 : shouldBeEqualToString(&quot;(1234.567).toString(27)&quot;, &quot;1ij.f8971772k&quot;);</span>
+<span class="lineNum">      74 </span><span class="lineCov">          1 : shouldBeEqualToString(&quot;(1234.567).toString(28)&quot;, &quot;1g2.foelqia8e&quot;);</span>
+<span class="lineNum">      75 </span><span class="lineCov">          1 : shouldBeEqualToString(&quot;(1234.567).toString(29)&quot;, &quot;1dg.gcog9e05q&quot;);</span>
+<span class="lineNum">      76 </span><span class="lineCov">          1 : shouldBeEqualToString(&quot;(1234.567).toString(30)&quot;, &quot;1b4.h09&quot;);</span>
+<span class="lineNum">      77 </span><span class="lineCov">          1 : shouldBeEqualToString(&quot;(1234.567).toString(31)&quot;, &quot;18p.hhrfcj3t&quot;);</span>
+<span class="lineNum">      78 </span><span class="lineCov">          1 : shouldBeEqualToString(&quot;(1234.567).toString(32)&quot;, &quot;16i.i4jeiu6l&quot;);</span>
+<span class="lineNum">      79 </span><span class="lineCov">          1 : shouldBeEqualToString(&quot;(1234.567).toString(33)&quot;, &quot;14d.inf96rdvm&quot;);</span>
+<span class="lineNum">      80 </span><span class="lineCov">          1 : shouldBeEqualToString(&quot;(1234.567).toString(34)&quot;, &quot;12a.j9fchdtm&quot;);</span>
+<span class="lineNum">      81 </span><span class="lineCov">          1 : shouldBeEqualToString(&quot;(1234.567).toString(35)&quot;, &quot;109.jtk4d4d4e&quot;);</span>
+<span class="lineNum">      82 </span><span class="lineCov">          1 : shouldBeEqualToString(&quot;(1234.567).toString(36)&quot;, &quot;ya.kety9sifl&quot;);</span>
+<span class="lineNum">      83 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      84 </span><span class="lineCov">          1 : shouldThrow(&quot;(1234.567).toString(37)&quot;);</span>
+<span class="lineNum">      85 </span><span class="lineCov">          1 : shouldThrow(&quot;(1234.567).toString(-1)&quot;);</span>
+<span class="lineNum">      86 </span><span class="lineCov">          1 : shouldThrow(&quot;(1234.567).toString(posInf)&quot;);</span>
+<span class="lineNum">      87 </span><span class="lineCov">          1 : shouldThrow(&quot;(1234.567).toString(negInf)&quot;);</span>
+<span class="lineNum">      88 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      89 </span><span class="lineCov">          1 : shouldBeEqualToString(&quot;posInf.toString()&quot;, &quot;Infinity&quot;);</span>
+<span class="lineNum">      90 </span><span class="lineCov">          1 : shouldBeEqualToString(&quot;negInf.toString()&quot;, &quot;-Infinity&quot;);</span>
+<span class="lineNum">      91 </span><span class="lineCov">          1 : shouldBeEqualToString(&quot;nan.toString()&quot;, &quot;NaN&quot;);</span>
+<span class="lineNum">      92 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      93 </span><span class="lineCov">          1 : shouldBeEqualToString('&quot;&quot; + -0.0', &quot;0&quot;);</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

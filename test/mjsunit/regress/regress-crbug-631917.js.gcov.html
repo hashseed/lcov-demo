@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - test/mjsunit/regress/regress-crbug-631917.js</title>
+  <link rel="stylesheet" type="text/css" href="../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../index.html">top level</a> - <a href="index.html">test/mjsunit/regress</a> - regress-crbug-631917.js<span style="font-size: 80%;"> (source / <a href="regress-crbug-631917.js.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">39</td>
+            <td class="headerCovTableEntry">39</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2017-02-14</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">8</td>
+            <td class="headerCovTableEntry">8</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span><span class="lineCov">          1 : // Copyright 2016 the V8 project authors. All rights reserved.</span></a>
+<span class="lineNum">       2 </span><span class="lineCov">          1 : // Use of this source code is governed by a BSD-style license that can be</span>
+<span class="lineNum">       3 </span><span class="lineCov">          1 : // found in the LICENSE file.</span>
+<a name="4"><span class="lineNum">       4 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">       5 </span><span class="lineCov">          4 : var b = { toString: function() { return &quot;b&quot;; } };</span>
+<a name="6"><span class="lineNum">       6 </span><span class="lineCov">          4 : var c = { toString: function() { return &quot;c&quot;; } };</span></a>
+<span class="lineNum">       7 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">       8 </span><span class="lineCov">          1 : (function() {</span>
+<span class="lineNum">       9 </span><span class="lineCov">          1 :   var expected_receiver;</span>
+<span class="lineNum">      10 </span><span class="lineCov">          1 :   var obj1 = {</span>
+<a name="11"><span class="lineNum">      11 </span><span class="lineCov">          1 :     a: 100,</span></a>
+<a name="12"><span class="lineNum">      12 </span><span class="lineCov">          1 :     b_: 200,</span></a>
+<span class="lineNum">      13 </span><span class="lineCov">          3 :     get b() { assertEquals(expected_receiver, this); return this.b_; },</span>
+<a name="14"><span class="lineNum">      14 </span><span class="lineCov">          1 :     set b(v) { assertEquals(expected_receiver, this); this.b_ = v; },</span></a>
+<a name="15"><span class="lineNum">      15 </span><span class="lineCov">          1 :     c_: 300,</span></a>
+<span class="lineNum">      16 </span><span class="lineCov">          3 :     get c() { assertEquals(expected_receiver, this); return this.c_; },</span>
+<span class="lineNum">      17 </span><span class="lineCov">          1 :     set c(v) { assertEquals(expected_receiver, this); this.c_ = v; },</span>
+<a name="18"><span class="lineNum">      18 </span><span class="lineCov">          1 :   };</span></a>
+<span class="lineNum">      19 </span><span class="lineCov">          1 :   var obj2 = {</span>
+<span class="lineNum">      20 </span><span class="lineCov">          1 :     boom() {</span>
+<span class="lineNum">      21 </span><span class="lineCov">          1 :       super.a++;</span>
+<span class="lineNum">      22 </span><span class="lineCov">          1 :       super[b]++;</span>
+<span class="lineNum">      23 </span><span class="lineCov">          1 :       super[c]++;</span>
+<span class="lineNum">      24 </span><span class="lineCov">          1 :     },</span>
+<span class="lineNum">      25 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">      26 </span><span class="lineCov">          1 :   Object.setPrototypeOf(obj2, obj1);</span>
+<span class="lineNum">      27 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      28 </span><span class="lineCov">          1 :   expected_receiver = obj2;</span>
+<span class="lineNum">      29 </span><span class="lineCov">          1 :   obj2.boom();</span>
+<span class="lineNum">      30 </span><span class="lineCov">          1 :   assertEquals(101, obj2.a);</span>
+<span class="lineNum">      31 </span><span class="lineCov">          1 :   assertEquals(201, obj2[b]);</span>
+<span class="lineNum">      32 </span><span class="lineCov">          1 :   assertEquals(301, obj2[c]);</span>
+<span class="lineNum">      33 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      34 </span><span class="lineCov">          1 :   expected_receiver = obj1;</span>
+<span class="lineNum">      35 </span><span class="lineCov">          1 :   assertEquals(100, obj1.a);</span>
+<span class="lineNum">      36 </span><span class="lineCov">          1 :   assertEquals(200, obj1[b]);</span>
+<span class="lineNum">      37 </span><span class="lineCov">          1 :   assertEquals(300, obj1[c]);</span>
+<span class="lineNum">      38 </span><span class="lineCov">          1 : }());</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

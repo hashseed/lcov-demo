@@ -1,0 +1,959 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - test/benchmarks/data/octane/deltablue.js</title>
+  <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../index.html">top level</a> - <a href="index.html">test/benchmarks/data/octane</a> - deltablue.js<span style="font-size: 80%;"> (source / <a href="deltablue.js.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">877</td>
+            <td class="headerCovTableEntry">884</td>
+            <td class="headerCovTableEntryHi">99.2 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2017-02-14</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">72</td>
+            <td class="headerCovTableEntry">75</td>
+            <td class="headerCovTableEntryHi">96.0 %</td>
+          </tr>
+          <tr><td><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span><span class="lineCov">          1 : // Copyright 2008 the V8 project authors. All rights reserved.</span></a>
+<span class="lineNum">       2 </span><span class="lineCov">          1 : // Copyright 1996 John Maloney and Mario Wolczko.</span>
+<span class="lineNum">       3 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">       4 </span><span class="lineCov">          1 : // This program is free software; you can redistribute it and/or modify</span>
+<span class="lineNum">       5 </span><span class="lineCov">          1 : // it under the terms of the GNU General Public License as published by</span>
+<span class="lineNum">       6 </span><span class="lineCov">          1 : // the Free Software Foundation; either version 2 of the License, or</span>
+<span class="lineNum">       7 </span><span class="lineCov">          1 : // (at your option) any later version.</span>
+<span class="lineNum">       8 </span><span class="lineCov">          1 : //</span>
+<span class="lineNum">       9 </span><span class="lineCov">          1 : // This program is distributed in the hope that it will be useful,</span>
+<span class="lineNum">      10 </span><span class="lineCov">          1 : // but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="lineNum">      11 </span><span class="lineCov">          1 : // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="lineNum">      12 </span><span class="lineCov">          1 : // GNU General Public License for more details.</span>
+<span class="lineNum">      13 </span><span class="lineCov">          1 : //</span>
+<span class="lineNum">      14 </span><span class="lineCov">          1 : // You should have received a copy of the GNU General Public License</span>
+<span class="lineNum">      15 </span><span class="lineCov">          1 : // along with this program; if not, write to the Free Software</span>
+<span class="lineNum">      16 </span><span class="lineCov">          1 : // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA</span>
+<span class="lineNum">      17 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      18 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      19 </span><span class="lineCov">          1 : // This implementation of the DeltaBlue benchmark is derived</span>
+<span class="lineNum">      20 </span><span class="lineCov">          1 : // from the Smalltalk implementation by John Maloney and Mario</span>
+<span class="lineNum">      21 </span><span class="lineCov">          1 : // Wolczko. Some parts have been translated directly, whereas</span>
+<span class="lineNum">      22 </span><span class="lineCov">          1 : // others have been modified more aggresively to make it feel</span>
+<span class="lineNum">      23 </span><span class="lineCov">          1 : // more like a JavaScript program.</span>
+<span class="lineNum">      24 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      25 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      26 </span><span class="lineCov">          1 : var DeltaBlue = new BenchmarkSuite('DeltaBlue', [66118], [</span>
+<span class="lineNum">      27 </span><span class="lineCov">          1 :   new Benchmark('DeltaBlue', true, false, deltaBlue)</span>
+<span class="lineNum">      28 </span><span class="lineCov">          1 : ]);</span>
+<span class="lineNum">      29 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      30 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      31 </span><span class="lineCov">          1 : /**</span>
+<span class="lineNum">      32 </span><span class="lineCov">          1 :  * A JavaScript implementation of the DeltaBlue constraint-solving</span>
+<span class="lineNum">      33 </span><span class="lineCov">          1 :  * algorithm, as described in:</span>
+<span class="lineNum">      34 </span><span class="lineCov">          1 :  *</span>
+<span class="lineNum">      35 </span><span class="lineCov">          1 :  * &quot;The DeltaBlue Algorithm: An Incremental Constraint Hierarchy Solver&quot;</span>
+<span class="lineNum">      36 </span><span class="lineCov">          1 :  *   Bjorn N. Freeman-Benson and John Maloney</span>
+<span class="lineNum">      37 </span><span class="lineCov">          1 :  *   January 1990 Communications of the ACM,</span>
+<span class="lineNum">      38 </span><span class="lineCov">          1 :  *   also available as University of Washington TR 89-08-06.</span>
+<span class="lineNum">      39 </span><span class="lineCov">          1 :  *</span>
+<span class="lineNum">      40 </span><span class="lineCov">          1 :  * Beware: this benchmark is written in a grotesque style where</span>
+<span class="lineNum">      41 </span><span class="lineCov">          1 :  * the constraint model is built by side-effects from constructors.</span>
+<span class="lineNum">      42 </span><span class="lineCov">          1 :  * I've kept it this way to avoid deviating too much from the original</span>
+<span class="lineNum">      43 </span><span class="lineCov">          1 :  * implementation.</span>
+<span class="lineNum">      44 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">      45 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      46 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      47 </span><span class="lineCov">          1 : /* --- O b j e c t   M o d e l --- */</span>
+<span class="lineNum">      48 </span><span class="lineCov">          1 : </span>
+<a name="49"><span class="lineNum">      49 </span><span class="lineCov">          1 : Object.defineProperty(Object.prototype, &quot;inheritsFrom&quot;, {</span></a>
+<a name="50"><span class="lineNum">      50 </span><span class="lineCov">          1 :   </span></a>
+<span class="lineNum">      51 </span><span class="lineCov">          6 :   value: function (shuper) {</span>
+<span class="lineNum">      52 </span><span class="lineCov">          6 :     function Inheriter() { }</span>
+<span class="lineNum">      53 </span><span class="lineCov">          6 :     Inheriter.prototype = shuper.prototype;</span>
+<span class="lineNum">      54 </span><span class="lineCov">          6 :     this.prototype = new Inheriter();</span>
+<span class="lineNum">      55 </span><span class="lineCov">          6 :     this.superConstructor = shuper;</span>
+<span class="lineNum">      56 </span><span class="lineCov">          6 :   }</span>
+<a name="57"><span class="lineNum">      57 </span><span class="lineCov">          1 : });</span></a>
+<span class="lineNum">      58 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      59 </span><span class="lineCov">     528756 : function OrderedCollection() {</span>
+<span class="lineNum">      60 </span><span class="lineCov">     528756 :   this.elms = new Array();</span>
+<a name="61"><span class="lineNum">      61 </span><span class="lineCov">     528756 : }</span></a>
+<span class="lineNum">      62 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      63 </span><span class="lineCov">    1485462 : OrderedCollection.prototype.add = function (elm) {</span>
+<span class="lineNum">      64 </span><span class="lineCov">    1485462 :   this.elms.push(elm);</span>
+<a name="65"><span class="lineNum">      65 </span><span class="lineCov">    1485462 : }</span></a>
+<span class="lineNum">      66 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      67 </span><span class="lineCov">    9454208 : OrderedCollection.prototype.at = function (index) {</span>
+<span class="lineNum">      68 </span><span class="lineCov">    9454208 :   return this.elms[index];</span>
+<a name="69"><span class="lineNum">      69 </span><span class="lineCov">    9454208 : }</span></a>
+<span class="lineNum">      70 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      71 </span><span class="lineCov">   11429118 : OrderedCollection.prototype.size = function () {</span>
+<span class="lineNum">      72 </span><span class="lineCov">   11429118 :   return this.elms.length;</span>
+<a name="73"><span class="lineNum">      73 </span><span class="lineCov">   11429118 : }</span></a>
+<span class="lineNum">      74 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      75 </span><span class="lineCov">     774114 : OrderedCollection.prototype.removeFirst = function () {</span>
+<span class="lineNum">      76 </span><span class="lineCov">     774114 :   return this.elms.pop();</span>
+<a name="77"><span class="lineNum">      77 </span><span class="lineCov">     774114 : }</span></a>
+<span class="lineNum">      78 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      79 </span><span class="lineCov">       2536 : OrderedCollection.prototype.remove = function (elm) {</span>
+<span class="lineNum">      80 </span><span class="lineCov">       2536 :   var index = 0, skipped = 0;</span>
+<span class="lineNum">      81 </span><span class="lineCov">       2536 :   for (var i = 0; i &lt; this.elms.length; i++) {</span>
+<span class="lineNum">      82 </span><span class="lineCov">       2536 :     var value = this.elms[i];</span>
+<span class="lineNum">      83 </span><span class="lineCov">       2536 :     if (value != elm) {</span>
+<span class="lineNum">      84 </span><span class="lineCov">       2536 :       this.elms[index] = value;</span>
+<span class="lineNum">      85 </span><span class="lineCov">       2536 :       index++;</span>
+<span class="lineNum">      86 </span><span class="lineCov">       2536 :     } else {</span>
+<span class="lineNum">      87 </span><span class="lineCov">       2536 :       skipped++;</span>
+<span class="lineNum">      88 </span><span class="lineCov">       2536 :     }</span>
+<span class="lineNum">      89 </span><span class="lineCov">       2536 :   }</span>
+<span class="lineNum">      90 </span><span class="lineCov">       2536 :   for (var i = 0; i &lt; skipped; i++)</span>
+<span class="lineNum">      91 </span><span class="lineCov">       2536 :     this.elms.pop();</span>
+<span class="lineNum">      92 </span><span class="lineCov">       2536 : }</span>
+<span class="lineNum">      93 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      94 </span><span class="lineCov">          1 : /* --- *</span>
+<span class="lineNum">      95 </span><span class="lineCov">          1 :  * S t r e n g t h</span>
+<span class="lineNum">      96 </span><span class="lineCov">          1 :  * --- */</span>
+<span class="lineNum">      97 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      98 </span><span class="lineCov">          1 : /**</span>
+<span class="lineNum">      99 </span><span class="lineCov">          1 :  * Strengths are used to measure the relative importance of constraints.</span>
+<span class="lineNum">     100 </span><span class="lineCov">          1 :  * New strengths may be inserted in the strength hierarchy without</span>
+<span class="lineNum">     101 </span><span class="lineCov">          1 :  * disrupting current constraints.  Strengths cannot be created outside</span>
+<a name="102"><span class="lineNum">     102 </span><span class="lineCov">          1 :  * this class, so pointer comparison can be used for value comparison.</span></a>
+<span class="lineNum">     103 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">     104 </span><span class="lineCov">          7 : function Strength(strengthValue, name) {</span>
+<span class="lineNum">     105 </span><span class="lineCov">          7 :   this.strengthValue = strengthValue;</span>
+<span class="lineNum">     106 </span><span class="lineCov">          7 :   this.name = name;</span>
+<a name="107"><span class="lineNum">     107 </span><span class="lineCov">          7 : }</span></a>
+<span class="lineNum">     108 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     109 </span><span class="lineCov">     448872 : Strength.stronger = function (s1, s2) {</span>
+<span class="lineNum">     110 </span><span class="lineCov">     448872 :   return s1.strengthValue &lt; s2.strengthValue;</span>
+<a name="111"><span class="lineNum">     111 </span><span class="lineCov">     448872 : }</span></a>
+<span class="lineNum">     112 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     113 </span><span class="lineCov">     763970 : Strength.weaker = function (s1, s2) {</span>
+<span class="lineNum">     114 </span><span class="lineCov">     763970 :   return s1.strengthValue &gt; s2.strengthValue;</span>
+<a name="115"><span class="lineNum">     115 </span><span class="lineCov">     763970 : }</span></a>
+<span class="lineNum">     116 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     117 </span><span class="lineCov">     509736 : Strength.weakestOf = function (s1, s2) {</span>
+<span class="lineNum">     118 </span><span class="lineCov">     509736 :   return this.weaker(s1, s2) ? s1 : s2;</span>
+<a name="119"><span class="lineNum">     119 </span><span class="lineCov">     509736 : }</span></a>
+<span class="lineNum">     120 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     121 </span><span class="lineCov">          1 : Strength.strongest = function (s1, s2) {</span>
+<span class="lineNum">     122 </span><span class="lineNoCov">          0 :   return this.stronger(s1, s2) ? s1 : s2;</span>
+<a name="123"><span class="lineNum">     123 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">     124 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     125 </span><span class="lineCov">       2536 : Strength.prototype.nextWeaker = function () {</span>
+<span class="lineNum">     126 </span><span class="lineCov">       2536 :   switch (this.strengthValue) {</span>
+<span class="lineNum">     127 </span><span class="lineCov">       2536 :     case 0: return Strength.WEAKEST;</span>
+<span class="lineNum">     128 </span><span class="lineCov">       2536 :     case 1: return Strength.WEAK_DEFAULT;</span>
+<span class="lineNum">     129 </span><span class="lineCov">       2536 :     case 2: return Strength.NORMAL;</span>
+<span class="lineNum">     130 </span><span class="lineCov">       2536 :     case 3: return Strength.STRONG_DEFAULT;</span>
+<span class="lineNum">     131 </span><span class="lineCov">       2536 :     case 4: return Strength.PREFERRED;</span>
+<span class="lineNum">     132 </span><span class="lineCov">       2536 :     case 5: return Strength.REQUIRED;</span>
+<span class="lineNum">     133 </span><span class="lineCov">       2536 :   }</span>
+<span class="lineNum">     134 </span><span class="lineCov">       2536 : }</span>
+<span class="lineNum">     135 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     136 </span><span class="lineCov">          1 : // Strength constants.</span>
+<span class="lineNum">     137 </span><span class="lineCov">          1 : Strength.REQUIRED        = new Strength(0, &quot;required&quot;);</span>
+<span class="lineNum">     138 </span><span class="lineCov">          1 : Strength.STONG_PREFERRED = new Strength(1, &quot;strongPreferred&quot;);</span>
+<span class="lineNum">     139 </span><span class="lineCov">          1 : Strength.PREFERRED       = new Strength(2, &quot;preferred&quot;);</span>
+<span class="lineNum">     140 </span><span class="lineCov">          1 : Strength.STRONG_DEFAULT  = new Strength(3, &quot;strongDefault&quot;);</span>
+<span class="lineNum">     141 </span><span class="lineCov">          1 : Strength.NORMAL          = new Strength(4, &quot;normal&quot;);</span>
+<span class="lineNum">     142 </span><span class="lineCov">          1 : Strength.WEAK_DEFAULT    = new Strength(5, &quot;weakDefault&quot;);</span>
+<span class="lineNum">     143 </span><span class="lineCov">          1 : Strength.WEAKEST         = new Strength(6, &quot;weakest&quot;);</span>
+<span class="lineNum">     144 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     145 </span><span class="lineCov">          1 : /* --- *</span>
+<span class="lineNum">     146 </span><span class="lineCov">          1 :  * C o n s t r a i n t</span>
+<span class="lineNum">     147 </span><span class="lineCov">          1 :  * --- */</span>
+<span class="lineNum">     148 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     149 </span><span class="lineCov">          1 : /**</span>
+<span class="lineNum">     150 </span><span class="lineCov">          1 :  * An abstract class representing a system-maintainable relationship</span>
+<span class="lineNum">     151 </span><span class="lineCov">          1 :  * (or &quot;constraint&quot;) between a set of variables. A constraint supplies</span>
+<span class="lineNum">     152 </span><span class="lineCov">          1 :  * a strength instance variable; concrete subclasses provide a means</span>
+<span class="lineNum">     153 </span><span class="lineCov">          1 :  * of storing the constrained variables and other information required</span>
+<a name="154"><span class="lineNum">     154 </span><span class="lineCov">          1 :  * to represent a constraint.</span></a>
+<span class="lineNum">     155 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">     156 </span><span class="lineCov">     194004 : function Constraint(strength) {</span>
+<span class="lineNum">     157 </span><span class="lineCov">     194004 :   this.strength = strength;</span>
+<span class="lineNum">     158 </span><span class="lineCov">     194004 : }</span>
+<span class="lineNum">     159 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     160 </span><span class="lineCov">          1 : /**</span>
+<a name="161"><span class="lineNum">     161 </span><span class="lineCov">          1 :  * Activate this constraint and attempt to satisfy it.</span></a>
+<span class="lineNum">     162 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">     163 </span><span class="lineCov">     194004 : Constraint.prototype.addConstraint = function () {</span>
+<span class="lineNum">     164 </span><span class="lineCov">     194004 :   this.addToGraph();</span>
+<span class="lineNum">     165 </span><span class="lineCov">     194004 :   planner.incrementalAdd(this);</span>
+<span class="lineNum">     166 </span><span class="lineCov">     194004 : }</span>
+<span class="lineNum">     167 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     168 </span><span class="lineCov">          1 : /**</span>
+<span class="lineNum">     169 </span><span class="lineCov">          1 :  * Attempt to find a way to enforce this constraint. If successful,</span>
+<span class="lineNum">     170 </span><span class="lineCov">          1 :  * record the solution, perhaps modifying the current dataflow</span>
+<span class="lineNum">     171 </span><span class="lineCov">          1 :  * graph. Answer the constraint that this constraint overrides, if</span>
+<span class="lineNum">     172 </span><span class="lineCov">          1 :  * there is one, or nil, if there isn't.</span>
+<a name="173"><span class="lineNum">     173 </span><span class="lineCov">          1 :  * Assume: I am not already satisfied.</span></a>
+<span class="lineNum">     174 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">     175 </span><span class="lineCov">     322706 : Constraint.prototype.satisfy = function (mark) {</span>
+<span class="lineNum">     176 </span><span class="lineCov">     322706 :   this.chooseMethod(mark);</span>
+<span class="lineNum">     177 </span><span class="lineCov">     322706 :   if (!this.isSatisfied()) {</span>
+<span class="lineNum">     178 </span><span class="lineCov">     322706 :     if (this.strength == Strength.REQUIRED)</span>
+<span class="lineNum">     179 </span><span class="lineCov">     322706 :       alert(&quot;Could not satisfy a required constraint!&quot;);</span>
+<span class="lineNum">     180 </span><span class="lineCov">     322706 :     return null;</span>
+<span class="lineNum">     181 </span><span class="lineCov">     322706 :   }</span>
+<span class="lineNum">     182 </span><span class="lineCov">     322706 :   this.markInputs(mark);</span>
+<span class="lineNum">     183 </span><span class="lineCov">     322706 :   var out = this.output();</span>
+<span class="lineNum">     184 </span><span class="lineCov">     322706 :   var overridden = out.determinedBy;</span>
+<span class="lineNum">     185 </span><span class="lineCov">     322706 :   if (overridden != null) overridden.markUnsatisfied();</span>
+<span class="lineNum">     186 </span><span class="lineCov">     322706 :   out.determinedBy = this;</span>
+<span class="lineNum">     187 </span><span class="lineCov">     322706 :   if (!planner.addPropagate(this, mark))</span>
+<span class="lineNum">     188 </span><span class="lineCov">     322706 :     alert(&quot;Cycle encountered&quot;);</span>
+<span class="lineNum">     189 </span><span class="lineCov">     322706 :   out.mark = mark;</span>
+<span class="lineNum">     190 </span><span class="lineCov">     322706 :   return overridden;</span>
+<a name="191"><span class="lineNum">     191 </span><span class="lineCov">     322706 : }</span></a>
+<span class="lineNum">     192 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     193 </span><span class="lineCov">       2536 : Constraint.prototype.destroyConstraint = function () {</span>
+<span class="lineNum">     194 </span><span class="lineCov">       2536 :   if (this.isSatisfied()) planner.incrementalRemove(this);</span>
+<span class="lineNum">     195 </span><span class="lineCov">       2536 :   else this.removeFromGraph();</span>
+<span class="lineNum">     196 </span><span class="lineCov">       2536 : }</span>
+<span class="lineNum">     197 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     198 </span><span class="lineCov">          1 : /**</span>
+<span class="lineNum">     199 </span><span class="lineCov">          1 :  * Normal constraints are not input constraints.  An input constraint</span>
+<span class="lineNum">     200 </span><span class="lineCov">          1 :  * is one that depends on external state, such as the mouse, the</span>
+<a name="201"><span class="lineNum">     201 </span><span class="lineCov">          1 :  * keybord, a clock, or some arbitraty piece of imperative code.</span></a>
+<span class="lineNum">     202 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">     203 </span><span class="lineCov">      64034 : Constraint.prototype.isInput = function () {</span>
+<span class="lineNum">     204 </span><span class="lineCov">      64034 :   return false;</span>
+<span class="lineNum">     205 </span><span class="lineCov">      64034 : }</span>
+<span class="lineNum">     206 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     207 </span><span class="lineCov">          1 : /* --- *</span>
+<span class="lineNum">     208 </span><span class="lineCov">          1 :  * U n a r y   C o n s t r a i n t</span>
+<span class="lineNum">     209 </span><span class="lineCov">          1 :  * --- */</span>
+<span class="lineNum">     210 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     211 </span><span class="lineCov">          1 : /**</span>
+<span class="lineNum">     212 </span><span class="lineCov">          1 :  * Abstract superclass for constraints having a single possible output</span>
+<a name="213"><span class="lineNum">     213 </span><span class="lineCov">          1 :  * variable.</span></a>
+<span class="lineNum">     214 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">     215 </span><span class="lineCov">      67204 : function UnaryConstraint(v, strength) {</span>
+<span class="lineNum">     216 </span><span class="lineCov">      67204 :   UnaryConstraint.superConstructor.call(this, strength);</span>
+<span class="lineNum">     217 </span><span class="lineCov">      67204 :   this.myOutput = v;</span>
+<span class="lineNum">     218 </span><span class="lineCov">      67204 :   this.satisfied = false;</span>
+<span class="lineNum">     219 </span><span class="lineCov">      67204 :   this.addConstraint();</span>
+<span class="lineNum">     220 </span><span class="lineCov">      67204 : }</span>
+<span class="lineNum">     221 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     222 </span><span class="lineCov">          1 : UnaryConstraint.inheritsFrom(Constraint);</span>
+<span class="lineNum">     223 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     224 </span><span class="lineCov">          1 : /**</span>
+<a name="225"><span class="lineNum">     225 </span><span class="lineCov">          1 :  * Adds this constraint to the constraint graph</span></a>
+<span class="lineNum">     226 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">     227 </span><span class="lineCov">      67204 : UnaryConstraint.prototype.addToGraph = function () {</span>
+<span class="lineNum">     228 </span><span class="lineCov">      67204 :   this.myOutput.addConstraint(this);</span>
+<span class="lineNum">     229 </span><span class="lineCov">      67204 :   this.satisfied = false;</span>
+<span class="lineNum">     230 </span><span class="lineCov">      67204 : }</span>
+<span class="lineNum">     231 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     232 </span><span class="lineCov">          1 : /**</span>
+<span class="lineNum">     233 </span><span class="lineCov">          1 :  * Decides if this constraint can be satisfied and records that</span>
+<a name="234"><span class="lineNum">     234 </span><span class="lineCov">          1 :  * decision.</span></a>
+<span class="lineNum">     235 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">     236 </span><span class="lineCov">      68472 : UnaryConstraint.prototype.chooseMethod = function (mark) {</span>
+<span class="lineNum">     237 </span><span class="lineCov">      68472 :   this.satisfied = (this.myOutput.mark != mark)</span>
+<span class="lineNum">     238 </span><span class="lineCov">      68472 :     &amp;&amp; Strength.stronger(this.strength, this.myOutput.walkStrength);</span>
+<span class="lineNum">     239 </span><span class="lineCov">      68472 : }</span>
+<span class="lineNum">     240 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     241 </span><span class="lineCov">          1 : /**</span>
+<a name="242"><span class="lineNum">     242 </span><span class="lineCov">          1 :  * Returns true if this constraint is satisfied in the current solution.</span></a>
+<span class="lineNum">     243 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">     244 </span><span class="lineCov">      85590 : UnaryConstraint.prototype.isSatisfied = function () {</span>
+<span class="lineNum">     245 </span><span class="lineCov">      85590 :   return this.satisfied;</span>
+<a name="246"><span class="lineNum">     246 </span><span class="lineCov">      85590 : }</span></a>
+<span class="lineNum">     247 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     248 </span><span class="lineCov">      67204 : UnaryConstraint.prototype.markInputs = function (mark) {</span>
+<span class="lineNum">     249 </span><span class="lineCov">      67204 :   // has no inputs</span>
+<span class="lineNum">     250 </span><span class="lineCov">      67204 : }</span>
+<span class="lineNum">     251 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     252 </span><span class="lineCov">          1 : /**</span>
+<a name="253"><span class="lineNum">     253 </span><span class="lineCov">          1 :  * Returns the current output variable.</span></a>
+<span class="lineNum">     254 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">     255 </span><span class="lineCov">     213658 : UnaryConstraint.prototype.output = function () {</span>
+<span class="lineNum">     256 </span><span class="lineCov">     213658 :   return this.myOutput;</span>
+<span class="lineNum">     257 </span><span class="lineCov">     213658 : }</span>
+<span class="lineNum">     258 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     259 </span><span class="lineCov">          1 : /**</span>
+<span class="lineNum">     260 </span><span class="lineCov">          1 :  * Calculate the walkabout strength, the stay flag, and, if it is</span>
+<span class="lineNum">     261 </span><span class="lineCov">          1 :  * 'stay', the value for the current output of this constraint. Assume</span>
+<a name="262"><span class="lineNum">     262 </span><span class="lineCov">          1 :  * this constraint is satisfied.</span></a>
+<span class="lineNum">     263 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">     264 </span><span class="lineCov">      67204 : UnaryConstraint.prototype.recalculate = function () {</span>
+<span class="lineNum">     265 </span><span class="lineCov">      67204 :   this.myOutput.walkStrength = this.strength;</span>
+<span class="lineNum">     266 </span><span class="lineCov">      67204 :   this.myOutput.stay = !this.isInput();</span>
+<span class="lineNum">     267 </span><span class="lineCov">      67204 :   if (this.myOutput.stay) this.execute(); // Stay optimization</span>
+<span class="lineNum">     268 </span><span class="lineCov">      67204 : }</span>
+<span class="lineNum">     269 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     270 </span><span class="lineCov">          1 : /**</span>
+<a name="271"><span class="lineNum">     271 </span><span class="lineCov">          1 :  * Records that this constraint is unsatisfied</span></a>
+<span class="lineNum">     272 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">     273 </span><span class="lineCov">       3804 : UnaryConstraint.prototype.markUnsatisfied = function () {</span>
+<span class="lineNum">     274 </span><span class="lineCov">       3804 :   this.satisfied = false;</span>
+<a name="275"><span class="lineNum">     275 </span><span class="lineCov">       3804 : }</span></a>
+<span class="lineNum">     276 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     277 </span><span class="lineCov">       3170 : UnaryConstraint.prototype.inputsKnown = function () {</span>
+<span class="lineNum">     278 </span><span class="lineCov">       3170 :   return true;</span>
+<a name="279"><span class="lineNum">     279 </span><span class="lineCov">       3170 : }</span></a>
+<span class="lineNum">     280 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     281 </span><span class="lineCov">       2536 : UnaryConstraint.prototype.removeFromGraph = function () {</span>
+<span class="lineNum">     282 </span><span class="lineCov">       2536 :   if (this.myOutput != null) this.myOutput.removeConstraint(this);</span>
+<span class="lineNum">     283 </span><span class="lineCov">       2536 :   this.satisfied = false;</span>
+<span class="lineNum">     284 </span><span class="lineCov">       2536 : }</span>
+<span class="lineNum">     285 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     286 </span><span class="lineCov">          1 : /* --- *</span>
+<span class="lineNum">     287 </span><span class="lineCov">          1 :  * S t a y   C o n s t r a i n t</span>
+<span class="lineNum">     288 </span><span class="lineCov">          1 :  * --- */</span>
+<span class="lineNum">     289 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     290 </span><span class="lineCov">          1 : /**</span>
+<span class="lineNum">     291 </span><span class="lineCov">          1 :  * Variables that should, with some level of preference, stay the same.</span>
+<span class="lineNum">     292 </span><span class="lineCov">          1 :  * Planners may exploit the fact that instances, if satisfied, will not</span>
+<span class="lineNum">     293 </span><span class="lineCov">          1 :  * change their output during plan execution.  This is called &quot;stay</span>
+<a name="294"><span class="lineNum">     294 </span><span class="lineCov">          1 :  * optimization&quot;.</span></a>
+<span class="lineNum">     295 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">     296 </span><span class="lineCov">      64034 : function StayConstraint(v, str) {</span>
+<span class="lineNum">     297 </span><span class="lineCov">      64034 :   StayConstraint.superConstructor.call(this, v, str);</span>
+<span class="lineNum">     298 </span><span class="lineCov">      64034 : }</span>
+<span class="lineNum">     299 </span><span class="lineCov">          1 : </span>
+<a name="300"><span class="lineNum">     300 </span><span class="lineCov">          1 : StayConstraint.inheritsFrom(UnaryConstraint);</span></a>
+<span class="lineNum">     301 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     302 </span><span class="lineCov">      64034 : StayConstraint.prototype.execute = function () {</span>
+<span class="lineNum">     303 </span><span class="lineCov">      64034 :   // Stay constraints do nothing</span>
+<span class="lineNum">     304 </span><span class="lineCov">      64034 : }</span>
+<span class="lineNum">     305 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     306 </span><span class="lineCov">          1 : /* --- *</span>
+<span class="lineNum">     307 </span><span class="lineCov">          1 :  * E d i t   C o n s t r a i n t</span>
+<span class="lineNum">     308 </span><span class="lineCov">          1 :  * --- */</span>
+<span class="lineNum">     309 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     310 </span><span class="lineCov">          1 : /**</span>
+<span class="lineNum">     311 </span><span class="lineCov">          1 :  * A unary input constraint used to mark a variable that the client</span>
+<a name="312"><span class="lineNum">     312 </span><span class="lineCov">          1 :  * wishes to change.</span></a>
+<span class="lineNum">     313 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">     314 </span><span class="lineCov">       3170 : function EditConstraint(v, str) {</span>
+<span class="lineNum">     315 </span><span class="lineCov">       3170 :   EditConstraint.superConstructor.call(this, v, str);</span>
+<span class="lineNum">     316 </span><span class="lineCov">       3170 : }</span>
+<span class="lineNum">     317 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     318 </span><span class="lineCov">          1 : EditConstraint.inheritsFrom(UnaryConstraint);</span>
+<span class="lineNum">     319 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     320 </span><span class="lineCov">          1 : /**</span>
+<a name="321"><span class="lineNum">     321 </span><span class="lineCov">          1 :  * Edits indicate that a variable is to be changed by imperative code.</span></a>
+<span class="lineNum">     322 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">     323 </span><span class="lineCov">       6340 : EditConstraint.prototype.isInput = function () {</span>
+<span class="lineNum">     324 </span><span class="lineCov">       6340 :   return true;</span>
+<a name="325"><span class="lineNum">     325 </span><span class="lineCov">       6340 : }</span></a>
+<span class="lineNum">     326 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     327 </span><span class="lineCov">      88760 : EditConstraint.prototype.execute = function () {</span>
+<span class="lineNum">     328 </span><span class="lineCov">      88760 :   // Edit constraints do nothing</span>
+<span class="lineNum">     329 </span><span class="lineCov">      88760 : }</span>
+<span class="lineNum">     330 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     331 </span><span class="lineCov">          1 : /* --- *</span>
+<span class="lineNum">     332 </span><span class="lineCov">          1 :  * B i n a r y   C o n s t r a i n t</span>
+<span class="lineNum">     333 </span><span class="lineCov">          1 :  * --- */</span>
+<span class="lineNum">     334 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     335 </span><span class="lineCov">          1 : var Direction = new Object();</span>
+<span class="lineNum">     336 </span><span class="lineCov">          1 : Direction.NONE     = 0;</span>
+<span class="lineNum">     337 </span><span class="lineCov">          1 : Direction.FORWARD  = 1;</span>
+<span class="lineNum">     338 </span><span class="lineCov">          1 : Direction.BACKWARD = -1;</span>
+<span class="lineNum">     339 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     340 </span><span class="lineCov">          1 : /**</span>
+<span class="lineNum">     341 </span><span class="lineCov">          1 :  * Abstract superclass for constraints having two possible output</span>
+<a name="342"><span class="lineNum">     342 </span><span class="lineCov">          1 :  * variables.</span></a>
+<span class="lineNum">     343 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">     344 </span><span class="lineCov">     126800 : function BinaryConstraint(var1, var2, strength) {</span>
+<span class="lineNum">     345 </span><span class="lineCov">     126800 :   BinaryConstraint.superConstructor.call(this, strength);</span>
+<span class="lineNum">     346 </span><span class="lineCov">     126800 :   this.v1 = var1;</span>
+<span class="lineNum">     347 </span><span class="lineCov">     126800 :   this.v2 = var2;</span>
+<span class="lineNum">     348 </span><span class="lineCov">     126800 :   this.direction = Direction.NONE;</span>
+<span class="lineNum">     349 </span><span class="lineCov">     126800 :   this.addConstraint();</span>
+<span class="lineNum">     350 </span><span class="lineCov">     126800 : }</span>
+<span class="lineNum">     351 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     352 </span><span class="lineCov">          1 : BinaryConstraint.inheritsFrom(Constraint);</span>
+<span class="lineNum">     353 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     354 </span><span class="lineCov">          1 : /**</span>
+<span class="lineNum">     355 </span><span class="lineCov">          1 :  * Decides if this constraint can be satisfied and which way it</span>
+<span class="lineNum">     356 </span><span class="lineCov">          1 :  * should flow based on the relative strength of the variables related,</span>
+<a name="357"><span class="lineNum">     357 </span><span class="lineCov">          1 :  * and record that decision.</span></a>
+<span class="lineNum">     358 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">     359 </span><span class="lineCov">     254234 : BinaryConstraint.prototype.chooseMethod = function (mark) {</span>
+<span class="lineNum">     360 </span><span class="lineCov">     254234 :   if (this.v1.mark == mark) {</span>
+<span class="lineNum">     361 </span><span class="lineCov">     254234 :     this.direction = (this.v2.mark != mark &amp;&amp; Strength.stronger(this.strength, this.v2.walkStrength))</span>
+<span class="lineNum">     362 </span><span class="lineCov">     254234 :       ? Direction.FORWARD</span>
+<span class="lineNum">     363 </span><span class="lineCov">     254234 :       : Direction.NONE;</span>
+<span class="lineNum">     364 </span><span class="lineCov">     254234 :   }</span>
+<span class="lineNum">     365 </span><span class="lineCov">     254234 :   if (this.v2.mark == mark) {</span>
+<span class="lineNum">     366 </span><span class="lineCov">     254234 :     this.direction = (this.v1.mark != mark &amp;&amp; Strength.stronger(this.strength, this.v1.walkStrength))</span>
+<span class="lineNum">     367 </span><span class="lineCov">     254234 :       ? Direction.BACKWARD</span>
+<span class="lineNum">     368 </span><span class="lineCov">     254234 :       : Direction.NONE;</span>
+<span class="lineNum">     369 </span><span class="lineCov">     254234 :   }</span>
+<span class="lineNum">     370 </span><span class="lineCov">     254234 :   if (Strength.weaker(this.v1.walkStrength, this.v2.walkStrength)) {</span>
+<span class="lineNum">     371 </span><span class="lineCov">     254234 :     this.direction = Strength.stronger(this.strength, this.v1.walkStrength)</span>
+<span class="lineNum">     372 </span><span class="lineCov">     254234 :       ? Direction.BACKWARD</span>
+<span class="lineNum">     373 </span><span class="lineCov">     254234 :       : Direction.NONE;</span>
+<span class="lineNum">     374 </span><span class="lineCov">     254234 :   } else {</span>
+<span class="lineNum">     375 </span><span class="lineCov">     254234 :     this.direction = Strength.stronger(this.strength, this.v2.walkStrength)</span>
+<span class="lineNum">     376 </span><span class="lineCov">     254234 :       ? Direction.FORWARD</span>
+<span class="lineNum">     377 </span><span class="lineCov">     254234 :       : Direction.BACKWARD</span>
+<span class="lineNum">     378 </span><span class="lineCov">     254234 :   }</span>
+<span class="lineNum">     379 </span><span class="lineCov">     254234 : }</span>
+<span class="lineNum">     380 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     381 </span><span class="lineCov">          1 : /**</span>
+<a name="382"><span class="lineNum">     382 </span><span class="lineCov">          1 :  * Add this constraint to the constraint graph</span></a>
+<span class="lineNum">     383 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">     384 </span><span class="lineCov">     126800 : BinaryConstraint.prototype.addToGraph = function () {</span>
+<span class="lineNum">     385 </span><span class="lineCov">     126800 :   this.v1.addConstraint(this);</span>
+<span class="lineNum">     386 </span><span class="lineCov">     126800 :   this.v2.addConstraint(this);</span>
+<span class="lineNum">     387 </span><span class="lineCov">     126800 :   this.direction = Direction.NONE;</span>
+<span class="lineNum">     388 </span><span class="lineCov">     126800 : }</span>
+<span class="lineNum">     389 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     390 </span><span class="lineCov">          1 : /**</span>
+<a name="391"><span class="lineNum">     391 </span><span class="lineCov">          1 :  * Answer true if this constraint is satisfied in the current solution.</span></a>
+<span class="lineNum">     392 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">     393 </span><span class="lineCov">    1084774 : BinaryConstraint.prototype.isSatisfied = function () {</span>
+<span class="lineNum">     394 </span><span class="lineCov">    1084774 :   return this.direction != Direction.NONE;</span>
+<span class="lineNum">     395 </span><span class="lineCov">    1084774 : }</span>
+<span class="lineNum">     396 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     397 </span><span class="lineCov">          1 : /**</span>
+<a name="398"><span class="lineNum">     398 </span><span class="lineCov">          1 :  * Mark the input variable with the given mark.</span></a>
+<span class="lineNum">     399 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">     400 </span><span class="lineCov">     254234 : BinaryConstraint.prototype.markInputs = function (mark) {</span>
+<span class="lineNum">     401 </span><span class="lineCov">     254234 :   this.input().mark = mark;</span>
+<span class="lineNum">     402 </span><span class="lineCov">     254234 : }</span>
+<span class="lineNum">     403 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     404 </span><span class="lineCov">          1 : /**</span>
+<a name="405"><span class="lineNum">     405 </span><span class="lineCov">          1 :  * Returns the current input variable</span></a>
+<span class="lineNum">     406 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">     407 </span><span class="lineCov">    7422238 : BinaryConstraint.prototype.input = function () {</span>
+<span class="lineNum">     408 </span><span class="lineCov">    7422238 :   return (this.direction == Direction.FORWARD) ? this.v1 : this.v2;</span>
+<span class="lineNum">     409 </span><span class="lineCov">    7422238 : }</span>
+<span class="lineNum">     410 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     411 </span><span class="lineCov">          1 : /**</span>
+<a name="412"><span class="lineNum">     412 </span><span class="lineCov">          1 :  * Returns the current output variable</span></a>
+<span class="lineNum">     413 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">     414 </span><span class="lineCov">    8696578 : BinaryConstraint.prototype.output = function () {</span>
+<span class="lineNum">     415 </span><span class="lineCov">    8696578 :   return (this.direction == Direction.FORWARD) ? this.v2 : this.v1;</span>
+<span class="lineNum">     416 </span><span class="lineCov">    8696578 : }</span>
+<span class="lineNum">     417 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     418 </span><span class="lineCov">          1 : /**</span>
+<span class="lineNum">     419 </span><span class="lineCov">          1 :  * Calculate the walkabout strength, the stay flag, and, if it is</span>
+<span class="lineNum">     420 </span><span class="lineCov">          1 :  * 'stay', the value for the current output of this</span>
+<a name="421"><span class="lineNum">     421 </span><span class="lineCov">          1 :  * constraint. Assume this constraint is satisfied.</span></a>
+<span class="lineNum">     422 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">     423 </span><span class="lineCov">     190200 : BinaryConstraint.prototype.recalculate = function () {</span>
+<span class="lineNum">     424 </span><span class="lineCov">     190200 :   var ihn = this.input(), out = this.output();</span>
+<span class="lineNum">     425 </span><span class="lineCov">     190200 :   out.walkStrength = Strength.weakestOf(this.strength, ihn.walkStrength);</span>
+<span class="lineNum">     426 </span><span class="lineCov">     190200 :   out.stay = ihn.stay;</span>
+<span class="lineNum">     427 </span><span class="lineCov">     190200 :   if (out.stay) this.execute();</span>
+<span class="lineNum">     428 </span><span class="lineCov">     190200 : }</span>
+<span class="lineNum">     429 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     430 </span><span class="lineCov">          1 : /**</span>
+<a name="431"><span class="lineNum">     431 </span><span class="lineCov">          1 :  * Record the fact that this constraint is unsatisfied.</span></a>
+<span class="lineNum">     432 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">     433 </span><span class="lineCov">     127434 : BinaryConstraint.prototype.markUnsatisfied = function () {</span>
+<span class="lineNum">     434 </span><span class="lineCov">     127434 :   this.direction = Direction.NONE;</span>
+<a name="435"><span class="lineNum">     435 </span><span class="lineCov">     127434 : }</span></a>
+<span class="lineNum">     436 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     437 </span><span class="lineCov">     191468 : BinaryConstraint.prototype.inputsKnown = function (mark) {</span>
+<span class="lineNum">     438 </span><span class="lineCov">     191468 :   var i = this.input();</span>
+<span class="lineNum">     439 </span><span class="lineCov">     191468 :   return i.mark == mark || i.stay || i.determinedBy == null;</span>
+<a name="440"><span class="lineNum">     440 </span><span class="lineCov">     191468 : }</span></a>
+<span class="lineNum">     441 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     442 </span><span class="lineCov">          1 : BinaryConstraint.prototype.removeFromGraph = function () {</span>
+<span class="lineNum">     443 </span><span class="lineNoCov">          0 :   if (this.v1 != null) this.v1.removeConstraint(this);</span>
+<span class="lineNum">     444 </span><span class="lineNoCov">          0 :   if (this.v2 != null) this.v2.removeConstraint(this);</span>
+<span class="lineNum">     445 </span><span class="lineNoCov">          0 :   this.direction = Direction.NONE;</span>
+<span class="lineNum">     446 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     447 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     448 </span><span class="lineCov">          1 : /* --- *</span>
+<span class="lineNum">     449 </span><span class="lineCov">          1 :  * S c a l e   C o n s t r a i n t</span>
+<span class="lineNum">     450 </span><span class="lineCov">          1 :  * --- */</span>
+<span class="lineNum">     451 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     452 </span><span class="lineCov">          1 : /**</span>
+<span class="lineNum">     453 </span><span class="lineCov">          1 :  * Relates two variables by the linear scaling relationship: &quot;v2 =</span>
+<span class="lineNum">     454 </span><span class="lineCov">          1 :  * (v1 * scale) + offset&quot;. Either v1 or v2 may be changed to maintain</span>
+<span class="lineNum">     455 </span><span class="lineCov">          1 :  * this relationship but the scale factor and offset are considered</span>
+<a name="456"><span class="lineNum">     456 </span><span class="lineCov">          1 :  * read-only.</span></a>
+<span class="lineNum">     457 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">     458 </span><span class="lineCov">      63400 : function ScaleConstraint(src, scale, offset, dest, strength) {</span>
+<span class="lineNum">     459 </span><span class="lineCov">      63400 :   this.direction = Direction.NONE;</span>
+<span class="lineNum">     460 </span><span class="lineCov">      63400 :   this.scale = scale;</span>
+<span class="lineNum">     461 </span><span class="lineCov">      63400 :   this.offset = offset;</span>
+<span class="lineNum">     462 </span><span class="lineCov">      63400 :   ScaleConstraint.superConstructor.call(this, src, dest, strength);</span>
+<span class="lineNum">     463 </span><span class="lineCov">      63400 : }</span>
+<span class="lineNum">     464 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     465 </span><span class="lineCov">          1 : ScaleConstraint.inheritsFrom(BinaryConstraint);</span>
+<span class="lineNum">     466 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     467 </span><span class="lineCov">          1 : /**</span>
+<a name="468"><span class="lineNum">     468 </span><span class="lineCov">          1 :  * Adds this constraint to the constraint graph.</span></a>
+<span class="lineNum">     469 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">     470 </span><span class="lineCov">      63400 : ScaleConstraint.prototype.addToGraph = function () {</span>
+<span class="lineNum">     471 </span><span class="lineCov">      63400 :   ScaleConstraint.superConstructor.prototype.addToGraph.call(this);</span>
+<span class="lineNum">     472 </span><span class="lineCov">      63400 :   this.scale.addConstraint(this);</span>
+<span class="lineNum">     473 </span><span class="lineCov">      63400 :   this.offset.addConstraint(this);</span>
+<a name="474"><span class="lineNum">     474 </span><span class="lineCov">      63400 : }</span></a>
+<span class="lineNum">     475 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     476 </span><span class="lineCov">          1 : ScaleConstraint.prototype.removeFromGraph = function () {</span>
+<span class="lineNum">     477 </span><span class="lineNoCov">          0 :   ScaleConstraint.superConstructor.prototype.removeFromGraph.call(this);</span>
+<span class="lineNum">     478 </span><span class="lineNoCov">          0 :   if (this.scale != null) this.scale.removeConstraint(this);</span>
+<span class="lineNum">     479 </span><span class="lineNoCov">          0 :   if (this.offset != null) this.offset.removeConstraint(this);</span>
+<a name="480"><span class="lineNum">     480 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">     481 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     482 </span><span class="lineCov">      64034 : ScaleConstraint.prototype.markInputs = function (mark) {</span>
+<span class="lineNum">     483 </span><span class="lineCov">      64034 :   ScaleConstraint.superConstructor.prototype.markInputs.call(this, mark);</span>
+<span class="lineNum">     484 </span><span class="lineCov">      64034 :   this.scale.mark = this.offset.mark = mark;</span>
+<span class="lineNum">     485 </span><span class="lineCov">      64034 : }</span>
+<span class="lineNum">     486 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     487 </span><span class="lineCov">          1 : /**</span>
+<a name="488"><span class="lineNum">     488 </span><span class="lineCov">          1 :  * Enforce this constraint. Assume that it is satisfied.</span></a>
+<span class="lineNum">     489 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">     490 </span><span class="lineCov">    1472148 : ScaleConstraint.prototype.execute = function () {</span>
+<span class="lineNum">     491 </span><span class="lineCov">    1472148 :   if (this.direction == Direction.FORWARD) {</span>
+<span class="lineNum">     492 </span><span class="lineCov">    1472148 :     this.v2.value = this.v1.value * this.scale.value + this.offset.value;</span>
+<span class="lineNum">     493 </span><span class="lineCov">    1472148 :   } else {</span>
+<span class="lineNum">     494 </span><span class="lineCov">    1472148 :     this.v1.value = (this.v2.value - this.offset.value) / this.scale.value;</span>
+<span class="lineNum">     495 </span><span class="lineCov">    1472148 :   }</span>
+<span class="lineNum">     496 </span><span class="lineCov">    1472148 : }</span>
+<span class="lineNum">     497 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     498 </span><span class="lineCov">          1 : /**</span>
+<span class="lineNum">     499 </span><span class="lineCov">          1 :  * Calculate the walkabout strength, the stay flag, and, if it is</span>
+<span class="lineNum">     500 </span><span class="lineCov">          1 :  * 'stay', the value for the current output of this constraint. Assume</span>
+<a name="501"><span class="lineNum">     501 </span><span class="lineCov">          1 :  * this constraint is satisfied.</span></a>
+<span class="lineNum">     502 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">     503 </span><span class="lineCov">     319536 : ScaleConstraint.prototype.recalculate = function () {</span>
+<span class="lineNum">     504 </span><span class="lineCov">     319536 :   var ihn = this.input(), out = this.output();</span>
+<span class="lineNum">     505 </span><span class="lineCov">     319536 :   out.walkStrength = Strength.weakestOf(this.strength, ihn.walkStrength);</span>
+<span class="lineNum">     506 </span><span class="lineCov">     319536 :   out.stay = ihn.stay &amp;&amp; this.scale.stay &amp;&amp; this.offset.stay;</span>
+<span class="lineNum">     507 </span><span class="lineCov">     319536 :   if (out.stay) this.execute();</span>
+<span class="lineNum">     508 </span><span class="lineCov">     319536 : }</span>
+<span class="lineNum">     509 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     510 </span><span class="lineCov">          1 : /* --- *</span>
+<span class="lineNum">     511 </span><span class="lineCov">          1 :  * E q u a l i t  y   C o n s t r a i n t</span>
+<span class="lineNum">     512 </span><span class="lineCov">          1 :  * --- */</span>
+<span class="lineNum">     513 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     514 </span><span class="lineCov">          1 : /**</span>
+<a name="515"><span class="lineNum">     515 </span><span class="lineCov">          1 :  * Constrains two variables to have the same value.</span></a>
+<span class="lineNum">     516 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">     517 </span><span class="lineCov">      63400 : function EqualityConstraint(var1, var2, strength) {</span>
+<span class="lineNum">     518 </span><span class="lineCov">      63400 :   EqualityConstraint.superConstructor.call(this, var1, var2, strength);</span>
+<span class="lineNum">     519 </span><span class="lineCov">      63400 : }</span>
+<span class="lineNum">     520 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     521 </span><span class="lineCov">          1 : EqualityConstraint.inheritsFrom(BinaryConstraint);</span>
+<span class="lineNum">     522 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     523 </span><span class="lineCov">          1 : /**</span>
+<a name="524"><span class="lineNum">     524 </span><span class="lineCov">          1 :  * Enforce this constraint. Assume that it is satisfied.</span></a>
+<span class="lineNum">     525 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">     526 </span><span class="lineCov">    6466800 : EqualityConstraint.prototype.execute = function () {</span>
+<span class="lineNum">     527 </span><span class="lineCov">    6466800 :   this.output().value = this.input().value;</span>
+<span class="lineNum">     528 </span><span class="lineCov">    6466800 : }</span>
+<span class="lineNum">     529 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     530 </span><span class="lineCov">          1 : /* --- *</span>
+<span class="lineNum">     531 </span><span class="lineCov">          1 :  * V a r i a b l e</span>
+<span class="lineNum">     532 </span><span class="lineCov">          1 :  * --- */</span>
+<span class="lineNum">     533 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     534 </span><span class="lineCov">          1 : /**</span>
+<span class="lineNum">     535 </span><span class="lineCov">          1 :  * A constrained variable. In addition to its value, it maintain the</span>
+<span class="lineNum">     536 </span><span class="lineCov">          1 :  * structure of the constraint graph, the current dataflow graph, and</span>
+<span class="lineNum">     537 </span><span class="lineCov">          1 :  * various parameters of interest to the DeltaBlue incremental</span>
+<a name="538"><span class="lineNum">     538 </span><span class="lineCov">          1 :  * constraint solver.</span></a>
+<span class="lineNum">     539 </span><span class="lineCov">          1 :  **/</span>
+<span class="lineNum">     540 </span><span class="lineCov">     192102 : function Variable(name, initialValue) {</span>
+<span class="lineNum">     541 </span><span class="lineCov">     192102 :   this.value = initialValue || 0;</span>
+<span class="lineNum">     542 </span><span class="lineCov">     192102 :   this.constraints = new OrderedCollection();</span>
+<span class="lineNum">     543 </span><span class="lineCov">     192102 :   this.determinedBy = null;</span>
+<span class="lineNum">     544 </span><span class="lineCov">     192102 :   this.mark = 0;</span>
+<span class="lineNum">     545 </span><span class="lineCov">     192102 :   this.walkStrength = Strength.WEAKEST;</span>
+<span class="lineNum">     546 </span><span class="lineCov">     192102 :   this.stay = true;</span>
+<span class="lineNum">     547 </span><span class="lineCov">     192102 :   this.name = name;</span>
+<span class="lineNum">     548 </span><span class="lineCov">     192102 : }</span>
+<span class="lineNum">     549 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     550 </span><span class="lineCov">          1 : /**</span>
+<span class="lineNum">     551 </span><span class="lineCov">          1 :  * Add the given constraint to the set of all constraints that refer</span>
+<a name="552"><span class="lineNum">     552 </span><span class="lineCov">          1 :  * this variable.</span></a>
+<span class="lineNum">     553 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">     554 </span><span class="lineCov">     447604 : Variable.prototype.addConstraint = function (c) {</span>
+<span class="lineNum">     555 </span><span class="lineCov">     447604 :   this.constraints.add(c);</span>
+<span class="lineNum">     556 </span><span class="lineCov">     447604 : }</span>
+<span class="lineNum">     557 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     558 </span><span class="lineCov">          1 : /**</span>
+<a name="559"><span class="lineNum">     559 </span><span class="lineCov">          1 :  * Removes all traces of c from this variable.</span></a>
+<span class="lineNum">     560 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">     561 </span><span class="lineCov">       2536 : Variable.prototype.removeConstraint = function (c) {</span>
+<span class="lineNum">     562 </span><span class="lineCov">       2536 :   this.constraints.remove(c);</span>
+<span class="lineNum">     563 </span><span class="lineCov">       2536 :   if (this.determinedBy == c) this.determinedBy = null;</span>
+<span class="lineNum">     564 </span><span class="lineCov">       2536 : }</span>
+<span class="lineNum">     565 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     566 </span><span class="lineCov">          1 : /* --- *</span>
+<span class="lineNum">     567 </span><span class="lineCov">          1 :  * P l a n n e r</span>
+<span class="lineNum">     568 </span><span class="lineCov">          1 :  * --- */</span>
+<span class="lineNum">     569 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     570 </span><span class="lineCov">          1 : /**</span>
+<a name="571"><span class="lineNum">     571 </span><span class="lineCov">          1 :  * The DeltaBlue planner</span></a>
+<span class="lineNum">     572 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">     573 </span><span class="lineCov">       1268 : function Planner() {</span>
+<span class="lineNum">     574 </span><span class="lineCov">       1268 :   this.currentMark = 0;</span>
+<span class="lineNum">     575 </span><span class="lineCov">       1268 : }</span>
+<span class="lineNum">     576 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     577 </span><span class="lineCov">          1 : /**</span>
+<span class="lineNum">     578 </span><span class="lineCov">          1 :  * Attempt to satisfy the given constraint and, if successful,</span>
+<span class="lineNum">     579 </span><span class="lineCov">          1 :  * incrementally update the dataflow graph.  Details: If satifying</span>
+<span class="lineNum">     580 </span><span class="lineCov">          1 :  * the constraint is successful, it may override a weaker constraint</span>
+<span class="lineNum">     581 </span><span class="lineCov">          1 :  * on its output. The algorithm attempts to resatisfy that</span>
+<span class="lineNum">     582 </span><span class="lineCov">          1 :  * constraint using some other method. This process is repeated</span>
+<span class="lineNum">     583 </span><span class="lineCov">          1 :  * until either a) it reaches a variable that was not previously</span>
+<span class="lineNum">     584 </span><span class="lineCov">          1 :  * determined by any constraint or b) it reaches a constraint that</span>
+<span class="lineNum">     585 </span><span class="lineCov">          1 :  * is too weak to be satisfied using any of its methods. The</span>
+<span class="lineNum">     586 </span><span class="lineCov">          1 :  * variables of constraints that have been processed are marked with</span>
+<span class="lineNum">     587 </span><span class="lineCov">          1 :  * a unique mark value so that we know where we've been. This allows</span>
+<span class="lineNum">     588 </span><span class="lineCov">          1 :  * the algorithm to avoid getting into an infinite loop even if the</span>
+<a name="589"><span class="lineNum">     589 </span><span class="lineCov">          1 :  * constraint graph has an inadvertent cycle.</span></a>
+<span class="lineNum">     590 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">     591 </span><span class="lineCov">     194004 : Planner.prototype.incrementalAdd = function (c) {</span>
+<span class="lineNum">     592 </span><span class="lineCov">     194004 :   var mark = this.newMark();</span>
+<span class="lineNum">     593 </span><span class="lineCov">     194004 :   var overridden = c.satisfy(mark);</span>
+<span class="lineNum">     594 </span><span class="lineCov">     194004 :   while (overridden != null)</span>
+<span class="lineNum">     595 </span><span class="lineCov">     194004 :     overridden = overridden.satisfy(mark);</span>
+<span class="lineNum">     596 </span><span class="lineCov">     194004 : }</span>
+<span class="lineNum">     597 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     598 </span><span class="lineCov">          1 : /**</span>
+<span class="lineNum">     599 </span><span class="lineCov">          1 :  * Entry point for retracting a constraint. Remove the given</span>
+<span class="lineNum">     600 </span><span class="lineCov">          1 :  * constraint and incrementally update the dataflow graph.</span>
+<span class="lineNum">     601 </span><span class="lineCov">          1 :  * Details: Retracting the given constraint may allow some currently</span>
+<span class="lineNum">     602 </span><span class="lineCov">          1 :  * unsatisfiable downstream constraint to be satisfied. We therefore collect</span>
+<span class="lineNum">     603 </span><span class="lineCov">          1 :  * a list of unsatisfied downstream constraints and attempt to</span>
+<span class="lineNum">     604 </span><span class="lineCov">          1 :  * satisfy each one in turn. This list is traversed by constraint</span>
+<span class="lineNum">     605 </span><span class="lineCov">          1 :  * strength, strongest first, as a heuristic for avoiding</span>
+<span class="lineNum">     606 </span><span class="lineCov">          1 :  * unnecessarily adding and then overriding weak constraints.</span>
+<a name="607"><span class="lineNum">     607 </span><span class="lineCov">          1 :  * Assume: c is satisfied.</span></a>
+<span class="lineNum">     608 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">     609 </span><span class="lineCov">       2536 : Planner.prototype.incrementalRemove = function (c) {</span>
+<span class="lineNum">     610 </span><span class="lineCov">       2536 :   var out = c.output();</span>
+<span class="lineNum">     611 </span><span class="lineCov">       2536 :   c.markUnsatisfied();</span>
+<span class="lineNum">     612 </span><span class="lineCov">       2536 :   c.removeFromGraph();</span>
+<span class="lineNum">     613 </span><span class="lineCov">       2536 :   var unsatisfied = this.removePropagateFrom(out);</span>
+<span class="lineNum">     614 </span><span class="lineCov">       2536 :   var strength = Strength.REQUIRED;</span>
+<span class="lineNum">     615 </span><span class="lineCov">       2536 :   do {</span>
+<span class="lineNum">     616 </span><span class="lineCov">       2536 :     for (var i = 0; i &lt; unsatisfied.size(); i++) {</span>
+<span class="lineNum">     617 </span><span class="lineCov">       2536 :       var u = unsatisfied.at(i);</span>
+<span class="lineNum">     618 </span><span class="lineCov">       2536 :       if (u.strength == strength)</span>
+<span class="lineNum">     619 </span><span class="lineCov">       2536 :         this.incrementalAdd(u);</span>
+<span class="lineNum">     620 </span><span class="lineCov">       2536 :     }</span>
+<span class="lineNum">     621 </span><span class="lineCov">       2536 :     strength = strength.nextWeaker();</span>
+<span class="lineNum">     622 </span><span class="lineCov">       2536 :   } while (strength != Strength.WEAKEST);</span>
+<span class="lineNum">     623 </span><span class="lineCov">       2536 : }</span>
+<span class="lineNum">     624 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     625 </span><span class="lineCov">          1 : /**</span>
+<a name="626"><span class="lineNum">     626 </span><span class="lineCov">          1 :  * Select a previously unused mark value.</span></a>
+<span class="lineNum">     627 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">     628 </span><span class="lineCov">     197174 : Planner.prototype.newMark = function () {</span>
+<span class="lineNum">     629 </span><span class="lineCov">     197174 :   return ++this.currentMark;</span>
+<span class="lineNum">     630 </span><span class="lineCov">     197174 : }</span>
+<span class="lineNum">     631 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     632 </span><span class="lineCov">          1 : /**</span>
+<span class="lineNum">     633 </span><span class="lineCov">          1 :  * Extract a plan for resatisfaction starting from the given source</span>
+<span class="lineNum">     634 </span><span class="lineCov">          1 :  * constraints, usually a set of input constraints. This method</span>
+<span class="lineNum">     635 </span><span class="lineCov">          1 :  * assumes that stay optimization is desired; the plan will contain</span>
+<span class="lineNum">     636 </span><span class="lineCov">          1 :  * only constraints whose output variables are not stay. Constraints</span>
+<span class="lineNum">     637 </span><span class="lineCov">          1 :  * that do no computation, such as stay and edit constraints, are</span>
+<span class="lineNum">     638 </span><span class="lineCov">          1 :  * not included in the plan.</span>
+<span class="lineNum">     639 </span><span class="lineCov">          1 :  * Details: The outputs of a constraint are marked when it is added</span>
+<span class="lineNum">     640 </span><span class="lineCov">          1 :  * to the plan under construction. A constraint may be appended to</span>
+<span class="lineNum">     641 </span><span class="lineCov">          1 :  * the plan when all its input variables are known. A variable is</span>
+<span class="lineNum">     642 </span><span class="lineCov">          1 :  * known if either a) the variable is marked (indicating that has</span>
+<span class="lineNum">     643 </span><span class="lineCov">          1 :  * been computed by a constraint appearing earlier in the plan), b)</span>
+<span class="lineNum">     644 </span><span class="lineCov">          1 :  * the variable is 'stay' (i.e. it is a constant at plan execution</span>
+<span class="lineNum">     645 </span><span class="lineCov">          1 :  * time), or c) the variable is not determined by any</span>
+<span class="lineNum">     646 </span><span class="lineCov">          1 :  * constraint. The last provision is for past states of history</span>
+<span class="lineNum">     647 </span><span class="lineCov">          1 :  * variables, which are not stay but which are also not computed by</span>
+<span class="lineNum">     648 </span><span class="lineCov">          1 :  * any constraint.</span>
+<a name="649"><span class="lineNum">     649 </span><span class="lineCov">          1 :  * Assume: sources are all satisfied.</span></a>
+<span class="lineNum">     650 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">     651 </span><span class="lineCov">       3170 : Planner.prototype.makePlan = function (sources) {</span>
+<span class="lineNum">     652 </span><span class="lineCov">       3170 :   var mark = this.newMark();</span>
+<span class="lineNum">     653 </span><span class="lineCov">       3170 :   var plan = new Plan();</span>
+<span class="lineNum">     654 </span><span class="lineCov">       3170 :   var todo = sources;</span>
+<span class="lineNum">     655 </span><span class="lineCov">       3170 :   while (todo.size() &gt; 0) {</span>
+<span class="lineNum">     656 </span><span class="lineCov">       3170 :     var c = todo.removeFirst();</span>
+<span class="lineNum">     657 </span><span class="lineCov">       3170 :     if (c.output().mark != mark &amp;&amp; c.inputsKnown(mark)) {</span>
+<span class="lineNum">     658 </span><span class="lineCov">       3170 :       plan.addConstraint(c);</span>
+<span class="lineNum">     659 </span><span class="lineCov">       3170 :       c.output().mark = mark;</span>
+<span class="lineNum">     660 </span><span class="lineCov">       3170 :       this.addConstraintsConsumingTo(c.output(), todo);</span>
+<span class="lineNum">     661 </span><span class="lineCov">       3170 :     }</span>
+<span class="lineNum">     662 </span><span class="lineCov">       3170 :   }</span>
+<span class="lineNum">     663 </span><span class="lineCov">       3170 :   return plan;</span>
+<span class="lineNum">     664 </span><span class="lineCov">       3170 : }</span>
+<span class="lineNum">     665 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     666 </span><span class="lineCov">          1 : /**</span>
+<span class="lineNum">     667 </span><span class="lineCov">          1 :  * Extract a plan for resatisfying starting from the output of the</span>
+<a name="668"><span class="lineNum">     668 </span><span class="lineCov">          1 :  * given constraints, usually a set of input constraints.</span></a>
+<span class="lineNum">     669 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">     670 </span><span class="lineCov">       3170 : Planner.prototype.extractPlanFromConstraints = function (constraints) {</span>
+<span class="lineNum">     671 </span><span class="lineCov">       3170 :   var sources = new OrderedCollection();</span>
+<span class="lineNum">     672 </span><span class="lineCov">       3170 :   for (var i = 0; i &lt; constraints.size(); i++) {</span>
+<span class="lineNum">     673 </span><span class="lineCov">       3170 :     var c = constraints.at(i);</span>
+<span class="lineNum">     674 </span><span class="lineCov">       3170 :     if (c.isInput() &amp;&amp; c.isSatisfied())</span>
+<span class="lineNum">     675 </span><span class="lineCov">       3170 :       // not in plan already and eligible for inclusion</span>
+<span class="lineNum">     676 </span><span class="lineCov">       3170 :       sources.add(c);</span>
+<span class="lineNum">     677 </span><span class="lineCov">       3170 :   }</span>
+<span class="lineNum">     678 </span><span class="lineCov">       3170 :   return this.makePlan(sources);</span>
+<span class="lineNum">     679 </span><span class="lineCov">       3170 : }</span>
+<span class="lineNum">     680 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     681 </span><span class="lineCov">          1 : /**</span>
+<span class="lineNum">     682 </span><span class="lineCov">          1 :  * Recompute the walkabout strengths and stay flags of all variables</span>
+<span class="lineNum">     683 </span><span class="lineCov">          1 :  * downstream of the given constraint and recompute the actual</span>
+<span class="lineNum">     684 </span><span class="lineCov">          1 :  * values of all variables whose stay flag is true. If a cycle is</span>
+<span class="lineNum">     685 </span><span class="lineCov">          1 :  * detected, remove the given constraint and answer</span>
+<span class="lineNum">     686 </span><span class="lineCov">          1 :  * false. Otherwise, answer true.</span>
+<span class="lineNum">     687 </span><span class="lineCov">          1 :  * Details: Cycles are detected when a marked variable is</span>
+<span class="lineNum">     688 </span><span class="lineCov">          1 :  * encountered downstream of the given constraint. The sender is</span>
+<span class="lineNum">     689 </span><span class="lineCov">          1 :  * assumed to have marked the inputs of the given constraint with</span>
+<span class="lineNum">     690 </span><span class="lineCov">          1 :  * the given mark. Thus, encountering a marked node downstream of</span>
+<span class="lineNum">     691 </span><span class="lineCov">          1 :  * the output constraint means that there is a path from the</span>
+<a name="692"><span class="lineNum">     692 </span><span class="lineCov">          1 :  * constraint's output to one of its inputs.</span></a>
+<span class="lineNum">     693 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">     694 </span><span class="lineCov">     321438 : Planner.prototype.addPropagate = function (c, mark) {</span>
+<span class="lineNum">     695 </span><span class="lineCov">     321438 :   var todo = new OrderedCollection();</span>
+<span class="lineNum">     696 </span><span class="lineCov">     321438 :   todo.add(c);</span>
+<span class="lineNum">     697 </span><span class="lineCov">     321438 :   while (todo.size() &gt; 0) {</span>
+<span class="lineNum">     698 </span><span class="lineCov">     321438 :     var d = todo.removeFirst();</span>
+<span class="lineNum">     699 </span><span class="lineCov">     321438 :     if (d.output().mark == mark) {</span>
+<span class="lineNum">     700 </span><span class="lineCov">     321438 :       this.incrementalRemove(c);</span>
+<span class="lineNum">     701 </span><span class="lineCov">     321438 :       return false;</span>
+<span class="lineNum">     702 </span><span class="lineCov">     321438 :     }</span>
+<span class="lineNum">     703 </span><span class="lineCov">     321438 :     d.recalculate();</span>
+<span class="lineNum">     704 </span><span class="lineCov">     321438 :     this.addConstraintsConsumingTo(d.output(), todo);</span>
+<span class="lineNum">     705 </span><span class="lineCov">     321438 :   }</span>
+<span class="lineNum">     706 </span><span class="lineCov">     321438 :   return true;</span>
+<span class="lineNum">     707 </span><span class="lineCov">     321438 : }</span>
+<span class="lineNum">     708 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     709 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     710 </span><span class="lineCov">          1 : /**</span>
+<span class="lineNum">     711 </span><span class="lineCov">          1 :  * Update the walkabout strengths and stay flags of all variables</span>
+<span class="lineNum">     712 </span><span class="lineCov">          1 :  * downstream of the given constraint. Answer a collection of</span>
+<a name="713"><span class="lineNum">     713 </span><span class="lineCov">          1 :  * unsatisfied constraints sorted in order of decreasing strength.</span></a>
+<span class="lineNum">     714 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">     715 </span><span class="lineCov">       2536 : Planner.prototype.removePropagateFrom = function (out) {</span>
+<span class="lineNum">     716 </span><span class="lineCov">       2536 :   out.determinedBy = null;</span>
+<span class="lineNum">     717 </span><span class="lineCov">       2536 :   out.walkStrength = Strength.WEAKEST;</span>
+<span class="lineNum">     718 </span><span class="lineCov">       2536 :   out.stay = true;</span>
+<span class="lineNum">     719 </span><span class="lineCov">       2536 :   var unsatisfied = new OrderedCollection();</span>
+<span class="lineNum">     720 </span><span class="lineCov">       2536 :   var todo = new OrderedCollection();</span>
+<span class="lineNum">     721 </span><span class="lineCov">       2536 :   todo.add(out);</span>
+<span class="lineNum">     722 </span><span class="lineCov">       2536 :   while (todo.size() &gt; 0) {</span>
+<span class="lineNum">     723 </span><span class="lineCov">       2536 :     var v = todo.removeFirst();</span>
+<span class="lineNum">     724 </span><span class="lineCov">       2536 :     for (var i = 0; i &lt; v.constraints.size(); i++) {</span>
+<span class="lineNum">     725 </span><span class="lineCov">       2536 :       var c = v.constraints.at(i);</span>
+<span class="lineNum">     726 </span><span class="lineCov">       2536 :       if (!c.isSatisfied())</span>
+<span class="lineNum">     727 </span><span class="lineCov">       2536 :         unsatisfied.add(c);</span>
+<span class="lineNum">     728 </span><span class="lineCov">       2536 :     }</span>
+<span class="lineNum">     729 </span><span class="lineCov">       2536 :     var determining = v.determinedBy;</span>
+<span class="lineNum">     730 </span><span class="lineCov">       2536 :     for (var i = 0; i &lt; v.constraints.size(); i++) {</span>
+<span class="lineNum">     731 </span><span class="lineCov">       2536 :       var next = v.constraints.at(i);</span>
+<span class="lineNum">     732 </span><span class="lineCov">       2536 :       if (next != determining &amp;&amp; next.isSatisfied()) {</span>
+<span class="lineNum">     733 </span><span class="lineCov">       2536 :         next.recalculate();</span>
+<span class="lineNum">     734 </span><span class="lineCov">       2536 :         todo.add(next.output());</span>
+<span class="lineNum">     735 </span><span class="lineCov">       2536 :       }</span>
+<span class="lineNum">     736 </span><span class="lineCov">       2536 :     }</span>
+<span class="lineNum">     737 </span><span class="lineCov">       2536 :   }</span>
+<span class="lineNum">     738 </span><span class="lineCov">       2536 :   return unsatisfied;</span>
+<a name="739"><span class="lineNum">     739 </span><span class="lineCov">       2536 : }</span></a>
+<span class="lineNum">     740 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     741 </span><span class="lineCov">     643510 : Planner.prototype.addConstraintsConsumingTo = function (v, coll) {</span>
+<span class="lineNum">     742 </span><span class="lineCov">     643510 :   var determining = v.determinedBy;</span>
+<span class="lineNum">     743 </span><span class="lineCov">     643510 :   var cc = v.constraints;</span>
+<span class="lineNum">     744 </span><span class="lineCov">     643510 :   for (var i = 0; i &lt; cc.size(); i++) {</span>
+<span class="lineNum">     745 </span><span class="lineCov">     643510 :     var c = cc.at(i);</span>
+<span class="lineNum">     746 </span><span class="lineCov">     643510 :     if (c != determining &amp;&amp; c.isSatisfied())</span>
+<span class="lineNum">     747 </span><span class="lineCov">     643510 :       coll.add(c);</span>
+<span class="lineNum">     748 </span><span class="lineCov">     643510 :   }</span>
+<span class="lineNum">     749 </span><span class="lineCov">     643510 : }</span>
+<span class="lineNum">     750 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     751 </span><span class="lineCov">          1 : /* --- *</span>
+<span class="lineNum">     752 </span><span class="lineCov">          1 :  * P l a n</span>
+<span class="lineNum">     753 </span><span class="lineCov">          1 :  * --- */</span>
+<span class="lineNum">     754 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     755 </span><span class="lineCov">          1 : /**</span>
+<span class="lineNum">     756 </span><span class="lineCov">          1 :  * A Plan is an ordered list of constraints to be executed in sequence</span>
+<span class="lineNum">     757 </span><span class="lineCov">          1 :  * to resatisfy all currently satisfiable constraints in the face of</span>
+<a name="758"><span class="lineNum">     758 </span><span class="lineCov">          1 :  * one or more changing inputs.</span></a>
+<span class="lineNum">     759 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">     760 </span><span class="lineCov">       3170 : function Plan() {</span>
+<span class="lineNum">     761 </span><span class="lineCov">       3170 :   this.v = new OrderedCollection();</span>
+<a name="762"><span class="lineNum">     762 </span><span class="lineCov">       3170 : }</span></a>
+<span class="lineNum">     763 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     764 </span><span class="lineCov">     194638 : Plan.prototype.addConstraint = function (c) {</span>
+<span class="lineNum">     765 </span><span class="lineCov">     194638 :   this.v.add(c);</span>
+<a name="766"><span class="lineNum">     766 </span><span class="lineCov">     194638 : }</span></a>
+<span class="lineNum">     767 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     768 </span><span class="lineCov">    7798200 : Plan.prototype.size = function () {</span>
+<span class="lineNum">     769 </span><span class="lineCov">    7798200 :   return this.v.size();</span>
+<a name="770"><span class="lineNum">     770 </span><span class="lineCov">    7798200 : }</span></a>
+<span class="lineNum">     771 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     772 </span><span class="lineCov">    7709440 : Plan.prototype.constraintAt = function (index) {</span>
+<span class="lineNum">     773 </span><span class="lineCov">    7709440 :   return this.v.at(index);</span>
+<a name="774"><span class="lineNum">     774 </span><span class="lineCov">    7709440 : }</span></a>
+<span class="lineNum">     775 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     776 </span><span class="lineCov">      88760 : Plan.prototype.execute = function () {</span>
+<span class="lineNum">     777 </span><span class="lineCov">      88760 :   for (var i = 0; i &lt; this.size(); i++) {</span>
+<span class="lineNum">     778 </span><span class="lineCov">      88760 :     var c = this.constraintAt(i);</span>
+<span class="lineNum">     779 </span><span class="lineCov">      88760 :     c.execute();</span>
+<span class="lineNum">     780 </span><span class="lineCov">      88760 :   }</span>
+<span class="lineNum">     781 </span><span class="lineCov">      88760 : }</span>
+<span class="lineNum">     782 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     783 </span><span class="lineCov">          1 : /* --- *</span>
+<span class="lineNum">     784 </span><span class="lineCov">          1 :  * M a i n</span>
+<span class="lineNum">     785 </span><span class="lineCov">          1 :  * --- */</span>
+<span class="lineNum">     786 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     787 </span><span class="lineCov">          1 : /**</span>
+<span class="lineNum">     788 </span><span class="lineCov">          1 :  * This is the standard DeltaBlue benchmark. A long chain of equality</span>
+<span class="lineNum">     789 </span><span class="lineCov">          1 :  * constraints is constructed with a stay constraint on one end. An</span>
+<span class="lineNum">     790 </span><span class="lineCov">          1 :  * edit constraint is then added to the opposite end and the time is</span>
+<span class="lineNum">     791 </span><span class="lineCov">          1 :  * measured for adding and removing this constraint, and extracting</span>
+<span class="lineNum">     792 </span><span class="lineCov">          1 :  * and executing a constraint satisfaction plan. There are two cases.</span>
+<span class="lineNum">     793 </span><span class="lineCov">          1 :  * In case 1, the added constraint is stronger than the stay</span>
+<span class="lineNum">     794 </span><span class="lineCov">          1 :  * constraint and values must propagate down the entire length of the</span>
+<span class="lineNum">     795 </span><span class="lineCov">          1 :  * chain. In case 2, the added constraint is weaker than the stay</span>
+<span class="lineNum">     796 </span><span class="lineCov">          1 :  * constraint so it cannot be accomodated. The cost in this case is,</span>
+<span class="lineNum">     797 </span><span class="lineCov">          1 :  * of course, very low. Typical situations lie somewhere between these</span>
+<a name="798"><span class="lineNum">     798 </span><span class="lineCov">          1 :  * two extremes.</span></a>
+<span class="lineNum">     799 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">     800 </span><span class="lineCov">        634 : function chainTest(n) {</span>
+<span class="lineNum">     801 </span><span class="lineCov">        634 :   planner = new Planner();</span>
+<span class="lineNum">     802 </span><span class="lineCov">        634 :   var prev = null, first = null, last = null;</span>
+<span class="lineNum">     803 </span><span class="lineCov">        634 : </span>
+<span class="lineNum">     804 </span><span class="lineCov">        634 :   // Build chain of n equality constraints</span>
+<span class="lineNum">     805 </span><span class="lineCov">        634 :   for (var i = 0; i &lt;= n; i++) {</span>
+<span class="lineNum">     806 </span><span class="lineCov">        634 :     var name = &quot;v&quot; + i;</span>
+<span class="lineNum">     807 </span><span class="lineCov">        634 :     var v = new Variable(name);</span>
+<span class="lineNum">     808 </span><span class="lineCov">        634 :     if (prev != null)</span>
+<span class="lineNum">     809 </span><span class="lineCov">        634 :       new EqualityConstraint(prev, v, Strength.REQUIRED);</span>
+<span class="lineNum">     810 </span><span class="lineCov">        634 :     if (i == 0) first = v;</span>
+<span class="lineNum">     811 </span><span class="lineCov">        634 :     if (i == n) last = v;</span>
+<span class="lineNum">     812 </span><span class="lineCov">        634 :     prev = v;</span>
+<span class="lineNum">     813 </span><span class="lineCov">        634 :   }</span>
+<span class="lineNum">     814 </span><span class="lineCov">        634 : </span>
+<span class="lineNum">     815 </span><span class="lineCov">        634 :   new StayConstraint(last, Strength.STRONG_DEFAULT);</span>
+<span class="lineNum">     816 </span><span class="lineCov">        634 :   var edit = new EditConstraint(first, Strength.PREFERRED);</span>
+<span class="lineNum">     817 </span><span class="lineCov">        634 :   var edits = new OrderedCollection();</span>
+<span class="lineNum">     818 </span><span class="lineCov">        634 :   edits.add(edit);</span>
+<span class="lineNum">     819 </span><span class="lineCov">        634 :   var plan = planner.extractPlanFromConstraints(edits);</span>
+<span class="lineNum">     820 </span><span class="lineCov">        634 :   for (var i = 0; i &lt; 100; i++) {</span>
+<span class="lineNum">     821 </span><span class="lineCov">        634 :     first.value = i;</span>
+<span class="lineNum">     822 </span><span class="lineCov">        634 :     plan.execute();</span>
+<span class="lineNum">     823 </span><span class="lineCov">        634 :     if (last.value != i)</span>
+<span class="lineNum">     824 </span><span class="lineCov">        634 :       alert(&quot;Chain test failed.&quot;);</span>
+<span class="lineNum">     825 </span><span class="lineCov">        634 :   }</span>
+<span class="lineNum">     826 </span><span class="lineCov">        634 : }</span>
+<span class="lineNum">     827 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     828 </span><span class="lineCov">          1 : /**</span>
+<span class="lineNum">     829 </span><span class="lineCov">          1 :  * This test constructs a two sets of variables related to each</span>
+<span class="lineNum">     830 </span><span class="lineCov">          1 :  * other by a simple linear transformation (scale and offset). The</span>
+<span class="lineNum">     831 </span><span class="lineCov">          1 :  * time is measured to change a variable on either side of the</span>
+<a name="832"><span class="lineNum">     832 </span><span class="lineCov">          1 :  * mapping and to change the scale and offset factors.</span></a>
+<span class="lineNum">     833 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">     834 </span><span class="lineCov">        634 : function projectionTest(n) {</span>
+<span class="lineNum">     835 </span><span class="lineCov">        634 :   planner = new Planner();</span>
+<span class="lineNum">     836 </span><span class="lineCov">        634 :   var scale = new Variable(&quot;scale&quot;, 10);</span>
+<span class="lineNum">     837 </span><span class="lineCov">        634 :   var offset = new Variable(&quot;offset&quot;, 1000);</span>
+<span class="lineNum">     838 </span><span class="lineCov">        634 :   var src = null, dst = null;</span>
+<span class="lineNum">     839 </span><span class="lineCov">        634 : </span>
+<span class="lineNum">     840 </span><span class="lineCov">        634 :   var dests = new OrderedCollection();</span>
+<span class="lineNum">     841 </span><span class="lineCov">        634 :   for (var i = 0; i &lt; n; i++) {</span>
+<span class="lineNum">     842 </span><span class="lineCov">        634 :     src = new Variable(&quot;src&quot; + i, i);</span>
+<span class="lineNum">     843 </span><span class="lineCov">        634 :     dst = new Variable(&quot;dst&quot; + i, i);</span>
+<span class="lineNum">     844 </span><span class="lineCov">        634 :     dests.add(dst);</span>
+<span class="lineNum">     845 </span><span class="lineCov">        634 :     new StayConstraint(src, Strength.NORMAL);</span>
+<span class="lineNum">     846 </span><span class="lineCov">        634 :     new ScaleConstraint(src, scale, offset, dst, Strength.REQUIRED);</span>
+<span class="lineNum">     847 </span><span class="lineCov">        634 :   }</span>
+<span class="lineNum">     848 </span><span class="lineCov">        634 : </span>
+<span class="lineNum">     849 </span><span class="lineCov">        634 :   change(src, 17);</span>
+<span class="lineNum">     850 </span><span class="lineCov">        634 :   if (dst.value != 1170) alert(&quot;Projection 1 failed&quot;);</span>
+<span class="lineNum">     851 </span><span class="lineCov">        634 :   change(dst, 1050);</span>
+<span class="lineNum">     852 </span><span class="lineCov">        634 :   if (src.value != 5) alert(&quot;Projection 2 failed&quot;);</span>
+<span class="lineNum">     853 </span><span class="lineCov">        634 :   change(scale, 5);</span>
+<span class="lineNum">     854 </span><span class="lineCov">        634 :   for (var i = 0; i &lt; n - 1; i++) {</span>
+<span class="lineNum">     855 </span><span class="lineCov">        634 :     if (dests.at(i).value != i * 5 + 1000)</span>
+<span class="lineNum">     856 </span><span class="lineCov">        634 :       alert(&quot;Projection 3 failed&quot;);</span>
+<span class="lineNum">     857 </span><span class="lineCov">        634 :   }</span>
+<span class="lineNum">     858 </span><span class="lineCov">        634 :   change(offset, 2000);</span>
+<span class="lineNum">     859 </span><span class="lineCov">        634 :   for (var i = 0; i &lt; n - 1; i++) {</span>
+<span class="lineNum">     860 </span><span class="lineCov">        634 :     if (dests.at(i).value != i * 5 + 2000)</span>
+<span class="lineNum">     861 </span><span class="lineCov">        634 :       alert(&quot;Projection 4 failed&quot;);</span>
+<span class="lineNum">     862 </span><span class="lineCov">        634 :   }</span>
+<a name="863"><span class="lineNum">     863 </span><span class="lineCov">        634 : }</span></a>
+<span class="lineNum">     864 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     865 </span><span class="lineCov">       2536 : function change(v, newValue) {</span>
+<span class="lineNum">     866 </span><span class="lineCov">       2536 :   var edit = new EditConstraint(v, Strength.PREFERRED);</span>
+<span class="lineNum">     867 </span><span class="lineCov">       2536 :   var edits = new OrderedCollection();</span>
+<span class="lineNum">     868 </span><span class="lineCov">       2536 :   edits.add(edit);</span>
+<span class="lineNum">     869 </span><span class="lineCov">       2536 :   var plan = planner.extractPlanFromConstraints(edits);</span>
+<span class="lineNum">     870 </span><span class="lineCov">       2536 :   for (var i = 0; i &lt; 10; i++) {</span>
+<span class="lineNum">     871 </span><span class="lineCov">       2536 :     v.value = newValue;</span>
+<span class="lineNum">     872 </span><span class="lineCov">       2536 :     plan.execute();</span>
+<span class="lineNum">     873 </span><span class="lineCov">       2536 :   }</span>
+<span class="lineNum">     874 </span><span class="lineCov">       2536 :   edit.destroyConstraint();</span>
+<span class="lineNum">     875 </span><span class="lineCov">       2536 : }</span>
+<span class="lineNum">     876 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     877 </span><span class="lineCov">          1 : // Global variable holding the current planner.</span>
+<a name="878"><span class="lineNum">     878 </span><span class="lineCov">          1 : var planner = null;</span></a>
+<span class="lineNum">     879 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     880 </span><span class="lineCov">        634 : function deltaBlue() {</span>
+<span class="lineNum">     881 </span><span class="lineCov">        634 :   chainTest(100);</span>
+<span class="lineNum">     882 </span><span class="lineCov">        634 :   projectionTest(100);</span>
+<span class="lineNum">     883 </span><span class="lineCov">        634 : }</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

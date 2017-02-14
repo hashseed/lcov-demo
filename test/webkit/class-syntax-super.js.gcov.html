@@ -1,0 +1,170 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - test/webkit/class-syntax-super.js</title>
+  <link rel="stylesheet" type="text/css" href="../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../index.html">top level</a> - <a href="index.html">test/webkit</a> - class-syntax-super.js<span style="font-size: 80%;"> (source / <a href="class-syntax-super.js.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">95</td>
+            <td class="headerCovTableEntry">95</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2017-02-14</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">12</td>
+            <td class="headerCovTableEntry">12</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span><span class="lineCov">          1 : // Copyright 2015 the V8 project authors. All rights reserved.</span></a>
+<span class="lineNum">       2 </span><span class="lineCov">          1 : // Copyright (C) 2005, 2006, 2007, 2008, 2009 Apple Inc. All rights reserved.</span>
+<span class="lineNum">       3 </span><span class="lineCov">          1 : //</span>
+<span class="lineNum">       4 </span><span class="lineCov">          1 : // Redistribution and use in source and binary forms, with or without</span>
+<span class="lineNum">       5 </span><span class="lineCov">          1 : // modification, are permitted provided that the following conditions</span>
+<span class="lineNum">       6 </span><span class="lineCov">          1 : // are met:</span>
+<span class="lineNum">       7 </span><span class="lineCov">          1 : // 1.  Redistributions of source code must retain the above copyright</span>
+<span class="lineNum">       8 </span><span class="lineCov">          1 : //     notice, this list of conditions and the following disclaimer.</span>
+<span class="lineNum">       9 </span><span class="lineCov">          1 : // 2.  Redistributions in binary form must reproduce the above copyright</span>
+<span class="lineNum">      10 </span><span class="lineCov">          1 : //     notice, this list of conditions and the following disclaimer in the</span>
+<span class="lineNum">      11 </span><span class="lineCov">          1 : //     documentation and/or other materials provided with the distribution.</span>
+<span class="lineNum">      12 </span><span class="lineCov">          1 : //</span>
+<span class="lineNum">      13 </span><span class="lineCov">          1 : // THIS SOFTWARE IS PROVIDED BY APPLE INC. AND ITS CONTRIBUTORS ``AS IS'' AND ANY</span>
+<span class="lineNum">      14 </span><span class="lineCov">          1 : // EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED</span>
+<span class="lineNum">      15 </span><span class="lineCov">          1 : // WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE</span>
+<span class="lineNum">      16 </span><span class="lineCov">          1 : // DISCLAIMED. IN NO EVENT SHALL APPLE INC. OR ITS CONTRIBUTORS BE LIABLE FOR ANY</span>
+<span class="lineNum">      17 </span><span class="lineCov">          1 : // DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES</span>
+<span class="lineNum">      18 </span><span class="lineCov">          1 : // (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="lineNum">      19 </span><span class="lineCov">          1 : // LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON</span>
+<span class="lineNum">      20 </span><span class="lineCov">          1 : // ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT</span>
+<span class="lineNum">      21 </span><span class="lineCov">          1 : // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS</span>
+<span class="lineNum">      22 </span><span class="lineCov">          1 : // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="lineNum">      23 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      24 </span><span class="lineCov">          1 : description('Tests for ES6 class syntax &quot;super&quot;');</span>
+<span class="lineNum">      25 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      26 </span><span class="lineCov">          1 : var baseMethodValue = {};</span>
+<span class="lineNum">      27 </span><span class="lineCov">          1 : var valueInSetter = null;</span>
+<a name="28"><span class="lineNum">      28 </span><span class="lineCov">          1 : </span></a>
+<a name="29"><span class="lineNum">      29 </span><span class="lineCov">          1 : class Base {</span></a>
+<span class="lineNum">      30 </span><span class="lineCov">         14 :     constructor() { }</span>
+<span class="lineNum">      31 </span><span class="lineCov">          4 :     baseMethod() { return baseMethodValue; }</span>
+<span class="lineNum">      32 </span><span class="lineCov">          1 :     chainMethod() { return 'base'; }</span>
+<span class="lineNum">      33 </span><span class="lineCov">          1 :     static staticMethod() { return 'base3'; }</span>
+<span class="lineNum">      34 </span><span class="lineCov">          1 : }</span>
+<a name="35"><span class="lineNum">      35 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      36 </span><span class="lineCov">          1 : class Derived extends Base {</span>
+<a name="37"><span class="lineNum">      37 </span><span class="lineCov">          8 :     constructor() { super(); }</span></a>
+<a name="38"><span class="lineNum">      38 </span><span class="lineCov">          1 :     chainMethod() { return [super.chainMethod(), 'derived']; }</span></a>
+<a name="39"><span class="lineNum">      39 </span><span class="lineCov">          2 :     callBaseMethod() { return super.baseMethod(); }</span></a>
+<a name="40"><span class="lineNum">      40 </span><span class="lineCov">          1 :     get callBaseMethodInGetter() { return super['baseMethod'](); }</span></a>
+<a name="41"><span class="lineNum">      41 </span><span class="lineCov">          1 :     set callBaseMethodInSetter(x) { valueInSetter = super.baseMethod(); }</span></a>
+<a name="42"><span class="lineNum">      42 </span><span class="lineCov">          1 :     get baseMethodInGetterSetter() { return super.baseMethod; }</span></a>
+<span class="lineNum">      43 </span><span class="lineCov">          1 :     set baseMethodInGetterSetter(x) { valueInSetter = super['baseMethod']; }</span>
+<span class="lineNum">      44 </span><span class="lineCov">          1 :     static staticMethod() { return super.staticMethod(); }</span>
+<span class="lineNum">      45 </span><span class="lineCov">          1 : }</span>
+<a name="46"><span class="lineNum">      46 </span><span class="lineCov">          1 : </span></a>
+<a name="47"><span class="lineNum">      47 </span><span class="lineCov">          1 : class SecondDerived extends Derived {</span></a>
+<span class="lineNum">      48 </span><span class="lineCov">          1 :     constructor() { super(); }</span>
+<span class="lineNum">      49 </span><span class="lineCov">          1 :     chainMethod() { return super.chainMethod().concat(['secondDerived']); }</span>
+<span class="lineNum">      50 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      51 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      52 </span><span class="lineCov">          1 : shouldBeTrue('(new Base) instanceof Base');</span>
+<span class="lineNum">      53 </span><span class="lineCov">          1 : shouldBeTrue('(new Derived) instanceof Derived');</span>
+<span class="lineNum">      54 </span><span class="lineCov">          1 : shouldBe('(new Derived).callBaseMethod()', 'baseMethodValue');</span>
+<span class="lineNum">      55 </span><span class="lineCov">          1 : shouldBe('x = (new Derived).callBaseMethod; x()', 'baseMethodValue');</span>
+<span class="lineNum">      56 </span><span class="lineCov">          1 : shouldBe('(new Derived).callBaseMethodInGetter', 'baseMethodValue');</span>
+<span class="lineNum">      57 </span><span class="lineCov">          1 : shouldBe('(new Derived).callBaseMethodInSetter = 1; valueInSetter', 'baseMethodValue');</span>
+<span class="lineNum">      58 </span><span class="lineCov">          1 : shouldBe('(new Derived).baseMethodInGetterSetter', '(new Base).baseMethod');</span>
+<span class="lineNum">      59 </span><span class="lineCov">          1 : shouldBe('(new Derived).baseMethodInGetterSetter = 1; valueInSetter', '(new Base).baseMethod');</span>
+<span class="lineNum">      60 </span><span class="lineCov">          1 : shouldBe('Derived.staticMethod()', '&quot;base3&quot;');</span>
+<span class="lineNum">      61 </span><span class="lineCov">          1 : shouldBe('(new SecondDerived).chainMethod()', '[&quot;base&quot;, &quot;derived&quot;, &quot;secondDerived&quot;]');</span>
+<span class="lineNum">      62 </span><span class="lineCov">          1 : shouldNotThrow('x = class extends Base { constructor() { super(); } super() {} }');</span>
+<span class="lineNum">      63 </span><span class="lineCov">          1 : shouldThrow('x = class extends Base { constructor() { super(); } method() { super() } }',</span>
+<span class="lineNum">      64 </span><span class="lineCov">          1 :     '&quot;SyntaxError: \'super\' keyword unexpected here&quot;');</span>
+<span class="lineNum">      65 </span><span class="lineCov">          1 : shouldThrow('x = class extends Base { constructor() { super(); } method() { super } }', '&quot;SyntaxError: \'super\' keyword unexpected here&quot;');</span>
+<span class="lineNum">      66 </span><span class="lineCov">          1 : shouldThrow('x = class extends Base { constructor() { super(); } method() { return new super } }', '&quot;SyntaxError: \'super\' keyword unexpected here&quot;');</span>
+<span class="lineNum">      67 </span><span class="lineCov">          1 : // shouldBeTrue('(new x).method() instanceof Base');</span>
+<span class="lineNum">      68 </span><span class="lineCov">          1 : // shouldBeFalse('(new x).method() instanceof x');</span>
+<span class="lineNum">      69 </span><span class="lineCov">          1 : shouldNotThrow('x = class extends Base { constructor() { super(); } method1() { delete (super.foo) } method2() { delete super[&quot;foo&quot;] } }');</span>
+<span class="lineNum">      70 </span><span class="lineCov">          1 : shouldThrow('(new x).method1()', '&quot;ReferenceError: Unsupported reference to \'super\'&quot;');</span>
+<span class="lineNum">      71 </span><span class="lineCov">          1 : shouldThrow('(new x).method2()', '&quot;ReferenceError: Unsupported reference to \'super\'&quot;');</span>
+<span class="lineNum">      72 </span><span class="lineCov">          1 : shouldBeTrue('new (class { constructor() { return undefined; } }) instanceof Object');</span>
+<span class="lineNum">      73 </span><span class="lineCov">          1 : shouldBeTrue('new (class { constructor() { return 1; } }) instanceof Object');</span>
+<span class="lineNum">      74 </span><span class="lineCov">          1 : shouldThrow('new (class extends Base { constructor() { return undefined } })');</span>
+<span class="lineNum">      75 </span><span class="lineCov">          1 : shouldBeTrue('new (class extends Base { constructor() { super(); return undefined } }) instanceof Object');</span>
+<span class="lineNum">      76 </span><span class="lineCov">          1 : shouldBe('x = { }; new (class extends Base { constructor() { return x } });', 'x');</span>
+<span class="lineNum">      77 </span><span class="lineCov">          1 : shouldBeFalse('x instanceof Base');</span>
+<span class="lineNum">      78 </span><span class="lineCov">          1 : shouldThrow('new (class extends Base { constructor() { } })', '&quot;ReferenceError: this is not defined&quot;');</span>
+<span class="lineNum">      79 </span><span class="lineCov">          1 : shouldThrow('new (class extends Base { constructor() { return 1; } })', '&quot;TypeError: Derived constructors may only return object or undefined&quot;');</span>
+<span class="lineNum">      80 </span><span class="lineCov">          1 : shouldThrow('new (class extends null { constructor() { return undefined } })');</span>
+<span class="lineNum">      81 </span><span class="lineCov">          1 : shouldThrow('new (class extends null { constructor() { super(); return undefined } })', '&quot;TypeError: Super constructor null of anonymous class is not a constructor&quot;');</span>
+<span class="lineNum">      82 </span><span class="lineCov">          1 : shouldBe('x = { }; new (class extends null { constructor() { return x } });', 'x');</span>
+<span class="lineNum">      83 </span><span class="lineCov">          1 : shouldBeTrue('x instanceof Object');</span>
+<span class="lineNum">      84 </span><span class="lineCov">          1 : shouldThrow('new (class extends null { constructor() { } })', '&quot;ReferenceError: this is not defined&quot;');</span>
+<span class="lineNum">      85 </span><span class="lineCov">          1 : shouldThrow('new (class extends null { constructor() { return 1; } })', '&quot;TypeError: Derived constructors may only return object or undefined&quot;');</span>
+<span class="lineNum">      86 </span><span class="lineCov">          1 : shouldThrow('new (class extends null { constructor() { super() } })', '&quot;TypeError: Super constructor null of anonymous class is not a constructor&quot;');</span>
+<span class="lineNum">      87 </span><span class="lineCov">          1 : shouldThrow('new (class { constructor() { super() } })', '&quot;SyntaxError: \'super\' keyword unexpected here&quot;');</span>
+<span class="lineNum">      88 </span><span class="lineCov">          1 : shouldThrow('function x() { super(); }', '&quot;SyntaxError: \'super\' keyword unexpected here&quot;');</span>
+<span class="lineNum">      89 </span><span class="lineCov">          1 : shouldThrow('new (class extends Object { constructor() { function x() { super() } } })', '&quot;SyntaxError: \'super\' keyword unexpected here&quot;');</span>
+<span class="lineNum">      90 </span><span class="lineCov">          1 : shouldThrow('new (class extends Object { constructor() { function x() { super.method } } })', '&quot;SyntaxError: \'super\' keyword unexpected here&quot;');</span>
+<span class="lineNum">      91 </span><span class="lineCov">          1 : shouldThrow('function x() { super.method(); }', '&quot;SyntaxError: \'super\' keyword unexpected here&quot;');</span>
+<span class="lineNum">      92 </span><span class="lineCov">          1 : shouldThrow('function x() { super(); }', '&quot;SyntaxError: \'super\' keyword unexpected here&quot;');</span>
+<span class="lineNum">      93 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      94 </span><span class="lineCov">          1 : var successfullyParsed = true;</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

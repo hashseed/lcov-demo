@@ -1,0 +1,496 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - test/benchmarks/data/sunspider/date-format-xparb.js</title>
+  <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../index.html">top level</a> - <a href="index.html">test/benchmarks/data/sunspider</a> - date-format-xparb.js<span style="font-size: 80%;"> (source / <a href="date-format-xparb.js.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">219</td>
+            <td class="headerCovTableEntry">421</td>
+            <td class="headerCovTableEntryLo">52.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2017-02-14</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">6</td>
+            <td class="headerCovTableEntry">18</td>
+            <td class="headerCovTableEntryLo">33.3 %</td>
+          </tr>
+          <tr><td><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span><span class="lineCov">          1 : /*</span></a>
+<span class="lineNum">       2 </span><span class="lineCov">          1 :  * Copyright (C) 2004 Baron Schwartz &lt;baron at sequent dot org&gt;</span>
+<span class="lineNum">       3 </span><span class="lineCov">          1 :  *</span>
+<span class="lineNum">       4 </span><span class="lineCov">          1 :  * This program is free software; you can redistribute it and/or modify it</span>
+<span class="lineNum">       5 </span><span class="lineCov">          1 :  * under the terms of the GNU Lesser General Public License as published by the</span>
+<span class="lineNum">       6 </span><span class="lineCov">          1 :  * Free Software Foundation, version 2.1.</span>
+<span class="lineNum">       7 </span><span class="lineCov">          1 :  *</span>
+<span class="lineNum">       8 </span><span class="lineCov">          1 :  * This program is distributed in the hope that it will be useful, but WITHOUT</span>
+<span class="lineNum">       9 </span><span class="lineCov">          1 :  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS</span>
+<span class="lineNum">      10 </span><span class="lineCov">          1 :  * FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public License for more</span>
+<span class="lineNum">      11 </span><span class="lineCov">          1 :  * details.</span>
+<span class="lineNum">      12 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">      13 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      14 </span><span class="lineCov">          1 : Date.parseFunctions = {count:0};</span>
+<span class="lineNum">      15 </span><span class="lineCov">          1 : Date.parseRegexes = [];</span>
+<a name="16"><span class="lineNum">      16 </span><span class="lineCov">          1 : Date.formatFunctions = {count:0};</span></a>
+<span class="lineNum">      17 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      18 </span><span class="lineCov">       8000 : Date.prototype.dateFormat = function(format) {</span>
+<span class="lineNum">      19 </span><span class="lineCov">       8000 :     if (Date.formatFunctions[format] == null) {</span>
+<span class="lineNum">      20 </span><span class="lineCov">       8000 :         Date.createNewFormat(format);</span>
+<span class="lineNum">      21 </span><span class="lineCov">       8000 :     }</span>
+<span class="lineNum">      22 </span><span class="lineCov">       8000 :     var func = Date.formatFunctions[format];</span>
+<span class="lineNum">      23 </span><span class="lineCov">       8000 :     return this[func]();</span>
+<a name="24"><span class="lineNum">      24 </span><span class="lineCov">       8000 : }</span></a>
+<span class="lineNum">      25 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      26 </span><span class="lineCov">          2 : Date.createNewFormat = function(format) {</span>
+<span class="lineNum">      27 </span><span class="lineCov">          2 :     var funcName = &quot;format&quot; + Date.formatFunctions.count++;</span>
+<span class="lineNum">      28 </span><span class="lineCov">          2 :     Date.formatFunctions[format] = funcName;</span>
+<span class="lineNum">      29 </span><span class="lineCov">          2 :     var code = &quot;Date.prototype.&quot; + funcName + &quot; = function(){return &quot;;</span>
+<span class="lineNum">      30 </span><span class="lineCov">          2 :     var special = false;</span>
+<span class="lineNum">      31 </span><span class="lineCov">          2 :     var ch = '';</span>
+<span class="lineNum">      32 </span><span class="lineCov">          2 :     for (var i = 0; i &lt; format.length; ++i) {</span>
+<span class="lineNum">      33 </span><span class="lineCov">          2 :         ch = format.charAt(i);</span>
+<span class="lineNum">      34 </span><span class="lineCov">          2 :         if (!special &amp;&amp; ch == &quot;\\&quot;) {</span>
+<span class="lineNum">      35 </span><span class="lineCov">          2 :             special = true;</span>
+<span class="lineNum">      36 </span><span class="lineCov">          2 :         }</span>
+<span class="lineNum">      37 </span><span class="lineCov">          2 :         else if (special) {</span>
+<span class="lineNum">      38 </span><span class="lineCov">          2 :             special = false;</span>
+<span class="lineNum">      39 </span><span class="lineCov">          2 :             code += &quot;'&quot; + String.escape(ch) + &quot;' + &quot;;</span>
+<span class="lineNum">      40 </span><span class="lineCov">          2 :         }</span>
+<span class="lineNum">      41 </span><span class="lineCov">          2 :         else {</span>
+<span class="lineNum">      42 </span><span class="lineCov">          2 :             code += Date.getFormatCode(ch);</span>
+<span class="lineNum">      43 </span><span class="lineCov">          2 :         }</span>
+<span class="lineNum">      44 </span><span class="lineCov">          2 :     }</span>
+<span class="lineNum">      45 </span><span class="lineCov">          2 :     eval(code.substring(0, code.length - 3) + &quot;;}&quot;);</span>
+<a name="46"><span class="lineNum">      46 </span><span class="lineCov">          2 : }</span></a>
+<span class="lineNum">      47 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      48 </span><span class="lineCov">         22 : Date.getFormatCode = function(character) {</span>
+<span class="lineNum">      49 </span><span class="lineCov">         22 :     switch (character) {</span>
+<span class="lineNum">      50 </span><span class="lineCov">         22 :     case &quot;d&quot;:</span>
+<span class="lineNum">      51 </span><span class="lineCov">         22 :         return &quot;String.leftPad(this.getDate(), 2, '0') + &quot;;</span>
+<span class="lineNum">      52 </span><span class="lineCov">         22 :     case &quot;D&quot;:</span>
+<span class="lineNum">      53 </span><span class="lineCov">         22 :         return &quot;Date.dayNames[this.getDay()].substring(0, 3) + &quot;;</span>
+<span class="lineNum">      54 </span><span class="lineCov">         22 :     case &quot;j&quot;:</span>
+<span class="lineNum">      55 </span><span class="lineCov">         22 :         return &quot;this.getDate() + &quot;;</span>
+<span class="lineNum">      56 </span><span class="lineCov">         22 :     case &quot;l&quot;:</span>
+<span class="lineNum">      57 </span><span class="lineCov">         22 :         return &quot;Date.dayNames[this.getDay()] + &quot;;</span>
+<span class="lineNum">      58 </span><span class="lineCov">         22 :     case &quot;S&quot;:</span>
+<span class="lineNum">      59 </span><span class="lineCov">         22 :         return &quot;this.getSuffix() + &quot;;</span>
+<span class="lineNum">      60 </span><span class="lineCov">         22 :     case &quot;w&quot;:</span>
+<span class="lineNum">      61 </span><span class="lineCov">         22 :         return &quot;this.getDay() + &quot;;</span>
+<span class="lineNum">      62 </span><span class="lineCov">         22 :     case &quot;z&quot;:</span>
+<span class="lineNum">      63 </span><span class="lineCov">         22 :         return &quot;this.getDayOfYear() + &quot;;</span>
+<span class="lineNum">      64 </span><span class="lineCov">         22 :     case &quot;W&quot;:</span>
+<span class="lineNum">      65 </span><span class="lineCov">         22 :         return &quot;this.getWeekOfYear() + &quot;;</span>
+<span class="lineNum">      66 </span><span class="lineCov">         22 :     case &quot;F&quot;:</span>
+<span class="lineNum">      67 </span><span class="lineCov">         22 :         return &quot;Date.monthNames[this.getMonth()] + &quot;;</span>
+<span class="lineNum">      68 </span><span class="lineCov">         22 :     case &quot;m&quot;:</span>
+<span class="lineNum">      69 </span><span class="lineCov">         22 :         return &quot;String.leftPad(this.getMonth() + 1, 2, '0') + &quot;;</span>
+<span class="lineNum">      70 </span><span class="lineCov">         22 :     case &quot;M&quot;:</span>
+<span class="lineNum">      71 </span><span class="lineCov">         22 :         return &quot;Date.monthNames[this.getMonth()].substring(0, 3) + &quot;;</span>
+<span class="lineNum">      72 </span><span class="lineCov">         22 :     case &quot;n&quot;:</span>
+<span class="lineNum">      73 </span><span class="lineCov">         22 :         return &quot;(this.getMonth() + 1) + &quot;;</span>
+<span class="lineNum">      74 </span><span class="lineCov">         22 :     case &quot;t&quot;:</span>
+<span class="lineNum">      75 </span><span class="lineCov">         22 :         return &quot;this.getDaysInMonth() + &quot;;</span>
+<span class="lineNum">      76 </span><span class="lineCov">         22 :     case &quot;L&quot;:</span>
+<span class="lineNum">      77 </span><span class="lineCov">         22 :         return &quot;(this.isLeapYear() ? 1 : 0) + &quot;;</span>
+<span class="lineNum">      78 </span><span class="lineCov">         22 :     case &quot;Y&quot;:</span>
+<span class="lineNum">      79 </span><span class="lineCov">         22 :         return &quot;this.getFullYear() + &quot;;</span>
+<span class="lineNum">      80 </span><span class="lineCov">         22 :     case &quot;y&quot;:</span>
+<span class="lineNum">      81 </span><span class="lineCov">         22 :         return &quot;('' + this.getFullYear()).substring(2, 4) + &quot;;</span>
+<span class="lineNum">      82 </span><span class="lineCov">         22 :     case &quot;a&quot;:</span>
+<span class="lineNum">      83 </span><span class="lineCov">         22 :         return &quot;(this.getHours() &lt; 12 ? 'am' : 'pm') + &quot;;</span>
+<span class="lineNum">      84 </span><span class="lineCov">         22 :     case &quot;A&quot;:</span>
+<span class="lineNum">      85 </span><span class="lineCov">         22 :         return &quot;(this.getHours() &lt; 12 ? 'AM' : 'PM') + &quot;;</span>
+<span class="lineNum">      86 </span><span class="lineCov">         22 :     case &quot;g&quot;:</span>
+<span class="lineNum">      87 </span><span class="lineCov">         22 :         return &quot;((this.getHours() %12) ? this.getHours() % 12 : 12) + &quot;;</span>
+<span class="lineNum">      88 </span><span class="lineCov">         22 :     case &quot;G&quot;:</span>
+<span class="lineNum">      89 </span><span class="lineCov">         22 :         return &quot;this.getHours() + &quot;;</span>
+<span class="lineNum">      90 </span><span class="lineCov">         22 :     case &quot;h&quot;:</span>
+<span class="lineNum">      91 </span><span class="lineCov">         22 :         return &quot;String.leftPad((this.getHours() %12) ? this.getHours() % 12 : 12, 2, '0') + &quot;;</span>
+<span class="lineNum">      92 </span><span class="lineCov">         22 :     case &quot;H&quot;:</span>
+<span class="lineNum">      93 </span><span class="lineCov">         22 :         return &quot;String.leftPad(this.getHours(), 2, '0') + &quot;;</span>
+<span class="lineNum">      94 </span><span class="lineCov">         22 :     case &quot;i&quot;:</span>
+<span class="lineNum">      95 </span><span class="lineCov">         22 :         return &quot;String.leftPad(this.getMinutes(), 2, '0') + &quot;;</span>
+<span class="lineNum">      96 </span><span class="lineCov">         22 :     case &quot;s&quot;:</span>
+<span class="lineNum">      97 </span><span class="lineCov">         22 :         return &quot;String.leftPad(this.getSeconds(), 2, '0') + &quot;;</span>
+<span class="lineNum">      98 </span><span class="lineCov">         22 :     case &quot;O&quot;:</span>
+<span class="lineNum">      99 </span><span class="lineCov">         22 :         return &quot;this.getGMTOffset() + &quot;;</span>
+<span class="lineNum">     100 </span><span class="lineCov">         22 :     case &quot;T&quot;:</span>
+<span class="lineNum">     101 </span><span class="lineCov">         22 :         return &quot;this.getTimezone() + &quot;;</span>
+<span class="lineNum">     102 </span><span class="lineCov">         22 :     case &quot;Z&quot;:</span>
+<span class="lineNum">     103 </span><span class="lineCov">         22 :         return &quot;(this.getTimezoneOffset() * -60) + &quot;;</span>
+<span class="lineNum">     104 </span><span class="lineCov">         22 :     default:</span>
+<span class="lineNum">     105 </span><span class="lineCov">         22 :         return &quot;'&quot; + String.escape(character) + &quot;' + &quot;;</span>
+<span class="lineNum">     106 </span><span class="lineCov">         22 :     }</span>
+<a name="107"><span class="lineNum">     107 </span><span class="lineCov">         22 : }</span></a>
+<span class="lineNum">     108 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     109 </span><span class="lineCov">          1 : Date.parseDate = function(input, format) {</span>
+<span class="lineNum">     110 </span><span class="lineNoCov">          0 :     if (Date.parseFunctions[format] == null) {</span>
+<span class="lineNum">     111 </span><span class="lineNoCov">          0 :         Date.createParser(format);</span>
+<span class="lineNum">     112 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     113 </span><span class="lineNoCov">          0 :     var func = Date.parseFunctions[format];</span>
+<span class="lineNum">     114 </span><span class="lineNoCov">          0 :     return Date[func](input);</span>
+<a name="115"><span class="lineNum">     115 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">     116 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     117 </span><span class="lineCov">          1 : Date.createParser = function(format) {</span>
+<span class="lineNum">     118 </span><span class="lineNoCov">          0 :     var funcName = &quot;parse&quot; + Date.parseFunctions.count++;</span>
+<span class="lineNum">     119 </span><span class="lineNoCov">          0 :     var regexNum = Date.parseRegexes.length;</span>
+<span class="lineNum">     120 </span><span class="lineNoCov">          0 :     var currentGroup = 1;</span>
+<span class="lineNum">     121 </span><span class="lineNoCov">          0 :     Date.parseFunctions[format] = funcName;</span>
+<span class="lineNum">     122 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     123 </span><span class="lineNoCov">          0 :     var code = &quot;Date.&quot; + funcName + &quot; = function(input){\n&quot;</span>
+<span class="lineNum">     124 </span><span class="lineNoCov">          0 :         + &quot;var y = -1, m = -1, d = -1, h = -1, i = -1, s = -1;\n&quot;</span>
+<span class="lineNum">     125 </span><span class="lineNoCov">          0 :         + &quot;var d = new Date();\n&quot;</span>
+<span class="lineNum">     126 </span><span class="lineNoCov">          0 :         + &quot;y = d.getFullYear();\n&quot;</span>
+<span class="lineNum">     127 </span><span class="lineNoCov">          0 :         + &quot;m = d.getMonth();\n&quot;</span>
+<span class="lineNum">     128 </span><span class="lineNoCov">          0 :         + &quot;d = d.getDate();\n&quot;</span>
+<span class="lineNum">     129 </span><span class="lineNoCov">          0 :         + &quot;var results = input.match(Date.parseRegexes[&quot; + regexNum + &quot;]);\n&quot;</span>
+<span class="lineNum">     130 </span><span class="lineNoCov">          0 :         + &quot;if (results &amp;&amp; results.length &gt; 0) {&quot;</span>
+<span class="lineNum">     131 </span><span class="lineNoCov">          0 :     var regex = &quot;&quot;;</span>
+<span class="lineNum">     132 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     133 </span><span class="lineNoCov">          0 :     var special = false;</span>
+<span class="lineNum">     134 </span><span class="lineNoCov">          0 :     var ch = '';</span>
+<span class="lineNum">     135 </span><span class="lineNoCov">          0 :     for (var i = 0; i &lt; format.length; ++i) {</span>
+<span class="lineNum">     136 </span><span class="lineNoCov">          0 :         ch = format.charAt(i);</span>
+<span class="lineNum">     137 </span><span class="lineNoCov">          0 :         if (!special &amp;&amp; ch == &quot;\\&quot;) {</span>
+<span class="lineNum">     138 </span><span class="lineNoCov">          0 :             special = true;</span>
+<span class="lineNum">     139 </span><span class="lineNoCov">          0 :         }</span>
+<span class="lineNum">     140 </span><span class="lineNoCov">          0 :         else if (special) {</span>
+<span class="lineNum">     141 </span><span class="lineNoCov">          0 :             special = false;</span>
+<span class="lineNum">     142 </span><span class="lineNoCov">          0 :             regex += String.escape(ch);</span>
+<span class="lineNum">     143 </span><span class="lineNoCov">          0 :         }</span>
+<span class="lineNum">     144 </span><span class="lineNoCov">          0 :         else {</span>
+<span class="lineNum">     145 </span><span class="lineNoCov">          0 :             obj = Date.formatCodeToRegex(ch, currentGroup);</span>
+<span class="lineNum">     146 </span><span class="lineNoCov">          0 :             currentGroup += obj.g;</span>
+<span class="lineNum">     147 </span><span class="lineNoCov">          0 :             regex += obj.s;</span>
+<span class="lineNum">     148 </span><span class="lineNoCov">          0 :             if (obj.g &amp;&amp; obj.c) {</span>
+<span class="lineNum">     149 </span><span class="lineNoCov">          0 :                 code += obj.c;</span>
+<span class="lineNum">     150 </span><span class="lineNoCov">          0 :             }</span>
+<span class="lineNum">     151 </span><span class="lineNoCov">          0 :         }</span>
+<span class="lineNum">     152 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     153 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     154 </span><span class="lineNoCov">          0 :     code += &quot;if (y &gt; 0 &amp;&amp; m &gt;= 0 &amp;&amp; d &gt; 0 &amp;&amp; h &gt;= 0 &amp;&amp; i &gt;= 0 &amp;&amp; s &gt;= 0)\n&quot;</span>
+<span class="lineNum">     155 </span><span class="lineNoCov">          0 :         + &quot;{return new Date(y, m, d, h, i, s);}\n&quot;</span>
+<span class="lineNum">     156 </span><span class="lineNoCov">          0 :         + &quot;else if (y &gt; 0 &amp;&amp; m &gt;= 0 &amp;&amp; d &gt; 0 &amp;&amp; h &gt;= 0 &amp;&amp; i &gt;= 0)\n&quot;</span>
+<span class="lineNum">     157 </span><span class="lineNoCov">          0 :         + &quot;{return new Date(y, m, d, h, i);}\n&quot;</span>
+<span class="lineNum">     158 </span><span class="lineNoCov">          0 :         + &quot;else if (y &gt; 0 &amp;&amp; m &gt;= 0 &amp;&amp; d &gt; 0 &amp;&amp; h &gt;= 0)\n&quot;</span>
+<span class="lineNum">     159 </span><span class="lineNoCov">          0 :         + &quot;{return new Date(y, m, d, h);}\n&quot;</span>
+<span class="lineNum">     160 </span><span class="lineNoCov">          0 :         + &quot;else if (y &gt; 0 &amp;&amp; m &gt;= 0 &amp;&amp; d &gt; 0)\n&quot;</span>
+<span class="lineNum">     161 </span><span class="lineNoCov">          0 :         + &quot;{return new Date(y, m, d);}\n&quot;</span>
+<span class="lineNum">     162 </span><span class="lineNoCov">          0 :         + &quot;else if (y &gt; 0 &amp;&amp; m &gt;= 0)\n&quot;</span>
+<span class="lineNum">     163 </span><span class="lineNoCov">          0 :         + &quot;{return new Date(y, m);}\n&quot;</span>
+<span class="lineNum">     164 </span><span class="lineNoCov">          0 :         + &quot;else if (y &gt; 0)\n&quot;</span>
+<span class="lineNum">     165 </span><span class="lineNoCov">          0 :         + &quot;{return new Date(y);}\n&quot;</span>
+<span class="lineNum">     166 </span><span class="lineNoCov">          0 :         + &quot;}return null;}&quot;;</span>
+<span class="lineNum">     167 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     168 </span><span class="lineNoCov">          0 :     Date.parseRegexes[regexNum] = new RegExp(&quot;^&quot; + regex + &quot;$&quot;);</span>
+<span class="lineNum">     169 </span><span class="lineNoCov">          0 :     eval(code);</span>
+<a name="170"><span class="lineNum">     170 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">     171 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     172 </span><span class="lineCov">          1 : Date.formatCodeToRegex = function(character, currentGroup) {</span>
+<span class="lineNum">     173 </span><span class="lineNoCov">          0 :     switch (character) {</span>
+<span class="lineNum">     174 </span><span class="lineNoCov">          0 :     case &quot;D&quot;:</span>
+<span class="lineNum">     175 </span><span class="lineNoCov">          0 :         return {g:0,</span>
+<span class="lineNum">     176 </span><span class="lineNoCov">          0 :         c:null,</span>
+<span class="lineNum">     177 </span><span class="lineNoCov">          0 :         s:&quot;(?:Sun|Mon|Tue|Wed|Thu|Fri|Sat)&quot;};</span>
+<span class="lineNum">     178 </span><span class="lineNoCov">          0 :     case &quot;j&quot;:</span>
+<span class="lineNum">     179 </span><span class="lineNoCov">          0 :     case &quot;d&quot;:</span>
+<span class="lineNum">     180 </span><span class="lineNoCov">          0 :         return {g:1,</span>
+<span class="lineNum">     181 </span><span class="lineNoCov">          0 :             c:&quot;d = parseInt(results[&quot; + currentGroup + &quot;], 10);\n&quot;,</span>
+<span class="lineNum">     182 </span><span class="lineNoCov">          0 :             s:&quot;(\\d{1,2})&quot;};</span>
+<span class="lineNum">     183 </span><span class="lineNoCov">          0 :     case &quot;l&quot;:</span>
+<span class="lineNum">     184 </span><span class="lineNoCov">          0 :         return {g:0,</span>
+<span class="lineNum">     185 </span><span class="lineNoCov">          0 :             c:null,</span>
+<span class="lineNum">     186 </span><span class="lineNoCov">          0 :             s:&quot;(?:&quot; + Date.dayNames.join(&quot;|&quot;) + &quot;)&quot;};</span>
+<span class="lineNum">     187 </span><span class="lineNoCov">          0 :     case &quot;S&quot;:</span>
+<span class="lineNum">     188 </span><span class="lineNoCov">          0 :         return {g:0,</span>
+<span class="lineNum">     189 </span><span class="lineNoCov">          0 :             c:null,</span>
+<span class="lineNum">     190 </span><span class="lineNoCov">          0 :             s:&quot;(?:st|nd|rd|th)&quot;};</span>
+<span class="lineNum">     191 </span><span class="lineNoCov">          0 :     case &quot;w&quot;:</span>
+<span class="lineNum">     192 </span><span class="lineNoCov">          0 :         return {g:0,</span>
+<span class="lineNum">     193 </span><span class="lineNoCov">          0 :             c:null,</span>
+<span class="lineNum">     194 </span><span class="lineNoCov">          0 :             s:&quot;\\d&quot;};</span>
+<span class="lineNum">     195 </span><span class="lineNoCov">          0 :     case &quot;z&quot;:</span>
+<span class="lineNum">     196 </span><span class="lineNoCov">          0 :         return {g:0,</span>
+<span class="lineNum">     197 </span><span class="lineNoCov">          0 :             c:null,</span>
+<span class="lineNum">     198 </span><span class="lineNoCov">          0 :             s:&quot;(?:\\d{1,3})&quot;};</span>
+<span class="lineNum">     199 </span><span class="lineNoCov">          0 :     case &quot;W&quot;:</span>
+<span class="lineNum">     200 </span><span class="lineNoCov">          0 :         return {g:0,</span>
+<span class="lineNum">     201 </span><span class="lineNoCov">          0 :             c:null,</span>
+<span class="lineNum">     202 </span><span class="lineNoCov">          0 :             s:&quot;(?:\\d{2})&quot;};</span>
+<span class="lineNum">     203 </span><span class="lineNoCov">          0 :     case &quot;F&quot;:</span>
+<span class="lineNum">     204 </span><span class="lineNoCov">          0 :         return {g:1,</span>
+<span class="lineNum">     205 </span><span class="lineNoCov">          0 :             c:&quot;m = parseInt(Date.monthNumbers[results[&quot; + currentGroup + &quot;].substring(0, 3)], 10);\n&quot;,</span>
+<span class="lineNum">     206 </span><span class="lineNoCov">          0 :             s:&quot;(&quot; + Date.monthNames.join(&quot;|&quot;) + &quot;)&quot;};</span>
+<span class="lineNum">     207 </span><span class="lineNoCov">          0 :     case &quot;M&quot;:</span>
+<span class="lineNum">     208 </span><span class="lineNoCov">          0 :         return {g:1,</span>
+<span class="lineNum">     209 </span><span class="lineNoCov">          0 :             c:&quot;m = parseInt(Date.monthNumbers[results[&quot; + currentGroup + &quot;]], 10);\n&quot;,</span>
+<span class="lineNum">     210 </span><span class="lineNoCov">          0 :             s:&quot;(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)&quot;};</span>
+<span class="lineNum">     211 </span><span class="lineNoCov">          0 :     case &quot;n&quot;:</span>
+<span class="lineNum">     212 </span><span class="lineNoCov">          0 :     case &quot;m&quot;:</span>
+<span class="lineNum">     213 </span><span class="lineNoCov">          0 :         return {g:1,</span>
+<span class="lineNum">     214 </span><span class="lineNoCov">          0 :             c:&quot;m = parseInt(results[&quot; + currentGroup + &quot;], 10) - 1;\n&quot;,</span>
+<span class="lineNum">     215 </span><span class="lineNoCov">          0 :             s:&quot;(\\d{1,2})&quot;};</span>
+<span class="lineNum">     216 </span><span class="lineNoCov">          0 :     case &quot;t&quot;:</span>
+<span class="lineNum">     217 </span><span class="lineNoCov">          0 :         return {g:0,</span>
+<span class="lineNum">     218 </span><span class="lineNoCov">          0 :             c:null,</span>
+<span class="lineNum">     219 </span><span class="lineNoCov">          0 :             s:&quot;\\d{1,2}&quot;};</span>
+<span class="lineNum">     220 </span><span class="lineNoCov">          0 :     case &quot;L&quot;:</span>
+<span class="lineNum">     221 </span><span class="lineNoCov">          0 :         return {g:0,</span>
+<span class="lineNum">     222 </span><span class="lineNoCov">          0 :             c:null,</span>
+<span class="lineNum">     223 </span><span class="lineNoCov">          0 :             s:&quot;(?:1|0)&quot;};</span>
+<span class="lineNum">     224 </span><span class="lineNoCov">          0 :     case &quot;Y&quot;:</span>
+<span class="lineNum">     225 </span><span class="lineNoCov">          0 :         return {g:1,</span>
+<span class="lineNum">     226 </span><span class="lineNoCov">          0 :             c:&quot;y = parseInt(results[&quot; + currentGroup + &quot;], 10);\n&quot;,</span>
+<span class="lineNum">     227 </span><span class="lineNoCov">          0 :             s:&quot;(\\d{4})&quot;};</span>
+<span class="lineNum">     228 </span><span class="lineNoCov">          0 :     case &quot;y&quot;:</span>
+<span class="lineNum">     229 </span><span class="lineNoCov">          0 :         return {g:1,</span>
+<span class="lineNum">     230 </span><span class="lineNoCov">          0 :             c:&quot;var ty = parseInt(results[&quot; + currentGroup + &quot;], 10);\n&quot;</span>
+<span class="lineNum">     231 </span><span class="lineNoCov">          0 :                 + &quot;y = ty &gt; Date.y2kYear ? 1900 + ty : 2000 + ty;\n&quot;,</span>
+<span class="lineNum">     232 </span><span class="lineNoCov">          0 :             s:&quot;(\\d{1,2})&quot;};</span>
+<span class="lineNum">     233 </span><span class="lineNoCov">          0 :     case &quot;a&quot;:</span>
+<span class="lineNum">     234 </span><span class="lineNoCov">          0 :         return {g:1,</span>
+<span class="lineNum">     235 </span><span class="lineNoCov">          0 :             c:&quot;if (results[&quot; + currentGroup + &quot;] == 'am') {\n&quot;</span>
+<span class="lineNum">     236 </span><span class="lineNoCov">          0 :                 + &quot;if (h == 12) { h = 0; }\n&quot;</span>
+<span class="lineNum">     237 </span><span class="lineNoCov">          0 :                 + &quot;} else { if (h &lt; 12) { h += 12; }}&quot;,</span>
+<span class="lineNum">     238 </span><span class="lineNoCov">          0 :             s:&quot;(am|pm)&quot;};</span>
+<span class="lineNum">     239 </span><span class="lineNoCov">          0 :     case &quot;A&quot;:</span>
+<span class="lineNum">     240 </span><span class="lineNoCov">          0 :         return {g:1,</span>
+<span class="lineNum">     241 </span><span class="lineNoCov">          0 :             c:&quot;if (results[&quot; + currentGroup + &quot;] == 'AM') {\n&quot;</span>
+<span class="lineNum">     242 </span><span class="lineNoCov">          0 :                 + &quot;if (h == 12) { h = 0; }\n&quot;</span>
+<span class="lineNum">     243 </span><span class="lineNoCov">          0 :                 + &quot;} else { if (h &lt; 12) { h += 12; }}&quot;,</span>
+<span class="lineNum">     244 </span><span class="lineNoCov">          0 :             s:&quot;(AM|PM)&quot;};</span>
+<span class="lineNum">     245 </span><span class="lineNoCov">          0 :     case &quot;g&quot;:</span>
+<span class="lineNum">     246 </span><span class="lineNoCov">          0 :     case &quot;G&quot;:</span>
+<span class="lineNum">     247 </span><span class="lineNoCov">          0 :     case &quot;h&quot;:</span>
+<span class="lineNum">     248 </span><span class="lineNoCov">          0 :     case &quot;H&quot;:</span>
+<span class="lineNum">     249 </span><span class="lineNoCov">          0 :         return {g:1,</span>
+<span class="lineNum">     250 </span><span class="lineNoCov">          0 :             c:&quot;h = parseInt(results[&quot; + currentGroup + &quot;], 10);\n&quot;,</span>
+<span class="lineNum">     251 </span><span class="lineNoCov">          0 :             s:&quot;(\\d{1,2})&quot;};</span>
+<span class="lineNum">     252 </span><span class="lineNoCov">          0 :     case &quot;i&quot;:</span>
+<span class="lineNum">     253 </span><span class="lineNoCov">          0 :         return {g:1,</span>
+<span class="lineNum">     254 </span><span class="lineNoCov">          0 :             c:&quot;i = parseInt(results[&quot; + currentGroup + &quot;], 10);\n&quot;,</span>
+<span class="lineNum">     255 </span><span class="lineNoCov">          0 :             s:&quot;(\\d{2})&quot;};</span>
+<span class="lineNum">     256 </span><span class="lineNoCov">          0 :     case &quot;s&quot;:</span>
+<span class="lineNum">     257 </span><span class="lineNoCov">          0 :         return {g:1,</span>
+<span class="lineNum">     258 </span><span class="lineNoCov">          0 :             c:&quot;s = parseInt(results[&quot; + currentGroup + &quot;], 10);\n&quot;,</span>
+<span class="lineNum">     259 </span><span class="lineNoCov">          0 :             s:&quot;(\\d{2})&quot;};</span>
+<span class="lineNum">     260 </span><span class="lineNoCov">          0 :     case &quot;O&quot;:</span>
+<span class="lineNum">     261 </span><span class="lineNoCov">          0 :         return {g:0,</span>
+<span class="lineNum">     262 </span><span class="lineNoCov">          0 :             c:null,</span>
+<span class="lineNum">     263 </span><span class="lineNoCov">          0 :             s:&quot;[+-]\\d{4}&quot;};</span>
+<span class="lineNum">     264 </span><span class="lineNoCov">          0 :     case &quot;T&quot;:</span>
+<span class="lineNum">     265 </span><span class="lineNoCov">          0 :         return {g:0,</span>
+<span class="lineNum">     266 </span><span class="lineNoCov">          0 :             c:null,</span>
+<span class="lineNum">     267 </span><span class="lineNoCov">          0 :             s:&quot;[A-Z]{3}&quot;};</span>
+<span class="lineNum">     268 </span><span class="lineNoCov">          0 :     case &quot;Z&quot;:</span>
+<span class="lineNum">     269 </span><span class="lineNoCov">          0 :         return {g:0,</span>
+<span class="lineNum">     270 </span><span class="lineNoCov">          0 :             c:null,</span>
+<span class="lineNum">     271 </span><span class="lineNoCov">          0 :             s:&quot;[+-]\\d{1,5}&quot;};</span>
+<span class="lineNum">     272 </span><span class="lineNoCov">          0 :     default:</span>
+<span class="lineNum">     273 </span><span class="lineNoCov">          0 :         return {g:0,</span>
+<span class="lineNum">     274 </span><span class="lineNoCov">          0 :             c:null,</span>
+<span class="lineNum">     275 </span><span class="lineNoCov">          0 :             s:String.escape(character)};</span>
+<span class="lineNum">     276 </span><span class="lineNoCov">          0 :     }</span>
+<a name="277"><span class="lineNum">     277 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">     278 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     279 </span><span class="lineCov">          1 : Date.prototype.getTimezone = function() {</span>
+<span class="lineNum">     280 </span><span class="lineNoCov">          0 :     return this.toString().replace(</span>
+<span class="lineNum">     281 </span><span class="lineNoCov">          0 :         /^.*? ([A-Z]{3}) [0-9]{4}.*$/, &quot;$1&quot;).replace(</span>
+<span class="lineNum">     282 </span><span class="lineNoCov">          0 :         /^.*?\(([A-Z])[a-z]+ ([A-Z])[a-z]+ ([A-Z])[a-z]+\)$/, &quot;$1$2$3&quot;);</span>
+<a name="283"><span class="lineNum">     283 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">     284 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     285 </span><span class="lineCov">          1 : Date.prototype.getGMTOffset = function() {</span>
+<span class="lineNum">     286 </span><span class="lineNoCov">          0 :     return (this.getTimezoneOffset() &gt; 0 ? &quot;-&quot; : &quot;+&quot;)</span>
+<span class="lineNum">     287 </span><span class="lineNoCov">          0 :         + String.leftPad(Math.floor(this.getTimezoneOffset() / 60), 2, &quot;0&quot;)</span>
+<span class="lineNum">     288 </span><span class="lineNoCov">          0 :         + String.leftPad(this.getTimezoneOffset() % 60, 2, &quot;0&quot;);</span>
+<a name="289"><span class="lineNum">     289 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">     290 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     291 </span><span class="lineCov">          1 : Date.prototype.getDayOfYear = function() {</span>
+<span class="lineNum">     292 </span><span class="lineNoCov">          0 :     var num = 0;</span>
+<span class="lineNum">     293 </span><span class="lineNoCov">          0 :     Date.daysInMonth[1] = this.isLeapYear() ? 29 : 28;</span>
+<span class="lineNum">     294 </span><span class="lineNoCov">          0 :     for (var i = 0; i &lt; this.getMonth(); ++i) {</span>
+<span class="lineNum">     295 </span><span class="lineNoCov">          0 :         num += Date.daysInMonth[i];</span>
+<span class="lineNum">     296 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     297 </span><span class="lineNoCov">          0 :     return num + this.getDate() - 1;</span>
+<a name="298"><span class="lineNum">     298 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">     299 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     300 </span><span class="lineCov">          1 : Date.prototype.getWeekOfYear = function() {</span>
+<span class="lineNum">     301 </span><span class="lineNoCov">          0 :     // Skip to Thursday of this week</span>
+<span class="lineNum">     302 </span><span class="lineNoCov">          0 :     var now = this.getDayOfYear() + (4 - this.getDay());</span>
+<span class="lineNum">     303 </span><span class="lineNoCov">          0 :     // Find the first Thursday of the year</span>
+<span class="lineNum">     304 </span><span class="lineNoCov">          0 :     var jan1 = new Date(this.getFullYear(), 0, 1);</span>
+<span class="lineNum">     305 </span><span class="lineNoCov">          0 :     var then = (7 - jan1.getDay() + 4);</span>
+<span class="lineNum">     306 </span><span class="lineNoCov">          0 :     document.write(then);</span>
+<span class="lineNum">     307 </span><span class="lineNoCov">          0 :     return String.leftPad(((now - then) / 7) + 1, 2, &quot;0&quot;);</span>
+<a name="308"><span class="lineNum">     308 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">     309 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     310 </span><span class="lineCov">          1 : Date.prototype.isLeapYear = function() {</span>
+<span class="lineNum">     311 </span><span class="lineNoCov">          0 :     var year = this.getFullYear();</span>
+<span class="lineNum">     312 </span><span class="lineNoCov">          0 :     return ((year &amp; 3) == 0 &amp;&amp; (year % 100 || (year % 400 == 0 &amp;&amp; year)));</span>
+<a name="313"><span class="lineNum">     313 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">     314 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     315 </span><span class="lineCov">          1 : Date.prototype.getFirstDayOfMonth = function() {</span>
+<span class="lineNum">     316 </span><span class="lineNoCov">          0 :     var day = (this.getDay() - (this.getDate() - 1)) % 7;</span>
+<span class="lineNum">     317 </span><span class="lineNoCov">          0 :     return (day &lt; 0) ? (day + 7) : day;</span>
+<a name="318"><span class="lineNum">     318 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">     319 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     320 </span><span class="lineCov">          1 : Date.prototype.getLastDayOfMonth = function() {</span>
+<span class="lineNum">     321 </span><span class="lineNoCov">          0 :     var day = (this.getDay() + (Date.daysInMonth[this.getMonth()] - this.getDate())) % 7;</span>
+<span class="lineNum">     322 </span><span class="lineNoCov">          0 :     return (day &lt; 0) ? (day + 7) : day;</span>
+<a name="323"><span class="lineNum">     323 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">     324 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     325 </span><span class="lineCov">          1 : Date.prototype.getDaysInMonth = function() {</span>
+<span class="lineNum">     326 </span><span class="lineNoCov">          0 :     Date.daysInMonth[1] = this.isLeapYear() ? 29 : 28;</span>
+<span class="lineNum">     327 </span><span class="lineNoCov">          0 :     return Date.daysInMonth[this.getMonth()];</span>
+<a name="328"><span class="lineNum">     328 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">     329 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     330 </span><span class="lineCov">          1 : Date.prototype.getSuffix = function() {</span>
+<span class="lineNum">     331 </span><span class="lineNoCov">          0 :     switch (this.getDate()) {</span>
+<span class="lineNum">     332 </span><span class="lineNoCov">          0 :         case 1:</span>
+<span class="lineNum">     333 </span><span class="lineNoCov">          0 :         case 21:</span>
+<span class="lineNum">     334 </span><span class="lineNoCov">          0 :         case 31:</span>
+<span class="lineNum">     335 </span><span class="lineNoCov">          0 :             return &quot;st&quot;;</span>
+<span class="lineNum">     336 </span><span class="lineNoCov">          0 :         case 2:</span>
+<span class="lineNum">     337 </span><span class="lineNoCov">          0 :         case 22:</span>
+<span class="lineNum">     338 </span><span class="lineNoCov">          0 :             return &quot;nd&quot;;</span>
+<span class="lineNum">     339 </span><span class="lineNoCov">          0 :         case 3:</span>
+<span class="lineNum">     340 </span><span class="lineNoCov">          0 :         case 23:</span>
+<span class="lineNum">     341 </span><span class="lineNoCov">          0 :             return &quot;rd&quot;;</span>
+<span class="lineNum">     342 </span><span class="lineNoCov">          0 :         default:</span>
+<span class="lineNum">     343 </span><span class="lineNoCov">          0 :             return &quot;th&quot;;</span>
+<span class="lineNum">     344 </span><span class="lineNoCov">          0 :     }</span>
+<a name="345"><span class="lineNum">     345 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">     346 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     347 </span><span class="lineCov">         11 : String.escape = function(string) {</span>
+<span class="lineNum">     348 </span><span class="lineCov">         11 :     return string.replace(/('|\\)/g, &quot;\\$1&quot;);</span>
+<a name="349"><span class="lineNum">     349 </span><span class="lineCov">         11 : }</span></a>
+<span class="lineNum">     350 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     351 </span><span class="lineCov">      20000 : String.leftPad = function (val, size, ch) {</span>
+<span class="lineNum">     352 </span><span class="lineCov">      20000 :     var result = new String(val);</span>
+<span class="lineNum">     353 </span><span class="lineCov">      20000 :     if (ch == null) {</span>
+<span class="lineNum">     354 </span><span class="lineCov">      20000 :         ch = &quot; &quot;;</span>
+<span class="lineNum">     355 </span><span class="lineCov">      20000 :     }</span>
+<span class="lineNum">     356 </span><span class="lineCov">      20000 :     while (result.length &lt; size) {</span>
+<span class="lineNum">     357 </span><span class="lineCov">      20000 :         result = ch + result;</span>
+<span class="lineNum">     358 </span><span class="lineCov">      20000 :     }</span>
+<span class="lineNum">     359 </span><span class="lineCov">      20000 :     return result;</span>
+<span class="lineNum">     360 </span><span class="lineCov">      20000 : }</span>
+<span class="lineNum">     361 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     362 </span><span class="lineCov">          1 : Date.daysInMonth = [31,28,31,30,31,30,31,31,30,31,30,31];</span>
+<span class="lineNum">     363 </span><span class="lineCov">          1 : Date.monthNames =</span>
+<span class="lineNum">     364 </span><span class="lineCov">          1 :    [&quot;January&quot;,</span>
+<span class="lineNum">     365 </span><span class="lineCov">          1 :     &quot;February&quot;,</span>
+<span class="lineNum">     366 </span><span class="lineCov">          1 :     &quot;March&quot;,</span>
+<span class="lineNum">     367 </span><span class="lineCov">          1 :     &quot;April&quot;,</span>
+<span class="lineNum">     368 </span><span class="lineCov">          1 :     &quot;May&quot;,</span>
+<span class="lineNum">     369 </span><span class="lineCov">          1 :     &quot;June&quot;,</span>
+<span class="lineNum">     370 </span><span class="lineCov">          1 :     &quot;July&quot;,</span>
+<span class="lineNum">     371 </span><span class="lineCov">          1 :     &quot;August&quot;,</span>
+<span class="lineNum">     372 </span><span class="lineCov">          1 :     &quot;September&quot;,</span>
+<span class="lineNum">     373 </span><span class="lineCov">          1 :     &quot;October&quot;,</span>
+<span class="lineNum">     374 </span><span class="lineCov">          1 :     &quot;November&quot;,</span>
+<span class="lineNum">     375 </span><span class="lineCov">          1 :     &quot;December&quot;];</span>
+<span class="lineNum">     376 </span><span class="lineCov">          1 : Date.dayNames =</span>
+<span class="lineNum">     377 </span><span class="lineCov">          1 :    [&quot;Sunday&quot;,</span>
+<span class="lineNum">     378 </span><span class="lineCov">          1 :     &quot;Monday&quot;,</span>
+<span class="lineNum">     379 </span><span class="lineCov">          1 :     &quot;Tuesday&quot;,</span>
+<span class="lineNum">     380 </span><span class="lineCov">          1 :     &quot;Wednesday&quot;,</span>
+<span class="lineNum">     381 </span><span class="lineCov">          1 :     &quot;Thursday&quot;,</span>
+<span class="lineNum">     382 </span><span class="lineCov">          1 :     &quot;Friday&quot;,</span>
+<span class="lineNum">     383 </span><span class="lineCov">          1 :     &quot;Saturday&quot;];</span>
+<span class="lineNum">     384 </span><span class="lineCov">          1 : Date.y2kYear = 50;</span>
+<span class="lineNum">     385 </span><span class="lineCov">          1 : Date.monthNumbers = {</span>
+<span class="lineNum">     386 </span><span class="lineCov">          1 :     Jan:0,</span>
+<span class="lineNum">     387 </span><span class="lineCov">          1 :     Feb:1,</span>
+<span class="lineNum">     388 </span><span class="lineCov">          1 :     Mar:2,</span>
+<span class="lineNum">     389 </span><span class="lineCov">          1 :     Apr:3,</span>
+<span class="lineNum">     390 </span><span class="lineCov">          1 :     May:4,</span>
+<span class="lineNum">     391 </span><span class="lineCov">          1 :     Jun:5,</span>
+<span class="lineNum">     392 </span><span class="lineCov">          1 :     Jul:6,</span>
+<span class="lineNum">     393 </span><span class="lineCov">          1 :     Aug:7,</span>
+<span class="lineNum">     394 </span><span class="lineCov">          1 :     Sep:8,</span>
+<span class="lineNum">     395 </span><span class="lineCov">          1 :     Oct:9,</span>
+<span class="lineNum">     396 </span><span class="lineCov">          1 :     Nov:10,</span>
+<span class="lineNum">     397 </span><span class="lineCov">          1 :     Dec:11};</span>
+<span class="lineNum">     398 </span><span class="lineCov">          1 : Date.patterns = {</span>
+<span class="lineNum">     399 </span><span class="lineCov">          1 :     ISO8601LongPattern:&quot;Y-m-d H:i:s&quot;,</span>
+<span class="lineNum">     400 </span><span class="lineCov">          1 :     ISO8601ShortPattern:&quot;Y-m-d&quot;,</span>
+<span class="lineNum">     401 </span><span class="lineCov">          1 :     ShortDatePattern: &quot;n/j/Y&quot;,</span>
+<span class="lineNum">     402 </span><span class="lineCov">          1 :     LongDatePattern: &quot;l, F d, Y&quot;,</span>
+<span class="lineNum">     403 </span><span class="lineCov">          1 :     FullDateTimePattern: &quot;l, F d, Y g:i:s A&quot;,</span>
+<span class="lineNum">     404 </span><span class="lineCov">          1 :     MonthDayPattern: &quot;F d&quot;,</span>
+<span class="lineNum">     405 </span><span class="lineCov">          1 :     ShortTimePattern: &quot;g:i A&quot;,</span>
+<span class="lineNum">     406 </span><span class="lineCov">          1 :     LongTimePattern: &quot;g:i:s A&quot;,</span>
+<span class="lineNum">     407 </span><span class="lineCov">          1 :     SortableDateTimePattern: &quot;Y-m-d\\TH:i:s&quot;,</span>
+<span class="lineNum">     408 </span><span class="lineCov">          1 :     UniversalSortableDateTimePattern: &quot;Y-m-d H:i:sO&quot;,</span>
+<span class="lineNum">     409 </span><span class="lineCov">          1 :     YearMonthPattern: &quot;F, Y&quot;};</span>
+<span class="lineNum">     410 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     411 </span><span class="lineCov">          1 : var date = new Date(&quot;1/1/2007 1:11:11&quot;);</span>
+<span class="lineNum">     412 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     413 </span><span class="lineCov">          1 : for (i = 0; i &lt; 4000; ++i) {</span>
+<span class="lineNum">     414 </span><span class="lineCov">          1 :     var shortFormat = date.dateFormat(&quot;Y-m-d&quot;);</span>
+<span class="lineNum">     415 </span><span class="lineCov">          1 :     var longFormat = date.dateFormat(&quot;l, F d, Y g:i:s A&quot;);</span>
+<span class="lineNum">     416 </span><span class="lineCov">          1 :     date.setTime(date.getTime() + 84266956);</span>
+<span class="lineNum">     417 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     418 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     419 </span><span class="lineCov">          1 : // FIXME: Find a way to validate this test.</span>
+<span class="lineNum">     420 </span><span class="lineCov">          1 : // https://bugs.webkit.org/show_bug.cgi?id=114849</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

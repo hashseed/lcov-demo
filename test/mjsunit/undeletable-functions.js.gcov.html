@@ -1,0 +1,247 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - test/mjsunit/undeletable-functions.js</title>
+  <link rel="stylesheet" type="text/css" href="../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../index.html">top level</a> - <a href="index.html">test/mjsunit</a> - undeletable-functions.js<span style="font-size: 80%;"> (source / <a href="undeletable-functions.js.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">172</td>
+            <td class="headerCovTableEntry">172</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2017-02-14</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">6</td>
+            <td class="headerCovTableEntry">6</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span><span class="lineCov">          1 : // Copyright 2009 the V8 project authors. All rights reserved.</span></a>
+<span class="lineNum">       2 </span><span class="lineCov">          1 : // Redistribution and use in source and binary forms, with or without</span>
+<span class="lineNum">       3 </span><span class="lineCov">          1 : // modification, are permitted provided that the following conditions are</span>
+<span class="lineNum">       4 </span><span class="lineCov">          1 : // met:</span>
+<span class="lineNum">       5 </span><span class="lineCov">          1 : //</span>
+<span class="lineNum">       6 </span><span class="lineCov">          1 : //     * Redistributions of source code must retain the above copyright</span>
+<span class="lineNum">       7 </span><span class="lineCov">          1 : //       notice, this list of conditions and the following disclaimer.</span>
+<span class="lineNum">       8 </span><span class="lineCov">          1 : //     * Redistributions in binary form must reproduce the above</span>
+<span class="lineNum">       9 </span><span class="lineCov">          1 : //       copyright notice, this list of conditions and the following</span>
+<span class="lineNum">      10 </span><span class="lineCov">          1 : //       disclaimer in the documentation and/or other materials provided</span>
+<span class="lineNum">      11 </span><span class="lineCov">          1 : //       with the distribution.</span>
+<span class="lineNum">      12 </span><span class="lineCov">          1 : //     * Neither the name of Google Inc. nor the names of its</span>
+<span class="lineNum">      13 </span><span class="lineCov">          1 : //       contributors may be used to endorse or promote products derived</span>
+<span class="lineNum">      14 </span><span class="lineCov">          1 : //       from this software without specific prior written permission.</span>
+<span class="lineNum">      15 </span><span class="lineCov">          1 : //</span>
+<span class="lineNum">      16 </span><span class="lineCov">          1 : // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="lineNum">      17 </span><span class="lineCov">          1 : // &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="lineNum">      18 </span><span class="lineCov">          1 : // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR</span>
+<span class="lineNum">      19 </span><span class="lineCov">          1 : // A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT</span>
+<span class="lineNum">      20 </span><span class="lineCov">          1 : // OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,</span>
+<span class="lineNum">      21 </span><span class="lineCov">          1 : // SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT</span>
+<span class="lineNum">      22 </span><span class="lineCov">          1 : // LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,</span>
+<span class="lineNum">      23 </span><span class="lineCov">          1 : // DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY</span>
+<span class="lineNum">      24 </span><span class="lineCov">          1 : // THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT</span>
+<span class="lineNum">      25 </span><span class="lineCov">          1 : // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE</span>
+<span class="lineNum">      26 </span><span class="lineCov">          1 : // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="lineNum">      27 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      28 </span><span class="lineCov">          1 : // Test that we match ECMAScript in making most builtin functions</span>
+<span class="lineNum">      29 </span><span class="lineCov">          1 : // deletable and only specific ones undeletable or read-only.</span>
+<span class="lineNum">      30 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      31 </span><span class="lineCov">          1 : var array;</span>
+<span class="lineNum">      32 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      33 </span><span class="lineCov">          1 : array = [</span>
+<span class="lineNum">      34 </span><span class="lineCov">          1 :   &quot;toString&quot;, &quot;toLocaleString&quot;, &quot;join&quot;, &quot;pop&quot;, &quot;push&quot;, &quot;concat&quot;, &quot;reverse&quot;,</span>
+<span class="lineNum">      35 </span><span class="lineCov">          1 :   &quot;shift&quot;, &quot;unshift&quot;, &quot;slice&quot;, &quot;splice&quot;, &quot;sort&quot;, &quot;filter&quot;, &quot;forEach&quot;, &quot;some&quot;,</span>
+<span class="lineNum">      36 </span><span class="lineCov">          1 :   &quot;every&quot;, &quot;map&quot;, &quot;indexOf&quot;, &quot;lastIndexOf&quot;, &quot;reduce&quot;, &quot;reduceRight&quot;];</span>
+<span class="lineNum">      37 </span><span class="lineCov">          1 : CheckEcmaSemantics(Array.prototype, array, &quot;Array prototype&quot;);</span>
+<span class="lineNum">      38 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      39 </span><span class="lineCov">          1 : var old_Array_prototype = Array.prototype;</span>
+<span class="lineNum">      40 </span><span class="lineCov">          1 : var new_Array_prototype = {};</span>
+<span class="lineNum">      41 </span><span class="lineCov">          1 : for (var i = 0; i &lt; 7; i++) {</span>
+<span class="lineNum">      42 </span><span class="lineCov">          1 :   Array.prototype = new_Array_prototype;</span>
+<span class="lineNum">      43 </span><span class="lineCov">          1 :   assertEquals(old_Array_prototype, Array.prototype);</span>
+<span class="lineNum">      44 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      45 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      46 </span><span class="lineCov">          1 : array = [</span>
+<span class="lineNum">      47 </span><span class="lineCov">          1 :   &quot;toString&quot;, &quot;toDateString&quot;, &quot;toTimeString&quot;, &quot;toLocaleString&quot;,</span>
+<span class="lineNum">      48 </span><span class="lineCov">          1 :   &quot;toLocaleDateString&quot;, &quot;toLocaleTimeString&quot;, &quot;valueOf&quot;, &quot;getTime&quot;,</span>
+<span class="lineNum">      49 </span><span class="lineCov">          1 :   &quot;getFullYear&quot;, &quot;getUTCFullYear&quot;, &quot;getMonth&quot;, &quot;getUTCMonth&quot;, &quot;getDate&quot;,</span>
+<span class="lineNum">      50 </span><span class="lineCov">          1 :   &quot;getUTCDate&quot;, &quot;getDay&quot;, &quot;getUTCDay&quot;, &quot;getHours&quot;, &quot;getUTCHours&quot;, &quot;getMinutes&quot;,</span>
+<span class="lineNum">      51 </span><span class="lineCov">          1 :   &quot;getUTCMinutes&quot;, &quot;getSeconds&quot;, &quot;getUTCSeconds&quot;, &quot;getMilliseconds&quot;,</span>
+<span class="lineNum">      52 </span><span class="lineCov">          1 :   &quot;getUTCMilliseconds&quot;, &quot;getTimezoneOffset&quot;, &quot;setTime&quot;, &quot;setMilliseconds&quot;,</span>
+<span class="lineNum">      53 </span><span class="lineCov">          1 :   &quot;setUTCMilliseconds&quot;, &quot;setSeconds&quot;, &quot;setUTCSeconds&quot;, &quot;setMinutes&quot;,</span>
+<span class="lineNum">      54 </span><span class="lineCov">          1 :   &quot;setUTCMinutes&quot;, &quot;setHours&quot;, &quot;setUTCHours&quot;, &quot;setDate&quot;, &quot;setUTCDate&quot;,</span>
+<span class="lineNum">      55 </span><span class="lineCov">          1 :   &quot;setMonth&quot;, &quot;setUTCMonth&quot;, &quot;setFullYear&quot;, &quot;setUTCFullYear&quot;, &quot;toGMTString&quot;,</span>
+<span class="lineNum">      56 </span><span class="lineCov">          1 :   &quot;toUTCString&quot;, &quot;getYear&quot;, &quot;setYear&quot;, &quot;toISOString&quot;, &quot;toJSON&quot;];</span>
+<span class="lineNum">      57 </span><span class="lineCov">          1 : CheckEcmaSemantics(Date.prototype, array, &quot;Date prototype&quot;);</span>
+<span class="lineNum">      58 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      59 </span><span class="lineCov">          1 : array = [</span>
+<span class="lineNum">      60 </span><span class="lineCov">          1 :   &quot;random&quot;, &quot;abs&quot;, &quot;acos&quot;, &quot;asin&quot;, &quot;atan&quot;, &quot;ceil&quot;, &quot;cos&quot;, &quot;exp&quot;, &quot;floor&quot;, &quot;log&quot;,</span>
+<span class="lineNum">      61 </span><span class="lineCov">          1 :   &quot;round&quot;, &quot;sin&quot;, &quot;sqrt&quot;, &quot;tan&quot;, &quot;atan2&quot;, &quot;pow&quot;, &quot;max&quot;, &quot;min&quot;];</span>
+<span class="lineNum">      62 </span><span class="lineCov">          1 : CheckEcmaSemantics(Math, array, &quot;Math1&quot;);</span>
+<span class="lineNum">      63 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      64 </span><span class="lineCov">          1 : CheckEcmaSemantics(Date, [&quot;UTC&quot;, &quot;parse&quot;, &quot;now&quot;], &quot;Date&quot;);</span>
+<span class="lineNum">      65 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      66 </span><span class="lineCov">          1 : array = [</span>
+<span class="lineNum">      67 </span><span class="lineCov">          1 :   &quot;E&quot;, &quot;LN10&quot;, &quot;LN2&quot;, &quot;LOG2E&quot;, &quot;LOG10E&quot;, &quot;PI&quot;, &quot;SQRT1_2&quot;, &quot;SQRT2&quot;];</span>
+<span class="lineNum">      68 </span><span class="lineCov">          1 : CheckDontDelete(Math, array, &quot;Math2&quot;);</span>
+<span class="lineNum">      69 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      70 </span><span class="lineCov">          1 : array = [</span>
+<span class="lineNum">      71 </span><span class="lineCov">          1 :   &quot;escape&quot;, &quot;unescape&quot;, &quot;decodeURI&quot;, &quot;decodeURIComponent&quot;, &quot;encodeURI&quot;,</span>
+<span class="lineNum">      72 </span><span class="lineCov">          1 :   &quot;encodeURIComponent&quot;, &quot;isNaN&quot;, &quot;isFinite&quot;, &quot;parseInt&quot;, &quot;parseFloat&quot;, &quot;eval&quot;,</span>
+<span class="lineNum">      73 </span><span class="lineCov">          1 :   &quot;execScript&quot;];</span>
+<span class="lineNum">      74 </span><span class="lineCov">          1 : CheckEcmaSemantics(this, array, &quot;Global&quot;);</span>
+<span class="lineNum">      75 </span><span class="lineCov">          1 : CheckReadOnlyAttr(this, &quot;Infinity&quot;);</span>
+<span class="lineNum">      76 </span><span class="lineCov">          1 : CheckReadOnlyAttr(this, &quot;NaN&quot;);</span>
+<span class="lineNum">      77 </span><span class="lineCov">          1 : CheckReadOnlyAttr(this, &quot;undefined&quot;);</span>
+<span class="lineNum">      78 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      79 </span><span class="lineCov">          1 : array = [&quot;exec&quot;, &quot;test&quot;, &quot;toString&quot;, &quot;compile&quot;];</span>
+<span class="lineNum">      80 </span><span class="lineCov">          1 : CheckEcmaSemantics(RegExp.prototype, array, &quot;RegExp prototype&quot;);</span>
+<span class="lineNum">      81 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      82 </span><span class="lineCov">          1 : array = [</span>
+<span class="lineNum">      83 </span><span class="lineCov">          1 :   &quot;toString&quot;, &quot;toLocaleString&quot;, &quot;valueOf&quot;, &quot;hasOwnProperty&quot;,</span>
+<span class="lineNum">      84 </span><span class="lineCov">          1 :   &quot;isPrototypeOf&quot;, &quot;propertyIsEnumerable&quot;, &quot;__defineGetter__&quot;,</span>
+<span class="lineNum">      85 </span><span class="lineCov">          1 :   &quot;__lookupGetter__&quot;, &quot;__defineSetter__&quot;, &quot;__lookupSetter__&quot;];</span>
+<span class="lineNum">      86 </span><span class="lineCov">          1 : CheckEcmaSemantics(Object.prototype, array, &quot;Object prototype&quot;);</span>
+<span class="lineNum">      87 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      88 </span><span class="lineCov">          1 : var old_Object_prototype = Object.prototype;</span>
+<span class="lineNum">      89 </span><span class="lineCov">          1 : var new_Object_prototype = {};</span>
+<span class="lineNum">      90 </span><span class="lineCov">          1 : for (var i = 0; i &lt; 7; i++) {</span>
+<span class="lineNum">      91 </span><span class="lineCov">          1 :   Object.prototype = new_Object_prototype;</span>
+<span class="lineNum">      92 </span><span class="lineCov">          1 :   assertEquals(old_Object_prototype, Object.prototype);</span>
+<span class="lineNum">      93 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      94 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      95 </span><span class="lineCov">          1 : array = [</span>
+<span class="lineNum">      96 </span><span class="lineCov">          1 :   &quot;toString&quot;, &quot;valueOf&quot;, &quot;toJSON&quot;];</span>
+<span class="lineNum">      97 </span><span class="lineCov">          1 : CheckEcmaSemantics(Boolean.prototype, array, &quot;Boolean prototype&quot;);</span>
+<span class="lineNum">      98 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      99 </span><span class="lineCov">          1 : array = [</span>
+<span class="lineNum">     100 </span><span class="lineCov">          1 :   &quot;toString&quot;, &quot;toLocaleString&quot;, &quot;valueOf&quot;, &quot;toFixed&quot;, &quot;toExponential&quot;,</span>
+<span class="lineNum">     101 </span><span class="lineCov">          1 :   &quot;toPrecision&quot;, &quot;toJSON&quot;];</span>
+<span class="lineNum">     102 </span><span class="lineCov">          1 : CheckEcmaSemantics(Number.prototype, array, &quot;Number prototype&quot;);</span>
+<span class="lineNum">     103 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     104 </span><span class="lineCov">          1 : CheckEcmaSemantics(Function.prototype, [&quot;toString&quot;], &quot;Function prototype&quot;);</span>
+<span class="lineNum">     105 </span><span class="lineCov">          1 : CheckEcmaSemantics(Date.prototype, [&quot;constructor&quot;], &quot;Date prototype constructor&quot;);</span>
+<span class="lineNum">     106 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     107 </span><span class="lineCov">          1 : array = [</span>
+<span class="lineNum">     108 </span><span class="lineCov">          1 :   &quot;charAt&quot;, &quot;charCodeAt&quot;, &quot;concat&quot;, &quot;indexOf&quot;,</span>
+<span class="lineNum">     109 </span><span class="lineCov">          1 :   &quot;lastIndexOf&quot;, &quot;localeCompare&quot;, &quot;match&quot;, &quot;replace&quot;, &quot;search&quot;, &quot;slice&quot;,</span>
+<span class="lineNum">     110 </span><span class="lineCov">          1 :   &quot;split&quot;, &quot;substring&quot;, &quot;substr&quot;, &quot;toLowerCase&quot;, &quot;toLocaleLowerCase&quot;,</span>
+<span class="lineNum">     111 </span><span class="lineCov">          1 :   &quot;toUpperCase&quot;, &quot;toLocaleUpperCase&quot;, &quot;link&quot;, &quot;anchor&quot;, &quot;fontcolor&quot;, &quot;fontsize&quot;,</span>
+<span class="lineNum">     112 </span><span class="lineCov">          1 :   &quot;big&quot;, &quot;blink&quot;, &quot;bold&quot;, &quot;fixed&quot;, &quot;italics&quot;, &quot;small&quot;, &quot;strike&quot;, &quot;sub&quot;, &quot;sup&quot;,</span>
+<span class="lineNum">     113 </span><span class="lineCov">          1 :   &quot;toJSON&quot;, &quot;toString&quot;, &quot;valueOf&quot;];</span>
+<span class="lineNum">     114 </span><span class="lineCov">          1 : CheckEcmaSemantics(String.prototype, array, &quot;String prototype&quot;);</span>
+<span class="lineNum">     115 </span><span class="lineCov">          1 : CheckEcmaSemantics(String, [&quot;fromCharCode&quot;], &quot;String&quot;);</span>
+<a name="116"><span class="lineNum">     116 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     117 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     118 </span><span class="lineCov">         13 : function CheckEcmaSemantics(type, props, name) {</span>
+<span class="lineNum">     119 </span><span class="lineCov">         13 :   print(name);</span>
+<span class="lineNum">     120 </span><span class="lineCov">         13 :   for (var i = 0; i &lt; props.length; i++) {</span>
+<span class="lineNum">     121 </span><span class="lineCov">         13 :     CheckDeletable(type, props[i]);</span>
+<span class="lineNum">     122 </span><span class="lineCov">         13 :   }</span>
+<span class="lineNum">     123 </span><span class="lineCov">         13 : }</span>
+<a name="124"><span class="lineNum">     124 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     125 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     126 </span><span class="lineCov">          1 : function CheckDontDelete(type, props, name) {</span>
+<span class="lineNum">     127 </span><span class="lineCov">          1 :   print(name);</span>
+<span class="lineNum">     128 </span><span class="lineCov">          1 :   for (var i = 0; i &lt; props.length; i++) {</span>
+<span class="lineNum">     129 </span><span class="lineCov">          1 :     CheckDontDeleteAttr(type, props[i]);</span>
+<span class="lineNum">     130 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     131 </span><span class="lineCov">          1 : }</span>
+<a name="132"><span class="lineNum">     132 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     133 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     134 </span><span class="lineCov">        160 : function CheckDeletable(type, prop) {</span>
+<span class="lineNum">     135 </span><span class="lineCov">        160 :   var old = type[prop];</span>
+<span class="lineNum">     136 </span><span class="lineCov">        160 :   var hasOwnProperty = Object.prototype.hasOwnProperty;</span>
+<span class="lineNum">     137 </span><span class="lineCov">        160 :   if (!type[prop]) return;</span>
+<span class="lineNum">     138 </span><span class="lineCov">        160 :   assertTrue(type.hasOwnProperty(prop), &quot;inherited: &quot; + prop);</span>
+<span class="lineNum">     139 </span><span class="lineCov">        160 :   var deleted = delete type[prop];</span>
+<span class="lineNum">     140 </span><span class="lineCov">        160 :   assertTrue(deleted, &quot;delete operator returned false: &quot; + prop);</span>
+<span class="lineNum">     141 </span><span class="lineCov">        160 :   assertFalse(hasOwnProperty.call(type, prop), &quot;still there after delete: &quot; + prop);</span>
+<span class="lineNum">     142 </span><span class="lineCov">        160 :   type[prop] = &quot;foo&quot;;</span>
+<span class="lineNum">     143 </span><span class="lineCov">        160 :   assertEquals(&quot;foo&quot;, type[prop], &quot;not overwritable: &quot; + prop);</span>
+<span class="lineNum">     144 </span><span class="lineCov">        160 :   type[prop] = old;</span>
+<span class="lineNum">     145 </span><span class="lineCov">        160 : }</span>
+<a name="146"><span class="lineNum">     146 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     147 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     148 </span><span class="lineCov">          8 : function CheckDontDeleteAttr(type, prop) {</span>
+<span class="lineNum">     149 </span><span class="lineCov">          8 :   var old = type[prop];</span>
+<span class="lineNum">     150 </span><span class="lineCov">          8 :   if (!type[prop]) return;</span>
+<span class="lineNum">     151 </span><span class="lineCov">          8 :   assertTrue(type.hasOwnProperty(prop), &quot;inherited: &quot; + prop);</span>
+<span class="lineNum">     152 </span><span class="lineCov">          8 :   var deleted = delete type[prop];</span>
+<span class="lineNum">     153 </span><span class="lineCov">          8 :   assertFalse(deleted, &quot;delete operator returned true: &quot; + prop);</span>
+<span class="lineNum">     154 </span><span class="lineCov">          8 :   assertTrue(type.hasOwnProperty(prop), &quot;not there after delete: &quot; + prop);</span>
+<span class="lineNum">     155 </span><span class="lineCov">          8 :   type[prop] = &quot;foo&quot;;</span>
+<span class="lineNum">     156 </span><span class="lineCov">          8 :   assertFalse(&quot;foo&quot; == type[prop], &quot;overwritable: &quot; + prop);</span>
+<span class="lineNum">     157 </span><span class="lineCov">          8 : }</span>
+<a name="158"><span class="lineNum">     158 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     159 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     160 </span><span class="lineCov">          3 : function CheckReadOnlyAttr(type, prop) {</span>
+<span class="lineNum">     161 </span><span class="lineCov">          3 :   var old = type[prop];</span>
+<span class="lineNum">     162 </span><span class="lineCov">          3 :   if (!type[prop]) return;</span>
+<span class="lineNum">     163 </span><span class="lineCov">          3 :   assertTrue(type.hasOwnProperty(prop), &quot;inherited: &quot; + prop);</span>
+<span class="lineNum">     164 </span><span class="lineCov">          3 :   var deleted = delete type[prop];</span>
+<span class="lineNum">     165 </span><span class="lineCov">          3 :   assertFalse(deleted, &quot;delete operator returned true: &quot; + prop);</span>
+<span class="lineNum">     166 </span><span class="lineCov">          3 :   assertTrue(type.hasOwnProperty(prop), &quot;not there after delete: &quot; + prop);</span>
+<span class="lineNum">     167 </span><span class="lineCov">          3 :   type[prop] = &quot;foo&quot;;</span>
+<span class="lineNum">     168 </span><span class="lineCov">          3 :   assertEquals(old, type[prop], &quot;overwritable: &quot; + prop);</span>
+<span class="lineNum">     169 </span><span class="lineCov">          3 : }</span>
+<span class="lineNum">     170 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     171 </span><span class="lineCov">          1 : print(&quot;OK&quot;);</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>
