@@ -1,0 +1,638 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - mjsunit/es6/proxies-json.js</title>
+  <link rel="stylesheet" type="text/css" href="../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../index.html">top level</a> - <a href="index.html">mjsunit/es6</a> - proxies-json.js<span style="font-size: 80%;"> (source / <a href="proxies-json.js.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">555</td>
+            <td class="headerCovTableEntry">563</td>
+            <td class="headerCovTableEntryHi">98.6 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2017-02-13</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">18</td>
+            <td class="headerCovTableEntry">21</td>
+            <td class="headerCovTableEntryMed">85.7 %</td>
+          </tr>
+          <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span><span class="lineCov">          1 : // Copyright 2012 the V8 project authors. All rights reserved.</span></a>
+<span class="lineNum">       2 </span><span class="lineCov">          1 : // Redistribution and use in source and binary forms, with or without</span>
+<span class="lineNum">       3 </span><span class="lineCov">          1 : // modification, are permitted provided that the following conditions are</span>
+<span class="lineNum">       4 </span><span class="lineCov">          1 : // met:</span>
+<span class="lineNum">       5 </span><span class="lineCov">          1 : //</span>
+<span class="lineNum">       6 </span><span class="lineCov">          1 : //     * Redistributions of source code must retain the above copyright</span>
+<span class="lineNum">       7 </span><span class="lineCov">          1 : //       notice, this list of conditions and the following disclaimer.</span>
+<span class="lineNum">       8 </span><span class="lineCov">          1 : //     * Redistributions in binary form must reproduce the above</span>
+<span class="lineNum">       9 </span><span class="lineCov">          1 : //       copyright notice, this list of conditions and the following</span>
+<span class="lineNum">      10 </span><span class="lineCov">          1 : //       disclaimer in the documentation and/or other materials provided</span>
+<span class="lineNum">      11 </span><span class="lineCov">          1 : //       with the distribution.</span>
+<span class="lineNum">      12 </span><span class="lineCov">          1 : //     * Neither the name of Google Inc. nor the names of its</span>
+<span class="lineNum">      13 </span><span class="lineCov">          1 : //       contributors may be used to endorse or promote products derived</span>
+<span class="lineNum">      14 </span><span class="lineCov">          1 : //       from this software without specific prior written permission.</span>
+<span class="lineNum">      15 </span><span class="lineCov">          1 : //</span>
+<span class="lineNum">      16 </span><span class="lineCov">          1 : // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="lineNum">      17 </span><span class="lineCov">          1 : // &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="lineNum">      18 </span><span class="lineCov">          1 : // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR</span>
+<span class="lineNum">      19 </span><span class="lineCov">          1 : // A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT</span>
+<span class="lineNum">      20 </span><span class="lineCov">          1 : // OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,</span>
+<span class="lineNum">      21 </span><span class="lineCov">          1 : // SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT</span>
+<span class="lineNum">      22 </span><span class="lineCov">          1 : // LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,</span>
+<span class="lineNum">      23 </span><span class="lineCov">          1 : // DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY</span>
+<span class="lineNum">      24 </span><span class="lineCov">          1 : // THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT</span>
+<span class="lineNum">      25 </span><span class="lineCov">          1 : // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE</span>
+<span class="lineNum">      26 </span><span class="lineCov">          1 : // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="lineNum">      27 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      28 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      29 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      30 </span><span class="lineCov">          1 : ///////////////////////////////////////////////////////////////////////////////</span>
+<span class="lineNum">      31 </span><span class="lineCov">          1 : // JSON.stringify</span>
+<a name="32"><span class="lineNum">      32 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      33 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      34 </span><span class="lineCov">         15 : function testStringify(expected, object) {</span>
+<span class="lineNum">      35 </span><span class="lineCov">         15 :   // Test fast case that bails out to slow case.</span>
+<span class="lineNum">      36 </span><span class="lineCov">         15 :   assertEquals(expected, JSON.stringify(object));</span>
+<span class="lineNum">      37 </span><span class="lineCov">         15 :   // Test slow case.</span>
+<span class="lineNum">      38 </span><span class="lineCov">         55 :   assertEquals(expected, JSON.stringify(object, (key, value) =&gt; value));</span>
+<a name="39"><span class="lineNum">      39 </span><span class="lineCov">         15 :   // Test gap.</span></a>
+<span class="lineNum">      40 </span><span class="lineCov">         15 :   assertEquals(JSON.stringify(object, null, &quot;=&quot;),</span>
+<span class="lineNum">      41 </span><span class="lineCov">         55 :                JSON.stringify(object, (key, value) =&gt; value, &quot;=&quot;));</span>
+<span class="lineNum">      42 </span><span class="lineCov">         15 : }</span>
+<span class="lineNum">      43 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      44 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      45 </span><span class="lineCov">          1 : // Test serializing a proxy, a function proxy, and objects that contain them.</span>
+<span class="lineNum">      46 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      47 </span><span class="lineCov">          1 : var handler1 = {</span>
+<span class="lineNum">      48 </span><span class="lineCov">         96 :   get: function(target, name) {</span>
+<span class="lineNum">      49 </span><span class="lineCov">         96 :     return name.toUpperCase();</span>
+<span class="lineNum">      50 </span><span class="lineCov">         96 :   },</span>
+<span class="lineNum">      51 </span><span class="lineCov">         20 :   ownKeys: function() {</span>
+<span class="lineNum">      52 </span><span class="lineCov">         20 :     return ['a', 'b', 'c'];</span>
+<span class="lineNum">      53 </span><span class="lineCov">         20 :   },</span>
+<span class="lineNum">      54 </span><span class="lineCov">         60 :   getOwnPropertyDescriptor: function() {</span>
+<span class="lineNum">      55 </span><span class="lineCov">         60 :     return { enumerable: true, configurable: true };</span>
+<span class="lineNum">      56 </span><span class="lineCov">         60 :   }</span>
+<span class="lineNum">      57 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      58 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      59 </span><span class="lineCov">          1 : var proxy1 = new Proxy({}, handler1);</span>
+<a name="60"><span class="lineNum">      60 </span><span class="lineCov">          1 : testStringify('{&quot;a&quot;:&quot;A&quot;,&quot;b&quot;:&quot;B&quot;,&quot;c&quot;:&quot;C&quot;}', proxy1);</span></a>
+<span class="lineNum">      61 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      62 </span><span class="lineCov">          1 : var proxy_fun = new Proxy(() =&gt; {}, handler1);</span>
+<span class="lineNum">      63 </span><span class="lineCov">          1 : assertTrue(typeof(proxy_fun) === 'function');</span>
+<span class="lineNum">      64 </span><span class="lineCov">          1 : testStringify(undefined, proxy_fun);</span>
+<a name="65"><span class="lineNum">      65 </span><span class="lineCov">          1 : testStringify('[1,null]', [1, proxy_fun]);</span></a>
+<span class="lineNum">      66 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      67 </span><span class="lineCov">          1 : handler1.apply = function() { return 666; };</span>
+<span class="lineNum">      68 </span><span class="lineCov">          1 : testStringify(undefined, proxy_fun);</span>
+<span class="lineNum">      69 </span><span class="lineCov">          1 : testStringify('[1,null]', [1, proxy_fun]);</span>
+<span class="lineNum">      70 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      71 </span><span class="lineCov">          1 : var parent1a = { b: proxy1 };</span>
+<span class="lineNum">      72 </span><span class="lineCov">          1 : testStringify('{&quot;b&quot;:{&quot;a&quot;:&quot;A&quot;,&quot;b&quot;:&quot;B&quot;,&quot;c&quot;:&quot;C&quot;}}', parent1a);</span>
+<span class="lineNum">      73 </span><span class="lineCov">          1 : testStringify('{&quot;b&quot;:{&quot;a&quot;:&quot;A&quot;,&quot;b&quot;:&quot;B&quot;,&quot;c&quot;:&quot;C&quot;}}', parent1a);</span>
+<span class="lineNum">      74 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      75 </span><span class="lineCov">          1 : var parent1b = { a: 123, b: proxy1, c: true };</span>
+<span class="lineNum">      76 </span><span class="lineCov">          1 : testStringify('{&quot;a&quot;:123,&quot;b&quot;:{&quot;a&quot;:&quot;A&quot;,&quot;b&quot;:&quot;B&quot;,&quot;c&quot;:&quot;C&quot;},&quot;c&quot;:true}', parent1b);</span>
+<span class="lineNum">      77 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      78 </span><span class="lineCov">          1 : var parent1c = [123, proxy1, true];</span>
+<span class="lineNum">      79 </span><span class="lineCov">          1 : testStringify('[123,{&quot;a&quot;:&quot;A&quot;,&quot;b&quot;:&quot;B&quot;,&quot;c&quot;:&quot;C&quot;},true]', parent1c);</span>
+<span class="lineNum">      80 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      81 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      82 </span><span class="lineCov">          1 : // Proxy with side effect.</span>
+<span class="lineNum">      83 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      84 </span><span class="lineCov">          1 : var handler2 = {</span>
+<span class="lineNum">      85 </span><span class="lineCov">          8 :   get: function(target, name) {</span>
+<span class="lineNum">      86 </span><span class="lineCov">          8 :     delete parent2.c;</span>
+<span class="lineNum">      87 </span><span class="lineCov">          8 :     return name.toUpperCase();</span>
+<span class="lineNum">      88 </span><span class="lineCov">          8 :   },</span>
+<span class="lineNum">      89 </span><span class="lineCov">          2 :   ownKeys: function() {</span>
+<span class="lineNum">      90 </span><span class="lineCov">          2 :     return ['a', 'b', 'c'];</span>
+<span class="lineNum">      91 </span><span class="lineCov">          2 :   },</span>
+<span class="lineNum">      92 </span><span class="lineCov">          6 :   getOwnPropertyDescriptor: function() {</span>
+<span class="lineNum">      93 </span><span class="lineCov">          6 :     return { enumerable: true, configurable: true };</span>
+<span class="lineNum">      94 </span><span class="lineCov">          6 :   }</span>
+<span class="lineNum">      95 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      96 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      97 </span><span class="lineCov">          1 : var proxy2 = new Proxy({}, handler2);</span>
+<span class="lineNum">      98 </span><span class="lineCov">          1 : var parent2 = { a: &quot;delete&quot;, b: proxy2, c: &quot;remove&quot; };</span>
+<span class="lineNum">      99 </span><span class="lineCov">          1 : var expected2 = '{&quot;a&quot;:&quot;delete&quot;,&quot;b&quot;:{&quot;a&quot;:&quot;A&quot;,&quot;b&quot;:&quot;B&quot;,&quot;c&quot;:&quot;C&quot;}}';</span>
+<span class="lineNum">     100 </span><span class="lineCov">          1 : assertEquals(expected2, JSON.stringify(parent2));</span>
+<span class="lineNum">     101 </span><span class="lineCov">          1 : parent2.c = &quot;remove&quot;;  // Revert side effect.</span>
+<span class="lineNum">     102 </span><span class="lineCov">          1 : assertEquals(expected2, JSON.stringify(parent2, undefined, 0));</span>
+<span class="lineNum">     103 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     104 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     105 </span><span class="lineCov">          1 : // Proxy with a get function that uses the receiver argument.</span>
+<span class="lineNum">     106 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     107 </span><span class="lineCov">          1 : var handler3 = {</span>
+<a name="108"><span class="lineNum">     108 </span><span class="lineCov">         32 :   get: function(target, name, receiver) {</span></a>
+<span class="lineNum">     109 </span><span class="lineCov">         32 :     if (name == 'valueOf' || name === Symbol.toPrimitive) {</span>
+<span class="lineNum">     110 </span><span class="lineCov">         32 :       return function() { return &quot;proxy&quot; };</span>
+<span class="lineNum">     111 </span><span class="lineCov">         32 :     };</span>
+<span class="lineNum">     112 </span><span class="lineCov">         32 :     if (typeof name !== 'symbol') return name + &quot;(&quot; + receiver + &quot;)&quot;;</span>
+<span class="lineNum">     113 </span><span class="lineCov">         32 :   },</span>
+<span class="lineNum">     114 </span><span class="lineCov">          4 :   ownKeys: function() {</span>
+<span class="lineNum">     115 </span><span class="lineCov">          4 :     return ['a', 'b', 'c'];</span>
+<span class="lineNum">     116 </span><span class="lineCov">          4 :   },</span>
+<span class="lineNum">     117 </span><span class="lineCov">         12 :   getOwnPropertyDescriptor: function() {</span>
+<span class="lineNum">     118 </span><span class="lineCov">         12 :     return { enumerable: true, configurable: true };</span>
+<span class="lineNum">     119 </span><span class="lineCov">         12 :   }</span>
+<span class="lineNum">     120 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     121 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     122 </span><span class="lineCov">          1 : var proxy3 = new Proxy({}, handler3);</span>
+<span class="lineNum">     123 </span><span class="lineCov">          1 : var parent3 = { x: 123, y: proxy3 }</span>
+<span class="lineNum">     124 </span><span class="lineCov">          1 : testStringify('{&quot;x&quot;:123,&quot;y&quot;:{&quot;a&quot;:&quot;a(proxy)&quot;,&quot;b&quot;:&quot;b(proxy)&quot;,&quot;c&quot;:&quot;c(proxy)&quot;}}',</span>
+<span class="lineNum">     125 </span><span class="lineCov">          1 :               parent3);</span>
+<span class="lineNum">     126 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     127 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     128 </span><span class="lineCov">          1 : // Empty proxy.</span>
+<span class="lineNum">     129 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     130 </span><span class="lineCov">          1 : var handler4 = {</span>
+<span class="lineNum">     131 </span><span class="lineCov">          8 :   get: function(target, name) {</span>
+<span class="lineNum">     132 </span><span class="lineCov">          8 :     return 0;</span>
+<span class="lineNum">     133 </span><span class="lineCov">          8 :   },</span>
+<span class="lineNum">     134 </span><span class="lineCov">          1 :   has: function() {</span>
+<span class="lineNum">     135 </span><span class="lineNoCov">          0 :     return true;</span>
+<span class="lineNum">     136 </span><span class="lineCov">          1 :   },</span>
+<span class="lineNum">     137 </span><span class="lineCov">          1 :   getOwnPropertyDescriptor: function(target, name) {</span>
+<span class="lineNum">     138 </span><span class="lineNoCov">          0 :     return { enumerable: false };</span>
+<span class="lineNum">     139 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     140 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     141 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     142 </span><span class="lineCov">          1 : var proxy4 = new Proxy({}, handler4);</span>
+<span class="lineNum">     143 </span><span class="lineCov">          1 : testStringify('{}', proxy4);</span>
+<span class="lineNum">     144 </span><span class="lineCov">          1 : testStringify('{&quot;a&quot;:{}}', { a: proxy4 });</span>
+<span class="lineNum">     145 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     146 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     147 </span><span class="lineCov">          1 : // Proxy that provides a toJSON function that uses this.</span>
+<span class="lineNum">     148 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     149 </span><span class="lineCov">          1 : var handler5 = {</span>
+<a name="150"><span class="lineNum">     150 </span><span class="lineCov">          8 :   get: function(target, name) {</span></a>
+<span class="lineNum">     151 </span><span class="lineCov">          8 :     if (name == 'z') return 97000;</span>
+<span class="lineNum">     152 </span><span class="lineCov">          8 :     return function(key) { return key.charCodeAt(0) + this.z; };</span>
+<span class="lineNum">     153 </span><span class="lineCov">          8 :   },</span>
+<span class="lineNum">     154 </span><span class="lineCov">          1 :   ownKeys: function(target) {</span>
+<span class="lineNum">     155 </span><span class="lineNoCov">          0 :     return ['toJSON', 'z'];</span>
+<span class="lineNum">     156 </span><span class="lineCov">          1 :   },</span>
+<span class="lineNum">     157 </span><span class="lineCov">          1 :   has: function() {</span>
+<span class="lineNum">     158 </span><span class="lineNoCov">          0 :     return true;</span>
+<span class="lineNum">     159 </span><span class="lineCov">          1 :   },</span>
+<span class="lineNum">     160 </span><span class="lineCov">          1 :   getOwnPropertyDescriptor: function(target, name) {</span>
+<span class="lineNum">     161 </span><span class="lineNoCov">          0 :     return { enumerable: true };</span>
+<span class="lineNum">     162 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     163 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     164 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     165 </span><span class="lineCov">          1 : var proxy5 = new Proxy({}, handler5);</span>
+<span class="lineNum">     166 </span><span class="lineCov">          1 : testStringify('{&quot;a&quot;:97097}', { a: proxy5 });</span>
+<span class="lineNum">     167 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     168 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     169 </span><span class="lineCov">          1 : // Proxy that provides a toJSON function that returns undefined.</span>
+<span class="lineNum">     170 </span><span class="lineCov">          1 : </span>
+<a name="171"><span class="lineNum">     171 </span><span class="lineCov">          1 : var handler6 = {</span></a>
+<span class="lineNum">     172 </span><span class="lineCov">          8 :   get: function(target, name) {</span>
+<span class="lineNum">     173 </span><span class="lineCov">          8 :     return function(key) { return undefined; };</span>
+<span class="lineNum">     174 </span><span class="lineCov">          8 :   },</span>
+<span class="lineNum">     175 </span><span class="lineCov">          1 :   ownKeys: function(target) {</span>
+<a name="176"><span class="lineNum">     176 </span><span class="lineNoCov">          0 :     return ['toJSON'];</span></a>
+<span class="lineNum">     177 </span><span class="lineCov">          1 :   },</span>
+<span class="lineNum">     178 </span><span class="lineCov">          1 :   has: function() {</span>
+<span class="lineNum">     179 </span><span class="lineNoCov">          0 :     return true;</span>
+<span class="lineNum">     180 </span><span class="lineCov">          1 :   },</span>
+<span class="lineNum">     181 </span><span class="lineCov">          1 :   getOwnPropertyDescriptor: function(target, name) {</span>
+<span class="lineNum">     182 </span><span class="lineNoCov">          0 :     return { enumerable: true };</span>
+<span class="lineNum">     183 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     184 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     185 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     186 </span><span class="lineCov">          1 : var proxy6 = new Proxy({}, handler6);</span>
+<span class="lineNum">     187 </span><span class="lineCov">          1 : testStringify('[1,null,true]', [1, proxy6, true]);</span>
+<span class="lineNum">     188 </span><span class="lineCov">          1 : testStringify('{&quot;a&quot;:1,&quot;c&quot;:true}', {a: 1, b: proxy6, c: true});</span>
+<span class="lineNum">     189 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     190 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     191 </span><span class="lineCov">          1 : // Object containing a proxy that changes the parent's properties.</span>
+<span class="lineNum">     192 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     193 </span><span class="lineCov">          1 : var handler7 = {</span>
+<span class="lineNum">     194 </span><span class="lineCov">          8 :   get: function(target, name) {</span>
+<span class="lineNum">     195 </span><span class="lineCov">          8 :     delete parent7.a;</span>
+<span class="lineNum">     196 </span><span class="lineCov">          8 :     delete parent7.c;</span>
+<span class="lineNum">     197 </span><span class="lineCov">          8 :     parent7.e = &quot;5&quot;;</span>
+<span class="lineNum">     198 </span><span class="lineCov">          8 :     return name.toUpperCase();</span>
+<span class="lineNum">     199 </span><span class="lineCov">          8 :   },</span>
+<span class="lineNum">     200 </span><span class="lineCov">          2 :   ownKeys: function() {</span>
+<span class="lineNum">     201 </span><span class="lineCov">          2 :     return ['a', 'b', 'c'];</span>
+<span class="lineNum">     202 </span><span class="lineCov">          2 :   },</span>
+<span class="lineNum">     203 </span><span class="lineCov">          6 :   getOwnPropertyDescriptor: function() {</span>
+<span class="lineNum">     204 </span><span class="lineCov">          6 :     return { enumerable: true, configurable: true };</span>
+<span class="lineNum">     205 </span><span class="lineCov">          6 :   }</span>
+<span class="lineNum">     206 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     207 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     208 </span><span class="lineCov">          1 : var proxy7 = new Proxy({}, handler7);</span>
+<span class="lineNum">     209 </span><span class="lineCov">          1 : var parent7 = { a: &quot;1&quot;, b: proxy7, c: &quot;3&quot;, d: &quot;4&quot; };</span>
+<span class="lineNum">     210 </span><span class="lineCov">          1 : assertEquals('{&quot;a&quot;:&quot;1&quot;,&quot;b&quot;:{&quot;a&quot;:&quot;A&quot;,&quot;b&quot;:&quot;B&quot;,&quot;c&quot;:&quot;C&quot;},&quot;d&quot;:&quot;4&quot;}',</span>
+<span class="lineNum">     211 </span><span class="lineCov">          1 :              JSON.stringify(parent7));</span>
+<span class="lineNum">     212 </span><span class="lineCov">          1 : assertEquals('{&quot;b&quot;:{&quot;a&quot;:&quot;A&quot;,&quot;b&quot;:&quot;B&quot;,&quot;c&quot;:&quot;C&quot;},&quot;d&quot;:&quot;4&quot;,&quot;e&quot;:&quot;5&quot;}',</span>
+<span class="lineNum">     213 </span><span class="lineCov">          1 :              JSON.stringify(parent7));</span>
+<span class="lineNum">     214 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     215 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     216 </span><span class="lineCov">          1 : // (Proxy handler to log trap calls)</span>
+<span class="lineNum">     217 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     218 </span><span class="lineCov">          1 : var log = [];</span>
+<span class="lineNum">     219 </span><span class="lineCov">          1 : var logger = {};</span>
+<a name="220"><span class="lineNum">     220 </span><span class="lineCov">          1 : var handler = new Proxy({}, logger);</span></a>
+<a name="221"><span class="lineNum">     221 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     222 </span><span class="lineCov">         30 : logger.get = function(t, trap, r) {</span>
+<span class="lineNum">     223 </span><span class="lineCov">         30 :   return function() {</span>
+<span class="lineNum">     224 </span><span class="lineCov">         30 :     log.push([trap, ...arguments]);</span>
+<span class="lineNum">     225 </span><span class="lineCov">         30 :     return Reflect[trap](...arguments);</span>
+<span class="lineNum">     226 </span><span class="lineCov">         30 :   }</span>
+<span class="lineNum">     227 </span><span class="lineCov">         30 : };</span>
+<span class="lineNum">     228 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     229 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     230 </span><span class="lineCov">          1 : // Object is a callable proxy</span>
+<span class="lineNum">     231 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     232 </span><span class="lineCov">          1 : log.length = 0;</span>
+<span class="lineNum">     233 </span><span class="lineCov">          1 : var target = () =&gt; 42;</span>
+<span class="lineNum">     234 </span><span class="lineCov">          1 : var proxy = new Proxy(target, handler);</span>
+<span class="lineNum">     235 </span><span class="lineCov">          1 : assertTrue(typeof proxy === 'function');</span>
+<span class="lineNum">     236 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     237 </span><span class="lineCov">          1 : assertEquals(undefined, JSON.stringify(proxy));</span>
+<span class="lineNum">     238 </span><span class="lineCov">          1 : assertEquals(1, log.length)</span>
+<span class="lineNum">     239 </span><span class="lineCov">          1 : for (var i in log) assertSame(target, log[i][1]);</span>
+<span class="lineNum">     240 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     241 </span><span class="lineCov">          1 : assertEquals([&quot;get&quot;, target, &quot;toJSON&quot;, proxy], log[0]);</span>
+<span class="lineNum">     242 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     243 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     244 </span><span class="lineCov">          1 : // Object is a non-callable non-arraylike proxy</span>
+<span class="lineNum">     245 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     246 </span><span class="lineCov">          1 : log.length = 0;</span>
+<span class="lineNum">     247 </span><span class="lineCov">          1 : var target = {foo: 42}</span>
+<span class="lineNum">     248 </span><span class="lineCov">          1 : var proxy = new Proxy(target, handler);</span>
+<span class="lineNum">     249 </span><span class="lineCov">          1 : assertFalse(Array.isArray(proxy));</span>
+<span class="lineNum">     250 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     251 </span><span class="lineCov">          1 : assertEquals('{&quot;foo&quot;:42}', JSON.stringify(proxy));</span>
+<span class="lineNum">     252 </span><span class="lineCov">          1 : assertEquals(4, log.length)</span>
+<span class="lineNum">     253 </span><span class="lineCov">          1 : for (var i in log) assertSame(target, log[i][1]);</span>
+<span class="lineNum">     254 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     255 </span><span class="lineCov">          1 : assertEquals(</span>
+<span class="lineNum">     256 </span><span class="lineCov">          1 :     [&quot;get&quot;, target, &quot;toJSON&quot;, proxy], log[0]);</span>
+<span class="lineNum">     257 </span><span class="lineCov">          1 : assertEquals(</span>
+<span class="lineNum">     258 </span><span class="lineCov">          1 :     [&quot;ownKeys&quot;, target], log[1]);  // EnumerableOwnNames</span>
+<span class="lineNum">     259 </span><span class="lineCov">          1 : assertEquals(</span>
+<span class="lineNum">     260 </span><span class="lineCov">          1 :     [&quot;getOwnPropertyDescriptor&quot;, target, &quot;foo&quot;], log[2]);  // EnumerableOwnNames</span>
+<span class="lineNum">     261 </span><span class="lineCov">          1 : assertEquals(</span>
+<span class="lineNum">     262 </span><span class="lineCov">          1 :     [&quot;get&quot;, target, &quot;foo&quot;, proxy], log[3]);</span>
+<span class="lineNum">     263 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     264 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     265 </span><span class="lineCov">          1 : // Object is an arraylike proxy</span>
+<span class="lineNum">     266 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     267 </span><span class="lineCov">          1 : log.length = 0;</span>
+<span class="lineNum">     268 </span><span class="lineCov">          1 : var target = [42];</span>
+<span class="lineNum">     269 </span><span class="lineCov">          1 : var proxy = new Proxy(target, handler);</span>
+<span class="lineNum">     270 </span><span class="lineCov">          1 : assertTrue(Array.isArray(proxy));</span>
+<span class="lineNum">     271 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     272 </span><span class="lineCov">          1 : assertEquals('[42]', JSON.stringify(proxy));</span>
+<span class="lineNum">     273 </span><span class="lineCov">          1 : assertEquals(3, log.length)</span>
+<span class="lineNum">     274 </span><span class="lineCov">          1 : for (var i in log) assertSame(target, log[i][1]);</span>
+<span class="lineNum">     275 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     276 </span><span class="lineCov">          1 : assertEquals([&quot;get&quot;, target, &quot;toJSON&quot;, proxy], log[0]);</span>
+<span class="lineNum">     277 </span><span class="lineCov">          1 : assertEquals([&quot;get&quot;, target, &quot;length&quot;, proxy], log[1]);</span>
+<span class="lineNum">     278 </span><span class="lineCov">          1 : assertEquals([&quot;get&quot;, target, &quot;0&quot;, proxy], log[2]);</span>
+<span class="lineNum">     279 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     280 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     281 </span><span class="lineCov">          1 : // Replacer is a callable proxy</span>
+<span class="lineNum">     282 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     283 </span><span class="lineCov">          1 : log.length = 0;</span>
+<span class="lineNum">     284 </span><span class="lineCov">          1 : var object = {0: &quot;foo&quot;, 1: 666};</span>
+<span class="lineNum">     285 </span><span class="lineCov">          3 : var target = (key, val) =&gt; key == &quot;1&quot; ? val + 42 : val;</span>
+<span class="lineNum">     286 </span><span class="lineCov">          1 : var proxy = new Proxy(target, handler);</span>
+<span class="lineNum">     287 </span><span class="lineCov">          1 : assertTrue(typeof proxy === 'function');</span>
+<span class="lineNum">     288 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     289 </span><span class="lineCov">          1 : assertEquals('{&quot;0&quot;:&quot;foo&quot;,&quot;1&quot;:708}', JSON.stringify(object, proxy));</span>
+<span class="lineNum">     290 </span><span class="lineCov">          1 : assertEquals(3, log.length)</span>
+<span class="lineNum">     291 </span><span class="lineCov">          1 : for (var i in log) assertSame(target, log[i][1]);</span>
+<span class="lineNum">     292 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     293 </span><span class="lineCov">          1 : assertEquals(4, log[0].length)</span>
+<span class="lineNum">     294 </span><span class="lineCov">          1 : assertEquals(&quot;apply&quot;, log[0][0]);</span>
+<span class="lineNum">     295 </span><span class="lineCov">          1 : assertEquals(&quot;&quot;, log[0][3][0]);</span>
+<span class="lineNum">     296 </span><span class="lineCov">          1 : assertEquals({0: &quot;foo&quot;, 1: 666}, log[0][3][1]);</span>
+<span class="lineNum">     297 </span><span class="lineCov">          1 : assertEquals(4, log[1].length)</span>
+<span class="lineNum">     298 </span><span class="lineCov">          1 : assertEquals(&quot;apply&quot;, log[1][0]);</span>
+<span class="lineNum">     299 </span><span class="lineCov">          1 : assertEquals([&quot;0&quot;, &quot;foo&quot;], log[1][3]);</span>
+<span class="lineNum">     300 </span><span class="lineCov">          1 : assertEquals(4, log[2].length)</span>
+<span class="lineNum">     301 </span><span class="lineCov">          1 : assertEquals(&quot;apply&quot;, log[2][0]);</span>
+<span class="lineNum">     302 </span><span class="lineCov">          1 : assertEquals([&quot;1&quot;, 666], log[2][3]);</span>
+<span class="lineNum">     303 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     304 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     305 </span><span class="lineCov">          1 : // Replacer is an arraylike proxy</span>
+<span class="lineNum">     306 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     307 </span><span class="lineCov">          1 : log.length = 0;</span>
+<span class="lineNum">     308 </span><span class="lineCov">          1 : var object = {0: &quot;foo&quot;, 1: 666};</span>
+<span class="lineNum">     309 </span><span class="lineCov">          1 : var target = [0];</span>
+<span class="lineNum">     310 </span><span class="lineCov">          1 : var proxy = new Proxy(target, handler);</span>
+<span class="lineNum">     311 </span><span class="lineCov">          1 : assertTrue(Array.isArray(proxy));</span>
+<span class="lineNum">     312 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     313 </span><span class="lineCov">          1 : assertEquals('{&quot;0&quot;:&quot;foo&quot;}', JSON.stringify(object, proxy));</span>
+<span class="lineNum">     314 </span><span class="lineCov">          1 : assertEquals(2, log.length)</span>
+<span class="lineNum">     315 </span><span class="lineCov">          1 : for (var i in log) assertSame(target, log[i][1]);</span>
+<span class="lineNum">     316 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     317 </span><span class="lineCov">          1 : assertEquals([&quot;get&quot;, target, &quot;length&quot;, proxy], log[0]);</span>
+<span class="lineNum">     318 </span><span class="lineCov">          1 : assertEquals([&quot;get&quot;, target, &quot;0&quot;, proxy], log[1]);</span>
+<span class="lineNum">     319 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     320 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     321 </span><span class="lineCov">          1 : // Replacer is an arraylike proxy and object is an array</span>
+<span class="lineNum">     322 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     323 </span><span class="lineCov">          1 : log.length = 0;</span>
+<span class="lineNum">     324 </span><span class="lineCov">          1 : var object = [&quot;foo&quot;, 42];</span>
+<span class="lineNum">     325 </span><span class="lineCov">          1 : var target = [0];</span>
+<span class="lineNum">     326 </span><span class="lineCov">          1 : var proxy = new Proxy(target, handler);</span>
+<span class="lineNum">     327 </span><span class="lineCov">          1 : assertTrue(Array.isArray(proxy));</span>
+<span class="lineNum">     328 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     329 </span><span class="lineCov">          1 : assertEquals('[&quot;foo&quot;,42]', JSON.stringify(object, proxy));</span>
+<span class="lineNum">     330 </span><span class="lineCov">          1 : assertEquals(2, log.length);</span>
+<span class="lineNum">     331 </span><span class="lineCov">          1 : for (var i in log) assertSame(target, log[i][1]);</span>
+<span class="lineNum">     332 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     333 </span><span class="lineCov">          1 : assertEquals([&quot;get&quot;, target, &quot;length&quot;, proxy], log[0]);</span>
+<span class="lineNum">     334 </span><span class="lineCov">          1 : assertEquals([&quot;get&quot;, target, &quot;0&quot;, proxy], log[1]);</span>
+<span class="lineNum">     335 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     336 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     337 </span><span class="lineCov">          1 : // Replacer is an arraylike proxy with a non-trivial length</span>
+<a name="338"><span class="lineNum">     338 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     339 </span><span class="lineCov">         43 : var getTrap = function(t, key) {</span>
+<span class="lineNum">     340 </span><span class="lineCov">         43 :   if (key === &quot;length&quot;) return {[Symbol.toPrimitive]() {return 42}};</span>
+<span class="lineNum">     341 </span><span class="lineCov">         43 :   if (key === &quot;41&quot;) return &quot;foo&quot;;</span>
+<span class="lineNum">     342 </span><span class="lineCov">         43 :   if (key === &quot;42&quot;) return &quot;bar&quot;;</span>
+<span class="lineNum">     343 </span><span class="lineCov">         43 : };</span>
+<span class="lineNum">     344 </span><span class="lineCov">          1 : var target = [];</span>
+<span class="lineNum">     345 </span><span class="lineCov">          1 : var proxy = new Proxy(target, {get: getTrap});</span>
+<span class="lineNum">     346 </span><span class="lineCov">          1 : assertTrue(Array.isArray(proxy));</span>
+<span class="lineNum">     347 </span><span class="lineCov">          1 : var object = {foo: true, bar: 666};</span>
+<span class="lineNum">     348 </span><span class="lineCov">          1 : assertEquals('{&quot;foo&quot;:true}', JSON.stringify(object, proxy));</span>
+<span class="lineNum">     349 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     350 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     351 </span><span class="lineCov">          1 : // Replacer is an arraylike proxy with a bogus length</span>
+<span class="lineNum">     352 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     353 </span><span class="lineCov">          1 : var getTrap = function(t, key) {</span>
+<span class="lineNum">     354 </span><span class="lineCov">          1 :   if (key === &quot;length&quot;) return Symbol();</span>
+<span class="lineNum">     355 </span><span class="lineCov">          1 :   if (key === &quot;41&quot;) return &quot;foo&quot;;</span>
+<span class="lineNum">     356 </span><span class="lineCov">          1 :   if (key === &quot;42&quot;) return &quot;bar&quot;;</span>
+<span class="lineNum">     357 </span><span class="lineCov">          1 : };</span>
+<span class="lineNum">     358 </span><span class="lineCov">          1 : var target = [];</span>
+<span class="lineNum">     359 </span><span class="lineCov">          1 : var proxy = new Proxy(target, {get: getTrap});</span>
+<span class="lineNum">     360 </span><span class="lineCov">          1 : assertTrue(Array.isArray(proxy));</span>
+<span class="lineNum">     361 </span><span class="lineCov">          1 : var object = {foo: true, bar: 666};</span>
+<span class="lineNum">     362 </span><span class="lineCov">          1 : assertThrows(() =&gt; JSON.stringify(object, proxy), TypeError);</span>
+<span class="lineNum">     363 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     364 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     365 </span><span class="lineCov">          1 : // Replacer returns a non-callable non-arraylike proxy</span>
+<span class="lineNum">     366 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     367 </span><span class="lineCov">          1 : log.length = 0;</span>
+<span class="lineNum">     368 </span><span class="lineCov">          1 : var object = [&quot;foo&quot;, 42];</span>
+<span class="lineNum">     369 </span><span class="lineCov">          1 : var target = {baz: 5};</span>
+<span class="lineNum">     370 </span><span class="lineCov">          1 : var proxy = new Proxy(target, handler);</span>
+<span class="lineNum">     371 </span><span class="lineCov">          4 : var replacer = (key, val) =&gt; key === &quot;1&quot; ? proxy : val;</span>
+<span class="lineNum">     372 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     373 </span><span class="lineCov">          1 : assertEquals('[&quot;foo&quot;,{&quot;baz&quot;:5}]', JSON.stringify(object, replacer));</span>
+<span class="lineNum">     374 </span><span class="lineCov">          1 : assertEquals(3, log.length);</span>
+<span class="lineNum">     375 </span><span class="lineCov">          1 : for (var i in log) assertSame(target, log[i][1]);</span>
+<span class="lineNum">     376 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     377 </span><span class="lineCov">          1 : assertEquals([&quot;ownKeys&quot;, target], log[0]);</span>
+<span class="lineNum">     378 </span><span class="lineCov">          1 : assertEquals([&quot;getOwnPropertyDescriptor&quot;, target, &quot;baz&quot;], log[1]);</span>
+<span class="lineNum">     379 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     380 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     381 </span><span class="lineCov">          1 : // Replacer returns an arraylike proxy</span>
+<span class="lineNum">     382 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     383 </span><span class="lineCov">          1 : log.length = 0;</span>
+<span class="lineNum">     384 </span><span class="lineCov">          1 : var object = [&quot;foo&quot;, 42];</span>
+<span class="lineNum">     385 </span><span class="lineCov">          1 : var target = [&quot;bar&quot;];</span>
+<span class="lineNum">     386 </span><span class="lineCov">          1 : var proxy = new Proxy(target, handler);</span>
+<span class="lineNum">     387 </span><span class="lineCov">          4 : var replacer = (key, val) =&gt; key === &quot;1&quot; ? proxy : val;</span>
+<span class="lineNum">     388 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     389 </span><span class="lineCov">          1 : assertEquals('[&quot;foo&quot;,[&quot;bar&quot;]]', JSON.stringify(object, replacer));</span>
+<span class="lineNum">     390 </span><span class="lineCov">          1 : assertEquals(2, log.length);</span>
+<span class="lineNum">     391 </span><span class="lineCov">          1 : for (var i in log) assertSame(target, log[i][1]);</span>
+<span class="lineNum">     392 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     393 </span><span class="lineCov">          1 : assertEquals([&quot;get&quot;, target, &quot;length&quot;, proxy], log[0]);</span>
+<span class="lineNum">     394 </span><span class="lineCov">          1 : assertEquals([&quot;get&quot;, target, &quot;0&quot;, proxy], log[1]);</span>
+<span class="lineNum">     395 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     396 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     397 </span><span class="lineCov">          1 : // Replacer returns an arraylike proxy with a non-trivial length</span>
+<a name="398"><span class="lineNum">     398 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     399 </span><span class="lineCov">          4 : var getTrap = function(t, key) {</span>
+<span class="lineNum">     400 </span><span class="lineCov">          4 :   if (key === &quot;length&quot;) return {[Symbol.toPrimitive]() {return 3}};</span>
+<span class="lineNum">     401 </span><span class="lineCov">          4 :   if (key === &quot;2&quot;) return &quot;baz&quot;;</span>
+<span class="lineNum">     402 </span><span class="lineCov">          4 :   if (key === &quot;3&quot;) return &quot;bar&quot;;</span>
+<span class="lineNum">     403 </span><span class="lineCov">          4 : };</span>
+<span class="lineNum">     404 </span><span class="lineCov">          1 : var target = [];</span>
+<span class="lineNum">     405 </span><span class="lineCov">          1 : var proxy = new Proxy(target, {get: getTrap});</span>
+<span class="lineNum">     406 </span><span class="lineCov">          6 : var replacer = (key, val) =&gt; key === &quot;goo&quot; ? proxy : val;</span>
+<span class="lineNum">     407 </span><span class="lineCov">          1 : var object = {foo: true, goo: false};</span>
+<span class="lineNum">     408 </span><span class="lineCov">          1 : assertEquals('{&quot;foo&quot;:true,&quot;goo&quot;:[null,null,&quot;baz&quot;]}',</span>
+<span class="lineNum">     409 </span><span class="lineCov">          1 :     JSON.stringify(object, replacer));</span>
+<span class="lineNum">     410 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     411 </span><span class="lineCov">          1 : </span>
+<a name="412"><span class="lineNum">     412 </span><span class="lineCov">          1 : // Replacer returns an arraylike proxy with a bogus length</span></a>
+<span class="lineNum">     413 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     414 </span><span class="lineCov">          1 : var getTrap = function(t, key) {</span>
+<span class="lineNum">     415 </span><span class="lineCov">          1 :   if (key === &quot;length&quot;) return Symbol();</span>
+<span class="lineNum">     416 </span><span class="lineCov">          1 :   if (key === &quot;2&quot;) return &quot;baz&quot;;</span>
+<span class="lineNum">     417 </span><span class="lineCov">          1 :   if (key === &quot;3&quot;) return &quot;bar&quot;;</span>
+<span class="lineNum">     418 </span><span class="lineCov">          1 : };</span>
+<span class="lineNum">     419 </span><span class="lineCov">          1 : var target = [];</span>
+<span class="lineNum">     420 </span><span class="lineCov">          1 : var proxy = new Proxy(target, {get: getTrap});</span>
+<span class="lineNum">     421 </span><span class="lineCov">          3 : var replacer = (key, val) =&gt; key === &quot;goo&quot; ? proxy : val;</span>
+<span class="lineNum">     422 </span><span class="lineCov">          1 : var object = {foo: true, goo: false};</span>
+<span class="lineNum">     423 </span><span class="lineCov">          1 : assertThrows(() =&gt; JSON.stringify(object, replacer), TypeError);</span>
+<span class="lineNum">     424 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     425 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     426 </span><span class="lineCov">          1 : // Replacer returns a callable proxy</span>
+<span class="lineNum">     427 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     428 </span><span class="lineCov">          1 : log.length = 0;</span>
+<a name="429"><span class="lineNum">     429 </span><span class="lineCov">          1 : var target = () =&gt; 666;</span></a>
+<span class="lineNum">     430 </span><span class="lineCov">          1 : var proxy = new Proxy(target, handler);</span>
+<span class="lineNum">     431 </span><span class="lineCov">          6 : var replacer = (key, val) =&gt; key === &quot;1&quot; ? proxy : val;</span>
+<span class="lineNum">     432 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     433 </span><span class="lineCov">          1 : assertEquals('[&quot;foo&quot;,null]', JSON.stringify([&quot;foo&quot;, 42], replacer));</span>
+<span class="lineNum">     434 </span><span class="lineCov">          1 : assertEquals(0, log.length);</span>
+<span class="lineNum">     435 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     436 </span><span class="lineCov">          1 : assertEquals('{&quot;0&quot;:&quot;foo&quot;}', JSON.stringify({0: &quot;foo&quot;, 1: 42}, replacer));</span>
+<span class="lineNum">     437 </span><span class="lineCov">          1 : assertEquals(0, log.length);</span>
+<span class="lineNum">     438 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     439 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     440 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     441 </span><span class="lineCov">          1 : ///////////////////////////////////////////////////////////////////////////////</span>
+<span class="lineNum">     442 </span><span class="lineCov">          1 : // JSON.parse</span>
+<span class="lineNum">     443 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     444 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     445 </span><span class="lineCov">          1 : // Reviver is a callable proxy</span>
+<a name="446"><span class="lineNum">     446 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     447 </span><span class="lineCov">          1 : log.length = 0;</span>
+<span class="lineNum">     448 </span><span class="lineCov">          3 : var target = () =&gt; 42;</span>
+<span class="lineNum">     449 </span><span class="lineCov">          1 : var proxy = new Proxy(target, handler);</span>
+<span class="lineNum">     450 </span><span class="lineCov">          1 : assertTrue(typeof proxy === &quot;function&quot;);</span>
+<span class="lineNum">     451 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     452 </span><span class="lineCov">          1 : assertEquals(42, JSON.parse(&quot;[true, false]&quot;, proxy));</span>
+<span class="lineNum">     453 </span><span class="lineCov">          1 : assertEquals(3, log.length);</span>
+<span class="lineNum">     454 </span><span class="lineCov">          1 : for (var i in log) assertSame(target, log[i][1]);</span>
+<span class="lineNum">     455 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     456 </span><span class="lineCov">          1 : assertEquals(4, log[0].length);</span>
+<span class="lineNum">     457 </span><span class="lineCov">          1 : assertEquals(&quot;apply&quot;, log[0][0]);</span>
+<span class="lineNum">     458 </span><span class="lineCov">          1 : assertEquals([&quot;0&quot;, true], log[0][3]);</span>
+<span class="lineNum">     459 </span><span class="lineCov">          1 : assertEquals(4, log[1].length);</span>
+<span class="lineNum">     460 </span><span class="lineCov">          1 : assertEquals(&quot;apply&quot;, log[1][0]);</span>
+<span class="lineNum">     461 </span><span class="lineCov">          1 : assertEquals([&quot;1&quot;, false], log[1][3]);</span>
+<span class="lineNum">     462 </span><span class="lineCov">          1 : assertEquals(4, log[2].length);</span>
+<span class="lineNum">     463 </span><span class="lineCov">          1 : assertEquals(&quot;apply&quot;, log[2][0]);</span>
+<span class="lineNum">     464 </span><span class="lineCov">          1 : assertEquals([&quot;&quot;, [42, 42]], log[2][3]);</span>
+<span class="lineNum">     465 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     466 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     467 </span><span class="lineCov">          1 : // Reviver plants a non-arraylike proxy into a yet-to-be-visited property</span>
+<span class="lineNum">     468 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     469 </span><span class="lineCov">          1 : log.length = 0;</span>
+<span class="lineNum">     470 </span><span class="lineCov">          1 : var target = {baz: 42};</span>
+<span class="lineNum">     471 </span><span class="lineCov">          1 : var proxy = new Proxy(target, handler);</span>
+<span class="lineNum">     472 </span><span class="lineCov">          4 : var reviver = function(p, v) {</span>
+<span class="lineNum">     473 </span><span class="lineCov">          4 :   if (p === &quot;baz&quot;) return 5;</span>
+<span class="lineNum">     474 </span><span class="lineCov">          4 :   if (p === &quot;foo&quot;) this.bar = proxy;</span>
+<span class="lineNum">     475 </span><span class="lineCov">          4 :   return v;</span>
+<span class="lineNum">     476 </span><span class="lineCov">          4 : }</span>
+<span class="lineNum">     477 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     478 </span><span class="lineCov">          1 : assertEquals({foo: 0, bar: proxy}, JSON.parse('{&quot;foo&quot;:0,&quot;bar&quot;:1}', reviver));</span>
+<span class="lineNum">     479 </span><span class="lineCov">          1 : assertEquals(4, log.length);</span>
+<span class="lineNum">     480 </span><span class="lineCov">          1 : for (var i in log) assertSame(target, log[i][1]);</span>
+<span class="lineNum">     481 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     482 </span><span class="lineCov">          1 : assertEquals([&quot;ownKeys&quot;, target], log[0]);</span>
+<span class="lineNum">     483 </span><span class="lineCov">          1 : assertEquals([&quot;getOwnPropertyDescriptor&quot;, target, &quot;baz&quot;], log[1]);</span>
+<span class="lineNum">     484 </span><span class="lineCov">          1 : assertEquals([&quot;get&quot;, target, &quot;baz&quot;, proxy], log[2]);</span>
+<span class="lineNum">     485 </span><span class="lineCov">          1 : assertEquals([&quot;defineProperty&quot;, target, &quot;baz&quot;,</span>
+<span class="lineNum">     486 </span><span class="lineCov">          1 :     {value: 5, configurable: true, writable: true, enumerable: true}], log[3]);</span>
+<span class="lineNum">     487 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     488 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     489 </span><span class="lineCov">          1 : // Reviver plants an arraylike proxy into a yet-to-be-visited property</span>
+<span class="lineNum">     490 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     491 </span><span class="lineCov">          1 : log.length = 0;</span>
+<span class="lineNum">     492 </span><span class="lineCov">          1 : var target = [42];</span>
+<a name="493"><span class="lineNum">     493 </span><span class="lineCov">          1 : var proxy = new Proxy(target, handler);</span></a>
+<span class="lineNum">     494 </span><span class="lineCov">          1 : assertTrue(Array.isArray(proxy));</span>
+<span class="lineNum">     495 </span><span class="lineCov">          4 : var reviver = function(p, v) {</span>
+<span class="lineNum">     496 </span><span class="lineCov">          4 :   if (p === &quot;0&quot;) return undefined;</span>
+<span class="lineNum">     497 </span><span class="lineCov">          4 :   if (p === &quot;foo&quot;) this.bar = proxy;</span>
+<span class="lineNum">     498 </span><span class="lineCov">          4 :   return v;</span>
+<span class="lineNum">     499 </span><span class="lineCov">          4 : }</span>
+<span class="lineNum">     500 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     501 </span><span class="lineCov">          1 : var result = JSON.parse('{&quot;foo&quot;:0,&quot;bar&quot;:1}', reviver);</span>
+<span class="lineNum">     502 </span><span class="lineCov">          1 : assertEquals({foo: 0, bar: proxy}, result);</span>
+<span class="lineNum">     503 </span><span class="lineCov">          1 : assertSame(result.bar, proxy);</span>
+<span class="lineNum">     504 </span><span class="lineCov">          1 : assertEquals(3, log.length);</span>
+<span class="lineNum">     505 </span><span class="lineCov">          1 : for (var i in log) assertSame(target, log[i][1]);</span>
+<span class="lineNum">     506 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     507 </span><span class="lineCov">          1 : assertEquals([&quot;get&quot;, target, &quot;length&quot;, proxy], log[0]);</span>
+<span class="lineNum">     508 </span><span class="lineCov">          1 : assertEquals([&quot;get&quot;, target, &quot;0&quot;, proxy], log[1]);</span>
+<span class="lineNum">     509 </span><span class="lineCov">          1 : assertEquals([&quot;deleteProperty&quot;, target, &quot;0&quot;], log[2]);</span>
+<span class="lineNum">     510 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     511 </span><span class="lineCov">          1 : proxy = new Proxy([], {</span>
+<span class="lineNum">     512 </span><span class="lineCov">          9 :   get: function(target, property) {</span>
+<span class="lineNum">     513 </span><span class="lineCov">          9 :     if (property == &quot;length&quot;) return 7;</span>
+<span class="lineNum">     514 </span><span class="lineCov">          9 :     return 0;</span>
+<span class="lineNum">     515 </span><span class="lineCov">          9 :   },</span>
+<span class="lineNum">     516 </span><span class="lineCov">          1 : });</span>
+<span class="lineNum">     517 </span><span class="lineCov">          1 : assertEquals('[[0,0,0,0,0,0,0]]', JSON.stringify([proxy]));</span>
+<span class="lineNum">     518 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     519 </span><span class="lineCov">          1 : proxy = new Proxy([], {</span>
+<span class="lineNum">     520 </span><span class="lineCov">          2 :   get: function(target, property) {</span>
+<span class="lineNum">     521 </span><span class="lineCov">          2 :     if (property == &quot;length&quot;) return 1E40;</span>
+<span class="lineNum">     522 </span><span class="lineCov">          2 :     return 0;</span>
+<a name="523"><span class="lineNum">     523 </span><span class="lineCov">          2 :   },</span></a>
+<span class="lineNum">     524 </span><span class="lineCov">          1 : });</span>
+<span class="lineNum">     525 </span><span class="lineCov">          1 : assertThrows(() =&gt; JSON.stringify([proxy]), RangeError);</span>
+<span class="lineNum">     526 </span><span class="lineCov">          1 : </span>
+<a name="527"><span class="lineNum">     527 </span><span class="lineCov">          1 : log = [];</span></a>
+<span class="lineNum">     528 </span><span class="lineCov">          1 : proxy = new Proxy({}, {</span>
+<span class="lineNum">     529 </span><span class="lineCov">          1 :   ownKeys: function() {</span>
+<span class="lineNum">     530 </span><span class="lineCov">          1 :     log.push(&quot;ownKeys&quot;);</span>
+<a name="531"><span class="lineNum">     531 </span><span class="lineCov">          1 :     return [&quot;0&quot;, &quot;a&quot;, &quot;b&quot;];</span></a>
+<span class="lineNum">     532 </span><span class="lineCov">          1 :   },</span>
+<span class="lineNum">     533 </span><span class="lineCov">          4 :   get: function(target, property) {</span>
+<span class="lineNum">     534 </span><span class="lineCov">          4 :     log.push(&quot;get &quot; + property);</span>
+<a name="535"><span class="lineNum">     535 </span><span class="lineCov">          4 :     return property.toUpperCase();</span></a>
+<span class="lineNum">     536 </span><span class="lineCov">          4 :   },</span>
+<span class="lineNum">     537 </span><span class="lineCov">          3 :   getOwnPropertyDescriptor: function(target, property) {</span>
+<span class="lineNum">     538 </span><span class="lineCov">          3 :     log.push(&quot;descriptor &quot; + property);</span>
+<span class="lineNum">     539 </span><span class="lineCov">          3 :     return {enumerable: true, configurable: true};</span>
+<span class="lineNum">     540 </span><span class="lineCov">          3 :   },</span>
+<span class="lineNum">     541 </span><span class="lineCov">          1 :   isExtensible: assertUnreachable,</span>
+<span class="lineNum">     542 </span><span class="lineCov">          1 :   has: assertUnreachable,</span>
+<span class="lineNum">     543 </span><span class="lineCov">          1 :   getPrototypeOf: assertUnreachable,</span>
+<span class="lineNum">     544 </span><span class="lineCov">          1 :   setPrototypeOf: assertUnreachable,</span>
+<span class="lineNum">     545 </span><span class="lineCov">          1 :   preventExtensions: assertUnreachable,</span>
+<span class="lineNum">     546 </span><span class="lineCov">          1 :   setPrototypeOf: assertUnreachable,</span>
+<span class="lineNum">     547 </span><span class="lineCov">          1 :   defineProperty: assertUnreachable,</span>
+<span class="lineNum">     548 </span><span class="lineCov">          1 :   set: assertUnreachable,</span>
+<span class="lineNum">     549 </span><span class="lineCov">          1 :   deleteProperty: assertUnreachable,</span>
+<span class="lineNum">     550 </span><span class="lineCov">          1 :   apply: assertUnreachable,</span>
+<span class="lineNum">     551 </span><span class="lineCov">          1 :   construct: assertUnreachable,</span>
+<span class="lineNum">     552 </span><span class="lineCov">          1 : });</span>
+<span class="lineNum">     553 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     554 </span><span class="lineCov">          1 : assertEquals('[{&quot;0&quot;:&quot;0&quot;,&quot;a&quot;:&quot;A&quot;,&quot;b&quot;:&quot;B&quot;}]', JSON.stringify([proxy]));</span>
+<span class="lineNum">     555 </span><span class="lineCov">          1 : assertEquals(['get toJSON',</span>
+<span class="lineNum">     556 </span><span class="lineCov">          1 :               'ownKeys',</span>
+<span class="lineNum">     557 </span><span class="lineCov">          1 :               'descriptor 0',</span>
+<span class="lineNum">     558 </span><span class="lineCov">          1 :               'descriptor a',</span>
+<span class="lineNum">     559 </span><span class="lineCov">          1 :               'descriptor b',</span>
+<span class="lineNum">     560 </span><span class="lineCov">          1 :               'get 0',</span>
+<span class="lineNum">     561 </span><span class="lineCov">          1 :               'get a',</span>
+<span class="lineNum">     562 </span><span class="lineCov">          1 :               'get b'], log);</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

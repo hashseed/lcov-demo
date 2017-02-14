@@ -1,0 +1,271 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - mjsunit/string-add.js</title>
+  <link rel="stylesheet" type="text/css" href="../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../index.html">top level</a> - <a href="index.html">mjsunit</a> - string-add.js<span style="font-size: 80%;"> (source / <a href="string-add.js.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">196</td>
+            <td class="headerCovTableEntry">196</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2017-02-13</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">4</td>
+            <td class="headerCovTableEntry">4</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr><td><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span><span class="lineCov">          1 : // Copyright 2009 the V8 project authors. All rights reserved.</span></a>
+<span class="lineNum">       2 </span><span class="lineCov">          1 : // Redistribution and use in source and binary forms, with or without</span>
+<span class="lineNum">       3 </span><span class="lineCov">          1 : // modification, are permitted provided that the following conditions are</span>
+<span class="lineNum">       4 </span><span class="lineCov">          1 : // met:</span>
+<span class="lineNum">       5 </span><span class="lineCov">          1 : //</span>
+<span class="lineNum">       6 </span><span class="lineCov">          1 : //     * Redistributions of source code must retain the above copyright</span>
+<span class="lineNum">       7 </span><span class="lineCov">          1 : //       notice, this list of conditions and the following disclaimer.</span>
+<span class="lineNum">       8 </span><span class="lineCov">          1 : //     * Redistributions in binary form must reproduce the above</span>
+<span class="lineNum">       9 </span><span class="lineCov">          1 : //       copyright notice, this list of conditions and the following</span>
+<span class="lineNum">      10 </span><span class="lineCov">          1 : //       disclaimer in the documentation and/or other materials provided</span>
+<span class="lineNum">      11 </span><span class="lineCov">          1 : //       with the distribution.</span>
+<span class="lineNum">      12 </span><span class="lineCov">          1 : //     * Neither the name of Google Inc. nor the names of its</span>
+<span class="lineNum">      13 </span><span class="lineCov">          1 : //       contributors may be used to endorse or promote products derived</span>
+<span class="lineNum">      14 </span><span class="lineCov">          1 : //       from this software without specific prior written permission.</span>
+<span class="lineNum">      15 </span><span class="lineCov">          1 : //</span>
+<span class="lineNum">      16 </span><span class="lineCov">          1 : // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="lineNum">      17 </span><span class="lineCov">          1 : // &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="lineNum">      18 </span><span class="lineCov">          1 : // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR</span>
+<span class="lineNum">      19 </span><span class="lineCov">          1 : // A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT</span>
+<span class="lineNum">      20 </span><span class="lineCov">          1 : // OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,</span>
+<span class="lineNum">      21 </span><span class="lineCov">          1 : // SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT</span>
+<span class="lineNum">      22 </span><span class="lineCov">          1 : // LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,</span>
+<span class="lineNum">      23 </span><span class="lineCov">          1 : // DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY</span>
+<span class="lineNum">      24 </span><span class="lineCov">          1 : // THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT</span>
+<span class="lineNum">      25 </span><span class="lineCov">          1 : // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE</span>
+<span class="lineNum">      26 </span><span class="lineCov">          1 : // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="lineNum">      27 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      28 </span><span class="lineCov">          1 : assertEquals(&quot;ab&quot;, &quot;a&quot; + &quot;b&quot;, &quot;ll&quot;);</span>
+<span class="lineNum">      29 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      30 </span><span class="lineCov">          1 : assertEquals(&quot;12&quot;, &quot;1&quot; + &quot;2&quot;, &quot;dd&quot;);</span>
+<span class="lineNum">      31 </span><span class="lineCov">          1 : assertEquals(&quot;123&quot;, &quot;1&quot; + &quot;2&quot; + &quot;3&quot;, &quot;ddd&quot;);</span>
+<span class="lineNum">      32 </span><span class="lineCov">          1 : assertEquals(&quot;123&quot;, 1 + &quot;2&quot; + &quot;3&quot;, &quot;ndd&quot;);</span>
+<span class="lineNum">      33 </span><span class="lineCov">          1 : assertEquals(&quot;123&quot;, &quot;1&quot; + 2 + &quot;3&quot;, &quot;dnd&quot;);</span>
+<span class="lineNum">      34 </span><span class="lineCov">          1 : assertEquals(&quot;123&quot;, &quot;1&quot; + &quot;2&quot; + 3, &quot;ddn&quot;);</span>
+<span class="lineNum">      35 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      36 </span><span class="lineCov">          1 : assertEquals(&quot;123&quot;, &quot;1&quot; + 2 + 3, &quot;dnn&quot;);</span>
+<span class="lineNum">      37 </span><span class="lineCov">          1 : assertEquals(&quot;123&quot;, 1 + &quot;2&quot; + 3, &quot;ndn&quot;);</span>
+<span class="lineNum">      38 </span><span class="lineCov">          1 : assertEquals(&quot;33&quot;, 1 + 2 + &quot;3&quot;, &quot;nnd&quot;);</span>
+<span class="lineNum">      39 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      40 </span><span class="lineCov">          1 : var x = &quot;1&quot;;</span>
+<span class="lineNum">      41 </span><span class="lineCov">          1 : assertEquals(&quot;12&quot;, x + 2, &quot;vn&quot;);</span>
+<span class="lineNum">      42 </span><span class="lineCov">          1 : assertEquals(&quot;12&quot;, x + &quot;2&quot;, &quot;vd&quot;);</span>
+<span class="lineNum">      43 </span><span class="lineCov">          1 : assertEquals(&quot;21&quot;, 2 + x, &quot;nv&quot;);</span>
+<span class="lineNum">      44 </span><span class="lineCov">          1 : assertEquals(&quot;21&quot;, &quot;2&quot; + x, &quot;dv&quot;);</span>
+<span class="lineNum">      45 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      46 </span><span class="lineCov">          1 : var y = &quot;2&quot;;</span>
+<span class="lineNum">      47 </span><span class="lineCov">          1 : assertEquals(&quot;12&quot;, x + y, &quot;vdvd&quot;);</span>
+<span class="lineNum">      48 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      49 </span><span class="lineCov">          1 : x = 1;</span>
+<span class="lineNum">      50 </span><span class="lineCov">          1 : assertEquals(&quot;12&quot;, x + y, &quot;vnvd&quot;);</span>
+<span class="lineNum">      51 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      52 </span><span class="lineCov">          1 : y = 2;</span>
+<span class="lineNum">      53 </span><span class="lineCov">          1 : assertEquals(3, x + y, &quot;vnvn&quot;);</span>
+<span class="lineNum">      54 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      55 </span><span class="lineCov">          1 : x = &quot;1&quot;;</span>
+<span class="lineNum">      56 </span><span class="lineCov">          1 : assertEquals(&quot;12&quot;, x + y, &quot;vdvn&quot;);</span>
+<span class="lineNum">      57 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      58 </span><span class="lineCov">          1 : y = &quot;2&quot;;</span>
+<a name="59"><span class="lineNum">      59 </span><span class="lineCov">          1 : assertEquals(&quot;12&quot;, x + y, &quot;vdvd2&quot;);</span></a>
+<span class="lineNum">      60 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      61 </span><span class="lineCov">          1 : (function(x, y) {</span>
+<span class="lineNum">      62 </span><span class="lineCov">          1 :   var z = &quot;3&quot;;</span>
+<span class="lineNum">      63 </span><span class="lineCov">          1 :   var w = &quot;4&quot;;</span>
+<span class="lineNum">      64 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      65 </span><span class="lineCov">          1 :   assertEquals(&quot;11&quot;, x + x, &quot;xx&quot;);</span>
+<span class="lineNum">      66 </span><span class="lineCov">          1 :   assertEquals(&quot;12&quot;, x + y, &quot;xy&quot;);</span>
+<span class="lineNum">      67 </span><span class="lineCov">          1 :   assertEquals(&quot;13&quot;, x + z, &quot;xz&quot;);</span>
+<span class="lineNum">      68 </span><span class="lineCov">          1 :   assertEquals(&quot;14&quot;, x + w, &quot;xw&quot;);</span>
+<span class="lineNum">      69 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      70 </span><span class="lineCov">          1 :   assertEquals(&quot;21&quot;, y + x, &quot;yx&quot;);</span>
+<span class="lineNum">      71 </span><span class="lineCov">          1 :   assertEquals(&quot;22&quot;, y + y, &quot;yy&quot;);</span>
+<span class="lineNum">      72 </span><span class="lineCov">          1 :   assertEquals(&quot;23&quot;, y + z, &quot;yz&quot;);</span>
+<span class="lineNum">      73 </span><span class="lineCov">          1 :   assertEquals(&quot;24&quot;, y + w, &quot;yw&quot;);</span>
+<span class="lineNum">      74 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      75 </span><span class="lineCov">          1 :   assertEquals(&quot;31&quot;, z + x, &quot;zx&quot;);</span>
+<span class="lineNum">      76 </span><span class="lineCov">          1 :   assertEquals(&quot;32&quot;, z + y, &quot;zy&quot;);</span>
+<span class="lineNum">      77 </span><span class="lineCov">          1 :   assertEquals(&quot;33&quot;, z + z, &quot;zz&quot;);</span>
+<span class="lineNum">      78 </span><span class="lineCov">          1 :   assertEquals(&quot;34&quot;, z + w, &quot;zw&quot;);</span>
+<span class="lineNum">      79 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      80 </span><span class="lineCov">          1 :   assertEquals(&quot;41&quot;, w + x, &quot;wx&quot;);</span>
+<span class="lineNum">      81 </span><span class="lineCov">          1 :   assertEquals(&quot;42&quot;, w + y, &quot;wy&quot;);</span>
+<span class="lineNum">      82 </span><span class="lineCov">          1 :   assertEquals(&quot;43&quot;, w + z, &quot;wz&quot;);</span>
+<a name="83"><span class="lineNum">      83 </span><span class="lineCov">          1 :   assertEquals(&quot;44&quot;, w + w, &quot;ww&quot;);</span></a>
+<span class="lineNum">      84 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      85 </span><span class="lineCov">          1 :   (function(){x = 1; z = 3;})();</span>
+<span class="lineNum">      86 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      87 </span><span class="lineCov">          1 :   assertEquals(2, x + x, &quot;x'x&quot;);</span>
+<span class="lineNum">      88 </span><span class="lineCov">          1 :   assertEquals(&quot;12&quot;, x + y, &quot;x'y&quot;);</span>
+<span class="lineNum">      89 </span><span class="lineCov">          1 :   assertEquals(4, x + z, &quot;x'z'&quot;);</span>
+<span class="lineNum">      90 </span><span class="lineCov">          1 :   assertEquals(&quot;14&quot;, x + w, &quot;x'w&quot;);</span>
+<span class="lineNum">      91 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      92 </span><span class="lineCov">          1 :   assertEquals(&quot;21&quot;, y + x, &quot;yx'&quot;);</span>
+<span class="lineNum">      93 </span><span class="lineCov">          1 :   assertEquals(&quot;22&quot;, y + y, &quot;yy&quot;);</span>
+<span class="lineNum">      94 </span><span class="lineCov">          1 :   assertEquals(&quot;23&quot;, y + z, &quot;yz'&quot;);</span>
+<span class="lineNum">      95 </span><span class="lineCov">          1 :   assertEquals(&quot;24&quot;, y + w, &quot;yw&quot;);</span>
+<span class="lineNum">      96 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      97 </span><span class="lineCov">          1 :   assertEquals(4, z + x, &quot;z'x'&quot;);</span>
+<span class="lineNum">      98 </span><span class="lineCov">          1 :   assertEquals(&quot;32&quot;, z + y, &quot;z'y&quot;);</span>
+<span class="lineNum">      99 </span><span class="lineCov">          1 :   assertEquals(6, z + z, &quot;z'z'&quot;);</span>
+<span class="lineNum">     100 </span><span class="lineCov">          1 :   assertEquals(&quot;34&quot;, z + w, &quot;z'w&quot;);</span>
+<span class="lineNum">     101 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     102 </span><span class="lineCov">          1 :   assertEquals(&quot;41&quot;, w + x, &quot;wx'&quot;);</span>
+<span class="lineNum">     103 </span><span class="lineCov">          1 :   assertEquals(&quot;42&quot;, w + y, &quot;wy&quot;);</span>
+<span class="lineNum">     104 </span><span class="lineCov">          1 :   assertEquals(&quot;43&quot;, w + z, &quot;wz'&quot;);</span>
+<span class="lineNum">     105 </span><span class="lineCov">          1 :   assertEquals(&quot;44&quot;, w + w, &quot;ww&quot;);</span>
+<span class="lineNum">     106 </span><span class="lineCov">          1 : })(&quot;1&quot;, &quot;2&quot;);</span>
+<span class="lineNum">     107 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     108 </span><span class="lineCov">          1 : assertEquals(&quot;142&quot;, &quot;1&quot; + new Number(42), &quot;sN&quot;);</span>
+<span class="lineNum">     109 </span><span class="lineCov">          1 : assertEquals(&quot;421&quot;, new Number(42) + &quot;1&quot;, &quot;Ns&quot;);</span>
+<span class="lineNum">     110 </span><span class="lineCov">          1 : assertEquals(84, new Number(42) + new Number(42), &quot;NN&quot;);</span>
+<span class="lineNum">     111 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     112 </span><span class="lineCov">          1 : assertEquals(&quot;142&quot;, &quot;1&quot; + new String(&quot;42&quot;), &quot;sS&quot;);</span>
+<span class="lineNum">     113 </span><span class="lineCov">          1 : assertEquals(&quot;421&quot;, new String(&quot;42&quot;) + &quot;1&quot;, &quot;Ss&quot;);</span>
+<span class="lineNum">     114 </span><span class="lineCov">          1 : assertEquals(&quot;142&quot;, &quot;1&quot; + new String(&quot;42&quot;), &quot;sS&quot;);</span>
+<span class="lineNum">     115 </span><span class="lineCov">          1 : assertEquals(&quot;4242&quot;, new String(&quot;42&quot;) + new String(&quot;42&quot;), &quot;SS&quot;);</span>
+<span class="lineNum">     116 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     117 </span><span class="lineCov">          1 : assertEquals(&quot;1true&quot;, &quot;1&quot; + true, &quot;sb&quot;);</span>
+<span class="lineNum">     118 </span><span class="lineCov">          1 : assertEquals(&quot;true1&quot;, true + &quot;1&quot;, &quot;bs&quot;);</span>
+<span class="lineNum">     119 </span><span class="lineCov">          1 : assertEquals(2, true + true, &quot;bs&quot;);</span>
+<span class="lineNum">     120 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     121 </span><span class="lineCov">          1 : assertEquals(&quot;1true&quot;, &quot;1&quot; + new Boolean(true), &quot;sB&quot;);</span>
+<span class="lineNum">     122 </span><span class="lineCov">          1 : assertEquals(&quot;true1&quot;, new Boolean(true) + &quot;1&quot;, &quot;Bs&quot;);</span>
+<span class="lineNum">     123 </span><span class="lineCov">          1 : assertEquals(2, new Boolean(true) + new Boolean(true), &quot;Bs&quot;);</span>
+<span class="lineNum">     124 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     125 </span><span class="lineCov">          1 : assertEquals(&quot;1undefined&quot;, &quot;1&quot; + void 0, &quot;sv&quot;);</span>
+<span class="lineNum">     126 </span><span class="lineCov">          1 : assertEquals(&quot;undefined1&quot;, (void 0)  + &quot;1&quot;, &quot;vs&quot;);</span>
+<span class="lineNum">     127 </span><span class="lineCov">          1 : assertTrue(isNaN(void 0 + void 0), &quot;vv&quot;);</span>
+<span class="lineNum">     128 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     129 </span><span class="lineCov">          1 : assertEquals(&quot;1null&quot;, &quot;1&quot; + null, &quot;su&quot;);</span>
+<span class="lineNum">     130 </span><span class="lineCov">          1 : assertEquals(&quot;null1&quot;, null + &quot;1&quot;, &quot;us&quot;);</span>
+<a name="131"><span class="lineNum">     131 </span><span class="lineCov">          1 : assertEquals(0, null + null, &quot;uu&quot;);</span></a>
+<span class="lineNum">     132 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     133 </span><span class="lineCov">          1 : (function (i) {</span>
+<span class="lineNum">     134 </span><span class="lineCov">          1 :   // Check that incoming frames are merged correctly.</span>
+<span class="lineNum">     135 </span><span class="lineCov">          1 :   var x;</span>
+<span class="lineNum">     136 </span><span class="lineCov">          1 :   var y;</span>
+<span class="lineNum">     137 </span><span class="lineCov">          1 :   var z;</span>
+<span class="lineNum">     138 </span><span class="lineCov">          1 :   var w;</span>
+<span class="lineNum">     139 </span><span class="lineCov">          1 :   switch (i) {</span>
+<span class="lineNum">     140 </span><span class="lineCov">          1 :   case 1: x = 42; y = &quot;stry&quot;; z = &quot;strz&quot;; w = 42; break;</span>
+<span class="lineNum">     141 </span><span class="lineCov">          1 :   default: x = &quot;strx&quot;, y = 42; z = &quot;strz&quot;; w = 42; break;</span>
+<span class="lineNum">     142 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     143 </span><span class="lineCov">          1 :   var resxx = x + x;</span>
+<span class="lineNum">     144 </span><span class="lineCov">          1 :   var resxy = x + y;</span>
+<span class="lineNum">     145 </span><span class="lineCov">          1 :   var resxz = x + z;</span>
+<span class="lineNum">     146 </span><span class="lineCov">          1 :   var resxw = x + w;</span>
+<span class="lineNum">     147 </span><span class="lineCov">          1 :   var resyx = y + x;</span>
+<span class="lineNum">     148 </span><span class="lineCov">          1 :   var resyy = y + y;</span>
+<span class="lineNum">     149 </span><span class="lineCov">          1 :   var resyz = y + z;</span>
+<span class="lineNum">     150 </span><span class="lineCov">          1 :   var resyw = y + w;</span>
+<span class="lineNum">     151 </span><span class="lineCov">          1 :   var reszx = z + x;</span>
+<span class="lineNum">     152 </span><span class="lineCov">          1 :   var reszy = z + y;</span>
+<span class="lineNum">     153 </span><span class="lineCov">          1 :   var reszz = z + z;</span>
+<span class="lineNum">     154 </span><span class="lineCov">          1 :   var reszw = z + w;</span>
+<span class="lineNum">     155 </span><span class="lineCov">          1 :   var reswx = w + x;</span>
+<span class="lineNum">     156 </span><span class="lineCov">          1 :   var reswy = w + y;</span>
+<span class="lineNum">     157 </span><span class="lineCov">          1 :   var reswz = w + z;</span>
+<span class="lineNum">     158 </span><span class="lineCov">          1 :   var resww = w + w;</span>
+<span class="lineNum">     159 </span><span class="lineCov">          1 :   assertEquals(84, resxx, &quot;swxx&quot;);</span>
+<span class="lineNum">     160 </span><span class="lineCov">          1 :   assertEquals(&quot;42stry&quot;, resxy, &quot;swxy&quot;);</span>
+<span class="lineNum">     161 </span><span class="lineCov">          1 :   assertEquals(&quot;42strz&quot;, resxz, &quot;swxz&quot;);</span>
+<span class="lineNum">     162 </span><span class="lineCov">          1 :   assertEquals(84, resxw, &quot;swxw&quot;);</span>
+<span class="lineNum">     163 </span><span class="lineCov">          1 :   assertEquals(&quot;stry42&quot;, resyx, &quot;swyx&quot;);</span>
+<span class="lineNum">     164 </span><span class="lineCov">          1 :   assertEquals(&quot;strystry&quot;, resyy, &quot;swyy&quot;);</span>
+<span class="lineNum">     165 </span><span class="lineCov">          1 :   assertEquals(&quot;strystrz&quot;, resyz, &quot;swyz&quot;);</span>
+<span class="lineNum">     166 </span><span class="lineCov">          1 :   assertEquals(&quot;stry42&quot;, resyw, &quot;swyw&quot;);</span>
+<span class="lineNum">     167 </span><span class="lineCov">          1 :   assertEquals(&quot;strz42&quot;, reszx, &quot;swzx&quot;);</span>
+<span class="lineNum">     168 </span><span class="lineCov">          1 :   assertEquals(&quot;strzstry&quot;, reszy, &quot;swzy&quot;);</span>
+<span class="lineNum">     169 </span><span class="lineCov">          1 :   assertEquals(&quot;strzstrz&quot;, reszz, &quot;swzz&quot;);</span>
+<span class="lineNum">     170 </span><span class="lineCov">          1 :   assertEquals(&quot;strz42&quot;, reszw, &quot;swzw&quot;);</span>
+<span class="lineNum">     171 </span><span class="lineCov">          1 :   assertEquals(84, reswx, &quot;swwx&quot;);</span>
+<span class="lineNum">     172 </span><span class="lineCov">          1 :   assertEquals(&quot;42stry&quot;, reswy, &quot;swwy&quot;);</span>
+<span class="lineNum">     173 </span><span class="lineCov">          1 :   assertEquals(&quot;42strz&quot;, reswz, &quot;swwz&quot;);</span>
+<span class="lineNum">     174 </span><span class="lineCov">          1 :   assertEquals(84, resww, &quot;swww&quot;);</span>
+<span class="lineNum">     175 </span><span class="lineCov">          1 : })(1);</span>
+<span class="lineNum">     176 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     177 </span><span class="lineCov">          1 : // Generate ascii and non ascii strings from length 0 to 20.</span>
+<span class="lineNum">     178 </span><span class="lineCov">          1 : var ascii = 'aaaaaaaaaaaaaaaaaaaa';</span>
+<span class="lineNum">     179 </span><span class="lineCov">          1 : var non_ascii = '\u1234\u1234\u1234\u1234\u1234\u1234\u1234\u1234\u1234\u1234\u1234\u1234\u1234\u1234\u1234\u1234\u1234\u1234\u1234\u1234';</span>
+<span class="lineNum">     180 </span><span class="lineCov">          1 : assertEquals(20, ascii.length);</span>
+<span class="lineNum">     181 </span><span class="lineCov">          1 : assertEquals(20, non_ascii.length);</span>
+<span class="lineNum">     182 </span><span class="lineCov">          1 : var a = Array(21);</span>
+<span class="lineNum">     183 </span><span class="lineCov">          1 : var b = Array(21);</span>
+<span class="lineNum">     184 </span><span class="lineCov">          1 : for (var i = 0; i &lt;= 20; i++) {</span>
+<span class="lineNum">     185 </span><span class="lineCov">          1 :   a[i] = ascii.substring(0, i);</span>
+<span class="lineNum">     186 </span><span class="lineCov">          1 :   b[i] = non_ascii.substring(0, i);</span>
+<span class="lineNum">     187 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     188 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     189 </span><span class="lineCov">          1 : // Add ascii and non-ascii strings generating strings with length from 0 to 20.</span>
+<span class="lineNum">     190 </span><span class="lineCov">          1 : for (var i = 0; i &lt;= 20; i++) {</span>
+<span class="lineNum">     191 </span><span class="lineCov">          1 :   for (var j = 0; j &lt; i; j++) {</span>
+<span class="lineNum">     192 </span><span class="lineCov">          1 :     assertEquals(a[i], a[j] + a[i - j])</span>
+<span class="lineNum">     193 </span><span class="lineCov">          1 :     assertEquals(b[i], b[j] + b[i - j])</span>
+<span class="lineNum">     194 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     195 </span><span class="lineCov">          1 : }</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

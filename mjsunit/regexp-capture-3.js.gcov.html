@@ -1,0 +1,294 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - mjsunit/regexp-capture-3.js</title>
+  <link rel="stylesheet" type="text/css" href="../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../index.html">top level</a> - <a href="index.html">mjsunit</a> - regexp-capture-3.js<span style="font-size: 80%;"> (source / <a href="regexp-capture-3.js.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">219</td>
+            <td class="headerCovTableEntry">219</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2017-02-13</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">27</td>
+            <td class="headerCovTableEntry">27</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr><td><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span><span class="lineCov">          1 : // Copyright 2012 the V8 project authors. All rights reserved.</span></a>
+<span class="lineNum">       2 </span><span class="lineCov">          1 : // Redistribution and use in source and binary forms, with or without</span>
+<span class="lineNum">       3 </span><span class="lineCov">          1 : // modification, are permitted provided that the following conditions are</span>
+<span class="lineNum">       4 </span><span class="lineCov">          1 : // met:</span>
+<span class="lineNum">       5 </span><span class="lineCov">          1 : //</span>
+<span class="lineNum">       6 </span><span class="lineCov">          1 : //     * Redistributions of source code must retain the above copyright</span>
+<span class="lineNum">       7 </span><span class="lineCov">          1 : //       notice, this list of conditions and the following disclaimer.</span>
+<span class="lineNum">       8 </span><span class="lineCov">          1 : //     * Redistributions in binary form must reproduce the above</span>
+<span class="lineNum">       9 </span><span class="lineCov">          1 : //       copyright notice, this list of conditions and the following</span>
+<span class="lineNum">      10 </span><span class="lineCov">          1 : //       disclaimer in the documentation and/or other materials provided</span>
+<span class="lineNum">      11 </span><span class="lineCov">          1 : //       with the distribution.</span>
+<span class="lineNum">      12 </span><span class="lineCov">          1 : //     * Neither the name of Google Inc. nor the names of its</span>
+<span class="lineNum">      13 </span><span class="lineCov">          1 : //       contributors may be used to endorse or promote products derived</span>
+<span class="lineNum">      14 </span><span class="lineCov">          1 : //       from this software without specific prior written permission.</span>
+<span class="lineNum">      15 </span><span class="lineCov">          1 : //</span>
+<span class="lineNum">      16 </span><span class="lineCov">          1 : // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="lineNum">      17 </span><span class="lineCov">          1 : // &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="lineNum">      18 </span><span class="lineCov">          1 : // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR</span>
+<span class="lineNum">      19 </span><span class="lineCov">          1 : // A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT</span>
+<span class="lineNum">      20 </span><span class="lineCov">          1 : // OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,</span>
+<span class="lineNum">      21 </span><span class="lineCov">          1 : // SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT</span>
+<span class="lineNum">      22 </span><span class="lineCov">          1 : // LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,</span>
+<span class="lineNum">      23 </span><span class="lineCov">          1 : // DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY</span>
+<span class="lineNum">      24 </span><span class="lineCov">          1 : // THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT</span>
+<span class="lineNum">      25 </span><span class="lineCov">          1 : // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE</span>
+<a name="26"><span class="lineNum">      26 </span><span class="lineCov">          1 : // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span></a>
+<a name="27"><span class="lineNum">      27 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      28 </span><span class="lineCov">          2 : function oneMatch(re) {</span>
+<span class="lineNum">      29 </span><span class="lineCov">          2 :   &quot;abcd&quot;.replace(re, function() { });</span>
+<span class="lineNum">      30 </span><span class="lineCov">          2 :   assertEquals(&quot;abcd&quot;, RegExp.input);</span>
+<span class="lineNum">      31 </span><span class="lineCov">          2 :   assertEquals(&quot;a&quot;, RegExp.leftContext);</span>
+<span class="lineNum">      32 </span><span class="lineCov">          2 :   assertEquals(&quot;b&quot;, RegExp.lastMatch);</span>
+<span class="lineNum">      33 </span><span class="lineCov">          2 :   assertEquals(&quot;&quot;, RegExp.lastParen);</span>
+<span class="lineNum">      34 </span><span class="lineCov">          2 :   assertEquals(undefined, RegExp.lastIndex);</span>
+<span class="lineNum">      35 </span><span class="lineCov">          2 :   assertEquals(undefined, RegExp.index);</span>
+<span class="lineNum">      36 </span><span class="lineCov">          2 :   assertEquals(&quot;cd&quot;, RegExp.rightContext);</span>
+<span class="lineNum">      37 </span><span class="lineCov">          2 :   for (var i = 1; i &lt; 10; i++) {</span>
+<span class="lineNum">      38 </span><span class="lineCov">          2 :     assertEquals(&quot;&quot;, RegExp['$' + i]);</span>
+<span class="lineNum">      39 </span><span class="lineCov">          2 :   }</span>
+<span class="lineNum">      40 </span><span class="lineCov">          2 : }</span>
+<span class="lineNum">      41 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      42 </span><span class="lineCov">          1 : oneMatch(/b/);</span>
+<a name="43"><span class="lineNum">      43 </span><span class="lineCov">          1 : oneMatch(/b/g);</span></a>
+<span class="lineNum">      44 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      45 </span><span class="lineCov">          2 : &quot;abcdabcd&quot;.replace(/b/g, function() { });</span>
+<span class="lineNum">      46 </span><span class="lineCov">          1 : assertEquals(&quot;abcdabcd&quot;, RegExp.input);</span>
+<span class="lineNum">      47 </span><span class="lineCov">          1 : assertEquals(&quot;abcda&quot;, RegExp.leftContext);</span>
+<span class="lineNum">      48 </span><span class="lineCov">          1 : assertEquals(&quot;b&quot;, RegExp.lastMatch);</span>
+<span class="lineNum">      49 </span><span class="lineCov">          1 : assertEquals(&quot;&quot;, RegExp.lastParen);</span>
+<span class="lineNum">      50 </span><span class="lineCov">          1 : assertEquals(undefined, RegExp.lastIndex);</span>
+<span class="lineNum">      51 </span><span class="lineCov">          1 : assertEquals(undefined, RegExp.index);</span>
+<span class="lineNum">      52 </span><span class="lineCov">          1 : assertEquals(&quot;cd&quot;, RegExp.rightContext);</span>
+<span class="lineNum">      53 </span><span class="lineCov">          1 : for (var i = 1; i &lt; 10; i++) {</span>
+<span class="lineNum">      54 </span><span class="lineCov">          1 :   assertEquals(&quot;&quot;, RegExp['$' + i]);</span>
+<a name="55"><span class="lineNum">      55 </span><span class="lineCov">          1 : }</span></a>
+<a name="56"><span class="lineNum">      56 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      57 </span><span class="lineCov">          2 : function captureMatch(re) {</span>
+<span class="lineNum">      58 </span><span class="lineCov">          2 :   &quot;abcd&quot;.replace(re, function() { });</span>
+<span class="lineNum">      59 </span><span class="lineCov">          2 :   assertEquals(&quot;abcd&quot;, RegExp.input);</span>
+<span class="lineNum">      60 </span><span class="lineCov">          2 :   assertEquals(&quot;a&quot;, RegExp.leftContext);</span>
+<span class="lineNum">      61 </span><span class="lineCov">          2 :   assertEquals(&quot;bc&quot;, RegExp.lastMatch);</span>
+<span class="lineNum">      62 </span><span class="lineCov">          2 :   assertEquals(&quot;c&quot;, RegExp.lastParen);</span>
+<span class="lineNum">      63 </span><span class="lineCov">          2 :   assertEquals(undefined, RegExp.lastIndex);</span>
+<span class="lineNum">      64 </span><span class="lineCov">          2 :   assertEquals(undefined, RegExp.index);</span>
+<span class="lineNum">      65 </span><span class="lineCov">          2 :   assertEquals(&quot;d&quot;, RegExp.rightContext);</span>
+<span class="lineNum">      66 </span><span class="lineCov">          2 :   assertEquals('b', RegExp.$1);</span>
+<span class="lineNum">      67 </span><span class="lineCov">          2 :   assertEquals('c', RegExp.$2);</span>
+<span class="lineNum">      68 </span><span class="lineCov">          2 :   for (var i = 3; i &lt; 10; i++) {</span>
+<span class="lineNum">      69 </span><span class="lineCov">          2 :     assertEquals(&quot;&quot;, RegExp['$' + i]);</span>
+<span class="lineNum">      70 </span><span class="lineCov">          2 :   }</span>
+<span class="lineNum">      71 </span><span class="lineCov">          2 : }</span>
+<span class="lineNum">      72 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      73 </span><span class="lineCov">          1 : captureMatch(/(b)(c)/);</span>
+<a name="74"><span class="lineNum">      74 </span><span class="lineCov">          1 : captureMatch(/(b)(c)/g);</span></a>
+<span class="lineNum">      75 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      76 </span><span class="lineCov">          2 : &quot;abcdabcd&quot;.replace(/(b)(c)/g, function() { });</span>
+<span class="lineNum">      77 </span><span class="lineCov">          1 : assertEquals(&quot;abcdabcd&quot;, RegExp.input);</span>
+<span class="lineNum">      78 </span><span class="lineCov">          1 : assertEquals(&quot;abcda&quot;, RegExp.leftContext);</span>
+<span class="lineNum">      79 </span><span class="lineCov">          1 : assertEquals(&quot;bc&quot;, RegExp.lastMatch);</span>
+<span class="lineNum">      80 </span><span class="lineCov">          1 : assertEquals(&quot;c&quot;, RegExp.lastParen);</span>
+<span class="lineNum">      81 </span><span class="lineCov">          1 : assertEquals(undefined, RegExp.lastIndex);</span>
+<span class="lineNum">      82 </span><span class="lineCov">          1 : assertEquals(undefined, RegExp.index);</span>
+<span class="lineNum">      83 </span><span class="lineCov">          1 : assertEquals(&quot;d&quot;, RegExp.rightContext);</span>
+<span class="lineNum">      84 </span><span class="lineCov">          1 : assertEquals('b', RegExp.$1);</span>
+<span class="lineNum">      85 </span><span class="lineCov">          1 : assertEquals('c', RegExp.$2);</span>
+<span class="lineNum">      86 </span><span class="lineCov">          1 : for (var i = 3; i &lt; 10; i++) {</span>
+<span class="lineNum">      87 </span><span class="lineCov">          1 :   assertEquals(&quot;&quot;, RegExp['$' + i]);</span>
+<span class="lineNum">      88 </span><span class="lineCov">          1 : }</span>
+<a name="89"><span class="lineNum">      89 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      90 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      91 </span><span class="lineCov">         16 : function Override() {</span>
+<span class="lineNum">      92 </span><span class="lineCov">         16 :   // Set the internal lastMatchInfoOverride.  After calling this we do a normal</span>
+<a name="93"><span class="lineNum">      93 </span><span class="lineCov">         16 :   // match and verify the override was cleared and that we record the new</span></a>
+<span class="lineNum">      94 </span><span class="lineCov">         16 :   // captures.</span>
+<span class="lineNum">      95 </span><span class="lineCov">         32 :   &quot;abcdabcd&quot;.replace(/(b)(c)/g, function() { });</span>
+<span class="lineNum">      96 </span><span class="lineCov">         16 : }</span>
+<a name="97"><span class="lineNum">      97 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      98 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      99 </span><span class="lineCov">          2 : function TestOverride(input, expect, property, re_src) {</span>
+<span class="lineNum">     100 </span><span class="lineCov">          2 :   var re = new RegExp(re_src);</span>
+<a name="101"><span class="lineNum">     101 </span><span class="lineCov">          2 :   var re_g = new RegExp(re_src, &quot;g&quot;);</span></a>
+<span class="lineNum">     102 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">     103 </span><span class="lineCov">         16 :   function OverrideCase(fn) {</span>
+<span class="lineNum">     104 </span><span class="lineCov">         16 :     Override();</span>
+<span class="lineNum">     105 </span><span class="lineCov">         16 :     fn();</span>
+<span class="lineNum">     106 </span><span class="lineCov">         16 :     assertEquals(expect, RegExp[property]);</span>
+<a name="107"><span class="lineNum">     107 </span><span class="lineCov">         16 :   }</span></a>
+<a name="108"><span class="lineNum">     108 </span><span class="lineCov">          2 : </span></a>
+<a name="109"><span class="lineNum">     109 </span><span class="lineCov">          2 :   OverrideCase(function() { return input.replace(re, &quot;x&quot;); });</span></a>
+<a name="110"><span class="lineNum">     110 </span><span class="lineCov">          2 :   OverrideCase(function() { return input.replace(re_g, &quot;x&quot;); });</span></a>
+<a name="111"><span class="lineNum">     111 </span><span class="lineCov">          2 :   OverrideCase(function() { return input.replace(re, &quot;&quot;); });</span></a>
+<a name="112"><span class="lineNum">     112 </span><span class="lineCov">          2 :   OverrideCase(function() { return input.replace(re_g, &quot;&quot;); });</span></a>
+<a name="113"><span class="lineNum">     113 </span><span class="lineCov">          2 :   OverrideCase(function() { return input.match(re); });</span></a>
+<a name="114"><span class="lineNum">     114 </span><span class="lineCov">          2 :   OverrideCase(function() { return input.match(re_g); });</span></a>
+<span class="lineNum">     115 </span><span class="lineCov">          2 :   OverrideCase(function() { return re.test(input); });</span>
+<span class="lineNum">     116 </span><span class="lineCov">          2 :   OverrideCase(function() { return re_g.test(input); });</span>
+<span class="lineNum">     117 </span><span class="lineCov">          2 : }</span>
+<span class="lineNum">     118 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     119 </span><span class="lineCov">          1 : var input = &quot;bar.foo baz......&quot;;</span>
+<span class="lineNum">     120 </span><span class="lineCov">          1 : var re_str = &quot;(ba.).*?f&quot;;</span>
+<span class="lineNum">     121 </span><span class="lineCov">          1 : TestOverride(input, &quot;bar&quot;, &quot;$1&quot;, re_str);</span>
+<span class="lineNum">     122 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     123 </span><span class="lineCov">          1 : input = &quot;foo bar baz&quot;;</span>
+<span class="lineNum">     124 </span><span class="lineCov">          1 : var re_str = &quot;bar&quot;;</span>
+<span class="lineNum">     125 </span><span class="lineCov">          1 : TestOverride(input, &quot;bar&quot;, &quot;$&amp;&quot;, re_str);</span>
+<a name="126"><span class="lineNum">     126 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     127 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     128 </span><span class="lineCov">          5 : function no_last_match(fn) {</span>
+<span class="lineNum">     129 </span><span class="lineCov">          5 :   fn();</span>
+<span class="lineNum">     130 </span><span class="lineCov">          5 :   assertEquals(&quot;hestfisk&quot;, RegExp.$1);</span>
+<span class="lineNum">     131 </span><span class="lineCov">          5 : }</span>
+<span class="lineNum">     132 </span><span class="lineCov">          1 : </span>
+<a name="133"><span class="lineNum">     133 </span><span class="lineCov">          1 : /(hestfisk)/.test(&quot;There's no such thing as a hestfisk!&quot;);</span></a>
+<a name="134"><span class="lineNum">     134 </span><span class="lineCov">          1 : </span></a>
+<a name="135"><span class="lineNum">     135 </span><span class="lineCov">          1 : no_last_match(function() { &quot;foo&quot;.replace(&quot;f&quot;, &quot;&quot;); });</span></a>
+<span class="lineNum">     136 </span><span class="lineCov">          1 : no_last_match(function() { &quot;foo&quot;.replace(&quot;f&quot;, &quot;f&quot;); });</span>
+<span class="lineNum">     137 </span><span class="lineCov">          1 : no_last_match(function() { &quot;foo&quot;.split(&quot;o&quot;); });</span>
+<span class="lineNum">     138 </span><span class="lineCov">          1 : </span>
+<a name="139"><span class="lineNum">     139 </span><span class="lineCov">          1 : var base = &quot;In the music.  In the music.  &quot;;</span></a>
+<a name="140"><span class="lineNum">     140 </span><span class="lineCov">          1 : var cons = base + base + base + base;</span></a>
+<span class="lineNum">     141 </span><span class="lineCov">          1 : no_last_match(function() { cons.replace(&quot;x&quot;, &quot;y&quot;); });</span>
+<span class="lineNum">     142 </span><span class="lineCov">          1 : no_last_match(function() { cons.replace(&quot;e&quot;, &quot;E&quot;); });</span>
+<span class="lineNum">     143 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     144 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     145 </span><span class="lineCov">          1 : // Here's one that matches once, then tries to match again, but fails.</span>
+<a name="146"><span class="lineNum">     146 </span><span class="lineCov">          1 : // Verify that the last match info is from the last match, not from the</span></a>
+<span class="lineNum">     147 </span><span class="lineCov">          1 : // failure that came after.</span>
+<span class="lineNum">     148 </span><span class="lineCov">          1 : &quot;bar.foo baz......&quot;.replace(/(ba.).*?f/g, function() { return &quot;x&quot;;});</span>
+<span class="lineNum">     149 </span><span class="lineCov">          1 : assertEquals(&quot;bar&quot;, RegExp.$1);</span>
+<span class="lineNum">     150 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     151 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     152 </span><span class="lineCov">          1 : // A test that initially does a zero width match, but later does a non-zero</span>
+<span class="lineNum">     153 </span><span class="lineCov">          1 : // width match.</span>
+<span class="lineNum">     154 </span><span class="lineCov">          1 : var a = &quot;foo bar baz&quot;.replace(/^|bar/g, &quot;&quot;);</span>
+<span class="lineNum">     155 </span><span class="lineCov">          1 : assertEquals(&quot;foo  baz&quot;, a);</span>
+<span class="lineNum">     156 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     157 </span><span class="lineCov">          1 : a = &quot;foo bar baz&quot;.replace(/^|bar/g, &quot;*&quot;);</span>
+<span class="lineNum">     158 </span><span class="lineCov">          1 : assertEquals(&quot;*foo * baz&quot;, a);</span>
+<span class="lineNum">     159 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     160 </span><span class="lineCov">          1 : // We test FilterASCII using regexps that will backtrack forever.  Since</span>
+<span class="lineNum">     161 </span><span class="lineCov">          1 : // a regexp with a non-ASCII character in it can never match an ASCII</span>
+<a name="162"><span class="lineNum">     162 </span><span class="lineCov">          1 : // string we can test that the relevant node is removed by verifying that</span></a>
+<span class="lineNum">     163 </span><span class="lineCov">          1 : // there is no hang.</span>
+<span class="lineNum">     164 </span><span class="lineCov">         16 : function NoHang(re) {</span>
+<span class="lineNum">     165 </span><span class="lineCov">         16 :   &quot;This is an ASCII string that could take forever&quot;.match(re);</span>
+<span class="lineNum">     166 </span><span class="lineCov">         16 : }</span>
+<span class="lineNum">     167 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     168 </span><span class="lineCov">          1 : NoHang(/(((.*)*)*x)Ā/);  // Continuation after loop is filtered, so is loop.</span>
+<span class="lineNum">     169 </span><span class="lineCov">          1 : NoHang(/(((.*)*)*Ā)foo/);  // Body of loop filtered.</span>
+<span class="lineNum">     170 </span><span class="lineCov">          1 : NoHang(/Ā(((.*)*)*x)/);   // Everything after a filtered character is filtered.</span>
+<span class="lineNum">     171 </span><span class="lineCov">          1 : NoHang(/(((.*)*)*x)Ā/);   // Everything before a filtered character is filtered.</span>
+<span class="lineNum">     172 </span><span class="lineCov">          1 : NoHang(/[ćăĀ](((.*)*)*x)/);   // Everything after a filtered class is filtered.</span>
+<span class="lineNum">     173 </span><span class="lineCov">          1 : NoHang(/(((.*)*)*x)[ćăĀ]/);   // Everything before a filtered class is filtered.</span>
+<span class="lineNum">     174 </span><span class="lineCov">          1 : NoHang(/[^\x00-\xff](((.*)*)*x)/);   // After negated class.</span>
+<span class="lineNum">     175 </span><span class="lineCov">          1 : NoHang(/(((.*)*)*x)[^\x00-\xff]/);   // Before negated class.</span>
+<span class="lineNum">     176 </span><span class="lineCov">          1 : NoHang(/(?!(((.*)*)*x)Ā)foo/);  // Negative lookahead is filtered.</span>
+<span class="lineNum">     177 </span><span class="lineCov">          1 : NoHang(/(?!(((.*)*)*x))Ā/);  // Continuation branch of negative lookahead.</span>
+<span class="lineNum">     178 </span><span class="lineCov">          1 : NoHang(/(?=(((.*)*)*x)Ā)foo/);  // Positive lookahead is filtered.</span>
+<span class="lineNum">     179 </span><span class="lineCov">          1 : NoHang(/(?=(((.*)*)*x))Ā/);  // Continuation branch of positive lookahead.</span>
+<span class="lineNum">     180 </span><span class="lineCov">          1 : NoHang(/(?=Ā)(((.*)*)*x)/);  // Positive lookahead also prunes continuation.</span>
+<span class="lineNum">     181 </span><span class="lineCov">          1 : NoHang(/(æ|ø|Ā)(((.*)*)*x)/);  // All branches of alternation are filtered.</span>
+<span class="lineNum">     182 </span><span class="lineCov">          1 : NoHang(/(a|b|(((.*)*)*x))Ā/);  // 1 out of 3 branches pruned.</span>
+<span class="lineNum">     183 </span><span class="lineCov">          1 : NoHang(/(a|(((.*)*)*x)ă|(((.*)*)*x)Ā)/);  // 2 out of 3 branches pruned.</span>
+<span class="lineNum">     184 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     185 </span><span class="lineCov">          1 : var s = &quot;Don't prune based on a repetition of length 0&quot;;</span>
+<span class="lineNum">     186 </span><span class="lineCov">          1 : assertEquals(null, s.match(/å{1,1}prune/));</span>
+<span class="lineNum">     187 </span><span class="lineCov">          1 : assertEquals(&quot;prune&quot;, (s.match(/å{0,0}prune/)[0]));</span>
+<span class="lineNum">     188 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     189 </span><span class="lineCov">          1 : // Some very deep regexps where FilterASCII gives up in order not to make the</span>
+<span class="lineNum">     190 </span><span class="lineCov">          1 : // stack overflow.</span>
+<span class="lineNum">     191 </span><span class="lineCov">          1 : var regex6 = /a*\u0100*\w/;</span>
+<span class="lineNum">     192 </span><span class="lineCov">          1 : var input0 = &quot;a&quot;;</span>
+<span class="lineNum">     193 </span><span class="lineCov">          1 : regex6.exec(input0);</span>
+<span class="lineNum">     194 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     195 </span><span class="lineCov">          1 : var re = &quot;\u0100*\\w&quot;;</span>
+<span class="lineNum">     196 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     197 </span><span class="lineCov">          1 : for (var i = 0; i &lt; 200; i++) re = &quot;a*&quot; + re;</span>
+<span class="lineNum">     198 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     199 </span><span class="lineCov">          1 : var regex7 = new RegExp(re);</span>
+<span class="lineNum">     200 </span><span class="lineCov">          1 : regex7.exec(input0);</span>
+<span class="lineNum">     201 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     202 </span><span class="lineCov">          1 : var regex8 = new RegExp(re, &quot;i&quot;);</span>
+<span class="lineNum">     203 </span><span class="lineCov">          1 : regex8.exec(input0);</span>
+<span class="lineNum">     204 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     205 </span><span class="lineCov">          1 : re = &quot;[\u0100]*\\w&quot;;</span>
+<span class="lineNum">     206 </span><span class="lineCov">          1 : for (var i = 0; i &lt; 200; i++) re = &quot;a*&quot; + re;</span>
+<span class="lineNum">     207 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     208 </span><span class="lineCov">          1 : var regex9 = new RegExp(re);</span>
+<span class="lineNum">     209 </span><span class="lineCov">          1 : regex9.exec(input0);</span>
+<span class="lineNum">     210 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     211 </span><span class="lineCov">          1 : var regex10 = new RegExp(re, &quot;i&quot;);</span>
+<span class="lineNum">     212 </span><span class="lineCov">          1 : regex10.exec(input0);</span>
+<span class="lineNum">     213 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     214 </span><span class="lineCov">          1 : var regex11 = /^(?:[^\u0000-\u0080]|[0-9a-z?,.!&amp;\s#()])+$/i;</span>
+<span class="lineNum">     215 </span><span class="lineCov">          1 : regex11.exec(input0);</span>
+<span class="lineNum">     216 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     217 </span><span class="lineCov">          1 : var regex12 = /u(\xf0{8}?\D*?|( ? !)$h??(|)*?(||)+?\6((?:\W\B|--\d-*-|)?$){0, }?|^Y( ? !1)\d+)+a/;</span>
+<span class="lineNum">     218 </span><span class="lineCov">          1 : regex12.exec(&quot;&quot;);</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

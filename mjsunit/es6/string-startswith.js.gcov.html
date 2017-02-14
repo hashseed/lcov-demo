@@ -1,0 +1,487 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - mjsunit/es6/string-startswith.js</title>
+  <link rel="stylesheet" type="text/css" href="../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../index.html">top level</a> - <a href="index.html">mjsunit/es6</a> - string-startswith.js<span style="font-size: 80%;"> (source / <a href="string-startswith.js.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">412</td>
+            <td class="headerCovTableEntry">412</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2017-02-13</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">26</td>
+            <td class="headerCovTableEntry">26</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span><span class="lineCov">          1 : // Copyright 2014 the V8 project authors. All rights reserved.</span></a>
+<span class="lineNum">       2 </span><span class="lineCov">          1 : // Redistribution and use in source and binary forms, with or without</span>
+<span class="lineNum">       3 </span><span class="lineCov">          1 : // modification, are permitted provided that the following conditions are</span>
+<span class="lineNum">       4 </span><span class="lineCov">          1 : // met:</span>
+<span class="lineNum">       5 </span><span class="lineCov">          1 : //</span>
+<span class="lineNum">       6 </span><span class="lineCov">          1 : //     * Redistributions of source code must retain the above copyright</span>
+<span class="lineNum">       7 </span><span class="lineCov">          1 : //       notice, this list of conditions and the following disclaimer.</span>
+<span class="lineNum">       8 </span><span class="lineCov">          1 : //     * Redistributions in binary form must reproduce the above</span>
+<span class="lineNum">       9 </span><span class="lineCov">          1 : //       copyright notice, this list of conditions and the following</span>
+<span class="lineNum">      10 </span><span class="lineCov">          1 : //       disclaimer in the documentation and/or other materials provided</span>
+<span class="lineNum">      11 </span><span class="lineCov">          1 : //       with the distribution.</span>
+<span class="lineNum">      12 </span><span class="lineCov">          1 : //     * Neither the name of Google Inc. nor the names of its</span>
+<span class="lineNum">      13 </span><span class="lineCov">          1 : //       contributors may be used to endorse or promote products derived</span>
+<span class="lineNum">      14 </span><span class="lineCov">          1 : //       from this software without specific prior written permission.</span>
+<span class="lineNum">      15 </span><span class="lineCov">          1 : //</span>
+<span class="lineNum">      16 </span><span class="lineCov">          1 : // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="lineNum">      17 </span><span class="lineCov">          1 : // &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="lineNum">      18 </span><span class="lineCov">          1 : // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR</span>
+<span class="lineNum">      19 </span><span class="lineCov">          1 : // A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT</span>
+<span class="lineNum">      20 </span><span class="lineCov">          1 : // OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,</span>
+<span class="lineNum">      21 </span><span class="lineCov">          1 : // SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT</span>
+<span class="lineNum">      22 </span><span class="lineCov">          1 : // LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,</span>
+<span class="lineNum">      23 </span><span class="lineCov">          1 : // DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY</span>
+<span class="lineNum">      24 </span><span class="lineCov">          1 : // THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT</span>
+<span class="lineNum">      25 </span><span class="lineCov">          1 : // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE</span>
+<span class="lineNum">      26 </span><span class="lineCov">          1 : // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="lineNum">      27 </span><span class="lineCov">          1 : assertFalse(&quot;abc&quot;.startsWith(&quot;a&quot;, Infinity));</span>
+<span class="lineNum">      28 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      29 </span><span class="lineCov">          1 : assertEquals(1, String.prototype.startsWith.length);</span>
+<span class="lineNum">      30 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      31 </span><span class="lineCov">          1 : var testString = &quot;Hello World&quot;;</span>
+<span class="lineNum">      32 </span><span class="lineCov">          1 : assertTrue(testString.startsWith(&quot;&quot;));</span>
+<span class="lineNum">      33 </span><span class="lineCov">          1 : assertTrue(testString.startsWith(&quot;Hello&quot;));</span>
+<span class="lineNum">      34 </span><span class="lineCov">          1 : assertFalse(testString.startsWith(&quot;hello&quot;));</span>
+<span class="lineNum">      35 </span><span class="lineCov">          1 : assertFalse(testString.startsWith(&quot;Hello World!&quot;));</span>
+<span class="lineNum">      36 </span><span class="lineCov">          1 : assertFalse(testString.startsWith(null));</span>
+<span class="lineNum">      37 </span><span class="lineCov">          1 : assertFalse(testString.startsWith(undefined));</span>
+<span class="lineNum">      38 </span><span class="lineCov">          1 : assertFalse(testString.startsWith());</span>
+<span class="lineNum">      39 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      40 </span><span class="lineCov">          1 : assertTrue(&quot;null&quot;.startsWith(null));</span>
+<span class="lineNum">      41 </span><span class="lineCov">          1 : assertTrue(&quot;undefined&quot;.startsWith(undefined));</span>
+<span class="lineNum">      42 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      43 </span><span class="lineCov">          1 : var georgianUnicodeString = &quot;\u10D0\u10D1\u10D2\u10D3\u10D4\u10D5\u10D6\u10D7&quot;;</span>
+<span class="lineNum">      44 </span><span class="lineCov">          1 : assertTrue(georgianUnicodeString.startsWith(georgianUnicodeString));</span>
+<span class="lineNum">      45 </span><span class="lineCov">          1 : assertTrue(georgianUnicodeString.startsWith(&quot;\u10D0\u10D1\u10D2&quot;));</span>
+<span class="lineNum">      46 </span><span class="lineCov">          1 : assertFalse(georgianUnicodeString.startsWith(&quot;\u10D8&quot;));</span>
+<span class="lineNum">      47 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      48 </span><span class="lineCov">          1 : assertThrows(&quot;String.prototype.startsWith.call(null, 'test')&quot;, TypeError);</span>
+<span class="lineNum">      49 </span><span class="lineCov">          1 : assertThrows(&quot;String.prototype.startsWith.call(null, null)&quot;, TypeError);</span>
+<span class="lineNum">      50 </span><span class="lineCov">          1 : assertThrows(&quot;String.prototype.startsWith.call(undefined, undefined)&quot;, TypeError);</span>
+<span class="lineNum">      51 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      52 </span><span class="lineCov">          1 : assertThrows(&quot;String.prototype.startsWith.apply(null, ['test'])&quot;, TypeError);</span>
+<span class="lineNum">      53 </span><span class="lineCov">          1 : assertThrows(&quot;String.prototype.startsWith.apply(null, [null])&quot;, TypeError);</span>
+<span class="lineNum">      54 </span><span class="lineCov">          1 : assertThrows(&quot;String.prototype.startsWith.apply(undefined, [undefined])&quot;, TypeError);</span>
+<span class="lineNum">      55 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      56 </span><span class="lineCov">          1 : var TEST_INPUT = [{</span>
+<span class="lineNum">      57 </span><span class="lineCov">          1 :   msg: &quot;Empty string&quot;, val: &quot;&quot;</span>
+<span class="lineNum">      58 </span><span class="lineCov">          1 : }, {</span>
+<span class="lineNum">      59 </span><span class="lineCov">          1 :   msg: &quot;Number 1234.34&quot;, val: 1234.34</span>
+<span class="lineNum">      60 </span><span class="lineCov">          1 : }, {</span>
+<span class="lineNum">      61 </span><span class="lineCov">          1 :   msg: &quot;Integer number 0&quot;, val: 0</span>
+<span class="lineNum">      62 </span><span class="lineCov">          1 : }, {</span>
+<span class="lineNum">      63 </span><span class="lineCov">          1 :   msg: &quot;Negative number -1&quot;, val: -1</span>
+<span class="lineNum">      64 </span><span class="lineCov">          1 : }, {</span>
+<span class="lineNum">      65 </span><span class="lineCov">          1 :   msg: &quot;Boolean true&quot;, val: true</span>
+<span class="lineNum">      66 </span><span class="lineCov">          1 : }, {</span>
+<span class="lineNum">      67 </span><span class="lineCov">          1 :   msg: &quot;Boolean false&quot;, val: false</span>
+<span class="lineNum">      68 </span><span class="lineCov">          1 : }, {</span>
+<span class="lineNum">      69 </span><span class="lineCov">          1 :   msg: &quot;Empty array []&quot;, val: []</span>
+<span class="lineNum">      70 </span><span class="lineCov">          1 : }, {</span>
+<span class="lineNum">      71 </span><span class="lineCov">          1 :   msg: &quot;Empty object {}&quot;, val: {}</span>
+<span class="lineNum">      72 </span><span class="lineCov">          1 : }, {</span>
+<span class="lineNum">      73 </span><span class="lineCov">          1 :   msg: &quot;Array of size 3&quot;, val: new Array(3)</span>
+<a name="74"><span class="lineNum">      74 </span><span class="lineCov">          1 : }];</span></a>
+<span class="lineNum">      75 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      76 </span><span class="lineCov">          1 : function testNonStringValues() {</span>
+<span class="lineNum">      77 </span><span class="lineCov">          1 :   var i = 0;</span>
+<span class="lineNum">      78 </span><span class="lineCov">          1 :   var l = TEST_INPUT.length;</span>
+<span class="lineNum">      79 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      80 </span><span class="lineCov">          1 :   for (; i &lt; l; i++) {</span>
+<span class="lineNum">      81 </span><span class="lineCov">          1 :     var e = TEST_INPUT[i];</span>
+<span class="lineNum">      82 </span><span class="lineCov">          1 :     var v = e.val;</span>
+<span class="lineNum">      83 </span><span class="lineCov">          1 :     var s = String(v);</span>
+<span class="lineNum">      84 </span><span class="lineCov">          1 :     assertTrue(s.startsWith(v), e.msg);</span>
+<span class="lineNum">      85 </span><span class="lineCov">          1 :     assertTrue(String.prototype.startsWith.call(v, v), e.msg);</span>
+<span class="lineNum">      86 </span><span class="lineCov">          1 :     assertTrue(String.prototype.startsWith.apply(v, [v]), e.msg);</span>
+<span class="lineNum">      87 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">      88 </span><span class="lineCov">          1 : }</span>
+<a name="89"><span class="lineNum">      89 </span><span class="lineCov">          1 : testNonStringValues();</span></a>
+<span class="lineNum">      90 </span><span class="lineCov">          1 : </span>
+<a name="91"><span class="lineNum">      91 </span><span class="lineCov">          9 : var CustomType = function(value) {</span></a>
+<span class="lineNum">      92 </span><span class="lineCov">          9 :   this.startsWith = String.prototype.startsWith;</span>
+<span class="lineNum">      93 </span><span class="lineCov">          9 :   this.toString = function() {</span>
+<span class="lineNum">      94 </span><span class="lineCov">          9 :     return String(value);</span>
+<span class="lineNum">      95 </span><span class="lineCov">          9 :   }</span>
+<a name="96"><span class="lineNum">      96 </span><span class="lineCov">          9 : };</span></a>
+<span class="lineNum">      97 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      98 </span><span class="lineCov">          1 : function testCutomType() {</span>
+<span class="lineNum">      99 </span><span class="lineCov">          1 :   var i = 0;</span>
+<span class="lineNum">     100 </span><span class="lineCov">          1 :   var l = TEST_INPUT.length;</span>
+<span class="lineNum">     101 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     102 </span><span class="lineCov">          1 :   for (; i &lt; l; i++) {</span>
+<span class="lineNum">     103 </span><span class="lineCov">          1 :     var e = TEST_INPUT[i];</span>
+<span class="lineNum">     104 </span><span class="lineCov">          1 :     var v = e.val;</span>
+<span class="lineNum">     105 </span><span class="lineCov">          1 :     var o = new CustomType(v);</span>
+<span class="lineNum">     106 </span><span class="lineCov">          1 :     assertTrue(o.startsWith(v), e.msg);</span>
+<span class="lineNum">     107 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     108 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     109 </span><span class="lineCov">          1 : testCutomType();</span>
+<span class="lineNum">     110 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     111 </span><span class="lineCov">          1 : // Test cases found in FF</span>
+<span class="lineNum">     112 </span><span class="lineCov">          1 : assertTrue(&quot;abc&quot;.startsWith(&quot;abc&quot;));</span>
+<span class="lineNum">     113 </span><span class="lineCov">          1 : assertTrue(&quot;abcd&quot;.startsWith(&quot;abc&quot;));</span>
+<span class="lineNum">     114 </span><span class="lineCov">          1 : assertTrue(&quot;abc&quot;.startsWith(&quot;a&quot;));</span>
+<span class="lineNum">     115 </span><span class="lineCov">          1 : assertFalse(&quot;abc&quot;.startsWith(&quot;abcd&quot;));</span>
+<span class="lineNum">     116 </span><span class="lineCov">          1 : assertFalse(&quot;abc&quot;.startsWith(&quot;bcde&quot;));</span>
+<span class="lineNum">     117 </span><span class="lineCov">          1 : assertFalse(&quot;abc&quot;.startsWith(&quot;b&quot;));</span>
+<span class="lineNum">     118 </span><span class="lineCov">          1 : assertTrue(&quot;abc&quot;.startsWith(&quot;abc&quot;, 0));</span>
+<span class="lineNum">     119 </span><span class="lineCov">          1 : assertFalse(&quot;abc&quot;.startsWith(&quot;bc&quot;, 0));</span>
+<span class="lineNum">     120 </span><span class="lineCov">          1 : assertTrue(&quot;abc&quot;.startsWith(&quot;bc&quot;, 1));</span>
+<span class="lineNum">     121 </span><span class="lineCov">          1 : assertFalse(&quot;abc&quot;.startsWith(&quot;c&quot;, 1));</span>
+<span class="lineNum">     122 </span><span class="lineCov">          1 : assertFalse(&quot;abc&quot;.startsWith(&quot;abc&quot;, 1));</span>
+<span class="lineNum">     123 </span><span class="lineCov">          1 : assertTrue(&quot;abc&quot;.startsWith(&quot;c&quot;, 2));</span>
+<span class="lineNum">     124 </span><span class="lineCov">          1 : assertFalse(&quot;abc&quot;.startsWith(&quot;d&quot;, 2));</span>
+<span class="lineNum">     125 </span><span class="lineCov">          1 : assertFalse(&quot;abc&quot;.startsWith(&quot;dcd&quot;, 2));</span>
+<span class="lineNum">     126 </span><span class="lineCov">          1 : assertFalse(&quot;abc&quot;.startsWith(&quot;a&quot;, 42));</span>
+<span class="lineNum">     127 </span><span class="lineCov">          1 : assertFalse(&quot;abc&quot;.startsWith(&quot;a&quot;, Infinity));</span>
+<span class="lineNum">     128 </span><span class="lineCov">          1 : assertTrue(&quot;abc&quot;.startsWith(&quot;a&quot;, NaN));</span>
+<span class="lineNum">     129 </span><span class="lineCov">          1 : assertFalse(&quot;abc&quot;.startsWith(&quot;b&quot;, NaN));</span>
+<span class="lineNum">     130 </span><span class="lineCov">          1 : assertTrue(&quot;abc&quot;.startsWith(&quot;ab&quot;, -43));</span>
+<span class="lineNum">     131 </span><span class="lineCov">          1 : assertTrue(&quot;abc&quot;.startsWith(&quot;ab&quot;, -Infinity));</span>
+<span class="lineNum">     132 </span><span class="lineCov">          1 : assertFalse(&quot;abc&quot;.startsWith(&quot;bc&quot;, -42));</span>
+<span class="lineNum">     133 </span><span class="lineCov">          1 : assertFalse(&quot;abc&quot;.startsWith(&quot;bc&quot;, -Infinity));</span>
+<span class="lineNum">     134 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     135 </span><span class="lineCov">          1 : // Test cases taken from</span>
+<span class="lineNum">     136 </span><span class="lineCov">          1 : // https://github.com/mathiasbynens/String.prototype.startsWith/blob/master/tests/tests.js</span>
+<span class="lineNum">     137 </span><span class="lineCov">          1 : Object.prototype[1] = 2; // try to break `arguments[1]`</span>
+<span class="lineNum">     138 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     139 </span><span class="lineCov">          1 : assertEquals(String.prototype.startsWith.length, 1);</span>
+<span class="lineNum">     140 </span><span class="lineCov">          1 : assertEquals(String.prototype.propertyIsEnumerable(&quot;startsWith&quot;), false);</span>
+<span class="lineNum">     141 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     142 </span><span class="lineCov">          1 : assertEquals(&quot;undefined&quot;.startsWith(), true);</span>
+<span class="lineNum">     143 </span><span class="lineCov">          1 : assertEquals(&quot;undefined&quot;.startsWith(undefined), true);</span>
+<span class="lineNum">     144 </span><span class="lineCov">          1 : assertEquals(&quot;undefined&quot;.startsWith(null), false);</span>
+<span class="lineNum">     145 </span><span class="lineCov">          1 : assertEquals(&quot;null&quot;.startsWith(), false);</span>
+<span class="lineNum">     146 </span><span class="lineCov">          1 : assertEquals(&quot;null&quot;.startsWith(undefined), false);</span>
+<span class="lineNum">     147 </span><span class="lineCov">          1 : assertEquals(&quot;null&quot;.startsWith(null), true);</span>
+<span class="lineNum">     148 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     149 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(), false);</span>
+<span class="lineNum">     150 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;&quot;), true);</span>
+<span class="lineNum">     151 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;\0&quot;), false);</span>
+<span class="lineNum">     152 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;a&quot;), true);</span>
+<span class="lineNum">     153 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;b&quot;), false);</span>
+<span class="lineNum">     154 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;ab&quot;), true);</span>
+<span class="lineNum">     155 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;bc&quot;), false);</span>
+<span class="lineNum">     156 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;abc&quot;), true);</span>
+<span class="lineNum">     157 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;bcd&quot;), false);</span>
+<span class="lineNum">     158 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;abcd&quot;), false);</span>
+<span class="lineNum">     159 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;bcde&quot;), false);</span>
+<span class="lineNum">     160 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     161 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;&quot;, NaN), true);</span>
+<span class="lineNum">     162 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;\0&quot;, NaN), false);</span>
+<span class="lineNum">     163 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;a&quot;, NaN), true);</span>
+<span class="lineNum">     164 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;b&quot;, NaN), false);</span>
+<span class="lineNum">     165 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;ab&quot;, NaN), true);</span>
+<span class="lineNum">     166 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;bc&quot;, NaN), false);</span>
+<span class="lineNum">     167 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;abc&quot;, NaN), true);</span>
+<span class="lineNum">     168 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;bcd&quot;, NaN), false);</span>
+<span class="lineNum">     169 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;abcd&quot;, NaN), false);</span>
+<span class="lineNum">     170 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;bcde&quot;, NaN), false);</span>
+<span class="lineNum">     171 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     172 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;&quot;, false), true);</span>
+<span class="lineNum">     173 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;\0&quot;, false), false);</span>
+<span class="lineNum">     174 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;a&quot;, false), true);</span>
+<span class="lineNum">     175 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;b&quot;, false), false);</span>
+<span class="lineNum">     176 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;ab&quot;, false), true);</span>
+<span class="lineNum">     177 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;bc&quot;, false), false);</span>
+<span class="lineNum">     178 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;abc&quot;, false), true);</span>
+<span class="lineNum">     179 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;bcd&quot;, false), false);</span>
+<span class="lineNum">     180 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;abcd&quot;, false), false);</span>
+<span class="lineNum">     181 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;bcde&quot;, false), false);</span>
+<span class="lineNum">     182 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     183 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;&quot;, undefined), true);</span>
+<span class="lineNum">     184 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;\0&quot;, undefined), false);</span>
+<span class="lineNum">     185 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;a&quot;, undefined), true);</span>
+<span class="lineNum">     186 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;b&quot;, undefined), false);</span>
+<span class="lineNum">     187 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;ab&quot;, undefined), true);</span>
+<span class="lineNum">     188 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;bc&quot;, undefined), false);</span>
+<span class="lineNum">     189 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;abc&quot;, undefined), true);</span>
+<span class="lineNum">     190 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;bcd&quot;, undefined), false);</span>
+<span class="lineNum">     191 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;abcd&quot;, undefined), false);</span>
+<span class="lineNum">     192 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;bcde&quot;, undefined), false);</span>
+<span class="lineNum">     193 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     194 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;&quot;, null), true);</span>
+<span class="lineNum">     195 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;\0&quot;, null), false);</span>
+<span class="lineNum">     196 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;a&quot;, null), true);</span>
+<span class="lineNum">     197 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;b&quot;, null), false);</span>
+<span class="lineNum">     198 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;ab&quot;, null), true);</span>
+<span class="lineNum">     199 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;bc&quot;, null), false);</span>
+<span class="lineNum">     200 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;abc&quot;, null), true);</span>
+<span class="lineNum">     201 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;bcd&quot;, null), false);</span>
+<span class="lineNum">     202 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;abcd&quot;, null), false);</span>
+<span class="lineNum">     203 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;bcde&quot;, null), false);</span>
+<span class="lineNum">     204 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     205 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;&quot;, -Infinity), true);</span>
+<span class="lineNum">     206 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;\0&quot;, -Infinity), false);</span>
+<span class="lineNum">     207 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;a&quot;, -Infinity), true);</span>
+<span class="lineNum">     208 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;b&quot;, -Infinity), false);</span>
+<span class="lineNum">     209 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;ab&quot;, -Infinity), true);</span>
+<span class="lineNum">     210 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;bc&quot;, -Infinity), false);</span>
+<span class="lineNum">     211 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;abc&quot;, -Infinity), true);</span>
+<span class="lineNum">     212 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;bcd&quot;, -Infinity), false);</span>
+<span class="lineNum">     213 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;abcd&quot;, -Infinity), false);</span>
+<span class="lineNum">     214 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;bcde&quot;, -Infinity), false);</span>
+<span class="lineNum">     215 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     216 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;&quot;, -1), true);</span>
+<span class="lineNum">     217 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;\0&quot;, -1), false);</span>
+<span class="lineNum">     218 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;a&quot;, -1), true);</span>
+<span class="lineNum">     219 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;b&quot;, -1), false);</span>
+<span class="lineNum">     220 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;ab&quot;, -1), true);</span>
+<span class="lineNum">     221 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;bc&quot;, -1), false);</span>
+<span class="lineNum">     222 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;abc&quot;, -1), true);</span>
+<span class="lineNum">     223 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;bcd&quot;, -1), false);</span>
+<span class="lineNum">     224 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;abcd&quot;, -1), false);</span>
+<span class="lineNum">     225 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;bcde&quot;, -1), false);</span>
+<span class="lineNum">     226 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     227 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;&quot;, -0), true);</span>
+<span class="lineNum">     228 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;\0&quot;, -0), false);</span>
+<span class="lineNum">     229 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;a&quot;, -0), true);</span>
+<span class="lineNum">     230 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;b&quot;, -0), false);</span>
+<span class="lineNum">     231 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;ab&quot;, -0), true);</span>
+<span class="lineNum">     232 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;bc&quot;, -0), false);</span>
+<span class="lineNum">     233 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;abc&quot;, -0), true);</span>
+<span class="lineNum">     234 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;bcd&quot;, -0), false);</span>
+<span class="lineNum">     235 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;abcd&quot;, -0), false);</span>
+<span class="lineNum">     236 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;bcde&quot;, -0), false);</span>
+<span class="lineNum">     237 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     238 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;&quot;, +0), true);</span>
+<span class="lineNum">     239 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;\0&quot;, +0), false);</span>
+<span class="lineNum">     240 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;a&quot;, +0), true);</span>
+<span class="lineNum">     241 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;b&quot;, +0), false);</span>
+<span class="lineNum">     242 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;ab&quot;, +0), true);</span>
+<span class="lineNum">     243 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;bc&quot;, +0), false);</span>
+<span class="lineNum">     244 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;abc&quot;, +0), true);</span>
+<span class="lineNum">     245 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;bcd&quot;, +0), false);</span>
+<span class="lineNum">     246 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;abcd&quot;, +0), false);</span>
+<span class="lineNum">     247 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;bcde&quot;, +0), false);</span>
+<span class="lineNum">     248 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     249 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;&quot;, 1), true);</span>
+<span class="lineNum">     250 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;\0&quot;, 1), false);</span>
+<span class="lineNum">     251 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;a&quot;, 1), false);</span>
+<span class="lineNum">     252 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;b&quot;, 1), true);</span>
+<span class="lineNum">     253 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;ab&quot;, 1), false);</span>
+<span class="lineNum">     254 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;bc&quot;, 1), true);</span>
+<span class="lineNum">     255 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;abc&quot;, 1), false);</span>
+<span class="lineNum">     256 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;bcd&quot;, 1), false);</span>
+<span class="lineNum">     257 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;abcd&quot;, 1), false);</span>
+<span class="lineNum">     258 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;bcde&quot;, 1), false);</span>
+<span class="lineNum">     259 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     260 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;&quot;, +Infinity), true);</span>
+<span class="lineNum">     261 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;\0&quot;, +Infinity), false);</span>
+<span class="lineNum">     262 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;a&quot;, +Infinity), false);</span>
+<span class="lineNum">     263 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;b&quot;, +Infinity), false);</span>
+<span class="lineNum">     264 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;ab&quot;, +Infinity), false);</span>
+<span class="lineNum">     265 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;bc&quot;, +Infinity), false);</span>
+<span class="lineNum">     266 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;abc&quot;, +Infinity), false);</span>
+<span class="lineNum">     267 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;bcd&quot;, +Infinity), false);</span>
+<span class="lineNum">     268 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;abcd&quot;, +Infinity), false);</span>
+<span class="lineNum">     269 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;bcde&quot;, +Infinity), false);</span>
+<span class="lineNum">     270 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     271 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;&quot;, true), true);</span>
+<span class="lineNum">     272 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;\0&quot;, true), false);</span>
+<span class="lineNum">     273 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;a&quot;, true), false);</span>
+<span class="lineNum">     274 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;b&quot;, true), true);</span>
+<span class="lineNum">     275 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;ab&quot;, true), false);</span>
+<span class="lineNum">     276 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;bc&quot;, true), true);</span>
+<span class="lineNum">     277 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;abc&quot;, true), false);</span>
+<span class="lineNum">     278 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;bcd&quot;, true), false);</span>
+<span class="lineNum">     279 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;abcd&quot;, true), false);</span>
+<span class="lineNum">     280 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;bcde&quot;, true), false);</span>
+<span class="lineNum">     281 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     282 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;&quot;, &quot;x&quot;), true);</span>
+<span class="lineNum">     283 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;\0&quot;, &quot;x&quot;), false);</span>
+<span class="lineNum">     284 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;a&quot;, &quot;x&quot;), true);</span>
+<span class="lineNum">     285 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;b&quot;, &quot;x&quot;), false);</span>
+<span class="lineNum">     286 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;ab&quot;, &quot;x&quot;), true);</span>
+<span class="lineNum">     287 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;bc&quot;, &quot;x&quot;), false);</span>
+<span class="lineNum">     288 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;abc&quot;, &quot;x&quot;), true);</span>
+<span class="lineNum">     289 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;bcd&quot;, &quot;x&quot;), false);</span>
+<span class="lineNum">     290 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;abcd&quot;, &quot;x&quot;), false);</span>
+<span class="lineNum">     291 </span><span class="lineCov">          1 : assertEquals(&quot;abc&quot;.startsWith(&quot;bcde&quot;, &quot;x&quot;), false);</span>
+<a name="292"><span class="lineNum">     292 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     293 </span><span class="lineCov">          1 : assertEquals(&quot;[a-z]+(bar)?&quot;.startsWith(&quot;[a-z]+&quot;), true);</span>
+<a name="294"><span class="lineNum">     294 </span><span class="lineCov">          1 : assertThrows(function() { &quot;[a-z]+(bar)?&quot;.startsWith(/[a-z]+/); }, TypeError);</span></a>
+<a name="295"><span class="lineNum">     295 </span><span class="lineCov">          1 : assertEquals(&quot;[a-z]+(bar)?&quot;.startsWith(&quot;(bar)?&quot;, 6), true);</span></a>
+<span class="lineNum">     296 </span><span class="lineCov">          1 : assertThrows(function() { &quot;[a-z]+(bar)?&quot;.startsWith(/(bar)?/); }, TypeError);</span>
+<span class="lineNum">     297 </span><span class="lineCov">          1 : assertThrows(function() { &quot;[a-z]+/(bar)?/&quot;.startsWith(/(bar)?/); }, TypeError);</span>
+<span class="lineNum">     298 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     299 </span><span class="lineCov">          1 : // http://mathiasbynens.be/notes/javascript-unicode#poo-test</span>
+<span class="lineNum">     300 </span><span class="lineCov">          1 : var string = &quot;I\xF1t\xEBrn\xE2ti\xF4n\xE0liz\xE6ti\xF8n\u2603\uD83D\uDCA9&quot;;</span>
+<span class="lineNum">     301 </span><span class="lineCov">          1 : assertEquals(string.startsWith(&quot;&quot;), true);</span>
+<span class="lineNum">     302 </span><span class="lineCov">          1 : assertEquals(string.startsWith(&quot;\xF1t\xEBr&quot;), false);</span>
+<span class="lineNum">     303 </span><span class="lineCov">          1 : assertEquals(string.startsWith(&quot;\xF1t\xEBr&quot;, 1), true);</span>
+<span class="lineNum">     304 </span><span class="lineCov">          1 : assertEquals(string.startsWith(&quot;\xE0liz\xE6&quot;), false);</span>
+<span class="lineNum">     305 </span><span class="lineCov">          1 : assertEquals(string.startsWith(&quot;\xE0liz\xE6&quot;, 11), true);</span>
+<span class="lineNum">     306 </span><span class="lineCov">          1 : assertEquals(string.startsWith(&quot;\xF8n\u2603\uD83D\uDCA9&quot;), false);</span>
+<span class="lineNum">     307 </span><span class="lineCov">          1 : assertEquals(string.startsWith(&quot;\xF8n\u2603\uD83D\uDCA9&quot;, 18), true);</span>
+<span class="lineNum">     308 </span><span class="lineCov">          1 : assertEquals(string.startsWith(&quot;\u2603&quot;), false);</span>
+<span class="lineNum">     309 </span><span class="lineCov">          1 : assertEquals(string.startsWith(&quot;\u2603&quot;, 20), true);</span>
+<span class="lineNum">     310 </span><span class="lineCov">          1 : assertEquals(string.startsWith(&quot;\uD83D\uDCA9&quot;), false);</span>
+<a name="311"><span class="lineNum">     311 </span><span class="lineCov">          1 : assertEquals(string.startsWith(&quot;\uD83D\uDCA9&quot;, 21), true);</span></a>
+<span class="lineNum">     312 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     313 </span><span class="lineCov">          1 : assertThrows(function() {</span>
+<a name="314"><span class="lineNum">     314 </span><span class="lineCov">          1 :   String.prototype.startsWith.call(undefined);</span></a>
+<span class="lineNum">     315 </span><span class="lineCov">          1 : }, TypeError);</span>
+<span class="lineNum">     316 </span><span class="lineCov">          1 : assertThrows(function() {</span>
+<a name="317"><span class="lineNum">     317 </span><span class="lineCov">          1 :   String.prototype.startsWith.call(undefined, &quot;b&quot;);</span></a>
+<span class="lineNum">     318 </span><span class="lineCov">          1 : }, TypeError);</span>
+<span class="lineNum">     319 </span><span class="lineCov">          1 : assertThrows(function() {</span>
+<a name="320"><span class="lineNum">     320 </span><span class="lineCov">          1 :   String.prototype.startsWith.call(undefined, &quot;b&quot;, 4);</span></a>
+<span class="lineNum">     321 </span><span class="lineCov">          1 : }, TypeError);</span>
+<span class="lineNum">     322 </span><span class="lineCov">          1 : assertThrows(function() {</span>
+<a name="323"><span class="lineNum">     323 </span><span class="lineCov">          1 :   String.prototype.startsWith.call(null);</span></a>
+<span class="lineNum">     324 </span><span class="lineCov">          1 : }, TypeError);</span>
+<span class="lineNum">     325 </span><span class="lineCov">          1 : assertThrows(function() {</span>
+<a name="326"><span class="lineNum">     326 </span><span class="lineCov">          1 :   String.prototype.startsWith.call(null, &quot;b&quot;);</span></a>
+<span class="lineNum">     327 </span><span class="lineCov">          1 : }, TypeError);</span>
+<span class="lineNum">     328 </span><span class="lineCov">          1 : assertThrows(function() {</span>
+<span class="lineNum">     329 </span><span class="lineCov">          1 :   String.prototype.startsWith.call(null, &quot;b&quot;, 4);</span>
+<span class="lineNum">     330 </span><span class="lineCov">          1 : }, TypeError);</span>
+<span class="lineNum">     331 </span><span class="lineCov">          1 : assertEquals(String.prototype.startsWith.call(42, &quot;2&quot;), false);</span>
+<span class="lineNum">     332 </span><span class="lineCov">          1 : assertEquals(String.prototype.startsWith.call(42, &quot;4&quot;), true);</span>
+<span class="lineNum">     333 </span><span class="lineCov">          1 : assertEquals(String.prototype.startsWith.call(42, &quot;b&quot;, 4), false);</span>
+<span class="lineNum">     334 </span><span class="lineCov">          1 : assertEquals(String.prototype.startsWith.call(42, &quot;2&quot;, 1), true);</span>
+<span class="lineNum">     335 </span><span class="lineCov">          1 : assertEquals(String.prototype.startsWith.call(42, &quot;2&quot;, 4), false);</span>
+<span class="lineNum">     336 </span><span class="lineCov">          1 : assertEquals(String.prototype.startsWith.call({</span>
+<span class="lineNum">     337 </span><span class="lineCov">          1 :   &quot;toString&quot;: function() { return &quot;abc&quot;; }</span>
+<span class="lineNum">     338 </span><span class="lineCov">          1 : }, &quot;b&quot;, 0), false);</span>
+<span class="lineNum">     339 </span><span class="lineCov">          1 : assertEquals(String.prototype.startsWith.call({</span>
+<span class="lineNum">     340 </span><span class="lineCov">          1 :   &quot;toString&quot;: function() { return &quot;abc&quot;; }</span>
+<span class="lineNum">     341 </span><span class="lineCov">          1 : }, &quot;b&quot;, 1), true);</span>
+<span class="lineNum">     342 </span><span class="lineCov">          1 : assertEquals(String.prototype.startsWith.call({</span>
+<a name="343"><span class="lineNum">     343 </span><span class="lineCov">          1 :   &quot;toString&quot;: function() { return &quot;abc&quot;; }</span></a>
+<span class="lineNum">     344 </span><span class="lineCov">          1 : }, &quot;b&quot;, 2), false);</span>
+<span class="lineNum">     345 </span><span class="lineCov">          1 : assertThrows(function() {</span>
+<span class="lineNum">     346 </span><span class="lineCov">          1 :   String.prototype.startsWith.call({</span>
+<span class="lineNum">     347 </span><span class="lineCov">          1 :     &quot;toString&quot;: function() { throw RangeError(); }</span>
+<a name="348"><span class="lineNum">     348 </span><span class="lineCov">          1 :   }, /./);</span></a>
+<span class="lineNum">     349 </span><span class="lineCov">          1 : }, RangeError);</span>
+<span class="lineNum">     350 </span><span class="lineCov">          1 : assertThrows(function() {</span>
+<span class="lineNum">     351 </span><span class="lineCov">          1 :   String.prototype.startsWith.call({</span>
+<span class="lineNum">     352 </span><span class="lineCov">          1 :     &quot;toString&quot;: function() { return &quot;abc&quot;; }</span>
+<span class="lineNum">     353 </span><span class="lineCov">          1 :   }, /./);</span>
+<a name="354"><span class="lineNum">     354 </span><span class="lineCov">          1 : }, TypeError);</span></a>
+<span class="lineNum">     355 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     356 </span><span class="lineCov">          1 : assertThrows(function() {</span>
+<a name="357"><span class="lineNum">     357 </span><span class="lineCov">          1 :   String.prototype.startsWith.apply(undefined);</span></a>
+<span class="lineNum">     358 </span><span class="lineCov">          1 : }, TypeError);</span>
+<span class="lineNum">     359 </span><span class="lineCov">          1 : assertThrows(function() {</span>
+<a name="360"><span class="lineNum">     360 </span><span class="lineCov">          1 :   String.prototype.startsWith.apply(undefined, [&quot;b&quot;]);</span></a>
+<span class="lineNum">     361 </span><span class="lineCov">          1 : }, TypeError);</span>
+<span class="lineNum">     362 </span><span class="lineCov">          1 : assertThrows(function() {</span>
+<a name="363"><span class="lineNum">     363 </span><span class="lineCov">          1 :   String.prototype.startsWith.apply(undefined, [&quot;b&quot;, 4]);</span></a>
+<span class="lineNum">     364 </span><span class="lineCov">          1 : }, TypeError);</span>
+<span class="lineNum">     365 </span><span class="lineCov">          1 : assertThrows(function() {</span>
+<a name="366"><span class="lineNum">     366 </span><span class="lineCov">          1 :   String.prototype.startsWith.apply(null);</span></a>
+<span class="lineNum">     367 </span><span class="lineCov">          1 : }, TypeError);</span>
+<span class="lineNum">     368 </span><span class="lineCov">          1 : assertThrows(function() {</span>
+<a name="369"><span class="lineNum">     369 </span><span class="lineCov">          1 :   String.prototype.startsWith.apply(null, [&quot;b&quot;]);</span></a>
+<span class="lineNum">     370 </span><span class="lineCov">          1 : }, TypeError);</span>
+<span class="lineNum">     371 </span><span class="lineCov">          1 : assertThrows(function() {</span>
+<span class="lineNum">     372 </span><span class="lineCov">          1 :   String.prototype.startsWith.apply(null, [&quot;b&quot;, 4]);</span>
+<span class="lineNum">     373 </span><span class="lineCov">          1 : }, TypeError);</span>
+<span class="lineNum">     374 </span><span class="lineCov">          1 : assertEquals(String.prototype.startsWith.apply(42, [&quot;2&quot;]), false);</span>
+<span class="lineNum">     375 </span><span class="lineCov">          1 : assertEquals(String.prototype.startsWith.apply(42, [&quot;4&quot;]), true);</span>
+<span class="lineNum">     376 </span><span class="lineCov">          1 : assertEquals(String.prototype.startsWith.apply(42, [&quot;b&quot;, 4]), false);</span>
+<span class="lineNum">     377 </span><span class="lineCov">          1 : assertEquals(String.prototype.startsWith.apply(42, [&quot;2&quot;, 1]), true);</span>
+<span class="lineNum">     378 </span><span class="lineCov">          1 : assertEquals(String.prototype.startsWith.apply(42, [&quot;2&quot;, 4]), false);</span>
+<span class="lineNum">     379 </span><span class="lineCov">          1 : assertEquals(String.prototype.startsWith.apply({</span>
+<span class="lineNum">     380 </span><span class="lineCov">          1 :   &quot;toString&quot;: function() {</span>
+<span class="lineNum">     381 </span><span class="lineCov">          1 :     return &quot;abc&quot;;</span>
+<span class="lineNum">     382 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     383 </span><span class="lineCov">          1 : }, [&quot;b&quot;, 0]), false);</span>
+<span class="lineNum">     384 </span><span class="lineCov">          1 : assertEquals(String.prototype.startsWith.apply({</span>
+<span class="lineNum">     385 </span><span class="lineCov">          1 :   &quot;toString&quot;: function() {</span>
+<span class="lineNum">     386 </span><span class="lineCov">          1 :     return &quot;abc&quot;;</span>
+<span class="lineNum">     387 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     388 </span><span class="lineCov">          1 : }, [&quot;b&quot;, 1]), true);</span>
+<span class="lineNum">     389 </span><span class="lineCov">          1 : assertEquals(String.prototype.startsWith.apply({</span>
+<span class="lineNum">     390 </span><span class="lineCov">          1 :   &quot;toString&quot;: function() {</span>
+<span class="lineNum">     391 </span><span class="lineCov">          1 :     return &quot;abc&quot;;</span>
+<a name="392"><span class="lineNum">     392 </span><span class="lineCov">          1 :   }</span></a>
+<span class="lineNum">     393 </span><span class="lineCov">          1 : }, [&quot;b&quot;, 2]), false);</span>
+<span class="lineNum">     394 </span><span class="lineCov">          1 : assertThrows(function() {</span>
+<span class="lineNum">     395 </span><span class="lineCov">          1 :   String.prototype.startsWith.apply({</span>
+<span class="lineNum">     396 </span><span class="lineCov">          1 :     &quot;toString&quot;: function() { throw RangeError(); }</span>
+<a name="397"><span class="lineNum">     397 </span><span class="lineCov">          1 :   }, [/./]);</span></a>
+<span class="lineNum">     398 </span><span class="lineCov">          1 : }, RangeError);</span>
+<a name="399"><span class="lineNum">     399 </span><span class="lineCov">          1 : assertThrows(function() {</span></a>
+<span class="lineNum">     400 </span><span class="lineCov">          1 :   String.prototype.startsWith.apply({</span>
+<span class="lineNum">     401 </span><span class="lineCov">          1 :     &quot;toString&quot;: function() { return &quot;abc&quot;; }</span>
+<span class="lineNum">     402 </span><span class="lineCov">          1 :   }, [/./]);</span>
+<span class="lineNum">     403 </span><span class="lineCov">          1 : }, TypeError);</span>
+<span class="lineNum">     404 </span><span class="lineCov">          1 : </span>
+<a name="405"><span class="lineNum">     405 </span><span class="lineCov">          1 : // startsWith does its brand checks with Symbol.match</span></a>
+<span class="lineNum">     406 </span><span class="lineCov">          1 : var re = /./;</span>
+<span class="lineNum">     407 </span><span class="lineCov">          1 : assertThrows(function() {</span>
+<span class="lineNum">     408 </span><span class="lineCov">          1 :   &quot;&quot;.startsWith(re);</span>
+<span class="lineNum">     409 </span><span class="lineCov">          1 : }, TypeError);</span>
+<span class="lineNum">     410 </span><span class="lineCov">          1 : re[Symbol.match] = false;</span>
+<span class="lineNum">     411 </span><span class="lineCov">          1 : assertEquals(false, &quot;&quot;.startsWith(re));</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

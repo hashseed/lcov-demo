@@ -1,0 +1,668 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - mjsunit/harmony/sharedarraybuffer.js</title>
+  <link rel="stylesheet" type="text/css" href="../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../index.html">top level</a> - <a href="index.html">mjsunit/harmony</a> - sharedarraybuffer.js<span style="font-size: 80%;"> (source / <a href="sharedarraybuffer.js.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">593</td>
+            <td class="headerCovTableEntry">593</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2017-02-13</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">40</td>
+            <td class="headerCovTableEntry">40</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span><span class="lineCov">          1 : // Copyright 2015 the V8 project authors. All rights reserved.</span></a>
+<span class="lineNum">       2 </span><span class="lineCov">          1 : // Redistribution and use in source and binary forms, with or without</span>
+<span class="lineNum">       3 </span><span class="lineCov">          1 : // modification, are permitted provided that the following conditions are</span>
+<span class="lineNum">       4 </span><span class="lineCov">          1 : // met:</span>
+<span class="lineNum">       5 </span><span class="lineCov">          1 : //</span>
+<span class="lineNum">       6 </span><span class="lineCov">          1 : //     * Redistributions of source code must retain the above copyright</span>
+<span class="lineNum">       7 </span><span class="lineCov">          1 : //       notice, this list of conditions and the following disclaimer.</span>
+<span class="lineNum">       8 </span><span class="lineCov">          1 : //     * Redistributions in binary form must reproduce the above</span>
+<span class="lineNum">       9 </span><span class="lineCov">          1 : //       copyright notice, this list of conditions and the following</span>
+<span class="lineNum">      10 </span><span class="lineCov">          1 : //       disclaimer in the documentation and/or other materials provided</span>
+<span class="lineNum">      11 </span><span class="lineCov">          1 : //       with the distribution.</span>
+<span class="lineNum">      12 </span><span class="lineCov">          1 : //     * Neither the name of Google Inc. nor the names of its</span>
+<span class="lineNum">      13 </span><span class="lineCov">          1 : //       contributors may be used to endorse or promote products derived</span>
+<span class="lineNum">      14 </span><span class="lineCov">          1 : //       from this software without specific prior written permission.</span>
+<span class="lineNum">      15 </span><span class="lineCov">          1 : //</span>
+<span class="lineNum">      16 </span><span class="lineCov">          1 : // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="lineNum">      17 </span><span class="lineCov">          1 : // &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="lineNum">      18 </span><span class="lineCov">          1 : // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR</span>
+<span class="lineNum">      19 </span><span class="lineCov">          1 : // A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT</span>
+<span class="lineNum">      20 </span><span class="lineCov">          1 : // OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,</span>
+<span class="lineNum">      21 </span><span class="lineCov">          1 : // SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT</span>
+<span class="lineNum">      22 </span><span class="lineCov">          1 : // LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,</span>
+<span class="lineNum">      23 </span><span class="lineCov">          1 : // DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY</span>
+<span class="lineNum">      24 </span><span class="lineCov">          1 : // THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT</span>
+<span class="lineNum">      25 </span><span class="lineCov">          1 : // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE</span>
+<span class="lineNum">      26 </span><span class="lineCov">          1 : // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="lineNum">      27 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      28 </span><span class="lineCov">          1 : // Flags: --harmony-sharedarraybuffer</span>
+<span class="lineNum">      29 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      30 </span><span class="lineCov">          1 : </span>
+<a name="31"><span class="lineNum">      31 </span><span class="lineCov">          1 : // SharedArrayBuffer</span></a>
+<span class="lineNum">      32 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      33 </span><span class="lineCov">          5 : function TestByteLength(param, expectedByteLength) {</span>
+<span class="lineNum">      34 </span><span class="lineCov">          5 :   var sab = new SharedArrayBuffer(param);</span>
+<span class="lineNum">      35 </span><span class="lineCov">          5 :   assertSame(expectedByteLength, sab.byteLength);</span>
+<a name="36"><span class="lineNum">      36 </span><span class="lineCov">          5 : }</span></a>
+<span class="lineNum">      37 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      38 </span><span class="lineCov">          1 : function TestArrayBufferCreation() {</span>
+<span class="lineNum">      39 </span><span class="lineCov">          1 :   TestByteLength(1, 1);</span>
+<span class="lineNum">      40 </span><span class="lineCov">          1 :   TestByteLength(256, 256);</span>
+<span class="lineNum">      41 </span><span class="lineCov">          1 :   TestByteLength(2.567, 2);</span>
+<span class="lineNum">      42 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      43 </span><span class="lineCov">          1 :   TestByteLength(&quot;abc&quot;, 0);</span>
+<span class="lineNum">      44 </span><span class="lineCov">          1 : </span>
+<a name="45"><span class="lineNum">      45 </span><span class="lineCov">          1 :   TestByteLength(0, 0);</span></a>
+<a name="46"><span class="lineNum">      46 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      47 </span><span class="lineCov">          1 :   assertThrows(function() { new SharedArrayBuffer(-10); }, RangeError);</span>
+<span class="lineNum">      48 </span><span class="lineCov">          1 :   assertThrows(function() { new SharedArrayBuffer(-2.567); }, RangeError);</span>
+<span class="lineNum">      49 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      50 </span><span class="lineCov">          1 : /* TODO[dslomov]: Reenable the test</span>
+<span class="lineNum">      51 </span><span class="lineCov">          1 :   assertThrows(function() {</span>
+<span class="lineNum">      52 </span><span class="lineCov">          1 :     var ab1 = new SharedArrayBuffer(0xFFFFFFFFFFFF)</span>
+<span class="lineNum">      53 </span><span class="lineCov">          1 :   }, RangeError);</span>
+<span class="lineNum">      54 </span><span class="lineCov">          1 : */</span>
+<span class="lineNum">      55 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      56 </span><span class="lineCov">          1 :   var sab = new SharedArrayBuffer();</span>
+<span class="lineNum">      57 </span><span class="lineCov">          1 :   assertSame(0, sab.byteLength);</span>
+<span class="lineNum">      58 </span><span class="lineCov">          1 :   assertEquals(&quot;[object SharedArrayBuffer]&quot;,</span>
+<span class="lineNum">      59 </span><span class="lineCov">          1 :       Object.prototype.toString.call(sab));</span>
+<span class="lineNum">      60 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      61 </span><span class="lineCov">          1 : </span>
+<a name="62"><span class="lineNum">      62 </span><span class="lineCov">          1 : TestArrayBufferCreation();</span></a>
+<span class="lineNum">      63 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      64 </span><span class="lineCov">          1 : function TestByteLengthNotWritable() {</span>
+<span class="lineNum">      65 </span><span class="lineCov">          1 :   var sab = new SharedArrayBuffer(1024);</span>
+<a name="66"><span class="lineNum">      66 </span><span class="lineCov">          1 :   assertSame(1024, sab.byteLength);</span></a>
+<span class="lineNum">      67 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      68 </span><span class="lineCov">          1 :   assertThrows(function() { &quot;use strict&quot;; sab.byteLength = 42; }, TypeError);</span>
+<span class="lineNum">      69 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      70 </span><span class="lineCov">          1 : </span>
+<a name="71"><span class="lineNum">      71 </span><span class="lineCov">          1 : TestByteLengthNotWritable();</span></a>
+<span class="lineNum">      72 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      73 </span><span class="lineCov">          1 : function TestArrayBufferNoSlice() {</span>
+<span class="lineNum">      74 </span><span class="lineCov">          1 :   var sab = new SharedArrayBuffer(10);</span>
+<span class="lineNum">      75 </span><span class="lineCov">          1 :   assertEquals(undefined, sab.slice);</span>
+<span class="lineNum">      76 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      77 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      78 </span><span class="lineCov">          1 : TestArrayBufferNoSlice();</span>
+<span class="lineNum">      79 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      80 </span><span class="lineCov">          1 : // Typed arrays using SharedArrayBuffers</span>
+<span class="lineNum">      81 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      82 </span><span class="lineCov">          1 : // TODO(binji): how many of these tests are necessary if there are no new</span>
+<a name="83"><span class="lineNum">      83 </span><span class="lineCov">          1 : // TypedArray types?</span></a>
+<span class="lineNum">      84 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      85 </span><span class="lineCov">        534 : function MakeSharedTypedArray(constr, numElements) {</span>
+<span class="lineNum">      86 </span><span class="lineCov">        534 :   var sab = new SharedArrayBuffer(constr.BYTES_PER_ELEMENT * numElements);</span>
+<span class="lineNum">      87 </span><span class="lineCov">        534 :   return new constr(sab);</span>
+<a name="88"><span class="lineNum">      88 </span><span class="lineCov">        534 : }</span></a>
+<span class="lineNum">      89 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      90 </span><span class="lineCov">          9 : function TestTypedArray(constr, elementSize, typicalElement) {</span>
+<span class="lineNum">      91 </span><span class="lineCov">          9 :   assertSame(elementSize, constr.BYTES_PER_ELEMENT);</span>
+<span class="lineNum">      92 </span><span class="lineCov">          9 : </span>
+<span class="lineNum">      93 </span><span class="lineCov">          9 :   var sab = new SharedArrayBuffer(256*elementSize);</span>
+<span class="lineNum">      94 </span><span class="lineCov">          9 : </span>
+<span class="lineNum">      95 </span><span class="lineCov">          9 :   var a0 = new constr(30);</span>
+<span class="lineNum">      96 </span><span class="lineCov">          9 :   assertEquals(&quot;[object &quot; + constr.name + &quot;]&quot;,</span>
+<span class="lineNum">      97 </span><span class="lineCov">          9 :       Object.prototype.toString.call(a0));</span>
+<span class="lineNum">      98 </span><span class="lineCov">          9 : </span>
+<span class="lineNum">      99 </span><span class="lineCov">          9 :   // TODO(binji): Should this return false here? It is a view, but it doesn't</span>
+<span class="lineNum">     100 </span><span class="lineCov">          9 :   // view a SharedArrayBuffer...</span>
+<span class="lineNum">     101 </span><span class="lineCov">          9 :   assertTrue(SharedArrayBuffer.isView(a0));</span>
+<span class="lineNum">     102 </span><span class="lineCov">          9 :   assertSame(elementSize, a0.BYTES_PER_ELEMENT);</span>
+<span class="lineNum">     103 </span><span class="lineCov">          9 :   assertSame(30, a0.length);</span>
+<span class="lineNum">     104 </span><span class="lineCov">          9 :   assertSame(30*elementSize, a0.byteLength);</span>
+<span class="lineNum">     105 </span><span class="lineCov">          9 :   assertSame(0, a0.byteOffset);</span>
+<span class="lineNum">     106 </span><span class="lineCov">          9 :   assertSame(30*elementSize, a0.buffer.byteLength);</span>
+<span class="lineNum">     107 </span><span class="lineCov">          9 : </span>
+<span class="lineNum">     108 </span><span class="lineCov">          9 :   var aOverBufferLen0 = new constr(sab, 128*elementSize, 0);</span>
+<span class="lineNum">     109 </span><span class="lineCov">          9 :   assertSame(sab, aOverBufferLen0.buffer);</span>
+<span class="lineNum">     110 </span><span class="lineCov">          9 :   assertSame(elementSize, aOverBufferLen0.BYTES_PER_ELEMENT);</span>
+<span class="lineNum">     111 </span><span class="lineCov">          9 :   assertSame(0, aOverBufferLen0.length);</span>
+<span class="lineNum">     112 </span><span class="lineCov">          9 :   assertSame(0, aOverBufferLen0.byteLength);</span>
+<span class="lineNum">     113 </span><span class="lineCov">          9 :   assertSame(128*elementSize, aOverBufferLen0.byteOffset);</span>
+<span class="lineNum">     114 </span><span class="lineCov">          9 : </span>
+<span class="lineNum">     115 </span><span class="lineCov">          9 :   var a1 = new constr(sab, 128*elementSize, 128);</span>
+<span class="lineNum">     116 </span><span class="lineCov">          9 :   assertSame(sab, a1.buffer);</span>
+<span class="lineNum">     117 </span><span class="lineCov">          9 :   assertSame(elementSize, a1.BYTES_PER_ELEMENT);</span>
+<span class="lineNum">     118 </span><span class="lineCov">          9 :   assertSame(128, a1.length);</span>
+<span class="lineNum">     119 </span><span class="lineCov">          9 :   assertSame(128*elementSize, a1.byteLength);</span>
+<span class="lineNum">     120 </span><span class="lineCov">          9 :   assertSame(128*elementSize, a1.byteOffset);</span>
+<span class="lineNum">     121 </span><span class="lineCov">          9 : </span>
+<span class="lineNum">     122 </span><span class="lineCov">          9 : </span>
+<span class="lineNum">     123 </span><span class="lineCov">          9 :   var a2 = new constr(sab, 64*elementSize, 128);</span>
+<span class="lineNum">     124 </span><span class="lineCov">          9 :   assertSame(sab, a2.buffer);</span>
+<span class="lineNum">     125 </span><span class="lineCov">          9 :   assertSame(elementSize, a2.BYTES_PER_ELEMENT);</span>
+<span class="lineNum">     126 </span><span class="lineCov">          9 :   assertSame(128, a2.length);</span>
+<span class="lineNum">     127 </span><span class="lineCov">          9 :   assertSame(128*elementSize, a2.byteLength);</span>
+<span class="lineNum">     128 </span><span class="lineCov">          9 :   assertSame(64*elementSize, a2.byteOffset);</span>
+<span class="lineNum">     129 </span><span class="lineCov">          9 : </span>
+<span class="lineNum">     130 </span><span class="lineCov">          9 :   var a3 = new constr(sab, 192*elementSize);</span>
+<span class="lineNum">     131 </span><span class="lineCov">          9 :   assertSame(sab, a3.buffer);</span>
+<span class="lineNum">     132 </span><span class="lineCov">          9 :   assertSame(64, a3.length);</span>
+<span class="lineNum">     133 </span><span class="lineCov">          9 :   assertSame(64*elementSize, a3.byteLength);</span>
+<span class="lineNum">     134 </span><span class="lineCov">          9 :   assertSame(192*elementSize, a3.byteOffset);</span>
+<span class="lineNum">     135 </span><span class="lineCov">          9 : </span>
+<span class="lineNum">     136 </span><span class="lineCov">          9 :   var a4 = new constr(sab);</span>
+<span class="lineNum">     137 </span><span class="lineCov">          9 :   assertSame(sab, a4.buffer);</span>
+<span class="lineNum">     138 </span><span class="lineCov">          9 :   assertSame(256, a4.length);</span>
+<span class="lineNum">     139 </span><span class="lineCov">          9 :   assertSame(256*elementSize, a4.byteLength);</span>
+<span class="lineNum">     140 </span><span class="lineCov">          9 :   assertSame(0, a4.byteOffset);</span>
+<span class="lineNum">     141 </span><span class="lineCov">          9 : </span>
+<span class="lineNum">     142 </span><span class="lineCov">          9 : </span>
+<span class="lineNum">     143 </span><span class="lineCov">          9 :   var i;</span>
+<span class="lineNum">     144 </span><span class="lineCov">          9 :   for (i = 0; i &lt; 128; i++) {</span>
+<span class="lineNum">     145 </span><span class="lineCov">          9 :     a1[i] = typicalElement;</span>
+<span class="lineNum">     146 </span><span class="lineCov">          9 :   }</span>
+<span class="lineNum">     147 </span><span class="lineCov">          9 : </span>
+<span class="lineNum">     148 </span><span class="lineCov">          9 :   for (i = 0; i &lt; 128; i++) {</span>
+<span class="lineNum">     149 </span><span class="lineCov">          9 :     assertSame(typicalElement, a1[i]);</span>
+<span class="lineNum">     150 </span><span class="lineCov">          9 :   }</span>
+<span class="lineNum">     151 </span><span class="lineCov">          9 : </span>
+<span class="lineNum">     152 </span><span class="lineCov">          9 :   for (i = 0; i &lt; 64; i++) {</span>
+<span class="lineNum">     153 </span><span class="lineCov">          9 :     assertSame(0, a2[i]);</span>
+<span class="lineNum">     154 </span><span class="lineCov">          9 :   }</span>
+<span class="lineNum">     155 </span><span class="lineCov">          9 : </span>
+<span class="lineNum">     156 </span><span class="lineCov">          9 :   for (i = 64; i &lt; 128; i++) {</span>
+<span class="lineNum">     157 </span><span class="lineCov">          9 :     assertSame(typicalElement, a2[i]);</span>
+<span class="lineNum">     158 </span><span class="lineCov">          9 :   }</span>
+<span class="lineNum">     159 </span><span class="lineCov">          9 : </span>
+<span class="lineNum">     160 </span><span class="lineCov">          9 :   for (i = 0; i &lt; 64; i++) {</span>
+<span class="lineNum">     161 </span><span class="lineCov">          9 :     assertSame(typicalElement, a3[i]);</span>
+<span class="lineNum">     162 </span><span class="lineCov">          9 :   }</span>
+<span class="lineNum">     163 </span><span class="lineCov">          9 : </span>
+<span class="lineNum">     164 </span><span class="lineCov">          9 :   for (i = 0; i &lt; 128; i++) {</span>
+<span class="lineNum">     165 </span><span class="lineCov">          9 :     assertSame(0, a4[i]);</span>
+<span class="lineNum">     166 </span><span class="lineCov">          9 :   }</span>
+<span class="lineNum">     167 </span><span class="lineCov">          9 : </span>
+<span class="lineNum">     168 </span><span class="lineCov">          9 :   for (i = 128; i &lt; 256; i++) {</span>
+<span class="lineNum">     169 </span><span class="lineCov">          9 :     assertSame(typicalElement, a4[i]);</span>
+<span class="lineNum">     170 </span><span class="lineCov">          9 :   }</span>
+<span class="lineNum">     171 </span><span class="lineCov">          9 : </span>
+<span class="lineNum">     172 </span><span class="lineCov">          9 :   var aAtTheEnd = new constr(sab, 256*elementSize);</span>
+<span class="lineNum">     173 </span><span class="lineCov">          9 :   assertSame(elementSize, aAtTheEnd.BYTES_PER_ELEMENT);</span>
+<span class="lineNum">     174 </span><span class="lineCov">          9 :   assertSame(0, aAtTheEnd.length);</span>
+<span class="lineNum">     175 </span><span class="lineCov">          9 :   assertSame(0, aAtTheEnd.byteLength);</span>
+<a name="176"><span class="lineNum">     176 </span><span class="lineCov">          9 :   assertSame(256*elementSize, aAtTheEnd.byteOffset);</span></a>
+<span class="lineNum">     177 </span><span class="lineCov">          9 : </span>
+<a name="178"><span class="lineNum">     178 </span><span class="lineCov">          9 :   assertThrows(function () { new constr(sab, 257*elementSize); }, RangeError);</span></a>
+<span class="lineNum">     179 </span><span class="lineCov">          9 :   assertThrows(</span>
+<span class="lineNum">     180 </span><span class="lineCov">          9 :       function () { new constr(sab, 128*elementSize, 192); },</span>
+<span class="lineNum">     181 </span><span class="lineCov">          9 :       RangeError);</span>
+<a name="182"><span class="lineNum">     182 </span><span class="lineCov">          9 : </span></a>
+<span class="lineNum">     183 </span><span class="lineCov">          9 :   if (elementSize !== 1) {</span>
+<span class="lineNum">     184 </span><span class="lineCov">          9 :     assertThrows(function() { new constr(sab, 128*elementSize - 1, 10); },</span>
+<span class="lineNum">     185 </span><span class="lineCov">          9 :                  RangeError);</span>
+<span class="lineNum">     186 </span><span class="lineCov">          9 :     var unalignedArrayBuffer = new SharedArrayBuffer(10*elementSize + 1);</span>
+<span class="lineNum">     187 </span><span class="lineCov">          9 :     var goodArray = new constr(unalignedArrayBuffer, 0, 10);</span>
+<a name="188"><span class="lineNum">     188 </span><span class="lineCov">          9 :     assertSame(10, goodArray.length);</span></a>
+<a name="189"><span class="lineNum">     189 </span><span class="lineCov">          9 :     assertSame(10*elementSize, goodArray.byteLength);</span></a>
+<span class="lineNum">     190 </span><span class="lineCov">          9 :     assertThrows(function() { new constr(unalignedArrayBuffer)}, RangeError);</span>
+<span class="lineNum">     191 </span><span class="lineCov">          9 :     assertThrows(function() { new constr(unalignedArrayBuffer, 5*elementSize)},</span>
+<span class="lineNum">     192 </span><span class="lineCov">          9 :                  RangeError);</span>
+<span class="lineNum">     193 </span><span class="lineCov">          9 :   }</span>
+<span class="lineNum">     194 </span><span class="lineCov">          9 : </span>
+<span class="lineNum">     195 </span><span class="lineCov">          9 :   var abLen0 = new SharedArrayBuffer(0);</span>
+<span class="lineNum">     196 </span><span class="lineCov">          9 :   var aOverAbLen0 = new constr(abLen0);</span>
+<span class="lineNum">     197 </span><span class="lineCov">          9 :   assertSame(abLen0, aOverAbLen0.buffer);</span>
+<span class="lineNum">     198 </span><span class="lineCov">          9 :   assertSame(elementSize, aOverAbLen0.BYTES_PER_ELEMENT);</span>
+<span class="lineNum">     199 </span><span class="lineCov">          9 :   assertSame(0, aOverAbLen0.length);</span>
+<span class="lineNum">     200 </span><span class="lineCov">          9 :   assertSame(0, aOverAbLen0.byteLength);</span>
+<span class="lineNum">     201 </span><span class="lineCov">          9 :   assertSame(0, aOverAbLen0.byteOffset);</span>
+<span class="lineNum">     202 </span><span class="lineCov">          9 : </span>
+<span class="lineNum">     203 </span><span class="lineCov">          9 :   var a = new constr(sab, 64*elementSize, 128);</span>
+<span class="lineNum">     204 </span><span class="lineCov">          9 :   assertEquals(&quot;[object &quot; + constr.name + &quot;]&quot;,</span>
+<span class="lineNum">     205 </span><span class="lineCov">          9 :       Object.prototype.toString.call(a));</span>
+<span class="lineNum">     206 </span><span class="lineCov">          9 :   var desc = Object.getOwnPropertyDescriptor(</span>
+<span class="lineNum">     207 </span><span class="lineCov">          9 :       constr.prototype.__proto__, Symbol.toStringTag);</span>
+<span class="lineNum">     208 </span><span class="lineCov">          9 :   assertTrue(desc.configurable);</span>
+<span class="lineNum">     209 </span><span class="lineCov">          9 :   assertFalse(desc.enumerable);</span>
+<span class="lineNum">     210 </span><span class="lineCov">          9 :   assertFalse(!!desc.writable);</span>
+<span class="lineNum">     211 </span><span class="lineCov">          9 :   assertFalse(!!desc.set);</span>
+<span class="lineNum">     212 </span><span class="lineCov">          9 :   assertEquals(&quot;function&quot;, typeof desc.get);</span>
+<span class="lineNum">     213 </span><span class="lineCov">          9 : }</span>
+<span class="lineNum">     214 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     215 </span><span class="lineCov">          1 : TestTypedArray(Uint8Array, 1, 0xFF);</span>
+<span class="lineNum">     216 </span><span class="lineCov">          1 : TestTypedArray(Int8Array, 1, -0x7F);</span>
+<span class="lineNum">     217 </span><span class="lineCov">          1 : TestTypedArray(Uint16Array, 2, 0xFFFF);</span>
+<span class="lineNum">     218 </span><span class="lineCov">          1 : TestTypedArray(Int16Array, 2, -0x7FFF);</span>
+<span class="lineNum">     219 </span><span class="lineCov">          1 : TestTypedArray(Uint32Array, 4, 0xFFFFFFFF);</span>
+<span class="lineNum">     220 </span><span class="lineCov">          1 : TestTypedArray(Int32Array, 4, -0x7FFFFFFF);</span>
+<span class="lineNum">     221 </span><span class="lineCov">          1 : TestTypedArray(Float32Array, 4, 0.5);</span>
+<span class="lineNum">     222 </span><span class="lineCov">          1 : TestTypedArray(Float64Array, 8, 0.5);</span>
+<span class="lineNum">     223 </span><span class="lineCov">          1 : TestTypedArray(Uint8ClampedArray, 1, 0xFF);</span>
+<a name="224"><span class="lineNum">     224 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     225 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     226 </span><span class="lineCov">        180 : function SubarrayTestCase(constructor, item, expectedResultLen,</span>
+<span class="lineNum">     227 </span><span class="lineCov">        180 :                           expectedStartIndex, initialLen, start, end) {</span>
+<span class="lineNum">     228 </span><span class="lineCov">        180 :   var a = MakeSharedTypedArray(constructor, initialLen);</span>
+<span class="lineNum">     229 </span><span class="lineCov">        180 :   var s = a.subarray(start, end);</span>
+<span class="lineNum">     230 </span><span class="lineCov">        180 :   assertSame(constructor, s.constructor);</span>
+<span class="lineNum">     231 </span><span class="lineCov">        180 :   assertSame(expectedResultLen, s.length);</span>
+<span class="lineNum">     232 </span><span class="lineCov">        180 :   if (s.length &gt; 0) {</span>
+<span class="lineNum">     233 </span><span class="lineCov">        180 :     s[0] = item;</span>
+<span class="lineNum">     234 </span><span class="lineCov">        180 :     assertSame(item, a[expectedStartIndex]);</span>
+<span class="lineNum">     235 </span><span class="lineCov">        180 :   }</span>
+<a name="236"><span class="lineNum">     236 </span><span class="lineCov">        180 : }</span></a>
+<span class="lineNum">     237 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     238 </span><span class="lineCov">          9 : function TestSubArray(constructor, item) {</span>
+<span class="lineNum">     239 </span><span class="lineCov">          9 :   SubarrayTestCase(constructor, item, 512, 512, 1024, 512, 1024);</span>
+<span class="lineNum">     240 </span><span class="lineCov">          9 :   SubarrayTestCase(constructor, item, 512, 512, 1024, 512);</span>
+<span class="lineNum">     241 </span><span class="lineCov">          9 : </span>
+<span class="lineNum">     242 </span><span class="lineCov">          9 :   SubarrayTestCase(constructor, item, 0, undefined, 0, 1, 20);</span>
+<span class="lineNum">     243 </span><span class="lineCov">          9 :   SubarrayTestCase(constructor, item, 100, 0,       100, 0, 100);</span>
+<span class="lineNum">     244 </span><span class="lineCov">          9 :   SubarrayTestCase(constructor, item, 100, 0,       100,  0, 1000);</span>
+<span class="lineNum">     245 </span><span class="lineCov">          9 :   SubarrayTestCase(constructor, item, 0, undefined, 100, 5, 1);</span>
+<span class="lineNum">     246 </span><span class="lineCov">          9 : </span>
+<span class="lineNum">     247 </span><span class="lineCov">          9 :   SubarrayTestCase(constructor, item, 1, 89,        100, -11, -10);</span>
+<span class="lineNum">     248 </span><span class="lineCov">          9 :   SubarrayTestCase(constructor, item, 9, 90,        100, -10, 99);</span>
+<span class="lineNum">     249 </span><span class="lineCov">          9 :   SubarrayTestCase(constructor, item, 0, undefined, 100, -10, 80);</span>
+<span class="lineNum">     250 </span><span class="lineCov">          9 :   SubarrayTestCase(constructor, item, 10,80,        100, 80, -10);</span>
+<span class="lineNum">     251 </span><span class="lineCov">          9 : </span>
+<span class="lineNum">     252 </span><span class="lineCov">          9 :   SubarrayTestCase(constructor, item, 10,90,        100, 90, &quot;100&quot;);</span>
+<span class="lineNum">     253 </span><span class="lineCov">          9 :   SubarrayTestCase(constructor, item, 10,90,        100, &quot;90&quot;, &quot;100&quot;);</span>
+<span class="lineNum">     254 </span><span class="lineCov">          9 : </span>
+<span class="lineNum">     255 </span><span class="lineCov">          9 :   SubarrayTestCase(constructor, item, 0, undefined, 100, 90, &quot;abc&quot;);</span>
+<span class="lineNum">     256 </span><span class="lineCov">          9 :   SubarrayTestCase(constructor, item, 10,0,         100, &quot;abc&quot;, 10);</span>
+<span class="lineNum">     257 </span><span class="lineCov">          9 : </span>
+<span class="lineNum">     258 </span><span class="lineCov">          9 :   SubarrayTestCase(constructor, item, 10,0,         100, 0.96, 10.96);</span>
+<span class="lineNum">     259 </span><span class="lineCov">          9 :   SubarrayTestCase(constructor, item, 10,0,         100, 0.96, 10.01);</span>
+<span class="lineNum">     260 </span><span class="lineCov">          9 :   SubarrayTestCase(constructor, item, 10,0,         100, 0.01, 10.01);</span>
+<span class="lineNum">     261 </span><span class="lineCov">          9 :   SubarrayTestCase(constructor, item, 10,0,         100, 0.01, 10.96);</span>
+<span class="lineNum">     262 </span><span class="lineCov">          9 : </span>
+<span class="lineNum">     263 </span><span class="lineCov">          9 : </span>
+<span class="lineNum">     264 </span><span class="lineCov">          9 :   SubarrayTestCase(constructor, item, 10,90,        100, 90);</span>
+<span class="lineNum">     265 </span><span class="lineCov">          9 :   SubarrayTestCase(constructor, item, 10,90,        100, -10);</span>
+<span class="lineNum">     266 </span><span class="lineCov">          9 : }</span>
+<span class="lineNum">     267 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     268 </span><span class="lineCov">          1 : TestSubArray(Uint8Array, 0xFF);</span>
+<span class="lineNum">     269 </span><span class="lineCov">          1 : TestSubArray(Int8Array, -0x7F);</span>
+<span class="lineNum">     270 </span><span class="lineCov">          1 : TestSubArray(Uint16Array, 0xFFFF);</span>
+<span class="lineNum">     271 </span><span class="lineCov">          1 : TestSubArray(Int16Array, -0x7FFF);</span>
+<span class="lineNum">     272 </span><span class="lineCov">          1 : TestSubArray(Uint32Array, 0xFFFFFFFF);</span>
+<span class="lineNum">     273 </span><span class="lineCov">          1 : TestSubArray(Int32Array, -0x7FFFFFFF);</span>
+<span class="lineNum">     274 </span><span class="lineCov">          1 : TestSubArray(Float32Array, 0.5);</span>
+<span class="lineNum">     275 </span><span class="lineCov">          1 : TestSubArray(Float64Array, 0.5);</span>
+<a name="276"><span class="lineNum">     276 </span><span class="lineCov">          1 : TestSubArray(Uint8ClampedArray, 0xFF);</span></a>
+<span class="lineNum">     277 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     278 </span><span class="lineCov">         11 : function TestTypedArrayOutOfRange(constructor, value, result) {</span>
+<span class="lineNum">     279 </span><span class="lineCov">         11 :   var a = MakeSharedTypedArray(constructor, 1);</span>
+<span class="lineNum">     280 </span><span class="lineCov">         11 :   a[0] = value;</span>
+<span class="lineNum">     281 </span><span class="lineCov">         11 :   assertSame(result, a[0]);</span>
+<span class="lineNum">     282 </span><span class="lineCov">         11 : }</span>
+<span class="lineNum">     283 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     284 </span><span class="lineCov">          1 : TestTypedArrayOutOfRange(Uint8Array, 0x1FA, 0xFA);</span>
+<span class="lineNum">     285 </span><span class="lineCov">          1 : TestTypedArrayOutOfRange(Uint8Array, -1, 0xFF);</span>
+<span class="lineNum">     286 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     287 </span><span class="lineCov">          1 : TestTypedArrayOutOfRange(Int8Array, 0x1FA, 0x7A - 0x80);</span>
+<span class="lineNum">     288 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     289 </span><span class="lineCov">          1 : TestTypedArrayOutOfRange(Uint16Array, 0x1FFFA, 0xFFFA);</span>
+<span class="lineNum">     290 </span><span class="lineCov">          1 : TestTypedArrayOutOfRange(Uint16Array, -1, 0xFFFF);</span>
+<span class="lineNum">     291 </span><span class="lineCov">          1 : TestTypedArrayOutOfRange(Int16Array, 0x1FFFA, 0x7FFA - 0x8000);</span>
+<span class="lineNum">     292 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     293 </span><span class="lineCov">          1 : TestTypedArrayOutOfRange(Uint32Array, 0x1FFFFFFFA, 0xFFFFFFFA);</span>
+<span class="lineNum">     294 </span><span class="lineCov">          1 : TestTypedArrayOutOfRange(Uint32Array, -1, 0xFFFFFFFF);</span>
+<span class="lineNum">     295 </span><span class="lineCov">          1 : TestTypedArrayOutOfRange(Int32Array, 0x1FFFFFFFA, 0x7FFFFFFA - 0x80000000);</span>
+<span class="lineNum">     296 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     297 </span><span class="lineCov">          1 : TestTypedArrayOutOfRange(Uint8ClampedArray, 0x1FA, 0xFF);</span>
+<span class="lineNum">     298 </span><span class="lineCov">          1 : TestTypedArrayOutOfRange(Uint8ClampedArray, -1, 0);</span>
+<span class="lineNum">     299 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     300 </span><span class="lineCov">          1 : var typedArrayConstructors = [</span>
+<span class="lineNum">     301 </span><span class="lineCov">          1 :   Uint8Array,</span>
+<span class="lineNum">     302 </span><span class="lineCov">          1 :   Int8Array,</span>
+<span class="lineNum">     303 </span><span class="lineCov">          1 :   Uint16Array,</span>
+<span class="lineNum">     304 </span><span class="lineCov">          1 :   Int16Array,</span>
+<span class="lineNum">     305 </span><span class="lineCov">          1 :   Uint32Array,</span>
+<span class="lineNum">     306 </span><span class="lineCov">          1 :   Int32Array,</span>
+<span class="lineNum">     307 </span><span class="lineCov">          1 :   Uint8ClampedArray,</span>
+<span class="lineNum">     308 </span><span class="lineCov">          1 :   Float32Array,</span>
+<a name="309"><span class="lineNum">     309 </span><span class="lineCov">          1 :   Float64Array];</span></a>
+<a name="310"><span class="lineNum">     310 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     311 </span><span class="lineCov">          9 : function TestPropertyTypeChecks(constructor) {</span>
+<span class="lineNum">     312 </span><span class="lineCov">         36 :   function CheckProperty(name) {</span>
+<span class="lineNum">     313 </span><span class="lineCov">         36 :     var d = Object.getOwnPropertyDescriptor(constructor.prototype.__proto__,</span>
+<a name="314"><span class="lineNum">     314 </span><span class="lineCov">         36 :                                             name);</span></a>
+<span class="lineNum">     315 </span><span class="lineCov">         36 :     var o = {};</span>
+<span class="lineNum">     316 </span><span class="lineCov">         36 :     assertThrows(function() {d.get.call(o);}, TypeError);</span>
+<span class="lineNum">     317 </span><span class="lineCov">         36 :     for (var i = 0; i &lt; typedArrayConstructors.length; i++) {</span>
+<span class="lineNum">     318 </span><span class="lineCov">         36 :       var ctor = typedArrayConstructors[i];</span>
+<span class="lineNum">     319 </span><span class="lineCov">         36 :       var a = MakeSharedTypedArray(ctor, 10);</span>
+<span class="lineNum">     320 </span><span class="lineCov">         36 :       d.get.call(a); // shouldn't throw</span>
+<span class="lineNum">     321 </span><span class="lineCov">         36 :     }</span>
+<span class="lineNum">     322 </span><span class="lineCov">         36 :   }</span>
+<span class="lineNum">     323 </span><span class="lineCov">          9 : </span>
+<span class="lineNum">     324 </span><span class="lineCov">          9 :   CheckProperty(&quot;buffer&quot;);</span>
+<span class="lineNum">     325 </span><span class="lineCov">          9 :   CheckProperty(&quot;byteOffset&quot;);</span>
+<span class="lineNum">     326 </span><span class="lineCov">          9 :   CheckProperty(&quot;byteLength&quot;);</span>
+<span class="lineNum">     327 </span><span class="lineCov">          9 :   CheckProperty(&quot;length&quot;);</span>
+<span class="lineNum">     328 </span><span class="lineCov">          9 : }</span>
+<span class="lineNum">     329 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     330 </span><span class="lineCov">          1 : for(i = 0; i &lt; typedArrayConstructors.length; i++) {</span>
+<span class="lineNum">     331 </span><span class="lineCov">          1 :   TestPropertyTypeChecks(typedArrayConstructors[i]);</span>
+<a name="332"><span class="lineNum">     332 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">     333 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     334 </span><span class="lineCov">          1 : function TestTypedArraySet() {</span>
+<a name="335"><span class="lineNum">     335 </span><span class="lineCov">          1 :   // Test array.set in different combinations.</span></a>
+<span class="lineNum">     336 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     337 </span><span class="lineCov">         18 :   function assertArrayPrefix(expected, array) {</span>
+<span class="lineNum">     338 </span><span class="lineCov">         18 :     for (var i = 0; i &lt; expected.length; ++i) {</span>
+<span class="lineNum">     339 </span><span class="lineCov">         18 :       assertEquals(expected[i], array[i]);</span>
+<span class="lineNum">     340 </span><span class="lineCov">         18 :     }</span>
+<span class="lineNum">     341 </span><span class="lineCov">         18 :   }</span>
+<a name="342"><span class="lineNum">     342 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     343 </span><span class="lineCov">          1 :   // SharedTypedArrays don't allow initialization via array-like</span>
+<span class="lineNum">     344 </span><span class="lineCov">          4 :   function initializeFromArray(constructor, array) {</span>
+<span class="lineNum">     345 </span><span class="lineCov">          4 :     var buffer = MakeSharedTypedArray(constructor, array.length);</span>
+<span class="lineNum">     346 </span><span class="lineCov">          4 :     for (var i = 0; i &lt; array.length; ++i) {</span>
+<span class="lineNum">     347 </span><span class="lineCov">          4 :       buffer[i] = array[i];</span>
+<span class="lineNum">     348 </span><span class="lineCov">          4 :     }</span>
+<span class="lineNum">     349 </span><span class="lineCov">          4 :     return buffer;</span>
+<span class="lineNum">     350 </span><span class="lineCov">          4 :   }</span>
+<span class="lineNum">     351 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     352 </span><span class="lineCov">          1 :   var a11 = initializeFromArray(Int16Array, [1, 2, 3, 4, 0, -1])</span>
+<span class="lineNum">     353 </span><span class="lineCov">          1 :   var a12 = MakeSharedTypedArray(Uint16Array, 15);</span>
+<a name="354"><span class="lineNum">     354 </span><span class="lineCov">          1 :   a12.set(a11, 3)</span></a>
+<span class="lineNum">     355 </span><span class="lineCov">          1 :   assertArrayPrefix([0, 0, 0, 1, 2, 3, 4, 0, 0xffff, 0, 0], a12)</span>
+<a name="356"><span class="lineNum">     356 </span><span class="lineCov">          1 :   assertThrows(function(){ a11.set(a12) })</span></a>
+<span class="lineNum">     357 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     358 </span><span class="lineCov">          1 :   var a21 = [1, undefined, 10, NaN, 0, -1, {valueOf: function() {return 3}}]</span>
+<span class="lineNum">     359 </span><span class="lineCov">          1 :   var a22 = MakeSharedTypedArray(Int32Array, 12)</span>
+<span class="lineNum">     360 </span><span class="lineCov">          1 :   a22.set(a21, 2)</span>
+<span class="lineNum">     361 </span><span class="lineCov">          1 :   assertArrayPrefix([0, 0, 1, 0, 10, 0, 0, -1, 3, 0], a22)</span>
+<span class="lineNum">     362 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     363 </span><span class="lineCov">          1 :   var a31 = initializeFromArray(Float32Array, [2, 4, 6, 8, 11, NaN, 1/0, -3])</span>
+<span class="lineNum">     364 </span><span class="lineCov">          1 :   var a32 = a31.subarray(2, 6)</span>
+<span class="lineNum">     365 </span><span class="lineCov">          1 :   a31.set(a32, 4)</span>
+<span class="lineNum">     366 </span><span class="lineCov">          1 :   assertArrayPrefix([2, 4, 6, 8, 6, 8, 11, NaN], a31)</span>
+<span class="lineNum">     367 </span><span class="lineCov">          1 :   assertArrayPrefix([6, 8, 6, 8], a32)</span>
+<span class="lineNum">     368 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     369 </span><span class="lineCov">          1 :   var a4 = initializeFromArray(Uint8ClampedArray, [3,2,5,6])</span>
+<span class="lineNum">     370 </span><span class="lineCov">          1 :   a4.set(a4)</span>
+<span class="lineNum">     371 </span><span class="lineCov">          1 :   assertArrayPrefix([3, 2, 5, 6], a4)</span>
+<span class="lineNum">     372 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     373 </span><span class="lineCov">          1 :   // Cases with overlapping backing store but different element sizes.</span>
+<span class="lineNum">     374 </span><span class="lineCov">          1 :   var b = new SharedArrayBuffer(4)</span>
+<span class="lineNum">     375 </span><span class="lineCov">          1 :   var a5 = new Int16Array(b)</span>
+<span class="lineNum">     376 </span><span class="lineCov">          1 :   var a50 = new Int8Array(b)</span>
+<span class="lineNum">     377 </span><span class="lineCov">          1 :   var a51 = new Int8Array(b, 0, 2)</span>
+<span class="lineNum">     378 </span><span class="lineCov">          1 :   var a52 = new Int8Array(b, 1, 2)</span>
+<span class="lineNum">     379 </span><span class="lineCov">          1 :   var a53 = new Int8Array(b, 2, 2)</span>
+<span class="lineNum">     380 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     381 </span><span class="lineCov">          1 :   a5.set([0x5050, 0x0a0a])</span>
+<span class="lineNum">     382 </span><span class="lineCov">          1 :   assertArrayPrefix([0x50, 0x50, 0x0a, 0x0a], a50)</span>
+<span class="lineNum">     383 </span><span class="lineCov">          1 :   assertArrayPrefix([0x50, 0x50], a51)</span>
+<span class="lineNum">     384 </span><span class="lineCov">          1 :   assertArrayPrefix([0x50, 0x0a], a52)</span>
+<span class="lineNum">     385 </span><span class="lineCov">          1 :   assertArrayPrefix([0x0a, 0x0a], a53)</span>
+<span class="lineNum">     386 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     387 </span><span class="lineCov">          1 :   a50.set([0x50, 0x50, 0x0a, 0x0a])</span>
+<span class="lineNum">     388 </span><span class="lineCov">          1 :   a51.set(a5)</span>
+<span class="lineNum">     389 </span><span class="lineCov">          1 :   assertArrayPrefix([0x50, 0x0a, 0x0a, 0x0a], a50)</span>
+<span class="lineNum">     390 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     391 </span><span class="lineCov">          1 :   a50.set([0x50, 0x50, 0x0a, 0x0a])</span>
+<span class="lineNum">     392 </span><span class="lineCov">          1 :   a52.set(a5)</span>
+<span class="lineNum">     393 </span><span class="lineCov">          1 :   assertArrayPrefix([0x50, 0x50, 0x0a, 0x0a], a50)</span>
+<span class="lineNum">     394 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     395 </span><span class="lineCov">          1 :   a50.set([0x50, 0x50, 0x0a, 0x0a])</span>
+<span class="lineNum">     396 </span><span class="lineCov">          1 :   a53.set(a5)</span>
+<span class="lineNum">     397 </span><span class="lineCov">          1 :   assertArrayPrefix([0x50, 0x50, 0x50, 0x0a], a50)</span>
+<span class="lineNum">     398 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     399 </span><span class="lineCov">          1 :   a50.set([0x50, 0x51, 0x0a, 0x0b])</span>
+<span class="lineNum">     400 </span><span class="lineCov">          1 :   a5.set(a51)</span>
+<span class="lineNum">     401 </span><span class="lineCov">          1 :   assertArrayPrefix([0x0050, 0x0051], a5)</span>
+<span class="lineNum">     402 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     403 </span><span class="lineCov">          1 :   a50.set([0x50, 0x51, 0x0a, 0x0b])</span>
+<span class="lineNum">     404 </span><span class="lineCov">          1 :   a5.set(a52)</span>
+<span class="lineNum">     405 </span><span class="lineCov">          1 :   assertArrayPrefix([0x0051, 0x000a], a5)</span>
+<span class="lineNum">     406 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     407 </span><span class="lineCov">          1 :   a50.set([0x50, 0x51, 0x0a, 0x0b])</span>
+<span class="lineNum">     408 </span><span class="lineCov">          1 :   a5.set(a53)</span>
+<span class="lineNum">     409 </span><span class="lineCov">          1 :   assertArrayPrefix([0x000a, 0x000b], a5)</span>
+<span class="lineNum">     410 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     411 </span><span class="lineCov">          1 :   // Mixed types of same size.</span>
+<span class="lineNum">     412 </span><span class="lineCov">          1 :   var a61 = initializeFromArray(Float32Array, [1.2, 12.3])</span>
+<span class="lineNum">     413 </span><span class="lineCov">          1 :   var a62 = MakeSharedTypedArray(Int32Array, 2)</span>
+<span class="lineNum">     414 </span><span class="lineCov">          1 :   a62.set(a61)</span>
+<span class="lineNum">     415 </span><span class="lineCov">          1 :   assertArrayPrefix([1, 12], a62)</span>
+<span class="lineNum">     416 </span><span class="lineCov">          1 :   a61.set(a62)</span>
+<span class="lineNum">     417 </span><span class="lineCov">          1 :   assertArrayPrefix([1, 12], a61)</span>
+<span class="lineNum">     418 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     419 </span><span class="lineCov">          1 :   // Invalid source</span>
+<span class="lineNum">     420 </span><span class="lineCov">          1 :   var a = MakeSharedTypedArray(Uint16Array, 50);</span>
+<span class="lineNum">     421 </span><span class="lineCov">          1 :   var expected = [];</span>
+<span class="lineNum">     422 </span><span class="lineCov">          1 :   for (i = 0; i &lt; 50; i++) {</span>
+<span class="lineNum">     423 </span><span class="lineCov">          1 :     a[i] = i;</span>
+<span class="lineNum">     424 </span><span class="lineCov">          1 :     expected.push(i);</span>
+<span class="lineNum">     425 </span><span class="lineCov">          1 :   }</span>
+<a name="426"><span class="lineNum">     426 </span><span class="lineCov">          1 :   a.set({});</span></a>
+<a name="427"><span class="lineNum">     427 </span><span class="lineCov">          1 :   assertArrayPrefix(expected, a);</span></a>
+<span class="lineNum">     428 </span><span class="lineCov">          1 :   assertThrows(function() { a.set.call({}) }, TypeError);</span>
+<a name="429"><span class="lineNum">     429 </span><span class="lineCov">          1 :   assertThrows(function() { a.set.call([]) }, TypeError);</span></a>
+<a name="430"><span class="lineNum">     430 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     431 </span><span class="lineCov">          1 :   assertThrows(function() { a.set(0); }, TypeError);</span>
+<span class="lineNum">     432 </span><span class="lineCov">          1 :   assertThrows(function() { a.set(0, 1); }, TypeError);</span>
+<span class="lineNum">     433 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     434 </span><span class="lineCov">          1 : </span>
+<a name="435"><span class="lineNum">     435 </span><span class="lineCov">          1 : TestTypedArraySet();</span></a>
+<span class="lineNum">     436 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     437 </span><span class="lineCov">          1 : function TestTypedArraysWithIllegalIndices() {</span>
+<span class="lineNum">     438 </span><span class="lineCov">          1 :   var a = MakeSharedTypedArray(Int32Array, 100);</span>
+<span class="lineNum">     439 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     440 </span><span class="lineCov">          1 :   a[-10] = 10;</span>
+<span class="lineNum">     441 </span><span class="lineCov">          1 :   assertEquals(undefined, a[-10]);</span>
+<span class="lineNum">     442 </span><span class="lineCov">          1 :   a[&quot;-10&quot;] = 10;</span>
+<span class="lineNum">     443 </span><span class="lineCov">          1 :   assertEquals(undefined, a[&quot;-10&quot;]);</span>
+<span class="lineNum">     444 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     445 </span><span class="lineCov">          1 :   var s = &quot;    -10&quot;;</span>
+<span class="lineNum">     446 </span><span class="lineCov">          1 :   a[s] = 10;</span>
+<span class="lineNum">     447 </span><span class="lineCov">          1 :   assertEquals(10, a[s]);</span>
+<span class="lineNum">     448 </span><span class="lineCov">          1 :   var s1 = &quot;    -10   &quot;;</span>
+<span class="lineNum">     449 </span><span class="lineCov">          1 :   a[s] = 10;</span>
+<span class="lineNum">     450 </span><span class="lineCov">          1 :   assertEquals(10, a[s]);</span>
+<span class="lineNum">     451 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     452 </span><span class="lineCov">          1 :   a[&quot;-1e2&quot;] = 10;</span>
+<span class="lineNum">     453 </span><span class="lineCov">          1 :   assertEquals(10, a[&quot;-1e2&quot;]);</span>
+<span class="lineNum">     454 </span><span class="lineCov">          1 :   assertEquals(undefined, a[-1e2]);</span>
+<span class="lineNum">     455 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     456 </span><span class="lineCov">          1 :   a[&quot;-0&quot;] = 256;</span>
+<span class="lineNum">     457 </span><span class="lineCov">          1 :   var s2 = &quot;     -0&quot;;</span>
+<span class="lineNum">     458 </span><span class="lineCov">          1 :   a[s2] = 255;</span>
+<span class="lineNum">     459 </span><span class="lineCov">          1 :   assertEquals(undefined, a[&quot;-0&quot;]);</span>
+<span class="lineNum">     460 </span><span class="lineCov">          1 :   assertEquals(255, a[s2]);</span>
+<span class="lineNum">     461 </span><span class="lineCov">          1 :   assertEquals(0, a[-0]);</span>
+<span class="lineNum">     462 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     463 </span><span class="lineCov">          1 :   /* Chromium bug: 424619</span>
+<span class="lineNum">     464 </span><span class="lineCov">          1 :    * a[-Infinity] = 50;</span>
+<span class="lineNum">     465 </span><span class="lineCov">          1 :    * assertEquals(undefined, a[-Infinity]);</span>
+<span class="lineNum">     466 </span><span class="lineCov">          1 :    */</span>
+<span class="lineNum">     467 </span><span class="lineCov">          1 :   a[1.5] = 10;</span>
+<span class="lineNum">     468 </span><span class="lineCov">          1 :   assertEquals(undefined, a[1.5]);</span>
+<span class="lineNum">     469 </span><span class="lineCov">          1 :   var nan = Math.sqrt(-1);</span>
+<span class="lineNum">     470 </span><span class="lineCov">          1 :   a[nan] = 5;</span>
+<span class="lineNum">     471 </span><span class="lineCov">          1 :   assertEquals(undefined, a[nan]);</span>
+<span class="lineNum">     472 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     473 </span><span class="lineCov">          1 :   var x = 0;</span>
+<span class="lineNum">     474 </span><span class="lineCov">          1 :   var y = -0;</span>
+<span class="lineNum">     475 </span><span class="lineCov">          1 :   assertEquals(Infinity, 1/x);</span>
+<span class="lineNum">     476 </span><span class="lineCov">          1 :   assertEquals(-Infinity, 1/y);</span>
+<span class="lineNum">     477 </span><span class="lineCov">          1 :   a[x] = 5;</span>
+<span class="lineNum">     478 </span><span class="lineCov">          1 :   a[y] = 27;</span>
+<span class="lineNum">     479 </span><span class="lineCov">          1 :   assertEquals(27, a[x]);</span>
+<span class="lineNum">     480 </span><span class="lineCov">          1 :   assertEquals(27, a[y]);</span>
+<span class="lineNum">     481 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     482 </span><span class="lineCov">          1 : </span>
+<a name="483"><span class="lineNum">     483 </span><span class="lineCov">          1 : TestTypedArraysWithIllegalIndices();</span></a>
+<span class="lineNum">     484 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     485 </span><span class="lineCov">          1 : function TestTypedArraysWithIllegalIndicesStrict() {</span>
+<span class="lineNum">     486 </span><span class="lineCov">          1 :   'use strict';</span>
+<span class="lineNum">     487 </span><span class="lineCov">          1 :   var a = MakeSharedTypedArray(Int32Array, 100);</span>
+<span class="lineNum">     488 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     489 </span><span class="lineCov">          1 :   a[-10] = 10;</span>
+<span class="lineNum">     490 </span><span class="lineCov">          1 :   assertEquals(undefined, a[-10]);</span>
+<span class="lineNum">     491 </span><span class="lineCov">          1 :   a[&quot;-10&quot;] = 10;</span>
+<span class="lineNum">     492 </span><span class="lineCov">          1 :   assertEquals(undefined, a[&quot;-10&quot;]);</span>
+<span class="lineNum">     493 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     494 </span><span class="lineCov">          1 :   var s = &quot;    -10&quot;;</span>
+<span class="lineNum">     495 </span><span class="lineCov">          1 :   a[s] = 10;</span>
+<span class="lineNum">     496 </span><span class="lineCov">          1 :   assertEquals(10, a[s]);</span>
+<span class="lineNum">     497 </span><span class="lineCov">          1 :   var s1 = &quot;    -10   &quot;;</span>
+<span class="lineNum">     498 </span><span class="lineCov">          1 :   a[s] = 10;</span>
+<span class="lineNum">     499 </span><span class="lineCov">          1 :   assertEquals(10, a[s]);</span>
+<span class="lineNum">     500 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     501 </span><span class="lineCov">          1 :   a[&quot;-1e2&quot;] = 10;</span>
+<span class="lineNum">     502 </span><span class="lineCov">          1 :   assertEquals(10, a[&quot;-1e2&quot;]);</span>
+<span class="lineNum">     503 </span><span class="lineCov">          1 :   assertEquals(undefined, a[-1e2]);</span>
+<span class="lineNum">     504 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     505 </span><span class="lineCov">          1 :   a[&quot;-0&quot;] = 256;</span>
+<span class="lineNum">     506 </span><span class="lineCov">          1 :   var s2 = &quot;     -0&quot;;</span>
+<span class="lineNum">     507 </span><span class="lineCov">          1 :   a[s2] = 255;</span>
+<span class="lineNum">     508 </span><span class="lineCov">          1 :   assertEquals(undefined, a[&quot;-0&quot;]);</span>
+<span class="lineNum">     509 </span><span class="lineCov">          1 :   assertEquals(255, a[s2]);</span>
+<span class="lineNum">     510 </span><span class="lineCov">          1 :   assertEquals(0, a[-0]);</span>
+<span class="lineNum">     511 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     512 </span><span class="lineCov">          1 :   /* Chromium bug: 424619</span>
+<span class="lineNum">     513 </span><span class="lineCov">          1 :    * a[-Infinity] = 50;</span>
+<span class="lineNum">     514 </span><span class="lineCov">          1 :    * assertEquals(undefined, a[-Infinity]);</span>
+<span class="lineNum">     515 </span><span class="lineCov">          1 :    */</span>
+<span class="lineNum">     516 </span><span class="lineCov">          1 :   a[1.5] = 10;</span>
+<span class="lineNum">     517 </span><span class="lineCov">          1 :   assertEquals(undefined, a[1.5]);</span>
+<span class="lineNum">     518 </span><span class="lineCov">          1 :   var nan = Math.sqrt(-1);</span>
+<span class="lineNum">     519 </span><span class="lineCov">          1 :   a[nan] = 5;</span>
+<span class="lineNum">     520 </span><span class="lineCov">          1 :   assertEquals(undefined, a[nan]);</span>
+<span class="lineNum">     521 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     522 </span><span class="lineCov">          1 :   var x = 0;</span>
+<span class="lineNum">     523 </span><span class="lineCov">          1 :   var y = -0;</span>
+<span class="lineNum">     524 </span><span class="lineCov">          1 :   assertEquals(Infinity, 1/x);</span>
+<span class="lineNum">     525 </span><span class="lineCov">          1 :   assertEquals(-Infinity, 1/y);</span>
+<span class="lineNum">     526 </span><span class="lineCov">          1 :   a[x] = 5;</span>
+<span class="lineNum">     527 </span><span class="lineCov">          1 :   a[y] = 27;</span>
+<span class="lineNum">     528 </span><span class="lineCov">          1 :   assertEquals(27, a[x]);</span>
+<span class="lineNum">     529 </span><span class="lineCov">          1 :   assertEquals(27, a[y]);</span>
+<span class="lineNum">     530 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     531 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     532 </span><span class="lineCov">          1 : TestTypedArraysWithIllegalIndicesStrict();</span>
+<span class="lineNum">     533 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     534 </span><span class="lineCov">          1 : // General tests for properties</span>
+<a name="535"><span class="lineNum">     535 </span><span class="lineCov">          1 : </span></a>
+<a name="536"><span class="lineNum">     536 </span><span class="lineCov">          1 : // Test property attribute [[Enumerable]]</span></a>
+<span class="lineNum">     537 </span><span class="lineCov">         10 : function TestEnumerable(func, obj) {</span>
+<span class="lineNum">     538 </span><span class="lineCov">         21 :   function props(x) {</span>
+<span class="lineNum">     539 </span><span class="lineCov">         21 :     var array = [];</span>
+<span class="lineNum">     540 </span><span class="lineCov">         21 :     for (var p in x) array.push(p);</span>
+<span class="lineNum">     541 </span><span class="lineCov">         21 :     return array.sort();</span>
+<span class="lineNum">     542 </span><span class="lineCov">         21 :   }</span>
+<span class="lineNum">     543 </span><span class="lineCov">         10 :   assertArrayEquals([], props(func));</span>
+<span class="lineNum">     544 </span><span class="lineCov">         10 :   assertArrayEquals([], props(func.prototype));</span>
+<span class="lineNum">     545 </span><span class="lineCov">         10 :   if (obj)</span>
+<span class="lineNum">     546 </span><span class="lineCov">         10 :     assertArrayEquals([], props(obj));</span>
+<span class="lineNum">     547 </span><span class="lineCov">         10 : }</span>
+<span class="lineNum">     548 </span><span class="lineCov">          1 : TestEnumerable(ArrayBuffer, new SharedArrayBuffer());</span>
+<span class="lineNum">     549 </span><span class="lineCov">          1 : for(i = 0; i &lt; typedArrayConstructors.length; i++) {</span>
+<span class="lineNum">     550 </span><span class="lineCov">          1 :   TestEnumerable(typedArrayConstructors[i]);</span>
+<span class="lineNum">     551 </span><span class="lineCov">          1 : }</span>
+<a name="552"><span class="lineNum">     552 </span><span class="lineCov">          1 : </span></a>
+<a name="553"><span class="lineNum">     553 </span><span class="lineCov">          1 : // Test arbitrary properties on ArrayBuffer</span></a>
+<span class="lineNum">     554 </span><span class="lineCov">         10 : function TestArbitrary(m) {</span>
+<span class="lineNum">     555 </span><span class="lineCov">        400 :   function TestProperty(map, property, value) {</span>
+<span class="lineNum">     556 </span><span class="lineCov">        400 :     map[property] = value;</span>
+<span class="lineNum">     557 </span><span class="lineCov">        400 :     assertEquals(value, map[property]);</span>
+<span class="lineNum">     558 </span><span class="lineCov">        400 :   }</span>
+<span class="lineNum">     559 </span><span class="lineCov">         10 :   for (var i = 0; i &lt; 20; i++) {</span>
+<span class="lineNum">     560 </span><span class="lineCov">         10 :     TestProperty(m, 'key' + i, 'val' + i);</span>
+<span class="lineNum">     561 </span><span class="lineCov">         10 :     TestProperty(m, 'foo' + i, 'bar' + i);</span>
+<span class="lineNum">     562 </span><span class="lineCov">         10 :   }</span>
+<span class="lineNum">     563 </span><span class="lineCov">         10 : }</span>
+<span class="lineNum">     564 </span><span class="lineCov">          1 : TestArbitrary(new SharedArrayBuffer(256));</span>
+<span class="lineNum">     565 </span><span class="lineCov">          1 : for(i = 0; i &lt; typedArrayConstructors.length; i++) {</span>
+<span class="lineNum">     566 </span><span class="lineCov">          1 :   TestArbitrary(MakeSharedTypedArray(typedArrayConstructors[i], 10));</span>
+<span class="lineNum">     567 </span><span class="lineCov">          1 : }</span>
+<a name="568"><span class="lineNum">     568 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     569 </span><span class="lineCov">          1 : // Test direct constructor call</span>
+<a name="570"><span class="lineNum">     570 </span><span class="lineCov">          1 : assertThrows(function() { SharedArrayBuffer(); }, TypeError);</span></a>
+<span class="lineNum">     571 </span><span class="lineCov">          1 : for(i = 0; i &lt; typedArrayConstructors.length; i++) {</span>
+<span class="lineNum">     572 </span><span class="lineCov">          9 :   assertThrows(function(i) { typedArrayConstructors[i](); }.bind(this, i),</span>
+<span class="lineNum">     573 </span><span class="lineCov">          1 :                TypeError);</span>
+<span class="lineNum">     574 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     575 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     576 </span><span class="lineCov">          1 : // byteLength from prototype can be overwritten</span>
+<span class="lineNum">     577 </span><span class="lineCov">          1 : var s = new SharedArrayBuffer(10);</span>
+<span class="lineNum">     578 </span><span class="lineCov">          1 : assertEquals(10, s.byteLength);</span>
+<span class="lineNum">     579 </span><span class="lineCov">          1 : Object.defineProperty(s, 'byteLength', {value: 42});</span>
+<span class="lineNum">     580 </span><span class="lineCov">          1 : assertEquals(42, s.byteLength);</span>
+<span class="lineNum">     581 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     582 </span><span class="lineCov">          1 : // byteLength on incompatible type (shared vs. regular ArrayBuffer)</span>
+<span class="lineNum">     583 </span><span class="lineCov">          1 : var desc = Object.getOwnPropertyDescriptor(ArrayBuffer.prototype, 'byteLength');</span>
+<a name="584"><span class="lineNum">     584 </span><span class="lineCov">          1 : s = new SharedArrayBuffer(10);</span></a>
+<span class="lineNum">     585 </span><span class="lineCov">          1 : Object.defineProperty(s, 'byteLength', desc);</span>
+<span class="lineNum">     586 </span><span class="lineCov">          1 : assertThrows(function() {s.byteLength}, TypeError);</span>
+<span class="lineNum">     587 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     588 </span><span class="lineCov">          1 : desc = Object.getOwnPropertyDescriptor(SharedArrayBuffer.prototype,</span>
+<span class="lineNum">     589 </span><span class="lineCov">          1 :   'byteLength');</span>
+<a name="590"><span class="lineNum">     590 </span><span class="lineCov">          1 : var a = new ArrayBuffer(10);</span></a>
+<span class="lineNum">     591 </span><span class="lineCov">          1 : Object.defineProperty(a, 'byteLength', desc);</span>
+<span class="lineNum">     592 </span><span class="lineCov">          1 : assertThrows(function() {a.byteLength}, TypeError);</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

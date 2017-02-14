@@ -1,0 +1,147 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - mjsunit/es6/typedarray-slice.js</title>
+  <link rel="stylesheet" type="text/css" href="../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../index.html">top level</a> - <a href="index.html">mjsunit/es6</a> - typedarray-slice.js<span style="font-size: 80%;"> (source / <a href="typedarray-slice.js.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">72</td>
+            <td class="headerCovTableEntry">72</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2017-02-13</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span><span class="lineCov">          1 : // Copyright 2015 the V8 project authors. All rights reserved.</span></a>
+<span class="lineNum">       2 </span><span class="lineCov">          1 : // Use of this source code is governed by a BSD-style license that can be</span>
+<span class="lineNum">       3 </span><span class="lineCov">          1 : // found in the LICENSE file.</span>
+<span class="lineNum">       4 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">       5 </span><span class="lineCov">          1 : var typedArrayConstructors = [</span>
+<span class="lineNum">       6 </span><span class="lineCov">          1 :   Uint8Array,</span>
+<span class="lineNum">       7 </span><span class="lineCov">          1 :   Int8Array,</span>
+<span class="lineNum">       8 </span><span class="lineCov">          1 :   Uint16Array,</span>
+<span class="lineNum">       9 </span><span class="lineCov">          1 :   Int16Array,</span>
+<span class="lineNum">      10 </span><span class="lineCov">          1 :   Uint32Array,</span>
+<span class="lineNum">      11 </span><span class="lineCov">          1 :   Int32Array,</span>
+<span class="lineNum">      12 </span><span class="lineCov">          1 :   Uint8ClampedArray,</span>
+<span class="lineNum">      13 </span><span class="lineCov">          1 :   Float32Array,</span>
+<span class="lineNum">      14 </span><span class="lineCov">          1 :   Float64Array</span>
+<span class="lineNum">      15 </span><span class="lineCov">          1 : ];</span>
+<span class="lineNum">      16 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      17 </span><span class="lineCov">          1 : for (var constructor of typedArrayConstructors) {</span>
+<span class="lineNum">      18 </span><span class="lineCov">          1 :   // Check various variants of empty array's slicing.</span>
+<span class="lineNum">      19 </span><span class="lineCov">          1 :   var array = new constructor(0);</span>
+<span class="lineNum">      20 </span><span class="lineCov">          1 :   for (var i = 0; i &lt; 7; i++) {</span>
+<span class="lineNum">      21 </span><span class="lineCov">          1 :     assertEquals(0, array.slice(0, 0).length);</span>
+<span class="lineNum">      22 </span><span class="lineCov">          1 :     assertEquals(0, array.slice(1, 0).length);</span>
+<span class="lineNum">      23 </span><span class="lineCov">          1 :     assertEquals(0, array.slice(0, 1).length);</span>
+<span class="lineNum">      24 </span><span class="lineCov">          1 :     assertEquals(0, array.slice(-1, 0).length);</span>
+<span class="lineNum">      25 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">      26 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      27 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      28 </span><span class="lineCov">          1 :   // Check various forms of arguments omission.</span>
+<span class="lineNum">      29 </span><span class="lineCov">          1 :   array = new constructor(7);</span>
+<span class="lineNum">      30 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      31 </span><span class="lineCov">          1 :   for (var i = 0; i &lt; 7; i++) {</span>
+<span class="lineNum">      32 </span><span class="lineCov">          1 :     assertEquals(array, array.slice());</span>
+<span class="lineNum">      33 </span><span class="lineCov">          1 :     assertEquals(array, array.slice(0));</span>
+<span class="lineNum">      34 </span><span class="lineCov">          1 :     assertEquals(array, array.slice(undefined));</span>
+<span class="lineNum">      35 </span><span class="lineCov">          1 :     assertEquals(array, array.slice(&quot;foobar&quot;));</span>
+<span class="lineNum">      36 </span><span class="lineCov">          1 :     assertEquals(array, array.slice(undefined, undefined));</span>
+<span class="lineNum">      37 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">      38 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      39 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      40 </span><span class="lineCov">          1 :   // Check variants of negatives and positive indices.</span>
+<span class="lineNum">      41 </span><span class="lineCov">          1 :   array = new constructor(7);</span>
+<span class="lineNum">      42 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      43 </span><span class="lineCov">          1 :   assertEquals(7, array.slice(-100).length);</span>
+<span class="lineNum">      44 </span><span class="lineCov">          1 :   assertEquals(3, array.slice(-3).length);</span>
+<span class="lineNum">      45 </span><span class="lineCov">          1 :   assertEquals(3, array.slice(4).length);</span>
+<span class="lineNum">      46 </span><span class="lineCov">          1 :   assertEquals(1, array.slice(6).length);</span>
+<span class="lineNum">      47 </span><span class="lineCov">          1 :   assertEquals(0, array.slice(7).length);</span>
+<span class="lineNum">      48 </span><span class="lineCov">          1 :   assertEquals(0, array.slice(8).length);</span>
+<span class="lineNum">      49 </span><span class="lineCov">          1 :   assertEquals(0, array.slice(100).length);</span>
+<span class="lineNum">      50 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      51 </span><span class="lineCov">          1 :   assertEquals(0, array.slice(0, -100).length);</span>
+<span class="lineNum">      52 </span><span class="lineCov">          1 :   assertEquals(4, array.slice(0, -3).length);</span>
+<span class="lineNum">      53 </span><span class="lineCov">          1 :   assertEquals(4, array.slice(0, 4).length);</span>
+<span class="lineNum">      54 </span><span class="lineCov">          1 :   assertEquals(6, array.slice(0, 6).length);</span>
+<span class="lineNum">      55 </span><span class="lineCov">          1 :   assertEquals(7, array.slice(0, 7).length);</span>
+<span class="lineNum">      56 </span><span class="lineCov">          1 :   assertEquals(7, array.slice(0, 8).length);</span>
+<span class="lineNum">      57 </span><span class="lineCov">          1 :   assertEquals(7, array.slice(0, 100).length);</span>
+<a name="58"><span class="lineNum">      58 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      59 </span><span class="lineCov">          1 :   // Does not permit being called on other types</span>
+<span class="lineNum">      60 </span><span class="lineCov">          9 :   assertThrows(function () {</span>
+<span class="lineNum">      61 </span><span class="lineCov">          9 :     constructor.prototype.slice.call([], 0, 0);</span>
+<span class="lineNum">      62 </span><span class="lineCov">          9 :   }, TypeError);</span>
+<span class="lineNum">      63 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      64 </span><span class="lineCov">          1 :   // Check that elements are copied properly in slice</span>
+<span class="lineNum">      65 </span><span class="lineCov">          1 :   array = new constructor([1, 2, 3, 4]);</span>
+<span class="lineNum">      66 </span><span class="lineCov">          1 :   var slice = array.slice(1, 3);</span>
+<span class="lineNum">      67 </span><span class="lineCov">          1 :   assertEquals(2, slice.length);</span>
+<span class="lineNum">      68 </span><span class="lineCov">          1 :   assertEquals(2, slice[0]);</span>
+<span class="lineNum">      69 </span><span class="lineCov">          1 :   assertEquals(3, slice[1]);</span>
+<span class="lineNum">      70 </span><span class="lineCov">          1 :   assertTrue(slice instanceof constructor);</span>
+<span class="lineNum">      71 </span><span class="lineCov">          1 : }</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

@@ -1,0 +1,420 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - mjsunit/date.js</title>
+  <link rel="stylesheet" type="text/css" href="../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../index.html">top level</a> - <a href="index.html">mjsunit</a> - date.js<span style="font-size: 80%;"> (source / <a href="date.js.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">345</td>
+            <td class="headerCovTableEntry">345</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2017-02-13</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">8</td>
+            <td class="headerCovTableEntry">8</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr><td><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span><span class="lineCov">          1 : // Copyright 2008 the V8 project authors. All rights reserved.</span></a>
+<span class="lineNum">       2 </span><span class="lineCov">          1 : // Redistribution and use in source and binary forms, with or without</span>
+<span class="lineNum">       3 </span><span class="lineCov">          1 : // modification, are permitted provided that the following conditions are</span>
+<span class="lineNum">       4 </span><span class="lineCov">          1 : // met:</span>
+<span class="lineNum">       5 </span><span class="lineCov">          1 : //</span>
+<span class="lineNum">       6 </span><span class="lineCov">          1 : //     * Redistributions of source code must retain the above copyright</span>
+<span class="lineNum">       7 </span><span class="lineCov">          1 : //       notice, this list of conditions and the following disclaimer.</span>
+<span class="lineNum">       8 </span><span class="lineCov">          1 : //     * Redistributions in binary form must reproduce the above</span>
+<span class="lineNum">       9 </span><span class="lineCov">          1 : //       copyright notice, this list of conditions and the following</span>
+<span class="lineNum">      10 </span><span class="lineCov">          1 : //       disclaimer in the documentation and/or other materials provided</span>
+<span class="lineNum">      11 </span><span class="lineCov">          1 : //       with the distribution.</span>
+<span class="lineNum">      12 </span><span class="lineCov">          1 : //     * Neither the name of Google Inc. nor the names of its</span>
+<span class="lineNum">      13 </span><span class="lineCov">          1 : //       contributors may be used to endorse or promote products derived</span>
+<span class="lineNum">      14 </span><span class="lineCov">          1 : //       from this software without specific prior written permission.</span>
+<span class="lineNum">      15 </span><span class="lineCov">          1 : //</span>
+<span class="lineNum">      16 </span><span class="lineCov">          1 : // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="lineNum">      17 </span><span class="lineCov">          1 : // &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="lineNum">      18 </span><span class="lineCov">          1 : // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR</span>
+<span class="lineNum">      19 </span><span class="lineCov">          1 : // A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT</span>
+<span class="lineNum">      20 </span><span class="lineCov">          1 : // OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,</span>
+<span class="lineNum">      21 </span><span class="lineCov">          1 : // SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT</span>
+<span class="lineNum">      22 </span><span class="lineCov">          1 : // LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,</span>
+<span class="lineNum">      23 </span><span class="lineCov">          1 : // DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY</span>
+<span class="lineNum">      24 </span><span class="lineCov">          1 : // THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT</span>
+<span class="lineNum">      25 </span><span class="lineCov">          1 : // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE</span>
+<span class="lineNum">      26 </span><span class="lineCov">          1 : // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="lineNum">      27 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      28 </span><span class="lineCov">          1 : // Flags: --allow-natives-syntax</span>
+<span class="lineNum">      29 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      30 </span><span class="lineCov">          1 : // Test date construction from other dates.</span>
+<span class="lineNum">      31 </span><span class="lineCov">          1 : var date0 = new Date(1111);</span>
+<span class="lineNum">      32 </span><span class="lineCov">          1 : var date1 = new Date(date0);</span>
+<span class="lineNum">      33 </span><span class="lineCov">          1 : assertEquals(1111, date0.getTime());</span>
+<span class="lineNum">      34 </span><span class="lineCov">          1 : assertEquals(date0.getTime(), date1.getTime());</span>
+<span class="lineNum">      35 </span><span class="lineCov">          1 : var date2 = new Date(date0.toString());</span>
+<span class="lineNum">      36 </span><span class="lineCov">          1 : assertEquals(1000, date2.getTime());</span>
+<span class="lineNum">      37 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      38 </span><span class="lineCov">          1 : // Test that dates may contain commas.</span>
+<span class="lineNum">      39 </span><span class="lineCov">          1 : var date0 = Date.parse(&quot;Dec 25 1995 1:30&quot;);</span>
+<span class="lineNum">      40 </span><span class="lineCov">          1 : var date1 = Date.parse(&quot;Dec 25, 1995 1:30&quot;);</span>
+<span class="lineNum">      41 </span><span class="lineCov">          1 : var date2 = Date.parse(&quot;Dec 25 1995, 1:30&quot;);</span>
+<span class="lineNum">      42 </span><span class="lineCov">          1 : var date3 = Date.parse(&quot;Dec 25, 1995, 1:30&quot;);</span>
+<span class="lineNum">      43 </span><span class="lineCov">          1 : assertEquals(date0, date1);</span>
+<span class="lineNum">      44 </span><span class="lineCov">          1 : assertEquals(date1, date2);</span>
+<span class="lineNum">      45 </span><span class="lineCov">          1 : assertEquals(date2, date3);</span>
+<span class="lineNum">      46 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      47 </span><span class="lineCov">          1 : // Test limits (+/-1e8 days from epoch)</span>
+<span class="lineNum">      48 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      49 </span><span class="lineCov">          1 : var dMax = new Date(8.64e15);</span>
+<span class="lineNum">      50 </span><span class="lineCov">          1 : assertEquals(8.64e15, dMax.getTime());</span>
+<span class="lineNum">      51 </span><span class="lineCov">          1 : assertEquals(275760, dMax.getFullYear());</span>
+<span class="lineNum">      52 </span><span class="lineCov">          1 : assertEquals(8, dMax.getMonth());</span>
+<span class="lineNum">      53 </span><span class="lineCov">          1 : assertEquals(13, dMax.getUTCDate());</span>
+<span class="lineNum">      54 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      55 </span><span class="lineCov">          1 : var dOverflow = new Date(8.64e15+1);</span>
+<span class="lineNum">      56 </span><span class="lineCov">          1 : assertTrue(isNaN(dOverflow.getTime()));</span>
+<span class="lineNum">      57 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      58 </span><span class="lineCov">          1 : var dMin = new Date(-8.64e15);</span>
+<span class="lineNum">      59 </span><span class="lineCov">          1 : assertEquals(-8.64e15, dMin.getTime());</span>
+<span class="lineNum">      60 </span><span class="lineCov">          1 : assertEquals(-271821, dMin.getFullYear());</span>
+<span class="lineNum">      61 </span><span class="lineCov">          1 : assertEquals(3, dMin.getMonth());</span>
+<span class="lineNum">      62 </span><span class="lineCov">          1 : assertEquals(20, dMin.getUTCDate());</span>
+<span class="lineNum">      63 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      64 </span><span class="lineCov">          1 : var dUnderflow = new Date(-8.64e15-1);</span>
+<span class="lineNum">      65 </span><span class="lineCov">          1 : assertTrue(isNaN(dUnderflow.getTime()));</span>
+<span class="lineNum">      66 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      67 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      68 </span><span class="lineCov">          1 : // Tests inspired by js1_5/Date/regress-346363.js</span>
+<span class="lineNum">      69 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      70 </span><span class="lineCov">          1 : // Year</span>
+<span class="lineNum">      71 </span><span class="lineCov">          1 : var a = new Date();</span>
+<span class="lineNum">      72 </span><span class="lineCov">          1 : a.setFullYear();</span>
+<span class="lineNum">      73 </span><span class="lineCov">          1 : a.setFullYear(2006);</span>
+<span class="lineNum">      74 </span><span class="lineCov">          1 : assertEquals(2006, a.getFullYear());</span>
+<span class="lineNum">      75 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      76 </span><span class="lineCov">          1 : var b = new Date();</span>
+<span class="lineNum">      77 </span><span class="lineCov">          1 : b.setUTCFullYear();</span>
+<span class="lineNum">      78 </span><span class="lineCov">          1 : b.setUTCFullYear(2006);</span>
+<span class="lineNum">      79 </span><span class="lineCov">          1 : assertEquals(2006, b.getUTCFullYear());</span>
+<span class="lineNum">      80 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      81 </span><span class="lineCov">          1 : // Month</span>
+<span class="lineNum">      82 </span><span class="lineCov">          1 : var c = new Date();</span>
+<span class="lineNum">      83 </span><span class="lineCov">          1 : c.setMonth();</span>
+<span class="lineNum">      84 </span><span class="lineCov">          1 : c.setMonth(2);</span>
+<span class="lineNum">      85 </span><span class="lineCov">          1 : assertTrue(isNaN(c.getMonth()));</span>
+<span class="lineNum">      86 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      87 </span><span class="lineCov">          1 : var d = new Date();</span>
+<span class="lineNum">      88 </span><span class="lineCov">          1 : d.setUTCMonth();</span>
+<span class="lineNum">      89 </span><span class="lineCov">          1 : d.setUTCMonth(2);</span>
+<span class="lineNum">      90 </span><span class="lineCov">          1 : assertTrue(isNaN(d.getUTCMonth()));</span>
+<span class="lineNum">      91 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      92 </span><span class="lineCov">          1 : // Date</span>
+<span class="lineNum">      93 </span><span class="lineCov">          1 : var e = new Date();</span>
+<span class="lineNum">      94 </span><span class="lineCov">          1 : e.setDate();</span>
+<span class="lineNum">      95 </span><span class="lineCov">          1 : e.setDate(2);</span>
+<span class="lineNum">      96 </span><span class="lineCov">          1 : assertTrue(isNaN(e.getDate()));</span>
+<span class="lineNum">      97 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      98 </span><span class="lineCov">          1 : var f = new Date();</span>
+<span class="lineNum">      99 </span><span class="lineCov">          1 : f.setUTCDate();</span>
+<span class="lineNum">     100 </span><span class="lineCov">          1 : f.setUTCDate(2);</span>
+<span class="lineNum">     101 </span><span class="lineCov">          1 : assertTrue(isNaN(f.getUTCDate()));</span>
+<span class="lineNum">     102 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     103 </span><span class="lineCov">          1 : // Hours</span>
+<span class="lineNum">     104 </span><span class="lineCov">          1 : var g = new Date();</span>
+<span class="lineNum">     105 </span><span class="lineCov">          1 : g.setHours();</span>
+<span class="lineNum">     106 </span><span class="lineCov">          1 : g.setHours(2);</span>
+<span class="lineNum">     107 </span><span class="lineCov">          1 : assertTrue(isNaN(g.getHours()));</span>
+<span class="lineNum">     108 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     109 </span><span class="lineCov">          1 : var h = new Date();</span>
+<span class="lineNum">     110 </span><span class="lineCov">          1 : h.setUTCHours();</span>
+<span class="lineNum">     111 </span><span class="lineCov">          1 : h.setUTCHours(2);</span>
+<span class="lineNum">     112 </span><span class="lineCov">          1 : assertTrue(isNaN(h.getUTCHours()));</span>
+<span class="lineNum">     113 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     114 </span><span class="lineCov">          1 : // Minutes</span>
+<span class="lineNum">     115 </span><span class="lineCov">          1 : var g = new Date();</span>
+<span class="lineNum">     116 </span><span class="lineCov">          1 : g.setMinutes();</span>
+<span class="lineNum">     117 </span><span class="lineCov">          1 : g.setMinutes(2);</span>
+<span class="lineNum">     118 </span><span class="lineCov">          1 : assertTrue(isNaN(g.getMinutes()));</span>
+<span class="lineNum">     119 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     120 </span><span class="lineCov">          1 : var h = new Date();</span>
+<span class="lineNum">     121 </span><span class="lineCov">          1 : h.setUTCHours();</span>
+<span class="lineNum">     122 </span><span class="lineCov">          1 : h.setUTCHours(2);</span>
+<span class="lineNum">     123 </span><span class="lineCov">          1 : assertTrue(isNaN(h.getUTCHours()));</span>
+<span class="lineNum">     124 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     125 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     126 </span><span class="lineCov">          1 : // Seconds</span>
+<span class="lineNum">     127 </span><span class="lineCov">          1 : var i = new Date();</span>
+<span class="lineNum">     128 </span><span class="lineCov">          1 : i.setSeconds();</span>
+<span class="lineNum">     129 </span><span class="lineCov">          1 : i.setSeconds(2);</span>
+<span class="lineNum">     130 </span><span class="lineCov">          1 : assertTrue(isNaN(i.getSeconds()));</span>
+<span class="lineNum">     131 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     132 </span><span class="lineCov">          1 : var j = new Date();</span>
+<span class="lineNum">     133 </span><span class="lineCov">          1 : j.setUTCSeconds();</span>
+<span class="lineNum">     134 </span><span class="lineCov">          1 : j.setUTCSeconds(2);</span>
+<span class="lineNum">     135 </span><span class="lineCov">          1 : assertTrue(isNaN(j.getUTCSeconds()));</span>
+<span class="lineNum">     136 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     137 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     138 </span><span class="lineCov">          1 : // Milliseconds</span>
+<span class="lineNum">     139 </span><span class="lineCov">          1 : var k = new Date();</span>
+<span class="lineNum">     140 </span><span class="lineCov">          1 : k.setMilliseconds();</span>
+<span class="lineNum">     141 </span><span class="lineCov">          1 : k.setMilliseconds(2);</span>
+<span class="lineNum">     142 </span><span class="lineCov">          1 : assertTrue(isNaN(k.getMilliseconds()));</span>
+<span class="lineNum">     143 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     144 </span><span class="lineCov">          1 : var l = new Date();</span>
+<span class="lineNum">     145 </span><span class="lineCov">          1 : l.setUTCMilliseconds();</span>
+<span class="lineNum">     146 </span><span class="lineCov">          1 : l.setUTCMilliseconds(2);</span>
+<span class="lineNum">     147 </span><span class="lineCov">          1 : assertTrue(isNaN(l.getUTCMilliseconds()));</span>
+<span class="lineNum">     148 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     149 </span><span class="lineCov">          1 : // Test that -0 is treated correctly in MakeDay.</span>
+<span class="lineNum">     150 </span><span class="lineCov">          1 : var d = new Date();</span>
+<span class="lineNum">     151 </span><span class="lineCov">          1 : assertDoesNotThrow(&quot;d.setDate(-0)&quot;);</span>
+<span class="lineNum">     152 </span><span class="lineCov">          1 : assertDoesNotThrow(&quot;new Date(-0, -0, -0, -0, -0, -0, -0)&quot;);</span>
+<span class="lineNum">     153 </span><span class="lineCov">          1 : assertDoesNotThrow(&quot;new Date(0x40000000, 0x40000000, 0x40000000,&quot; +</span>
+<span class="lineNum">     154 </span><span class="lineCov">          1 :                    &quot;0x40000000, 0x40000000, 0x40000000, 0x40000000)&quot;)</span>
+<span class="lineNum">     155 </span><span class="lineCov">          1 : assertDoesNotThrow(&quot;new Date(-0x40000001, -0x40000001, -0x40000001,&quot; +</span>
+<span class="lineNum">     156 </span><span class="lineCov">          1 :                    &quot;-0x40000001, -0x40000001, -0x40000001, -0x40000001)&quot;)</span>
+<span class="lineNum">     157 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     158 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     159 </span><span class="lineCov">          1 : // Modified test from WebKit</span>
+<span class="lineNum">     160 </span><span class="lineCov">          1 : // LayoutTests/fast/js/script-tests/date-utc-timeclip.js:</span>
+<span class="lineNum">     161 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     162 </span><span class="lineCov">          1 : assertEquals(8639999999999999, Date.UTC(275760, 8, 12, 23, 59, 59, 999));</span>
+<span class="lineNum">     163 </span><span class="lineCov">          1 : assertEquals(8640000000000000, Date.UTC(275760, 8, 13));</span>
+<span class="lineNum">     164 </span><span class="lineCov">          1 : assertTrue(isNaN(Date.UTC(275760, 8, 13, 0, 0, 0, 1)));</span>
+<span class="lineNum">     165 </span><span class="lineCov">          1 : assertTrue(isNaN(Date.UTC(275760, 8, 14)));</span>
+<span class="lineNum">     166 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     167 </span><span class="lineCov">          1 : assertEquals(Date.UTC(-271821, 3, 20, 0, 0, 0, 1), -8639999999999999);</span>
+<span class="lineNum">     168 </span><span class="lineCov">          1 : assertEquals(Date.UTC(-271821, 3, 20), -8640000000000000);</span>
+<span class="lineNum">     169 </span><span class="lineCov">          1 : assertTrue(isNaN(Date.UTC(-271821, 3, 19, 23, 59, 59, 999)));</span>
+<span class="lineNum">     170 </span><span class="lineCov">          1 : assertTrue(isNaN(Date.UTC(-271821, 3, 19)));</span>
+<span class="lineNum">     171 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     172 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     173 </span><span class="lineCov">          1 : // Test creation with large date values.</span>
+<span class="lineNum">     174 </span><span class="lineCov">          1 : d = new Date(1969, 12, 1, 99999999999);</span>
+<span class="lineNum">     175 </span><span class="lineCov">          1 : assertTrue(isNaN(d.getTime()));</span>
+<span class="lineNum">     176 </span><span class="lineCov">          1 : d = new Date(1969, 12, 1, -99999999999);</span>
+<span class="lineNum">     177 </span><span class="lineCov">          1 : assertTrue(isNaN(d.getTime()));</span>
+<span class="lineNum">     178 </span><span class="lineCov">          1 : d = new Date(1969, 12, 1, Infinity);</span>
+<span class="lineNum">     179 </span><span class="lineCov">          1 : assertTrue(isNaN(d.getTime()));</span>
+<span class="lineNum">     180 </span><span class="lineCov">          1 : d = new Date(1969, 12, 1, -Infinity);</span>
+<span class="lineNum">     181 </span><span class="lineCov">          1 : assertTrue(isNaN(d.getTime()));</span>
+<span class="lineNum">     182 </span><span class="lineCov">          1 : d = new Date(1969, 12, 1, 0);</span>
+<span class="lineNum">     183 </span><span class="lineCov">          1 : d.setTime(Math.pow(2, 64));</span>
+<span class="lineNum">     184 </span><span class="lineCov">          1 : assertTrue(isNaN(d.getTime()));</span>
+<span class="lineNum">     185 </span><span class="lineCov">          1 : d = new Date(1969, 12, 1, 0);</span>
+<span class="lineNum">     186 </span><span class="lineCov">          1 : d.setTime(Math.pow(-2, 64));</span>
+<span class="lineNum">     187 </span><span class="lineCov">          1 : assertTrue(isNaN(d.getTime()));</span>
+<span class="lineNum">     188 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     189 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     190 </span><span class="lineCov">          1 : // Test creation with obscure date values.</span>
+<span class="lineNum">     191 </span><span class="lineCov">          1 : assertEquals(8640000000000000, Date.UTC(1970, 0, 1 + 100000001, -24));</span>
+<span class="lineNum">     192 </span><span class="lineCov">          1 : assertEquals(-8640000000000000, Date.UTC(1970, 0, 1 - 100000001, 24));</span>
+<span class="lineNum">     193 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     194 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     195 </span><span class="lineCov">          1 : // Parsing ES5 ISO-8601 dates.</span>
+<span class="lineNum">     196 </span><span class="lineCov">          1 : // When TZ is omitted, it defaults to 'Z' meaning UTC.</span>
+<span class="lineNum">     197 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     198 </span><span class="lineCov">          1 : // Check epoch.</span>
+<span class="lineNum">     199 </span><span class="lineCov">          1 : assertEquals(0, Date.parse(&quot;1970-01-01T00:00:00.000+00:00&quot;));</span>
+<span class="lineNum">     200 </span><span class="lineCov">          1 : assertEquals(0, Date.parse(&quot;1970-01-01T00:00:00.000-00:00&quot;));</span>
+<span class="lineNum">     201 </span><span class="lineCov">          1 : assertEquals(0, Date.parse(&quot;1970-01-01T00:00:00.000Z&quot;));</span>
+<span class="lineNum">     202 </span><span class="lineCov">          1 : assertEquals(0, Date.parse(&quot;1970-01-01T00:00:00.000&quot;));</span>
+<span class="lineNum">     203 </span><span class="lineCov">          1 : assertEquals(0, Date.parse(&quot;1970-01-01T00:00:00&quot;));</span>
+<span class="lineNum">     204 </span><span class="lineCov">          1 : assertEquals(0, Date.parse(&quot;1970-01-01T00:00&quot;));</span>
+<span class="lineNum">     205 </span><span class="lineCov">          1 : assertEquals(0, Date.parse(&quot;1970-01-01&quot;));</span>
+<span class="lineNum">     206 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     207 </span><span class="lineCov">          1 : assertEquals(0, Date.parse(&quot;1970-01T00:00:00.000+00:00&quot;));</span>
+<span class="lineNum">     208 </span><span class="lineCov">          1 : assertEquals(0, Date.parse(&quot;1970-01T00:00:00.000-00:00&quot;));</span>
+<span class="lineNum">     209 </span><span class="lineCov">          1 : assertEquals(0, Date.parse(&quot;1970-01T00:00:00.000Z&quot;));</span>
+<span class="lineNum">     210 </span><span class="lineCov">          1 : assertEquals(0, Date.parse(&quot;1970-01T00:00:00.000&quot;));</span>
+<span class="lineNum">     211 </span><span class="lineCov">          1 : assertEquals(0, Date.parse(&quot;1970-01T00:00:00&quot;));</span>
+<span class="lineNum">     212 </span><span class="lineCov">          1 : assertEquals(0, Date.parse(&quot;1970-01T00:00&quot;));</span>
+<span class="lineNum">     213 </span><span class="lineCov">          1 : assertEquals(0, Date.parse(&quot;1970-01&quot;));</span>
+<span class="lineNum">     214 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     215 </span><span class="lineCov">          1 : assertEquals(0, Date.parse(&quot;1970T00:00:00.000+00:00&quot;));</span>
+<span class="lineNum">     216 </span><span class="lineCov">          1 : assertEquals(0, Date.parse(&quot;1970T00:00:00.000-00:00&quot;));</span>
+<span class="lineNum">     217 </span><span class="lineCov">          1 : assertEquals(0, Date.parse(&quot;1970T00:00:00.000Z&quot;));</span>
+<span class="lineNum">     218 </span><span class="lineCov">          1 : assertEquals(0, Date.parse(&quot;1970T00:00:00.000&quot;));</span>
+<span class="lineNum">     219 </span><span class="lineCov">          1 : assertEquals(0, Date.parse(&quot;1970T00:00:00&quot;));</span>
+<span class="lineNum">     220 </span><span class="lineCov">          1 : assertEquals(0, Date.parse(&quot;1970T00:00&quot;));</span>
+<span class="lineNum">     221 </span><span class="lineCov">          1 : assertEquals(0, Date.parse(&quot;1970&quot;));</span>
+<span class="lineNum">     222 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     223 </span><span class="lineCov">          1 : assertEquals(0, Date.parse(&quot;+001970-01-01T00:00:00.000+00:00&quot;));</span>
+<span class="lineNum">     224 </span><span class="lineCov">          1 : assertEquals(0, Date.parse(&quot;+001970-01-01T00:00:00.000-00:00&quot;));</span>
+<span class="lineNum">     225 </span><span class="lineCov">          1 : assertEquals(0, Date.parse(&quot;+001970-01-01T00:00:00.000Z&quot;));</span>
+<span class="lineNum">     226 </span><span class="lineCov">          1 : assertEquals(0, Date.parse(&quot;+001970-01-01T00:00:00.000&quot;));</span>
+<span class="lineNum">     227 </span><span class="lineCov">          1 : assertEquals(0, Date.parse(&quot;+001970-01-01T00:00:00&quot;));</span>
+<span class="lineNum">     228 </span><span class="lineCov">          1 : assertEquals(0, Date.parse(&quot;+001970-01-01T00:00&quot;));</span>
+<span class="lineNum">     229 </span><span class="lineCov">          1 : assertEquals(0, Date.parse(&quot;+001970-01-01&quot;));</span>
+<span class="lineNum">     230 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     231 </span><span class="lineCov">          1 : assertEquals(0, Date.parse(&quot;+001970-01T00:00:00.000+00:00&quot;));</span>
+<span class="lineNum">     232 </span><span class="lineCov">          1 : assertEquals(0, Date.parse(&quot;+001970-01T00:00:00.000-00:00&quot;));</span>
+<span class="lineNum">     233 </span><span class="lineCov">          1 : assertEquals(0, Date.parse(&quot;+001970-01T00:00:00.000Z&quot;));</span>
+<span class="lineNum">     234 </span><span class="lineCov">          1 : assertEquals(0, Date.parse(&quot;+001970-01T00:00:00.000&quot;));</span>
+<span class="lineNum">     235 </span><span class="lineCov">          1 : assertEquals(0, Date.parse(&quot;+001970-01T00:00:00&quot;));</span>
+<span class="lineNum">     236 </span><span class="lineCov">          1 : assertEquals(0, Date.parse(&quot;+001970-01T00:00&quot;));</span>
+<span class="lineNum">     237 </span><span class="lineCov">          1 : assertEquals(0, Date.parse(&quot;+001970-01&quot;));</span>
+<span class="lineNum">     238 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     239 </span><span class="lineCov">          1 : assertEquals(0, Date.parse(&quot;+001970T00:00:00.000+00:00&quot;));</span>
+<span class="lineNum">     240 </span><span class="lineCov">          1 : assertEquals(0, Date.parse(&quot;+001970T00:00:00.000-00:00&quot;));</span>
+<span class="lineNum">     241 </span><span class="lineCov">          1 : assertEquals(0, Date.parse(&quot;+001970T00:00:00.000Z&quot;));</span>
+<span class="lineNum">     242 </span><span class="lineCov">          1 : assertEquals(0, Date.parse(&quot;+001970T00:00:00.000&quot;));</span>
+<span class="lineNum">     243 </span><span class="lineCov">          1 : assertEquals(0, Date.parse(&quot;+001970T00:00:00&quot;));</span>
+<span class="lineNum">     244 </span><span class="lineCov">          1 : assertEquals(0, Date.parse(&quot;+001970T00:00&quot;));</span>
+<span class="lineNum">     245 </span><span class="lineCov">          1 : assertEquals(0, Date.parse(&quot;+001970&quot;));</span>
+<span class="lineNum">     246 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     247 </span><span class="lineCov">          1 : // Check random date.</span>
+<span class="lineNum">     248 </span><span class="lineCov">          1 : assertEquals(70671003500, Date.parse(&quot;1972-03-28T23:50:03.500+01:00&quot;));</span>
+<span class="lineNum">     249 </span><span class="lineCov">          1 : assertEquals(70674603500, Date.parse(&quot;1972-03-28T23:50:03.500Z&quot;));</span>
+<span class="lineNum">     250 </span><span class="lineCov">          1 : assertEquals(70674603500, Date.parse(&quot;1972-03-28T23:50:03.500&quot;));</span>
+<span class="lineNum">     251 </span><span class="lineCov">          1 : assertEquals(70674603000, Date.parse(&quot;1972-03-28T23:50:03&quot;));</span>
+<span class="lineNum">     252 </span><span class="lineCov">          1 : assertEquals(70674600000, Date.parse(&quot;1972-03-28T23:50&quot;));</span>
+<span class="lineNum">     253 </span><span class="lineCov">          1 : assertEquals(70588800000, Date.parse(&quot;1972-03-28&quot;));</span>
+<span class="lineNum">     254 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     255 </span><span class="lineCov">          1 : assertEquals(68338203500, Date.parse(&quot;1972-03T23:50:03.500+01:00&quot;));</span>
+<span class="lineNum">     256 </span><span class="lineCov">          1 : assertEquals(68341803500, Date.parse(&quot;1972-03T23:50:03.500Z&quot;));</span>
+<span class="lineNum">     257 </span><span class="lineCov">          1 : assertEquals(68341803500, Date.parse(&quot;1972-03T23:50:03.500&quot;));</span>
+<span class="lineNum">     258 </span><span class="lineCov">          1 : assertEquals(68341803000, Date.parse(&quot;1972-03T23:50:03&quot;));</span>
+<span class="lineNum">     259 </span><span class="lineCov">          1 : assertEquals(68341800000, Date.parse(&quot;1972-03T23:50&quot;));</span>
+<span class="lineNum">     260 </span><span class="lineCov">          1 : assertEquals(68256000000, Date.parse(&quot;1972-03&quot;));</span>
+<span class="lineNum">     261 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     262 </span><span class="lineCov">          1 : assertEquals(63154203500, Date.parse(&quot;1972T23:50:03.500+01:00&quot;));</span>
+<span class="lineNum">     263 </span><span class="lineCov">          1 : assertEquals(63157803500, Date.parse(&quot;1972T23:50:03.500Z&quot;));</span>
+<span class="lineNum">     264 </span><span class="lineCov">          1 : assertEquals(63157803500, Date.parse(&quot;1972T23:50:03.500&quot;));</span>
+<span class="lineNum">     265 </span><span class="lineCov">          1 : assertEquals(63157803000, Date.parse(&quot;1972T23:50:03&quot;));</span>
+<span class="lineNum">     266 </span><span class="lineCov">          1 : assertEquals(63072000000, Date.parse(&quot;1972&quot;));</span>
+<span class="lineNum">     267 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     268 </span><span class="lineCov">          1 : assertEquals(70671003500, Date.parse(&quot;+001972-03-28T23:50:03.500+01:00&quot;));</span>
+<span class="lineNum">     269 </span><span class="lineCov">          1 : assertEquals(70674603500, Date.parse(&quot;+001972-03-28T23:50:03.500Z&quot;));</span>
+<span class="lineNum">     270 </span><span class="lineCov">          1 : assertEquals(70674603500, Date.parse(&quot;+001972-03-28T23:50:03.500&quot;));</span>
+<span class="lineNum">     271 </span><span class="lineCov">          1 : assertEquals(70674603000, Date.parse(&quot;+001972-03-28T23:50:03&quot;));</span>
+<span class="lineNum">     272 </span><span class="lineCov">          1 : assertEquals(70674600000, Date.parse(&quot;+001972-03-28T23:50&quot;));</span>
+<span class="lineNum">     273 </span><span class="lineCov">          1 : assertEquals(70588800000, Date.parse(&quot;+001972-03-28&quot;));</span>
+<span class="lineNum">     274 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     275 </span><span class="lineCov">          1 : assertEquals(68338203500, Date.parse(&quot;+001972-03T23:50:03.500+01:00&quot;));</span>
+<span class="lineNum">     276 </span><span class="lineCov">          1 : assertEquals(68341803500, Date.parse(&quot;+001972-03T23:50:03.500Z&quot;));</span>
+<span class="lineNum">     277 </span><span class="lineCov">          1 : assertEquals(68341803500, Date.parse(&quot;+001972-03T23:50:03.500&quot;));</span>
+<span class="lineNum">     278 </span><span class="lineCov">          1 : assertEquals(68341803000, Date.parse(&quot;+001972-03T23:50:03&quot;));</span>
+<span class="lineNum">     279 </span><span class="lineCov">          1 : assertEquals(68341800000, Date.parse(&quot;+001972-03T23:50&quot;));</span>
+<span class="lineNum">     280 </span><span class="lineCov">          1 : assertEquals(68256000000, Date.parse(&quot;+001972-03&quot;));</span>
+<span class="lineNum">     281 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     282 </span><span class="lineCov">          1 : assertEquals(63154203500, Date.parse(&quot;+001972T23:50:03.500+01:00&quot;));</span>
+<span class="lineNum">     283 </span><span class="lineCov">          1 : assertEquals(63157803500, Date.parse(&quot;+001972T23:50:03.500Z&quot;));</span>
+<span class="lineNum">     284 </span><span class="lineCov">          1 : assertEquals(63157803500, Date.parse(&quot;+001972T23:50:03.500&quot;));</span>
+<span class="lineNum">     285 </span><span class="lineCov">          1 : assertEquals(63157803000, Date.parse(&quot;+001972T23:50:03&quot;));</span>
+<span class="lineNum">     286 </span><span class="lineCov">          1 : assertEquals(63072000000, Date.parse(&quot;+001972&quot;));</span>
+<span class="lineNum">     287 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     288 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     289 </span><span class="lineCov">          1 : // Ensure that ISO-years in the range 00-99 aren't translated to the range</span>
+<span class="lineNum">     290 </span><span class="lineCov">          1 : // 1950..2049.</span>
+<span class="lineNum">     291 </span><span class="lineCov">          1 : assertEquals(-60904915200000, Date.parse(&quot;0040-01-01&quot;));</span>
+<span class="lineNum">     292 </span><span class="lineCov">          1 : assertEquals(-60273763200000, Date.parse(&quot;0060-01-01&quot;));</span>
+<span class="lineNum">     293 </span><span class="lineCov">          1 : assertEquals(-62167219200000, Date.parse(&quot;0000-01-01&quot;));</span>
+<span class="lineNum">     294 </span><span class="lineCov">          1 : assertEquals(-62167219200000, Date.parse(&quot;+000000-01-01&quot;));</span>
+<span class="lineNum">     295 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     296 </span><span class="lineCov">          1 : // Test negative years.</span>
+<span class="lineNum">     297 </span><span class="lineCov">          1 : assertEquals(-63429523200000, Date.parse(&quot;-000040-01-01&quot;));</span>
+<span class="lineNum">     298 </span><span class="lineCov">          1 : assertEquals(-64060675200000, Date.parse(&quot;-000060-01-01&quot;));</span>
+<span class="lineNum">     299 </span><span class="lineCov">          1 : assertEquals(-124397510400000, Date.parse(&quot;-001972-01-01&quot;));</span>
+<span class="lineNum">     300 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     301 </span><span class="lineCov">          1 : // Check time-zones.</span>
+<span class="lineNum">     302 </span><span class="lineCov">          1 : assertEquals(70674603500, Date.parse(&quot;1972-03-28T23:50:03.500Z&quot;));</span>
+<span class="lineNum">     303 </span><span class="lineCov">          1 : for (var i = 0; i &lt; 24; i++) {</span>
+<span class="lineNum">     304 </span><span class="lineCov">          1 :   var hh = (i &lt; 10) ? &quot;0&quot; + i : &quot;&quot; + i;</span>
+<span class="lineNum">     305 </span><span class="lineCov">          1 :   for (var j = 0; j &lt; 60; j += 15) {</span>
+<span class="lineNum">     306 </span><span class="lineCov">          1 :     var mm = (j &lt; 10) ? &quot;0&quot; + j : &quot;&quot; + j;</span>
+<span class="lineNum">     307 </span><span class="lineCov">          1 :     var ms = (i * 60 + j) * 60000;</span>
+<span class="lineNum">     308 </span><span class="lineCov">          1 :     var string = &quot;1972-03-28T23:50:03.500-&quot; + hh + &quot;:&quot; + mm;</span>
+<span class="lineNum">     309 </span><span class="lineCov">          1 :     assertEquals(70674603500 + ms, Date.parse(string), string);</span>
+<span class="lineNum">     310 </span><span class="lineCov">          1 :     string = &quot;1972-03-28T23:50:03.500+&quot; + hh + &quot;:&quot; + mm;</span>
+<span class="lineNum">     311 </span><span class="lineCov">          1 :     assertEquals(70674603500 - ms, Date.parse(string), string);</span>
+<span class="lineNum">     312 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     313 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     314 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     315 </span><span class="lineCov">          1 : assertThrows('Date.prototype.setTime.call(&quot;&quot;, 1);', TypeError);</span>
+<span class="lineNum">     316 </span><span class="lineCov">          1 : assertThrows('Date.prototype.setYear.call(&quot;&quot;, 1);', TypeError);</span>
+<span class="lineNum">     317 </span><span class="lineCov">          1 : assertThrows('Date.prototype.setHours.call(&quot;&quot;, 1, 2, 3, 4);', TypeError);</span>
+<span class="lineNum">     318 </span><span class="lineCov">          1 : assertThrows('Date.prototype.getDate.call(&quot;&quot;);', TypeError);</span>
+<a name="319"><span class="lineNum">     319 </span><span class="lineCov">          1 : assertThrows('Date.prototype.getUTCDate.call(&quot;&quot;);', TypeError);</span></a>
+<a name="320"><span class="lineNum">     320 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     321 </span><span class="lineCov">          1 : assertThrows(function() { Date.prototype.getTime.call(0) }, TypeError);</span>
+<a name="322"><span class="lineNum">     322 </span><span class="lineCov">          1 : assertThrows(function() { Date.prototype.getTime.call(&quot;&quot;) }, TypeError);</span></a>
+<a name="323"><span class="lineNum">     323 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     324 </span><span class="lineCov">          1 : assertThrows(function() { Date.prototype.getYear.call(0) }, TypeError);</span>
+<a name="325"><span class="lineNum">     325 </span><span class="lineCov">          1 : assertThrows(function() { Date.prototype.getYear.call(&quot;&quot;) }, TypeError);</span></a>
+<span class="lineNum">     326 </span><span class="lineCov">          1 : </span>
+<a name="327"><span class="lineNum">     327 </span><span class="lineCov">          1 : (function TestDatePrototypeOrdinaryObject() {</span></a>
+<span class="lineNum">     328 </span><span class="lineCov">          1 :   assertEquals(Object.prototype, Date.prototype.__proto__);</span>
+<span class="lineNum">     329 </span><span class="lineCov">          1 :   assertThrows(function () { Date.prototype.toString() }, TypeError);</span>
+<span class="lineNum">     330 </span><span class="lineCov">          1 : })();</span>
+<span class="lineNum">     331 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     332 </span><span class="lineCov">          1 : delete Date.prototype.getUTCFullYear;</span>
+<span class="lineNum">     333 </span><span class="lineCov">          1 : delete Date.prototype.getUTCMonth;</span>
+<span class="lineNum">     334 </span><span class="lineCov">          1 : delete Date.prototype.getUTCDate;</span>
+<span class="lineNum">     335 </span><span class="lineCov">          1 : delete Date.prototype.getUTCHours;</span>
+<span class="lineNum">     336 </span><span class="lineCov">          1 : delete Date.prototype.getUTCMinutes;</span>
+<span class="lineNum">     337 </span><span class="lineCov">          1 : delete Date.prototype.getUTCSeconds;</span>
+<span class="lineNum">     338 </span><span class="lineCov">          1 : delete Date.prototype.getUTCMilliseconds;</span>
+<a name="339"><span class="lineNum">     339 </span><span class="lineCov">          1 : (new Date()).toISOString();</span></a>
+<span class="lineNum">     340 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     341 </span><span class="lineCov">          1 : (function TestDeleteToString() {</span>
+<span class="lineNum">     342 </span><span class="lineCov">          1 :   assertTrue(delete Date.prototype.toString);</span>
+<span class="lineNum">     343 </span><span class="lineCov">          1 :   assertTrue('[object Date]' !== Date());</span>
+<span class="lineNum">     344 </span><span class="lineCov">          1 : })();</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

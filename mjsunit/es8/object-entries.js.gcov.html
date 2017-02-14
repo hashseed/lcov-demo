@@ -1,0 +1,390 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - mjsunit/es8/object-entries.js</title>
+  <link rel="stylesheet" type="text/css" href="../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../index.html">top level</a> - <a href="index.html">mjsunit/es8</a> - object-entries.js<span style="font-size: 80%;"> (source / <a href="object-entries.js.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">313</td>
+            <td class="headerCovTableEntry">315</td>
+            <td class="headerCovTableEntryHi">99.4 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2017-02-13</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">21</td>
+            <td class="headerCovTableEntry">22</td>
+            <td class="headerCovTableEntryHi">95.5 %</td>
+          </tr>
+          <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span><span class="lineCov">          1 : // Copyright 2016 the V8 project authors. All rights reserved.</span></a>
+<span class="lineNum">       2 </span><span class="lineCov">          1 : // Use of this source code is governed by a BSD-style license that can be</span>
+<span class="lineNum">       3 </span><span class="lineCov">          1 : // found in the LICENSE file.</span>
+<span class="lineNum">       4 </span><span class="lineCov">          1 : </span>
+<a name="5"><span class="lineNum">       5 </span><span class="lineCov">          1 : // Flags: --allow-natives-syntax</span></a>
+<span class="lineNum">       6 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">       7 </span><span class="lineCov">          1 : function TestMeta() {</span>
+<span class="lineNum">       8 </span><span class="lineCov">          1 :   assertEquals(1, Object.entries.length);</span>
+<span class="lineNum">       9 </span><span class="lineCov">          1 :   assertEquals(Function.prototype, Object.getPrototypeOf(Object.entries));</span>
+<span class="lineNum">      10 </span><span class="lineCov">          1 :   assertEquals(&quot;entries&quot;, Object.entries.name);</span>
+<span class="lineNum">      11 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      12 </span><span class="lineCov">          1 :   var descriptor = Object.getOwnPropertyDescriptor(Object, &quot;entries&quot;);</span>
+<span class="lineNum">      13 </span><span class="lineCov">          1 :   assertTrue(descriptor.writable);</span>
+<span class="lineNum">      14 </span><span class="lineCov">          1 :   assertFalse(descriptor.enumerable);</span>
+<a name="15"><span class="lineNum">      15 </span><span class="lineCov">          1 :   assertTrue(descriptor.configurable);</span></a>
+<span class="lineNum">      16 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      17 </span><span class="lineCov">          1 :   assertThrows(() =&gt; new Object.entries({}), TypeError);</span>
+<span class="lineNum">      18 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      19 </span><span class="lineCov">          1 : TestMeta();</span>
+<a name="20"><span class="lineNum">      20 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      21 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      22 </span><span class="lineCov">          1 : function TestBasic() {</span>
+<span class="lineNum">      23 </span><span class="lineCov">          1 :   var x = 16;</span>
+<span class="lineNum">      24 </span><span class="lineCov">          1 :   var O = {</span>
+<span class="lineNum">      25 </span><span class="lineCov">          1 :     d: 1,</span>
+<span class="lineNum">      26 </span><span class="lineCov">          1 :     c: 3,</span>
+<span class="lineNum">      27 </span><span class="lineCov">          1 :     [Symbol.iterator]: void 0,</span>
+<span class="lineNum">      28 </span><span class="lineCov">          1 :     0: 123,</span>
+<span class="lineNum">      29 </span><span class="lineCov">          1 :     1000: 456,</span>
+<span class="lineNum">      30 </span><span class="lineCov">          1 :     [x * x]: &quot;ducks&quot;,</span>
+<span class="lineNum">      31 </span><span class="lineCov">          1 :     [`0x${(x * x).toString(16)}`]: &quot;quack&quot;</span>
+<span class="lineNum">      32 </span><span class="lineCov">          1 :   };</span>
+<span class="lineNum">      33 </span><span class="lineCov">          1 :   O.a = 2;</span>
+<span class="lineNum">      34 </span><span class="lineCov">          1 :   O.b = 4;</span>
+<span class="lineNum">      35 </span><span class="lineCov">          1 :   Object.defineProperty(O, &quot;HIDDEN&quot;, { enumerable: false, value: NaN });</span>
+<span class="lineNum">      36 </span><span class="lineCov">          1 :   assertEquals([</span>
+<span class="lineNum">      37 </span><span class="lineCov">          1 :     [&quot;0&quot;, 123],</span>
+<span class="lineNum">      38 </span><span class="lineCov">          1 :     [&quot;256&quot;, &quot;ducks&quot;],</span>
+<span class="lineNum">      39 </span><span class="lineCov">          1 :     [&quot;1000&quot;, 456],</span>
+<span class="lineNum">      40 </span><span class="lineCov">          1 :     [&quot;d&quot;, 1],</span>
+<span class="lineNum">      41 </span><span class="lineCov">          1 :     [&quot;c&quot;, 3],</span>
+<span class="lineNum">      42 </span><span class="lineCov">          1 :     [&quot;0x100&quot;, &quot;quack&quot;],</span>
+<span class="lineNum">      43 </span><span class="lineCov">          1 :     [&quot;a&quot;, 2],</span>
+<a name="44"><span class="lineNum">      44 </span><span class="lineCov">          1 :     [&quot;b&quot;, 4]</span></a>
+<span class="lineNum">      45 </span><span class="lineCov">          1 :   ], Object.entries(O));</span>
+<span class="lineNum">      46 </span><span class="lineCov">          8 :   assertEquals(Object.entries(O), Object.keys(O).map(key =&gt; [key, O[key]]));</span>
+<span class="lineNum">      47 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      48 </span><span class="lineCov">          1 :   assertTrue(Array.isArray(Object.entries({})));</span>
+<span class="lineNum">      49 </span><span class="lineCov">          1 :   assertEquals(0, Object.entries({}).length);</span>
+<span class="lineNum">      50 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      51 </span><span class="lineCov">          1 : TestBasic();</span>
+<a name="52"><span class="lineNum">      52 </span><span class="lineCov">          1 : </span></a>
+<a name="53"><span class="lineNum">      53 </span><span class="lineCov">          1 : </span></a>
+<a name="54"><span class="lineNum">      54 </span><span class="lineCov">          1 : function TestToObject() {</span></a>
+<a name="55"><span class="lineNum">      55 </span><span class="lineCov">          1 :   assertThrows(function() { Object.entries(); }, TypeError);</span></a>
+<span class="lineNum">      56 </span><span class="lineCov">          1 :   assertThrows(function() { Object.entries(null); }, TypeError);</span>
+<span class="lineNum">      57 </span><span class="lineCov">          1 :   assertThrows(function() { Object.entries(void 0); }, TypeError);</span>
+<span class="lineNum">      58 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      59 </span><span class="lineCov">          1 : TestToObject();</span>
+<a name="60"><span class="lineNum">      60 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      61 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      62 </span><span class="lineCov">          1 : function TestOrder() {</span>
+<span class="lineNum">      63 </span><span class="lineCov">          1 :   var O = {</span>
+<span class="lineNum">      64 </span><span class="lineCov">          1 :     a: 1,</span>
+<span class="lineNum">      65 </span><span class="lineCov">          1 :     [Symbol.iterator]: null</span>
+<span class="lineNum">      66 </span><span class="lineCov">          1 :   };</span>
+<span class="lineNum">      67 </span><span class="lineCov">          1 :   O[456] = 123;</span>
+<span class="lineNum">      68 </span><span class="lineCov">          1 :   Object.defineProperty(O, &quot;HIDDEN&quot;, { enumerable: false, value: NaN });</span>
+<span class="lineNum">      69 </span><span class="lineCov">          1 :   var priv = %CreatePrivateSymbol(&quot;Secret&quot;);</span>
+<span class="lineNum">      70 </span><span class="lineCov">          1 :   O[priv] = 56;</span>
+<span class="lineNum">      71 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      72 </span><span class="lineCov">          1 :   var log = [];</span>
+<span class="lineNum">      73 </span><span class="lineCov">          1 :   var P = new Proxy(O, {</span>
+<span class="lineNum">      74 </span><span class="lineCov">          1 :     ownKeys(target) {</span>
+<span class="lineNum">      75 </span><span class="lineCov">          1 :       log.push(&quot;[[OwnPropertyKeys]]&quot;);</span>
+<span class="lineNum">      76 </span><span class="lineCov">          1 :       return Reflect.ownKeys(target);</span>
+<span class="lineNum">      77 </span><span class="lineCov">          1 :     },</span>
+<span class="lineNum">      78 </span><span class="lineCov">          2 :     get(target, name) {</span>
+<span class="lineNum">      79 </span><span class="lineCov">          2 :       log.push(`[[Get]](${JSON.stringify(name)})`);</span>
+<span class="lineNum">      80 </span><span class="lineCov">          2 :       return Reflect.get(target, name);</span>
+<span class="lineNum">      81 </span><span class="lineCov">          2 :     },</span>
+<span class="lineNum">      82 </span><span class="lineCov">          3 :     getOwnPropertyDescriptor(target, name) {</span>
+<span class="lineNum">      83 </span><span class="lineCov">          3 :       log.push(`[[GetOwnProperty]](${JSON.stringify(name)})`);</span>
+<span class="lineNum">      84 </span><span class="lineCov">          3 :       return Reflect.getOwnPropertyDescriptor(target, name);</span>
+<span class="lineNum">      85 </span><span class="lineCov">          3 :     },</span>
+<span class="lineNum">      86 </span><span class="lineCov">          1 :     set(target, name, value) {</span>
+<span class="lineNum">      87 </span><span class="lineNoCov">          0 :       assertUnreachable();</span>
+<span class="lineNum">      88 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">      89 </span><span class="lineCov">          1 :   });</span>
+<span class="lineNum">      90 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      91 </span><span class="lineCov">          1 :   assertEquals([[&quot;456&quot;, 123], [&quot;a&quot;, 1]], Object.entries(P));</span>
+<span class="lineNum">      92 </span><span class="lineCov">          1 :   assertEquals([</span>
+<span class="lineNum">      93 </span><span class="lineCov">          1 :     &quot;[[OwnPropertyKeys]]&quot;,</span>
+<span class="lineNum">      94 </span><span class="lineCov">          1 :     &quot;[[GetOwnProperty]](\&quot;456\&quot;)&quot;,</span>
+<span class="lineNum">      95 </span><span class="lineCov">          1 :     &quot;[[Get]](\&quot;456\&quot;)&quot;,</span>
+<span class="lineNum">      96 </span><span class="lineCov">          1 :     &quot;[[GetOwnProperty]](\&quot;a\&quot;)&quot;,</span>
+<span class="lineNum">      97 </span><span class="lineCov">          1 :     &quot;[[Get]](\&quot;a\&quot;)&quot;,</span>
+<span class="lineNum">      98 </span><span class="lineCov">          1 :     &quot;[[GetOwnProperty]](\&quot;HIDDEN\&quot;)&quot;</span>
+<span class="lineNum">      99 </span><span class="lineCov">          1 :   ], log);</span>
+<span class="lineNum">     100 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     101 </span><span class="lineCov">          1 : TestOrder();</span>
+<a name="102"><span class="lineNum">     102 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     103 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     104 </span><span class="lineCov">          1 : function TestOrderWithDuplicates() {</span>
+<span class="lineNum">     105 </span><span class="lineCov">          1 :   var O = {</span>
+<span class="lineNum">     106 </span><span class="lineCov">          1 :     a: 1,</span>
+<span class="lineNum">     107 </span><span class="lineCov">          1 :     [Symbol.iterator]: null</span>
+<span class="lineNum">     108 </span><span class="lineCov">          1 :   };</span>
+<span class="lineNum">     109 </span><span class="lineCov">          1 :   O[456] = 123;</span>
+<span class="lineNum">     110 </span><span class="lineCov">          1 :   Object.defineProperty(O, &quot;HIDDEN&quot;, { enumerable: false, value: NaN });</span>
+<span class="lineNum">     111 </span><span class="lineCov">          1 :   var priv = %CreatePrivateSymbol(&quot;Secret&quot;);</span>
+<span class="lineNum">     112 </span><span class="lineCov">          1 :   O[priv] = 56;</span>
+<span class="lineNum">     113 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     114 </span><span class="lineCov">          1 :   var log = [];</span>
+<span class="lineNum">     115 </span><span class="lineCov">          1 :   var P = new Proxy(O, {</span>
+<span class="lineNum">     116 </span><span class="lineCov">          1 :     ownKeys(target) {</span>
+<span class="lineNum">     117 </span><span class="lineCov">          1 :       log.push(&quot;[[OwnPropertyKeys]]&quot;);</span>
+<span class="lineNum">     118 </span><span class="lineCov">          1 :       return [&quot;a&quot;, Symbol.iterator, &quot;a&quot;, &quot;456&quot;, &quot;HIDDEN&quot;, &quot;HIDDEN&quot;, &quot;456&quot;];</span>
+<span class="lineNum">     119 </span><span class="lineCov">          1 :     },</span>
+<span class="lineNum">     120 </span><span class="lineCov">          4 :     get(target, name) {</span>
+<span class="lineNum">     121 </span><span class="lineCov">          4 :       log.push(`[[Get]](${JSON.stringify(name)})`);</span>
+<span class="lineNum">     122 </span><span class="lineCov">          4 :       return Reflect.get(target, name);</span>
+<span class="lineNum">     123 </span><span class="lineCov">          4 :     },</span>
+<span class="lineNum">     124 </span><span class="lineCov">          6 :     getOwnPropertyDescriptor(target, name) {</span>
+<span class="lineNum">     125 </span><span class="lineCov">          6 :       log.push(`[[GetOwnProperty]](${JSON.stringify(name)})`);</span>
+<a name="126"><span class="lineNum">     126 </span><span class="lineCov">          6 :       return Reflect.getOwnPropertyDescriptor(target, name);</span></a>
+<span class="lineNum">     127 </span><span class="lineCov">          6 :     },</span>
+<span class="lineNum">     128 </span><span class="lineCov">          1 :     set(target, name, value) {</span>
+<span class="lineNum">     129 </span><span class="lineNoCov">          0 :       assertUnreachable();</span>
+<span class="lineNum">     130 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">     131 </span><span class="lineCov">          1 :   });</span>
+<span class="lineNum">     132 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     133 </span><span class="lineCov">          1 :   assertEquals([</span>
+<span class="lineNum">     134 </span><span class="lineCov">          1 :     [&quot;a&quot;, 1],</span>
+<span class="lineNum">     135 </span><span class="lineCov">          1 :     [&quot;a&quot;, 1],</span>
+<span class="lineNum">     136 </span><span class="lineCov">          1 :     [&quot;456&quot;, 123],</span>
+<span class="lineNum">     137 </span><span class="lineCov">          1 :     [&quot;456&quot;, 123]</span>
+<span class="lineNum">     138 </span><span class="lineCov">          1 :   ], Object.entries(P));</span>
+<span class="lineNum">     139 </span><span class="lineCov">          1 :   assertEquals([</span>
+<span class="lineNum">     140 </span><span class="lineCov">          1 :     &quot;[[OwnPropertyKeys]]&quot;,</span>
+<span class="lineNum">     141 </span><span class="lineCov">          1 :     &quot;[[GetOwnProperty]](\&quot;a\&quot;)&quot;,</span>
+<span class="lineNum">     142 </span><span class="lineCov">          1 :     &quot;[[Get]](\&quot;a\&quot;)&quot;,</span>
+<span class="lineNum">     143 </span><span class="lineCov">          1 :     &quot;[[GetOwnProperty]](\&quot;a\&quot;)&quot;,</span>
+<span class="lineNum">     144 </span><span class="lineCov">          1 :     &quot;[[Get]](\&quot;a\&quot;)&quot;,</span>
+<span class="lineNum">     145 </span><span class="lineCov">          1 :     &quot;[[GetOwnProperty]](\&quot;456\&quot;)&quot;,</span>
+<span class="lineNum">     146 </span><span class="lineCov">          1 :     &quot;[[Get]](\&quot;456\&quot;)&quot;,</span>
+<span class="lineNum">     147 </span><span class="lineCov">          1 :     &quot;[[GetOwnProperty]](\&quot;HIDDEN\&quot;)&quot;,</span>
+<span class="lineNum">     148 </span><span class="lineCov">          1 :     &quot;[[GetOwnProperty]](\&quot;HIDDEN\&quot;)&quot;,</span>
+<span class="lineNum">     149 </span><span class="lineCov">          1 :     &quot;[[GetOwnProperty]](\&quot;456\&quot;)&quot;,</span>
+<span class="lineNum">     150 </span><span class="lineCov">          1 :     &quot;[[Get]](\&quot;456\&quot;)&quot;</span>
+<span class="lineNum">     151 </span><span class="lineCov">          1 :   ], log);</span>
+<span class="lineNum">     152 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     153 </span><span class="lineCov">          1 : TestOrderWithDuplicates();</span>
+<a name="154"><span class="lineNum">     154 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     155 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     156 </span><span class="lineCov">          1 : function TestPropertyFilter() {</span>
+<span class="lineNum">     157 </span><span class="lineCov">          1 :   var object = { prop3: 30 };</span>
+<span class="lineNum">     158 </span><span class="lineCov">          1 :   object[2] = 40;</span>
+<span class="lineNum">     159 </span><span class="lineCov">          1 :   object[&quot;prop4&quot;] = 50;</span>
+<span class="lineNum">     160 </span><span class="lineCov">          1 :   Object.defineProperty(object, &quot;prop5&quot;, { value: 60, enumerable: true });</span>
+<span class="lineNum">     161 </span><span class="lineCov">          1 :   Object.defineProperty(object, &quot;prop6&quot;, { value: 70, enumerable: false });</span>
+<span class="lineNum">     162 </span><span class="lineCov">          1 :   Object.defineProperty(object, &quot;prop7&quot;, {</span>
+<span class="lineNum">     163 </span><span class="lineCov">          1 :       enumerable: true, get() { return 80; }});</span>
+<span class="lineNum">     164 </span><span class="lineCov">          1 :   var sym = Symbol(&quot;prop8&quot;);</span>
+<span class="lineNum">     165 </span><span class="lineCov">          1 :   object[sym] = 90;</span>
+<span class="lineNum">     166 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     167 </span><span class="lineCov">          1 :   values = Object.entries(object);</span>
+<span class="lineNum">     168 </span><span class="lineCov">          1 :   assertEquals(5, values.length);</span>
+<span class="lineNum">     169 </span><span class="lineCov">          1 :   assertEquals([</span>
+<span class="lineNum">     170 </span><span class="lineCov">          1 :     [ &quot;2&quot;, 40 ],</span>
+<span class="lineNum">     171 </span><span class="lineCov">          1 :     [ &quot;prop3&quot;, 30 ],</span>
+<span class="lineNum">     172 </span><span class="lineCov">          1 :     [ &quot;prop4&quot;, 50 ],</span>
+<span class="lineNum">     173 </span><span class="lineCov">          1 :     [ &quot;prop5&quot;, 60 ],</span>
+<span class="lineNum">     174 </span><span class="lineCov">          1 :     [ &quot;prop7&quot;, 80 ]</span>
+<span class="lineNum">     175 </span><span class="lineCov">          1 :   ], values);</span>
+<span class="lineNum">     176 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     177 </span><span class="lineCov">          1 : TestPropertyFilter();</span>
+<a name="178"><span class="lineNum">     178 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     179 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     180 </span><span class="lineCov">          1 : function TestWithProxy() {</span>
+<span class="lineNum">     181 </span><span class="lineCov">          1 :   var obj1 = {prop1:10};</span>
+<span class="lineNum">     182 </span><span class="lineCov">          1 :   var proxy1 = new Proxy(obj1, { });</span>
+<span class="lineNum">     183 </span><span class="lineCov">          1 :   assertEquals([ [ &quot;prop1&quot;, 10 ] ], Object.entries(proxy1));</span>
+<span class="lineNum">     184 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     185 </span><span class="lineCov">          1 :   var obj2 = {};</span>
+<span class="lineNum">     186 </span><span class="lineCov">          1 :   Object.defineProperty(obj2, &quot;prop2&quot;, { value: 20, enumerable: true });</span>
+<span class="lineNum">     187 </span><span class="lineCov">          1 :   Object.defineProperty(obj2, &quot;prop3&quot;, {</span>
+<span class="lineNum">     188 </span><span class="lineCov">          1 :       get() { return 30; }, enumerable: true });</span>
+<span class="lineNum">     189 </span><span class="lineCov">          1 :   var proxy2 = new Proxy(obj2, {</span>
+<span class="lineNum">     190 </span><span class="lineCov">          2 :     getOwnPropertyDescriptor(target, name) {</span>
+<span class="lineNum">     191 </span><span class="lineCov">          2 :       return Reflect.getOwnPropertyDescriptor(target, name);</span>
+<span class="lineNum">     192 </span><span class="lineCov">          2 :     }</span>
+<span class="lineNum">     193 </span><span class="lineCov">          1 :   });</span>
+<span class="lineNum">     194 </span><span class="lineCov">          1 :   assertEquals([ [ &quot;prop2&quot;, 20 ], [ &quot;prop3&quot;, 30 ] ], Object.entries(proxy2));</span>
+<span class="lineNum">     195 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     196 </span><span class="lineCov">          1 :   var obj3 = {};</span>
+<span class="lineNum">     197 </span><span class="lineCov">          1 :   var count = 0;</span>
+<span class="lineNum">     198 </span><span class="lineCov">          1 :   var proxy3 = new Proxy(obj3, {</span>
+<span class="lineNum">     199 </span><span class="lineCov">          2 :     get(target, property, receiver) {</span>
+<a name="200"><span class="lineNum">     200 </span><span class="lineCov">          2 :       return count++ * 5;</span></a>
+<span class="lineNum">     201 </span><span class="lineCov">          2 :     },</span>
+<span class="lineNum">     202 </span><span class="lineCov">          2 :     getOwnPropertyDescriptor(target, property) {</span>
+<a name="203"><span class="lineNum">     203 </span><span class="lineCov">          2 :       return { configurable: true, enumerable: true };</span></a>
+<span class="lineNum">     204 </span><span class="lineCov">          2 :     },</span>
+<span class="lineNum">     205 </span><span class="lineCov">          1 :     ownKeys(target) {</span>
+<span class="lineNum">     206 </span><span class="lineCov">          1 :       return [ &quot;prop0&quot;, &quot;prop1&quot;, Symbol(&quot;prop2&quot;), Symbol(&quot;prop5&quot;) ];</span>
+<span class="lineNum">     207 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">     208 </span><span class="lineCov">          1 :   });</span>
+<span class="lineNum">     209 </span><span class="lineCov">          1 :   assertEquals([ [ &quot;prop0&quot;, 0 ], [ &quot;prop1&quot;, 5 ] ], Object.entries(proxy3));</span>
+<span class="lineNum">     210 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     211 </span><span class="lineCov">          1 : TestWithProxy();</span>
+<a name="212"><span class="lineNum">     212 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     213 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     214 </span><span class="lineCov">          1 : function TestMutateDuringEnumeration() {</span>
+<span class="lineNum">     215 </span><span class="lineCov">          1 :   var aDeletesB = {</span>
+<span class="lineNum">     216 </span><span class="lineCov">          1 :     get a() {</span>
+<span class="lineNum">     217 </span><span class="lineCov">          1 :       delete this.b;</span>
+<span class="lineNum">     218 </span><span class="lineCov">          1 :       return 1;</span>
+<span class="lineNum">     219 </span><span class="lineCov">          1 :     },</span>
+<span class="lineNum">     220 </span><span class="lineCov">          1 :     b: 2</span>
+<span class="lineNum">     221 </span><span class="lineCov">          1 :   };</span>
+<span class="lineNum">     222 </span><span class="lineCov">          1 :   assertEquals([ [ &quot;a&quot;, 1 ] ], Object.entries(aDeletesB));</span>
+<span class="lineNum">     223 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     224 </span><span class="lineCov">          1 :   var aRemovesB = {</span>
+<span class="lineNum">     225 </span><span class="lineCov">          1 :     get a() {</span>
+<span class="lineNum">     226 </span><span class="lineCov">          1 :       Object.defineProperty(this, &quot;b&quot;, { enumerable: false });</span>
+<span class="lineNum">     227 </span><span class="lineCov">          1 :       return 1;</span>
+<span class="lineNum">     228 </span><span class="lineCov">          1 :     },</span>
+<span class="lineNum">     229 </span><span class="lineCov">          1 :     b: 2</span>
+<span class="lineNum">     230 </span><span class="lineCov">          1 :   };</span>
+<a name="231"><span class="lineNum">     231 </span><span class="lineCov">          1 :   assertEquals([ [ &quot;a&quot;, 1 ] ], Object.entries(aRemovesB));</span></a>
+<span class="lineNum">     232 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     233 </span><span class="lineCov">          1 :   var aAddsB = { get a() { this.b = 2; return 1; } };</span>
+<span class="lineNum">     234 </span><span class="lineCov">          1 :   assertEquals([ [ &quot;a&quot;, 1 ] ], Object.entries(aAddsB));</span>
+<span class="lineNum">     235 </span><span class="lineCov">          1 : </span>
+<a name="236"><span class="lineNum">     236 </span><span class="lineCov">          1 :   var aMakesBEnumerable = {};</span></a>
+<span class="lineNum">     237 </span><span class="lineCov">          1 :   Object.defineProperty(aMakesBEnumerable, &quot;a&quot;, {</span>
+<span class="lineNum">     238 </span><span class="lineCov">          1 :     get() {</span>
+<span class="lineNum">     239 </span><span class="lineCov">          1 :       Object.defineProperty(this, &quot;b&quot;, { enumerable: true });</span>
+<span class="lineNum">     240 </span><span class="lineCov">          1 :       return 1;</span>
+<span class="lineNum">     241 </span><span class="lineCov">          1 :     },</span>
+<span class="lineNum">     242 </span><span class="lineCov">          1 :     enumerable: true</span>
+<span class="lineNum">     243 </span><span class="lineCov">          1 :   });</span>
+<span class="lineNum">     244 </span><span class="lineCov">          1 :   Object.defineProperty(aMakesBEnumerable, &quot;b&quot;, {</span>
+<span class="lineNum">     245 </span><span class="lineCov">          1 :       value: 2, configurable:true, enumerable: false });</span>
+<span class="lineNum">     246 </span><span class="lineCov">          1 :   assertEquals([ [ &quot;a&quot;, 1 ], [ &quot;b&quot;, 2 ] ], Object.entries(aMakesBEnumerable));</span>
+<span class="lineNum">     247 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     248 </span><span class="lineCov">          1 : TestMutateDuringEnumeration();</span>
+<a name="249"><span class="lineNum">     249 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     250 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     251 </span><span class="lineCov">          1 : (function TestElementKinds() {</span>
+<span class="lineNum">     252 </span><span class="lineCov">          1 :   var O1 = { name: &quot;1&quot; }, O2 = { name: &quot;2&quot; }, O3 = { name: &quot;3&quot; };</span>
+<a name="253"><span class="lineNum">     253 </span><span class="lineCov">          1 :   var PI = 3.141592653589793;</span></a>
+<span class="lineNum">     254 </span><span class="lineCov">          1 :   var E = 2.718281828459045;</span>
+<span class="lineNum">     255 </span><span class="lineCov">          1 :   function fastSloppyArguments(a, b, c) {</span>
+<span class="lineNum">     256 </span><span class="lineCov">          1 :     delete arguments[0];</span>
+<span class="lineNum">     257 </span><span class="lineCov">          1 :     arguments[0] = a;</span>
+<span class="lineNum">     258 </span><span class="lineCov">          1 :     return arguments;</span>
+<a name="259"><span class="lineNum">     259 </span><span class="lineCov">          1 :   }</span></a>
+<span class="lineNum">     260 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     261 </span><span class="lineCov">          1 :   function slowSloppyArguments(a, b, c) {</span>
+<span class="lineNum">     262 </span><span class="lineCov">          1 :     delete arguments[0];</span>
+<span class="lineNum">     263 </span><span class="lineCov">          1 :     arguments[0] = a;</span>
+<span class="lineNum">     264 </span><span class="lineCov">          1 :     Object.defineProperties(arguments, {</span>
+<span class="lineNum">     265 </span><span class="lineCov">          1 :       0: {</span>
+<span class="lineNum">     266 </span><span class="lineCov">          1 :         enumerable: true,</span>
+<span class="lineNum">     267 </span><span class="lineCov">          1 :         value: a</span>
+<span class="lineNum">     268 </span><span class="lineCov">          1 :       },</span>
+<span class="lineNum">     269 </span><span class="lineCov">          1 :       9999: {</span>
+<span class="lineNum">     270 </span><span class="lineCov">          1 :         enumerable: false,</span>
+<span class="lineNum">     271 </span><span class="lineCov">          1 :         value: &quot;Y&quot;</span>
+<span class="lineNum">     272 </span><span class="lineCov">          1 :       }</span>
+<span class="lineNum">     273 </span><span class="lineCov">          1 :     });</span>
+<span class="lineNum">     274 </span><span class="lineCov">          1 :     arguments[10000] = &quot;X&quot;;</span>
+<span class="lineNum">     275 </span><span class="lineCov">          1 :     return arguments;</span>
+<span class="lineNum">     276 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     277 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     278 </span><span class="lineCov">          1 :   var element_kinds = {</span>
+<span class="lineNum">     279 </span><span class="lineCov">          1 :     FAST_SMI_ELEMENTS: [ [1, 2, 3], [ [&quot;0&quot;, 1], [&quot;1&quot;, 2], [&quot;2&quot;, 3] ] ],</span>
+<span class="lineNum">     280 </span><span class="lineCov">          1 :     FAST_HOLEY_SMI_ELEMENTS: [ [, , 3], [ [&quot;2&quot;, 3] ] ],</span>
+<span class="lineNum">     281 </span><span class="lineCov">          1 :     FAST_ELEMENTS: [ [O1, O2, O3], [ [&quot;0&quot;, O1], [&quot;1&quot;, O2], [&quot;2&quot;, O3] ] ],</span>
+<span class="lineNum">     282 </span><span class="lineCov">          1 :     FAST_HOLEY_ELEMENTS: [ [, , O3], [ [&quot;2&quot;, O3] ] ],</span>
+<span class="lineNum">     283 </span><span class="lineCov">          1 :     FAST_DOUBLE_ELEMENTS: [ [E, NaN, PI], [ [&quot;0&quot;, E], [&quot;1&quot;, NaN], [&quot;2&quot;, PI] ] ],</span>
+<span class="lineNum">     284 </span><span class="lineCov">          1 :     FAST_HOLEY_DOUBLE_ELEMENTS: [ [, , NaN], [ [&quot;2&quot;, NaN] ] ],</span>
+<span class="lineNum">     285 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     286 </span><span class="lineCov">          1 :     DICTIONARY_ELEMENTS: [ Object.defineProperties({ 10000: &quot;world&quot; }, {</span>
+<span class="lineNum">     287 </span><span class="lineCov">          1 :         100: { enumerable: true, value: &quot;hello&quot; },</span>
+<span class="lineNum">     288 </span><span class="lineCov">          1 :         99: { enumerable: false, value: &quot;nope&quot; }</span>
+<span class="lineNum">     289 </span><span class="lineCov">          1 :       }), [ [&quot;100&quot;, &quot;hello&quot;], [&quot;10000&quot;, &quot;world&quot; ] ] ],</span>
+<span class="lineNum">     290 </span><span class="lineCov">          1 :     FAST_SLOPPY_ARGUMENTS_ELEMENTS: [</span>
+<span class="lineNum">     291 </span><span class="lineCov">          1 :         fastSloppyArguments(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;),</span>
+<span class="lineNum">     292 </span><span class="lineCov">          1 :         [ [&quot;0&quot;, &quot;a&quot;], [&quot;1&quot;, &quot;b&quot;], [&quot;2&quot;, &quot;c&quot;] ] ],</span>
+<span class="lineNum">     293 </span><span class="lineCov">          1 :     SLOW_SLOPPY_ARGUMENTS_ELEMENTS: [</span>
+<span class="lineNum">     294 </span><span class="lineCov">          1 :         slowSloppyArguments(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;),</span>
+<span class="lineNum">     295 </span><span class="lineCov">          1 :         [ [&quot;0&quot;, &quot;a&quot;], [&quot;1&quot;, &quot;b&quot;], [&quot;2&quot;, &quot;c&quot;], [&quot;10000&quot;, &quot;X&quot;] ] ],</span>
+<span class="lineNum">     296 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     297 </span><span class="lineCov">          1 :     FAST_STRING_WRAPPER_ELEMENTS: [ new String(&quot;str&quot;),</span>
+<span class="lineNum">     298 </span><span class="lineCov">          1 :         [ [&quot;0&quot;, &quot;s&quot;], [&quot;1&quot;, &quot;t&quot;], [&quot;2&quot;, &quot;r&quot;]] ],</span>
+<span class="lineNum">     299 </span><span class="lineCov">          1 :     SLOW_STRING_WRAPPER_ELEMENTS: [</span>
+<span class="lineNum">     300 </span><span class="lineCov">          1 :         Object.defineProperties(new String(&quot;str&quot;), {</span>
+<span class="lineNum">     301 </span><span class="lineCov">          1 :           10000: { enumerable: false, value: &quot;X&quot; },</span>
+<span class="lineNum">     302 </span><span class="lineCov">          1 :           9999: { enumerable: true, value: &quot;Y&quot; }</span>
+<span class="lineNum">     303 </span><span class="lineCov">          1 :         }), [[&quot;0&quot;, &quot;s&quot;], [&quot;1&quot;, &quot;t&quot;], [&quot;2&quot;, &quot;r&quot;], [&quot;9999&quot;, &quot;Y&quot;]] ],</span>
+<span class="lineNum">     304 </span><span class="lineCov">          1 :   };</span>
+<span class="lineNum">     305 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     306 </span><span class="lineCov">          1 :   for (let [kind, [object, expected]] of Object.entries(element_kinds)) {</span>
+<span class="lineNum">     307 </span><span class="lineCov">          1 :     let result1 = Object.entries(object);</span>
+<span class="lineNum">     308 </span><span class="lineCov">          1 :     assertEquals(expected, result1, `fast Object.entries() with ${kind}`);</span>
+<span class="lineNum">     309 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     310 </span><span class="lineCov">          1 :     let proxy = new Proxy(object, {});</span>
+<span class="lineNum">     311 </span><span class="lineCov">          1 :     let result2 = Object.entries(proxy);</span>
+<span class="lineNum">     312 </span><span class="lineCov">          1 :     assertEquals(result1, result2, `slow Object.entries() with ${kind}`);</span>
+<span class="lineNum">     313 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     314 </span><span class="lineCov">          1 : })();</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

@@ -1,0 +1,972 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - mjsunit/es6/array-concat.js</title>
+  <link rel="stylesheet" type="text/css" href="../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../index.html">top level</a> - <a href="index.html">mjsunit/es6</a> - array-concat.js<span style="font-size: 80%;"> (source / <a href="array-concat.js.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">897</td>
+            <td class="headerCovTableEntry">897</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2017-02-13</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">70</td>
+            <td class="headerCovTableEntry">73</td>
+            <td class="headerCovTableEntryHi">95.9 %</td>
+          </tr>
+          <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span><span class="lineCov">          1 : // Copyright 2014 the V8 project authors. All rights reserved.</span></a>
+<a name="2"><span class="lineNum">       2 </span><span class="lineCov">          1 : // Use of this source code is governed by a BSD-style license that can be</span></a>
+<span class="lineNum">       3 </span><span class="lineCov">          1 : // found in the LICENSE file.</span>
+<span class="lineNum">       4 </span><span class="lineCov">          1 : (function testArrayConcatArity() {</span>
+<span class="lineNum">       5 </span><span class="lineCov">          1 :   &quot;use strict&quot;;</span>
+<span class="lineNum">       6 </span><span class="lineCov">          1 :   assertEquals(1, Array.prototype.concat.length);</span>
+<span class="lineNum">       7 </span><span class="lineCov">          1 : })();</span>
+<a name="8"><span class="lineNum">       8 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">       9 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      10 </span><span class="lineCov">          1 : (function testArrayConcatNoPrototype() {</span>
+<span class="lineNum">      11 </span><span class="lineCov">          1 :   &quot;use strict&quot;;</span>
+<span class="lineNum">      12 </span><span class="lineCov">          1 :   assertEquals(void 0, Array.prototype.concat.prototype);</span>
+<span class="lineNum">      13 </span><span class="lineCov">          1 : })();</span>
+<a name="14"><span class="lineNum">      14 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      15 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      16 </span><span class="lineCov">          1 : (function testArrayConcatDescriptor() {</span>
+<span class="lineNum">      17 </span><span class="lineCov">          1 :   &quot;use strict&quot;;</span>
+<span class="lineNum">      18 </span><span class="lineCov">          1 :   var desc = Object.getOwnPropertyDescriptor(Array.prototype, 'concat');</span>
+<span class="lineNum">      19 </span><span class="lineCov">          1 :   assertEquals(false, desc.enumerable);</span>
+<a name="20"><span class="lineNum">      20 </span><span class="lineCov">          1 : })();</span></a>
+<span class="lineNum">      21 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      22 </span><span class="lineCov">          1 : (function testNonConcatSpreadableArray() {</span>
+<span class="lineNum">      23 </span><span class="lineCov">          1 :   &quot;use strict&quot;</span>
+<span class="lineNum">      24 </span><span class="lineCov">          1 :   var array = [1, 2, 3];</span>
+<span class="lineNum">      25 </span><span class="lineCov">          1 :   assertEquals(array, [].concat(array));</span>
+<span class="lineNum">      26 </span><span class="lineCov">          1 :   assertEquals(array, array.concat([]));</span>
+<span class="lineNum">      27 </span><span class="lineCov">          1 :   array[Symbol.isConcatSpreadable] = false;</span>
+<span class="lineNum">      28 </span><span class="lineCov">          1 :   assertEquals([[1,2,3]], [].concat(array));</span>
+<span class="lineNum">      29 </span><span class="lineCov">          1 :   assertEquals([[1,2,3]], array.concat([]));</span>
+<a name="30"><span class="lineNum">      30 </span><span class="lineCov">          1 : })();</span></a>
+<span class="lineNum">      31 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      32 </span><span class="lineCov">          1 : (function testConcatArrayLike() {</span>
+<span class="lineNum">      33 </span><span class="lineCov">          1 :   &quot;use strict&quot;;</span>
+<span class="lineNum">      34 </span><span class="lineCov">          1 :   var obj = {</span>
+<span class="lineNum">      35 </span><span class="lineCov">          1 :     &quot;length&quot;: 6,</span>
+<span class="lineNum">      36 </span><span class="lineCov">          1 :     &quot;1&quot;: &quot;A&quot;,</span>
+<span class="lineNum">      37 </span><span class="lineCov">          1 :     &quot;3&quot;: &quot;B&quot;,</span>
+<span class="lineNum">      38 </span><span class="lineCov">          1 :     &quot;5&quot;: &quot;C&quot;</span>
+<span class="lineNum">      39 </span><span class="lineCov">          1 :   };</span>
+<span class="lineNum">      40 </span><span class="lineCov">          1 :   obj[Symbol.isConcatSpreadable] = true;</span>
+<span class="lineNum">      41 </span><span class="lineCov">          1 :   var obj2 = { length: 3, &quot;0&quot;: &quot;0&quot;, &quot;1&quot;: &quot;1&quot;, &quot;2&quot;: &quot;2&quot; };</span>
+<span class="lineNum">      42 </span><span class="lineCov">          1 :   var arr = [&quot;X&quot;, &quot;Y&quot;, &quot;Z&quot;];</span>
+<span class="lineNum">      43 </span><span class="lineCov">          1 :   assertEquals([void 0, &quot;A&quot;, void 0, &quot;B&quot;, void 0, &quot;C&quot;,</span>
+<span class="lineNum">      44 </span><span class="lineCov">          1 :                { &quot;length&quot;: 3, &quot;0&quot;: &quot;0&quot;, &quot;1&quot;: &quot;1&quot;, &quot;2&quot;: &quot;2&quot; },</span>
+<span class="lineNum">      45 </span><span class="lineCov">          1 :                &quot;X&quot;, &quot;Y&quot;, &quot;Z&quot;], Array.prototype.concat.call(obj, obj2, arr));</span>
+<span class="lineNum">      46 </span><span class="lineCov">          1 : })();</span>
+<a name="47"><span class="lineNum">      47 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      48 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      49 </span><span class="lineCov">          1 : (function testConcatArrayLikeStringLength() {</span>
+<span class="lineNum">      50 </span><span class="lineCov">          1 :   &quot;use strict&quot;;</span>
+<span class="lineNum">      51 </span><span class="lineCov">          1 :   var obj = {</span>
+<span class="lineNum">      52 </span><span class="lineCov">          1 :     &quot;length&quot;: &quot;6&quot;,</span>
+<span class="lineNum">      53 </span><span class="lineCov">          1 :     &quot;1&quot;: &quot;A&quot;,</span>
+<span class="lineNum">      54 </span><span class="lineCov">          1 :     &quot;3&quot;: &quot;B&quot;,</span>
+<span class="lineNum">      55 </span><span class="lineCov">          1 :     &quot;5&quot;: &quot;C&quot;</span>
+<span class="lineNum">      56 </span><span class="lineCov">          1 :   };</span>
+<span class="lineNum">      57 </span><span class="lineCov">          1 :   obj[Symbol.isConcatSpreadable] = true;</span>
+<span class="lineNum">      58 </span><span class="lineCov">          1 :   var obj2 = { length: 3, &quot;0&quot;: &quot;0&quot;, &quot;1&quot;: &quot;1&quot;, &quot;2&quot;: &quot;2&quot; };</span>
+<span class="lineNum">      59 </span><span class="lineCov">          1 :   var arr = [&quot;X&quot;, &quot;Y&quot;, &quot;Z&quot;];</span>
+<span class="lineNum">      60 </span><span class="lineCov">          1 :   assertEquals([void 0, &quot;A&quot;, void 0, &quot;B&quot;, void 0, &quot;C&quot;,</span>
+<span class="lineNum">      61 </span><span class="lineCov">          1 :                { &quot;length&quot;: 3, &quot;0&quot;: &quot;0&quot;, &quot;1&quot;: &quot;1&quot;, &quot;2&quot;: &quot;2&quot; },</span>
+<span class="lineNum">      62 </span><span class="lineCov">          1 :                &quot;X&quot;, &quot;Y&quot;, &quot;Z&quot;], Array.prototype.concat.call(obj, obj2, arr));</span>
+<span class="lineNum">      63 </span><span class="lineCov">          1 : })();</span>
+<a name="64"><span class="lineNum">      64 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      65 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      66 </span><span class="lineCov">          1 : (function testConcatArrayLikeNegativeLength() {</span>
+<span class="lineNum">      67 </span><span class="lineCov">          1 :   &quot;use strict&quot;;</span>
+<span class="lineNum">      68 </span><span class="lineCov">          1 :   var obj = {</span>
+<span class="lineNum">      69 </span><span class="lineCov">          1 :     &quot;length&quot;: -6,</span>
+<span class="lineNum">      70 </span><span class="lineCov">          1 :     &quot;1&quot;: &quot;A&quot;,</span>
+<span class="lineNum">      71 </span><span class="lineCov">          1 :     &quot;3&quot;: &quot;B&quot;,</span>
+<span class="lineNum">      72 </span><span class="lineCov">          1 :     &quot;5&quot;: &quot;C&quot;</span>
+<span class="lineNum">      73 </span><span class="lineCov">          1 :   };</span>
+<span class="lineNum">      74 </span><span class="lineCov">          1 :   obj[Symbol.isConcatSpreadable] = true;</span>
+<span class="lineNum">      75 </span><span class="lineCov">          1 :   assertEquals([], [].concat(obj));</span>
+<span class="lineNum">      76 </span><span class="lineCov">          1 :   obj.length = -6.7;</span>
+<span class="lineNum">      77 </span><span class="lineCov">          1 :   assertEquals([], [].concat(obj));</span>
+<span class="lineNum">      78 </span><span class="lineCov">          1 :   obj.length = &quot;-6&quot;;</span>
+<span class="lineNum">      79 </span><span class="lineCov">          1 :   assertEquals([], [].concat(obj));</span>
+<span class="lineNum">      80 </span><span class="lineCov">          1 : })();</span>
+<a name="81"><span class="lineNum">      81 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      82 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      83 </span><span class="lineCov">          1 : (function testConcatArrayLikeToLengthThrows() {</span>
+<span class="lineNum">      84 </span><span class="lineCov">          1 :   &quot;use strict&quot;;</span>
+<span class="lineNum">      85 </span><span class="lineCov">          1 :   var obj = {</span>
+<span class="lineNum">      86 </span><span class="lineCov">          1 :     &quot;length&quot;: {valueOf: null, toString: null},</span>
+<span class="lineNum">      87 </span><span class="lineCov">          1 :     &quot;1&quot;: &quot;A&quot;,</span>
+<span class="lineNum">      88 </span><span class="lineCov">          1 :     &quot;3&quot;: &quot;B&quot;,</span>
+<span class="lineNum">      89 </span><span class="lineCov">          1 :     &quot;5&quot;: &quot;C&quot;</span>
+<span class="lineNum">      90 </span><span class="lineCov">          1 :   };</span>
+<span class="lineNum">      91 </span><span class="lineCov">          1 :   obj[Symbol.isConcatSpreadable] = true;</span>
+<a name="92"><span class="lineNum">      92 </span><span class="lineCov">          1 :   var obj2 = { length: 3, &quot;0&quot;: &quot;0&quot;, &quot;1&quot;: &quot;1&quot;, &quot;2&quot;: &quot;2&quot; };</span></a>
+<span class="lineNum">      93 </span><span class="lineCov">          1 :   var arr = [&quot;X&quot;, &quot;Y&quot;, &quot;Z&quot;];</span>
+<span class="lineNum">      94 </span><span class="lineCov">          1 :   assertThrows(function() {</span>
+<span class="lineNum">      95 </span><span class="lineCov">          1 :     Array.prototype.concat.call(obj, obj2, arr);</span>
+<span class="lineNum">      96 </span><span class="lineCov">          1 :   }, TypeError);</span>
+<span class="lineNum">      97 </span><span class="lineCov">          1 : })();</span>
+<a name="98"><span class="lineNum">      98 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      99 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     100 </span><span class="lineCov">          1 : (function testConcatArrayLikePrimitiveNonNumberLength() {</span>
+<span class="lineNum">     101 </span><span class="lineCov">          1 :   &quot;use strict&quot;;</span>
+<span class="lineNum">     102 </span><span class="lineCov">          1 :   var obj = {</span>
+<span class="lineNum">     103 </span><span class="lineCov">          1 :     &quot;1&quot;: &quot;A&quot;,</span>
+<span class="lineNum">     104 </span><span class="lineCov">          1 :     &quot;3&quot;: &quot;B&quot;,</span>
+<span class="lineNum">     105 </span><span class="lineCov">          1 :     &quot;5&quot;: &quot;C&quot;</span>
+<span class="lineNum">     106 </span><span class="lineCov">          1 :   };</span>
+<span class="lineNum">     107 </span><span class="lineCov">          1 :   obj[Symbol.isConcatSpreadable] = true;</span>
+<span class="lineNum">     108 </span><span class="lineCov">          1 :   obj.length = {toString: function() { return &quot;SIX&quot;; }, valueOf: null };</span>
+<span class="lineNum">     109 </span><span class="lineCov">          1 :   assertEquals([], [].concat(obj));</span>
+<span class="lineNum">     110 </span><span class="lineCov">          1 :   obj.length = {toString: null, valueOf: function() { return &quot;SIX&quot;; } };</span>
+<span class="lineNum">     111 </span><span class="lineCov">          1 :   assertEquals([], [].concat(obj));</span>
+<span class="lineNum">     112 </span><span class="lineCov">          1 : })();</span>
+<a name="113"><span class="lineNum">     113 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     114 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     115 </span><span class="lineCov">          1 : (function testConcatArrayLikeLengthToStringThrows() {</span>
+<span class="lineNum">     116 </span><span class="lineCov">          1 :   &quot;use strict&quot;;</span>
+<a name="117"><span class="lineNum">     117 </span><span class="lineCov">          1 :   function MyError() {}</span></a>
+<span class="lineNum">     118 </span><span class="lineCov">          1 :   var obj = {</span>
+<span class="lineNum">     119 </span><span class="lineCov">          1 :     &quot;length&quot;: { toString: function() {</span>
+<span class="lineNum">     120 </span><span class="lineCov">          1 :         throw new MyError();</span>
+<span class="lineNum">     121 </span><span class="lineCov">          1 :       }, valueOf: null</span>
+<span class="lineNum">     122 </span><span class="lineCov">          1 :     },</span>
+<span class="lineNum">     123 </span><span class="lineCov">          1 :     &quot;1&quot;: &quot;A&quot;,</span>
+<span class="lineNum">     124 </span><span class="lineCov">          1 :     &quot;3&quot;: &quot;B&quot;,</span>
+<span class="lineNum">     125 </span><span class="lineCov">          1 :     &quot;5&quot;: &quot;C&quot;</span>
+<a name="126"><span class="lineNum">     126 </span><span class="lineCov">          1 :   };</span></a>
+<span class="lineNum">     127 </span><span class="lineCov">          1 :   obj[Symbol.isConcatSpreadable] = true;</span>
+<span class="lineNum">     128 </span><span class="lineCov">          1 :   assertThrows(function() {</span>
+<span class="lineNum">     129 </span><span class="lineCov">          1 :     [].concat(obj);</span>
+<span class="lineNum">     130 </span><span class="lineCov">          1 :   }, MyError);</span>
+<span class="lineNum">     131 </span><span class="lineCov">          1 : })();</span>
+<a name="132"><span class="lineNum">     132 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     133 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     134 </span><span class="lineCov">          1 : (function testConcatArrayLikeLengthValueOfThrows() {</span>
+<span class="lineNum">     135 </span><span class="lineCov">          1 :   &quot;use strict&quot;;</span>
+<a name="136"><span class="lineNum">     136 </span><span class="lineCov">          1 :   function MyError() {}</span></a>
+<span class="lineNum">     137 </span><span class="lineCov">          1 :   var obj = {</span>
+<span class="lineNum">     138 </span><span class="lineCov">          1 :     &quot;length&quot;: { valueOf: function() {</span>
+<span class="lineNum">     139 </span><span class="lineCov">          1 :       throw new MyError();</span>
+<span class="lineNum">     140 </span><span class="lineCov">          1 :     }, toString: null</span>
+<span class="lineNum">     141 </span><span class="lineCov">          1 :   },</span>
+<span class="lineNum">     142 </span><span class="lineCov">          1 :   &quot;1&quot;: &quot;A&quot;,</span>
+<span class="lineNum">     143 </span><span class="lineCov">          1 :   &quot;3&quot;: &quot;B&quot;,</span>
+<span class="lineNum">     144 </span><span class="lineCov">          1 :   &quot;5&quot;: &quot;C&quot;</span>
+<a name="145"><span class="lineNum">     145 </span><span class="lineCov">          1 : };</span></a>
+<span class="lineNum">     146 </span><span class="lineCov">          1 : obj[Symbol.isConcatSpreadable] = true;</span>
+<span class="lineNum">     147 </span><span class="lineCov">          1 : assertThrows(function() {</span>
+<span class="lineNum">     148 </span><span class="lineCov">          1 :   [].concat(obj);</span>
+<span class="lineNum">     149 </span><span class="lineCov">          1 : }, MyError);</span>
+<span class="lineNum">     150 </span><span class="lineCov">          1 : })();</span>
+<a name="151"><span class="lineNum">     151 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     152 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     153 </span><span class="lineCov">          1 : (function testConcatHoleyArray() {</span>
+<span class="lineNum">     154 </span><span class="lineCov">          1 :   &quot;use strict&quot;;</span>
+<span class="lineNum">     155 </span><span class="lineCov">          1 :   var arr = [];</span>
+<span class="lineNum">     156 </span><span class="lineCov">          1 :   arr[4] = &quot;Item 4&quot;;</span>
+<span class="lineNum">     157 </span><span class="lineCov">          1 :   arr[8] = &quot;Item 8&quot;;</span>
+<span class="lineNum">     158 </span><span class="lineCov">          1 :   var arr2 = [&quot;.&quot;, &quot;!&quot;, &quot;?&quot;];</span>
+<span class="lineNum">     159 </span><span class="lineCov">          1 :   assertEquals([void 0, void 0, void 0, void 0, &quot;Item 4&quot;, void 0, void 0,</span>
+<span class="lineNum">     160 </span><span class="lineCov">          1 :                 void 0, &quot;Item 8&quot;, &quot;.&quot;, &quot;!&quot;, &quot;?&quot;], arr.concat(arr2));</span>
+<span class="lineNum">     161 </span><span class="lineCov">          1 : })();</span>
+<a name="162"><span class="lineNum">     162 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     163 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     164 </span><span class="lineCov">          1 : (function testIsConcatSpreadableGetterThrows() {</span>
+<span class="lineNum">     165 </span><span class="lineCov">          1 :   &quot;use strict&quot;;</span>
+<span class="lineNum">     166 </span><span class="lineCov">          2 :   function MyError() {}</span>
+<span class="lineNum">     167 </span><span class="lineCov">          1 :   var obj = {};</span>
+<span class="lineNum">     168 </span><span class="lineCov">          1 :   Object.defineProperty(obj, Symbol.isConcatSpreadable, {</span>
+<span class="lineNum">     169 </span><span class="lineCov">          2 :     get: function() { throw new MyError(); }</span>
+<a name="170"><span class="lineNum">     170 </span><span class="lineCov">          1 :   });</span></a>
+<span class="lineNum">     171 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     172 </span><span class="lineCov">          1 :   assertThrows(function() {</span>
+<span class="lineNum">     173 </span><span class="lineCov">          1 :     [].concat(obj);</span>
+<a name="174"><span class="lineNum">     174 </span><span class="lineCov">          1 :   }, MyError);</span></a>
+<span class="lineNum">     175 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     176 </span><span class="lineCov">          1 :   assertThrows(function() {</span>
+<span class="lineNum">     177 </span><span class="lineCov">          1 :     Array.prototype.concat.call(obj, 1, 2, 3);</span>
+<span class="lineNum">     178 </span><span class="lineCov">          1 :   }, MyError);</span>
+<span class="lineNum">     179 </span><span class="lineCov">          1 : })();</span>
+<a name="180"><span class="lineNum">     180 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     181 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     182 </span><span class="lineCov">          1 : (function testConcatLengthThrows() {</span>
+<span class="lineNum">     183 </span><span class="lineCov">          1 :   &quot;use strict&quot;;</span>
+<span class="lineNum">     184 </span><span class="lineCov">          2 :   function MyError() {}</span>
+<span class="lineNum">     185 </span><span class="lineCov">          1 :   var obj = {};</span>
+<span class="lineNum">     186 </span><span class="lineCov">          1 :   obj[Symbol.isConcatSpreadable] = true;</span>
+<span class="lineNum">     187 </span><span class="lineCov">          1 :   Object.defineProperty(obj, &quot;length&quot;, {</span>
+<span class="lineNum">     188 </span><span class="lineCov">          2 :     get: function() { throw new MyError(); }</span>
+<a name="189"><span class="lineNum">     189 </span><span class="lineCov">          1 :   });</span></a>
+<span class="lineNum">     190 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     191 </span><span class="lineCov">          1 :   assertThrows(function() {</span>
+<span class="lineNum">     192 </span><span class="lineCov">          1 :     [].concat(obj);</span>
+<a name="193"><span class="lineNum">     193 </span><span class="lineCov">          1 :   }, MyError);</span></a>
+<span class="lineNum">     194 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     195 </span><span class="lineCov">          1 :   assertThrows(function() {</span>
+<span class="lineNum">     196 </span><span class="lineCov">          1 :     Array.prototype.concat.call(obj, 1, 2, 3);</span>
+<span class="lineNum">     197 </span><span class="lineCov">          1 :   }, MyError);</span>
+<span class="lineNum">     198 </span><span class="lineCov">          1 : })();</span>
+<a name="199"><span class="lineNum">     199 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     200 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     201 </span><span class="lineCov">          1 : (function testConcatArraySubclass() {</span>
+<span class="lineNum">     202 </span><span class="lineCov">          1 :   &quot;use strict&quot;;</span>
+<span class="lineNum">     203 </span><span class="lineCov">          1 :   // If @@isConcatSpreadable is not used, the value of IsArray(O)</span>
+<span class="lineNum">     204 </span><span class="lineCov">          1 :   // is used to determine the spreadable property.</span>
+<span class="lineNum">     205 </span><span class="lineCov">          3 :   class A extends Array {}</span>
+<span class="lineNum">     206 </span><span class="lineCov">          1 :   var obj = [].concat(new A(1, 2, 3), new A(4, 5, 6), new A(7, 8, 9));</span>
+<span class="lineNum">     207 </span><span class="lineCov">          1 :   assertEquals(9, obj.length);</span>
+<span class="lineNum">     208 </span><span class="lineCov">          1 :   for (var i = 0; i &lt; obj.length; ++i) {</span>
+<span class="lineNum">     209 </span><span class="lineCov">          1 :     assertEquals(i + 1, obj[i]);</span>
+<span class="lineNum">     210 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     211 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     212 </span><span class="lineCov">          1 :   // TODO(caitp): when concat is called on instances of classes which extend</span>
+<span class="lineNum">     213 </span><span class="lineCov">          1 :   // Array, they should:</span>
+<span class="lineNum">     214 </span><span class="lineCov">          1 :   //</span>
+<span class="lineNum">     215 </span><span class="lineCov">          1 :   // - return an instance of the class, rather than an Array instance (if from</span>
+<span class="lineNum">     216 </span><span class="lineCov">          1 :   //   same Realm)</span>
+<span class="lineNum">     217 </span><span class="lineCov">          1 :   // - always treat such classes as concat-spreadable</span>
+<span class="lineNum">     218 </span><span class="lineCov">          1 : })();</span>
+<a name="219"><span class="lineNum">     219 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     220 </span><span class="lineCov">          1 : </span>
+<a name="221"><span class="lineNum">     221 </span><span class="lineCov">          1 : (function testConcatArraySubclassOptOut() {</span></a>
+<a name="222"><span class="lineNum">     222 </span><span class="lineCov">          1 :   &quot;use strict&quot;;</span></a>
+<span class="lineNum">     223 </span><span class="lineCov">          3 :   class A extends Array {</span>
+<span class="lineNum">     224 </span><span class="lineCov">          3 :     get [Symbol.isConcatSpreadable]() { return false; }</span>
+<span class="lineNum">     225 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     226 </span><span class="lineCov">          1 :   var obj = [].concat(new A(1, 2, 3), new A(4, 5, 6), new A(7, 8, 9));</span>
+<span class="lineNum">     227 </span><span class="lineCov">          1 :   assertEquals(3, obj.length);</span>
+<span class="lineNum">     228 </span><span class="lineCov">          1 :   assertEquals(3, obj[0].length);</span>
+<span class="lineNum">     229 </span><span class="lineCov">          1 :   assertEquals(3, obj[1].length);</span>
+<span class="lineNum">     230 </span><span class="lineCov">          1 :   assertEquals(3, obj[2].length);</span>
+<span class="lineNum">     231 </span><span class="lineCov">          1 : })();</span>
+<a name="232"><span class="lineNum">     232 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     233 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     234 </span><span class="lineCov">          1 : (function testConcatNonArray() {</span>
+<a name="235"><span class="lineNum">     235 </span><span class="lineCov">          1 :   &quot;use strict&quot;;</span></a>
+<span class="lineNum">     236 </span><span class="lineCov">          1 :   class NonArray {</span>
+<span class="lineNum">     237 </span><span class="lineCov">          1 :     constructor() { Array.apply(this, arguments); }</span>
+<span class="lineNum">     238 </span><span class="lineCov">          1 :   };</span>
+<span class="lineNum">     239 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     240 </span><span class="lineCov">          1 :   var obj = new NonArray(1,2,3);</span>
+<span class="lineNum">     241 </span><span class="lineCov">          1 :   var result = Array.prototype.concat.call(obj, 4, 5, 6);</span>
+<span class="lineNum">     242 </span><span class="lineCov">          1 :   assertEquals(Array, result.constructor);</span>
+<span class="lineNum">     243 </span><span class="lineCov">          1 :   assertEquals([obj,4,5,6], result);</span>
+<span class="lineNum">     244 </span><span class="lineCov">          1 :   assertFalse(result instanceof NonArray);</span>
+<span class="lineNum">     245 </span><span class="lineCov">          1 : })();</span>
+<a name="246"><span class="lineNum">     246 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     247 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     248 </span><span class="lineCov">         10 : function testConcatTypedArray(type, elems, modulo) {</span>
+<span class="lineNum">     249 </span><span class="lineCov">         10 :   &quot;use strict&quot;;</span>
+<span class="lineNum">     250 </span><span class="lineCov">         10 :   var items = new Array(elems);</span>
+<span class="lineNum">     251 </span><span class="lineCov">         10 :   var ta_by_len = new type(elems);</span>
+<span class="lineNum">     252 </span><span class="lineCov">         10 :   for (var i = 0; i &lt; elems; ++i) {</span>
+<span class="lineNum">     253 </span><span class="lineCov">         10 :     ta_by_len[i] = items[i] = modulo === false ? i : elems % modulo;</span>
+<span class="lineNum">     254 </span><span class="lineCov">         10 :   }</span>
+<span class="lineNum">     255 </span><span class="lineCov">         10 :   var ta = new type(items);</span>
+<span class="lineNum">     256 </span><span class="lineCov">         10 :   assertEquals([ta, ta], [].concat(ta, ta));</span>
+<span class="lineNum">     257 </span><span class="lineCov">         10 :   ta[Symbol.isConcatSpreadable] = true;</span>
+<span class="lineNum">     258 </span><span class="lineCov">         10 :   assertEquals(items, [].concat(ta));</span>
+<span class="lineNum">     259 </span><span class="lineCov">         10 : </span>
+<span class="lineNum">     260 </span><span class="lineCov">         10 :   assertEquals([ta_by_len, ta_by_len], [].concat(ta_by_len, ta_by_len));</span>
+<span class="lineNum">     261 </span><span class="lineCov">         10 :   ta_by_len[Symbol.isConcatSpreadable] = true;</span>
+<span class="lineNum">     262 </span><span class="lineCov">         10 :   assertEquals(items, [].concat(ta_by_len));</span>
+<span class="lineNum">     263 </span><span class="lineCov">         10 : </span>
+<span class="lineNum">     264 </span><span class="lineCov">         10 :   // TypedArray with fake `length`.</span>
+<span class="lineNum">     265 </span><span class="lineCov">         10 :   ta = new type(1);</span>
+<span class="lineNum">     266 </span><span class="lineCov">         10 :   var defValue = ta[0];</span>
+<span class="lineNum">     267 </span><span class="lineCov">         10 :   var expected = new Array(4000);</span>
+<span class="lineNum">     268 </span><span class="lineCov">         10 :   expected[0] = defValue;</span>
+<span class="lineNum">     269 </span><span class="lineCov">         10 : </span>
+<span class="lineNum">     270 </span><span class="lineCov">         10 :   Object.defineProperty(ta, &quot;length&quot;, { value: 4000 });</span>
+<span class="lineNum">     271 </span><span class="lineCov">         10 :   ta[Symbol.isConcatSpreadable] = true;</span>
+<span class="lineNum">     272 </span><span class="lineCov">         10 :   assertEquals(expected, [].concat(ta));</span>
+<a name="273"><span class="lineNum">     273 </span><span class="lineCov">         10 : }</span></a>
+<span class="lineNum">     274 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     275 </span><span class="lineCov">          1 : (function testConcatSmallTypedArray() {</span>
+<span class="lineNum">     276 </span><span class="lineCov">          1 :   var length = 1;</span>
+<span class="lineNum">     277 </span><span class="lineCov">          1 :   testConcatTypedArray(Uint8Array, length, Math.pow(2, 8));</span>
+<span class="lineNum">     278 </span><span class="lineCov">          1 :   testConcatTypedArray(Uint16Array, length, Math.pow(2, 16));</span>
+<span class="lineNum">     279 </span><span class="lineCov">          1 :   testConcatTypedArray(Uint32Array, length,  Math.pow(2, 32));</span>
+<span class="lineNum">     280 </span><span class="lineCov">          1 :   testConcatTypedArray(Float32Array, length, false);</span>
+<span class="lineNum">     281 </span><span class="lineCov">          1 :   testConcatTypedArray(Float64Array, length, false);</span>
+<span class="lineNum">     282 </span><span class="lineCov">          1 : })();</span>
+<a name="283"><span class="lineNum">     283 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     284 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     285 </span><span class="lineCov">          1 : (function testConcatLargeTypedArray() {</span>
+<span class="lineNum">     286 </span><span class="lineCov">          1 :   var length = 4000;</span>
+<span class="lineNum">     287 </span><span class="lineCov">          1 :   testConcatTypedArray(Uint8Array, length, Math.pow(2, 8));</span>
+<span class="lineNum">     288 </span><span class="lineCov">          1 :   testConcatTypedArray(Uint16Array, length, Math.pow(2, 16));</span>
+<span class="lineNum">     289 </span><span class="lineCov">          1 :   testConcatTypedArray(Uint32Array, length,  Math.pow(2, 32));</span>
+<span class="lineNum">     290 </span><span class="lineCov">          1 :   testConcatTypedArray(Float32Array, length, false);</span>
+<span class="lineNum">     291 </span><span class="lineCov">          1 :   testConcatTypedArray(Float64Array, length, false);</span>
+<span class="lineNum">     292 </span><span class="lineCov">          1 : })();</span>
+<a name="293"><span class="lineNum">     293 </span><span class="lineCov">          1 : </span></a>
+<a name="294"><span class="lineNum">     294 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     295 </span><span class="lineCov">          1 : (function testConcatStrictArguments() {</span>
+<span class="lineNum">     296 </span><span class="lineCov">          1 :   var args = (function(a, b, c) { &quot;use strict&quot;; return arguments; })(1,2,3);</span>
+<span class="lineNum">     297 </span><span class="lineCov">          1 :   args[Symbol.isConcatSpreadable] = true;</span>
+<span class="lineNum">     298 </span><span class="lineCov">          1 :   assertEquals([1, 2, 3, 1, 2, 3], [].concat(args, args));</span>
+<span class="lineNum">     299 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     300 </span><span class="lineCov">          1 :   Object.defineProperty(args, &quot;length&quot;, { value: 6 });</span>
+<span class="lineNum">     301 </span><span class="lineCov">          1 :   assertEquals([1, 2, 3, void 0, void 0, void 0], [].concat(args));</span>
+<span class="lineNum">     302 </span><span class="lineCov">          1 : })();</span>
+<a name="303"><span class="lineNum">     303 </span><span class="lineCov">          1 : </span></a>
+<a name="304"><span class="lineNum">     304 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     305 </span><span class="lineCov">          1 : (function testConcatSloppyArguments() {</span>
+<span class="lineNum">     306 </span><span class="lineCov">          1 :   var args = (function(a, b, c) { return arguments; })(1,2,3);</span>
+<span class="lineNum">     307 </span><span class="lineCov">          1 :   args[Symbol.isConcatSpreadable] = true;</span>
+<span class="lineNum">     308 </span><span class="lineCov">          1 :   assertEquals([1, 2, 3, 1, 2, 3], [].concat(args, args));</span>
+<span class="lineNum">     309 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     310 </span><span class="lineCov">          1 :   Object.defineProperty(args, &quot;length&quot;, { value: 6 });</span>
+<span class="lineNum">     311 </span><span class="lineCov">          1 :   assertEquals([1, 2, 3, void 0, void 0, void 0], [].concat(args));</span>
+<span class="lineNum">     312 </span><span class="lineCov">          1 : })();</span>
+<a name="313"><span class="lineNum">     313 </span><span class="lineCov">          1 : </span></a>
+<a name="314"><span class="lineNum">     314 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     315 </span><span class="lineCov">          1 : (function testConcatSloppyArgumentsWithDupes() {</span>
+<span class="lineNum">     316 </span><span class="lineCov">          1 :   var args = (function(a, a, a) { return arguments; })(1,2,3);</span>
+<span class="lineNum">     317 </span><span class="lineCov">          1 :   args[Symbol.isConcatSpreadable] = true;</span>
+<span class="lineNum">     318 </span><span class="lineCov">          1 :   assertEquals([1, 2, 3, 1, 2, 3], [].concat(args, args));</span>
+<span class="lineNum">     319 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     320 </span><span class="lineCov">          1 :   Object.defineProperty(args, &quot;length&quot;, { value: 6 });</span>
+<span class="lineNum">     321 </span><span class="lineCov">          1 :   assertEquals([1, 2, 3, void 0, void 0, void 0], [].concat(args));</span>
+<span class="lineNum">     322 </span><span class="lineCov">          1 : })();</span>
+<a name="323"><span class="lineNum">     323 </span><span class="lineCov">          1 : </span></a>
+<a name="324"><span class="lineNum">     324 </span><span class="lineCov">          1 : </span></a>
+<a name="325"><span class="lineNum">     325 </span><span class="lineCov">          1 : (function testConcatSloppyArgumentsThrows() {</span></a>
+<span class="lineNum">     326 </span><span class="lineCov">          1 :   function MyError() {}</span>
+<span class="lineNum">     327 </span><span class="lineCov">          1 :   var args = (function(a) { return arguments; })(1,2,3);</span>
+<span class="lineNum">     328 </span><span class="lineCov">          1 :   Object.defineProperty(args, 0, {</span>
+<span class="lineNum">     329 </span><span class="lineCov">          1 :     get: function() { throw new MyError(); }</span>
+<a name="330"><span class="lineNum">     330 </span><span class="lineCov">          1 :   });</span></a>
+<span class="lineNum">     331 </span><span class="lineCov">          1 :   args[Symbol.isConcatSpreadable] = true;</span>
+<span class="lineNum">     332 </span><span class="lineCov">          1 :   assertThrows(function() {</span>
+<span class="lineNum">     333 </span><span class="lineCov">          1 :     return [].concat(args, args);</span>
+<span class="lineNum">     334 </span><span class="lineCov">          1 :   }, MyError);</span>
+<span class="lineNum">     335 </span><span class="lineCov">          1 : })();</span>
+<a name="336"><span class="lineNum">     336 </span><span class="lineCov">          1 : </span></a>
+<a name="337"><span class="lineNum">     337 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     338 </span><span class="lineCov">          1 : (function testConcatHoleySloppyArguments() {</span>
+<span class="lineNum">     339 </span><span class="lineCov">          1 :   var args = (function(a) { return arguments; })(1,2,3);</span>
+<span class="lineNum">     340 </span><span class="lineCov">          1 :   delete args[1];</span>
+<span class="lineNum">     341 </span><span class="lineCov">          1 :   args[Symbol.isConcatSpreadable] = true;</span>
+<span class="lineNum">     342 </span><span class="lineCov">          1 :   assertEquals([1, void 0, 3, 1, void 0, 3], [].concat(args, args));</span>
+<span class="lineNum">     343 </span><span class="lineCov">          1 : })();</span>
+<a name="344"><span class="lineNum">     344 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     345 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     346 </span><span class="lineCov">          1 : (function testConcatSpreadableStringWrapper() {</span>
+<span class="lineNum">     347 </span><span class="lineCov">          1 :   &quot;use strict&quot;;</span>
+<span class="lineNum">     348 </span><span class="lineCov">          1 :   var str1 = new String(&quot;yuck\uD83D\uDCA9&quot;)</span>
+<span class="lineNum">     349 </span><span class="lineCov">          1 :   // String wrapper objects are not concat-spreadable by default</span>
+<span class="lineNum">     350 </span><span class="lineCov">          1 :   assertEquals([str1], [].concat(str1));</span>
+<span class="lineNum">     351 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     352 </span><span class="lineCov">          1 :   // String wrapper objects may be individually concat-spreadable</span>
+<span class="lineNum">     353 </span><span class="lineCov">          1 :   str1[Symbol.isConcatSpreadable] = true;</span>
+<span class="lineNum">     354 </span><span class="lineCov">          1 :   assertEquals([&quot;y&quot;, &quot;u&quot;, &quot;c&quot;, &quot;k&quot;, &quot;\uD83D&quot;, &quot;\uDCA9&quot;],</span>
+<span class="lineNum">     355 </span><span class="lineCov">          1 :                [].concat(str1));</span>
+<span class="lineNum">     356 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     357 </span><span class="lineCov">          1 :   String.prototype[Symbol.isConcatSpreadable] = true;</span>
+<span class="lineNum">     358 </span><span class="lineCov">          1 :   // String wrapper objects may be concat-spreadable</span>
+<span class="lineNum">     359 </span><span class="lineCov">          1 :   assertEquals([&quot;y&quot;, &quot;u&quot;, &quot;c&quot;, &quot;k&quot;, &quot;\uD83D&quot;, &quot;\uDCA9&quot;],</span>
+<span class="lineNum">     360 </span><span class="lineCov">          1 :                [].concat(new String(&quot;yuck\uD83D\uDCA9&quot;)));</span>
+<span class="lineNum">     361 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     362 </span><span class="lineCov">          1 :   // String values are never concat-spreadable</span>
+<span class="lineNum">     363 </span><span class="lineCov">          1 :   assertEquals([&quot;yuck\uD83D\uDCA9&quot;], [].concat(&quot;yuck\uD83D\uDCA9&quot;));</span>
+<span class="lineNum">     364 </span><span class="lineCov">          1 :   delete String.prototype[Symbol.isConcatSpreadable];</span>
+<span class="lineNum">     365 </span><span class="lineCov">          1 : })();</span>
+<a name="366"><span class="lineNum">     366 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     367 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     368 </span><span class="lineCov">          1 : (function testConcatSpreadableBooleanWrapper() {</span>
+<span class="lineNum">     369 </span><span class="lineCov">          1 :   &quot;use strict&quot;;</span>
+<span class="lineNum">     370 </span><span class="lineCov">          1 :   var bool = new Boolean(true)</span>
+<span class="lineNum">     371 </span><span class="lineCov">          1 :   // Boolean wrapper objects are not concat-spreadable by default</span>
+<span class="lineNum">     372 </span><span class="lineCov">          1 :   assertEquals([bool], [].concat(bool));</span>
+<span class="lineNum">     373 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     374 </span><span class="lineCov">          1 :   // Boolean wrapper objects may be individually concat-spreadable</span>
+<span class="lineNum">     375 </span><span class="lineCov">          1 :   bool[Symbol.isConcatSpreadable] = true;</span>
+<span class="lineNum">     376 </span><span class="lineCov">          1 :   bool.length = 3;</span>
+<span class="lineNum">     377 </span><span class="lineCov">          1 :   bool[0] = 1, bool[1] = 2, bool[2] = 3;</span>
+<span class="lineNum">     378 </span><span class="lineCov">          1 :   assertEquals([1, 2, 3], [].concat(bool));</span>
+<span class="lineNum">     379 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     380 </span><span class="lineCov">          1 :   Boolean.prototype[Symbol.isConcatSpreadable] = true;</span>
+<span class="lineNum">     381 </span><span class="lineCov">          1 :   // Boolean wrapper objects may be concat-spreadable</span>
+<span class="lineNum">     382 </span><span class="lineCov">          1 :   assertEquals([], [].concat(new Boolean(true)));</span>
+<span class="lineNum">     383 </span><span class="lineCov">          1 :   Boolean.prototype[0] = 1;</span>
+<span class="lineNum">     384 </span><span class="lineCov">          1 :   Boolean.prototype[1] = 2;</span>
+<span class="lineNum">     385 </span><span class="lineCov">          1 :   Boolean.prototype[2] = 3;</span>
+<span class="lineNum">     386 </span><span class="lineCov">          1 :   Boolean.prototype.length = 3;</span>
+<span class="lineNum">     387 </span><span class="lineCov">          1 :   assertEquals([1,2,3], [].concat(new Boolean(true)));</span>
+<span class="lineNum">     388 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     389 </span><span class="lineCov">          1 :   // Boolean values are never concat-spreadable</span>
+<span class="lineNum">     390 </span><span class="lineCov">          1 :   assertEquals([true], [].concat(true));</span>
+<span class="lineNum">     391 </span><span class="lineCov">          1 :   delete Boolean.prototype[Symbol.isConcatSpreadable];</span>
+<span class="lineNum">     392 </span><span class="lineCov">          1 :   delete Boolean.prototype[0];</span>
+<span class="lineNum">     393 </span><span class="lineCov">          1 :   delete Boolean.prototype[1];</span>
+<span class="lineNum">     394 </span><span class="lineCov">          1 :   delete Boolean.prototype[2];</span>
+<span class="lineNum">     395 </span><span class="lineCov">          1 :   delete Boolean.prototype.length;</span>
+<span class="lineNum">     396 </span><span class="lineCov">          1 : })();</span>
+<a name="397"><span class="lineNum">     397 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     398 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     399 </span><span class="lineCov">          1 : (function testConcatSpreadableNumberWrapper() {</span>
+<span class="lineNum">     400 </span><span class="lineCov">          1 :   &quot;use strict&quot;;</span>
+<span class="lineNum">     401 </span><span class="lineCov">          1 :   var num = new Number(true)</span>
+<span class="lineNum">     402 </span><span class="lineCov">          1 :   // Number wrapper objects are not concat-spreadable by default</span>
+<span class="lineNum">     403 </span><span class="lineCov">          1 :   assertEquals([num], [].concat(num));</span>
+<span class="lineNum">     404 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     405 </span><span class="lineCov">          1 :   // Number wrapper objects may be individually concat-spreadable</span>
+<span class="lineNum">     406 </span><span class="lineCov">          1 :   num[Symbol.isConcatSpreadable] = true;</span>
+<span class="lineNum">     407 </span><span class="lineCov">          1 :   num.length = 3;</span>
+<span class="lineNum">     408 </span><span class="lineCov">          1 :   num[0] = 1, num[1] = 2, num[2] = 3;</span>
+<span class="lineNum">     409 </span><span class="lineCov">          1 :   assertEquals([1, 2, 3], [].concat(num));</span>
+<span class="lineNum">     410 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     411 </span><span class="lineCov">          1 :   Number.prototype[Symbol.isConcatSpreadable] = true;</span>
+<span class="lineNum">     412 </span><span class="lineCov">          1 :   // Number wrapper objects may be concat-spreadable</span>
+<span class="lineNum">     413 </span><span class="lineCov">          1 :   assertEquals([], [].concat(new Number(123)));</span>
+<span class="lineNum">     414 </span><span class="lineCov">          1 :   Number.prototype[0] = 1;</span>
+<span class="lineNum">     415 </span><span class="lineCov">          1 :   Number.prototype[1] = 2;</span>
+<span class="lineNum">     416 </span><span class="lineCov">          1 :   Number.prototype[2] = 3;</span>
+<span class="lineNum">     417 </span><span class="lineCov">          1 :   Number.prototype.length = 3;</span>
+<span class="lineNum">     418 </span><span class="lineCov">          1 :   assertEquals([1,2,3], [].concat(new Number(123)));</span>
+<span class="lineNum">     419 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     420 </span><span class="lineCov">          1 :   // Number values are never concat-spreadable</span>
+<span class="lineNum">     421 </span><span class="lineCov">          1 :   assertEquals([true], [].concat(true));</span>
+<span class="lineNum">     422 </span><span class="lineCov">          1 :   delete Number.prototype[Symbol.isConcatSpreadable];</span>
+<span class="lineNum">     423 </span><span class="lineCov">          1 :   delete Number.prototype[0];</span>
+<span class="lineNum">     424 </span><span class="lineCov">          1 :   delete Number.prototype[1];</span>
+<span class="lineNum">     425 </span><span class="lineCov">          1 :   delete Number.prototype[2];</span>
+<span class="lineNum">     426 </span><span class="lineCov">          1 :   delete Number.prototype.length;</span>
+<span class="lineNum">     427 </span><span class="lineCov">          1 : })();</span>
+<a name="428"><span class="lineNum">     428 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     429 </span><span class="lineCov">          1 : </span>
+<a name="430"><span class="lineNum">     430 </span><span class="lineCov">          1 : (function testConcatSpreadableFunction() {</span></a>
+<span class="lineNum">     431 </span><span class="lineCov">          1 :   &quot;use strict&quot;;</span>
+<span class="lineNum">     432 </span><span class="lineCov">          1 :   var fn = function(a, b, c) {}</span>
+<span class="lineNum">     433 </span><span class="lineCov">          1 :   // Functions are not concat-spreadable by default</span>
+<span class="lineNum">     434 </span><span class="lineCov">          1 :   assertEquals([fn], [].concat(fn));</span>
+<span class="lineNum">     435 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     436 </span><span class="lineCov">          1 :   // Functions may be individually concat-spreadable</span>
+<span class="lineNum">     437 </span><span class="lineCov">          1 :   fn[Symbol.isConcatSpreadable] = true;</span>
+<span class="lineNum">     438 </span><span class="lineCov">          1 :   fn[0] = 1, fn[1] = 2, fn[2] = 3;</span>
+<span class="lineNum">     439 </span><span class="lineCov">          1 :   assertEquals([1, 2, 3], [].concat(fn));</span>
+<span class="lineNum">     440 </span><span class="lineCov">          1 : </span>
+<a name="441"><span class="lineNum">     441 </span><span class="lineCov">          1 :   Function.prototype[Symbol.isConcatSpreadable] = true;</span></a>
+<span class="lineNum">     442 </span><span class="lineCov">          1 :   // Functions may be concat-spreadable</span>
+<span class="lineNum">     443 </span><span class="lineCov">          1 :   assertEquals([void 0, void 0, void 0], [].concat(function(a,b,c) {}));</span>
+<span class="lineNum">     444 </span><span class="lineCov">          1 :   Function.prototype[0] = 1;</span>
+<a name="445"><span class="lineNum">     445 </span><span class="lineCov">          1 :   Function.prototype[1] = 2;</span></a>
+<span class="lineNum">     446 </span><span class="lineCov">          1 :   Function.prototype[2] = 3;</span>
+<span class="lineNum">     447 </span><span class="lineCov">          1 :   assertEquals([1,2,3], [].concat(function(a, b, c) {}));</span>
+<span class="lineNum">     448 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     449 </span><span class="lineCov">          1 :   delete Function.prototype[Symbol.isConcatSpreadable];</span>
+<span class="lineNum">     450 </span><span class="lineCov">          1 :   delete Function.prototype[0];</span>
+<span class="lineNum">     451 </span><span class="lineCov">          1 :   delete Function.prototype[1];</span>
+<span class="lineNum">     452 </span><span class="lineCov">          1 :   delete Function.prototype[2];</span>
+<span class="lineNum">     453 </span><span class="lineCov">          1 : })();</span>
+<a name="454"><span class="lineNum">     454 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     455 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     456 </span><span class="lineCov">          1 : (function testConcatSpreadableRegExp() {</span>
+<span class="lineNum">     457 </span><span class="lineCov">          1 :   &quot;use strict&quot;;</span>
+<span class="lineNum">     458 </span><span class="lineCov">          1 :   var re = /abc/;</span>
+<span class="lineNum">     459 </span><span class="lineCov">          1 :   // RegExps are not concat-spreadable by default</span>
+<span class="lineNum">     460 </span><span class="lineCov">          1 :   assertEquals([re], [].concat(re));</span>
+<span class="lineNum">     461 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     462 </span><span class="lineCov">          1 :   // RegExps may be individually concat-spreadable</span>
+<span class="lineNum">     463 </span><span class="lineCov">          1 :   re[Symbol.isConcatSpreadable] = true;</span>
+<span class="lineNum">     464 </span><span class="lineCov">          1 :   re[0] = 1, re[1] = 2, re[2] = 3, re.length = 3;</span>
+<span class="lineNum">     465 </span><span class="lineCov">          1 :   assertEquals([1, 2, 3], [].concat(re));</span>
+<span class="lineNum">     466 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     467 </span><span class="lineCov">          1 :   // RegExps may be concat-spreadable</span>
+<span class="lineNum">     468 </span><span class="lineCov">          1 :   RegExp.prototype[Symbol.isConcatSpreadable] = true;</span>
+<span class="lineNum">     469 </span><span class="lineCov">          1 :   RegExp.prototype.length = 3;</span>
+<span class="lineNum">     470 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     471 </span><span class="lineCov">          1 :   assertEquals([void 0, void 0, void 0], [].concat(/abc/));</span>
+<span class="lineNum">     472 </span><span class="lineCov">          1 :   RegExp.prototype[0] = 1;</span>
+<span class="lineNum">     473 </span><span class="lineCov">          1 :   RegExp.prototype[1] = 2;</span>
+<span class="lineNum">     474 </span><span class="lineCov">          1 :   RegExp.prototype[2] = 3;</span>
+<span class="lineNum">     475 </span><span class="lineCov">          1 :   assertEquals([1,2,3], [].concat(/abc/));</span>
+<span class="lineNum">     476 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     477 </span><span class="lineCov">          1 :   delete RegExp.prototype[Symbol.isConcatSpreadable];</span>
+<span class="lineNum">     478 </span><span class="lineCov">          1 :   delete RegExp.prototype[0];</span>
+<span class="lineNum">     479 </span><span class="lineCov">          1 :   delete RegExp.prototype[1];</span>
+<span class="lineNum">     480 </span><span class="lineCov">          1 :   delete RegExp.prototype[2];</span>
+<span class="lineNum">     481 </span><span class="lineCov">          1 :   delete RegExp.prototype.length;</span>
+<span class="lineNum">     482 </span><span class="lineCov">          1 : })();</span>
+<a name="483"><span class="lineNum">     483 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     484 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     485 </span><span class="lineCov">          1 : (function testArrayConcatSpreadableSparseObject() {</span>
+<span class="lineNum">     486 </span><span class="lineCov">          1 :   &quot;use strict&quot;;</span>
+<span class="lineNum">     487 </span><span class="lineCov">          1 :   var obj = { length: 5 };</span>
+<span class="lineNum">     488 </span><span class="lineCov">          1 :   obj[Symbol.isConcatSpreadable] = true;</span>
+<span class="lineNum">     489 </span><span class="lineCov">          1 :   assertEquals([void 0, void 0, void 0, void 0, void 0], [].concat(obj));</span>
+<span class="lineNum">     490 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     491 </span><span class="lineCov">          1 :   obj.length = 4000;</span>
+<span class="lineNum">     492 </span><span class="lineCov">          1 :   assertEquals(new Array(4000), [].concat(obj));</span>
+<span class="lineNum">     493 </span><span class="lineCov">          1 : })();</span>
+<span class="lineNum">     494 </span><span class="lineCov">          1 : </span>
+<a name="495"><span class="lineNum">     495 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     496 </span><span class="lineCov">          1 : // ES5 tests</span>
+<span class="lineNum">     497 </span><span class="lineCov">          1 : (function testArrayConcatES5() {</span>
+<span class="lineNum">     498 </span><span class="lineCov">          1 :   &quot;use strict&quot;;</span>
+<span class="lineNum">     499 </span><span class="lineCov">          1 :   var poses;</span>
+<span class="lineNum">     500 </span><span class="lineCov">          1 :   var pos;</span>
+<span class="lineNum">     501 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     502 </span><span class="lineCov">          1 :   poses = [140, 4000000000];</span>
+<span class="lineNum">     503 </span><span class="lineCov">          1 :   while (pos = poses.shift()) {</span>
+<span class="lineNum">     504 </span><span class="lineCov">          1 :     var a = new Array(pos);</span>
+<span class="lineNum">     505 </span><span class="lineCov">          1 :     var array_proto = [];</span>
+<span class="lineNum">     506 </span><span class="lineCov">          1 :     a.__proto__ = array_proto;</span>
+<span class="lineNum">     507 </span><span class="lineCov">          1 :     assertEquals(pos, a.length);</span>
+<span class="lineNum">     508 </span><span class="lineCov">          1 :     a.push('foo');</span>
+<span class="lineNum">     509 </span><span class="lineCov">          1 :     assertEquals(pos + 1, a.length);</span>
+<span class="lineNum">     510 </span><span class="lineCov">          1 :     var b = ['bar'];</span>
+<span class="lineNum">     511 </span><span class="lineCov">          1 :     var c = a.concat(b);</span>
+<span class="lineNum">     512 </span><span class="lineCov">          1 :     assertEquals(pos + 2, c.length);</span>
+<span class="lineNum">     513 </span><span class="lineCov">          1 :     assertEquals(&quot;undefined&quot;, typeof(c[pos - 1]));</span>
+<span class="lineNum">     514 </span><span class="lineCov">          1 :     assertEquals(&quot;foo&quot;, c[pos]);</span>
+<span class="lineNum">     515 </span><span class="lineCov">          1 :     assertEquals(&quot;bar&quot;, c[pos + 1]);</span>
+<span class="lineNum">     516 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     517 </span><span class="lineCov">          1 :     // Can we fool the system by putting a number in a string?</span>
+<span class="lineNum">     518 </span><span class="lineCov">          1 :     var onetwofour = &quot;124&quot;;</span>
+<span class="lineNum">     519 </span><span class="lineCov">          1 :     a[onetwofour] = 'doo';</span>
+<span class="lineNum">     520 </span><span class="lineCov">          1 :     assertEquals(a[124], 'doo');</span>
+<span class="lineNum">     521 </span><span class="lineCov">          1 :     c = a.concat(b);</span>
+<span class="lineNum">     522 </span><span class="lineCov">          1 :     assertEquals(c[124], 'doo');</span>
+<span class="lineNum">     523 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     524 </span><span class="lineCov">          1 :     // If we put a number in the prototype, then the spec says it should be</span>
+<span class="lineNum">     525 </span><span class="lineCov">          1 :     // copied on concat.</span>
+<span class="lineNum">     526 </span><span class="lineCov">          1 :     array_proto[&quot;123&quot;] = 'baz';</span>
+<span class="lineNum">     527 </span><span class="lineCov">          1 :     assertEquals(a[123], 'baz');</span>
+<span class="lineNum">     528 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     529 </span><span class="lineCov">          1 :     c = a.concat(b);</span>
+<span class="lineNum">     530 </span><span class="lineCov">          1 :     assertEquals(pos + 2, c.length);</span>
+<span class="lineNum">     531 </span><span class="lineCov">          1 :     assertEquals(&quot;baz&quot;, c[123]);</span>
+<span class="lineNum">     532 </span><span class="lineCov">          1 :     assertEquals(&quot;undefined&quot;, typeof(c[pos - 1]));</span>
+<span class="lineNum">     533 </span><span class="lineCov">          1 :     assertEquals(&quot;foo&quot;, c[pos]);</span>
+<span class="lineNum">     534 </span><span class="lineCov">          1 :     assertEquals(&quot;bar&quot;, c[pos + 1]);</span>
+<span class="lineNum">     535 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     536 </span><span class="lineCov">          1 :     // When we take the number off the prototype it disappears from a, but</span>
+<span class="lineNum">     537 </span><span class="lineCov">          1 :     // the concat put it in c itself.</span>
+<span class="lineNum">     538 </span><span class="lineCov">          1 :     array_proto[&quot;123&quot;] = undefined;</span>
+<span class="lineNum">     539 </span><span class="lineCov">          1 :     assertEquals(&quot;undefined&quot;, typeof(a[123]));</span>
+<span class="lineNum">     540 </span><span class="lineCov">          1 :     assertEquals(&quot;baz&quot;, c[123]);</span>
+<span class="lineNum">     541 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     542 </span><span class="lineCov">          1 :     // If the element of prototype is shadowed, the element on the instance</span>
+<span class="lineNum">     543 </span><span class="lineCov">          1 :     // should be copied, but not the one on the prototype.</span>
+<span class="lineNum">     544 </span><span class="lineCov">          1 :     array_proto[123] = 'baz';</span>
+<span class="lineNum">     545 </span><span class="lineCov">          1 :     a[123] = 'xyz';</span>
+<span class="lineNum">     546 </span><span class="lineCov">          1 :     assertEquals('xyz', a[123]);</span>
+<span class="lineNum">     547 </span><span class="lineCov">          1 :     c = a.concat(b);</span>
+<span class="lineNum">     548 </span><span class="lineCov">          1 :     assertEquals('xyz', c[123]);</span>
+<span class="lineNum">     549 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     550 </span><span class="lineCov">          1 :     // Non-numeric properties on the prototype or the array shouldn't get</span>
+<span class="lineNum">     551 </span><span class="lineCov">          1 :     // copied.</span>
+<span class="lineNum">     552 </span><span class="lineCov">          1 :     array_proto.moe = 'joe';</span>
+<span class="lineNum">     553 </span><span class="lineCov">          1 :     a.ben = 'jerry';</span>
+<span class="lineNum">     554 </span><span class="lineCov">          1 :     assertEquals(a[&quot;moe&quot;], 'joe');</span>
+<span class="lineNum">     555 </span><span class="lineCov">          1 :     assertEquals(a[&quot;ben&quot;], 'jerry');</span>
+<span class="lineNum">     556 </span><span class="lineCov">          1 :     c = a.concat(b);</span>
+<span class="lineNum">     557 </span><span class="lineCov">          1 :     // ben was not copied</span>
+<span class="lineNum">     558 </span><span class="lineCov">          1 :     assertEquals(&quot;undefined&quot;, typeof(c.ben));</span>
+<span class="lineNum">     559 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     560 </span><span class="lineCov">          1 :     // When we take moe off the prototype it disappears from all arrays.</span>
+<span class="lineNum">     561 </span><span class="lineCov">          1 :     array_proto.moe = undefined;</span>
+<span class="lineNum">     562 </span><span class="lineCov">          1 :     assertEquals(&quot;undefined&quot;, typeof(c.moe));</span>
+<span class="lineNum">     563 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     564 </span><span class="lineCov">          1 :     // Negative indices don't get concated.</span>
+<span class="lineNum">     565 </span><span class="lineCov">          1 :     a[-1] = 'minus1';</span>
+<span class="lineNum">     566 </span><span class="lineCov">          1 :     assertEquals(&quot;minus1&quot;, a[-1]);</span>
+<span class="lineNum">     567 </span><span class="lineCov">          1 :     assertEquals(&quot;undefined&quot;, typeof(a[0xffffffff]));</span>
+<span class="lineNum">     568 </span><span class="lineCov">          1 :     c = a.concat(b);</span>
+<span class="lineNum">     569 </span><span class="lineCov">          1 :     assertEquals(&quot;undefined&quot;, typeof(c[-1]));</span>
+<span class="lineNum">     570 </span><span class="lineCov">          1 :     assertEquals(&quot;undefined&quot;, typeof(c[0xffffffff]));</span>
+<span class="lineNum">     571 </span><span class="lineCov">          1 :     assertEquals(c.length, a.length + 1);</span>
+<span class="lineNum">     572 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     573 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     574 </span><span class="lineCov">          1 :   poses = [140, 4000000000];</span>
+<span class="lineNum">     575 </span><span class="lineCov">          1 :   while (pos = poses.shift()) {</span>
+<span class="lineNum">     576 </span><span class="lineCov">          1 :     var a = new Array(pos);</span>
+<span class="lineNum">     577 </span><span class="lineCov">          1 :     assertEquals(pos, a.length);</span>
+<span class="lineNum">     578 </span><span class="lineCov">          1 :     a.push('foo');</span>
+<span class="lineNum">     579 </span><span class="lineCov">          1 :     assertEquals(pos + 1, a.length);</span>
+<span class="lineNum">     580 </span><span class="lineCov">          1 :     var b = ['bar'];</span>
+<span class="lineNum">     581 </span><span class="lineCov">          1 :     var c = a.concat(b);</span>
+<span class="lineNum">     582 </span><span class="lineCov">          1 :     assertEquals(pos + 2, c.length);</span>
+<span class="lineNum">     583 </span><span class="lineCov">          1 :     assertEquals(&quot;undefined&quot;, typeof(c[pos - 1]));</span>
+<span class="lineNum">     584 </span><span class="lineCov">          1 :     assertEquals(&quot;foo&quot;, c[pos]);</span>
+<span class="lineNum">     585 </span><span class="lineCov">          1 :     assertEquals(&quot;bar&quot;, c[pos + 1]);</span>
+<span class="lineNum">     586 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     587 </span><span class="lineCov">          1 :     // Can we fool the system by putting a number in a string?</span>
+<span class="lineNum">     588 </span><span class="lineCov">          1 :     var onetwofour = &quot;124&quot;;</span>
+<span class="lineNum">     589 </span><span class="lineCov">          1 :     a[onetwofour] = 'doo';</span>
+<span class="lineNum">     590 </span><span class="lineCov">          1 :     assertEquals(a[124], 'doo');</span>
+<span class="lineNum">     591 </span><span class="lineCov">          1 :     c = a.concat(b);</span>
+<span class="lineNum">     592 </span><span class="lineCov">          1 :     assertEquals(c[124], 'doo');</span>
+<span class="lineNum">     593 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     594 </span><span class="lineCov">          1 :     // If we put a number in the prototype, then the spec says it should be</span>
+<span class="lineNum">     595 </span><span class="lineCov">          1 :     // copied on concat.</span>
+<span class="lineNum">     596 </span><span class="lineCov">          1 :     Array.prototype[&quot;123&quot;] = 'baz';</span>
+<span class="lineNum">     597 </span><span class="lineCov">          1 :     assertEquals(a[123], 'baz');</span>
+<span class="lineNum">     598 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     599 </span><span class="lineCov">          1 :     c = a.concat(b);</span>
+<span class="lineNum">     600 </span><span class="lineCov">          1 :     assertEquals(pos + 2, c.length);</span>
+<span class="lineNum">     601 </span><span class="lineCov">          1 :     assertEquals(&quot;baz&quot;, c[123]);</span>
+<span class="lineNum">     602 </span><span class="lineCov">          1 :     assertEquals(&quot;undefined&quot;, typeof(c[pos - 1]));</span>
+<span class="lineNum">     603 </span><span class="lineCov">          1 :     assertEquals(&quot;foo&quot;, c[pos]);</span>
+<span class="lineNum">     604 </span><span class="lineCov">          1 :     assertEquals(&quot;bar&quot;, c[pos + 1]);</span>
+<span class="lineNum">     605 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     606 </span><span class="lineCov">          1 :     // When we take the number off the prototype it disappears from a, but</span>
+<span class="lineNum">     607 </span><span class="lineCov">          1 :     // the concat put it in c itself.</span>
+<span class="lineNum">     608 </span><span class="lineCov">          1 :     Array.prototype[&quot;123&quot;] = undefined;</span>
+<span class="lineNum">     609 </span><span class="lineCov">          1 :     assertEquals(&quot;undefined&quot;, typeof(a[123]));</span>
+<span class="lineNum">     610 </span><span class="lineCov">          1 :     assertEquals(&quot;baz&quot;, c[123]);</span>
+<span class="lineNum">     611 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     612 </span><span class="lineCov">          1 :     // If the element of prototype is shadowed, the element on the instance</span>
+<span class="lineNum">     613 </span><span class="lineCov">          1 :     // should be copied, but not the one on the prototype.</span>
+<span class="lineNum">     614 </span><span class="lineCov">          1 :     Array.prototype[123] = 'baz';</span>
+<span class="lineNum">     615 </span><span class="lineCov">          1 :     a[123] = 'xyz';</span>
+<span class="lineNum">     616 </span><span class="lineCov">          1 :     assertEquals('xyz', a[123]);</span>
+<span class="lineNum">     617 </span><span class="lineCov">          1 :     c = a.concat(b);</span>
+<span class="lineNum">     618 </span><span class="lineCov">          1 :     assertEquals('xyz', c[123]);</span>
+<span class="lineNum">     619 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     620 </span><span class="lineCov">          1 :     // Non-numeric properties on the prototype or the array shouldn't get</span>
+<span class="lineNum">     621 </span><span class="lineCov">          1 :     // copied.</span>
+<span class="lineNum">     622 </span><span class="lineCov">          1 :     Array.prototype.moe = 'joe';</span>
+<span class="lineNum">     623 </span><span class="lineCov">          1 :     a.ben = 'jerry';</span>
+<span class="lineNum">     624 </span><span class="lineCov">          1 :     assertEquals(a[&quot;moe&quot;], 'joe');</span>
+<span class="lineNum">     625 </span><span class="lineCov">          1 :     assertEquals(a[&quot;ben&quot;], 'jerry');</span>
+<span class="lineNum">     626 </span><span class="lineCov">          1 :     c = a.concat(b);</span>
+<span class="lineNum">     627 </span><span class="lineCov">          1 :     // ben was not copied</span>
+<span class="lineNum">     628 </span><span class="lineCov">          1 :     assertEquals(&quot;undefined&quot;, typeof(c.ben));</span>
+<span class="lineNum">     629 </span><span class="lineCov">          1 :     // moe was not copied, but we can see it through the prototype</span>
+<span class="lineNum">     630 </span><span class="lineCov">          1 :     assertEquals(&quot;joe&quot;, c.moe);</span>
+<span class="lineNum">     631 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     632 </span><span class="lineCov">          1 :     // When we take moe off the prototype it disappears from all arrays.</span>
+<span class="lineNum">     633 </span><span class="lineCov">          1 :     Array.prototype.moe = undefined;</span>
+<span class="lineNum">     634 </span><span class="lineCov">          1 :     assertEquals(&quot;undefined&quot;, typeof(c.moe));</span>
+<span class="lineNum">     635 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     636 </span><span class="lineCov">          1 :     // Negative indices don't get concated.</span>
+<span class="lineNum">     637 </span><span class="lineCov">          1 :     a[-1] = 'minus1';</span>
+<span class="lineNum">     638 </span><span class="lineCov">          1 :     assertEquals(&quot;minus1&quot;, a[-1]);</span>
+<span class="lineNum">     639 </span><span class="lineCov">          1 :     assertEquals(&quot;undefined&quot;, typeof(a[0xffffffff]));</span>
+<span class="lineNum">     640 </span><span class="lineCov">          1 :     c = a.concat(b);</span>
+<span class="lineNum">     641 </span><span class="lineCov">          1 :     assertEquals(&quot;undefined&quot;, typeof(c[-1]));</span>
+<span class="lineNum">     642 </span><span class="lineCov">          1 :     assertEquals(&quot;undefined&quot;, typeof(c[0xffffffff]));</span>
+<span class="lineNum">     643 </span><span class="lineCov">          1 :     assertEquals(c.length, a.length + 1);</span>
+<span class="lineNum">     644 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     645 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     646 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     647 </span><span class="lineCov">          1 :   a = [];</span>
+<span class="lineNum">     648 </span><span class="lineCov">          1 :   c = a.concat('Hello');</span>
+<span class="lineNum">     649 </span><span class="lineCov">          1 :   assertEquals(1, c.length);</span>
+<span class="lineNum">     650 </span><span class="lineCov">          1 :   assertEquals(&quot;Hello&quot;, c[0]);</span>
+<span class="lineNum">     651 </span><span class="lineCov">          1 :   assertEquals(&quot;Hello&quot;, c.toString());</span>
+<span class="lineNum">     652 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     653 </span><span class="lineCov">          1 :   // Check that concat preserves holes.</span>
+<span class="lineNum">     654 </span><span class="lineCov">          1 :   var holey = [void 0,'a',,'c'].concat(['d',,'f',[0,,2],void 0])</span>
+<span class="lineNum">     655 </span><span class="lineCov">          1 :   assertEquals(9, holey.length);  // hole in embedded array is ignored</span>
+<span class="lineNum">     656 </span><span class="lineCov">          1 :   for (var i = 0; i &lt; holey.length; i++) {</span>
+<span class="lineNum">     657 </span><span class="lineCov">          1 :     if (i == 2 || i == 5) {</span>
+<span class="lineNum">     658 </span><span class="lineCov">          1 :       assertFalse(i in holey);</span>
+<span class="lineNum">     659 </span><span class="lineCov">          1 :     } else {</span>
+<span class="lineNum">     660 </span><span class="lineCov">          1 :       assertTrue(i in holey);</span>
+<span class="lineNum">     661 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">     662 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     663 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     664 </span><span class="lineCov">          1 :   // Polluted prototype from prior tests.</span>
+<span class="lineNum">     665 </span><span class="lineCov">          1 :   delete Array.prototype[123];</span>
+<span class="lineNum">     666 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     667 </span><span class="lineCov">          1 :   // Check that concat reads getters in the correct order.</span>
+<span class="lineNum">     668 </span><span class="lineCov">          1 :   var arr1 = [,2];</span>
+<span class="lineNum">     669 </span><span class="lineCov">          1 :   var arr2 = [1,3];</span>
+<span class="lineNum">     670 </span><span class="lineCov">          1 :   var r1 = [].concat(arr1, arr2);  // [,2,1,3]</span>
+<span class="lineNum">     671 </span><span class="lineCov">          1 :   assertEquals([,2,1,3], r1);</span>
+<span class="lineNum">     672 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     673 </span><span class="lineCov">          1 :   // Make first array change length of second array.</span>
+<span class="lineNum">     674 </span><span class="lineCov">          1 :   Object.defineProperty(arr1, 0, {get: function() {</span>
+<span class="lineNum">     675 </span><span class="lineCov">          1 :         arr2.push(&quot;X&quot;);</span>
+<span class="lineNum">     676 </span><span class="lineCov">          1 :         return undefined;</span>
+<span class="lineNum">     677 </span><span class="lineCov">          1 :       }, configurable: true})</span>
+<span class="lineNum">     678 </span><span class="lineCov">          1 :   var r2 = [].concat(arr1, arr2);  // [undefined,2,1,3,&quot;X&quot;]</span>
+<span class="lineNum">     679 </span><span class="lineCov">          1 :   assertEquals([undefined,2,1,3,&quot;X&quot;], r2);</span>
+<span class="lineNum">     680 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     681 </span><span class="lineCov">          1 :   // Make first array change length of second array massively.</span>
+<span class="lineNum">     682 </span><span class="lineCov">          1 :   arr2.length = 2;</span>
+<span class="lineNum">     683 </span><span class="lineCov">          1 :   Object.defineProperty(arr1, 0, {get: function() {</span>
+<span class="lineNum">     684 </span><span class="lineCov">          1 :         arr2[500000] = &quot;X&quot;;</span>
+<span class="lineNum">     685 </span><span class="lineCov">          1 :         return undefined;</span>
+<span class="lineNum">     686 </span><span class="lineCov">          1 :       }, configurable: true})</span>
+<span class="lineNum">     687 </span><span class="lineCov">          1 :   var r3 = [].concat(arr1, arr2);  // [undefined,2,1,3,&quot;X&quot;]</span>
+<span class="lineNum">     688 </span><span class="lineCov">          1 :   var expected = [undefined,2,1,3];</span>
+<span class="lineNum">     689 </span><span class="lineCov">          1 :   expected[500000 + 2] = &quot;X&quot;;</span>
+<span class="lineNum">     690 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     691 </span><span class="lineCov">          1 :   assertEquals(expected, r3);</span>
+<span class="lineNum">     692 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     693 </span><span class="lineCov">          1 :   var arr3 = [];</span>
+<a name="694"><span class="lineNum">     694 </span><span class="lineCov">          1 :   var trace = [];</span></a>
+<span class="lineNum">     695 </span><span class="lineCov">          1 :   var expectedTrace = []</span>
+<span class="lineNum">     696 </span><span class="lineCov">        200 :   function mkGetter(i) { return function() { trace.push(i); }; }</span>
+<span class="lineNum">     697 </span><span class="lineCov">          1 :   arr3.length = 10000;</span>
+<span class="lineNum">     698 </span><span class="lineCov">          1 :   for (var i = 0; i &lt; 100; i++) {</span>
+<span class="lineNum">     699 </span><span class="lineCov">          1 :     Object.defineProperty(arr3, i * i, {get: mkGetter(i)});</span>
+<span class="lineNum">     700 </span><span class="lineCov">          1 :     expectedTrace[i] = i;</span>
+<span class="lineNum">     701 </span><span class="lineCov">          1 :     expectedTrace[100 + i] = i;</span>
+<span class="lineNum">     702 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     703 </span><span class="lineCov">          1 :   var r4 = [0].concat(arr3, arr3);</span>
+<span class="lineNum">     704 </span><span class="lineCov">          1 :   assertEquals(1 + arr3.length * 2, r4.length);</span>
+<span class="lineNum">     705 </span><span class="lineCov">          1 :   assertEquals(expectedTrace, trace);</span>
+<span class="lineNum">     706 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     707 </span><span class="lineCov">          1 :   // Clean up.</span>
+<span class="lineNum">     708 </span><span class="lineCov">          1 :   delete Array.prototype[123];</span>
+<span class="lineNum">     709 </span><span class="lineCov">          1 :   delete Array.prototype[&quot;123&quot;];</span>
+<span class="lineNum">     710 </span><span class="lineCov">          1 :   delete Array.prototype[&quot;moe&quot;];</span>
+<span class="lineNum">     711 </span><span class="lineCov">          1 : })();</span>
+<span class="lineNum">     712 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     713 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     714 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     715 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     716 </span><span class="lineCov">          1 : ////////////////////////////////////////////////////////////////////////////////</span>
+<span class="lineNum">     717 </span><span class="lineCov">          1 : // Tests with proxies</span>
+<span class="lineNum">     718 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     719 </span><span class="lineCov">          1 : // Note: concat does not currently support species so there is no difference</span>
+<span class="lineNum">     720 </span><span class="lineCov">          1 : // between [].concat(foo) and Array.prototype.concat.apply(foo).</span>
+<span class="lineNum">     721 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     722 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     723 </span><span class="lineCov">          1 : var log = [];</span>
+<span class="lineNum">     724 </span><span class="lineCov">          1 : var logger = {};</span>
+<a name="725"><span class="lineNum">     725 </span><span class="lineCov">          1 : var handler = new Proxy({}, logger);</span></a>
+<a name="726"><span class="lineNum">     726 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     727 </span><span class="lineCov">         36 : logger.get = function(t, trap, r) {</span>
+<span class="lineNum">     728 </span><span class="lineCov">         36 :   return function(...args) {</span>
+<span class="lineNum">     729 </span><span class="lineCov">         36 :     log.push([trap, ...args]);</span>
+<span class="lineNum">     730 </span><span class="lineCov">         36 :     return Reflect[trap](...args);</span>
+<span class="lineNum">     731 </span><span class="lineCov">         36 :   }</span>
+<span class="lineNum">     732 </span><span class="lineCov">         36 : };</span>
+<a name="733"><span class="lineNum">     733 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     734 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     735 </span><span class="lineCov">          1 : (function testUnspreadableNonArrayLikeProxy() {</span>
+<span class="lineNum">     736 </span><span class="lineCov">          1 :   var target = {0: &quot;a&quot;, 1: &quot;b&quot;};</span>
+<span class="lineNum">     737 </span><span class="lineCov">          1 :   var obj = new Proxy(target, handler);</span>
+<span class="lineNum">     738 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     739 </span><span class="lineCov">          1 :   log.length = 0;</span>
+<span class="lineNum">     740 </span><span class="lineCov">          1 :   assertEquals([obj], [].concat(obj));</span>
+<span class="lineNum">     741 </span><span class="lineCov">          1 :   assertEquals(1, log.length);</span>
+<span class="lineNum">     742 </span><span class="lineCov">          1 :   for (var i in log) assertSame(target, log[i][1]);</span>
+<span class="lineNum">     743 </span><span class="lineCov">          1 :   assertEquals([&quot;get&quot;, target, Symbol.isConcatSpreadable, obj], log[0]);</span>
+<span class="lineNum">     744 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     745 </span><span class="lineCov">          1 :   log.length = 0;</span>
+<span class="lineNum">     746 </span><span class="lineCov">          1 :   assertEquals([obj], Array.prototype.concat.apply(obj));</span>
+<span class="lineNum">     747 </span><span class="lineCov">          1 :   assertEquals(1, log.length);</span>
+<span class="lineNum">     748 </span><span class="lineCov">          1 :   for (var i in log) assertSame(target, log[i][1]);</span>
+<span class="lineNum">     749 </span><span class="lineCov">          1 :   assertEquals([&quot;get&quot;, target, Symbol.isConcatSpreadable, obj], log[0]);</span>
+<span class="lineNum">     750 </span><span class="lineCov">          1 : })();</span>
+<a name="751"><span class="lineNum">     751 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     752 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     753 </span><span class="lineCov">          1 : (function testSpreadableNonArrayLikeProxy() {</span>
+<span class="lineNum">     754 </span><span class="lineCov">          1 :   var target = {0: &quot;a&quot;, 1: &quot;b&quot;, [Symbol.isConcatSpreadable]: &quot;truish&quot;};</span>
+<span class="lineNum">     755 </span><span class="lineCov">          1 :   var obj = new Proxy(target, handler);</span>
+<span class="lineNum">     756 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     757 </span><span class="lineCov">          1 :   log.length = 0;</span>
+<span class="lineNum">     758 </span><span class="lineCov">          1 :   assertEquals([], [].concat(obj));</span>
+<span class="lineNum">     759 </span><span class="lineCov">          1 :   assertEquals(2, log.length);</span>
+<span class="lineNum">     760 </span><span class="lineCov">          1 :   for (var i in log) assertSame(target, log[i][1]);</span>
+<span class="lineNum">     761 </span><span class="lineCov">          1 :   assertEquals([&quot;get&quot;, target, Symbol.isConcatSpreadable, obj], log[0]);</span>
+<span class="lineNum">     762 </span><span class="lineCov">          1 :   assertEquals([&quot;get&quot;, target, &quot;length&quot;, obj], log[1]);</span>
+<span class="lineNum">     763 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     764 </span><span class="lineCov">          1 :   log.length = 0;</span>
+<span class="lineNum">     765 </span><span class="lineCov">          1 :   assertEquals([], Array.prototype.concat.apply(obj));</span>
+<span class="lineNum">     766 </span><span class="lineCov">          1 :   assertEquals(2, log.length);</span>
+<span class="lineNum">     767 </span><span class="lineCov">          1 :   for (var i in log) assertSame(target, log[i][1]);</span>
+<span class="lineNum">     768 </span><span class="lineCov">          1 :   assertEquals([&quot;get&quot;, target, Symbol.isConcatSpreadable, obj], log[0]);</span>
+<span class="lineNum">     769 </span><span class="lineCov">          1 :   assertEquals([&quot;get&quot;, target, &quot;length&quot;, obj], log[1]);</span>
+<span class="lineNum">     770 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     771 </span><span class="lineCov">          1 :   target.length = 3;</span>
+<span class="lineNum">     772 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     773 </span><span class="lineCov">          1 :   log.length = 0;</span>
+<span class="lineNum">     774 </span><span class="lineCov">          1 :   assertEquals([&quot;a&quot;, &quot;b&quot;, undefined], [].concat(obj));</span>
+<span class="lineNum">     775 </span><span class="lineCov">          1 :   assertEquals(7, log.length);</span>
+<span class="lineNum">     776 </span><span class="lineCov">          1 :   for (var i in log) assertSame(target, log[i][1]);</span>
+<span class="lineNum">     777 </span><span class="lineCov">          1 :   assertEquals([&quot;get&quot;, target, Symbol.isConcatSpreadable, obj], log[0]);</span>
+<span class="lineNum">     778 </span><span class="lineCov">          1 :   assertEquals([&quot;get&quot;, target, &quot;length&quot;, obj], log[1]);</span>
+<span class="lineNum">     779 </span><span class="lineCov">          1 :   assertEquals([&quot;has&quot;, target, &quot;0&quot;], log[2]);</span>
+<span class="lineNum">     780 </span><span class="lineCov">          1 :   assertEquals([&quot;get&quot;, target, &quot;0&quot;, obj], log[3]);</span>
+<span class="lineNum">     781 </span><span class="lineCov">          1 :   assertEquals([&quot;has&quot;, target, &quot;1&quot;], log[4]);</span>
+<span class="lineNum">     782 </span><span class="lineCov">          1 :   assertEquals([&quot;get&quot;, target, &quot;1&quot;, obj], log[5]);</span>
+<span class="lineNum">     783 </span><span class="lineCov">          1 :   assertEquals([&quot;has&quot;, target, &quot;2&quot;], log[6]);</span>
+<span class="lineNum">     784 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     785 </span><span class="lineCov">          1 :   log.length = 0;</span>
+<span class="lineNum">     786 </span><span class="lineCov">          1 :   assertEquals([&quot;a&quot;, &quot;b&quot;, undefined], Array.prototype.concat.apply(obj));</span>
+<span class="lineNum">     787 </span><span class="lineCov">          1 :   assertEquals(7, log.length);</span>
+<span class="lineNum">     788 </span><span class="lineCov">          1 :   for (var i in log) assertSame(target, log[i][1]);</span>
+<span class="lineNum">     789 </span><span class="lineCov">          1 :   assertEquals([&quot;get&quot;, target, Symbol.isConcatSpreadable, obj], log[0]);</span>
+<span class="lineNum">     790 </span><span class="lineCov">          1 :   assertEquals([&quot;get&quot;, target, &quot;length&quot;, obj], log[1]);</span>
+<span class="lineNum">     791 </span><span class="lineCov">          1 :   assertEquals([&quot;has&quot;, target, &quot;0&quot;], log[2]);</span>
+<span class="lineNum">     792 </span><span class="lineCov">          1 :   assertEquals([&quot;get&quot;, target, &quot;0&quot;, obj], log[3]);</span>
+<span class="lineNum">     793 </span><span class="lineCov">          1 :   assertEquals([&quot;has&quot;, target, &quot;1&quot;], log[4]);</span>
+<span class="lineNum">     794 </span><span class="lineCov">          1 :   assertEquals([&quot;get&quot;, target, &quot;1&quot;, obj], log[5]);</span>
+<span class="lineNum">     795 </span><span class="lineCov">          1 :   assertEquals([&quot;has&quot;, target, &quot;2&quot;], log[6]);</span>
+<span class="lineNum">     796 </span><span class="lineCov">          1 : })();</span>
+<a name="797"><span class="lineNum">     797 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     798 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     799 </span><span class="lineCov">          1 : (function testUnspreadableArrayLikeProxy() {</span>
+<span class="lineNum">     800 </span><span class="lineCov">          1 :   var target = [&quot;a&quot;, &quot;b&quot;];</span>
+<span class="lineNum">     801 </span><span class="lineCov">          1 :   target[Symbol.isConcatSpreadable] = &quot;&quot;;</span>
+<span class="lineNum">     802 </span><span class="lineCov">          1 :   var obj = new Proxy(target, handler);</span>
+<span class="lineNum">     803 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     804 </span><span class="lineCov">          1 :   log.length = 0;</span>
+<span class="lineNum">     805 </span><span class="lineCov">          1 :   assertEquals([obj], [].concat(obj));</span>
+<span class="lineNum">     806 </span><span class="lineCov">          1 :   assertEquals(1, log.length);</span>
+<span class="lineNum">     807 </span><span class="lineCov">          1 :   for (var i in log) assertSame(target, log[i][1]);</span>
+<span class="lineNum">     808 </span><span class="lineCov">          1 :   assertEquals([&quot;get&quot;, target, Symbol.isConcatSpreadable, obj], log[0]);</span>
+<span class="lineNum">     809 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     810 </span><span class="lineCov">          1 :   log.length = 0;</span>
+<span class="lineNum">     811 </span><span class="lineCov">          1 :   assertEquals([obj], Array.prototype.concat.apply(obj));</span>
+<span class="lineNum">     812 </span><span class="lineCov">          1 :   assertEquals(2, log.length);  // An extra read for the constructor</span>
+<span class="lineNum">     813 </span><span class="lineCov">          1 :   for (var i in log) assertSame(target, log[i][1]);</span>
+<span class="lineNum">     814 </span><span class="lineCov">          1 :   assertEquals([&quot;get&quot;, target, &quot;constructor&quot;, obj], log[0]);</span>
+<span class="lineNum">     815 </span><span class="lineCov">          1 :   assertEquals([&quot;get&quot;, target, Symbol.isConcatSpreadable, obj], log[1]);</span>
+<span class="lineNum">     816 </span><span class="lineCov">          1 : })();</span>
+<a name="817"><span class="lineNum">     817 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     818 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     819 </span><span class="lineCov">          1 : (function testSpreadableArrayLikeProxy() {</span>
+<span class="lineNum">     820 </span><span class="lineCov">          1 :   var target = [&quot;a&quot;, &quot;b&quot;];</span>
+<span class="lineNum">     821 </span><span class="lineCov">          1 :   target[Symbol.isConcatSpreadable] = undefined;</span>
+<span class="lineNum">     822 </span><span class="lineCov">          1 :   var obj = new Proxy(target, handler);</span>
+<span class="lineNum">     823 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     824 </span><span class="lineCov">          1 :   log.length = 0;</span>
+<span class="lineNum">     825 </span><span class="lineCov">          1 :   assertEquals([&quot;a&quot;, &quot;b&quot;], [].concat(obj));</span>
+<span class="lineNum">     826 </span><span class="lineCov">          1 :   assertEquals(6, log.length);</span>
+<span class="lineNum">     827 </span><span class="lineCov">          1 :   for (var i in log) assertSame(target, log[i][1]);</span>
+<span class="lineNum">     828 </span><span class="lineCov">          1 :   assertEquals([&quot;get&quot;, target, Symbol.isConcatSpreadable, obj], log[0]);</span>
+<span class="lineNum">     829 </span><span class="lineCov">          1 :   assertEquals([&quot;get&quot;, target, &quot;length&quot;, obj], log[1]);</span>
+<span class="lineNum">     830 </span><span class="lineCov">          1 :   assertEquals([&quot;has&quot;, target, &quot;0&quot;], log[2]);</span>
+<span class="lineNum">     831 </span><span class="lineCov">          1 :   assertEquals([&quot;get&quot;, target, &quot;0&quot;, obj], log[3]);</span>
+<span class="lineNum">     832 </span><span class="lineCov">          1 :   assertEquals([&quot;has&quot;, target, &quot;1&quot;], log[4]);</span>
+<span class="lineNum">     833 </span><span class="lineCov">          1 :   assertEquals([&quot;get&quot;, target, &quot;1&quot;, obj], log[5]);</span>
+<span class="lineNum">     834 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     835 </span><span class="lineCov">          1 :   log.length = 0;</span>
+<span class="lineNum">     836 </span><span class="lineCov">          1 :   assertEquals([&quot;a&quot;, &quot;b&quot;], Array.prototype.concat.apply(obj));</span>
+<span class="lineNum">     837 </span><span class="lineCov">          1 :   assertEquals(7, log.length);</span>
+<span class="lineNum">     838 </span><span class="lineCov">          1 :   for (var i in log) assertSame(target, log[i][1]);</span>
+<span class="lineNum">     839 </span><span class="lineCov">          1 :   assertEquals([&quot;get&quot;, target, &quot;constructor&quot;, obj], log[0]);</span>
+<span class="lineNum">     840 </span><span class="lineCov">          1 :   assertEquals([&quot;get&quot;, target, Symbol.isConcatSpreadable, obj], log[1]);</span>
+<span class="lineNum">     841 </span><span class="lineCov">          1 :   assertEquals([&quot;get&quot;, target, &quot;length&quot;, obj], log[2]);</span>
+<span class="lineNum">     842 </span><span class="lineCov">          1 :   assertEquals([&quot;has&quot;, target, &quot;0&quot;], log[3]);</span>
+<span class="lineNum">     843 </span><span class="lineCov">          1 :   assertEquals([&quot;get&quot;, target, &quot;0&quot;, obj], log[4]);</span>
+<span class="lineNum">     844 </span><span class="lineCov">          1 :   assertEquals([&quot;has&quot;, target, &quot;1&quot;], log[5]);</span>
+<span class="lineNum">     845 </span><span class="lineCov">          1 :   assertEquals([&quot;get&quot;, target, &quot;1&quot;, obj], log[6]);</span>
+<span class="lineNum">     846 </span><span class="lineCov">          1 : })();</span>
+<a name="847"><span class="lineNum">     847 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     848 </span><span class="lineCov">          1 : </span>
+<a name="849"><span class="lineNum">     849 </span><span class="lineCov">          1 : (function testSpreadableArrayLikeProxyWithNontrivialLength() {</span></a>
+<span class="lineNum">     850 </span><span class="lineCov">         11 :   var getTrap = function(t, key) {</span>
+<span class="lineNum">     851 </span><span class="lineCov">         11 :     if (key === &quot;length&quot;) return {[Symbol.toPrimitive]() {return 3}};</span>
+<span class="lineNum">     852 </span><span class="lineCov">         11 :     if (key === &quot;2&quot;) return &quot;baz&quot;;</span>
+<span class="lineNum">     853 </span><span class="lineCov">         11 :     if (key === &quot;3&quot;) return &quot;bar&quot;;</span>
+<span class="lineNum">     854 </span><span class="lineCov">         11 :   };</span>
+<span class="lineNum">     855 </span><span class="lineCov">          1 :   var target = [];</span>
+<span class="lineNum">     856 </span><span class="lineCov">          6 :   var obj = new Proxy(target, {get: getTrap, has: () =&gt; true});</span>
+<span class="lineNum">     857 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     858 </span><span class="lineCov">          1 :   assertEquals([undefined, undefined, &quot;baz&quot;], [].concat(obj));</span>
+<span class="lineNum">     859 </span><span class="lineCov">          1 :   assertEquals([undefined, undefined, &quot;baz&quot;], Array.prototype.concat.apply(obj))</span>
+<span class="lineNum">     860 </span><span class="lineCov">          1 : })();</span>
+<a name="861"><span class="lineNum">     861 </span><span class="lineCov">          1 : </span></a>
+<a name="862"><span class="lineNum">     862 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     863 </span><span class="lineCov">          1 : (function testSpreadableArrayLikeProxyWithBogusLength() {</span>
+<span class="lineNum">     864 </span><span class="lineCov">          5 :   var getTrap = function(t, key) {</span>
+<span class="lineNum">     865 </span><span class="lineCov">          5 :     if (key === &quot;length&quot;) return Symbol();</span>
+<span class="lineNum">     866 </span><span class="lineCov">          5 :     if (key === &quot;2&quot;) return &quot;baz&quot;;</span>
+<span class="lineNum">     867 </span><span class="lineCov">          5 :     if (key === &quot;3&quot;) return &quot;bar&quot;;</span>
+<a name="868"><span class="lineNum">     868 </span><span class="lineCov">          5 :   };</span></a>
+<span class="lineNum">     869 </span><span class="lineCov">          1 :   var target = [];</span>
+<span class="lineNum">     870 </span><span class="lineCov">          1 :   var obj = new Proxy(target, {get: getTrap, has: () =&gt; true});</span>
+<a name="871"><span class="lineNum">     871 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     872 </span><span class="lineCov">          1 :   assertThrows(() =&gt; [].concat(obj), TypeError);</span>
+<span class="lineNum">     873 </span><span class="lineCov">          1 :   assertThrows(() =&gt; Array.prototype.concat.apply(obj), TypeError);</span>
+<a name="874"><span class="lineNum">     874 </span><span class="lineCov">          1 : })();</span></a>
+<span class="lineNum">     875 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     876 </span><span class="lineCov">          1 : (function testConcatRevokedProxy() {</span>
+<span class="lineNum">     877 </span><span class="lineCov">          1 :   &quot;use strict&quot;;</span>
+<a name="878"><span class="lineNum">     878 </span><span class="lineCov">          1 :   var target = [];</span></a>
+<span class="lineNum">     879 </span><span class="lineCov">          1 :   var handler = {</span>
+<span class="lineNum">     880 </span><span class="lineCov">          2 :     get(_, name) {</span>
+<span class="lineNum">     881 </span><span class="lineCov">          2 :       if (name === Symbol.isConcatSpreadable) {</span>
+<span class="lineNum">     882 </span><span class="lineCov">          2 :         p.revoke();</span>
+<span class="lineNum">     883 </span><span class="lineCov">          2 :       }</span>
+<span class="lineNum">     884 </span><span class="lineCov">          2 :       return target[name];</span>
+<span class="lineNum">     885 </span><span class="lineCov">          2 :     }</span>
+<span class="lineNum">     886 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     887 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     888 </span><span class="lineCov">          1 :   p = Proxy.revocable(target, handler);</span>
+<a name="889"><span class="lineNum">     889 </span><span class="lineCov">          1 :   target = {};</span></a>
+<span class="lineNum">     890 </span><span class="lineCov">          1 :   target.__proto__ = p.proxy;</span>
+<span class="lineNum">     891 </span><span class="lineCov">          1 :   assertThrows(function() { [].concat({ __proto__: p.proxy }); }, TypeError);</span>
+<span class="lineNum">     892 </span><span class="lineCov">          1 : </span>
+<a name="893"><span class="lineNum">     893 </span><span class="lineCov">          1 :   target = [];</span></a>
+<span class="lineNum">     894 </span><span class="lineCov">          1 :   var p = Proxy.revocable(target, handler);</span>
+<span class="lineNum">     895 </span><span class="lineCov">          1 :   assertThrows(function() { [].concat(p.proxy); }, TypeError);</span>
+<span class="lineNum">     896 </span><span class="lineCov">          1 : })();</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

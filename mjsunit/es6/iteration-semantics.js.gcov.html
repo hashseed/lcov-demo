@@ -1,0 +1,435 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - mjsunit/es6/iteration-semantics.js</title>
+  <link rel="stylesheet" type="text/css" href="../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../index.html">top level</a> - <a href="index.html">mjsunit/es6</a> - iteration-semantics.js<span style="font-size: 80%;"> (source / <a href="iteration-semantics.js.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">360</td>
+            <td class="headerCovTableEntry">360</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2017-02-13</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">35</td>
+            <td class="headerCovTableEntry">37</td>
+            <td class="headerCovTableEntryHi">94.6 %</td>
+          </tr>
+          <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span><span class="lineCov">          1 : // Copyright 2013 the V8 project authors. All rights reserved.</span></a>
+<span class="lineNum">       2 </span><span class="lineCov">          1 : // Redistribution and use in source and binary forms, with or without</span>
+<span class="lineNum">       3 </span><span class="lineCov">          1 : // modification, are permitted provided that the following conditions are</span>
+<span class="lineNum">       4 </span><span class="lineCov">          1 : // met:</span>
+<span class="lineNum">       5 </span><span class="lineCov">          1 : //</span>
+<span class="lineNum">       6 </span><span class="lineCov">          1 : //     * Redistributions of source code must retain the above copyright</span>
+<span class="lineNum">       7 </span><span class="lineCov">          1 : //       notice, this list of conditions and the following disclaimer.</span>
+<span class="lineNum">       8 </span><span class="lineCov">          1 : //     * Redistributions in binary form must reproduce the above</span>
+<span class="lineNum">       9 </span><span class="lineCov">          1 : //       copyright notice, this list of conditions and the following</span>
+<span class="lineNum">      10 </span><span class="lineCov">          1 : //       disclaimer in the documentation and/or other materials provided</span>
+<span class="lineNum">      11 </span><span class="lineCov">          1 : //       with the distribution.</span>
+<span class="lineNum">      12 </span><span class="lineCov">          1 : //     * Neither the name of Google Inc. nor the names of its</span>
+<span class="lineNum">      13 </span><span class="lineCov">          1 : //       contributors may be used to endorse or promote products derived</span>
+<span class="lineNum">      14 </span><span class="lineCov">          1 : //       from this software without specific prior written permission.</span>
+<span class="lineNum">      15 </span><span class="lineCov">          1 : //</span>
+<span class="lineNum">      16 </span><span class="lineCov">          1 : // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="lineNum">      17 </span><span class="lineCov">          1 : // &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="lineNum">      18 </span><span class="lineCov">          1 : // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR</span>
+<span class="lineNum">      19 </span><span class="lineCov">          1 : // A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT</span>
+<span class="lineNum">      20 </span><span class="lineCov">          1 : // OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,</span>
+<span class="lineNum">      21 </span><span class="lineCov">          1 : // SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT</span>
+<span class="lineNum">      22 </span><span class="lineCov">          1 : // LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,</span>
+<span class="lineNum">      23 </span><span class="lineCov">          1 : // DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY</span>
+<span class="lineNum">      24 </span><span class="lineCov">          1 : // THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT</span>
+<span class="lineNum">      25 </span><span class="lineCov">          1 : // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE</span>
+<span class="lineNum">      26 </span><span class="lineCov">          1 : // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="lineNum">      27 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      28 </span><span class="lineCov">          1 : // Test for-of semantics.</span>
+<span class="lineNum">      29 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      30 </span><span class="lineCov">          1 : &quot;use strict&quot;;</span>
+<span class="lineNum">      31 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      32 </span><span class="lineCov">          1 : </span>
+<a name="33"><span class="lineNum">      33 </span><span class="lineCov">          1 : // First, some helpers.</span></a>
+<span class="lineNum">      34 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      35 </span><span class="lineCov">          5 : function* values() {</span>
+<span class="lineNum">      36 </span><span class="lineCov">          5 :   for (var i = 0; i &lt; arguments.length; i++) {</span>
+<span class="lineNum">      37 </span><span class="lineCov">          5 :     yield arguments[i];</span>
+<span class="lineNum">      38 </span><span class="lineCov">          5 :   }</span>
+<a name="39"><span class="lineNum">      39 </span><span class="lineCov">          5 : }</span></a>
+<span class="lineNum">      40 </span><span class="lineCov">          1 : </span>
+<a name="41"><span class="lineNum">      41 </span><span class="lineCov">         30 : function wrap_iterator(iterator) {</span></a>
+<span class="lineNum">      42 </span><span class="lineCov">         30 :     var iterable = {};</span>
+<span class="lineNum">      43 </span><span class="lineCov">         40 :     iterable[Symbol.iterator] = function() { return iterator; };</span>
+<span class="lineNum">      44 </span><span class="lineCov">         30 :     return iterable;</span>
+<a name="45"><span class="lineNum">      45 </span><span class="lineCov">         30 : }</span></a>
+<span class="lineNum">      46 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      47 </span><span class="lineCov">         18 : function integers_until(max) {</span>
+<span class="lineNum">      48 </span><span class="lineCov">        108 :   function next() {</span>
+<span class="lineNum">      49 </span><span class="lineCov">        108 :     var ret = { value: this.n, done: this.n == max };</span>
+<span class="lineNum">      50 </span><span class="lineCov">        108 :     this.n++;</span>
+<span class="lineNum">      51 </span><span class="lineCov">        108 :     return ret;</span>
+<span class="lineNum">      52 </span><span class="lineCov">        108 :   }</span>
+<span class="lineNum">      53 </span><span class="lineCov">         18 :   return wrap_iterator({ next: next, n: 0 });</span>
+<a name="54"><span class="lineNum">      54 </span><span class="lineCov">         18 : }</span></a>
+<span class="lineNum">      55 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      56 </span><span class="lineCov">          9 : function results(results) {</span>
+<span class="lineNum">      57 </span><span class="lineCov">          9 :   var i = 0;</span>
+<span class="lineNum">      58 </span><span class="lineCov">         27 :   function next() {</span>
+<span class="lineNum">      59 </span><span class="lineCov">         27 :     return results[i++];</span>
+<span class="lineNum">      60 </span><span class="lineCov">         27 :   }</span>
+<span class="lineNum">      61 </span><span class="lineCov">          9 :   return wrap_iterator({ next: next });</span>
+<a name="62"><span class="lineNum">      62 </span><span class="lineCov">          9 : }</span></a>
+<span class="lineNum">      63 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      64 </span><span class="lineCov">         46 : function* integers_from(n) {</span>
+<span class="lineNum">      65 </span><span class="lineCov">         46 :   while (1) yield n++;</span>
+<span class="lineNum">      66 </span><span class="lineCov">         46 : }</span>
+<a name="67"><span class="lineNum">      67 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      68 </span><span class="lineCov">          1 : // A destructive append.</span>
+<span class="lineNum">      69 </span><span class="lineCov">         31 : function append(x, tail) {</span>
+<span class="lineNum">      70 </span><span class="lineCov">         31 :   tail[tail.length] = x;</span>
+<span class="lineNum">      71 </span><span class="lineCov">         31 :   return tail;</span>
+<a name="72"><span class="lineNum">      72 </span><span class="lineCov">         31 : }</span></a>
+<span class="lineNum">      73 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      74 </span><span class="lineCov">         56 : function sum(x, tail) {</span>
+<span class="lineNum">      75 </span><span class="lineCov">         56 :   return x + tail;</span>
+<a name="76"><span class="lineNum">      76 </span><span class="lineCov">         56 : }</span></a>
+<span class="lineNum">      77 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      78 </span><span class="lineCov">         21 : function fold(cons, seed, iterable) {</span>
+<span class="lineNum">      79 </span><span class="lineCov">         21 :   for (var x of iterable) {</span>
+<span class="lineNum">      80 </span><span class="lineCov">         21 :     seed = cons(x, seed);</span>
+<span class="lineNum">      81 </span><span class="lineCov">         21 :   }</span>
+<span class="lineNum">      82 </span><span class="lineCov">         21 :   return seed;</span>
+<a name="83"><span class="lineNum">      83 </span><span class="lineCov">         21 : }</span></a>
+<span class="lineNum">      84 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      85 </span><span class="lineCov">         24 : function* take(iterable, n) {</span>
+<span class="lineNum">      86 </span><span class="lineCov">         24 :   if (n == 0) return;</span>
+<span class="lineNum">      87 </span><span class="lineCov">         24 :   for (let x of iterable) {</span>
+<span class="lineNum">      88 </span><span class="lineCov">         24 :     yield x;</span>
+<span class="lineNum">      89 </span><span class="lineCov">         24 :     if (--n == 0) break;</span>
+<span class="lineNum">      90 </span><span class="lineCov">         24 :   }</span>
+<a name="91"><span class="lineNum">      91 </span><span class="lineCov">         24 : }</span></a>
+<span class="lineNum">      92 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      93 </span><span class="lineCov">          1 : function nth(iterable, n) {</span>
+<span class="lineNum">      94 </span><span class="lineCov">          1 :   for (let x of iterable) {</span>
+<span class="lineNum">      95 </span><span class="lineCov">          1 :     if (n-- == 0) return x;</span>
+<span class="lineNum">      96 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">      97 </span><span class="lineCov">          1 :   throw &quot;unreachable&quot;;</span>
+<a name="98"><span class="lineNum">      98 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">      99 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     100 </span><span class="lineCov">         12 : function* skip_every(iterable, n) {</span>
+<span class="lineNum">     101 </span><span class="lineCov">         12 :   var i = 0;</span>
+<span class="lineNum">     102 </span><span class="lineCov">         12 :   for (let x of iterable) {</span>
+<span class="lineNum">     103 </span><span class="lineCov">         12 :     if (++i % n == 0) continue;</span>
+<span class="lineNum">     104 </span><span class="lineCov">         12 :     yield x;</span>
+<span class="lineNum">     105 </span><span class="lineCov">         12 :   }</span>
+<a name="106"><span class="lineNum">     106 </span><span class="lineCov">         12 : }</span></a>
+<span class="lineNum">     107 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     108 </span><span class="lineCov">          7 : function* iter_map(iterable, f) {</span>
+<span class="lineNum">     109 </span><span class="lineCov">          7 :   for (var x of iterable) {</span>
+<span class="lineNum">     110 </span><span class="lineCov">          7 :     yield f(x);</span>
+<a name="111"><span class="lineNum">     111 </span><span class="lineCov">          7 :   }</span></a>
+<span class="lineNum">     112 </span><span class="lineCov">          7 : }</span>
+<span class="lineNum">     113 </span><span class="lineCov">          1 : function nested_fold(cons, seed, iterable) {</span>
+<span class="lineNum">     114 </span><span class="lineCov">          1 :   var visited = []</span>
+<span class="lineNum">     115 </span><span class="lineCov">          1 :   for (let x of iterable) {</span>
+<span class="lineNum">     116 </span><span class="lineCov">          1 :     for (let y of x) {</span>
+<span class="lineNum">     117 </span><span class="lineCov">          1 :       seed = cons(y, seed);</span>
+<span class="lineNum">     118 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">     119 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     120 </span><span class="lineCov">          1 :   return seed;</span>
+<a name="121"><span class="lineNum">     121 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">     122 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     123 </span><span class="lineCov">         10 : function* unreachable(iterable) {</span>
+<span class="lineNum">     124 </span><span class="lineCov">         10 :   for (let x of iterable) {</span>
+<span class="lineNum">     125 </span><span class="lineCov">         10 :     throw &quot;not reached&quot;;</span>
+<span class="lineNum">     126 </span><span class="lineCov">         10 :   }</span>
+<a name="127"><span class="lineNum">     127 </span><span class="lineCov">         10 : }</span></a>
+<a name="128"><span class="lineNum">     128 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     129 </span><span class="lineCov">          2 : function one_time_getter(o, prop, val) {</span>
+<a name="130"><span class="lineNum">     130 </span><span class="lineCov">          2 :   function set_never() { throw &quot;unreachable&quot;; }</span></a>
+<span class="lineNum">     131 </span><span class="lineCov">          2 :   var gotten = false;</span>
+<span class="lineNum">     132 </span><span class="lineCov">          2 :   function get_once() {</span>
+<span class="lineNum">     133 </span><span class="lineCov">          2 :     if (gotten) throw &quot;got twice&quot;;</span>
+<span class="lineNum">     134 </span><span class="lineCov">          2 :     gotten = true;</span>
+<span class="lineNum">     135 </span><span class="lineCov">          2 :     return val;</span>
+<span class="lineNum">     136 </span><span class="lineCov">          2 :   }</span>
+<span class="lineNum">     137 </span><span class="lineCov">          2 :   Object.defineProperty(o, prop, {get: get_once, set: set_never})</span>
+<span class="lineNum">     138 </span><span class="lineCov">          2 :   return o;</span>
+<a name="139"><span class="lineNum">     139 </span><span class="lineCov">          2 : }</span></a>
+<a name="140"><span class="lineNum">     140 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     141 </span><span class="lineCov">          2 : function never_getter(o, prop) {</span>
+<span class="lineNum">     142 </span><span class="lineCov">          2 :   function never() { throw &quot;unreachable&quot;; }</span>
+<span class="lineNum">     143 </span><span class="lineCov">          2 :   Object.defineProperty(o, prop, {get: never, set: never})</span>
+<span class="lineNum">     144 </span><span class="lineCov">          2 :   return o;</span>
+<a name="145"><span class="lineNum">     145 </span><span class="lineCov">          2 : }</span></a>
+<span class="lineNum">     146 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     147 </span><span class="lineCov">          2 : function remove_next_after(iterable, n) {</span>
+<span class="lineNum">     148 </span><span class="lineCov">          2 :   var iterator = iterable[Symbol.iterator]();</span>
+<span class="lineNum">     149 </span><span class="lineCov">         17 :   function next() {</span>
+<span class="lineNum">     150 </span><span class="lineCov">         17 :     if (n-- == 0) delete this.next;</span>
+<span class="lineNum">     151 </span><span class="lineCov">         17 :     return iterator.next();</span>
+<span class="lineNum">     152 </span><span class="lineCov">         17 :   }</span>
+<span class="lineNum">     153 </span><span class="lineCov">          2 :   return wrap_iterator({ next: next });</span>
+<a name="154"><span class="lineNum">     154 </span><span class="lineCov">          2 : }</span></a>
+<span class="lineNum">     155 </span><span class="lineCov">          1 : </span>
+<a name="156"><span class="lineNum">     156 </span><span class="lineCov">          1 : function poison_next_after(iterable, n) {</span></a>
+<span class="lineNum">     157 </span><span class="lineCov">          1 :   var iterator = iterable[Symbol.iterator]();</span>
+<span class="lineNum">     158 </span><span class="lineCov">         11 :   function next() {</span>
+<a name="159"><span class="lineNum">     159 </span><span class="lineCov">         11 :     return iterator.next();</span></a>
+<span class="lineNum">     160 </span><span class="lineCov">         11 :   }</span>
+<span class="lineNum">     161 </span><span class="lineCov">         11 :   function next_getter() {</span>
+<span class="lineNum">     162 </span><span class="lineCov">         11 :     if (n-- &lt; 0)</span>
+<span class="lineNum">     163 </span><span class="lineCov">         11 :       throw &quot;poisoned&quot;;</span>
+<span class="lineNum">     164 </span><span class="lineCov">         11 :     return next;</span>
+<span class="lineNum">     165 </span><span class="lineCov">         11 :   }</span>
+<span class="lineNum">     166 </span><span class="lineCov">          1 :   var o = {};</span>
+<span class="lineNum">     167 </span><span class="lineCov">          1 :   Object.defineProperty(o, 'next', { get: next_getter });</span>
+<span class="lineNum">     168 </span><span class="lineCov">          1 :   return wrap_iterator(o);</span>
+<span class="lineNum">     169 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     170 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     171 </span><span class="lineCov">          1 : // Now, the tests.</span>
+<span class="lineNum">     172 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     173 </span><span class="lineCov">          1 : // Non-generator iterators.</span>
+<span class="lineNum">     174 </span><span class="lineCov">          1 : assertEquals(45, fold(sum, 0, integers_until(10)));</span>
+<span class="lineNum">     175 </span><span class="lineCov">          1 : // Generator iterators.</span>
+<span class="lineNum">     176 </span><span class="lineCov">          1 : assertEquals([1, 2, 3], fold(append, [], values(1, 2, 3)));</span>
+<span class="lineNum">     177 </span><span class="lineCov">          1 : // Break.</span>
+<span class="lineNum">     178 </span><span class="lineCov">          1 : assertEquals(45, fold(sum, 0, take(integers_from(0), 10)));</span>
+<span class="lineNum">     179 </span><span class="lineCov">          1 : // Continue.</span>
+<span class="lineNum">     180 </span><span class="lineCov">          1 : assertEquals(90, fold(sum, 0, take(skip_every(integers_from(0), 2), 10)));</span>
+<span class="lineNum">     181 </span><span class="lineCov">          1 : // Return.</span>
+<span class="lineNum">     182 </span><span class="lineCov">          1 : assertEquals(10, nth(integers_from(0), 10));</span>
+<span class="lineNum">     183 </span><span class="lineCov">          1 : // Nested for-of.</span>
+<span class="lineNum">     184 </span><span class="lineCov">          1 : assertEquals([0, 0, 1, 0, 1, 2, 0, 1, 2, 3],</span>
+<span class="lineNum">     185 </span><span class="lineCov">          1 :              nested_fold(append,</span>
+<span class="lineNum">     186 </span><span class="lineCov">          1 :                          [],</span>
+<span class="lineNum">     187 </span><span class="lineCov">          1 :                          iter_map(integers_until(5), integers_until)));</span>
+<span class="lineNum">     188 </span><span class="lineCov">          1 : // Result objects with sparse fields.</span>
+<span class="lineNum">     189 </span><span class="lineCov">          1 : assertEquals([undefined, 1, 2, 3],</span>
+<span class="lineNum">     190 </span><span class="lineCov">          1 :              fold(append, [],</span>
+<span class="lineNum">     191 </span><span class="lineCov">          1 :                   results([{ done: false },</span>
+<span class="lineNum">     192 </span><span class="lineCov">          1 :                            { value: 1, done: false },</span>
+<span class="lineNum">     193 </span><span class="lineCov">          1 :                            // A missing &quot;done&quot; is the same as undefined, which</span>
+<span class="lineNum">     194 </span><span class="lineCov">          1 :                            // is false.</span>
+<span class="lineNum">     195 </span><span class="lineCov">          1 :                            { value: 2 },</span>
+<span class="lineNum">     196 </span><span class="lineCov">          1 :                            // Not done.</span>
+<span class="lineNum">     197 </span><span class="lineCov">          1 :                            { value: 3, done: 0 },</span>
+<span class="lineNum">     198 </span><span class="lineCov">          1 :                            // Done.</span>
+<a name="199"><span class="lineNum">     199 </span><span class="lineCov">          1 :                            { value: 4, done: 42 }])));</span></a>
+<span class="lineNum">     200 </span><span class="lineCov">          1 : // Results that are not objects.</span>
+<span class="lineNum">     201 </span><span class="lineCov">          1 : assertThrows(function() {</span>
+<span class="lineNum">     202 </span><span class="lineCov">          1 :   assertEquals([undefined, undefined, undefined],</span>
+<span class="lineNum">     203 </span><span class="lineCov">          1 :                fold(append, [],</span>
+<span class="lineNum">     204 </span><span class="lineCov">          1 :                     results([10, &quot;foo&quot;, /qux/, { value: 37, done: true }])));</span>
+<span class="lineNum">     205 </span><span class="lineCov">          1 : }, TypeError);</span>
+<span class="lineNum">     206 </span><span class="lineCov">          1 : // Getters (shudder).</span>
+<span class="lineNum">     207 </span><span class="lineCov">          1 : assertEquals([1, 2],</span>
+<span class="lineNum">     208 </span><span class="lineCov">          1 :              fold(append, [],</span>
+<span class="lineNum">     209 </span><span class="lineCov">          1 :                   results([one_time_getter({ value: 1 }, 'done', false),</span>
+<span class="lineNum">     210 </span><span class="lineCov">          1 :                            one_time_getter({ done: false }, 'value', 2),</span>
+<span class="lineNum">     211 </span><span class="lineCov">          1 :                            { value: 37, done: true },</span>
+<span class="lineNum">     212 </span><span class="lineCov">          1 :                            never_getter(never_getter({}, 'done'), 'value')])));</span>
+<span class="lineNum">     213 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     214 </span><span class="lineCov">          1 : // Unlike the case with for-in, null and undefined cause an error.</span>
+<span class="lineNum">     215 </span><span class="lineCov">          1 : assertThrows('fold(sum, 0, unreachable(null))', TypeError);</span>
+<span class="lineNum">     216 </span><span class="lineCov">          1 : assertThrows('fold(sum, 0, unreachable(undefined))', TypeError);</span>
+<span class="lineNum">     217 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     218 </span><span class="lineCov">          1 : // Other non-iterators do cause an error.</span>
+<span class="lineNum">     219 </span><span class="lineCov">          1 : assertThrows('fold(sum, 0, unreachable({}))', TypeError);</span>
+<span class="lineNum">     220 </span><span class="lineCov">          1 : assertThrows('fold(sum, 0, unreachable(false))', TypeError);</span>
+<span class="lineNum">     221 </span><span class="lineCov">          1 : assertThrows('fold(sum, 0, unreachable(37))', TypeError);</span>
+<span class="lineNum">     222 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     223 </span><span class="lineCov">          1 : // &quot;next&quot; is looked up each time.</span>
+<span class="lineNum">     224 </span><span class="lineCov">          1 : assertThrows('fold(sum, 0, remove_next_after(integers_until(10), 5))',</span>
+<span class="lineNum">     225 </span><span class="lineCov">          1 :              TypeError);</span>
+<span class="lineNum">     226 </span><span class="lineCov">          1 : // It is not called at any other time.</span>
+<span class="lineNum">     227 </span><span class="lineCov">          1 : assertEquals(45,</span>
+<span class="lineNum">     228 </span><span class="lineCov">          1 :              fold(sum, 0, remove_next_after(integers_until(10), 10)));</span>
+<span class="lineNum">     229 </span><span class="lineCov">          1 : // It is not looked up too many times.</span>
+<span class="lineNum">     230 </span><span class="lineCov">          1 : assertEquals(45,</span>
+<a name="231"><span class="lineNum">     231 </span><span class="lineCov">          1 :              fold(sum, 0, poison_next_after(integers_until(10), 10)));</span></a>
+<span class="lineNum">     232 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     233 </span><span class="lineCov">          1 : function labelled_continue(iterable) {</span>
+<span class="lineNum">     234 </span><span class="lineCov">          1 :   var n = 0;</span>
+<span class="lineNum">     235 </span><span class="lineCov">          1 : outer:</span>
+<span class="lineNum">     236 </span><span class="lineCov">          1 :   while (true) {</span>
+<span class="lineNum">     237 </span><span class="lineCov">          1 :     n++;</span>
+<span class="lineNum">     238 </span><span class="lineCov">          1 :     for (var x of iterable) continue outer;</span>
+<span class="lineNum">     239 </span><span class="lineCov">          1 :     break;</span>
+<span class="lineNum">     240 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     241 </span><span class="lineCov">          1 :   return n;</span>
+<span class="lineNum">     242 </span><span class="lineCov">          1 : }</span>
+<a name="243"><span class="lineNum">     243 </span><span class="lineCov">          1 : assertEquals(11, labelled_continue(integers_until(10)));</span></a>
+<span class="lineNum">     244 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     245 </span><span class="lineCov">          1 : function labelled_break(iterable) {</span>
+<span class="lineNum">     246 </span><span class="lineCov">          1 :   var n = 0;</span>
+<span class="lineNum">     247 </span><span class="lineCov">          1 : outer:</span>
+<span class="lineNum">     248 </span><span class="lineCov">          1 :   while (true) {</span>
+<span class="lineNum">     249 </span><span class="lineCov">          1 :     n++;</span>
+<span class="lineNum">     250 </span><span class="lineCov">          1 :     for (var x of iterable) break outer;</span>
+<span class="lineNum">     251 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     252 </span><span class="lineCov">          1 :   return n;</span>
+<span class="lineNum">     253 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     254 </span><span class="lineCov">          1 : assertEquals(1, labelled_break(integers_until(10)));</span>
+<a name="255"><span class="lineNum">     255 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     256 </span><span class="lineCov">          1 : // Test continue/break in catch.</span>
+<span class="lineNum">     257 </span><span class="lineCov">          3 : function catch_control(iterable, k) {</span>
+<span class="lineNum">     258 </span><span class="lineCov">          3 :   var n = 0;</span>
+<span class="lineNum">     259 </span><span class="lineCov">          3 :   for (var x of iterable) {</span>
+<span class="lineNum">     260 </span><span class="lineCov">          3 :     try {</span>
+<span class="lineNum">     261 </span><span class="lineCov">          3 :       return k(x);</span>
+<span class="lineNum">     262 </span><span class="lineCov">          3 :     } catch (e) {</span>
+<span class="lineNum">     263 </span><span class="lineCov">          3 :       if (e == &quot;continue&quot;) continue;</span>
+<span class="lineNum">     264 </span><span class="lineCov">          3 :       else if (e == &quot;break&quot;) break;</span>
+<span class="lineNum">     265 </span><span class="lineCov">          3 :       else throw e;</span>
+<span class="lineNum">     266 </span><span class="lineCov">          3 :     }</span>
+<span class="lineNum">     267 </span><span class="lineCov">          3 :   } while (false);</span>
+<span class="lineNum">     268 </span><span class="lineCov">          3 :   return false;</span>
+<span class="lineNum">     269 </span><span class="lineCov">          3 : }</span>
+<a name="270"><span class="lineNum">     270 </span><span class="lineCov">          1 : assertEquals(false,</span></a>
+<span class="lineNum">     271 </span><span class="lineCov">          1 :              catch_control(integers_until(10),</span>
+<span class="lineNum">     272 </span><span class="lineCov">          1 :                            function() { throw &quot;break&quot; }));</span>
+<a name="273"><span class="lineNum">     273 </span><span class="lineCov">          1 : assertEquals(false,</span></a>
+<span class="lineNum">     274 </span><span class="lineCov">          1 :              catch_control(integers_until(10),</span>
+<span class="lineNum">     275 </span><span class="lineCov">         10 :                            function() { throw &quot;continue&quot; }));</span>
+<a name="276"><span class="lineNum">     276 </span><span class="lineCov">          1 : assertEquals(5,</span></a>
+<span class="lineNum">     277 </span><span class="lineCov">          1 :              catch_control(integers_until(10),</span>
+<span class="lineNum">     278 </span><span class="lineCov">          6 :                            function(x) {</span>
+<span class="lineNum">     279 </span><span class="lineCov">          6 :                              if (x == 5) return x;</span>
+<span class="lineNum">     280 </span><span class="lineCov">          6 :                              throw &quot;continue&quot;;</span>
+<span class="lineNum">     281 </span><span class="lineCov">          6 :                            }));</span>
+<a name="282"><span class="lineNum">     282 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     283 </span><span class="lineCov">          1 : // Test continue/break in try.</span>
+<span class="lineNum">     284 </span><span class="lineCov">          3 : function try_control(iterable, k) {</span>
+<span class="lineNum">     285 </span><span class="lineCov">          3 :   var n = 0;</span>
+<span class="lineNum">     286 </span><span class="lineCov">          3 :   for (var x of iterable) {</span>
+<span class="lineNum">     287 </span><span class="lineCov">          3 :     try {</span>
+<span class="lineNum">     288 </span><span class="lineCov">          3 :       var e = k(x);</span>
+<span class="lineNum">     289 </span><span class="lineCov">          3 :       if (e == &quot;continue&quot;) continue;</span>
+<span class="lineNum">     290 </span><span class="lineCov">          3 :       else if (e == &quot;break&quot;) break;</span>
+<span class="lineNum">     291 </span><span class="lineCov">          3 :       return e;</span>
+<span class="lineNum">     292 </span><span class="lineCov">          3 :     } catch (e) {</span>
+<span class="lineNum">     293 </span><span class="lineCov">          3 :       throw e;</span>
+<span class="lineNum">     294 </span><span class="lineCov">          3 :     }</span>
+<span class="lineNum">     295 </span><span class="lineCov">          3 :   } while (false);</span>
+<span class="lineNum">     296 </span><span class="lineCov">          3 :   return false;</span>
+<span class="lineNum">     297 </span><span class="lineCov">          3 : }</span>
+<a name="298"><span class="lineNum">     298 </span><span class="lineCov">          1 : assertEquals(false,</span></a>
+<span class="lineNum">     299 </span><span class="lineCov">          1 :              try_control(integers_until(10),</span>
+<span class="lineNum">     300 </span><span class="lineCov">          1 :                          function() { return &quot;break&quot; }));</span>
+<a name="301"><span class="lineNum">     301 </span><span class="lineCov">          1 : assertEquals(false,</span></a>
+<span class="lineNum">     302 </span><span class="lineCov">          1 :              try_control(integers_until(10),</span>
+<span class="lineNum">     303 </span><span class="lineCov">         10 :                          function() { return &quot;continue&quot; }));</span>
+<a name="304"><span class="lineNum">     304 </span><span class="lineCov">          1 : assertEquals(5,</span></a>
+<span class="lineNum">     305 </span><span class="lineCov">          1 :              try_control(integers_until(10),</span>
+<span class="lineNum">     306 </span><span class="lineCov">          6 :                          function(x) { return (x == 5) ? x : &quot;continue&quot; }));</span>
+<span class="lineNum">     307 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     308 </span><span class="lineCov">          1 : // TODO(neis,cbruni): Enable once the corresponding traps work again.</span>
+<span class="lineNum">     309 </span><span class="lineCov">          1 : // Proxy results, with getters.</span>
+<span class="lineNum">     310 </span><span class="lineCov">          1 : // function transparent_proxy(x) {</span>
+<span class="lineNum">     311 </span><span class="lineCov">          1 : //   return new Proxy({}, {</span>
+<span class="lineNum">     312 </span><span class="lineCov">          1 : //     get: function(receiver, name) { return x[name]; }</span>
+<span class="lineNum">     313 </span><span class="lineCov">          1 : //   });</span>
+<span class="lineNum">     314 </span><span class="lineCov">          1 : // }</span>
+<span class="lineNum">     315 </span><span class="lineCov">          1 : // assertEquals([1, 2],</span>
+<span class="lineNum">     316 </span><span class="lineCov">          1 : //              fold(append, [],</span>
+<span class="lineNum">     317 </span><span class="lineCov">          1 : //                   results([one_time_getter({ value: 1 }, 'done', false),</span>
+<span class="lineNum">     318 </span><span class="lineCov">          1 : //                            one_time_getter({ done: false }, 'value', 2),</span>
+<span class="lineNum">     319 </span><span class="lineCov">          1 : //                            { value: 37, done: true },</span>
+<span class="lineNum">     320 </span><span class="lineCov">          1 : //                            never_getter(never_getter({}, 'done'), 'value')]</span>
+<span class="lineNum">     321 </span><span class="lineCov">          1 : //                           .map(transparent_proxy))));</span>
+<span class="lineNum">     322 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     323 </span><span class="lineCov">          1 : // Proxy iterators.</span>
+<span class="lineNum">     324 </span><span class="lineCov">          1 : // function poison_proxy_after(iterable, n) {</span>
+<span class="lineNum">     325 </span><span class="lineCov">          1 : //   var iterator = iterable[Symbol.iterator]();</span>
+<span class="lineNum">     326 </span><span class="lineCov">          1 : //   return wrap_iterator(new Proxy({}, {</span>
+<span class="lineNum">     327 </span><span class="lineCov">          1 : //     get: function(receiver, name) {</span>
+<span class="lineNum">     328 </span><span class="lineCov">          1 : //       if (name == 'next' &amp;&amp; n-- &lt; 0) throw &quot;unreachable&quot;;</span>
+<span class="lineNum">     329 </span><span class="lineCov">          1 : //       return iterator[name];</span>
+<span class="lineNum">     330 </span><span class="lineCov">          1 : //     },</span>
+<span class="lineNum">     331 </span><span class="lineCov">          1 : //     // Needed for integers_until(10)'s this.n++.</span>
+<span class="lineNum">     332 </span><span class="lineCov">          1 : //     set: function(receiver, name, val) {</span>
+<span class="lineNum">     333 </span><span class="lineCov">          1 : //       return iterator[name] = val;</span>
+<span class="lineNum">     334 </span><span class="lineCov">          1 : //     }</span>
+<span class="lineNum">     335 </span><span class="lineCov">          1 : //   }));</span>
+<span class="lineNum">     336 </span><span class="lineCov">          1 : // }</span>
+<span class="lineNum">     337 </span><span class="lineCov">          1 : // assertEquals(45, fold(sum, 0, poison_proxy_after(integers_until(10), 10)));</span>
+<a name="338"><span class="lineNum">     338 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     339 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     340 </span><span class="lineCov">          6 : function test_iterator_result_object_non_object(value, descr) {</span>
+<span class="lineNum">     341 </span><span class="lineCov">          6 :   var arr = [];</span>
+<span class="lineNum">     342 </span><span class="lineCov">          6 :   var ex;</span>
+<span class="lineNum">     343 </span><span class="lineCov">          6 :   var message = 'Iterator result ' + (descr || value) + ' is not an object';</span>
+<span class="lineNum">     344 </span><span class="lineCov">          6 :   try {</span>
+<span class="lineNum">     345 </span><span class="lineCov">          6 :     fold(append, arr,</span>
+<span class="lineNum">     346 </span><span class="lineCov">          6 :          results([{value: 1}, {}, value, {value: 2}, {done: true}]));</span>
+<span class="lineNum">     347 </span><span class="lineCov">          6 :   } catch (e) {</span>
+<span class="lineNum">     348 </span><span class="lineCov">          6 :     ex = e;</span>
+<span class="lineNum">     349 </span><span class="lineCov">          6 :   }</span>
+<span class="lineNum">     350 </span><span class="lineCov">          6 :   assertInstanceof(ex, TypeError);</span>
+<span class="lineNum">     351 </span><span class="lineCov">          6 :   assertEquals(message, ex.message);</span>
+<span class="lineNum">     352 </span><span class="lineCov">          6 :   assertArrayEquals([1, undefined], arr);</span>
+<span class="lineNum">     353 </span><span class="lineCov">          6 : }</span>
+<span class="lineNum">     354 </span><span class="lineCov">          1 : test_iterator_result_object_non_object(null);</span>
+<span class="lineNum">     355 </span><span class="lineCov">          1 : test_iterator_result_object_non_object(undefined);</span>
+<span class="lineNum">     356 </span><span class="lineCov">          1 : test_iterator_result_object_non_object(42);</span>
+<span class="lineNum">     357 </span><span class="lineCov">          1 : test_iterator_result_object_non_object('abc');</span>
+<span class="lineNum">     358 </span><span class="lineCov">          1 : test_iterator_result_object_non_object(false);</span>
+<span class="lineNum">     359 </span><span class="lineCov">          1 : test_iterator_result_object_non_object(Symbol('x'), 'Symbol(x)');</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - mjsunit/harmony/regexp-named-captures.js</title>
+  <link rel="stylesheet" type="text/css" href="../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../index.html">top level</a> - <a href="index.html">mjsunit/harmony</a> - regexp-named-captures.js<span style="font-size: 80%;"> (source / <a href="regexp-named-captures.js.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">99</td>
+            <td class="headerCovTableEntry">99</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2017-02-13</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span><span class="lineCov">          1 : // Copyright 2015 the V8 project authors. All rights reserved.</span></a>
+<span class="lineNum">       2 </span><span class="lineCov">          1 : // Use of this source code is governed by a BSD-style license that can be</span>
+<span class="lineNum">       3 </span><span class="lineCov">          1 : // found in the LICENSE file.</span>
+<span class="lineNum">       4 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">       5 </span><span class="lineCov">          1 : // Flags: --harmony-regexp-named-captures</span>
+<span class="lineNum">       6 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">       7 </span><span class="lineCov">          1 : // Malformed named captures.</span>
+<span class="lineNum">       8 </span><span class="lineCov">          1 : assertThrows(&quot;/(?&lt;&gt;a)/u&quot;);  // Empty name.</span>
+<span class="lineNum">       9 </span><span class="lineCov">          1 : assertThrows(&quot;/(?&lt;aa)/u&quot;);  // Unterminated name.</span>
+<span class="lineNum">      10 </span><span class="lineCov">          1 : assertThrows(&quot;/(?&lt;42a&gt;a)/u&quot;);  // Name starting with digits.</span>
+<span class="lineNum">      11 </span><span class="lineCov">          1 : assertThrows(&quot;/(?&lt;:a&gt;a)/u&quot;);  // Name starting with invalid char.</span>
+<span class="lineNum">      12 </span><span class="lineCov">          1 : assertThrows(&quot;/(?&lt;a:&gt;a)/u&quot;);  // Name containing with invalid char.</span>
+<span class="lineNum">      13 </span><span class="lineCov">          1 : assertThrows(&quot;/(?&lt;a&gt;a)(?&lt;a&gt;a)/u&quot;);  // Duplicate name.</span>
+<span class="lineNum">      14 </span><span class="lineCov">          1 : assertThrows(&quot;/(?&lt;a&gt;a)(?&lt;b&gt;b)(?&lt;a&gt;a)/u&quot;);  // Duplicate name.</span>
+<span class="lineNum">      15 </span><span class="lineCov">          1 : assertThrows(&quot;/\\k&lt;a&gt;/u&quot;);  // Invalid reference.</span>
+<span class="lineNum">      16 </span><span class="lineCov">          1 : assertThrows(&quot;/(?&lt;a&gt;a)\\k&lt;ab&gt;/u&quot;);  // Invalid reference.</span>
+<span class="lineNum">      17 </span><span class="lineCov">          1 : assertThrows(&quot;/(?&lt;ab&gt;a)\\k&lt;a&gt;/u&quot;);  // Invalid reference.</span>
+<span class="lineNum">      18 </span><span class="lineCov">          1 : assertThrows(&quot;/\\k&lt;a&gt;(?&lt;ab&gt;a)/u&quot;);  // Invalid reference.</span>
+<span class="lineNum">      19 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      20 </span><span class="lineCov">          1 : // Fallback behavior in non-unicode mode.</span>
+<span class="lineNum">      21 </span><span class="lineCov">          1 : assertThrows(&quot;/(?&lt;&gt;a)/&quot;, SyntaxError);</span>
+<span class="lineNum">      22 </span><span class="lineCov">          1 : assertThrows(&quot;/(?&lt;aa)/&quot;, SyntaxError);</span>
+<span class="lineNum">      23 </span><span class="lineCov">          1 : assertThrows(&quot;/(?&lt;42a&gt;a)/&quot;, SyntaxError);</span>
+<span class="lineNum">      24 </span><span class="lineCov">          1 : assertThrows(&quot;/(?&lt;:a&gt;a)/&quot;, SyntaxError);</span>
+<span class="lineNum">      25 </span><span class="lineCov">          1 : assertThrows(&quot;/(?&lt;a:&gt;a)/&quot;, SyntaxError);</span>
+<span class="lineNum">      26 </span><span class="lineCov">          1 : assertThrows(&quot;/(?&lt;a&gt;a)(?&lt;a&gt;a)/&quot;, SyntaxError);</span>
+<span class="lineNum">      27 </span><span class="lineCov">          1 : assertThrows(&quot;/(?&lt;a&gt;a)(?&lt;b&gt;b)(?&lt;a&gt;a)/&quot;, SyntaxError);</span>
+<span class="lineNum">      28 </span><span class="lineCov">          1 : assertThrows(&quot;/(?&lt;a&gt;a)\\k&lt;ab&gt;/&quot;, SyntaxError);</span>
+<span class="lineNum">      29 </span><span class="lineCov">          1 : assertThrows(&quot;/(?&lt;ab&gt;a)\\k&lt;a&gt;/&quot;, SyntaxError);</span>
+<span class="lineNum">      30 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      31 </span><span class="lineCov">          1 : assertEquals([&quot;k&lt;a&gt;&quot;], &quot;xxxk&lt;a&gt;xxx&quot;.match(/\k&lt;a&gt;/));</span>
+<span class="lineNum">      32 </span><span class="lineCov">          1 : assertEquals([&quot;k&lt;a&quot;], &quot;xxxk&lt;a&gt;xxx&quot;.match(/\k&lt;a/));</span>
+<span class="lineNum">      33 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      34 </span><span class="lineCov">          1 : // Basic named groups.</span>
+<span class="lineNum">      35 </span><span class="lineCov">          1 : assertEquals([&quot;a&quot;, &quot;a&quot;], &quot;bab&quot;.match(/(?&lt;a&gt;a)/u));</span>
+<span class="lineNum">      36 </span><span class="lineCov">          1 : assertEquals([&quot;a&quot;, &quot;a&quot;], &quot;bab&quot;.match(/(?&lt;a42&gt;a)/u));</span>
+<span class="lineNum">      37 </span><span class="lineCov">          1 : assertEquals([&quot;a&quot;, &quot;a&quot;], &quot;bab&quot;.match(/(?&lt;_&gt;a)/u));</span>
+<span class="lineNum">      38 </span><span class="lineCov">          1 : assertEquals([&quot;a&quot;, &quot;a&quot;], &quot;bab&quot;.match(/(?&lt;$&gt;a)/u));</span>
+<span class="lineNum">      39 </span><span class="lineCov">          1 : assertEquals([&quot;bab&quot;, &quot;a&quot;], &quot;bab&quot;.match(/.(?&lt;$&gt;a)./u));</span>
+<span class="lineNum">      40 </span><span class="lineCov">          1 : assertEquals([&quot;bab&quot;, &quot;a&quot;, &quot;b&quot;], &quot;bab&quot;.match(/.(?&lt;a&gt;a)(.)/u));</span>
+<span class="lineNum">      41 </span><span class="lineCov">          1 : assertEquals([&quot;bab&quot;, &quot;a&quot;, &quot;b&quot;], &quot;bab&quot;.match(/.(?&lt;a&gt;a)(?&lt;b&gt;.)/u));</span>
+<span class="lineNum">      42 </span><span class="lineCov">          1 : assertEquals([&quot;bab&quot;, &quot;ab&quot;], &quot;bab&quot;.match(/.(?&lt;a&gt;\w\w)/u));</span>
+<span class="lineNum">      43 </span><span class="lineCov">          1 : assertEquals([&quot;bab&quot;, &quot;bab&quot;], &quot;bab&quot;.match(/(?&lt;a&gt;\w\w\w)/u));</span>
+<span class="lineNum">      44 </span><span class="lineCov">          1 : assertEquals([&quot;bab&quot;, &quot;ba&quot;, &quot;b&quot;], &quot;bab&quot;.match(/(?&lt;a&gt;\w\w)(?&lt;b&gt;\w)/u));</span>
+<span class="lineNum">      45 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      46 </span><span class="lineCov">          1 : assertEquals(&quot;bab&quot;.match(/(a)/u), &quot;bab&quot;.match(/(?&lt;a&gt;a)/u));</span>
+<span class="lineNum">      47 </span><span class="lineCov">          1 : assertEquals(&quot;bab&quot;.match(/(a)/u), &quot;bab&quot;.match(/(?&lt;a42&gt;a)/u));</span>
+<span class="lineNum">      48 </span><span class="lineCov">          1 : assertEquals(&quot;bab&quot;.match(/(a)/u), &quot;bab&quot;.match(/(?&lt;_&gt;a)/u));</span>
+<span class="lineNum">      49 </span><span class="lineCov">          1 : assertEquals(&quot;bab&quot;.match(/(a)/u), &quot;bab&quot;.match(/(?&lt;$&gt;a)/u));</span>
+<span class="lineNum">      50 </span><span class="lineCov">          1 : assertEquals(&quot;bab&quot;.match(/.(a)./u), &quot;bab&quot;.match(/.(?&lt;$&gt;a)./u));</span>
+<span class="lineNum">      51 </span><span class="lineCov">          1 : assertEquals(&quot;bab&quot;.match(/.(a)(.)/u), &quot;bab&quot;.match(/.(?&lt;a&gt;a)(.)/u));</span>
+<span class="lineNum">      52 </span><span class="lineCov">          1 : assertEquals(&quot;bab&quot;.match(/.(a)(.)/u), &quot;bab&quot;.match(/.(?&lt;a&gt;a)(?&lt;b&gt;.)/u));</span>
+<span class="lineNum">      53 </span><span class="lineCov">          1 : assertEquals(&quot;bab&quot;.match(/.(\w\w)/u), &quot;bab&quot;.match(/.(?&lt;a&gt;\w\w)/u));</span>
+<span class="lineNum">      54 </span><span class="lineCov">          1 : assertEquals(&quot;bab&quot;.match(/(\w\w\w)/u), &quot;bab&quot;.match(/(?&lt;a&gt;\w\w\w)/u));</span>
+<span class="lineNum">      55 </span><span class="lineCov">          1 : assertEquals(&quot;bab&quot;.match(/(\w\w)(\w)/u), &quot;bab&quot;.match(/(?&lt;a&gt;\w\w)(?&lt;b&gt;\w)/u));</span>
+<span class="lineNum">      56 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      57 </span><span class="lineCov">          1 : assertEquals([&quot;bab&quot;, &quot;b&quot;], &quot;bab&quot;.match(/(?&lt;b&gt;b).\1/u));</span>
+<span class="lineNum">      58 </span><span class="lineCov">          1 : assertEquals([&quot;baba&quot;, &quot;b&quot;, &quot;a&quot;], &quot;baba&quot;.match(/(.)(?&lt;a&gt;a)\1\2/u));</span>
+<span class="lineNum">      59 </span><span class="lineCov">          1 : assertEquals([&quot;baba&quot;, &quot;b&quot;, &quot;a&quot;, &quot;b&quot;, &quot;a&quot;],</span>
+<span class="lineNum">      60 </span><span class="lineCov">          1 :     &quot;baba&quot;.match(/(.)(?&lt;a&gt;a)(?&lt;b&gt;\1)(\2)/u));</span>
+<span class="lineNum">      61 </span><span class="lineCov">          1 : assertEquals([&quot;&lt;a&quot;, &quot;&lt;&quot;], &quot;&lt;a&quot;.match(/(?&lt;lt&gt;&lt;)a/u));</span>
+<span class="lineNum">      62 </span><span class="lineCov">          1 : assertEquals([&quot;&gt;a&quot;, &quot;&gt;&quot;], &quot;&gt;a&quot;.match(/(?&lt;gt&gt;&gt;)a/u));</span>
+<span class="lineNum">      63 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      64 </span><span class="lineCov">          1 : // Named references.</span>
+<span class="lineNum">      65 </span><span class="lineCov">          1 : assertEquals([&quot;bab&quot;, &quot;b&quot;], &quot;bab&quot;.match(/(?&lt;b&gt;.).\k&lt;b&gt;/u));</span>
+<span class="lineNum">      66 </span><span class="lineCov">          1 : assertNull(&quot;baa&quot;.match(/(?&lt;b&gt;.).\k&lt;b&gt;/u));</span>
+<span class="lineNum">      67 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      68 </span><span class="lineCov">          1 : // Nested groups.</span>
+<span class="lineNum">      69 </span><span class="lineCov">          1 : assertEquals([&quot;bab&quot;, &quot;bab&quot;, &quot;ab&quot;, &quot;b&quot;], &quot;bab&quot;.match(/(?&lt;a&gt;.(?&lt;b&gt;.(?&lt;c&gt;.)))/u));</span>
+<span class="lineNum">      70 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      71 </span><span class="lineCov">          1 : // Reference inside group.</span>
+<span class="lineNum">      72 </span><span class="lineCov">          1 : assertEquals([&quot;bab&quot;, &quot;b&quot;], &quot;bab&quot;.match(/(?&lt;a&gt;\k&lt;a&gt;\w)../u));</span>
+<span class="lineNum">      73 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      74 </span><span class="lineCov">          1 : // Reference before group.</span>
+<span class="lineNum">      75 </span><span class="lineCov">          1 : assertEquals([&quot;bab&quot;, &quot;b&quot;], &quot;bab&quot;.match(/\k&lt;a&gt;(?&lt;a&gt;b)\w\k&lt;a&gt;/u));</span>
+<span class="lineNum">      76 </span><span class="lineCov">          1 : assertEquals([&quot;bab&quot;, &quot;b&quot;, &quot;a&quot;], &quot;bab&quot;.match(/(?&lt;b&gt;b)\k&lt;a&gt;(?&lt;a&gt;a)\k&lt;b&gt;/u));</span>
+<span class="lineNum">      77 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      78 </span><span class="lineCov">          1 : // Reference properties.</span>
+<span class="lineNum">      79 </span><span class="lineCov">          1 : assertEquals(&quot;a&quot;, /(?&lt;a&gt;a)(?&lt;b&gt;b)\k&lt;a&gt;/u.exec(&quot;aba&quot;).group.a);</span>
+<span class="lineNum">      80 </span><span class="lineCov">          1 : assertEquals(&quot;b&quot;, /(?&lt;a&gt;a)(?&lt;b&gt;b)\k&lt;a&gt;/u.exec(&quot;aba&quot;).group.b);</span>
+<span class="lineNum">      81 </span><span class="lineCov">          1 : assertEquals(undefined, /(?&lt;a&gt;a)(?&lt;b&gt;b)\k&lt;a&gt;/u.exec(&quot;aba&quot;).group.c);</span>
+<span class="lineNum">      82 </span><span class="lineCov">          1 : assertEquals(undefined, /(?&lt;a&gt;a)(?&lt;b&gt;b)\k&lt;a&gt;|(?&lt;c&gt;c)/u.exec(&quot;aba&quot;).group.c);</span>
+<span class="lineNum">      83 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      84 </span><span class="lineCov">          1 : // Unicode names.</span>
+<span class="lineNum">      85 </span><span class="lineCov">          1 : assertEquals(&quot;a&quot;, /(?&lt;π&gt;a)/u.exec(&quot;bab&quot;).group.π);</span>
+<span class="lineNum">      86 </span><span class="lineCov">          1 : assertEquals(&quot;a&quot;, /(?&lt;\u{03C0}&gt;a)/u.exec(&quot;bab&quot;).group.\u03C0);</span>
+<span class="lineNum">      87 </span><span class="lineCov">          1 : assertEquals(&quot;a&quot;, /(?&lt;$&gt;a)/u.exec(&quot;bab&quot;).group.$);</span>
+<span class="lineNum">      88 </span><span class="lineCov">          1 : assertEquals(&quot;a&quot;, /(?&lt;_&gt;a)/u.exec(&quot;bab&quot;).group._);</span>
+<span class="lineNum">      89 </span><span class="lineCov">          1 : assertEquals(&quot;a&quot;, /(?&lt;$𐒤&gt;a)/u.exec(&quot;bab&quot;).group.$𐒤);</span>
+<span class="lineNum">      90 </span><span class="lineCov">          1 : assertEquals(&quot;a&quot;, /(?&lt;_\u200C&gt;a)/u.exec(&quot;bab&quot;).group._\u200C);</span>
+<span class="lineNum">      91 </span><span class="lineCov">          1 : assertEquals(&quot;a&quot;, /(?&lt;_\u200D&gt;a)/u.exec(&quot;bab&quot;).group._\u200D);</span>
+<span class="lineNum">      92 </span><span class="lineCov">          1 : assertEquals(&quot;a&quot;, /(?&lt;ಠ_ಠ&gt;a)/u.exec(&quot;bab&quot;).group.ಠ_ಠ);</span>
+<span class="lineNum">      93 </span><span class="lineCov">          1 : assertThrows('/(?&lt;❤&gt;a)/u', SyntaxError);</span>
+<span class="lineNum">      94 </span><span class="lineCov">          1 : assertThrows('/(?&lt;𐒤&gt;a)/u', SyntaxError);  // ID_Continue but not ID_Start.</span>
+<span class="lineNum">      95 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      96 </span><span class="lineCov">          1 : // The '__proto__' property on the groups object.</span>
+<span class="lineNum">      97 </span><span class="lineCov">          1 : assertEquals(undefined, /(?&lt;a&gt;.)/u.exec(&quot;a&quot;).group.__proto__);</span>
+<span class="lineNum">      98 </span><span class="lineCov">          1 : assertEquals(&quot;a&quot;, /(?&lt;__proto__&gt;a)/u.exec(&quot;a&quot;).group.__proto__);</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

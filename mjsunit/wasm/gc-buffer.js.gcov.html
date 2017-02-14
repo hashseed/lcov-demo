@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - mjsunit/wasm/gc-buffer.js</title>
+  <link rel="stylesheet" type="text/css" href="../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../index.html">top level</a> - <a href="index.html">mjsunit/wasm</a> - gc-buffer.js<span style="font-size: 80%;"> (source / <a href="gc-buffer.js.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">43</td>
+            <td class="headerCovTableEntry">43</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2017-02-13</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">5</td>
+            <td class="headerCovTableEntry">5</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span><span class="lineCov">          1 : // Copyright 2016 the V8 project authors. All rights reserved.</span></a>
+<span class="lineNum">       2 </span><span class="lineCov">          1 : // Use of this source code is governed by a BSD-style license that can be</span>
+<span class="lineNum">       3 </span><span class="lineCov">          1 : // found in the LICENSE file.</span>
+<span class="lineNum">       4 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">       5 </span><span class="lineCov">          1 : // Flags: --expose-wasm  --stress-gc --expose-gc</span>
+<span class="lineNum">       6 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">       7 </span><span class="lineCov">          1 : load(&quot;test/mjsunit/wasm/wasm-constants.js&quot;);</span>
+<a name="8"><span class="lineNum">       8 </span><span class="lineCov">          1 : load(&quot;test/mjsunit/wasm/wasm-module-builder.js&quot;);</span></a>
+<span class="lineNum">       9 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      10 </span><span class="lineCov">          6 : function run(f) {</span>
+<a name="11"><span class="lineNum">      11 </span><span class="lineCov">          6 :   // wrap the creation in a closure so that the only thing returned is</span></a>
+<span class="lineNum">      12 </span><span class="lineCov">          6 :   // the module (i.e. the underlying array buffer of WASM wire bytes dies).</span>
+<span class="lineNum">      13 </span><span class="lineCov">          6 :   var module = (() =&gt; {</span>
+<span class="lineNum">      14 </span><span class="lineCov">          6 :     var builder = new WasmModuleBuilder();</span>
+<span class="lineNum">      15 </span><span class="lineCov">          6 :     builder.addImport(&quot;mod&quot;, &quot;the_name_of_my_import&quot;, kSig_i_i);</span>
+<span class="lineNum">      16 </span><span class="lineCov">          6 :     builder.addFunction(&quot;main&quot;, kSig_i_i)</span>
+<span class="lineNum">      17 </span><span class="lineCov">          6 :       .addBody([</span>
+<span class="lineNum">      18 </span><span class="lineCov">          6 :         kExprGetLocal, 0,</span>
+<span class="lineNum">      19 </span><span class="lineCov">          6 :         kExprCallFunction, 0])</span>
+<span class="lineNum">      20 </span><span class="lineCov">          6 :       .exportAs(&quot;main&quot;);</span>
+<span class="lineNum">      21 </span><span class="lineCov">          6 :     print(&quot;module&quot;);</span>
+<span class="lineNum">      22 </span><span class="lineCov">          6 :     return new WebAssembly.Module(builder.toBuffer());</span>
+<span class="lineNum">      23 </span><span class="lineCov">          6 :   })();</span>
+<span class="lineNum">      24 </span><span class="lineCov">          6 : </span>
+<span class="lineNum">      25 </span><span class="lineCov">          6 :   gc();</span>
+<span class="lineNum">      26 </span><span class="lineCov">          6 :   for (var i = 0; i &lt; 10; i++) {</span>
+<span class="lineNum">      27 </span><span class="lineCov">          6 :     print(&quot;  instance &quot; + i);</span>
+<span class="lineNum">      28 </span><span class="lineCov">          6 :     var instance = new WebAssembly.Instance(module, {&quot;mod&quot;: {the_name_of_my_import: f}});</span>
+<span class="lineNum">      29 </span><span class="lineCov">          6 :     var g = instance.exports.main;</span>
+<span class="lineNum">      30 </span><span class="lineCov">          6 :     assertEquals(&quot;function&quot;, typeof g);</span>
+<span class="lineNum">      31 </span><span class="lineCov">          6 :     for (var j = 0; j &lt; 10; j++) {</span>
+<span class="lineNum">      32 </span><span class="lineCov">          6 :       assertEquals(f(j), g(j));</span>
+<span class="lineNum">      33 </span><span class="lineCov">          6 :     }</span>
+<span class="lineNum">      34 </span><span class="lineCov">          6 :   }</span>
+<a name="35"><span class="lineNum">      35 </span><span class="lineCov">          6 : }</span></a>
+<span class="lineNum">      36 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      37 </span><span class="lineCov">          1 : (function test() {</span>
+<a name="38"><span class="lineNum">      38 </span><span class="lineCov">          1 :   for (var i = 0; i &lt; 3; i++) {</span></a>
+<span class="lineNum">      39 </span><span class="lineCov">        600 :     run(x =&gt; (x + 19));</span>
+<span class="lineNum">      40 </span><span class="lineCov">        600 :     run(x =&gt; (x - 18));</span>
+<span class="lineNum">      41 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">      42 </span><span class="lineCov">          1 : })();</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

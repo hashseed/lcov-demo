@@ -1,0 +1,145 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - mjsunit/random-bit-correlations.js</title>
+  <link rel="stylesheet" type="text/css" href="../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../index.html">top level</a> - <a href="index.html">mjsunit</a> - random-bit-correlations.js<span style="font-size: 80%;"> (source / <a href="random-bit-correlations.js.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">70</td>
+            <td class="headerCovTableEntry">70</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2017-02-13</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">4</td>
+            <td class="headerCovTableEntry">4</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr><td><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span><span class="lineCov">          1 : // Copyright 2015 the V8 project authors. All rights reserved.</span></a>
+<span class="lineNum">       2 </span><span class="lineCov">          1 : // Use of this source code is governed by a BSD-style license that can be</span>
+<span class="lineNum">       3 </span><span class="lineCov">          1 : // found in the LICENSE file.</span>
+<span class="lineNum">       4 </span><span class="lineCov">          1 : </span>
+<a name="5"><span class="lineNum">       5 </span><span class="lineCov">          1 : // Flags: --random-seed=20 --nostress-opt --noalways-opt --predictable</span></a>
+<span class="lineNum">       6 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">       7 </span><span class="lineCov">          1 : (function() {</span>
+<span class="lineNum">       8 </span><span class="lineCov">          1 :   var kHistory = 2;</span>
+<span class="lineNum">       9 </span><span class="lineCov">          1 :   var kRepeats = 100;</span>
+<a name="10"><span class="lineNum">      10 </span><span class="lineCov">          1 :   var history = new Uint32Array(kHistory);</span></a>
+<span class="lineNum">      11 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      12 </span><span class="lineCov">     211104 :   function random() {</span>
+<span class="lineNum">      13 </span><span class="lineCov">     211104 :     return (Math.random() * Math.pow(2, 32)) &gt;&gt;&gt; 0;</span>
+<a name="14"><span class="lineNum">      14 </span><span class="lineCov">     211104 :   }</span></a>
+<span class="lineNum">      15 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      16 </span><span class="lineCov">       2080 :   function ChiSquared(m, n) {</span>
+<span class="lineNum">      17 </span><span class="lineCov">       2080 :     var ys_minus_np1 = (m - n / 2.0);</span>
+<span class="lineNum">      18 </span><span class="lineCov">       2080 :     var chi_squared_1 = ys_minus_np1 * ys_minus_np1 * 2.0 / n;</span>
+<span class="lineNum">      19 </span><span class="lineCov">       2080 :     var ys_minus_np2 = ((n - m) - n / 2.0);</span>
+<span class="lineNum">      20 </span><span class="lineCov">       2080 :     var chi_squared_2 = ys_minus_np2 * ys_minus_np2 * 2.0 / n;</span>
+<span class="lineNum">      21 </span><span class="lineCov">       2080 :     return chi_squared_1 + chi_squared_2;</span>
+<span class="lineNum">      22 </span><span class="lineCov">       2080 :   }</span>
+<span class="lineNum">      23 </span><span class="lineCov">          1 :   for (var predictor_bit = -2; predictor_bit &lt; 32; predictor_bit++) {</span>
+<span class="lineNum">      24 </span><span class="lineCov">          1 :     // The predicted bit is one of the bits from the PRNG.</span>
+<span class="lineNum">      25 </span><span class="lineCov">          1 :     for (var random_bit = 0; random_bit &lt; 32; random_bit++) {</span>
+<span class="lineNum">      26 </span><span class="lineCov">          1 :       for (var ago = 0; ago &lt; kHistory; ago++) {</span>
+<span class="lineNum">      27 </span><span class="lineCov">          1 :         // We don't want to check whether each bit predicts itself.</span>
+<span class="lineNum">      28 </span><span class="lineCov">          1 :         if (ago == 0 &amp;&amp; predictor_bit == random_bit) continue;</span>
+<span class="lineNum">      29 </span><span class="lineCov">          1 :         // Enter the new random value into the history</span>
+<span class="lineNum">      30 </span><span class="lineCov">          1 :         for (var i = ago; i &gt;= 0; i--) {</span>
+<span class="lineNum">      31 </span><span class="lineCov">          1 :           history[i] = random();</span>
+<span class="lineNum">      32 </span><span class="lineCov">          1 :         }</span>
+<span class="lineNum">      33 </span><span class="lineCov">          1 :         // Find out how many of the bits are the same as the prediction bit.</span>
+<span class="lineNum">      34 </span><span class="lineCov">          1 :         var m = 0;</span>
+<span class="lineNum">      35 </span><span class="lineCov">          1 :         for (var i = 0; i &lt; kRepeats; i++) {</span>
+<span class="lineNum">      36 </span><span class="lineCov">          1 :           for (var j = ago - 1; j &gt;= 0; j--) history[j + 1] = history[j];</span>
+<span class="lineNum">      37 </span><span class="lineCov">          1 :           history[0] = random();</span>
+<span class="lineNum">      38 </span><span class="lineCov">          1 :           var predicted;</span>
+<span class="lineNum">      39 </span><span class="lineCov">          1 :           if (predictor_bit &gt;= 0) {</span>
+<span class="lineNum">      40 </span><span class="lineCov">          1 :             predicted = (history[ago] &gt;&gt; predictor_bit) &amp; 1;</span>
+<span class="lineNum">      41 </span><span class="lineCov">          1 :           } else {</span>
+<span class="lineNum">      42 </span><span class="lineCov">          1 :             predicted = predictor_bit == -2 ? 0 : 1;</span>
+<span class="lineNum">      43 </span><span class="lineCov">          1 :           }</span>
+<span class="lineNum">      44 </span><span class="lineCov">          1 :           var bit = (history[0] &gt;&gt; random_bit) &amp; 1;</span>
+<span class="lineNum">      45 </span><span class="lineCov">          1 :           if (bit == predicted) m++;</span>
+<span class="lineNum">      46 </span><span class="lineCov">          1 :         }</span>
+<span class="lineNum">      47 </span><span class="lineCov">          1 :         // Chi squared analysis for k = 2 (2, states: same/not-same) and one</span>
+<span class="lineNum">      48 </span><span class="lineCov">          1 :         // degree of freedom (k - 1).</span>
+<span class="lineNum">      49 </span><span class="lineCov">          1 :         var chi_squared = ChiSquared(m, kRepeats);</span>
+<span class="lineNum">      50 </span><span class="lineCov">          1 :         if (chi_squared &gt; 24) {</span>
+<span class="lineNum">      51 </span><span class="lineCov">          1 :           var percent = Math.floor(m * 100.0 / kRepeats);</span>
+<span class="lineNum">      52 </span><span class="lineCov">          1 :           if (predictor_bit &lt; 0) {</span>
+<span class="lineNum">      53 </span><span class="lineCov">          1 :             var bit_value = predictor_bit == -2 ? 0 : 1;</span>
+<span class="lineNum">      54 </span><span class="lineCov">          1 :             print(`Bit ${random_bit} is ${bit_value} ${percent}% of the time`);</span>
+<span class="lineNum">      55 </span><span class="lineCov">          1 :           } else {</span>
+<span class="lineNum">      56 </span><span class="lineCov">          1 :             print(`Bit ${random_bit} is the same as bit ${predictor_bit} ` +</span>
+<span class="lineNum">      57 </span><span class="lineCov">          1 :               `${ago} ago ${percent}% of the time`);</span>
+<span class="lineNum">      58 </span><span class="lineCov">          1 :           }</span>
+<span class="lineNum">      59 </span><span class="lineCov">          1 :         }</span>
+<span class="lineNum">      60 </span><span class="lineCov">          1 :         // For 1 degree of freedom this corresponds to 1 in a million.  We are</span>
+<span class="lineNum">      61 </span><span class="lineCov">          1 :         // running ~8000 tests, so that would be surprising.</span>
+<span class="lineNum">      62 </span><span class="lineCov">          1 :         assertTrue(chi_squared &lt;= 24);</span>
+<span class="lineNum">      63 </span><span class="lineCov">          1 :         // If the predictor bit is a fixed 0 or 1 then it makes no sense to</span>
+<span class="lineNum">      64 </span><span class="lineCov">          1 :         // repeat the test with a different age.</span>
+<span class="lineNum">      65 </span><span class="lineCov">          1 :         if (predictor_bit &lt; 0) break;</span>
+<span class="lineNum">      66 </span><span class="lineCov">          1 :       }</span>
+<span class="lineNum">      67 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">      68 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">      69 </span><span class="lineCov">          1 : })();</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>
