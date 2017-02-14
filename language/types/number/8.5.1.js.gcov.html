@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - language/types/number/8.5.1.js</title>
+  <link rel="stylesheet" type="text/css" href="../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../index.html">top level</a> - <a href="index.html">language/types/number</a> - 8.5.1.js<span style="font-size: 80%;"> (source / <a href="8.5.1.js.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">63</td>
+            <td class="headerCovTableEntry">63</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2017-02-14</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span><span class="lineCov">          2 : // Copyright (c) 2012 Ecma International.  All rights reserved.</span></a>
+<span class="lineNum">       2 </span><span class="lineCov">          2 : // This code is governed by the BSD license found in the LICENSE file.</span>
+<span class="lineNum">       3 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">       4 </span><span class="lineCov">          2 : /*---</span>
+<span class="lineNum">       5 </span><span class="lineCov">          2 : es5id: 8.5.1</span>
+<span class="lineNum">       6 </span><span class="lineCov">          2 : description: Valid Number ranges</span>
+<span class="lineNum">       7 </span><span class="lineCov">          2 : ---*/</span>
+<span class="lineNum">       8 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">       9 </span><span class="lineCov">          2 : // Check range support for Number values (IEEE 754 64-bit floats having the form s*m*2**e)</span>
+<span class="lineNum">      10 </span><span class="lineCov">          2 : //</span>
+<span class="lineNum">      11 </span><span class="lineCov">          2 : // For normalized floats, sign (s) is +1 or -1, m (mantisa) is a positive integer less </span>
+<span class="lineNum">      12 </span><span class="lineCov">          2 : // than 2**53 but not less than 2**52 and e (exponent) is an integer ranging from -1074 to 971</span>
+<span class="lineNum">      13 </span><span class="lineCov">          2 : //</span>
+<span class="lineNum">      14 </span><span class="lineCov">          2 : // For denormalized floats, s is +1 or -1, m is a positive integer less than 2**52, and</span>
+<span class="lineNum">      15 </span><span class="lineCov">          2 : // e is -1074</span>
+<span class="lineNum">      16 </span><span class="lineCov">          2 : //</span>
+<span class="lineNum">      17 </span><span class="lineCov">          2 : // Below 64-bit float values shown for informational purposes.  Values may be positive or negative.</span>
+<span class="lineNum">      18 </span><span class="lineCov">          2 : // Infinity  &gt;= ~1.797693134862315907729305190789e+308 &gt;= 2**1024</span>
+<span class="lineNum">      19 </span><span class="lineCov">          2 : // MAX_NORM   = ~1.797693134862315708145274237317e+308  = (2**53 - 1) * (2**-52) * (2**1023) = (2**53-1) * (2**971) = (2**1024) - (2**971)</span>
+<span class="lineNum">      20 </span><span class="lineCov">          2 : // MIN_NORM   = ~2.2250738585072013830902327173324e-308 = 2**-1022</span>
+<span class="lineNum">      21 </span><span class="lineCov">          2 : // MAX_DENORM = ~2.2250738585072008890245868760859e-308 = MIN_NORM - MIN_DENORM = (2**-1022) - (2**-1074)</span>
+<span class="lineNum">      22 </span><span class="lineCov">          2 : // MIN_DENORM = ~4.9406564584124654417656879286822e-324 = 2**-1074</span>
+<span class="lineNum">      23 </span><span class="lineCov">          2 :  </span>
+<span class="lineNum">      24 </span><span class="lineCov">          2 : // Fill an array with 2 to the power of (0 ... -1075)</span>
+<span class="lineNum">      25 </span><span class="lineCov">          2 : var value = 1;</span>
+<span class="lineNum">      26 </span><span class="lineCov">          2 : var floatValues = new Array(1076);</span>
+<span class="lineNum">      27 </span><span class="lineCov">          2 : for(var power = 0; power &lt;= 1075; power++){</span>
+<span class="lineNum">      28 </span><span class="lineCov">          2 :         floatValues[power] = value;</span>
+<span class="lineNum">      29 </span><span class="lineCov">          2 :     // Use basic math operations for testing, which are required to support 'gradual underflow' rather</span>
+<span class="lineNum">      30 </span><span class="lineCov">          2 :     // than Math.pow etc..., which are defined as 'implementation dependent'.</span>
+<span class="lineNum">      31 </span><span class="lineCov">          2 :         value = value * 0.5;</span>
+<span class="lineNum">      32 </span><span class="lineCov">          2 : }</span>
+<span class="lineNum">      33 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      34 </span><span class="lineCov">          2 : // The last value is below min denorm and should round to 0, everything else should contain a value</span>
+<span class="lineNum">      35 </span><span class="lineCov">          2 : if(floatValues[1075] !== 0) {</span>
+<span class="lineNum">      36 </span><span class="lineCov">          2 :   $ERROR(&quot;Value after min denorm should round to 0&quot;);</span>
+<span class="lineNum">      37 </span><span class="lineCov">          2 : }</span>
+<span class="lineNum">      38 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      39 </span><span class="lineCov">          2 : // Validate the last actual value is min denorm</span>
+<span class="lineNum">      40 </span><span class="lineCov">          2 : if(floatValues[1074] !== 4.9406564584124654417656879286822e-324) {</span>
+<span class="lineNum">      41 </span><span class="lineCov">          2 :   $ERROR(&quot;Min denorm value is incorrect: &quot; + floatValues[1074]);</span>
+<span class="lineNum">      42 </span><span class="lineCov">          2 : }</span>
+<span class="lineNum">      43 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      44 </span><span class="lineCov">          2 : // Validate that every value is half the value before it up to 1</span>
+<span class="lineNum">      45 </span><span class="lineCov">          2 : for(var index = 1074; index &gt; 0; index--){</span>
+<span class="lineNum">      46 </span><span class="lineCov">          2 :   if(floatValues[index] === 0){</span>
+<span class="lineNum">      47 </span><span class="lineCov">          2 :         $ERROR(&quot;2**-&quot; + index + &quot; should not be 0&quot;);</span>
+<span class="lineNum">      48 </span><span class="lineCov">          2 :   }</span>
+<span class="lineNum">      49 </span><span class="lineCov">          2 :   if(floatValues[index - 1] !== (floatValues[index] * 2)){</span>
+<span class="lineNum">      50 </span><span class="lineCov">          2 :         $ERROR(&quot;Value should be double adjacent value at index &quot; + index);</span>
+<span class="lineNum">      51 </span><span class="lineCov">          2 :   }</span>
+<span class="lineNum">      52 </span><span class="lineCov">          2 : }</span>
+<span class="lineNum">      53 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      54 </span><span class="lineCov">          2 : // Max norm should be supported and compare less than inifity</span>
+<span class="lineNum">      55 </span><span class="lineCov">          2 : if(!(1.797693134862315708145274237317e+308 &lt; Infinity)){</span>
+<span class="lineNum">      56 </span><span class="lineCov">          2 :         $ERROR(&quot;Max Number value 1.797693134862315708145274237317e+308 should not overflow to infinity&quot;);</span>
+<span class="lineNum">      57 </span><span class="lineCov">          2 : }</span>
+<span class="lineNum">      58 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      59 </span><span class="lineCov">          2 : // Numbers closer to 2**1024 then max norm should overflow to infinity</span>
+<span class="lineNum">      60 </span><span class="lineCov">          2 : if(!(1.797693134862315808e+308 === +Infinity)){</span>
+<span class="lineNum">      61 </span><span class="lineCov">          2 :         $ERROR(&quot;1.797693134862315808e+308 did not resolve to Infinity&quot;);</span>
+<span class="lineNum">      62 </span><span class="lineCov">          2 : }</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

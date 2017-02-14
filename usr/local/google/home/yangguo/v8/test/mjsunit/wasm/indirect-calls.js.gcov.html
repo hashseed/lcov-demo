@@ -1,0 +1,284 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - /usr/local/google/home/yangguo/v8/test/mjsunit/wasm/indirect-calls.js</title>
+  <link rel="stylesheet" type="text/css" href="../../../../../../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../../../../../../index.html">top level</a> - <a href="index.html">usr/local/google/home/yangguo/v8/test/mjsunit/wasm</a> - indirect-calls.js<span style="font-size: 80%;"> (source / <a href="indirect-calls.js.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">209</td>
+            <td class="headerCovTableEntry">209</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2017-02-14</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">10</td>
+            <td class="headerCovTableEntry">10</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr><td><img src="../../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span><span class="lineCov">          1 : // Copyright 2015 the V8 project authors. All rights reserved.</span></a>
+<span class="lineNum">       2 </span><span class="lineCov">          1 : // Use of this source code is governed by a BSD-style license that can be</span>
+<span class="lineNum">       3 </span><span class="lineCov">          1 : // found in the LICENSE file.</span>
+<span class="lineNum">       4 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">       5 </span><span class="lineCov">          1 : // Flags: --expose-wasm</span>
+<span class="lineNum">       6 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">       7 </span><span class="lineCov">          1 : load(&quot;test/mjsunit/wasm/wasm-constants.js&quot;);</span>
+<a name="8"><span class="lineNum">       8 </span><span class="lineCov">          1 : load(&quot;test/mjsunit/wasm/wasm-module-builder.js&quot;);</span></a>
+<span class="lineNum">       9 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      10 </span><span class="lineCov">          1 : var module = (function () {</span>
+<span class="lineNum">      11 </span><span class="lineCov">          1 :   var builder = new WasmModuleBuilder();</span>
+<span class="lineNum">      12 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      13 </span><span class="lineCov">          1 :   var sig_index = builder.addType(kSig_i_ii);</span>
+<span class="lineNum">      14 </span><span class="lineCov">          1 :   builder.addImport(&quot;q&quot;, &quot;add&quot;, sig_index);</span>
+<span class="lineNum">      15 </span><span class="lineCov">          1 :   builder.addFunction(&quot;add&quot;, sig_index)</span>
+<span class="lineNum">      16 </span><span class="lineCov">          1 :     .addBody([</span>
+<span class="lineNum">      17 </span><span class="lineCov">          1 :       kExprGetLocal, 0, kExprGetLocal, 1, kExprCallFunction, 0</span>
+<span class="lineNum">      18 </span><span class="lineCov">          1 :     ]);</span>
+<span class="lineNum">      19 </span><span class="lineCov">          1 :   builder.addFunction(&quot;sub&quot;, sig_index)</span>
+<span class="lineNum">      20 </span><span class="lineCov">          1 :     .addBody([</span>
+<span class="lineNum">      21 </span><span class="lineCov">          1 :       kExprGetLocal, 0,             // --</span>
+<span class="lineNum">      22 </span><span class="lineCov">          1 :       kExprGetLocal, 1,             // --</span>
+<span class="lineNum">      23 </span><span class="lineCov">          1 :       kExprI32Sub,                  // --</span>
+<span class="lineNum">      24 </span><span class="lineCov">          1 :     ]);</span>
+<span class="lineNum">      25 </span><span class="lineCov">          1 :   builder.addFunction(&quot;main&quot;, kSig_i_iii)</span>
+<span class="lineNum">      26 </span><span class="lineCov">          1 :     .addBody([</span>
+<span class="lineNum">      27 </span><span class="lineCov">          1 :       kExprGetLocal, 1,</span>
+<span class="lineNum">      28 </span><span class="lineCov">          1 :       kExprGetLocal, 2,</span>
+<span class="lineNum">      29 </span><span class="lineCov">          1 :       kExprGetLocal, 0,</span>
+<span class="lineNum">      30 </span><span class="lineCov">          1 :       kExprCallIndirect, sig_index, kTableZero</span>
+<span class="lineNum">      31 </span><span class="lineCov">          1 :     ])</span>
+<span class="lineNum">      32 </span><span class="lineCov">          1 :     .exportFunc()</span>
+<a name="33"><span class="lineNum">      33 </span><span class="lineCov">          1 :   builder.appendToTable([1, 2, 3]);</span></a>
+<span class="lineNum">      34 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      35 </span><span class="lineCov">          1 :   return builder.instantiate({q: {add: function(a, b) { return a + b | 0; }}});</span>
+<span class="lineNum">      36 </span><span class="lineCov">          1 : })();</span>
+<span class="lineNum">      37 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      38 </span><span class="lineCov">          1 : // Check the module exists.</span>
+<span class="lineNum">      39 </span><span class="lineCov">          1 : assertFalse(module === undefined);</span>
+<span class="lineNum">      40 </span><span class="lineCov">          1 : assertFalse(module === null);</span>
+<span class="lineNum">      41 </span><span class="lineCov">          1 : assertFalse(module === 0);</span>
+<span class="lineNum">      42 </span><span class="lineCov">          1 : assertEquals(&quot;object&quot;, typeof module.exports);</span>
+<span class="lineNum">      43 </span><span class="lineCov">          1 : assertEquals(&quot;function&quot;, typeof module.exports.main);</span>
+<span class="lineNum">      44 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      45 </span><span class="lineCov">          1 : assertEquals(5, module.exports.main(1, 12, 7));</span>
+<span class="lineNum">      46 </span><span class="lineCov">          1 : assertEquals(19, module.exports.main(0, 12, 7));</span>
+<span class="lineNum">      47 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      48 </span><span class="lineCov">          1 : assertTraps(kTrapFuncSigMismatch, &quot;module.exports.main(2, 12, 33)&quot;);</span>
+<span class="lineNum">      49 </span><span class="lineCov">          1 : assertTraps(kTrapFuncInvalid, &quot;module.exports.main(3, 12, 33)&quot;);</span>
+<a name="50"><span class="lineNum">      50 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      51 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      52 </span><span class="lineCov">          1 : module = (function () {</span>
+<span class="lineNum">      53 </span><span class="lineCov">          1 :   var builder = new WasmModuleBuilder();</span>
+<span class="lineNum">      54 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      55 </span><span class="lineCov">          1 :   var sig_i_ii = builder.addType(kSig_i_ii);</span>
+<span class="lineNum">      56 </span><span class="lineCov">          1 :   var sig_i_i = builder.addType(kSig_i_i);</span>
+<span class="lineNum">      57 </span><span class="lineCov">          1 :   var mul = builder.addImport(&quot;q&quot;, &quot;mul&quot;, sig_i_ii);</span>
+<span class="lineNum">      58 </span><span class="lineCov">          1 :   var add = builder.addFunction(&quot;add&quot;, sig_i_ii)</span>
+<span class="lineNum">      59 </span><span class="lineCov">          1 :     .addBody([</span>
+<span class="lineNum">      60 </span><span class="lineCov">          1 :       kExprGetLocal, 0,  // --</span>
+<span class="lineNum">      61 </span><span class="lineCov">          1 :       kExprGetLocal, 1,  // --</span>
+<span class="lineNum">      62 </span><span class="lineCov">          1 :       kExprI32Add        // --</span>
+<span class="lineNum">      63 </span><span class="lineCov">          1 :     ]);</span>
+<span class="lineNum">      64 </span><span class="lineCov">          1 :   var popcnt = builder.addFunction(&quot;popcnt&quot;, sig_i_i)</span>
+<span class="lineNum">      65 </span><span class="lineCov">          1 :     .addBody([</span>
+<span class="lineNum">      66 </span><span class="lineCov">          1 :       kExprGetLocal, 0,  // --</span>
+<span class="lineNum">      67 </span><span class="lineCov">          1 :       kExprI32Popcnt     // --</span>
+<span class="lineNum">      68 </span><span class="lineCov">          1 :     ]);</span>
+<span class="lineNum">      69 </span><span class="lineCov">          1 :   var main = builder.addFunction(&quot;main&quot;, kSig_i_iii)</span>
+<span class="lineNum">      70 </span><span class="lineCov">          1 :     .addBody([</span>
+<span class="lineNum">      71 </span><span class="lineCov">          1 :       kExprGetLocal, 1,</span>
+<span class="lineNum">      72 </span><span class="lineCov">          1 :       kExprGetLocal, 2,</span>
+<span class="lineNum">      73 </span><span class="lineCov">          1 :       kExprGetLocal, 0,</span>
+<span class="lineNum">      74 </span><span class="lineCov">          1 :       kExprCallIndirect, sig_i_ii, kTableZero</span>
+<span class="lineNum">      75 </span><span class="lineCov">          1 :     ])</span>
+<span class="lineNum">      76 </span><span class="lineCov">          1 :     .exportFunc();</span>
+<a name="77"><span class="lineNum">      77 </span><span class="lineCov">          1 :   builder.appendToTable([mul.index, add.index, popcnt.index, main.index]);</span></a>
+<span class="lineNum">      78 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      79 </span><span class="lineCov">          1 :   return builder.instantiate({q: {mul: function(a, b) { return a * b | 0; }}});</span>
+<span class="lineNum">      80 </span><span class="lineCov">          1 : })();</span>
+<span class="lineNum">      81 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      82 </span><span class="lineCov">          1 : assertEquals(-6, module.exports.main(0, -2, 3));</span>
+<span class="lineNum">      83 </span><span class="lineCov">          1 : assertEquals(99, module.exports.main(1, 22, 77));</span>
+<span class="lineNum">      84 </span><span class="lineCov">          1 : assertTraps(kTrapFuncSigMismatch, &quot;module.exports.main(2, 12, 33)&quot;);</span>
+<span class="lineNum">      85 </span><span class="lineCov">          1 : assertTraps(kTrapFuncSigMismatch, &quot;module.exports.main(3, 12, 33)&quot;);</span>
+<a name="86"><span class="lineNum">      86 </span><span class="lineCov">          1 : assertTraps(kTrapFuncInvalid, &quot;module.exports.main(4, 12, 33)&quot;);</span></a>
+<span class="lineNum">      87 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      88 </span><span class="lineCov">          7 : function AddFunctions(builder) {</span>
+<span class="lineNum">      89 </span><span class="lineCov">          7 :   var mul = builder.addFunction(&quot;mul&quot;, kSig_i_ii)</span>
+<span class="lineNum">      90 </span><span class="lineCov">          7 :     .addBody([</span>
+<span class="lineNum">      91 </span><span class="lineCov">          7 :       kExprGetLocal, 0,  // --</span>
+<span class="lineNum">      92 </span><span class="lineCov">          7 :       kExprGetLocal, 1,  // --</span>
+<span class="lineNum">      93 </span><span class="lineCov">          7 :       kExprI32Mul        // --</span>
+<span class="lineNum">      94 </span><span class="lineCov">          7 :     ]);</span>
+<span class="lineNum">      95 </span><span class="lineCov">          7 :   var add = builder.addFunction(&quot;add&quot;, kSig_i_ii)</span>
+<span class="lineNum">      96 </span><span class="lineCov">          7 :     .addBody([</span>
+<span class="lineNum">      97 </span><span class="lineCov">          7 :       kExprGetLocal, 0,  // --</span>
+<span class="lineNum">      98 </span><span class="lineCov">          7 :       kExprGetLocal, 1,  // --</span>
+<span class="lineNum">      99 </span><span class="lineCov">          7 :       kExprI32Add        // --</span>
+<span class="lineNum">     100 </span><span class="lineCov">          7 :     ]);</span>
+<span class="lineNum">     101 </span><span class="lineCov">          7 :   var sub = builder.addFunction(&quot;sub&quot;, kSig_i_ii)</span>
+<span class="lineNum">     102 </span><span class="lineCov">          7 :     .addBody([</span>
+<span class="lineNum">     103 </span><span class="lineCov">          7 :       kExprGetLocal, 0,  // --</span>
+<span class="lineNum">     104 </span><span class="lineCov">          7 :       kExprGetLocal, 1,  // --</span>
+<span class="lineNum">     105 </span><span class="lineCov">          7 :       kExprI32Sub        // --</span>
+<span class="lineNum">     106 </span><span class="lineCov">          7 :     ]);</span>
+<span class="lineNum">     107 </span><span class="lineCov">          7 :   return {mul: mul, add: add, sub: sub};</span>
+<span class="lineNum">     108 </span><span class="lineCov">          7 : }</span>
+<a name="109"><span class="lineNum">     109 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     110 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     111 </span><span class="lineCov">          1 : module = (function () {</span>
+<span class="lineNum">     112 </span><span class="lineCov">          1 :   var builder = new WasmModuleBuilder();</span>
+<span class="lineNum">     113 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     114 </span><span class="lineCov">          1 :   var f = AddFunctions(builder);</span>
+<span class="lineNum">     115 </span><span class="lineCov">          1 :   builder.addFunction(&quot;main&quot;, kSig_i_ii)</span>
+<span class="lineNum">     116 </span><span class="lineCov">          1 :     .addBody([</span>
+<span class="lineNum">     117 </span><span class="lineCov">          1 :       kExprI32Const, 33,  // --</span>
+<span class="lineNum">     118 </span><span class="lineCov">          1 :       kExprGetLocal, 0,   // --</span>
+<span class="lineNum">     119 </span><span class="lineCov">          1 :       kExprGetLocal, 1,   // --</span>
+<span class="lineNum">     120 </span><span class="lineCov">          1 :       kExprCallIndirect, 0, kTableZero])  // --</span>
+<span class="lineNum">     121 </span><span class="lineCov">          1 :     .exportAs(&quot;main&quot;);</span>
+<span class="lineNum">     122 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     123 </span><span class="lineCov">          1 :   builder.appendToTable([f.mul.index, f.add.index, f.sub.index]);</span>
+<span class="lineNum">     124 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     125 </span><span class="lineCov">          1 :   return builder.instantiate();</span>
+<span class="lineNum">     126 </span><span class="lineCov">          1 : })();</span>
+<span class="lineNum">     127 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     128 </span><span class="lineCov">          1 : assertEquals(33, module.exports.main(1, 0));</span>
+<span class="lineNum">     129 </span><span class="lineCov">          1 : assertEquals(66, module.exports.main(2, 0));</span>
+<span class="lineNum">     130 </span><span class="lineCov">          1 : assertEquals(34, module.exports.main(1, 1));</span>
+<span class="lineNum">     131 </span><span class="lineCov">          1 : assertEquals(35, module.exports.main(2, 1));</span>
+<span class="lineNum">     132 </span><span class="lineCov">          1 : assertEquals(32, module.exports.main(1, 2));</span>
+<span class="lineNum">     133 </span><span class="lineCov">          1 : assertEquals(31, module.exports.main(2, 2));</span>
+<a name="134"><span class="lineNum">     134 </span><span class="lineCov">          1 : assertTraps(kTrapFuncInvalid, &quot;module.exports.main(12, 3)&quot;);</span></a>
+<span class="lineNum">     135 </span><span class="lineCov">          1 : </span>
+<a name="136"><span class="lineNum">     136 </span><span class="lineCov">          1 : (function ConstBaseTest() {</span></a>
+<span class="lineNum">     137 </span><span class="lineCov">          1 :   print(&quot;ConstBaseTest...&quot;);</span>
+<span class="lineNum">     138 </span><span class="lineCov">          5 :   function instanceWithTable(base, length) {</span>
+<span class="lineNum">     139 </span><span class="lineCov">          5 :     var builder = new WasmModuleBuilder();</span>
+<span class="lineNum">     140 </span><span class="lineCov">          5 : </span>
+<span class="lineNum">     141 </span><span class="lineCov">          5 :     var f = AddFunctions(builder);</span>
+<span class="lineNum">     142 </span><span class="lineCov">          5 :     builder.addFunction(&quot;main&quot;, kSig_i_ii)</span>
+<span class="lineNum">     143 </span><span class="lineCov">          5 :       .addBody([</span>
+<span class="lineNum">     144 </span><span class="lineCov">          5 :         kExprI32Const, 33,  // --</span>
+<span class="lineNum">     145 </span><span class="lineCov">          5 :         kExprGetLocal, 0,   // --</span>
+<span class="lineNum">     146 </span><span class="lineCov">          5 :         kExprGetLocal, 1,   // --</span>
+<span class="lineNum">     147 </span><span class="lineCov">          5 :         kExprCallIndirect, 0, kTableZero])  // --</span>
+<span class="lineNum">     148 </span><span class="lineCov">          5 :       .exportAs(&quot;main&quot;);</span>
+<span class="lineNum">     149 </span><span class="lineCov">          5 : </span>
+<span class="lineNum">     150 </span><span class="lineCov">          5 :     builder.setFunctionTableLength(length);</span>
+<span class="lineNum">     151 </span><span class="lineCov">          5 :     builder.addFunctionTableInit(base, false, [f.add.index, f.sub.index, f.mul.index]);</span>
+<span class="lineNum">     152 </span><span class="lineCov">          5 : </span>
+<span class="lineNum">     153 </span><span class="lineCov">          5 :     return builder.instantiate();</span>
+<span class="lineNum">     154 </span><span class="lineCov">          5 :   }</span>
+<span class="lineNum">     155 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     156 </span><span class="lineCov">          1 :   for (var i = 0; i &lt; 5; i++) {</span>
+<span class="lineNum">     157 </span><span class="lineCov">          1 :     print(&quot; base = &quot; + i);</span>
+<span class="lineNum">     158 </span><span class="lineCov">          1 :     var module = instanceWithTable(i, 10);</span>
+<span class="lineNum">     159 </span><span class="lineCov">          1 :     main = module.exports.main;</span>
+<span class="lineNum">     160 </span><span class="lineCov">          1 :     for (var j = 0; j &lt; i; j++) {</span>
+<span class="lineNum">     161 </span><span class="lineCov">          1 :       assertTraps(kTrapFuncSigMismatch, &quot;main(12, &quot; + j + &quot;)&quot;);</span>
+<span class="lineNum">     162 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">     163 </span><span class="lineCov">          1 :     assertEquals(34, main(1, i + 0));</span>
+<span class="lineNum">     164 </span><span class="lineCov">          1 :     assertEquals(35, main(2, i + 0));</span>
+<span class="lineNum">     165 </span><span class="lineCov">          1 :     assertEquals(32, main(1, i + 1));</span>
+<span class="lineNum">     166 </span><span class="lineCov">          1 :     assertEquals(31, main(2, i + 1));</span>
+<span class="lineNum">     167 </span><span class="lineCov">          1 :     assertEquals(33, main(1, i + 2));</span>
+<span class="lineNum">     168 </span><span class="lineCov">          1 :     assertEquals(66, main(2, i + 2));</span>
+<span class="lineNum">     169 </span><span class="lineCov">          1 :     assertTraps(kTrapFuncInvalid, &quot;main(12, 10)&quot;);</span>
+<span class="lineNum">     170 </span><span class="lineCov">          1 :   }</span>
+<a name="171"><span class="lineNum">     171 </span><span class="lineCov">          1 : })();</span></a>
+<span class="lineNum">     172 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     173 </span><span class="lineCov">          1 : (function GlobalBaseTest() {</span>
+<span class="lineNum">     174 </span><span class="lineCov">          1 :   print(&quot;GlobalBaseTest...&quot;);</span>
+<span class="lineNum">     175 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     176 </span><span class="lineCov">          1 :   var builder = new WasmModuleBuilder();</span>
+<span class="lineNum">     177 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     178 </span><span class="lineCov">          1 :   var f = AddFunctions(builder);</span>
+<span class="lineNum">     179 </span><span class="lineCov">          1 :   builder.addFunction(&quot;main&quot;, kSig_i_ii)</span>
+<span class="lineNum">     180 </span><span class="lineCov">          1 :     .addBody([</span>
+<span class="lineNum">     181 </span><span class="lineCov">          1 :       kExprI32Const, 33,  // --</span>
+<span class="lineNum">     182 </span><span class="lineCov">          1 :       kExprGetLocal, 0,   // --</span>
+<span class="lineNum">     183 </span><span class="lineCov">          1 :       kExprGetLocal, 1,   // --</span>
+<span class="lineNum">     184 </span><span class="lineCov">          1 :       kExprCallIndirect, 0, kTableZero])  // --</span>
+<span class="lineNum">     185 </span><span class="lineCov">          1 :     .exportAs(&quot;main&quot;);</span>
+<span class="lineNum">     186 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     187 </span><span class="lineCov">          1 :   builder.setFunctionTableLength(10);</span>
+<span class="lineNum">     188 </span><span class="lineCov">          1 :   var g = builder.addImportedGlobal(&quot;fff&quot;, &quot;base&quot;, kWasmI32);</span>
+<span class="lineNum">     189 </span><span class="lineCov">          1 :   builder.addFunctionTableInit(g, true, [f.mul.index, f.add.index, f.sub.index]);</span>
+<span class="lineNum">     190 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     191 </span><span class="lineCov">          1 :   var module = new WebAssembly.Module(builder.toBuffer());</span>
+<span class="lineNum">     192 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     193 </span><span class="lineCov">          1 :   for (var i = 0; i &lt; 5; i++) {</span>
+<span class="lineNum">     194 </span><span class="lineCov">          1 :     print(&quot; base = &quot; + i);</span>
+<span class="lineNum">     195 </span><span class="lineCov">          1 :     var instance = new WebAssembly.Instance(module, {fff: {base: i}});</span>
+<span class="lineNum">     196 </span><span class="lineCov">          1 :     main = instance.exports.main;</span>
+<span class="lineNum">     197 </span><span class="lineCov">          1 :     for (var j = 0; j &lt; i; j++) {</span>
+<span class="lineNum">     198 </span><span class="lineCov">          1 :       assertTraps(kTrapFuncSigMismatch, &quot;main(12, &quot; + j + &quot;)&quot;);</span>
+<span class="lineNum">     199 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">     200 </span><span class="lineCov">          1 :     assertEquals(33, main(1, i + 0));</span>
+<span class="lineNum">     201 </span><span class="lineCov">          1 :     assertEquals(66, main(2, i + 0));</span>
+<span class="lineNum">     202 </span><span class="lineCov">          1 :     assertEquals(34, main(1, i + 1));</span>
+<span class="lineNum">     203 </span><span class="lineCov">          1 :     assertEquals(35, main(2, i + 1));</span>
+<span class="lineNum">     204 </span><span class="lineCov">          1 :     assertEquals(32, main(1, i + 2));</span>
+<span class="lineNum">     205 </span><span class="lineCov">          1 :     assertEquals(31, main(2, i + 2));</span>
+<span class="lineNum">     206 </span><span class="lineCov">          1 :     assertTraps(kTrapFuncInvalid, &quot;main(12, 10)&quot;);</span>
+<span class="lineNum">     207 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     208 </span><span class="lineCov">          1 : })();</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

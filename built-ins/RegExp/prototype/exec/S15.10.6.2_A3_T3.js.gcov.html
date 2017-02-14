@@ -1,0 +1,230 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - built-ins/RegExp/prototype/exec/S15.10.6.2_A3_T3.js</title>
+  <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../index.html">top level</a> - <a href="index.html">built-ins/RegExp/prototype/exec</a> - S15.10.6.2_A3_T3.js<span style="font-size: 80%;"> (source / <a href="S15.10.6.2_A3_T3.js.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">155</td>
+            <td class="headerCovTableEntry">155</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2017-02-14</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr><td><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span><span class="lineCov">          2 : // Copyright 2009 the Sputnik authors.  All rights reserved.</span></a>
+<span class="lineNum">       2 </span><span class="lineCov">          2 : // This code is governed by the BSD license found in the LICENSE file.</span>
+<span class="lineNum">       3 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">       4 </span><span class="lineCov">          2 : /*---</span>
+<span class="lineNum">       5 </span><span class="lineCov">          2 : info: &gt;</span>
+<span class="lineNum">       6 </span><span class="lineCov">          2 :     RegExp.prototype.exec behavior depends on global property.</span>
+<span class="lineNum">       7 </span><span class="lineCov">          2 :     If global is true and lastIndex not changed manually,</span>
+<span class="lineNum">       8 </span><span class="lineCov">          2 :     next exec calling start to match from position where current match finished</span>
+<span class="lineNum">       9 </span><span class="lineCov">          2 : es5id: 15.10.6.2_A3_T3</span>
+<span class="lineNum">      10 </span><span class="lineCov">          2 : description: RegExp is /[Nn]?evermore/g and tested string is very long string</span>
+<span class="lineNum">      11 </span><span class="lineCov">          2 : ---*/</span>
+<span class="lineNum">      12 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      13 </span><span class="lineCov">          2 : var __the__raven = &quot;       Once upon a midnight dreary, while I pondered weak and weary,&quot; +</span>
+<span class="lineNum">      14 </span><span class="lineCov">          2 :         &quot;Over many a quaint and curious volume of forgotten lore,&quot; +</span>
+<span class="lineNum">      15 </span><span class="lineCov">          2 :         &quot;While I nodded, nearly napping, suddenly there came a tapping,&quot; +</span>
+<span class="lineNum">      16 </span><span class="lineCov">          2 :         &quot;As of some one gently rapping, rapping at my chamber door.&quot; +</span>
+<span class="lineNum">      17 </span><span class="lineCov">          2 :         &quot;`'Tis some visitor,' I muttered, `tapping at my chamber door -&quot; +</span>
+<span class="lineNum">      18 </span><span class="lineCov">          2 :         &quot;Only this, and nothing more.'&quot; +</span>
+<span class="lineNum">      19 </span><span class="lineCov">          2 :         &quot;Ah, distinctly I remember it was in the bleak December,&quot; +</span>
+<span class="lineNum">      20 </span><span class="lineCov">          2 :         &quot;And each separate dying ember wrought its ghost upon the floor.&quot; +</span>
+<span class="lineNum">      21 </span><span class="lineCov">          2 :         &quot;Eagerly I wished the morrow; - vainly I had sought to borrow&quot; +</span>
+<span class="lineNum">      22 </span><span class="lineCov">          2 :         &quot;From my books surcease of sorrow - sorrow for the lost Lenore -&quot; +</span>
+<span class="lineNum">      23 </span><span class="lineCov">          2 :         &quot;For the rare and radiant maiden whom the angels named Lenore -&quot; +</span>
+<span class="lineNum">      24 </span><span class="lineCov">          2 :         &quot;Nameless here for evermore.&quot; +</span>
+<span class="lineNum">      25 </span><span class="lineCov">          2 :         &quot;\n&quot; +</span>
+<span class="lineNum">      26 </span><span class="lineCov">          2 :         &quot;And the silken sad uncertain rustling of each purple curtain&quot; +</span>
+<span class="lineNum">      27 </span><span class="lineCov">          2 :         &quot;Thrilled me - filled me with fantastic terrors never felt before;&quot; +</span>
+<span class="lineNum">      28 </span><span class="lineCov">          2 :         &quot;So that now, to still the beating of my heart, I stood repeating&quot; +</span>
+<span class="lineNum">      29 </span><span class="lineCov">          2 :         &quot;`'Tis some visitor entreating entrance at my chamber door -&quot; +</span>
+<span class="lineNum">      30 </span><span class="lineCov">          2 :         &quot;Some late visitor entreating entrance at my chamber door; -&quot; +</span>
+<span class="lineNum">      31 </span><span class="lineCov">          2 :         &quot;This it is, and nothing more,'&quot; +</span>
+<span class="lineNum">      32 </span><span class="lineCov">          2 :         &quot;Presently my soul grew stronger; hesitating then no longer,&quot; +</span>
+<span class="lineNum">      33 </span><span class="lineCov">          2 :         &quot;`Sir,' said I, `or Madam, truly your forgiveness I implore;&quot; +</span>
+<span class="lineNum">      34 </span><span class="lineCov">          2 :         &quot;But the fact is I was napping, and so gently you came rapping,&quot; +</span>
+<span class="lineNum">      35 </span><span class="lineCov">          2 :         &quot;And so faintly you came tapping, tapping at my chamber door,&quot; +</span>
+<span class="lineNum">      36 </span><span class="lineCov">          2 :         &quot;That I scarce was sure I heard you' - here I opened wide the door; -&quot; +</span>
+<span class="lineNum">      37 </span><span class="lineCov">          2 :         &quot;Darkness there, and nothing more.&quot; +</span>
+<span class="lineNum">      38 </span><span class="lineCov">          2 :         &quot;\n&quot; +</span>
+<span class="lineNum">      39 </span><span class="lineCov">          2 :         &quot;Deep into that darkness peering, long I stood there wondering, fearing,&quot; +</span>
+<span class="lineNum">      40 </span><span class="lineCov">          2 :         &quot;Doubting, dreaming dreams no mortal ever dared to dream before&quot; +</span>
+<span class="lineNum">      41 </span><span class="lineCov">          2 :         &quot;But the silence was unbroken, and the darkness gave no token,&quot; +</span>
+<span class="lineNum">      42 </span><span class="lineCov">          2 :         &quot;And the only word there spoken was the whispered word, `Lenore!'&quot; +</span>
+<span class="lineNum">      43 </span><span class="lineCov">          2 :         &quot;This I whispered, and an echo murmured back the word, `Lenore!'&quot; +</span>
+<span class="lineNum">      44 </span><span class="lineCov">          2 :         &quot;Merely this and nothing more.&quot; +</span>
+<span class="lineNum">      45 </span><span class="lineCov">          2 :         &quot;\n&quot; +</span>
+<span class="lineNum">      46 </span><span class="lineCov">          2 :         &quot;Back into the chamber turning, all my soul within me burning,&quot; +</span>
+<span class="lineNum">      47 </span><span class="lineCov">          2 :         &quot;Soon again I heard a tapping somewhat louder than before.&quot; +</span>
+<span class="lineNum">      48 </span><span class="lineCov">          2 :         &quot;`Surely,' said I, `surely that is something at my window lattice;&quot; +</span>
+<span class="lineNum">      49 </span><span class="lineCov">          2 :         &quot;Let me see then, what thereat is, and this mystery explore -&quot; +</span>
+<span class="lineNum">      50 </span><span class="lineCov">          2 :         &quot;Let my heart be still a moment and this mystery explore; -&quot; +</span>
+<span class="lineNum">      51 </span><span class="lineCov">          2 :         &quot;'Tis the wind and nothing more!'&quot; +</span>
+<span class="lineNum">      52 </span><span class="lineCov">          2 :         &quot;\n&quot; +</span>
+<span class="lineNum">      53 </span><span class="lineCov">          2 :         &quot;Open here I flung the shutter, when, with many a flirt and flutter,&quot; +</span>
+<span class="lineNum">      54 </span><span class="lineCov">          2 :         &quot;In there stepped a stately raven of the saintly days of yore.&quot; +</span>
+<span class="lineNum">      55 </span><span class="lineCov">          2 :         &quot;Not the least obeisance made he; not a minute stopped or stayed he;&quot; +</span>
+<span class="lineNum">      56 </span><span class="lineCov">          2 :         &quot;But, with mien of lord or lady, perched above my chamber door -&quot; +</span>
+<span class="lineNum">      57 </span><span class="lineCov">          2 :         &quot;Perched upon a bust of Pallas just above my chamber door -&quot; +</span>
+<span class="lineNum">      58 </span><span class="lineCov">          2 :         &quot;Perched, and sat, and nothing more.&quot; +</span>
+<span class="lineNum">      59 </span><span class="lineCov">          2 :         &quot;\n&quot; +</span>
+<span class="lineNum">      60 </span><span class="lineCov">          2 :         &quot;Then this ebony bird beguiling my sad fancy into smiling,&quot; +</span>
+<span class="lineNum">      61 </span><span class="lineCov">          2 :         &quot;By the grave and stern decorum of the countenance it wore,&quot; +</span>
+<span class="lineNum">      62 </span><span class="lineCov">          2 :         &quot;`Though thy crest be shorn and shaven, thou,' I said, `art sure no craven.&quot; +</span>
+<span class="lineNum">      63 </span><span class="lineCov">          2 :         &quot;Ghastly grim and ancient raven wandering from the nightly shore -&quot; +</span>
+<span class="lineNum">      64 </span><span class="lineCov">          2 :         &quot;Tell me what thy lordly name is on the Night's Plutonian shore!'&quot; +</span>
+<span class="lineNum">      65 </span><span class="lineCov">          2 :         &quot;Quoth the raven, `Nevermore.'&quot; +</span>
+<span class="lineNum">      66 </span><span class="lineCov">          2 :         &quot;-n&quot; +</span>
+<span class="lineNum">      67 </span><span class="lineCov">          2 :         &quot;Much I marvelled this ungainly fowl to hear discourse so plainly,&quot; +</span>
+<span class="lineNum">      68 </span><span class="lineCov">          2 :         &quot;Though its answer little meaning - little relevancy bore;&quot; +</span>
+<span class="lineNum">      69 </span><span class="lineCov">          2 :         &quot;For we cannot help agreeing that no living human being&quot; +</span>
+<span class="lineNum">      70 </span><span class="lineCov">          2 :         &quot;Ever yet was blessed with seeing bird above his chamber door -&quot; +</span>
+<span class="lineNum">      71 </span><span class="lineCov">          2 :         &quot;Bird or beast above the sculptured bust above his chamber door,&quot; +</span>
+<span class="lineNum">      72 </span><span class="lineCov">          2 :         &quot;With such name as `Nevermore.'&quot; +</span>
+<span class="lineNum">      73 </span><span class="lineCov">          2 :         &quot;\n&quot; +</span>
+<span class="lineNum">      74 </span><span class="lineCov">          2 :         &quot;But the raven, sitting lonely on the placid bust, spoke only,&quot; +</span>
+<span class="lineNum">      75 </span><span class="lineCov">          2 :         &quot;That one word, as if his soul in that one word he did outpour.&quot; +</span>
+<span class="lineNum">      76 </span><span class="lineCov">          2 :         &quot;Nothing further then he uttered - not a feather then he fluttered -&quot; +</span>
+<span class="lineNum">      77 </span><span class="lineCov">          2 :         &quot;Till I scarcely more than muttered `Other friends have flown before -&quot; +</span>
+<span class="lineNum">      78 </span><span class="lineCov">          2 :         &quot;On the morrow he will leave me, as my hopes have flown before.'&quot; +</span>
+<span class="lineNum">      79 </span><span class="lineCov">          2 :         &quot;Then the bird said, `Nevermore.'&quot; +</span>
+<span class="lineNum">      80 </span><span class="lineCov">          2 :         &quot;\n&quot; +</span>
+<span class="lineNum">      81 </span><span class="lineCov">          2 :         &quot;Startled at the stillness broken by reply so aptly spoken,&quot; +</span>
+<span class="lineNum">      82 </span><span class="lineCov">          2 :         &quot;`Doubtless,' said I, `what it utters is its only stock and store,&quot; +</span>
+<span class="lineNum">      83 </span><span class="lineCov">          2 :         &quot;Caught from some unhappy master whom unmerciful disaster&quot; +</span>
+<span class="lineNum">      84 </span><span class="lineCov">          2 :         &quot;Followed fast and followed faster till his songs one burden bore -&quot; +</span>
+<span class="lineNum">      85 </span><span class="lineCov">          2 :         &quot;Till the dirges of his hope that melancholy burden bore&quot; +</span>
+<span class="lineNum">      86 </span><span class="lineCov">          2 :         &quot;Of \&quot;Never-nevermore.\&quot;'&quot; +</span>
+<span class="lineNum">      87 </span><span class="lineCov">          2 :         &quot;\n&quot; +</span>
+<span class="lineNum">      88 </span><span class="lineCov">          2 :         &quot;But the raven still beguiling all my sad soul into smiling,&quot; +</span>
+<span class="lineNum">      89 </span><span class="lineCov">          2 :         &quot;Straight I wheeled a cushioned seat in front of bird and bust and door;&quot; +</span>
+<span class="lineNum">      90 </span><span class="lineCov">          2 :         &quot;Then, upon the velvet sinking, I betook myself to linking&quot; +</span>
+<span class="lineNum">      91 </span><span class="lineCov">          2 :         &quot;Fancy unto fancy, thinking what this ominous bird of yore -&quot; +</span>
+<span class="lineNum">      92 </span><span class="lineCov">          2 :         &quot;What this grim, ungainly, ghastly, gaunt, and ominous bird of yore&quot; +</span>
+<span class="lineNum">      93 </span><span class="lineCov">          2 :         &quot;Meant in croaking `Nevermore.'&quot; +</span>
+<span class="lineNum">      94 </span><span class="lineCov">          2 :         &quot;\n&quot; +</span>
+<span class="lineNum">      95 </span><span class="lineCov">          2 :         &quot;This I sat engaged in guessing, but no syllable expressing&quot; +</span>
+<span class="lineNum">      96 </span><span class="lineCov">          2 :         &quot;To the fowl whose fiery eyes now burned into my bosom's core;&quot; +</span>
+<span class="lineNum">      97 </span><span class="lineCov">          2 :         &quot;This and more I sat divining, with my head at ease reclining&quot; +</span>
+<span class="lineNum">      98 </span><span class="lineCov">          2 :         &quot;On the cushion's velvet lining that the lamp-light gloated o'er,&quot; +</span>
+<span class="lineNum">      99 </span><span class="lineCov">          2 :         &quot;But whose velvet violet lining with the lamp-light gloating o'er,&quot; +</span>
+<span class="lineNum">     100 </span><span class="lineCov">          2 :         &quot;She shall press, ah, nevermore!&quot; +</span>
+<span class="lineNum">     101 </span><span class="lineCov">          2 :         &quot;\n&quot; +</span>
+<span class="lineNum">     102 </span><span class="lineCov">          2 :         &quot;Then, methought, the air grew denser, perfumed from an unseen censer&quot; +</span>
+<span class="lineNum">     103 </span><span class="lineCov">          2 :         &quot;Swung by Seraphim whose foot-falls tinkled on the tufted floor.&quot; +</span>
+<span class="lineNum">     104 </span><span class="lineCov">          2 :         &quot;`Wretch,' I cried, `thy God hath lent thee - by these angels he has sent thee&quot; +</span>
+<span class="lineNum">     105 </span><span class="lineCov">          2 :         &quot;Respite - respite and nepenthe from thy memories of Lenore!&quot; +</span>
+<span class="lineNum">     106 </span><span class="lineCov">          2 :         &quot;Quaff, oh quaff this kind nepenthe, and forget this lost Lenore!'&quot; +</span>
+<span class="lineNum">     107 </span><span class="lineCov">          2 :         &quot;Quoth the raven, `Nevermore.'&quot; +</span>
+<span class="lineNum">     108 </span><span class="lineCov">          2 :         &quot;\n&quot; +</span>
+<span class="lineNum">     109 </span><span class="lineCov">          2 :         &quot;`Prophet!' said I, `thing of evil! - prophet still, if bird or devil! -&quot; +</span>
+<span class="lineNum">     110 </span><span class="lineCov">          2 :         &quot;Whether tempter sent, or whether tempest tossed thee here ashore,&quot; +</span>
+<span class="lineNum">     111 </span><span class="lineCov">          2 :         &quot;Desolate yet all undaunted, on this desert land enchanted -&quot; +</span>
+<span class="lineNum">     112 </span><span class="lineCov">          2 :         &quot;On this home by horror haunted - tell me truly, I implore -&quot; +</span>
+<span class="lineNum">     113 </span><span class="lineCov">          2 :         &quot;Is there - is there balm in Gilead? - tell me - tell me, I implore!'&quot; +</span>
+<span class="lineNum">     114 </span><span class="lineCov">          2 :         &quot;Quoth the raven, `Nevermore.'&quot; +</span>
+<span class="lineNum">     115 </span><span class="lineCov">          2 :         &quot;\n&quot; +</span>
+<span class="lineNum">     116 </span><span class="lineCov">          2 :         &quot;`Prophet!' said I, `thing of evil! - prophet still, if bird or devil!&quot; +</span>
+<span class="lineNum">     117 </span><span class="lineCov">          2 :         &quot;By that Heaven that bends above us - by that God we both adore -&quot; +</span>
+<span class="lineNum">     118 </span><span class="lineCov">          2 :         &quot;Tell this soul with sorrow laden if, within the distant Aidenn,&quot; +</span>
+<span class="lineNum">     119 </span><span class="lineCov">          2 :         &quot;It shall clasp a sainted maiden whom the angels named Lenore -&quot; +</span>
+<span class="lineNum">     120 </span><span class="lineCov">          2 :         &quot;Clasp a rare and radiant maiden, whom the angels named Lenore?'&quot; +</span>
+<span class="lineNum">     121 </span><span class="lineCov">          2 :         &quot;Quoth the raven, `Nevermore.'&quot; +</span>
+<span class="lineNum">     122 </span><span class="lineCov">          2 :         &quot;\n&quot; +</span>
+<span class="lineNum">     123 </span><span class="lineCov">          2 :         &quot;`Be that word our sign of parting, bird or fiend!' I shrieked upstarting -&quot; +</span>
+<span class="lineNum">     124 </span><span class="lineCov">          2 :         &quot;`Get thee back into the tempest and the Night's Plutonian shore!&quot; +</span>
+<span class="lineNum">     125 </span><span class="lineCov">          2 :         &quot;Leave no black plume as a token of that lie thy soul hath spoken!&quot; +</span>
+<span class="lineNum">     126 </span><span class="lineCov">          2 :         &quot;Leave my loneliness unbroken! - quit the bust above my door!&quot; +</span>
+<span class="lineNum">     127 </span><span class="lineCov">          2 :         &quot;Take thy beak from out my heart, and take thy form from off my door!'&quot; +</span>
+<span class="lineNum">     128 </span><span class="lineCov">          2 :         &quot;Quoth the raven, `Nevermore.'&quot; +</span>
+<span class="lineNum">     129 </span><span class="lineCov">          2 :         &quot;\n&quot; +</span>
+<span class="lineNum">     130 </span><span class="lineCov">          2 :         &quot;And the raven, never flitting, still is sitting, still is sitting&quot; +</span>
+<span class="lineNum">     131 </span><span class="lineCov">          2 :         &quot;On the pallid bust of Pallas just above my chamber door;&quot; +</span>
+<span class="lineNum">     132 </span><span class="lineCov">          2 :         &quot;And his eyes have all the seeming of a demon's that is dreaming,&quot; +</span>
+<span class="lineNum">     133 </span><span class="lineCov">          2 :         &quot;And the lamp-light o'er him streaming throws his shadow on the floor;&quot; +</span>
+<span class="lineNum">     134 </span><span class="lineCov">          2 :         &quot;And my soul from out that shadow that lies floating on the floor&quot; +</span>
+<span class="lineNum">     135 </span><span class="lineCov">          2 :         &quot;Shall be lifted - nevermore!&quot;</span>
+<span class="lineNum">     136 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">     137 </span><span class="lineCov">          2 : var NEVERMORE_AND_EVERMORE=12;       </span>
+<span class="lineNum">     138 </span><span class="lineCov">          2 :        </span>
+<span class="lineNum">     139 </span><span class="lineCov">          2 : var __re = /[Nn]?evermore/g;</span>
+<span class="lineNum">     140 </span><span class="lineCov">          2 : var __matched=0;</span>
+<span class="lineNum">     141 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">     142 </span><span class="lineCov">          2 : do{</span>
+<span class="lineNum">     143 </span><span class="lineCov">          2 :     var __executed = __re.exec(__the__raven);</span>
+<span class="lineNum">     144 </span><span class="lineCov">          2 :     if (__executed !== null) {</span>
+<span class="lineNum">     145 </span><span class="lineCov">          2 :         __matched++;</span>
+<span class="lineNum">     146 </span><span class="lineCov">          2 :     } else {</span>
+<span class="lineNum">     147 </span><span class="lineCov">          2 :         break;</span>
+<span class="lineNum">     148 </span><span class="lineCov">          2 :     }</span>
+<span class="lineNum">     149 </span><span class="lineCov">          2 : }while(1);</span>
+<span class="lineNum">     150 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">     151 </span><span class="lineCov">          2 : //CHECK#1</span>
+<span class="lineNum">     152 </span><span class="lineCov">          2 : if (__matched !== NEVERMORE_AND_EVERMORE) {</span>
+<span class="lineNum">     153 </span><span class="lineCov">          2 :         $ERROR('#1: __re = /[Nn]?evermore/g; __executed = __re.exec(__the__raven)'+__matched);</span>
+<span class="lineNum">     154 </span><span class="lineCov">          2 : }</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

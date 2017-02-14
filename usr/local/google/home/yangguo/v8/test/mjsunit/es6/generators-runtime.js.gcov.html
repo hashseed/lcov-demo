@@ -1,0 +1,248 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - /usr/local/google/home/yangguo/v8/test/mjsunit/es6/generators-runtime.js</title>
+  <link rel="stylesheet" type="text/css" href="../../../../../../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../../../../../../index.html">top level</a> - <a href="index.html">usr/local/google/home/yangguo/v8/test/mjsunit/es6</a> - generators-runtime.js<span style="font-size: 80%;"> (source / <a href="generators-runtime.js.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">173</td>
+            <td class="headerCovTableEntry">173</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2017-02-14</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">6</td>
+            <td class="headerCovTableEntry">13</td>
+            <td class="headerCovTableEntryLo">46.2 %</td>
+          </tr>
+          <tr><td><img src="../../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span><span class="lineCov">          1 : // Copyright 2013 the V8 project authors. All rights reserved.</span></a>
+<span class="lineNum">       2 </span><span class="lineCov">          1 : // Redistribution and use in source and binary forms, with or without</span>
+<span class="lineNum">       3 </span><span class="lineCov">          1 : // modification, are permitted provided that the following conditions are</span>
+<span class="lineNum">       4 </span><span class="lineCov">          1 : // met:</span>
+<span class="lineNum">       5 </span><span class="lineCov">          1 : //</span>
+<span class="lineNum">       6 </span><span class="lineCov">          1 : //     * Redistributions of source code must retain the above copyright</span>
+<span class="lineNum">       7 </span><span class="lineCov">          1 : //       notice, this list of conditions and the following disclaimer.</span>
+<span class="lineNum">       8 </span><span class="lineCov">          1 : //     * Redistributions in binary form must reproduce the above</span>
+<span class="lineNum">       9 </span><span class="lineCov">          1 : //       copyright notice, this list of conditions and the following</span>
+<span class="lineNum">      10 </span><span class="lineCov">          1 : //       disclaimer in the documentation and/or other materials provided</span>
+<span class="lineNum">      11 </span><span class="lineCov">          1 : //       with the distribution.</span>
+<span class="lineNum">      12 </span><span class="lineCov">          1 : //     * Neither the name of Google Inc. nor the names of its</span>
+<span class="lineNum">      13 </span><span class="lineCov">          1 : //       contributors may be used to endorse or promote products derived</span>
+<span class="lineNum">      14 </span><span class="lineCov">          1 : //       from this software without specific prior written permission.</span>
+<span class="lineNum">      15 </span><span class="lineCov">          1 : //</span>
+<span class="lineNum">      16 </span><span class="lineCov">          1 : // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="lineNum">      17 </span><span class="lineCov">          1 : // &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="lineNum">      18 </span><span class="lineCov">          1 : // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR</span>
+<span class="lineNum">      19 </span><span class="lineCov">          1 : // A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT</span>
+<span class="lineNum">      20 </span><span class="lineCov">          1 : // OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,</span>
+<span class="lineNum">      21 </span><span class="lineCov">          1 : // SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT</span>
+<span class="lineNum">      22 </span><span class="lineCov">          1 : // LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,</span>
+<span class="lineNum">      23 </span><span class="lineCov">          1 : // DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY</span>
+<span class="lineNum">      24 </span><span class="lineCov">          1 : // THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT</span>
+<span class="lineNum">      25 </span><span class="lineCov">          1 : // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE</span>
+<span class="lineNum">      26 </span><span class="lineCov">          1 : // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="lineNum">      27 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      28 </span><span class="lineCov">          1 : // Test aspects of the generator runtime.</span>
+<span class="lineNum">      29 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      30 </span><span class="lineCov">          1 : // See:</span>
+<a name="31"><span class="lineNum">      31 </span><span class="lineCov">          1 : // http://people.mozilla.org/~jorendorff/es6-draft.html#sec-generatorfunction-objects</span></a>
+<a name="32"><span class="lineNum">      32 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      33 </span><span class="lineCov">          1 : function f() { &quot;use strict&quot;; }</span>
+<span class="lineNum">      34 </span><span class="lineCov">          1 : function* g() { yield 1; }</span>
+<span class="lineNum">      35 </span><span class="lineCov">          1 : var GeneratorFunctionPrototype = Object.getPrototypeOf(g);</span>
+<span class="lineNum">      36 </span><span class="lineCov">          1 : var GeneratorFunction = GeneratorFunctionPrototype.constructor;</span>
+<span class="lineNum">      37 </span><span class="lineCov">          1 : var GeneratorObjectPrototype = GeneratorFunctionPrototype.prototype;</span>
+<span class="lineNum">      38 </span><span class="lineCov">          1 : var IteratorPrototype = Object.getPrototypeOf(GeneratorObjectPrototype);</span>
+<span class="lineNum">      39 </span><span class="lineCov">          1 : </span>
+<a name="40"><span class="lineNum">      40 </span><span class="lineCov">          1 : // A generator function should have the same set of properties as any</span></a>
+<span class="lineNum">      41 </span><span class="lineCov">          1 : // other function.</span>
+<span class="lineNum">      42 </span><span class="lineCov">          1 : function TestGeneratorFunctionInstance() {</span>
+<span class="lineNum">      43 </span><span class="lineCov">          1 :   var f_own_property_names = Object.getOwnPropertyNames(f);</span>
+<span class="lineNum">      44 </span><span class="lineCov">          1 :   var g_own_property_names = Object.getOwnPropertyNames(g);</span>
+<span class="lineNum">      45 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      46 </span><span class="lineCov">          1 :   f_own_property_names.sort();</span>
+<span class="lineNum">      47 </span><span class="lineCov">          1 :   g_own_property_names.sort();</span>
+<span class="lineNum">      48 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      49 </span><span class="lineCov">          1 :   assertArrayEquals(f_own_property_names, g_own_property_names);</span>
+<span class="lineNum">      50 </span><span class="lineCov">          1 :   var i;</span>
+<span class="lineNum">      51 </span><span class="lineCov">          1 :   for (i = 0; i &lt; f_own_property_names.length; i++) {</span>
+<span class="lineNum">      52 </span><span class="lineCov">          1 :     var prop = f_own_property_names[i];</span>
+<span class="lineNum">      53 </span><span class="lineCov">          1 :     var f_desc = Object.getOwnPropertyDescriptor(f, prop);</span>
+<span class="lineNum">      54 </span><span class="lineCov">          1 :     var g_desc = Object.getOwnPropertyDescriptor(g, prop);</span>
+<span class="lineNum">      55 </span><span class="lineCov">          1 :     assertEquals(f_desc.configurable, g_desc.configurable, prop);</span>
+<span class="lineNum">      56 </span><span class="lineCov">          1 :     assertEquals(f_desc.writable, g_desc.writable, prop);</span>
+<span class="lineNum">      57 </span><span class="lineCov">          1 :     assertEquals(f_desc.enumerable, g_desc.enumerable, prop);</span>
+<span class="lineNum">      58 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">      59 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      60 </span><span class="lineCov">          1 : TestGeneratorFunctionInstance();</span>
+<span class="lineNum">      61 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      62 </span><span class="lineCov">          1 : </span>
+<a name="63"><span class="lineNum">      63 </span><span class="lineCov">          1 : // Generators have an additional object interposed in the chain between</span></a>
+<span class="lineNum">      64 </span><span class="lineCov">          1 : // themselves and Function.prototype.</span>
+<span class="lineNum">      65 </span><span class="lineCov">          1 : function TestGeneratorFunctionPrototype() {</span>
+<span class="lineNum">      66 </span><span class="lineCov">          1 :   // Sanity check.</span>
+<span class="lineNum">      67 </span><span class="lineCov">          1 :   assertSame(Object.getPrototypeOf(f), Function.prototype);</span>
+<span class="lineNum">      68 </span><span class="lineCov">          1 :   assertFalse(GeneratorFunctionPrototype === Function.prototype);</span>
+<span class="lineNum">      69 </span><span class="lineCov">          1 :   assertSame(Function.prototype,</span>
+<a name="70"><span class="lineNum">      70 </span><span class="lineCov">          1 :              Object.getPrototypeOf(GeneratorFunctionPrototype));</span></a>
+<span class="lineNum">      71 </span><span class="lineCov">          1 :   assertSame(GeneratorFunctionPrototype,</span>
+<span class="lineNum">      72 </span><span class="lineCov">          1 :              Object.getPrototypeOf(function* () {}));</span>
+<span class="lineNum">      73 </span><span class="lineCov">          1 :   assertSame(&quot;object&quot;, typeof GeneratorFunctionPrototype);</span>
+<span class="lineNum">      74 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      75 </span><span class="lineCov">          1 :   var constructor_desc = Object.getOwnPropertyDescriptor(</span>
+<span class="lineNum">      76 </span><span class="lineCov">          1 :       GeneratorFunctionPrototype, &quot;constructor&quot;);</span>
+<span class="lineNum">      77 </span><span class="lineCov">          1 :   assertTrue(constructor_desc !== undefined);</span>
+<span class="lineNum">      78 </span><span class="lineCov">          1 :   assertSame(GeneratorFunction, constructor_desc.value);</span>
+<span class="lineNum">      79 </span><span class="lineCov">          1 :   assertFalse(constructor_desc.writable);</span>
+<span class="lineNum">      80 </span><span class="lineCov">          1 :   assertFalse(constructor_desc.enumerable);</span>
+<span class="lineNum">      81 </span><span class="lineCov">          1 :   assertTrue(constructor_desc.configurable);</span>
+<span class="lineNum">      82 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      83 </span><span class="lineCov">          1 :   var prototype_desc = Object.getOwnPropertyDescriptor(</span>
+<span class="lineNum">      84 </span><span class="lineCov">          1 :       GeneratorFunctionPrototype, &quot;prototype&quot;);</span>
+<span class="lineNum">      85 </span><span class="lineCov">          1 :   assertTrue(prototype_desc !== undefined);</span>
+<span class="lineNum">      86 </span><span class="lineCov">          1 :   assertSame(GeneratorObjectPrototype, prototype_desc.value);</span>
+<span class="lineNum">      87 </span><span class="lineCov">          1 :   assertFalse(prototype_desc.writable);</span>
+<span class="lineNum">      88 </span><span class="lineCov">          1 :   assertFalse(prototype_desc.enumerable);</span>
+<span class="lineNum">      89 </span><span class="lineCov">          1 :   assertTrue(prototype_desc.configurable);</span>
+<span class="lineNum">      90 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      91 </span><span class="lineCov">          1 : TestGeneratorFunctionPrototype();</span>
+<span class="lineNum">      92 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      93 </span><span class="lineCov">          1 : </span>
+<a name="94"><span class="lineNum">      94 </span><span class="lineCov">          1 : // Functions that we associate with generator objects are actually defined by</span></a>
+<span class="lineNum">      95 </span><span class="lineCov">          1 : // a common prototype.</span>
+<span class="lineNum">      96 </span><span class="lineCov">          1 : function TestGeneratorObjectPrototype() {</span>
+<span class="lineNum">      97 </span><span class="lineCov">          1 :   assertSame(IteratorPrototype,</span>
+<a name="98"><span class="lineNum">      98 </span><span class="lineCov">          1 :              Object.getPrototypeOf(GeneratorObjectPrototype));</span></a>
+<span class="lineNum">      99 </span><span class="lineCov">          1 :   assertSame(GeneratorObjectPrototype,</span>
+<span class="lineNum">     100 </span><span class="lineCov">          1 :              Object.getPrototypeOf((function*(){yield 1}).prototype));</span>
+<span class="lineNum">     101 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     102 </span><span class="lineCov">          1 :   var expected_property_names = [&quot;next&quot;, &quot;return&quot;, &quot;throw&quot;, &quot;constructor&quot;];</span>
+<span class="lineNum">     103 </span><span class="lineCov">          1 :   var found_property_names =</span>
+<span class="lineNum">     104 </span><span class="lineCov">          1 :       Object.getOwnPropertyNames(GeneratorObjectPrototype);</span>
+<span class="lineNum">     105 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     106 </span><span class="lineCov">          1 :   expected_property_names.sort();</span>
+<span class="lineNum">     107 </span><span class="lineCov">          1 :   found_property_names.sort();</span>
+<span class="lineNum">     108 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     109 </span><span class="lineCov">          1 :   assertArrayEquals(expected_property_names, found_property_names);</span>
+<span class="lineNum">     110 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     111 </span><span class="lineCov">          1 :   var constructor_desc = Object.getOwnPropertyDescriptor(</span>
+<span class="lineNum">     112 </span><span class="lineCov">          1 :       GeneratorObjectPrototype, &quot;constructor&quot;);</span>
+<span class="lineNum">     113 </span><span class="lineCov">          1 :   assertTrue(constructor_desc !== undefined);</span>
+<span class="lineNum">     114 </span><span class="lineCov">          1 :   assertFalse(constructor_desc.writable);</span>
+<span class="lineNum">     115 </span><span class="lineCov">          1 :   assertFalse(constructor_desc.enumerable);</span>
+<span class="lineNum">     116 </span><span class="lineCov">          1 :   assertTrue(constructor_desc.configurable);</span>
+<span class="lineNum">     117 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     118 </span><span class="lineCov">          1 :   var next_desc = Object.getOwnPropertyDescriptor(GeneratorObjectPrototype,</span>
+<span class="lineNum">     119 </span><span class="lineCov">          1 :       &quot;next&quot;);</span>
+<span class="lineNum">     120 </span><span class="lineCov">          1 :   assertTrue(next_desc !== undefined);</span>
+<span class="lineNum">     121 </span><span class="lineCov">          1 :   assertTrue(next_desc.writable);</span>
+<span class="lineNum">     122 </span><span class="lineCov">          1 :   assertFalse(next_desc.enumerable);</span>
+<span class="lineNum">     123 </span><span class="lineCov">          1 :   assertTrue(next_desc.configurable);</span>
+<span class="lineNum">     124 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     125 </span><span class="lineCov">          1 :   var throw_desc = Object.getOwnPropertyDescriptor(GeneratorObjectPrototype,</span>
+<span class="lineNum">     126 </span><span class="lineCov">          1 :       &quot;throw&quot;);</span>
+<span class="lineNum">     127 </span><span class="lineCov">          1 :   assertTrue(throw_desc !== undefined);</span>
+<span class="lineNum">     128 </span><span class="lineCov">          1 :   assertTrue(throw_desc.writable);</span>
+<span class="lineNum">     129 </span><span class="lineCov">          1 :   assertFalse(throw_desc.enumerable);</span>
+<span class="lineNum">     130 </span><span class="lineCov">          1 :   assertTrue(throw_desc.configurable);</span>
+<span class="lineNum">     131 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     132 </span><span class="lineCov">          1 : TestGeneratorObjectPrototype();</span>
+<span class="lineNum">     133 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     134 </span><span class="lineCov">          1 : </span>
+<a name="135"><span class="lineNum">     135 </span><span class="lineCov">          1 : // This tests the object that would be called &quot;GeneratorFunction&quot;, if it were</span></a>
+<span class="lineNum">     136 </span><span class="lineCov">          1 : // like &quot;Function&quot;.</span>
+<span class="lineNum">     137 </span><span class="lineCov">          1 : function TestGeneratorFunction() {</span>
+<span class="lineNum">     138 </span><span class="lineCov">          1 :   assertSame(GeneratorFunctionPrototype, GeneratorFunction.prototype);</span>
+<span class="lineNum">     139 </span><span class="lineCov">          1 :   assertTrue(g instanceof GeneratorFunction);</span>
+<span class="lineNum">     140 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     141 </span><span class="lineCov">          1 :   assertSame(Function, Object.getPrototypeOf(GeneratorFunction));</span>
+<span class="lineNum">     142 </span><span class="lineCov">          1 :   assertTrue(g instanceof Function);</span>
+<span class="lineNum">     143 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     144 </span><span class="lineCov">          1 :   assertEquals(&quot;function* g() { yield 1; }&quot;, g.toString());</span>
+<span class="lineNum">     145 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     146 </span><span class="lineCov">          1 :   // Not all functions are generators.</span>
+<span class="lineNum">     147 </span><span class="lineCov">          1 :   assertTrue(f instanceof Function);  // Sanity check.</span>
+<span class="lineNum">     148 </span><span class="lineCov">          1 :   assertTrue(!(f instanceof GeneratorFunction));</span>
+<span class="lineNum">     149 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     150 </span><span class="lineCov">          1 :   assertTrue((new GeneratorFunction()) instanceof GeneratorFunction);</span>
+<span class="lineNum">     151 </span><span class="lineCov">          1 :   assertTrue(GeneratorFunction() instanceof GeneratorFunction);</span>
+<span class="lineNum">     152 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     153 </span><span class="lineCov">          1 :   // ES6 draft 04-14-15, section 25.2.2.2</span>
+<span class="lineNum">     154 </span><span class="lineCov">          1 :   var prototype_desc = Object.getOwnPropertyDescriptor(GeneratorFunction,</span>
+<span class="lineNum">     155 </span><span class="lineCov">          1 :       &quot;prototype&quot;);</span>
+<span class="lineNum">     156 </span><span class="lineCov">          1 :   assertFalse(prototype_desc.writable);</span>
+<span class="lineNum">     157 </span><span class="lineCov">          1 :   assertFalse(prototype_desc.enumerable);</span>
+<span class="lineNum">     158 </span><span class="lineCov">          1 :   assertFalse(prototype_desc.configurable);</span>
+<span class="lineNum">     159 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     160 </span><span class="lineCov">          1 : TestGeneratorFunction();</span>
+<a name="161"><span class="lineNum">     161 </span><span class="lineCov">          1 : </span></a>
+<a name="162"><span class="lineNum">     162 </span><span class="lineCov">          1 : </span></a>
+<a name="163"><span class="lineNum">     163 </span><span class="lineCov">          1 : function TestPerGeneratorPrototype() {</span></a>
+<span class="lineNum">     164 </span><span class="lineCov">          1 :   assertTrue((function*(){}).prototype !== (function*(){}).prototype);</span>
+<span class="lineNum">     165 </span><span class="lineCov">          1 :   assertTrue((function*(){}).prototype !== g.prototype);</span>
+<span class="lineNum">     166 </span><span class="lineCov">          1 :   assertSame(GeneratorObjectPrototype, Object.getPrototypeOf(g.prototype));</span>
+<span class="lineNum">     167 </span><span class="lineCov">          1 :   assertTrue(!(g.prototype instanceof Function));</span>
+<span class="lineNum">     168 </span><span class="lineCov">          1 :   assertSame(typeof (g.prototype), &quot;object&quot;);</span>
+<span class="lineNum">     169 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     170 </span><span class="lineCov">          1 :   assertArrayEquals([], Object.getOwnPropertyNames(g.prototype));</span>
+<span class="lineNum">     171 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     172 </span><span class="lineCov">          1 : TestPerGeneratorPrototype();</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

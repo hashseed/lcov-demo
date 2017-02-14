@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - intl402/Number/prototype/toLocaleString/13.2.1_5.js</title>
+  <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../index.html">top level</a> - <a href="index.html">intl402/Number/prototype/toLocaleString</a> - 13.2.1_5.js<span style="font-size: 80%;"> (source / <a href="13.2.1_5.js.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">43</td>
+            <td class="headerCovTableEntry">43</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2017-02-14</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">4</td>
+            <td class="headerCovTableEntry">4</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr><td><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span><span class="lineCov">          2 : // Copyright 2012 Mozilla Corporation. All rights reserved.</span></a>
+<span class="lineNum">       2 </span><span class="lineCov">          2 : // This code is governed by the BSD license found in the LICENSE file.</span>
+<span class="lineNum">       3 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">       4 </span><span class="lineCov">          2 : /*---</span>
+<span class="lineNum">       5 </span><span class="lineCov">          2 : es5id: 13.2.1_5</span>
+<span class="lineNum">       6 </span><span class="lineCov">          2 : description: &gt;</span>
+<span class="lineNum">       7 </span><span class="lineCov">          2 :     Tests that Number.prototype.toLocaleString produces the same</span>
+<span class="lineNum">       8 </span><span class="lineCov">          2 :     results as Intl.NumberFormat.</span>
+<span class="lineNum">       9 </span><span class="lineCov">          2 : author: Norbert Lindenberg</span>
+<span class="lineNum">      10 </span><span class="lineCov">          2 : includes: [testIntl.js]</span>
+<span class="lineNum">      11 </span><span class="lineCov">          2 : ---*/</span>
+<span class="lineNum">      12 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      13 </span><span class="lineCov">          2 : var numbers = [0, -0, 1, -1, 5.5, 123, -123, -123.45, 123.44501, 0.001234,</span>
+<span class="lineNum">      14 </span><span class="lineCov">          2 :     -0.00000000123, 0.00000000000000000000000000000123, 1.2, 0.0000000012344501,</span>
+<span class="lineNum">      15 </span><span class="lineCov">          2 :     123445.01, 12344501000000000000000000000000000, -12344501000000000000000000000000000,</span>
+<span class="lineNum">      16 </span><span class="lineCov">          2 :     Infinity, -Infinity, NaN];</span>
+<span class="lineNum">      17 </span><span class="lineCov">          2 : var locales = [undefined, [&quot;de&quot;], [&quot;th-u-nu-thai&quot;], [&quot;en&quot;], [&quot;ja-u-nu-jpanfin&quot;], [&quot;ar-u-nu-arab&quot;]];</span>
+<span class="lineNum">      18 </span><span class="lineCov">          2 : var options = [</span>
+<span class="lineNum">      19 </span><span class="lineCov">          2 :     undefined,</span>
+<span class="lineNum">      20 </span><span class="lineCov">          2 :     {style: &quot;percent&quot;},</span>
+<span class="lineNum">      21 </span><span class="lineCov">          2 :     {style: &quot;currency&quot;, currency: &quot;EUR&quot;, currencyDisplay: &quot;symbol&quot;},</span>
+<span class="lineNum">      22 </span><span class="lineCov">          2 :     {style: &quot;currency&quot;, currency: &quot;IQD&quot;, currencyDisplay: &quot;symbol&quot;},</span>
+<span class="lineNum">      23 </span><span class="lineCov">          2 :     {style: &quot;currency&quot;, currency: &quot;KMF&quot;, currencyDisplay: &quot;symbol&quot;},</span>
+<span class="lineNum">      24 </span><span class="lineCov">          2 :     {style: &quot;currency&quot;, currency: &quot;CLF&quot;, currencyDisplay: &quot;symbol&quot;},</span>
+<span class="lineNum">      25 </span><span class="lineCov">          2 :     {useGrouping: false, minimumIntegerDigits: 3, minimumFractionDigits: 1, maximumFractionDigits: 3}</span>
+<a name="26"><span class="lineNum">      26 </span><span class="lineCov">          2 : ];</span></a>
+<a name="27"><span class="lineNum">      27 </span><span class="lineCov">          2 : </span></a>
+<span class="lineNum">      28 </span><span class="lineCov">         12 : locales.forEach(function (locales) {</span>
+<span class="lineNum">      29 </span><span class="lineCov">         84 :     options.forEach(function (options) {</span>
+<span class="lineNum">      30 </span><span class="lineCov">         84 :         var referenceNumberFormat = new Intl.NumberFormat(locales, options);</span>
+<a name="31"><span class="lineNum">      31 </span><span class="lineCov">         84 :         var referenceFormatted = numbers.map(referenceNumberFormat.format);</span></a>
+<span class="lineNum">      32 </span><span class="lineCov">         84 :         </span>
+<span class="lineNum">      33 </span><span class="lineCov">       1680 :         var formatted = numbers.map(function (a) { return a.toLocaleString(locales, options); });</span>
+<span class="lineNum">      34 </span><span class="lineCov">         84 :         try {</span>
+<span class="lineNum">      35 </span><span class="lineCov">         84 :             testArraysAreSame(referenceFormatted, formatted);</span>
+<span class="lineNum">      36 </span><span class="lineCov">         84 :         } catch (e) {</span>
+<span class="lineNum">      37 </span><span class="lineCov">         84 :             e.message += &quot; (Testing with locales &quot; + locales + &quot;; options &quot; +</span>
+<span class="lineNum">      38 </span><span class="lineCov">         84 :             (options ? JSON.stringify(options) : options) + &quot;.)&quot;;</span>
+<span class="lineNum">      39 </span><span class="lineCov">         84 :             throw e;</span>
+<span class="lineNum">      40 </span><span class="lineCov">         84 :         }</span>
+<span class="lineNum">      41 </span><span class="lineCov">         84 :     });</span>
+<span class="lineNum">      42 </span><span class="lineCov">         12 : });</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

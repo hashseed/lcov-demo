@@ -1,0 +1,780 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - /usr/local/google/home/yangguo/v8/test/mjsunit/smi-ops.js</title>
+  <link rel="stylesheet" type="text/css" href="../../../../../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../../../../../index.html">top level</a> - <a href="index.html">usr/local/google/home/yangguo/v8/test/mjsunit</a> - smi-ops.js<span style="font-size: 80%;"> (source / <a href="smi-ops.js.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">705</td>
+            <td class="headerCovTableEntry">705</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2017-02-14</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">30</td>
+            <td class="headerCovTableEntry">30</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr><td><img src="../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span><span class="lineCov">          1 : // Copyright 2010 the V8 project authors. All rights reserved.</span></a>
+<span class="lineNum">       2 </span><span class="lineCov">          1 : // Redistribution and use in source and binary forms, with or without</span>
+<span class="lineNum">       3 </span><span class="lineCov">          1 : // modification, are permitted provided that the following conditions are</span>
+<span class="lineNum">       4 </span><span class="lineCov">          1 : // met:</span>
+<span class="lineNum">       5 </span><span class="lineCov">          1 : //</span>
+<span class="lineNum">       6 </span><span class="lineCov">          1 : //     * Redistributions of source code must retain the above copyright</span>
+<span class="lineNum">       7 </span><span class="lineCov">          1 : //       notice, this list of conditions and the following disclaimer.</span>
+<span class="lineNum">       8 </span><span class="lineCov">          1 : //     * Redistributions in binary form must reproduce the above</span>
+<span class="lineNum">       9 </span><span class="lineCov">          1 : //       copyright notice, this list of conditions and the following</span>
+<span class="lineNum">      10 </span><span class="lineCov">          1 : //       disclaimer in the documentation and/or other materials provided</span>
+<span class="lineNum">      11 </span><span class="lineCov">          1 : //       with the distribution.</span>
+<span class="lineNum">      12 </span><span class="lineCov">          1 : //     * Neither the name of Google Inc. nor the names of its</span>
+<span class="lineNum">      13 </span><span class="lineCov">          1 : //       contributors may be used to endorse or promote products derived</span>
+<span class="lineNum">      14 </span><span class="lineCov">          1 : //       from this software without specific prior written permission.</span>
+<span class="lineNum">      15 </span><span class="lineCov">          1 : //</span>
+<span class="lineNum">      16 </span><span class="lineCov">          1 : // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="lineNum">      17 </span><span class="lineCov">          1 : // &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="lineNum">      18 </span><span class="lineCov">          1 : // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR</span>
+<span class="lineNum">      19 </span><span class="lineCov">          1 : // A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT</span>
+<span class="lineNum">      20 </span><span class="lineCov">          1 : // OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,</span>
+<span class="lineNum">      21 </span><span class="lineCov">          1 : // SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT</span>
+<span class="lineNum">      22 </span><span class="lineCov">          1 : // LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,</span>
+<span class="lineNum">      23 </span><span class="lineCov">          1 : // DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY</span>
+<span class="lineNum">      24 </span><span class="lineCov">          1 : // THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT</span>
+<span class="lineNum">      25 </span><span class="lineCov">          1 : // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE</span>
+<span class="lineNum">      26 </span><span class="lineCov">          1 : // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="lineNum">      27 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      28 </span><span class="lineCov">          1 : const SMI_MAX = (1 &lt;&lt; 29) - 1 + (1 &lt;&lt; 29);  // Create without overflowing.</span>
+<span class="lineNum">      29 </span><span class="lineCov">          1 : const SMI_MIN = -SMI_MAX - 1;  // Create without overflowing.</span>
+<span class="lineNum">      30 </span><span class="lineCov">          1 : const ONE = 1;</span>
+<a name="31"><span class="lineNum">      31 </span><span class="lineCov">          1 : const ONE_HUNDRED = 100;</span></a>
+<a name="32"><span class="lineNum">      32 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      33 </span><span class="lineCov">          1 : const OBJ_42 = new (function() {</span>
+<span class="lineNum">      34 </span><span class="lineCov">         21 :   this.valueOf = function() { return 42; };</span>
+<span class="lineNum">      35 </span><span class="lineCov">          1 : })();</span>
+<span class="lineNum">      36 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      37 </span><span class="lineCov">          1 : assertEquals(42, OBJ_42.valueOf());</span>
+<a name="38"><span class="lineNum">      38 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      39 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      40 </span><span class="lineCov">          3 : function Add1(x) {</span>
+<span class="lineNum">      41 </span><span class="lineCov">          3 :   return x + 1;</span>
+<a name="42"><span class="lineNum">      42 </span><span class="lineCov">          3 : }</span></a>
+<span class="lineNum">      43 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      44 </span><span class="lineCov">          3 : function Add100(x) {</span>
+<span class="lineNum">      45 </span><span class="lineCov">          3 :   return x + 100;</span>
+<a name="46"><span class="lineNum">      46 </span><span class="lineCov">          3 : }</span></a>
+<span class="lineNum">      47 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      48 </span><span class="lineCov">          3 : function Add1Reversed(x) {</span>
+<span class="lineNum">      49 </span><span class="lineCov">          3 :   return 1 + x;</span>
+<a name="50"><span class="lineNum">      50 </span><span class="lineCov">          3 : }</span></a>
+<span class="lineNum">      51 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      52 </span><span class="lineCov">          3 : function Add100Reversed(x) {</span>
+<span class="lineNum">      53 </span><span class="lineCov">          3 :   return 100 + x;</span>
+<span class="lineNum">      54 </span><span class="lineCov">          3 : }</span>
+<span class="lineNum">      55 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      56 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      57 </span><span class="lineCov">          1 : assertEquals(1, Add1(0));  // fast case</span>
+<span class="lineNum">      58 </span><span class="lineCov">          1 : assertEquals(1, Add1Reversed(0));  // fast case</span>
+<span class="lineNum">      59 </span><span class="lineCov">          1 : assertEquals(SMI_MAX + ONE, Add1(SMI_MAX), &quot;smimax + 1&quot;);</span>
+<span class="lineNum">      60 </span><span class="lineCov">          1 : assertEquals(SMI_MAX + ONE, Add1Reversed(SMI_MAX), &quot;1 + smimax&quot;);</span>
+<span class="lineNum">      61 </span><span class="lineCov">          1 : assertEquals(42 + ONE, Add1(OBJ_42));  // non-smi</span>
+<span class="lineNum">      62 </span><span class="lineCov">          1 : assertEquals(42 + ONE, Add1Reversed(OBJ_42));  // non-smi</span>
+<span class="lineNum">      63 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      64 </span><span class="lineCov">          1 : assertEquals(100, Add100(0));  // fast case</span>
+<span class="lineNum">      65 </span><span class="lineCov">          1 : assertEquals(100, Add100Reversed(0));  // fast case</span>
+<span class="lineNum">      66 </span><span class="lineCov">          1 : assertEquals(SMI_MAX + ONE_HUNDRED, Add100(SMI_MAX), &quot;smimax + 100&quot;);</span>
+<span class="lineNum">      67 </span><span class="lineCov">          1 : assertEquals(SMI_MAX + ONE_HUNDRED, Add100Reversed(SMI_MAX), &quot; 100 + smimax&quot;);</span>
+<span class="lineNum">      68 </span><span class="lineCov">          1 : assertEquals(42 + ONE_HUNDRED, Add100(OBJ_42));  // non-smi</span>
+<span class="lineNum">      69 </span><span class="lineCov">          1 : assertEquals(42 + ONE_HUNDRED, Add100Reversed(OBJ_42));  // non-smi</span>
+<span class="lineNum">      70 </span><span class="lineCov">          1 : </span>
+<a name="71"><span class="lineNum">      71 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      72 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      73 </span><span class="lineCov">          3 : function Sub1(x) {</span>
+<span class="lineNum">      74 </span><span class="lineCov">          3 :   return x - 1;</span>
+<a name="75"><span class="lineNum">      75 </span><span class="lineCov">          3 : }</span></a>
+<span class="lineNum">      76 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      77 </span><span class="lineCov">          3 : function Sub100(x) {</span>
+<span class="lineNum">      78 </span><span class="lineCov">          3 :   return x - 100;</span>
+<a name="79"><span class="lineNum">      79 </span><span class="lineCov">          3 : }</span></a>
+<span class="lineNum">      80 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      81 </span><span class="lineCov">          3 : function Sub1Reversed(x) {</span>
+<span class="lineNum">      82 </span><span class="lineCov">          3 :   return 1 - x;</span>
+<a name="83"><span class="lineNum">      83 </span><span class="lineCov">          3 : }</span></a>
+<span class="lineNum">      84 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      85 </span><span class="lineCov">          3 : function Sub100Reversed(x) {</span>
+<span class="lineNum">      86 </span><span class="lineCov">          3 :   return 100 - x;</span>
+<span class="lineNum">      87 </span><span class="lineCov">          3 : }</span>
+<span class="lineNum">      88 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      89 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      90 </span><span class="lineCov">          1 : assertEquals(0, Sub1(1));  // fast case</span>
+<span class="lineNum">      91 </span><span class="lineCov">          1 : assertEquals(-1, Sub1Reversed(2));  // fast case</span>
+<span class="lineNum">      92 </span><span class="lineCov">          1 : assertEquals(SMI_MIN - ONE, Sub1(SMI_MIN));  // overflow</span>
+<span class="lineNum">      93 </span><span class="lineCov">          1 : assertEquals(ONE - SMI_MIN, Sub1Reversed(SMI_MIN));  // overflow</span>
+<span class="lineNum">      94 </span><span class="lineCov">          1 : assertEquals(42 - ONE, Sub1(OBJ_42));  // non-smi</span>
+<span class="lineNum">      95 </span><span class="lineCov">          1 : assertEquals(ONE - 42, Sub1Reversed(OBJ_42));  // non-smi</span>
+<span class="lineNum">      96 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      97 </span><span class="lineCov">          1 : assertEquals(0, Sub100(100));  // fast case</span>
+<span class="lineNum">      98 </span><span class="lineCov">          1 : assertEquals(1, Sub100Reversed(99));  // fast case</span>
+<span class="lineNum">      99 </span><span class="lineCov">          1 : assertEquals(SMI_MIN - ONE_HUNDRED, Sub100(SMI_MIN));  // overflow</span>
+<span class="lineNum">     100 </span><span class="lineCov">          1 : assertEquals(ONE_HUNDRED - SMI_MIN, Sub100Reversed(SMI_MIN));  // overflow</span>
+<span class="lineNum">     101 </span><span class="lineCov">          1 : assertEquals(42 - ONE_HUNDRED, Sub100(OBJ_42));  // non-smi</span>
+<span class="lineNum">     102 </span><span class="lineCov">          1 : assertEquals(ONE_HUNDRED - 42, Sub100Reversed(OBJ_42));  // non-smi</span>
+<a name="103"><span class="lineNum">     103 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     104 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     105 </span><span class="lineCov">          3 : function Shr1(x) {</span>
+<span class="lineNum">     106 </span><span class="lineCov">          3 :   return x &gt;&gt;&gt; 1;</span>
+<a name="107"><span class="lineNum">     107 </span><span class="lineCov">          3 : }</span></a>
+<span class="lineNum">     108 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     109 </span><span class="lineCov">          3 : function Shr100(x) {</span>
+<span class="lineNum">     110 </span><span class="lineCov">          3 :   return x &gt;&gt;&gt; 100;</span>
+<a name="111"><span class="lineNum">     111 </span><span class="lineCov">          3 : }</span></a>
+<span class="lineNum">     112 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     113 </span><span class="lineCov">          3 : function Shr1Reversed(x) {</span>
+<span class="lineNum">     114 </span><span class="lineCov">          3 :   return 1 &gt;&gt;&gt; x;</span>
+<a name="115"><span class="lineNum">     115 </span><span class="lineCov">          3 : }</span></a>
+<span class="lineNum">     116 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     117 </span><span class="lineCov">          3 : function Shr100Reversed(x) {</span>
+<span class="lineNum">     118 </span><span class="lineCov">          3 :   return 100 &gt;&gt;&gt; x;</span>
+<a name="119"><span class="lineNum">     119 </span><span class="lineCov">          3 : }</span></a>
+<span class="lineNum">     120 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     121 </span><span class="lineCov">          3 : function Sar1(x) {</span>
+<span class="lineNum">     122 </span><span class="lineCov">          3 :   return x &gt;&gt; 1;</span>
+<a name="123"><span class="lineNum">     123 </span><span class="lineCov">          3 : }</span></a>
+<span class="lineNum">     124 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     125 </span><span class="lineCov">          3 : function Sar100(x) {</span>
+<span class="lineNum">     126 </span><span class="lineCov">          3 :   return x &gt;&gt; 100;</span>
+<a name="127"><span class="lineNum">     127 </span><span class="lineCov">          3 : }</span></a>
+<span class="lineNum">     128 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     129 </span><span class="lineCov">          3 : function Sar1Reversed(x) {</span>
+<span class="lineNum">     130 </span><span class="lineCov">          3 :   return 1 &gt;&gt; x;</span>
+<a name="131"><span class="lineNum">     131 </span><span class="lineCov">          3 : }</span></a>
+<span class="lineNum">     132 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     133 </span><span class="lineCov">          3 : function Sar100Reversed(x) {</span>
+<span class="lineNum">     134 </span><span class="lineCov">          3 :   return 100 &gt;&gt; x;</span>
+<span class="lineNum">     135 </span><span class="lineCov">          3 : }</span>
+<span class="lineNum">     136 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     137 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     138 </span><span class="lineCov">          1 : assertEquals(0, Shr1(1));</span>
+<span class="lineNum">     139 </span><span class="lineCov">          1 : assertEquals(0, Sar1(1));</span>
+<span class="lineNum">     140 </span><span class="lineCov">          1 : assertEquals(0, Shr1Reversed(2));</span>
+<span class="lineNum">     141 </span><span class="lineCov">          1 : assertEquals(0, Sar1Reversed(2));</span>
+<span class="lineNum">     142 </span><span class="lineCov">          1 : assertEquals(1610612736, Shr1(SMI_MIN));</span>
+<span class="lineNum">     143 </span><span class="lineCov">          1 : assertEquals(-536870912, Sar1(SMI_MIN));</span>
+<span class="lineNum">     144 </span><span class="lineCov">          1 : assertEquals(1, Shr1Reversed(SMI_MIN));</span>
+<span class="lineNum">     145 </span><span class="lineCov">          1 : assertEquals(1, Sar1Reversed(SMI_MIN));</span>
+<span class="lineNum">     146 </span><span class="lineCov">          1 : assertEquals(21, Shr1(OBJ_42));</span>
+<span class="lineNum">     147 </span><span class="lineCov">          1 : assertEquals(21, Sar1(OBJ_42));</span>
+<span class="lineNum">     148 </span><span class="lineCov">          1 : assertEquals(0, Shr1Reversed(OBJ_42));</span>
+<span class="lineNum">     149 </span><span class="lineCov">          1 : assertEquals(0, Sar1Reversed(OBJ_42));</span>
+<span class="lineNum">     150 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     151 </span><span class="lineCov">          1 : assertEquals(6, Shr100(100), &quot;100 &gt;&gt;&gt; 100&quot;);</span>
+<span class="lineNum">     152 </span><span class="lineCov">          1 : assertEquals(6, Sar100(100), &quot;100 &gt;&gt; 100&quot;);</span>
+<span class="lineNum">     153 </span><span class="lineCov">          1 : assertEquals(12, Shr100Reversed(99));</span>
+<span class="lineNum">     154 </span><span class="lineCov">          1 : assertEquals(12, Sar100Reversed(99));</span>
+<span class="lineNum">     155 </span><span class="lineCov">          1 : assertEquals(201326592, Shr100(SMI_MIN));</span>
+<span class="lineNum">     156 </span><span class="lineCov">          1 : assertEquals(-67108864, Sar100(SMI_MIN));</span>
+<span class="lineNum">     157 </span><span class="lineCov">          1 : assertEquals(100, Shr100Reversed(SMI_MIN));</span>
+<span class="lineNum">     158 </span><span class="lineCov">          1 : assertEquals(100, Sar100Reversed(SMI_MIN));</span>
+<span class="lineNum">     159 </span><span class="lineCov">          1 : assertEquals(2, Shr100(OBJ_42));</span>
+<span class="lineNum">     160 </span><span class="lineCov">          1 : assertEquals(2, Sar100(OBJ_42));</span>
+<span class="lineNum">     161 </span><span class="lineCov">          1 : assertEquals(0, Shr100Reversed(OBJ_42));</span>
+<span class="lineNum">     162 </span><span class="lineCov">          1 : assertEquals(0, Sar100Reversed(OBJ_42));</span>
+<a name="163"><span class="lineNum">     163 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     164 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     165 </span><span class="lineCov">          3 : function Xor1(x) {</span>
+<span class="lineNum">     166 </span><span class="lineCov">          3 :   return x ^ 1;</span>
+<a name="167"><span class="lineNum">     167 </span><span class="lineCov">          3 : }</span></a>
+<span class="lineNum">     168 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     169 </span><span class="lineCov">          3 : function Xor100(x) {</span>
+<span class="lineNum">     170 </span><span class="lineCov">          3 :   return x ^ 100;</span>
+<a name="171"><span class="lineNum">     171 </span><span class="lineCov">          3 : }</span></a>
+<span class="lineNum">     172 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     173 </span><span class="lineCov">          3 : function Xor1Reversed(x) {</span>
+<span class="lineNum">     174 </span><span class="lineCov">          3 :   return 1 ^ x;</span>
+<a name="175"><span class="lineNum">     175 </span><span class="lineCov">          3 : }</span></a>
+<span class="lineNum">     176 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     177 </span><span class="lineCov">          3 : function Xor100Reversed(x) {</span>
+<span class="lineNum">     178 </span><span class="lineCov">          3 :   return 100 ^ x;</span>
+<span class="lineNum">     179 </span><span class="lineCov">          3 : }</span>
+<span class="lineNum">     180 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     181 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     182 </span><span class="lineCov">          1 : assertEquals(0, Xor1(1));</span>
+<span class="lineNum">     183 </span><span class="lineCov">          1 : assertEquals(3, Xor1Reversed(2));</span>
+<span class="lineNum">     184 </span><span class="lineCov">          1 : assertEquals(SMI_MIN + 1, Xor1(SMI_MIN));</span>
+<span class="lineNum">     185 </span><span class="lineCov">          1 : assertEquals(SMI_MIN + 1, Xor1Reversed(SMI_MIN));</span>
+<span class="lineNum">     186 </span><span class="lineCov">          1 : assertEquals(43, Xor1(OBJ_42));</span>
+<span class="lineNum">     187 </span><span class="lineCov">          1 : assertEquals(43, Xor1Reversed(OBJ_42));</span>
+<span class="lineNum">     188 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     189 </span><span class="lineCov">          1 : assertEquals(0, Xor100(100));</span>
+<span class="lineNum">     190 </span><span class="lineCov">          1 : assertEquals(7, Xor100Reversed(99));</span>
+<span class="lineNum">     191 </span><span class="lineCov">          1 : assertEquals(-1073741724, Xor100(SMI_MIN));</span>
+<span class="lineNum">     192 </span><span class="lineCov">          1 : assertEquals(-1073741724, Xor100Reversed(SMI_MIN));</span>
+<span class="lineNum">     193 </span><span class="lineCov">          1 : assertEquals(78, Xor100(OBJ_42));</span>
+<span class="lineNum">     194 </span><span class="lineCov">          1 : assertEquals(78, Xor100Reversed(OBJ_42));</span>
+<span class="lineNum">     195 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     196 </span><span class="lineCov">          1 : var x = 0x23; var y = 0x35;</span>
+<span class="lineNum">     197 </span><span class="lineCov">          1 : assertEquals(0x16, x ^ y);</span>
+<span class="lineNum">     198 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     199 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     200 </span><span class="lineCov">          1 : // Bitwise not.</span>
+<span class="lineNum">     201 </span><span class="lineCov">          1 : var v = 0;</span>
+<span class="lineNum">     202 </span><span class="lineCov">          1 : assertEquals(-1, ~v);</span>
+<span class="lineNum">     203 </span><span class="lineCov">          1 : v = SMI_MIN;</span>
+<span class="lineNum">     204 </span><span class="lineCov">          1 : assertEquals(0x3fffffff, ~v, &quot;~smimin&quot;);</span>
+<span class="lineNum">     205 </span><span class="lineCov">          1 : v = SMI_MAX;</span>
+<span class="lineNum">     206 </span><span class="lineCov">          1 : assertEquals(-0x40000000, ~v, &quot;~smimax&quot;);</span>
+<span class="lineNum">     207 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     208 </span><span class="lineCov">          1 : // Overflowing ++ and --.</span>
+<span class="lineNum">     209 </span><span class="lineCov">          1 : v = SMI_MAX;</span>
+<span class="lineNum">     210 </span><span class="lineCov">          1 : v++;</span>
+<span class="lineNum">     211 </span><span class="lineCov">          1 : assertEquals(0x40000000, v, &quot;smimax++&quot;);</span>
+<span class="lineNum">     212 </span><span class="lineCov">          1 : v = SMI_MIN;</span>
+<span class="lineNum">     213 </span><span class="lineCov">          1 : v--;</span>
+<span class="lineNum">     214 </span><span class="lineCov">          1 : assertEquals(-0x40000001, v, &quot;smimin--&quot;);</span>
+<span class="lineNum">     215 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     216 </span><span class="lineCov">          1 : // Check that comparisons of numbers separated by MIN_SMI work.</span>
+<span class="lineNum">     217 </span><span class="lineCov">          1 : assertFalse(SMI_MIN &gt; 0);</span>
+<span class="lineNum">     218 </span><span class="lineCov">          1 : assertFalse(SMI_MIN + 1 &gt; 1);</span>
+<span class="lineNum">     219 </span><span class="lineCov">          1 : assertFalse(SMI_MIN + 1 &gt; 2);</span>
+<span class="lineNum">     220 </span><span class="lineCov">          1 : assertFalse(SMI_MIN + 2 &gt; 1);</span>
+<span class="lineNum">     221 </span><span class="lineCov">          1 : assertFalse(0 &lt; SMI_MIN);</span>
+<span class="lineNum">     222 </span><span class="lineCov">          1 : assertTrue(-1 &lt; SMI_MAX);</span>
+<span class="lineNum">     223 </span><span class="lineCov">          1 : assertFalse(SMI_MAX &lt; -1);</span>
+<span class="lineNum">     224 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     225 </span><span class="lineCov">          1 : // Not actually Smi operations.</span>
+<span class="lineNum">     226 </span><span class="lineCov">          1 : // Check that relations on unary ops work.</span>
+<span class="lineNum">     227 </span><span class="lineCov">          1 : var v = -1.2;</span>
+<span class="lineNum">     228 </span><span class="lineCov">          1 : assertTrue(v == v);</span>
+<span class="lineNum">     229 </span><span class="lineCov">          1 : assertTrue(v === v);</span>
+<span class="lineNum">     230 </span><span class="lineCov">          1 : assertTrue(v &lt;= v);</span>
+<span class="lineNum">     231 </span><span class="lineCov">          1 : assertTrue(v &gt;= v);</span>
+<span class="lineNum">     232 </span><span class="lineCov">          1 : assertFalse(v &lt; v);</span>
+<span class="lineNum">     233 </span><span class="lineCov">          1 : assertFalse(v &gt; v);</span>
+<span class="lineNum">     234 </span><span class="lineCov">          1 : assertFalse(v != v);</span>
+<span class="lineNum">     235 </span><span class="lineCov">          1 : assertFalse(v !== v);</span>
+<span class="lineNum">     236 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     237 </span><span class="lineCov">          1 : // Right hand side of unary minus is overwritable.</span>
+<span class="lineNum">     238 </span><span class="lineCov">          1 : v = 1.5</span>
+<span class="lineNum">     239 </span><span class="lineCov">          1 : assertEquals(-2.25, -(v * v));</span>
+<span class="lineNum">     240 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     241 </span><span class="lineCov">          1 : // Smi input to bitop gives non-smi result where the rhs is a float that</span>
+<span class="lineNum">     242 </span><span class="lineCov">          1 : // can be overwritten.</span>
+<span class="lineNum">     243 </span><span class="lineCov">          1 : var x1 = 0x10000000;</span>
+<span class="lineNum">     244 </span><span class="lineCov">          1 : var x2 = 0x40000002;</span>
+<span class="lineNum">     245 </span><span class="lineCov">          1 : var x3 = 0x40000000;</span>
+<span class="lineNum">     246 </span><span class="lineCov">          1 : assertEquals(0x40000000, x1 &lt;&lt; (x2 - x3), &quot;0x10000000&lt;&lt;1(1)&quot;);</span>
+<span class="lineNum">     247 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     248 </span><span class="lineCov">          1 : // Smi input to bitop gives non-smi result where the rhs could be overwritten</span>
+<span class="lineNum">     249 </span><span class="lineCov">          1 : // if it were a float, but it isn't.</span>
+<span class="lineNum">     250 </span><span class="lineCov">          1 : x1 = 0x10000000</span>
+<span class="lineNum">     251 </span><span class="lineCov">          1 : x2 = 4</span>
+<span class="lineNum">     252 </span><span class="lineCov">          1 : x3 = 2</span>
+<span class="lineNum">     253 </span><span class="lineCov">          1 : assertEquals(0x40000000, x1 &lt;&lt; (x2 - x3), &quot;0x10000000&lt;&lt;2(2)&quot;);</span>
+<span class="lineNum">     254 </span><span class="lineCov">          1 : </span>
+<a name="255"><span class="lineNum">     255 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     256 </span><span class="lineCov">          1 : // Test shift operators on non-smi inputs, giving smi and non-smi results.</span>
+<span class="lineNum">     257 </span><span class="lineCov">          1 : function testShiftNonSmis() {</span>
+<span class="lineNum">     258 </span><span class="lineCov">          1 :   var pos_non_smi = 2000000000;</span>
+<span class="lineNum">     259 </span><span class="lineCov">          1 :   var neg_non_smi = -pos_non_smi;</span>
+<span class="lineNum">     260 </span><span class="lineCov">          1 :   var pos_smi = 1000000000;</span>
+<span class="lineNum">     261 </span><span class="lineCov">          1 :   var neg_smi = -pos_smi;</span>
+<span class="lineNum">     262 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     263 </span><span class="lineCov">          1 :   // Begin block A</span>
+<span class="lineNum">     264 </span><span class="lineCov">          1 :   assertEquals(pos_non_smi, (pos_non_smi) &gt;&gt; 0);</span>
+<span class="lineNum">     265 </span><span class="lineCov">          1 :   assertEquals(pos_non_smi, (pos_non_smi) &gt;&gt;&gt; 0);</span>
+<span class="lineNum">     266 </span><span class="lineCov">          1 :   assertEquals(pos_non_smi, (pos_non_smi) &lt;&lt; 0);</span>
+<span class="lineNum">     267 </span><span class="lineCov">          1 :   assertEquals(neg_non_smi, (neg_non_smi) &gt;&gt; 0);</span>
+<span class="lineNum">     268 </span><span class="lineCov">          1 :   assertEquals(neg_non_smi + 0x100000000, (neg_non_smi) &gt;&gt;&gt; 0);</span>
+<span class="lineNum">     269 </span><span class="lineCov">          1 :   assertEquals(neg_non_smi, (neg_non_smi) &lt;&lt; 0);</span>
+<span class="lineNum">     270 </span><span class="lineCov">          1 :   assertEquals(pos_smi, (pos_smi) &gt;&gt; 0, &quot;possmi &gt;&gt; 0&quot;);</span>
+<span class="lineNum">     271 </span><span class="lineCov">          1 :   assertEquals(pos_smi, (pos_smi) &gt;&gt;&gt; 0, &quot;possmi &gt;&gt;&gt;0&quot;);</span>
+<span class="lineNum">     272 </span><span class="lineCov">          1 :   assertEquals(pos_smi, (pos_smi) &lt;&lt; 0, &quot;possmi &lt;&lt; 0&quot;);</span>
+<span class="lineNum">     273 </span><span class="lineCov">          1 :   assertEquals(neg_smi, (neg_smi) &gt;&gt; 0, &quot;negsmi &gt;&gt; 0&quot;);</span>
+<span class="lineNum">     274 </span><span class="lineCov">          1 :   assertEquals(neg_smi + 0x100000000, (neg_smi) &gt;&gt;&gt; 0, &quot;negsmi &gt;&gt;&gt; 0&quot;);</span>
+<span class="lineNum">     275 </span><span class="lineCov">          1 :   assertEquals(neg_smi, (neg_smi) &lt;&lt; 0), &quot;negsmi &lt;&lt; 0&quot;;</span>
+<span class="lineNum">     276 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     277 </span><span class="lineCov">          1 :   assertEquals(pos_non_smi / 2, (pos_non_smi) &gt;&gt; 1);</span>
+<span class="lineNum">     278 </span><span class="lineCov">          1 :   assertEquals(pos_non_smi / 2, (pos_non_smi) &gt;&gt;&gt; 1);</span>
+<span class="lineNum">     279 </span><span class="lineCov">          1 :   assertEquals(-0x1194D800, (pos_non_smi) &lt;&lt; 1);</span>
+<span class="lineNum">     280 </span><span class="lineCov">          1 :   assertEquals(pos_non_smi / 8, (pos_non_smi) &gt;&gt; 3);</span>
+<span class="lineNum">     281 </span><span class="lineCov">          1 :   assertEquals(pos_non_smi / 8, (pos_non_smi) &gt;&gt;&gt; 3);</span>
+<span class="lineNum">     282 </span><span class="lineCov">          1 :   assertEquals(-0x46536000, (pos_non_smi) &lt;&lt; 3);</span>
+<span class="lineNum">     283 </span><span class="lineCov">          1 :   assertEquals(0x73594000, (pos_non_smi) &lt;&lt; 4);</span>
+<span class="lineNum">     284 </span><span class="lineCov">          1 :   assertEquals(pos_non_smi, (pos_non_smi + 0.5) &gt;&gt; 0);</span>
+<span class="lineNum">     285 </span><span class="lineCov">          1 :   assertEquals(pos_non_smi, (pos_non_smi + 0.5) &gt;&gt;&gt; 0);</span>
+<span class="lineNum">     286 </span><span class="lineCov">          1 :   assertEquals(pos_non_smi, (pos_non_smi + 0.5) &lt;&lt; 0);</span>
+<span class="lineNum">     287 </span><span class="lineCov">          1 :   assertEquals(pos_non_smi / 2, (pos_non_smi + 0.5) &gt;&gt; 1);</span>
+<span class="lineNum">     288 </span><span class="lineCov">          1 :   assertEquals(pos_non_smi / 2, (pos_non_smi + 0.5) &gt;&gt;&gt; 1);</span>
+<span class="lineNum">     289 </span><span class="lineCov">          1 :   assertEquals(-0x1194D800, (pos_non_smi + 0.5) &lt;&lt; 1);</span>
+<span class="lineNum">     290 </span><span class="lineCov">          1 :   assertEquals(pos_non_smi / 8, (pos_non_smi + 0.5) &gt;&gt; 3);</span>
+<span class="lineNum">     291 </span><span class="lineCov">          1 :   assertEquals(pos_non_smi / 8, (pos_non_smi + 0.5) &gt;&gt;&gt; 3);</span>
+<span class="lineNum">     292 </span><span class="lineCov">          1 :   assertEquals(-0x46536000, (pos_non_smi + 0.5) &lt;&lt; 3);</span>
+<span class="lineNum">     293 </span><span class="lineCov">          1 :   assertEquals(0x73594000, (pos_non_smi + 0.5) &lt;&lt; 4);</span>
+<span class="lineNum">     294 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     295 </span><span class="lineCov">          1 :   assertEquals(neg_non_smi / 2, (neg_non_smi) &gt;&gt; 1, &quot;negnonsmi &gt;&gt; 1&quot;);</span>
+<span class="lineNum">     296 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     297 </span><span class="lineCov">          1 :   assertEquals(neg_non_smi / 2 + 0x100000000 / 2, (neg_non_smi) &gt;&gt;&gt; 1,</span>
+<span class="lineNum">     298 </span><span class="lineCov">          1 :                &quot;negnonsmi &gt;&gt;&gt; 1&quot;);</span>
+<span class="lineNum">     299 </span><span class="lineCov">          1 :   assertEquals(0x1194D800, (neg_non_smi) &lt;&lt; 1);</span>
+<span class="lineNum">     300 </span><span class="lineCov">          1 :   assertEquals(neg_non_smi / 8, (neg_non_smi) &gt;&gt; 3);</span>
+<span class="lineNum">     301 </span><span class="lineCov">          1 :   assertEquals(neg_non_smi / 8 + 0x100000000 / 8, (neg_non_smi) &gt;&gt;&gt; 3);</span>
+<span class="lineNum">     302 </span><span class="lineCov">          1 :   assertEquals(0x46536000, (neg_non_smi) &lt;&lt; 3);</span>
+<span class="lineNum">     303 </span><span class="lineCov">          1 :   assertEquals(-0x73594000, (neg_non_smi) &lt;&lt; 4);</span>
+<span class="lineNum">     304 </span><span class="lineCov">          1 :   assertEquals(neg_non_smi, (neg_non_smi - 0.5) &gt;&gt; 0);</span>
+<span class="lineNum">     305 </span><span class="lineCov">          1 :   assertEquals(neg_non_smi + 0x100000000, (neg_non_smi - 0.5) &gt;&gt;&gt; 0,</span>
+<span class="lineNum">     306 </span><span class="lineCov">          1 :                &quot;negnonsmi.5 &gt;&gt;&gt; 0&quot;);</span>
+<span class="lineNum">     307 </span><span class="lineCov">          1 :   assertEquals(neg_non_smi, (neg_non_smi - 0.5) &lt;&lt; 0);</span>
+<span class="lineNum">     308 </span><span class="lineCov">          1 :   assertEquals(neg_non_smi / 2, (neg_non_smi - 0.5) &gt;&gt; 1);</span>
+<span class="lineNum">     309 </span><span class="lineCov">          1 :   assertEquals(neg_non_smi / 2 + 0x100000000 / 2, (neg_non_smi - 0.5) &gt;&gt;&gt; 1,</span>
+<span class="lineNum">     310 </span><span class="lineCov">          1 :                &quot;negnonsmi.5 &gt;&gt;&gt; 1&quot;);</span>
+<span class="lineNum">     311 </span><span class="lineCov">          1 :   assertEquals(0x1194D800, (neg_non_smi - 0.5) &lt;&lt; 1);</span>
+<span class="lineNum">     312 </span><span class="lineCov">          1 :   assertEquals(neg_non_smi / 8, (neg_non_smi - 0.5) &gt;&gt; 3);</span>
+<span class="lineNum">     313 </span><span class="lineCov">          1 :   assertEquals(neg_non_smi / 8 + 0x100000000 / 8, (neg_non_smi - 0.5) &gt;&gt;&gt; 3);</span>
+<span class="lineNum">     314 </span><span class="lineCov">          1 :   assertEquals(0x46536000, (neg_non_smi - 0.5) &lt;&lt; 3);</span>
+<span class="lineNum">     315 </span><span class="lineCov">          1 :   assertEquals(-0x73594000, (neg_non_smi - 0.5) &lt;&lt; 4);</span>
+<span class="lineNum">     316 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     317 </span><span class="lineCov">          1 :   assertEquals(pos_smi / 2, (pos_smi) &gt;&gt; 1);</span>
+<span class="lineNum">     318 </span><span class="lineCov">          1 :   assertEquals(pos_smi / 2, (pos_smi) &gt;&gt;&gt; 1);</span>
+<span class="lineNum">     319 </span><span class="lineCov">          1 :   assertEquals(pos_non_smi, (pos_smi) &lt;&lt; 1);</span>
+<span class="lineNum">     320 </span><span class="lineCov">          1 :   assertEquals(pos_smi / 8, (pos_smi) &gt;&gt; 3);</span>
+<span class="lineNum">     321 </span><span class="lineCov">          1 :   assertEquals(pos_smi / 8, (pos_smi) &gt;&gt;&gt; 3);</span>
+<span class="lineNum">     322 </span><span class="lineCov">          1 :   assertEquals(-0x2329b000, (pos_smi) &lt;&lt; 3);</span>
+<span class="lineNum">     323 </span><span class="lineCov">          1 :   assertEquals(0x73594000, (pos_smi) &lt;&lt; 5);</span>
+<span class="lineNum">     324 </span><span class="lineCov">          1 :   assertEquals(pos_smi, (pos_smi + 0.5) &gt;&gt; 0, &quot;possmi.5 &gt;&gt; 0&quot;);</span>
+<span class="lineNum">     325 </span><span class="lineCov">          1 :   assertEquals(pos_smi, (pos_smi + 0.5) &gt;&gt;&gt; 0, &quot;possmi.5 &gt;&gt;&gt; 0&quot;);</span>
+<span class="lineNum">     326 </span><span class="lineCov">          1 :   assertEquals(pos_smi, (pos_smi + 0.5) &lt;&lt; 0, &quot;possmi.5 &lt;&lt; 0&quot;);</span>
+<span class="lineNum">     327 </span><span class="lineCov">          1 :   assertEquals(pos_smi / 2, (pos_smi + 0.5) &gt;&gt; 1);</span>
+<span class="lineNum">     328 </span><span class="lineCov">          1 :   assertEquals(pos_smi / 2, (pos_smi + 0.5) &gt;&gt;&gt; 1);</span>
+<span class="lineNum">     329 </span><span class="lineCov">          1 :   assertEquals(pos_non_smi, (pos_smi + 0.5) &lt;&lt; 1);</span>
+<span class="lineNum">     330 </span><span class="lineCov">          1 :   assertEquals(pos_smi / 8, (pos_smi + 0.5) &gt;&gt; 3);</span>
+<span class="lineNum">     331 </span><span class="lineCov">          1 :   assertEquals(pos_smi / 8, (pos_smi + 0.5) &gt;&gt;&gt; 3);</span>
+<span class="lineNum">     332 </span><span class="lineCov">          1 :   assertEquals(-0x2329b000, (pos_smi + 0.5) &lt;&lt; 3);</span>
+<span class="lineNum">     333 </span><span class="lineCov">          1 :   assertEquals(0x73594000, (pos_smi + 0.5) &lt;&lt; 5);</span>
+<span class="lineNum">     334 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     335 </span><span class="lineCov">          1 :   assertEquals(neg_smi / 2, (neg_smi) &gt;&gt; 1);</span>
+<span class="lineNum">     336 </span><span class="lineCov">          1 :   assertEquals(neg_smi / 2 + 0x100000000 / 2, (neg_smi) &gt;&gt;&gt; 1);</span>
+<span class="lineNum">     337 </span><span class="lineCov">          1 :   assertEquals(neg_non_smi, (neg_smi) &lt;&lt; 1);</span>
+<span class="lineNum">     338 </span><span class="lineCov">          1 :   assertEquals(neg_smi / 8, (neg_smi) &gt;&gt; 3);</span>
+<span class="lineNum">     339 </span><span class="lineCov">          1 :   assertEquals(neg_smi / 8 + 0x100000000 / 8, (neg_smi) &gt;&gt;&gt; 3);</span>
+<span class="lineNum">     340 </span><span class="lineCov">          1 :   assertEquals(0x46536000, (neg_smi) &lt;&lt; 4);</span>
+<span class="lineNum">     341 </span><span class="lineCov">          1 :   assertEquals(-0x73594000, (neg_smi) &lt;&lt; 5);</span>
+<span class="lineNum">     342 </span><span class="lineCov">          1 :   assertEquals(neg_smi, (neg_smi - 0.5) &gt;&gt; 0, &quot;negsmi.5 &gt;&gt; 0&quot;);</span>
+<span class="lineNum">     343 </span><span class="lineCov">          1 :   assertEquals(neg_smi + 0x100000000, (neg_smi - 0.5) &gt;&gt;&gt; 0, &quot;negsmi.5 &gt;&gt;&gt; 0&quot;);</span>
+<span class="lineNum">     344 </span><span class="lineCov">          1 :   assertEquals(neg_smi, (neg_smi - 0.5) &lt;&lt; 0, &quot;negsmi.5 &lt;&lt; 0&quot;);</span>
+<span class="lineNum">     345 </span><span class="lineCov">          1 :   assertEquals(neg_smi / 2, (neg_smi - 0.5) &gt;&gt; 1);</span>
+<span class="lineNum">     346 </span><span class="lineCov">          1 :   assertEquals(neg_smi / 2 + 0x100000000 / 2, (neg_smi - 0.5) &gt;&gt;&gt; 1);</span>
+<span class="lineNum">     347 </span><span class="lineCov">          1 :   assertEquals(neg_non_smi, (neg_smi - 0.5) &lt;&lt; 1);</span>
+<span class="lineNum">     348 </span><span class="lineCov">          1 :   assertEquals(neg_smi / 8, (neg_smi - 0.5) &gt;&gt; 3);</span>
+<span class="lineNum">     349 </span><span class="lineCov">          1 :   assertEquals(neg_smi / 8 + 0x100000000 / 8, (neg_smi - 0.5) &gt;&gt;&gt; 3);</span>
+<span class="lineNum">     350 </span><span class="lineCov">          1 :   assertEquals(0x46536000, (neg_smi - 0.5) &lt;&lt; 4);</span>
+<span class="lineNum">     351 </span><span class="lineCov">          1 :   assertEquals(-0x73594000, (neg_smi - 0.5) &lt;&lt; 5);</span>
+<span class="lineNum">     352 </span><span class="lineCov">          1 :   // End block A</span>
+<span class="lineNum">     353 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     354 </span><span class="lineCov">          1 :   // Repeat block A with 2^32 added to positive numbers and</span>
+<span class="lineNum">     355 </span><span class="lineCov">          1 :   // 2^32 subtracted from negative numbers.</span>
+<span class="lineNum">     356 </span><span class="lineCov">          1 :   // Begin block A repeat 1</span>
+<span class="lineNum">     357 </span><span class="lineCov">          1 :   var two_32 = 0x100000000;</span>
+<span class="lineNum">     358 </span><span class="lineCov">          1 :   var neg_32 = -two_32;</span>
+<span class="lineNum">     359 </span><span class="lineCov">          1 :   assertEquals(pos_non_smi, (two_32 + pos_non_smi) &gt;&gt; 0);</span>
+<span class="lineNum">     360 </span><span class="lineCov">          1 :   assertEquals(pos_non_smi, (two_32 + pos_non_smi) &gt;&gt;&gt; 0);</span>
+<span class="lineNum">     361 </span><span class="lineCov">          1 :   assertEquals(pos_non_smi, (two_32 + pos_non_smi) &lt;&lt; 0);</span>
+<span class="lineNum">     362 </span><span class="lineCov">          1 :   assertEquals(neg_non_smi, (neg_32 + neg_non_smi) &gt;&gt; 0);</span>
+<span class="lineNum">     363 </span><span class="lineCov">          1 :   assertEquals(neg_non_smi + 0x100000000, (neg_32 + neg_non_smi) &gt;&gt;&gt; 0);</span>
+<span class="lineNum">     364 </span><span class="lineCov">          1 :   assertEquals(neg_non_smi, (neg_32 + neg_non_smi) &lt;&lt; 0);</span>
+<span class="lineNum">     365 </span><span class="lineCov">          1 :   assertEquals(pos_smi, (two_32 + pos_smi) &gt;&gt; 0, &quot;2^32+possmi &gt;&gt; 0&quot;);</span>
+<span class="lineNum">     366 </span><span class="lineCov">          1 :   assertEquals(pos_smi, (two_32 + pos_smi) &gt;&gt;&gt; 0, &quot;2^32+possmi &gt;&gt;&gt; 0&quot;);</span>
+<span class="lineNum">     367 </span><span class="lineCov">          1 :   assertEquals(pos_smi, (two_32 + pos_smi) &lt;&lt; 0, &quot;2^32+possmi &lt;&lt; 0&quot;);</span>
+<span class="lineNum">     368 </span><span class="lineCov">          1 :   assertEquals(neg_smi, (neg_32 + neg_smi) &gt;&gt; 0, &quot;2^32+negsmi &gt;&gt; 0&quot;);</span>
+<span class="lineNum">     369 </span><span class="lineCov">          1 :   assertEquals(neg_smi + 0x100000000, (neg_32 + neg_smi) &gt;&gt;&gt; 0);</span>
+<span class="lineNum">     370 </span><span class="lineCov">          1 :   assertEquals(neg_smi, (neg_32 + neg_smi) &lt;&lt; 0, &quot;2^32+negsmi &lt;&lt; 0&quot;);</span>
+<span class="lineNum">     371 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     372 </span><span class="lineCov">          1 :   assertEquals(pos_non_smi / 2, (two_32 + pos_non_smi) &gt;&gt; 1);</span>
+<span class="lineNum">     373 </span><span class="lineCov">          1 :   assertEquals(pos_non_smi / 2, (two_32 + pos_non_smi) &gt;&gt;&gt; 1);</span>
+<span class="lineNum">     374 </span><span class="lineCov">          1 :   assertEquals(-0x1194D800, (two_32 + pos_non_smi) &lt;&lt; 1);</span>
+<span class="lineNum">     375 </span><span class="lineCov">          1 :   assertEquals(pos_non_smi / 8, (two_32 + pos_non_smi) &gt;&gt; 3);</span>
+<span class="lineNum">     376 </span><span class="lineCov">          1 :   assertEquals(pos_non_smi / 8, (two_32 + pos_non_smi) &gt;&gt;&gt; 3);</span>
+<span class="lineNum">     377 </span><span class="lineCov">          1 :   assertEquals(-0x46536000, (two_32 + pos_non_smi) &lt;&lt; 3);</span>
+<span class="lineNum">     378 </span><span class="lineCov">          1 :   assertEquals(0x73594000, (two_32 + pos_non_smi) &lt;&lt; 4);</span>
+<span class="lineNum">     379 </span><span class="lineCov">          1 :   assertEquals(pos_non_smi, (two_32 + pos_non_smi + 0.5) &gt;&gt; 0);</span>
+<span class="lineNum">     380 </span><span class="lineCov">          1 :   assertEquals(pos_non_smi, (two_32 + pos_non_smi + 0.5) &gt;&gt;&gt; 0);</span>
+<span class="lineNum">     381 </span><span class="lineCov">          1 :   assertEquals(pos_non_smi, (two_32 + pos_non_smi + 0.5) &lt;&lt; 0);</span>
+<span class="lineNum">     382 </span><span class="lineCov">          1 :   assertEquals(pos_non_smi / 2, (two_32 + pos_non_smi + 0.5) &gt;&gt; 1);</span>
+<span class="lineNum">     383 </span><span class="lineCov">          1 :   assertEquals(pos_non_smi / 2, (two_32 + pos_non_smi + 0.5) &gt;&gt;&gt; 1);</span>
+<span class="lineNum">     384 </span><span class="lineCov">          1 :   assertEquals(-0x1194D800, (two_32 + pos_non_smi + 0.5) &lt;&lt; 1);</span>
+<span class="lineNum">     385 </span><span class="lineCov">          1 :   assertEquals(pos_non_smi / 8, (two_32 + pos_non_smi + 0.5) &gt;&gt; 3);</span>
+<span class="lineNum">     386 </span><span class="lineCov">          1 :   assertEquals(pos_non_smi / 8, (two_32 + pos_non_smi + 0.5) &gt;&gt;&gt; 3);</span>
+<span class="lineNum">     387 </span><span class="lineCov">          1 :   assertEquals(-0x46536000, (two_32 + pos_non_smi + 0.5) &lt;&lt; 3);</span>
+<span class="lineNum">     388 </span><span class="lineCov">          1 :   assertEquals(0x73594000, (two_32 + pos_non_smi + 0.5) &lt;&lt; 4);</span>
+<span class="lineNum">     389 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     390 </span><span class="lineCov">          1 :   assertEquals(neg_non_smi / 2, (neg_32 + neg_non_smi) &gt;&gt; 1);</span>
+<span class="lineNum">     391 </span><span class="lineCov">          1 :   assertEquals(neg_non_smi / 2 + 0x100000000 / 2, (neg_32 + neg_non_smi) &gt;&gt;&gt; 1);</span>
+<span class="lineNum">     392 </span><span class="lineCov">          1 :   assertEquals(0x1194D800, (neg_32 + neg_non_smi) &lt;&lt; 1);</span>
+<span class="lineNum">     393 </span><span class="lineCov">          1 :   assertEquals(neg_non_smi / 8, (neg_32 + neg_non_smi) &gt;&gt; 3);</span>
+<span class="lineNum">     394 </span><span class="lineCov">          1 :   assertEquals(neg_non_smi / 8 + 0x100000000 / 8, (neg_32 + neg_non_smi) &gt;&gt;&gt; 3);</span>
+<span class="lineNum">     395 </span><span class="lineCov">          1 :   assertEquals(0x46536000, (neg_32 + neg_non_smi) &lt;&lt; 3);</span>
+<span class="lineNum">     396 </span><span class="lineCov">          1 :   assertEquals(-0x73594000, (neg_32 + neg_non_smi) &lt;&lt; 4);</span>
+<span class="lineNum">     397 </span><span class="lineCov">          1 :   assertEquals(neg_non_smi, (neg_32 + neg_non_smi - 0.5) &gt;&gt; 0);</span>
+<span class="lineNum">     398 </span><span class="lineCov">          1 :   assertEquals(neg_non_smi + 0x100000000, (neg_32 + neg_non_smi - 0.5) &gt;&gt;&gt; 0);</span>
+<span class="lineNum">     399 </span><span class="lineCov">          1 :   assertEquals(neg_non_smi, (neg_32 + neg_non_smi - 0.5) &lt;&lt; 0);</span>
+<span class="lineNum">     400 </span><span class="lineCov">          1 :   assertEquals(neg_non_smi / 2, (neg_32 + neg_non_smi - 0.5) &gt;&gt; 1);</span>
+<span class="lineNum">     401 </span><span class="lineCov">          1 :   assertEquals(neg_non_smi / 2 + 0x100000000 / 2, (neg_32 + neg_non_smi - 0.5)</span>
+<span class="lineNum">     402 </span><span class="lineCov">          1 :                &gt;&gt;&gt; 1);</span>
+<span class="lineNum">     403 </span><span class="lineCov">          1 :   assertEquals(0x1194D800, (neg_32 + neg_non_smi - 0.5) &lt;&lt; 1);</span>
+<span class="lineNum">     404 </span><span class="lineCov">          1 :   assertEquals(neg_non_smi / 8, (neg_32 + neg_non_smi - 0.5) &gt;&gt; 3);</span>
+<span class="lineNum">     405 </span><span class="lineCov">          1 :   assertEquals(neg_non_smi / 8 + 0x100000000 / 8, (neg_32 + neg_non_smi - 0.5)</span>
+<span class="lineNum">     406 </span><span class="lineCov">          1 :                &gt;&gt;&gt; 3);</span>
+<span class="lineNum">     407 </span><span class="lineCov">          1 :   assertEquals(0x46536000, (neg_32 + neg_non_smi - 0.5) &lt;&lt; 3);</span>
+<span class="lineNum">     408 </span><span class="lineCov">          1 :   assertEquals(-0x73594000, (neg_32 + neg_non_smi - 0.5) &lt;&lt; 4);</span>
+<span class="lineNum">     409 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     410 </span><span class="lineCov">          1 :   assertEquals(pos_smi / 2, (two_32 + pos_smi) &gt;&gt; 1);</span>
+<span class="lineNum">     411 </span><span class="lineCov">          1 :   assertEquals(pos_smi / 2, (two_32 + pos_smi) &gt;&gt;&gt; 1);</span>
+<span class="lineNum">     412 </span><span class="lineCov">          1 :   assertEquals(pos_non_smi, (two_32 + pos_smi) &lt;&lt; 1);</span>
+<span class="lineNum">     413 </span><span class="lineCov">          1 :   assertEquals(pos_smi / 8, (two_32 + pos_smi) &gt;&gt; 3);</span>
+<span class="lineNum">     414 </span><span class="lineCov">          1 :   assertEquals(pos_smi / 8, (two_32 + pos_smi) &gt;&gt;&gt; 3);</span>
+<span class="lineNum">     415 </span><span class="lineCov">          1 :   assertEquals(-0x2329b000, (two_32 + pos_smi) &lt;&lt; 3);</span>
+<span class="lineNum">     416 </span><span class="lineCov">          1 :   assertEquals(0x73594000, (two_32 + pos_smi) &lt;&lt; 5);</span>
+<span class="lineNum">     417 </span><span class="lineCov">          1 :   assertEquals(pos_smi, (two_32 + pos_smi + 0.5) &gt;&gt; 0);</span>
+<span class="lineNum">     418 </span><span class="lineCov">          1 :   assertEquals(pos_smi, (two_32 + pos_smi + 0.5) &gt;&gt;&gt; 0);</span>
+<span class="lineNum">     419 </span><span class="lineCov">          1 :   assertEquals(pos_smi, (two_32 + pos_smi + 0.5) &lt;&lt; 0);</span>
+<span class="lineNum">     420 </span><span class="lineCov">          1 :   assertEquals(pos_smi / 2, (two_32 + pos_smi + 0.5) &gt;&gt; 1);</span>
+<span class="lineNum">     421 </span><span class="lineCov">          1 :   assertEquals(pos_smi / 2, (two_32 + pos_smi + 0.5) &gt;&gt;&gt; 1);</span>
+<span class="lineNum">     422 </span><span class="lineCov">          1 :   assertEquals(pos_non_smi, (two_32 + pos_smi + 0.5) &lt;&lt; 1);</span>
+<span class="lineNum">     423 </span><span class="lineCov">          1 :   assertEquals(pos_smi / 8, (two_32 + pos_smi + 0.5) &gt;&gt; 3);</span>
+<span class="lineNum">     424 </span><span class="lineCov">          1 :   assertEquals(pos_smi / 8, (two_32 + pos_smi + 0.5) &gt;&gt;&gt; 3);</span>
+<span class="lineNum">     425 </span><span class="lineCov">          1 :   assertEquals(-0x2329b000, (two_32 + pos_smi + 0.5) &lt;&lt; 3);</span>
+<span class="lineNum">     426 </span><span class="lineCov">          1 :   assertEquals(0x73594000, (two_32 + pos_smi + 0.5) &lt;&lt; 5);</span>
+<span class="lineNum">     427 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     428 </span><span class="lineCov">          1 :   assertEquals(neg_smi / 2, (neg_32 + neg_smi) &gt;&gt; 1);</span>
+<span class="lineNum">     429 </span><span class="lineCov">          1 :   assertEquals(neg_smi / 2 + 0x100000000 / 2, (neg_32 + neg_smi) &gt;&gt;&gt; 1);</span>
+<span class="lineNum">     430 </span><span class="lineCov">          1 :   assertEquals(neg_non_smi, (neg_32 + neg_smi) &lt;&lt; 1);</span>
+<span class="lineNum">     431 </span><span class="lineCov">          1 :   assertEquals(neg_smi / 8, (neg_32 + neg_smi) &gt;&gt; 3);</span>
+<span class="lineNum">     432 </span><span class="lineCov">          1 :   assertEquals((neg_smi + 0x100000000) / 8, (neg_32 + neg_smi) &gt;&gt;&gt; 3);</span>
+<span class="lineNum">     433 </span><span class="lineCov">          1 :   assertEquals(0x46536000, (neg_32 + neg_smi) &lt;&lt; 4);</span>
+<span class="lineNum">     434 </span><span class="lineCov">          1 :   assertEquals(-0x73594000, (neg_32 + neg_smi) &lt;&lt; 5);</span>
+<span class="lineNum">     435 </span><span class="lineCov">          1 :   assertEquals(neg_smi, (neg_32 + neg_smi - 0.5) &gt;&gt; 0, &quot;-2^32+negsmi.5 &gt;&gt; 0&quot;);</span>
+<span class="lineNum">     436 </span><span class="lineCov">          1 :   assertEquals(neg_smi + 0x100000000, (neg_32 + neg_smi - 0.5) &gt;&gt;&gt; 0);</span>
+<span class="lineNum">     437 </span><span class="lineCov">          1 :   assertEquals(neg_smi, (neg_32 + neg_smi - 0.5) &lt;&lt; 0, &quot;-2^32+negsmi.5 &lt;&lt; 0&quot;);</span>
+<span class="lineNum">     438 </span><span class="lineCov">          1 :   assertEquals(neg_smi / 2, (neg_32 + neg_smi - 0.5) &gt;&gt; 1);</span>
+<span class="lineNum">     439 </span><span class="lineCov">          1 :   assertEquals(neg_smi / 2 + 0x100000000 / 2, (neg_32 + neg_smi - 0.5) &gt;&gt;&gt; 1);</span>
+<span class="lineNum">     440 </span><span class="lineCov">          1 :   assertEquals(neg_non_smi, (neg_32 + neg_smi - 0.5) &lt;&lt; 1);</span>
+<span class="lineNum">     441 </span><span class="lineCov">          1 :   assertEquals(neg_smi / 8, (neg_32 + neg_smi - 0.5) &gt;&gt; 3);</span>
+<span class="lineNum">     442 </span><span class="lineCov">          1 :   assertEquals(neg_smi / 8 + 0x100000000 / 8, (neg_32 + neg_smi - 0.5) &gt;&gt;&gt; 3);</span>
+<span class="lineNum">     443 </span><span class="lineCov">          1 :   assertEquals(0x46536000, (neg_32 + neg_smi - 0.5) &lt;&lt; 4);</span>
+<span class="lineNum">     444 </span><span class="lineCov">          1 :   assertEquals(-0x73594000, (neg_32 + neg_smi - 0.5) &lt;&lt; 5);</span>
+<span class="lineNum">     445 </span><span class="lineCov">          1 :   // End block A repeat 1</span>
+<span class="lineNum">     446 </span><span class="lineCov">          1 :   // Repeat block A with shift amounts in variables intialized with</span>
+<span class="lineNum">     447 </span><span class="lineCov">          1 :   // a constant.</span>
+<span class="lineNum">     448 </span><span class="lineCov">          1 :   var zero = 0;</span>
+<span class="lineNum">     449 </span><span class="lineCov">          1 :   var one = 1;</span>
+<span class="lineNum">     450 </span><span class="lineCov">          1 :   var three = 3;</span>
+<span class="lineNum">     451 </span><span class="lineCov">          1 :   var four = 4;</span>
+<span class="lineNum">     452 </span><span class="lineCov">          1 :   var five = 5;</span>
+<span class="lineNum">     453 </span><span class="lineCov">          1 :   // Begin block A repeat 2</span>
+<span class="lineNum">     454 </span><span class="lineCov">          1 :   assertEquals(pos_non_smi, (pos_non_smi) &gt;&gt; zero);</span>
+<span class="lineNum">     455 </span><span class="lineCov">          1 :   assertEquals(pos_non_smi, (pos_non_smi) &gt;&gt;&gt; zero);</span>
+<span class="lineNum">     456 </span><span class="lineCov">          1 :   assertEquals(pos_non_smi, (pos_non_smi) &lt;&lt; zero);</span>
+<span class="lineNum">     457 </span><span class="lineCov">          1 :   assertEquals(neg_non_smi, (neg_non_smi) &gt;&gt; zero);</span>
+<span class="lineNum">     458 </span><span class="lineCov">          1 :   assertEquals(neg_non_smi + 0x100000000, (neg_non_smi) &gt;&gt;&gt; zero);</span>
+<span class="lineNum">     459 </span><span class="lineCov">          1 :   assertEquals(neg_non_smi, (neg_non_smi) &lt;&lt; zero);</span>
+<span class="lineNum">     460 </span><span class="lineCov">          1 :   assertEquals(pos_smi, (pos_smi) &gt;&gt; zero);</span>
+<span class="lineNum">     461 </span><span class="lineCov">          1 :   assertEquals(pos_smi, (pos_smi) &gt;&gt;&gt; zero);</span>
+<span class="lineNum">     462 </span><span class="lineCov">          1 :   assertEquals(pos_smi, (pos_smi) &lt;&lt; zero);</span>
+<span class="lineNum">     463 </span><span class="lineCov">          1 :   assertEquals(neg_smi, (neg_smi) &gt;&gt; zero, &quot;negsmi &gt;&gt; zero&quot;);</span>
+<span class="lineNum">     464 </span><span class="lineCov">          1 :   assertEquals(neg_smi + 0x100000000, (neg_smi) &gt;&gt;&gt; zero);</span>
+<span class="lineNum">     465 </span><span class="lineCov">          1 :   assertEquals(neg_smi, (neg_smi) &lt;&lt; zero, &quot;negsmi &lt;&lt; zero&quot;);</span>
+<span class="lineNum">     466 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     467 </span><span class="lineCov">          1 :   assertEquals(pos_non_smi / 2, (pos_non_smi) &gt;&gt; one);</span>
+<span class="lineNum">     468 </span><span class="lineCov">          1 :   assertEquals(pos_non_smi / 2, (pos_non_smi) &gt;&gt;&gt; one);</span>
+<span class="lineNum">     469 </span><span class="lineCov">          1 :   assertEquals(-0x1194D800, (pos_non_smi) &lt;&lt; one);</span>
+<span class="lineNum">     470 </span><span class="lineCov">          1 :   assertEquals(pos_non_smi / 8, (pos_non_smi) &gt;&gt; three);</span>
+<span class="lineNum">     471 </span><span class="lineCov">          1 :   assertEquals(pos_non_smi / 8, (pos_non_smi) &gt;&gt;&gt; three);</span>
+<span class="lineNum">     472 </span><span class="lineCov">          1 :   assertEquals(-0x46536000, (pos_non_smi) &lt;&lt; three);</span>
+<span class="lineNum">     473 </span><span class="lineCov">          1 :   assertEquals(0x73594000, (pos_non_smi) &lt;&lt; four);</span>
+<span class="lineNum">     474 </span><span class="lineCov">          1 :   assertEquals(pos_non_smi, (pos_non_smi + 0.5) &gt;&gt; zero);</span>
+<span class="lineNum">     475 </span><span class="lineCov">          1 :   assertEquals(pos_non_smi, (pos_non_smi + 0.5) &gt;&gt;&gt; zero);</span>
+<span class="lineNum">     476 </span><span class="lineCov">          1 :   assertEquals(pos_non_smi, (pos_non_smi + 0.5) &lt;&lt; zero);</span>
+<span class="lineNum">     477 </span><span class="lineCov">          1 :   assertEquals(pos_non_smi / 2, (pos_non_smi + 0.5) &gt;&gt; one);</span>
+<span class="lineNum">     478 </span><span class="lineCov">          1 :   assertEquals(pos_non_smi / 2, (pos_non_smi + 0.5) &gt;&gt;&gt; one);</span>
+<span class="lineNum">     479 </span><span class="lineCov">          1 :   assertEquals(-0x1194D800, (pos_non_smi + 0.5) &lt;&lt; one);</span>
+<span class="lineNum">     480 </span><span class="lineCov">          1 :   assertEquals(pos_non_smi / 8, (pos_non_smi + 0.5) &gt;&gt; three);</span>
+<span class="lineNum">     481 </span><span class="lineCov">          1 :   assertEquals(pos_non_smi / 8, (pos_non_smi + 0.5) &gt;&gt;&gt; three);</span>
+<span class="lineNum">     482 </span><span class="lineCov">          1 :   assertEquals(-0x46536000, (pos_non_smi + 0.5) &lt;&lt; three);</span>
+<span class="lineNum">     483 </span><span class="lineCov">          1 :   assertEquals(0x73594000, (pos_non_smi + 0.5) &lt;&lt; four);</span>
+<span class="lineNum">     484 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     485 </span><span class="lineCov">          1 :   assertEquals(neg_non_smi / 2, (neg_non_smi) &gt;&gt; one);</span>
+<span class="lineNum">     486 </span><span class="lineCov">          1 :   assertEquals(neg_non_smi / 2 + 0x100000000 / 2, (neg_non_smi) &gt;&gt;&gt; one);</span>
+<span class="lineNum">     487 </span><span class="lineCov">          1 :   assertEquals(0x1194D800, (neg_non_smi) &lt;&lt; one);</span>
+<span class="lineNum">     488 </span><span class="lineCov">          1 :   assertEquals(neg_non_smi / 8, (neg_non_smi) &gt;&gt; three);</span>
+<span class="lineNum">     489 </span><span class="lineCov">          1 :   assertEquals(neg_non_smi / 8 + 0x100000000 / 8, (neg_non_smi) &gt;&gt;&gt; three);</span>
+<span class="lineNum">     490 </span><span class="lineCov">          1 :   assertEquals(0x46536000, (neg_non_smi) &lt;&lt; three);</span>
+<span class="lineNum">     491 </span><span class="lineCov">          1 :   assertEquals(-0x73594000, (neg_non_smi) &lt;&lt; four);</span>
+<span class="lineNum">     492 </span><span class="lineCov">          1 :   assertEquals(neg_non_smi, (neg_non_smi - 0.5) &gt;&gt; zero);</span>
+<span class="lineNum">     493 </span><span class="lineCov">          1 :   assertEquals(neg_non_smi + 0x100000000, (neg_non_smi - 0.5) &gt;&gt;&gt; zero);</span>
+<span class="lineNum">     494 </span><span class="lineCov">          1 :   assertEquals(neg_non_smi, (neg_non_smi - 0.5) &lt;&lt; zero);</span>
+<span class="lineNum">     495 </span><span class="lineCov">          1 :   assertEquals(neg_non_smi / 2, (neg_non_smi - 0.5) &gt;&gt; one);</span>
+<span class="lineNum">     496 </span><span class="lineCov">          1 :   assertEquals(neg_non_smi / 2 + 0x100000000 / 2, (neg_non_smi - 0.5) &gt;&gt;&gt; one);</span>
+<span class="lineNum">     497 </span><span class="lineCov">          1 :   assertEquals(0x1194D800, (neg_non_smi - 0.5) &lt;&lt; one);</span>
+<span class="lineNum">     498 </span><span class="lineCov">          1 :   assertEquals(neg_non_smi / 8, (neg_non_smi - 0.5) &gt;&gt; three);</span>
+<span class="lineNum">     499 </span><span class="lineCov">          1 :   assertEquals(neg_non_smi / 8 + 0x100000000 / 8, (neg_non_smi - 0.5)</span>
+<span class="lineNum">     500 </span><span class="lineCov">          1 :       &gt;&gt;&gt; three);</span>
+<span class="lineNum">     501 </span><span class="lineCov">          1 :   assertEquals(0x46536000, (neg_non_smi - 0.5) &lt;&lt; three);</span>
+<span class="lineNum">     502 </span><span class="lineCov">          1 :   assertEquals(-0x73594000, (neg_non_smi - 0.5) &lt;&lt; four);</span>
+<span class="lineNum">     503 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     504 </span><span class="lineCov">          1 :   assertEquals(pos_smi / 2, (pos_smi) &gt;&gt; one);</span>
+<span class="lineNum">     505 </span><span class="lineCov">          1 :   assertEquals(pos_smi / 2, (pos_smi) &gt;&gt;&gt; one);</span>
+<span class="lineNum">     506 </span><span class="lineCov">          1 :   assertEquals(pos_non_smi, (pos_smi) &lt;&lt; one);</span>
+<span class="lineNum">     507 </span><span class="lineCov">          1 :   assertEquals(pos_smi / 8, (pos_smi) &gt;&gt; three);</span>
+<span class="lineNum">     508 </span><span class="lineCov">          1 :   assertEquals(pos_smi / 8, (pos_smi) &gt;&gt;&gt; three);</span>
+<span class="lineNum">     509 </span><span class="lineCov">          1 :   assertEquals(-0x2329b000, (pos_smi) &lt;&lt; three);</span>
+<span class="lineNum">     510 </span><span class="lineCov">          1 :   assertEquals(0x73594000, (pos_smi) &lt;&lt; five);</span>
+<span class="lineNum">     511 </span><span class="lineCov">          1 :   assertEquals(pos_smi, (pos_smi + 0.5) &gt;&gt; zero);</span>
+<span class="lineNum">     512 </span><span class="lineCov">          1 :   assertEquals(pos_smi, (pos_smi + 0.5) &gt;&gt;&gt; zero);</span>
+<span class="lineNum">     513 </span><span class="lineCov">          1 :   assertEquals(pos_smi, (pos_smi + 0.5) &lt;&lt; zero);</span>
+<span class="lineNum">     514 </span><span class="lineCov">          1 :   assertEquals(pos_smi / 2, (pos_smi + 0.5) &gt;&gt; one);</span>
+<span class="lineNum">     515 </span><span class="lineCov">          1 :   assertEquals(pos_smi / 2, (pos_smi + 0.5) &gt;&gt;&gt; one);</span>
+<span class="lineNum">     516 </span><span class="lineCov">          1 :   assertEquals(pos_non_smi, (pos_smi + 0.5) &lt;&lt; one);</span>
+<span class="lineNum">     517 </span><span class="lineCov">          1 :   assertEquals(pos_smi / 8, (pos_smi + 0.5) &gt;&gt; three);</span>
+<span class="lineNum">     518 </span><span class="lineCov">          1 :   assertEquals(pos_smi / 8, (pos_smi + 0.5) &gt;&gt;&gt; three);</span>
+<span class="lineNum">     519 </span><span class="lineCov">          1 :   assertEquals(-0x2329b000, (pos_smi + 0.5) &lt;&lt; three);</span>
+<span class="lineNum">     520 </span><span class="lineCov">          1 :   assertEquals(0x73594000, (pos_smi + 0.5) &lt;&lt; five);</span>
+<span class="lineNum">     521 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     522 </span><span class="lineCov">          1 :   assertEquals(neg_smi / 2, (neg_smi) &gt;&gt; one);</span>
+<span class="lineNum">     523 </span><span class="lineCov">          1 :   assertEquals(neg_smi / 2 + 0x100000000 / 2, (neg_smi) &gt;&gt;&gt; one);</span>
+<span class="lineNum">     524 </span><span class="lineCov">          1 :   assertEquals(neg_non_smi, (neg_smi) &lt;&lt; one);</span>
+<span class="lineNum">     525 </span><span class="lineCov">          1 :   assertEquals(neg_smi / 8, (neg_smi) &gt;&gt; three);</span>
+<span class="lineNum">     526 </span><span class="lineCov">          1 :   assertEquals(neg_smi / 8 + 0x100000000 / 8, (neg_smi) &gt;&gt;&gt; three);</span>
+<span class="lineNum">     527 </span><span class="lineCov">          1 :   assertEquals(0x46536000, (neg_smi) &lt;&lt; four);</span>
+<span class="lineNum">     528 </span><span class="lineCov">          1 :   assertEquals(-0x73594000, (neg_smi) &lt;&lt; five);</span>
+<span class="lineNum">     529 </span><span class="lineCov">          1 :   assertEquals(neg_smi, (neg_smi - 0.5) &gt;&gt; zero);</span>
+<span class="lineNum">     530 </span><span class="lineCov">          1 :   assertEquals(neg_smi + 0x100000000, (neg_smi - 0.5) &gt;&gt;&gt; zero);</span>
+<span class="lineNum">     531 </span><span class="lineCov">          1 :   assertEquals(neg_smi, (neg_smi - 0.5) &lt;&lt; zero);</span>
+<span class="lineNum">     532 </span><span class="lineCov">          1 :   assertEquals(neg_smi / 2, (neg_smi - 0.5) &gt;&gt; one);</span>
+<span class="lineNum">     533 </span><span class="lineCov">          1 :   assertEquals(neg_smi / 2 + 0x100000000 / 2, (neg_smi - 0.5) &gt;&gt;&gt; one);</span>
+<span class="lineNum">     534 </span><span class="lineCov">          1 :   assertEquals(neg_non_smi, (neg_smi - 0.5) &lt;&lt; one);</span>
+<span class="lineNum">     535 </span><span class="lineCov">          1 :   assertEquals(neg_smi / 8, (neg_smi - 0.5) &gt;&gt; three);</span>
+<span class="lineNum">     536 </span><span class="lineCov">          1 :   assertEquals(neg_smi / 8 + 0x100000000 / 8, (neg_smi - 0.5) &gt;&gt;&gt; three);</span>
+<span class="lineNum">     537 </span><span class="lineCov">          1 :   assertEquals(0x46536000, (neg_smi - 0.5) &lt;&lt; four);</span>
+<span class="lineNum">     538 </span><span class="lineCov">          1 :   assertEquals(-0x73594000, (neg_smi - 0.5) &lt;&lt; five);</span>
+<span class="lineNum">     539 </span><span class="lineCov">          1 :   // End block A repeat 2</span>
+<span class="lineNum">     540 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     541 </span><span class="lineCov">          1 :   // Repeat previous block, with computed values in the shift variables.</span>
+<span class="lineNum">     542 </span><span class="lineCov">          1 :   five = 0;</span>
+<span class="lineNum">     543 </span><span class="lineCov">          1 :   while (five &lt; 5 ) ++five;</span>
+<span class="lineNum">     544 </span><span class="lineCov">          1 :   four = five - one;</span>
+<span class="lineNum">     545 </span><span class="lineCov">          1 :   three = four - one;</span>
+<span class="lineNum">     546 </span><span class="lineCov">          1 :   one = four - three;</span>
+<span class="lineNum">     547 </span><span class="lineCov">          1 :   zero = one - one;</span>
+<span class="lineNum">     548 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     549 </span><span class="lineCov">          1 :   // Begin block A repeat 3</span>
+<span class="lineNum">     550 </span><span class="lineCov">          1 :   assertEquals(pos_non_smi, (pos_non_smi) &gt;&gt; zero);</span>
+<span class="lineNum">     551 </span><span class="lineCov">          1 :   assertEquals(pos_non_smi, (pos_non_smi) &gt;&gt;&gt; zero);</span>
+<span class="lineNum">     552 </span><span class="lineCov">          1 :   assertEquals(pos_non_smi, (pos_non_smi) &lt;&lt; zero);</span>
+<span class="lineNum">     553 </span><span class="lineCov">          1 :   assertEquals(neg_non_smi, (neg_non_smi) &gt;&gt; zero);</span>
+<span class="lineNum">     554 </span><span class="lineCov">          1 :   assertEquals(neg_non_smi + 0x100000000, (neg_non_smi) &gt;&gt;&gt; zero);</span>
+<span class="lineNum">     555 </span><span class="lineCov">          1 :   assertEquals(neg_non_smi, (neg_non_smi) &lt;&lt; zero);</span>
+<span class="lineNum">     556 </span><span class="lineCov">          1 :   assertEquals(pos_smi, (pos_smi) &gt;&gt; zero);</span>
+<span class="lineNum">     557 </span><span class="lineCov">          1 :   assertEquals(pos_smi, (pos_smi) &gt;&gt;&gt; zero);</span>
+<span class="lineNum">     558 </span><span class="lineCov">          1 :   assertEquals(pos_smi, (pos_smi) &lt;&lt; zero);</span>
+<span class="lineNum">     559 </span><span class="lineCov">          1 :   assertEquals(neg_smi, (neg_smi) &gt;&gt; zero, &quot;negsmi &gt;&gt; zero(2)&quot;);</span>
+<span class="lineNum">     560 </span><span class="lineCov">          1 :   assertEquals(neg_smi + 0x100000000, (neg_smi) &gt;&gt;&gt; zero);</span>
+<span class="lineNum">     561 </span><span class="lineCov">          1 :   assertEquals(neg_smi, (neg_smi) &lt;&lt; zero, &quot;negsmi &lt;&lt; zero(2)&quot;);</span>
+<span class="lineNum">     562 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     563 </span><span class="lineCov">          1 :   assertEquals(pos_non_smi / 2, (pos_non_smi) &gt;&gt; one);</span>
+<span class="lineNum">     564 </span><span class="lineCov">          1 :   assertEquals(pos_non_smi / 2, (pos_non_smi) &gt;&gt;&gt; one);</span>
+<span class="lineNum">     565 </span><span class="lineCov">          1 :   assertEquals(-0x1194D800, (pos_non_smi) &lt;&lt; one);</span>
+<span class="lineNum">     566 </span><span class="lineCov">          1 :   assertEquals(pos_non_smi / 8, (pos_non_smi) &gt;&gt; three);</span>
+<span class="lineNum">     567 </span><span class="lineCov">          1 :   assertEquals(pos_non_smi / 8, (pos_non_smi) &gt;&gt;&gt; three);</span>
+<span class="lineNum">     568 </span><span class="lineCov">          1 :   assertEquals(-0x46536000, (pos_non_smi) &lt;&lt; three);</span>
+<span class="lineNum">     569 </span><span class="lineCov">          1 :   assertEquals(0x73594000, (pos_non_smi) &lt;&lt; four);</span>
+<span class="lineNum">     570 </span><span class="lineCov">          1 :   assertEquals(pos_non_smi, (pos_non_smi + 0.5) &gt;&gt; zero);</span>
+<span class="lineNum">     571 </span><span class="lineCov">          1 :   assertEquals(pos_non_smi, (pos_non_smi + 0.5) &gt;&gt;&gt; zero);</span>
+<span class="lineNum">     572 </span><span class="lineCov">          1 :   assertEquals(pos_non_smi, (pos_non_smi + 0.5) &lt;&lt; zero);</span>
+<span class="lineNum">     573 </span><span class="lineCov">          1 :   assertEquals(pos_non_smi / 2, (pos_non_smi + 0.5) &gt;&gt; one);</span>
+<span class="lineNum">     574 </span><span class="lineCov">          1 :   assertEquals(pos_non_smi / 2, (pos_non_smi + 0.5) &gt;&gt;&gt; one);</span>
+<span class="lineNum">     575 </span><span class="lineCov">          1 :   assertEquals(-0x1194D800, (pos_non_smi + 0.5) &lt;&lt; one);</span>
+<span class="lineNum">     576 </span><span class="lineCov">          1 :   assertEquals(pos_non_smi / 8, (pos_non_smi + 0.5) &gt;&gt; three);</span>
+<span class="lineNum">     577 </span><span class="lineCov">          1 :   assertEquals(pos_non_smi / 8, (pos_non_smi + 0.5) &gt;&gt;&gt; three);</span>
+<span class="lineNum">     578 </span><span class="lineCov">          1 :   assertEquals(-0x46536000, (pos_non_smi + 0.5) &lt;&lt; three);</span>
+<span class="lineNum">     579 </span><span class="lineCov">          1 :   assertEquals(0x73594000, (pos_non_smi + 0.5) &lt;&lt; four);</span>
+<span class="lineNum">     580 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     581 </span><span class="lineCov">          1 :   assertEquals(neg_non_smi / 2, (neg_non_smi) &gt;&gt; one);</span>
+<span class="lineNum">     582 </span><span class="lineCov">          1 :   assertEquals(neg_non_smi / 2 + 0x100000000 / 2, (neg_non_smi) &gt;&gt;&gt; one);</span>
+<span class="lineNum">     583 </span><span class="lineCov">          1 :   assertEquals(0x1194D800, (neg_non_smi) &lt;&lt; one);</span>
+<span class="lineNum">     584 </span><span class="lineCov">          1 :   assertEquals(neg_non_smi / 8, (neg_non_smi) &gt;&gt; three);</span>
+<span class="lineNum">     585 </span><span class="lineCov">          1 :   assertEquals(neg_non_smi / 8 + 0x100000000 / 8, (neg_non_smi) &gt;&gt;&gt; three);</span>
+<span class="lineNum">     586 </span><span class="lineCov">          1 :   assertEquals(0x46536000, (neg_non_smi) &lt;&lt; three);</span>
+<span class="lineNum">     587 </span><span class="lineCov">          1 :   assertEquals(-0x73594000, (neg_non_smi) &lt;&lt; four);</span>
+<span class="lineNum">     588 </span><span class="lineCov">          1 :   assertEquals(neg_non_smi, (neg_non_smi - 0.5) &gt;&gt; zero);</span>
+<span class="lineNum">     589 </span><span class="lineCov">          1 :   assertEquals(neg_non_smi + 0x100000000, (neg_non_smi - 0.5) &gt;&gt;&gt; zero);</span>
+<span class="lineNum">     590 </span><span class="lineCov">          1 :   assertEquals(neg_non_smi, (neg_non_smi - 0.5) &lt;&lt; zero);</span>
+<span class="lineNum">     591 </span><span class="lineCov">          1 :   assertEquals(neg_non_smi / 2, (neg_non_smi - 0.5) &gt;&gt; one);</span>
+<span class="lineNum">     592 </span><span class="lineCov">          1 :   assertEquals(neg_non_smi / 2 + 0x100000000 / 2, (neg_non_smi - 0.5) &gt;&gt;&gt; one);</span>
+<span class="lineNum">     593 </span><span class="lineCov">          1 :   assertEquals(0x1194D800, (neg_non_smi - 0.5) &lt;&lt; one);</span>
+<span class="lineNum">     594 </span><span class="lineCov">          1 :   assertEquals(neg_non_smi / 8, (neg_non_smi - 0.5) &gt;&gt; three);</span>
+<span class="lineNum">     595 </span><span class="lineCov">          1 :   assertEquals(neg_non_smi / 8 + 0x100000000 / 8, (neg_non_smi - 0.5)</span>
+<span class="lineNum">     596 </span><span class="lineCov">          1 :       &gt;&gt;&gt; three);</span>
+<span class="lineNum">     597 </span><span class="lineCov">          1 :   assertEquals(0x46536000, (neg_non_smi - 0.5) &lt;&lt; three);</span>
+<span class="lineNum">     598 </span><span class="lineCov">          1 :   assertEquals(-0x73594000, (neg_non_smi - 0.5) &lt;&lt; four);</span>
+<span class="lineNum">     599 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     600 </span><span class="lineCov">          1 :   assertEquals(pos_smi / 2, (pos_smi) &gt;&gt; one);</span>
+<span class="lineNum">     601 </span><span class="lineCov">          1 :   assertEquals(pos_smi / 2, (pos_smi) &gt;&gt;&gt; one);</span>
+<span class="lineNum">     602 </span><span class="lineCov">          1 :   assertEquals(pos_non_smi, (pos_smi) &lt;&lt; one);</span>
+<span class="lineNum">     603 </span><span class="lineCov">          1 :   assertEquals(pos_smi / 8, (pos_smi) &gt;&gt; three);</span>
+<span class="lineNum">     604 </span><span class="lineCov">          1 :   assertEquals(pos_smi / 8, (pos_smi) &gt;&gt;&gt; three);</span>
+<span class="lineNum">     605 </span><span class="lineCov">          1 :   assertEquals(-0x2329b000, (pos_smi) &lt;&lt; three);</span>
+<span class="lineNum">     606 </span><span class="lineCov">          1 :   assertEquals(0x73594000, (pos_smi) &lt;&lt; five);</span>
+<span class="lineNum">     607 </span><span class="lineCov">          1 :   assertEquals(pos_smi, (pos_smi + 0.5) &gt;&gt; zero);</span>
+<span class="lineNum">     608 </span><span class="lineCov">          1 :   assertEquals(pos_smi, (pos_smi + 0.5) &gt;&gt;&gt; zero);</span>
+<span class="lineNum">     609 </span><span class="lineCov">          1 :   assertEquals(pos_smi, (pos_smi + 0.5) &lt;&lt; zero);</span>
+<span class="lineNum">     610 </span><span class="lineCov">          1 :   assertEquals(pos_smi / 2, (pos_smi + 0.5) &gt;&gt; one);</span>
+<span class="lineNum">     611 </span><span class="lineCov">          1 :   assertEquals(pos_smi / 2, (pos_smi + 0.5) &gt;&gt;&gt; one);</span>
+<span class="lineNum">     612 </span><span class="lineCov">          1 :   assertEquals(pos_non_smi, (pos_smi + 0.5) &lt;&lt; one);</span>
+<span class="lineNum">     613 </span><span class="lineCov">          1 :   assertEquals(pos_smi / 8, (pos_smi + 0.5) &gt;&gt; three);</span>
+<span class="lineNum">     614 </span><span class="lineCov">          1 :   assertEquals(pos_smi / 8, (pos_smi + 0.5) &gt;&gt;&gt; three);</span>
+<span class="lineNum">     615 </span><span class="lineCov">          1 :   assertEquals(-0x2329b000, (pos_smi + 0.5) &lt;&lt; three);</span>
+<span class="lineNum">     616 </span><span class="lineCov">          1 :   assertEquals(0x73594000, (pos_smi + 0.5) &lt;&lt; five);</span>
+<span class="lineNum">     617 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     618 </span><span class="lineCov">          1 :   assertEquals(neg_smi / 2, (neg_smi) &gt;&gt; one);</span>
+<span class="lineNum">     619 </span><span class="lineCov">          1 :   assertEquals(neg_smi / 2 + 0x100000000 / 2, (neg_smi) &gt;&gt;&gt; one);</span>
+<span class="lineNum">     620 </span><span class="lineCov">          1 :   assertEquals(neg_non_smi, (neg_smi) &lt;&lt; one);</span>
+<span class="lineNum">     621 </span><span class="lineCov">          1 :   assertEquals(neg_smi / 8, (neg_smi) &gt;&gt; three);</span>
+<span class="lineNum">     622 </span><span class="lineCov">          1 :   assertEquals(neg_smi / 8 + 0x100000000 / 8, (neg_smi) &gt;&gt;&gt; three);</span>
+<span class="lineNum">     623 </span><span class="lineCov">          1 :   assertEquals(0x46536000, (neg_smi) &lt;&lt; four);</span>
+<span class="lineNum">     624 </span><span class="lineCov">          1 :   assertEquals(-0x73594000, (neg_smi) &lt;&lt; five);</span>
+<span class="lineNum">     625 </span><span class="lineCov">          1 :   assertEquals(neg_smi, (neg_smi - 0.5) &gt;&gt; zero, &quot;negsmi.5 &gt;&gt; zero&quot;);</span>
+<span class="lineNum">     626 </span><span class="lineCov">          1 :   assertEquals(neg_smi + 0x100000000, (neg_smi - 0.5) &gt;&gt;&gt; zero);</span>
+<span class="lineNum">     627 </span><span class="lineCov">          1 :   assertEquals(neg_smi, (neg_smi - 0.5) &lt;&lt; zero, &quot;negsmi.5 &lt;&lt; zero&quot;);</span>
+<span class="lineNum">     628 </span><span class="lineCov">          1 :   assertEquals(neg_smi / 2, (neg_smi - 0.5) &gt;&gt; one);</span>
+<span class="lineNum">     629 </span><span class="lineCov">          1 :   assertEquals(neg_smi / 2 + 0x100000000 / 2, (neg_smi - 0.5) &gt;&gt;&gt; one);</span>
+<span class="lineNum">     630 </span><span class="lineCov">          1 :   assertEquals(neg_non_smi, (neg_smi - 0.5) &lt;&lt; one);</span>
+<span class="lineNum">     631 </span><span class="lineCov">          1 :   assertEquals(neg_smi / 8, (neg_smi - 0.5) &gt;&gt; three);</span>
+<span class="lineNum">     632 </span><span class="lineCov">          1 :   assertEquals(neg_smi / 8 + 0x100000000 / 8, (neg_smi - 0.5) &gt;&gt;&gt; three);</span>
+<span class="lineNum">     633 </span><span class="lineCov">          1 :   assertEquals(0x46536000, (neg_smi - 0.5) &lt;&lt; four);</span>
+<span class="lineNum">     634 </span><span class="lineCov">          1 :   assertEquals(-0x73594000, (neg_smi - 0.5) &lt;&lt; five);</span>
+<span class="lineNum">     635 </span><span class="lineCov">          1 :   // End block A repeat 3</span>
+<span class="lineNum">     636 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     637 </span><span class="lineCov">          1 :   // Test non-integer shift value</span>
+<span class="lineNum">     638 </span><span class="lineCov">          1 :   assertEquals(5, 20.5 &gt;&gt; 2.4);</span>
+<span class="lineNum">     639 </span><span class="lineCov">          1 :   assertEquals(5, 20.5 &gt;&gt; 2.7);</span>
+<span class="lineNum">     640 </span><span class="lineCov">          1 :   var shift = 2.4;</span>
+<span class="lineNum">     641 </span><span class="lineCov">          1 :   assertEquals(5, 20.5 &gt;&gt; shift);</span>
+<span class="lineNum">     642 </span><span class="lineCov">          1 :   assertEquals(5, 20.5 &gt;&gt; shift + 0.3);</span>
+<span class="lineNum">     643 </span><span class="lineCov">          1 :   shift = shift + zero;</span>
+<span class="lineNum">     644 </span><span class="lineCov">          1 :   assertEquals(5, 20.5 &gt;&gt; shift);</span>
+<span class="lineNum">     645 </span><span class="lineCov">          1 :   assertEquals(5, 20.5 &gt;&gt; shift + 0.3);</span>
+<span class="lineNum">     646 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     647 </span><span class="lineCov">          1 : </span>
+<a name="648"><span class="lineNum">     648 </span><span class="lineCov">          1 : testShiftNonSmis();</span></a>
+<a name="649"><span class="lineNum">     649 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     650 </span><span class="lineCov">          1 : function intConversion() {</span>
+<span class="lineNum">     651 </span><span class="lineCov">         62 :   function foo(x) {</span>
+<span class="lineNum">     652 </span><span class="lineCov">         62 :     assertEquals(x, (x * 1.0000000001) | 0, &quot;foo more &quot; + x);</span>
+<span class="lineNum">     653 </span><span class="lineCov">         62 :     assertEquals(x, x | 0, &quot;foo &quot; + x);</span>
+<span class="lineNum">     654 </span><span class="lineCov">         62 :     if (x &gt; 0) {</span>
+<span class="lineNum">     655 </span><span class="lineCov">         62 :       assertEquals(x - 1, (x * 0.9999999999) | 0, &quot;foo less &quot; + x);</span>
+<span class="lineNum">     656 </span><span class="lineCov">         62 :     } else {</span>
+<span class="lineNum">     657 </span><span class="lineCov">         62 :       assertEquals(x + 1, (x * 0.9999999999) | 0, &quot;foo less &quot; + x);</span>
+<span class="lineNum">     658 </span><span class="lineCov">         62 :     }</span>
+<span class="lineNum">     659 </span><span class="lineCov">         62 :   }</span>
+<span class="lineNum">     660 </span><span class="lineCov">          1 :   for (var i = 1; i &lt; 0x80000000; i *= 2) {</span>
+<span class="lineNum">     661 </span><span class="lineCov">          1 :     foo(i);</span>
+<span class="lineNum">     662 </span><span class="lineCov">          1 :     foo(-i);</span>
+<span class="lineNum">     663 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     664 </span><span class="lineCov">          1 :   for (var i = 1; i &lt; 1/0; i *= 2) {</span>
+<span class="lineNum">     665 </span><span class="lineCov">          1 :     assertEquals(i | 0, (i * 1.0000000000000001) | 0, &quot;b&quot; + i);</span>
+<span class="lineNum">     666 </span><span class="lineCov">          1 :     assertEquals(-i | 0, (i * -1.0000000000000001) | 0, &quot;c&quot; + i);</span>
+<span class="lineNum">     667 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     668 </span><span class="lineCov">          1 :   for (var i = 0.5; i &gt; 0; i /= 2) {</span>
+<span class="lineNum">     669 </span><span class="lineCov">          1 :     assertEquals(0, i | 0, &quot;d&quot; + i);</span>
+<span class="lineNum">     670 </span><span class="lineCov">          1 :     assertEquals(0, -i | 0, &quot;e&quot; + i);</span>
+<span class="lineNum">     671 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     672 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     673 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     674 </span><span class="lineCov">          1 : intConversion();</span>
+<span class="lineNum">     675 </span><span class="lineCov">          1 : </span>
+<a name="676"><span class="lineNum">     676 </span><span class="lineCov">          1 : // Verify that we handle the (optimized) corner case of shifting by</span></a>
+<span class="lineNum">     677 </span><span class="lineCov">          1 : // zero even for non-smis.</span>
+<span class="lineNum">     678 </span><span class="lineCov">          1 : function shiftByZero(n) { return n &lt;&lt; 0; }</span>
+<span class="lineNum">     679 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     680 </span><span class="lineCov">          1 : assertEquals(3, shiftByZero(3.1415));</span>
+<a name="681"><span class="lineNum">     681 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     682 </span><span class="lineCov">          1 : // Verify that the static type information of x &gt;&gt;&gt; 32 is computed correctly.</span>
+<span class="lineNum">     683 </span><span class="lineCov">          2 : function LogicalShiftRightByMultipleOf32(x) {</span>
+<span class="lineNum">     684 </span><span class="lineCov">          2 :   x = x &gt;&gt;&gt; 32;</span>
+<span class="lineNum">     685 </span><span class="lineCov">          2 :   return x + x;</span>
+<span class="lineNum">     686 </span><span class="lineCov">          2 : }</span>
+<span class="lineNum">     687 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     688 </span><span class="lineCov">          1 : assertEquals(4589934592, LogicalShiftRightByMultipleOf32(-2000000000));</span>
+<span class="lineNum">     689 </span><span class="lineCov">          1 : assertEquals(4589934592, LogicalShiftRightByMultipleOf32(-2000000000));</span>
+<a name="690"><span class="lineNum">     690 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     691 </span><span class="lineCov">          1 : // Verify that the shift amount is reduced modulo 32, not modulo 64.</span>
+<span class="lineNum">     692 </span><span class="lineCov">          4 : function LeftShiftThreeBy(x) {return 3 &lt;&lt; x;}</span>
+<span class="lineNum">     693 </span><span class="lineCov">          1 : assertEquals(24, LeftShiftThreeBy(3));</span>
+<span class="lineNum">     694 </span><span class="lineCov">          1 : assertEquals(24, LeftShiftThreeBy(35));</span>
+<span class="lineNum">     695 </span><span class="lineCov">          1 : assertEquals(24, LeftShiftThreeBy(67));</span>
+<span class="lineNum">     696 </span><span class="lineCov">          1 : assertEquals(24, LeftShiftThreeBy(-29));</span>
+<span class="lineNum">     697 </span><span class="lineCov">          1 : </span>
+<a name="698"><span class="lineNum">     698 </span><span class="lineCov">          1 : // Regression test for a bug in the ARM code generator.  For some register</span></a>
+<span class="lineNum">     699 </span><span class="lineCov">          1 : // allocations we got the Smi overflow case wrong.</span>
+<span class="lineNum">     700 </span><span class="lineCov">          1 : function f(x, y) { return y +  ( 1 &lt;&lt; (x &amp; 31)); }</span>
+<span class="lineNum">     701 </span><span class="lineCov">          1 : assertEquals(-2147483647, f(31, 1));</span>
+<span class="lineNum">     702 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     703 </span><span class="lineCov">          1 : // Regression test for correct handling of overflow in smi comparison.</span>
+<span class="lineNum">     704 </span><span class="lineCov">          1 : assertTrue(-0x40000000 &lt; 42);</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

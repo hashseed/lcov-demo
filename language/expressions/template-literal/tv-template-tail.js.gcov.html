@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - language/expressions/template-literal/tv-template-tail.js</title>
+  <link rel="stylesheet" type="text/css" href="../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../index.html">top level</a> - <a href="index.html">language/expressions/template-literal</a> - tv-template-tail.js<span style="font-size: 80%;"> (source / <a href="tv-template-tail.js.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">31</td>
+            <td class="headerCovTableEntry">31</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2017-02-14</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">3</td>
+            <td class="headerCovTableEntry">3</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span><span class="lineCov">          2 : // Copyright (C) 2014 the V8 project authors. All rights reserved.</span></a>
+<span class="lineNum">       2 </span><span class="lineCov">          2 : // This code is governed by the BSD license found in the LICENSE file.</span>
+<span class="lineNum">       3 </span><span class="lineCov">          2 : /*---</span>
+<span class="lineNum">       4 </span><span class="lineCov">          2 : es6id: 11.8.6.1</span>
+<span class="lineNum">       5 </span><span class="lineCov">          2 : description: Template values of the template tail pattern</span>
+<span class="lineNum">       6 </span><span class="lineCov">          2 : info: &gt;</span>
+<span class="lineNum">       7 </span><span class="lineCov">          2 :     The TV and TRV of TemplateTail :: }` is the empty code unit sequence.</span>
+<span class="lineNum">       8 </span><span class="lineCov">          2 :     The TV of TemplateTail :: } TemplateCharacters ` is the TV of</span>
+<span class="lineNum">       9 </span><span class="lineCov">          2 :     TemplateCharacters.</span>
+<span class="lineNum">      10 </span><span class="lineCov">          2 :     The TRV of TemplateTail :: } TemplateCharacters ` is the TRV of</span>
+<span class="lineNum">      11 </span><span class="lineCov">          2 :     TemplateCharacters.</span>
+<span class="lineNum">      12 </span><span class="lineCov">          2 : ---*/</span>
+<span class="lineNum">      13 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      14 </span><span class="lineCov">          2 : var calls;</span>
+<a name="15"><span class="lineNum">      15 </span><span class="lineCov">          2 : </span></a>
+<span class="lineNum">      16 </span><span class="lineCov">          2 : calls = 0;</span>
+<span class="lineNum">      17 </span><span class="lineCov">          2 : (function(s) {</span>
+<span class="lineNum">      18 </span><span class="lineCov">          2 :   calls++;</span>
+<span class="lineNum">      19 </span><span class="lineCov">          2 :   assert.sameValue(s[1], '', 'Template value (empty)');</span>
+<span class="lineNum">      20 </span><span class="lineCov">          2 :   assert.sameValue(s.raw[1], '', 'Template raw value (empty)');</span>
+<span class="lineNum">      21 </span><span class="lineCov">          2 : })`${1}`;</span>
+<span class="lineNum">      22 </span><span class="lineCov">          2 : assert.sameValue(calls, 1);</span>
+<a name="23"><span class="lineNum">      23 </span><span class="lineCov">          2 : </span></a>
+<span class="lineNum">      24 </span><span class="lineCov">          2 : calls = 0;</span>
+<span class="lineNum">      25 </span><span class="lineCov">          2 : (function(s) {</span>
+<span class="lineNum">      26 </span><span class="lineCov">          2 :   calls++;</span>
+<span class="lineNum">      27 </span><span class="lineCov">          2 :   assert.sameValue(s[1], 'foo', 'Template value (with content)');</span>
+<span class="lineNum">      28 </span><span class="lineCov">          2 :   assert.sameValue(s.raw[1], 'foo', 'Template raw value (with content)');</span>
+<span class="lineNum">      29 </span><span class="lineCov">          2 : })`${1}foo`;</span>
+<span class="lineNum">      30 </span><span class="lineCov">          2 : assert.sameValue(calls, 1);</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

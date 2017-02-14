@@ -1,0 +1,277 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - /usr/local/google/home/yangguo/v8/test/mjsunit/es6/string-html.js</title>
+  <link rel="stylesheet" type="text/css" href="../../../../../../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../../../../../../index.html">top level</a> - <a href="index.html">usr/local/google/home/yangguo/v8/test/mjsunit/es6</a> - string-html.js<span style="font-size: 80%;"> (source / <a href="string-html.js.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">201</td>
+            <td class="headerCovTableEntry">202</td>
+            <td class="headerCovTableEntryHi">99.5 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2017-02-14</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">30</td>
+            <td class="headerCovTableEntry">31</td>
+            <td class="headerCovTableEntryHi">96.8 %</td>
+          </tr>
+          <tr><td><img src="../../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span><span class="lineCov">          1 : // Copyright 2014 the V8 project authors. All rights reserved.</span></a>
+<span class="lineNum">       2 </span><span class="lineCov">          1 : // Use of this source code is governed by a BSD-style license that can be</span>
+<span class="lineNum">       3 </span><span class="lineCov">          1 : // found in the LICENSE file.</span>
+<span class="lineNum">       4 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">       5 </span><span class="lineCov">          1 : // Tests taken from:</span>
+<span class="lineNum">       6 </span><span class="lineCov">          1 : // http://mathias.html5.org/tests/javascript/string/</span>
+<span class="lineNum">       7 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">       8 </span><span class="lineCov">          1 : assertEquals('_'.anchor('b'), '&lt;a name=&quot;b&quot;&gt;_&lt;/a&gt;');</span>
+<span class="lineNum">       9 </span><span class="lineCov">          1 : assertEquals('&lt;'.anchor('&lt;'), '&lt;a name=&quot;&lt;&quot;&gt;&lt;&lt;/a&gt;');</span>
+<span class="lineNum">      10 </span><span class="lineCov">          1 : assertEquals('_'.anchor(0x2A), '&lt;a name=&quot;42&quot;&gt;_&lt;/a&gt;');</span>
+<a name="11"><span class="lineNum">      11 </span><span class="lineCov">          1 : assertEquals('_'.anchor('\x22'), '&lt;a name=&quot;&amp;quot;&quot;&gt;_&lt;/a&gt;');</span></a>
+<span class="lineNum">      12 </span><span class="lineCov">          1 : assertEquals(String.prototype.anchor.call(0x2A, 0x2A), '&lt;a name=&quot;42&quot;&gt;42&lt;/a&gt;');</span>
+<span class="lineNum">      13 </span><span class="lineCov">          1 : assertThrows(function() {</span>
+<a name="14"><span class="lineNum">      14 </span><span class="lineCov">          1 :   String.prototype.anchor.call(undefined);</span></a>
+<span class="lineNum">      15 </span><span class="lineCov">          1 : }, TypeError);</span>
+<span class="lineNum">      16 </span><span class="lineCov">          1 : assertThrows(function() {</span>
+<span class="lineNum">      17 </span><span class="lineCov">          1 :   String.prototype.anchor.call(null);</span>
+<span class="lineNum">      18 </span><span class="lineCov">          1 : }, TypeError);</span>
+<span class="lineNum">      19 </span><span class="lineCov">          1 : assertEquals(String.prototype.anchor.length, 1);</span>
+<span class="lineNum">      20 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      21 </span><span class="lineCov">          1 : assertEquals('_'.big(), '&lt;big&gt;_&lt;/big&gt;');</span>
+<a name="22"><span class="lineNum">      22 </span><span class="lineCov">          1 : assertEquals('&lt;'.big(), '&lt;big&gt;&lt;&lt;/big&gt;');</span></a>
+<span class="lineNum">      23 </span><span class="lineCov">          1 : assertEquals(String.prototype.big.call(0x2A), '&lt;big&gt;42&lt;/big&gt;');</span>
+<span class="lineNum">      24 </span><span class="lineCov">          1 : assertThrows(function() {</span>
+<a name="25"><span class="lineNum">      25 </span><span class="lineCov">          1 :   String.prototype.big.call(undefined);</span></a>
+<span class="lineNum">      26 </span><span class="lineCov">          1 : }, TypeError);</span>
+<span class="lineNum">      27 </span><span class="lineCov">          1 : assertThrows(function() {</span>
+<span class="lineNum">      28 </span><span class="lineCov">          1 :   String.prototype.big.call(null);</span>
+<span class="lineNum">      29 </span><span class="lineCov">          1 : }, TypeError);</span>
+<span class="lineNum">      30 </span><span class="lineCov">          1 : assertEquals(String.prototype.big.length, 0);</span>
+<span class="lineNum">      31 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      32 </span><span class="lineCov">          1 : assertEquals('_'.blink(), '&lt;blink&gt;_&lt;/blink&gt;');</span>
+<a name="33"><span class="lineNum">      33 </span><span class="lineCov">          1 : assertEquals('&lt;'.blink(), '&lt;blink&gt;&lt;&lt;/blink&gt;');</span></a>
+<span class="lineNum">      34 </span><span class="lineCov">          1 : assertEquals(String.prototype.blink.call(0x2A), '&lt;blink&gt;42&lt;/blink&gt;');</span>
+<span class="lineNum">      35 </span><span class="lineCov">          1 : assertThrows(function() {</span>
+<a name="36"><span class="lineNum">      36 </span><span class="lineCov">          1 :   String.prototype.blink.call(undefined);</span></a>
+<span class="lineNum">      37 </span><span class="lineCov">          1 : }, TypeError);</span>
+<span class="lineNum">      38 </span><span class="lineCov">          1 : assertThrows(function() {</span>
+<span class="lineNum">      39 </span><span class="lineCov">          1 :   String.prototype.blink.call(null);</span>
+<span class="lineNum">      40 </span><span class="lineCov">          1 : }, TypeError);</span>
+<span class="lineNum">      41 </span><span class="lineCov">          1 : assertEquals(String.prototype.blink.length, 0);</span>
+<span class="lineNum">      42 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      43 </span><span class="lineCov">          1 : assertEquals('_'.bold(), '&lt;b&gt;_&lt;/b&gt;');</span>
+<a name="44"><span class="lineNum">      44 </span><span class="lineCov">          1 : assertEquals('&lt;'.bold(), '&lt;b&gt;&lt;&lt;/b&gt;');</span></a>
+<span class="lineNum">      45 </span><span class="lineCov">          1 : assertEquals(String.prototype.bold.call(0x2A), '&lt;b&gt;42&lt;/b&gt;');</span>
+<span class="lineNum">      46 </span><span class="lineCov">          1 : assertThrows(function() {</span>
+<a name="47"><span class="lineNum">      47 </span><span class="lineCov">          1 :   String.prototype.bold.call(undefined);</span></a>
+<span class="lineNum">      48 </span><span class="lineCov">          1 : }, TypeError);</span>
+<span class="lineNum">      49 </span><span class="lineCov">          1 : assertThrows(function() {</span>
+<span class="lineNum">      50 </span><span class="lineCov">          1 :   String.prototype.bold.call(null);</span>
+<span class="lineNum">      51 </span><span class="lineCov">          1 : }, TypeError);</span>
+<span class="lineNum">      52 </span><span class="lineCov">          1 : assertEquals(String.prototype.bold.length, 0);</span>
+<span class="lineNum">      53 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      54 </span><span class="lineCov">          1 : assertEquals('_'.fixed(), '&lt;tt&gt;_&lt;/tt&gt;');</span>
+<a name="55"><span class="lineNum">      55 </span><span class="lineCov">          1 : assertEquals('&lt;'.fixed(), '&lt;tt&gt;&lt;&lt;/tt&gt;');</span></a>
+<span class="lineNum">      56 </span><span class="lineCov">          1 : assertEquals(String.prototype.fixed.call(0x2A), '&lt;tt&gt;42&lt;/tt&gt;');</span>
+<span class="lineNum">      57 </span><span class="lineCov">          1 : assertThrows(function() {</span>
+<a name="58"><span class="lineNum">      58 </span><span class="lineCov">          1 :   String.prototype.fixed.call(undefined);</span></a>
+<span class="lineNum">      59 </span><span class="lineCov">          1 : }, TypeError);</span>
+<span class="lineNum">      60 </span><span class="lineCov">          1 : assertThrows(function() {</span>
+<span class="lineNum">      61 </span><span class="lineCov">          1 :   String.prototype.fixed.call(null);</span>
+<span class="lineNum">      62 </span><span class="lineCov">          1 : }, TypeError);</span>
+<span class="lineNum">      63 </span><span class="lineCov">          1 : assertEquals(String.prototype.fixed.length, 0);</span>
+<span class="lineNum">      64 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      65 </span><span class="lineCov">          1 : assertEquals('_'.fontcolor('b'), '&lt;font color=&quot;b&quot;&gt;_&lt;/font&gt;');</span>
+<span class="lineNum">      66 </span><span class="lineCov">          1 : assertEquals('&lt;'.fontcolor('&lt;'), '&lt;font color=&quot;&lt;&quot;&gt;&lt;&lt;/font&gt;');</span>
+<span class="lineNum">      67 </span><span class="lineCov">          1 : assertEquals('_'.fontcolor(0x2A), '&lt;font color=&quot;42&quot;&gt;_&lt;/font&gt;');</span>
+<span class="lineNum">      68 </span><span class="lineCov">          1 : assertEquals('_'.fontcolor('\x22'), '&lt;font color=&quot;&amp;quot;&quot;&gt;_&lt;/font&gt;');</span>
+<a name="69"><span class="lineNum">      69 </span><span class="lineCov">          1 : assertEquals(String.prototype.fontcolor.call(0x2A, 0x2A),</span></a>
+<span class="lineNum">      70 </span><span class="lineCov">          1 :   '&lt;font color=&quot;42&quot;&gt;42&lt;/font&gt;');</span>
+<span class="lineNum">      71 </span><span class="lineCov">          1 : assertThrows(function() {</span>
+<a name="72"><span class="lineNum">      72 </span><span class="lineCov">          1 :   String.prototype.fontcolor.call(undefined);</span></a>
+<span class="lineNum">      73 </span><span class="lineCov">          1 : }, TypeError);</span>
+<span class="lineNum">      74 </span><span class="lineCov">          1 : assertThrows(function() {</span>
+<span class="lineNum">      75 </span><span class="lineCov">          1 :   String.prototype.fontcolor.call(null);</span>
+<span class="lineNum">      76 </span><span class="lineCov">          1 : }, TypeError);</span>
+<span class="lineNum">      77 </span><span class="lineCov">          1 : assertEquals(String.prototype.fontcolor.length, 1);</span>
+<span class="lineNum">      78 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      79 </span><span class="lineCov">          1 : assertEquals('_'.fontsize('b'), '&lt;font size=&quot;b&quot;&gt;_&lt;/font&gt;');</span>
+<span class="lineNum">      80 </span><span class="lineCov">          1 : assertEquals('&lt;'.fontsize('&lt;'), '&lt;font size=&quot;&lt;&quot;&gt;&lt;&lt;/font&gt;');</span>
+<span class="lineNum">      81 </span><span class="lineCov">          1 : assertEquals('_'.fontsize(0x2A), '&lt;font size=&quot;42&quot;&gt;_&lt;/font&gt;');</span>
+<span class="lineNum">      82 </span><span class="lineCov">          1 : assertEquals('_'.fontsize('\x22'), '&lt;font size=&quot;&amp;quot;&quot;&gt;_&lt;/font&gt;');</span>
+<a name="83"><span class="lineNum">      83 </span><span class="lineCov">          1 : assertEquals(String.prototype.fontsize.call(0x2A, 0x2A),</span></a>
+<span class="lineNum">      84 </span><span class="lineCov">          1 :   '&lt;font size=&quot;42&quot;&gt;42&lt;/font&gt;');</span>
+<span class="lineNum">      85 </span><span class="lineCov">          1 : assertThrows(function() {</span>
+<a name="86"><span class="lineNum">      86 </span><span class="lineCov">          1 :   String.prototype.fontsize.call(undefined);</span></a>
+<span class="lineNum">      87 </span><span class="lineCov">          1 : }, TypeError);</span>
+<span class="lineNum">      88 </span><span class="lineCov">          1 : assertThrows(function() {</span>
+<span class="lineNum">      89 </span><span class="lineCov">          1 :   String.prototype.fontsize.call(null);</span>
+<span class="lineNum">      90 </span><span class="lineCov">          1 : }, TypeError);</span>
+<span class="lineNum">      91 </span><span class="lineCov">          1 : assertEquals(String.prototype.fontsize.length, 1);</span>
+<span class="lineNum">      92 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      93 </span><span class="lineCov">          1 : assertEquals('_'.italics(), '&lt;i&gt;_&lt;/i&gt;');</span>
+<a name="94"><span class="lineNum">      94 </span><span class="lineCov">          1 : assertEquals('&lt;'.italics(), '&lt;i&gt;&lt;&lt;/i&gt;');</span></a>
+<span class="lineNum">      95 </span><span class="lineCov">          1 : assertEquals(String.prototype.italics.call(0x2A), '&lt;i&gt;42&lt;/i&gt;');</span>
+<span class="lineNum">      96 </span><span class="lineCov">          1 : assertThrows(function() {</span>
+<a name="97"><span class="lineNum">      97 </span><span class="lineCov">          1 :   String.prototype.italics.call(undefined);</span></a>
+<span class="lineNum">      98 </span><span class="lineCov">          1 : }, TypeError);</span>
+<span class="lineNum">      99 </span><span class="lineCov">          1 : assertThrows(function() {</span>
+<span class="lineNum">     100 </span><span class="lineCov">          1 :   String.prototype.italics.call(null);</span>
+<span class="lineNum">     101 </span><span class="lineCov">          1 : }, TypeError);</span>
+<span class="lineNum">     102 </span><span class="lineCov">          1 : assertEquals(String.prototype.italics.length, 0);</span>
+<span class="lineNum">     103 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     104 </span><span class="lineCov">          1 : assertEquals('_'.link('b'), '&lt;a href=&quot;b&quot;&gt;_&lt;/a&gt;');</span>
+<span class="lineNum">     105 </span><span class="lineCov">          1 : assertEquals('&lt;'.link('&lt;'), '&lt;a href=&quot;&lt;&quot;&gt;&lt;&lt;/a&gt;');</span>
+<span class="lineNum">     106 </span><span class="lineCov">          1 : assertEquals('_'.link(0x2A), '&lt;a href=&quot;42&quot;&gt;_&lt;/a&gt;');</span>
+<a name="107"><span class="lineNum">     107 </span><span class="lineCov">          1 : assertEquals('_'.link('\x22'), '&lt;a href=&quot;&amp;quot;&quot;&gt;_&lt;/a&gt;');</span></a>
+<span class="lineNum">     108 </span><span class="lineCov">          1 : assertEquals(String.prototype.link.call(0x2A, 0x2A), '&lt;a href=&quot;42&quot;&gt;42&lt;/a&gt;');</span>
+<span class="lineNum">     109 </span><span class="lineCov">          1 : assertThrows(function() {</span>
+<a name="110"><span class="lineNum">     110 </span><span class="lineCov">          1 :   String.prototype.link.call(undefined);</span></a>
+<span class="lineNum">     111 </span><span class="lineCov">          1 : }, TypeError);</span>
+<span class="lineNum">     112 </span><span class="lineCov">          1 : assertThrows(function() {</span>
+<span class="lineNum">     113 </span><span class="lineCov">          1 :   String.prototype.link.call(null);</span>
+<span class="lineNum">     114 </span><span class="lineCov">          1 : }, TypeError);</span>
+<span class="lineNum">     115 </span><span class="lineCov">          1 : assertEquals(String.prototype.link.length, 1);</span>
+<span class="lineNum">     116 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     117 </span><span class="lineCov">          1 : assertEquals('_'.small(), '&lt;small&gt;_&lt;/small&gt;');</span>
+<a name="118"><span class="lineNum">     118 </span><span class="lineCov">          1 : assertEquals('&lt;'.small(), '&lt;small&gt;&lt;&lt;/small&gt;');</span></a>
+<span class="lineNum">     119 </span><span class="lineCov">          1 : assertEquals(String.prototype.small.call(0x2A), '&lt;small&gt;42&lt;/small&gt;');</span>
+<span class="lineNum">     120 </span><span class="lineCov">          1 : assertThrows(function() {</span>
+<a name="121"><span class="lineNum">     121 </span><span class="lineCov">          1 :   String.prototype.small.call(undefined);</span></a>
+<span class="lineNum">     122 </span><span class="lineCov">          1 : }, TypeError);</span>
+<span class="lineNum">     123 </span><span class="lineCov">          1 : assertThrows(function() {</span>
+<span class="lineNum">     124 </span><span class="lineCov">          1 :   String.prototype.small.call(null);</span>
+<span class="lineNum">     125 </span><span class="lineCov">          1 : }, TypeError);</span>
+<span class="lineNum">     126 </span><span class="lineCov">          1 : assertEquals(String.prototype.small.length, 0);</span>
+<span class="lineNum">     127 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     128 </span><span class="lineCov">          1 : assertEquals('_'.strike(), '&lt;strike&gt;_&lt;/strike&gt;');</span>
+<a name="129"><span class="lineNum">     129 </span><span class="lineCov">          1 : assertEquals('&lt;'.strike(), '&lt;strike&gt;&lt;&lt;/strike&gt;');</span></a>
+<span class="lineNum">     130 </span><span class="lineCov">          1 : assertEquals(String.prototype.strike.call(0x2A), '&lt;strike&gt;42&lt;/strike&gt;');</span>
+<span class="lineNum">     131 </span><span class="lineCov">          1 : assertThrows(function() {</span>
+<a name="132"><span class="lineNum">     132 </span><span class="lineCov">          1 :   String.prototype.strike.call(undefined);</span></a>
+<span class="lineNum">     133 </span><span class="lineCov">          1 : }, TypeError);</span>
+<span class="lineNum">     134 </span><span class="lineCov">          1 : assertThrows(function() {</span>
+<span class="lineNum">     135 </span><span class="lineCov">          1 :   String.prototype.strike.call(null);</span>
+<span class="lineNum">     136 </span><span class="lineCov">          1 : }, TypeError);</span>
+<span class="lineNum">     137 </span><span class="lineCov">          1 : assertEquals(String.prototype.strike.length, 0);</span>
+<span class="lineNum">     138 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     139 </span><span class="lineCov">          1 : assertEquals('_'.sub(), '&lt;sub&gt;_&lt;/sub&gt;');</span>
+<a name="140"><span class="lineNum">     140 </span><span class="lineCov">          1 : assertEquals('&lt;'.sub(), '&lt;sub&gt;&lt;&lt;/sub&gt;');</span></a>
+<span class="lineNum">     141 </span><span class="lineCov">          1 : assertEquals(String.prototype.sub.call(0x2A), '&lt;sub&gt;42&lt;/sub&gt;');</span>
+<span class="lineNum">     142 </span><span class="lineCov">          1 : assertThrows(function() {</span>
+<a name="143"><span class="lineNum">     143 </span><span class="lineCov">          1 :   String.prototype.sub.call(undefined);</span></a>
+<span class="lineNum">     144 </span><span class="lineCov">          1 : }, TypeError);</span>
+<span class="lineNum">     145 </span><span class="lineCov">          1 : assertThrows(function() {</span>
+<span class="lineNum">     146 </span><span class="lineCov">          1 :   String.prototype.sub.call(null);</span>
+<span class="lineNum">     147 </span><span class="lineCov">          1 : }, TypeError);</span>
+<span class="lineNum">     148 </span><span class="lineCov">          1 : assertEquals(String.prototype.sub.length, 0);</span>
+<span class="lineNum">     149 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     150 </span><span class="lineCov">          1 : assertEquals('_'.sup(), '&lt;sup&gt;_&lt;/sup&gt;');</span>
+<a name="151"><span class="lineNum">     151 </span><span class="lineCov">          1 : assertEquals('&lt;'.sup(), '&lt;sup&gt;&lt;&lt;/sup&gt;');</span></a>
+<span class="lineNum">     152 </span><span class="lineCov">          1 : assertEquals(String.prototype.sup.call(0x2A), '&lt;sup&gt;42&lt;/sup&gt;');</span>
+<span class="lineNum">     153 </span><span class="lineCov">          1 : assertThrows(function() {</span>
+<a name="154"><span class="lineNum">     154 </span><span class="lineCov">          1 :   String.prototype.sup.call(undefined);</span></a>
+<span class="lineNum">     155 </span><span class="lineCov">          1 : }, TypeError);</span>
+<span class="lineNum">     156 </span><span class="lineCov">          1 : assertThrows(function() {</span>
+<span class="lineNum">     157 </span><span class="lineCov">          1 :   String.prototype.sup.call(null);</span>
+<span class="lineNum">     158 </span><span class="lineCov">          1 : }, TypeError);</span>
+<span class="lineNum">     159 </span><span class="lineCov">          1 : assertEquals(String.prototype.sup.length, 0);</span>
+<a name="160"><span class="lineNum">     160 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     161 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     162 </span><span class="lineCov">          1 : (function TestToString() {</span>
+<a name="163"><span class="lineNum">     163 </span><span class="lineCov">          1 :   var calls = 0;</span></a>
+<span class="lineNum">     164 </span><span class="lineCov">          1 :   var obj = {</span>
+<span class="lineNum">     165 </span><span class="lineCov">         13 :     toString() {</span>
+<span class="lineNum">     166 </span><span class="lineCov">         13 :       calls++;</span>
+<a name="167"><span class="lineNum">     167 </span><span class="lineCov">         13 :       return 'abc';</span></a>
+<span class="lineNum">     168 </span><span class="lineCov">         13 :     },</span>
+<span class="lineNum">     169 </span><span class="lineCov">          1 :     valueOf() {</span>
+<span class="lineNum">     170 </span><span class="lineNoCov">          0 :       assertUnreachable();</span>
+<span class="lineNum">     171 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">     172 </span><span class="lineCov">          1 :   };</span>
+<span class="lineNum">     173 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     174 </span><span class="lineCov">          1 :   var methodNames = [</span>
+<span class="lineNum">     175 </span><span class="lineCov">          1 :     'anchor',</span>
+<span class="lineNum">     176 </span><span class="lineCov">          1 :     'big',</span>
+<span class="lineNum">     177 </span><span class="lineCov">          1 :     'blink',</span>
+<span class="lineNum">     178 </span><span class="lineCov">          1 :     'bold',</span>
+<span class="lineNum">     179 </span><span class="lineCov">          1 :     'fixed',</span>
+<span class="lineNum">     180 </span><span class="lineCov">          1 :     'fontcolor',</span>
+<span class="lineNum">     181 </span><span class="lineCov">          1 :     'fontsize',</span>
+<span class="lineNum">     182 </span><span class="lineCov">          1 :     'italics',</span>
+<span class="lineNum">     183 </span><span class="lineCov">          1 :     'link',</span>
+<span class="lineNum">     184 </span><span class="lineCov">          1 :     'small',</span>
+<span class="lineNum">     185 </span><span class="lineCov">          1 :     'strike',</span>
+<span class="lineNum">     186 </span><span class="lineCov">          1 :     'sub',</span>
+<span class="lineNum">     187 </span><span class="lineCov">          1 :     'sup',</span>
+<span class="lineNum">     188 </span><span class="lineCov">          1 :   ];</span>
+<span class="lineNum">     189 </span><span class="lineCov">          1 :   for (var name of methodNames) {</span>
+<span class="lineNum">     190 </span><span class="lineCov">          1 :     calls = 0;</span>
+<span class="lineNum">     191 </span><span class="lineCov">          1 :     String.prototype[name].call(obj);</span>
+<span class="lineNum">     192 </span><span class="lineCov">          1 :     assertEquals(1, calls);</span>
+<span class="lineNum">     193 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     194 </span><span class="lineCov">          1 : })();</span>
+<a name="195"><span class="lineNum">     195 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     196 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     197 </span><span class="lineCov">          1 : (function TestDeleteStringRelace() {</span>
+<span class="lineNum">     198 </span><span class="lineCov">          1 :   assertEquals('&lt;a name=&quot;n&quot;&gt;s&lt;/a&gt;', 's'.anchor('n'));</span>
+<span class="lineNum">     199 </span><span class="lineCov">          1 :   assertTrue(delete String.prototype.replace);</span>
+<span class="lineNum">     200 </span><span class="lineCov">          1 :   assertEquals('&lt;a name=&quot;n&quot;&gt;s&lt;/a&gt;', 's'.anchor('n'));</span>
+<span class="lineNum">     201 </span><span class="lineCov">          1 : })();</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

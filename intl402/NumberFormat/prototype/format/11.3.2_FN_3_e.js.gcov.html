@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - intl402/NumberFormat/prototype/format/11.3.2_FN_3_e.js</title>
+  <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../index.html">top level</a> - <a href="index.html">intl402/NumberFormat/prototype/format</a> - 11.3.2_FN_3_e.js<span style="font-size: 80%;"> (source / <a href="11.3.2_FN_3_e.js.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">49</td>
+            <td class="headerCovTableEntry">49</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2017-02-14</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr><td><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span><span class="lineCov">          2 : // Copyright 2012 Google Inc.  All rights reserved.</span></a>
+<span class="lineNum">       2 </span><span class="lineCov">          2 : // This code is governed by the BSD license found in the LICENSE file.</span>
+<span class="lineNum">       3 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">       4 </span><span class="lineCov">          2 : /*---</span>
+<span class="lineNum">       5 </span><span class="lineCov">          2 : es5id: 11.3.2_FN_3_e</span>
+<span class="lineNum">       6 </span><span class="lineCov">          2 : description: &gt;</span>
+<span class="lineNum">       7 </span><span class="lineCov">          2 :     Tests that Intl.NumberFormat.prototype.format  supports all</span>
+<span class="lineNum">       8 </span><span class="lineCov">          2 :     alternative numbering systems.</span>
+<span class="lineNum">       9 </span><span class="lineCov">          2 : author: Roozbeh Pournader</span>
+<span class="lineNum">      10 </span><span class="lineCov">          2 : ---*/</span>
+<span class="lineNum">      11 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      12 </span><span class="lineCov">          2 : var numberingSystems = {</span>
+<span class="lineNum">      13 </span><span class="lineCov">          2 :     arab: 0x0660,</span>
+<span class="lineNum">      14 </span><span class="lineCov">          2 :     arabext: 0x06F0,</span>
+<span class="lineNum">      15 </span><span class="lineCov">          2 :     beng: 0x09E6,</span>
+<span class="lineNum">      16 </span><span class="lineCov">          2 :     deva: 0x0966,</span>
+<span class="lineNum">      17 </span><span class="lineCov">          2 :     fullwide: 0xFF10,</span>
+<span class="lineNum">      18 </span><span class="lineCov">          2 :     gujr: 0x0AE6,</span>
+<span class="lineNum">      19 </span><span class="lineCov">          2 :     guru: 0x0A66,</span>
+<span class="lineNum">      20 </span><span class="lineCov">          2 :     hanidec: [0x3007, 0x4E00, 0x4E8C, 0x4E09, 0x56DB,</span>
+<span class="lineNum">      21 </span><span class="lineCov">          2 :               0x4E94, 0x516D, 0x4E03, 0x516B, 0x4E5D],</span>
+<span class="lineNum">      22 </span><span class="lineCov">          2 :     khmr: 0x17E0,</span>
+<span class="lineNum">      23 </span><span class="lineCov">          2 :     knda: 0x0CE6,</span>
+<span class="lineNum">      24 </span><span class="lineCov">          2 :     laoo: 0x0ED0,</span>
+<span class="lineNum">      25 </span><span class="lineCov">          2 :     latn: 0x0030,</span>
+<span class="lineNum">      26 </span><span class="lineCov">          2 :     mlym: 0x0D66,</span>
+<span class="lineNum">      27 </span><span class="lineCov">          2 :     mong: 0x1810,</span>
+<span class="lineNum">      28 </span><span class="lineCov">          2 :     mymr: 0x1040,</span>
+<span class="lineNum">      29 </span><span class="lineCov">          2 :     orya: 0x0B66,</span>
+<span class="lineNum">      30 </span><span class="lineCov">          2 :     tamldec: 0x0BE6,</span>
+<span class="lineNum">      31 </span><span class="lineCov">          2 :     telu: 0x0C66,</span>
+<span class="lineNum">      32 </span><span class="lineCov">          2 :     thai: 0x0E50,</span>
+<span class="lineNum">      33 </span><span class="lineCov">          2 :     tibt: 0x0F20</span>
+<span class="lineNum">      34 </span><span class="lineCov">          2 : };</span>
+<span class="lineNum">      35 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      36 </span><span class="lineCov">          2 : var options, formatter;</span>
+<span class="lineNum">      37 </span><span class="lineCov">          2 : var s, zeroCode, digitList;</span>
+<span class="lineNum">      38 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      39 </span><span class="lineCov">          2 : for (s in numberingSystems) {</span>
+<span class="lineNum">      40 </span><span class="lineCov">          2 :     zeroCode = numberingSystems[s];</span>
+<span class="lineNum">      41 </span><span class="lineCov">          2 :     if (typeof zeroCode === 'number') {</span>
+<span class="lineNum">      42 </span><span class="lineCov">          2 :         digitList = [zeroCode, zeroCode+1, zeroCode+2, zeroCode+3, zeroCode+4,</span>
+<span class="lineNum">      43 </span><span class="lineCov">          2 :                    zeroCode+5, zeroCode+6, zeroCode+7, zeroCode+8, zeroCode+9];</span>
+<span class="lineNum">      44 </span><span class="lineCov">          2 :         numberingSystems[s] = digitList;</span>
+<span class="lineNum">      45 </span><span class="lineCov">          2 :     }</span>
+<span class="lineNum">      46 </span><span class="lineCov">          2 : }</span>
+<span class="lineNum">      47 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      48 </span><span class="lineCov">          2 : // FIXME: Unfinished</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

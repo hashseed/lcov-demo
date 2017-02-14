@@ -1,0 +1,146 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - intl402/Collator/prototype/compare/10.3.2_CS_a.js</title>
+  <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../index.html">top level</a> - <a href="index.html">intl402/Collator/prototype/compare</a> - 10.3.2_CS_a.js<span style="font-size: 80%;"> (source / <a href="10.3.2_CS_a.js.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">63</td>
+            <td class="headerCovTableEntry">71</td>
+            <td class="headerCovTableEntryMed">88.7 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2017-02-14</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntryLo">50.0 %</td>
+          </tr>
+          <tr><td><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span><span class="lineCov">          2 : // Copyright 2012 Norbert Lindenberg. All rights reserved.</span></a>
+<span class="lineNum">       2 </span><span class="lineCov">          2 : // Copyright 2012 Mozilla Corporation. All rights reserved.</span>
+<span class="lineNum">       3 </span><span class="lineCov">          2 : // This code is governed by the license found in the LICENSE file.</span>
+<span class="lineNum">       4 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">       5 </span><span class="lineCov">          2 : /*---</span>
+<span class="lineNum">       6 </span><span class="lineCov">          2 : es5id: 10.3.2_CS_a</span>
+<span class="lineNum">       7 </span><span class="lineCov">          2 : description: &gt;</span>
+<span class="lineNum">       8 </span><span class="lineCov">          2 :     Tests that the function returned by</span>
+<span class="lineNum">       9 </span><span class="lineCov">          2 :     Intl.Collator.prototype.compare  returns 0 when comparing Strings</span>
+<span class="lineNum">      10 </span><span class="lineCov">          2 :     that are considered canonically equivalent  by the Unicode</span>
+<span class="lineNum">      11 </span><span class="lineCov">          2 :     standard.</span>
+<span class="lineNum">      12 </span><span class="lineCov">          2 : author: Norbert Lindenberg</span>
+<span class="lineNum">      13 </span><span class="lineCov">          2 : ---*/</span>
+<span class="lineNum">      14 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      15 </span><span class="lineCov">          2 : var collator = new Intl.Collator();</span>
+<span class="lineNum">      16 </span><span class="lineCov">          2 : var pairs = [</span>
+<span class="lineNum">      17 </span><span class="lineCov">          2 :     // example from Unicode 5.0, section 3.7, definition D70</span>
+<span class="lineNum">      18 </span><span class="lineCov">          2 :     [&quot;o\u0308&quot;, &quot;ö&quot;],</span>
+<span class="lineNum">      19 </span><span class="lineCov">          2 :     // examples from Unicode 5.0, chapter 3.11</span>
+<span class="lineNum">      20 </span><span class="lineCov">          2 :     [&quot;ä\u0323&quot;, &quot;a\u0323\u0308&quot;],</span>
+<span class="lineNum">      21 </span><span class="lineCov">          2 :     [&quot;a\u0308\u0323&quot;, &quot;a\u0323\u0308&quot;],</span>
+<span class="lineNum">      22 </span><span class="lineCov">          2 :     [&quot;ạ\u0308&quot;, &quot;a\u0323\u0308&quot;],</span>
+<span class="lineNum">      23 </span><span class="lineCov">          2 :     [&quot;ä\u0306&quot;, &quot;a\u0308\u0306&quot;],</span>
+<span class="lineNum">      24 </span><span class="lineCov">          2 :     [&quot;ă\u0308&quot;, &quot;a\u0306\u0308&quot;],</span>
+<span class="lineNum">      25 </span><span class="lineCov">          2 :     // example from Unicode 5.0, chapter 3.12</span>
+<span class="lineNum">      26 </span><span class="lineCov">          2 :     [&quot;\u1111\u1171\u11B6&quot;, &quot;퓛&quot;],</span>
+<span class="lineNum">      27 </span><span class="lineCov">          2 :     // examples from UTS 10, Unicode Collation Algorithm</span>
+<span class="lineNum">      28 </span><span class="lineCov">          2 :     [&quot;Å&quot;, &quot;Å&quot;],</span>
+<span class="lineNum">      29 </span><span class="lineCov">          2 :     [&quot;Å&quot;, &quot;A\u030A&quot;],</span>
+<span class="lineNum">      30 </span><span class="lineCov">          2 :     [&quot;x\u031B\u0323&quot;, &quot;x\u0323\u031B&quot;],</span>
+<span class="lineNum">      31 </span><span class="lineCov">          2 :     [&quot;ự&quot;, &quot;ụ\u031B&quot;],</span>
+<span class="lineNum">      32 </span><span class="lineCov">          2 :     [&quot;ự&quot;, &quot;u\u031B\u0323&quot;],</span>
+<span class="lineNum">      33 </span><span class="lineCov">          2 :     [&quot;ự&quot;, &quot;ư\u0323&quot;],</span>
+<span class="lineNum">      34 </span><span class="lineCov">          2 :     [&quot;ự&quot;, &quot;u\u0323\u031B&quot;],</span>
+<span class="lineNum">      35 </span><span class="lineCov">          2 :     // examples from UAX 15, Unicode Normalization Forms</span>
+<span class="lineNum">      36 </span><span class="lineCov">          2 :     [&quot;Ç&quot;, &quot;C\u0327&quot;],</span>
+<span class="lineNum">      37 </span><span class="lineCov">          2 :     [&quot;q\u0307\u0323&quot;, &quot;q\u0323\u0307&quot;],</span>
+<span class="lineNum">      38 </span><span class="lineCov">          2 :     [&quot;가&quot;, &quot;\u1100\u1161&quot;],</span>
+<span class="lineNum">      39 </span><span class="lineCov">          2 :     [&quot;Å&quot;, &quot;A\u030A&quot;],</span>
+<span class="lineNum">      40 </span><span class="lineCov">          2 :     [&quot;Ω&quot;, &quot;Ω&quot;],</span>
+<span class="lineNum">      41 </span><span class="lineCov">          2 :     [&quot;Å&quot;, &quot;A\u030A&quot;],</span>
+<span class="lineNum">      42 </span><span class="lineCov">          2 :     [&quot;ô&quot;, &quot;o\u0302&quot;],</span>
+<span class="lineNum">      43 </span><span class="lineCov">          2 :     [&quot;ṩ&quot;, &quot;s\u0323\u0307&quot;],</span>
+<span class="lineNum">      44 </span><span class="lineCov">          2 :     [&quot;ḋ\u0323&quot;, &quot;d\u0323\u0307&quot;],</span>
+<span class="lineNum">      45 </span><span class="lineCov">          2 :     [&quot;ḋ\u0323&quot;, &quot;ḍ\u0307&quot;],</span>
+<span class="lineNum">      46 </span><span class="lineCov">          2 :     [&quot;q\u0307\u0323&quot;, &quot;q\u0323\u0307&quot;],</span>
+<span class="lineNum">      47 </span><span class="lineCov">          2 :     // examples involving supplementary characters from UCD NormalizationTest.txt</span>
+<span class="lineNum">      48 </span><span class="lineCov">          2 :     [&quot;\uD834\uDD5E&quot;, &quot;\uD834\uDD57\uD834\uDD65&quot;],</span>
+<span class="lineNum">      49 </span><span class="lineCov">          2 :     [&quot;\uD87E\uDC2B&quot;, &quot;北&quot;]</span>
+<span class="lineNum">      50 </span><span class="lineCov">          2 :     </span>
+<span class="lineNum">      51 </span><span class="lineCov">          2 : ];</span>
+<span class="lineNum">      52 </span><span class="lineCov">          2 : var i;</span>
+<span class="lineNum">      53 </span><span class="lineCov">          2 : for (i = 0; i &lt; pairs.length; i++) {</span>
+<span class="lineNum">      54 </span><span class="lineCov">          2 :     var pair = pairs[i];</span>
+<span class="lineNum">      55 </span><span class="lineCov">          2 :     if (collator.compare(pair[0], pair[1]) !== 0) {</span>
+<span class="lineNum">      56 </span><span class="lineCov">          2 :         $ERROR(&quot;Collator.compare considers &quot; + pair[0] + &quot; (&quot; + toU(pair[0]) +</span>
+<span class="lineNum">      57 </span><span class="lineCov">          2 :             &quot;) ≠ &quot; + pair[1] + &quot; (&quot; + toU(pair[1]) + &quot;).&quot;);</span>
+<span class="lineNum">      58 </span><span class="lineCov">          2 :     }</span>
+<a name="59"><span class="lineNum">      59 </span><span class="lineCov">          2 : }</span></a>
+<span class="lineNum">      60 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      61 </span><span class="lineCov">          2 : function toU(s) {</span>
+<span class="lineNum">      62 </span><span class="lineNoCov">          0 :     var result = &quot;&quot;;</span>
+<span class="lineNum">      63 </span><span class="lineNoCov">          0 :     var escape = &quot;\\u0000&quot;;</span>
+<span class="lineNum">      64 </span><span class="lineNoCov">          0 :     var i;</span>
+<span class="lineNum">      65 </span><span class="lineNoCov">          0 :     for (i = 0; i &lt; s.length; i++) {</span>
+<span class="lineNum">      66 </span><span class="lineNoCov">          0 :         var hex = s.charCodeAt(i).toString(16);</span>
+<span class="lineNum">      67 </span><span class="lineNoCov">          0 :         result += escape.substring(0, escape.length - hex.length) + hex;</span>
+<span class="lineNum">      68 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">      69 </span><span class="lineNoCov">          0 :     return result;</span>
+<span class="lineNum">      70 </span><span class="lineCov">          2 : }</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

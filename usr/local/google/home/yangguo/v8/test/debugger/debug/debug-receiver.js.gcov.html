@@ -1,0 +1,198 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - /usr/local/google/home/yangguo/v8/test/debugger/debug/debug-receiver.js</title>
+  <link rel="stylesheet" type="text/css" href="../../../../../../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../../../../../../index.html">top level</a> - <a href="index.html">usr/local/google/home/yangguo/v8/test/debugger/debug</a> - debug-receiver.js<span style="font-size: 80%;"> (source / <a href="debug-receiver.js.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">123</td>
+            <td class="headerCovTableEntry">123</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2017-02-14</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">9</td>
+            <td class="headerCovTableEntry">9</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr><td><img src="../../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span><span class="lineCov">          1 : // Copyright 2011 the V8 project authors. All rights reserved.</span></a>
+<span class="lineNum">       2 </span><span class="lineCov">          1 : // Redistribution and use in source and binary forms, with or without</span>
+<span class="lineNum">       3 </span><span class="lineCov">          1 : // modification, are permitted provided that the following conditions are</span>
+<span class="lineNum">       4 </span><span class="lineCov">          1 : // met:</span>
+<span class="lineNum">       5 </span><span class="lineCov">          1 : //</span>
+<span class="lineNum">       6 </span><span class="lineCov">          1 : //     * Redistributions of source code must retain the above copyright</span>
+<span class="lineNum">       7 </span><span class="lineCov">          1 : //       notice, this list of conditions and the following disclaimer.</span>
+<span class="lineNum">       8 </span><span class="lineCov">          1 : //     * Redistributions in binary form must reproduce the above</span>
+<span class="lineNum">       9 </span><span class="lineCov">          1 : //       copyright notice, this list of conditions and the following</span>
+<span class="lineNum">      10 </span><span class="lineCov">          1 : //       disclaimer in the documentation and/or other materials provided</span>
+<span class="lineNum">      11 </span><span class="lineCov">          1 : //       with the distribution.</span>
+<span class="lineNum">      12 </span><span class="lineCov">          1 : //     * Neither the name of Google Inc. nor the names of its</span>
+<span class="lineNum">      13 </span><span class="lineCov">          1 : //       contributors may be used to endorse or promote products derived</span>
+<span class="lineNum">      14 </span><span class="lineCov">          1 : //       from this software without specific prior written permission.</span>
+<span class="lineNum">      15 </span><span class="lineCov">          1 : //</span>
+<span class="lineNum">      16 </span><span class="lineCov">          1 : // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="lineNum">      17 </span><span class="lineCov">          1 : // &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="lineNum">      18 </span><span class="lineCov">          1 : // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR</span>
+<span class="lineNum">      19 </span><span class="lineCov">          1 : // A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT</span>
+<span class="lineNum">      20 </span><span class="lineCov">          1 : // OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,</span>
+<span class="lineNum">      21 </span><span class="lineCov">          1 : // SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT</span>
+<span class="lineNum">      22 </span><span class="lineCov">          1 : // LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,</span>
+<span class="lineNum">      23 </span><span class="lineCov">          1 : // DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY</span>
+<span class="lineNum">      24 </span><span class="lineCov">          1 : // THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT</span>
+<span class="lineNum">      25 </span><span class="lineCov">          1 : // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE</span>
+<span class="lineNum">      26 </span><span class="lineCov">          1 : // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="lineNum">      27 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      28 </span><span class="lineCov">          1 : Debug = debug.Debug;</span>
+<span class="lineNum">      29 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      30 </span><span class="lineCov">          1 : var test_name;</span>
+<span class="lineNum">      31 </span><span class="lineCov">          1 : var listener_delegate;</span>
+<span class="lineNum">      32 </span><span class="lineCov">          1 : var listener_called;</span>
+<span class="lineNum">      33 </span><span class="lineCov">          1 : var exception;</span>
+<span class="lineNum">      34 </span><span class="lineCov">          1 : var expected_receiver;</span>
+<span class="lineNum">      35 </span><span class="lineCov">          1 : var begin_test_count = 0;</span>
+<span class="lineNum">      36 </span><span class="lineCov">          1 : var end_test_count = 0;</span>
+<span class="lineNum">      37 </span><span class="lineCov">          1 : var break_count = 0;</span>
+<span class="lineNum">      38 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      39 </span><span class="lineCov">          1 : // Debug event listener which delegates. Exceptions have to be</span>
+<a name="40"><span class="lineNum">      40 </span><span class="lineCov">          1 : // explictly caught here and checked later because exception in the</span></a>
+<span class="lineNum">      41 </span><span class="lineCov">          1 : // listener are not propagated to the surrounding JavaScript code.</span>
+<span class="lineNum">      42 </span><span class="lineCov">         14 : function listener(event, exec_state, event_data, data) {</span>
+<span class="lineNum">      43 </span><span class="lineCov">         14 :   try {</span>
+<span class="lineNum">      44 </span><span class="lineCov">         14 :     if (event == Debug.DebugEvent.Break) {</span>
+<span class="lineNum">      45 </span><span class="lineCov">         14 :       break_count++;</span>
+<span class="lineNum">      46 </span><span class="lineCov">         14 :       listener_called = true;</span>
+<span class="lineNum">      47 </span><span class="lineCov">         14 :       listener_delegate(exec_state);</span>
+<span class="lineNum">      48 </span><span class="lineCov">         14 :     }</span>
+<span class="lineNum">      49 </span><span class="lineCov">         14 :   } catch (e) {</span>
+<span class="lineNum">      50 </span><span class="lineCov">         14 :     exception = e;</span>
+<span class="lineNum">      51 </span><span class="lineCov">         14 :   }</span>
+<span class="lineNum">      52 </span><span class="lineCov">         14 : }</span>
+<span class="lineNum">      53 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      54 </span><span class="lineCov">          1 : // Add the debug event listener.</span>
+<span class="lineNum">      55 </span><span class="lineCov">          1 : Debug.setListener(listener);</span>
+<span class="lineNum">      56 </span><span class="lineCov">          1 : </span>
+<a name="57"><span class="lineNum">      57 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      58 </span><span class="lineCov">          1 : // Initialize for a new test.</span>
+<span class="lineNum">      59 </span><span class="lineCov">         12 : function BeginTest(name) {</span>
+<span class="lineNum">      60 </span><span class="lineCov">         12 :   test_name = name;</span>
+<span class="lineNum">      61 </span><span class="lineCov">         12 :   listener_called = false;</span>
+<span class="lineNum">      62 </span><span class="lineCov">         12 :   exception = null;</span>
+<span class="lineNum">      63 </span><span class="lineCov">         12 :   begin_test_count++;</span>
+<span class="lineNum">      64 </span><span class="lineCov">         12 : }</span>
+<span class="lineNum">      65 </span><span class="lineCov">          1 : </span>
+<a name="66"><span class="lineNum">      66 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      67 </span><span class="lineCov">          1 : // Check result of a test.</span>
+<span class="lineNum">      68 </span><span class="lineCov">         12 : function EndTest() {</span>
+<span class="lineNum">      69 </span><span class="lineCov">         12 :   assertTrue(listener_called, &quot;listener not called for &quot; + test_name);</span>
+<span class="lineNum">      70 </span><span class="lineCov">         12 :   assertNull(exception, test_name);</span>
+<span class="lineNum">      71 </span><span class="lineCov">         12 :   end_test_count++;</span>
+<span class="lineNum">      72 </span><span class="lineCov">         12 : }</span>
+<span class="lineNum">      73 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      74 </span><span class="lineCov">          1 : </span>
+<a name="75"><span class="lineNum">      75 </span><span class="lineCov">          1 : // Check that the debugger correctly reflects that the receiver is not</span></a>
+<a name="76"><span class="lineNum">      76 </span><span class="lineCov">          1 : // converted to object for strict mode functions.</span></a>
+<span class="lineNum">      77 </span><span class="lineCov">          6 : function Strict() { &quot;use strict&quot;; debugger; }</span>
+<span class="lineNum">      78 </span><span class="lineCov">          6 : function TestStrict(receiver) {</span>
+<span class="lineNum">      79 </span><span class="lineCov">          6 :   expected_receiver = receiver;</span>
+<span class="lineNum">      80 </span><span class="lineCov">          6 :   Strict.call(receiver);</span>
+<span class="lineNum">      81 </span><span class="lineCov">          6 : }</span>
+<span class="lineNum">      82 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      83 </span><span class="lineCov">          6 : listener_delegate = function(exec_state) {</span>
+<span class="lineNum">      84 </span><span class="lineCov">          6 :   var receiver = exec_state.frame().receiver();</span>
+<span class="lineNum">      85 </span><span class="lineCov">          6 :   assertEquals(expected_receiver, receiver.value())</span>
+<span class="lineNum">      86 </span><span class="lineCov">          6 : }</span>
+<span class="lineNum">      87 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      88 </span><span class="lineCov">          1 : BeginTest(&quot;strict: undefined&quot;); TestStrict(undefined); EndTest();</span>
+<span class="lineNum">      89 </span><span class="lineCov">          1 : BeginTest(&quot;strict: null&quot;); TestStrict(null); EndTest();</span>
+<span class="lineNum">      90 </span><span class="lineCov">          1 : BeginTest(&quot;strict: 1&quot;); TestStrict(1); EndTest();</span>
+<span class="lineNum">      91 </span><span class="lineCov">          1 : BeginTest(&quot;strict: 1.2&quot;); TestStrict(1.2); EndTest();</span>
+<span class="lineNum">      92 </span><span class="lineCov">          1 : BeginTest(&quot;strict: 'asdf'&quot;); TestStrict('asdf'); EndTest();</span>
+<span class="lineNum">      93 </span><span class="lineCov">          1 : BeginTest(&quot;strict: true&quot;); TestStrict(true); EndTest();</span>
+<span class="lineNum">      94 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      95 </span><span class="lineCov">          1 : </span>
+<a name="96"><span class="lineNum">      96 </span><span class="lineCov">          1 : // Check that the debugger correctly reflects the object conversion of</span></a>
+<a name="97"><span class="lineNum">      97 </span><span class="lineCov">          1 : // the receiver for non-strict mode functions.</span></a>
+<span class="lineNum">      98 </span><span class="lineCov">          6 : function NonStrict() { debugger; }</span>
+<span class="lineNum">      99 </span><span class="lineCov">          6 : function TestNonStrict(receiver) {</span>
+<span class="lineNum">     100 </span><span class="lineCov">          6 :   // null and undefined should be transformed to the global object and</span>
+<span class="lineNum">     101 </span><span class="lineCov">          6 :   // primitives should be wrapped.</span>
+<span class="lineNum">     102 </span><span class="lineCov">          6 :   expected_receiver = (receiver == null) ? this : Object(receiver);</span>
+<span class="lineNum">     103 </span><span class="lineCov">          6 :   NonStrict.call(receiver);</span>
+<a name="104"><span class="lineNum">     104 </span><span class="lineCov">          6 : }</span></a>
+<span class="lineNum">     105 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     106 </span><span class="lineCov">          6 : listener_delegate = function(exec_state) {</span>
+<span class="lineNum">     107 </span><span class="lineCov">          6 :   var receiver = exec_state.frame().receiver();</span>
+<span class="lineNum">     108 </span><span class="lineCov">          6 :   assertEquals(expected_receiver, receiver.value());</span>
+<span class="lineNum">     109 </span><span class="lineCov">          6 : }</span>
+<span class="lineNum">     110 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     111 </span><span class="lineCov">          1 : BeginTest(&quot;non-strict: undefined&quot;); TestNonStrict(undefined); EndTest();</span>
+<span class="lineNum">     112 </span><span class="lineCov">          1 : BeginTest(&quot;non-strict: null&quot;); TestNonStrict(null); EndTest();</span>
+<span class="lineNum">     113 </span><span class="lineCov">          1 : BeginTest(&quot;non-strict: 1&quot;); TestNonStrict(1); EndTest();</span>
+<span class="lineNum">     114 </span><span class="lineCov">          1 : BeginTest(&quot;non-strict: 1.2&quot;); TestNonStrict(1.2); EndTest();</span>
+<span class="lineNum">     115 </span><span class="lineCov">          1 : BeginTest(&quot;non-strict: 'asdf'&quot;); TestNonStrict('asdf'); EndTest();</span>
+<span class="lineNum">     116 </span><span class="lineCov">          1 : BeginTest(&quot;non-strict: true&quot;); TestNonStrict(true); EndTest();</span>
+<span class="lineNum">     117 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     118 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     119 </span><span class="lineCov">          1 : assertEquals(begin_test_count, break_count,</span>
+<span class="lineNum">     120 </span><span class="lineCov">          1 :              'one or more tests did not enter the debugger');</span>
+<span class="lineNum">     121 </span><span class="lineCov">          1 : assertEquals(begin_test_count, end_test_count,</span>
+<span class="lineNum">     122 </span><span class="lineCov">          1 :              'one or more tests did not have its result checked');</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

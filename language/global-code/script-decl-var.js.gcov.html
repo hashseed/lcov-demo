@@ -1,0 +1,147 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - language/global-code/script-decl-var.js</title>
+  <link rel="stylesheet" type="text/css" href="../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../index.html">top level</a> - <a href="index.html">language/global-code</a> - script-decl-var.js<span style="font-size: 80%;"> (source / <a href="script-decl-var.js.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">72</td>
+            <td class="headerCovTableEntry">72</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2017-02-14</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span><span class="lineCov">          2 : // Copyright (C) 2016 the V8 project authors. All rights reserved.</span></a>
+<span class="lineNum">       2 </span><span class="lineCov">          2 : // This code is governed by the BSD license found in the LICENSE file.</span>
+<span class="lineNum">       3 </span><span class="lineCov">          2 : /*---</span>
+<span class="lineNum">       4 </span><span class="lineCov">          2 : esid: sec-globaldeclarationinstantiation</span>
+<span class="lineNum">       5 </span><span class="lineCov">          2 : es6id: 15.1.8</span>
+<span class="lineNum">       6 </span><span class="lineCov">          2 : description: Declaration of variable where permissible</span>
+<span class="lineNum">       7 </span><span class="lineCov">          2 : info: |</span>
+<span class="lineNum">       8 </span><span class="lineCov">          2 :   [...]</span>
+<span class="lineNum">       9 </span><span class="lineCov">          2 :   11. Let declaredVarNames be a new empty List.</span>
+<span class="lineNum">      10 </span><span class="lineCov">          2 :   12. For each d in varDeclarations, do</span>
+<span class="lineNum">      11 </span><span class="lineCov">          2 :       a. If d is a VariableDeclaration or a ForBinding, then</span>
+<span class="lineNum">      12 </span><span class="lineCov">          2 :          i. For each String vn in the BoundNames of d, do</span>
+<span class="lineNum">      13 </span><span class="lineCov">          2 :             1. If vn is not an element of declaredFunctionNames, then</span>
+<span class="lineNum">      14 </span><span class="lineCov">          2 :                a. Let vnDefinable be ? envRec.CanDeclareGlobalVar(vn).</span>
+<span class="lineNum">      15 </span><span class="lineCov">          2 :                b. If vnDefinable is false, throw a TypeError exception.</span>
+<span class="lineNum">      16 </span><span class="lineCov">          2 :                c. If vn is not an element of declaredVarNames, then</span>
+<span class="lineNum">      17 </span><span class="lineCov">          2 :                   i. Append vn to declaredVarNames.</span>
+<span class="lineNum">      18 </span><span class="lineCov">          2 :   [...]</span>
+<span class="lineNum">      19 </span><span class="lineCov">          2 :   18. For each String vn in declaredVarNames, in list order do</span>
+<span class="lineNum">      20 </span><span class="lineCov">          2 :       a. Perform ? envRec.CreateGlobalVarBinding(vn, false).</span>
+<span class="lineNum">      21 </span><span class="lineCov">          2 :   [...]</span>
+<span class="lineNum">      22 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      23 </span><span class="lineCov">          2 :   8.1.1.4.15 CanDeclareGlobalVar</span>
+<span class="lineNum">      24 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      25 </span><span class="lineCov">          2 :   1. Let envRec be the global Environment Record for which the method was</span>
+<span class="lineNum">      26 </span><span class="lineCov">          2 :      invoked.</span>
+<span class="lineNum">      27 </span><span class="lineCov">          2 :   2. Let ObjRec be envRec.[[ObjectRecord]].</span>
+<span class="lineNum">      28 </span><span class="lineCov">          2 :   3. Let globalObject be the binding object for ObjRec.</span>
+<span class="lineNum">      29 </span><span class="lineCov">          2 :   4. Let hasProperty be ? HasOwnProperty(globalObject, N).</span>
+<span class="lineNum">      30 </span><span class="lineCov">          2 :   5. If hasProperty is true, return true.</span>
+<span class="lineNum">      31 </span><span class="lineCov">          2 :   6. Return ? IsExtensible(globalObject). </span>
+<span class="lineNum">      32 </span><span class="lineCov">          2 : includes: [propertyHelper.js]</span>
+<span class="lineNum">      33 </span><span class="lineCov">          2 : ---*/</span>
+<span class="lineNum">      34 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      35 </span><span class="lineCov">          2 : $.evalScript('var brandNew;');</span>
+<span class="lineNum">      36 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      37 </span><span class="lineCov">          2 : assert.sameValue(</span>
+<span class="lineNum">      38 </span><span class="lineCov">          2 :   this.brandNew, undefined, 'new binding on an extensible global object'</span>
+<span class="lineNum">      39 </span><span class="lineCov">          2 : );</span>
+<span class="lineNum">      40 </span><span class="lineCov">          2 : verifyEnumerable(this, 'brandNew');</span>
+<span class="lineNum">      41 </span><span class="lineCov">          2 : verifyWritable(this, 'brandNew');</span>
+<span class="lineNum">      42 </span><span class="lineCov">          2 : verifyNotConfigurable(this, 'brandNew');</span>
+<span class="lineNum">      43 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      44 </span><span class="lineCov">          2 : Object.defineProperty(</span>
+<span class="lineNum">      45 </span><span class="lineCov">          2 :   this,</span>
+<span class="lineNum">      46 </span><span class="lineCov">          2 :   'configurable',</span>
+<span class="lineNum">      47 </span><span class="lineCov">          2 :   { configurable: true, writable: false, enumerable: false, value: 0 }</span>
+<span class="lineNum">      48 </span><span class="lineCov">          2 : );</span>
+<span class="lineNum">      49 </span><span class="lineCov">          2 : Object.defineProperty(</span>
+<span class="lineNum">      50 </span><span class="lineCov">          2 :   this,</span>
+<span class="lineNum">      51 </span><span class="lineCov">          2 :   'nonConfigurable',</span>
+<span class="lineNum">      52 </span><span class="lineCov">          2 :   { configurable: false, writable: false, enumerable: false, value: 0 }</span>
+<span class="lineNum">      53 </span><span class="lineCov">          2 : );</span>
+<span class="lineNum">      54 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      55 </span><span class="lineCov">          2 : // Prevent extensions on the global object to ensure that detail is not</span>
+<span class="lineNum">      56 </span><span class="lineCov">          2 : // considered by any of the declarations which follow.</span>
+<span class="lineNum">      57 </span><span class="lineCov">          2 : Object.preventExtensions(this);</span>
+<span class="lineNum">      58 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      59 </span><span class="lineCov">          2 : $.evalScript('var configurable;');</span>
+<span class="lineNum">      60 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      61 </span><span class="lineCov">          2 : assert.sameValue(configurable, 0, 'like-named configurable property');</span>
+<span class="lineNum">      62 </span><span class="lineCov">          2 : verifyNotEnumerable(this, 'configurable');</span>
+<span class="lineNum">      63 </span><span class="lineCov">          2 : verifyNotWritable(this, 'configurable');</span>
+<span class="lineNum">      64 </span><span class="lineCov">          2 : verifyConfigurable(this, 'configurable');</span>
+<span class="lineNum">      65 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      66 </span><span class="lineCov">          2 : $.evalScript('var nonConfigurable;');</span>
+<span class="lineNum">      67 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      68 </span><span class="lineCov">          2 : assert.sameValue(nonConfigurable, 0, 'like-named non-configurable property');</span>
+<span class="lineNum">      69 </span><span class="lineCov">          2 : verifyNotEnumerable(this, 'nonConfigurable');</span>
+<span class="lineNum">      70 </span><span class="lineCov">          2 : verifyNotWritable(this, 'nonConfigurable');</span>
+<span class="lineNum">      71 </span><span class="lineCov">          2 : verifyNotConfigurable(this, 'nonConfigurable');</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

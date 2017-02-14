@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - built-ins/JSON/parse/15.12.2-2-8.js</title>
+  <link rel="stylesheet" type="text/css" href="../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../index.html">top level</a> - <a href="index.html">built-ins/JSON/parse</a> - 15.12.2-2-8.js<span style="font-size: 80%;"> (source / <a href="15.12.2-2-8.js.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">50</td>
+            <td class="headerCovTableEntry">50</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2017-02-14</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span><span class="lineCov">          2 : // Copyright (c) 2012 Ecma International.  All rights reserved.</span></a>
+<span class="lineNum">       2 </span><span class="lineCov">          2 : // This code is governed by the BSD license found in the LICENSE file.</span>
+<span class="lineNum">       3 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">       4 </span><span class="lineCov">          2 : /*---</span>
+<span class="lineNum">       5 </span><span class="lineCov">          2 : es5id: 15.12.2-2-8</span>
+<span class="lineNum">       6 </span><span class="lineCov">          2 : description: &gt;</span>
+<span class="lineNum">       7 </span><span class="lineCov">          2 :     JSON.parse - parsing an object where property value ends with a</span>
+<span class="lineNum">       8 </span><span class="lineCov">          2 :     null character</span>
+<span class="lineNum">       9 </span><span class="lineCov">          2 : ---*/</span>
+<span class="lineNum">      10 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      11 </span><span class="lineCov">          2 :         var nullChars = new Array();</span>
+<span class="lineNum">      12 </span><span class="lineCov">          2 :         nullChars[0] = '\&quot;\u0000\&quot;';</span>
+<span class="lineNum">      13 </span><span class="lineCov">          2 :         nullChars[1] = '\&quot;\u0001\&quot;';</span>
+<span class="lineNum">      14 </span><span class="lineCov">          2 :         nullChars[2] = '\&quot;\u0002\&quot;';</span>
+<span class="lineNum">      15 </span><span class="lineCov">          2 :         nullChars[3] = '\&quot;\u0003\&quot;';</span>
+<span class="lineNum">      16 </span><span class="lineCov">          2 :         nullChars[4] = '\&quot;\u0004\&quot;';</span>
+<span class="lineNum">      17 </span><span class="lineCov">          2 :         nullChars[5] = '\&quot;\u0005\&quot;';</span>
+<span class="lineNum">      18 </span><span class="lineCov">          2 :         nullChars[6] = '\&quot;\u0006\&quot;';</span>
+<span class="lineNum">      19 </span><span class="lineCov">          2 :         nullChars[7] = '\&quot;\u0007\&quot;';</span>
+<span class="lineNum">      20 </span><span class="lineCov">          2 :         nullChars[8] = '\&quot;\u0008\&quot;';</span>
+<span class="lineNum">      21 </span><span class="lineCov">          2 :         nullChars[9] = '\&quot;\u0009\&quot;';</span>
+<span class="lineNum">      22 </span><span class="lineCov">          2 :         nullChars[10] = '\&quot;\u000A\&quot;';</span>
+<span class="lineNum">      23 </span><span class="lineCov">          2 :         nullChars[11] = '\&quot;\u000B\&quot;';</span>
+<span class="lineNum">      24 </span><span class="lineCov">          2 :         nullChars[12] = '\&quot;\u000C\&quot;';</span>
+<span class="lineNum">      25 </span><span class="lineCov">          2 :         nullChars[13] = '\&quot;\u000D\&quot;';</span>
+<span class="lineNum">      26 </span><span class="lineCov">          2 :         nullChars[14] = '\&quot;\u000E\&quot;';</span>
+<span class="lineNum">      27 </span><span class="lineCov">          2 :         nullChars[15] = '\&quot;\u000F\&quot;';</span>
+<span class="lineNum">      28 </span><span class="lineCov">          2 :         nullChars[16] = '\&quot;\u0010\&quot;';</span>
+<span class="lineNum">      29 </span><span class="lineCov">          2 :         nullChars[17] = '\&quot;\u0011\&quot;';</span>
+<span class="lineNum">      30 </span><span class="lineCov">          2 :         nullChars[18] = '\&quot;\u0012\&quot;';</span>
+<span class="lineNum">      31 </span><span class="lineCov">          2 :         nullChars[19] = '\&quot;\u0013\&quot;';</span>
+<span class="lineNum">      32 </span><span class="lineCov">          2 :         nullChars[20] = '\&quot;\u0014\&quot;';</span>
+<span class="lineNum">      33 </span><span class="lineCov">          2 :         nullChars[21] = '\&quot;\u0015\&quot;';</span>
+<span class="lineNum">      34 </span><span class="lineCov">          2 :         nullChars[22] = '\&quot;\u0016\&quot;';</span>
+<span class="lineNum">      35 </span><span class="lineCov">          2 :         nullChars[23] = '\&quot;\u0017\&quot;';</span>
+<span class="lineNum">      36 </span><span class="lineCov">          2 :         nullChars[24] = '\&quot;\u0018\&quot;';</span>
+<span class="lineNum">      37 </span><span class="lineCov">          2 :         nullChars[25] = '\&quot;\u0019\&quot;';</span>
+<span class="lineNum">      38 </span><span class="lineCov">          2 :         nullChars[26] = '\&quot;\u001A\&quot;';</span>
+<span class="lineNum">      39 </span><span class="lineCov">          2 :         nullChars[27] = '\&quot;\u001B\&quot;';</span>
+<span class="lineNum">      40 </span><span class="lineCov">          2 :         nullChars[28] = '\&quot;\u001C\&quot;';</span>
+<span class="lineNum">      41 </span><span class="lineCov">          2 :         nullChars[29] = '\&quot;\u001D\&quot;';</span>
+<span class="lineNum">      42 </span><span class="lineCov">          2 :         nullChars[30] = '\&quot;\u001E\&quot;';</span>
+<span class="lineNum">      43 </span><span class="lineCov">          2 :         nullChars[31] = '\&quot;\u001F\&quot;';</span>
+<a name="44"><span class="lineNum">      44 </span><span class="lineCov">          2 : </span></a>
+<span class="lineNum">      45 </span><span class="lineCov">          2 :         for (var index in nullChars) {</span>
+<span class="lineNum">      46 </span><span class="lineCov">         64 :             assert.throws(SyntaxError, function() {</span>
+<span class="lineNum">      47 </span><span class="lineCov">         64 :                 var obj = JSON.parse('{ &quot;name&quot; : ' + &quot;John&quot; + nullChars[index] + ' } ');</span>
+<span class="lineNum">      48 </span><span class="lineCov">         64 :             });</span>
+<span class="lineNum">      49 </span><span class="lineCov">          2 :         }</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

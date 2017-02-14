@@ -1,0 +1,489 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - /usr/local/google/home/yangguo/v8/test/mjsunit/wasm/import-memory.js</title>
+  <link rel="stylesheet" type="text/css" href="../../../../../../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../../../../../../index.html">top level</a> - <a href="index.html">usr/local/google/home/yangguo/v8/test/mjsunit/wasm</a> - import-memory.js<span style="font-size: 80%;"> (source / <a href="import-memory.js.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">414</td>
+            <td class="headerCovTableEntry">414</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2017-02-14</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">25</td>
+            <td class="headerCovTableEntry">25</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr><td><img src="../../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span><span class="lineCov">          1 : // Copyright 2016 the V8 project authors. All rights reserved.</span></a>
+<span class="lineNum">       2 </span><span class="lineCov">          1 : // Use of this source code is governed by a BSD-style license that can be</span>
+<span class="lineNum">       3 </span><span class="lineCov">          1 : // found in the LICENSE file.</span>
+<span class="lineNum">       4 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">       5 </span><span class="lineCov">          1 : // Flags: --expose-wasm</span>
+<span class="lineNum">       6 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">       7 </span><span class="lineCov">          1 : load(&quot;test/mjsunit/wasm/wasm-constants.js&quot;);</span>
+<a name="8"><span class="lineNum">       8 </span><span class="lineCov">          1 : load(&quot;test/mjsunit/wasm/wasm-module-builder.js&quot;);</span></a>
+<span class="lineNum">       9 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      10 </span><span class="lineCov">          1 : (function TestOne() {</span>
+<span class="lineNum">      11 </span><span class="lineCov">          1 :   print(&quot;TestOne&quot;);</span>
+<span class="lineNum">      12 </span><span class="lineCov">          1 :   let memory = new WebAssembly.Memory({initial: 1});</span>
+<span class="lineNum">      13 </span><span class="lineCov">          1 :   assertEquals(kPageSize, memory.buffer.byteLength);</span>
+<span class="lineNum">      14 </span><span class="lineCov">          1 :   let i32 = new Int32Array(memory.buffer);</span>
+<span class="lineNum">      15 </span><span class="lineCov">          1 :   let builder = new WasmModuleBuilder();</span>
+<span class="lineNum">      16 </span><span class="lineCov">          1 :   builder.addImportedMemory(&quot;mod&quot;, &quot;mine&quot;);</span>
+<span class="lineNum">      17 </span><span class="lineCov">          1 :   builder.addFunction(&quot;main&quot;, kSig_i_v)</span>
+<span class="lineNum">      18 </span><span class="lineCov">          1 :     .addBody([</span>
+<span class="lineNum">      19 </span><span class="lineCov">          1 :       kExprI32Const, 0,</span>
+<span class="lineNum">      20 </span><span class="lineCov">          1 :       kExprI32LoadMem, 0, 0])</span>
+<span class="lineNum">      21 </span><span class="lineCov">          1 :     .exportAs(&quot;main&quot;);</span>
+<span class="lineNum">      22 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      23 </span><span class="lineCov">          1 :   let main = builder.instantiate({mod: {mine: memory}}).exports.main;</span>
+<span class="lineNum">      24 </span><span class="lineCov">          1 :   assertEquals(0, main());</span>
+<span class="lineNum">      25 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      26 </span><span class="lineCov">          1 :   i32[0] = 993377;</span>
+<span class="lineNum">      27 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      28 </span><span class="lineCov">          1 :   assertEquals(993377, main());</span>
+<a name="29"><span class="lineNum">      29 </span><span class="lineCov">          1 : })();</span></a>
+<span class="lineNum">      30 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      31 </span><span class="lineCov">          1 : (function TestIdentity() {</span>
+<span class="lineNum">      32 </span><span class="lineCov">          1 :   print(&quot;TestIdentity&quot;);</span>
+<span class="lineNum">      33 </span><span class="lineCov">          1 :   let memory = new WebAssembly.Memory({initial: 1});</span>
+<span class="lineNum">      34 </span><span class="lineCov">          1 :   let i32 = new Int32Array(memory.buffer);</span>
+<span class="lineNum">      35 </span><span class="lineCov">          1 :   let builder = new WasmModuleBuilder();</span>
+<span class="lineNum">      36 </span><span class="lineCov">          1 :   builder.addImportedMemory(&quot;dad&quot;, &quot;garg&quot;);</span>
+<span class="lineNum">      37 </span><span class="lineCov">          1 :   builder.exportMemoryAs(&quot;daggle&quot;);</span>
+<span class="lineNum">      38 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      39 </span><span class="lineCov">          1 :   let instance = builder.instantiate({dad: {garg: memory}});</span>
+<span class="lineNum">      40 </span><span class="lineCov">          1 :   assertSame(memory, instance.exports.daggle);</span>
+<a name="41"><span class="lineNum">      41 </span><span class="lineCov">          1 : })();</span></a>
+<span class="lineNum">      42 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      43 </span><span class="lineCov">          1 : (function TestImportExport() {</span>
+<span class="lineNum">      44 </span><span class="lineCov">          1 :   print(&quot;TestImportExport&quot;);</span>
+<span class="lineNum">      45 </span><span class="lineCov">          1 :   var i1;</span>
+<span class="lineNum">      46 </span><span class="lineCov">          1 :   {</span>
+<span class="lineNum">      47 </span><span class="lineCov">          1 :     let builder = new WasmModuleBuilder();</span>
+<span class="lineNum">      48 </span><span class="lineCov">          1 :     builder.addMemory(1, 1, false);</span>
+<span class="lineNum">      49 </span><span class="lineCov">          1 :     builder.exportMemoryAs(&quot;exported_mem&quot;);</span>
+<span class="lineNum">      50 </span><span class="lineCov">          1 :     builder.addFunction(&quot;foo&quot;, kSig_i_i)</span>
+<span class="lineNum">      51 </span><span class="lineCov">          1 :       .addBody([</span>
+<span class="lineNum">      52 </span><span class="lineCov">          1 :         kExprGetLocal, 0,</span>
+<span class="lineNum">      53 </span><span class="lineCov">          1 :         kExprI32LoadMem, 0, 0])</span>
+<span class="lineNum">      54 </span><span class="lineCov">          1 :       .exportAs(&quot;foo&quot;);</span>
+<span class="lineNum">      55 </span><span class="lineCov">          1 :     i1 = builder.instantiate();</span>
+<span class="lineNum">      56 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">      57 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      58 </span><span class="lineCov">          1 :   var i2;</span>
+<span class="lineNum">      59 </span><span class="lineCov">          1 :   {</span>
+<span class="lineNum">      60 </span><span class="lineCov">          1 :     let builder = new WasmModuleBuilder();</span>
+<span class="lineNum">      61 </span><span class="lineCov">          1 :     builder.addImportedMemory(&quot;fil&quot;, &quot;imported_mem&quot;);</span>
+<span class="lineNum">      62 </span><span class="lineCov">          1 :     builder.addFunction(&quot;bar&quot;, kSig_i_i)</span>
+<span class="lineNum">      63 </span><span class="lineCov">          1 :       .addBody([</span>
+<span class="lineNum">      64 </span><span class="lineCov">          1 :         kExprGetLocal, 0,</span>
+<span class="lineNum">      65 </span><span class="lineCov">          1 :         kExprI32LoadMem, 0, 0])</span>
+<span class="lineNum">      66 </span><span class="lineCov">          1 :       .exportAs(&quot;bar&quot;);</span>
+<span class="lineNum">      67 </span><span class="lineCov">          1 :     i2 = builder.instantiate({fil: {imported_mem: i1.exports.exported_mem}});</span>
+<span class="lineNum">      68 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">      69 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      70 </span><span class="lineCov">          1 :   let i32 = new Int32Array(i1.exports.exported_mem.buffer);</span>
+<span class="lineNum">      71 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      72 </span><span class="lineCov">          1 :   for (var i = 0; i &lt; 1e11; i = i * 3 + 5) {</span>
+<span class="lineNum">      73 </span><span class="lineCov">          1 :     for (var j = 0; j &lt; 10; j++) {</span>
+<span class="lineNum">      74 </span><span class="lineCov">          1 :       var val = i + 99077 + j;</span>
+<span class="lineNum">      75 </span><span class="lineCov">          1 :       i32[j] = val;</span>
+<span class="lineNum">      76 </span><span class="lineCov">          1 :       assertEquals(val | 0, i1.exports.foo(j * 4));</span>
+<span class="lineNum">      77 </span><span class="lineCov">          1 :       assertEquals(val | 0, i2.exports.bar(j * 4));</span>
+<span class="lineNum">      78 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">      79 </span><span class="lineCov">          1 :   }</span>
+<a name="80"><span class="lineNum">      80 </span><span class="lineCov">          1 : })();</span></a>
+<span class="lineNum">      81 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      82 </span><span class="lineCov">          1 : (function ValidateBoundsCheck() {</span>
+<span class="lineNum">      83 </span><span class="lineCov">          1 :   print(&quot;ValidateBoundsCheck&quot;);</span>
+<span class="lineNum">      84 </span><span class="lineCov">          1 :   let memory = new WebAssembly.Memory({initial: 1, maximum: 5});</span>
+<span class="lineNum">      85 </span><span class="lineCov">          1 :   assertEquals(kPageSize, memory.buffer.byteLength);</span>
+<span class="lineNum">      86 </span><span class="lineCov">          1 :   let i32 = new Int32Array(memory.buffer);</span>
+<span class="lineNum">      87 </span><span class="lineCov">          1 :   let builder = new WasmModuleBuilder();</span>
+<span class="lineNum">      88 </span><span class="lineCov">          1 :   builder.addImportedMemory(&quot;gaz&quot;, &quot;mine&quot;);</span>
+<span class="lineNum">      89 </span><span class="lineCov">          1 :   builder.addFunction(&quot;load&quot;, kSig_i_i)</span>
+<span class="lineNum">      90 </span><span class="lineCov">          1 :       .addBody([kExprGetLocal, 0, kExprI32LoadMem, 0, 0])</span>
+<span class="lineNum">      91 </span><span class="lineCov">          1 :       .exportFunc();</span>
+<span class="lineNum">      92 </span><span class="lineCov">          1 :   builder.addFunction(&quot;store&quot;, kSig_i_ii)</span>
+<span class="lineNum">      93 </span><span class="lineCov">          1 :       .addBody([kExprGetLocal, 0, kExprGetLocal, 1, kExprI32StoreMem, 0, 0,</span>
+<span class="lineNum">      94 </span><span class="lineCov">          1 :                 kExprGetLocal, 1])</span>
+<span class="lineNum">      95 </span><span class="lineCov">          1 :       .exportFunc();</span>
+<span class="lineNum">      96 </span><span class="lineCov">          1 :   var offset;</span>
+<span class="lineNum">      97 </span><span class="lineCov">          1 :   let instance = builder.instantiate({gaz: {mine: memory}});</span>
+<span class="lineNum">      98 </span><span class="lineCov">      16391 :   function load() { return instance.exports.load(offset); }</span>
+<span class="lineNum">      99 </span><span class="lineCov">      16384 :   function store(value) { return instance.exports.store(offset, value); }</span>
+<span class="lineNum">     100 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     101 </span><span class="lineCov">          1 :   for (offset = 0; offset &lt; kPageSize - 3; offset+=4) {</span>
+<span class="lineNum">     102 </span><span class="lineCov">          1 :     store(offset);</span>
+<span class="lineNum">     103 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     104 </span><span class="lineCov">          1 :   for (offset = 0; offset &lt; kPageSize - 3; offset+=4) {</span>
+<span class="lineNum">     105 </span><span class="lineCov">          1 :     assertEquals(offset, load());</span>
+<span class="lineNum">     106 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     107 </span><span class="lineCov">          1 :   for (offset = kPageSize - 3; offset &lt; kPageSize + 4; offset++) {</span>
+<span class="lineNum">     108 </span><span class="lineCov">          1 :     assertTraps(kTrapMemOutOfBounds, load);</span>
+<span class="lineNum">     109 </span><span class="lineCov">          1 :   }</span>
+<a name="110"><span class="lineNum">     110 </span><span class="lineCov">          1 : })();</span></a>
+<span class="lineNum">     111 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     112 </span><span class="lineCov">          1 : (function TestGrowMemoryMaxDesc() {</span>
+<span class="lineNum">     113 </span><span class="lineCov">          1 :   print(&quot;MaximumDescriptor&quot;);</span>
+<span class="lineNum">     114 </span><span class="lineCov">          1 :   let memory = new WebAssembly.Memory({initial: 1, maximum: 5});</span>
+<span class="lineNum">     115 </span><span class="lineCov">          1 :   assertEquals(kPageSize, memory.buffer.byteLength);</span>
+<span class="lineNum">     116 </span><span class="lineCov">          1 :   let i32 = new Int32Array(memory.buffer);</span>
+<span class="lineNum">     117 </span><span class="lineCov">          1 :   let builder = new WasmModuleBuilder();</span>
+<span class="lineNum">     118 </span><span class="lineCov">          1 :   builder.addImportedMemory(&quot;mine&quot;, &quot;dog&quot;, 0, 20);</span>
+<span class="lineNum">     119 </span><span class="lineCov">          1 :   builder.addFunction(&quot;load&quot;, kSig_i_i)</span>
+<span class="lineNum">     120 </span><span class="lineCov">          1 :       .addBody([kExprGetLocal, 0, kExprI32LoadMem, 0, 0])</span>
+<span class="lineNum">     121 </span><span class="lineCov">          1 :       .exportFunc();</span>
+<span class="lineNum">     122 </span><span class="lineCov">          1 :   builder.addFunction(&quot;store&quot;, kSig_i_ii)</span>
+<span class="lineNum">     123 </span><span class="lineCov">          1 :       .addBody([kExprGetLocal, 0, kExprGetLocal, 1, kExprI32StoreMem, 0, 0,</span>
+<span class="lineNum">     124 </span><span class="lineCov">          1 :                 kExprGetLocal, 1])</span>
+<span class="lineNum">     125 </span><span class="lineCov">          1 :       .exportFunc();</span>
+<span class="lineNum">     126 </span><span class="lineCov">          1 :   var offset;</span>
+<span class="lineNum">     127 </span><span class="lineCov">          1 :   let instance = builder.instantiate({mine: {dog: memory}});</span>
+<span class="lineNum">     128 </span><span class="lineCov">      81924 :   function load() { return instance.exports.load(offset); }</span>
+<span class="lineNum">     129 </span><span class="lineCov">      81920 :   function store(value) { return instance.exports.store(offset, value); }</span>
+<span class="lineNum">     130 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     131 </span><span class="lineCov">          1 :   for (var i = 1; i &lt; 5; i++) {</span>
+<span class="lineNum">     132 </span><span class="lineCov">          1 :     for (offset = (i - 1) * kPageSize; offset &lt; i * kPageSize - 3; offset+=4) {</span>
+<span class="lineNum">     133 </span><span class="lineCov">          1 :       store(offset * 2);</span>
+<span class="lineNum">     134 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">     135 </span><span class="lineCov">          1 :     assertEquals(i, memory.grow(1));</span>
+<span class="lineNum">     136 </span><span class="lineCov">          1 :     assertEquals((i + 1) * kPageSize, memory.buffer.byteLength);</span>
+<span class="lineNum">     137 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     138 </span><span class="lineCov">          1 :   for (offset = 4 * kPageSize; offset &lt; 5 * kPageSize - 3; offset+=4) {</span>
+<span class="lineNum">     139 </span><span class="lineCov">          1 :     store(offset * 2);</span>
+<span class="lineNum">     140 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     141 </span><span class="lineCov">          1 :   for (offset = 0; offset &lt; 5 * kPageSize - 3; offset+=4) {</span>
+<span class="lineNum">     142 </span><span class="lineCov">          1 :     assertEquals(offset * 2, load());</span>
+<span class="lineNum">     143 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     144 </span><span class="lineCov">          1 :   for (offset = 5 * kPageSize; offset &lt; 5 * kPageSize + 4; offset++) {</span>
+<span class="lineNum">     145 </span><span class="lineCov">          1 :     assertThrows(load);</span>
+<span class="lineNum">     146 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     147 </span><span class="lineCov">          1 :   assertThrows(() =&gt; memory.grow(1));</span>
+<a name="148"><span class="lineNum">     148 </span><span class="lineCov">          1 : })();</span></a>
+<span class="lineNum">     149 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     150 </span><span class="lineCov">          1 : (function TestGrowMemoryZeroInitialMemory() {</span>
+<span class="lineNum">     151 </span><span class="lineCov">          1 :   print(&quot;ZeroInitialMemory&quot;);</span>
+<span class="lineNum">     152 </span><span class="lineCov">          1 :   let memory = new WebAssembly.Memory({initial: 0});</span>
+<span class="lineNum">     153 </span><span class="lineCov">          1 :   assertEquals(0, memory.buffer.byteLength);</span>
+<span class="lineNum">     154 </span><span class="lineCov">          1 :   let i32 = new Int32Array(memory.buffer);</span>
+<span class="lineNum">     155 </span><span class="lineCov">          1 :   let builder = new WasmModuleBuilder();</span>
+<span class="lineNum">     156 </span><span class="lineCov">          1 :   builder.addImportedMemory(&quot;mine&quot;, &quot;fro&quot;);</span>
+<span class="lineNum">     157 </span><span class="lineCov">          1 :   builder.addFunction(&quot;load&quot;, kSig_i_i)</span>
+<span class="lineNum">     158 </span><span class="lineCov">          1 :       .addBody([kExprGetLocal, 0, kExprI32LoadMem, 0, 0])</span>
+<span class="lineNum">     159 </span><span class="lineCov">          1 :       .exportFunc();</span>
+<span class="lineNum">     160 </span><span class="lineCov">          1 :   builder.addFunction(&quot;store&quot;, kSig_i_ii)</span>
+<span class="lineNum">     161 </span><span class="lineCov">          1 :       .addBody([kExprGetLocal, 0, kExprGetLocal, 1, kExprI32StoreMem, 0, 0,</span>
+<span class="lineNum">     162 </span><span class="lineCov">          1 :                 kExprGetLocal, 1])</span>
+<span class="lineNum">     163 </span><span class="lineCov">          1 :       .exportFunc();</span>
+<a name="164"><span class="lineNum">     164 </span><span class="lineCov">          1 :   var offset;</span></a>
+<a name="165"><span class="lineNum">     165 </span><span class="lineCov">          1 :   let instance = builder.instantiate({mine: {fro: memory}});</span></a>
+<span class="lineNum">     166 </span><span class="lineCov">          4 :   function load() { return instance.exports.load(offset); }</span>
+<span class="lineNum">     167 </span><span class="lineCov">     262132 :   function store(value) { return instance.exports.store(offset, value); }</span>
+<span class="lineNum">     168 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     169 </span><span class="lineCov">          1 :   for (var i = 1; i &lt; 5; i++) {</span>
+<span class="lineNum">     170 </span><span class="lineCov">          1 :     assertEquals(i - 1, memory.grow(1));</span>
+<span class="lineNum">     171 </span><span class="lineCov">          1 :     assertEquals(i * kPageSize, memory.buffer.byteLength);</span>
+<span class="lineNum">     172 </span><span class="lineCov">          1 :     for (offset = (i - 1) * kPageSize; offset &lt; i * kPageSize - 3; offset++) {</span>
+<span class="lineNum">     173 </span><span class="lineCov">          1 :       store(offset * 2);</span>
+<span class="lineNum">     174 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">     175 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     176 </span><span class="lineCov">          1 :   for (offset = 5 * kPageSize; offset &lt; 5 * kPageSize + 4; offset++) {</span>
+<span class="lineNum">     177 </span><span class="lineCov">          1 :     assertThrows(load);</span>
+<span class="lineNum">     178 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     179 </span><span class="lineCov">          1 :   assertThrows(() =&gt; memory.grow(16381));</span>
+<a name="180"><span class="lineNum">     180 </span><span class="lineCov">          1 : })();</span></a>
+<span class="lineNum">     181 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     182 </span><span class="lineCov">          1 : (function ImportedMemoryBufferLength() {</span>
+<span class="lineNum">     183 </span><span class="lineCov">          1 :   print(&quot;ImportedMemoryBufferLength&quot;);</span>
+<span class="lineNum">     184 </span><span class="lineCov">          1 :   let memory = new WebAssembly.Memory({initial: 2, maximum: 10});</span>
+<span class="lineNum">     185 </span><span class="lineCov">          1 :   assertEquals(2*kPageSize, memory.buffer.byteLength);</span>
+<span class="lineNum">     186 </span><span class="lineCov">          1 :   let builder = new WasmModuleBuilder();</span>
+<span class="lineNum">     187 </span><span class="lineCov">          1 :   builder.addFunction(&quot;grow&quot;, kSig_i_i)</span>
+<span class="lineNum">     188 </span><span class="lineCov">          1 :       .addBody([kExprGetLocal, 0, kExprGrowMemory, kMemoryZero])</span>
+<span class="lineNum">     189 </span><span class="lineCov">          1 :       .exportFunc();</span>
+<span class="lineNum">     190 </span><span class="lineCov">          1 :   builder.addImportedMemory(&quot;cat&quot;, &quot;mine&quot;);</span>
+<span class="lineNum">     191 </span><span class="lineCov">          1 :   let instance = builder.instantiate({cat: {mine: memory}});</span>
+<span class="lineNum">     192 </span><span class="lineCov">          2 :   function grow(pages) { return instance.exports.grow(pages); }</span>
+<span class="lineNum">     193 </span><span class="lineCov">          1 :   assertEquals(2, grow(3));</span>
+<span class="lineNum">     194 </span><span class="lineCov">          1 :   assertEquals(5*kPageSize, memory.buffer.byteLength);</span>
+<span class="lineNum">     195 </span><span class="lineCov">          1 :   assertEquals(5, grow(5));</span>
+<span class="lineNum">     196 </span><span class="lineCov">          1 :   assertEquals(10*kPageSize, memory.buffer.byteLength);</span>
+<span class="lineNum">     197 </span><span class="lineCov">          1 :   assertThrows(() =&gt; memory.grow(1));</span>
+<a name="198"><span class="lineNum">     198 </span><span class="lineCov">          1 : })();</span></a>
+<span class="lineNum">     199 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     200 </span><span class="lineCov">          1 : (function TestGrowMemoryExportedMaximum() {</span>
+<span class="lineNum">     201 </span><span class="lineCov">          1 :   print(&quot;TestGrowMemoryExportedMaximum&quot;);</span>
+<span class="lineNum">     202 </span><span class="lineCov">          1 :   let initial_size = 1, maximum_size = 10;</span>
+<span class="lineNum">     203 </span><span class="lineCov">          1 :   var exp_instance;</span>
+<span class="lineNum">     204 </span><span class="lineCov">          1 :   {</span>
+<span class="lineNum">     205 </span><span class="lineCov">          1 :     let builder = new WasmModuleBuilder();</span>
+<span class="lineNum">     206 </span><span class="lineCov">          1 :     builder.addMemory(initial_size, maximum_size, true);</span>
+<span class="lineNum">     207 </span><span class="lineCov">          1 :     builder.exportMemoryAs(&quot;exported_mem&quot;);</span>
+<span class="lineNum">     208 </span><span class="lineCov">          1 :     exp_instance = builder.instantiate();</span>
+<span class="lineNum">     209 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     210 </span><span class="lineCov">          1 :   var instance;</span>
+<span class="lineNum">     211 </span><span class="lineCov">          1 :   {</span>
+<span class="lineNum">     212 </span><span class="lineCov">          1 :     var builder = new WasmModuleBuilder();</span>
+<span class="lineNum">     213 </span><span class="lineCov">          1 :     builder.addImportedMemory(&quot;fur&quot;, &quot;imported_mem&quot;);</span>
+<span class="lineNum">     214 </span><span class="lineCov">          1 :     builder.addFunction(&quot;mem_size&quot;, kSig_i_v)</span>
+<span class="lineNum">     215 </span><span class="lineCov">          1 :       .addBody([kExprMemorySize, kMemoryZero])</span>
+<span class="lineNum">     216 </span><span class="lineCov">          1 :       .exportFunc();</span>
+<span class="lineNum">     217 </span><span class="lineCov">          1 :     builder.addFunction(&quot;grow&quot;, kSig_i_i)</span>
+<span class="lineNum">     218 </span><span class="lineCov">          1 :       .addBody([kExprGetLocal, 0, kExprGrowMemory, kMemoryZero])</span>
+<span class="lineNum">     219 </span><span class="lineCov">          1 :       .exportFunc();</span>
+<span class="lineNum">     220 </span><span class="lineCov">          1 :     instance = builder.instantiate({fur: {</span>
+<span class="lineNum">     221 </span><span class="lineCov">          1 :       imported_mem: exp_instance.exports.exported_mem}});</span>
+<span class="lineNum">     222 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     223 </span><span class="lineCov">          1 :   for (var i = initial_size; i &lt; maximum_size; i++) {</span>
+<span class="lineNum">     224 </span><span class="lineCov">          1 :     assertEquals(i, instance.exports.grow(1));</span>
+<span class="lineNum">     225 </span><span class="lineCov">          1 :     assertEquals((i+1), instance.exports.mem_size());</span>
+<span class="lineNum">     226 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     227 </span><span class="lineCov">          1 :   assertEquals(-1, instance.exports.grow(1));</span>
+<a name="228"><span class="lineNum">     228 </span><span class="lineCov">          1 : })();</span></a>
+<span class="lineNum">     229 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     230 </span><span class="lineCov">          1 : (function TestMemoryGrowWebAssemblyInstances() {</span>
+<span class="lineNum">     231 </span><span class="lineCov">          1 :   print(&quot;TestMemoryGrowWebAssemblyInstances&quot;);</span>
+<span class="lineNum">     232 </span><span class="lineCov">          1 :   let memory = new WebAssembly.Memory({initial: 1, maximum: 15});</span>
+<span class="lineNum">     233 </span><span class="lineCov">          1 :   var builder = new WasmModuleBuilder();</span>
+<span class="lineNum">     234 </span><span class="lineCov">          1 :   builder.addImportedMemory(&quot;lit&quot;, &quot;imported_mem&quot;);</span>
+<span class="lineNum">     235 </span><span class="lineCov">          1 :   builder.addFunction(&quot;mem_size&quot;, kSig_i_v)</span>
+<span class="lineNum">     236 </span><span class="lineCov">          1 :     .addBody([kExprMemorySize, kMemoryZero])</span>
+<span class="lineNum">     237 </span><span class="lineCov">          1 :     .exportAs(&quot;mem_size&quot;);</span>
+<span class="lineNum">     238 </span><span class="lineCov">          1 :   builder.addFunction(&quot;grow&quot;, kSig_i_i)</span>
+<span class="lineNum">     239 </span><span class="lineCov">          1 :     .addBody([kExprGetLocal, 0, kExprGrowMemory, kMemoryZero])</span>
+<span class="lineNum">     240 </span><span class="lineCov">          1 :     .exportFunc();</span>
+<span class="lineNum">     241 </span><span class="lineCov">          1 :   var module = new WebAssembly.Module(builder.toBuffer());</span>
+<span class="lineNum">     242 </span><span class="lineCov">          1 :   var instances = [];</span>
+<span class="lineNum">     243 </span><span class="lineCov">          1 :   for (var i = 0; i &lt; 6; i++) {</span>
+<span class="lineNum">     244 </span><span class="lineCov">          1 :     instances.push(new WebAssembly.Instance(module, {lit: {imported_mem: memory}}));</span>
+<span class="lineNum">     245 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     246 </span><span class="lineCov">         11 :   function verify_mem_size(expected_pages) {</span>
+<span class="lineNum">     247 </span><span class="lineCov">         11 :     assertEquals(expected_pages*kPageSize,</span>
+<span class="lineNum">     248 </span><span class="lineCov">         11 :         memory.buffer.byteLength);</span>
+<span class="lineNum">     249 </span><span class="lineCov">         11 :     for (var i = 0; i &lt; 6; i++) {</span>
+<span class="lineNum">     250 </span><span class="lineCov">         11 :       assertEquals(expected_pages, instances[i].exports.mem_size());</span>
+<span class="lineNum">     251 </span><span class="lineCov">         11 :     }</span>
+<span class="lineNum">     252 </span><span class="lineCov">         11 :   }</span>
+<span class="lineNum">     253 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     254 </span><span class="lineCov">          1 :   // Verify initial memory size</span>
+<span class="lineNum">     255 </span><span class="lineCov">          1 :   verify_mem_size(1);</span>
+<span class="lineNum">     256 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     257 </span><span class="lineCov">          1 :   // Verify memory size with interleaving calls to Memory.grow,</span>
+<span class="lineNum">     258 </span><span class="lineCov">          1 :   // GrowMemory opcode.</span>
+<span class="lineNum">     259 </span><span class="lineCov">          1 :   var current_mem_size = 1;</span>
+<span class="lineNum">     260 </span><span class="lineCov">          1 :   for (var i = 0; i &lt; 5; i++) {</span>
+<span class="lineNum">     261 </span><span class="lineCov">          1 :     function grow(pages) { return instances[i].exports.grow(pages); }</span>
+<span class="lineNum">     262 </span><span class="lineCov">          1 :     assertEquals(current_mem_size, memory.grow(1));</span>
+<span class="lineNum">     263 </span><span class="lineCov">          1 :     verify_mem_size(++current_mem_size);</span>
+<span class="lineNum">     264 </span><span class="lineCov">          1 :     assertEquals(current_mem_size, instances[i].exports.grow(1));</span>
+<span class="lineNum">     265 </span><span class="lineCov">          1 :     verify_mem_size(++current_mem_size);</span>
+<span class="lineNum">     266 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     267 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     268 </span><span class="lineCov">          1 :   assertThrows(() =&gt; memory.grow(5));</span>
+<a name="269"><span class="lineNum">     269 </span><span class="lineCov">          1 : })();</span></a>
+<span class="lineNum">     270 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     271 </span><span class="lineCov">          1 : (function TestImportedMemoryGrowMultipleInstances() {</span>
+<span class="lineNum">     272 </span><span class="lineCov">          1 :   print(&quot;TestImportMemoryMultipleInstances&quot;);</span>
+<span class="lineNum">     273 </span><span class="lineCov">          1 :   let memory = new WebAssembly.Memory({initial: 5, maximum: 100});</span>
+<span class="lineNum">     274 </span><span class="lineCov">          1 :   var builder = new WasmModuleBuilder();</span>
+<span class="lineNum">     275 </span><span class="lineCov">          1 :   builder.addImportedMemory(&quot;nob&quot;, &quot;imported_mem&quot;);</span>
+<span class="lineNum">     276 </span><span class="lineCov">          1 :   builder.addFunction(&quot;mem_size&quot;, kSig_i_v)</span>
+<span class="lineNum">     277 </span><span class="lineCov">          1 :     .addBody([kExprMemorySize, kMemoryZero])</span>
+<span class="lineNum">     278 </span><span class="lineCov">          1 :     .exportFunc();</span>
+<span class="lineNum">     279 </span><span class="lineCov">          1 :   builder.addFunction(&quot;grow&quot;, kSig_i_i)</span>
+<span class="lineNum">     280 </span><span class="lineCov">          1 :     .addBody([kExprGetLocal, 0, kExprGrowMemory, kMemoryZero])</span>
+<span class="lineNum">     281 </span><span class="lineCov">          1 :     .exportFunc();</span>
+<span class="lineNum">     282 </span><span class="lineCov">          1 :   var instances = [];</span>
+<span class="lineNum">     283 </span><span class="lineCov">          1 :   for (var i = 0; i &lt; 5; i++) {</span>
+<a name="284"><span class="lineNum">     284 </span><span class="lineCov">          1 :     instances.push(builder.instantiate({nob: {imported_mem: memory}}));</span></a>
+<a name="285"><span class="lineNum">     285 </span><span class="lineCov">          1 :   }</span></a>
+<a name="286"><span class="lineNum">     286 </span><span class="lineCov">          1 :   function grow_instance_0(pages) { return instances[0].exports.grow(pages); }</span></a>
+<a name="287"><span class="lineNum">     287 </span><span class="lineCov">          1 :   function grow_instance_1(pages) { return instances[1].exports.grow(pages); }</span></a>
+<a name="288"><span class="lineNum">     288 </span><span class="lineCov">          1 :   function grow_instance_2(pages) { return instances[2].exports.grow(pages); }</span></a>
+<span class="lineNum">     289 </span><span class="lineCov">          1 :   function grow_instance_3(pages) { return instances[3].exports.grow(pages); }</span>
+<span class="lineNum">     290 </span><span class="lineCov">          1 :   function grow_instance_4(pages) { return instances[4].exports.grow(pages); }</span>
+<span class="lineNum">     291 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     292 </span><span class="lineCov">          8 :   function verify_mem_size(expected_pages) {</span>
+<span class="lineNum">     293 </span><span class="lineCov">          8 :     assertEquals(expected_pages*kPageSize, memory.buffer.byteLength);</span>
+<span class="lineNum">     294 </span><span class="lineCov">          8 :     for (var i = 0; i &lt; 5; i++) {</span>
+<span class="lineNum">     295 </span><span class="lineCov">          8 :       assertEquals(expected_pages, instances[i].exports.mem_size());</span>
+<span class="lineNum">     296 </span><span class="lineCov">          8 :     }</span>
+<span class="lineNum">     297 </span><span class="lineCov">          8 :   }</span>
+<span class="lineNum">     298 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     299 </span><span class="lineCov">          1 :   // Verify initial memory size</span>
+<span class="lineNum">     300 </span><span class="lineCov">          1 :   verify_mem_size(5);</span>
+<span class="lineNum">     301 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     302 </span><span class="lineCov">          1 :   // Grow instance memory and buffer memory out of order and verify memory is</span>
+<span class="lineNum">     303 </span><span class="lineCov">          1 :   // updated correctly.</span>
+<span class="lineNum">     304 </span><span class="lineCov">          1 :   assertEquals(5, grow_instance_0(7));</span>
+<span class="lineNum">     305 </span><span class="lineCov">          1 :   verify_mem_size(12);</span>
+<span class="lineNum">     306 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     307 </span><span class="lineCov">          1 :   assertEquals(12, memory.grow(4));</span>
+<span class="lineNum">     308 </span><span class="lineCov">          1 :   verify_mem_size(16);</span>
+<span class="lineNum">     309 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     310 </span><span class="lineCov">          1 :   assertEquals(16, grow_instance_4(1));</span>
+<span class="lineNum">     311 </span><span class="lineCov">          1 :   verify_mem_size(17);</span>
+<span class="lineNum">     312 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     313 </span><span class="lineCov">          1 :   assertEquals(17, grow_instance_1(6));</span>
+<span class="lineNum">     314 </span><span class="lineCov">          1 :   verify_mem_size(23);</span>
+<span class="lineNum">     315 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     316 </span><span class="lineCov">          1 :   assertEquals(23, grow_instance_3(2));</span>
+<span class="lineNum">     317 </span><span class="lineCov">          1 :   verify_mem_size(25);</span>
+<span class="lineNum">     318 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     319 </span><span class="lineCov">          1 :   assertEquals(25, memory.grow(10));</span>
+<span class="lineNum">     320 </span><span class="lineCov">          1 :   verify_mem_size(35);</span>
+<span class="lineNum">     321 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     322 </span><span class="lineCov">          1 :   assertEquals(35, grow_instance_2(15));</span>
+<span class="lineNum">     323 </span><span class="lineCov">          1 :   verify_mem_size(50);</span>
+<span class="lineNum">     324 </span><span class="lineCov">          1 :   assertThrows(() =&gt; memory.grow(51));</span>
+<a name="325"><span class="lineNum">     325 </span><span class="lineCov">          1 : })();</span></a>
+<span class="lineNum">     326 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     327 </span><span class="lineCov">          1 : (function TestExportImportedMemoryGrowMultipleInstances() {</span>
+<span class="lineNum">     328 </span><span class="lineCov">          1 :   // TODO(gdeepti):Exported memory objects currently do not take max_size</span>
+<span class="lineNum">     329 </span><span class="lineCov">          1 :   // into account so this can grow past the maximum specified in the exported</span>
+<span class="lineNum">     330 </span><span class="lineCov">          1 :   // memory object. Assert that growing past maximum for exported objects fails.</span>
+<span class="lineNum">     331 </span><span class="lineCov">          1 :   print(&quot;TestExportImportedMemoryGrowMultipleInstances&quot;);</span>
+<span class="lineNum">     332 </span><span class="lineCov">          1 :   var instance;</span>
+<span class="lineNum">     333 </span><span class="lineCov">          1 :   {</span>
+<span class="lineNum">     334 </span><span class="lineCov">          1 :     let builder = new WasmModuleBuilder();</span>
+<span class="lineNum">     335 </span><span class="lineCov">          1 :     builder.addMemory(1, 11, true);</span>
+<span class="lineNum">     336 </span><span class="lineCov">          1 :     builder.exportMemoryAs(&quot;exported_mem&quot;);</span>
+<span class="lineNum">     337 </span><span class="lineCov">          1 :     builder.addFunction(&quot;mem_size&quot;, kSig_i_v)</span>
+<span class="lineNum">     338 </span><span class="lineCov">          1 :       .addBody([kExprMemorySize, kMemoryZero])</span>
+<span class="lineNum">     339 </span><span class="lineCov">          1 :       .exportFunc();</span>
+<span class="lineNum">     340 </span><span class="lineCov">          1 :     instance = builder.instantiate();</span>
+<span class="lineNum">     341 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     342 </span><span class="lineCov">          1 :   var builder = new WasmModuleBuilder();</span>
+<span class="lineNum">     343 </span><span class="lineCov">          1 :   builder.addImportedMemory(&quot;doo&quot;, &quot;imported_mem&quot;);</span>
+<span class="lineNum">     344 </span><span class="lineCov">          1 :   builder.addFunction(&quot;mem_size&quot;, kSig_i_v)</span>
+<span class="lineNum">     345 </span><span class="lineCov">          1 :     .addBody([kExprMemorySize, kMemoryZero])</span>
+<span class="lineNum">     346 </span><span class="lineCov">          1 :     .exportFunc();</span>
+<span class="lineNum">     347 </span><span class="lineCov">          1 :   builder.addFunction(&quot;grow&quot;, kSig_i_i)</span>
+<span class="lineNum">     348 </span><span class="lineCov">          1 :     .addBody([kExprGetLocal, 0, kExprGrowMemory, kMemoryZero])</span>
+<span class="lineNum">     349 </span><span class="lineCov">          1 :     .exportFunc();</span>
+<span class="lineNum">     350 </span><span class="lineCov">          1 :   var instances = [];</span>
+<span class="lineNum">     351 </span><span class="lineCov">          1 :   for (var i = 0; i &lt; 10; i++) {</span>
+<span class="lineNum">     352 </span><span class="lineCov">          1 :     instances.push(builder.instantiate({</span>
+<a name="353"><span class="lineNum">     353 </span><span class="lineCov">          1 :       doo: {imported_mem: instance.exports.exported_mem}}));</span></a>
+<span class="lineNum">     354 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     355 </span><span class="lineCov">         10 :   function verify_mem_size(expected_pages) {</span>
+<span class="lineNum">     356 </span><span class="lineCov">         10 :     for (var i = 0; i &lt; 10; i++) {</span>
+<span class="lineNum">     357 </span><span class="lineCov">         10 :       assertEquals(expected_pages, instances[i].exports.mem_size());</span>
+<span class="lineNum">     358 </span><span class="lineCov">         10 :     }</span>
+<span class="lineNum">     359 </span><span class="lineCov">         10 :   }</span>
+<a name="360"><span class="lineNum">     360 </span><span class="lineCov">          1 :   var current_mem_size = 1;</span></a>
+<span class="lineNum">     361 </span><span class="lineCov">          1 :   for (var i = 0; i &lt; 10; i++) {</span>
+<span class="lineNum">     362 </span><span class="lineCov">          1 :     function grow(pages) { return instances[i].exports.grow(pages); }</span>
+<span class="lineNum">     363 </span><span class="lineCov">          1 :     assertEquals(current_mem_size, instances[i].exports.grow(1));</span>
+<span class="lineNum">     364 </span><span class="lineCov">          1 :     verify_mem_size(++current_mem_size);</span>
+<span class="lineNum">     365 </span><span class="lineCov">          1 :   }</span>
+<a name="366"><span class="lineNum">     366 </span><span class="lineCov">          1 : })();</span></a>
+<span class="lineNum">     367 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     368 </span><span class="lineCov">          1 : (function TestExportGrow() {</span>
+<span class="lineNum">     369 </span><span class="lineCov">          1 :   print(&quot;TestExportGrow&quot;);</span>
+<span class="lineNum">     370 </span><span class="lineCov">          1 :   let builder = new WasmModuleBuilder();</span>
+<span class="lineNum">     371 </span><span class="lineCov">          1 :   builder.addMemory(1, 5, true);</span>
+<span class="lineNum">     372 </span><span class="lineCov">          1 :   builder.exportMemoryAs(&quot;exported_mem&quot;);</span>
+<span class="lineNum">     373 </span><span class="lineCov">          1 :   builder.addFunction(&quot;mem_size&quot;, kSig_i_v)</span>
+<span class="lineNum">     374 </span><span class="lineCov">          1 :     .addBody([kExprMemorySize, kMemoryZero])</span>
+<span class="lineNum">     375 </span><span class="lineCov">          1 :     .exportFunc();</span>
+<span class="lineNum">     376 </span><span class="lineCov">          1 :   builder.addFunction(&quot;grow&quot;, kSig_i_i)</span>
+<span class="lineNum">     377 </span><span class="lineCov">          1 :     .addBody([kExprGetLocal, 0, kExprGrowMemory, kMemoryZero])</span>
+<span class="lineNum">     378 </span><span class="lineCov">          1 :     .exportFunc();</span>
+<span class="lineNum">     379 </span><span class="lineCov">          1 :   instance = builder.instantiate();</span>
+<span class="lineNum">     380 </span><span class="lineCov">          1 :   assertEquals(kPageSize, instance.exports.exported_mem.buffer.byteLength);</span>
+<span class="lineNum">     381 </span><span class="lineCov">          1 :   assertEquals(1, instance.exports.grow(2));</span>
+<span class="lineNum">     382 </span><span class="lineCov">          1 :   assertEquals(3, instance.exports.mem_size());</span>
+<span class="lineNum">     383 </span><span class="lineCov">          1 :   assertEquals(3*kPageSize, instance.exports.exported_mem.buffer.byteLength);</span>
+<a name="384"><span class="lineNum">     384 </span><span class="lineCov">          1 : })();</span></a>
+<span class="lineNum">     385 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     386 </span><span class="lineCov">          1 : (function TestImportTooLarge() {</span>
+<span class="lineNum">     387 </span><span class="lineCov">          1 :   print(&quot;TestImportTooLarge&quot;);</span>
+<span class="lineNum">     388 </span><span class="lineCov">          1 :   let builder = new WasmModuleBuilder();</span>
+<span class="lineNum">     389 </span><span class="lineCov">          1 :   builder.addImportedMemory(&quot;m&quot;, &quot;m&quot;, 1, 2);</span>
+<span class="lineNum">     390 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     391 </span><span class="lineCov">          1 :   // initial size is too large</span>
+<span class="lineNum">     392 </span><span class="lineCov">          1 :   assertThrows(() =&gt; builder.instantiate({m: {m: new WebAssembly.Memory({initial: 3, maximum: 3})}}));</span>
+<span class="lineNum">     393 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     394 </span><span class="lineCov">          1 :   // maximum size is too large</span>
+<span class="lineNum">     395 </span><span class="lineCov">          1 :   assertThrows(() =&gt; builder.instantiate({m: {m: new WebAssembly.Memory({initial: 1, maximum: 4})}}));</span>
+<a name="396"><span class="lineNum">     396 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     397 </span><span class="lineCov">          1 :   // no maximum</span>
+<span class="lineNum">     398 </span><span class="lineCov">          1 :   assertThrows(() =&gt; builder.instantiate({m: {m: new WebAssembly.Memory({initial: 1})}}));</span>
+<a name="399"><span class="lineNum">     399 </span><span class="lineCov">          1 : })();</span></a>
+<span class="lineNum">     400 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     401 </span><span class="lineCov">          1 : (function TestMemoryGrowDetachBuffer() {</span>
+<span class="lineNum">     402 </span><span class="lineCov">          1 :   print(&quot;TestMemoryGrowDetachBuffer&quot;);</span>
+<span class="lineNum">     403 </span><span class="lineCov">          1 :   let memory = new WebAssembly.Memory({initial: 1, maximum: 5});</span>
+<span class="lineNum">     404 </span><span class="lineCov">          1 :   var builder = new WasmModuleBuilder();</span>
+<span class="lineNum">     405 </span><span class="lineCov">          1 :   builder.addImportedMemory(&quot;m&quot;, &quot;imported_mem&quot;);</span>
+<span class="lineNum">     406 </span><span class="lineCov">          1 :   let instance = builder.instantiate({m: {imported_mem: memory}});</span>
+<span class="lineNum">     407 </span><span class="lineCov">          1 :   let buffer = memory.buffer;</span>
+<span class="lineNum">     408 </span><span class="lineCov">          1 :   assertEquals(kPageSize, buffer.byteLength);</span>
+<span class="lineNum">     409 </span><span class="lineCov">          1 :   assertEquals(1, memory.grow(2));</span>
+<span class="lineNum">     410 </span><span class="lineCov">          1 :   assertTrue(buffer !== memory.buffer);</span>
+<span class="lineNum">     411 </span><span class="lineCov">          1 :   assertEquals(0, buffer.byteLength);</span>
+<span class="lineNum">     412 </span><span class="lineCov">          1 :   assertEquals(3*kPageSize, memory.buffer.byteLength);</span>
+<span class="lineNum">     413 </span><span class="lineCov">          1 : })();</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

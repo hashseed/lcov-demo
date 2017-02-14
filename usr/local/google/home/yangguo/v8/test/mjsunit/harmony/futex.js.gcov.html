@@ -1,0 +1,311 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - /usr/local/google/home/yangguo/v8/test/mjsunit/harmony/futex.js</title>
+  <link rel="stylesheet" type="text/css" href="../../../../../../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../../../../../../index.html">top level</a> - <a href="index.html">usr/local/google/home/yangguo/v8/test/mjsunit/harmony</a> - futex.js<span style="font-size: 80%;"> (source / <a href="futex.js.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">236</td>
+            <td class="headerCovTableEntry">236</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2017-02-14</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">24</td>
+            <td class="headerCovTableEntry">24</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr><td><img src="../../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span><span class="lineCov">          1 : // Copyright 2015 the V8 project authors. All rights reserved.</span></a>
+<span class="lineNum">       2 </span><span class="lineCov">          1 : // Use of this source code is governed by a BSD-style license that can be</span>
+<span class="lineNum">       3 </span><span class="lineCov">          1 : // found in the LICENSE file.</span>
+<span class="lineNum">       4 </span><span class="lineCov">          1 : </span>
+<a name="5"><span class="lineNum">       5 </span><span class="lineCov">          1 : // Flags: --allow-natives-syntax --harmony-sharedarraybuffer</span></a>
+<span class="lineNum">       6 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">       7 </span><span class="lineCov">          1 : (function TestFailsWithNonSharedArray() {</span>
+<span class="lineNum">       8 </span><span class="lineCov">          1 :   var ab = new ArrayBuffer(16);</span>
+<span class="lineNum">       9 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      10 </span><span class="lineCov">          1 :   var i8a = new Int8Array(ab);</span>
+<span class="lineNum">      11 </span><span class="lineCov">          1 :   var i16a = new Int16Array(ab);</span>
+<span class="lineNum">      12 </span><span class="lineCov">          1 :   var i32a = new Int32Array(ab);</span>
+<span class="lineNum">      13 </span><span class="lineCov">          1 :   var ui8a = new Uint8Array(ab);</span>
+<span class="lineNum">      14 </span><span class="lineCov">          1 :   var ui8ca = new Uint8ClampedArray(ab);</span>
+<span class="lineNum">      15 </span><span class="lineCov">          1 :   var ui16a = new Uint16Array(ab);</span>
+<span class="lineNum">      16 </span><span class="lineCov">          1 :   var ui32a = new Uint32Array(ab);</span>
+<span class="lineNum">      17 </span><span class="lineCov">          1 :   var f32a = new Float32Array(ab);</span>
+<a name="18"><span class="lineNum">      18 </span><span class="lineCov">          1 :   var f64a = new Float64Array(ab);</span></a>
+<span class="lineNum">      19 </span><span class="lineCov">          1 : </span>
+<a name="20"><span class="lineNum">      20 </span><span class="lineCov">          9 :   [i8a, i16a, i32a, ui8a, ui8ca, ui16a, ui32a, f32a, f64a].forEach(function(</span></a>
+<a name="21"><span class="lineNum">      21 </span><span class="lineCov">          9 :       ta) {</span></a>
+<span class="lineNum">      22 </span><span class="lineCov">          9 :     assertThrows(function() { Atomics.wait(ta, 0, 0); });</span>
+<span class="lineNum">      23 </span><span class="lineCov">          9 :     assertThrows(function() { Atomics.wake(ta, 0, 1); });</span>
+<span class="lineNum">      24 </span><span class="lineCov">          9 :   });</span>
+<a name="25"><span class="lineNum">      25 </span><span class="lineCov">          1 : })();</span></a>
+<span class="lineNum">      26 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      27 </span><span class="lineCov">          1 : (function TestFailsWithNonSharedInt32Array() {</span>
+<span class="lineNum">      28 </span><span class="lineCov">          1 :   var sab = new SharedArrayBuffer(16);</span>
+<span class="lineNum">      29 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      30 </span><span class="lineCov">          1 :   var i8a = new Int8Array(sab);</span>
+<span class="lineNum">      31 </span><span class="lineCov">          1 :   var i16a = new Int16Array(sab);</span>
+<span class="lineNum">      32 </span><span class="lineCov">          1 :   var ui8a = new Uint8Array(sab);</span>
+<span class="lineNum">      33 </span><span class="lineCov">          1 :   var ui8ca = new Uint8ClampedArray(sab);</span>
+<span class="lineNum">      34 </span><span class="lineCov">          1 :   var ui16a = new Uint16Array(sab);</span>
+<span class="lineNum">      35 </span><span class="lineCov">          1 :   var ui32a = new Uint32Array(sab);</span>
+<span class="lineNum">      36 </span><span class="lineCov">          1 :   var f32a = new Float32Array(sab);</span>
+<a name="37"><span class="lineNum">      37 </span><span class="lineCov">          1 :   var f64a = new Float64Array(sab);</span></a>
+<span class="lineNum">      38 </span><span class="lineCov">          1 : </span>
+<a name="39"><span class="lineNum">      39 </span><span class="lineCov">          8 :   [i8a, i16a, ui8a, ui8ca, ui16a, ui32a, f32a, f64a].forEach(function(</span></a>
+<a name="40"><span class="lineNum">      40 </span><span class="lineCov">          8 :       ta) {</span></a>
+<span class="lineNum">      41 </span><span class="lineCov">          8 :     assertThrows(function() { Atomics.wait(ta, 0, 0); });</span>
+<span class="lineNum">      42 </span><span class="lineCov">          8 :     assertThrows(function() { Atomics.wake(ta, 0, 1); });</span>
+<span class="lineNum">      43 </span><span class="lineCov">          8 :   });</span>
+<a name="44"><span class="lineNum">      44 </span><span class="lineCov">          1 : })();</span></a>
+<span class="lineNum">      45 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      46 </span><span class="lineCov">          1 : (function TestInvalidIndex() {</span>
+<span class="lineNum">      47 </span><span class="lineCov">          1 :   var sab = new SharedArrayBuffer(16);</span>
+<span class="lineNum">      48 </span><span class="lineCov">          1 :   var i32a = new Int32Array(sab);</span>
+<a name="49"><span class="lineNum">      49 </span><span class="lineCov">          1 : </span></a>
+<a name="50"><span class="lineNum">      50 </span><span class="lineCov">          1 :   // Valid indexes are 0-3.</span></a>
+<span class="lineNum">      51 </span><span class="lineCov">          3 :   [-1, 4, 100].forEach(function(invalidIndex) {</span>
+<span class="lineNum">      52 </span><span class="lineCov">          3 :     assertThrows(function() {</span>
+<a name="53"><span class="lineNum">      53 </span><span class="lineCov">          3 :       Atomics.wait(i32a, invalidIndex, 0);</span></a>
+<span class="lineNum">      54 </span><span class="lineCov">          3 :     }, RangeError);</span>
+<span class="lineNum">      55 </span><span class="lineCov">          3 :     assertThrows(function() {</span>
+<span class="lineNum">      56 </span><span class="lineCov">          3 :       Atomics.wake(i32a, invalidIndex, 0);</span>
+<span class="lineNum">      57 </span><span class="lineCov">          3 :     }, RangeError);</span>
+<span class="lineNum">      58 </span><span class="lineCov">          3 :     var validIndex = 0;</span>
+<span class="lineNum">      59 </span><span class="lineCov">          3 :   });</span>
+<a name="60"><span class="lineNum">      60 </span><span class="lineCov">          1 : </span></a>
+<a name="61"><span class="lineNum">      61 </span><span class="lineCov">          1 :   i32a = new Int32Array(sab, 8);</span></a>
+<span class="lineNum">      62 </span><span class="lineCov">          3 :   [-1, 2, 100].forEach(function(invalidIndex) {</span>
+<span class="lineNum">      63 </span><span class="lineCov">          3 :     assertThrows(function() {</span>
+<a name="64"><span class="lineNum">      64 </span><span class="lineCov">          3 :       Atomics.wait(i32a, invalidIndex, 0);</span></a>
+<span class="lineNum">      65 </span><span class="lineCov">          3 :     }, RangeError);</span>
+<span class="lineNum">      66 </span><span class="lineCov">          3 :     assertThrows(function() {</span>
+<span class="lineNum">      67 </span><span class="lineCov">          3 :       Atomics.wake(i32a, invalidIndex, 0);</span>
+<span class="lineNum">      68 </span><span class="lineCov">          3 :     }, RangeError);</span>
+<span class="lineNum">      69 </span><span class="lineCov">          3 :     var validIndex = 0;</span>
+<span class="lineNum">      70 </span><span class="lineCov">          3 :   });</span>
+<a name="71"><span class="lineNum">      71 </span><span class="lineCov">          1 : })();</span></a>
+<span class="lineNum">      72 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      73 </span><span class="lineCov">          1 : (function TestWaitTimeout() {</span>
+<span class="lineNum">      74 </span><span class="lineCov">          1 :   var i32a = new Int32Array(new SharedArrayBuffer(16));</span>
+<span class="lineNum">      75 </span><span class="lineCov">          1 :   var waitMs = 100;</span>
+<span class="lineNum">      76 </span><span class="lineCov">          1 :   var startTime = new Date();</span>
+<span class="lineNum">      77 </span><span class="lineCov">          1 :   assertEquals(&quot;timed-out&quot;, Atomics.wait(i32a, 0, 0, waitMs));</span>
+<span class="lineNum">      78 </span><span class="lineCov">          1 :   var endTime = new Date();</span>
+<span class="lineNum">      79 </span><span class="lineCov">          1 :   assertTrue(endTime - startTime &gt;= waitMs);</span>
+<a name="80"><span class="lineNum">      80 </span><span class="lineCov">          1 : })();</span></a>
+<span class="lineNum">      81 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      82 </span><span class="lineCov">          1 : (function TestWaitNotEqual() {</span>
+<span class="lineNum">      83 </span><span class="lineCov">          1 :   var sab = new SharedArrayBuffer(16);</span>
+<span class="lineNum">      84 </span><span class="lineCov">          1 :   var i32a = new Int32Array(sab);</span>
+<span class="lineNum">      85 </span><span class="lineCov">          1 :   assertEquals(&quot;not-equal&quot;, Atomics.wait(i32a, 0, 42));</span>
+<span class="lineNum">      86 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      87 </span><span class="lineCov">          1 :   i32a = new Int32Array(sab, 8);</span>
+<span class="lineNum">      88 </span><span class="lineCov">          1 :   i32a[0] = 1;</span>
+<span class="lineNum">      89 </span><span class="lineCov">          1 :   assertEquals(&quot;not-equal&quot;, Atomics.wait(i32a, 0, 0));</span>
+<a name="90"><span class="lineNum">      90 </span><span class="lineCov">          1 : })();</span></a>
+<span class="lineNum">      91 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      92 </span><span class="lineCov">          1 : (function TestWaitNegativeTimeout() {</span>
+<span class="lineNum">      93 </span><span class="lineCov">          1 :   var i32a = new Int32Array(new SharedArrayBuffer(16));</span>
+<span class="lineNum">      94 </span><span class="lineCov">          1 :   assertEquals(&quot;timed-out&quot;, Atomics.wait(i32a, 0, 0, -1));</span>
+<span class="lineNum">      95 </span><span class="lineCov">          1 :   assertEquals(&quot;timed-out&quot;, Atomics.wait(i32a, 0, 0, -Infinity));</span>
+<a name="96"><span class="lineNum">      96 </span><span class="lineCov">          1 : })();</span></a>
+<span class="lineNum">      97 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      98 </span><span class="lineCov">          1 : (function TestWaitNotAllowed() {</span>
+<a name="99"><span class="lineNum">      99 </span><span class="lineCov">          1 :   %SetAllowAtomicsWait(false);</span></a>
+<span class="lineNum">     100 </span><span class="lineCov">          1 :   var i32a = new Int32Array(new SharedArrayBuffer(16));</span>
+<span class="lineNum">     101 </span><span class="lineCov">          1 :   assertThrows(function() {</span>
+<span class="lineNum">     102 </span><span class="lineCov">          1 :     Atomics.wait(i32a, 0, 0, -1);</span>
+<span class="lineNum">     103 </span><span class="lineCov">          1 :   });</span>
+<span class="lineNum">     104 </span><span class="lineCov">          1 :   %SetAllowAtomicsWait(true);</span>
+<a name="105"><span class="lineNum">     105 </span><span class="lineCov">          1 : })();</span></a>
+<span class="lineNum">     106 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     107 </span><span class="lineCov">          1 : (function TestWakePositiveInfinity() {</span>
+<span class="lineNum">     108 </span><span class="lineCov">          1 :   var i32a = new Int32Array(new SharedArrayBuffer(16));</span>
+<span class="lineNum">     109 </span><span class="lineCov">          1 :   Atomics.wake(i32a, 0, Number.POSITIVE_INFINITY);</span>
+<span class="lineNum">     110 </span><span class="lineCov">          1 : })();</span>
+<span class="lineNum">     111 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     112 </span><span class="lineCov">          1 : //// WORKER ONLY TESTS</span>
+<span class="lineNum">     113 </span><span class="lineCov">          1 : </span>
+<a name="114"><span class="lineNum">     114 </span><span class="lineCov">          1 : if (this.Worker) {</span></a>
+<span class="lineNum">     115 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     116 </span><span class="lineCov">          3 :   var TestWaitWithTimeout = function(timeout) {</span>
+<span class="lineNum">     117 </span><span class="lineCov">          3 :     var sab = new SharedArrayBuffer(16);</span>
+<span class="lineNum">     118 </span><span class="lineCov">          3 :     var i32a = new Int32Array(sab);</span>
+<span class="lineNum">     119 </span><span class="lineCov">          3 : </span>
+<span class="lineNum">     120 </span><span class="lineCov">          3 :     var workerScript =</span>
+<span class="lineNum">     121 </span><span class="lineCov">          3 :       `onmessage = function(msg) {</span>
+<span class="lineNum">     122 </span><span class="lineCov">          3 :          var i32a = new Int32Array(msg.sab, msg.offset);</span>
+<span class="lineNum">     123 </span><span class="lineCov">          3 :          var result = Atomics.wait(i32a, 0, 0, ${timeout});</span>
+<span class="lineNum">     124 </span><span class="lineCov">          3 :          postMessage(result);</span>
+<span class="lineNum">     125 </span><span class="lineCov">          3 :        };`;</span>
+<span class="lineNum">     126 </span><span class="lineCov">          3 : </span>
+<span class="lineNum">     127 </span><span class="lineCov">          3 :     var worker = new Worker(workerScript);</span>
+<span class="lineNum">     128 </span><span class="lineCov">          3 :     worker.postMessage({sab: sab, offset: offset});</span>
+<span class="lineNum">     129 </span><span class="lineCov">          3 : </span>
+<span class="lineNum">     130 </span><span class="lineCov">          3 :     // Spin until the worker is waiting on the futex.</span>
+<span class="lineNum">     131 </span><span class="lineCov">          3 :     while (%AtomicsNumWaitersForTesting(i32a, 0) != 1) {}</span>
+<span class="lineNum">     132 </span><span class="lineCov">          3 : </span>
+<span class="lineNum">     133 </span><span class="lineCov">          3 :     Atomics.wake(i32a, 0, 1);</span>
+<span class="lineNum">     134 </span><span class="lineCov">          3 :     assertEquals(&quot;ok&quot;, worker.getMessage());</span>
+<span class="lineNum">     135 </span><span class="lineCov">          3 :     worker.terminate();</span>
+<span class="lineNum">     136 </span><span class="lineCov">          3 : </span>
+<span class="lineNum">     137 </span><span class="lineCov">          3 :     var worker2 = new Worker(workerScript);</span>
+<span class="lineNum">     138 </span><span class="lineCov">          3 :     var offset = 8;</span>
+<span class="lineNum">     139 </span><span class="lineCov">          3 :     var i32a2 = new Int32Array(sab, offset);</span>
+<span class="lineNum">     140 </span><span class="lineCov">          3 :     worker2.postMessage({sab: sab, offset: offset});</span>
+<span class="lineNum">     141 </span><span class="lineCov">          3 : </span>
+<span class="lineNum">     142 </span><span class="lineCov">          3 :     // Spin until the worker is waiting on the futex.</span>
+<span class="lineNum">     143 </span><span class="lineCov">          3 :     while (%AtomicsNumWaitersForTesting(i32a2, 0) != 1) {}</span>
+<span class="lineNum">     144 </span><span class="lineCov">          3 :     Atomics.wake(i32a2, 0, 1);</span>
+<span class="lineNum">     145 </span><span class="lineCov">          3 :     assertEquals(&quot;ok&quot;, worker2.getMessage());</span>
+<span class="lineNum">     146 </span><span class="lineCov">          3 :     worker2.terminate();</span>
+<span class="lineNum">     147 </span><span class="lineCov">          3 : </span>
+<span class="lineNum">     148 </span><span class="lineCov">          3 :     // Futex should work when index and buffer views are different, but</span>
+<span class="lineNum">     149 </span><span class="lineCov">          3 :     // the real address is the same.</span>
+<span class="lineNum">     150 </span><span class="lineCov">          3 :     var worker3 = new Worker(workerScript);</span>
+<span class="lineNum">     151 </span><span class="lineCov">          3 :     i32a2 = new Int32Array(sab, 4);</span>
+<span class="lineNum">     152 </span><span class="lineCov">          3 :     worker3.postMessage({sab: sab, offset: 8});</span>
+<span class="lineNum">     153 </span><span class="lineCov">          3 : </span>
+<span class="lineNum">     154 </span><span class="lineCov">          3 :     // Spin until the worker is waiting on the futex.</span>
+<span class="lineNum">     155 </span><span class="lineCov">          3 :     while (%AtomicsNumWaitersForTesting(i32a2, 1) != 1) {}</span>
+<span class="lineNum">     156 </span><span class="lineCov">          3 :     Atomics.wake(i32a2, 1, 1);</span>
+<span class="lineNum">     157 </span><span class="lineCov">          3 :     assertEquals(&quot;ok&quot;, worker3.getMessage());</span>
+<span class="lineNum">     158 </span><span class="lineCov">          3 :     worker3.terminate();</span>
+<span class="lineNum">     159 </span><span class="lineCov">          3 :   };</span>
+<span class="lineNum">     160 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     161 </span><span class="lineCov">          1 :   // Test various infinite timeouts</span>
+<span class="lineNum">     162 </span><span class="lineCov">          1 :   TestWaitWithTimeout(undefined);</span>
+<span class="lineNum">     163 </span><span class="lineCov">          1 :   TestWaitWithTimeout(NaN);</span>
+<span class="lineNum">     164 </span><span class="lineCov">          1 :   TestWaitWithTimeout(Infinity);</span>
+<a name="165"><span class="lineNum">     165 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     166 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     167 </span><span class="lineCov">          1 :   (function TestWakeMulti() {</span>
+<span class="lineNum">     168 </span><span class="lineCov">          1 :     var sab = new SharedArrayBuffer(20);</span>
+<span class="lineNum">     169 </span><span class="lineCov">          1 :     var i32a = new Int32Array(sab);</span>
+<span class="lineNum">     170 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     171 </span><span class="lineCov">          1 :     // SAB values:</span>
+<span class="lineNum">     172 </span><span class="lineCov">          1 :     // i32a[id], where id in range [0, 3]:</span>
+<span class="lineNum">     173 </span><span class="lineCov">          1 :     //   0 =&gt; Worker |id| is still waiting on the futex</span>
+<span class="lineNum">     174 </span><span class="lineCov">          1 :     //   1 =&gt; Worker |id| is not waiting on futex, but has not be reaped by the</span>
+<span class="lineNum">     175 </span><span class="lineCov">          1 :     //        main thread.</span>
+<span class="lineNum">     176 </span><span class="lineCov">          1 :     //   2 =&gt; Worker |id| has been reaped.</span>
+<span class="lineNum">     177 </span><span class="lineCov">          1 :     //</span>
+<span class="lineNum">     178 </span><span class="lineCov">          1 :     // i32a[4]:</span>
+<span class="lineNum">     179 </span><span class="lineCov">          1 :     //   always 0. Each worker is waiting on this index.</span>
+<span class="lineNum">     180 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     181 </span><span class="lineCov">          1 :     var workerScript =</span>
+<span class="lineNum">     182 </span><span class="lineCov">          1 :       `onmessage = function(msg) {</span>
+<span class="lineNum">     183 </span><span class="lineCov">          1 :          var id = msg.id;</span>
+<span class="lineNum">     184 </span><span class="lineCov">          1 :          var i32a = new Int32Array(msg.sab);</span>
+<span class="lineNum">     185 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     186 </span><span class="lineCov">          1 :          // Wait on i32a[4] (should be zero).</span>
+<span class="lineNum">     187 </span><span class="lineCov">          1 :          var result = Atomics.wait(i32a, 4, 0);</span>
+<span class="lineNum">     188 </span><span class="lineCov">          1 :          // Set i32a[id] to 1 to notify the main thread which workers were</span>
+<span class="lineNum">     189 </span><span class="lineCov">          1 :          // woken up.</span>
+<span class="lineNum">     190 </span><span class="lineCov">          1 :          Atomics.store(i32a, id, 1);</span>
+<span class="lineNum">     191 </span><span class="lineCov">          1 :          postMessage(result);</span>
+<span class="lineNum">     192 </span><span class="lineCov">          1 :        };`;</span>
+<span class="lineNum">     193 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     194 </span><span class="lineCov">          1 :     var id;</span>
+<span class="lineNum">     195 </span><span class="lineCov">          1 :     var workers = [];</span>
+<span class="lineNum">     196 </span><span class="lineCov">          1 :     for (id = 0; id &lt; 4; id++) {</span>
+<span class="lineNum">     197 </span><span class="lineCov">          1 :       workers[id] = new Worker(workerScript);</span>
+<span class="lineNum">     198 </span><span class="lineCov">          1 :       workers[id].postMessage({sab: sab, id: id});</span>
+<span class="lineNum">     199 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">     200 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     201 </span><span class="lineCov">          1 :     // Spin until all workers are waiting on the futex.</span>
+<span class="lineNum">     202 </span><span class="lineCov">          1 :     while (%AtomicsNumWaitersForTesting(i32a, 4) != 4) {}</span>
+<span class="lineNum">     203 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     204 </span><span class="lineCov">          1 :     // Wake up three waiters.</span>
+<span class="lineNum">     205 </span><span class="lineCov">          1 :     assertEquals(3, Atomics.wake(i32a, 4, 3));</span>
+<span class="lineNum">     206 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     207 </span><span class="lineCov">          1 :     var wokenCount = 0;</span>
+<span class="lineNum">     208 </span><span class="lineCov">          1 :     var waitingId = 0 + 1 + 2 + 3;</span>
+<span class="lineNum">     209 </span><span class="lineCov">          1 :     while (wokenCount &lt; 3) {</span>
+<span class="lineNum">     210 </span><span class="lineCov">          1 :       for (id = 0; id &lt; 4; id++) {</span>
+<span class="lineNum">     211 </span><span class="lineCov">          1 :         // Look for workers that have not yet been reaped. Set i32a[id] to 2</span>
+<span class="lineNum">     212 </span><span class="lineCov">          1 :         // when they've been processed so we don't look at them again.</span>
+<span class="lineNum">     213 </span><span class="lineCov">          1 :         if (Atomics.compareExchange(i32a, id, 1, 2) == 1) {</span>
+<span class="lineNum">     214 </span><span class="lineCov">          1 :           assertEquals(&quot;ok&quot;, workers[id].getMessage());</span>
+<span class="lineNum">     215 </span><span class="lineCov">          1 :           workers[id].terminate();</span>
+<span class="lineNum">     216 </span><span class="lineCov">          1 :           waitingId -= id;</span>
+<span class="lineNum">     217 </span><span class="lineCov">          1 :           wokenCount++;</span>
+<span class="lineNum">     218 </span><span class="lineCov">          1 :         }</span>
+<span class="lineNum">     219 </span><span class="lineCov">          1 :       }</span>
+<span class="lineNum">     220 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">     221 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     222 </span><span class="lineCov">          1 :     assertEquals(3, wokenCount);</span>
+<span class="lineNum">     223 </span><span class="lineCov">          1 :     assertEquals(0, Atomics.load(i32a, waitingId));</span>
+<span class="lineNum">     224 </span><span class="lineCov">          1 :     assertEquals(1, %AtomicsNumWaitersForTesting(i32a, 4));</span>
+<span class="lineNum">     225 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     226 </span><span class="lineCov">          1 :     // Finally wake the last waiter.</span>
+<span class="lineNum">     227 </span><span class="lineCov">          1 :     assertEquals(1, Atomics.wake(i32a, 4, 1));</span>
+<span class="lineNum">     228 </span><span class="lineCov">          1 :     assertEquals(&quot;ok&quot;, workers[waitingId].getMessage());</span>
+<span class="lineNum">     229 </span><span class="lineCov">          1 :     workers[waitingId].terminate();</span>
+<span class="lineNum">     230 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     231 </span><span class="lineCov">          1 :     assertEquals(0, %AtomicsNumWaitersForTesting(i32a, 4));</span>
+<span class="lineNum">     232 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     233 </span><span class="lineCov">          1 :   })();</span>
+<span class="lineNum">     234 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     235 </span><span class="lineCov">          1 : }</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

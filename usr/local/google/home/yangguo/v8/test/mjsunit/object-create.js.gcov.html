@@ -1,0 +1,358 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - /usr/local/google/home/yangguo/v8/test/mjsunit/object-create.js</title>
+  <link rel="stylesheet" type="text/css" href="../../../../../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../../../../../index.html">top level</a> - <a href="index.html">usr/local/google/home/yangguo/v8/test/mjsunit</a> - object-create.js<span style="font-size: 80%;"> (source / <a href="object-create.js.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">283</td>
+            <td class="headerCovTableEntry">283</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2017-02-14</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">9</td>
+            <td class="headerCovTableEntry">11</td>
+            <td class="headerCovTableEntryMed">81.8 %</td>
+          </tr>
+          <tr><td><img src="../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span><span class="lineCov">          1 : // Copyright 2009 the V8 project authors. All rights reserved.</span></a>
+<span class="lineNum">       2 </span><span class="lineCov">          1 : // Redistribution and use in source and binary forms, with or without</span>
+<span class="lineNum">       3 </span><span class="lineCov">          1 : // modification, are permitted provided that the following conditions are</span>
+<span class="lineNum">       4 </span><span class="lineCov">          1 : // met:</span>
+<span class="lineNum">       5 </span><span class="lineCov">          1 : //</span>
+<span class="lineNum">       6 </span><span class="lineCov">          1 : //     * Redistributions of source code must retain the above copyright</span>
+<span class="lineNum">       7 </span><span class="lineCov">          1 : //       notice, this list of conditions and the following disclaimer.</span>
+<span class="lineNum">       8 </span><span class="lineCov">          1 : //     * Redistributions in binary form must reproduce the above</span>
+<span class="lineNum">       9 </span><span class="lineCov">          1 : //       copyright notice, this list of conditions and the following</span>
+<span class="lineNum">      10 </span><span class="lineCov">          1 : //       disclaimer in the documentation and/or other materials provided</span>
+<span class="lineNum">      11 </span><span class="lineCov">          1 : //       with the distribution.</span>
+<span class="lineNum">      12 </span><span class="lineCov">          1 : //     * Neither the name of Google Inc. nor the names of its</span>
+<span class="lineNum">      13 </span><span class="lineCov">          1 : //       contributors may be used to endorse or promote products derived</span>
+<span class="lineNum">      14 </span><span class="lineCov">          1 : //       from this software without specific prior written permission.</span>
+<span class="lineNum">      15 </span><span class="lineCov">          1 : //</span>
+<span class="lineNum">      16 </span><span class="lineCov">          1 : // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="lineNum">      17 </span><span class="lineCov">          1 : // &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="lineNum">      18 </span><span class="lineCov">          1 : // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR</span>
+<span class="lineNum">      19 </span><span class="lineCov">          1 : // A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT</span>
+<span class="lineNum">      20 </span><span class="lineCov">          1 : // OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,</span>
+<span class="lineNum">      21 </span><span class="lineCov">          1 : // SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT</span>
+<span class="lineNum">      22 </span><span class="lineCov">          1 : // LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,</span>
+<span class="lineNum">      23 </span><span class="lineCov">          1 : // DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY</span>
+<span class="lineNum">      24 </span><span class="lineCov">          1 : // THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT</span>
+<span class="lineNum">      25 </span><span class="lineCov">          1 : // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE</span>
+<span class="lineNum">      26 </span><span class="lineCov">          1 : // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="lineNum">      27 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      28 </span><span class="lineCov">          1 : // Test ES5 sections 15.2.3.5 Object.create.</span>
+<span class="lineNum">      29 </span><span class="lineCov">          1 : // We do not support nonconfigurable properties on objects so that is not</span>
+<span class="lineNum">      30 </span><span class="lineCov">          1 : // tested.  We do test getters, setters, writable, enumerable and value.</span>
+<span class="lineNum">      31 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      32 </span><span class="lineCov">          1 : // Check that no exceptions are thrown.</span>
+<span class="lineNum">      33 </span><span class="lineCov">          1 : Object.create(null);</span>
+<span class="lineNum">      34 </span><span class="lineCov">          1 : Object.create(null, undefined);</span>
+<span class="lineNum">      35 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      36 </span><span class="lineCov">          1 : // Check that the right exception is thrown.</span>
+<span class="lineNum">      37 </span><span class="lineCov">          1 : try {</span>
+<span class="lineNum">      38 </span><span class="lineCov">          1 :   Object.create(4);</span>
+<span class="lineNum">      39 </span><span class="lineCov">          1 :   assertTrue(false);</span>
+<span class="lineNum">      40 </span><span class="lineCov">          1 : } catch (e) {</span>
+<span class="lineNum">      41 </span><span class="lineCov">          1 :   assertTrue(/Object or null/.test(e));</span>
+<span class="lineNum">      42 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      43 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      44 </span><span class="lineCov">          1 : try {</span>
+<span class="lineNum">      45 </span><span class="lineCov">          1 :   Object.create(&quot;foo&quot;);</span>
+<span class="lineNum">      46 </span><span class="lineCov">          1 :   print(2);</span>
+<span class="lineNum">      47 </span><span class="lineCov">          1 :   assertTrue(false);</span>
+<span class="lineNum">      48 </span><span class="lineCov">          1 : } catch (e) {</span>
+<span class="lineNum">      49 </span><span class="lineCov">          1 :   assertTrue(/Object or null/.test(e));</span>
+<span class="lineNum">      50 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      51 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      52 </span><span class="lineCov">          1 : try {</span>
+<span class="lineNum">      53 </span><span class="lineCov">          1 :   Object.create(null, this);</span>
+<span class="lineNum">      54 </span><span class="lineCov">          1 :   assertTrue(false);</span>
+<span class="lineNum">      55 </span><span class="lineCov">          1 : } catch(e) {</span>
+<span class="lineNum">      56 </span><span class="lineCov">          1 :   assertTrue(/Property description/.test(e))</span>
+<span class="lineNum">      57 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      58 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      59 </span><span class="lineCov">          1 : try {</span>
+<span class="lineNum">      60 </span><span class="lineCov">          1 :   Object.create(null, [1, 2, 3]);</span>
+<span class="lineNum">      61 </span><span class="lineCov">          1 :   assertTrue(false);</span>
+<span class="lineNum">      62 </span><span class="lineCov">          1 : } catch(e) {</span>
+<span class="lineNum">      63 </span><span class="lineCov">          1 :   assertTrue(/Property description/.test(e))</span>
+<span class="lineNum">      64 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      65 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      66 </span><span class="lineCov">          1 : try {</span>
+<span class="lineNum">      67 </span><span class="lineCov">          1 :   Object.create(null, new Proxy([1, 2, 3], {}));</span>
+<span class="lineNum">      68 </span><span class="lineCov">          1 :   assertTrue(false);</span>
+<span class="lineNum">      69 </span><span class="lineCov">          1 : } catch(e) {</span>
+<span class="lineNum">      70 </span><span class="lineCov">          1 :   assertTrue(/Property description/.test(e))</span>
+<span class="lineNum">      71 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      72 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      73 </span><span class="lineCov">          1 : var ctr = 0;</span>
+<span class="lineNum">      74 </span><span class="lineCov">          1 : var ctr2 = 0;</span>
+<span class="lineNum">      75 </span><span class="lineCov">          1 : var ctr3 = 0;</span>
+<span class="lineNum">      76 </span><span class="lineCov">          1 : var ctr4 = 0;</span>
+<span class="lineNum">      77 </span><span class="lineCov">          1 : var ctr5 = 0;</span>
+<a name="78"><span class="lineNum">      78 </span><span class="lineCov">          1 : var ctr6 = 1000;</span></a>
+<a name="79"><span class="lineNum">      79 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      80 </span><span class="lineCov">          2 : var protoFoo = { foo: function() { ctr++; }};</span>
+<a name="81"><span class="lineNum">      81 </span><span class="lineCov">          1 : var fooValue = { foo: { writable: true, value: function() { ctr2++; }}};</span></a>
+<span class="lineNum">      82 </span><span class="lineCov">          1 : var fooGetter = { foo: { get: function() { return ctr3++; }}};</span>
+<span class="lineNum">      83 </span><span class="lineCov">          1 : var fooSetter = { foo: { set: function() { return ctr4++; }}};</span>
+<span class="lineNum">      84 </span><span class="lineCov">          1 : var fooAmbiguous = { foo: { get: function() { return ctr3++; },</span>
+<a name="85"><span class="lineNum">      85 </span><span class="lineCov">          1 :                             value: 3 }};</span></a>
+<a name="86"><span class="lineNum">      86 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      87 </span><span class="lineCov">          1 : function valueGet() { ctr5++; return 3 };</span>
+<span class="lineNum">      88 </span><span class="lineCov">          1 : function getterGet() { ctr5++; return function() { return ctr6++; }; };</span>
+<span class="lineNum">      89 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      90 </span><span class="lineCov">          1 : // Simple object with prototype, no properties added.</span>
+<span class="lineNum">      91 </span><span class="lineCov">          1 : Object.create(protoFoo).foo();</span>
+<span class="lineNum">      92 </span><span class="lineCov">          1 : assertEquals(1, ctr);</span>
+<span class="lineNum">      93 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      94 </span><span class="lineCov">          1 : // Simple object with object with prototype, no properties added.</span>
+<span class="lineNum">      95 </span><span class="lineCov">          1 : Object.create(Object.create(protoFoo)).foo();</span>
+<span class="lineNum">      96 </span><span class="lineCov">          1 : assertEquals(2, ctr);</span>
+<span class="lineNum">      97 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      98 </span><span class="lineCov">          1 : // Add a property foo that returns a function.</span>
+<span class="lineNum">      99 </span><span class="lineCov">          1 : var v = Object.create(protoFoo, fooValue);</span>
+<span class="lineNum">     100 </span><span class="lineCov">          1 : v.foo();</span>
+<span class="lineNum">     101 </span><span class="lineCov">          1 : assertEquals(2, ctr);</span>
+<span class="lineNum">     102 </span><span class="lineCov">          1 : assertEquals(1, ctr2);</span>
+<span class="lineNum">     103 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     104 </span><span class="lineCov">          1 : // Ensure the property is writable.</span>
+<span class="lineNum">     105 </span><span class="lineCov">          1 : v.foo = 42;</span>
+<span class="lineNum">     106 </span><span class="lineCov">          1 : assertEquals(42, v.foo);</span>
+<span class="lineNum">     107 </span><span class="lineCov">          1 : assertEquals(2, ctr);</span>
+<span class="lineNum">     108 </span><span class="lineCov">          1 : assertEquals(1, ctr2);</span>
+<span class="lineNum">     109 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     110 </span><span class="lineCov">          1 : // Ensure by default properties are not writable.</span>
+<span class="lineNum">     111 </span><span class="lineCov">          1 : v = Object.create(null, { foo: {value: 103}});</span>
+<span class="lineNum">     112 </span><span class="lineCov">          1 : assertEquals(103, v.foo);</span>
+<span class="lineNum">     113 </span><span class="lineCov">          1 : v.foo = 42;</span>
+<span class="lineNum">     114 </span><span class="lineCov">          1 : assertEquals(103, v.foo);</span>
+<span class="lineNum">     115 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     116 </span><span class="lineCov">          1 : // Add a getter foo that returns a counter value.</span>
+<span class="lineNum">     117 </span><span class="lineCov">          1 : assertEquals(0, Object.create(protoFoo, fooGetter).foo);</span>
+<span class="lineNum">     118 </span><span class="lineCov">          1 : assertEquals(2, ctr);</span>
+<span class="lineNum">     119 </span><span class="lineCov">          1 : assertEquals(1, ctr2);</span>
+<span class="lineNum">     120 </span><span class="lineCov">          1 : assertEquals(1, ctr3);</span>
+<span class="lineNum">     121 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     122 </span><span class="lineCov">          1 : // Add a setter foo that runs a function.</span>
+<span class="lineNum">     123 </span><span class="lineCov">          1 : assertEquals(1, Object.create(protoFoo, fooSetter).foo = 1);</span>
+<span class="lineNum">     124 </span><span class="lineCov">          1 : assertEquals(2, ctr);</span>
+<span class="lineNum">     125 </span><span class="lineCov">          1 : assertEquals(1, ctr2);</span>
+<span class="lineNum">     126 </span><span class="lineCov">          1 : assertEquals(1, ctr3);</span>
+<span class="lineNum">     127 </span><span class="lineCov">          1 : assertEquals(1, ctr4);</span>
+<span class="lineNum">     128 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     129 </span><span class="lineCov">          1 : // Make sure that trying to add both a value and a getter</span>
+<span class="lineNum">     130 </span><span class="lineCov">          1 : // will result in an exception.</span>
+<span class="lineNum">     131 </span><span class="lineCov">          1 : try {</span>
+<span class="lineNum">     132 </span><span class="lineCov">          1 :   Object.create(protoFoo, fooAmbiguous);</span>
+<span class="lineNum">     133 </span><span class="lineCov">          1 :   assertTrue(false);</span>
+<span class="lineNum">     134 </span><span class="lineCov">          1 : } catch (e) {</span>
+<span class="lineNum">     135 </span><span class="lineCov">          1 :   assertTrue(/Invalid property/.test(e));</span>
+<span class="lineNum">     136 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     137 </span><span class="lineCov">          1 : assertEquals(2, ctr);</span>
+<span class="lineNum">     138 </span><span class="lineCov">          1 : assertEquals(1, ctr2);</span>
+<span class="lineNum">     139 </span><span class="lineCov">          1 : assertEquals(1, ctr3);</span>
+<span class="lineNum">     140 </span><span class="lineCov">          1 : assertEquals(1, ctr4);</span>
+<span class="lineNum">     141 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     142 </span><span class="lineCov">          1 : var ctr7 = 0;</span>
+<span class="lineNum">     143 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     144 </span><span class="lineCov">          1 : var metaProps = {</span>
+<span class="lineNum">     145 </span><span class="lineCov">          1 :   enumerable: { get: function() {</span>
+<span class="lineNum">     146 </span><span class="lineCov">          1 :                        assertEquals(0, ctr7++);</span>
+<span class="lineNum">     147 </span><span class="lineCov">          1 :                        return true;</span>
+<span class="lineNum">     148 </span><span class="lineCov">          1 :                      }},</span>
+<span class="lineNum">     149 </span><span class="lineCov">          1 :   configurable: { get: function() {</span>
+<span class="lineNum">     150 </span><span class="lineCov">          1 :                          assertEquals(1, ctr7++);</span>
+<span class="lineNum">     151 </span><span class="lineCov">          1 :                          return true;</span>
+<span class="lineNum">     152 </span><span class="lineCov">          1 :                        }},</span>
+<span class="lineNum">     153 </span><span class="lineCov">          1 :   value: { get: function() {</span>
+<span class="lineNum">     154 </span><span class="lineCov">          1 :                   assertEquals(2, ctr7++);</span>
+<span class="lineNum">     155 </span><span class="lineCov">          1 :                   return 4;</span>
+<span class="lineNum">     156 </span><span class="lineCov">          1 :                 }},</span>
+<span class="lineNum">     157 </span><span class="lineCov">          1 :   writable: { get: function() {</span>
+<span class="lineNum">     158 </span><span class="lineCov">          1 :                      assertEquals(3, ctr7++);</span>
+<span class="lineNum">     159 </span><span class="lineCov">          1 :                      return true;</span>
+<span class="lineNum">     160 </span><span class="lineCov">          1 :                    }},</span>
+<a name="161"><span class="lineNum">     161 </span><span class="lineCov">          1 :   get: { get: function() {</span></a>
+<span class="lineNum">     162 </span><span class="lineCov">          1 :                 assertEquals(4, ctr7++);</span>
+<span class="lineNum">     163 </span><span class="lineCov">          1 :                 return function() { };</span>
+<span class="lineNum">     164 </span><span class="lineCov">          1 :               }},</span>
+<a name="165"><span class="lineNum">     165 </span><span class="lineCov">          1 :   set: { get: function() {</span></a>
+<span class="lineNum">     166 </span><span class="lineCov">          1 :                 assertEquals(5, ctr7++);</span>
+<span class="lineNum">     167 </span><span class="lineCov">          1 :                 return function() { };</span>
+<span class="lineNum">     168 </span><span class="lineCov">          1 :               }}</span>
+<span class="lineNum">     169 </span><span class="lineCov">          1 : };</span>
+<span class="lineNum">     170 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     171 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     172 </span><span class="lineCov">          1 : // Instead of a plain props object, let's use getters to return its properties.</span>
+<span class="lineNum">     173 </span><span class="lineCov">          1 : var magicValueProps = { foo: Object.create(null, { value: { get: valueGet }})};</span>
+<span class="lineNum">     174 </span><span class="lineCov">          1 : var magicGetterProps = { foo: Object.create(null, { get: { get: getterGet }})};</span>
+<span class="lineNum">     175 </span><span class="lineCov">          1 : var magicAmbiguousProps = { foo: Object.create(null, metaProps) };</span>
+<span class="lineNum">     176 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     177 </span><span class="lineCov">          1 : assertEquals(3, Object.create(null, magicValueProps).foo);</span>
+<span class="lineNum">     178 </span><span class="lineCov">          1 : assertEquals(1, ctr5);</span>
+<span class="lineNum">     179 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     180 </span><span class="lineCov">          1 : assertEquals(1000, Object.create(null, magicGetterProps).foo);</span>
+<span class="lineNum">     181 </span><span class="lineCov">          1 : assertEquals(2, ctr5);</span>
+<span class="lineNum">     182 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     183 </span><span class="lineCov">          1 : // See if we do the steps in ToPropertyDescriptor in the right order.</span>
+<span class="lineNum">     184 </span><span class="lineCov">          1 : // We shouldn't throw the exception for an ambiguous properties object</span>
+<span class="lineNum">     185 </span><span class="lineCov">          1 : // before we got all the values out.</span>
+<span class="lineNum">     186 </span><span class="lineCov">          1 : try {</span>
+<span class="lineNum">     187 </span><span class="lineCov">          1 :   Object.create(null, magicAmbiguousProps);</span>
+<span class="lineNum">     188 </span><span class="lineCov">          1 :   assertTrue(false);</span>
+<span class="lineNum">     189 </span><span class="lineCov">          1 : } catch (e) {</span>
+<span class="lineNum">     190 </span><span class="lineCov">          1 :   assertTrue(/Invalid property/.test(e));</span>
+<span class="lineNum">     191 </span><span class="lineCov">          1 :   assertEquals(6, ctr7);</span>
+<span class="lineNum">     192 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     193 </span><span class="lineCov">          1 : </span>
+<a name="194"><span class="lineNum">     194 </span><span class="lineCov">          1 : var magicWritableProps = {</span></a>
+<span class="lineNum">     195 </span><span class="lineCov">          1 :   foo: Object.create(null, { value: { value: 4 },</span>
+<span class="lineNum">     196 </span><span class="lineCov">          1 :                              writable: { get: function() {</span>
+<span class="lineNum">     197 </span><span class="lineCov">          1 :                                                 ctr6++;</span>
+<span class="lineNum">     198 </span><span class="lineCov">          1 :                                                 return false;</span>
+<span class="lineNum">     199 </span><span class="lineCov">          1 :                                               }}})};</span>
+<span class="lineNum">     200 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     201 </span><span class="lineCov">          1 : var fooNotWritable = Object.create(null, magicWritableProps)</span>
+<span class="lineNum">     202 </span><span class="lineCov">          1 : assertEquals(1002, ctr6);</span>
+<span class="lineNum">     203 </span><span class="lineCov">          1 : assertEquals(4, fooNotWritable.foo);</span>
+<span class="lineNum">     204 </span><span class="lineCov">          1 : fooNotWritable.foo = 5;</span>
+<span class="lineNum">     205 </span><span class="lineCov">          1 : assertEquals(4, fooNotWritable.foo);</span>
+<span class="lineNum">     206 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     207 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     208 </span><span class="lineCov">          1 : // Test enumerable flag.</span>
+<span class="lineNum">     209 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     210 </span><span class="lineCov">          1 : var fooNotEnumerable =</span>
+<span class="lineNum">     211 </span><span class="lineCov">          1 :     Object.create({fizz: 14}, {foo: {value: 3, enumerable: false},</span>
+<span class="lineNum">     212 </span><span class="lineCov">          1 :                                bar: {value: 4, enumerable: true},</span>
+<span class="lineNum">     213 </span><span class="lineCov">          1 :                                baz: {value: 5}});</span>
+<span class="lineNum">     214 </span><span class="lineCov">          1 : var sum = 0;</span>
+<span class="lineNum">     215 </span><span class="lineCov">          1 : for (x in fooNotEnumerable) {</span>
+<span class="lineNum">     216 </span><span class="lineCov">          1 :   assertTrue(x === 'bar' || x === 'fizz');</span>
+<span class="lineNum">     217 </span><span class="lineCov">          1 :   sum += fooNotEnumerable[x];</span>
+<span class="lineNum">     218 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     219 </span><span class="lineCov">          1 : assertEquals(18, sum);</span>
+<span class="lineNum">     220 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     221 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     222 </span><span class="lineCov">          1 : try {</span>
+<span class="lineNum">     223 </span><span class="lineCov">          1 :   Object.create(null, {foo: { get: 0 }});</span>
+<span class="lineNum">     224 </span><span class="lineCov">          1 :   assertTrue(false);</span>
+<span class="lineNum">     225 </span><span class="lineCov">          1 : } catch (e) {</span>
+<span class="lineNum">     226 </span><span class="lineCov">          1 :   assertTrue(/Getter must be a function/.test(e));</span>
+<span class="lineNum">     227 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     228 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     229 </span><span class="lineCov">          1 : try {</span>
+<span class="lineNum">     230 </span><span class="lineCov">          1 :   Object.create(null, {foo: { set: 0 }});</span>
+<span class="lineNum">     231 </span><span class="lineCov">          1 :   assertTrue(false);</span>
+<span class="lineNum">     232 </span><span class="lineCov">          1 : } catch (e) {</span>
+<span class="lineNum">     233 </span><span class="lineCov">          1 :   assertTrue(/Setter must be a function/.test(e));</span>
+<span class="lineNum">     234 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     235 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     236 </span><span class="lineCov">          1 : try {</span>
+<span class="lineNum">     237 </span><span class="lineCov">          1 :   Object.create(null, {foo: { set: 0, get: 0 }});</span>
+<span class="lineNum">     238 </span><span class="lineCov">          1 :   assertTrue(false);</span>
+<span class="lineNum">     239 </span><span class="lineCov">          1 : } catch (e) {</span>
+<span class="lineNum">     240 </span><span class="lineCov">          1 :   assertTrue(/Getter must be a function/.test(e));</span>
+<span class="lineNum">     241 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     242 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     243 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     244 </span><span class="lineCov">          1 : // Ensure that only enumerable own properties on the descriptor are used.</span>
+<span class="lineNum">     245 </span><span class="lineCov">          1 : var tricky = Object.create(</span>
+<span class="lineNum">     246 </span><span class="lineCov">          1 :   { foo: { value: 1, enumerable: true }},</span>
+<span class="lineNum">     247 </span><span class="lineCov">          1 :   { bar: { value: { value: 2, enumerable: true }, enumerable: false },</span>
+<span class="lineNum">     248 </span><span class="lineCov">          1 :     baz: { value: { value: 4, enumerable: false }, enumerable: true },</span>
+<span class="lineNum">     249 </span><span class="lineCov">          1 :     fizz: { value: { value: 8, enumerable: false }, enumerable: false },</span>
+<span class="lineNum">     250 </span><span class="lineCov">          1 :     buzz: { value: { value: 16, enumerable: true }, enumerable: true }});</span>
+<span class="lineNum">     251 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     252 </span><span class="lineCov">          1 : assertEquals(1, tricky.foo.value);</span>
+<span class="lineNum">     253 </span><span class="lineCov">          1 : assertEquals(2, tricky.bar.value);</span>
+<span class="lineNum">     254 </span><span class="lineCov">          1 : assertEquals(4, tricky.baz.value);</span>
+<span class="lineNum">     255 </span><span class="lineCov">          1 : assertEquals(8, tricky.fizz.value);</span>
+<span class="lineNum">     256 </span><span class="lineCov">          1 : assertEquals(16, tricky.buzz.value);</span>
+<span class="lineNum">     257 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     258 </span><span class="lineCov">          1 : var sonOfTricky = Object.create(null, tricky);</span>
+<span class="lineNum">     259 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     260 </span><span class="lineCov">          1 : assertFalse(&quot;foo&quot; in sonOfTricky);</span>
+<span class="lineNum">     261 </span><span class="lineCov">          1 : assertFalse(&quot;bar&quot; in sonOfTricky);</span>
+<span class="lineNum">     262 </span><span class="lineCov">          1 : assertTrue(&quot;baz&quot; in sonOfTricky);</span>
+<span class="lineNum">     263 </span><span class="lineCov">          1 : assertFalse(&quot;fizz&quot; in sonOfTricky);</span>
+<span class="lineNum">     264 </span><span class="lineCov">          1 : assertTrue(&quot;buzz&quot; in sonOfTricky);</span>
+<span class="lineNum">     265 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     266 </span><span class="lineCov">          1 : var sum = 0;</span>
+<span class="lineNum">     267 </span><span class="lineCov">          1 : for (x in sonOfTricky) {</span>
+<span class="lineNum">     268 </span><span class="lineCov">          1 :   assertTrue(x === 'buzz');</span>
+<span class="lineNum">     269 </span><span class="lineCov">          1 :   sum += sonOfTricky[x];</span>
+<span class="lineNum">     270 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     271 </span><span class="lineCov">          1 : assertEquals(16, sum);</span>
+<a name="272"><span class="lineNum">     272 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     273 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     274 </span><span class="lineCov">          1 : (function createWithEmptyProtoInfoCreateMap() {</span>
+<span class="lineNum">     275 </span><span class="lineCov">          1 :   var proto = {a:1};</span>
+<span class="lineNum">     276 </span><span class="lineCov">          1 :   var instance = {__proto__: proto };</span>
+<span class="lineNum">     277 </span><span class="lineCov">          1 :   // Try force creation of prototype info on proto by loading a proto property.</span>
+<span class="lineNum">     278 </span><span class="lineCov">          1 :   assertEquals(instance.a, 1);</span>
+<span class="lineNum">     279 </span><span class="lineCov">          1 :   var result = Object.create(proto, {});</span>
+<span class="lineNum">     280 </span><span class="lineCov">          1 :   assertEquals(result.a, 1);</span>
+<span class="lineNum">     281 </span><span class="lineCov">          1 :   assertEquals(result.__proto__, proto);</span>
+<span class="lineNum">     282 </span><span class="lineCov">          1 : })()</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

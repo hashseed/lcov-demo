@@ -1,0 +1,131 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - language/module-code/instn-star-iee-cycle.js</title>
+  <link rel="stylesheet" type="text/css" href="../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../index.html">top level</a> - <a href="index.html">language/module-code</a> - instn-star-iee-cycle.js<span style="font-size: 80%;"> (source / <a href="instn-star-iee-cycle.js.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">56</td>
+            <td class="headerCovTableEntry">56</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2017-02-14</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span><span class="lineCov">          4 : // Copyright (C) 2016 the V8 project authors. All rights reserved.</span></a>
+<span class="lineNum">       2 </span><span class="lineCov">          4 : // This code is governed by the BSD license found in the LICENSE file.</span>
+<span class="lineNum">       3 </span><span class="lineCov">          4 : /*---</span>
+<span class="lineNum">       4 </span><span class="lineCov">          4 : description: &gt;</span>
+<span class="lineNum">       5 </span><span class="lineCov">          4 :     There are no restrictions on the number of cycles during module traversal</span>
+<span class="lineNum">       6 </span><span class="lineCov">          4 :     during indirect export resolution, given unique export names.</span>
+<span class="lineNum">       7 </span><span class="lineCov">          4 : esid: sec-moduledeclarationinstantiation</span>
+<span class="lineNum">       8 </span><span class="lineCov">          4 : info: |</span>
+<span class="lineNum">       9 </span><span class="lineCov">          4 :     [...]</span>
+<span class="lineNum">      10 </span><span class="lineCov">          4 :     12. For each ImportEntry Record in in module.[[ImportEntries]], do</span>
+<span class="lineNum">      11 </span><span class="lineCov">          4 :         a. Let importedModule be ? HostResolveImportedModule(module,</span>
+<span class="lineNum">      12 </span><span class="lineCov">          4 :            in.[[ModuleRequest]]).</span>
+<span class="lineNum">      13 </span><span class="lineCov">          4 :         b. If in.[[ImportName]] is &quot;*&quot;, then</span>
+<span class="lineNum">      14 </span><span class="lineCov">          4 :            i. Let namespace be ? GetModuleNamespace(importedModule).</span>
+<span class="lineNum">      15 </span><span class="lineCov">          4 :            ii. Perform ! envRec.CreateImmutableBinding(in.[[LocalName]], true).</span>
+<span class="lineNum">      16 </span><span class="lineCov">          4 :            iii. Call envRec.InitializeBinding(in.[[LocalName]], namespace).</span>
+<span class="lineNum">      17 </span><span class="lineCov">          4 :         [...]</span>
+<span class="lineNum">      18 </span><span class="lineCov">          4 : </span>
+<span class="lineNum">      19 </span><span class="lineCov">          4 :     15.2.1.16.3 ResolveExport( exportName, resolveSet, exportStarSet )</span>
+<span class="lineNum">      20 </span><span class="lineCov">          4 : </span>
+<span class="lineNum">      21 </span><span class="lineCov">          4 :     2. For each Record {[[Module]], [[ExportName]]} r in resolveSet, do:</span>
+<span class="lineNum">      22 </span><span class="lineCov">          4 :        a. If module and r.[[Module]] are the same Module Record and</span>
+<span class="lineNum">      23 </span><span class="lineCov">          4 :           SameValue(exportName, r.[[ExportName]]) is true, then</span>
+<span class="lineNum">      24 </span><span class="lineCov">          4 :           i. Assert: this is a circular import request.</span>
+<span class="lineNum">      25 </span><span class="lineCov">          4 :           ii. Return null.</span>
+<span class="lineNum">      26 </span><span class="lineCov">          4 :     3. Append the Record {[[Module]]: module, [[ExportName]]: exportName} to resolveSet.</span>
+<span class="lineNum">      27 </span><span class="lineCov">          4 :     [...]</span>
+<span class="lineNum">      28 </span><span class="lineCov">          4 :     5. For each ExportEntry Record e in module.[[IndirectExportEntries]], do</span>
+<span class="lineNum">      29 </span><span class="lineCov">          4 :        a. If SameValue(exportName, e.[[ExportName]]) is true, then</span>
+<span class="lineNum">      30 </span><span class="lineCov">          4 :           i. Assert: module imports a specific binding for this export.</span>
+<span class="lineNum">      31 </span><span class="lineCov">          4 :           ii. Let importedModule be ? HostResolveImportedModule(module,</span>
+<span class="lineNum">      32 </span><span class="lineCov">          4 :               e.[[ModuleRequest]]).</span>
+<span class="lineNum">      33 </span><span class="lineCov">          4 :           iii. Let indirectResolution be ?</span>
+<span class="lineNum">      34 </span><span class="lineCov">          4 :                importedModule.ResolveExport(e.[[ImportName]], resolveSet,</span>
+<span class="lineNum">      35 </span><span class="lineCov">          4 :                exportStarSet).</span>
+<span class="lineNum">      36 </span><span class="lineCov">          4 :           iv. If indirectResolution is not null, return indirectResolution.</span>
+<span class="lineNum">      37 </span><span class="lineCov">          4 : flags: [module]</span>
+<span class="lineNum">      38 </span><span class="lineCov">          4 : ---*/</span>
+<span class="lineNum">      39 </span><span class="lineCov">          4 : </span>
+<span class="lineNum">      40 </span><span class="lineCov">          4 : import * as ns from './instn-star-iee-cycle-2_FIXTURE.js';</span>
+<span class="lineNum">      41 </span><span class="lineCov">          4 : export { c as b } from './instn-star-iee-cycle-2_FIXTURE.js';</span>
+<span class="lineNum">      42 </span><span class="lineCov">          4 : export { e as d } from './instn-star-iee-cycle-2_FIXTURE.js';</span>
+<span class="lineNum">      43 </span><span class="lineCov">          4 : export { g as f } from './instn-star-iee-cycle-2_FIXTURE.js';</span>
+<span class="lineNum">      44 </span><span class="lineCov">          4 : export { i as h } from './instn-star-iee-cycle-2_FIXTURE.js';</span>
+<span class="lineNum">      45 </span><span class="lineCov">          4 : export { k as j } from './instn-star-iee-cycle-2_FIXTURE.js';</span>
+<span class="lineNum">      46 </span><span class="lineCov">          4 : export { m as l } from './instn-star-iee-cycle-2_FIXTURE.js';</span>
+<span class="lineNum">      47 </span><span class="lineCov">          4 : export { o as n } from './instn-star-iee-cycle-2_FIXTURE.js';</span>
+<span class="lineNum">      48 </span><span class="lineCov">          4 : export { q as p } from './instn-star-iee-cycle-2_FIXTURE.js';</span>
+<span class="lineNum">      49 </span><span class="lineCov">          4 : export { s as r } from './instn-star-iee-cycle-2_FIXTURE.js';</span>
+<span class="lineNum">      50 </span><span class="lineCov">          4 : export { u as t } from './instn-star-iee-cycle-2_FIXTURE.js';</span>
+<span class="lineNum">      51 </span><span class="lineCov">          4 : export { w as v } from './instn-star-iee-cycle-2_FIXTURE.js';</span>
+<span class="lineNum">      52 </span><span class="lineCov">          4 : export { y as x } from './instn-star-iee-cycle-2_FIXTURE.js';</span>
+<span class="lineNum">      53 </span><span class="lineCov">          4 : export var z = 23;</span>
+<span class="lineNum">      54 </span><span class="lineCov">          4 : </span>
+<span class="lineNum">      55 </span><span class="lineCov">          4 : assert.sameValue(ns.a, 23);</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

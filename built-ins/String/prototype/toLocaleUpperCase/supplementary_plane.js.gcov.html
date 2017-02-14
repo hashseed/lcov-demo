@@ -1,0 +1,146 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - built-ins/String/prototype/toLocaleUpperCase/supplementary_plane.js</title>
+  <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../index.html">top level</a> - <a href="index.html">built-ins/String/prototype/toLocaleUpperCase</a> - supplementary_plane.js<span style="font-size: 80%;"> (source / <a href="supplementary_plane.js.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">71</td>
+            <td class="headerCovTableEntry">71</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2017-02-14</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr><td><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span><span class="lineCov">          2 : // Copyright (C) 2015 André Bargull. All rights reserved.</span></a>
+<span class="lineNum">       2 </span><span class="lineCov">          2 : // This code is governed by the BSD license found in the LICENSE file.</span>
+<span class="lineNum">       3 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">       4 </span><span class="lineCov">          2 : /*---</span>
+<span class="lineNum">       5 </span><span class="lineCov">          2 : description: String.prototype.toLocaleUpperCase() iterates over code points</span>
+<span class="lineNum">       6 </span><span class="lineCov">          2 : info: &gt;</span>
+<span class="lineNum">       7 </span><span class="lineCov">          2 :     21.1.3.21 String.prototype.toLocaleUpperCase()</span>
+<span class="lineNum">       8 </span><span class="lineCov">          2 :     ...</span>
+<span class="lineNum">       9 </span><span class="lineCov">          2 :     This function interprets a String value as a sequence of UTF-16 encoded</span>
+<span class="lineNum">      10 </span><span class="lineCov">          2 :     code points, as described in 6.1.4.</span>
+<span class="lineNum">      11 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      12 </span><span class="lineCov">          2 :     This function works exactly the same as toUpperCase [...].</span>
+<span class="lineNum">      13 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      14 </span><span class="lineCov">          2 :     21.1.3.24 String.prototype.toUpperCase ( )</span>
+<span class="lineNum">      15 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      16 </span><span class="lineCov">          2 :     This function behaves in exactly the same way as String.prototype.toLowerCase,</span>
+<span class="lineNum">      17 </span><span class="lineCov">          2 :     except that code points are mapped to their uppercase equivalents as specified</span>
+<span class="lineNum">      18 </span><span class="lineCov">          2 :     in the Unicode Character Database.</span>
+<span class="lineNum">      19 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      20 </span><span class="lineCov">          2 :     21.1.3.22 String.prototype.toLowerCase ( )</span>
+<span class="lineNum">      21 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      22 </span><span class="lineCov">          2 :     ...</span>
+<span class="lineNum">      23 </span><span class="lineCov">          2 :     4. Let cpList be a List containing in order the code points as defined in</span>
+<span class="lineNum">      24 </span><span class="lineCov">          2 :        6.1.4 of S, starting at the first element of S.</span>
+<span class="lineNum">      25 </span><span class="lineCov">          2 :     5. For each code point c in cpList, if the Unicode Character Database</span>
+<span class="lineNum">      26 </span><span class="lineCov">          2 :        provides a language insensitive lower case equivalent of c then replace</span>
+<span class="lineNum">      27 </span><span class="lineCov">          2 :        c in cpList with that equivalent code point(s).</span>
+<span class="lineNum">      28 </span><span class="lineCov">          2 : es6id: 21.1.3.21</span>
+<span class="lineNum">      29 </span><span class="lineCov">          2 : ---*/</span>
+<span class="lineNum">      30 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      31 </span><span class="lineCov">          2 : assert.sameValue(&quot;\uD801\uDC28&quot;.toLocaleUpperCase(), &quot;\uD801\uDC00&quot;, &quot;DESERET SMALL LETTER LONG I&quot;);</span>
+<span class="lineNum">      32 </span><span class="lineCov">          2 : assert.sameValue(&quot;\uD801\uDC29&quot;.toLocaleUpperCase(), &quot;\uD801\uDC01&quot;, &quot;DESERET SMALL LETTER LONG E&quot;);</span>
+<span class="lineNum">      33 </span><span class="lineCov">          2 : assert.sameValue(&quot;\uD801\uDC2A&quot;.toLocaleUpperCase(), &quot;\uD801\uDC02&quot;, &quot;DESERET SMALL LETTER LONG A&quot;);</span>
+<span class="lineNum">      34 </span><span class="lineCov">          2 : assert.sameValue(&quot;\uD801\uDC2B&quot;.toLocaleUpperCase(), &quot;\uD801\uDC03&quot;, &quot;DESERET SMALL LETTER LONG AH&quot;);</span>
+<span class="lineNum">      35 </span><span class="lineCov">          2 : assert.sameValue(&quot;\uD801\uDC2C&quot;.toLocaleUpperCase(), &quot;\uD801\uDC04&quot;, &quot;DESERET SMALL LETTER LONG O&quot;);</span>
+<span class="lineNum">      36 </span><span class="lineCov">          2 : assert.sameValue(&quot;\uD801\uDC2D&quot;.toLocaleUpperCase(), &quot;\uD801\uDC05&quot;, &quot;DESERET SMALL LETTER LONG OO&quot;);</span>
+<span class="lineNum">      37 </span><span class="lineCov">          2 : assert.sameValue(&quot;\uD801\uDC2E&quot;.toLocaleUpperCase(), &quot;\uD801\uDC06&quot;, &quot;DESERET SMALL LETTER SHORT I&quot;);</span>
+<span class="lineNum">      38 </span><span class="lineCov">          2 : assert.sameValue(&quot;\uD801\uDC2F&quot;.toLocaleUpperCase(), &quot;\uD801\uDC07&quot;, &quot;DESERET SMALL LETTER SHORT E&quot;);</span>
+<span class="lineNum">      39 </span><span class="lineCov">          2 : assert.sameValue(&quot;\uD801\uDC30&quot;.toLocaleUpperCase(), &quot;\uD801\uDC08&quot;, &quot;DESERET SMALL LETTER SHORT A&quot;);</span>
+<span class="lineNum">      40 </span><span class="lineCov">          2 : assert.sameValue(&quot;\uD801\uDC31&quot;.toLocaleUpperCase(), &quot;\uD801\uDC09&quot;, &quot;DESERET SMALL LETTER SHORT AH&quot;);</span>
+<span class="lineNum">      41 </span><span class="lineCov">          2 : assert.sameValue(&quot;\uD801\uDC32&quot;.toLocaleUpperCase(), &quot;\uD801\uDC0A&quot;, &quot;DESERET SMALL LETTER SHORT O&quot;);</span>
+<span class="lineNum">      42 </span><span class="lineCov">          2 : assert.sameValue(&quot;\uD801\uDC33&quot;.toLocaleUpperCase(), &quot;\uD801\uDC0B&quot;, &quot;DESERET SMALL LETTER SHORT OO&quot;);</span>
+<span class="lineNum">      43 </span><span class="lineCov">          2 : assert.sameValue(&quot;\uD801\uDC34&quot;.toLocaleUpperCase(), &quot;\uD801\uDC0C&quot;, &quot;DESERET SMALL LETTER AY&quot;);</span>
+<span class="lineNum">      44 </span><span class="lineCov">          2 : assert.sameValue(&quot;\uD801\uDC35&quot;.toLocaleUpperCase(), &quot;\uD801\uDC0D&quot;, &quot;DESERET SMALL LETTER OW&quot;);</span>
+<span class="lineNum">      45 </span><span class="lineCov">          2 : assert.sameValue(&quot;\uD801\uDC36&quot;.toLocaleUpperCase(), &quot;\uD801\uDC0E&quot;, &quot;DESERET SMALL LETTER WU&quot;);</span>
+<span class="lineNum">      46 </span><span class="lineCov">          2 : assert.sameValue(&quot;\uD801\uDC37&quot;.toLocaleUpperCase(), &quot;\uD801\uDC0F&quot;, &quot;DESERET SMALL LETTER YEE&quot;);</span>
+<span class="lineNum">      47 </span><span class="lineCov">          2 : assert.sameValue(&quot;\uD801\uDC38&quot;.toLocaleUpperCase(), &quot;\uD801\uDC10&quot;, &quot;DESERET SMALL LETTER H&quot;);</span>
+<span class="lineNum">      48 </span><span class="lineCov">          2 : assert.sameValue(&quot;\uD801\uDC39&quot;.toLocaleUpperCase(), &quot;\uD801\uDC11&quot;, &quot;DESERET SMALL LETTER PEE&quot;);</span>
+<span class="lineNum">      49 </span><span class="lineCov">          2 : assert.sameValue(&quot;\uD801\uDC3A&quot;.toLocaleUpperCase(), &quot;\uD801\uDC12&quot;, &quot;DESERET SMALL LETTER BEE&quot;);</span>
+<span class="lineNum">      50 </span><span class="lineCov">          2 : assert.sameValue(&quot;\uD801\uDC3B&quot;.toLocaleUpperCase(), &quot;\uD801\uDC13&quot;, &quot;DESERET SMALL LETTER TEE&quot;);</span>
+<span class="lineNum">      51 </span><span class="lineCov">          2 : assert.sameValue(&quot;\uD801\uDC3C&quot;.toLocaleUpperCase(), &quot;\uD801\uDC14&quot;, &quot;DESERET SMALL LETTER DEE&quot;);</span>
+<span class="lineNum">      52 </span><span class="lineCov">          2 : assert.sameValue(&quot;\uD801\uDC3D&quot;.toLocaleUpperCase(), &quot;\uD801\uDC15&quot;, &quot;DESERET SMALL LETTER CHEE&quot;);</span>
+<span class="lineNum">      53 </span><span class="lineCov">          2 : assert.sameValue(&quot;\uD801\uDC3E&quot;.toLocaleUpperCase(), &quot;\uD801\uDC16&quot;, &quot;DESERET SMALL LETTER JEE&quot;);</span>
+<span class="lineNum">      54 </span><span class="lineCov">          2 : assert.sameValue(&quot;\uD801\uDC3F&quot;.toLocaleUpperCase(), &quot;\uD801\uDC17&quot;, &quot;DESERET SMALL LETTER KAY&quot;);</span>
+<span class="lineNum">      55 </span><span class="lineCov">          2 : assert.sameValue(&quot;\uD801\uDC40&quot;.toLocaleUpperCase(), &quot;\uD801\uDC18&quot;, &quot;DESERET SMALL LETTER GAY&quot;);</span>
+<span class="lineNum">      56 </span><span class="lineCov">          2 : assert.sameValue(&quot;\uD801\uDC41&quot;.toLocaleUpperCase(), &quot;\uD801\uDC19&quot;, &quot;DESERET SMALL LETTER EF&quot;);</span>
+<span class="lineNum">      57 </span><span class="lineCov">          2 : assert.sameValue(&quot;\uD801\uDC42&quot;.toLocaleUpperCase(), &quot;\uD801\uDC1A&quot;, &quot;DESERET SMALL LETTER VEE&quot;);</span>
+<span class="lineNum">      58 </span><span class="lineCov">          2 : assert.sameValue(&quot;\uD801\uDC43&quot;.toLocaleUpperCase(), &quot;\uD801\uDC1B&quot;, &quot;DESERET SMALL LETTER ETH&quot;);</span>
+<span class="lineNum">      59 </span><span class="lineCov">          2 : assert.sameValue(&quot;\uD801\uDC44&quot;.toLocaleUpperCase(), &quot;\uD801\uDC1C&quot;, &quot;DESERET SMALL LETTER THEE&quot;);</span>
+<span class="lineNum">      60 </span><span class="lineCov">          2 : assert.sameValue(&quot;\uD801\uDC45&quot;.toLocaleUpperCase(), &quot;\uD801\uDC1D&quot;, &quot;DESERET SMALL LETTER ES&quot;);</span>
+<span class="lineNum">      61 </span><span class="lineCov">          2 : assert.sameValue(&quot;\uD801\uDC46&quot;.toLocaleUpperCase(), &quot;\uD801\uDC1E&quot;, &quot;DESERET SMALL LETTER ZEE&quot;);</span>
+<span class="lineNum">      62 </span><span class="lineCov">          2 : assert.sameValue(&quot;\uD801\uDC47&quot;.toLocaleUpperCase(), &quot;\uD801\uDC1F&quot;, &quot;DESERET SMALL LETTER ESH&quot;);</span>
+<span class="lineNum">      63 </span><span class="lineCov">          2 : assert.sameValue(&quot;\uD801\uDC48&quot;.toLocaleUpperCase(), &quot;\uD801\uDC20&quot;, &quot;DESERET SMALL LETTER ZHEE&quot;);</span>
+<span class="lineNum">      64 </span><span class="lineCov">          2 : assert.sameValue(&quot;\uD801\uDC49&quot;.toLocaleUpperCase(), &quot;\uD801\uDC21&quot;, &quot;DESERET SMALL LETTER ER&quot;);</span>
+<span class="lineNum">      65 </span><span class="lineCov">          2 : assert.sameValue(&quot;\uD801\uDC4A&quot;.toLocaleUpperCase(), &quot;\uD801\uDC22&quot;, &quot;DESERET SMALL LETTER EL&quot;);</span>
+<span class="lineNum">      66 </span><span class="lineCov">          2 : assert.sameValue(&quot;\uD801\uDC4B&quot;.toLocaleUpperCase(), &quot;\uD801\uDC23&quot;, &quot;DESERET SMALL LETTER EM&quot;);</span>
+<span class="lineNum">      67 </span><span class="lineCov">          2 : assert.sameValue(&quot;\uD801\uDC4C&quot;.toLocaleUpperCase(), &quot;\uD801\uDC24&quot;, &quot;DESERET SMALL LETTER EN&quot;);</span>
+<span class="lineNum">      68 </span><span class="lineCov">          2 : assert.sameValue(&quot;\uD801\uDC4D&quot;.toLocaleUpperCase(), &quot;\uD801\uDC25&quot;, &quot;DESERET SMALL LETTER ENG&quot;);</span>
+<span class="lineNum">      69 </span><span class="lineCov">          2 : assert.sameValue(&quot;\uD801\uDC4E&quot;.toLocaleUpperCase(), &quot;\uD801\uDC26&quot;, &quot;DESERET SMALL LETTER OI&quot;);</span>
+<span class="lineNum">      70 </span><span class="lineCov">          2 : assert.sameValue(&quot;\uD801\uDC4F&quot;.toLocaleUpperCase(), &quot;\uD801\uDC27&quot;, &quot;DESERET SMALL LETTER EW&quot;);</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

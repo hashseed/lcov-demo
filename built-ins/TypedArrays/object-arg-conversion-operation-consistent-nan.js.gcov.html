@@ -1,0 +1,136 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - built-ins/TypedArrays/object-arg-conversion-operation-consistent-nan.js</title>
+  <link rel="stylesheet" type="text/css" href="../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../index.html">top level</a> - <a href="index.html">built-ins/TypedArrays</a> - object-arg-conversion-operation-consistent-nan.js<span style="font-size: 80%;"> (source / <a href="object-arg-conversion-operation-consistent-nan.js.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">61</td>
+            <td class="headerCovTableEntry">61</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2017-02-14</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span><span class="lineCov">          2 : // Copyright (C) 2016 the V8 project authors. All rights reserved.</span></a>
+<span class="lineNum">       2 </span><span class="lineCov">          2 : // This code is governed by the BSD license found in the LICENSE file.</span>
+<span class="lineNum">       3 </span><span class="lineCov">          2 : /*---</span>
+<span class="lineNum">       4 </span><span class="lineCov">          2 : esid: sec-typedarray-object</span>
+<span class="lineNum">       5 </span><span class="lineCov">          2 : description: Consistent canonicalization of NaN values</span>
+<span class="lineNum">       6 </span><span class="lineCov">          2 : info: &gt;</span>
+<span class="lineNum">       7 </span><span class="lineCov">          2 :   22.2.4.4 TypedArray ( object )</span>
+<span class="lineNum">       8 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">       9 </span><span class="lineCov">          2 :   This description applies only if the TypedArray function is called with at</span>
+<span class="lineNum">      10 </span><span class="lineCov">          2 :   least one argument and the Type of the first argument is Object and that</span>
+<span class="lineNum">      11 </span><span class="lineCov">          2 :   object does not have either a [[TypedArrayName]] or an [[ArrayBufferData]]</span>
+<span class="lineNum">      12 </span><span class="lineCov">          2 :   internal slot.</span>
+<span class="lineNum">      13 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      14 </span><span class="lineCov">          2 :   ...</span>
+<span class="lineNum">      15 </span><span class="lineCov">          2 :   9. Repeat, while k &lt; len</span>
+<span class="lineNum">      16 </span><span class="lineCov">          2 :     ...</span>
+<span class="lineNum">      17 </span><span class="lineCov">          2 :     c. Perform ? Set(O, Pk, kValue, true).</span>
+<span class="lineNum">      18 </span><span class="lineCov">          2 :   ...</span>
+<span class="lineNum">      19 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      20 </span><span class="lineCov">          2 :   9.4.5.9 IntegerIndexedElementSet ( O, index, value )</span>
+<span class="lineNum">      21 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      22 </span><span class="lineCov">          2 :   ...</span>
+<span class="lineNum">      23 </span><span class="lineCov">          2 :   15. Perform SetValueInBuffer(buffer, indexedPosition, elementType, numValue).</span>
+<span class="lineNum">      24 </span><span class="lineCov">          2 :   ...</span>
+<span class="lineNum">      25 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      26 </span><span class="lineCov">          2 :   24.1.1.6 SetValueInBuffer ( arrayBuffer, byteIndex, type, value [ ,</span>
+<span class="lineNum">      27 </span><span class="lineCov">          2 :   isLittleEndian ] )</span>
+<span class="lineNum">      28 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      29 </span><span class="lineCov">          2 :   ...</span>
+<span class="lineNum">      30 </span><span class="lineCov">          2 :   8. If type is &quot;Float32&quot;, then</span>
+<span class="lineNum">      31 </span><span class="lineCov">          2 :      a. Set rawBytes to a List containing the 4 bytes that are the result</span>
+<span class="lineNum">      32 </span><span class="lineCov">          2 :         of converting value to IEEE 754-2008 binary32 format using “Round to</span>
+<span class="lineNum">      33 </span><span class="lineCov">          2 :         nearest, ties to even” rounding mode. If isLittleEndian is false, the</span>
+<span class="lineNum">      34 </span><span class="lineCov">          2 :         bytes are arranged in big endian order. Otherwise, the bytes are</span>
+<span class="lineNum">      35 </span><span class="lineCov">          2 :         arranged in little endian order. If value is NaN, rawValue may be set</span>
+<span class="lineNum">      36 </span><span class="lineCov">          2 :         to any implementation chosen IEEE 754-2008 binary64 format Not-a-Number</span>
+<span class="lineNum">      37 </span><span class="lineCov">          2 :         encoding. An implementation must always choose the same encoding for</span>
+<span class="lineNum">      38 </span><span class="lineCov">          2 :         each implementation distinguishable NaN value.</span>
+<span class="lineNum">      39 </span><span class="lineCov">          2 :   9. Else, if type is &quot;Float64&quot;, then</span>
+<span class="lineNum">      40 </span><span class="lineCov">          2 :      a. Set rawBytes to a List containing the 8 bytes that are the IEEE</span>
+<span class="lineNum">      41 </span><span class="lineCov">          2 :         754-2008 binary64 format encoding of value. If isLittleEndian is false,</span>
+<span class="lineNum">      42 </span><span class="lineCov">          2 :         the bytes are arranged in big endian order. Otherwise, the bytes are</span>
+<span class="lineNum">      43 </span><span class="lineCov">          2 :         arranged in little endian order. If value is NaN, rawValue may be set</span>
+<span class="lineNum">      44 </span><span class="lineCov">          2 :         to any implementation chosen IEEE 754-2008 binary32 format Not-a-Number</span>
+<span class="lineNum">      45 </span><span class="lineCov">          2 :         encoding. An implementation must always choose the same encoding for</span>
+<span class="lineNum">      46 </span><span class="lineCov">          2 :         each implementation distinguishable NaN value.</span>
+<span class="lineNum">      47 </span><span class="lineCov">          2 :   ...</span>
+<span class="lineNum">      48 </span><span class="lineCov">          2 : includes: [nans.js, testTypedArray.js, compareArray.js]</span>
+<a name="49"><span class="lineNum">      49 </span><span class="lineCov">          2 : ---*/</span></a>
+<span class="lineNum">      50 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      51 </span><span class="lineCov">          4 : function body(FloatArray) {</span>
+<span class="lineNum">      52 </span><span class="lineCov">          4 :   var first = new FloatArray(distinctNaNs);</span>
+<span class="lineNum">      53 </span><span class="lineCov">          4 :   var second = new FloatArray(distinctNaNs);</span>
+<span class="lineNum">      54 </span><span class="lineCov">          4 :   var firstBytes = new Uint8Array(first.buffer);</span>
+<span class="lineNum">      55 </span><span class="lineCov">          4 :   var secondBytes = new Uint8Array(second.buffer);</span>
+<span class="lineNum">      56 </span><span class="lineCov">          4 : </span>
+<span class="lineNum">      57 </span><span class="lineCov">          4 :   assert(compareArray(firstBytes, secondBytes));</span>
+<span class="lineNum">      58 </span><span class="lineCov">          4 : }</span>
+<span class="lineNum">      59 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      60 </span><span class="lineCov">          2 : testWithTypedArrayConstructors(body, [Float32Array, Float64Array]);</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

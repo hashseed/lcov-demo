@@ -1,0 +1,351 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - /usr/local/google/home/yangguo/v8/test/mjsunit/string-index.js</title>
+  <link rel="stylesheet" type="text/css" href="../../../../../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../../../../../index.html">top level</a> - <a href="index.html">usr/local/google/home/yangguo/v8/test/mjsunit</a> - string-index.js<span style="font-size: 80%;"> (source / <a href="string-index.js.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">276</td>
+            <td class="headerCovTableEntry">276</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2017-02-14</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr><td><img src="../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span><span class="lineCov">          1 : // Copyright 2008 the V8 project authors. All rights reserved.</span></a>
+<span class="lineNum">       2 </span><span class="lineCov">          1 : // Redistribution and use in source and binary forms, with or without</span>
+<span class="lineNum">       3 </span><span class="lineCov">          1 : // modification, are permitted provided that the following conditions are</span>
+<span class="lineNum">       4 </span><span class="lineCov">          1 : // met:</span>
+<span class="lineNum">       5 </span><span class="lineCov">          1 : //</span>
+<span class="lineNum">       6 </span><span class="lineCov">          1 : //     * Redistributions of source code must retain the above copyright</span>
+<span class="lineNum">       7 </span><span class="lineCov">          1 : //       notice, this list of conditions and the following disclaimer.</span>
+<span class="lineNum">       8 </span><span class="lineCov">          1 : //     * Redistributions in binary form must reproduce the above</span>
+<span class="lineNum">       9 </span><span class="lineCov">          1 : //       copyright notice, this list of conditions and the following</span>
+<span class="lineNum">      10 </span><span class="lineCov">          1 : //       disclaimer in the documentation and/or other materials provided</span>
+<span class="lineNum">      11 </span><span class="lineCov">          1 : //       with the distribution.</span>
+<span class="lineNum">      12 </span><span class="lineCov">          1 : //     * Neither the name of Google Inc. nor the names of its</span>
+<span class="lineNum">      13 </span><span class="lineCov">          1 : //       contributors may be used to endorse or promote products derived</span>
+<span class="lineNum">      14 </span><span class="lineCov">          1 : //       from this software without specific prior written permission.</span>
+<span class="lineNum">      15 </span><span class="lineCov">          1 : //</span>
+<span class="lineNum">      16 </span><span class="lineCov">          1 : // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="lineNum">      17 </span><span class="lineCov">          1 : // &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="lineNum">      18 </span><span class="lineCov">          1 : // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR</span>
+<span class="lineNum">      19 </span><span class="lineCov">          1 : // A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT</span>
+<span class="lineNum">      20 </span><span class="lineCov">          1 : // OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,</span>
+<span class="lineNum">      21 </span><span class="lineCov">          1 : // SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT</span>
+<span class="lineNum">      22 </span><span class="lineCov">          1 : // LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,</span>
+<span class="lineNum">      23 </span><span class="lineCov">          1 : // DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY</span>
+<span class="lineNum">      24 </span><span class="lineCov">          1 : // THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT</span>
+<span class="lineNum">      25 </span><span class="lineCov">          1 : // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE</span>
+<span class="lineNum">      26 </span><span class="lineCov">          1 : // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="lineNum">      27 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      28 </span><span class="lineCov">          1 : // Flags: --allow-natives-syntax</span>
+<span class="lineNum">      29 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      30 </span><span class="lineCov">          1 : /**</span>
+<span class="lineNum">      31 </span><span class="lineCov">          1 :  * @fileoverview Test indexing on strings with [].</span>
+<span class="lineNum">      32 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">      33 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      34 </span><span class="lineCov">          1 : var foo = &quot;Foo&quot;;</span>
+<span class="lineNum">      35 </span><span class="lineCov">          1 : assertEquals(&quot;Foo&quot;, foo);</span>
+<span class="lineNum">      36 </span><span class="lineCov">          1 : assertEquals(&quot;F&quot;, foo[0]);</span>
+<span class="lineNum">      37 </span><span class="lineCov">          1 : assertEquals(&quot;o&quot;, foo[1]);</span>
+<span class="lineNum">      38 </span><span class="lineCov">          1 : assertEquals(&quot;o&quot;, foo[2]);</span>
+<span class="lineNum">      39 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      40 </span><span class="lineCov">          1 : // Test string keyed load IC.</span>
+<span class="lineNum">      41 </span><span class="lineCov">          1 : for (var i = 0; i &lt; 10; i++) {</span>
+<span class="lineNum">      42 </span><span class="lineCov">          1 :   assertEquals(&quot;F&quot;, foo[0]);</span>
+<span class="lineNum">      43 </span><span class="lineCov">          1 :   assertEquals(&quot;o&quot;, foo[1]);</span>
+<span class="lineNum">      44 </span><span class="lineCov">          1 :   assertEquals(&quot;o&quot;, foo[2]);</span>
+<span class="lineNum">      45 </span><span class="lineCov">          1 :   assertEquals(&quot;F&quot;, (foo[0] + &quot;BarBazQuuxFooBarQuux&quot;)[0]);</span>
+<span class="lineNum">      46 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      47 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      48 </span><span class="lineCov">          1 : assertEquals(&quot;F&quot;, foo[&quot;0&quot; + &quot;&quot;], &quot;string index&quot;);</span>
+<span class="lineNum">      49 </span><span class="lineCov">          1 : assertEquals(&quot;o&quot;, foo[&quot;1&quot;], &quot;string index&quot;);</span>
+<span class="lineNum">      50 </span><span class="lineCov">          1 : assertEquals(&quot;o&quot;, foo[&quot;2&quot;], &quot;string index&quot;);</span>
+<span class="lineNum">      51 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      52 </span><span class="lineCov">          1 : assertEquals(&quot;undefined&quot;, typeof(foo[3]), &quot;out of range&quot;);</span>
+<span class="lineNum">      53 </span><span class="lineCov">          1 : // SpiderMonkey 1.5 fails this next one.  So does FF 2.0.6.</span>
+<span class="lineNum">      54 </span><span class="lineCov">          1 : assertEquals(&quot;undefined&quot;, typeof(foo[-1]), &quot;known failure in SpiderMonkey 1.5&quot;);</span>
+<span class="lineNum">      55 </span><span class="lineCov">          1 : assertEquals(&quot;undefined&quot;, typeof(foo[-2]), &quot;negative index&quot;);</span>
+<span class="lineNum">      56 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      57 </span><span class="lineCov">          1 : foo[0] = &quot;f&quot;;</span>
+<span class="lineNum">      58 </span><span class="lineCov">          1 : assertEquals(&quot;Foo&quot;, foo);</span>
+<span class="lineNum">      59 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      60 </span><span class="lineCov">          1 : foo[3] = &quot;t&quot;;</span>
+<span class="lineNum">      61 </span><span class="lineCov">          1 : assertEquals(&quot;Foo&quot;, foo);</span>
+<span class="lineNum">      62 </span><span class="lineCov">          1 : assertEquals(&quot;undefined&quot;, typeof(foo[3]), &quot;out of range&quot;);</span>
+<span class="lineNum">      63 </span><span class="lineCov">          1 : assertEquals(&quot;undefined&quot;, typeof(foo[-2]), &quot;negative index&quot;);</span>
+<span class="lineNum">      64 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      65 </span><span class="lineCov">          1 : var S = new String(&quot;foo&quot;);</span>
+<span class="lineNum">      66 </span><span class="lineCov">          1 : assertEquals(Object(&quot;foo&quot;), S);</span>
+<span class="lineNum">      67 </span><span class="lineCov">          1 : assertEquals(&quot;f&quot;, S[0], &quot;string object&quot;);</span>
+<span class="lineNum">      68 </span><span class="lineCov">          1 : assertEquals(&quot;f&quot;, S[&quot;0&quot;], &quot;string object&quot;);</span>
+<span class="lineNum">      69 </span><span class="lineCov">          1 : S[0] = 'bente';</span>
+<span class="lineNum">      70 </span><span class="lineCov">          1 : assertEquals(&quot;f&quot;, S[0], &quot;string object&quot;);</span>
+<span class="lineNum">      71 </span><span class="lineCov">          1 : assertEquals(&quot;f&quot;, S[&quot;0&quot;], &quot;string object&quot;);</span>
+<span class="lineNum">      72 </span><span class="lineCov">          1 : S[-2] = 'spider';</span>
+<span class="lineNum">      73 </span><span class="lineCov">          1 : assertEquals('spider', S[-2]);</span>
+<span class="lineNum">      74 </span><span class="lineCov">          1 : S[3] = 'monkey';</span>
+<span class="lineNum">      75 </span><span class="lineCov">          1 : assertEquals('monkey', S[3]);</span>
+<span class="lineNum">      76 </span><span class="lineCov">          1 : S['foo'] = 'Fu';</span>
+<span class="lineNum">      77 </span><span class="lineCov">          1 : assertEquals(&quot;Fu&quot;, S.foo);</span>
+<span class="lineNum">      78 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      79 </span><span class="lineCov">          1 : // In FF this is ignored I think.  In V8 it puts a property on the String object</span>
+<span class="lineNum">      80 </span><span class="lineCov">          1 : // but you won't ever see it because it is hidden by the 0th character in the</span>
+<span class="lineNum">      81 </span><span class="lineCov">          1 : // string.  The net effect is pretty much the same.</span>
+<span class="lineNum">      82 </span><span class="lineCov">          1 : S[&quot;0&quot;] = 'bente';</span>
+<span class="lineNum">      83 </span><span class="lineCov">          1 : assertEquals(&quot;f&quot;, S[0], &quot;string object&quot;);</span>
+<span class="lineNum">      84 </span><span class="lineCov">          1 : assertEquals(&quot;f&quot;, S[&quot;0&quot;], &quot;string object&quot;);</span>
+<span class="lineNum">      85 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      86 </span><span class="lineCov">          1 : assertEquals(true, 0 in S, &quot;0 in&quot;);</span>
+<span class="lineNum">      87 </span><span class="lineCov">          1 : assertEquals(false, -1 in S, &quot;-1 in&quot;);</span>
+<span class="lineNum">      88 </span><span class="lineCov">          1 : assertEquals(true, 2 in S, &quot;2 in&quot;);</span>
+<span class="lineNum">      89 </span><span class="lineCov">          1 : assertEquals(true, 3 in S, &quot;3 in&quot;);</span>
+<span class="lineNum">      90 </span><span class="lineCov">          1 : assertEquals(false, 4 in S, &quot;3 in&quot;);</span>
+<span class="lineNum">      91 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      92 </span><span class="lineCov">          1 : assertEquals(true, &quot;0&quot; in S, '&quot;0&quot; in');</span>
+<span class="lineNum">      93 </span><span class="lineCov">          1 : assertEquals(false, &quot;-1&quot; in S, '&quot;-1&quot; in');</span>
+<span class="lineNum">      94 </span><span class="lineCov">          1 : assertEquals(true, &quot;2&quot; in S, '&quot;2&quot; in');</span>
+<span class="lineNum">      95 </span><span class="lineCov">          1 : assertEquals(true, &quot;3&quot; in S, '&quot;3&quot; in');</span>
+<span class="lineNum">      96 </span><span class="lineCov">          1 : assertEquals(false, &quot;4&quot; in S, '&quot;3&quot; in');</span>
+<span class="lineNum">      97 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      98 </span><span class="lineCov">          1 : assertEquals(true, S.hasOwnProperty(0), &quot;0 hasOwnProperty&quot;);</span>
+<span class="lineNum">      99 </span><span class="lineCov">          1 : assertEquals(false, S.hasOwnProperty(-1), &quot;-1 hasOwnProperty&quot;);</span>
+<span class="lineNum">     100 </span><span class="lineCov">          1 : assertEquals(true, S.hasOwnProperty(2), &quot;2 hasOwnProperty&quot;);</span>
+<span class="lineNum">     101 </span><span class="lineCov">          1 : assertEquals(true, S.hasOwnProperty(3), &quot;3 hasOwnProperty&quot;);</span>
+<span class="lineNum">     102 </span><span class="lineCov">          1 : assertEquals(false, S.hasOwnProperty(4), &quot;3 hasOwnProperty&quot;);</span>
+<span class="lineNum">     103 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     104 </span><span class="lineCov">          1 : assertEquals(true, S.hasOwnProperty(&quot;0&quot;), '&quot;0&quot; hasOwnProperty');</span>
+<span class="lineNum">     105 </span><span class="lineCov">          1 : assertEquals(false, S.hasOwnProperty(&quot;-1&quot;), '&quot;-1&quot; hasOwnProperty');</span>
+<span class="lineNum">     106 </span><span class="lineCov">          1 : assertEquals(true, S.hasOwnProperty(&quot;2&quot;), '&quot;2&quot; hasOwnProperty');</span>
+<span class="lineNum">     107 </span><span class="lineCov">          1 : assertEquals(true, S.hasOwnProperty(&quot;3&quot;), '&quot;3&quot; hasOwnProperty');</span>
+<span class="lineNum">     108 </span><span class="lineCov">          1 : assertEquals(false, S.hasOwnProperty(&quot;4&quot;), '&quot;3&quot; hasOwnProperty');</span>
+<span class="lineNum">     109 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     110 </span><span class="lineCov">          1 : assertEquals(true, &quot;foo&quot;.hasOwnProperty(0), &quot;foo 0 hasOwnProperty&quot;);</span>
+<span class="lineNum">     111 </span><span class="lineCov">          1 : assertEquals(false, &quot;foo&quot;.hasOwnProperty(-1), &quot;foo -1 hasOwnProperty&quot;);</span>
+<span class="lineNum">     112 </span><span class="lineCov">          1 : assertEquals(true, &quot;foo&quot;.hasOwnProperty(2), &quot;foo 2 hasOwnProperty&quot;);</span>
+<span class="lineNum">     113 </span><span class="lineCov">          1 : assertEquals(false, &quot;foo&quot;.hasOwnProperty(4), &quot;foo 3 hasOwnProperty&quot;);</span>
+<span class="lineNum">     114 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     115 </span><span class="lineCov">          1 : assertEquals(true, &quot;foo&quot;.hasOwnProperty(&quot;0&quot;), 'foo &quot;0&quot; hasOwnProperty');</span>
+<span class="lineNum">     116 </span><span class="lineCov">          1 : assertEquals(false, &quot;foo&quot;.hasOwnProperty(&quot;-1&quot;), 'foo &quot;-1&quot; hasOwnProperty');</span>
+<span class="lineNum">     117 </span><span class="lineCov">          1 : assertEquals(true, &quot;foo&quot;.hasOwnProperty(&quot;2&quot;), 'foo &quot;2&quot; hasOwnProperty');</span>
+<span class="lineNum">     118 </span><span class="lineCov">          1 : assertEquals(false, &quot;foo&quot;.hasOwnProperty(&quot;4&quot;), 'foo &quot;3&quot; hasOwnProperty');</span>
+<span class="lineNum">     119 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     120 </span><span class="lineCov">          1 : //assertEquals(true, 0 in &quot;foo&quot;, &quot;0 in&quot;);</span>
+<span class="lineNum">     121 </span><span class="lineCov">          1 : //assertEquals(false, -1 in &quot;foo&quot;, &quot;-1 in&quot;);</span>
+<span class="lineNum">     122 </span><span class="lineCov">          1 : //assertEquals(true, 2 in &quot;foo&quot;, &quot;2 in&quot;);</span>
+<span class="lineNum">     123 </span><span class="lineCov">          1 : //assertEquals(false, 3 in &quot;foo&quot;, &quot;3 in&quot;);</span>
+<span class="lineNum">     124 </span><span class="lineCov">          1 : //</span>
+<span class="lineNum">     125 </span><span class="lineCov">          1 : //assertEquals(true, &quot;0&quot; in &quot;foo&quot;, '&quot;0&quot; in');</span>
+<span class="lineNum">     126 </span><span class="lineCov">          1 : //assertEquals(false, &quot;-1&quot; in &quot;foo&quot;, '&quot;-1&quot; in');</span>
+<span class="lineNum">     127 </span><span class="lineCov">          1 : //assertEquals(true, &quot;2&quot; in &quot;foo&quot;, '&quot;2&quot; in');</span>
+<span class="lineNum">     128 </span><span class="lineCov">          1 : //assertEquals(false, &quot;3&quot; in &quot;foo&quot;, '&quot;3&quot; in');</span>
+<span class="lineNum">     129 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     130 </span><span class="lineCov">          1 : delete S[3];</span>
+<span class="lineNum">     131 </span><span class="lineCov">          1 : assertEquals(&quot;undefined&quot;, typeof(S[3]));</span>
+<span class="lineNum">     132 </span><span class="lineCov">          1 : assertEquals(false, 3 in S);</span>
+<span class="lineNum">     133 </span><span class="lineCov">          1 : assertEquals(false, &quot;3&quot; in S);</span>
+<span class="lineNum">     134 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     135 </span><span class="lineCov">          1 : var N = new Number(43);</span>
+<span class="lineNum">     136 </span><span class="lineCov">          1 : assertEquals(Object(43), N);</span>
+<span class="lineNum">     137 </span><span class="lineCov">          1 : N[-2] = &quot;Alpha&quot;;</span>
+<span class="lineNum">     138 </span><span class="lineCov">          1 : assertEquals(&quot;Alpha&quot;, N[-2]);</span>
+<span class="lineNum">     139 </span><span class="lineCov">          1 : N[0] = &quot;Zappa&quot;;</span>
+<span class="lineNum">     140 </span><span class="lineCov">          1 : assertEquals(&quot;Zappa&quot;, N[0]);</span>
+<span class="lineNum">     141 </span><span class="lineCov">          1 : assertEquals(&quot;Zappa&quot;, N[&quot;0&quot;]);</span>
+<span class="lineNum">     142 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     143 </span><span class="lineCov">          1 : var A = [&quot;V&quot;, &quot;e&quot;, &quot;t&quot;, &quot;t&quot;, &quot;e&quot;, &quot;r&quot;];</span>
+<span class="lineNum">     144 </span><span class="lineCov">          1 : var A2 = (A[0] = &quot;v&quot;);</span>
+<span class="lineNum">     145 </span><span class="lineCov">          1 : assertEquals('v', A[0]);</span>
+<span class="lineNum">     146 </span><span class="lineCov">          1 : assertEquals('v', A2);</span>
+<span class="lineNum">     147 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     148 </span><span class="lineCov">          1 : var S = new String(&quot;Onkel&quot;);</span>
+<span class="lineNum">     149 </span><span class="lineCov">          1 : var S2 = (S[0] = 'o');</span>
+<span class="lineNum">     150 </span><span class="lineCov">          1 : assertEquals('O', S[0]);</span>
+<span class="lineNum">     151 </span><span class="lineCov">          1 : assertEquals('o', S2);</span>
+<span class="lineNum">     152 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     153 </span><span class="lineCov">          1 : var s = &quot;Tante&quot;;</span>
+<span class="lineNum">     154 </span><span class="lineCov">          1 : var s2 = (s[0] = 't');</span>
+<span class="lineNum">     155 </span><span class="lineCov">          1 : assertEquals('T', s[0]);</span>
+<span class="lineNum">     156 </span><span class="lineCov">          1 : assertEquals('t', s2);</span>
+<span class="lineNum">     157 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     158 </span><span class="lineCov">          1 : var S2 = (S[-2] = 'o');</span>
+<span class="lineNum">     159 </span><span class="lineCov">          1 : assertEquals('o', S[-2]);</span>
+<span class="lineNum">     160 </span><span class="lineCov">          1 : assertEquals('o', S2);</span>
+<span class="lineNum">     161 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     162 </span><span class="lineCov">          1 : var s2 = (s[-2] = 't');</span>
+<span class="lineNum">     163 </span><span class="lineCov">          1 : assertEquals('undefined', typeof(s[-2]));</span>
+<span class="lineNum">     164 </span><span class="lineCov">          1 : assertEquals('t', s2);</span>
+<span class="lineNum">     165 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     166 </span><span class="lineCov">          1 : // Make sure enough of the one-char string cache is filled.</span>
+<span class="lineNum">     167 </span><span class="lineCov">          1 : var alpha = ['@'];</span>
+<span class="lineNum">     168 </span><span class="lineCov">          1 : for (var i = 1; i &lt; 128; i++) {</span>
+<span class="lineNum">     169 </span><span class="lineCov">          1 :   var c = String.fromCharCode(i);</span>
+<span class="lineNum">     170 </span><span class="lineCov">          1 :   alpha[i] = c[0];</span>
+<span class="lineNum">     171 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     172 </span><span class="lineCov">          1 : var alphaStr = alpha.join(&quot;&quot;);</span>
+<span class="lineNum">     173 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     174 </span><span class="lineCov">          1 : // Now test chars.</span>
+<span class="lineNum">     175 </span><span class="lineCov">          1 : for (var i = 1; i &lt; 128; i++) {</span>
+<span class="lineNum">     176 </span><span class="lineCov">          1 :   assertEquals(alpha[i], alphaStr[i]);</span>
+<span class="lineNum">     177 </span><span class="lineCov">          1 :   assertEquals(String.fromCharCode(i), alphaStr[i]);</span>
+<span class="lineNum">     178 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     179 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     180 </span><span class="lineCov">          1 : // Test for keyed ic.</span>
+<span class="lineNum">     181 </span><span class="lineCov">          1 : var foo = ['a12', ['a', 2, 'c'], 'a31', 42];</span>
+<span class="lineNum">     182 </span><span class="lineCov">          1 : var results = [1, 2, 3, NaN];</span>
+<span class="lineNum">     183 </span><span class="lineCov">          1 : for (var i = 0; i &lt; 200; ++i) {</span>
+<span class="lineNum">     184 </span><span class="lineCov">          1 :   var index = Math.floor(i / 50);</span>
+<span class="lineNum">     185 </span><span class="lineCov">          1 :   var receiver = foo[index];</span>
+<span class="lineNum">     186 </span><span class="lineCov">          1 :   var expected = results[index];</span>
+<span class="lineNum">     187 </span><span class="lineCov">          1 :   var actual = +(receiver[1]);</span>
+<span class="lineNum">     188 </span><span class="lineCov">          1 :   assertEquals(expected, actual);</span>
+<span class="lineNum">     189 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     190 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     191 </span><span class="lineCov">          1 : var keys = [0, '1', 2, 3.0, -1, 10];</span>
+<span class="lineNum">     192 </span><span class="lineCov">          1 : var str = 'abcd', arr = ['a', 'b', 'c', 'd', undefined, undefined];</span>
+<span class="lineNum">     193 </span><span class="lineCov">          1 : for (var i = 0; i &lt; 300; ++i) {</span>
+<span class="lineNum">     194 </span><span class="lineCov">          1 :   var index = Math.floor(i / 50);</span>
+<span class="lineNum">     195 </span><span class="lineCov">          1 :   var key = keys[index];</span>
+<span class="lineNum">     196 </span><span class="lineCov">          1 :   var expected = arr[index];</span>
+<span class="lineNum">     197 </span><span class="lineCov">          1 :   var actual = str[key];</span>
+<span class="lineNum">     198 </span><span class="lineCov">          1 :   assertEquals(expected, actual);</span>
+<span class="lineNum">     199 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     200 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     201 </span><span class="lineCov">          1 : // Test heap number case.</span>
+<span class="lineNum">     202 </span><span class="lineCov">          1 : var keys = [0, Math.floor(2) * 0.5];</span>
+<span class="lineNum">     203 </span><span class="lineCov">          1 : var str = 'ab', arr = ['a', 'b'];</span>
+<span class="lineNum">     204 </span><span class="lineCov">          1 : for (var i = 0; i &lt; 100; ++i) {</span>
+<span class="lineNum">     205 </span><span class="lineCov">          1 :   var index = Math.floor(i / 50);</span>
+<span class="lineNum">     206 </span><span class="lineCov">          1 :   var key = keys[index];</span>
+<span class="lineNum">     207 </span><span class="lineCov">          1 :   var expected = arr[index];</span>
+<span class="lineNum">     208 </span><span class="lineCov">          1 :   var actual = str[key];</span>
+<span class="lineNum">     209 </span><span class="lineCov">          1 :   assertEquals(expected, actual);</span>
+<span class="lineNum">     210 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     211 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     212 </span><span class="lineCov">          1 : // Test negative zero case.</span>
+<span class="lineNum">     213 </span><span class="lineCov">          1 : var keys = [0, -0.0];</span>
+<span class="lineNum">     214 </span><span class="lineCov">          1 : var str = 'ab', arr = ['a', 'a'];</span>
+<span class="lineNum">     215 </span><span class="lineCov">          1 : for (var i = 0; i &lt; 100; ++i) {</span>
+<span class="lineNum">     216 </span><span class="lineCov">          1 :   var index = Math.floor(i / 50);</span>
+<span class="lineNum">     217 </span><span class="lineCov">          1 :   var key = keys[index];</span>
+<span class="lineNum">     218 </span><span class="lineCov">          1 :   var expected = arr[index];</span>
+<span class="lineNum">     219 </span><span class="lineCov">          1 :   var actual = str[key];</span>
+<span class="lineNum">     220 </span><span class="lineCov">          1 :   assertEquals(expected, actual);</span>
+<span class="lineNum">     221 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     222 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     223 </span><span class="lineCov">          1 : // Test &quot;not-an-array-index&quot; case.</span>
+<span class="lineNum">     224 </span><span class="lineCov">          1 : var keys = [0, 0.5];</span>
+<span class="lineNum">     225 </span><span class="lineCov">          1 : var str = 'ab', arr = ['a', undefined];</span>
+<span class="lineNum">     226 </span><span class="lineCov">          1 : for (var i = 0; i &lt; 100; ++i) {</span>
+<span class="lineNum">     227 </span><span class="lineCov">          1 :   var index = Math.floor(i / 50);</span>
+<span class="lineNum">     228 </span><span class="lineCov">          1 :   var key = keys[index];</span>
+<span class="lineNum">     229 </span><span class="lineCov">          1 :   var expected = arr[index];</span>
+<span class="lineNum">     230 </span><span class="lineCov">          1 :   var actual = str[key];</span>
+<span class="lineNum">     231 </span><span class="lineCov">          1 :   assertEquals(expected, actual);</span>
+<span class="lineNum">     232 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     233 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     234 </span><span class="lineCov">          1 : // Test out of range case.</span>
+<span class="lineNum">     235 </span><span class="lineCov">          1 : var keys = [0, -1];</span>
+<span class="lineNum">     236 </span><span class="lineCov">          1 : var str = 'ab', arr = ['a', undefined];</span>
+<span class="lineNum">     237 </span><span class="lineCov">          1 : for (var i = 0; i &lt; 100; ++i) {</span>
+<span class="lineNum">     238 </span><span class="lineCov">          1 :   var index = Math.floor(i / 50);</span>
+<span class="lineNum">     239 </span><span class="lineCov">          1 :   var key = keys[index];</span>
+<span class="lineNum">     240 </span><span class="lineCov">          1 :   var expected = arr[index];</span>
+<span class="lineNum">     241 </span><span class="lineCov">          1 :   var actual = str[key];</span>
+<span class="lineNum">     242 </span><span class="lineCov">          1 :   assertEquals(expected, actual);</span>
+<span class="lineNum">     243 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     244 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     245 </span><span class="lineCov">          1 : var keys = [0, 10];</span>
+<span class="lineNum">     246 </span><span class="lineCov">          1 : var str = 'ab', arr = ['a', undefined];</span>
+<span class="lineNum">     247 </span><span class="lineCov">          1 : for (var i = 0; i &lt; 100; ++i) {</span>
+<span class="lineNum">     248 </span><span class="lineCov">          1 :   var index = Math.floor(i / 50);</span>
+<span class="lineNum">     249 </span><span class="lineCov">          1 :   var key = keys[index];</span>
+<span class="lineNum">     250 </span><span class="lineCov">          1 :   var expected = arr[index];</span>
+<span class="lineNum">     251 </span><span class="lineCov">          1 :   var actual = str[key];</span>
+<span class="lineNum">     252 </span><span class="lineCov">          1 :   assertEquals(expected, actual);</span>
+<span class="lineNum">     253 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     254 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     255 </span><span class="lineCov">          1 : // Test out of range with a heap number case.</span>
+<span class="lineNum">     256 </span><span class="lineCov">          1 : var num = Math.floor(4) * 0.5;</span>
+<span class="lineNum">     257 </span><span class="lineCov">          1 : // TODO(mvstanton): figure out a reliable way to get a heap number every time.</span>
+<span class="lineNum">     258 </span><span class="lineCov">          1 : // assertFalse(!%_IsSmi(num));</span>
+<span class="lineNum">     259 </span><span class="lineCov">          1 : var keys = [0, num];</span>
+<span class="lineNum">     260 </span><span class="lineCov">          1 : var str = 'ab', arr = ['a', undefined];</span>
+<span class="lineNum">     261 </span><span class="lineCov">          1 : for (var i = 0; i &lt; 100; ++i) {</span>
+<span class="lineNum">     262 </span><span class="lineCov">          1 :   var index = Math.floor(i / 50);</span>
+<span class="lineNum">     263 </span><span class="lineCov">          1 :   var key = keys[index];</span>
+<span class="lineNum">     264 </span><span class="lineCov">          1 :   var expected = arr[index];</span>
+<span class="lineNum">     265 </span><span class="lineCov">          1 :   var actual = str[key];</span>
+<span class="lineNum">     266 </span><span class="lineCov">          1 :   assertEquals(expected, actual);</span>
+<span class="lineNum">     267 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     268 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     269 </span><span class="lineCov">          1 : // Test two byte string.</span>
+<span class="lineNum">     270 </span><span class="lineCov">          1 : var str = '\u0427', arr = ['\u0427'];</span>
+<span class="lineNum">     271 </span><span class="lineCov">          1 : for (var i = 0; i &lt; 50; ++i) {</span>
+<span class="lineNum">     272 </span><span class="lineCov">          1 :   var expected = arr[0];</span>
+<span class="lineNum">     273 </span><span class="lineCov">          1 :   var actual = str[0];</span>
+<span class="lineNum">     274 </span><span class="lineCov">          1 :   assertEquals(expected, actual);</span>
+<span class="lineNum">     275 </span><span class="lineCov">          1 : }</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

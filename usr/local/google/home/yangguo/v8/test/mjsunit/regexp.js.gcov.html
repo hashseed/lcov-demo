@@ -1,0 +1,842 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - /usr/local/google/home/yangguo/v8/test/mjsunit/regexp.js</title>
+  <link rel="stylesheet" type="text/css" href="../../../../../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../../../../../index.html">top level</a> - <a href="index.html">usr/local/google/home/yangguo/v8/test/mjsunit</a> - regexp.js<span style="font-size: 80%;"> (source / <a href="regexp.js.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">767</td>
+            <td class="headerCovTableEntry">767</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2017-02-14</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">9</td>
+            <td class="headerCovTableEntry">9</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr><td><img src="../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span><span class="lineCov">          1 : // Copyright 2012 the V8 project authors. All rights reserved.</span></a>
+<span class="lineNum">       2 </span><span class="lineCov">          1 : // Redistribution and use in source and binary forms, with or without</span>
+<span class="lineNum">       3 </span><span class="lineCov">          1 : // modification, are permitted provided that the following conditions are</span>
+<span class="lineNum">       4 </span><span class="lineCov">          1 : // met:</span>
+<span class="lineNum">       5 </span><span class="lineCov">          1 : //</span>
+<span class="lineNum">       6 </span><span class="lineCov">          1 : //     * Redistributions of source code must retain the above copyright</span>
+<span class="lineNum">       7 </span><span class="lineCov">          1 : //       notice, this list of conditions and the following disclaimer.</span>
+<span class="lineNum">       8 </span><span class="lineCov">          1 : //     * Redistributions in binary form must reproduce the above</span>
+<span class="lineNum">       9 </span><span class="lineCov">          1 : //       copyright notice, this list of conditions and the following</span>
+<span class="lineNum">      10 </span><span class="lineCov">          1 : //       disclaimer in the documentation and/or other materials provided</span>
+<span class="lineNum">      11 </span><span class="lineCov">          1 : //       with the distribution.</span>
+<span class="lineNum">      12 </span><span class="lineCov">          1 : //     * Neither the name of Google Inc. nor the names of its</span>
+<span class="lineNum">      13 </span><span class="lineCov">          1 : //       contributors may be used to endorse or promote products derived</span>
+<span class="lineNum">      14 </span><span class="lineCov">          1 : //       from this software without specific prior written permission.</span>
+<span class="lineNum">      15 </span><span class="lineCov">          1 : //</span>
+<span class="lineNum">      16 </span><span class="lineCov">          1 : // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="lineNum">      17 </span><span class="lineCov">          1 : // &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="lineNum">      18 </span><span class="lineCov">          1 : // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR</span>
+<span class="lineNum">      19 </span><span class="lineCov">          1 : // A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT</span>
+<span class="lineNum">      20 </span><span class="lineCov">          1 : // OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,</span>
+<span class="lineNum">      21 </span><span class="lineCov">          1 : // SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT</span>
+<span class="lineNum">      22 </span><span class="lineCov">          1 : // LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,</span>
+<span class="lineNum">      23 </span><span class="lineCov">          1 : // DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY</span>
+<span class="lineNum">      24 </span><span class="lineCov">          1 : // THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT</span>
+<span class="lineNum">      25 </span><span class="lineCov">          1 : // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE</span>
+<a name="26"><span class="lineNum">      26 </span><span class="lineCov">          1 : // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span></a>
+<span class="lineNum">      27 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      28 </span><span class="lineCov">          4 : function testEscape(str, regex) {</span>
+<span class="lineNum">      29 </span><span class="lineCov">          4 :   assertEquals(&quot;foo:bar:baz&quot;, str.split(regex).join(&quot;:&quot;));</span>
+<span class="lineNum">      30 </span><span class="lineCov">          4 : }</span>
+<span class="lineNum">      31 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      32 </span><span class="lineCov">          1 : testEscape(&quot;foo\nbar\nbaz&quot;, /\n/);</span>
+<span class="lineNum">      33 </span><span class="lineCov">          1 : testEscape(&quot;foo bar baz&quot;, /\s/);</span>
+<span class="lineNum">      34 </span><span class="lineCov">          1 : testEscape(&quot;foo\tbar\tbaz&quot;, /\s/);</span>
+<span class="lineNum">      35 </span><span class="lineCov">          1 : testEscape(&quot;foo-bar-baz&quot;, /\u002D/);</span>
+<span class="lineNum">      36 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      37 </span><span class="lineCov">          1 : // Test containing null char in regexp.</span>
+<span class="lineNum">      38 </span><span class="lineCov">          1 : var s = '[' + String.fromCharCode(0) + ']';</span>
+<span class="lineNum">      39 </span><span class="lineCov">          1 : var re = new RegExp(s);</span>
+<span class="lineNum">      40 </span><span class="lineCov">          1 : assertEquals(s.match(re).length, 1);</span>
+<span class="lineNum">      41 </span><span class="lineCov">          1 : assertEquals(s.match(re)[0], String.fromCharCode(0));</span>
+<span class="lineNum">      42 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      43 </span><span class="lineCov">          1 : // Test strings containing all line separators</span>
+<span class="lineNum">      44 </span><span class="lineCov">          1 : s = 'aA\nbB\rcC\r\ndD\u2028eE\u2029fF';</span>
+<span class="lineNum">      45 </span><span class="lineCov">          1 : re = /^./gm; // any non-newline character at the beginning of a line</span>
+<span class="lineNum">      46 </span><span class="lineCov">          1 : var result = s.match(re);</span>
+<span class="lineNum">      47 </span><span class="lineCov">          1 : assertEquals(result.length, 6);</span>
+<span class="lineNum">      48 </span><span class="lineCov">          1 : assertEquals(result[0], 'a');</span>
+<span class="lineNum">      49 </span><span class="lineCov">          1 : assertEquals(result[1], 'b');</span>
+<span class="lineNum">      50 </span><span class="lineCov">          1 : assertEquals(result[2], 'c');</span>
+<span class="lineNum">      51 </span><span class="lineCov">          1 : assertEquals(result[3], 'd');</span>
+<span class="lineNum">      52 </span><span class="lineCov">          1 : assertEquals(result[4], 'e');</span>
+<span class="lineNum">      53 </span><span class="lineCov">          1 : assertEquals(result[5], 'f');</span>
+<span class="lineNum">      54 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      55 </span><span class="lineCov">          1 : re = /.$/gm; // any non-newline character at the end of a line</span>
+<span class="lineNum">      56 </span><span class="lineCov">          1 : result = s.match(re);</span>
+<span class="lineNum">      57 </span><span class="lineCov">          1 : assertEquals(result.length, 6);</span>
+<span class="lineNum">      58 </span><span class="lineCov">          1 : assertEquals(result[0], 'A');</span>
+<span class="lineNum">      59 </span><span class="lineCov">          1 : assertEquals(result[1], 'B');</span>
+<span class="lineNum">      60 </span><span class="lineCov">          1 : assertEquals(result[2], 'C');</span>
+<span class="lineNum">      61 </span><span class="lineCov">          1 : assertEquals(result[3], 'D');</span>
+<span class="lineNum">      62 </span><span class="lineCov">          1 : assertEquals(result[4], 'E');</span>
+<span class="lineNum">      63 </span><span class="lineCov">          1 : assertEquals(result[5], 'F');</span>
+<span class="lineNum">      64 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      65 </span><span class="lineCov">          1 : re = /^[^]/gm; // *any* character at the beginning of a line</span>
+<span class="lineNum">      66 </span><span class="lineCov">          1 : result = s.match(re);</span>
+<span class="lineNum">      67 </span><span class="lineCov">          1 : assertEquals(result.length, 7);</span>
+<span class="lineNum">      68 </span><span class="lineCov">          1 : assertEquals(result[0], 'a');</span>
+<span class="lineNum">      69 </span><span class="lineCov">          1 : assertEquals(result[1], 'b');</span>
+<span class="lineNum">      70 </span><span class="lineCov">          1 : assertEquals(result[2], 'c');</span>
+<span class="lineNum">      71 </span><span class="lineCov">          1 : assertEquals(result[3], '\n');</span>
+<span class="lineNum">      72 </span><span class="lineCov">          1 : assertEquals(result[4], 'd');</span>
+<span class="lineNum">      73 </span><span class="lineCov">          1 : assertEquals(result[5], 'e');</span>
+<span class="lineNum">      74 </span><span class="lineCov">          1 : assertEquals(result[6], 'f');</span>
+<span class="lineNum">      75 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      76 </span><span class="lineCov">          1 : re = /[^]$/gm; // *any* character at the end of a line</span>
+<span class="lineNum">      77 </span><span class="lineCov">          1 : result = s.match(re);</span>
+<span class="lineNum">      78 </span><span class="lineCov">          1 : assertEquals(result.length, 7);</span>
+<span class="lineNum">      79 </span><span class="lineCov">          1 : assertEquals(result[0], 'A');</span>
+<span class="lineNum">      80 </span><span class="lineCov">          1 : assertEquals(result[1], 'B');</span>
+<span class="lineNum">      81 </span><span class="lineCov">          1 : assertEquals(result[2], 'C');</span>
+<span class="lineNum">      82 </span><span class="lineCov">          1 : assertEquals(result[3], '\r');</span>
+<span class="lineNum">      83 </span><span class="lineCov">          1 : assertEquals(result[4], 'D');</span>
+<span class="lineNum">      84 </span><span class="lineCov">          1 : assertEquals(result[5], 'E');</span>
+<span class="lineNum">      85 </span><span class="lineCov">          1 : assertEquals(result[6], 'F');</span>
+<span class="lineNum">      86 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      87 </span><span class="lineCov">          1 : // Some tests from the Mozilla tests, where our behavior used to differ from</span>
+<span class="lineNum">      88 </span><span class="lineCov">          1 : // SpiderMonkey.</span>
+<span class="lineNum">      89 </span><span class="lineCov">          1 : // From ecma_3/RegExp/regress-334158.js</span>
+<span class="lineNum">      90 </span><span class="lineCov">          1 : assertTrue(/\ca/.test( &quot;\x01&quot; ));</span>
+<span class="lineNum">      91 </span><span class="lineCov">          1 : assertFalse(/\ca/.test( &quot;\\ca&quot; ));</span>
+<span class="lineNum">      92 </span><span class="lineCov">          1 : assertFalse(/\ca/.test( &quot;ca&quot; ));</span>
+<span class="lineNum">      93 </span><span class="lineCov">          1 : assertTrue(/\c[a/]/.test( &quot;\\ca&quot; ));</span>
+<span class="lineNum">      94 </span><span class="lineCov">          1 : assertTrue(/\c[a/]/.test( &quot;\\c/&quot; ));</span>
+<span class="lineNum">      95 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      96 </span><span class="lineCov">          1 : // Test \c in character class</span>
+<span class="lineNum">      97 </span><span class="lineCov">          1 : re = /^[\cM]$/;</span>
+<span class="lineNum">      98 </span><span class="lineCov">          1 : assertTrue(re.test(&quot;\r&quot;));</span>
+<span class="lineNum">      99 </span><span class="lineCov">          1 : assertFalse(re.test(&quot;M&quot;));</span>
+<span class="lineNum">     100 </span><span class="lineCov">          1 : assertFalse(re.test(&quot;c&quot;));</span>
+<span class="lineNum">     101 </span><span class="lineCov">          1 : assertFalse(re.test(&quot;\\&quot;));</span>
+<span class="lineNum">     102 </span><span class="lineCov">          1 : assertFalse(re.test(&quot;\x03&quot;));  // I.e., read as \cc</span>
+<span class="lineNum">     103 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     104 </span><span class="lineCov">          1 : re = /^[\c]]$/;</span>
+<span class="lineNum">     105 </span><span class="lineCov">          1 : assertTrue(re.test(&quot;c]&quot;));</span>
+<span class="lineNum">     106 </span><span class="lineCov">          1 : assertTrue(re.test(&quot;\\]&quot;));</span>
+<span class="lineNum">     107 </span><span class="lineCov">          1 : assertFalse(re.test(&quot;\x1d&quot;));  // ']' &amp; 0x1f</span>
+<span class="lineNum">     108 </span><span class="lineCov">          1 : assertFalse(re.test(&quot;\x03]&quot;));  // I.e., read as \cc</span>
+<span class="lineNum">     109 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     110 </span><span class="lineCov">          1 : re = /^[\c1]$/;  // Digit control characters are masked in character classes.</span>
+<span class="lineNum">     111 </span><span class="lineCov">          1 : assertTrue(re.test(&quot;\x11&quot;));</span>
+<span class="lineNum">     112 </span><span class="lineCov">          1 : assertFalse(re.test(&quot;\\&quot;));</span>
+<span class="lineNum">     113 </span><span class="lineCov">          1 : assertFalse(re.test(&quot;c&quot;));</span>
+<span class="lineNum">     114 </span><span class="lineCov">          1 : assertFalse(re.test(&quot;1&quot;));</span>
+<span class="lineNum">     115 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     116 </span><span class="lineCov">          1 : re = /^[\c_]$/;  // Underscore control character is masked in character classes.</span>
+<span class="lineNum">     117 </span><span class="lineCov">          1 : assertTrue(re.test(&quot;\x1f&quot;));</span>
+<span class="lineNum">     118 </span><span class="lineCov">          1 : assertFalse(re.test(&quot;\\&quot;));</span>
+<span class="lineNum">     119 </span><span class="lineCov">          1 : assertFalse(re.test(&quot;c&quot;));</span>
+<span class="lineNum">     120 </span><span class="lineCov">          1 : assertFalse(re.test(&quot;_&quot;));</span>
+<span class="lineNum">     121 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     122 </span><span class="lineCov">          1 : re = /^[\c$]$/;  // Other characters are interpreted literally.</span>
+<span class="lineNum">     123 </span><span class="lineCov">          1 : assertFalse(re.test(&quot;\x04&quot;));</span>
+<span class="lineNum">     124 </span><span class="lineCov">          1 : assertTrue(re.test(&quot;\\&quot;));</span>
+<span class="lineNum">     125 </span><span class="lineCov">          1 : assertTrue(re.test(&quot;c&quot;));</span>
+<span class="lineNum">     126 </span><span class="lineCov">          1 : assertTrue(re.test(&quot;$&quot;));</span>
+<span class="lineNum">     127 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     128 </span><span class="lineCov">          1 : assertTrue(/^[Z-\c-e]*$/.test(&quot;Z[\\cde&quot;));</span>
+<span class="lineNum">     129 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     130 </span><span class="lineCov">          1 : // Test that we handle \s and \S correctly on special Unicode characters.</span>
+<span class="lineNum">     131 </span><span class="lineCov">          1 : re = /\s/;</span>
+<span class="lineNum">     132 </span><span class="lineCov">          1 : assertTrue(re.test(&quot;\u2028&quot;));</span>
+<span class="lineNum">     133 </span><span class="lineCov">          1 : assertTrue(re.test(&quot;\u2029&quot;));</span>
+<span class="lineNum">     134 </span><span class="lineCov">          1 : assertTrue(re.test(&quot;\uFEFF&quot;));</span>
+<span class="lineNum">     135 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     136 </span><span class="lineCov">          1 : re = /\S/;</span>
+<span class="lineNum">     137 </span><span class="lineCov">          1 : assertFalse(re.test(&quot;\u2028&quot;));</span>
+<span class="lineNum">     138 </span><span class="lineCov">          1 : assertFalse(re.test(&quot;\u2029&quot;));</span>
+<span class="lineNum">     139 </span><span class="lineCov">          1 : assertFalse(re.test(&quot;\uFEFF&quot;));</span>
+<span class="lineNum">     140 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     141 </span><span class="lineCov">          1 : // Test that we handle \s and \S correctly inside some bizarre</span>
+<span class="lineNum">     142 </span><span class="lineCov">          1 : // character classes.</span>
+<span class="lineNum">     143 </span><span class="lineCov">          1 : re = /[\s-:]/;</span>
+<span class="lineNum">     144 </span><span class="lineCov">          1 : assertTrue(re.test('-'));</span>
+<span class="lineNum">     145 </span><span class="lineCov">          1 : assertTrue(re.test(':'));</span>
+<span class="lineNum">     146 </span><span class="lineCov">          1 : assertTrue(re.test(' '));</span>
+<span class="lineNum">     147 </span><span class="lineCov">          1 : assertTrue(re.test('\t'));</span>
+<span class="lineNum">     148 </span><span class="lineCov">          1 : assertTrue(re.test('\n'));</span>
+<span class="lineNum">     149 </span><span class="lineCov">          1 : assertFalse(re.test('a'));</span>
+<span class="lineNum">     150 </span><span class="lineCov">          1 : assertFalse(re.test('Z'));</span>
+<span class="lineNum">     151 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     152 </span><span class="lineCov">          1 : re = /[\S-:]/;</span>
+<span class="lineNum">     153 </span><span class="lineCov">          1 : assertTrue(re.test('-'));</span>
+<span class="lineNum">     154 </span><span class="lineCov">          1 : assertTrue(re.test(':'));</span>
+<span class="lineNum">     155 </span><span class="lineCov">          1 : assertFalse(re.test(' '));</span>
+<span class="lineNum">     156 </span><span class="lineCov">          1 : assertFalse(re.test('\t'));</span>
+<span class="lineNum">     157 </span><span class="lineCov">          1 : assertFalse(re.test('\n'));</span>
+<span class="lineNum">     158 </span><span class="lineCov">          1 : assertTrue(re.test('a'));</span>
+<span class="lineNum">     159 </span><span class="lineCov">          1 : assertTrue(re.test('Z'));</span>
+<span class="lineNum">     160 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     161 </span><span class="lineCov">          1 : re = /[^\s-:]/;</span>
+<span class="lineNum">     162 </span><span class="lineCov">          1 : assertFalse(re.test('-'));</span>
+<span class="lineNum">     163 </span><span class="lineCov">          1 : assertFalse(re.test(':'));</span>
+<span class="lineNum">     164 </span><span class="lineCov">          1 : assertFalse(re.test(' '));</span>
+<span class="lineNum">     165 </span><span class="lineCov">          1 : assertFalse(re.test('\t'));</span>
+<span class="lineNum">     166 </span><span class="lineCov">          1 : assertFalse(re.test('\n'));</span>
+<span class="lineNum">     167 </span><span class="lineCov">          1 : assertTrue(re.test('a'));</span>
+<span class="lineNum">     168 </span><span class="lineCov">          1 : assertTrue(re.test('Z'));</span>
+<span class="lineNum">     169 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     170 </span><span class="lineCov">          1 : re = /[^\S-:]/;</span>
+<span class="lineNum">     171 </span><span class="lineCov">          1 : assertFalse(re.test('-'));</span>
+<span class="lineNum">     172 </span><span class="lineCov">          1 : assertFalse(re.test(':'));</span>
+<span class="lineNum">     173 </span><span class="lineCov">          1 : assertTrue(re.test(' '));</span>
+<span class="lineNum">     174 </span><span class="lineCov">          1 : assertTrue(re.test('\t'));</span>
+<span class="lineNum">     175 </span><span class="lineCov">          1 : assertTrue(re.test('\n'));</span>
+<span class="lineNum">     176 </span><span class="lineCov">          1 : assertFalse(re.test('a'));</span>
+<span class="lineNum">     177 </span><span class="lineCov">          1 : assertFalse(re.test('Z'));</span>
+<span class="lineNum">     178 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     179 </span><span class="lineCov">          1 : re = /[\s]/;</span>
+<span class="lineNum">     180 </span><span class="lineCov">          1 : assertFalse(re.test('-'));</span>
+<span class="lineNum">     181 </span><span class="lineCov">          1 : assertFalse(re.test(':'));</span>
+<span class="lineNum">     182 </span><span class="lineCov">          1 : assertTrue(re.test(' '));</span>
+<span class="lineNum">     183 </span><span class="lineCov">          1 : assertTrue(re.test('\t'));</span>
+<span class="lineNum">     184 </span><span class="lineCov">          1 : assertTrue(re.test('\n'));</span>
+<span class="lineNum">     185 </span><span class="lineCov">          1 : assertFalse(re.test('a'));</span>
+<span class="lineNum">     186 </span><span class="lineCov">          1 : assertFalse(re.test('Z'));</span>
+<span class="lineNum">     187 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     188 </span><span class="lineCov">          1 : re = /[^\s]/;</span>
+<span class="lineNum">     189 </span><span class="lineCov">          1 : assertTrue(re.test('-'));</span>
+<span class="lineNum">     190 </span><span class="lineCov">          1 : assertTrue(re.test(':'));</span>
+<span class="lineNum">     191 </span><span class="lineCov">          1 : assertFalse(re.test(' '));</span>
+<span class="lineNum">     192 </span><span class="lineCov">          1 : assertFalse(re.test('\t'));</span>
+<span class="lineNum">     193 </span><span class="lineCov">          1 : assertFalse(re.test('\n'));</span>
+<span class="lineNum">     194 </span><span class="lineCov">          1 : assertTrue(re.test('a'));</span>
+<span class="lineNum">     195 </span><span class="lineCov">          1 : assertTrue(re.test('Z'));</span>
+<span class="lineNum">     196 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     197 </span><span class="lineCov">          1 : re = /[\S]/;</span>
+<span class="lineNum">     198 </span><span class="lineCov">          1 : assertTrue(re.test('-'));</span>
+<span class="lineNum">     199 </span><span class="lineCov">          1 : assertTrue(re.test(':'));</span>
+<span class="lineNum">     200 </span><span class="lineCov">          1 : assertFalse(re.test(' '));</span>
+<span class="lineNum">     201 </span><span class="lineCov">          1 : assertFalse(re.test('\t'));</span>
+<span class="lineNum">     202 </span><span class="lineCov">          1 : assertFalse(re.test('\n'));</span>
+<span class="lineNum">     203 </span><span class="lineCov">          1 : assertTrue(re.test('a'));</span>
+<span class="lineNum">     204 </span><span class="lineCov">          1 : assertTrue(re.test('Z'));</span>
+<span class="lineNum">     205 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     206 </span><span class="lineCov">          1 : re = /[^\S]/;</span>
+<span class="lineNum">     207 </span><span class="lineCov">          1 : assertFalse(re.test('-'));</span>
+<span class="lineNum">     208 </span><span class="lineCov">          1 : assertFalse(re.test(':'));</span>
+<span class="lineNum">     209 </span><span class="lineCov">          1 : assertTrue(re.test(' '));</span>
+<span class="lineNum">     210 </span><span class="lineCov">          1 : assertTrue(re.test('\t'));</span>
+<span class="lineNum">     211 </span><span class="lineCov">          1 : assertTrue(re.test('\n'));</span>
+<span class="lineNum">     212 </span><span class="lineCov">          1 : assertFalse(re.test('a'));</span>
+<span class="lineNum">     213 </span><span class="lineCov">          1 : assertFalse(re.test('Z'));</span>
+<span class="lineNum">     214 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     215 </span><span class="lineCov">          1 : re = /[\s\S]/;</span>
+<span class="lineNum">     216 </span><span class="lineCov">          1 : assertTrue(re.test('-'));</span>
+<span class="lineNum">     217 </span><span class="lineCov">          1 : assertTrue(re.test(':'));</span>
+<span class="lineNum">     218 </span><span class="lineCov">          1 : assertTrue(re.test(' '));</span>
+<span class="lineNum">     219 </span><span class="lineCov">          1 : assertTrue(re.test('\t'));</span>
+<span class="lineNum">     220 </span><span class="lineCov">          1 : assertTrue(re.test('\n'));</span>
+<span class="lineNum">     221 </span><span class="lineCov">          1 : assertTrue(re.test('a'));</span>
+<span class="lineNum">     222 </span><span class="lineCov">          1 : assertTrue(re.test('Z'));</span>
+<span class="lineNum">     223 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     224 </span><span class="lineCov">          1 : re = /[^\s\S]/;</span>
+<span class="lineNum">     225 </span><span class="lineCov">          1 : assertFalse(re.test('-'));</span>
+<span class="lineNum">     226 </span><span class="lineCov">          1 : assertFalse(re.test(':'));</span>
+<span class="lineNum">     227 </span><span class="lineCov">          1 : assertFalse(re.test(' '));</span>
+<span class="lineNum">     228 </span><span class="lineCov">          1 : assertFalse(re.test('\t'));</span>
+<span class="lineNum">     229 </span><span class="lineCov">          1 : assertFalse(re.test('\n'));</span>
+<span class="lineNum">     230 </span><span class="lineCov">          1 : assertFalse(re.test('a'));</span>
+<span class="lineNum">     231 </span><span class="lineCov">          1 : assertFalse(re.test('Z'));</span>
+<span class="lineNum">     232 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     233 </span><span class="lineCov">          1 : // First - is treated as range operator, second as literal minus.</span>
+<span class="lineNum">     234 </span><span class="lineCov">          1 : // This follows the specification in parsing, but doesn't throw on</span>
+<span class="lineNum">     235 </span><span class="lineCov">          1 : // the \s at the beginning of the range.</span>
+<span class="lineNum">     236 </span><span class="lineCov">          1 : re = /[\s-0-9]/;</span>
+<span class="lineNum">     237 </span><span class="lineCov">          1 : assertTrue(re.test(' '));</span>
+<span class="lineNum">     238 </span><span class="lineCov">          1 : assertTrue(re.test('\xA0'));</span>
+<span class="lineNum">     239 </span><span class="lineCov">          1 : assertTrue(re.test('-'));</span>
+<span class="lineNum">     240 </span><span class="lineCov">          1 : assertTrue(re.test('0'));</span>
+<span class="lineNum">     241 </span><span class="lineCov">          1 : assertTrue(re.test('9'));</span>
+<span class="lineNum">     242 </span><span class="lineCov">          1 : assertFalse(re.test('1'));</span>
+<span class="lineNum">     243 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     244 </span><span class="lineCov">          1 : // Test beginning and end of line assertions with or without the</span>
+<span class="lineNum">     245 </span><span class="lineCov">          1 : // multiline flag.</span>
+<span class="lineNum">     246 </span><span class="lineCov">          1 : re = /^\d+/;</span>
+<span class="lineNum">     247 </span><span class="lineCov">          1 : assertFalse(re.test(&quot;asdf\n123&quot;));</span>
+<span class="lineNum">     248 </span><span class="lineCov">          1 : re = /^\d+/m;</span>
+<span class="lineNum">     249 </span><span class="lineCov">          1 : assertTrue(re.test(&quot;asdf\n123&quot;));</span>
+<span class="lineNum">     250 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     251 </span><span class="lineCov">          1 : re = /\d+$/;</span>
+<span class="lineNum">     252 </span><span class="lineCov">          1 : assertFalse(re.test(&quot;123\nasdf&quot;));</span>
+<span class="lineNum">     253 </span><span class="lineCov">          1 : re = /\d+$/m;</span>
+<span class="lineNum">     254 </span><span class="lineCov">          1 : assertTrue(re.test(&quot;123\nasdf&quot;));</span>
+<span class="lineNum">     255 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     256 </span><span class="lineCov">          1 : // Test that empty matches are handled correctly for multiline global</span>
+<span class="lineNum">     257 </span><span class="lineCov">          1 : // regexps.</span>
+<span class="lineNum">     258 </span><span class="lineCov">          1 : re = /^(.*)/mg;</span>
+<span class="lineNum">     259 </span><span class="lineCov">          1 : assertEquals(3, &quot;a\n\rb&quot;.match(re).length);</span>
+<span class="lineNum">     260 </span><span class="lineCov">          1 : assertEquals(&quot;*a\n*b\r*c\n*\r*d\r*\n*e&quot;, &quot;a\nb\rc\n\rd\r\ne&quot;.replace(re, &quot;*$1&quot;));</span>
+<span class="lineNum">     261 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     262 </span><span class="lineCov">          1 : // Test that empty matches advance one character</span>
+<span class="lineNum">     263 </span><span class="lineCov">          1 : re = new RegExp(&quot;&quot;, &quot;g&quot;);</span>
+<span class="lineNum">     264 </span><span class="lineCov">          1 : assertEquals(&quot;xAx&quot;, &quot;A&quot;.replace(re, &quot;x&quot;));</span>
+<span class="lineNum">     265 </span><span class="lineCov">          1 : assertEquals(3, String.fromCharCode(161).replace(re, &quot;x&quot;).length);</span>
+<span class="lineNum">     266 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     267 </span><span class="lineCov">          1 : // Test that we match the KJS behavior with regard to undefined constructor</span>
+<span class="lineNum">     268 </span><span class="lineCov">          1 : // arguments:</span>
+<span class="lineNum">     269 </span><span class="lineCov">          1 : re = new RegExp();</span>
+<span class="lineNum">     270 </span><span class="lineCov">          1 : // KJS actually shows this as '//'.  Here we match the Firefox behavior (ie,</span>
+<span class="lineNum">     271 </span><span class="lineCov">          1 : // giving a syntactically legal regexp literal).</span>
+<span class="lineNum">     272 </span><span class="lineCov">          1 : assertEquals('/(?:)/', re.toString());</span>
+<span class="lineNum">     273 </span><span class="lineCov">          1 : re = new RegExp(void 0);</span>
+<span class="lineNum">     274 </span><span class="lineCov">          1 : assertEquals('/(?:)/', re.toString());</span>
+<span class="lineNum">     275 </span><span class="lineCov">          1 : re.compile();</span>
+<span class="lineNum">     276 </span><span class="lineCov">          1 : assertEquals('/(?:)/', re.toString());</span>
+<span class="lineNum">     277 </span><span class="lineCov">          1 : re.compile(void 0);</span>
+<span class="lineNum">     278 </span><span class="lineCov">          1 : assertEquals('/(?:)/', re.toString());</span>
+<span class="lineNum">     279 </span><span class="lineCov">          1 : </span>
+<a name="280"><span class="lineNum">     280 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     281 </span><span class="lineCov">          1 : // Check for lazy RegExp literal creation</span>
+<span class="lineNum">     282 </span><span class="lineCov">          2 : function lazyLiteral(doit) {</span>
+<span class="lineNum">     283 </span><span class="lineCov">          2 :   if (doit) return &quot;&quot;.replace(/foo(/gi, &quot;&quot;);</span>
+<span class="lineNum">     284 </span><span class="lineCov">          2 :   return true;</span>
+<span class="lineNum">     285 </span><span class="lineCov">          2 : }</span>
+<span class="lineNum">     286 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     287 </span><span class="lineCov">          1 : assertTrue(lazyLiteral(false));</span>
+<span class="lineNum">     288 </span><span class="lineCov">          1 : assertThrows(&quot;lazyLiteral(true)&quot;);</span>
+<span class="lineNum">     289 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     290 </span><span class="lineCov">          1 : // Check $01 and $10</span>
+<span class="lineNum">     291 </span><span class="lineCov">          1 : re = new RegExp(&quot;(.)(.)(.)(.)(.)(.)(.)(.)(.)(.)&quot;);</span>
+<span class="lineNum">     292 </span><span class="lineCov">          1 : assertEquals(&quot;t&quot;, &quot;123456789t&quot;.replace(re, &quot;$10&quot;), &quot;$10&quot;);</span>
+<span class="lineNum">     293 </span><span class="lineCov">          1 : assertEquals(&quot;15&quot;, &quot;123456789t&quot;.replace(re, &quot;$15&quot;), &quot;$10&quot;);</span>
+<span class="lineNum">     294 </span><span class="lineCov">          1 : assertEquals(&quot;1&quot;, &quot;123456789t&quot;.replace(re, &quot;$01&quot;), &quot;$01&quot;);</span>
+<span class="lineNum">     295 </span><span class="lineCov">          1 : assertEquals(&quot;$001&quot;, &quot;123456789t&quot;.replace(re, &quot;$001&quot;), &quot;$001&quot;);</span>
+<span class="lineNum">     296 </span><span class="lineCov">          1 : re = new RegExp(&quot;foo(.)&quot;);</span>
+<span class="lineNum">     297 </span><span class="lineCov">          1 : assertEquals(&quot;bar$0&quot;, &quot;foox&quot;.replace(re, &quot;bar$0&quot;), &quot;$0&quot;);</span>
+<span class="lineNum">     298 </span><span class="lineCov">          1 : assertEquals(&quot;bar$00&quot;, &quot;foox&quot;.replace(re, &quot;bar$00&quot;), &quot;$00&quot;);</span>
+<span class="lineNum">     299 </span><span class="lineCov">          1 : assertEquals(&quot;bar$000&quot;, &quot;foox&quot;.replace(re, &quot;bar$000&quot;), &quot;$000&quot;);</span>
+<span class="lineNum">     300 </span><span class="lineCov">          1 : assertEquals(&quot;barx&quot;, &quot;foox&quot;.replace(re, &quot;bar$01&quot;), &quot;$01 2&quot;);</span>
+<span class="lineNum">     301 </span><span class="lineCov">          1 : assertEquals(&quot;barx5&quot;, &quot;foox&quot;.replace(re, &quot;bar$15&quot;), &quot;$15&quot;);</span>
+<span class="lineNum">     302 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     303 </span><span class="lineCov">          1 : assertFalse(/()foo$\1/.test(&quot;football&quot;), &quot;football1&quot;);</span>
+<span class="lineNum">     304 </span><span class="lineCov">          1 : assertFalse(/foo$(?=ball)/.test(&quot;football&quot;), &quot;football2&quot;);</span>
+<span class="lineNum">     305 </span><span class="lineCov">          1 : assertFalse(/foo$(?!bar)/.test(&quot;football&quot;), &quot;football3&quot;);</span>
+<span class="lineNum">     306 </span><span class="lineCov">          1 : assertTrue(/()foo$\1/.test(&quot;foo&quot;), &quot;football4&quot;);</span>
+<span class="lineNum">     307 </span><span class="lineCov">          1 : assertTrue(/foo$(?=(ball)?)/.test(&quot;foo&quot;), &quot;football5&quot;);</span>
+<span class="lineNum">     308 </span><span class="lineCov">          1 : assertTrue(/()foo$(?!bar)/.test(&quot;foo&quot;), &quot;football6&quot;);</span>
+<span class="lineNum">     309 </span><span class="lineCov">          1 : assertFalse(/(x?)foo$\1/.test(&quot;football&quot;), &quot;football7&quot;);</span>
+<span class="lineNum">     310 </span><span class="lineCov">          1 : assertFalse(/foo$(?=ball)/.test(&quot;football&quot;), &quot;football8&quot;);</span>
+<span class="lineNum">     311 </span><span class="lineCov">          1 : assertFalse(/foo$(?!bar)/.test(&quot;football&quot;), &quot;football9&quot;);</span>
+<span class="lineNum">     312 </span><span class="lineCov">          1 : assertTrue(/(x?)foo$\1/.test(&quot;foo&quot;), &quot;football10&quot;);</span>
+<span class="lineNum">     313 </span><span class="lineCov">          1 : assertTrue(/foo$(?=(ball)?)/.test(&quot;foo&quot;), &quot;football11&quot;);</span>
+<span class="lineNum">     314 </span><span class="lineCov">          1 : assertTrue(/foo$(?!bar)/.test(&quot;foo&quot;), &quot;football12&quot;);</span>
+<span class="lineNum">     315 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     316 </span><span class="lineCov">          1 : // Check that the back reference has two successors.  See</span>
+<span class="lineNum">     317 </span><span class="lineCov">          1 : // BackReferenceNode::PropagateForward.</span>
+<span class="lineNum">     318 </span><span class="lineCov">          1 : assertFalse(/f(o)\b\1/.test('foo'));</span>
+<span class="lineNum">     319 </span><span class="lineCov">          1 : assertTrue(/f(o)\B\1/.test('foo'));</span>
+<span class="lineNum">     320 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     321 </span><span class="lineCov">          1 : // Back-reference, ignore case:</span>
+<span class="lineNum">     322 </span><span class="lineCov">          1 : // ASCII</span>
+<span class="lineNum">     323 </span><span class="lineCov">          1 : assertEquals(&quot;xaAx,a&quot;, String(/x(a)\1x/i.exec(&quot;xaAx&quot;)), &quot;backref-ASCII&quot;);</span>
+<span class="lineNum">     324 </span><span class="lineCov">          1 : assertFalse(/x(...)\1/i.test(&quot;xaaaaa&quot;), &quot;backref-ASCII-short&quot;);</span>
+<span class="lineNum">     325 </span><span class="lineCov">          1 : assertTrue(/x((?:))\1\1x/i.test(&quot;xx&quot;), &quot;backref-ASCII-empty&quot;);</span>
+<span class="lineNum">     326 </span><span class="lineCov">          1 : assertTrue(/x(?:...|(...))\1x/i.test(&quot;xabcx&quot;), &quot;backref-ASCII-uncaptured&quot;);</span>
+<span class="lineNum">     327 </span><span class="lineCov">          1 : assertTrue(/x(?:...|(...))\1x/i.test(&quot;xabcABCx&quot;), &quot;backref-ASCII-backtrack&quot;);</span>
+<span class="lineNum">     328 </span><span class="lineCov">          1 : assertEquals(&quot;xaBcAbCABCx,aBc&quot;,</span>
+<span class="lineNum">     329 </span><span class="lineCov">          1 :              String(/x(...)\1\1x/i.exec(&quot;xaBcAbCABCx&quot;)),</span>
+<span class="lineNum">     330 </span><span class="lineCov">          1 :              &quot;backref-ASCII-twice&quot;);</span>
+<span class="lineNum">     331 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     332 </span><span class="lineCov">          1 : for (var i = 0; i &lt; 128; i++) {</span>
+<span class="lineNum">     333 </span><span class="lineCov">          1 :   var testName = &quot;backref-ASCII-char-&quot; + i + &quot;,&quot; + (i^0x20);</span>
+<span class="lineNum">     334 </span><span class="lineCov">          1 :   var test = /^(.)\1$/i.test(String.fromCharCode(i, i ^ 0x20))</span>
+<span class="lineNum">     335 </span><span class="lineCov">          1 :   var c = String.fromCharCode(i);</span>
+<span class="lineNum">     336 </span><span class="lineCov">          1 :   if (('A' &lt;= c &amp;&amp; c &lt;= 'Z') || ('a' &lt;= c &amp;&amp; c &lt;= 'z')) {</span>
+<span class="lineNum">     337 </span><span class="lineCov">          1 :     assertTrue(test, testName);</span>
+<span class="lineNum">     338 </span><span class="lineCov">          1 :   } else {</span>
+<span class="lineNum">     339 </span><span class="lineCov">          1 :     assertFalse(test, testName);</span>
+<span class="lineNum">     340 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     341 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     342 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     343 </span><span class="lineCov">          1 : assertFalse(/f(o)$\1/.test('foo'), &quot;backref detects at_end&quot;);</span>
+<span class="lineNum">     344 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     345 </span><span class="lineCov">          1 : // Check decimal escapes doesn't overflow.</span>
+<span class="lineNum">     346 </span><span class="lineCov">          1 : // (Note: \214 is interpreted as octal).</span>
+<span class="lineNum">     347 </span><span class="lineCov">          1 : assertArrayEquals([&quot;\x8c7483648&quot;],</span>
+<span class="lineNum">     348 </span><span class="lineCov">          1 :                   /\2147483648/.exec(&quot;\x8c7483648&quot;),</span>
+<span class="lineNum">     349 </span><span class="lineCov">          1 :                   &quot;Overflow decimal escape&quot;);</span>
+<span class="lineNum">     350 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     351 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     352 </span><span class="lineCov">          1 : // Check numbers in quantifiers doesn't overflow and doesn't throw on</span>
+<span class="lineNum">     353 </span><span class="lineCov">          1 : // too large numbers.</span>
+<span class="lineNum">     354 </span><span class="lineCov">          1 : assertFalse(/a{111111111111111111111111111111111111111111111}/.test('b'),</span>
+<span class="lineNum">     355 </span><span class="lineCov">          1 :             &quot;overlarge1&quot;);</span>
+<span class="lineNum">     356 </span><span class="lineCov">          1 : assertFalse(/a{999999999999999999999999999999999999999999999}/.test('b'),</span>
+<span class="lineNum">     357 </span><span class="lineCov">          1 :             &quot;overlarge2&quot;);</span>
+<span class="lineNum">     358 </span><span class="lineCov">          1 : assertFalse(/a{1,111111111111111111111111111111111111111111111}/.test('b'),</span>
+<span class="lineNum">     359 </span><span class="lineCov">          1 :             &quot;overlarge3&quot;);</span>
+<span class="lineNum">     360 </span><span class="lineCov">          1 : assertFalse(/a{1,999999999999999999999999999999999999999999999}/.test('b'),</span>
+<span class="lineNum">     361 </span><span class="lineCov">          1 :             &quot;overlarge4&quot;);</span>
+<span class="lineNum">     362 </span><span class="lineCov">          1 : assertFalse(/a{2147483648}/.test('b'),</span>
+<span class="lineNum">     363 </span><span class="lineCov">          1 :             &quot;overlarge5&quot;);</span>
+<span class="lineNum">     364 </span><span class="lineCov">          1 : assertFalse(/a{21474836471}/.test('b'),</span>
+<span class="lineNum">     365 </span><span class="lineCov">          1 :             &quot;overlarge6&quot;);</span>
+<span class="lineNum">     366 </span><span class="lineCov">          1 : assertFalse(/a{1,2147483648}/.test('b'),</span>
+<span class="lineNum">     367 </span><span class="lineCov">          1 :             &quot;overlarge7&quot;);</span>
+<span class="lineNum">     368 </span><span class="lineCov">          1 : assertFalse(/a{1,21474836471}/.test('b'),</span>
+<span class="lineNum">     369 </span><span class="lineCov">          1 :             &quot;overlarge8&quot;);</span>
+<span class="lineNum">     370 </span><span class="lineCov">          1 : assertFalse(/a{2147483648,2147483648}/.test('b'),</span>
+<span class="lineNum">     371 </span><span class="lineCov">          1 :             &quot;overlarge9&quot;);</span>
+<span class="lineNum">     372 </span><span class="lineCov">          1 : assertFalse(/a{21474836471,21474836471}/.test('b'),</span>
+<span class="lineNum">     373 </span><span class="lineCov">          1 :             &quot;overlarge10&quot;);</span>
+<span class="lineNum">     374 </span><span class="lineCov">          1 : assertFalse(/a{2147483647}/.test('b'),</span>
+<span class="lineNum">     375 </span><span class="lineCov">          1 :             &quot;overlarge11&quot;);</span>
+<span class="lineNum">     376 </span><span class="lineCov">          1 : assertFalse(/a{1,2147483647}/.test('b'),</span>
+<span class="lineNum">     377 </span><span class="lineCov">          1 :             &quot;overlarge12&quot;);</span>
+<span class="lineNum">     378 </span><span class="lineCov">          1 : assertTrue(/a{1,2147483647}/.test('a'),</span>
+<span class="lineNum">     379 </span><span class="lineCov">          1 :             &quot;overlarge13&quot;);</span>
+<span class="lineNum">     380 </span><span class="lineCov">          1 : assertFalse(/a{2147483647,2147483647}/.test('a'),</span>
+<span class="lineNum">     381 </span><span class="lineCov">          1 :             &quot;overlarge14&quot;);</span>
+<span class="lineNum">     382 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     383 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     384 </span><span class="lineCov">          1 : // Check that we don't read past the end of the string.</span>
+<span class="lineNum">     385 </span><span class="lineCov">          1 : assertFalse(/f/.test('b'));</span>
+<span class="lineNum">     386 </span><span class="lineCov">          1 : assertFalse(/[abc]f/.test('x'));</span>
+<span class="lineNum">     387 </span><span class="lineCov">          1 : assertFalse(/[abc]f/.test('xa'));</span>
+<span class="lineNum">     388 </span><span class="lineCov">          1 : assertFalse(/[abc]&lt;/.test('x'));</span>
+<span class="lineNum">     389 </span><span class="lineCov">          1 : assertFalse(/[abc]&lt;/.test('xa'));</span>
+<span class="lineNum">     390 </span><span class="lineCov">          1 : assertFalse(/f/i.test('b'));</span>
+<span class="lineNum">     391 </span><span class="lineCov">          1 : assertFalse(/[abc]f/i.test('x'));</span>
+<span class="lineNum">     392 </span><span class="lineCov">          1 : assertFalse(/[abc]f/i.test('xa'));</span>
+<span class="lineNum">     393 </span><span class="lineCov">          1 : assertFalse(/[abc]&lt;/i.test('x'));</span>
+<span class="lineNum">     394 </span><span class="lineCov">          1 : assertFalse(/[abc]&lt;/i.test('xa'));</span>
+<span class="lineNum">     395 </span><span class="lineCov">          1 : assertFalse(/f[abc]/.test('x'));</span>
+<span class="lineNum">     396 </span><span class="lineCov">          1 : assertFalse(/f[abc]/.test('xa'));</span>
+<span class="lineNum">     397 </span><span class="lineCov">          1 : assertFalse(/&lt;[abc]/.test('x'));</span>
+<span class="lineNum">     398 </span><span class="lineCov">          1 : assertFalse(/&lt;[abc]/.test('xa'));</span>
+<span class="lineNum">     399 </span><span class="lineCov">          1 : assertFalse(/f[abc]/i.test('x'));</span>
+<span class="lineNum">     400 </span><span class="lineCov">          1 : assertFalse(/f[abc]/i.test('xa'));</span>
+<span class="lineNum">     401 </span><span class="lineCov">          1 : assertFalse(/&lt;[abc]/i.test('x'));</span>
+<span class="lineNum">     402 </span><span class="lineCov">          1 : assertFalse(/&lt;[abc]/i.test('xa'));</span>
+<span class="lineNum">     403 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     404 </span><span class="lineCov">          1 : // Test that merging of quick test masks gets it right.</span>
+<span class="lineNum">     405 </span><span class="lineCov">          1 : assertFalse(/x([0-7]%%x|[0-6]%%y)/.test('x7%%y'), 'qt');</span>
+<span class="lineNum">     406 </span><span class="lineCov">          1 : assertFalse(/()x\1(y([0-7]%%%x|[0-6]%%%y)|dkjasldkas)/.test('xy7%%%y'), 'qt2');</span>
+<span class="lineNum">     407 </span><span class="lineCov">          1 : assertFalse(/()x\1(y([0-7]%%%x|[0-6]%%%y)|dkjasldkas)/.test('xy%%%y'), 'qt3');</span>
+<span class="lineNum">     408 </span><span class="lineCov">          1 : assertFalse(/()x\1y([0-7]%%%x|[0-6]%%%y)/.test('xy7%%%y'), 'qt4');</span>
+<span class="lineNum">     409 </span><span class="lineCov">          1 : assertFalse(/()x\1(y([0-7]%%%x|[0-6]%%%y)|dkjasldkas)/.test('xy%%%y'), 'qt5');</span>
+<span class="lineNum">     410 </span><span class="lineCov">          1 : assertFalse(/()x\1y([0-7]%%%x|[0-6]%%%y)/.test('xy7%%%y'), 'qt6');</span>
+<span class="lineNum">     411 </span><span class="lineCov">          1 : assertFalse(/xy([0-7]%%%x|[0-6]%%%y)/.test('xy7%%%y'), 'qt7');</span>
+<span class="lineNum">     412 </span><span class="lineCov">          1 : assertFalse(/x([0-7]%%%x|[0-6]%%%y)/.test('x7%%%y'), 'qt8');</span>
+<span class="lineNum">     413 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     414 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     415 </span><span class="lineCov">          1 : // Don't hang on this one.</span>
+<span class="lineNum">     416 </span><span class="lineCov">          1 : /[^\xfe-\xff]*/.test(&quot;&quot;);</span>
+<span class="lineNum">     417 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     418 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     419 </span><span class="lineCov">          1 : var long = &quot;a&quot;;</span>
+<span class="lineNum">     420 </span><span class="lineCov">          1 : for (var i = 0; i &lt; 100000; i++) {</span>
+<span class="lineNum">     421 </span><span class="lineCov">          1 :   long = &quot;a?&quot; + long;</span>
+<span class="lineNum">     422 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     423 </span><span class="lineCov">          1 : // Don't crash on this one, but maybe throw an exception.</span>
+<span class="lineNum">     424 </span><span class="lineCov">          1 : try {</span>
+<span class="lineNum">     425 </span><span class="lineCov">          1 :   RegExp(long).exec(&quot;a&quot;);</span>
+<span class="lineNum">     426 </span><span class="lineCov">          1 : } catch (e) {</span>
+<span class="lineNum">     427 </span><span class="lineCov">          1 :   assertTrue(String(e).indexOf(&quot;Stack overflow&quot;) &gt;= 0, &quot;overflow&quot;);</span>
+<span class="lineNum">     428 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     429 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     430 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     431 </span><span class="lineCov">          1 : // Test that compile works on modified objects</span>
+<span class="lineNum">     432 </span><span class="lineCov">          1 : var re = /re+/;</span>
+<span class="lineNum">     433 </span><span class="lineCov">          1 : assertEquals(&quot;re+&quot;, re.source);</span>
+<span class="lineNum">     434 </span><span class="lineCov">          1 : assertFalse(re.global);</span>
+<span class="lineNum">     435 </span><span class="lineCov">          1 : assertFalse(re.ignoreCase);</span>
+<span class="lineNum">     436 </span><span class="lineCov">          1 : assertFalse(re.multiline);</span>
+<span class="lineNum">     437 </span><span class="lineCov">          1 : assertEquals(0, re.lastIndex);</span>
+<span class="lineNum">     438 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     439 </span><span class="lineCov">          1 : re.compile(&quot;ro+&quot;, &quot;gim&quot;);</span>
+<span class="lineNum">     440 </span><span class="lineCov">          1 : assertEquals(&quot;ro+&quot;, re.source);</span>
+<span class="lineNum">     441 </span><span class="lineCov">          1 : assertTrue(re.global);</span>
+<span class="lineNum">     442 </span><span class="lineCov">          1 : assertTrue(re.ignoreCase);</span>
+<span class="lineNum">     443 </span><span class="lineCov">          1 : assertTrue(re.multiline);</span>
+<span class="lineNum">     444 </span><span class="lineCov">          1 : assertEquals(0, re.lastIndex);</span>
+<span class="lineNum">     445 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     446 </span><span class="lineCov">          1 : re.lastIndex = 42;</span>
+<span class="lineNum">     447 </span><span class="lineCov">          1 : re.someOtherProperty = 42;</span>
+<span class="lineNum">     448 </span><span class="lineCov">          1 : re.someDeletableProperty = 42;</span>
+<span class="lineNum">     449 </span><span class="lineCov">          1 : re[37] = 37;</span>
+<span class="lineNum">     450 </span><span class="lineCov">          1 : re[42] = 42;</span>
+<span class="lineNum">     451 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     452 </span><span class="lineCov">          1 : re.compile(&quot;ra+&quot;, &quot;i&quot;);</span>
+<span class="lineNum">     453 </span><span class="lineCov">          1 : assertEquals(&quot;ra+&quot;, re.source);</span>
+<span class="lineNum">     454 </span><span class="lineCov">          1 : assertFalse(re.global);</span>
+<span class="lineNum">     455 </span><span class="lineCov">          1 : assertTrue(re.ignoreCase);</span>
+<span class="lineNum">     456 </span><span class="lineCov">          1 : assertFalse(re.multiline);</span>
+<span class="lineNum">     457 </span><span class="lineCov">          1 : assertEquals(0, re.lastIndex);</span>
+<span class="lineNum">     458 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     459 </span><span class="lineCov">          1 : assertEquals(42, re.someOtherProperty);</span>
+<span class="lineNum">     460 </span><span class="lineCov">          1 : assertEquals(42, re.someDeletableProperty);</span>
+<span class="lineNum">     461 </span><span class="lineCov">          1 : assertEquals(37, re[37]);</span>
+<span class="lineNum">     462 </span><span class="lineCov">          1 : assertEquals(42, re[42]);</span>
+<span class="lineNum">     463 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     464 </span><span class="lineCov">          1 : re.lastIndex = -1;</span>
+<span class="lineNum">     465 </span><span class="lineCov">          1 : re.someOtherProperty = 37;</span>
+<span class="lineNum">     466 </span><span class="lineCov">          1 : re[42] = 37;</span>
+<span class="lineNum">     467 </span><span class="lineCov">          1 : assertTrue(delete re[37]);</span>
+<span class="lineNum">     468 </span><span class="lineCov">          1 : assertTrue(delete re.someDeletableProperty);</span>
+<span class="lineNum">     469 </span><span class="lineCov">          1 : re.compile(&quot;ri+&quot;, &quot;gm&quot;);</span>
+<span class="lineNum">     470 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     471 </span><span class="lineCov">          1 : assertEquals(&quot;ri+&quot;, re.source);</span>
+<span class="lineNum">     472 </span><span class="lineCov">          1 : assertTrue(re.global);</span>
+<span class="lineNum">     473 </span><span class="lineCov">          1 : assertFalse(re.ignoreCase);</span>
+<span class="lineNum">     474 </span><span class="lineCov">          1 : assertTrue(re.multiline);</span>
+<span class="lineNum">     475 </span><span class="lineCov">          1 : assertEquals(0, re.lastIndex);</span>
+<span class="lineNum">     476 </span><span class="lineCov">          1 : assertEquals(37, re.someOtherProperty);</span>
+<span class="lineNum">     477 </span><span class="lineCov">          1 : assertEquals(37, re[42]);</span>
+<a name="478"><span class="lineNum">     478 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     479 </span><span class="lineCov">          1 : // Test boundary-checks.</span>
+<span class="lineNum">     480 </span><span class="lineCov">         36 : function assertRegExpTest(re, input, test) {</span>
+<span class="lineNum">     481 </span><span class="lineCov">         36 :   assertEquals(test, re.test(input), &quot;test:&quot; + re + &quot;:&quot; + input);</span>
+<span class="lineNum">     482 </span><span class="lineCov">         36 : }</span>
+<span class="lineNum">     483 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     484 </span><span class="lineCov">          1 : assertRegExpTest(/b\b/, &quot;b&quot;, true);</span>
+<span class="lineNum">     485 </span><span class="lineCov">          1 : assertRegExpTest(/b\b$/, &quot;b&quot;, true);</span>
+<span class="lineNum">     486 </span><span class="lineCov">          1 : assertRegExpTest(/\bb/, &quot;b&quot;, true);</span>
+<span class="lineNum">     487 </span><span class="lineCov">          1 : assertRegExpTest(/^\bb/, &quot;b&quot;, true);</span>
+<span class="lineNum">     488 </span><span class="lineCov">          1 : assertRegExpTest(/,\b/, &quot;,&quot;, false);</span>
+<span class="lineNum">     489 </span><span class="lineCov">          1 : assertRegExpTest(/,\b$/, &quot;,&quot;, false);</span>
+<span class="lineNum">     490 </span><span class="lineCov">          1 : assertRegExpTest(/\b,/, &quot;,&quot;, false);</span>
+<span class="lineNum">     491 </span><span class="lineCov">          1 : assertRegExpTest(/^\b,/, &quot;,&quot;, false);</span>
+<span class="lineNum">     492 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     493 </span><span class="lineCov">          1 : assertRegExpTest(/b\B/, &quot;b&quot;, false);</span>
+<span class="lineNum">     494 </span><span class="lineCov">          1 : assertRegExpTest(/b\B$/, &quot;b&quot;, false);</span>
+<span class="lineNum">     495 </span><span class="lineCov">          1 : assertRegExpTest(/\Bb/, &quot;b&quot;, false);</span>
+<span class="lineNum">     496 </span><span class="lineCov">          1 : assertRegExpTest(/^\Bb/, &quot;b&quot;, false);</span>
+<span class="lineNum">     497 </span><span class="lineCov">          1 : assertRegExpTest(/,\B/, &quot;,&quot;, true);</span>
+<span class="lineNum">     498 </span><span class="lineCov">          1 : assertRegExpTest(/,\B$/, &quot;,&quot;, true);</span>
+<span class="lineNum">     499 </span><span class="lineCov">          1 : assertRegExpTest(/\B,/, &quot;,&quot;, true);</span>
+<span class="lineNum">     500 </span><span class="lineCov">          1 : assertRegExpTest(/^\B,/, &quot;,&quot;, true);</span>
+<span class="lineNum">     501 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     502 </span><span class="lineCov">          1 : assertRegExpTest(/b\b/, &quot;b,&quot;, true);</span>
+<span class="lineNum">     503 </span><span class="lineCov">          1 : assertRegExpTest(/b\b/, &quot;ba&quot;, false);</span>
+<span class="lineNum">     504 </span><span class="lineCov">          1 : assertRegExpTest(/b\B/, &quot;b,&quot;, false);</span>
+<span class="lineNum">     505 </span><span class="lineCov">          1 : assertRegExpTest(/b\B/, &quot;ba&quot;, true);</span>
+<span class="lineNum">     506 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     507 </span><span class="lineCov">          1 : assertRegExpTest(/b\Bb/, &quot;bb&quot;, true);</span>
+<span class="lineNum">     508 </span><span class="lineCov">          1 : assertRegExpTest(/b\bb/, &quot;bb&quot;, false);</span>
+<span class="lineNum">     509 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     510 </span><span class="lineCov">          1 : assertRegExpTest(/b\b[,b]/, &quot;bb&quot;, false);</span>
+<span class="lineNum">     511 </span><span class="lineCov">          1 : assertRegExpTest(/b\B[,b]/, &quot;bb&quot;, true);</span>
+<span class="lineNum">     512 </span><span class="lineCov">          1 : assertRegExpTest(/b\b[,b]/, &quot;b,&quot;, true);</span>
+<span class="lineNum">     513 </span><span class="lineCov">          1 : assertRegExpTest(/b\B[,b]/, &quot;b,&quot;, false);</span>
+<span class="lineNum">     514 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     515 </span><span class="lineCov">          1 : assertRegExpTest(/[,b]\bb/, &quot;bb&quot;, false);</span>
+<span class="lineNum">     516 </span><span class="lineCov">          1 : assertRegExpTest(/[,b]\Bb/, &quot;bb&quot;, true);</span>
+<span class="lineNum">     517 </span><span class="lineCov">          1 : assertRegExpTest(/[,b]\bb/, &quot;,b&quot;, true);</span>
+<span class="lineNum">     518 </span><span class="lineCov">          1 : assertRegExpTest(/[,b]\Bb/, &quot;,b&quot;, false);</span>
+<span class="lineNum">     519 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     520 </span><span class="lineCov">          1 : assertRegExpTest(/[,b]\b[,b]/, &quot;bb&quot;, false);</span>
+<span class="lineNum">     521 </span><span class="lineCov">          1 : assertRegExpTest(/[,b]\B[,b]/, &quot;bb&quot;, true);</span>
+<span class="lineNum">     522 </span><span class="lineCov">          1 : assertRegExpTest(/[,b]\b[,b]/, &quot;,b&quot;, true);</span>
+<span class="lineNum">     523 </span><span class="lineCov">          1 : assertRegExpTest(/[,b]\B[,b]/, &quot;,b&quot;, false);</span>
+<span class="lineNum">     524 </span><span class="lineCov">          1 : assertRegExpTest(/[,b]\b[,b]/, &quot;b,&quot;, true);</span>
+<span class="lineNum">     525 </span><span class="lineCov">          1 : assertRegExpTest(/[,b]\B[,b]/, &quot;b,&quot;, false);</span>
+<span class="lineNum">     526 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     527 </span><span class="lineCov">          1 : // Test that caching of result doesn't share result objects.</span>
+<span class="lineNum">     528 </span><span class="lineCov">          1 : // More iterations increases the chance of hitting a GC.</span>
+<span class="lineNum">     529 </span><span class="lineCov">          1 : for (var i = 0; i &lt; 100; i++) {</span>
+<span class="lineNum">     530 </span><span class="lineCov">          1 :   var re = /x(y)z/;</span>
+<span class="lineNum">     531 </span><span class="lineCov">          1 :   var res = re.exec(&quot;axyzb&quot;);</span>
+<span class="lineNum">     532 </span><span class="lineCov">          1 :   assertTrue(!!res);</span>
+<span class="lineNum">     533 </span><span class="lineCov">          1 :   assertEquals(2, res.length);</span>
+<span class="lineNum">     534 </span><span class="lineCov">          1 :   assertEquals(&quot;xyz&quot;, res[0]);</span>
+<span class="lineNum">     535 </span><span class="lineCov">          1 :   assertEquals(&quot;y&quot;, res[1]);</span>
+<span class="lineNum">     536 </span><span class="lineCov">          1 :   assertEquals(1, res.index);</span>
+<span class="lineNum">     537 </span><span class="lineCov">          1 :   assertEquals(&quot;axyzb&quot;, res.input);</span>
+<span class="lineNum">     538 </span><span class="lineCov">          1 :   assertEquals(undefined, res.foobar);</span>
+<span class="lineNum">     539 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     540 </span><span class="lineCov">          1 :   res.foobar = &quot;Arglebargle&quot;;</span>
+<span class="lineNum">     541 </span><span class="lineCov">          1 :   res[3] = &quot;Glopglyf&quot;;</span>
+<span class="lineNum">     542 </span><span class="lineCov">          1 :   assertEquals(&quot;Arglebargle&quot;, res.foobar);</span>
+<span class="lineNum">     543 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     544 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     545 </span><span class="lineCov">          1 : // Test that we perform the spec required conversions in the correct order.</span>
+<span class="lineNum">     546 </span><span class="lineCov">          1 : var log;</span>
+<a name="547"><span class="lineNum">     547 </span><span class="lineCov">          1 : var string = &quot;the string&quot;;</span></a>
+<span class="lineNum">     548 </span><span class="lineCov">          1 : var fakeLastIndex = {</span>
+<span class="lineNum">     549 </span><span class="lineCov">          6 :       valueOf: function() {</span>
+<span class="lineNum">     550 </span><span class="lineCov">          6 :         log.push(&quot;li&quot;);</span>
+<span class="lineNum">     551 </span><span class="lineCov">          6 :         return 0;</span>
+<span class="lineNum">     552 </span><span class="lineCov">          6 :       }</span>
+<a name="553"><span class="lineNum">     553 </span><span class="lineCov">          1 :     };</span></a>
+<span class="lineNum">     554 </span><span class="lineCov">          1 : var fakeString = {</span>
+<span class="lineNum">     555 </span><span class="lineCov">          6 :       toString: function() {</span>
+<span class="lineNum">     556 </span><span class="lineCov">          6 :         log.push(&quot;ts&quot;);</span>
+<span class="lineNum">     557 </span><span class="lineCov">          6 :         return string;</span>
+<span class="lineNum">     558 </span><span class="lineCov">          6 :       },</span>
+<span class="lineNum">     559 </span><span class="lineCov">          1 :       length: 0</span>
+<span class="lineNum">     560 </span><span class="lineCov">          1 :     };</span>
+<span class="lineNum">     561 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     562 </span><span class="lineCov">          1 : var re = /str/;</span>
+<span class="lineNum">     563 </span><span class="lineCov">          1 : log = [];</span>
+<span class="lineNum">     564 </span><span class="lineCov">          1 : re.lastIndex = fakeLastIndex;</span>
+<span class="lineNum">     565 </span><span class="lineCov">          1 : var result = re.exec(fakeString);</span>
+<span class="lineNum">     566 </span><span class="lineCov">          1 : assertEquals([&quot;str&quot;], result);</span>
+<span class="lineNum">     567 </span><span class="lineCov">          1 : assertEquals([&quot;ts&quot;, &quot;li&quot;], log);</span>
+<span class="lineNum">     568 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     569 </span><span class="lineCov">          1 : // Again, to check if caching interferes.</span>
+<span class="lineNum">     570 </span><span class="lineCov">          1 : log = [];</span>
+<span class="lineNum">     571 </span><span class="lineCov">          1 : re.lastIndex = fakeLastIndex;</span>
+<span class="lineNum">     572 </span><span class="lineCov">          1 : result = re.exec(fakeString);</span>
+<span class="lineNum">     573 </span><span class="lineCov">          1 : assertEquals([&quot;str&quot;], result);</span>
+<span class="lineNum">     574 </span><span class="lineCov">          1 : assertEquals([&quot;ts&quot;, &quot;li&quot;], log);</span>
+<span class="lineNum">     575 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     576 </span><span class="lineCov">          1 : // And one more time, just to be certain.</span>
+<span class="lineNum">     577 </span><span class="lineCov">          1 : log = [];</span>
+<span class="lineNum">     578 </span><span class="lineCov">          1 : re.lastIndex = fakeLastIndex;</span>
+<span class="lineNum">     579 </span><span class="lineCov">          1 : result = re.exec(fakeString);</span>
+<span class="lineNum">     580 </span><span class="lineCov">          1 : assertEquals([&quot;str&quot;], result);</span>
+<span class="lineNum">     581 </span><span class="lineCov">          1 : assertEquals([&quot;ts&quot;, &quot;li&quot;], log);</span>
+<span class="lineNum">     582 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     583 </span><span class="lineCov">          1 : // Now with a global regexp, where lastIndex is actually used.</span>
+<span class="lineNum">     584 </span><span class="lineCov">          1 : re = /str/g;</span>
+<span class="lineNum">     585 </span><span class="lineCov">          1 : log = [];</span>
+<span class="lineNum">     586 </span><span class="lineCov">          1 : re.lastIndex = fakeLastIndex;</span>
+<span class="lineNum">     587 </span><span class="lineCov">          1 : var result = re.exec(fakeString);</span>
+<span class="lineNum">     588 </span><span class="lineCov">          1 : assertEquals([&quot;str&quot;], result);</span>
+<span class="lineNum">     589 </span><span class="lineCov">          1 : assertEquals([&quot;ts&quot;, &quot;li&quot;], log);</span>
+<span class="lineNum">     590 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     591 </span><span class="lineCov">          1 : // Again, to check if caching interferes.</span>
+<span class="lineNum">     592 </span><span class="lineCov">          1 : log = [];</span>
+<span class="lineNum">     593 </span><span class="lineCov">          1 : re.lastIndex = fakeLastIndex;</span>
+<span class="lineNum">     594 </span><span class="lineCov">          1 : result = re.exec(fakeString);</span>
+<span class="lineNum">     595 </span><span class="lineCov">          1 : assertEquals([&quot;str&quot;], result);</span>
+<span class="lineNum">     596 </span><span class="lineCov">          1 : assertEquals([&quot;ts&quot;, &quot;li&quot;], log);</span>
+<span class="lineNum">     597 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     598 </span><span class="lineCov">          1 : // And one more time, just to be certain.</span>
+<span class="lineNum">     599 </span><span class="lineCov">          1 : log = [];</span>
+<span class="lineNum">     600 </span><span class="lineCov">          1 : re.lastIndex = fakeLastIndex;</span>
+<span class="lineNum">     601 </span><span class="lineCov">          1 : result = re.exec(fakeString);</span>
+<span class="lineNum">     602 </span><span class="lineCov">          1 : assertEquals([&quot;str&quot;], result);</span>
+<span class="lineNum">     603 </span><span class="lineCov">          1 : assertEquals([&quot;ts&quot;, &quot;li&quot;], log);</span>
+<span class="lineNum">     604 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     605 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     606 </span><span class="lineCov">          1 : // Check that properties of RegExp have the correct permissions.</span>
+<span class="lineNum">     607 </span><span class="lineCov">          1 : var re = /x/g;</span>
+<span class="lineNum">     608 </span><span class="lineCov">          1 : var desc = Object.getOwnPropertyDescriptor(re.__proto__, &quot;global&quot;);</span>
+<span class="lineNum">     609 </span><span class="lineCov">          1 : assertInstanceof(desc.get, Function);</span>
+<span class="lineNum">     610 </span><span class="lineCov">          1 : assertEquals(true, desc.configurable);</span>
+<span class="lineNum">     611 </span><span class="lineCov">          1 : assertEquals(false, desc.enumerable);</span>
+<span class="lineNum">     612 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     613 </span><span class="lineCov">          1 : desc = Object.getOwnPropertyDescriptor(re.__proto__, &quot;multiline&quot;);</span>
+<span class="lineNum">     614 </span><span class="lineCov">          1 : assertInstanceof(desc.get, Function);</span>
+<span class="lineNum">     615 </span><span class="lineCov">          1 : assertEquals(true, desc.configurable);</span>
+<span class="lineNum">     616 </span><span class="lineCov">          1 : assertEquals(false, desc.enumerable);</span>
+<span class="lineNum">     617 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     618 </span><span class="lineCov">          1 : desc = Object.getOwnPropertyDescriptor(re.__proto__, &quot;ignoreCase&quot;);</span>
+<span class="lineNum">     619 </span><span class="lineCov">          1 : assertInstanceof(desc.get, Function);</span>
+<span class="lineNum">     620 </span><span class="lineCov">          1 : assertEquals(true, desc.configurable);</span>
+<span class="lineNum">     621 </span><span class="lineCov">          1 : assertEquals(false, desc.enumerable);</span>
+<span class="lineNum">     622 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     623 </span><span class="lineCov">          1 : desc = Object.getOwnPropertyDescriptor(re, &quot;global&quot;);</span>
+<span class="lineNum">     624 </span><span class="lineCov">          1 : assertEquals(undefined, desc);</span>
+<span class="lineNum">     625 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     626 </span><span class="lineCov">          1 : desc = Object.getOwnPropertyDescriptor(re, &quot;multiline&quot;);</span>
+<span class="lineNum">     627 </span><span class="lineCov">          1 : assertEquals(undefined, desc);</span>
+<span class="lineNum">     628 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     629 </span><span class="lineCov">          1 : desc = Object.getOwnPropertyDescriptor(re, &quot;ignoreCase&quot;);</span>
+<span class="lineNum">     630 </span><span class="lineCov">          1 : assertEquals(undefined, desc);</span>
+<span class="lineNum">     631 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     632 </span><span class="lineCov">          1 : desc = Object.getOwnPropertyDescriptor(re, &quot;lastIndex&quot;);</span>
+<span class="lineNum">     633 </span><span class="lineCov">          1 : assertEquals(0, desc.value);</span>
+<span class="lineNum">     634 </span><span class="lineCov">          1 : assertEquals(false, desc.configurable);</span>
+<span class="lineNum">     635 </span><span class="lineCov">          1 : assertEquals(false, desc.enumerable);</span>
+<span class="lineNum">     636 </span><span class="lineCov">          1 : assertEquals(true, desc.writable);</span>
+<span class="lineNum">     637 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     638 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     639 </span><span class="lineCov">          1 : // Check that end-anchored regexps are optimized correctly.</span>
+<span class="lineNum">     640 </span><span class="lineCov">          1 : var re = /(?:a|bc)g$/;</span>
+<span class="lineNum">     641 </span><span class="lineCov">          1 : assertTrue(re.test(&quot;ag&quot;));</span>
+<span class="lineNum">     642 </span><span class="lineCov">          1 : assertTrue(re.test(&quot;bcg&quot;));</span>
+<span class="lineNum">     643 </span><span class="lineCov">          1 : assertTrue(re.test(&quot;abcg&quot;));</span>
+<span class="lineNum">     644 </span><span class="lineCov">          1 : assertTrue(re.test(&quot;zimbag&quot;));</span>
+<span class="lineNum">     645 </span><span class="lineCov">          1 : assertTrue(re.test(&quot;zimbcg&quot;));</span>
+<span class="lineNum">     646 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     647 </span><span class="lineCov">          1 : assertFalse(re.test(&quot;g&quot;));</span>
+<span class="lineNum">     648 </span><span class="lineCov">          1 : assertFalse(re.test(&quot;&quot;));</span>
+<span class="lineNum">     649 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     650 </span><span class="lineCov">          1 : // Global regexp (non-zero start).</span>
+<span class="lineNum">     651 </span><span class="lineCov">          1 : var re = /(?:a|bc)g$/g;</span>
+<span class="lineNum">     652 </span><span class="lineCov">          1 : assertTrue(re.test(&quot;ag&quot;));</span>
+<span class="lineNum">     653 </span><span class="lineCov">          1 : re.lastIndex = 1;  // Near start of string.</span>
+<span class="lineNum">     654 </span><span class="lineCov">          1 : assertTrue(re.test(&quot;zimbag&quot;));</span>
+<span class="lineNum">     655 </span><span class="lineCov">          1 : re.lastIndex = 6;  // At end of string.</span>
+<span class="lineNum">     656 </span><span class="lineCov">          1 : assertFalse(re.test(&quot;zimbag&quot;));</span>
+<span class="lineNum">     657 </span><span class="lineCov">          1 : re.lastIndex = 5;  // Near end of string.</span>
+<span class="lineNum">     658 </span><span class="lineCov">          1 : assertFalse(re.test(&quot;zimbag&quot;));</span>
+<span class="lineNum">     659 </span><span class="lineCov">          1 : re.lastIndex = 4;</span>
+<span class="lineNum">     660 </span><span class="lineCov">          1 : assertTrue(re.test(&quot;zimbag&quot;));</span>
+<span class="lineNum">     661 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     662 </span><span class="lineCov">          1 : // Anchored at both ends.</span>
+<span class="lineNum">     663 </span><span class="lineCov">          1 : var re = /^(?:a|bc)g$/g;</span>
+<span class="lineNum">     664 </span><span class="lineCov">          1 : assertTrue(re.test(&quot;ag&quot;));</span>
+<span class="lineNum">     665 </span><span class="lineCov">          1 : re.lastIndex = 1;</span>
+<span class="lineNum">     666 </span><span class="lineCov">          1 : assertFalse(re.test(&quot;ag&quot;));</span>
+<span class="lineNum">     667 </span><span class="lineCov">          1 : re.lastIndex = 1;</span>
+<span class="lineNum">     668 </span><span class="lineCov">          1 : assertFalse(re.test(&quot;zag&quot;));</span>
+<span class="lineNum">     669 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     670 </span><span class="lineCov">          1 : // Long max_length of RegExp.</span>
+<span class="lineNum">     671 </span><span class="lineCov">          1 : var re = /VeryLongRegExp!{1,1000}$/;</span>
+<span class="lineNum">     672 </span><span class="lineCov">          1 : assertTrue(re.test(&quot;BahoolaVeryLongRegExp!!!!!!&quot;));</span>
+<span class="lineNum">     673 </span><span class="lineCov">          1 : assertFalse(re.test(&quot;VeryLongRegExp&quot;));</span>
+<span class="lineNum">     674 </span><span class="lineCov">          1 : assertFalse(re.test(&quot;!&quot;));</span>
+<span class="lineNum">     675 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     676 </span><span class="lineCov">          1 : // End anchor inside disjunction.</span>
+<span class="lineNum">     677 </span><span class="lineCov">          1 : var re = /(?:a$|bc$)/;</span>
+<span class="lineNum">     678 </span><span class="lineCov">          1 : assertTrue(re.test(&quot;a&quot;));</span>
+<span class="lineNum">     679 </span><span class="lineCov">          1 : assertTrue(re.test(&quot;bc&quot;));</span>
+<span class="lineNum">     680 </span><span class="lineCov">          1 : assertTrue(re.test(&quot;abc&quot;));</span>
+<span class="lineNum">     681 </span><span class="lineCov">          1 : assertTrue(re.test(&quot;zimzamzumba&quot;));</span>
+<span class="lineNum">     682 </span><span class="lineCov">          1 : assertTrue(re.test(&quot;zimzamzumbc&quot;));</span>
+<span class="lineNum">     683 </span><span class="lineCov">          1 : assertFalse(re.test(&quot;c&quot;));</span>
+<span class="lineNum">     684 </span><span class="lineCov">          1 : assertFalse(re.test(&quot;&quot;));</span>
+<span class="lineNum">     685 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     686 </span><span class="lineCov">          1 : // Only partially anchored.</span>
+<span class="lineNum">     687 </span><span class="lineCov">          1 : var re = /(?:a|bc$)/;</span>
+<span class="lineNum">     688 </span><span class="lineCov">          1 : assertTrue(re.test(&quot;a&quot;));</span>
+<span class="lineNum">     689 </span><span class="lineCov">          1 : assertTrue(re.test(&quot;bc&quot;));</span>
+<span class="lineNum">     690 </span><span class="lineCov">          1 : assertEquals([&quot;a&quot;], re.exec(&quot;abc&quot;));</span>
+<span class="lineNum">     691 </span><span class="lineCov">          1 : assertEquals(4, re.exec(&quot;zimzamzumba&quot;).index);</span>
+<span class="lineNum">     692 </span><span class="lineCov">          1 : assertEquals([&quot;bc&quot;], re.exec(&quot;zimzomzumbc&quot;));</span>
+<span class="lineNum">     693 </span><span class="lineCov">          1 : assertFalse(re.test(&quot;c&quot;));</span>
+<span class="lineNum">     694 </span><span class="lineCov">          1 : assertFalse(re.test(&quot;&quot;));</span>
+<span class="lineNum">     695 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     696 </span><span class="lineCov">          1 : // Valid syntax in ES5.</span>
+<span class="lineNum">     697 </span><span class="lineCov">          1 : re = RegExp(&quot;(?:x)*&quot;);</span>
+<span class="lineNum">     698 </span><span class="lineCov">          1 : re = RegExp(&quot;(x)*&quot;);</span>
+<span class="lineNum">     699 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     700 </span><span class="lineCov">          1 : // Syntax extension relative to ES5, for matching JSC (and ES3).</span>
+<span class="lineNum">     701 </span><span class="lineCov">          1 : // Shouldn't throw.</span>
+<span class="lineNum">     702 </span><span class="lineCov">          1 : re = RegExp(&quot;(?=x)*&quot;);</span>
+<span class="lineNum">     703 </span><span class="lineCov">          1 : re = RegExp(&quot;(?!x)*&quot;);</span>
+<span class="lineNum">     704 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     705 </span><span class="lineCov">          1 : // Should throw. Shouldn't hit asserts in debug mode.</span>
+<span class="lineNum">     706 </span><span class="lineCov">          1 : assertThrows(&quot;RegExp('(*)')&quot;);</span>
+<span class="lineNum">     707 </span><span class="lineCov">          1 : assertThrows(&quot;RegExp('(?:*)')&quot;);</span>
+<span class="lineNum">     708 </span><span class="lineCov">          1 : assertThrows(&quot;RegExp('(?=*)')&quot;);</span>
+<span class="lineNum">     709 </span><span class="lineCov">          1 : assertThrows(&quot;RegExp('(?!*)')&quot;);</span>
+<span class="lineNum">     710 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     711 </span><span class="lineCov">          1 : // Test trimmed regular expression for RegExp.test().</span>
+<span class="lineNum">     712 </span><span class="lineCov">          1 : assertTrue(/.*abc/.test(&quot;abc&quot;));</span>
+<span class="lineNum">     713 </span><span class="lineCov">          1 : assertFalse(/.*\d+/.test(&quot;q&quot;));</span>
+<span class="lineNum">     714 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     715 </span><span class="lineCov">          1 : // Test that RegExp.prototype.toString() throws TypeError for</span>
+<span class="lineNum">     716 </span><span class="lineCov">          1 : // incompatible receivers (ES5 section 15.10.6 and 15.10.6.4).</span>
+<span class="lineNum">     717 </span><span class="lineCov">          1 : assertThrows(&quot;RegExp.prototype.toString.call(null)&quot;, TypeError);</span>
+<span class="lineNum">     718 </span><span class="lineCov">          1 : assertThrows(&quot;RegExp.prototype.toString.call(0)&quot;, TypeError);</span>
+<span class="lineNum">     719 </span><span class="lineCov">          1 : assertThrows(&quot;RegExp.prototype.toString.call('')&quot;, TypeError);</span>
+<span class="lineNum">     720 </span><span class="lineCov">          1 : assertThrows(&quot;RegExp.prototype.toString.call(false)&quot;, TypeError);</span>
+<span class="lineNum">     721 </span><span class="lineCov">          1 : assertThrows(&quot;RegExp.prototype.toString.call(true)&quot;, TypeError);</span>
+<span class="lineNum">     722 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     723 </span><span class="lineCov">          1 : // Test mutually recursive capture and backreferences.</span>
+<span class="lineNum">     724 </span><span class="lineCov">          1 : assertEquals([&quot;b&quot;, &quot;&quot;, &quot;&quot;], /(\2)b(\1)/.exec(&quot;aba&quot;));</span>
+<span class="lineNum">     725 </span><span class="lineCov">          1 : assertEquals([&quot;a&quot;, &quot;&quot;, &quot;&quot;], /(\2).(\1)/.exec(&quot;aba&quot;));</span>
+<span class="lineNum">     726 </span><span class="lineCov">          1 : assertEquals([&quot;aba&quot;, &quot;a&quot;, &quot;a&quot;], /(.\2).(\1)/.exec(&quot;aba&quot;));</span>
+<span class="lineNum">     727 </span><span class="lineCov">          1 : assertEquals([&quot;acbc&quot;, &quot;c&quot;, &quot;c&quot;], /a(.\2)b(\1)$/.exec(&quot;acbc&quot;));</span>
+<span class="lineNum">     728 </span><span class="lineCov">          1 : assertEquals([&quot;acbc&quot;, &quot;c&quot;, &quot;c&quot;], /a(.\2)b(\1)/.exec(&quot;aabcacbc&quot;));</span>
+<span class="lineNum">     729 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     730 </span><span class="lineCov">          1 : // Test surrogate pair detection in split.</span>
+<span class="lineNum">     731 </span><span class="lineCov">          1 : // \u{daff}\u{e000} is not a surrogate pair, while \u{daff}\u{dfff} is.</span>
+<span class="lineNum">     732 </span><span class="lineCov">          1 : assertEquals([&quot;\u{daff}&quot;, &quot;\u{e000}&quot;], &quot;\u{daff}\u{e000}&quot;.split(/[a-z]{0,1}/u));</span>
+<span class="lineNum">     733 </span><span class="lineCov">          1 : assertEquals([&quot;\u{daff}\u{dfff}&quot;], &quot;\u{daff}\u{dfff}&quot;.split(/[a-z]{0,1}/u));</span>
+<span class="lineNum">     734 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     735 </span><span class="lineCov">          1 : // Test that changing a property on RegExp.prototype results in us taking the</span>
+<span class="lineNum">     736 </span><span class="lineCov">          1 : // slow path, which executes RegExp.prototype.exec instead of our</span>
+<a name="737"><span class="lineNum">     737 </span><span class="lineCov">          1 : // RegExpExecStub.</span></a>
+<a name="738"><span class="lineNum">     738 </span><span class="lineCov">          1 : const RegExpPrototypeExec = RegExp.prototype.exec;</span></a>
+<span class="lineNum">     739 </span><span class="lineCov">          1 : RegExp.prototype.exec = function() { throw new Error(); }</span>
+<span class="lineNum">     740 </span><span class="lineCov">          1 : assertThrows(() =&gt; &quot;abc&quot;.replace(/./, &quot;&quot;));</span>
+<span class="lineNum">     741 </span><span class="lineCov">          1 : RegExp.prototype.exec = RegExpPrototypeExec;</span>
+<span class="lineNum">     742 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     743 </span><span class="lineCov">          1 : // Test the code path in RE.proto[@@search] when previousLastIndex is a receiver</span>
+<span class="lineNum">     744 </span><span class="lineCov">          1 : // but can't be converted to a primitive. This exposed a crash in an older</span>
+<span class="lineNum">     745 </span><span class="lineCov">          1 : // C++ implementation of @@search which a) still relied on Object::Equals,</span>
+<span class="lineNum">     746 </span><span class="lineCov">          1 : // and b) incorrectly returned isolate-&gt;pending_exception() on error.</span>
+<span class="lineNum">     747 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     748 </span><span class="lineCov">          1 : var re = /./;</span>
+<span class="lineNum">     749 </span><span class="lineCov">          1 : re.lastIndex = { [Symbol.toPrimitive]: 42 };</span>
+<span class="lineNum">     750 </span><span class="lineCov">          1 : try { &quot;abc&quot;.search(re); } catch (_) {}  // Ensure we don't crash.</span>
+<span class="lineNum">     751 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     752 </span><span class="lineCov">          1 : // Test lastIndex values of -0.0 and NaN (since @@search uses SameValue).</span>
+<span class="lineNum">     753 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     754 </span><span class="lineCov">          1 : var re = /./;</span>
+<span class="lineNum">     755 </span><span class="lineCov">          1 : re.exec = function(str) { assertEquals(0, re.lastIndex); return []; }</span>
+<span class="lineNum">     756 </span><span class="lineCov">          1 : re.lastIndex = -0.0;</span>
+<span class="lineNum">     757 </span><span class="lineCov">          1 : assertEquals(-0, re.lastIndex);</span>
+<span class="lineNum">     758 </span><span class="lineCov">          1 : &quot;abc&quot;.search(re);</span>
+<span class="lineNum">     759 </span><span class="lineCov">          1 : assertEquals(-0, re.lastIndex);</span>
+<a name="760"><span class="lineNum">     760 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     761 </span><span class="lineCov">          1 : var re = /./;</span>
+<span class="lineNum">     762 </span><span class="lineCov">          1 : re.exec = function(str) { assertEquals(0, re.lastIndex); return []; }</span>
+<span class="lineNum">     763 </span><span class="lineCov">          1 : re.lastIndex = NaN;</span>
+<span class="lineNum">     764 </span><span class="lineCov">          1 : assertEquals(NaN, re.lastIndex);</span>
+<span class="lineNum">     765 </span><span class="lineCov">          1 : &quot;abc&quot;.search(re);</span>
+<span class="lineNum">     766 </span><span class="lineCov">          1 : assertEquals(NaN, re.lastIndex);</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

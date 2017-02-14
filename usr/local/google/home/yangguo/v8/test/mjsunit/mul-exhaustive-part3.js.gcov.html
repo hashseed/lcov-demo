@@ -1,0 +1,608 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - /usr/local/google/home/yangguo/v8/test/mjsunit/mul-exhaustive-part3.js</title>
+  <link rel="stylesheet" type="text/css" href="../../../../../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../../../../../index.html">top level</a> - <a href="index.html">usr/local/google/home/yangguo/v8/test/mjsunit</a> - mul-exhaustive-part3.js<span style="font-size: 80%;"> (source / <a href="mul-exhaustive-part3.js.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">533</td>
+            <td class="headerCovTableEntry">533</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2017-02-14</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">5</td>
+            <td class="headerCovTableEntry">5</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr><td><img src="../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span><span class="lineCov">          1 : // Copyright 2008 the V8 project authors. All rights reserved.</span></a>
+<span class="lineNum">       2 </span><span class="lineCov">          1 : // Redistribution and use in source and binary forms, with or without</span>
+<span class="lineNum">       3 </span><span class="lineCov">          1 : // modification, are permitted provided that the following conditions are</span>
+<span class="lineNum">       4 </span><span class="lineCov">          1 : // met:</span>
+<span class="lineNum">       5 </span><span class="lineCov">          1 : //</span>
+<span class="lineNum">       6 </span><span class="lineCov">          1 : //     * Redistributions of source code must retain the above copyright</span>
+<span class="lineNum">       7 </span><span class="lineCov">          1 : //       notice, this list of conditions and the following disclaimer.</span>
+<span class="lineNum">       8 </span><span class="lineCov">          1 : //     * Redistributions in binary form must reproduce the above</span>
+<span class="lineNum">       9 </span><span class="lineCov">          1 : //       copyright notice, this list of conditions and the following</span>
+<span class="lineNum">      10 </span><span class="lineCov">          1 : //       disclaimer in the documentation and/or other materials provided</span>
+<span class="lineNum">      11 </span><span class="lineCov">          1 : //       with the distribution.</span>
+<span class="lineNum">      12 </span><span class="lineCov">          1 : //     * Neither the name of Google Inc. nor the names of its</span>
+<span class="lineNum">      13 </span><span class="lineCov">          1 : //       contributors may be used to endorse or promote products derived</span>
+<span class="lineNum">      14 </span><span class="lineCov">          1 : //       from this software without specific prior written permission.</span>
+<span class="lineNum">      15 </span><span class="lineCov">          1 : //</span>
+<span class="lineNum">      16 </span><span class="lineCov">          1 : // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="lineNum">      17 </span><span class="lineCov">          1 : // &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="lineNum">      18 </span><span class="lineCov">          1 : // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR</span>
+<span class="lineNum">      19 </span><span class="lineCov">          1 : // A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT</span>
+<span class="lineNum">      20 </span><span class="lineCov">          1 : // OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,</span>
+<span class="lineNum">      21 </span><span class="lineCov">          1 : // SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT</span>
+<span class="lineNum">      22 </span><span class="lineCov">          1 : // LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,</span>
+<span class="lineNum">      23 </span><span class="lineCov">          1 : // DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY</span>
+<span class="lineNum">      24 </span><span class="lineCov">          1 : // THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT</span>
+<span class="lineNum">      25 </span><span class="lineCov">          1 : // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE</span>
+<span class="lineNum">      26 </span><span class="lineCov">          1 : // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="lineNum">      27 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      28 </span><span class="lineCov">          1 : var x;</span>
+<a name="29"><span class="lineNum">      29 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      30 </span><span class="lineCov">          1 : // Converts a number to string respecting -0.</span>
+<span class="lineNum">      31 </span><span class="lineCov">      14720 : function stringify(n) {</span>
+<span class="lineNum">      32 </span><span class="lineCov">      14720 :   if ((1 / n) === -Infinity) return &quot;-0&quot;;</span>
+<span class="lineNum">      33 </span><span class="lineCov">      14720 :   return String(n);</span>
+<a name="34"><span class="lineNum">      34 </span><span class="lineCov">      14720 : }</span></a>
+<a name="35"><span class="lineNum">      35 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      36 </span><span class="lineCov">        465 : function f(expected, y) {</span>
+<span class="lineNum">      37 </span><span class="lineCov">      11040 :   function testEval(string, x, y) {</span>
+<span class="lineNum">      38 </span><span class="lineCov">      11040 :     var mulFunction = Function(&quot;x, y&quot;, &quot;return &quot; + string);</span>
+<a name="39"><span class="lineNum">      39 </span><span class="lineCov">      11040 :     return mulFunction(x, y);</span></a>
+<span class="lineNum">      40 </span><span class="lineCov">      11040 :   }</span>
+<span class="lineNum">      41 </span><span class="lineCov">       3680 :   function mulTest(expected, x, y) {</span>
+<span class="lineNum">      42 </span><span class="lineCov">       3680 :     assertEquals(expected, x * y);</span>
+<span class="lineNum">      43 </span><span class="lineCov">       3680 :     assertEquals(expected, testEval(stringify(x) + &quot; * y&quot;, x, y));</span>
+<span class="lineNum">      44 </span><span class="lineCov">       3680 :     assertEquals(expected, testEval(&quot;x * &quot; + stringify(y), x, y));</span>
+<span class="lineNum">      45 </span><span class="lineCov">       3680 :     assertEquals(expected, testEval(stringify(x) + &quot; * &quot; + stringify(y), x, y));</span>
+<span class="lineNum">      46 </span><span class="lineCov">       3680 :   }</span>
+<span class="lineNum">      47 </span><span class="lineCov">        465 :   mulTest(expected, x, y);</span>
+<span class="lineNum">      48 </span><span class="lineCov">        465 :   mulTest(-expected, -x, y);</span>
+<span class="lineNum">      49 </span><span class="lineCov">        465 :   mulTest(-expected, x, -y);</span>
+<span class="lineNum">      50 </span><span class="lineCov">        465 :   mulTest(expected, -x, -y);</span>
+<span class="lineNum">      51 </span><span class="lineCov">        465 :   if (x === y) return;  // Symmetric cases not necessary.</span>
+<span class="lineNum">      52 </span><span class="lineCov">        465 :   mulTest(expected, y, x);</span>
+<span class="lineNum">      53 </span><span class="lineCov">        465 :   mulTest(-expected, -y, x);</span>
+<span class="lineNum">      54 </span><span class="lineCov">        465 :   mulTest(-expected, y, -x);</span>
+<span class="lineNum">      55 </span><span class="lineCov">        465 :   mulTest(expected, -y, -x);</span>
+<span class="lineNum">      56 </span><span class="lineCov">        465 : }</span>
+<span class="lineNum">      57 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      58 </span><span class="lineCov">          1 : x = 16385;</span>
+<span class="lineNum">      59 </span><span class="lineCov">          1 : f(0, 0);</span>
+<span class="lineNum">      60 </span><span class="lineCov">          1 : f(16385, 1);</span>
+<span class="lineNum">      61 </span><span class="lineCov">          1 : f(32770, 2);</span>
+<span class="lineNum">      62 </span><span class="lineCov">          1 : f(49155, 3);</span>
+<span class="lineNum">      63 </span><span class="lineCov">          1 : f(65540, 4);</span>
+<span class="lineNum">      64 </span><span class="lineCov">          1 : f(81925, 5);</span>
+<span class="lineNum">      65 </span><span class="lineCov">          1 : f(114695, 7);</span>
+<span class="lineNum">      66 </span><span class="lineCov">          1 : f(131080, 8);</span>
+<span class="lineNum">      67 </span><span class="lineCov">          1 : f(147465, 9);</span>
+<span class="lineNum">      68 </span><span class="lineCov">          1 : f(245775, 15);</span>
+<span class="lineNum">      69 </span><span class="lineCov">          1 : f(262160, 16);</span>
+<span class="lineNum">      70 </span><span class="lineCov">          1 : f(278545, 17);</span>
+<span class="lineNum">      71 </span><span class="lineCov">          1 : f(507935, 31);</span>
+<span class="lineNum">      72 </span><span class="lineCov">          1 : f(524320, 32);</span>
+<span class="lineNum">      73 </span><span class="lineCov">          1 : f(540705, 33);</span>
+<span class="lineNum">      74 </span><span class="lineCov">          1 : f(1032255, 63);</span>
+<span class="lineNum">      75 </span><span class="lineCov">          1 : f(1048640, 64);</span>
+<span class="lineNum">      76 </span><span class="lineCov">          1 : f(1065025, 65);</span>
+<span class="lineNum">      77 </span><span class="lineCov">          1 : f(2080895, 127);</span>
+<span class="lineNum">      78 </span><span class="lineCov">          1 : f(2097280, 128);</span>
+<span class="lineNum">      79 </span><span class="lineCov">          1 : f(2113665, 129);</span>
+<span class="lineNum">      80 </span><span class="lineCov">          1 : f(4178175, 255);</span>
+<span class="lineNum">      81 </span><span class="lineCov">          1 : f(4194560, 256);</span>
+<span class="lineNum">      82 </span><span class="lineCov">          1 : f(4210945, 257);</span>
+<span class="lineNum">      83 </span><span class="lineCov">          1 : f(8372735, 511);</span>
+<span class="lineNum">      84 </span><span class="lineCov">          1 : f(8389120, 512);</span>
+<span class="lineNum">      85 </span><span class="lineCov">          1 : f(8405505, 513);</span>
+<span class="lineNum">      86 </span><span class="lineCov">          1 : f(16761855, 1023);</span>
+<span class="lineNum">      87 </span><span class="lineCov">          1 : f(16778240, 1024);</span>
+<span class="lineNum">      88 </span><span class="lineCov">          1 : f(16794625, 1025);</span>
+<span class="lineNum">      89 </span><span class="lineCov">          1 : f(33540095, 2047);</span>
+<span class="lineNum">      90 </span><span class="lineCov">          1 : f(33556480, 2048);</span>
+<span class="lineNum">      91 </span><span class="lineCov">          1 : f(33572865, 2049);</span>
+<span class="lineNum">      92 </span><span class="lineCov">          1 : f(67096575, 4095);</span>
+<span class="lineNum">      93 </span><span class="lineCov">          1 : f(67112960, 4096);</span>
+<span class="lineNum">      94 </span><span class="lineCov">          1 : f(67129345, 4097);</span>
+<span class="lineNum">      95 </span><span class="lineCov">          1 : f(134209535, 8191);</span>
+<span class="lineNum">      96 </span><span class="lineCov">          1 : f(134225920, 8192);</span>
+<span class="lineNum">      97 </span><span class="lineCov">          1 : f(134242305, 8193);</span>
+<span class="lineNum">      98 </span><span class="lineCov">          1 : f(268435455, 16383);</span>
+<span class="lineNum">      99 </span><span class="lineCov">          1 : f(268451840, 16384);</span>
+<span class="lineNum">     100 </span><span class="lineCov">          1 : f(268468225, 16385);</span>
+<span class="lineNum">     101 </span><span class="lineCov">          1 : x = 32767;</span>
+<span class="lineNum">     102 </span><span class="lineCov">          1 : f(0, 0);</span>
+<span class="lineNum">     103 </span><span class="lineCov">          1 : f(32767, 1);</span>
+<span class="lineNum">     104 </span><span class="lineCov">          1 : f(65534, 2);</span>
+<span class="lineNum">     105 </span><span class="lineCov">          1 : f(98301, 3);</span>
+<span class="lineNum">     106 </span><span class="lineCov">          1 : f(131068, 4);</span>
+<span class="lineNum">     107 </span><span class="lineCov">          1 : f(163835, 5);</span>
+<span class="lineNum">     108 </span><span class="lineCov">          1 : f(229369, 7);</span>
+<span class="lineNum">     109 </span><span class="lineCov">          1 : f(262136, 8);</span>
+<span class="lineNum">     110 </span><span class="lineCov">          1 : f(294903, 9);</span>
+<span class="lineNum">     111 </span><span class="lineCov">          1 : f(491505, 15);</span>
+<span class="lineNum">     112 </span><span class="lineCov">          1 : f(524272, 16);</span>
+<span class="lineNum">     113 </span><span class="lineCov">          1 : f(557039, 17);</span>
+<span class="lineNum">     114 </span><span class="lineCov">          1 : f(1015777, 31);</span>
+<span class="lineNum">     115 </span><span class="lineCov">          1 : f(1048544, 32);</span>
+<span class="lineNum">     116 </span><span class="lineCov">          1 : f(1081311, 33);</span>
+<span class="lineNum">     117 </span><span class="lineCov">          1 : f(2064321, 63);</span>
+<span class="lineNum">     118 </span><span class="lineCov">          1 : f(2097088, 64);</span>
+<span class="lineNum">     119 </span><span class="lineCov">          1 : f(2129855, 65);</span>
+<span class="lineNum">     120 </span><span class="lineCov">          1 : f(4161409, 127);</span>
+<span class="lineNum">     121 </span><span class="lineCov">          1 : f(4194176, 128);</span>
+<span class="lineNum">     122 </span><span class="lineCov">          1 : f(4226943, 129);</span>
+<span class="lineNum">     123 </span><span class="lineCov">          1 : f(8355585, 255);</span>
+<span class="lineNum">     124 </span><span class="lineCov">          1 : f(8388352, 256);</span>
+<span class="lineNum">     125 </span><span class="lineCov">          1 : f(8421119, 257);</span>
+<span class="lineNum">     126 </span><span class="lineCov">          1 : f(16743937, 511);</span>
+<span class="lineNum">     127 </span><span class="lineCov">          1 : f(16776704, 512);</span>
+<span class="lineNum">     128 </span><span class="lineCov">          1 : f(16809471, 513);</span>
+<span class="lineNum">     129 </span><span class="lineCov">          1 : f(33520641, 1023);</span>
+<span class="lineNum">     130 </span><span class="lineCov">          1 : f(33553408, 1024);</span>
+<span class="lineNum">     131 </span><span class="lineCov">          1 : f(33586175, 1025);</span>
+<span class="lineNum">     132 </span><span class="lineCov">          1 : f(67074049, 2047);</span>
+<span class="lineNum">     133 </span><span class="lineCov">          1 : f(67106816, 2048);</span>
+<span class="lineNum">     134 </span><span class="lineCov">          1 : f(67139583, 2049);</span>
+<span class="lineNum">     135 </span><span class="lineCov">          1 : f(134180865, 4095);</span>
+<span class="lineNum">     136 </span><span class="lineCov">          1 : f(134213632, 4096);</span>
+<span class="lineNum">     137 </span><span class="lineCov">          1 : f(134246399, 4097);</span>
+<span class="lineNum">     138 </span><span class="lineCov">          1 : f(268394497, 8191);</span>
+<span class="lineNum">     139 </span><span class="lineCov">          1 : f(268427264, 8192);</span>
+<span class="lineNum">     140 </span><span class="lineCov">          1 : f(268460031, 8193);</span>
+<span class="lineNum">     141 </span><span class="lineCov">          1 : f(536821761, 16383);</span>
+<span class="lineNum">     142 </span><span class="lineCov">          1 : f(536854528, 16384);</span>
+<span class="lineNum">     143 </span><span class="lineCov">          1 : f(536887295, 16385);</span>
+<span class="lineNum">     144 </span><span class="lineCov">          1 : f(1073676289, 32767);</span>
+<span class="lineNum">     145 </span><span class="lineCov">          1 : x = 32768;</span>
+<span class="lineNum">     146 </span><span class="lineCov">          1 : f(0, 0);</span>
+<span class="lineNum">     147 </span><span class="lineCov">          1 : f(32768, 1);</span>
+<span class="lineNum">     148 </span><span class="lineCov">          1 : f(65536, 2);</span>
+<span class="lineNum">     149 </span><span class="lineCov">          1 : f(98304, 3);</span>
+<span class="lineNum">     150 </span><span class="lineCov">          1 : f(131072, 4);</span>
+<span class="lineNum">     151 </span><span class="lineCov">          1 : f(163840, 5);</span>
+<span class="lineNum">     152 </span><span class="lineCov">          1 : f(229376, 7);</span>
+<span class="lineNum">     153 </span><span class="lineCov">          1 : f(262144, 8);</span>
+<span class="lineNum">     154 </span><span class="lineCov">          1 : f(294912, 9);</span>
+<span class="lineNum">     155 </span><span class="lineCov">          1 : f(491520, 15);</span>
+<span class="lineNum">     156 </span><span class="lineCov">          1 : f(524288, 16);</span>
+<span class="lineNum">     157 </span><span class="lineCov">          1 : f(557056, 17);</span>
+<span class="lineNum">     158 </span><span class="lineCov">          1 : f(1015808, 31);</span>
+<span class="lineNum">     159 </span><span class="lineCov">          1 : f(1048576, 32);</span>
+<span class="lineNum">     160 </span><span class="lineCov">          1 : f(1081344, 33);</span>
+<span class="lineNum">     161 </span><span class="lineCov">          1 : f(2064384, 63);</span>
+<span class="lineNum">     162 </span><span class="lineCov">          1 : f(2097152, 64);</span>
+<span class="lineNum">     163 </span><span class="lineCov">          1 : f(2129920, 65);</span>
+<span class="lineNum">     164 </span><span class="lineCov">          1 : f(4161536, 127);</span>
+<span class="lineNum">     165 </span><span class="lineCov">          1 : f(4194304, 128);</span>
+<span class="lineNum">     166 </span><span class="lineCov">          1 : f(4227072, 129);</span>
+<span class="lineNum">     167 </span><span class="lineCov">          1 : f(8355840, 255);</span>
+<span class="lineNum">     168 </span><span class="lineCov">          1 : f(8388608, 256);</span>
+<span class="lineNum">     169 </span><span class="lineCov">          1 : f(8421376, 257);</span>
+<span class="lineNum">     170 </span><span class="lineCov">          1 : f(16744448, 511);</span>
+<span class="lineNum">     171 </span><span class="lineCov">          1 : f(16777216, 512);</span>
+<span class="lineNum">     172 </span><span class="lineCov">          1 : f(16809984, 513);</span>
+<span class="lineNum">     173 </span><span class="lineCov">          1 : f(33521664, 1023);</span>
+<span class="lineNum">     174 </span><span class="lineCov">          1 : f(33554432, 1024);</span>
+<span class="lineNum">     175 </span><span class="lineCov">          1 : f(33587200, 1025);</span>
+<span class="lineNum">     176 </span><span class="lineCov">          1 : f(67076096, 2047);</span>
+<span class="lineNum">     177 </span><span class="lineCov">          1 : f(67108864, 2048);</span>
+<span class="lineNum">     178 </span><span class="lineCov">          1 : f(67141632, 2049);</span>
+<span class="lineNum">     179 </span><span class="lineCov">          1 : f(134184960, 4095);</span>
+<span class="lineNum">     180 </span><span class="lineCov">          1 : f(134217728, 4096);</span>
+<span class="lineNum">     181 </span><span class="lineCov">          1 : f(134250496, 4097);</span>
+<span class="lineNum">     182 </span><span class="lineCov">          1 : f(268402688, 8191);</span>
+<span class="lineNum">     183 </span><span class="lineCov">          1 : f(268435456, 8192);</span>
+<span class="lineNum">     184 </span><span class="lineCov">          1 : f(268468224, 8193);</span>
+<span class="lineNum">     185 </span><span class="lineCov">          1 : f(536838144, 16383);</span>
+<span class="lineNum">     186 </span><span class="lineCov">          1 : f(536870912, 16384);</span>
+<span class="lineNum">     187 </span><span class="lineCov">          1 : f(536903680, 16385);</span>
+<span class="lineNum">     188 </span><span class="lineCov">          1 : f(1073709056, 32767);</span>
+<span class="lineNum">     189 </span><span class="lineCov">          1 : f(1073741824, 32768);</span>
+<span class="lineNum">     190 </span><span class="lineCov">          1 : x = 32769;</span>
+<span class="lineNum">     191 </span><span class="lineCov">          1 : f(0, 0);</span>
+<span class="lineNum">     192 </span><span class="lineCov">          1 : f(32769, 1);</span>
+<span class="lineNum">     193 </span><span class="lineCov">          1 : f(65538, 2);</span>
+<span class="lineNum">     194 </span><span class="lineCov">          1 : f(98307, 3);</span>
+<span class="lineNum">     195 </span><span class="lineCov">          1 : f(131076, 4);</span>
+<span class="lineNum">     196 </span><span class="lineCov">          1 : f(163845, 5);</span>
+<span class="lineNum">     197 </span><span class="lineCov">          1 : f(229383, 7);</span>
+<span class="lineNum">     198 </span><span class="lineCov">          1 : f(262152, 8);</span>
+<span class="lineNum">     199 </span><span class="lineCov">          1 : f(294921, 9);</span>
+<span class="lineNum">     200 </span><span class="lineCov">          1 : f(491535, 15);</span>
+<span class="lineNum">     201 </span><span class="lineCov">          1 : f(524304, 16);</span>
+<span class="lineNum">     202 </span><span class="lineCov">          1 : f(557073, 17);</span>
+<span class="lineNum">     203 </span><span class="lineCov">          1 : f(1015839, 31);</span>
+<span class="lineNum">     204 </span><span class="lineCov">          1 : f(1048608, 32);</span>
+<span class="lineNum">     205 </span><span class="lineCov">          1 : f(1081377, 33);</span>
+<span class="lineNum">     206 </span><span class="lineCov">          1 : f(2064447, 63);</span>
+<span class="lineNum">     207 </span><span class="lineCov">          1 : f(2097216, 64);</span>
+<span class="lineNum">     208 </span><span class="lineCov">          1 : f(2129985, 65);</span>
+<span class="lineNum">     209 </span><span class="lineCov">          1 : f(4161663, 127);</span>
+<span class="lineNum">     210 </span><span class="lineCov">          1 : f(4194432, 128);</span>
+<span class="lineNum">     211 </span><span class="lineCov">          1 : f(4227201, 129);</span>
+<span class="lineNum">     212 </span><span class="lineCov">          1 : f(8356095, 255);</span>
+<span class="lineNum">     213 </span><span class="lineCov">          1 : f(8388864, 256);</span>
+<span class="lineNum">     214 </span><span class="lineCov">          1 : f(8421633, 257);</span>
+<span class="lineNum">     215 </span><span class="lineCov">          1 : f(16744959, 511);</span>
+<span class="lineNum">     216 </span><span class="lineCov">          1 : f(16777728, 512);</span>
+<span class="lineNum">     217 </span><span class="lineCov">          1 : f(16810497, 513);</span>
+<span class="lineNum">     218 </span><span class="lineCov">          1 : f(33522687, 1023);</span>
+<span class="lineNum">     219 </span><span class="lineCov">          1 : f(33555456, 1024);</span>
+<span class="lineNum">     220 </span><span class="lineCov">          1 : f(33588225, 1025);</span>
+<span class="lineNum">     221 </span><span class="lineCov">          1 : f(67078143, 2047);</span>
+<span class="lineNum">     222 </span><span class="lineCov">          1 : f(67110912, 2048);</span>
+<span class="lineNum">     223 </span><span class="lineCov">          1 : f(67143681, 2049);</span>
+<span class="lineNum">     224 </span><span class="lineCov">          1 : f(134189055, 4095);</span>
+<span class="lineNum">     225 </span><span class="lineCov">          1 : f(134221824, 4096);</span>
+<span class="lineNum">     226 </span><span class="lineCov">          1 : f(134254593, 4097);</span>
+<span class="lineNum">     227 </span><span class="lineCov">          1 : f(268410879, 8191);</span>
+<span class="lineNum">     228 </span><span class="lineCov">          1 : f(268443648, 8192);</span>
+<span class="lineNum">     229 </span><span class="lineCov">          1 : f(268476417, 8193);</span>
+<span class="lineNum">     230 </span><span class="lineCov">          1 : f(536854527, 16383);</span>
+<span class="lineNum">     231 </span><span class="lineCov">          1 : f(536887296, 16384);</span>
+<span class="lineNum">     232 </span><span class="lineCov">          1 : f(536920065, 16385);</span>
+<span class="lineNum">     233 </span><span class="lineCov">          1 : f(1073741823, 32767);</span>
+<span class="lineNum">     234 </span><span class="lineCov">          1 : f(1073774592, 32768);</span>
+<span class="lineNum">     235 </span><span class="lineCov">          1 : f(1073807361, 32769);</span>
+<span class="lineNum">     236 </span><span class="lineCov">          1 : x = 65535;</span>
+<span class="lineNum">     237 </span><span class="lineCov">          1 : f(0, 0);</span>
+<span class="lineNum">     238 </span><span class="lineCov">          1 : f(65535, 1);</span>
+<span class="lineNum">     239 </span><span class="lineCov">          1 : f(131070, 2);</span>
+<span class="lineNum">     240 </span><span class="lineCov">          1 : f(196605, 3);</span>
+<span class="lineNum">     241 </span><span class="lineCov">          1 : f(262140, 4);</span>
+<span class="lineNum">     242 </span><span class="lineCov">          1 : f(327675, 5);</span>
+<span class="lineNum">     243 </span><span class="lineCov">          1 : f(458745, 7);</span>
+<span class="lineNum">     244 </span><span class="lineCov">          1 : f(524280, 8);</span>
+<span class="lineNum">     245 </span><span class="lineCov">          1 : f(589815, 9);</span>
+<span class="lineNum">     246 </span><span class="lineCov">          1 : f(983025, 15);</span>
+<span class="lineNum">     247 </span><span class="lineCov">          1 : f(1048560, 16);</span>
+<span class="lineNum">     248 </span><span class="lineCov">          1 : f(1114095, 17);</span>
+<span class="lineNum">     249 </span><span class="lineCov">          1 : f(2031585, 31);</span>
+<span class="lineNum">     250 </span><span class="lineCov">          1 : f(2097120, 32);</span>
+<span class="lineNum">     251 </span><span class="lineCov">          1 : f(2162655, 33);</span>
+<span class="lineNum">     252 </span><span class="lineCov">          1 : f(4128705, 63);</span>
+<span class="lineNum">     253 </span><span class="lineCov">          1 : f(4194240, 64);</span>
+<span class="lineNum">     254 </span><span class="lineCov">          1 : f(4259775, 65);</span>
+<span class="lineNum">     255 </span><span class="lineCov">          1 : f(8322945, 127);</span>
+<span class="lineNum">     256 </span><span class="lineCov">          1 : f(8388480, 128);</span>
+<span class="lineNum">     257 </span><span class="lineCov">          1 : f(8454015, 129);</span>
+<span class="lineNum">     258 </span><span class="lineCov">          1 : f(16711425, 255);</span>
+<span class="lineNum">     259 </span><span class="lineCov">          1 : f(16776960, 256);</span>
+<span class="lineNum">     260 </span><span class="lineCov">          1 : f(16842495, 257);</span>
+<span class="lineNum">     261 </span><span class="lineCov">          1 : f(33488385, 511);</span>
+<span class="lineNum">     262 </span><span class="lineCov">          1 : f(33553920, 512);</span>
+<span class="lineNum">     263 </span><span class="lineCov">          1 : f(33619455, 513);</span>
+<span class="lineNum">     264 </span><span class="lineCov">          1 : f(67042305, 1023);</span>
+<span class="lineNum">     265 </span><span class="lineCov">          1 : f(67107840, 1024);</span>
+<span class="lineNum">     266 </span><span class="lineCov">          1 : f(67173375, 1025);</span>
+<span class="lineNum">     267 </span><span class="lineCov">          1 : f(134150145, 2047);</span>
+<span class="lineNum">     268 </span><span class="lineCov">          1 : f(134215680, 2048);</span>
+<span class="lineNum">     269 </span><span class="lineCov">          1 : f(134281215, 2049);</span>
+<span class="lineNum">     270 </span><span class="lineCov">          1 : f(268365825, 4095);</span>
+<span class="lineNum">     271 </span><span class="lineCov">          1 : f(268431360, 4096);</span>
+<span class="lineNum">     272 </span><span class="lineCov">          1 : f(268496895, 4097);</span>
+<span class="lineNum">     273 </span><span class="lineCov">          1 : f(536797185, 8191);</span>
+<span class="lineNum">     274 </span><span class="lineCov">          1 : f(536862720, 8192);</span>
+<span class="lineNum">     275 </span><span class="lineCov">          1 : f(536928255, 8193);</span>
+<span class="lineNum">     276 </span><span class="lineCov">          1 : f(1073659905, 16383);</span>
+<span class="lineNum">     277 </span><span class="lineCov">          1 : f(1073725440, 16384);</span>
+<span class="lineNum">     278 </span><span class="lineCov">          1 : f(1073790975, 16385);</span>
+<span class="lineNum">     279 </span><span class="lineCov">          1 : f(2147385345, 32767);</span>
+<span class="lineNum">     280 </span><span class="lineCov">          1 : f(2147450880, 32768);</span>
+<span class="lineNum">     281 </span><span class="lineCov">          1 : f(2147516415, 32769);</span>
+<span class="lineNum">     282 </span><span class="lineCov">          1 : f(4294836225, 65535);</span>
+<span class="lineNum">     283 </span><span class="lineCov">          1 : x = 65536;</span>
+<span class="lineNum">     284 </span><span class="lineCov">          1 : f(0, 0);</span>
+<span class="lineNum">     285 </span><span class="lineCov">          1 : f(65536, 1);</span>
+<span class="lineNum">     286 </span><span class="lineCov">          1 : f(131072, 2);</span>
+<span class="lineNum">     287 </span><span class="lineCov">          1 : f(196608, 3);</span>
+<span class="lineNum">     288 </span><span class="lineCov">          1 : f(262144, 4);</span>
+<span class="lineNum">     289 </span><span class="lineCov">          1 : f(327680, 5);</span>
+<span class="lineNum">     290 </span><span class="lineCov">          1 : f(458752, 7);</span>
+<span class="lineNum">     291 </span><span class="lineCov">          1 : f(524288, 8);</span>
+<span class="lineNum">     292 </span><span class="lineCov">          1 : f(589824, 9);</span>
+<span class="lineNum">     293 </span><span class="lineCov">          1 : f(983040, 15);</span>
+<span class="lineNum">     294 </span><span class="lineCov">          1 : f(1048576, 16);</span>
+<span class="lineNum">     295 </span><span class="lineCov">          1 : f(1114112, 17);</span>
+<span class="lineNum">     296 </span><span class="lineCov">          1 : f(2031616, 31);</span>
+<span class="lineNum">     297 </span><span class="lineCov">          1 : f(2097152, 32);</span>
+<span class="lineNum">     298 </span><span class="lineCov">          1 : f(2162688, 33);</span>
+<span class="lineNum">     299 </span><span class="lineCov">          1 : f(4128768, 63);</span>
+<span class="lineNum">     300 </span><span class="lineCov">          1 : f(4194304, 64);</span>
+<span class="lineNum">     301 </span><span class="lineCov">          1 : f(4259840, 65);</span>
+<span class="lineNum">     302 </span><span class="lineCov">          1 : f(8323072, 127);</span>
+<span class="lineNum">     303 </span><span class="lineCov">          1 : f(8388608, 128);</span>
+<span class="lineNum">     304 </span><span class="lineCov">          1 : f(8454144, 129);</span>
+<span class="lineNum">     305 </span><span class="lineCov">          1 : f(16711680, 255);</span>
+<span class="lineNum">     306 </span><span class="lineCov">          1 : f(16777216, 256);</span>
+<span class="lineNum">     307 </span><span class="lineCov">          1 : f(16842752, 257);</span>
+<span class="lineNum">     308 </span><span class="lineCov">          1 : f(33488896, 511);</span>
+<span class="lineNum">     309 </span><span class="lineCov">          1 : f(33554432, 512);</span>
+<span class="lineNum">     310 </span><span class="lineCov">          1 : f(33619968, 513);</span>
+<span class="lineNum">     311 </span><span class="lineCov">          1 : f(67043328, 1023);</span>
+<span class="lineNum">     312 </span><span class="lineCov">          1 : f(67108864, 1024);</span>
+<span class="lineNum">     313 </span><span class="lineCov">          1 : f(67174400, 1025);</span>
+<span class="lineNum">     314 </span><span class="lineCov">          1 : f(134152192, 2047);</span>
+<span class="lineNum">     315 </span><span class="lineCov">          1 : f(134217728, 2048);</span>
+<span class="lineNum">     316 </span><span class="lineCov">          1 : f(134283264, 2049);</span>
+<span class="lineNum">     317 </span><span class="lineCov">          1 : f(268369920, 4095);</span>
+<span class="lineNum">     318 </span><span class="lineCov">          1 : f(268435456, 4096);</span>
+<span class="lineNum">     319 </span><span class="lineCov">          1 : f(268500992, 4097);</span>
+<span class="lineNum">     320 </span><span class="lineCov">          1 : f(536805376, 8191);</span>
+<span class="lineNum">     321 </span><span class="lineCov">          1 : f(536870912, 8192);</span>
+<span class="lineNum">     322 </span><span class="lineCov">          1 : f(536936448, 8193);</span>
+<span class="lineNum">     323 </span><span class="lineCov">          1 : f(1073676288, 16383);</span>
+<span class="lineNum">     324 </span><span class="lineCov">          1 : f(1073741824, 16384);</span>
+<span class="lineNum">     325 </span><span class="lineCov">          1 : f(1073807360, 16385);</span>
+<span class="lineNum">     326 </span><span class="lineCov">          1 : f(2147418112, 32767);</span>
+<span class="lineNum">     327 </span><span class="lineCov">          1 : f(2147483648, 32768);</span>
+<span class="lineNum">     328 </span><span class="lineCov">          1 : f(2147549184, 32769);</span>
+<span class="lineNum">     329 </span><span class="lineCov">          1 : f(4294901760, 65535);</span>
+<span class="lineNum">     330 </span><span class="lineCov">          1 : f(4294967296, 65536);</span>
+<span class="lineNum">     331 </span><span class="lineCov">          1 : x = 65537;</span>
+<span class="lineNum">     332 </span><span class="lineCov">          1 : f(0, 0);</span>
+<span class="lineNum">     333 </span><span class="lineCov">          1 : f(65537, 1);</span>
+<span class="lineNum">     334 </span><span class="lineCov">          1 : f(131074, 2);</span>
+<span class="lineNum">     335 </span><span class="lineCov">          1 : f(196611, 3);</span>
+<span class="lineNum">     336 </span><span class="lineCov">          1 : f(262148, 4);</span>
+<span class="lineNum">     337 </span><span class="lineCov">          1 : f(327685, 5);</span>
+<span class="lineNum">     338 </span><span class="lineCov">          1 : f(458759, 7);</span>
+<span class="lineNum">     339 </span><span class="lineCov">          1 : f(524296, 8);</span>
+<span class="lineNum">     340 </span><span class="lineCov">          1 : f(589833, 9);</span>
+<span class="lineNum">     341 </span><span class="lineCov">          1 : f(983055, 15);</span>
+<span class="lineNum">     342 </span><span class="lineCov">          1 : f(1048592, 16);</span>
+<span class="lineNum">     343 </span><span class="lineCov">          1 : f(1114129, 17);</span>
+<span class="lineNum">     344 </span><span class="lineCov">          1 : f(2031647, 31);</span>
+<span class="lineNum">     345 </span><span class="lineCov">          1 : f(2097184, 32);</span>
+<span class="lineNum">     346 </span><span class="lineCov">          1 : f(2162721, 33);</span>
+<span class="lineNum">     347 </span><span class="lineCov">          1 : f(4128831, 63);</span>
+<span class="lineNum">     348 </span><span class="lineCov">          1 : f(4194368, 64);</span>
+<span class="lineNum">     349 </span><span class="lineCov">          1 : f(4259905, 65);</span>
+<span class="lineNum">     350 </span><span class="lineCov">          1 : f(8323199, 127);</span>
+<span class="lineNum">     351 </span><span class="lineCov">          1 : f(8388736, 128);</span>
+<span class="lineNum">     352 </span><span class="lineCov">          1 : f(8454273, 129);</span>
+<span class="lineNum">     353 </span><span class="lineCov">          1 : f(16711935, 255);</span>
+<span class="lineNum">     354 </span><span class="lineCov">          1 : f(16777472, 256);</span>
+<span class="lineNum">     355 </span><span class="lineCov">          1 : f(16843009, 257);</span>
+<span class="lineNum">     356 </span><span class="lineCov">          1 : f(33489407, 511);</span>
+<span class="lineNum">     357 </span><span class="lineCov">          1 : f(33554944, 512);</span>
+<span class="lineNum">     358 </span><span class="lineCov">          1 : f(33620481, 513);</span>
+<span class="lineNum">     359 </span><span class="lineCov">          1 : f(67044351, 1023);</span>
+<span class="lineNum">     360 </span><span class="lineCov">          1 : f(67109888, 1024);</span>
+<span class="lineNum">     361 </span><span class="lineCov">          1 : f(67175425, 1025);</span>
+<span class="lineNum">     362 </span><span class="lineCov">          1 : f(134154239, 2047);</span>
+<span class="lineNum">     363 </span><span class="lineCov">          1 : f(134219776, 2048);</span>
+<span class="lineNum">     364 </span><span class="lineCov">          1 : f(134285313, 2049);</span>
+<span class="lineNum">     365 </span><span class="lineCov">          1 : f(268374015, 4095);</span>
+<span class="lineNum">     366 </span><span class="lineCov">          1 : f(268439552, 4096);</span>
+<span class="lineNum">     367 </span><span class="lineCov">          1 : f(268505089, 4097);</span>
+<span class="lineNum">     368 </span><span class="lineCov">          1 : f(536813567, 8191);</span>
+<span class="lineNum">     369 </span><span class="lineCov">          1 : f(536879104, 8192);</span>
+<span class="lineNum">     370 </span><span class="lineCov">          1 : f(536944641, 8193);</span>
+<span class="lineNum">     371 </span><span class="lineCov">          1 : f(1073692671, 16383);</span>
+<span class="lineNum">     372 </span><span class="lineCov">          1 : f(1073758208, 16384);</span>
+<span class="lineNum">     373 </span><span class="lineCov">          1 : f(1073823745, 16385);</span>
+<span class="lineNum">     374 </span><span class="lineCov">          1 : f(2147450879, 32767);</span>
+<span class="lineNum">     375 </span><span class="lineCov">          1 : f(2147516416, 32768);</span>
+<span class="lineNum">     376 </span><span class="lineCov">          1 : f(2147581953, 32769);</span>
+<span class="lineNum">     377 </span><span class="lineCov">          1 : f(4294967295, 65535);</span>
+<span class="lineNum">     378 </span><span class="lineCov">          1 : f(4295032832, 65536);</span>
+<span class="lineNum">     379 </span><span class="lineCov">          1 : f(4295098369, 65537);</span>
+<span class="lineNum">     380 </span><span class="lineCov">          1 : x = 131071;</span>
+<span class="lineNum">     381 </span><span class="lineCov">          1 : f(0, 0);</span>
+<span class="lineNum">     382 </span><span class="lineCov">          1 : f(131071, 1);</span>
+<span class="lineNum">     383 </span><span class="lineCov">          1 : f(262142, 2);</span>
+<span class="lineNum">     384 </span><span class="lineCov">          1 : f(393213, 3);</span>
+<span class="lineNum">     385 </span><span class="lineCov">          1 : f(524284, 4);</span>
+<span class="lineNum">     386 </span><span class="lineCov">          1 : f(655355, 5);</span>
+<span class="lineNum">     387 </span><span class="lineCov">          1 : f(917497, 7);</span>
+<span class="lineNum">     388 </span><span class="lineCov">          1 : f(1048568, 8);</span>
+<span class="lineNum">     389 </span><span class="lineCov">          1 : f(1179639, 9);</span>
+<span class="lineNum">     390 </span><span class="lineCov">          1 : f(1966065, 15);</span>
+<span class="lineNum">     391 </span><span class="lineCov">          1 : f(2097136, 16);</span>
+<span class="lineNum">     392 </span><span class="lineCov">          1 : f(2228207, 17);</span>
+<span class="lineNum">     393 </span><span class="lineCov">          1 : f(4063201, 31);</span>
+<span class="lineNum">     394 </span><span class="lineCov">          1 : f(4194272, 32);</span>
+<span class="lineNum">     395 </span><span class="lineCov">          1 : f(4325343, 33);</span>
+<span class="lineNum">     396 </span><span class="lineCov">          1 : f(8257473, 63);</span>
+<span class="lineNum">     397 </span><span class="lineCov">          1 : f(8388544, 64);</span>
+<span class="lineNum">     398 </span><span class="lineCov">          1 : f(8519615, 65);</span>
+<span class="lineNum">     399 </span><span class="lineCov">          1 : f(16646017, 127);</span>
+<span class="lineNum">     400 </span><span class="lineCov">          1 : f(16777088, 128);</span>
+<span class="lineNum">     401 </span><span class="lineCov">          1 : f(16908159, 129);</span>
+<span class="lineNum">     402 </span><span class="lineCov">          1 : f(33423105, 255);</span>
+<span class="lineNum">     403 </span><span class="lineCov">          1 : f(33554176, 256);</span>
+<span class="lineNum">     404 </span><span class="lineCov">          1 : f(33685247, 257);</span>
+<span class="lineNum">     405 </span><span class="lineCov">          1 : f(66977281, 511);</span>
+<span class="lineNum">     406 </span><span class="lineCov">          1 : f(67108352, 512);</span>
+<span class="lineNum">     407 </span><span class="lineCov">          1 : f(67239423, 513);</span>
+<span class="lineNum">     408 </span><span class="lineCov">          1 : f(134085633, 1023);</span>
+<span class="lineNum">     409 </span><span class="lineCov">          1 : f(134216704, 1024);</span>
+<span class="lineNum">     410 </span><span class="lineCov">          1 : f(134347775, 1025);</span>
+<span class="lineNum">     411 </span><span class="lineCov">          1 : f(268302337, 2047);</span>
+<span class="lineNum">     412 </span><span class="lineCov">          1 : f(268433408, 2048);</span>
+<span class="lineNum">     413 </span><span class="lineCov">          1 : f(268564479, 2049);</span>
+<span class="lineNum">     414 </span><span class="lineCov">          1 : f(536735745, 4095);</span>
+<span class="lineNum">     415 </span><span class="lineCov">          1 : f(536866816, 4096);</span>
+<span class="lineNum">     416 </span><span class="lineCov">          1 : f(536997887, 4097);</span>
+<span class="lineNum">     417 </span><span class="lineCov">          1 : f(1073602561, 8191);</span>
+<span class="lineNum">     418 </span><span class="lineCov">          1 : f(1073733632, 8192);</span>
+<span class="lineNum">     419 </span><span class="lineCov">          1 : f(1073864703, 8193);</span>
+<span class="lineNum">     420 </span><span class="lineCov">          1 : f(2147336193, 16383);</span>
+<span class="lineNum">     421 </span><span class="lineCov">          1 : f(2147467264, 16384);</span>
+<span class="lineNum">     422 </span><span class="lineCov">          1 : f(2147598335, 16385);</span>
+<span class="lineNum">     423 </span><span class="lineCov">          1 : f(4294803457, 32767);</span>
+<span class="lineNum">     424 </span><span class="lineCov">          1 : f(4294934528, 32768);</span>
+<span class="lineNum">     425 </span><span class="lineCov">          1 : f(4295065599, 32769);</span>
+<span class="lineNum">     426 </span><span class="lineCov">          1 : f(8589737985, 65535);</span>
+<span class="lineNum">     427 </span><span class="lineCov">          1 : f(8589869056, 65536);</span>
+<span class="lineNum">     428 </span><span class="lineCov">          1 : f(8590000127, 65537);</span>
+<span class="lineNum">     429 </span><span class="lineCov">          1 : f(17179607041, 131071);</span>
+<span class="lineNum">     430 </span><span class="lineCov">          1 : x = 131072;</span>
+<span class="lineNum">     431 </span><span class="lineCov">          1 : f(0, 0);</span>
+<span class="lineNum">     432 </span><span class="lineCov">          1 : f(131072, 1);</span>
+<span class="lineNum">     433 </span><span class="lineCov">          1 : f(262144, 2);</span>
+<span class="lineNum">     434 </span><span class="lineCov">          1 : f(393216, 3);</span>
+<span class="lineNum">     435 </span><span class="lineCov">          1 : f(524288, 4);</span>
+<span class="lineNum">     436 </span><span class="lineCov">          1 : f(655360, 5);</span>
+<span class="lineNum">     437 </span><span class="lineCov">          1 : f(917504, 7);</span>
+<span class="lineNum">     438 </span><span class="lineCov">          1 : f(1048576, 8);</span>
+<span class="lineNum">     439 </span><span class="lineCov">          1 : f(1179648, 9);</span>
+<span class="lineNum">     440 </span><span class="lineCov">          1 : f(1966080, 15);</span>
+<span class="lineNum">     441 </span><span class="lineCov">          1 : f(2097152, 16);</span>
+<span class="lineNum">     442 </span><span class="lineCov">          1 : f(2228224, 17);</span>
+<span class="lineNum">     443 </span><span class="lineCov">          1 : f(4063232, 31);</span>
+<span class="lineNum">     444 </span><span class="lineCov">          1 : f(4194304, 32);</span>
+<span class="lineNum">     445 </span><span class="lineCov">          1 : f(4325376, 33);</span>
+<span class="lineNum">     446 </span><span class="lineCov">          1 : f(8257536, 63);</span>
+<span class="lineNum">     447 </span><span class="lineCov">          1 : f(8388608, 64);</span>
+<span class="lineNum">     448 </span><span class="lineCov">          1 : f(8519680, 65);</span>
+<span class="lineNum">     449 </span><span class="lineCov">          1 : f(16646144, 127);</span>
+<span class="lineNum">     450 </span><span class="lineCov">          1 : f(16777216, 128);</span>
+<span class="lineNum">     451 </span><span class="lineCov">          1 : f(16908288, 129);</span>
+<span class="lineNum">     452 </span><span class="lineCov">          1 : f(33423360, 255);</span>
+<span class="lineNum">     453 </span><span class="lineCov">          1 : f(33554432, 256);</span>
+<span class="lineNum">     454 </span><span class="lineCov">          1 : f(33685504, 257);</span>
+<span class="lineNum">     455 </span><span class="lineCov">          1 : f(66977792, 511);</span>
+<span class="lineNum">     456 </span><span class="lineCov">          1 : f(67108864, 512);</span>
+<span class="lineNum">     457 </span><span class="lineCov">          1 : f(67239936, 513);</span>
+<span class="lineNum">     458 </span><span class="lineCov">          1 : f(134086656, 1023);</span>
+<span class="lineNum">     459 </span><span class="lineCov">          1 : f(134217728, 1024);</span>
+<span class="lineNum">     460 </span><span class="lineCov">          1 : f(134348800, 1025);</span>
+<span class="lineNum">     461 </span><span class="lineCov">          1 : f(268304384, 2047);</span>
+<span class="lineNum">     462 </span><span class="lineCov">          1 : f(268435456, 2048);</span>
+<span class="lineNum">     463 </span><span class="lineCov">          1 : f(268566528, 2049);</span>
+<span class="lineNum">     464 </span><span class="lineCov">          1 : f(536739840, 4095);</span>
+<span class="lineNum">     465 </span><span class="lineCov">          1 : f(536870912, 4096);</span>
+<span class="lineNum">     466 </span><span class="lineCov">          1 : f(537001984, 4097);</span>
+<span class="lineNum">     467 </span><span class="lineCov">          1 : f(1073610752, 8191);</span>
+<span class="lineNum">     468 </span><span class="lineCov">          1 : f(1073741824, 8192);</span>
+<span class="lineNum">     469 </span><span class="lineCov">          1 : f(1073872896, 8193);</span>
+<span class="lineNum">     470 </span><span class="lineCov">          1 : f(2147352576, 16383);</span>
+<span class="lineNum">     471 </span><span class="lineCov">          1 : f(2147483648, 16384);</span>
+<span class="lineNum">     472 </span><span class="lineCov">          1 : f(2147614720, 16385);</span>
+<span class="lineNum">     473 </span><span class="lineCov">          1 : f(4294836224, 32767);</span>
+<span class="lineNum">     474 </span><span class="lineCov">          1 : f(4294967296, 32768);</span>
+<span class="lineNum">     475 </span><span class="lineCov">          1 : f(4295098368, 32769);</span>
+<span class="lineNum">     476 </span><span class="lineCov">          1 : f(8589803520, 65535);</span>
+<span class="lineNum">     477 </span><span class="lineCov">          1 : f(8589934592, 65536);</span>
+<span class="lineNum">     478 </span><span class="lineCov">          1 : f(8590065664, 65537);</span>
+<span class="lineNum">     479 </span><span class="lineCov">          1 : f(17179738112, 131071);</span>
+<span class="lineNum">     480 </span><span class="lineCov">          1 : f(17179869184, 131072);</span>
+<span class="lineNum">     481 </span><span class="lineCov">          1 : x = 131073;</span>
+<span class="lineNum">     482 </span><span class="lineCov">          1 : f(0, 0);</span>
+<span class="lineNum">     483 </span><span class="lineCov">          1 : f(131073, 1);</span>
+<span class="lineNum">     484 </span><span class="lineCov">          1 : f(262146, 2);</span>
+<span class="lineNum">     485 </span><span class="lineCov">          1 : f(393219, 3);</span>
+<span class="lineNum">     486 </span><span class="lineCov">          1 : f(524292, 4);</span>
+<span class="lineNum">     487 </span><span class="lineCov">          1 : f(655365, 5);</span>
+<span class="lineNum">     488 </span><span class="lineCov">          1 : f(917511, 7);</span>
+<span class="lineNum">     489 </span><span class="lineCov">          1 : f(1048584, 8);</span>
+<span class="lineNum">     490 </span><span class="lineCov">          1 : f(1179657, 9);</span>
+<span class="lineNum">     491 </span><span class="lineCov">          1 : f(1966095, 15);</span>
+<span class="lineNum">     492 </span><span class="lineCov">          1 : f(2097168, 16);</span>
+<span class="lineNum">     493 </span><span class="lineCov">          1 : f(2228241, 17);</span>
+<span class="lineNum">     494 </span><span class="lineCov">          1 : f(4063263, 31);</span>
+<span class="lineNum">     495 </span><span class="lineCov">          1 : f(4194336, 32);</span>
+<span class="lineNum">     496 </span><span class="lineCov">          1 : f(4325409, 33);</span>
+<span class="lineNum">     497 </span><span class="lineCov">          1 : f(8257599, 63);</span>
+<span class="lineNum">     498 </span><span class="lineCov">          1 : f(8388672, 64);</span>
+<span class="lineNum">     499 </span><span class="lineCov">          1 : f(8519745, 65);</span>
+<span class="lineNum">     500 </span><span class="lineCov">          1 : f(16646271, 127);</span>
+<span class="lineNum">     501 </span><span class="lineCov">          1 : f(16777344, 128);</span>
+<span class="lineNum">     502 </span><span class="lineCov">          1 : f(16908417, 129);</span>
+<span class="lineNum">     503 </span><span class="lineCov">          1 : f(33423615, 255);</span>
+<span class="lineNum">     504 </span><span class="lineCov">          1 : f(33554688, 256);</span>
+<span class="lineNum">     505 </span><span class="lineCov">          1 : f(33685761, 257);</span>
+<span class="lineNum">     506 </span><span class="lineCov">          1 : f(66978303, 511);</span>
+<span class="lineNum">     507 </span><span class="lineCov">          1 : f(67109376, 512);</span>
+<span class="lineNum">     508 </span><span class="lineCov">          1 : f(67240449, 513);</span>
+<span class="lineNum">     509 </span><span class="lineCov">          1 : f(134087679, 1023);</span>
+<span class="lineNum">     510 </span><span class="lineCov">          1 : f(134218752, 1024);</span>
+<span class="lineNum">     511 </span><span class="lineCov">          1 : f(134349825, 1025);</span>
+<span class="lineNum">     512 </span><span class="lineCov">          1 : f(268306431, 2047);</span>
+<span class="lineNum">     513 </span><span class="lineCov">          1 : f(268437504, 2048);</span>
+<span class="lineNum">     514 </span><span class="lineCov">          1 : f(268568577, 2049);</span>
+<span class="lineNum">     515 </span><span class="lineCov">          1 : f(536743935, 4095);</span>
+<span class="lineNum">     516 </span><span class="lineCov">          1 : f(536875008, 4096);</span>
+<span class="lineNum">     517 </span><span class="lineCov">          1 : f(537006081, 4097);</span>
+<span class="lineNum">     518 </span><span class="lineCov">          1 : f(1073618943, 8191);</span>
+<span class="lineNum">     519 </span><span class="lineCov">          1 : f(1073750016, 8192);</span>
+<span class="lineNum">     520 </span><span class="lineCov">          1 : f(1073881089, 8193);</span>
+<span class="lineNum">     521 </span><span class="lineCov">          1 : f(2147368959, 16383);</span>
+<span class="lineNum">     522 </span><span class="lineCov">          1 : f(2147500032, 16384);</span>
+<span class="lineNum">     523 </span><span class="lineCov">          1 : f(2147631105, 16385);</span>
+<span class="lineNum">     524 </span><span class="lineCov">          1 : f(4294868991, 32767);</span>
+<span class="lineNum">     525 </span><span class="lineCov">          1 : f(4295000064, 32768);</span>
+<span class="lineNum">     526 </span><span class="lineCov">          1 : f(4295131137, 32769);</span>
+<span class="lineNum">     527 </span><span class="lineCov">          1 : f(8589869055, 65535);</span>
+<span class="lineNum">     528 </span><span class="lineCov">          1 : f(8590000128, 65536);</span>
+<span class="lineNum">     529 </span><span class="lineCov">          1 : f(8590131201, 65537);</span>
+<span class="lineNum">     530 </span><span class="lineCov">          1 : f(17179869183, 131071);</span>
+<span class="lineNum">     531 </span><span class="lineCov">          1 : f(17180000256, 131072);</span>
+<span class="lineNum">     532 </span><span class="lineCov">          1 : f(17180131329, 131073);</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

@@ -1,0 +1,425 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - /usr/local/google/home/yangguo/v8/test/mjsunit/elements-kind.js</title>
+  <link rel="stylesheet" type="text/css" href="../../../../../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../../../../../index.html">top level</a> - <a href="index.html">usr/local/google/home/yangguo/v8/test/mjsunit</a> - elements-kind.js<span style="font-size: 80%;"> (source / <a href="elements-kind.js.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">346</td>
+            <td class="headerCovTableEntry">350</td>
+            <td class="headerCovTableEntryHi">98.9 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2017-02-14</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">14</td>
+            <td class="headerCovTableEntry">15</td>
+            <td class="headerCovTableEntryHi">93.3 %</td>
+          </tr>
+          <tr><td><img src="../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span><span class="lineCov">          1 : // Copyright 2012 the V8 project authors. All rights reserved.</span></a>
+<span class="lineNum">       2 </span><span class="lineCov">          1 : // Redistribution and use in source and binary forms, with or without</span>
+<span class="lineNum">       3 </span><span class="lineCov">          1 : // modification, are permitted provided that the following conditions are</span>
+<span class="lineNum">       4 </span><span class="lineCov">          1 : // met:</span>
+<span class="lineNum">       5 </span><span class="lineCov">          1 : //</span>
+<span class="lineNum">       6 </span><span class="lineCov">          1 : //     * Redistributions of source code must retain the above copyright</span>
+<span class="lineNum">       7 </span><span class="lineCov">          1 : //       notice, this list of conditions and the following disclaimer.</span>
+<span class="lineNum">       8 </span><span class="lineCov">          1 : //     * Redistributions in binary form must reproduce the above</span>
+<span class="lineNum">       9 </span><span class="lineCov">          1 : //       copyright notice, this list of conditions and the following</span>
+<span class="lineNum">      10 </span><span class="lineCov">          1 : //       disclaimer in the documentation and/or other materials provided</span>
+<span class="lineNum">      11 </span><span class="lineCov">          1 : //       with the distribution.</span>
+<span class="lineNum">      12 </span><span class="lineCov">          1 : //     * Neither the name of Google Inc. nor the names of its</span>
+<span class="lineNum">      13 </span><span class="lineCov">          1 : //       contributors may be used to endorse or promote products derived</span>
+<span class="lineNum">      14 </span><span class="lineCov">          1 : //       from this software without specific prior written permission.</span>
+<span class="lineNum">      15 </span><span class="lineCov">          1 : //</span>
+<span class="lineNum">      16 </span><span class="lineCov">          1 : // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="lineNum">      17 </span><span class="lineCov">          1 : // &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="lineNum">      18 </span><span class="lineCov">          1 : // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR</span>
+<span class="lineNum">      19 </span><span class="lineCov">          1 : // A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT</span>
+<span class="lineNum">      20 </span><span class="lineCov">          1 : // OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,</span>
+<span class="lineNum">      21 </span><span class="lineCov">          1 : // SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT</span>
+<span class="lineNum">      22 </span><span class="lineCov">          1 : // LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,</span>
+<span class="lineNum">      23 </span><span class="lineCov">          1 : // DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY</span>
+<span class="lineNum">      24 </span><span class="lineCov">          1 : // THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT</span>
+<span class="lineNum">      25 </span><span class="lineCov">          1 : // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE</span>
+<span class="lineNum">      26 </span><span class="lineCov">          1 : // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="lineNum">      27 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      28 </span><span class="lineCov">          1 : // Flags: --allow-natives-syntax --expose-gc --nostress-opt --typed-array-max-size-in-heap=2048</span>
+<span class="lineNum">      29 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      30 </span><span class="lineCov">          1 : var elements_kind = {</span>
+<span class="lineNum">      31 </span><span class="lineCov">          1 :   fast_smi_only             :  'fast smi only elements',</span>
+<span class="lineNum">      32 </span><span class="lineCov">          1 :   fast                      :  'fast elements',</span>
+<span class="lineNum">      33 </span><span class="lineCov">          1 :   fast_double               :  'fast double elements',</span>
+<span class="lineNum">      34 </span><span class="lineCov">          1 :   dictionary                :  'dictionary elements',</span>
+<span class="lineNum">      35 </span><span class="lineCov">          1 :   fixed_int32               :  'fixed int8 elements',</span>
+<span class="lineNum">      36 </span><span class="lineCov">          1 :   fixed_uint8               :  'fixed uint8 elements',</span>
+<span class="lineNum">      37 </span><span class="lineCov">          1 :   fixed_int16               :  'fixed int16 elements',</span>
+<span class="lineNum">      38 </span><span class="lineCov">          1 :   fixed_uint16              :  'fixed uint16 elements',</span>
+<span class="lineNum">      39 </span><span class="lineCov">          1 :   fixed_int32               :  'fixed int32 elements',</span>
+<span class="lineNum">      40 </span><span class="lineCov">          1 :   fixed_uint32              :  'fixed uint32 elements',</span>
+<span class="lineNum">      41 </span><span class="lineCov">          1 :   fixed_float32             :  'fixed float32 elements',</span>
+<span class="lineNum">      42 </span><span class="lineCov">          1 :   fixed_float64             :  'fixed float64 elements',</span>
+<span class="lineNum">      43 </span><span class="lineCov">          1 :   fixed_uint8_clamped       :  'fixed uint8_clamped elements'</span>
+<a name="44"><span class="lineNum">      44 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">      45 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      46 </span><span class="lineCov">        109 : function getKind(obj) {</span>
+<span class="lineNum">      47 </span><span class="lineCov">        109 :   if (%HasFastSmiElements(obj)) return elements_kind.fast_smi_only;</span>
+<span class="lineNum">      48 </span><span class="lineCov">        109 :   if (%HasFastObjectElements(obj)) return elements_kind.fast;</span>
+<span class="lineNum">      49 </span><span class="lineCov">        109 :   if (%HasFastDoubleElements(obj)) return elements_kind.fast_double;</span>
+<span class="lineNum">      50 </span><span class="lineCov">        109 :   if (%HasDictionaryElements(obj)) return elements_kind.dictionary;</span>
+<span class="lineNum">      51 </span><span class="lineCov">        109 : </span>
+<span class="lineNum">      52 </span><span class="lineCov">        109 :   if (%HasFixedInt8Elements(obj)) {</span>
+<span class="lineNum">      53 </span><span class="lineCov">        109 :     return elements_kind.fixed_int8;</span>
+<span class="lineNum">      54 </span><span class="lineCov">        109 :   }</span>
+<span class="lineNum">      55 </span><span class="lineCov">        109 :   if (%HasFixedUint8Elements(obj)) {</span>
+<span class="lineNum">      56 </span><span class="lineCov">        109 :     return elements_kind.fixed_uint8;</span>
+<span class="lineNum">      57 </span><span class="lineCov">        109 :   }</span>
+<span class="lineNum">      58 </span><span class="lineCov">        109 :   if (%HasFixedInt16Elements(obj)) {</span>
+<span class="lineNum">      59 </span><span class="lineCov">        109 :     return elements_kind.fixed_int16;</span>
+<span class="lineNum">      60 </span><span class="lineCov">        109 :   }</span>
+<span class="lineNum">      61 </span><span class="lineCov">        109 :   if (%HasFixedUint16Elements(obj)) {</span>
+<span class="lineNum">      62 </span><span class="lineCov">        109 :     return elements_kind.fixed_uint16;</span>
+<span class="lineNum">      63 </span><span class="lineCov">        109 :   }</span>
+<span class="lineNum">      64 </span><span class="lineCov">        109 :   if (%HasFixedInt32Elements(obj)) {</span>
+<span class="lineNum">      65 </span><span class="lineCov">        109 :     return elements_kind.fixed_int32;</span>
+<span class="lineNum">      66 </span><span class="lineCov">        109 :   }</span>
+<span class="lineNum">      67 </span><span class="lineCov">        109 :   if (%HasFixedUint32Elements(obj)) {</span>
+<span class="lineNum">      68 </span><span class="lineCov">        109 :     return elements_kind.fixed_uint32;</span>
+<span class="lineNum">      69 </span><span class="lineCov">        109 :   }</span>
+<span class="lineNum">      70 </span><span class="lineCov">        109 :   if (%HasFixedFloat32Elements(obj)) {</span>
+<span class="lineNum">      71 </span><span class="lineCov">        109 :     return elements_kind.fixed_float32;</span>
+<span class="lineNum">      72 </span><span class="lineCov">        109 :   }</span>
+<span class="lineNum">      73 </span><span class="lineCov">        109 :   if (%HasFixedFloat64Elements(obj)) {</span>
+<span class="lineNum">      74 </span><span class="lineCov">        109 :     return elements_kind.fixed_float64;</span>
+<span class="lineNum">      75 </span><span class="lineCov">        109 :   }</span>
+<span class="lineNum">      76 </span><span class="lineCov">        109 :   if (%HasFixedUint8ClampedElements(obj)) {</span>
+<span class="lineNum">      77 </span><span class="lineCov">        109 :     return elements_kind.fixed_uint8_clamped;</span>
+<span class="lineNum">      78 </span><span class="lineCov">        109 :   }</span>
+<a name="79"><span class="lineNum">      79 </span><span class="lineCov">        109 : }</span></a>
+<span class="lineNum">      80 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      81 </span><span class="lineCov">        109 : function assertKind(expected, obj, name_opt) {</span>
+<span class="lineNum">      82 </span><span class="lineCov">        109 :   assertEquals(expected, getKind(obj), name_opt);</span>
+<span class="lineNum">      83 </span><span class="lineCov">        109 : }</span>
+<span class="lineNum">      84 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      85 </span><span class="lineCov">          1 : var me = {};</span>
+<span class="lineNum">      86 </span><span class="lineCov">          1 : assertKind(elements_kind.fast, me);</span>
+<span class="lineNum">      87 </span><span class="lineCov">          1 : me.dance = 0xD15C0;</span>
+<span class="lineNum">      88 </span><span class="lineCov">          1 : me.drink = 0xC0C0A;</span>
+<span class="lineNum">      89 </span><span class="lineCov">          1 : assertKind(elements_kind.fast, me);</span>
+<span class="lineNum">      90 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      91 </span><span class="lineCov">          1 : var too = [1,2,3];</span>
+<span class="lineNum">      92 </span><span class="lineCov">          1 : assertKind(elements_kind.fast_smi_only, too);</span>
+<span class="lineNum">      93 </span><span class="lineCov">          1 : too.dance = 0xD15C0;</span>
+<span class="lineNum">      94 </span><span class="lineCov">          1 : too.drink = 0xC0C0A;</span>
+<span class="lineNum">      95 </span><span class="lineCov">          1 : assertKind(elements_kind.fast_smi_only, too);</span>
+<a name="96"><span class="lineNum">      96 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      97 </span><span class="lineCov">          1 : // Make sure the element kind transitions from smi when a non-smi is stored.</span>
+<span class="lineNum">      98 </span><span class="lineCov">          1 : function test_wrapper() {</span>
+<span class="lineNum">      99 </span><span class="lineCov">          1 :   var you = new Array();</span>
+<span class="lineNum">     100 </span><span class="lineCov">          1 :   assertKind(elements_kind.fast_smi_only, you);</span>
+<span class="lineNum">     101 </span><span class="lineCov">          1 :   for (var i = 0; i &lt; 1337; i++) {</span>
+<span class="lineNum">     102 </span><span class="lineCov">          1 :     var val = i;</span>
+<span class="lineNum">     103 </span><span class="lineCov">          1 :     if (i == 1336) {</span>
+<span class="lineNum">     104 </span><span class="lineCov">          1 :       assertKind(elements_kind.fast_smi_only, you);</span>
+<span class="lineNum">     105 </span><span class="lineCov">          1 :       val = new Object();</span>
+<span class="lineNum">     106 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">     107 </span><span class="lineCov">          1 :     you[i] = val;</span>
+<span class="lineNum">     108 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     109 </span><span class="lineCov">          1 :   assertKind(elements_kind.fast, you);</span>
+<span class="lineNum">     110 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     111 </span><span class="lineCov">          1 :   var temp = [];</span>
+<span class="lineNum">     112 </span><span class="lineCov">          1 :   temp[0xDECAF] = 0;</span>
+<span class="lineNum">     113 </span><span class="lineCov">          1 :   assertKind(elements_kind.dictionary, temp);</span>
+<span class="lineNum">     114 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     115 </span><span class="lineCov">          1 :   var fast_double_array = new Array(0xDECAF);</span>
+<span class="lineNum">     116 </span><span class="lineCov">          1 :   for (var i = 0; i &lt; 0xDECAF; i++) fast_double_array[i] = i / 2;</span>
+<span class="lineNum">     117 </span><span class="lineCov">          1 :   assertKind(elements_kind.fast_double, fast_double_array);</span>
+<span class="lineNum">     118 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     119 </span><span class="lineCov">          1 :   assertKind(elements_kind.fixed_int8,    new Int8Array(007));</span>
+<span class="lineNum">     120 </span><span class="lineCov">          1 :   assertKind(elements_kind.fixed_uint8,   new Uint8Array(007));</span>
+<span class="lineNum">     121 </span><span class="lineCov">          1 :   assertKind(elements_kind.fixed_int16,   new Int16Array(666));</span>
+<span class="lineNum">     122 </span><span class="lineCov">          1 :   assertKind(elements_kind.fixed_uint16,  new Uint16Array(42));</span>
+<span class="lineNum">     123 </span><span class="lineCov">          1 :   assertKind(elements_kind.fixed_int32,   new Int32Array(0xF));</span>
+<span class="lineNum">     124 </span><span class="lineCov">          1 :   assertKind(elements_kind.fixed_uint32,  new Uint32Array(23));</span>
+<span class="lineNum">     125 </span><span class="lineCov">          1 :   assertKind(elements_kind.fixed_float32, new Float32Array(7));</span>
+<span class="lineNum">     126 </span><span class="lineCov">          1 :   assertKind(elements_kind.fixed_float64, new Float64Array(0));</span>
+<span class="lineNum">     127 </span><span class="lineCov">          1 :   assertKind(elements_kind.fixed_uint8_clamped, new Uint8ClampedArray(512));</span>
+<span class="lineNum">     128 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     129 </span><span class="lineCov">          1 :   var ab = new ArrayBuffer(128);</span>
+<span class="lineNum">     130 </span><span class="lineCov">          1 :   assertKind(elements_kind.fixed_int8,    new Int8Array(ab));</span>
+<span class="lineNum">     131 </span><span class="lineCov">          1 :   assertKind(elements_kind.fixed_uint8,   new Uint8Array(ab));</span>
+<span class="lineNum">     132 </span><span class="lineCov">          1 :   assertKind(elements_kind.fixed_int16,   new Int16Array(ab));</span>
+<span class="lineNum">     133 </span><span class="lineCov">          1 :   assertKind(elements_kind.fixed_uint16,  new Uint16Array(ab));</span>
+<span class="lineNum">     134 </span><span class="lineCov">          1 :   assertKind(elements_kind.fixed_int32,   new Int32Array(ab));</span>
+<span class="lineNum">     135 </span><span class="lineCov">          1 :   assertKind(elements_kind.fixed_uint32,  new Uint32Array(ab));</span>
+<span class="lineNum">     136 </span><span class="lineCov">          1 :   assertKind(elements_kind.fixed_float32, new Float32Array(ab));</span>
+<span class="lineNum">     137 </span><span class="lineCov">          1 :   assertKind(elements_kind.fixed_float64, new Float64Array(ab));</span>
+<span class="lineNum">     138 </span><span class="lineCov">          1 :   assertKind(elements_kind.fixed_uint8_clamped, new Uint8ClampedArray(ab));</span>
+<a name="139"><span class="lineNum">     139 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     140 </span><span class="lineCov">          1 :   // Crankshaft support for smi-only array elements.</span>
+<span class="lineNum">     141 </span><span class="lineCov">          4 :   function monomorphic(array) {</span>
+<span class="lineNum">     142 </span><span class="lineCov">          4 :     assertKind(elements_kind.fast_smi_only, array);</span>
+<span class="lineNum">     143 </span><span class="lineCov">          4 :     for (var i = 0; i &lt; 3; i++) {</span>
+<span class="lineNum">     144 </span><span class="lineCov">          4 :       array[i] = i + 10;</span>
+<span class="lineNum">     145 </span><span class="lineCov">          4 :     }</span>
+<span class="lineNum">     146 </span><span class="lineCov">          4 :     assertKind(elements_kind.fast_smi_only, array);</span>
+<span class="lineNum">     147 </span><span class="lineCov">          4 :     for (var i = 0; i &lt; 3; i++) {</span>
+<span class="lineNum">     148 </span><span class="lineCov">          4 :       var a = array[i];</span>
+<span class="lineNum">     149 </span><span class="lineCov">          4 :       assertEquals(i + 10, a);</span>
+<span class="lineNum">     150 </span><span class="lineCov">          4 :     }</span>
+<span class="lineNum">     151 </span><span class="lineCov">          4 :   }</span>
+<span class="lineNum">     152 </span><span class="lineCov">          1 :   var smi_only = new Array(1, 2, 3);</span>
+<span class="lineNum">     153 </span><span class="lineCov">          1 :   assertKind(elements_kind.fast_smi_only, smi_only);</span>
+<span class="lineNum">     154 </span><span class="lineCov">          1 :   for (var i = 0; i &lt; 3; i++) monomorphic(smi_only);</span>
+<span class="lineNum">     155 </span><span class="lineCov">          1 :     %OptimizeFunctionOnNextCall(monomorphic);</span>
+<span class="lineNum">     156 </span><span class="lineCov">          1 :   monomorphic(smi_only);</span>
+<span class="lineNum">     157 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     158 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     159 </span><span class="lineCov">          1 : // The test is called in a wrapper function to eliminate the transition learning</span>
+<span class="lineNum">     160 </span><span class="lineCov">          1 : // feedback of AllocationSites.</span>
+<span class="lineNum">     161 </span><span class="lineCov">          1 : test_wrapper();</span>
+<span class="lineNum">     162 </span><span class="lineCov">          1 : %ClearFunctionTypeFeedback(test_wrapper);</span>
+<span class="lineNum">     163 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     164 </span><span class="lineCov">          1 : %NeverOptimizeFunction(construct_smis);</span>
+<span class="lineNum">     165 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     166 </span><span class="lineCov">          1 : // This code exists to eliminate the learning influence of AllocationSites</span>
+<a name="167"><span class="lineNum">     167 </span><span class="lineCov">          1 : // on the following tests.</span></a>
+<span class="lineNum">     168 </span><span class="lineCov">          1 : var __sequence = 0;</span>
+<span class="lineNum">     169 </span><span class="lineCov">         12 : function make_array_string() {</span>
+<span class="lineNum">     170 </span><span class="lineCov">         12 :   this.__sequence = this.__sequence + 1;</span>
+<a name="171"><span class="lineNum">     171 </span><span class="lineCov">         12 :   return &quot;/* &quot; + this.__sequence + &quot; */  [0, 0, 0];&quot;</span></a>
+<span class="lineNum">     172 </span><span class="lineCov">         12 : }</span>
+<span class="lineNum">     173 </span><span class="lineCov">         12 : function make_array() {</span>
+<span class="lineNum">     174 </span><span class="lineCov">         12 :   return eval(make_array_string());</span>
+<a name="175"><span class="lineNum">     175 </span><span class="lineCov">         12 : }</span></a>
+<span class="lineNum">     176 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     177 </span><span class="lineCov">         12 : function construct_smis() {</span>
+<span class="lineNum">     178 </span><span class="lineCov">         12 :   var a = make_array();</span>
+<span class="lineNum">     179 </span><span class="lineCov">         12 :   a[0] = 0;  // Send the COW array map to the steak house.</span>
+<span class="lineNum">     180 </span><span class="lineCov">         12 :   assertKind(elements_kind.fast_smi_only, a);</span>
+<span class="lineNum">     181 </span><span class="lineCov">         12 :   return a;</span>
+<a name="182"><span class="lineNum">     182 </span><span class="lineCov">         12 : }</span></a>
+<span class="lineNum">     183 </span><span class="lineCov">          1 :   %NeverOptimizeFunction(construct_doubles);</span>
+<span class="lineNum">     184 </span><span class="lineCov">          5 : function construct_doubles() {</span>
+<span class="lineNum">     185 </span><span class="lineCov">          5 :   var a = construct_smis();</span>
+<span class="lineNum">     186 </span><span class="lineCov">          5 :   a[0] = 1.5;</span>
+<span class="lineNum">     187 </span><span class="lineCov">          5 :   assertKind(elements_kind.fast_double, a);</span>
+<span class="lineNum">     188 </span><span class="lineCov">          5 :   return a;</span>
+<a name="189"><span class="lineNum">     189 </span><span class="lineCov">          5 : }</span></a>
+<span class="lineNum">     190 </span><span class="lineCov">          1 :   %NeverOptimizeFunction(construct_objects);</span>
+<span class="lineNum">     191 </span><span class="lineCov">          1 : function construct_objects() {</span>
+<span class="lineNum">     192 </span><span class="lineNoCov">          0 :   var a = construct_smis();</span>
+<span class="lineNum">     193 </span><span class="lineNoCov">          0 :   a[0] = &quot;one&quot;;</span>
+<span class="lineNum">     194 </span><span class="lineNoCov">          0 :   assertKind(elements_kind.fast, a);</span>
+<span class="lineNum">     195 </span><span class="lineNoCov">          0 :   return a;</span>
+<span class="lineNum">     196 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     197 </span><span class="lineCov">          1 : </span>
+<a name="198"><span class="lineNum">     198 </span><span class="lineCov">          1 : // Test crankshafted transition SMI-&gt;DOUBLE.</span></a>
+<span class="lineNum">     199 </span><span class="lineCov">          1 :   %NeverOptimizeFunction(convert_to_double);</span>
+<span class="lineNum">     200 </span><span class="lineCov">          4 : function convert_to_double(array) {</span>
+<span class="lineNum">     201 </span><span class="lineCov">          4 :   array[1] = 2.5;</span>
+<span class="lineNum">     202 </span><span class="lineCov">          4 :   assertKind(elements_kind.fast_double, array);</span>
+<span class="lineNum">     203 </span><span class="lineCov">          4 :   assertEquals(2.5, array[1]);</span>
+<span class="lineNum">     204 </span><span class="lineCov">          4 : }</span>
+<span class="lineNum">     205 </span><span class="lineCov">          1 : var smis = construct_smis();</span>
+<span class="lineNum">     206 </span><span class="lineCov">          1 : for (var i = 0; i &lt; 3; i++) convert_to_double(smis);</span>
+<span class="lineNum">     207 </span><span class="lineCov">          1 :   %OptimizeFunctionOnNextCall(convert_to_double);</span>
+<span class="lineNum">     208 </span><span class="lineCov">          1 : smis = construct_smis();</span>
+<span class="lineNum">     209 </span><span class="lineCov">          1 : convert_to_double(smis);</span>
+<a name="210"><span class="lineNum">     210 </span><span class="lineCov">          1 : // Test crankshafted transitions SMI-&gt;FAST and DOUBLE-&gt;FAST.</span></a>
+<span class="lineNum">     211 </span><span class="lineCov">          1 :   %NeverOptimizeFunction(convert_to_fast);</span>
+<span class="lineNum">     212 </span><span class="lineCov">          8 : function convert_to_fast(array) {</span>
+<span class="lineNum">     213 </span><span class="lineCov">          8 :   array[1] = &quot;two&quot;;</span>
+<span class="lineNum">     214 </span><span class="lineCov">          8 :   assertKind(elements_kind.fast, array);</span>
+<span class="lineNum">     215 </span><span class="lineCov">          8 :   assertEquals(&quot;two&quot;, array[1]);</span>
+<span class="lineNum">     216 </span><span class="lineCov">          8 : }</span>
+<span class="lineNum">     217 </span><span class="lineCov">          1 : smis = construct_smis();</span>
+<span class="lineNum">     218 </span><span class="lineCov">          1 : for (var i = 0; i &lt; 3; i++) convert_to_fast(smis);</span>
+<span class="lineNum">     219 </span><span class="lineCov">          1 : var doubles = construct_doubles();</span>
+<span class="lineNum">     220 </span><span class="lineCov">          1 : for (var i = 0; i &lt; 3; i++) convert_to_fast(doubles);</span>
+<span class="lineNum">     221 </span><span class="lineCov">          1 : smis = construct_smis();</span>
+<span class="lineNum">     222 </span><span class="lineCov">          1 : doubles = construct_doubles();</span>
+<span class="lineNum">     223 </span><span class="lineCov">          1 :   %OptimizeFunctionOnNextCall(convert_to_fast);</span>
+<span class="lineNum">     224 </span><span class="lineCov">          1 : convert_to_fast(smis);</span>
+<span class="lineNum">     225 </span><span class="lineCov">          1 : convert_to_fast(doubles);</span>
+<span class="lineNum">     226 </span><span class="lineCov">          1 : // Test transition chain SMI-&gt;DOUBLE-&gt;FAST (crankshafted function will</span>
+<a name="227"><span class="lineNum">     227 </span><span class="lineCov">          1 : // transition to FAST directly).</span></a>
+<span class="lineNum">     228 </span><span class="lineCov">          1 :   %NeverOptimizeFunction(convert_mixed);</span>
+<span class="lineNum">     229 </span><span class="lineCov">         10 : function convert_mixed(array, value, kind) {</span>
+<span class="lineNum">     230 </span><span class="lineCov">         10 :   array[1] = value;</span>
+<span class="lineNum">     231 </span><span class="lineCov">         10 :   assertKind(kind, array);</span>
+<span class="lineNum">     232 </span><span class="lineCov">         10 :   assertEquals(value, array[1]);</span>
+<span class="lineNum">     233 </span><span class="lineCov">         10 : }</span>
+<span class="lineNum">     234 </span><span class="lineCov">          1 : smis = construct_smis();</span>
+<span class="lineNum">     235 </span><span class="lineCov">          1 : for (var i = 0; i &lt; 3; i++) {</span>
+<span class="lineNum">     236 </span><span class="lineCov">          1 :   convert_mixed(smis, 1.5, elements_kind.fast_double);</span>
+<span class="lineNum">     237 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     238 </span><span class="lineCov">          1 : doubles = construct_doubles();</span>
+<span class="lineNum">     239 </span><span class="lineCov">          1 : for (var i = 0; i &lt; 3; i++) {</span>
+<span class="lineNum">     240 </span><span class="lineCov">          1 :   convert_mixed(doubles, &quot;three&quot;, elements_kind.fast);</span>
+<span class="lineNum">     241 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     242 </span><span class="lineCov">          1 : convert_mixed(construct_smis(), &quot;three&quot;, elements_kind.fast);</span>
+<span class="lineNum">     243 </span><span class="lineCov">          1 : convert_mixed(construct_doubles(), &quot;three&quot;, elements_kind.fast);</span>
+<span class="lineNum">     244 </span><span class="lineCov">          1 :   %OptimizeFunctionOnNextCall(convert_mixed);</span>
+<span class="lineNum">     245 </span><span class="lineCov">          1 : smis = construct_smis();</span>
+<span class="lineNum">     246 </span><span class="lineCov">          1 : doubles = construct_doubles();</span>
+<span class="lineNum">     247 </span><span class="lineCov">          1 : convert_mixed(smis, 1, elements_kind.fast);</span>
+<span class="lineNum">     248 </span><span class="lineCov">          1 : convert_mixed(doubles, 1, elements_kind.fast);</span>
+<span class="lineNum">     249 </span><span class="lineCov">          1 : assertTrue(%HaveSameMap(smis, doubles));</span>
+<a name="250"><span class="lineNum">     250 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     251 </span><span class="lineCov">          1 : // Crankshaft support for smi-only elements in dynamic array literals.</span>
+<a name="252"><span class="lineNum">     252 </span><span class="lineCov">         48 : function get(foo) { return foo; }  // Used to generate dynamic values.</span></a>
+<span class="lineNum">     253 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     254 </span><span class="lineCov">          4 : function crankshaft_test() {</span>
+<span class="lineNum">     255 </span><span class="lineCov">          4 :   var a1 = [get(1), get(2), get(3)];</span>
+<span class="lineNum">     256 </span><span class="lineCov">          4 :   assertKind(elements_kind.fast_smi_only, a1);</span>
+<span class="lineNum">     257 </span><span class="lineCov">          4 : </span>
+<span class="lineNum">     258 </span><span class="lineCov">          4 :   var a2 = new Array(get(1), get(2), get(3));</span>
+<span class="lineNum">     259 </span><span class="lineCov">          4 :   assertKind(elements_kind.fast_smi_only, a2);</span>
+<span class="lineNum">     260 </span><span class="lineCov">          4 :   var b = [get(1), get(2), get(&quot;three&quot;)];</span>
+<span class="lineNum">     261 </span><span class="lineCov">          4 :   assertKind(elements_kind.fast, b);</span>
+<span class="lineNum">     262 </span><span class="lineCov">          4 :   var c = [get(1), get(2), get(3.5)];</span>
+<span class="lineNum">     263 </span><span class="lineCov">          4 :   assertKind(elements_kind.fast_double, c);</span>
+<span class="lineNum">     264 </span><span class="lineCov">          4 : }</span>
+<span class="lineNum">     265 </span><span class="lineCov">          1 : for (var i = 0; i &lt; 3; i++) {</span>
+<span class="lineNum">     266 </span><span class="lineCov">          1 :   crankshaft_test();</span>
+<span class="lineNum">     267 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     268 </span><span class="lineCov">          1 : %OptimizeFunctionOnNextCall(crankshaft_test);</span>
+<span class="lineNum">     269 </span><span class="lineCov">          1 : crankshaft_test();</span>
+<span class="lineNum">     270 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     271 </span><span class="lineCov">          1 : // Elements_kind transitions for arrays.</span>
+<span class="lineNum">     272 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     273 </span><span class="lineCov">          1 : // A map can have three different elements_kind transitions: SMI-&gt;DOUBLE,</span>
+<span class="lineNum">     274 </span><span class="lineCov">          1 : // DOUBLE-&gt;OBJECT, and SMI-&gt;OBJECT. No matter in which order these three are</span>
+<span class="lineNum">     275 </span><span class="lineCov">          1 : // created, they must always end up with the same FAST map.</span>
+<span class="lineNum">     276 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     277 </span><span class="lineCov">          1 : // Preparation: create one pair of identical objects for each case.</span>
+<span class="lineNum">     278 </span><span class="lineCov">          1 : var a = [1, 2, 3];</span>
+<span class="lineNum">     279 </span><span class="lineCov">          1 : var b = [1, 2, 3];</span>
+<span class="lineNum">     280 </span><span class="lineCov">          1 : assertTrue(%HaveSameMap(a, b));</span>
+<span class="lineNum">     281 </span><span class="lineCov">          1 : assertKind(elements_kind.fast_smi_only, a);</span>
+<span class="lineNum">     282 </span><span class="lineCov">          1 : var c = [1, 2, 3];</span>
+<span class="lineNum">     283 </span><span class="lineCov">          1 : c[&quot;case2&quot;] = true;</span>
+<span class="lineNum">     284 </span><span class="lineCov">          1 : var d = [1, 2, 3];</span>
+<span class="lineNum">     285 </span><span class="lineCov">          1 : d[&quot;case2&quot;] = true;</span>
+<span class="lineNum">     286 </span><span class="lineCov">          1 : assertTrue(%HaveSameMap(c, d));</span>
+<span class="lineNum">     287 </span><span class="lineCov">          1 : assertFalse(%HaveSameMap(a, c));</span>
+<span class="lineNum">     288 </span><span class="lineCov">          1 : assertKind(elements_kind.fast_smi_only, c);</span>
+<span class="lineNum">     289 </span><span class="lineCov">          1 : var e = [1, 2, 3];</span>
+<span class="lineNum">     290 </span><span class="lineCov">          1 : e[&quot;case3&quot;] = true;</span>
+<span class="lineNum">     291 </span><span class="lineCov">          1 : var f = [1, 2, 3];</span>
+<span class="lineNum">     292 </span><span class="lineCov">          1 : f[&quot;case3&quot;] = true;</span>
+<span class="lineNum">     293 </span><span class="lineCov">          1 : assertTrue(%HaveSameMap(e, f));</span>
+<span class="lineNum">     294 </span><span class="lineCov">          1 : assertFalse(%HaveSameMap(a, e));</span>
+<span class="lineNum">     295 </span><span class="lineCov">          1 : assertFalse(%HaveSameMap(c, e));</span>
+<span class="lineNum">     296 </span><span class="lineCov">          1 : assertKind(elements_kind.fast_smi_only, e);</span>
+<span class="lineNum">     297 </span><span class="lineCov">          1 : // Case 1: SMI-&gt;DOUBLE, DOUBLE-&gt;OBJECT, SMI-&gt;OBJECT.</span>
+<span class="lineNum">     298 </span><span class="lineCov">          1 : a[0] = 1.5;</span>
+<span class="lineNum">     299 </span><span class="lineCov">          1 : assertKind(elements_kind.fast_double, a);</span>
+<span class="lineNum">     300 </span><span class="lineCov">          1 : a[0] = &quot;foo&quot;;</span>
+<span class="lineNum">     301 </span><span class="lineCov">          1 : assertKind(elements_kind.fast, a);</span>
+<span class="lineNum">     302 </span><span class="lineCov">          1 : b[0] = &quot;bar&quot;;</span>
+<span class="lineNum">     303 </span><span class="lineCov">          1 : assertTrue(%HaveSameMap(a, b));</span>
+<span class="lineNum">     304 </span><span class="lineCov">          1 : // Case 2: SMI-&gt;DOUBLE, SMI-&gt;OBJECT, DOUBLE-&gt;OBJECT.</span>
+<span class="lineNum">     305 </span><span class="lineCov">          1 : c[0] = 1.5;</span>
+<span class="lineNum">     306 </span><span class="lineCov">          1 : assertKind(elements_kind.fast_double, c);</span>
+<span class="lineNum">     307 </span><span class="lineCov">          1 : assertFalse(%HaveSameMap(c, d));</span>
+<span class="lineNum">     308 </span><span class="lineCov">          1 : d[0] = &quot;foo&quot;;</span>
+<span class="lineNum">     309 </span><span class="lineCov">          1 : assertKind(elements_kind.fast, d);</span>
+<span class="lineNum">     310 </span><span class="lineCov">          1 : assertFalse(%HaveSameMap(c, d));</span>
+<span class="lineNum">     311 </span><span class="lineCov">          1 : c[0] = &quot;bar&quot;;</span>
+<span class="lineNum">     312 </span><span class="lineCov">          1 : assertTrue(%HaveSameMap(c, d));</span>
+<span class="lineNum">     313 </span><span class="lineCov">          1 : // Case 3: SMI-&gt;OBJECT, SMI-&gt;DOUBLE, DOUBLE-&gt;OBJECT.</span>
+<span class="lineNum">     314 </span><span class="lineCov">          1 : e[0] = &quot;foo&quot;;</span>
+<span class="lineNum">     315 </span><span class="lineCov">          1 : assertKind(elements_kind.fast, e);</span>
+<span class="lineNum">     316 </span><span class="lineCov">          1 : assertFalse(%HaveSameMap(e, f));</span>
+<span class="lineNum">     317 </span><span class="lineCov">          1 : f[0] = 1.5;</span>
+<span class="lineNum">     318 </span><span class="lineCov">          1 : assertKind(elements_kind.fast_double, f);</span>
+<span class="lineNum">     319 </span><span class="lineCov">          1 : assertFalse(%HaveSameMap(e, f));</span>
+<span class="lineNum">     320 </span><span class="lineCov">          1 : f[0] = &quot;bar&quot;;</span>
+<span class="lineNum">     321 </span><span class="lineCov">          1 : assertKind(elements_kind.fast, f);</span>
+<span class="lineNum">     322 </span><span class="lineCov">          1 : assertTrue(%HaveSameMap(e, f));</span>
+<span class="lineNum">     323 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     324 </span><span class="lineCov">          1 : // Test if Array.concat() works correctly with DOUBLE elements.</span>
+<span class="lineNum">     325 </span><span class="lineCov">          1 : var a = [1, 2];</span>
+<span class="lineNum">     326 </span><span class="lineCov">          1 : assertKind(elements_kind.fast_smi_only, a);</span>
+<span class="lineNum">     327 </span><span class="lineCov">          1 : var b = [4.5, 5.5];</span>
+<span class="lineNum">     328 </span><span class="lineCov">          1 : assertKind(elements_kind.fast_double, b);</span>
+<span class="lineNum">     329 </span><span class="lineCov">          1 : var c = a.concat(b);</span>
+<span class="lineNum">     330 </span><span class="lineCov">          1 : assertEquals([1, 2, 4.5, 5.5], c);</span>
+<span class="lineNum">     331 </span><span class="lineCov">          1 : assertKind(elements_kind.fast_double, c);</span>
+<span class="lineNum">     332 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     333 </span><span class="lineCov">          1 : // Test that Array.push() correctly handles SMI elements.</span>
+<span class="lineNum">     334 </span><span class="lineCov">          1 : var a = [1, 2];</span>
+<span class="lineNum">     335 </span><span class="lineCov">          1 : assertKind(elements_kind.fast_smi_only, a);</span>
+<span class="lineNum">     336 </span><span class="lineCov">          1 : a.push(3, 4, 5);</span>
+<span class="lineNum">     337 </span><span class="lineCov">          1 : assertKind(elements_kind.fast_smi_only, a);</span>
+<span class="lineNum">     338 </span><span class="lineCov">          1 : assertEquals([1, 2, 3, 4, 5], a);</span>
+<span class="lineNum">     339 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     340 </span><span class="lineCov">          1 : // Test that Array.splice() and Array.slice() return correct ElementsKinds.</span>
+<span class="lineNum">     341 </span><span class="lineCov">          1 : var a = [&quot;foo&quot;, &quot;bar&quot;];</span>
+<span class="lineNum">     342 </span><span class="lineCov">          1 : assertKind(elements_kind.fast, a);</span>
+<span class="lineNum">     343 </span><span class="lineCov">          1 : var b = a.splice(0, 1);</span>
+<span class="lineNum">     344 </span><span class="lineCov">          1 : assertKind(elements_kind.fast, b);</span>
+<span class="lineNum">     345 </span><span class="lineCov">          1 : var c = a.slice(0, 1);</span>
+<span class="lineNum">     346 </span><span class="lineCov">          1 : assertKind(elements_kind.fast, c);</span>
+<span class="lineNum">     347 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     348 </span><span class="lineCov">          1 : // Throw away type information in the ICs for next stress run.</span>
+<span class="lineNum">     349 </span><span class="lineCov">          1 : gc();</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

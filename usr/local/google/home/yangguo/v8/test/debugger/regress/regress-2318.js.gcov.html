@@ -1,0 +1,148 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - /usr/local/google/home/yangguo/v8/test/debugger/regress/regress-2318.js</title>
+  <link rel="stylesheet" type="text/css" href="../../../../../../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../../../../../../index.html">top level</a> - <a href="index.html">usr/local/google/home/yangguo/v8/test/debugger/regress</a> - regress-2318.js<span style="font-size: 80%;"> (source / <a href="regress-2318.js.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">73</td>
+            <td class="headerCovTableEntry">73</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2017-02-14</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">4</td>
+            <td class="headerCovTableEntry">4</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr><td><img src="../../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span><span class="lineCov">          1 : // Copyright 2012 the V8 project authors. All rights reserved.</span></a>
+<span class="lineNum">       2 </span><span class="lineCov">          1 : // Redistribution and use in source and binary forms, with or without</span>
+<span class="lineNum">       3 </span><span class="lineCov">          1 : // modification, are permitted provided that the following conditions are</span>
+<span class="lineNum">       4 </span><span class="lineCov">          1 : // met:</span>
+<span class="lineNum">       5 </span><span class="lineCov">          1 : //</span>
+<span class="lineNum">       6 </span><span class="lineCov">          1 : //     * Redistributions of source code must retain the above copyright</span>
+<span class="lineNum">       7 </span><span class="lineCov">          1 : //       notice, this list of conditions and the following disclaimer.</span>
+<span class="lineNum">       8 </span><span class="lineCov">          1 : //     * Redistributions in binary form must reproduce the above</span>
+<span class="lineNum">       9 </span><span class="lineCov">          1 : //       copyright notice, this list of conditions and the following</span>
+<span class="lineNum">      10 </span><span class="lineCov">          1 : //       disclaimer in the documentation and/or other materials provided</span>
+<span class="lineNum">      11 </span><span class="lineCov">          1 : //       with the distribution.</span>
+<span class="lineNum">      12 </span><span class="lineCov">          1 : //     * Neither the name of Google Inc. nor the names of its</span>
+<span class="lineNum">      13 </span><span class="lineCov">          1 : //       contributors may be used to endorse or promote products derived</span>
+<span class="lineNum">      14 </span><span class="lineCov">          1 : //       from this software without specific prior written permission.</span>
+<span class="lineNum">      15 </span><span class="lineCov">          1 : //</span>
+<span class="lineNum">      16 </span><span class="lineCov">          1 : // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="lineNum">      17 </span><span class="lineCov">          1 : // &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="lineNum">      18 </span><span class="lineCov">          1 : // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR</span>
+<span class="lineNum">      19 </span><span class="lineCov">          1 : // A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT</span>
+<span class="lineNum">      20 </span><span class="lineCov">          1 : // OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,</span>
+<span class="lineNum">      21 </span><span class="lineCov">          1 : // SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT</span>
+<span class="lineNum">      22 </span><span class="lineCov">          1 : // LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,</span>
+<span class="lineNum">      23 </span><span class="lineCov">          1 : // DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY</span>
+<span class="lineNum">      24 </span><span class="lineCov">          1 : // THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT</span>
+<span class="lineNum">      25 </span><span class="lineCov">          1 : // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE</span>
+<span class="lineNum">      26 </span><span class="lineCov">          1 : // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="lineNum">      27 </span><span class="lineCov">          1 : </span>
+<a name="28"><span class="lineNum">      28 </span><span class="lineCov">          1 : // Flags: --stack-size=100</span></a>
+<span class="lineNum">      29 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      30 </span><span class="lineCov">        121 : function f() {</span>
+<span class="lineNum">      31 </span><span class="lineCov">        121 :   var i = 0;</span>
+<span class="lineNum">      32 </span><span class="lineCov">        121 :   // Stack-allocate to reach the end of stack quickly.</span>
+<span class="lineNum">      33 </span><span class="lineCov">        121 :   var _A0 = 00; var _A1 = 01; var _A2 = 02; var _A3 = 03; var _A4 = 04;</span>
+<span class="lineNum">      34 </span><span class="lineCov">        121 :   var _B0 = 05; var _B1 = 06; var _B2 = 07; var _B3 = 08; var _B4 = 09;</span>
+<span class="lineNum">      35 </span><span class="lineCov">        121 :   var _C0 = 10; var _C1 = 11; var _C2 = 12; var _C3 = 13; var _C4 = 14;</span>
+<span class="lineNum">      36 </span><span class="lineCov">        121 :   var _D0 = 15; var _D1 = 16; var _D2 = 17; var _D3 = 18; var _D4 = 19;</span>
+<span class="lineNum">      37 </span><span class="lineCov">        121 :   var _E0 = 20; var _E1 = 21; var _E2 = 22; var _E3 = 23; var _E4 = 24;</span>
+<span class="lineNum">      38 </span><span class="lineCov">        121 :   var _F0 = 25; var _F1 = 26; var _F2 = 27; var _F3 = 28; var _F4 = 29;</span>
+<span class="lineNum">      39 </span><span class="lineCov">        121 :   var _G0 = 30; var _G1 = 31; var _G2 = 32; var _G3 = 33; var _G4 = 34;</span>
+<span class="lineNum">      40 </span><span class="lineCov">        121 :   var _H0 = 35; var _H1 = 36; var _H2 = 37; var _H3 = 38; var _H4 = 39;</span>
+<span class="lineNum">      41 </span><span class="lineCov">        121 :   var _I0 = 40; var _I1 = 41; var _I2 = 42; var _I3 = 43; var _I4 = 44;</span>
+<span class="lineNum">      42 </span><span class="lineCov">        121 :   var _J0 = 45; var _J1 = 46; var _J2 = 47; var _J3 = 48; var _J4 = 49;</span>
+<span class="lineNum">      43 </span><span class="lineCov">        121 :   var _K0 = 50; var _K1 = 51; var _K2 = 52; var _K3 = 53; var _K4 = 54;</span>
+<span class="lineNum">      44 </span><span class="lineCov">        121 :   var _L0 = 55; var _L1 = 56; var _L2 = 57; var _L3 = 58; var _L4 = 59;</span>
+<span class="lineNum">      45 </span><span class="lineCov">        121 :   var _M0 = 60; var _M1 = 61; var _M2 = 62; var _M3 = 63; var _M4 = 64;</span>
+<span class="lineNum">      46 </span><span class="lineCov">        121 :   var _N0 = 65; var _N1 = 66; var _N2 = 67; var _N3 = 68; var _N4 = 69;</span>
+<span class="lineNum">      47 </span><span class="lineCov">        121 :   var _O0 = 70; var _O1 = 71; var _O2 = 72; var _O3 = 73; var _O4 = 74;</span>
+<span class="lineNum">      48 </span><span class="lineCov">        121 :   var _P0 = 75; var _P1 = 76; var _P2 = 77; var _P3 = 78; var _P4 = 79;</span>
+<span class="lineNum">      49 </span><span class="lineCov">        121 :   var _Q0 = 80; var _Q1 = 81; var _Q2 = 82; var _Q3 = 83; var _Q4 = 84;</span>
+<span class="lineNum">      50 </span><span class="lineCov">        121 :   var _R0 = 85; var _R1 = 86; var _R2 = 87; var _R3 = 88; var _R4 = 89;</span>
+<span class="lineNum">      51 </span><span class="lineCov">        121 :   var _S0 = 90; var _S1 = 91; var _S2 = 92; var _S3 = 93; var _S4 = 94;</span>
+<span class="lineNum">      52 </span><span class="lineCov">        121 :   var _T0 = 95; var _T1 = 96; var _T2 = 97; var _T3 = 98; var _T4 = 99;</span>
+<span class="lineNum">      53 </span><span class="lineCov">        121 : </span>
+<span class="lineNum">      54 </span><span class="lineCov">        121 :   f();</span>
+<span class="lineNum">      55 </span><span class="lineCov">        121 : };</span>
+<span class="lineNum">      56 </span><span class="lineCov">          1 : </span>
+<a name="57"><span class="lineNum">      57 </span><span class="lineCov">          1 : Debug = debug.Debug;</span></a>
+<span class="lineNum">      58 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      59 </span><span class="lineCov">        221 : function listener(event, exec_state, event_data, data) {</span>
+<span class="lineNum">      60 </span><span class="lineCov">        221 :   if (event != Debug.DebugEvent.Break) return;</span>
+<span class="lineNum">      61 </span><span class="lineCov">        221 :   try {</span>
+<span class="lineNum">      62 </span><span class="lineCov">        221 :     exec_state.frame(0).evaluate(&quot;i&quot;);</span>
+<span class="lineNum">      63 </span><span class="lineCov">        221 :   } catch (e) {</span>
+<span class="lineNum">      64 </span><span class="lineCov">        221 :   }</span>
+<span class="lineNum">      65 </span><span class="lineCov">        221 : };</span>
+<span class="lineNum">      66 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      67 </span><span class="lineCov">          1 : Debug.setListener(listener);</span>
+<a name="68"><span class="lineNum">      68 </span><span class="lineCov">          1 : var bp = Debug.setBreakPoint(f, 1);</span></a>
+<span class="lineNum">      69 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      70 </span><span class="lineCov">          1 : assertThrows(function() { f(); }, RangeError);</span>
+<span class="lineNum">      71 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      72 </span><span class="lineCov">          1 : Debug.setListener(null);</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>
