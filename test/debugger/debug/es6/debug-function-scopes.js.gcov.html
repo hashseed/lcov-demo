@@ -31,17 +31,17 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">137</td>
-            <td class="headerCovTableEntry">137</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntry">116</td>
+            <td class="headerCovTableEntry">132</td>
+            <td class="headerCovTableEntryMed">87.9 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">10</td>
-            <td class="headerCovTableEntry">10</td>
+            <td class="headerCovTableEntry">6</td>
+            <td class="headerCovTableEntry">6</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr><td><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -99,7 +99,7 @@
 <span class="lineNum">      37 </span><span class="lineCov">          1 : let listenerDelegate = null;</span>
 <span class="lineNum">      38 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      39 </span><span class="lineCov">          1 : const expected_break_count = 5;</span>
-<a name="40"><span class="lineNum">      40 </span><span class="lineCov">          1 : let break_count = 0;</span></a>
+<span class="lineNum">      40 </span><span class="lineCov">          1 : let break_count = 0;</span>
 <span class="lineNum">      41 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      42 </span><span class="lineCov">          2 : Debug.setListener(function(event, exec_state, event_data, data) {</span>
 <span class="lineNum">      43 </span><span class="lineCov">          2 :   if (event != Debug.DebugEvent.Break) return;</span>
@@ -111,7 +111,7 @@
 <span class="lineNum">      49 </span><span class="lineCov">          2 :     print(e, e.stack);</span>
 <span class="lineNum">      50 </span><span class="lineCov">          2 :   }</span>
 <a name="51"><span class="lineNum">      51 </span><span class="lineCov">          2 : });</span></a>
-<span class="lineNum">      52 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      52 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      53 </span><span class="lineCov">         12 : function CheckScope(scope_frame, scope_expectations, expected_scope_type) {</span>
 <span class="lineNum">      54 </span><span class="lineCov">         12 :   assertEquals(expected_scope_type, scope_frame.scopeType());</span>
 <span class="lineNum">      55 </span><span class="lineCov">         12 : </span>
@@ -123,9 +123,9 @@
 <span class="lineNum">      61 </span><span class="lineCov">         12 :     assertEquals(expected, actual);</span>
 <span class="lineNum">      62 </span><span class="lineCov">         12 :   }</span>
 <span class="lineNum">      63 </span><span class="lineCov">         12 : }</span>
-<span class="lineNum">      64 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      65 </span><span class="lineCov">          1 : // ---</span>
-<span class="lineNum">      66 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      64 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      65 </span><span class="lineNoCov">          0 : // ---</span>
+<span class="lineNum">      66 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      67 </span><span class="lineCov">          1 : listenerDelegate = function(exec_state) {</span>
 <span class="lineNum">      68 </span><span class="lineCov">          1 :   const frame = exec_state.frame(0);</span>
 <span class="lineNum">      69 </span><span class="lineCov">          1 : </span>
@@ -138,7 +138,7 @@
 <span class="lineNum">      76 </span><span class="lineCov">          1 :   CheckScope(frame.scope(4), { top_level_let: 255 }, ScopeType.Script);</span>
 <span class="lineNum">      77 </span><span class="lineCov">          1 :   CheckScope(frame.scope(5), {}, ScopeType.Global);</span>
 <a name="78"><span class="lineNum">      78 </span><span class="lineCov">          1 : };</span></a>
-<a name="79"><span class="lineNum">      79 </span><span class="lineCov">          1 : </span></a>
+<a name="79"><span class="lineNum">      79 </span><span class="lineNoCov">          0 : </span></a>
 <span class="lineNum">      80 </span><span class="lineCov">          1 : (function F1(x) {</span>
 <span class="lineNum">      81 </span><span class="lineCov">          1 :   function F2(y) {</span>
 <span class="lineNum">      82 </span><span class="lineCov">          1 :     var z = x + y;</span>
@@ -150,16 +150,16 @@
 <span class="lineNum">      88 </span><span class="lineCov">          1 :           debugger;</span>
 <span class="lineNum">      89 </span><span class="lineCov">          1 :           return p + a + b + z + w + v.length;</span>
 <span class="lineNum">      90 </span><span class="lineCov">          1 :         }</span>
-<span class="lineNum">      91 </span><span class="lineCov">          1 :         return F4;</span>
-<span class="lineNum">      92 </span><span class="lineCov">          1 :       }</span>
-<span class="lineNum">      93 </span><span class="lineCov">          1 :       return F3(4, 5);</span>
-<span class="lineNum">      94 </span><span class="lineCov">          1 :     }</span>
-<span class="lineNum">      95 </span><span class="lineCov">          1 :   }</span>
-<span class="lineNum">      96 </span><span class="lineCov">          1 :   return F2(17);</span>
-<span class="lineNum">      97 </span><span class="lineCov">          1 : })(5)();</span>
-<span class="lineNum">      98 </span><span class="lineCov">          1 : </span>
-<a name="99"><span class="lineNum">      99 </span><span class="lineCov">          1 : // ---</span></a>
-<span class="lineNum">     100 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      91 </span><span class="lineNoCov">          0 :         return F4;</span>
+<span class="lineNum">      92 </span><span class="lineNoCov">          0 :       }</span>
+<span class="lineNum">      93 </span><span class="lineNoCov">          0 :       return F3(4, 5);</span>
+<span class="lineNum">      94 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">      95 </span><span class="lineNoCov">          0 :   }</span>
+<span class="lineNum">      96 </span><span class="lineNoCov">          0 :   return F2(17);</span>
+<span class="lineNum">      97 </span><span class="lineNoCov">          0 : })(5)();</span>
+<span class="lineNum">      98 </span><span class="lineNoCov">          0 : </span>
+<a name="99"><span class="lineNum">      99 </span><span class="lineNoCov">          0 : // ---</span></a>
+<span class="lineNum">     100 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     101 </span><span class="lineCov">          1 : listenerDelegate = function(exec_state) {</span>
 <span class="lineNum">     102 </span><span class="lineCov">          1 :   const frame = exec_state.frame(0);</span>
 <span class="lineNum">     103 </span><span class="lineCov">          1 : </span>
@@ -171,8 +171,8 @@
 <span class="lineNum">     109 </span><span class="lineCov">          1 :   CheckScope(frame.scope(3), { v1:3, l0: 0, v3: 5, v6: 11 }, ScopeType.Closure);</span>
 <span class="lineNum">     110 </span><span class="lineCov">          1 :   CheckScope(frame.scope(4), { top_level_let: 255 }, ScopeType.Script);</span>
 <span class="lineNum">     111 </span><span class="lineCov">          1 :   CheckScope(frame.scope(5), {}, ScopeType.Global);</span>
-<a name="112"><span class="lineNum">     112 </span><span class="lineCov">          1 : };</span></a>
-<span class="lineNum">     113 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     112 </span><span class="lineCov">          1 : };</span>
+<span class="lineNum">     113 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     114 </span><span class="lineCov">          1 : (function() {</span>
 <span class="lineNum">     115 </span><span class="lineCov">          1 :   var v1 = 3;</span>
 <span class="lineNum">     116 </span><span class="lineCov">          1 :   var v2 = 4;</span>
@@ -186,16 +186,16 @@
 <span class="lineNum">     124 </span><span class="lineCov">          1 :       let l3 = 9;</span>
 <span class="lineNum">     125 </span><span class="lineCov">          1 :       {</span>
 <span class="lineNum">     126 </span><span class="lineCov">          1 :         var v5 = &quot;Cat&quot;;</span>
-<a name="127"><span class="lineNum">     127 </span><span class="lineCov">          1 :         let l4 = 11;</span></a>
+<span class="lineNum">     127 </span><span class="lineCov">          1 :         let l4 = 11;</span>
 <span class="lineNum">     128 </span><span class="lineCov">          1 :         var v6 = l4;</span>
 <span class="lineNum">     129 </span><span class="lineCov">          1 :         return function() {</span>
 <span class="lineNum">     130 </span><span class="lineCov">          1 :           debugger;</span>
 <span class="lineNum">     131 </span><span class="lineCov">          1 :           return l0 + v1 + v3 + l2 + l3 + v6;</span>
 <span class="lineNum">     132 </span><span class="lineCov">          1 :         };</span>
-<span class="lineNum">     133 </span><span class="lineCov">          1 :       }</span>
-<span class="lineNum">     134 </span><span class="lineCov">          1 :     }</span>
-<span class="lineNum">     135 </span><span class="lineCov">          1 :   }</span>
-<span class="lineNum">     136 </span><span class="lineCov">          1 : })()();</span>
+<span class="lineNum">     133 </span>            :       }
+<span class="lineNum">     134 </span>            :     }
+<span class="lineNum">     135 </span>            :   }
+<span class="lineNum">     136 </span>            : })()();
 </pre>
       </td>
     </tr>

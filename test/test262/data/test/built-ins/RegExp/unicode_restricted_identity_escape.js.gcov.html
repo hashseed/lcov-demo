@@ -31,17 +31,17 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">66</td>
-            <td class="headerCovTableEntry">66</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntry">42</td>
+            <td class="headerCovTableEntry">63</td>
+            <td class="headerCovTableEntryLo">66.7 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">5</td>
-            <td class="headerCovTableEntry">5</td>
+            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntry">2</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr><td><img src="../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -93,38 +93,38 @@
 <span class="lineNum">      31 </span><span class="lineCov">        264 :       return false;</span>
 <span class="lineNum">      32 </span><span class="lineCov">        264 :   }</span>
 <a name="33"><span class="lineNum">      33 </span><span class="lineCov">        264 : }</span></a>
-<span class="lineNum">      34 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      34 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      35 </span><span class="lineCov">        512 : function isAlphaDigit(c) {</span>
 <span class="lineNum">      36 </span><span class="lineCov">        512 :   return (&quot;0&quot; &lt;= c &amp;&amp; c &lt;= &quot;9&quot;) || (&quot;A&quot; &lt;= c &amp;&amp; c &lt;= &quot;Z&quot;) || (&quot;a&quot; &lt;= c &amp;&amp; c &lt;= &quot;z&quot;);</span>
 <span class="lineNum">      37 </span><span class="lineCov">        512 : }</span>
-<span class="lineNum">      38 </span><span class="lineCov">          2 : </span>
-<span class="lineNum">      39 </span><span class="lineCov">          2 : </span>
-<span class="lineNum">      40 </span><span class="lineCov">          2 : // IdentityEscape in AtomEscape.</span>
-<span class="lineNum">      41 </span><span class="lineCov">          2 : //</span>
-<span class="lineNum">      42 </span><span class="lineCov">          2 : // AtomEscape[U] :: CharacterEscape[?U]</span>
-<span class="lineNum">      43 </span><span class="lineCov">          2 : // CharacterEscape[U] :: IdentityEscape[?U]</span>
-<span class="lineNum">      44 </span><span class="lineCov">          2 : for (var cu = 0x00; cu &lt;= 0x7f; ++cu) {</span>
-<a name="45"><span class="lineNum">      45 </span><span class="lineCov">          2 :   var s = String.fromCharCode(cu);</span></a>
-<span class="lineNum">      46 </span><span class="lineCov">          2 :   if (!isAlphaDigit(s) &amp;&amp; !isSyntaxCharacter(s) &amp;&amp; s !== &quot;/&quot;) {</span>
+<span class="lineNum">      38 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      39 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      40 </span><span class="lineNoCov">          0 : // IdentityEscape in AtomEscape.</span>
+<span class="lineNum">      41 </span><span class="lineNoCov">          0 : //</span>
+<span class="lineNum">      42 </span><span class="lineNoCov">          0 : // AtomEscape[U] :: CharacterEscape[?U]</span>
+<span class="lineNum">      43 </span><span class="lineNoCov">          0 : // CharacterEscape[U] :: IdentityEscape[?U]</span>
+<span class="lineNum">      44 </span><span class="lineNoCov">          0 : for (var cu = 0x00; cu &lt;= 0x7f; ++cu) {</span>
+<span class="lineNum">      45 </span><span class="lineNoCov">          0 :   var s = String.fromCharCode(cu);</span>
+<span class="lineNum">      46 </span><span class="lineNoCov">          0 :   if (!isAlphaDigit(s) &amp;&amp; !isSyntaxCharacter(s) &amp;&amp; s !== &quot;/&quot;) {</span>
 <span class="lineNum">      47 </span><span class="lineCov">        102 :     assert.throws(SyntaxError, function() {</span>
 <span class="lineNum">      48 </span><span class="lineCov">        102 :       RegExp(&quot;\\&quot; + s, &quot;u&quot;);</span>
 <span class="lineNum">      49 </span><span class="lineCov">        102 :     }, &quot;Invalid IdentityEscape in AtomEscape: '\\&quot; + s + &quot;'&quot;);</span>
-<span class="lineNum">      50 </span><span class="lineCov">          2 :   }</span>
-<span class="lineNum">      51 </span><span class="lineCov">          2 : }</span>
-<span class="lineNum">      52 </span><span class="lineCov">          2 : </span>
-<span class="lineNum">      53 </span><span class="lineCov">          2 : </span>
-<span class="lineNum">      54 </span><span class="lineCov">          2 : // IdentityEscape in ClassEscape.</span>
-<span class="lineNum">      55 </span><span class="lineCov">          2 : //</span>
-<span class="lineNum">      56 </span><span class="lineCov">          2 : // ClassEscape[U] :: CharacterEscape[?U]</span>
-<span class="lineNum">      57 </span><span class="lineCov">          2 : // CharacterEscape[U] :: IdentityEscape[?U]</span>
-<span class="lineNum">      58 </span><span class="lineCov">          2 : for (var cu = 0x00; cu &lt;= 0x7f; ++cu) {</span>
-<a name="59"><span class="lineNum">      59 </span><span class="lineCov">          2 :   var s = String.fromCharCode(cu);</span></a>
-<span class="lineNum">      60 </span><span class="lineCov">          2 :   if (!isAlphaDigit(s) &amp;&amp; !isSyntaxCharacter(s) &amp;&amp; s !== &quot;/&quot; &amp;&amp; s !== &quot;-&quot;) {</span>
+<span class="lineNum">      50 </span><span class="lineNoCov">          0 :   }</span>
+<span class="lineNum">      51 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      52 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      53 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      54 </span><span class="lineNoCov">          0 : // IdentityEscape in ClassEscape.</span>
+<span class="lineNum">      55 </span><span class="lineNoCov">          0 : //</span>
+<span class="lineNum">      56 </span><span class="lineNoCov">          0 : // ClassEscape[U] :: CharacterEscape[?U]</span>
+<span class="lineNum">      57 </span><span class="lineNoCov">          0 : // CharacterEscape[U] :: IdentityEscape[?U]</span>
+<span class="lineNum">      58 </span><span class="lineNoCov">          0 : for (var cu = 0x00; cu &lt;= 0x7f; ++cu) {</span>
+<span class="lineNum">      59 </span><span class="lineNoCov">          0 :   var s = String.fromCharCode(cu);</span>
+<span class="lineNum">      60 </span><span class="lineNoCov">          0 :   if (!isAlphaDigit(s) &amp;&amp; !isSyntaxCharacter(s) &amp;&amp; s !== &quot;/&quot; &amp;&amp; s !== &quot;-&quot;) {</span>
 <span class="lineNum">      61 </span><span class="lineCov">        100 :     assert.throws(SyntaxError, function() {</span>
 <span class="lineNum">      62 </span><span class="lineCov">        100 :       RegExp(&quot;[\\&quot; + s + &quot;]&quot;, &quot;u&quot;);</span>
 <span class="lineNum">      63 </span><span class="lineCov">        100 :     }, &quot;Invalid IdentityEscape in ClassEscape: '\\&quot; + s + &quot;'&quot;);</span>
-<span class="lineNum">      64 </span><span class="lineCov">          2 :   }</span>
-<span class="lineNum">      65 </span><span class="lineCov">          2 : }</span>
+<span class="lineNum">      64 </span>            :   }
+<span class="lineNum">      65 </span>            : }
 </pre>
       </td>
     </tr>

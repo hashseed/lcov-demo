@@ -31,17 +31,17 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">82</td>
-            <td class="headerCovTableEntry">82</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntry">68</td>
+            <td class="headerCovTableEntry">70</td>
+            <td class="headerCovTableEntryHi">97.1 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">4</td>
-            <td class="headerCovTableEntry">4</td>
+            <td class="headerCovTableEntry">3</td>
+            <td class="headerCovTableEntry">3</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -122,25 +122,25 @@
 <span class="lineNum">      60 </span><span class="lineCov">          1 :   Debug.LiveEdit.TestApi.ApplySingleChunkPatch(script, patch_pos, orig_body.length, new_body_patch, change_log);</span>
 <span class="lineNum">      61 </span><span class="lineCov">          1 :   print(&quot;Change log: &quot; + JSON.stringify(change_log) + &quot;\n&quot;);</span>
 <a name="62"><span class="lineNum">      62 </span><span class="lineCov">          1 : }</span></a>
-<span class="lineNum">      63 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      63 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      64 </span><span class="lineCov">          3 : function NoOp() {</span>
 <a name="65"><span class="lineNum">      65 </span><span class="lineCov">          3 : }</span></a>
-<span class="lineNum">      66 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      66 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      67 </span><span class="lineCov">          4 : function CallM(changer) {</span>
 <span class="lineNum">      68 </span><span class="lineCov">          4 :   // We expect call IC here after several function runs.</span>
 <span class="lineNum">      69 </span><span class="lineCov">          4 :   return BeingReplaced(changer);</span>
 <span class="lineNum">      70 </span><span class="lineCov">          4 : }</span>
-<span class="lineNum">      71 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      72 </span><span class="lineCov">          1 : // This several iterations should cause call IC for BeingReplaced call. This IC</span>
-<span class="lineNum">      73 </span><span class="lineCov">          1 : // will keep reference to code object of BeingRepalced function. This reference</span>
-<span class="lineNum">      74 </span><span class="lineCov">          1 : // should also be patched. Unfortunately, this is a manually checked fact (from</span>
-<span class="lineNum">      75 </span><span class="lineCov">          1 : // debugger or debug print) and doesn't work as an automatic test.</span>
-<span class="lineNum">      76 </span><span class="lineCov">          1 : CallM(NoOp);</span>
-<span class="lineNum">      77 </span><span class="lineCov">          1 : CallM(NoOp);</span>
-<span class="lineNum">      78 </span><span class="lineCov">          1 : CallM(NoOp);</span>
-<span class="lineNum">      79 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      80 </span><span class="lineCov">          1 : var res = CallM(Changer);</span>
-<span class="lineNum">      81 </span><span class="lineCov">          1 : assertEquals(&quot;Capybara&quot;, res);</span>
+<span class="lineNum">      71 </span>            : 
+<span class="lineNum">      72 </span>            : // This several iterations should cause call IC for BeingReplaced call. This IC
+<span class="lineNum">      73 </span>            : // will keep reference to code object of BeingRepalced function. This reference
+<span class="lineNum">      74 </span>            : // should also be patched. Unfortunately, this is a manually checked fact (from
+<span class="lineNum">      75 </span>            : // debugger or debug print) and doesn't work as an automatic test.
+<span class="lineNum">      76 </span>            : CallM(NoOp);
+<span class="lineNum">      77 </span>            : CallM(NoOp);
+<span class="lineNum">      78 </span>            : CallM(NoOp);
+<span class="lineNum">      79 </span>            : 
+<span class="lineNum">      80 </span>            : var res = CallM(Changer);
+<span class="lineNum">      81 </span>            : assertEquals(&quot;Capybara&quot;, res);
 </pre>
       </td>
     </tr>

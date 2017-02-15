@@ -31,18 +31,18 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">178</td>
-            <td class="headerCovTableEntry">223</td>
-            <td class="headerCovTableEntryMed">79.8 %</td>
+            <td class="headerCovTableEntry">65</td>
+            <td class="headerCovTableEntry">220</td>
+            <td class="headerCovTableEntryLo">29.5 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">32</td>
-            <td class="headerCovTableEntry">77</td>
-            <td class="headerCovTableEntryLo">41.6 %</td>
+            <td class="headerCovTableEntry">26</td>
+            <td class="headerCovTableEntry">71</td>
+            <td class="headerCovTableEntryLo">36.6 %</td>
           </tr>
           <tr><td><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
         </table>
@@ -63,101 +63,101 @@
 <a name="1"><span class="lineNum">       1 </span><span class="lineCov">          1 : &quot;use strict&quot;;</span></a>
 <a name="2"><span class="lineNum">       2 </span><span class="lineCov">          1 : </span></a>
 <span class="lineNum">       3 </span><span class="lineCov">          1 : var sjcl={cipher:{},hash:{},mode:{},misc:{},codec:{},exception:{corrupt:function(a){this.toString=function(){return&quot;CORRUPT: &quot;+this.message};this.message=a},invalid:function(a){this.toString=function(){return&quot;INVALID: &quot;+this.message};this.message=a},bug:function(a){this.toString=function(){return&quot;BUG: &quot;+this.message};this.message=a}}};</span>
-<span class="lineNum">       4 </span><span class="lineCov">          1 : sjcl.cipher.aes=function(a){this.h[0][0][0]||this.w();var b,c,d,e,f=this.h[0][4],g=this.h[1];b=a.length;var h=1;if(b!==4&amp;&amp;b!==6&amp;&amp;b!==8)throw new sjcl.exception.invalid(&quot;invalid aes key size&quot;);this.a=[d=a.slice(0),e=[]];for(a=b;a&lt;4*b+28;a++){c=d[a-1];if(a%b===0||b===8&amp;&amp;a%b===4){c=f[c&gt;&gt;&gt;24]&lt;&lt;24^f[c&gt;&gt;16&amp;255]&lt;&lt;16^f[c&gt;&gt;8&amp;255]&lt;&lt;8^f[c&amp;255];if(a%b===0){c=c&lt;&lt;8^c&gt;&gt;&gt;24^h&lt;&lt;24;h=h&lt;&lt;1^(h&gt;&gt;7)*283}}d[a]=d[a-b]^c}for(b=0;a;b++,a--){c=d[b&amp;3?a:a-4];e[b]=a&lt;=4||b&lt;4?c:g[0][f[c&gt;&gt;&gt;24]]^g[1][f[c&gt;&gt;16&amp;255]]^g[2][f[c&gt;&gt;8&amp;255]]^</span>
-<a name="5"><span class="lineNum">       5 </span><span class="lineCov">          1 : g[3][f[c&amp;255]]}};</span></a>
-<span class="lineNum">       6 </span><span class="lineCov">          1 : sjcl.cipher.aes.prototype={encrypt:function(a){return this.H(a,0)},decrypt:function(a){return this.H(a,1)},h:[[[],[],[],[],[]],[[],[],[],[],[]]],w:function(){var a=this.h[0],b=this.h[1],c=a[4],d=b[4],e,f,g,h=[],i=[],k,j,l,m;for(e=0;e&lt;0x100;e++)i[(h[e]=e&lt;&lt;1^(e&gt;&gt;7)*283)^e]=e;for(f=g=0;!c[f];f^=k||1,g=i[g]||1){l=g^g&lt;&lt;1^g&lt;&lt;2^g&lt;&lt;3^g&lt;&lt;4;l=l&gt;&gt;8^l&amp;255^99;c[f]=l;d[l]=f;j=h[e=h[k=h[f]]];m=j*0x1010101^e*0x10001^k*0x101^f*0x1010100;j=h[l]*0x101^l*0x1010100;for(e=0;e&lt;4;e++){a[e][f]=j=j&lt;&lt;24^j&gt;&gt;&gt;8;b[e][l]=m=m&lt;&lt;24^m&gt;&gt;&gt;8}}for(e=</span>
-<a name="7"><span class="lineNum">       7 </span><span class="lineCov">          1 : 0;e&lt;5;e++){a[e]=a[e].slice(0);b[e]=b[e].slice(0)}},H:function(a,b){if(a.length!==4)throw new sjcl.exception.invalid(&quot;invalid aes block size&quot;);var c=this.a[b],d=a[0]^c[0],e=a[b?3:1]^c[1],f=a[2]^c[2];a=a[b?1:3]^c[3];var g,h,i,k=c.length/4-2,j,l=4,m=[0,0,0,0];g=this.h[b];var n=g[0],o=g[1],p=g[2],q=g[3],r=g[4];for(j=0;j&lt;k;j++){g=n[d&gt;&gt;&gt;24]^o[e&gt;&gt;16&amp;255]^p[f&gt;&gt;8&amp;255]^q[a&amp;255]^c[l];h=n[e&gt;&gt;&gt;24]^o[f&gt;&gt;16&amp;255]^p[a&gt;&gt;8&amp;255]^q[d&amp;255]^c[l+1];i=n[f&gt;&gt;&gt;24]^o[a&gt;&gt;16&amp;255]^p[d&gt;&gt;8&amp;255]^q[e&amp;255]^c[l+2];a=n[a&gt;&gt;&gt;24]^o[d&gt;&gt;16&amp;</span></a>
-<a name="8"><span class="lineNum">       8 </span><span class="lineCov">          1 : 255]^p[e&gt;&gt;8&amp;255]^q[f&amp;255]^c[l+3];l+=4;d=g;e=h;f=i}for(j=0;j&lt;4;j++){m[b?3&amp;-j:j]=r[d&gt;&gt;&gt;24]&lt;&lt;24^r[e&gt;&gt;16&amp;255]&lt;&lt;16^r[f&gt;&gt;8&amp;255]&lt;&lt;8^r[a&amp;255]^c[l++];g=d;d=e;e=f;f=a;a=g}return m}};</span></a>
+<span class="lineNum">       4 </span><span class="lineNoCov">          0 : sjcl.cipher.aes=function(a){this.h[0][0][0]||this.w();var b,c,d,e,f=this.h[0][4],g=this.h[1];b=a.length;var h=1;if(b!==4&amp;&amp;b!==6&amp;&amp;b!==8)throw new sjcl.exception.invalid(&quot;invalid aes key size&quot;);this.a=[d=a.slice(0),e=[]];for(a=b;a&lt;4*b+28;a++){c=d[a-1];if(a%b===0||b===8&amp;&amp;a%b===4){c=f[c&gt;&gt;&gt;24]&lt;&lt;24^f[c&gt;&gt;16&amp;255]&lt;&lt;16^f[c&gt;&gt;8&amp;255]&lt;&lt;8^f[c&amp;255];if(a%b===0){c=c&lt;&lt;8^c&gt;&gt;&gt;24^h&lt;&lt;24;h=h&lt;&lt;1^(h&gt;&gt;7)*283}}d[a]=d[a-b]^c}for(b=0;a;b++,a--){c=d[b&amp;3?a:a-4];e[b]=a&lt;=4||b&lt;4?c:g[0][f[c&gt;&gt;&gt;24]]^g[1][f[c&gt;&gt;16&amp;255]]^g[2][f[c&gt;&gt;8&amp;255]]^</span>
+<a name="5"><span class="lineNum">       5 </span><span class="lineNoCov">          0 : g[3][f[c&amp;255]]}};</span></a>
+<span class="lineNum">       6 </span><span class="lineNoCov">          0 : sjcl.cipher.aes.prototype={encrypt:function(a){return this.H(a,0)},decrypt:function(a){return this.H(a,1)},h:[[[],[],[],[],[]],[[],[],[],[],[]]],w:function(){var a=this.h[0],b=this.h[1],c=a[4],d=b[4],e,f,g,h=[],i=[],k,j,l,m;for(e=0;e&lt;0x100;e++)i[(h[e]=e&lt;&lt;1^(e&gt;&gt;7)*283)^e]=e;for(f=g=0;!c[f];f^=k||1,g=i[g]||1){l=g^g&lt;&lt;1^g&lt;&lt;2^g&lt;&lt;3^g&lt;&lt;4;l=l&gt;&gt;8^l&amp;255^99;c[f]=l;d[l]=f;j=h[e=h[k=h[f]]];m=j*0x1010101^e*0x10001^k*0x101^f*0x1010100;j=h[l]*0x101^l*0x1010100;for(e=0;e&lt;4;e++){a[e][f]=j=j&lt;&lt;24^j&gt;&gt;&gt;8;b[e][l]=m=m&lt;&lt;24^m&gt;&gt;&gt;8}}for(e=</span>
+<a name="7"><span class="lineNum">       7 </span><span class="lineNoCov">          0 : 0;e&lt;5;e++){a[e]=a[e].slice(0);b[e]=b[e].slice(0)}},H:function(a,b){if(a.length!==4)throw new sjcl.exception.invalid(&quot;invalid aes block size&quot;);var c=this.a[b],d=a[0]^c[0],e=a[b?3:1]^c[1],f=a[2]^c[2];a=a[b?1:3]^c[3];var g,h,i,k=c.length/4-2,j,l=4,m=[0,0,0,0];g=this.h[b];var n=g[0],o=g[1],p=g[2],q=g[3],r=g[4];for(j=0;j&lt;k;j++){g=n[d&gt;&gt;&gt;24]^o[e&gt;&gt;16&amp;255]^p[f&gt;&gt;8&amp;255]^q[a&amp;255]^c[l];h=n[e&gt;&gt;&gt;24]^o[f&gt;&gt;16&amp;255]^p[a&gt;&gt;8&amp;255]^q[d&amp;255]^c[l+1];i=n[f&gt;&gt;&gt;24]^o[a&gt;&gt;16&amp;255]^p[d&gt;&gt;8&amp;255]^q[e&amp;255]^c[l+2];a=n[a&gt;&gt;&gt;24]^o[d&gt;&gt;16&amp;</span></a>
+<a name="8"><span class="lineNum">       8 </span><span class="lineNoCov">          0 : 255]^p[e&gt;&gt;8&amp;255]^q[f&amp;255]^c[l+3];l+=4;d=g;e=h;f=i}for(j=0;j&lt;4;j++){m[b?3&amp;-j:j]=r[d&gt;&gt;&gt;24]&lt;&lt;24^r[e&gt;&gt;16&amp;255]&lt;&lt;16^r[f&gt;&gt;8&amp;255]&lt;&lt;8^r[a&amp;255]^c[l++];g=d;d=e;e=f;f=a;a=g}return m}};</span></a>
 <a name="9"><span class="lineNum">       9 </span><span class="lineCov">      65560 : sjcl.bitArray={bitSlice:function(a,b,c){a=sjcl.bitArray.P(a.slice(b/32),32-(b&amp;31)).slice(1);return c===undefined?a:sjcl.bitArray.clamp(a,c-b)},concat:function(a,b){if(a.length===0||b.length===0)return a.concat(b);var c=a[a.length-1],d=sjcl.bitArray.getPartial(c);return d===32?a.concat(b):sjcl.bitArray.P(b,d,c|0,a.slice(0,a.length-1))},bitLength:function(a){var b=a.length;if(b===0)return 0;return(b-1)*32+sjcl.bitArray.getPartial(a[b-1])},clamp:function(a,b){if(a.length*32&lt;b)return a;a=a.slice(0,Math.ceil(b/</span></a>
 <span class="lineNum">      10 </span><span class="lineCov">      65568 : 32));var c=a.length;b&amp;=31;if(c&gt;0&amp;&amp;b)a[c-1]=sjcl.bitArray.partial(b,a[c-1]&amp;2147483648&gt;&gt;b-1,1);return a},partial:function(a,b,c){if(a===32)return b;return(c?b|0:b&lt;&lt;32-a)+a*0x10000000000},getPartial:function(a){return Math.round(a/0x10000000000)||32},equal:function(a,b){if(sjcl.bitArray.bitLength(a)!==sjcl.bitArray.bitLength(b))return false;var c=0,d;for(d=0;d&lt;a.length;d++)c|=a[d]^b[d];return c===0},P:function(a,b,c,d){var e;e=0;if(d===undefined)d=[];for(;b&gt;=32;b-=32){d.push(c);c=0}if(b===0)return d.concat(a);</span>
-<span class="lineNum">      11 </span><span class="lineCov">          1 : for(e=0;e&lt;a.length;e++){d.push(c|a[e]&gt;&gt;&gt;b);c=a[e]&lt;&lt;32-b}e=a.length?a[a.length-1]:0;a=sjcl.bitArray.getPartial(e);d.push(sjcl.bitArray.partial(b+a&amp;31,b+a&gt;32?c:d.pop(),1));return d},k:function(a,b){return[a[0]^b[0],a[1]^b[1],a[2]^b[2],a[3]^b[3]]}};</span>
+<span class="lineNum">      11 </span><span class="lineNoCov">          0 : for(e=0;e&lt;a.length;e++){d.push(c|a[e]&gt;&gt;&gt;b);c=a[e]&lt;&lt;32-b}e=a.length?a[a.length-1]:0;a=sjcl.bitArray.getPartial(e);d.push(sjcl.bitArray.partial(b+a&amp;31,b+a&gt;32?c:d.pop(),1));return d},k:function(a,b){return[a[0]^b[0],a[1]^b[1],a[2]^b[2],a[3]^b[3]]}};</span>
 <span class="lineNum">      12 </span><span class="lineCov">          8 : sjcl.codec.utf8String={fromBits:function(a){var b=&quot;&quot;,c=sjcl.bitArray.bitLength(a),d,e;for(d=0;d&lt;c/8;d++){if((d&amp;3)===0)e=a[d/4];b+=String.fromCharCode(e&gt;&gt;&gt;24);e&lt;&lt;=8}return decodeURIComponent(escape(b))},toBits:function(a){a=unescape(encodeURIComponent(a));var b=[],c,d=0;for(c=0;c&lt;a.length;c++){d=d&lt;&lt;8|a.charCodeAt(c);if((c&amp;3)===3){b.push(d);d=0}}c&amp;3&amp;&amp;b.push(sjcl.bitArray.partial(8*(c&amp;3),d));return b}};</span>
 <a name="13"><span class="lineNum">      13 </span><span class="lineCov">          8 : sjcl.codec.hex={fromBits:function(a){var b=&quot;&quot;,c;for(c=0;c&lt;a.length;c++)b+=((a[c]|0)+0xf00000000000).toString(16).substr(4);return b.substr(0,sjcl.bitArray.bitLength(a)/4)},toBits:function(a){var b,c=[],d;a=a.replace(/\s|0x/g,&quot;&quot;);d=a.length;a+=&quot;00000000&quot;;for(b=0;b&lt;a.length;b+=8)c.push(parseInt(a.substr(b,8),16)^0);return sjcl.bitArray.clamp(c,d*4)}};</span></a>
-<a name="14"><span class="lineNum">      14 </span><span class="lineCov">          1 : sjcl.codec.base64={D:&quot;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/&quot;,fromBits:function(a,b){var c=&quot;&quot;,d,e=0,f=sjcl.codec.base64.D,g=0,h=sjcl.bitArray.bitLength(a);for(d=0;c.length*6&lt;h;){c+=f.charAt((g^a[d]&gt;&gt;&gt;e)&gt;&gt;&gt;26);if(e&lt;6){g=a[d]&lt;&lt;6-e;e+=26;d++}else{g&lt;&lt;=6;e-=6}}for(;c.length&amp;3&amp;&amp;!b;)c+=&quot;=&quot;;return c},toBits:function(a){a=a.replace(/\s|=/g,&quot;&quot;);var b=[],c,d=0,e=sjcl.codec.base64.D,f=0,g;for(c=0;c&lt;a.length;c++){g=e.indexOf(a.charAt(c));if(g&lt;0)throw new sjcl.exception.invalid(&quot;this isn't base64!&quot;);</span></a>
+<a name="14"><span class="lineNum">      14 </span><span class="lineNoCov">          0 : sjcl.codec.base64={D:&quot;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/&quot;,fromBits:function(a,b){var c=&quot;&quot;,d,e=0,f=sjcl.codec.base64.D,g=0,h=sjcl.bitArray.bitLength(a);for(d=0;c.length*6&lt;h;){c+=f.charAt((g^a[d]&gt;&gt;&gt;e)&gt;&gt;&gt;26);if(e&lt;6){g=a[d]&lt;&lt;6-e;e+=26;d++}else{g&lt;&lt;=6;e-=6}}for(;c.length&amp;3&amp;&amp;!b;)c+=&quot;=&quot;;return c},toBits:function(a){a=a.replace(/\s|=/g,&quot;&quot;);var b=[],c,d=0,e=sjcl.codec.base64.D,f=0,g;for(c=0;c&lt;a.length;c++){g=e.indexOf(a.charAt(c));if(g&lt;0)throw new sjcl.exception.invalid(&quot;this isn't base64!&quot;);</span></a>
 <a name="15"><span class="lineNum">      15 </span><span class="lineCov">      32785 : if(d&gt;26){d-=26;b.push(f^g&gt;&gt;&gt;d);f=g&lt;&lt;32-d}else{d+=6;f^=g&lt;&lt;32-d}}d&amp;56&amp;&amp;b.push(sjcl.bitArray.partial(d&amp;56,f,1));return b}};sjcl.hash.sha256=function(a){this.a[0]||this.w();if(a){this.n=a.n.slice(0);this.i=a.i.slice(0);this.e=a.e}else this.reset()};sjcl.hash.sha256.hash=function(a){return(new sjcl.hash.sha256).update(a).finalize()};</span></a>
 <span class="lineNum">      16 </span><span class="lineCov">      32785 : sjcl.hash.sha256.prototype={blockSize:512,reset:function(){this.n=this.N.slice(0);this.i=[];this.e=0;return this},update:function(a){if(typeof a===&quot;string&quot;)a=sjcl.codec.utf8String.toBits(a);var b,c=this.i=sjcl.bitArray.concat(this.i,a);b=this.e;a=this.e=b+sjcl.bitArray.bitLength(a);for(b=512+b&amp;-512;b&lt;=a;b+=512)this.C(c.splice(0,16));return this},finalize:function(){var a,b=this.i,c=this.n;b=sjcl.bitArray.concat(b,[sjcl.bitArray.partial(1,1)]);for(a=b.length+2;a&amp;15;a++)b.push(0);b.push(Math.floor(this.e/</span>
 <span class="lineNum">      17 </span><span class="lineCov">      32784 : 4294967296));for(b.push(this.e|0);b.length;)this.C(b.splice(0,16));this.reset();return c},N:[],a:[],w:function(){function a(e){return(e-Math.floor(e))*0x100000000|0}var b=0,c=2,d;a:for(;b&lt;64;c++){for(d=2;d*d&lt;=c;d++)if(c%d===0)continue a;if(b&lt;8)this.N[b]=a(Math.pow(c,0.5));this.a[b]=a(Math.pow(c,1/3));b++}},C:function(a){var b,c,d=a.slice(0),e=this.n,f=this.a,g=e[0],h=e[1],i=e[2],k=e[3],j=e[4],l=e[5],m=e[6],n=e[7];for(a=0;a&lt;64;a++){if(a&lt;16)b=d[a];else{b=d[a+1&amp;15];c=d[a+14&amp;15];b=d[a&amp;15]=(b&gt;&gt;&gt;7^b&gt;&gt;&gt;18^</span>
 <a name="18"><span class="lineNum">      18 </span><span class="lineCov">      32784 : b&gt;&gt;&gt;3^b&lt;&lt;25^b&lt;&lt;14)+(c&gt;&gt;&gt;17^c&gt;&gt;&gt;19^c&gt;&gt;&gt;10^c&lt;&lt;15^c&lt;&lt;13)+d[a&amp;15]+d[a+9&amp;15]|0}b=b+n+(j&gt;&gt;&gt;6^j&gt;&gt;&gt;11^j&gt;&gt;&gt;25^j&lt;&lt;26^j&lt;&lt;21^j&lt;&lt;7)+(m^j&amp;(l^m))+f[a];n=m;m=l;l=j;j=k+b|0;k=i;i=h;h=g;g=b+(h&amp;i^k&amp;(h^i))+(h&gt;&gt;&gt;2^h&gt;&gt;&gt;13^h&gt;&gt;&gt;22^h&lt;&lt;30^h&lt;&lt;19^h&lt;&lt;10)|0}e[0]=e[0]+g|0;e[1]=e[1]+h|0;e[2]=e[2]+i|0;e[3]=e[3]+k|0;e[4]=e[4]+j|0;e[5]=e[5]+l|0;e[6]=e[6]+m|0;e[7]=e[7]+n|0}};</span></a>
-<a name="19"><span class="lineNum">      19 </span><span class="lineCov">          1 : sjcl.mode.ccm={name:&quot;ccm&quot;,encrypt:function(a,b,c,d,e){var f,g=b.slice(0),h=sjcl.bitArray,i=h.bitLength(c)/8,k=h.bitLength(g)/8;e=e||64;d=d||[];if(i&lt;7)throw new sjcl.exception.invalid(&quot;ccm: iv must be at least 7 bytes&quot;);for(f=2;f&lt;4&amp;&amp;k&gt;&gt;&gt;8*f;f++);if(f&lt;15-i)f=15-i;c=h.clamp(c,8*(15-f));b=sjcl.mode.ccm.G(a,b,c,d,e,f);g=sjcl.mode.ccm.I(a,g,c,b,e,f);return h.concat(g.data,g.tag)},decrypt:function(a,b,c,d,e){e=e||64;d=d||[];var f=sjcl.bitArray,g=f.bitLength(c)/8,h=f.bitLength(b),i=f.clamp(b,h-e),k=f.bitSlice(b,</span></a>
-<span class="lineNum">      20 </span><span class="lineCov">          1 : h-e);h=(h-e)/8;if(g&lt;7)throw new sjcl.exception.invalid(&quot;ccm: iv must be at least 7 bytes&quot;);for(b=2;b&lt;4&amp;&amp;h&gt;&gt;&gt;8*b;b++);if(b&lt;15-g)b=15-g;c=f.clamp(c,8*(15-b));i=sjcl.mode.ccm.I(a,i,c,k,e,b);a=sjcl.mode.ccm.G(a,i.data,c,d,e,b);if(!f.equal(i.tag,a))throw new sjcl.exception.corrupt(&quot;ccm: tag doesn't match&quot;);return i.data},G:function(a,b,c,d,e,f){var g=[],h=sjcl.bitArray,i=h.k;e/=8;if(e%2||e&lt;4||e&gt;16)throw new sjcl.exception.invalid(&quot;ccm: invalid tag length&quot;);if(d.length&gt;0xffffffff||b.length&gt;0xffffffff)throw new sjcl.exception.bug(&quot;ccm: can't deal with 4GiB or more data&quot;);</span>
-<span class="lineNum">      21 </span><span class="lineCov">          1 : f=[h.partial(8,(d.length?64:0)|e-2&lt;&lt;2|f-1)];f=h.concat(f,c);f[3]|=h.bitLength(b)/8;f=a.encrypt(f);if(d.length){c=h.bitLength(d)/8;if(c&lt;=65279)g=[h.partial(16,c)];else if(c&lt;=0xffffffff)g=h.concat([h.partial(16,65534)],[c]);g=h.concat(g,d);for(d=0;d&lt;g.length;d+=4)f=a.encrypt(i(f,g.slice(d,d+4)))}for(d=0;d&lt;b.length;d+=4)f=a.encrypt(i(f,b.slice(d,d+4)));return h.clamp(f,e*8)},I:function(a,b,c,d,e,f){var g,h=sjcl.bitArray;g=h.k;var i=b.length,k=h.bitLength(b);c=h.concat([h.partial(8,f-1)],c).concat([0,</span>
-<span class="lineNum">      22 </span><span class="lineCov">          1 : 0,0]).slice(0,4);d=h.bitSlice(g(d,a.encrypt(c)),0,e);if(!i)return{tag:d,data:[]};for(g=0;g&lt;i;g+=4){c[3]++;e=a.encrypt(c);b[g]^=e[0];b[g+1]^=e[1];b[g+2]^=e[2];b[g+3]^=e[3]}return{tag:d,data:h.clamp(b,k)}}};</span>
-<a name="23"><span class="lineNum">      23 </span><span class="lineCov">          1 : sjcl.mode.ocb2={name:&quot;ocb2&quot;,encrypt:function(a,b,c,d,e,f){if(sjcl.bitArray.bitLength(c)!==128)throw new sjcl.exception.invalid(&quot;ocb iv must be 128 bits&quot;);var g,h=sjcl.mode.ocb2.A,i=sjcl.bitArray,k=i.k,j=[0,0,0,0];c=h(a.encrypt(c));var l,m=[];d=d||[];e=e||64;for(g=0;g+4&lt;b.length;g+=4){l=b.slice(g,g+4);j=k(j,l);m=m.concat(k(c,a.encrypt(k(c,l))));c=h(c)}l=b.slice(g);b=i.bitLength(l);g=a.encrypt(k(c,[0,0,0,b]));l=i.clamp(k(l,g),b);j=k(j,k(l,g));j=a.encrypt(k(j,k(c,h(c))));if(d.length)j=k(j,f?d:sjcl.mode.ocb2.pmac(a,</span></a>
-<a name="24"><span class="lineNum">      24 </span><span class="lineCov">          1 : d));return m.concat(i.concat(l,i.clamp(j,e)))},decrypt:function(a,b,c,d,e,f){if(sjcl.bitArray.bitLength(c)!==128)throw new sjcl.exception.invalid(&quot;ocb iv must be 128 bits&quot;);e=e||64;var g=sjcl.mode.ocb2.A,h=sjcl.bitArray,i=h.k,k=[0,0,0,0],j=g(a.encrypt(c)),l,m,n=sjcl.bitArray.bitLength(b)-e,o=[];d=d||[];for(c=0;c+4&lt;n/32;c+=4){l=i(j,a.decrypt(i(j,b.slice(c,c+4))));k=i(k,l);o=o.concat(l);j=g(j)}m=n-c*32;l=a.encrypt(i(j,[0,0,0,m]));l=i(l,h.clamp(b.slice(c),m));k=i(k,l);k=a.encrypt(i(k,i(j,g(j))));if(d.length)k=</span></a>
-<a name="25"><span class="lineNum">      25 </span><span class="lineCov">          1 : i(k,f?d:sjcl.mode.ocb2.pmac(a,d));if(!h.equal(h.clamp(k,e),h.bitSlice(b,n)))throw new sjcl.exception.corrupt(&quot;ocb: tag doesn't match&quot;);return o.concat(h.clamp(l,m))},pmac:function(a,b){var c,d=sjcl.mode.ocb2.A,e=sjcl.bitArray,f=e.k,g=[0,0,0,0],h=a.encrypt([0,0,0,0]);h=f(h,d(d(h)));for(c=0;c+4&lt;b.length;c+=4){h=d(h);g=f(g,a.encrypt(f(h,b.slice(c,c+4))))}b=b.slice(c);if(e.bitLength(b)&lt;128){h=f(h,d(h));b=e.concat(b,[2147483648|0])}g=f(g,b);return a.encrypt(f(d(f(h,d(h))),g))},A:function(a){return[a[0]&lt;&lt;</span></a>
+<a name="19"><span class="lineNum">      19 </span><span class="lineNoCov">          0 : sjcl.mode.ccm={name:&quot;ccm&quot;,encrypt:function(a,b,c,d,e){var f,g=b.slice(0),h=sjcl.bitArray,i=h.bitLength(c)/8,k=h.bitLength(g)/8;e=e||64;d=d||[];if(i&lt;7)throw new sjcl.exception.invalid(&quot;ccm: iv must be at least 7 bytes&quot;);for(f=2;f&lt;4&amp;&amp;k&gt;&gt;&gt;8*f;f++);if(f&lt;15-i)f=15-i;c=h.clamp(c,8*(15-f));b=sjcl.mode.ccm.G(a,b,c,d,e,f);g=sjcl.mode.ccm.I(a,g,c,b,e,f);return h.concat(g.data,g.tag)},decrypt:function(a,b,c,d,e){e=e||64;d=d||[];var f=sjcl.bitArray,g=f.bitLength(c)/8,h=f.bitLength(b),i=f.clamp(b,h-e),k=f.bitSlice(b,</span></a>
+<span class="lineNum">      20 </span><span class="lineNoCov">          0 : h-e);h=(h-e)/8;if(g&lt;7)throw new sjcl.exception.invalid(&quot;ccm: iv must be at least 7 bytes&quot;);for(b=2;b&lt;4&amp;&amp;h&gt;&gt;&gt;8*b;b++);if(b&lt;15-g)b=15-g;c=f.clamp(c,8*(15-b));i=sjcl.mode.ccm.I(a,i,c,k,e,b);a=sjcl.mode.ccm.G(a,i.data,c,d,e,b);if(!f.equal(i.tag,a))throw new sjcl.exception.corrupt(&quot;ccm: tag doesn't match&quot;);return i.data},G:function(a,b,c,d,e,f){var g=[],h=sjcl.bitArray,i=h.k;e/=8;if(e%2||e&lt;4||e&gt;16)throw new sjcl.exception.invalid(&quot;ccm: invalid tag length&quot;);if(d.length&gt;0xffffffff||b.length&gt;0xffffffff)throw new sjcl.exception.bug(&quot;ccm: can't deal with 4GiB or more data&quot;);</span>
+<span class="lineNum">      21 </span><span class="lineNoCov">          0 : f=[h.partial(8,(d.length?64:0)|e-2&lt;&lt;2|f-1)];f=h.concat(f,c);f[3]|=h.bitLength(b)/8;f=a.encrypt(f);if(d.length){c=h.bitLength(d)/8;if(c&lt;=65279)g=[h.partial(16,c)];else if(c&lt;=0xffffffff)g=h.concat([h.partial(16,65534)],[c]);g=h.concat(g,d);for(d=0;d&lt;g.length;d+=4)f=a.encrypt(i(f,g.slice(d,d+4)))}for(d=0;d&lt;b.length;d+=4)f=a.encrypt(i(f,b.slice(d,d+4)));return h.clamp(f,e*8)},I:function(a,b,c,d,e,f){var g,h=sjcl.bitArray;g=h.k;var i=b.length,k=h.bitLength(b);c=h.concat([h.partial(8,f-1)],c).concat([0,</span>
+<span class="lineNum">      22 </span><span class="lineNoCov">          0 : 0,0]).slice(0,4);d=h.bitSlice(g(d,a.encrypt(c)),0,e);if(!i)return{tag:d,data:[]};for(g=0;g&lt;i;g+=4){c[3]++;e=a.encrypt(c);b[g]^=e[0];b[g+1]^=e[1];b[g+2]^=e[2];b[g+3]^=e[3]}return{tag:d,data:h.clamp(b,k)}}};</span>
+<a name="23"><span class="lineNum">      23 </span><span class="lineNoCov">          0 : sjcl.mode.ocb2={name:&quot;ocb2&quot;,encrypt:function(a,b,c,d,e,f){if(sjcl.bitArray.bitLength(c)!==128)throw new sjcl.exception.invalid(&quot;ocb iv must be 128 bits&quot;);var g,h=sjcl.mode.ocb2.A,i=sjcl.bitArray,k=i.k,j=[0,0,0,0];c=h(a.encrypt(c));var l,m=[];d=d||[];e=e||64;for(g=0;g+4&lt;b.length;g+=4){l=b.slice(g,g+4);j=k(j,l);m=m.concat(k(c,a.encrypt(k(c,l))));c=h(c)}l=b.slice(g);b=i.bitLength(l);g=a.encrypt(k(c,[0,0,0,b]));l=i.clamp(k(l,g),b);j=k(j,k(l,g));j=a.encrypt(k(j,k(c,h(c))));if(d.length)j=k(j,f?d:sjcl.mode.ocb2.pmac(a,</span></a>
+<a name="24"><span class="lineNum">      24 </span><span class="lineNoCov">          0 : d));return m.concat(i.concat(l,i.clamp(j,e)))},decrypt:function(a,b,c,d,e,f){if(sjcl.bitArray.bitLength(c)!==128)throw new sjcl.exception.invalid(&quot;ocb iv must be 128 bits&quot;);e=e||64;var g=sjcl.mode.ocb2.A,h=sjcl.bitArray,i=h.k,k=[0,0,0,0],j=g(a.encrypt(c)),l,m,n=sjcl.bitArray.bitLength(b)-e,o=[];d=d||[];for(c=0;c+4&lt;n/32;c+=4){l=i(j,a.decrypt(i(j,b.slice(c,c+4))));k=i(k,l);o=o.concat(l);j=g(j)}m=n-c*32;l=a.encrypt(i(j,[0,0,0,m]));l=i(l,h.clamp(b.slice(c),m));k=i(k,l);k=a.encrypt(i(k,i(j,g(j))));if(d.length)k=</span></a>
+<a name="25"><span class="lineNum">      25 </span><span class="lineNoCov">          0 : i(k,f?d:sjcl.mode.ocb2.pmac(a,d));if(!h.equal(h.clamp(k,e),h.bitSlice(b,n)))throw new sjcl.exception.corrupt(&quot;ocb: tag doesn't match&quot;);return o.concat(h.clamp(l,m))},pmac:function(a,b){var c,d=sjcl.mode.ocb2.A,e=sjcl.bitArray,f=e.k,g=[0,0,0,0],h=a.encrypt([0,0,0,0]);h=f(h,d(d(h)));for(c=0;c+4&lt;b.length;c+=4){h=d(h);g=f(g,a.encrypt(f(h,b.slice(c,c+4))))}b=b.slice(c);if(e.bitLength(b)&lt;128){h=f(h,d(h));b=e.concat(b,[2147483648|0])}g=f(g,b);return a.encrypt(f(d(f(h,d(h))),g))},A:function(a){return[a[0]&lt;&lt;</span></a>
 <a name="26"><span class="lineNum">      26 </span><span class="lineCov">      16384 : 1^a[1]&gt;&gt;&gt;31,a[1]&lt;&lt;1^a[2]&gt;&gt;&gt;31,a[2]&lt;&lt;1^a[3]&gt;&gt;&gt;31,a[3]&lt;&lt;1^(a[0]&gt;&gt;&gt;31)*135]}};sjcl.misc.hmac=function(a,b){this.M=b=b||sjcl.hash.sha256;var c=[[],[]],d=b.prototype.blockSize/32;this.l=[new b,new b];if(a.length&gt;d)a=b.hash(a);for(b=0;b&lt;d;b++){c[0][b]=a[b]^909522486;c[1][b]=a[b]^1549556828}this.l[0].update(c[0]);this.l[1].update(c[1])};sjcl.misc.hmac.prototype.encrypt=sjcl.misc.hmac.prototype.mac=function(a,b){a=(new this.M(this.l[0])).update(a,b).finalize();return(new this.M(this.l[1])).update(a).finalize()};</span></a>
 <span class="lineNum">      27 </span><span class="lineCov">          8 : sjcl.misc.pbkdf2=function(a,b,c,d,e){c=c||1E3;if(d&lt;0||c&lt;0)throw sjcl.exception.invalid(&quot;invalid params to pbkdf2&quot;);if(typeof a===&quot;string&quot;)a=sjcl.codec.utf8String.toBits(a);e=e||sjcl.misc.hmac;a=new e(a);var f,g,h,i,k=[],j=sjcl.bitArray;for(i=1;32*k.length&lt;(d||1);i++){e=f=a.encrypt(j.concat(b,[i]));for(g=1;g&lt;c;g++){f=a.encrypt(f);for(h=0;h&lt;f.length;h++)e[h]^=f[h]}k=k.concat(e)}if(d)k=j.clamp(k,d);return k};</span>
-<a name="28"><span class="lineNum">      28 </span><span class="lineCov">          1 : sjcl.random={randomWords:function(a,b){var c=[];b=this.isReady(b);var d;if(b===0)throw new sjcl.exception.notready(&quot;generator isn't seeded&quot;);else b&amp;2&amp;&amp;this.U(!(b&amp;1));for(b=0;b&lt;a;b+=4){(b+1)%0x10000===0&amp;&amp;this.L();d=this.u();c.push(d[0],d[1],d[2],d[3])}this.L();return c.slice(0,a)},setDefaultParanoia:function(a){this.t=a},addEntropy:function(a,b,c){c=c||&quot;user&quot;;var d,e,f=(new Date).valueOf(),g=this.q[c],h=this.isReady();d=this.F[c];if(d===undefined)d=this.F[c]=this.R++;if(g===undefined)g=this.q[c]=0;this.q[c]=</span></a>
+<a name="28"><span class="lineNum">      28 </span><span class="lineNoCov">          0 : sjcl.random={randomWords:function(a,b){var c=[];b=this.isReady(b);var d;if(b===0)throw new sjcl.exception.notready(&quot;generator isn't seeded&quot;);else b&amp;2&amp;&amp;this.U(!(b&amp;1));for(b=0;b&lt;a;b+=4){(b+1)%0x10000===0&amp;&amp;this.L();d=this.u();c.push(d[0],d[1],d[2],d[3])}this.L();return c.slice(0,a)},setDefaultParanoia:function(a){this.t=a},addEntropy:function(a,b,c){c=c||&quot;user&quot;;var d,e,f=(new Date).valueOf(),g=this.q[c],h=this.isReady();d=this.F[c];if(d===undefined)d=this.F[c]=this.R++;if(g===undefined)g=this.q[c]=0;this.q[c]=</span></a>
 <a name="29"><span class="lineNum">      29 </span><span class="lineNoCov">          0 : (this.q[c]+1)%this.b.length;switch(typeof a){case &quot;number&quot;:break;case &quot;object&quot;:if(b===undefined)for(c=b=0;c&lt;a.length;c++)for(e=a[c];e&gt;0;){b++;e&gt;&gt;&gt;=1}this.b[g].update([d,this.J++,2,b,f,a.length].concat(a));break;case &quot;string&quot;:if(b===undefined)b=a.length;this.b[g].update([d,this.J++,3,b,f,a.length]);this.b[g].update(a);break;default:throw new sjcl.exception.bug(&quot;random: addEntropy only supports number, array or string&quot;);}this.j[g]+=b;this.f+=b;if(h===0){this.isReady()!==0&amp;&amp;this.K(&quot;seeded&quot;,Math.max(this.g,</span></a>
-<a name="30"><span class="lineNum">      30 </span><span class="lineCov">          1 : this.f));this.K(&quot;progress&quot;,this.getProgress())}},isReady:function(a){a=this.B[a!==undefined?a:this.t];return this.g&amp;&amp;this.g&gt;=a?this.j[0]&gt;80&amp;&amp;(new Date).valueOf()&gt;this.O?3:1:this.f&gt;=a?2:0},getProgress:function(a){a=this.B[a?a:this.t];return this.g&gt;=a?1[&quot;0&quot;]:this.f&gt;a?1[&quot;0&quot;]:this.f/a},startCollectors:function(){if(!this.m){if(window.addEventListener){window.addEventListener(&quot;load&quot;,this.o,false);window.addEventListener(&quot;mousemove&quot;,this.p,false)}else if(document.attachEvent){document.attachEvent(&quot;onload&quot;,</span></a>
-<a name="31"><span class="lineNum">      31 </span><span class="lineCov">          1 : this.o);document.attachEvent(&quot;onmousemove&quot;,this.p)}else throw new sjcl.exception.bug(&quot;can't attach event&quot;);this.m=true}},stopCollectors:function(){if(this.m){if(window.removeEventListener){window.removeEventListener(&quot;load&quot;,this.o);window.removeEventListener(&quot;mousemove&quot;,this.p)}else if(window.detachEvent){window.detachEvent(&quot;onload&quot;,this.o);window.detachEvent(&quot;onmousemove&quot;,this.p)}this.m=false}},addEventListener:function(a,b){this.r[a][this.Q++]=b},removeEventListener:function(a,b){var c;a=this.r[a];</span></a>
-<a name="32"><span class="lineNum">      32 </span><span class="lineCov">          1 : var d=[];for(c in a)a.hasOwnProperty[c]&amp;&amp;a[c]===b&amp;&amp;d.push(c);for(b=0;b&lt;d.length;b++){c=d[b];delete a[c]}},b:[new sjcl.hash.sha256],j:[0],z:0,q:{},J:0,F:{},R:0,g:0,f:0,O:0,a:[0,0,0,0,0,0,0,0],d:[0,0,0,0],s:undefined,t:6,m:false,r:{progress:{},seeded:{}},Q:0,B:[0,48,64,96,128,192,0x100,384,512,768,1024],u:function(){for(var a=0;a&lt;4;a++){this.d[a]=this.d[a]+1|0;if(this.d[a])break}return this.s.encrypt(this.d)},L:function(){this.a=this.u().concat(this.u());this.s=new sjcl.cipher.aes(this.a)},T:function(a){this.a=</span></a>
-<a name="33"><span class="lineNum">      33 </span><span class="lineCov">          1 : sjcl.hash.sha256.hash(this.a.concat(a));this.s=new sjcl.cipher.aes(this.a);for(a=0;a&lt;4;a++){this.d[a]=this.d[a]+1|0;if(this.d[a])break}},U:function(a){var b=[],c=0,d;this.O=b[0]=(new Date).valueOf()+3E4;for(d=0;d&lt;16;d++)b.push(Math.random()*0x100000000|0);for(d=0;d&lt;this.b.length;d++){b=b.concat(this.b[d].finalize());c+=this.j[d];this.j[d]=0;if(!a&amp;&amp;this.z&amp;1&lt;&lt;d)break}if(this.z&gt;=1&lt;&lt;this.b.length){this.b.push(new sjcl.hash.sha256);this.j.push(0)}this.f-=c;if(c&gt;this.g)this.g=c;this.z++;this.T(b)},p:function(a){sjcl.random.addEntropy([a.x||</span></a>
-<a name="34"><span class="lineNum">      34 </span><span class="lineCov">          1 : a.clientX||a.offsetX,a.y||a.clientY||a.offsetY],2,&quot;mouse&quot;)},o:function(){sjcl.random.addEntropy(new Date,2,&quot;loadtime&quot;)},K:function(a,b){var c;a=sjcl.random.r[a];var d=[];for(c in a)a.hasOwnProperty(c)&amp;&amp;d.push(a[c]);for(c=0;c&lt;d.length;c++)d[c](b)}};</span></a>
-<span class="lineNum">      35 </span><span class="lineCov">          1 : sjcl.json={defaults:{v:1,iter:1E3,ks:128,ts:64,mode:&quot;ccm&quot;,adata:&quot;&quot;,cipher:&quot;aes&quot;},encrypt:function(a,b,c,d){c=c||{};d=d||{};var e=sjcl.json,f=e.c({iv:sjcl.random.randomWords(4,0)},e.defaults);e.c(f,c);if(typeof f.salt===&quot;string&quot;)f.salt=sjcl.codec.base64.toBits(f.salt);if(typeof f.iv===&quot;string&quot;)f.iv=sjcl.codec.base64.toBits(f.iv);if(!sjcl.mode[f.mode]||!sjcl.cipher[f.cipher]||typeof a===&quot;string&quot;&amp;&amp;f.iter&lt;=100||f.ts!==64&amp;&amp;f.ts!==96&amp;&amp;f.ts!==128||f.ks!==128&amp;&amp;f.ks!==192&amp;&amp;f.ks!==0x100||f.iv.length&lt;2||f.iv.length&gt;</span>
-<a name="36"><span class="lineNum">      36 </span><span class="lineCov">          1 : 4)throw new sjcl.exception.invalid(&quot;json encrypt: invalid parameters&quot;);if(typeof a===&quot;string&quot;){c=sjcl.misc.cachedPbkdf2(a,f);a=c.key.slice(0,f.ks/32);f.salt=c.salt}if(typeof b===&quot;string&quot;)b=sjcl.codec.utf8String.toBits(b);c=new sjcl.cipher[f.cipher](a);e.c(d,f);d.key=a;f.ct=sjcl.mode[f.mode].encrypt(c,b,f.iv,f.adata,f.tag);return e.encode(e.V(f,e.defaults))},decrypt:function(a,b,c,d){c=c||{};d=d||{};var e=sjcl.json;b=e.c(e.c(e.c({},e.defaults),e.decode(b)),c,true);if(typeof b.salt===&quot;string&quot;)b.salt=</span></a>
+<a name="30"><span class="lineNum">      30 </span><span class="lineNoCov">          0 : this.f));this.K(&quot;progress&quot;,this.getProgress())}},isReady:function(a){a=this.B[a!==undefined?a:this.t];return this.g&amp;&amp;this.g&gt;=a?this.j[0]&gt;80&amp;&amp;(new Date).valueOf()&gt;this.O?3:1:this.f&gt;=a?2:0},getProgress:function(a){a=this.B[a?a:this.t];return this.g&gt;=a?1[&quot;0&quot;]:this.f&gt;a?1[&quot;0&quot;]:this.f/a},startCollectors:function(){if(!this.m){if(window.addEventListener){window.addEventListener(&quot;load&quot;,this.o,false);window.addEventListener(&quot;mousemove&quot;,this.p,false)}else if(document.attachEvent){document.attachEvent(&quot;onload&quot;,</span></a>
+<a name="31"><span class="lineNum">      31 </span><span class="lineNoCov">          0 : this.o);document.attachEvent(&quot;onmousemove&quot;,this.p)}else throw new sjcl.exception.bug(&quot;can't attach event&quot;);this.m=true}},stopCollectors:function(){if(this.m){if(window.removeEventListener){window.removeEventListener(&quot;load&quot;,this.o);window.removeEventListener(&quot;mousemove&quot;,this.p)}else if(window.detachEvent){window.detachEvent(&quot;onload&quot;,this.o);window.detachEvent(&quot;onmousemove&quot;,this.p)}this.m=false}},addEventListener:function(a,b){this.r[a][this.Q++]=b},removeEventListener:function(a,b){var c;a=this.r[a];</span></a>
+<a name="32"><span class="lineNum">      32 </span><span class="lineNoCov">          0 : var d=[];for(c in a)a.hasOwnProperty[c]&amp;&amp;a[c]===b&amp;&amp;d.push(c);for(b=0;b&lt;d.length;b++){c=d[b];delete a[c]}},b:[new sjcl.hash.sha256],j:[0],z:0,q:{},J:0,F:{},R:0,g:0,f:0,O:0,a:[0,0,0,0,0,0,0,0],d:[0,0,0,0],s:undefined,t:6,m:false,r:{progress:{},seeded:{}},Q:0,B:[0,48,64,96,128,192,0x100,384,512,768,1024],u:function(){for(var a=0;a&lt;4;a++){this.d[a]=this.d[a]+1|0;if(this.d[a])break}return this.s.encrypt(this.d)},L:function(){this.a=this.u().concat(this.u());this.s=new sjcl.cipher.aes(this.a)},T:function(a){this.a=</span></a>
+<a name="33"><span class="lineNum">      33 </span><span class="lineNoCov">          0 : sjcl.hash.sha256.hash(this.a.concat(a));this.s=new sjcl.cipher.aes(this.a);for(a=0;a&lt;4;a++){this.d[a]=this.d[a]+1|0;if(this.d[a])break}},U:function(a){var b=[],c=0,d;this.O=b[0]=(new Date).valueOf()+3E4;for(d=0;d&lt;16;d++)b.push(Math.random()*0x100000000|0);for(d=0;d&lt;this.b.length;d++){b=b.concat(this.b[d].finalize());c+=this.j[d];this.j[d]=0;if(!a&amp;&amp;this.z&amp;1&lt;&lt;d)break}if(this.z&gt;=1&lt;&lt;this.b.length){this.b.push(new sjcl.hash.sha256);this.j.push(0)}this.f-=c;if(c&gt;this.g)this.g=c;this.z++;this.T(b)},p:function(a){sjcl.random.addEntropy([a.x||</span></a>
+<a name="34"><span class="lineNum">      34 </span><span class="lineNoCov">          0 : a.clientX||a.offsetX,a.y||a.clientY||a.offsetY],2,&quot;mouse&quot;)},o:function(){sjcl.random.addEntropy(new Date,2,&quot;loadtime&quot;)},K:function(a,b){var c;a=sjcl.random.r[a];var d=[];for(c in a)a.hasOwnProperty(c)&amp;&amp;d.push(a[c]);for(c=0;c&lt;d.length;c++)d[c](b)}};</span></a>
+<span class="lineNum">      35 </span><span class="lineNoCov">          0 : sjcl.json={defaults:{v:1,iter:1E3,ks:128,ts:64,mode:&quot;ccm&quot;,adata:&quot;&quot;,cipher:&quot;aes&quot;},encrypt:function(a,b,c,d){c=c||{};d=d||{};var e=sjcl.json,f=e.c({iv:sjcl.random.randomWords(4,0)},e.defaults);e.c(f,c);if(typeof f.salt===&quot;string&quot;)f.salt=sjcl.codec.base64.toBits(f.salt);if(typeof f.iv===&quot;string&quot;)f.iv=sjcl.codec.base64.toBits(f.iv);if(!sjcl.mode[f.mode]||!sjcl.cipher[f.cipher]||typeof a===&quot;string&quot;&amp;&amp;f.iter&lt;=100||f.ts!==64&amp;&amp;f.ts!==96&amp;&amp;f.ts!==128||f.ks!==128&amp;&amp;f.ks!==192&amp;&amp;f.ks!==0x100||f.iv.length&lt;2||f.iv.length&gt;</span>
+<a name="36"><span class="lineNum">      36 </span><span class="lineNoCov">          0 : 4)throw new sjcl.exception.invalid(&quot;json encrypt: invalid parameters&quot;);if(typeof a===&quot;string&quot;){c=sjcl.misc.cachedPbkdf2(a,f);a=c.key.slice(0,f.ks/32);f.salt=c.salt}if(typeof b===&quot;string&quot;)b=sjcl.codec.utf8String.toBits(b);c=new sjcl.cipher[f.cipher](a);e.c(d,f);d.key=a;f.ct=sjcl.mode[f.mode].encrypt(c,b,f.iv,f.adata,f.tag);return e.encode(e.V(f,e.defaults))},decrypt:function(a,b,c,d){c=c||{};d=d||{};var e=sjcl.json;b=e.c(e.c(e.c({},e.defaults),e.decode(b)),c,true);if(typeof b.salt===&quot;string&quot;)b.salt=</span></a>
 <a name="37"><span class="lineNum">      37 </span><span class="lineNoCov">          0 : sjcl.codec.base64.toBits(b.salt);if(typeof b.iv===&quot;string&quot;)b.iv=sjcl.codec.base64.toBits(b.iv);if(!sjcl.mode[b.mode]||!sjcl.cipher[b.cipher]||typeof a===&quot;string&quot;&amp;&amp;b.iter&lt;=100||b.ts!==64&amp;&amp;b.ts!==96&amp;&amp;b.ts!==128||b.ks!==128&amp;&amp;b.ks!==192&amp;&amp;b.ks!==0x100||!b.iv||b.iv.length&lt;2||b.iv.length&gt;4)throw new sjcl.exception.invalid(&quot;json decrypt: invalid parameters&quot;);if(typeof a===&quot;string&quot;){c=sjcl.misc.cachedPbkdf2(a,b);a=c.key.slice(0,b.ks/32);b.salt=c.salt}c=new sjcl.cipher[b.cipher](a);c=sjcl.mode[b.mode].decrypt(c,</span></a>
-<a name="38"><span class="lineNum">      38 </span><span class="lineCov">          1 : b.ct,b.iv,b.adata,b.tag);e.c(d,b);d.key=a;return sjcl.codec.utf8String.fromBits(c)},encode:function(a){var b,c=&quot;{&quot;,d=&quot;&quot;;for(b in a)if(a.hasOwnProperty(b)){if(!b.match(/^[a-z0-9]+$/i))throw new sjcl.exception.invalid(&quot;json encode: invalid property name&quot;);c+=d+b+&quot;:&quot;;d=&quot;,&quot;;switch(typeof a[b]){case &quot;number&quot;:case &quot;boolean&quot;:c+=a[b];break;case &quot;string&quot;:c+='&quot;'+escape(a[b])+'&quot;';break;case &quot;object&quot;:c+='&quot;'+sjcl.codec.base64.fromBits(a[b],1)+'&quot;';break;default:throw new sjcl.exception.bug(&quot;json encode: unsupported type&quot;);</span></a>
-<a name="39"><span class="lineNum">      39 </span><span class="lineCov">          1 : }}return c+&quot;}&quot;},decode:function(a){a=a.replace(/\s/g,&quot;&quot;);if(!a.match(/^\{.*\}$/))throw new sjcl.exception.invalid(&quot;json decode: this isn't json!&quot;);a=a.replace(/^\{|\}$/g,&quot;&quot;).split(/,/);var b={},c,d;for(c=0;c&lt;a.length;c++){if(!(d=a[c].match(/^([a-z][a-z0-9]*):(?:(\d+)|&quot;([a-z0-9+\/%*_.@=\-]*)&quot;)$/i)))throw new sjcl.exception.invalid(&quot;json decode: this isn't json!&quot;);b[d[1]]=d[2]?parseInt(d[2],10):d[1].match(/^(ct|salt|iv)$/)?sjcl.codec.base64.toBits(d[3]):unescape(d[3])}return b},c:function(a,b,c){if(a===</span></a>
-<span class="lineNum">      40 </span><span class="lineCov">          1 : undefined)a={};if(b===undefined)return a;var d;for(d in b)if(b.hasOwnProperty(d)){if(c&amp;&amp;a[d]!==undefined&amp;&amp;a[d]!==b[d])throw new sjcl.exception.invalid(&quot;required parameter overridden&quot;);a[d]=b[d]}return a},V:function(a,b){var c={},d;for(d in a)if(a.hasOwnProperty(d)&amp;&amp;a[d]!==b[d])c[d]=a[d];return c},W:function(a,b){var c={},d;for(d=0;d&lt;b.length;d++)if(a[b[d]]!==undefined)c[b[d]]=a[b[d]];return c}};sjcl.encrypt=sjcl.json.encrypt;sjcl.decrypt=sjcl.json.decrypt;sjcl.misc.S={};</span>
-<span class="lineNum">      41 </span><span class="lineCov">          1 : sjcl.misc.cachedPbkdf2=function(a,b){var c=sjcl.misc.S,d;b=b||{};d=b.iter||1E3;c=c[a]=c[a]||{};d=c[d]=c[d]||{firstSalt:b.salt&amp;&amp;b.salt.length?b.salt.slice(0):sjcl.random.randomWords(2,0)};c=b.salt===undefined?d.firstSalt:b.salt;d[c]=d[c]||sjcl.misc.pbkdf2(a,c,b.iter);return{key:d[c].slice(0),salt:c.slice(0)}};</span>
-<span class="lineNum">      42 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      43 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      44 </span><span class="lineCov">          1 : var browserUtil = {</span>
-<a name="45"><span class="lineNum">      45 </span><span class="lineCov">          1 :   isRhino: true,</span></a>
-<span class="lineNum">      46 </span><span class="lineCov">          1 :   </span>
+<a name="38"><span class="lineNum">      38 </span><span class="lineNoCov">          0 : b.ct,b.iv,b.adata,b.tag);e.c(d,b);d.key=a;return sjcl.codec.utf8String.fromBits(c)},encode:function(a){var b,c=&quot;{&quot;,d=&quot;&quot;;for(b in a)if(a.hasOwnProperty(b)){if(!b.match(/^[a-z0-9]+$/i))throw new sjcl.exception.invalid(&quot;json encode: invalid property name&quot;);c+=d+b+&quot;:&quot;;d=&quot;,&quot;;switch(typeof a[b]){case &quot;number&quot;:case &quot;boolean&quot;:c+=a[b];break;case &quot;string&quot;:c+='&quot;'+escape(a[b])+'&quot;';break;case &quot;object&quot;:c+='&quot;'+sjcl.codec.base64.fromBits(a[b],1)+'&quot;';break;default:throw new sjcl.exception.bug(&quot;json encode: unsupported type&quot;);</span></a>
+<a name="39"><span class="lineNum">      39 </span><span class="lineNoCov">          0 : }}return c+&quot;}&quot;},decode:function(a){a=a.replace(/\s/g,&quot;&quot;);if(!a.match(/^\{.*\}$/))throw new sjcl.exception.invalid(&quot;json decode: this isn't json!&quot;);a=a.replace(/^\{|\}$/g,&quot;&quot;).split(/,/);var b={},c,d;for(c=0;c&lt;a.length;c++){if(!(d=a[c].match(/^([a-z][a-z0-9]*):(?:(\d+)|&quot;([a-z0-9+\/%*_.@=\-]*)&quot;)$/i)))throw new sjcl.exception.invalid(&quot;json decode: this isn't json!&quot;);b[d[1]]=d[2]?parseInt(d[2],10):d[1].match(/^(ct|salt|iv)$/)?sjcl.codec.base64.toBits(d[3]):unescape(d[3])}return b},c:function(a,b,c){if(a===</span></a>
+<span class="lineNum">      40 </span><span class="lineNoCov">          0 : undefined)a={};if(b===undefined)return a;var d;for(d in b)if(b.hasOwnProperty(d)){if(c&amp;&amp;a[d]!==undefined&amp;&amp;a[d]!==b[d])throw new sjcl.exception.invalid(&quot;required parameter overridden&quot;);a[d]=b[d]}return a},V:function(a,b){var c={},d;for(d in a)if(a.hasOwnProperty(d)&amp;&amp;a[d]!==b[d])c[d]=a[d];return c},W:function(a,b){var c={},d;for(d=0;d&lt;b.length;d++)if(a[b[d]]!==undefined)c[b[d]]=a[b[d]];return c}};sjcl.encrypt=sjcl.json.encrypt;sjcl.decrypt=sjcl.json.decrypt;sjcl.misc.S={};</span>
+<span class="lineNum">      41 </span><span class="lineNoCov">          0 : sjcl.misc.cachedPbkdf2=function(a,b){var c=sjcl.misc.S,d;b=b||{};d=b.iter||1E3;c=c[a]=c[a]||{};d=c[d]=c[d]||{firstSalt:b.salt&amp;&amp;b.salt.length?b.salt.slice(0):sjcl.random.randomWords(2,0)};c=b.salt===undefined?d.firstSalt:b.salt;d[c]=d[c]||sjcl.misc.pbkdf2(a,c,b.iter);return{key:d[c].slice(0),salt:c.slice(0)}};</span>
+<span class="lineNum">      42 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      43 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      44 </span><span class="lineNoCov">          0 : var browserUtil = {</span>
+<a name="45"><span class="lineNum">      45 </span><span class="lineNoCov">          0 :   isRhino: true,</span></a>
+<span class="lineNum">      46 </span><span class="lineNoCov">          0 :   </span>
 <a name="47"><span class="lineNum">      47 </span><span class="lineCov">          1 :   pauseAndThen: function (cb) { cb(); },</span></a>
-<a name="48"><span class="lineNum">      48 </span><span class="lineCov">          1 :   </span></a>
+<a name="48"><span class="lineNum">      48 </span><span class="lineNoCov">          0 :   </span></a>
 <span class="lineNum">      49 </span><span class="lineCov">          1 :   cpsIterate: function (f, start, end, pause, callback) {</span>
 <span class="lineNum">      50 </span><span class="lineCov">          2 :     function go() {</span>
 <span class="lineNum">      51 </span><span class="lineCov">          2 :       var called = false;</span>
 <span class="lineNum">      52 </span><span class="lineCov">          2 :       if (start &gt;= end) {</span>
-<a name="53"><span class="lineNum">      53 </span><span class="lineCov">          2 :         callback &amp;&amp; callback();</span></a>
+<span class="lineNum">      53 </span><span class="lineCov">          2 :         callback &amp;&amp; callback();</span>
 <span class="lineNum">      54 </span><span class="lineCov">          2 :       } else {</span>
 <span class="lineNum">      55 </span><span class="lineCov">          8 :         f(start, function () {</span>
 <span class="lineNum">      56 </span><span class="lineCov">          8 :           if (!called) { called = true; start++; go(); }</span>
 <span class="lineNum">      57 </span><span class="lineCov">          8 :         });</span>
-<span class="lineNum">      58 </span><span class="lineCov">          2 :       }</span>
-<span class="lineNum">      59 </span><span class="lineCov">          2 :     }</span>
-<span class="lineNum">      60 </span><span class="lineCov">          1 :     go (start);</span>
-<a name="61"><span class="lineNum">      61 </span><span class="lineCov">          1 :   },</span></a>
-<a name="62"><span class="lineNum">      62 </span><span class="lineCov">          1 :   </span></a>
+<span class="lineNum">      58 </span><span class="lineNoCov">          0 :       }</span>
+<span class="lineNum">      59 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">      60 </span><span class="lineNoCov">          0 :     go (start);</span>
+<a name="61"><span class="lineNum">      61 </span><span class="lineNoCov">          0 :   },</span></a>
+<span class="lineNum">      62 </span><span class="lineNoCov">          0 :   </span>
 <span class="lineNum">      63 </span><span class="lineCov">          1 :   cpsMap: function (map, list, pause, callback) {</span>
 <span class="lineNum">      64 </span><span class="lineCov">          1 :     browserUtil.cpsIterate(function (i, cb) { map(list[i], i, list.length, cb); },</span>
-<span class="lineNum">      65 </span><span class="lineCov">          1 :                            0, list.length, pause, callback);</span>
-<a name="66"><span class="lineNum">      66 </span><span class="lineCov">          1 :   },</span></a>
-<span class="lineNum">      67 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      68 </span><span class="lineCov">          1 :   loadScripts: function(scriptNames, callback) {</span>
+<span class="lineNum">      65 </span><span class="lineNoCov">          0 :                            0, list.length, pause, callback);</span>
+<a name="66"><span class="lineNum">      66 </span><span class="lineNoCov">          0 :   },</span></a>
+<span class="lineNum">      67 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      68 </span><span class="lineNoCov">          0 :   loadScripts: function(scriptNames, callback) {</span>
 <span class="lineNum">      69 </span><span class="lineNoCov">          0 :     for (i=0; i&lt;scriptNames.length; i++) {</span>
 <span class="lineNum">      70 </span><span class="lineNoCov">          0 :       load(scriptNames[i]);</span>
 <span class="lineNum">      71 </span><span class="lineNoCov">          0 :       callback &amp;&amp; callback();</span>
 <span class="lineNum">      72 </span><span class="lineNoCov">          0 :     }</span>
-<a name="73"><span class="lineNum">      73 </span><span class="lineCov">          1 :   },</span></a>
-<span class="lineNum">      74 </span><span class="lineCov">          1 :   </span>
-<span class="lineNum">      75 </span><span class="lineCov">          1 :   write: function(type, message) {</span>
+<a name="73"><span class="lineNum">      73 </span><span class="lineNoCov">          0 :   },</span></a>
+<span class="lineNum">      74 </span><span class="lineNoCov">          0 :   </span>
+<span class="lineNum">      75 </span><span class="lineNoCov">          0 :   write: function(type, message) {</span>
 <span class="lineNum">      76 </span><span class="lineNoCov">          0 :     print(message);</span>
 <span class="lineNum">      77 </span><span class="lineNoCov">          0 :     return { update: function (type2, message2) {</span>
 <span class="lineNum">      78 </span><span class="lineNoCov">          0 :       if (type2 === 'pass') { print(&quot;  + &quot; + message2); }</span>
 <span class="lineNum">      79 </span><span class="lineNoCov">          0 :       else if (type2 === 'unimplemented') { print(&quot;  ? &quot; + message2); }</span>
 <span class="lineNum">      80 </span><span class="lineNoCov">          0 :       else { print(&quot;  - &quot; + message2); }</span>
 <span class="lineNum">      81 </span><span class="lineNoCov">          0 :     }};</span>
-<a name="82"><span class="lineNum">      82 </span><span class="lineCov">          1 :   },</span></a>
-<span class="lineNum">      83 </span><span class="lineCov">          1 :   </span>
-<a name="84"><span class="lineNum">      84 </span><span class="lineCov">          1 :   writeNewline: function () { print(&quot;&quot;); },</span></a>
-<span class="lineNum">      85 </span><span class="lineCov">          1 :   </span>
-<span class="lineNum">      86 </span><span class="lineCov">          1 :   status: function(message) {}</span>
-<span class="lineNum">      87 </span><span class="lineCov">          1 : };</span>
-<span class="lineNum">      88 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      89 </span><span class="lineCov">          1 : sjcl.test = { vector: {}, all: {} };</span>
-<span class="lineNum">      90 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      91 </span><span class="lineCov">          1 : /* A bit of a hack.  Because sjcl.test will be reloaded several times</span>
-<span class="lineNum">      92 </span><span class="lineCov">          1 :  * for different variants of sjcl, but browserUtils will not, this</span>
-<span class="lineNum">      93 </span><span class="lineCov">          1 :  * variable keeps a permanent record of whether anything has failed.</span>
-<span class="lineNum">      94 </span><span class="lineCov">          1 :  */</span>
-<span class="lineNum">      95 </span><span class="lineCov">          1 : if (typeof browserUtil.allPassed === 'undefined') {</span>
-<span class="lineNum">      96 </span><span class="lineCov">          1 :     browserUtil.allPassed = true;</span>
-<a name="97"><span class="lineNum">      97 </span><span class="lineCov">          1 : }</span></a>
-<span class="lineNum">      98 </span><span class="lineCov">          1 : </span>
+<a name="82"><span class="lineNum">      82 </span><span class="lineNoCov">          0 :   },</span></a>
+<span class="lineNum">      83 </span><span class="lineNoCov">          0 :   </span>
+<a name="84"><span class="lineNum">      84 </span><span class="lineNoCov">          0 :   writeNewline: function () { print(&quot;&quot;); },</span></a>
+<span class="lineNum">      85 </span><span class="lineNoCov">          0 :   </span>
+<span class="lineNum">      86 </span><span class="lineNoCov">          0 :   status: function(message) {}</span>
+<span class="lineNum">      87 </span><span class="lineNoCov">          0 : };</span>
+<span class="lineNum">      88 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      89 </span><span class="lineNoCov">          0 : sjcl.test = { vector: {}, all: {} };</span>
+<span class="lineNum">      90 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      91 </span><span class="lineNoCov">          0 : /* A bit of a hack.  Because sjcl.test will be reloaded several times</span>
+<span class="lineNum">      92 </span><span class="lineNoCov">          0 :  * for different variants of sjcl, but browserUtils will not, this</span>
+<span class="lineNum">      93 </span><span class="lineNoCov">          0 :  * variable keeps a permanent record of whether anything has failed.</span>
+<span class="lineNum">      94 </span><span class="lineNoCov">          0 :  */</span>
+<span class="lineNum">      95 </span><span class="lineNoCov">          0 : if (typeof browserUtil.allPassed === 'undefined') {</span>
+<span class="lineNum">      96 </span><span class="lineNoCov">          0 :     browserUtil.allPassed = true;</span>
+<a name="97"><span class="lineNum">      97 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">      98 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      99 </span><span class="lineCov">          1 : sjcl.test.TestCase = function(name, doRun) {</span>
 <span class="lineNum">     100 </span><span class="lineCov">          1 :   this.doRun = doRun;</span>
 <span class="lineNum">     101 </span><span class="lineCov">          1 :   this.name = name;</span>
@@ -166,13 +166,13 @@
 <span class="lineNum">     104 </span><span class="lineCov">          1 :   this.isUnimplemented = false;</span>
 <span class="lineNum">     105 </span><span class="lineCov">          1 :   sjcl.test.all[name] = this;</span>
 <span class="lineNum">     106 </span><span class="lineCov">          1 : };</span>
-<span class="lineNum">     107 </span><span class="lineCov">          1 : </span>
-<a name="108"><span class="lineNum">     108 </span><span class="lineCov">          1 : sjcl.test.TestCase.prototype = {</span></a>
-<span class="lineNum">     109 </span><span class="lineCov">          1 :   /** Pass some subtest of this test */</span>
+<span class="lineNum">     107 </span><span class="lineNoCov">          0 : </span>
+<a name="108"><span class="lineNum">     108 </span><span class="lineNoCov">          0 : sjcl.test.TestCase.prototype = {</span></a>
+<span class="lineNum">     109 </span><span class="lineNoCov">          0 :   /** Pass some subtest of this test */</span>
 <span class="lineNum">     110 </span><span class="lineCov">          8 :   pass: function () { this.passes ++; },</span>
-<a name="111"><span class="lineNum">     111 </span><span class="lineCov">          1 :   </span></a>
-<span class="lineNum">     112 </span><span class="lineCov">          1 :   /** Fail some subtest of this test */</span>
-<span class="lineNum">     113 </span><span class="lineCov">          1 :   fail: function (message) {</span>
+<a name="111"><span class="lineNum">     111 </span><span class="lineNoCov">          0 :   </span></a>
+<span class="lineNum">     112 </span><span class="lineNoCov">          0 :   /** Fail some subtest of this test */</span>
+<span class="lineNum">     113 </span><span class="lineNoCov">          0 :   fail: function (message) {</span>
 <span class="lineNum">     114 </span><span class="lineNoCov">          0 :     if (message !== undefined) {</span>
 <span class="lineNum">     115 </span><span class="lineNoCov">          0 :       this.log(&quot;fail&quot;, &quot;*** FAIL *** &quot; + this.name + &quot;: &quot; + message);</span>
 <span class="lineNum">     116 </span><span class="lineNoCov">          0 :     } else {</span>
@@ -180,16 +180,16 @@
 <span class="lineNum">     118 </span><span class="lineNoCov">          0 :     }</span>
 <span class="lineNum">     119 </span><span class="lineNoCov">          0 :     this.failures ++;</span>
 <span class="lineNum">     120 </span><span class="lineNoCov">          0 :     browserUtil.allPassed = false;</span>
-<a name="121"><span class="lineNum">     121 </span><span class="lineCov">          1 :   },</span></a>
-<span class="lineNum">     122 </span><span class="lineCov">          1 :   </span>
-<span class="lineNum">     123 </span><span class="lineCov">          1 :   unimplemented: function() {</span>
+<a name="121"><span class="lineNum">     121 </span><span class="lineNoCov">          0 :   },</span></a>
+<span class="lineNum">     122 </span><span class="lineNoCov">          0 :   </span>
+<span class="lineNum">     123 </span><span class="lineNoCov">          0 :   unimplemented: function() {</span>
 <span class="lineNum">     124 </span><span class="lineNoCov">          0 :     this.isUnimplemented = true;</span>
-<span class="lineNum">     125 </span><span class="lineCov">          1 :   },</span>
-<span class="lineNum">     126 </span><span class="lineCov">          1 :   </span>
-<span class="lineNum">     127 </span><span class="lineCov">          1 :   /** Log a message to the console */</span>
-<span class="lineNum">     128 </span><span class="lineCov">          1 :   log: browserUtil.write,</span>
-<a name="129"><span class="lineNum">     129 </span><span class="lineCov">          1 :   </span></a>
-<span class="lineNum">     130 </span><span class="lineCov">          1 :   /** Require that the first argument is true; otherwise fail with the given message */</span>
+<span class="lineNum">     125 </span><span class="lineNoCov">          0 :   },</span>
+<span class="lineNum">     126 </span><span class="lineNoCov">          0 :   </span>
+<span class="lineNum">     127 </span><span class="lineNoCov">          0 :   /** Log a message to the console */</span>
+<span class="lineNum">     128 </span><span class="lineNoCov">          0 :   log: browserUtil.write,</span>
+<a name="129"><span class="lineNum">     129 </span><span class="lineNoCov">          0 :   </span></a>
+<span class="lineNum">     130 </span><span class="lineNoCov">          0 :   /** Require that the first argument is true; otherwise fail with the given message */</span>
 <span class="lineNum">     131 </span><span class="lineCov">          8 :   require: function (bool, message) {</span>
 <span class="lineNum">     132 </span><span class="lineCov">          8 :     if (bool) {</span>
 <span class="lineNum">     133 </span><span class="lineCov">          8 :       this.pass();</span>
@@ -199,18 +199,18 @@
 <span class="lineNum">     137 </span><span class="lineCov">          8 :       this.fail(&quot;requirement failed&quot;);</span>
 <span class="lineNum">     138 </span><span class="lineCov">          8 :     }</span>
 <span class="lineNum">     139 </span><span class="lineCov">          8 :   },</span>
-<span class="lineNum">     140 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     141 </span><span class="lineCov">          1 :   /** Pause and then take the specified action. */</span>
-<span class="lineNum">     142 </span><span class="lineCov">          1 :   pauseAndThen: browserUtil.pauseAndThen,</span>
-<span class="lineNum">     143 </span><span class="lineCov">          1 :   </span>
-<span class="lineNum">     144 </span><span class="lineCov">          1 :   /** Continuation-passing-style iteration */</span>
-<span class="lineNum">     145 </span><span class="lineCov">          1 :   cpsIterate: browserUtil.cpsIterate,</span>
-<span class="lineNum">     146 </span><span class="lineCov">          1 :   </span>
-<span class="lineNum">     147 </span><span class="lineCov">          1 :   /** Continuation-passing-style iteration */</span>
-<span class="lineNum">     148 </span><span class="lineCov">          1 :   cpsMap: browserUtil.cpsMap,</span>
-<a name="149"><span class="lineNum">     149 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">     150 </span><span class="lineCov">          1 :   /** Report the results of this test. */</span>
-<span class="lineNum">     151 </span><span class="lineCov">          1 :   report: function (repo) {</span>
+<span class="lineNum">     140 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     141 </span><span class="lineNoCov">          0 :   /** Pause and then take the specified action. */</span>
+<span class="lineNum">     142 </span><span class="lineNoCov">          0 :   pauseAndThen: browserUtil.pauseAndThen,</span>
+<span class="lineNum">     143 </span><span class="lineNoCov">          0 :   </span>
+<span class="lineNum">     144 </span><span class="lineNoCov">          0 :   /** Continuation-passing-style iteration */</span>
+<span class="lineNum">     145 </span><span class="lineNoCov">          0 :   cpsIterate: browserUtil.cpsIterate,</span>
+<span class="lineNum">     146 </span><span class="lineNoCov">          0 :   </span>
+<span class="lineNum">     147 </span><span class="lineNoCov">          0 :   /** Continuation-passing-style iteration */</span>
+<span class="lineNum">     148 </span><span class="lineNoCov">          0 :   cpsMap: browserUtil.cpsMap,</span>
+<a name="149"><span class="lineNum">     149 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">     150 </span><span class="lineNoCov">          0 :   /** Report the results of this test. */</span>
+<span class="lineNum">     151 </span><span class="lineNoCov">          0 :   report: function (repo) {</span>
 <span class="lineNum">     152 </span><span class="lineNoCov">          0 :     var t = (new Date()).valueOf() - this.startTime;</span>
 <span class="lineNum">     153 </span><span class="lineNoCov">          0 :     if (this.failures !== 0) {</span>
 <span class="lineNum">     154 </span><span class="lineNoCov">          0 :       repo.update(&quot;fail&quot;, &quot;failed &quot; + this.failures + &quot; / &quot; +</span>
@@ -223,22 +223,22 @@
 <span class="lineNum">     161 </span><span class="lineNoCov">          0 :       repo.update(&quot;pass&quot;, &quot;passed all &quot; + this.passes + &quot; tests. (&quot; + t + &quot; ms)&quot;);</span>
 <span class="lineNum">     162 </span><span class="lineNoCov">          0 :     }</span>
 <span class="lineNum">     163 </span><span class="lineNoCov">          0 :     browserUtil.writeNewline();</span>
-<span class="lineNum">     164 </span><span class="lineCov">          1 :   },</span>
-<span class="lineNum">     165 </span><span class="lineCov">          1 :   </span>
-<a name="166"><span class="lineNum">     166 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">     167 </span><span class="lineCov">          1 :   /** Run the test. */</span>
+<span class="lineNum">     164 </span><span class="lineNoCov">          0 :   },</span>
+<span class="lineNum">     165 </span><span class="lineNoCov">          0 :   </span>
+<a name="166"><span class="lineNum">     166 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">     167 </span><span class="lineNoCov">          0 :   /** Run the test. */</span>
 <span class="lineNum">     168 </span><span class="lineCov">          1 :   run: function (ntests, i, cb) {</span>
-<a name="169"><span class="lineNum">     169 </span><span class="lineCov">          1 :     var thiz = this;</span></a>
-<a name="170"><span class="lineNum">     170 </span><span class="lineCov">          1 :     this.startTime = (new Date()).valueOf();</span></a>
+<span class="lineNum">     169 </span><span class="lineCov">          1 :     var thiz = this;</span>
+<span class="lineNum">     170 </span><span class="lineCov">          1 :     this.startTime = (new Date()).valueOf();</span>
 <span class="lineNum">     171 </span><span class="lineCov">          1 :     this.pauseAndThen(function () {</span>
 <span class="lineNum">     172 </span><span class="lineCov">          8 :       thiz.doRun(function () {</span>
 <span class="lineNum">     173 </span><span class="lineCov">          8 :         cb &amp;&amp; cb();</span>
 <span class="lineNum">     174 </span><span class="lineCov">          8 :       })</span>
-<span class="lineNum">     175 </span><span class="lineCov">          1 :     });</span>
-<span class="lineNum">     176 </span><span class="lineCov">          1 :   }</span>
-<span class="lineNum">     177 </span><span class="lineCov">          1 : };</span>
-<a name="178"><span class="lineNum">     178 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">     179 </span><span class="lineCov">          1 : // pass a list of tests to run, or pass nothing and it will run them all</span>
+<span class="lineNum">     175 </span><span class="lineNoCov">          0 :     });</span>
+<span class="lineNum">     176 </span><span class="lineNoCov">          0 :   }</span>
+<span class="lineNum">     177 </span><span class="lineNoCov">          0 : };</span>
+<a name="178"><span class="lineNum">     178 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">     179 </span><span class="lineNoCov">          0 : // pass a list of tests to run, or pass nothing and it will run them all</span>
 <span class="lineNum">     180 </span><span class="lineCov">          1 : sjcl.test.run = function (tests, callback) {</span>
 <span class="lineNum">     181 </span><span class="lineCov">          1 :   var t;</span>
 <span class="lineNum">     182 </span><span class="lineCov">          1 :     </span>
@@ -249,28 +249,28 @@
 <span class="lineNum">     187 </span><span class="lineCov">          1 :         tests.push(t);</span>
 <span class="lineNum">     188 </span><span class="lineCov">          1 :       }</span>
 <span class="lineNum">     189 </span><span class="lineCov">          1 :     }</span>
-<a name="190"><span class="lineNum">     190 </span><span class="lineCov">          1 :   }</span></a>
+<span class="lineNum">     190 </span><span class="lineCov">          1 :   }</span>
 <span class="lineNum">     191 </span><span class="lineCov">          1 :   </span>
 <span class="lineNum">     192 </span><span class="lineCov">          1 :   browserUtil.cpsMap(function (t, i, n, cb) {</span>
 <span class="lineNum">     193 </span><span class="lineCov">          1 :     sjcl.test.all[tests[i]].run(n, i+1, cb);</span>
 <span class="lineNum">     194 </span><span class="lineCov">          1 :   }, tests, true, callback);</span>
-<span class="lineNum">     195 </span><span class="lineCov">          1 : };</span>
-<span class="lineNum">     196 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     197 </span><span class="lineCov">          1 : /* Several test scripts rely on sjcl.codec.hex to parse their test</span>
-<span class="lineNum">     198 </span><span class="lineCov">          1 :  * vectors, but we are not guaranteed that sjcl.codec.hex is</span>
-<span class="lineNum">     199 </span><span class="lineCov">          1 :  * implemented.</span>
-<span class="lineNum">     200 </span><span class="lineCov">          1 :  */</span>
-<span class="lineNum">     201 </span><span class="lineCov">          1 : sjcl.codec = sjcl.codec || {};</span>
-<a name="202"><span class="lineNum">     202 </span><span class="lineCov">          1 : sjcl.codec.hex = sjcl.codec.hex ||</span></a>
-<span class="lineNum">     203 </span><span class="lineCov">          1 : {</span>
-<span class="lineNum">     204 </span><span class="lineCov">          1 :   fromBits: function (arr) {</span>
+<span class="lineNum">     195 </span><span class="lineNoCov">          0 : };</span>
+<span class="lineNum">     196 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     197 </span><span class="lineNoCov">          0 : /* Several test scripts rely on sjcl.codec.hex to parse their test</span>
+<span class="lineNum">     198 </span><span class="lineNoCov">          0 :  * vectors, but we are not guaranteed that sjcl.codec.hex is</span>
+<span class="lineNum">     199 </span><span class="lineNoCov">          0 :  * implemented.</span>
+<span class="lineNum">     200 </span><span class="lineNoCov">          0 :  */</span>
+<span class="lineNum">     201 </span><span class="lineNoCov">          0 : sjcl.codec = sjcl.codec || {};</span>
+<a name="202"><span class="lineNum">     202 </span><span class="lineNoCov">          0 : sjcl.codec.hex = sjcl.codec.hex ||</span></a>
+<span class="lineNum">     203 </span><span class="lineNoCov">          0 : {</span>
+<span class="lineNum">     204 </span><span class="lineNoCov">          0 :   fromBits: function (arr) {</span>
 <span class="lineNum">     205 </span><span class="lineNoCov">          0 :     var out = &quot;&quot;, i, x;</span>
 <span class="lineNum">     206 </span><span class="lineNoCov">          0 :     for (i=0; i&lt;arr.length; i++) {</span>
 <span class="lineNum">     207 </span><span class="lineNoCov">          0 :       out += ((arr[i]|0)+0xF00000000000).toString(16).substr(4);</span>
 <span class="lineNum">     208 </span><span class="lineNoCov">          0 :     }</span>
 <a name="209"><span class="lineNum">     209 </span><span class="lineNoCov">          0 :     return out.substr(0, sjcl.bitArray.bitLength(arr)/4);//.replace(/(.{8})/g, &quot;$1 &quot;);</span></a>
-<span class="lineNum">     210 </span><span class="lineCov">          1 :   },</span>
-<span class="lineNum">     211 </span><span class="lineCov">          1 :   toBits: function (str) {</span>
+<span class="lineNum">     210 </span><span class="lineNoCov">          0 :   },</span>
+<span class="lineNum">     211 </span><span class="lineNoCov">          0 :   toBits: function (str) {</span>
 <span class="lineNum">     212 </span><span class="lineNoCov">          0 :     var i, out=[], len;</span>
 <span class="lineNum">     213 </span><span class="lineNoCov">          0 :     str = str.replace(/\s|0x/g, &quot;&quot;);</span>
 <span class="lineNum">     214 </span><span class="lineNoCov">          0 :     len = str.length;</span>
@@ -279,9 +279,9 @@
 <span class="lineNum">     217 </span><span class="lineNoCov">          0 :       out.push(parseInt(str.substr(i,8),16)^0);</span>
 <span class="lineNum">     218 </span><span class="lineNoCov">          0 :     }</span>
 <span class="lineNum">     219 </span><span class="lineNoCov">          0 :     return sjcl.bitArray.clamp(out, len*4);</span>
-<span class="lineNum">     220 </span><span class="lineCov">          1 :   }</span>
-<span class="lineNum">     221 </span><span class="lineCov">          1 : };</span>
-<span class="lineNum">     222 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     220 </span><span class="lineNoCov">          0 :   }</span>
+<span class="lineNum">     221 </span>            : };
+<span class="lineNum">     222 </span>            : 
 </pre>
       </td>
     </tr>

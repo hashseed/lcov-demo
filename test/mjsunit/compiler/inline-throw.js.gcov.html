@@ -31,17 +31,17 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">69</td>
-            <td class="headerCovTableEntry">69</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntry">44</td>
+            <td class="headerCovTableEntry">58</td>
+            <td class="headerCovTableEntryMed">75.9 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">5</td>
-            <td class="headerCovTableEntry">5</td>
+            <td class="headerCovTableEntry">4</td>
+            <td class="headerCovTableEntry">4</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -93,41 +93,41 @@
 <span class="lineNum">      31 </span><span class="lineCov">          1 : function doThrow() {</span>
 <span class="lineNum">      32 </span><span class="lineCov">          1 :   throw &quot;uha&quot;;</span>
 <a name="33"><span class="lineNum">      33 </span><span class="lineCov">          1 : }</span></a>
-<span class="lineNum">      34 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      34 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      35 </span><span class="lineCov">         14 : function f(x) {</span>
 <span class="lineNum">      36 </span><span class="lineCov">         14 :   if (x == 42) throw doThrow();</span>
 <span class="lineNum">      37 </span><span class="lineCov">         14 :   if (x == 43) throw &quot;wow&quot;;</span>
 <span class="lineNum">      38 </span><span class="lineCov">         14 :   return x == 0;</span>
 <a name="39"><span class="lineNum">      39 </span><span class="lineCov">         14 : }</span></a>
-<span class="lineNum">      40 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      40 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      41 </span><span class="lineCov">          7 : function g(x) {</span>
 <span class="lineNum">      42 </span><span class="lineCov">          7 :   return f(x);</span>
 <span class="lineNum">      43 </span><span class="lineCov">          7 : }</span>
-<span class="lineNum">      44 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      45 </span><span class="lineCov">          1 : for (var i = 0; i &lt; 5; i++) g(0);</span>
-<span class="lineNum">      46 </span><span class="lineCov">          1 : %OptimizeFunctionOnNextCall(g);</span>
-<span class="lineNum">      47 </span><span class="lineCov">          1 : assertEquals(true, g(0));</span>
-<span class="lineNum">      48 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      49 </span><span class="lineCov">          1 : try {</span>
-<span class="lineNum">      50 </span><span class="lineCov">          1 :   g(42);</span>
-<span class="lineNum">      51 </span><span class="lineCov">          1 : } catch(e) {</span>
-<span class="lineNum">      52 </span><span class="lineCov">          1 :   assertEquals(&quot;uha&quot;, e);</span>
-<span class="lineNum">      53 </span><span class="lineCov">          1 : }</span>
-<a name="54"><span class="lineNum">      54 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">      55 </span><span class="lineCov">          1 : // Test inlining in a test context.</span>
+<span class="lineNum">      44 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      45 </span><span class="lineNoCov">          0 : for (var i = 0; i &lt; 5; i++) g(0);</span>
+<span class="lineNum">      46 </span><span class="lineNoCov">          0 : %OptimizeFunctionOnNextCall(g);</span>
+<span class="lineNum">      47 </span><span class="lineNoCov">          0 : assertEquals(true, g(0));</span>
+<span class="lineNum">      48 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      49 </span><span class="lineNoCov">          0 : try {</span>
+<span class="lineNum">      50 </span><span class="lineNoCov">          0 :   g(42);</span>
+<span class="lineNum">      51 </span><span class="lineNoCov">          0 : } catch(e) {</span>
+<span class="lineNum">      52 </span><span class="lineNoCov">          0 :   assertEquals(&quot;uha&quot;, e);</span>
+<span class="lineNum">      53 </span><span class="lineNoCov">          0 : }</span>
+<a name="54"><span class="lineNum">      54 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">      55 </span><span class="lineNoCov">          0 : // Test inlining in a test context.</span>
 <span class="lineNum">      56 </span><span class="lineCov">          7 : function h(x) {</span>
 <span class="lineNum">      57 </span><span class="lineCov">          7 :   return f(x) ? &quot;yes&quot; : &quot;no&quot;;</span>
 <span class="lineNum">      58 </span><span class="lineCov">          7 : }</span>
-<span class="lineNum">      59 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      60 </span><span class="lineCov">          1 : for (var i = 0; i &lt; 5; i++) h(0);</span>
-<span class="lineNum">      61 </span><span class="lineCov">          1 : %OptimizeFunctionOnNextCall(h);</span>
-<span class="lineNum">      62 </span><span class="lineCov">          1 : assertEquals(&quot;yes&quot;, h(0));</span>
-<span class="lineNum">      63 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      64 </span><span class="lineCov">          1 : try {</span>
-<span class="lineNum">      65 </span><span class="lineCov">          1 :   h(43);</span>
-<span class="lineNum">      66 </span><span class="lineCov">          1 : } catch(e) {</span>
-<span class="lineNum">      67 </span><span class="lineCov">          1 :   assertEquals(&quot;wow&quot;, e);</span>
-<span class="lineNum">      68 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      59 </span>            : 
+<span class="lineNum">      60 </span>            : for (var i = 0; i &lt; 5; i++) h(0);
+<span class="lineNum">      61 </span>            : %OptimizeFunctionOnNextCall(h);
+<span class="lineNum">      62 </span>            : assertEquals(&quot;yes&quot;, h(0));
+<span class="lineNum">      63 </span>            : 
+<span class="lineNum">      64 </span>            : try {
+<span class="lineNum">      65 </span>            :   h(43);
+<span class="lineNum">      66 </span>            : } catch(e) {
+<span class="lineNum">      67 </span>            :   assertEquals(&quot;wow&quot;, e);
+<span class="lineNum">      68 </span>            : }
 </pre>
       </td>
     </tr>

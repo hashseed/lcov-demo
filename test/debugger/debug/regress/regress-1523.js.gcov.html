@@ -31,17 +31,17 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">68</td>
-            <td class="headerCovTableEntry">68</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntry">48</td>
+            <td class="headerCovTableEntry">53</td>
+            <td class="headerCovTableEntryHi">90.6 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">4</td>
-            <td class="headerCovTableEntry">4</td>
+            <td class="headerCovTableEntry">3</td>
+            <td class="headerCovTableEntry">3</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr><td><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -98,35 +98,35 @@
 <span class="lineNum">      36 </span><span class="lineCov">          2 : function listener(event, exec_state, event_data, data) {</span>
 <span class="lineNum">      37 </span><span class="lineCov">          2 :   listenerCalled = true;</span>
 <span class="lineNum">      38 </span><span class="lineCov">          2 : };</span>
-<span class="lineNum">      39 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      40 </span><span class="lineCov">          1 : // Add the debug event listener.</span>
-<a name="41"><span class="lineNum">      41 </span><span class="lineCov">          1 : Debug.setListener(listener);</span></a>
-<span class="lineNum">      42 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      39 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      40 </span><span class="lineNoCov">          0 : // Add the debug event listener.</span>
+<a name="41"><span class="lineNum">      41 </span><span class="lineNoCov">          0 : Debug.setListener(listener);</span></a>
+<span class="lineNum">      42 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      43 </span><span class="lineCov">          1 : function test_and(x) {</span>
 <span class="lineNum">      44 </span><span class="lineCov">          1 :   if (x &amp;&amp; (bar === this.baz))</span>
 <span class="lineNum">      45 </span><span class="lineCov">          1 :     return 0;</span>
 <span class="lineNum">      46 </span><span class="lineCov">          1 :   return 1;</span>
 <a name="47"><span class="lineNum">      47 </span><span class="lineCov">          1 : }</span></a>
-<span class="lineNum">      48 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      48 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      49 </span><span class="lineCov">          1 : function test_or(x) {</span>
 <span class="lineNum">      50 </span><span class="lineCov">          1 :   if (x || (bar === this.baz))</span>
 <span class="lineNum">      51 </span><span class="lineCov">          1 :     return 0;</span>
 <span class="lineNum">      52 </span><span class="lineCov">          1 :   return 1;</span>
 <span class="lineNum">      53 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">      54 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      55 </span><span class="lineCov">          1 : // Set a break points and call each function to invoke the debug event listener.</span>
-<span class="lineNum">      56 </span><span class="lineCov">          1 : Debug.setBreakPoint(test_and, 0, 0);</span>
-<span class="lineNum">      57 </span><span class="lineCov">          1 : Debug.setBreakPoint(test_or, 0, 0);</span>
-<span class="lineNum">      58 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      59 </span><span class="lineCov">          1 : listenerCalled = false;</span>
-<span class="lineNum">      60 </span><span class="lineCov">          1 : result = test_and(false);</span>
-<span class="lineNum">      61 </span><span class="lineCov">          1 : assertEquals(1, result);</span>
-<span class="lineNum">      62 </span><span class="lineCov">          1 : assertTrue(listenerCalled);</span>
-<span class="lineNum">      63 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      64 </span><span class="lineCov">          1 : listenerCalled = false;</span>
-<span class="lineNum">      65 </span><span class="lineCov">          1 : result = test_or(true);</span>
-<span class="lineNum">      66 </span><span class="lineCov">          1 : assertEquals(0, result);</span>
-<span class="lineNum">      67 </span><span class="lineCov">          1 : assertTrue(listenerCalled);</span>
+<span class="lineNum">      54 </span>            : 
+<span class="lineNum">      55 </span>            : // Set a break points and call each function to invoke the debug event listener.
+<span class="lineNum">      56 </span>            : Debug.setBreakPoint(test_and, 0, 0);
+<span class="lineNum">      57 </span>            : Debug.setBreakPoint(test_or, 0, 0);
+<span class="lineNum">      58 </span>            : 
+<span class="lineNum">      59 </span>            : listenerCalled = false;
+<span class="lineNum">      60 </span>            : result = test_and(false);
+<span class="lineNum">      61 </span>            : assertEquals(1, result);
+<span class="lineNum">      62 </span>            : assertTrue(listenerCalled);
+<span class="lineNum">      63 </span>            : 
+<span class="lineNum">      64 </span>            : listenerCalled = false;
+<span class="lineNum">      65 </span>            : result = test_or(true);
+<span class="lineNum">      66 </span>            : assertEquals(0, result);
+<span class="lineNum">      67 </span>            : assertTrue(listenerCalled);
 </pre>
       </td>
     </tr>

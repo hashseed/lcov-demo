@@ -31,17 +31,17 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">160</td>
-            <td class="headerCovTableEntry">160</td>
+            <td class="headerCovTableEntry">121</td>
+            <td class="headerCovTableEntry">121</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">2</td>
-            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntry">1</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -181,44 +181,44 @@
 <a name="119"><span class="lineNum">     119 </span><span class="lineCov">          1 : // case the function uses the static properties of the regexp constructor.</span></a>
 <span class="lineNum">     120 </span><span class="lineCov">          1 : re = /(.)/g;</span>
 <span class="lineNum">     121 </span><span class="lineCov">          4 : function f() { return RegExp.$1; };</span>
-<span class="lineNum">     122 </span><span class="lineCov">          1 : assertEquals('dddd', 'abcd'.replace(re, f));</span>
-<span class="lineNum">     123 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     124 </span><span class="lineCov">          1 : // lastParen where the last parenthesis didn't match.</span>
-<span class="lineNum">     125 </span><span class="lineCov">          1 : assertEquals([&quot;foo&quot;,undefined], /foo(?:a(x))?/.exec(&quot;foobx&quot;),</span>
-<span class="lineNum">     126 </span><span class="lineCov">          1 :              &quot;lastParen setup&quot;);</span>
-<span class="lineNum">     127 </span><span class="lineCov">          1 : assertEquals(&quot;&quot;, RegExp.lastParen, &quot;lastParen&quot;);</span>
-<span class="lineNum">     128 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     129 </span><span class="lineCov">          1 : // The same test for $1 to $9.</span>
-<span class="lineNum">     130 </span><span class="lineCov">          1 : for (var i = 1; i &lt;= 9; i++) {</span>
-<span class="lineNum">     131 </span><span class="lineCov">          1 :   var haystack = &quot;foo&quot;;</span>
-<span class="lineNum">     132 </span><span class="lineCov">          1 :   var re_text = &quot;^foo&quot;;</span>
-<span class="lineNum">     133 </span><span class="lineCov">          1 :   for (var j = 0; j &lt; i - 1; j++) {</span>
-<span class="lineNum">     134 </span><span class="lineCov">          1 :     haystack += &quot;x&quot;;</span>
-<span class="lineNum">     135 </span><span class="lineCov">          1 :     re_text += &quot;(x)&quot;;</span>
-<span class="lineNum">     136 </span><span class="lineCov">          1 :   }</span>
-<span class="lineNum">     137 </span><span class="lineCov">          1 :   re_text += &quot;(?:a(x))?&quot;;</span>
-<span class="lineNum">     138 </span><span class="lineCov">          1 :   haystack += &quot;bx&quot;;</span>
-<span class="lineNum">     139 </span><span class="lineCov">          1 :   var re = new RegExp(re_text);</span>
-<span class="lineNum">     140 </span><span class="lineCov">          1 :   assertTrue(re.test(haystack), &quot;$&quot; + i + &quot; setup&quot;);</span>
-<span class="lineNum">     141 </span><span class="lineCov">          1 :   for (var j = 1; j &lt; i - 1; j++) {</span>
-<span class="lineNum">     142 </span><span class="lineCov">          1 :     assertEquals(&quot;x&quot;, RegExp['$' + j], &quot;$&quot; + j + &quot; in $&quot; + i + &quot; setup&quot;);</span>
-<span class="lineNum">     143 </span><span class="lineCov">          1 :   }</span>
-<span class="lineNum">     144 </span><span class="lineCov">          1 :   assertEquals(&quot;&quot;, RegExp['$' + (i)], &quot;$&quot; + i);</span>
-<span class="lineNum">     145 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">     146 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     147 </span><span class="lineCov">          1 : RegExp.input = Number();</span>
-<span class="lineNum">     148 </span><span class="lineCov">          1 : assertTrue(typeof RegExp.input == typeof String(), &quot;RegExp.input coerces values to booleans&quot;);</span>
-<span class="lineNum">     149 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     150 </span><span class="lineCov">          1 : // Ensure that we save the correct string as the last subject when</span>
-<span class="lineNum">     151 </span><span class="lineCov">          1 : // we do a match on a sliced string (the top one not the underlying).</span>
-<span class="lineNum">     152 </span><span class="lineCov">          1 : var foo = &quot;lsdfj sldkfj sdklfj læsdfjl sdkfjlsdk fjsdl fjsdljskdj flsj flsdkj flskd regexp: /foobar/\nldkfj sdlkfj sdkl&quot;;</span>
-<span class="lineNum">     153 </span><span class="lineCov">          1 : assertTrue(/^([a-z]+): (.*)/.test(foo.substring(foo.indexOf(&quot;regexp:&quot;))), &quot;regexp: setup&quot;);</span>
-<span class="lineNum">     154 </span><span class="lineCov">          1 : assertEquals(&quot;regexp&quot;, RegExp.$1, &quot;RegExp.$1&quot;);</span>
-<span class="lineNum">     155 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     156 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     157 </span><span class="lineCov">          1 : // Check that calling with no argument is the same as calling with undefined.</span>
-<span class="lineNum">     158 </span><span class="lineCov">          1 : assertTrue(/^undefined$/.test());</span>
-<span class="lineNum">     159 </span><span class="lineCov">          1 : assertEquals([&quot;undefined&quot;], /^undefined$/.exec());</span>
+<span class="lineNum">     122 </span>            : assertEquals('dddd', 'abcd'.replace(re, f));
+<span class="lineNum">     123 </span>            : 
+<span class="lineNum">     124 </span>            : // lastParen where the last parenthesis didn't match.
+<span class="lineNum">     125 </span>            : assertEquals([&quot;foo&quot;,undefined], /foo(?:a(x))?/.exec(&quot;foobx&quot;),
+<span class="lineNum">     126 </span>            :              &quot;lastParen setup&quot;);
+<span class="lineNum">     127 </span>            : assertEquals(&quot;&quot;, RegExp.lastParen, &quot;lastParen&quot;);
+<span class="lineNum">     128 </span>            : 
+<span class="lineNum">     129 </span>            : // The same test for $1 to $9.
+<span class="lineNum">     130 </span>            : for (var i = 1; i &lt;= 9; i++) {
+<span class="lineNum">     131 </span>            :   var haystack = &quot;foo&quot;;
+<span class="lineNum">     132 </span>            :   var re_text = &quot;^foo&quot;;
+<span class="lineNum">     133 </span>            :   for (var j = 0; j &lt; i - 1; j++) {
+<span class="lineNum">     134 </span>            :     haystack += &quot;x&quot;;
+<span class="lineNum">     135 </span>            :     re_text += &quot;(x)&quot;;
+<span class="lineNum">     136 </span>            :   }
+<span class="lineNum">     137 </span>            :   re_text += &quot;(?:a(x))?&quot;;
+<span class="lineNum">     138 </span>            :   haystack += &quot;bx&quot;;
+<span class="lineNum">     139 </span>            :   var re = new RegExp(re_text);
+<span class="lineNum">     140 </span>            :   assertTrue(re.test(haystack), &quot;$&quot; + i + &quot; setup&quot;);
+<span class="lineNum">     141 </span>            :   for (var j = 1; j &lt; i - 1; j++) {
+<span class="lineNum">     142 </span>            :     assertEquals(&quot;x&quot;, RegExp['$' + j], &quot;$&quot; + j + &quot; in $&quot; + i + &quot; setup&quot;);
+<span class="lineNum">     143 </span>            :   }
+<span class="lineNum">     144 </span>            :   assertEquals(&quot;&quot;, RegExp['$' + (i)], &quot;$&quot; + i);
+<span class="lineNum">     145 </span>            : }
+<span class="lineNum">     146 </span>            : 
+<span class="lineNum">     147 </span>            : RegExp.input = Number();
+<span class="lineNum">     148 </span>            : assertTrue(typeof RegExp.input == typeof String(), &quot;RegExp.input coerces values to booleans&quot;);
+<span class="lineNum">     149 </span>            : 
+<span class="lineNum">     150 </span>            : // Ensure that we save the correct string as the last subject when
+<span class="lineNum">     151 </span>            : // we do a match on a sliced string (the top one not the underlying).
+<span class="lineNum">     152 </span>            : var foo = &quot;lsdfj sldkfj sdklfj læsdfjl sdkfjlsdk fjsdl fjsdljskdj flsj flsdkj flskd regexp: /foobar/\nldkfj sdlkfj sdkl&quot;;
+<span class="lineNum">     153 </span>            : assertTrue(/^([a-z]+): (.*)/.test(foo.substring(foo.indexOf(&quot;regexp:&quot;))), &quot;regexp: setup&quot;);
+<span class="lineNum">     154 </span>            : assertEquals(&quot;regexp&quot;, RegExp.$1, &quot;RegExp.$1&quot;);
+<span class="lineNum">     155 </span>            : 
+<span class="lineNum">     156 </span>            : 
+<span class="lineNum">     157 </span>            : // Check that calling with no argument is the same as calling with undefined.
+<span class="lineNum">     158 </span>            : assertTrue(/^undefined$/.test());
+<span class="lineNum">     159 </span>            : assertEquals([&quot;undefined&quot;], /^undefined$/.exec());
 </pre>
       </td>
     </tr>

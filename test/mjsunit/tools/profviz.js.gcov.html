@@ -31,17 +31,17 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">83</td>
-            <td class="headerCovTableEntry">83</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntry">59</td>
+            <td class="headerCovTableEntry">61</td>
+            <td class="headerCovTableEntryHi">96.7 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">4</td>
-            <td class="headerCovTableEntry">4</td>
+            <td class="headerCovTableEntry">3</td>
+            <td class="headerCovTableEntry">3</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -112,36 +112,36 @@
 <span class="lineNum">      50 </span><span class="lineCov">       2614 : function input() {</span>
 <span class="lineNum">      51 </span><span class="lineCov">       2614 :   return content_lines[line_cursor++];</span>
 <a name="52"><span class="lineNum">      52 </span><span class="lineCov">       2614 : }</span></a>
-<span class="lineNum">      53 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      53 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      54 </span><span class="lineCov">       1564 : function output(line) {</span>
 <span class="lineNum">      55 </span><span class="lineCov">       1564 :   output_lines.push(line);</span>
 <a name="56"><span class="lineNum">      56 </span><span class="lineCov">       1564 : }</span></a>
-<span class="lineNum">      57 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      57 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      58 </span><span class="lineCov">          1 : function set_range(start, end) {</span>
 <span class="lineNum">      59 </span><span class="lineCov">          1 :   range_start = start;</span>
 <span class="lineNum">      60 </span><span class="lineCov">          1 :   range_end = end;</span>
 <span class="lineNum">      61 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">      62 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      63 </span><span class="lineCov">          1 : var distortion = 4500 / 1000000;</span>
-<span class="lineNum">      64 </span><span class="lineCov">          1 : var resx = 1600;</span>
-<span class="lineNum">      65 </span><span class="lineCov">          1 : var resy = 600;</span>
-<span class="lineNum">      66 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      67 </span><span class="lineCov">          1 : var psc = new PlotScriptComposer(resx, resy);</span>
-<span class="lineNum">      68 </span><span class="lineCov">          1 : psc.collectData(input, distortion);</span>
-<span class="lineNum">      69 </span><span class="lineCov">          1 : psc.findPlotRange(undefined, undefined, set_range);</span>
-<span class="lineNum">      70 </span><span class="lineCov">          1 : var objects = psc.assembleOutput(output);</span>
-<span class="lineNum">      71 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      72 </span><span class="lineCov">          1 : output(&quot;# start: &quot; + range_start);</span>
-<span class="lineNum">      73 </span><span class="lineCov">          1 : output(&quot;# end: &quot; + range_end);</span>
-<span class="lineNum">      74 </span><span class="lineCov">          1 : output(&quot;# objects: &quot; + objects);</span>
-<span class="lineNum">      75 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      76 </span><span class="lineCov">          1 : var create_baseline = false;</span>
-<span class="lineNum">      77 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      78 </span><span class="lineCov">          1 : if (create_baseline) {</span>
-<span class="lineNum">      79 </span><span class="lineCov">          1 :   print(JSON.stringify(output_lines, null, 2));</span>
-<span class="lineNum">      80 </span><span class="lineCov">          1 : } else {</span>
-<span class="lineNum">      81 </span><span class="lineCov">          1 :   assertArrayEquals(JSON.parse(read(reference_file)), output_lines);</span>
-<span class="lineNum">      82 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      62 </span>            : 
+<span class="lineNum">      63 </span>            : var distortion = 4500 / 1000000;
+<span class="lineNum">      64 </span>            : var resx = 1600;
+<span class="lineNum">      65 </span>            : var resy = 600;
+<span class="lineNum">      66 </span>            : 
+<span class="lineNum">      67 </span>            : var psc = new PlotScriptComposer(resx, resy);
+<span class="lineNum">      68 </span>            : psc.collectData(input, distortion);
+<span class="lineNum">      69 </span>            : psc.findPlotRange(undefined, undefined, set_range);
+<span class="lineNum">      70 </span>            : var objects = psc.assembleOutput(output);
+<span class="lineNum">      71 </span>            : 
+<span class="lineNum">      72 </span>            : output(&quot;# start: &quot; + range_start);
+<span class="lineNum">      73 </span>            : output(&quot;# end: &quot; + range_end);
+<span class="lineNum">      74 </span>            : output(&quot;# objects: &quot; + objects);
+<span class="lineNum">      75 </span>            : 
+<span class="lineNum">      76 </span>            : var create_baseline = false;
+<span class="lineNum">      77 </span>            : 
+<span class="lineNum">      78 </span>            : if (create_baseline) {
+<span class="lineNum">      79 </span>            :   print(JSON.stringify(output_lines, null, 2));
+<span class="lineNum">      80 </span>            : } else {
+<span class="lineNum">      81 </span>            :   assertArrayEquals(JSON.parse(read(reference_file)), output_lines);
+<span class="lineNum">      82 </span>            : }
 </pre>
       </td>
     </tr>

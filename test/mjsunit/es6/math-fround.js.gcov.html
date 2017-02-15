@@ -31,18 +31,18 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">119</td>
-            <td class="headerCovTableEntry">121</td>
-            <td class="headerCovTableEntryHi">98.3 %</td>
+            <td class="headerCovTableEntry">78</td>
+            <td class="headerCovTableEntry">114</td>
+            <td class="headerCovTableEntryLo">68.4 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">11</td>
-            <td class="headerCovTableEntry">15</td>
-            <td class="headerCovTableEntryLo">73.3 %</td>
+            <td class="headerCovTableEntry">10</td>
+            <td class="headerCovTableEntry">12</td>
+            <td class="headerCovTableEntryMed">83.3 %</td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
         </table>
@@ -68,25 +68,25 @@
 <a name="6"><span class="lineNum">       6 </span><span class="lineCov">          1 : </span></a>
 <span class="lineNum">       7 </span><span class="lineCov">          1 : // Monkey-patch Float32Array.</span>
 <span class="lineNum">       8 </span><span class="lineCov">          1 : Float32Array = function(x) { this[0] = 0; };</span>
-<a name="9"><span class="lineNum">       9 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">      10 </span><span class="lineCov">          1 : assertTrue(isNaN(Math.fround(NaN)));</span>
-<span class="lineNum">      11 </span><span class="lineCov">          1 : assertTrue(isNaN(Math.fround(function() {})));</span>
+<span class="lineNum">       9 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      10 </span><span class="lineNoCov">          0 : assertTrue(isNaN(Math.fround(NaN)));</span>
+<span class="lineNum">      11 </span><span class="lineNoCov">          0 : assertTrue(isNaN(Math.fround(function() {})));</span>
 <span class="lineNum">      12 </span><span class="lineCov">          1 : assertTrue(isNaN(Math.fround({ toString: function() { return NaN; } })));</span>
-<a name="13"><span class="lineNum">      13 </span><span class="lineCov">          1 : assertTrue(isNaN(Math.fround({ valueOf: function() { return &quot;abc&quot;; } })));</span></a>
-<a name="14"><span class="lineNum">      14 </span><span class="lineCov">          1 : assertTrue(isNaN(Math.fround(NaN)));</span></a>
-<a name="15"><span class="lineNum">      15 </span><span class="lineCov">          1 : assertTrue(isNaN(Math.fround(function() {})));</span></a>
+<span class="lineNum">      13 </span><span class="lineCov">          1 : assertTrue(isNaN(Math.fround({ valueOf: function() { return &quot;abc&quot;; } })));</span>
+<a name="14"><span class="lineNum">      14 </span><span class="lineNoCov">          0 : assertTrue(isNaN(Math.fround(NaN)));</span></a>
+<a name="15"><span class="lineNum">      15 </span><span class="lineNoCov">          0 : assertTrue(isNaN(Math.fround(function() {})));</span></a>
 <span class="lineNum">      16 </span><span class="lineCov">          1 : assertTrue(isNaN(Math.fround({ toString: function() { return NaN; } })));</span>
 <a name="17"><span class="lineNum">      17 </span><span class="lineCov">          1 : assertTrue(isNaN(Math.fround({ valueOf: function() { return &quot;abc&quot;; } })));</span></a>
-<a name="18"><span class="lineNum">      18 </span><span class="lineCov">          1 : </span></a>
+<a name="18"><span class="lineNum">      18 </span><span class="lineNoCov">          0 : </span></a>
 <span class="lineNum">      19 </span><span class="lineCov">      21032 : function unopt(x) { return Math.fround(x); }</span>
 <span class="lineNum">      20 </span><span class="lineCov">      21033 : function opt(y) { return Math.fround(y); }</span>
-<span class="lineNum">      21 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      22 </span><span class="lineCov">          1 : opt(0.1);</span>
-<span class="lineNum">      23 </span><span class="lineCov">          1 : opt(0.1);</span>
-<span class="lineNum">      24 </span><span class="lineCov">          1 : unopt(0.1);</span>
-<span class="lineNum">      25 </span><span class="lineCov">          1 : %NeverOptimizeFunction(unopt);</span>
-<a name="26"><span class="lineNum">      26 </span><span class="lineCov">          1 : %OptimizeFunctionOnNextCall(opt);</span></a>
-<span class="lineNum">      27 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      21 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      22 </span><span class="lineNoCov">          0 : opt(0.1);</span>
+<span class="lineNum">      23 </span><span class="lineNoCov">          0 : opt(0.1);</span>
+<span class="lineNum">      24 </span><span class="lineNoCov">          0 : unopt(0.1);</span>
+<span class="lineNum">      25 </span><span class="lineNoCov">          0 : %NeverOptimizeFunction(unopt);</span>
+<a name="26"><span class="lineNum">      26 </span><span class="lineNoCov">          0 : %OptimizeFunctionOnNextCall(opt);</span></a>
+<span class="lineNum">      27 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      28 </span><span class="lineCov">          2 : function test(f) {</span>
 <span class="lineNum">      29 </span><span class="lineCov">          2 :   assertEquals(&quot;Infinity&quot;, String(1/f(0)));</span>
 <span class="lineNum">      30 </span><span class="lineCov">          2 :   assertEquals(&quot;-Infinity&quot;, String(1/f(-0)));</span>
@@ -97,14 +97,14 @@
 <span class="lineNum">      35 </span><span class="lineCov">          2 :   assertEquals(&quot;Infinity&quot;, String(1/f(1E-300)));</span>
 <span class="lineNum">      36 </span><span class="lineCov">          2 :   assertEquals(&quot;-Infinity&quot;, String(1/f(-1E-300)));</span>
 <span class="lineNum">      37 </span><span class="lineCov">          2 : }</span>
-<span class="lineNum">      38 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      39 </span><span class="lineCov">          1 : test(opt);</span>
-<span class="lineNum">      40 </span><span class="lineCov">          1 : test(unopt);</span>
-<span class="lineNum">      41 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      42 </span><span class="lineCov">          1 : mantissa_23_shift = Math.pow(2, -23);</span>
-<span class="lineNum">      43 </span><span class="lineCov">          1 : mantissa_29_shift = Math.pow(2, -23-29);</span>
-<a name="44"><span class="lineNum">      44 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">      45 </span><span class="lineCov">          1 : // Javascript implementation of IEEE 754 to test double to single conversion.</span>
+<span class="lineNum">      38 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      39 </span><span class="lineNoCov">          0 : test(opt);</span>
+<span class="lineNum">      40 </span><span class="lineNoCov">          0 : test(unopt);</span>
+<span class="lineNum">      41 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      42 </span><span class="lineNoCov">          0 : mantissa_23_shift = Math.pow(2, -23);</span>
+<span class="lineNum">      43 </span><span class="lineNoCov">          0 : mantissa_29_shift = Math.pow(2, -23-29);</span>
+<a name="44"><span class="lineNum">      44 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">      45 </span><span class="lineNoCov">          0 : // Javascript implementation of IEEE 754 to test double to single conversion.</span>
 <span class="lineNum">      46 </span><span class="lineCov">      21023 : function ieee754float(sign_bit,</span>
 <span class="lineNum">      47 </span><span class="lineCov">      21023 :                       exponent_bits,</span>
 <span class="lineNum">      48 </span><span class="lineCov">      21023 :                       mantissa_23_bits,</span>
@@ -114,12 +114,12 @@
 <span class="lineNum">      52 </span><span class="lineCov">      21023 :   this.mantissa_23_bits = mantissa_23_bits &amp; ((1 &lt;&lt; 23) - 1);</span>
 <span class="lineNum">      53 </span><span class="lineCov">      21023 :   this.mantissa_29_bits = mantissa_29_bits &amp; ((1 &lt;&lt; 29) - 1);</span>
 <a name="54"><span class="lineNum">      54 </span><span class="lineCov">      21023 : }</span></a>
-<span class="lineNum">      55 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      56 </span><span class="lineCov">          1 : ieee754float.prototype.returnSpecial = function() {</span>
+<span class="lineNum">      55 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      56 </span><span class="lineNoCov">          0 : ieee754float.prototype.returnSpecial = function() {</span>
 <span class="lineNum">      57 </span><span class="lineNoCov">          0 :   if (mantissa_23_bits == 0 &amp;&amp; mantissa_29_bits == 0) return sign * Infinity;</span>
 <span class="lineNum">      58 </span><span class="lineNoCov">          0 :   return NaN;</span>
-<a name="59"><span class="lineNum">      59 </span><span class="lineCov">          1 : }</span></a>
-<span class="lineNum">      60 </span><span class="lineCov">          1 : </span>
+<a name="59"><span class="lineNum">      59 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">      60 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      61 </span><span class="lineCov">      42046 : ieee754float.prototype.toDouble = function() {</span>
 <span class="lineNum">      62 </span><span class="lineCov">      42046 :   var sign = this.sign_bit ? -1 : 1;</span>
 <span class="lineNum">      63 </span><span class="lineCov">      42046 :   var exponent = this.exponent_bits - 1023;</span>
@@ -128,7 +128,7 @@
 <span class="lineNum">      66 </span><span class="lineCov">      42046 :                      this.mantissa_29_bits * mantissa_29_shift;</span>
 <span class="lineNum">      67 </span><span class="lineCov">      42046 :   return sign * Math.pow(2, exponent) * mantissa;</span>
 <a name="68"><span class="lineNum">      68 </span><span class="lineCov">      42046 : }</span></a>
-<span class="lineNum">      69 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      69 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      70 </span><span class="lineCov">      42046 : ieee754float.prototype.toSingle = function() {</span>
 <span class="lineNum">      71 </span><span class="lineCov">      42046 :   var sign = this.sign_bit ? -1 : 1;</span>
 <span class="lineNum">      72 </span><span class="lineCov">      42046 :   var exponent = this.exponent_bits - 1023;</span>
@@ -139,7 +139,7 @@
 <span class="lineNum">      77 </span><span class="lineCov">      42046 :   var mantissa = 1 + (this.mantissa_23_bits + round) * mantissa_23_shift;</span>
 <span class="lineNum">      78 </span><span class="lineCov">      42046 :   return sign * Math.pow(2, exponent) * mantissa;</span>
 <a name="79"><span class="lineNum">      79 </span><span class="lineCov">      42046 : }</span></a>
-<span class="lineNum">      80 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      80 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      81 </span><span class="lineCov">       6880 : ieee754float.prototype.toSingleSubnormal = function(sign, exponent) {</span>
 <span class="lineNum">      82 </span><span class="lineCov">       6880 :   var shift = -126 - exponent;</span>
 <span class="lineNum">      83 </span><span class="lineCov">       6880 :   if (shift &gt; 24) return sign * 0;</span>
@@ -158,13 +158,13 @@
 <span class="lineNum">      96 </span><span class="lineCov">       6880 :   var mantissa = (mantissa_23_bits + round) * mantissa_23_shift;</span>
 <span class="lineNum">      97 </span><span class="lineCov">       6880 :   return sign * Math.pow(2, -126) * mantissa;</span>
 <span class="lineNum">      98 </span><span class="lineCov">       6880 : }</span>
-<span class="lineNum">      99 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     100 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     101 </span><span class="lineCov">          1 : var pi = new ieee754float(0, 0x400, 0x490fda, 0x14442d18);</span>
-<span class="lineNum">     102 </span><span class="lineCov">          1 : assertEquals(pi.toSingle(), opt(pi.toDouble()));</span>
-<span class="lineNum">     103 </span><span class="lineCov">          1 : assertEquals(pi.toSingle(), unopt(pi.toDouble()));</span>
-<a name="104"><span class="lineNum">     104 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">     105 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      99 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     100 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     101 </span><span class="lineNoCov">          0 : var pi = new ieee754float(0, 0x400, 0x490fda, 0x14442d18);</span>
+<span class="lineNum">     102 </span><span class="lineNoCov">          0 : assertEquals(pi.toSingle(), opt(pi.toDouble()));</span>
+<span class="lineNum">     103 </span><span class="lineNoCov">          0 : assertEquals(pi.toSingle(), unopt(pi.toDouble()));</span>
+<a name="104"><span class="lineNum">     104 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">     105 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     106 </span><span class="lineCov">        680 : function fuzz_mantissa(sign, exp, m1inc, m2inc) {</span>
 <span class="lineNum">     107 </span><span class="lineCov">        680 :   for (var m1 = 0; m1 &lt; (1 &lt;&lt; 23); m1 += m1inc) {</span>
 <span class="lineNum">     108 </span><span class="lineCov">        680 :     for (var m2 = 0; m2 &lt; (1 &lt;&lt; 29); m2 += m2inc) {</span>
@@ -174,12 +174,12 @@
 <span class="lineNum">     112 </span><span class="lineCov">        680 :     }</span>
 <span class="lineNum">     113 </span><span class="lineCov">        680 :   }</span>
 <span class="lineNum">     114 </span><span class="lineCov">        680 : }</span>
-<span class="lineNum">     115 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     116 </span><span class="lineCov">          1 : for (var sign = 0; sign &lt; 2; sign++) {</span>
-<span class="lineNum">     117 </span><span class="lineCov">          1 :   for (var exp = 1024 - 170; exp &lt; 1024 + 170; exp++) {</span>
-<span class="lineNum">     118 </span><span class="lineCov">          1 :     fuzz_mantissa(sign, exp, 1337 * exp - sign, 127913 * exp - sign);</span>
-<span class="lineNum">     119 </span><span class="lineCov">          1 :   }</span>
-<span class="lineNum">     120 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     115 </span>            : 
+<span class="lineNum">     116 </span>            : for (var sign = 0; sign &lt; 2; sign++) {
+<span class="lineNum">     117 </span>            :   for (var exp = 1024 - 170; exp &lt; 1024 + 170; exp++) {
+<span class="lineNum">     118 </span>            :     fuzz_mantissa(sign, exp, 1337 * exp - sign, 127913 * exp - sign);
+<span class="lineNum">     119 </span>            :   }
+<span class="lineNum">     120 </span>            : }
 </pre>
       </td>
     </tr>

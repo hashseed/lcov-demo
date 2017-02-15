@@ -31,17 +31,17 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">43</td>
-            <td class="headerCovTableEntry">43</td>
+            <td class="headerCovTableEntry">24</td>
+            <td class="headerCovTableEntry">24</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">6</td>
-            <td class="headerCovTableEntry">6</td>
+            <td class="headerCovTableEntry">5</td>
+            <td class="headerCovTableEntry">5</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -84,24 +84,24 @@
 <span class="lineNum">      22 </span><span class="lineCov">          1 :     v = v|0;</span>
 <span class="lineNum">      23 </span><span class="lineCov">          1 :     MEM16[-1] = v;</span>
 <span class="lineNum">      24 </span><span class="lineCov">          1 :   }</span>
-<span class="lineNum">      25 </span><span class="lineCov">          1 :   return {load: load, loadm1: loadm1, store: store, storem1: storem1};</span>
-<span class="lineNum">      26 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">      27 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      28 </span><span class="lineCov">          1 : var m = Module(this, {}, new ArrayBuffer(2));</span>
-<span class="lineNum">      29 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      30 </span><span class="lineCov">          1 : m.store(-1000, 4);</span>
-<span class="lineNum">      31 </span><span class="lineCov">          1 : assertEquals(0, m.load(-1000));</span>
-<span class="lineNum">      32 </span><span class="lineCov">          1 : assertEquals(0, m.loadm1());</span>
-<span class="lineNum">      33 </span><span class="lineCov">          1 : m.storem1(1);</span>
-<span class="lineNum">      34 </span><span class="lineCov">          1 : assertEquals(0, m.loadm1());</span>
-<span class="lineNum">      35 </span><span class="lineCov">          1 : m.store(0, 32767);</span>
-<span class="lineNum">      36 </span><span class="lineCov">          1 : for (var i = 1; i &lt; 64; ++i) {</span>
-<span class="lineNum">      37 </span><span class="lineCov">          1 :   m.store(i * 2 * 32 * 1024, i);</span>
-<span class="lineNum">      38 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">      39 </span><span class="lineCov">          1 : assertEquals(32767, m.load(0));</span>
-<span class="lineNum">      40 </span><span class="lineCov">          1 : for (var i = 1; i &lt; 64; ++i) {</span>
-<span class="lineNum">      41 </span><span class="lineCov">          1 :   assertEquals(0, m.load(i * 2 * 32 * 1024));</span>
-<span class="lineNum">      42 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      25 </span>            :   return {load: load, loadm1: loadm1, store: store, storem1: storem1};
+<span class="lineNum">      26 </span>            : }
+<span class="lineNum">      27 </span>            : 
+<span class="lineNum">      28 </span>            : var m = Module(this, {}, new ArrayBuffer(2));
+<span class="lineNum">      29 </span>            : 
+<span class="lineNum">      30 </span>            : m.store(-1000, 4);
+<span class="lineNum">      31 </span>            : assertEquals(0, m.load(-1000));
+<span class="lineNum">      32 </span>            : assertEquals(0, m.loadm1());
+<span class="lineNum">      33 </span>            : m.storem1(1);
+<span class="lineNum">      34 </span>            : assertEquals(0, m.loadm1());
+<span class="lineNum">      35 </span>            : m.store(0, 32767);
+<span class="lineNum">      36 </span>            : for (var i = 1; i &lt; 64; ++i) {
+<span class="lineNum">      37 </span>            :   m.store(i * 2 * 32 * 1024, i);
+<span class="lineNum">      38 </span>            : }
+<span class="lineNum">      39 </span>            : assertEquals(32767, m.load(0));
+<span class="lineNum">      40 </span>            : for (var i = 1; i &lt; 64; ++i) {
+<span class="lineNum">      41 </span>            :   assertEquals(0, m.load(i * 2 * 32 * 1024));
+<span class="lineNum">      42 </span>            : }
 </pre>
       </td>
     </tr>

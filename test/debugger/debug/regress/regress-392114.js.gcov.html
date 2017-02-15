@@ -31,18 +31,18 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">66</td>
-            <td class="headerCovTableEntry">66</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntry">41</td>
+            <td class="headerCovTableEntry">52</td>
+            <td class="headerCovTableEntryMed">78.8 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">4</td>
-            <td class="headerCovTableEntry">5</td>
-            <td class="headerCovTableEntryMed">80.0 %</td>
+            <td class="headerCovTableEntry">3</td>
+            <td class="headerCovTableEntry">3</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr><td><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
         </table>
@@ -93,7 +93,7 @@
 <span class="lineNum">      31 </span><span class="lineCov">          1 : function dummy(x) {</span>
 <span class="lineNum">      32 </span><span class="lineCov">          1 :   return x + 100;</span>
 <a name="33"><span class="lineNum">      33 </span><span class="lineCov">          1 : }</span></a>
-<a name="34"><span class="lineNum">      34 </span><span class="lineCov">          1 : </span></a>
+<a name="34"><span class="lineNum">      34 </span><span class="lineNoCov">          0 : </span></a>
 <span class="lineNum">      35 </span><span class="lineCov">          2 : function create_closure() {</span>
 <span class="lineNum">      36 </span><span class="lineCov">          3 :   var f = function(arg) {</span>
 <span class="lineNum">      37 </span><span class="lineCov">          3 :     if (arg) { %DeoptimizeFunction(f); }</span>
@@ -102,29 +102,29 @@
 <span class="lineNum">      40 </span><span class="lineCov">          3 :       a[i] = i;</span>
 <span class="lineNum">      41 </span><span class="lineCov">          3 :     }</span>
 <span class="lineNum">      42 </span><span class="lineCov">          3 :   }</span>
-<span class="lineNum">      43 </span><span class="lineCov">          2 :   return f;</span>
-<span class="lineNum">      44 </span><span class="lineCov">          2 : }</span>
-<span class="lineNum">      45 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      46 </span><span class="lineCov">          1 : var c = create_closure();</span>
-<span class="lineNum">      47 </span><span class="lineCov">          1 : c();</span>
-<span class="lineNum">      48 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      49 </span><span class="lineCov">          1 : // c CallIC state now has custom Array handler installed.</span>
-<a name="50"><span class="lineNum">      50 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">      51 </span><span class="lineCov">          1 : // Turn on the debugger.</span>
-<span class="lineNum">      52 </span><span class="lineCov">          1 : Debug.setListener(function () {});</span>
-<span class="lineNum">      53 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      54 </span><span class="lineCov">          1 : var d = create_closure();</span>
-<span class="lineNum">      55 </span><span class="lineCov">          1 : %OptimizeFunctionOnNextCall(d);</span>
-<span class="lineNum">      56 </span><span class="lineCov">          1 : // Thanks to the debugger, we recreate the full code too. We deopt and run</span>
-<span class="lineNum">      57 </span><span class="lineCov">          1 : // it, stomping on the unexpected AllocationSite in the type vector slot.</span>
-<span class="lineNum">      58 </span><span class="lineCov">          1 : d(true);</span>
-<span class="lineNum">      59 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      60 </span><span class="lineCov">          1 : // CallIC in c misinterprets type vector slot contents as an AllocationSite,</span>
-<span class="lineNum">      61 </span><span class="lineCov">          1 : // corrupting the heap.</span>
-<span class="lineNum">      62 </span><span class="lineCov">          1 : c();</span>
-<span class="lineNum">      63 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      64 </span><span class="lineCov">          1 : // CallIC MISS - crash due to corruption.</span>
-<span class="lineNum">      65 </span><span class="lineCov">          1 : dummy();</span>
+<span class="lineNum">      43 </span><span class="lineNoCov">          0 :   return f;</span>
+<span class="lineNum">      44 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      45 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      46 </span><span class="lineNoCov">          0 : var c = create_closure();</span>
+<span class="lineNum">      47 </span><span class="lineNoCov">          0 : c();</span>
+<span class="lineNum">      48 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      49 </span><span class="lineNoCov">          0 : // c CallIC state now has custom Array handler installed.</span>
+<span class="lineNum">      50 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      51 </span><span class="lineNoCov">          0 : // Turn on the debugger.</span>
+<span class="lineNum">      52 </span><span class="lineNoCov">          0 : Debug.setListener(function () {});</span>
+<span class="lineNum">      53 </span>            : 
+<span class="lineNum">      54 </span>            : var d = create_closure();
+<span class="lineNum">      55 </span>            : %OptimizeFunctionOnNextCall(d);
+<span class="lineNum">      56 </span>            : // Thanks to the debugger, we recreate the full code too. We deopt and run
+<span class="lineNum">      57 </span>            : // it, stomping on the unexpected AllocationSite in the type vector slot.
+<span class="lineNum">      58 </span>            : d(true);
+<span class="lineNum">      59 </span>            : 
+<span class="lineNum">      60 </span>            : // CallIC in c misinterprets type vector slot contents as an AllocationSite,
+<span class="lineNum">      61 </span>            : // corrupting the heap.
+<span class="lineNum">      62 </span>            : c();
+<span class="lineNum">      63 </span>            : 
+<span class="lineNum">      64 </span>            : // CallIC MISS - crash due to corruption.
+<span class="lineNum">      65 </span>            : dummy();
 </pre>
       </td>
     </tr>

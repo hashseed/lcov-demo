@@ -31,18 +31,18 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">45</td>
-            <td class="headerCovTableEntry">45</td>
+            <td class="headerCovTableEntry">16</td>
+            <td class="headerCovTableEntry">16</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">2</td>
-            <td class="headerCovTableEntry">2</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntryHi">-</td>
           </tr>
           <tr><td><img src="../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
         </table>
@@ -71,39 +71,39 @@
 <span class="lineNum">       9 </span><span class="lineCov">          2 :     updating the [[Writable]] attribute value of 'P' which is not</span>
 <span class="lineNum">      10 </span><span class="lineCov">          2 :     configurable (10.6 [[DefineOwnProperty]] step 4)</span>
 <span class="lineNum">      11 </span><span class="lineCov">          2 : includes: [propertyHelper.js]</span>
-<a name="12"><span class="lineNum">      12 </span><span class="lineCov">          2 : ---*/</span></a>
+<span class="lineNum">      12 </span><span class="lineCov">          2 : ---*/</span>
 <span class="lineNum">      13 </span><span class="lineCov">          2 : </span>
 <span class="lineNum">      14 </span><span class="lineCov">          2 : var arg = (function () {</span>
 <span class="lineNum">      15 </span><span class="lineCov">          2 :     return arguments;</span>
 <span class="lineNum">      16 </span><span class="lineCov">          2 : }(1, 2, 3));</span>
-<span class="lineNum">      17 </span><span class="lineCov">          2 : </span>
-<span class="lineNum">      18 </span><span class="lineCov">          2 : Object.defineProperty(arg, &quot;genericProperty&quot;, {</span>
-<span class="lineNum">      19 </span><span class="lineCov">          2 :     writable: false,</span>
-<span class="lineNum">      20 </span><span class="lineCov">          2 :     configurable: false</span>
-<span class="lineNum">      21 </span><span class="lineCov">          2 : });</span>
-<span class="lineNum">      22 </span><span class="lineCov">          2 : </span>
-<span class="lineNum">      23 </span><span class="lineCov">          2 : try {</span>
-<span class="lineNum">      24 </span><span class="lineCov">          2 :     Object.defineProperties(arg, {</span>
-<span class="lineNum">      25 </span><span class="lineCov">          2 :         &quot;genericProperty&quot;: {</span>
-<span class="lineNum">      26 </span><span class="lineCov">          2 :             writable: true</span>
-<span class="lineNum">      27 </span><span class="lineCov">          2 :         }</span>
-<span class="lineNum">      28 </span><span class="lineCov">          2 :     });</span>
-<span class="lineNum">      29 </span><span class="lineCov">          2 : </span>
-<span class="lineNum">      30 </span><span class="lineCov">          2 :     $ERROR(&quot;Expected an exception.&quot;);</span>
-<span class="lineNum">      31 </span><span class="lineCov">          2 : } catch (e) {</span>
-<span class="lineNum">      32 </span><span class="lineCov">          2 :     verifyEqualTo(arg, &quot;genericProperty&quot;, undefined);</span>
-<span class="lineNum">      33 </span><span class="lineCov">          2 : </span>
-<span class="lineNum">      34 </span><span class="lineCov">          2 :     verifyNotWritable(arg, &quot;genericProperty&quot;);</span>
-<span class="lineNum">      35 </span><span class="lineCov">          2 : </span>
-<span class="lineNum">      36 </span><span class="lineCov">          2 :     verifyNotEnumerable(arg, &quot;genericProperty&quot;);</span>
-<span class="lineNum">      37 </span><span class="lineCov">          2 : </span>
-<span class="lineNum">      38 </span><span class="lineCov">          2 :     verifyNotConfigurable(arg, &quot;genericProperty&quot;);</span>
-<span class="lineNum">      39 </span><span class="lineCov">          2 : </span>
-<span class="lineNum">      40 </span><span class="lineCov">          2 :     if (!(e instanceof TypeError)) {</span>
-<span class="lineNum">      41 </span><span class="lineCov">          2 :         $ERROR(&quot;Expected TypeError, got &quot; + e);</span>
-<span class="lineNum">      42 </span><span class="lineCov">          2 :     }</span>
-<span class="lineNum">      43 </span><span class="lineCov">          2 : </span>
-<span class="lineNum">      44 </span><span class="lineCov">          2 : }</span>
+<span class="lineNum">      17 </span>            : 
+<span class="lineNum">      18 </span>            : Object.defineProperty(arg, &quot;genericProperty&quot;, {
+<span class="lineNum">      19 </span>            :     writable: false,
+<span class="lineNum">      20 </span>            :     configurable: false
+<span class="lineNum">      21 </span>            : });
+<span class="lineNum">      22 </span>            : 
+<span class="lineNum">      23 </span>            : try {
+<span class="lineNum">      24 </span>            :     Object.defineProperties(arg, {
+<span class="lineNum">      25 </span>            :         &quot;genericProperty&quot;: {
+<span class="lineNum">      26 </span>            :             writable: true
+<span class="lineNum">      27 </span>            :         }
+<span class="lineNum">      28 </span>            :     });
+<span class="lineNum">      29 </span>            : 
+<span class="lineNum">      30 </span>            :     $ERROR(&quot;Expected an exception.&quot;);
+<span class="lineNum">      31 </span>            : } catch (e) {
+<span class="lineNum">      32 </span>            :     verifyEqualTo(arg, &quot;genericProperty&quot;, undefined);
+<span class="lineNum">      33 </span>            : 
+<span class="lineNum">      34 </span>            :     verifyNotWritable(arg, &quot;genericProperty&quot;);
+<span class="lineNum">      35 </span>            : 
+<span class="lineNum">      36 </span>            :     verifyNotEnumerable(arg, &quot;genericProperty&quot;);
+<span class="lineNum">      37 </span>            : 
+<span class="lineNum">      38 </span>            :     verifyNotConfigurable(arg, &quot;genericProperty&quot;);
+<span class="lineNum">      39 </span>            : 
+<span class="lineNum">      40 </span>            :     if (!(e instanceof TypeError)) {
+<span class="lineNum">      41 </span>            :         $ERROR(&quot;Expected TypeError, got &quot; + e);
+<span class="lineNum">      42 </span>            :     }
+<span class="lineNum">      43 </span>            : 
+<span class="lineNum">      44 </span>            : }
 </pre>
       </td>
     </tr>

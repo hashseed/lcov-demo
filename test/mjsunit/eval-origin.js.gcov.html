@@ -31,17 +31,17 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">40</td>
-            <td class="headerCovTableEntry">40</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntry">19</td>
+            <td class="headerCovTableEntry">26</td>
+            <td class="headerCovTableEntryLo">73.1 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">4</td>
-            <td class="headerCovTableEntry">4</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntry">1</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -69,36 +69,36 @@
 <span class="lineNum">       7 </span><span class="lineCov">          6 : Error.prepareStackTrace = function(exception, frames) {</span>
 <span class="lineNum">       8 </span><span class="lineCov">          6 :   return frames[0].getEvalOrigin();</span>
 <span class="lineNum">       9 </span><span class="lineCov">          6 : }</span>
-<span class="lineNum">      10 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      11 </span><span class="lineCov">          1 : var source = &quot;new Error()&quot;;</span>
-<span class="lineNum">      12 </span><span class="lineCov">          1 : var eval_origin;</span>
-<span class="lineNum">      13 </span><span class="lineCov">          1 : var geval = eval;</span>
-<a name="14"><span class="lineNum">      14 </span><span class="lineCov">          1 : var log = [];</span></a>
-<span class="lineNum">      15 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      10 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      11 </span><span class="lineNoCov">          0 : var source = &quot;new Error()&quot;;</span>
+<span class="lineNum">      12 </span><span class="lineNoCov">          0 : var eval_origin;</span>
+<span class="lineNum">      13 </span><span class="lineNoCov">          0 : var geval = eval;</span>
+<span class="lineNum">      14 </span><span class="lineNoCov">          0 : var log = [];</span>
+<span class="lineNum">      15 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      16 </span><span class="lineCov">          1 : (function() {</span>
 <span class="lineNum">      17 </span><span class="lineCov">          1 :   log.push([geval(source).stack, &quot;17:13&quot;]);</span>
 <span class="lineNum">      18 </span><span class="lineCov">          1 :   log.push([geval(source).stack, &quot;18:13&quot;]);</span>
 <span class="lineNum">      19 </span><span class="lineCov">          1 :   // log.push([geval(source).stack, &quot;19:13&quot;]);  TODO(4921).</span>
-<a name="20"><span class="lineNum">      20 </span><span class="lineCov">          1 : })();</span></a>
-<span class="lineNum">      21 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      20 </span><span class="lineCov">          1 : })();</span>
+<span class="lineNum">      21 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      22 </span><span class="lineCov">          1 : (function() {</span>
 <span class="lineNum">      23 </span><span class="lineCov">          1 :   log.push([eval(source).stack, &quot;23:13&quot;]);</span>
 <span class="lineNum">      24 </span><span class="lineCov">          1 :   log.push([eval(source).stack, &quot;24:13&quot;]);</span>
 <span class="lineNum">      25 </span><span class="lineCov">          1 :   // log.push([eval(source).stack, &quot;25:13&quot;]);  TODO(4921).</span>
 <span class="lineNum">      26 </span><span class="lineCov">          1 : })();</span>
-<span class="lineNum">      27 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      28 </span><span class="lineCov">          1 : log.push([eval(source).stack, &quot;28:11&quot;]);</span>
-<span class="lineNum">      29 </span><span class="lineCov">          1 : log.push([eval(source).stack, &quot;29:11&quot;]);</span>
-<span class="lineNum">      30 </span><span class="lineCov">          1 : // log.push([eval(source).stack, &quot;30:11&quot;]);  TODO(4921).</span>
-<span class="lineNum">      31 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      32 </span><span class="lineCov">          1 : Error.prepareStackTrace = undefined;</span>
-<span class="lineNum">      33 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      34 </span><span class="lineCov">          1 : for (var item of log) {</span>
-<span class="lineNum">      35 </span><span class="lineCov">          1 :   var stacktraceline = item[0];</span>
-<span class="lineNum">      36 </span><span class="lineCov">          1 :   var expectation = item[1];</span>
-<span class="lineNum">      37 </span><span class="lineCov">          1 :   var re = new RegExp(`:${expectation}\\)$`);</span>
-<span class="lineNum">      38 </span><span class="lineCov">          1 :   assertTrue(re.test(stacktraceline));</span>
-<span class="lineNum">      39 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      27 </span>            : 
+<span class="lineNum">      28 </span>            : log.push([eval(source).stack, &quot;28:11&quot;]);
+<span class="lineNum">      29 </span>            : log.push([eval(source).stack, &quot;29:11&quot;]);
+<span class="lineNum">      30 </span>            : // log.push([eval(source).stack, &quot;30:11&quot;]);  TODO(4921).
+<span class="lineNum">      31 </span>            : 
+<span class="lineNum">      32 </span>            : Error.prepareStackTrace = undefined;
+<span class="lineNum">      33 </span>            : 
+<span class="lineNum">      34 </span>            : for (var item of log) {
+<span class="lineNum">      35 </span>            :   var stacktraceline = item[0];
+<span class="lineNum">      36 </span>            :   var expectation = item[1];
+<span class="lineNum">      37 </span>            :   var re = new RegExp(`:${expectation}\\)$`);
+<span class="lineNum">      38 </span>            :   assertTrue(re.test(stacktraceline));
+<span class="lineNum">      39 </span>            : }
 </pre>
       </td>
     </tr>

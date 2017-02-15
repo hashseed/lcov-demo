@@ -31,18 +31,18 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">568</td>
-            <td class="headerCovTableEntry">570</td>
-            <td class="headerCovTableEntryHi">99.6 %</td>
+            <td class="headerCovTableEntry">339</td>
+            <td class="headerCovTableEntry">567</td>
+            <td class="headerCovTableEntryLo">59.8 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">43</td>
-            <td class="headerCovTableEntry">45</td>
-            <td class="headerCovTableEntryHi">95.6 %</td>
+            <td class="headerCovTableEntry">37</td>
+            <td class="headerCovTableEntry">39</td>
+            <td class="headerCovTableEntryHi">94.9 %</td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
         </table>
@@ -98,45 +98,45 @@
 <span class="lineNum">      36 </span><span class="lineCov">          1 :   // Default sort converts each element to string and orders</span>
 <span class="lineNum">      37 </span><span class="lineCov">          1 :   // lexicographically.</span>
 <span class="lineNum">      38 </span><span class="lineCov">          1 :   a.sort();</span>
-<a name="39"><span class="lineNum">      39 </span><span class="lineCov">          1 :   assertArrayEquals([ 200, 45, 7 ], a);</span></a>
+<span class="lineNum">      39 </span><span class="lineCov">          1 :   assertArrayEquals([ 200, 45, 7 ], a);</span>
 <span class="lineNum">      40 </span><span class="lineCov">          1 :   // Sort numbers by value using a compare functions.</span>
 <span class="lineNum">      41 </span><span class="lineCov">          3 :   a.sort(function(x, y) { return x - y; });</span>
-<span class="lineNum">      42 </span><span class="lineCov">          1 :   assertArrayEquals([ 7, 45, 200 ], a);</span>
-<span class="lineNum">      43 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      44 </span><span class="lineCov">          1 :   // Default sort on negative numbers.</span>
-<span class="lineNum">      45 </span><span class="lineCov">          1 :   a = [-12345,-123,-1234,-123456];</span>
-<span class="lineNum">      46 </span><span class="lineCov">          1 :   a.sort();</span>
-<span class="lineNum">      47 </span><span class="lineCov">          1 :   assertArrayEquals([-123,-1234,-12345,-123456], a);</span>
-<span class="lineNum">      48 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      49 </span><span class="lineCov">          1 :   // Default sort on negative and non-negative numbers.</span>
-<span class="lineNum">      50 </span><span class="lineCov">          1 :   a = [123456,0,-12345,-123,123,1234,-1234,0,12345,-123456];</span>
-<span class="lineNum">      51 </span><span class="lineCov">          1 :   a.sort();</span>
-<span class="lineNum">      52 </span><span class="lineCov">          1 :   assertArrayEquals([-123,-1234,-12345,-123456,0,0,123,1234,12345,123456], a);</span>
-<span class="lineNum">      53 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      54 </span><span class="lineCov">          1 :   // Tricky case avoiding integer overflow in Runtime_SmiLexicographicCompare.</span>
-<span class="lineNum">      55 </span><span class="lineCov">          1 :   a = [9, 1000000000].sort();</span>
-<span class="lineNum">      56 </span><span class="lineCov">          1 :   assertArrayEquals([1000000000, 9], a);</span>
-<span class="lineNum">      57 </span><span class="lineCov">          1 :   a = [1000000000, 1].sort();</span>
-<span class="lineNum">      58 </span><span class="lineCov">          1 :   assertArrayEquals([1, 1000000000], a);</span>
-<span class="lineNum">      59 </span><span class="lineCov">          1 :   a = [1000000000, 0].sort();</span>
-<span class="lineNum">      60 </span><span class="lineCov">          1 :   assertArrayEquals([0, 1000000000], a);</span>
-<span class="lineNum">      61 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      62 </span><span class="lineCov">          1 :   // One string is a prefix of the other.</span>
-<span class="lineNum">      63 </span><span class="lineCov">          1 :   a = [1230, 123].sort();</span>
-<span class="lineNum">      64 </span><span class="lineCov">          1 :   assertArrayEquals([123, 1230], a);</span>
-<span class="lineNum">      65 </span><span class="lineCov">          1 :   a = [1231, 123].sort();</span>
-<span class="lineNum">      66 </span><span class="lineCov">          1 :   assertArrayEquals([123, 1231], a);</span>
-<span class="lineNum">      67 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      68 </span><span class="lineCov">          1 :   // Default sort on Smis and non-Smis.</span>
-<span class="lineNum">      69 </span><span class="lineCov">          1 :   a = [1000000000, 10000000000, 1000000001, -1000000000, -10000000000, -1000000001];</span>
-<span class="lineNum">      70 </span><span class="lineCov">          1 :   a.sort();</span>
-<span class="lineNum">      71 </span><span class="lineCov">          1 :   assertArrayEquals([-1000000000, -10000000000, -1000000001, 1000000000, 10000000000, 1000000001], a);</span>
-<span class="lineNum">      72 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      73 </span><span class="lineCov">          1 :   // Other cases are tested implicitly in TestSmiLexicographicCompare.</span>
-<span class="lineNum">      74 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">      75 </span><span class="lineCov">          1 : </span>
-<a name="76"><span class="lineNum">      76 </span><span class="lineCov">          1 : TestNumberSort();</span></a>
-<span class="lineNum">      77 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      42 </span><span class="lineNoCov">          0 :   assertArrayEquals([ 7, 45, 200 ], a);</span>
+<span class="lineNum">      43 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      44 </span><span class="lineNoCov">          0 :   // Default sort on negative numbers.</span>
+<span class="lineNum">      45 </span><span class="lineNoCov">          0 :   a = [-12345,-123,-1234,-123456];</span>
+<span class="lineNum">      46 </span><span class="lineNoCov">          0 :   a.sort();</span>
+<span class="lineNum">      47 </span><span class="lineNoCov">          0 :   assertArrayEquals([-123,-1234,-12345,-123456], a);</span>
+<span class="lineNum">      48 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      49 </span><span class="lineNoCov">          0 :   // Default sort on negative and non-negative numbers.</span>
+<span class="lineNum">      50 </span><span class="lineNoCov">          0 :   a = [123456,0,-12345,-123,123,1234,-1234,0,12345,-123456];</span>
+<span class="lineNum">      51 </span><span class="lineNoCov">          0 :   a.sort();</span>
+<span class="lineNum">      52 </span><span class="lineNoCov">          0 :   assertArrayEquals([-123,-1234,-12345,-123456,0,0,123,1234,12345,123456], a);</span>
+<span class="lineNum">      53 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      54 </span><span class="lineNoCov">          0 :   // Tricky case avoiding integer overflow in Runtime_SmiLexicographicCompare.</span>
+<span class="lineNum">      55 </span><span class="lineNoCov">          0 :   a = [9, 1000000000].sort();</span>
+<span class="lineNum">      56 </span><span class="lineNoCov">          0 :   assertArrayEquals([1000000000, 9], a);</span>
+<span class="lineNum">      57 </span><span class="lineNoCov">          0 :   a = [1000000000, 1].sort();</span>
+<span class="lineNum">      58 </span><span class="lineNoCov">          0 :   assertArrayEquals([1, 1000000000], a);</span>
+<span class="lineNum">      59 </span><span class="lineNoCov">          0 :   a = [1000000000, 0].sort();</span>
+<span class="lineNum">      60 </span><span class="lineNoCov">          0 :   assertArrayEquals([0, 1000000000], a);</span>
+<span class="lineNum">      61 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      62 </span><span class="lineNoCov">          0 :   // One string is a prefix of the other.</span>
+<span class="lineNum">      63 </span><span class="lineNoCov">          0 :   a = [1230, 123].sort();</span>
+<span class="lineNum">      64 </span><span class="lineNoCov">          0 :   assertArrayEquals([123, 1230], a);</span>
+<span class="lineNum">      65 </span><span class="lineNoCov">          0 :   a = [1231, 123].sort();</span>
+<span class="lineNum">      66 </span><span class="lineNoCov">          0 :   assertArrayEquals([123, 1231], a);</span>
+<span class="lineNum">      67 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      68 </span><span class="lineNoCov">          0 :   // Default sort on Smis and non-Smis.</span>
+<span class="lineNum">      69 </span><span class="lineNoCov">          0 :   a = [1000000000, 10000000000, 1000000001, -1000000000, -10000000000, -1000000001];</span>
+<span class="lineNum">      70 </span><span class="lineNoCov">          0 :   a.sort();</span>
+<span class="lineNum">      71 </span><span class="lineNoCov">          0 :   assertArrayEquals([-1000000000, -10000000000, -1000000001, 1000000000, 10000000000, 1000000001], a);</span>
+<span class="lineNum">      72 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      73 </span><span class="lineNoCov">          0 :   // Other cases are tested implicitly in TestSmiLexicographicCompare.</span>
+<span class="lineNum">      74 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      75 </span><span class="lineNoCov">          0 : </span>
+<a name="76"><span class="lineNum">      76 </span><span class="lineNoCov">          0 : TestNumberSort();</span></a>
+<span class="lineNum">      77 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      78 </span><span class="lineCov">          1 : function TestSmiLexicographicCompare() {</span>
 <span class="lineNum">      79 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      80 </span><span class="lineCov">          1 :   assertFalse(%_IsSmi(2147483648), 'Update test for &gt;32 bit Smi');</span>
@@ -157,60 +157,60 @@
 <span class="lineNum">      95 </span><span class="lineCov">        500 :     add(x);</span>
 <span class="lineNum">      96 </span><span class="lineCov">        500 :     add(-x);</span>
 <span class="lineNum">      97 </span><span class="lineCov">        500 :   }</span>
-<span class="lineNum">      98 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      99 </span><span class="lineCov">          1 :   var BIGGER_THAN_ANY_SMI = 10 * 1000 * 1000 * 1000;</span>
-<span class="lineNum">     100 </span><span class="lineCov">          1 :   for (var xb = 1; xb &lt;= BIGGER_THAN_ANY_SMI; xb *= 10) {</span>
-<span class="lineNum">     101 </span><span class="lineCov">          1 :     for (var xf = 0; xf &lt;= 9; xf++) {</span>
-<span class="lineNum">     102 </span><span class="lineCov">          1 :       for (var xo = -1; xo &lt;= 1; xo++) {</span>
-<span class="lineNum">     103 </span><span class="lineCov">          1 :         addSigned(xb * xf + xo);</span>
-<span class="lineNum">     104 </span><span class="lineCov">          1 :       }</span>
-<span class="lineNum">     105 </span><span class="lineCov">          1 :     }</span>
-<span class="lineNum">     106 </span><span class="lineCov">          1 :   }</span>
-<span class="lineNum">     107 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     108 </span><span class="lineCov">          1 :   for (var yb = 1; yb &lt;= BIGGER_THAN_ANY_SMI; yb *= 2) {</span>
-<span class="lineNum">     109 </span><span class="lineCov">          1 :     for (var yo = -2; yo &lt;= 2; yo++) {</span>
-<span class="lineNum">     110 </span><span class="lineCov">          1 :       addSigned(yb + yo);</span>
-<span class="lineNum">     111 </span><span class="lineCov">          1 :     }</span>
-<span class="lineNum">     112 </span><span class="lineCov">          1 :   }</span>
-<span class="lineNum">     113 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     114 </span><span class="lineCov">          1 :   for (var i = 0; i &lt; smis.length; i++) {</span>
-<span class="lineNum">     115 </span><span class="lineCov">          1 :     for (var j = 0; j &lt; smis.length; j++) {</span>
-<span class="lineNum">     116 </span><span class="lineCov">          1 :       var x = smis[i];</span>
-<span class="lineNum">     117 </span><span class="lineCov">          1 :       var y = smis[j];</span>
-<span class="lineNum">     118 </span><span class="lineCov">          1 :       var lex = %SmiLexicographicCompare(x, y);</span>
-<span class="lineNum">     119 </span><span class="lineCov">          1 :       var expected = (x == y) ? 0 : ((x + &quot;&quot;) &lt; (y + &quot;&quot;) ? -1 : 1);</span>
-<span class="lineNum">     120 </span><span class="lineCov">          1 :       assertEquals(lex, expected, x + &quot; &lt; &quot; + y);</span>
-<span class="lineNum">     121 </span><span class="lineCov">          1 :     }</span>
-<span class="lineNum">     122 </span><span class="lineCov">          1 :   }</span>
-<span class="lineNum">     123 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">     124 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     125 </span><span class="lineCov">          1 : TestSmiLexicographicCompare();</span>
-<span class="lineNum">     126 </span><span class="lineCov">          1 : </span>
-<a name="127"><span class="lineNum">     127 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">     128 </span><span class="lineCov">          1 : // Test lexicographical string sorting.</span>
+<span class="lineNum">      98 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      99 </span><span class="lineNoCov">          0 :   var BIGGER_THAN_ANY_SMI = 10 * 1000 * 1000 * 1000;</span>
+<span class="lineNum">     100 </span><span class="lineNoCov">          0 :   for (var xb = 1; xb &lt;= BIGGER_THAN_ANY_SMI; xb *= 10) {</span>
+<span class="lineNum">     101 </span><span class="lineNoCov">          0 :     for (var xf = 0; xf &lt;= 9; xf++) {</span>
+<span class="lineNum">     102 </span><span class="lineNoCov">          0 :       for (var xo = -1; xo &lt;= 1; xo++) {</span>
+<span class="lineNum">     103 </span><span class="lineNoCov">          0 :         addSigned(xb * xf + xo);</span>
+<span class="lineNum">     104 </span><span class="lineNoCov">          0 :       }</span>
+<span class="lineNum">     105 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     106 </span><span class="lineNoCov">          0 :   }</span>
+<span class="lineNum">     107 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     108 </span><span class="lineNoCov">          0 :   for (var yb = 1; yb &lt;= BIGGER_THAN_ANY_SMI; yb *= 2) {</span>
+<span class="lineNum">     109 </span><span class="lineNoCov">          0 :     for (var yo = -2; yo &lt;= 2; yo++) {</span>
+<span class="lineNum">     110 </span><span class="lineNoCov">          0 :       addSigned(yb + yo);</span>
+<span class="lineNum">     111 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     112 </span><span class="lineNoCov">          0 :   }</span>
+<span class="lineNum">     113 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     114 </span><span class="lineNoCov">          0 :   for (var i = 0; i &lt; smis.length; i++) {</span>
+<span class="lineNum">     115 </span><span class="lineNoCov">          0 :     for (var j = 0; j &lt; smis.length; j++) {</span>
+<span class="lineNum">     116 </span><span class="lineNoCov">          0 :       var x = smis[i];</span>
+<span class="lineNum">     117 </span><span class="lineNoCov">          0 :       var y = smis[j];</span>
+<span class="lineNum">     118 </span><span class="lineNoCov">          0 :       var lex = %SmiLexicographicCompare(x, y);</span>
+<span class="lineNum">     119 </span><span class="lineNoCov">          0 :       var expected = (x == y) ? 0 : ((x + &quot;&quot;) &lt; (y + &quot;&quot;) ? -1 : 1);</span>
+<span class="lineNum">     120 </span><span class="lineNoCov">          0 :       assertEquals(lex, expected, x + &quot; &lt; &quot; + y);</span>
+<span class="lineNum">     121 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     122 </span><span class="lineNoCov">          0 :   }</span>
+<span class="lineNum">     123 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     124 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     125 </span><span class="lineNoCov">          0 : TestSmiLexicographicCompare();</span>
+<span class="lineNum">     126 </span><span class="lineNoCov">          0 : </span>
+<a name="127"><span class="lineNum">     127 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">     128 </span><span class="lineNoCov">          0 : // Test lexicographical string sorting.</span>
 <span class="lineNum">     129 </span><span class="lineCov">          1 : function TestStringSort() {</span>
 <span class="lineNum">     130 </span><span class="lineCov">          1 :   var a = [ &quot;cc&quot;, &quot;c&quot;, &quot;aa&quot;, &quot;a&quot;, &quot;bb&quot;, &quot;b&quot;, &quot;ab&quot;, &quot;ac&quot; ];</span>
 <span class="lineNum">     131 </span><span class="lineCov">          1 :   a.sort();</span>
 <span class="lineNum">     132 </span><span class="lineCov">          1 :   assertArrayEquals([ &quot;a&quot;, &quot;aa&quot;, &quot;ab&quot;, &quot;ac&quot;, &quot;b&quot;, &quot;bb&quot;, &quot;c&quot;, &quot;cc&quot; ], a);</span>
 <span class="lineNum">     133 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">     134 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     135 </span><span class="lineCov">          1 : TestStringSort();</span>
-<span class="lineNum">     136 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     137 </span><span class="lineCov">          1 : </span>
-<a name="138"><span class="lineNum">     138 </span><span class="lineCov">          1 : // Test object sorting.  Calls toString on each element and sorts</span></a>
-<span class="lineNum">     139 </span><span class="lineCov">          1 : // lexicographically.</span>
+<span class="lineNum">     134 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     135 </span><span class="lineNoCov">          0 : TestStringSort();</span>
+<span class="lineNum">     136 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     137 </span><span class="lineNoCov">          0 : </span>
+<a name="138"><span class="lineNum">     138 </span><span class="lineNoCov">          0 : // Test object sorting.  Calls toString on each element and sorts</span></a>
+<span class="lineNum">     139 </span><span class="lineNoCov">          0 : // lexicographically.</span>
 <span class="lineNum">     140 </span><span class="lineCov">          1 : function TestObjectSort() {</span>
 <a name="141"><span class="lineNum">     141 </span><span class="lineCov">          2 :   var obj0 = { toString: function() { return &quot;a&quot;; } };</span></a>
 <span class="lineNum">     142 </span><span class="lineCov">          2 :   var obj1 = { toString: function() { return &quot;b&quot;; } };</span>
 <span class="lineNum">     143 </span><span class="lineCov">          2 :   var obj2 = { toString: function() { return &quot;c&quot;; } };</span>
-<span class="lineNum">     144 </span><span class="lineCov">          1 :   var a = [ obj2, obj0, obj1 ];</span>
-<span class="lineNum">     145 </span><span class="lineCov">          1 :   a.sort();</span>
-<span class="lineNum">     146 </span><span class="lineCov">          1 :   assertArrayEquals([ obj0, obj1, obj2 ], a);</span>
-<span class="lineNum">     147 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">     148 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     149 </span><span class="lineCov">          1 : TestObjectSort();</span>
-<a name="150"><span class="lineNum">     150 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">     151 </span><span class="lineCov">          1 : // Test array sorting with holes in the array.</span>
+<span class="lineNum">     144 </span><span class="lineNoCov">          0 :   var a = [ obj2, obj0, obj1 ];</span>
+<span class="lineNum">     145 </span><span class="lineNoCov">          0 :   a.sort();</span>
+<span class="lineNum">     146 </span><span class="lineNoCov">          0 :   assertArrayEquals([ obj0, obj1, obj2 ], a);</span>
+<span class="lineNum">     147 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     148 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     149 </span><span class="lineNoCov">          0 : TestObjectSort();</span>
+<a name="150"><span class="lineNum">     150 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">     151 </span><span class="lineNoCov">          0 : // Test array sorting with holes in the array.</span>
 <span class="lineNum">     152 </span><span class="lineCov">          1 : function TestArraySortingWithHoles() {</span>
 <span class="lineNum">     153 </span><span class="lineCov">          1 :   var a = [];</span>
 <span class="lineNum">     154 </span><span class="lineCov">          1 :   a[4] = &quot;18&quot;;</span>
@@ -220,31 +220,31 @@
 <span class="lineNum">     158 </span><span class="lineCov">          1 :   assertEquals(&quot;12&quot;, a[0]);</span>
 <span class="lineNum">     159 </span><span class="lineCov">          1 :   assertEquals(&quot;18&quot;, a[1]);</span>
 <span class="lineNum">     160 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">     161 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     162 </span><span class="lineCov">          1 : TestArraySortingWithHoles();</span>
-<a name="163"><span class="lineNum">     163 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">     164 </span><span class="lineCov">          1 : // Test array sorting with undefined elemeents in the array.</span>
+<span class="lineNum">     161 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     162 </span><span class="lineNoCov">          0 : TestArraySortingWithHoles();</span>
+<a name="163"><span class="lineNum">     163 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">     164 </span><span class="lineNoCov">          0 : // Test array sorting with undefined elemeents in the array.</span>
 <span class="lineNum">     165 </span><span class="lineCov">          1 : function TestArraySortingWithUndefined() {</span>
 <span class="lineNum">     166 </span><span class="lineCov">          1 :   var a = [ 3, void 0, 2 ];</span>
 <span class="lineNum">     167 </span><span class="lineCov">          1 :   a.sort();</span>
 <span class="lineNum">     168 </span><span class="lineCov">          1 :   assertArrayEquals([ 2, 3, void 0 ], a);</span>
 <span class="lineNum">     169 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">     170 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     171 </span><span class="lineCov">          1 : TestArraySortingWithUndefined();</span>
-<span class="lineNum">     172 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     173 </span><span class="lineCov">          1 : // Test that sorting using an unsound comparison function still gives a</span>
-<a name="174"><span class="lineNum">     174 </span><span class="lineCov">          1 : // sane result, i.e. it terminates without error and retains the elements</span></a>
-<span class="lineNum">     175 </span><span class="lineCov">          1 : // in the array.</span>
-<a name="176"><span class="lineNum">     176 </span><span class="lineCov">          1 : function TestArraySortingWithUnsoundComparisonFunction() {</span></a>
+<span class="lineNum">     170 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     171 </span><span class="lineNoCov">          0 : TestArraySortingWithUndefined();</span>
+<span class="lineNum">     172 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     173 </span><span class="lineNoCov">          0 : // Test that sorting using an unsound comparison function still gives a</span>
+<a name="174"><span class="lineNum">     174 </span><span class="lineNoCov">          0 : // sane result, i.e. it terminates without error and retains the elements</span></a>
+<span class="lineNum">     175 </span><span class="lineNoCov">          0 : // in the array.</span>
+<span class="lineNum">     176 </span><span class="lineCov">          1 : function TestArraySortingWithUnsoundComparisonFunction() {</span>
 <span class="lineNum">     177 </span><span class="lineCov">          1 :   var a = [ 3, void 0, 2 ];</span>
 <span class="lineNum">     178 </span><span class="lineCov">          1 :   a.sort(function(x, y) { return 1; });</span>
-<span class="lineNum">     179 </span><span class="lineCov">          1 :   a.sort();</span>
-<span class="lineNum">     180 </span><span class="lineCov">          1 :   assertArrayEquals([ 2, 3, void 0 ], a);</span>
-<span class="lineNum">     181 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">     182 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     183 </span><span class="lineCov">          1 : TestArraySortingWithUnsoundComparisonFunction();</span>
-<a name="184"><span class="lineNum">     184 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">     185 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     179 </span><span class="lineNoCov">          0 :   a.sort();</span>
+<span class="lineNum">     180 </span><span class="lineNoCov">          0 :   assertArrayEquals([ 2, 3, void 0 ], a);</span>
+<span class="lineNum">     181 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     182 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     183 </span><span class="lineNoCov">          0 : TestArraySortingWithUnsoundComparisonFunction();</span>
+<a name="184"><span class="lineNum">     184 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">     185 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     186 </span><span class="lineCov">          3 : function TestSparseNonArraySorting(length) {</span>
 <span class="lineNum">     187 </span><span class="lineCov">          3 :   assertTrue(length &gt; 101);</span>
 <span class="lineNum">     188 </span><span class="lineCov">          3 :   var obj = {length: length};</span>
@@ -261,12 +261,12 @@
 <span class="lineNum">     199 </span><span class="lineCov">          3 :   assertTrue(3 in obj, &quot;objsort undefined retained&quot;);</span>
 <span class="lineNum">     200 </span><span class="lineCov">          3 :   assertFalse(4 in obj, &quot;objsort non-existing retained&quot;);</span>
 <span class="lineNum">     201 </span><span class="lineCov">          3 : }</span>
-<span class="lineNum">     202 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     203 </span><span class="lineCov">          1 : TestSparseNonArraySorting(5000);</span>
-<span class="lineNum">     204 </span><span class="lineCov">          1 : TestSparseNonArraySorting(500000);</span>
-<span class="lineNum">     205 </span><span class="lineCov">          1 : TestSparseNonArraySorting(Math.pow(2, 31) + 1);</span>
-<a name="206"><span class="lineNum">     206 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">     207 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     202 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     203 </span><span class="lineNoCov">          0 : TestSparseNonArraySorting(5000);</span>
+<span class="lineNum">     204 </span><span class="lineNoCov">          0 : TestSparseNonArraySorting(500000);</span>
+<span class="lineNum">     205 </span><span class="lineNoCov">          0 : TestSparseNonArraySorting(Math.pow(2, 31) + 1);</span>
+<a name="206"><span class="lineNum">     206 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">     207 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     208 </span><span class="lineCov">          5 : function TestArrayLongerLength(length) {</span>
 <span class="lineNum">     209 </span><span class="lineCov">          5 :   var x = new Array(4);</span>
 <span class="lineNum">     210 </span><span class="lineCov">          5 :   x[0] = 42;</span>
@@ -278,14 +278,14 @@
 <span class="lineNum">     216 </span><span class="lineCov">          5 :   assertEquals(42, x[1], &quot;longlength second&quot;);</span>
 <span class="lineNum">     217 </span><span class="lineCov">          5 :   assertFalse(2 in x,&quot;longlength third&quot;);</span>
 <span class="lineNum">     218 </span><span class="lineCov">          5 : }</span>
-<span class="lineNum">     219 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     220 </span><span class="lineCov">          1 : TestArrayLongerLength(4);</span>
-<span class="lineNum">     221 </span><span class="lineCov">          1 : TestArrayLongerLength(10);</span>
-<span class="lineNum">     222 </span><span class="lineCov">          1 : TestArrayLongerLength(1000);</span>
-<span class="lineNum">     223 </span><span class="lineCov">          1 : TestArrayLongerLength(500000);</span>
-<span class="lineNum">     224 </span><span class="lineCov">          1 : TestArrayLongerLength(Math.pow(2,32) - 1);</span>
-<a name="225"><span class="lineNum">     225 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">     226 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     219 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     220 </span><span class="lineNoCov">          0 : TestArrayLongerLength(4);</span>
+<span class="lineNum">     221 </span><span class="lineNoCov">          0 : TestArrayLongerLength(10);</span>
+<span class="lineNum">     222 </span><span class="lineNoCov">          0 : TestArrayLongerLength(1000);</span>
+<span class="lineNum">     223 </span><span class="lineNoCov">          0 : TestArrayLongerLength(500000);</span>
+<span class="lineNum">     224 </span><span class="lineNoCov">          0 : TestArrayLongerLength(Math.pow(2,32) - 1);</span>
+<a name="225"><span class="lineNum">     225 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">     226 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     227 </span><span class="lineCov">          5 : function TestNonArrayLongerLength(length) {</span>
 <span class="lineNum">     228 </span><span class="lineCov">          5 :   var x = {};</span>
 <span class="lineNum">     229 </span><span class="lineCov">          5 :   x[0] = 42;</span>
@@ -297,38 +297,38 @@
 <span class="lineNum">     235 </span><span class="lineCov">          5 :   assertEquals(42, x[1], &quot;longlength second&quot;);</span>
 <span class="lineNum">     236 </span><span class="lineCov">          5 :   assertFalse(2 in x,&quot;longlength third&quot;);</span>
 <span class="lineNum">     237 </span><span class="lineCov">          5 : }</span>
-<span class="lineNum">     238 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     239 </span><span class="lineCov">          1 : TestNonArrayLongerLength(4);</span>
-<span class="lineNum">     240 </span><span class="lineCov">          1 : TestNonArrayLongerLength(10);</span>
-<span class="lineNum">     241 </span><span class="lineCov">          1 : TestNonArrayLongerLength(1000);</span>
-<span class="lineNum">     242 </span><span class="lineCov">          1 : TestNonArrayLongerLength(500000);</span>
-<span class="lineNum">     243 </span><span class="lineCov">          1 : TestNonArrayLongerLength(Math.pow(2,32) - 1);</span>
-<a name="244"><span class="lineNum">     244 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">     245 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     238 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     239 </span><span class="lineNoCov">          0 : TestNonArrayLongerLength(4);</span>
+<span class="lineNum">     240 </span><span class="lineNoCov">          0 : TestNonArrayLongerLength(10);</span>
+<span class="lineNum">     241 </span><span class="lineNoCov">          0 : TestNonArrayLongerLength(1000);</span>
+<span class="lineNum">     242 </span><span class="lineNoCov">          0 : TestNonArrayLongerLength(500000);</span>
+<span class="lineNum">     243 </span><span class="lineNoCov">          0 : TestNonArrayLongerLength(Math.pow(2,32) - 1);</span>
+<a name="244"><span class="lineNum">     244 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">     245 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     246 </span><span class="lineCov">          1 : function TestNonArrayWithAccessors() {</span>
 <span class="lineNum">     247 </span><span class="lineCov">          1 :   // Regression test for issue 346, more info at URL</span>
 <span class="lineNum">     248 </span><span class="lineCov">          1 :   // http://code.google.com/p/v8/issues/detail?id=346</span>
 <span class="lineNum">     249 </span><span class="lineCov">          1 :   // Reported by nth10sd, test based on this report.</span>
-<a name="250"><span class="lineNum">     250 </span><span class="lineCov">          1 :   var x = {};</span></a>
-<a name="251"><span class="lineNum">     251 </span><span class="lineCov">          1 :   x[0] = 42;</span></a>
+<span class="lineNum">     250 </span><span class="lineCov">          1 :   var x = {};</span>
+<span class="lineNum">     251 </span><span class="lineCov">          1 :   x[0] = 42;</span>
 <span class="lineNum">     252 </span><span class="lineCov">          4 :   x.__defineGetter__(&quot;1&quot;, function(){return this.foo;});</span>
 <span class="lineNum">     253 </span><span class="lineCov">          3 :   x.__defineSetter__(&quot;1&quot;, function(val){this.foo = val;});</span>
-<span class="lineNum">     254 </span><span class="lineCov">          1 :   x[1] = 49</span>
-<span class="lineNum">     255 </span><span class="lineCov">          1 :   x[3] = 37;</span>
-<span class="lineNum">     256 </span><span class="lineCov">          1 :   x.length = 4;</span>
-<span class="lineNum">     257 </span><span class="lineCov">          1 :   Array.prototype.sort.call(x);</span>
-<span class="lineNum">     258 </span><span class="lineCov">          1 :   // Behavior of sort with accessors is undefined.  This accessor is</span>
-<span class="lineNum">     259 </span><span class="lineCov">          1 :   // well-behaved (acts like a normal property), so it should work.</span>
-<span class="lineNum">     260 </span><span class="lineCov">          1 :   assertEquals(4, x.length, &quot;sortaccessors length&quot;);</span>
-<span class="lineNum">     261 </span><span class="lineCov">          1 :   assertEquals(37, x[0], &quot;sortaccessors first&quot;);</span>
-<span class="lineNum">     262 </span><span class="lineCov">          1 :   assertEquals(42, x[1], &quot;sortaccessors second&quot;);</span>
-<span class="lineNum">     263 </span><span class="lineCov">          1 :   assertEquals(49, x[2], &quot;sortaccessors third&quot;)</span>
-<span class="lineNum">     264 </span><span class="lineCov">          1 :   assertFalse(3 in x, &quot;sortaccessors fourth&quot;);</span>
-<span class="lineNum">     265 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">     266 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     267 </span><span class="lineCov">          1 : TestNonArrayWithAccessors();</span>
-<a name="268"><span class="lineNum">     268 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">     269 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     254 </span><span class="lineNoCov">          0 :   x[1] = 49</span>
+<span class="lineNum">     255 </span><span class="lineNoCov">          0 :   x[3] = 37;</span>
+<span class="lineNum">     256 </span><span class="lineNoCov">          0 :   x.length = 4;</span>
+<span class="lineNum">     257 </span><span class="lineNoCov">          0 :   Array.prototype.sort.call(x);</span>
+<span class="lineNum">     258 </span><span class="lineNoCov">          0 :   // Behavior of sort with accessors is undefined.  This accessor is</span>
+<span class="lineNum">     259 </span><span class="lineNoCov">          0 :   // well-behaved (acts like a normal property), so it should work.</span>
+<span class="lineNum">     260 </span><span class="lineNoCov">          0 :   assertEquals(4, x.length, &quot;sortaccessors length&quot;);</span>
+<span class="lineNum">     261 </span><span class="lineNoCov">          0 :   assertEquals(37, x[0], &quot;sortaccessors first&quot;);</span>
+<span class="lineNum">     262 </span><span class="lineNoCov">          0 :   assertEquals(42, x[1], &quot;sortaccessors second&quot;);</span>
+<span class="lineNum">     263 </span><span class="lineNoCov">          0 :   assertEquals(49, x[2], &quot;sortaccessors third&quot;)</span>
+<span class="lineNum">     264 </span><span class="lineNoCov">          0 :   assertFalse(3 in x, &quot;sortaccessors fourth&quot;);</span>
+<span class="lineNum">     265 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     266 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     267 </span><span class="lineNoCov">          0 : TestNonArrayWithAccessors();</span>
+<a name="268"><span class="lineNum">     268 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">     269 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     270 </span><span class="lineCov">          2 : function TestInheritedElementSort(depth) {</span>
 <span class="lineNum">     271 </span><span class="lineCov">          2 :   var length = depth * 2 + 3;</span>
 <span class="lineNum">     272 </span><span class="lineCov">          2 :   var obj = {length: length};</span>
@@ -340,27 +340,27 @@
 <span class="lineNum">     278 </span><span class="lineCov">          2 :     obj[i + depth + 1] = depth - i;</span>
 <span class="lineNum">     279 </span><span class="lineCov">          2 :     obj = newObj;</span>
 <span class="lineNum">     280 </span><span class="lineCov">          2 :   }</span>
-<a name="281"><span class="lineNum">     281 </span><span class="lineCov">          2 :   // expected (inherited) object: [undef1,...undefdepth,hole,1,...,depth,0,hole]</span></a>
+<span class="lineNum">     281 </span><span class="lineCov">          2 :   // expected (inherited) object: [undef1,...undefdepth,hole,1,...,depth,0,hole]</span>
 <span class="lineNum">     282 </span><span class="lineCov">          2 : </span>
 <span class="lineNum">     283 </span><span class="lineCov">         40 :   Array.prototype.sort.call(obj, function(a,b) { return (b &lt; a) - (a &lt; b); });</span>
-<span class="lineNum">     284 </span><span class="lineCov">          2 :   // expected result: [0,1,...,depth,undef1,...,undefdepth,undef,hole]</span>
-<span class="lineNum">     285 </span><span class="lineCov">          2 :   var name = &quot;SortInherit(&quot;+depth+&quot;)-&quot;;</span>
-<span class="lineNum">     286 </span><span class="lineCov">          2 : </span>
-<span class="lineNum">     287 </span><span class="lineCov">          2 :   assertEquals(length, obj.length, name+&quot;length&quot;);</span>
-<span class="lineNum">     288 </span><span class="lineCov">          2 :   for (var i = 0; i &lt;= depth; i++) {</span>
-<span class="lineNum">     289 </span><span class="lineCov">          2 :     assertTrue(obj.hasOwnProperty(i), name + &quot;hasvalue&quot; + i);</span>
-<span class="lineNum">     290 </span><span class="lineCov">          2 :     assertEquals(i, obj[i], name + &quot;value&quot; + i);</span>
-<span class="lineNum">     291 </span><span class="lineCov">          2 :   }</span>
-<span class="lineNum">     292 </span><span class="lineCov">          2 :   for (var i = depth + 1; i &lt;= depth * 2 + 1; i++) {</span>
-<span class="lineNum">     293 </span><span class="lineCov">          2 :     assertEquals(undefined, obj[i], name + &quot;undefined&quot; + i);</span>
-<span class="lineNum">     294 </span><span class="lineCov">          2 :     assertTrue(obj.hasOwnProperty(i), name + &quot;hasundefined&quot; + i);</span>
-<span class="lineNum">     295 </span><span class="lineCov">          2 :   }</span>
-<span class="lineNum">     296 </span><span class="lineCov">          2 :   assertTrue(!obj.hasOwnProperty(depth * 2 + 2), name + &quot;hashole&quot;);</span>
-<span class="lineNum">     297 </span><span class="lineCov">          2 : }</span>
-<span class="lineNum">     298 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     299 </span><span class="lineCov">          1 : TestInheritedElementSort(5);</span>
-<a name="300"><span class="lineNum">     300 </span><span class="lineCov">          1 : TestInheritedElementSort(15);</span></a>
-<span class="lineNum">     301 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     284 </span><span class="lineNoCov">          0 :   // expected result: [0,1,...,depth,undef1,...,undefdepth,undef,hole]</span>
+<span class="lineNum">     285 </span><span class="lineNoCov">          0 :   var name = &quot;SortInherit(&quot;+depth+&quot;)-&quot;;</span>
+<span class="lineNum">     286 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     287 </span><span class="lineNoCov">          0 :   assertEquals(length, obj.length, name+&quot;length&quot;);</span>
+<span class="lineNum">     288 </span><span class="lineNoCov">          0 :   for (var i = 0; i &lt;= depth; i++) {</span>
+<span class="lineNum">     289 </span><span class="lineNoCov">          0 :     assertTrue(obj.hasOwnProperty(i), name + &quot;hasvalue&quot; + i);</span>
+<span class="lineNum">     290 </span><span class="lineNoCov">          0 :     assertEquals(i, obj[i], name + &quot;value&quot; + i);</span>
+<span class="lineNum">     291 </span><span class="lineNoCov">          0 :   }</span>
+<span class="lineNum">     292 </span><span class="lineNoCov">          0 :   for (var i = depth + 1; i &lt;= depth * 2 + 1; i++) {</span>
+<span class="lineNum">     293 </span><span class="lineNoCov">          0 :     assertEquals(undefined, obj[i], name + &quot;undefined&quot; + i);</span>
+<span class="lineNum">     294 </span><span class="lineNoCov">          0 :     assertTrue(obj.hasOwnProperty(i), name + &quot;hasundefined&quot; + i);</span>
+<span class="lineNum">     295 </span><span class="lineNoCov">          0 :   }</span>
+<span class="lineNum">     296 </span><span class="lineNoCov">          0 :   assertTrue(!obj.hasOwnProperty(depth * 2 + 2), name + &quot;hashole&quot;);</span>
+<span class="lineNum">     297 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     298 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     299 </span><span class="lineNoCov">          0 : TestInheritedElementSort(5);</span>
+<a name="300"><span class="lineNum">     300 </span><span class="lineNoCov">          0 : TestInheritedElementSort(15);</span></a>
+<span class="lineNum">     301 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     302 </span><span class="lineCov">          3 : function TestSparseInheritedElementSort(scale) {</span>
 <span class="lineNum">     303 </span><span class="lineCov">          3 :   var length = scale * 10;</span>
 <span class="lineNum">     304 </span><span class="lineCov">          3 :   var x = {length: length};</span>
@@ -391,11 +391,11 @@
 <span class="lineNum">     329 </span><span class="lineCov">          3 :     }</span>
 <span class="lineNum">     330 </span><span class="lineCov">          3 :   }</span>
 <span class="lineNum">     331 </span><span class="lineCov">          3 : }</span>
-<span class="lineNum">     332 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     333 </span><span class="lineCov">          1 : TestSparseInheritedElementSort(10);</span>
-<span class="lineNum">     334 </span><span class="lineCov">          1 : TestSparseInheritedElementSort(100);</span>
-<a name="335"><span class="lineNum">     335 </span><span class="lineCov">          1 : TestSparseInheritedElementSort(1000);</span></a>
-<span class="lineNum">     336 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     332 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     333 </span><span class="lineNoCov">          0 : TestSparseInheritedElementSort(10);</span>
+<span class="lineNum">     334 </span><span class="lineNoCov">          0 : TestSparseInheritedElementSort(100);</span>
+<a name="335"><span class="lineNum">     335 </span><span class="lineNoCov">          0 : TestSparseInheritedElementSort(1000);</span></a>
+<span class="lineNum">     336 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     337 </span><span class="lineCov">          1 : function TestSpecialCasesInheritedElementSort() {</span>
 <span class="lineNum">     338 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     339 </span><span class="lineCov">          1 :   var x = {</span>
@@ -449,24 +449,24 @@
 <span class="lineNum">     387 </span><span class="lineCov">          1 :   assertFalse(x.hasOwnProperty(12000), name + &quot;has12000&quot;);</span>
 <span class="lineNum">     388 </span><span class="lineCov">          1 :   assertEquals(&quot;XX&quot;, x[12000], name + &quot;XX12000&quot;);</span>
 <span class="lineNum">     389 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">     390 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     391 </span><span class="lineCov">          1 : TestSpecialCasesInheritedElementSort();</span>
-<span class="lineNum">     392 </span><span class="lineCov">          1 : </span>
-<a name="393"><span class="lineNum">     393 </span><span class="lineCov">          1 : // Test that sort calls compare function with global object as receiver,</span></a>
-<span class="lineNum">     394 </span><span class="lineCov">          1 : // and with only elements of the array as arguments.</span>
+<span class="lineNum">     390 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     391 </span><span class="lineNoCov">          0 : TestSpecialCasesInheritedElementSort();</span>
+<span class="lineNum">     392 </span><span class="lineNoCov">          0 : </span>
+<a name="393"><span class="lineNum">     393 </span><span class="lineNoCov">          0 : // Test that sort calls compare function with global object as receiver,</span></a>
+<span class="lineNum">     394 </span><span class="lineNoCov">          0 : // and with only elements of the array as arguments.</span>
 <span class="lineNum">     395 </span><span class="lineCov">         10 : function o(v) {</span>
 <span class="lineNum">     396 </span><span class="lineCov">         10 :   return {__proto__: o.prototype, val: v};</span>
 <span class="lineNum">     397 </span><span class="lineCov">         10 : }</span>
-<a name="398"><span class="lineNum">     398 </span><span class="lineCov">          1 : var arr = [o(1), o(2), o(4), o(8), o(16), o(32), o(64), o(128), o(256), o(-0)];</span></a>
-<span class="lineNum">     399 </span><span class="lineCov">          1 : var global = this;</span>
+<a name="398"><span class="lineNum">     398 </span><span class="lineNoCov">          0 : var arr = [o(1), o(2), o(4), o(8), o(16), o(32), o(64), o(128), o(256), o(-0)];</span></a>
+<span class="lineNum">     399 </span><span class="lineNoCov">          0 : var global = this;</span>
 <span class="lineNum">     400 </span><span class="lineCov">         17 : function cmpTest(a, b) {</span>
 <span class="lineNum">     401 </span><span class="lineCov">         17 :   assertEquals(global, this);</span>
 <span class="lineNum">     402 </span><span class="lineCov">         17 :   assertTrue(a instanceof o);</span>
 <span class="lineNum">     403 </span><span class="lineCov">         17 :   assertTrue(b instanceof o);</span>
 <span class="lineNum">     404 </span><span class="lineCov">         17 :   return a.val - b.val;</span>
 <span class="lineNum">     405 </span><span class="lineCov">         17 : }</span>
-<a name="406"><span class="lineNum">     406 </span><span class="lineCov">          1 : arr.sort(cmpTest);</span></a>
-<span class="lineNum">     407 </span><span class="lineCov">          1 : </span>
+<a name="406"><span class="lineNum">     406 </span><span class="lineNoCov">          0 : arr.sort(cmpTest);</span></a>
+<span class="lineNum">     407 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     408 </span><span class="lineCov">          1 : function TestSortDoesNotDependOnObjectPrototypeHasOwnProperty() {</span>
 <span class="lineNum">     409 </span><span class="lineCov">          1 :   Array.prototype.sort.call({</span>
 <span class="lineNum">     410 </span><span class="lineCov">          1 :     __proto__: { hasOwnProperty: null, 0: 1 },</span>
@@ -475,12 +475,12 @@
 <a name="413"><span class="lineNum">     413 </span><span class="lineCov">          1 : </span></a>
 <span class="lineNum">     414 </span><span class="lineCov">          1 :   var arr = new Array(2);</span>
 <span class="lineNum">     415 </span><span class="lineCov">          2 :   Object.defineProperty(arr, 0, { get: function() {}, set: function() {} });</span>
-<span class="lineNum">     416 </span><span class="lineCov">          1 :   arr.hasOwnProperty = null;</span>
-<span class="lineNum">     417 </span><span class="lineCov">          1 :   arr.sort();</span>
-<span class="lineNum">     418 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">     419 </span><span class="lineCov">          1 : </span>
-<a name="420"><span class="lineNum">     420 </span><span class="lineCov">          1 : TestSortDoesNotDependOnObjectPrototypeHasOwnProperty();</span></a>
-<span class="lineNum">     421 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     416 </span><span class="lineNoCov">          0 :   arr.hasOwnProperty = null;</span>
+<span class="lineNum">     417 </span><span class="lineNoCov">          0 :   arr.sort();</span>
+<span class="lineNum">     418 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     419 </span><span class="lineNoCov">          0 : </span>
+<a name="420"><span class="lineNum">     420 </span><span class="lineNoCov">          0 : TestSortDoesNotDependOnObjectPrototypeHasOwnProperty();</span></a>
+<span class="lineNum">     421 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     422 </span><span class="lineCov">          1 : function TestSortDoesNotDependOnArrayPrototypePush() {</span>
 <span class="lineNum">     423 </span><span class="lineCov">          1 :   // InsertionSort is used for arrays which length &lt;= 22</span>
 <a name="424"><span class="lineNum">     424 </span><span class="lineCov">          1 :   var arr = [];</span></a>
@@ -488,17 +488,17 @@
 <span class="lineNum">     426 </span><span class="lineCov">          1 :   Array.prototype.push = function() {</span>
 <span class="lineNum">     427 </span><span class="lineNoCov">          0 :     fail('Should not call push');</span>
 <span class="lineNum">     428 </span><span class="lineCov">          1 :   };</span>
-<span class="lineNum">     429 </span><span class="lineCov">          1 :   arr.sort();</span>
-<span class="lineNum">     430 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     431 </span><span class="lineCov">          1 :   // Quicksort is used for arrays which length &gt; 22</span>
-<span class="lineNum">     432 </span><span class="lineCov">          1 :   // Arrays which length &gt; 1000 guarantee GetThirdIndex is executed</span>
-<span class="lineNum">     433 </span><span class="lineCov">          1 :   arr = [];</span>
-<span class="lineNum">     434 </span><span class="lineCov">          1 :   for (var i = 0; i &lt; 2000; ++i) arr[i] = {};</span>
-<span class="lineNum">     435 </span><span class="lineCov">          1 :   arr.sort();</span>
-<span class="lineNum">     436 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">     437 </span><span class="lineCov">          1 : </span>
-<a name="438"><span class="lineNum">     438 </span><span class="lineCov">          1 : TestSortDoesNotDependOnArrayPrototypePush();</span></a>
-<span class="lineNum">     439 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     429 </span><span class="lineNoCov">          0 :   arr.sort();</span>
+<span class="lineNum">     430 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     431 </span><span class="lineNoCov">          0 :   // Quicksort is used for arrays which length &gt; 22</span>
+<span class="lineNum">     432 </span><span class="lineNoCov">          0 :   // Arrays which length &gt; 1000 guarantee GetThirdIndex is executed</span>
+<span class="lineNum">     433 </span><span class="lineNoCov">          0 :   arr = [];</span>
+<span class="lineNum">     434 </span><span class="lineNoCov">          0 :   for (var i = 0; i &lt; 2000; ++i) arr[i] = {};</span>
+<span class="lineNum">     435 </span><span class="lineNoCov">          0 :   arr.sort();</span>
+<span class="lineNum">     436 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     437 </span><span class="lineNoCov">          0 : </span>
+<a name="438"><span class="lineNum">     438 </span><span class="lineNoCov">          0 : TestSortDoesNotDependOnArrayPrototypePush();</span></a>
+<span class="lineNum">     439 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     440 </span><span class="lineCov">          1 : function TestSortDoesNotDependOnArrayPrototypeSort() {</span>
 <span class="lineNum">     441 </span><span class="lineCov">          1 :   var arr = [];</span>
 <a name="442"><span class="lineNum">     442 </span><span class="lineCov">          1 :   for (var i = 0; i &lt; 2000; i++) arr[i] = {};</span></a>
@@ -506,13 +506,13 @@
 <span class="lineNum">     444 </span><span class="lineCov">          1 :   Array.prototype.sort = function() {</span>
 <span class="lineNum">     445 </span><span class="lineNoCov">          0 :     fail('Should not call sort');</span>
 <span class="lineNum">     446 </span><span class="lineCov">          1 :   };</span>
-<span class="lineNum">     447 </span><span class="lineCov">          1 :   sortfn.call(arr);</span>
-<span class="lineNum">     448 </span><span class="lineCov">          1 :   // Restore for the next test</span>
-<span class="lineNum">     449 </span><span class="lineCov">          1 :   Array.prototype.sort = sortfn;</span>
-<span class="lineNum">     450 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">     451 </span><span class="lineCov">          1 : </span>
-<a name="452"><span class="lineNum">     452 </span><span class="lineCov">          1 : TestSortDoesNotDependOnArrayPrototypeSort();</span></a>
-<span class="lineNum">     453 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     447 </span><span class="lineNoCov">          0 :   sortfn.call(arr);</span>
+<span class="lineNum">     448 </span><span class="lineNoCov">          0 :   // Restore for the next test</span>
+<span class="lineNum">     449 </span><span class="lineNoCov">          0 :   Array.prototype.sort = sortfn;</span>
+<span class="lineNum">     450 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     451 </span><span class="lineNoCov">          0 : </span>
+<a name="452"><span class="lineNum">     452 </span><span class="lineNoCov">          0 : TestSortDoesNotDependOnArrayPrototypeSort();</span></a>
+<span class="lineNum">     453 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     454 </span><span class="lineCov">          1 : function TestSortToObject() {</span>
 <span class="lineNum">     455 </span><span class="lineCov">          1 :   Number.prototype[0] = 5;</span>
 <span class="lineNum">     456 </span><span class="lineCov">          1 :   Number.prototype[1] = 4;</span>
@@ -525,8 +525,8 @@
 <span class="lineNum">     463 </span><span class="lineCov">          1 :   // The following would throw if ToObject weren't called.</span>
 <span class="lineNum">     464 </span><span class="lineCov">          1 :   assertEquals(0, Number(Array.prototype.sort.call(0)));</span>
 <span class="lineNum">     465 </span><span class="lineCov">          1 : }</span>
-<a name="466"><span class="lineNum">     466 </span><span class="lineCov">          1 : TestSortToObject();</span></a>
-<span class="lineNum">     467 </span><span class="lineCov">          1 : </span>
+<a name="466"><span class="lineNum">     466 </span><span class="lineNoCov">          0 : TestSortToObject();</span></a>
+<span class="lineNum">     467 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     468 </span><span class="lineCov">          1 : function TestSortOnProxy() {</span>
 <span class="lineNum">     469 </span><span class="lineCov">          1 :   {</span>
 <span class="lineNum">     470 </span><span class="lineCov">          1 :     var p = new Proxy([2,1,3], {});</span>
@@ -535,38 +535,38 @@
 <a name="473"><span class="lineNum">     473 </span><span class="lineCov">          1 : </span></a>
 <span class="lineNum">     474 </span><span class="lineCov">          1 :   {</span>
 <span class="lineNum">     475 </span><span class="lineCov">          1 :     function f() { return arguments };</span>
-<span class="lineNum">     476 </span><span class="lineCov">          1 :     var a = f(2,1,3);</span>
-<span class="lineNum">     477 </span><span class="lineCov">          1 :     a.__proto__ = new Proxy({}, {});</span>
-<span class="lineNum">     478 </span><span class="lineCov">          1 :     assertEquals([1,2,3], [...(Array.prototype.sort.apply(a))]);</span>
-<span class="lineNum">     479 </span><span class="lineCov">          1 :   }</span>
-<span class="lineNum">     480 </span><span class="lineCov">          1 : }</span>
-<a name="481"><span class="lineNum">     481 </span><span class="lineCov">          1 : TestSortOnProxy();</span></a>
-<span class="lineNum">     482 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     476 </span><span class="lineNoCov">          0 :     var a = f(2,1,3);</span>
+<span class="lineNum">     477 </span><span class="lineNoCov">          0 :     a.__proto__ = new Proxy({}, {});</span>
+<span class="lineNum">     478 </span><span class="lineNoCov">          0 :     assertEquals([1,2,3], [...(Array.prototype.sort.apply(a))]);</span>
+<span class="lineNum">     479 </span><span class="lineNoCov">          0 :   }</span>
+<span class="lineNum">     480 </span><span class="lineNoCov">          0 : }</span>
+<a name="481"><span class="lineNum">     481 </span><span class="lineNoCov">          0 : TestSortOnProxy();</span></a>
+<span class="lineNum">     482 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     483 </span><span class="lineCov">          1 : function TestSortOnNonExtensible() {</span>
 <span class="lineNum">     484 </span><span class="lineCov">          1 :   {</span>
 <span class="lineNum">     485 </span><span class="lineCov">          1 :     var arr = [1,,2];</span>
 <span class="lineNum">     486 </span><span class="lineCov">          1 :     Object.preventExtensions(arr);</span>
 <span class="lineNum">     487 </span><span class="lineCov">          1 :     assertThrows(() =&gt; arr.sort(), TypeError);</span>
-<span class="lineNum">     488 </span><span class="lineCov">          1 :     assertEquals(arr, [1,,2]);</span>
-<span class="lineNum">     489 </span><span class="lineCov">          1 :   }</span>
-<span class="lineNum">     490 </span><span class="lineCov">          1 :   {</span>
-<a name="491"><span class="lineNum">     491 </span><span class="lineCov">          1 :     var arr = [1,,undefined];</span></a>
-<span class="lineNum">     492 </span><span class="lineCov">          1 :     Object.preventExtensions(arr);</span>
+<span class="lineNum">     488 </span><span class="lineNoCov">          0 :     assertEquals(arr, [1,,2]);</span>
+<span class="lineNum">     489 </span><span class="lineNoCov">          0 :   }</span>
+<span class="lineNum">     490 </span><span class="lineNoCov">          0 :   {</span>
+<a name="491"><span class="lineNum">     491 </span><span class="lineNoCov">          0 :     var arr = [1,,undefined];</span></a>
+<span class="lineNum">     492 </span><span class="lineNoCov">          0 :     Object.preventExtensions(arr);</span>
 <span class="lineNum">     493 </span><span class="lineCov">          1 :     assertThrows(() =&gt; arr.sort(), TypeError);</span>
-<span class="lineNum">     494 </span><span class="lineCov">          1 :     assertFalse(arr.hasOwnProperty(1));</span>
-<span class="lineNum">     495 </span><span class="lineCov">          1 :     assertEquals(arr, [1,,undefined]);</span>
-<span class="lineNum">     496 </span><span class="lineCov">          1 :   }</span>
-<span class="lineNum">     497 </span><span class="lineCov">          1 :   {</span>
-<span class="lineNum">     498 </span><span class="lineCov">          1 :     var arr = [1,undefined,2];</span>
-<span class="lineNum">     499 </span><span class="lineCov">          1 :     Object.preventExtensions(arr);</span>
-<span class="lineNum">     500 </span><span class="lineCov">          1 :     arr.sort();</span>
-<span class="lineNum">     501 </span><span class="lineCov">          1 :     assertEquals(arr, [1,2,undefined]);</span>
-<span class="lineNum">     502 </span><span class="lineCov">          1 :   }</span>
-<span class="lineNum">     503 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">     504 </span><span class="lineCov">          1 : TestSortOnNonExtensible();</span>
-<span class="lineNum">     505 </span><span class="lineCov">          1 : </span>
-<a name="506"><span class="lineNum">     506 </span><span class="lineCov">          1 : </span></a>
-<a name="507"><span class="lineNum">     507 </span><span class="lineCov">          1 : // Test special prototypes</span></a>
+<span class="lineNum">     494 </span><span class="lineNoCov">          0 :     assertFalse(arr.hasOwnProperty(1));</span>
+<span class="lineNum">     495 </span><span class="lineNoCov">          0 :     assertEquals(arr, [1,,undefined]);</span>
+<span class="lineNum">     496 </span><span class="lineNoCov">          0 :   }</span>
+<span class="lineNum">     497 </span><span class="lineNoCov">          0 :   {</span>
+<span class="lineNum">     498 </span><span class="lineNoCov">          0 :     var arr = [1,undefined,2];</span>
+<span class="lineNum">     499 </span><span class="lineNoCov">          0 :     Object.preventExtensions(arr);</span>
+<span class="lineNum">     500 </span><span class="lineNoCov">          0 :     arr.sort();</span>
+<span class="lineNum">     501 </span><span class="lineNoCov">          0 :     assertEquals(arr, [1,2,undefined]);</span>
+<span class="lineNum">     502 </span><span class="lineNoCov">          0 :   }</span>
+<span class="lineNum">     503 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     504 </span><span class="lineNoCov">          0 : TestSortOnNonExtensible();</span>
+<span class="lineNum">     505 </span><span class="lineNoCov">          0 : </span>
+<a name="506"><span class="lineNum">     506 </span><span class="lineNoCov">          0 : </span></a>
+<a name="507"><span class="lineNum">     507 </span><span class="lineNoCov">          0 : // Test special prototypes</span></a>
 <span class="lineNum">     508 </span><span class="lineCov">          1 : (function testSortSpecialPrototypes() {</span>
 <span class="lineNum">     509 </span><span class="lineCov">         20 :   function test(proto, length, expected) {</span>
 <span class="lineNum">     510 </span><span class="lineCov">         20 :     var result = {</span>
@@ -579,7 +579,7 @@
 <span class="lineNum">     517 </span><span class="lineCov">         20 :       assertEquals(expected[i], result[i], &quot;result[&quot;+i+&quot;]&quot;);</span>
 <span class="lineNum">     518 </span><span class="lineCov">         20 :     }</span>
 <a name="519"><span class="lineNum">     519 </span><span class="lineCov">         20 :   }</span></a>
-<span class="lineNum">     520 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     520 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     521 </span><span class="lineCov">          1 :   (function fast() {</span>
 <span class="lineNum">     522 </span><span class="lineCov">          1 :     // Fast elements, non-empty</span>
 <span class="lineNum">     523 </span><span class="lineCov">          1 :     test(arguments, 0, []);</span>
@@ -593,7 +593,7 @@
 <span class="lineNum">     531 </span><span class="lineCov">          1 :     arguments[0] = undefined;</span>
 <span class="lineNum">     532 </span><span class="lineCov">          1 :     test(arguments, 2, [1, undefined]);</span>
 <a name="533"><span class="lineNum">     533 </span><span class="lineCov">          1 :   })(2, 1, 4, 3);</span></a>
-<span class="lineNum">     534 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     534 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     535 </span><span class="lineCov">          1 :   (function fastSloppy(a) {</span>
 <span class="lineNum">     536 </span><span class="lineCov">          1 :     // Fast sloppy</span>
 <span class="lineNum">     537 </span><span class="lineCov">          1 :     test(arguments, 0, []);</span>
@@ -604,18 +604,18 @@
 <span class="lineNum">     542 </span><span class="lineCov">          1 :     arguments[0] = undefined;</span>
 <span class="lineNum">     543 </span><span class="lineCov">          1 :     test(arguments, 2, [1, undefined]);</span>
 <a name="544"><span class="lineNum">     544 </span><span class="lineCov">          1 :   })(2, 1);</span></a>
-<span class="lineNum">     545 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     545 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     546 </span><span class="lineCov">          1 :   (function fastEmpty() {</span>
 <span class="lineNum">     547 </span><span class="lineCov">          1 :     test(arguments, 0, []);</span>
 <span class="lineNum">     548 </span><span class="lineCov">          1 :     test(arguments, 1, [undefined]);</span>
 <span class="lineNum">     549 </span><span class="lineCov">          1 :     test(arguments, 2, [undefined, undefined]);</span>
 <a name="550"><span class="lineNum">     550 </span><span class="lineCov">          1 :   })();</span></a>
-<span class="lineNum">     551 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     551 </span><span class="lineNoCov">          0 : </span>
 <a name="552"><span class="lineNum">     552 </span><span class="lineCov">          1 :   (function stringWrapper() {</span></a>
 <span class="lineNum">     553 </span><span class="lineCov">          1 :     // cannot redefine string wrapper properties</span>
 <span class="lineNum">     554 </span><span class="lineCov">          1 :     assertThrows(() =&gt; test(new String('cba'), 3, []), TypeError);</span>
-<a name="555"><span class="lineNum">     555 </span><span class="lineCov">          1 :   })();</span></a>
-<span class="lineNum">     556 </span><span class="lineCov">          1 : </span>
+<a name="555"><span class="lineNum">     555 </span><span class="lineNoCov">          0 :   })();</span></a>
+<span class="lineNum">     556 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     557 </span><span class="lineCov">          1 :   (function typedArrys() {</span>
 <span class="lineNum">     558 </span><span class="lineCov">          1 :     test(new Int32Array(0), 0, []);</span>
 <span class="lineNum">     559 </span><span class="lineCov">          1 :     test(new Int32Array(1), 1, [0]);</span>
@@ -627,8 +627,8 @@
 <span class="lineNum">     565 </span><span class="lineCov">          1 :     test(array, 2, [1, 2]);</span>
 <span class="lineNum">     566 </span><span class="lineCov">          1 :     test(array, 3, [1, 2, 3]);</span>
 <span class="lineNum">     567 </span><span class="lineCov">          1 :   })()</span>
-<span class="lineNum">     568 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     569 </span><span class="lineCov">          1 : })();</span>
+<span class="lineNum">     568 </span>            : 
+<span class="lineNum">     569 </span>            : })();
 </pre>
       </td>
     </tr>

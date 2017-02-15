@@ -31,17 +31,17 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">56</td>
-            <td class="headerCovTableEntry">56</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntry">33</td>
+            <td class="headerCovTableEntry">43</td>
+            <td class="headerCovTableEntryMed">76.7 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">2</td>
-            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntry">1</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr><td><img src="../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -88,33 +88,33 @@
 <span class="lineNum">      26 </span><span class="lineCov">          2 :   setPrototypeOf: function() {</span>
 <span class="lineNum">      27 </span><span class="lineCov">          2 :     return true;</span>
 <span class="lineNum">      28 </span><span class="lineCov">          2 :   }</span>
-<span class="lineNum">      29 </span><span class="lineCov">          2 : });</span>
-<span class="lineNum">      30 </span><span class="lineCov">          2 : </span>
-<span class="lineNum">      31 </span><span class="lineCov">          2 : assert.sameValue(</span>
-<span class="lineNum">      32 </span><span class="lineCov">          2 :   Reflect.setPrototypeOf(proxy, proto),</span>
-<span class="lineNum">      33 </span><span class="lineCov">          2 :   true,</span>
-<span class="lineNum">      34 </span><span class="lineCov">          2 :   &quot;prototype arg is the same in target&quot;</span>
-<span class="lineNum">      35 </span><span class="lineCov">          2 : );</span>
-<span class="lineNum">      36 </span><span class="lineCov">          2 : </span>
-<a name="37"><span class="lineNum">      37 </span><span class="lineCov">          2 : var outro = {};</span></a>
-<span class="lineNum">      38 </span><span class="lineCov">          2 : proxy = new Proxy(outro, {</span>
+<span class="lineNum">      29 </span><span class="lineNoCov">          0 : });</span>
+<span class="lineNum">      30 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      31 </span><span class="lineNoCov">          0 : assert.sameValue(</span>
+<span class="lineNum">      32 </span><span class="lineNoCov">          0 :   Reflect.setPrototypeOf(proxy, proto),</span>
+<span class="lineNum">      33 </span><span class="lineNoCov">          0 :   true,</span>
+<span class="lineNum">      34 </span><span class="lineNoCov">          0 :   &quot;prototype arg is the same in target&quot;</span>
+<span class="lineNum">      35 </span><span class="lineNoCov">          0 : );</span>
+<span class="lineNum">      36 </span><span class="lineNoCov">          0 : </span>
+<a name="37"><span class="lineNum">      37 </span><span class="lineNoCov">          0 : var outro = {};</span></a>
+<span class="lineNum">      38 </span><span class="lineNoCov">          0 : proxy = new Proxy(outro, {</span>
 <span class="lineNum">      39 </span><span class="lineCov">          2 :   setPrototypeOf: function(t, p) {</span>
 <span class="lineNum">      40 </span><span class="lineCov">          2 :     Object.setPrototypeOf(t, p);</span>
 <span class="lineNum">      41 </span><span class="lineCov">          2 :     Object.preventExtensions(t);</span>
 <span class="lineNum">      42 </span><span class="lineCov">          2 :     return true;</span>
 <span class="lineNum">      43 </span><span class="lineCov">          2 :   }</span>
-<span class="lineNum">      44 </span><span class="lineCov">          2 : });</span>
-<span class="lineNum">      45 </span><span class="lineCov">          2 : </span>
-<span class="lineNum">      46 </span><span class="lineCov">          2 : assert.sameValue(</span>
-<span class="lineNum">      47 </span><span class="lineCov">          2 :   Reflect.setPrototypeOf(proxy, proto),</span>
-<span class="lineNum">      48 </span><span class="lineCov">          2 :   true,</span>
-<span class="lineNum">      49 </span><span class="lineCov">          2 :   &quot;prototype is set to target inside handler trap&quot;</span>
-<span class="lineNum">      50 </span><span class="lineCov">          2 : );</span>
-<span class="lineNum">      51 </span><span class="lineCov">          2 : assert.sameValue(</span>
-<span class="lineNum">      52 </span><span class="lineCov">          2 :   Object.getPrototypeOf(outro),</span>
-<span class="lineNum">      53 </span><span class="lineCov">          2 :   proto,</span>
-<span class="lineNum">      54 </span><span class="lineCov">          2 :   &quot;target has the custom set prototype&quot;</span>
-<span class="lineNum">      55 </span><span class="lineCov">          2 : );</span>
+<span class="lineNum">      44 </span>            : });
+<span class="lineNum">      45 </span>            : 
+<span class="lineNum">      46 </span>            : assert.sameValue(
+<span class="lineNum">      47 </span>            :   Reflect.setPrototypeOf(proxy, proto),
+<span class="lineNum">      48 </span>            :   true,
+<span class="lineNum">      49 </span>            :   &quot;prototype is set to target inside handler trap&quot;
+<span class="lineNum">      50 </span>            : );
+<span class="lineNum">      51 </span>            : assert.sameValue(
+<span class="lineNum">      52 </span>            :   Object.getPrototypeOf(outro),
+<span class="lineNum">      53 </span>            :   proto,
+<span class="lineNum">      54 </span>            :   &quot;target has the custom set prototype&quot;
+<span class="lineNum">      55 </span>            : );
 </pre>
       </td>
     </tr>

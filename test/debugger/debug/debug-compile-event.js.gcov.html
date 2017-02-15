@@ -31,18 +31,18 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">114</td>
-            <td class="headerCovTableEntry">123</td>
-            <td class="headerCovTableEntryHi">92.7 %</td>
+            <td class="headerCovTableEntry">77</td>
+            <td class="headerCovTableEntry">90</td>
+            <td class="headerCovTableEntryMed">85.6 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">2</td>
             <td class="headerCovTableEntry">3</td>
-            <td class="headerCovTableEntry">4</td>
-            <td class="headerCovTableEntryMed">75.0 %</td>
+            <td class="headerCovTableEntryLo">66.7 %</td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
         </table>
@@ -101,8 +101,8 @@
 <span class="lineNum">      39 </span><span class="lineCov">          7 :   eval(current_source);</span>
 <span class="lineNum">      40 </span><span class="lineCov">          7 :   source_count++;</span>
 <a name="41"><span class="lineNum">      41 </span><span class="lineCov">          7 : }</span></a>
-<span class="lineNum">      42 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      43 </span><span class="lineCov">          1 : function safeEval(code) {</span>
+<span class="lineNum">      42 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      43 </span><span class="lineNoCov">          0 : function safeEval(code) {</span>
 <span class="lineNum">      44 </span><span class="lineNoCov">          0 :   try {</span>
 <span class="lineNum">      45 </span><span class="lineNoCov">          0 :     mute_listener = true;</span>
 <span class="lineNum">      46 </span><span class="lineNoCov">          0 :     return eval('(' + code + ')');</span>
@@ -112,8 +112,8 @@
 <span class="lineNum">      50 </span><span class="lineNoCov">          0 :   } finally {</span>
 <span class="lineNum">      51 </span><span class="lineNoCov">          0 :     mute_listener = false;</span>
 <span class="lineNum">      52 </span><span class="lineNoCov">          0 :   }</span>
-<a name="53"><span class="lineNum">      53 </span><span class="lineCov">          1 : }</span></a>
-<span class="lineNum">      54 </span><span class="lineCov">          1 : </span>
+<a name="53"><span class="lineNum">      53 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">      54 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      55 </span><span class="lineCov">         10 : function listener(event, exec_state, event_data, data) {</span>
 <span class="lineNum">      56 </span><span class="lineCov">         10 :   if (mute_listener) return;</span>
 <span class="lineNum">      57 </span><span class="lineCov">         10 :   try {</span>
@@ -150,38 +150,38 @@
 <span class="lineNum">      88 </span><span class="lineCov">         10 :     exception = e</span>
 <span class="lineNum">      89 </span><span class="lineCov">         10 :   }</span>
 <span class="lineNum">      90 </span><span class="lineCov">         10 : };</span>
-<span class="lineNum">      91 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      92 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      93 </span><span class="lineCov">          1 : // Add the debug event listener.</span>
-<span class="lineNum">      94 </span><span class="lineCov">          1 : Debug.setListener(listener);</span>
-<span class="lineNum">      95 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      96 </span><span class="lineCov">          1 : // Compile different sources.</span>
-<span class="lineNum">      97 </span><span class="lineCov">          1 : compileSource('a=1');</span>
-<span class="lineNum">      98 </span><span class="lineCov">          1 : compileSource('(function(){})');</span>
-<span class="lineNum">      99 </span><span class="lineCov">          1 : compileSource('eval(&quot;a=2&quot;)');</span>
-<span class="lineNum">     100 </span><span class="lineCov">          1 : source_count++;  // Using eval causes additional compilation event.</span>
-<span class="lineNum">     101 </span><span class="lineCov">          1 : compileSource('eval(&quot;eval(\'(function(){return a;})\')&quot;)');</span>
-<span class="lineNum">     102 </span><span class="lineCov">          1 : source_count += 2;  // Using eval causes additional compilation event.</span>
-<span class="lineNum">     103 </span><span class="lineCov">          1 : compileSource('JSON.parse(\'{&quot;a&quot;:1,&quot;b&quot;:2}\')');</span>
-<span class="lineNum">     104 </span><span class="lineCov">          1 : // Using JSON.parse does not causes additional compilation events.</span>
-<span class="lineNum">     105 </span><span class="lineCov">          1 : compileSource('x=1; //# sourceURL=myscript.js');</span>
-<span class="lineNum">     106 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     107 </span><span class="lineCov">          1 : try {</span>
-<span class="lineNum">     108 </span><span class="lineCov">          1 :   compileSource('}');</span>
-<span class="lineNum">     109 </span><span class="lineCov">          1 : } catch(e) {</span>
-<span class="lineNum">     110 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">     111 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     112 </span><span class="lineCov">          1 : // Make sure that the debug event listener was invoked.</span>
-<span class="lineNum">     113 </span><span class="lineCov">          1 : assertFalse(exception, &quot;exception in listener&quot;)</span>
-<span class="lineNum">     114 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     115 </span><span class="lineCov">          1 : // Number of before and after + error events should be the same.</span>
-<span class="lineNum">     116 </span><span class="lineCov">          1 : assertEquals(compile_error_count, 1);</span>
-<span class="lineNum">     117 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     118 </span><span class="lineCov">          1 : // Check the actual number of events (no compilation through the API as all</span>
-<span class="lineNum">     119 </span><span class="lineCov">          1 : // source compiled through eval).</span>
-<span class="lineNum">     120 </span><span class="lineCov">          1 : assertEquals(source_count, after_compile_count);</span>
-<span class="lineNum">     121 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     122 </span><span class="lineCov">          1 : Debug.setListener(null);</span>
+<span class="lineNum">      91 </span>            : 
+<span class="lineNum">      92 </span>            : 
+<span class="lineNum">      93 </span>            : // Add the debug event listener.
+<span class="lineNum">      94 </span>            : Debug.setListener(listener);
+<span class="lineNum">      95 </span>            : 
+<span class="lineNum">      96 </span>            : // Compile different sources.
+<span class="lineNum">      97 </span>            : compileSource('a=1');
+<span class="lineNum">      98 </span>            : compileSource('(function(){})');
+<span class="lineNum">      99 </span>            : compileSource('eval(&quot;a=2&quot;)');
+<span class="lineNum">     100 </span>            : source_count++;  // Using eval causes additional compilation event.
+<span class="lineNum">     101 </span>            : compileSource('eval(&quot;eval(\'(function(){return a;})\')&quot;)');
+<span class="lineNum">     102 </span>            : source_count += 2;  // Using eval causes additional compilation event.
+<span class="lineNum">     103 </span>            : compileSource('JSON.parse(\'{&quot;a&quot;:1,&quot;b&quot;:2}\')');
+<span class="lineNum">     104 </span>            : // Using JSON.parse does not causes additional compilation events.
+<span class="lineNum">     105 </span>            : compileSource('x=1; //# sourceURL=myscript.js');
+<span class="lineNum">     106 </span>            : 
+<span class="lineNum">     107 </span>            : try {
+<span class="lineNum">     108 </span>            :   compileSource('}');
+<span class="lineNum">     109 </span>            : } catch(e) {
+<span class="lineNum">     110 </span>            : }
+<span class="lineNum">     111 </span>            : 
+<span class="lineNum">     112 </span>            : // Make sure that the debug event listener was invoked.
+<span class="lineNum">     113 </span>            : assertFalse(exception, &quot;exception in listener&quot;)
+<span class="lineNum">     114 </span>            : 
+<span class="lineNum">     115 </span>            : // Number of before and after + error events should be the same.
+<span class="lineNum">     116 </span>            : assertEquals(compile_error_count, 1);
+<span class="lineNum">     117 </span>            : 
+<span class="lineNum">     118 </span>            : // Check the actual number of events (no compilation through the API as all
+<span class="lineNum">     119 </span>            : // source compiled through eval).
+<span class="lineNum">     120 </span>            : assertEquals(source_count, after_compile_count);
+<span class="lineNum">     121 </span>            : 
+<span class="lineNum">     122 </span>            : Debug.setListener(null);
 </pre>
       </td>
     </tr>

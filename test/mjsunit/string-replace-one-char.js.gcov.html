@@ -31,17 +31,17 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">93</td>
-            <td class="headerCovTableEntry">93</td>
+            <td class="headerCovTableEntry">34</td>
+            <td class="headerCovTableEntry">34</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">2</td>
-            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntry">1</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -94,64 +94,64 @@
 <span class="lineNum">      32 </span><span class="lineCov">         13 : function test_replace(result, expected, search, replace) {</span>
 <span class="lineNum">      33 </span><span class="lineCov">         13 :   assertEquals(expected, result.replace(search, replace));</span>
 <span class="lineNum">      34 </span><span class="lineCov">         13 : }</span>
-<span class="lineNum">      35 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      36 </span><span class="lineCov">          1 : // '$' in the replace string.</span>
-<span class="lineNum">      37 </span><span class="lineCov">          1 : test_replace(prefix1024 + &quot;abcdefghijklmnopqrstuvwxyz&quot;,</span>
-<span class="lineNum">      38 </span><span class="lineCov">          1 :              prefix1024 + &quot;abcdefghijk#l#mnopqrstuvwxyz&quot;,</span>
-<span class="lineNum">      39 </span><span class="lineCov">          1 :              &quot;l&quot;, &quot;#$&amp;#&quot;);</span>
-<span class="lineNum">      40 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      41 </span><span class="lineCov">          1 : test_replace(prefix1024 + &quot;abcdefghijklmnopqrstuvwxyz\u1234&quot;,</span>
-<span class="lineNum">      42 </span><span class="lineCov">          1 :              prefix1024 + &quot;abcdefghijk\u2012l\u2012mnopqrstuvwxyz\u1234&quot;,</span>
-<span class="lineNum">      43 </span><span class="lineCov">          1 :              &quot;l&quot;, &quot;\u2012$&amp;\u2012&quot;);</span>
-<span class="lineNum">      44 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      45 </span><span class="lineCov">          1 : test_replace(prefix1024 + &quot;abcdefghijklmnopqrstuvwxyz&quot;,</span>
-<span class="lineNum">      46 </span><span class="lineCov">          1 :              prefix1024 + &quot;abcdefghijk$mnopqrstuvwxyz&quot;,</span>
-<span class="lineNum">      47 </span><span class="lineCov">          1 :              &quot;l&quot;, &quot;$$&quot;);</span>
-<span class="lineNum">      48 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      49 </span><span class="lineCov">          1 : test_replace(prefix1024 + &quot;abcdefghijklmnopqrstuvwxyz\u1234&quot;,</span>
-<span class="lineNum">      50 </span><span class="lineCov">          1 :              prefix1024 + &quot;abcdefghijk$mnopqrstuvwxyz\u1234&quot;,</span>
-<span class="lineNum">      51 </span><span class="lineCov">          1 :              &quot;l&quot;, &quot;$$&quot;);</span>
-<span class="lineNum">      52 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      53 </span><span class="lineCov">          1 : // Zero length replace string.</span>
-<span class="lineNum">      54 </span><span class="lineCov">          1 : test_replace(prefix1024 + &quot;abcdefghijklmnopqrstuvwxyz&quot;,</span>
-<span class="lineNum">      55 </span><span class="lineCov">          1 :              prefix1024 + &quot;abcdefghijklmnopqstuvwxyz&quot;,</span>
-<span class="lineNum">      56 </span><span class="lineCov">          1 :              &quot;r&quot;, &quot;&quot;);</span>
-<span class="lineNum">      57 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      58 </span><span class="lineCov">          1 : test_replace(prefix1024 + &quot;abcdefghijklmnopq\u1234stuvwxyz&quot;,</span>
-<span class="lineNum">      59 </span><span class="lineCov">          1 :              prefix1024 + &quot;abcdefghijklmnopqstuvwxyz&quot;,</span>
-<span class="lineNum">      60 </span><span class="lineCov">          1 :              &quot;\u1234&quot;, &quot;&quot;);</span>
-<span class="lineNum">      61 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      62 </span><span class="lineCov">          1 : // Search char not found.</span>
-<span class="lineNum">      63 </span><span class="lineCov">          1 : var not_found_1 = prefix1024 + &quot;abcdefghijklmnopqrstuvwxyz&quot;;</span>
-<span class="lineNum">      64 </span><span class="lineCov">          1 : test_replace(not_found_1, not_found_1, &quot;+&quot;, &quot;-&quot;);</span>
-<span class="lineNum">      65 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      66 </span><span class="lineCov">          1 : var not_found_2 = prefix1024 + &quot;abcdefghijklm\u1234nopqrstuvwxyz&quot;;</span>
-<span class="lineNum">      67 </span><span class="lineCov">          1 : test_replace(not_found_2, not_found_2, &quot;+&quot;, &quot;---&quot;);</span>
-<span class="lineNum">      68 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      69 </span><span class="lineCov">          1 : var not_found_3 = prefix1024 + &quot;abcdefghijklmnopqrstuvwxyz&quot;;</span>
-<span class="lineNum">      70 </span><span class="lineCov">          1 : test_replace(not_found_3, not_found_3, &quot;\u1234&quot;, &quot;ZZZ&quot;);</span>
-<span class="lineNum">      71 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      72 </span><span class="lineCov">          1 : // Deep cons tree.</span>
-<span class="lineNum">      73 </span><span class="lineCov">          1 : var nested_1 = &quot;&quot;;</span>
-<span class="lineNum">      74 </span><span class="lineCov">          1 : for (var i = 0; i &lt; 100000; i++) nested_1 += &quot;y&quot;;</span>
-<span class="lineNum">      75 </span><span class="lineCov">          1 : var nested_1_result = prefix1024 + nested_1 + &quot;aa&quot;;</span>
-<span class="lineNum">      76 </span><span class="lineCov">          1 : nested_1 = prefix1024 + nested_1 + &quot;z&quot;;</span>
-<span class="lineNum">      77 </span><span class="lineCov">          1 : test_replace(nested_1, nested_1_result, &quot;z&quot;, &quot;aa&quot;);</span>
-<span class="lineNum">      78 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      79 </span><span class="lineCov">          1 : var nested_2 = &quot;\u2244&quot;;</span>
-<span class="lineNum">      80 </span><span class="lineCov">          1 : for (var i = 0; i &lt; 100000; i++) nested_2 += &quot;y&quot;;</span>
-<span class="lineNum">      81 </span><span class="lineCov">          1 : var nested_2_result = prefix1024 + nested_2 + &quot;aa&quot;;</span>
-<span class="lineNum">      82 </span><span class="lineCov">          1 : nested_2 = prefix1024 + nested_2 + &quot;\u2012&quot;;</span>
-<span class="lineNum">      83 </span><span class="lineCov">          1 : test_replace(nested_2, nested_2_result, &quot;\u2012&quot;, &quot;aa&quot;);</span>
-<span class="lineNum">      84 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      85 </span><span class="lineCov">          1 : // Sliced string as input.  A cons string is always flattened before sliced.</span>
-<span class="lineNum">      86 </span><span class="lineCov">          1 : var slice_1 = (&quot;ab&quot; + prefix1024 + &quot;cdefghijklmnopqrstuvwxyz&quot;).slice(1, -1);</span>
-<span class="lineNum">      87 </span><span class="lineCov">          1 : var slice_1_result = &quot;b&quot; + prefix1024 + &quot;cdefghijklmnopqrstuvwxQ&quot;;</span>
-<span class="lineNum">      88 </span><span class="lineCov">          1 : test_replace(slice_1, slice_1_result, &quot;y&quot;, &quot;Q&quot;);</span>
-<span class="lineNum">      89 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      90 </span><span class="lineCov">          1 : var slice_2 = (prefix1024 + &quot;abcdefghijklmno\u1234\u1234p&quot;).slice(1, -1);</span>
-<span class="lineNum">      91 </span><span class="lineCov">          1 : var slice_2_result = prefix1024.substr(1) + &quot;abcdefghijklmnoQ\u1234&quot;;</span>
-<span class="lineNum">      92 </span><span class="lineCov">          1 : test_replace(slice_2, slice_2_result, &quot;\u1234&quot;, &quot;Q&quot;);</span>
+<span class="lineNum">      35 </span>            : 
+<span class="lineNum">      36 </span>            : // '$' in the replace string.
+<span class="lineNum">      37 </span>            : test_replace(prefix1024 + &quot;abcdefghijklmnopqrstuvwxyz&quot;,
+<span class="lineNum">      38 </span>            :              prefix1024 + &quot;abcdefghijk#l#mnopqrstuvwxyz&quot;,
+<span class="lineNum">      39 </span>            :              &quot;l&quot;, &quot;#$&amp;#&quot;);
+<span class="lineNum">      40 </span>            : 
+<span class="lineNum">      41 </span>            : test_replace(prefix1024 + &quot;abcdefghijklmnopqrstuvwxyz\u1234&quot;,
+<span class="lineNum">      42 </span>            :              prefix1024 + &quot;abcdefghijk\u2012l\u2012mnopqrstuvwxyz\u1234&quot;,
+<span class="lineNum">      43 </span>            :              &quot;l&quot;, &quot;\u2012$&amp;\u2012&quot;);
+<span class="lineNum">      44 </span>            : 
+<span class="lineNum">      45 </span>            : test_replace(prefix1024 + &quot;abcdefghijklmnopqrstuvwxyz&quot;,
+<span class="lineNum">      46 </span>            :              prefix1024 + &quot;abcdefghijk$mnopqrstuvwxyz&quot;,
+<span class="lineNum">      47 </span>            :              &quot;l&quot;, &quot;$$&quot;);
+<span class="lineNum">      48 </span>            : 
+<span class="lineNum">      49 </span>            : test_replace(prefix1024 + &quot;abcdefghijklmnopqrstuvwxyz\u1234&quot;,
+<span class="lineNum">      50 </span>            :              prefix1024 + &quot;abcdefghijk$mnopqrstuvwxyz\u1234&quot;,
+<span class="lineNum">      51 </span>            :              &quot;l&quot;, &quot;$$&quot;);
+<span class="lineNum">      52 </span>            : 
+<span class="lineNum">      53 </span>            : // Zero length replace string.
+<span class="lineNum">      54 </span>            : test_replace(prefix1024 + &quot;abcdefghijklmnopqrstuvwxyz&quot;,
+<span class="lineNum">      55 </span>            :              prefix1024 + &quot;abcdefghijklmnopqstuvwxyz&quot;,
+<span class="lineNum">      56 </span>            :              &quot;r&quot;, &quot;&quot;);
+<span class="lineNum">      57 </span>            : 
+<span class="lineNum">      58 </span>            : test_replace(prefix1024 + &quot;abcdefghijklmnopq\u1234stuvwxyz&quot;,
+<span class="lineNum">      59 </span>            :              prefix1024 + &quot;abcdefghijklmnopqstuvwxyz&quot;,
+<span class="lineNum">      60 </span>            :              &quot;\u1234&quot;, &quot;&quot;);
+<span class="lineNum">      61 </span>            : 
+<span class="lineNum">      62 </span>            : // Search char not found.
+<span class="lineNum">      63 </span>            : var not_found_1 = prefix1024 + &quot;abcdefghijklmnopqrstuvwxyz&quot;;
+<span class="lineNum">      64 </span>            : test_replace(not_found_1, not_found_1, &quot;+&quot;, &quot;-&quot;);
+<span class="lineNum">      65 </span>            : 
+<span class="lineNum">      66 </span>            : var not_found_2 = prefix1024 + &quot;abcdefghijklm\u1234nopqrstuvwxyz&quot;;
+<span class="lineNum">      67 </span>            : test_replace(not_found_2, not_found_2, &quot;+&quot;, &quot;---&quot;);
+<span class="lineNum">      68 </span>            : 
+<span class="lineNum">      69 </span>            : var not_found_3 = prefix1024 + &quot;abcdefghijklmnopqrstuvwxyz&quot;;
+<span class="lineNum">      70 </span>            : test_replace(not_found_3, not_found_3, &quot;\u1234&quot;, &quot;ZZZ&quot;);
+<span class="lineNum">      71 </span>            : 
+<span class="lineNum">      72 </span>            : // Deep cons tree.
+<span class="lineNum">      73 </span>            : var nested_1 = &quot;&quot;;
+<span class="lineNum">      74 </span>            : for (var i = 0; i &lt; 100000; i++) nested_1 += &quot;y&quot;;
+<span class="lineNum">      75 </span>            : var nested_1_result = prefix1024 + nested_1 + &quot;aa&quot;;
+<span class="lineNum">      76 </span>            : nested_1 = prefix1024 + nested_1 + &quot;z&quot;;
+<span class="lineNum">      77 </span>            : test_replace(nested_1, nested_1_result, &quot;z&quot;, &quot;aa&quot;);
+<span class="lineNum">      78 </span>            : 
+<span class="lineNum">      79 </span>            : var nested_2 = &quot;\u2244&quot;;
+<span class="lineNum">      80 </span>            : for (var i = 0; i &lt; 100000; i++) nested_2 += &quot;y&quot;;
+<span class="lineNum">      81 </span>            : var nested_2_result = prefix1024 + nested_2 + &quot;aa&quot;;
+<span class="lineNum">      82 </span>            : nested_2 = prefix1024 + nested_2 + &quot;\u2012&quot;;
+<span class="lineNum">      83 </span>            : test_replace(nested_2, nested_2_result, &quot;\u2012&quot;, &quot;aa&quot;);
+<span class="lineNum">      84 </span>            : 
+<span class="lineNum">      85 </span>            : // Sliced string as input.  A cons string is always flattened before sliced.
+<span class="lineNum">      86 </span>            : var slice_1 = (&quot;ab&quot; + prefix1024 + &quot;cdefghijklmnopqrstuvwxyz&quot;).slice(1, -1);
+<span class="lineNum">      87 </span>            : var slice_1_result = &quot;b&quot; + prefix1024 + &quot;cdefghijklmnopqrstuvwxQ&quot;;
+<span class="lineNum">      88 </span>            : test_replace(slice_1, slice_1_result, &quot;y&quot;, &quot;Q&quot;);
+<span class="lineNum">      89 </span>            : 
+<span class="lineNum">      90 </span>            : var slice_2 = (prefix1024 + &quot;abcdefghijklmno\u1234\u1234p&quot;).slice(1, -1);
+<span class="lineNum">      91 </span>            : var slice_2_result = prefix1024.substr(1) + &quot;abcdefghijklmnoQ\u1234&quot;;
+<span class="lineNum">      92 </span>            : test_replace(slice_2, slice_2_result, &quot;\u1234&quot;, &quot;Q&quot;);
 </pre>
       </td>
     </tr>

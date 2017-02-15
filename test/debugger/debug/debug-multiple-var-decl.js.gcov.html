@@ -31,17 +31,17 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">74</td>
-            <td class="headerCovTableEntry">74</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntry">39</td>
+            <td class="headerCovTableEntry">40</td>
+            <td class="headerCovTableEntryHi">97.5 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">3</td>
-            <td class="headerCovTableEntry">3</td>
+            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntry">2</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -83,7 +83,7 @@
 <span class="lineNum">      21 </span><span class="lineCov">          1 :         l9 = 9;  // t</span>
 <span class="lineNum">      22 </span><span class="lineCov">          1 :   return 0;      // u</span>
 <a name="23"><span class="lineNum">      23 </span><span class="lineCov">          1 : }                // v</span></a>
-<span class="lineNum">      24 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      24 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      25 </span><span class="lineCov">         19 : function listener(event, exec_state, event_data, data) {</span>
 <span class="lineNum">      26 </span><span class="lineCov">         19 :   if (event != Debug.DebugEvent.Break) return;</span>
 <span class="lineNum">      27 </span><span class="lineCov">         19 :   try {</span>
@@ -100,39 +100,39 @@
 <span class="lineNum">      38 </span><span class="lineCov">         19 :     exception = e;</span>
 <span class="lineNum">      39 </span><span class="lineCov">         19 :   }</span>
 <span class="lineNum">      40 </span><span class="lineCov">         19 : }</span>
-<span class="lineNum">      41 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      42 </span><span class="lineCov">          1 : var Debug = debug.Debug;</span>
-<span class="lineNum">      43 </span><span class="lineCov">          1 : Debug.setListener(listener);</span>
-<span class="lineNum">      44 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      45 </span><span class="lineCov">          1 : debugger;        // a</span>
-<span class="lineNum">      46 </span><span class="lineCov">          1 : var g1 = 1,      // b</span>
-<span class="lineNum">      47 </span><span class="lineCov">          1 :     g2 = 2,      // c</span>
-<span class="lineNum">      48 </span><span class="lineCov">          1 :     g3;          // d</span>
-<span class="lineNum">      49 </span><span class="lineCov">          1 : let g4 = 4,      // e</span>
-<span class="lineNum">      50 </span><span class="lineCov">          1 :     g5,          // f</span>
-<span class="lineNum">      51 </span><span class="lineCov">          1 :     g6 = 6;      // g</span>
-<span class="lineNum">      52 </span><span class="lineCov">          1 : const g7 = 7,    // h</span>
-<span class="lineNum">      53 </span><span class="lineCov">          1 :       g8 = 8,    // i</span>
-<span class="lineNum">      54 </span><span class="lineCov">          1 :       g9 = f();  // j</span>
-<span class="lineNum">      55 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      56 </span><span class="lineCov">          1 : Debug.setListener(null);</span>
-<span class="lineNum">      57 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      58 </span><span class="lineCov">          1 : assertNull(exception);</span>
-<span class="lineNum">      59 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      60 </span><span class="lineCov">          1 : // Note that let declarations, if not explicitly initialized, implicitly</span>
-<span class="lineNum">      61 </span><span class="lineCov">          1 : // initialize to undefined.</span>
-<span class="lineNum">      62 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      63 </span><span class="lineCov">          1 : var expected = [</span>
-<span class="lineNum">      64 </span><span class="lineCov">          1 :   &quot;a0&quot;,               // debugger statement</span>
-<span class="lineNum">      65 </span><span class="lineCov">          1 :   &quot;b9&quot;,&quot;c9&quot;,          // global var</span>
-<span class="lineNum">      66 </span><span class="lineCov">          1 :   &quot;e9&quot;,&quot;f4&quot;,&quot;g9&quot;,     // global let</span>
-<span class="lineNum">      67 </span><span class="lineCov">          1 :   &quot;h11&quot;,&quot;i11&quot;,&quot;j11&quot;,  // global const</span>
-<span class="lineNum">      68 </span><span class="lineCov">          1 :   &quot;l11&quot;,&quot;n11&quot;,        // local var</span>
-<span class="lineNum">      69 </span><span class="lineCov">          1 :   &quot;o6&quot;,&quot;p11&quot;,&quot;q11&quot;,   // local let</span>
-<span class="lineNum">      70 </span><span class="lineCov">          1 :   &quot;r13&quot;,&quot;s13&quot;,&quot;t13&quot;,  // local const</span>
-<span class="lineNum">      71 </span><span class="lineCov">          1 :   &quot;u2&quot;,&quot;v0&quot;,          // return</span>
-<span class="lineNum">      72 </span><span class="lineCov">          1 : ];</span>
-<span class="lineNum">      73 </span><span class="lineCov">          1 : assertEquals(expected, log);</span>
+<span class="lineNum">      41 </span>            : 
+<span class="lineNum">      42 </span>            : var Debug = debug.Debug;
+<span class="lineNum">      43 </span>            : Debug.setListener(listener);
+<span class="lineNum">      44 </span>            : 
+<span class="lineNum">      45 </span>            : debugger;        // a
+<span class="lineNum">      46 </span>            : var g1 = 1,      // b
+<span class="lineNum">      47 </span>            :     g2 = 2,      // c
+<span class="lineNum">      48 </span>            :     g3;          // d
+<span class="lineNum">      49 </span>            : let g4 = 4,      // e
+<span class="lineNum">      50 </span>            :     g5,          // f
+<span class="lineNum">      51 </span>            :     g6 = 6;      // g
+<span class="lineNum">      52 </span>            : const g7 = 7,    // h
+<span class="lineNum">      53 </span>            :       g8 = 8,    // i
+<span class="lineNum">      54 </span>            :       g9 = f();  // j
+<span class="lineNum">      55 </span>            : 
+<span class="lineNum">      56 </span>            : Debug.setListener(null);
+<span class="lineNum">      57 </span>            : 
+<span class="lineNum">      58 </span>            : assertNull(exception);
+<span class="lineNum">      59 </span>            : 
+<span class="lineNum">      60 </span>            : // Note that let declarations, if not explicitly initialized, implicitly
+<span class="lineNum">      61 </span>            : // initialize to undefined.
+<span class="lineNum">      62 </span>            : 
+<span class="lineNum">      63 </span>            : var expected = [
+<span class="lineNum">      64 </span>            :   &quot;a0&quot;,               // debugger statement
+<span class="lineNum">      65 </span>            :   &quot;b9&quot;,&quot;c9&quot;,          // global var
+<span class="lineNum">      66 </span>            :   &quot;e9&quot;,&quot;f4&quot;,&quot;g9&quot;,     // global let
+<span class="lineNum">      67 </span>            :   &quot;h11&quot;,&quot;i11&quot;,&quot;j11&quot;,  // global const
+<span class="lineNum">      68 </span>            :   &quot;l11&quot;,&quot;n11&quot;,        // local var
+<span class="lineNum">      69 </span>            :   &quot;o6&quot;,&quot;p11&quot;,&quot;q11&quot;,   // local let
+<span class="lineNum">      70 </span>            :   &quot;r13&quot;,&quot;s13&quot;,&quot;t13&quot;,  // local const
+<span class="lineNum">      71 </span>            :   &quot;u2&quot;,&quot;v0&quot;,          // return
+<span class="lineNum">      72 </span>            : ];
+<span class="lineNum">      73 </span>            : assertEquals(expected, log);
 </pre>
       </td>
     </tr>

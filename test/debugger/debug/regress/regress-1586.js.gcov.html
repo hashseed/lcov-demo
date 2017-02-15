@@ -31,17 +31,17 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">65</td>
-            <td class="headerCovTableEntry">65</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntry">46</td>
+            <td class="headerCovTableEntry">49</td>
+            <td class="headerCovTableEntryHi">93.9 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">3</td>
-            <td class="headerCovTableEntry">3</td>
+            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntry">2</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr><td><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -101,29 +101,29 @@
 <span class="lineNum">      39 </span><span class="lineCov">          1 :     }</span>
 <span class="lineNum">      40 </span><span class="lineCov">          1 :   }</span>
 <span class="lineNum">      41 </span><span class="lineCov">          1 : };</span>
-<span class="lineNum">      42 </span><span class="lineCov">          1 : </span>
-<a name="43"><span class="lineNum">      43 </span><span class="lineCov">          1 : Debug = debug.Debug</span></a>
-<span class="lineNum">      44 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      42 </span><span class="lineNoCov">          0 : </span>
+<a name="43"><span class="lineNum">      43 </span><span class="lineNoCov">          0 : Debug = debug.Debug</span></a>
+<span class="lineNum">      44 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      45 </span><span class="lineCov">          2 : function listener(event, exec_state, event_data, data) {</span>
 <span class="lineNum">      46 </span><span class="lineCov">          2 :   if (event == Debug.DebugEvent.Break) {</span>
 <span class="lineNum">      47 </span><span class="lineCov">          2 :     result = exec_state.frame().evaluate(&quot;i&quot;).value();</span>
 <span class="lineNum">      48 </span><span class="lineCov">          2 :   }</span>
 <span class="lineNum">      49 </span><span class="lineCov">          2 : };</span>
-<span class="lineNum">      50 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      51 </span><span class="lineCov">          1 : // Add the debug event listener.</span>
-<span class="lineNum">      52 </span><span class="lineCov">          1 : Debug.setListener(listener);</span>
-<span class="lineNum">      53 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      54 </span><span class="lineCov">          1 : //Set breakpoint on line 6.</span>
-<span class="lineNum">      55 </span><span class="lineCov">          1 : var bp = Debug.setBreakPoint(f, 6);</span>
-<span class="lineNum">      56 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      57 </span><span class="lineCov">          1 : result = -1;</span>
-<span class="lineNum">      58 </span><span class="lineCov">          1 : f();</span>
-<span class="lineNum">      59 </span><span class="lineCov">          1 : assertEquals(1, result);</span>
-<span class="lineNum">      60 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      61 </span><span class="lineCov">          1 : // Clear breakpoint.</span>
-<span class="lineNum">      62 </span><span class="lineCov">          1 : Debug.clearBreakPoint(bp);</span>
-<span class="lineNum">      63 </span><span class="lineCov">          1 : // Get rid of the debug event listener.</span>
-<span class="lineNum">      64 </span><span class="lineCov">          1 : Debug.setListener(null);</span>
+<span class="lineNum">      50 </span>            : 
+<span class="lineNum">      51 </span>            : // Add the debug event listener.
+<span class="lineNum">      52 </span>            : Debug.setListener(listener);
+<span class="lineNum">      53 </span>            : 
+<span class="lineNum">      54 </span>            : //Set breakpoint on line 6.
+<span class="lineNum">      55 </span>            : var bp = Debug.setBreakPoint(f, 6);
+<span class="lineNum">      56 </span>            : 
+<span class="lineNum">      57 </span>            : result = -1;
+<span class="lineNum">      58 </span>            : f();
+<span class="lineNum">      59 </span>            : assertEquals(1, result);
+<span class="lineNum">      60 </span>            : 
+<span class="lineNum">      61 </span>            : // Clear breakpoint.
+<span class="lineNum">      62 </span>            : Debug.clearBreakPoint(bp);
+<span class="lineNum">      63 </span>            : // Get rid of the debug event listener.
+<span class="lineNum">      64 </span>            : Debug.setListener(null);
 </pre>
       </td>
     </tr>

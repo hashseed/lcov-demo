@@ -31,17 +31,17 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">369</td>
-            <td class="headerCovTableEntry">369</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntry">236</td>
+            <td class="headerCovTableEntry">364</td>
+            <td class="headerCovTableEntryLo">64.8 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">39</td>
-            <td class="headerCovTableEntry">39</td>
+            <td class="headerCovTableEntry">38</td>
+            <td class="headerCovTableEntry">38</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -112,12 +112,12 @@
 <span class="lineNum">      50 </span><span class="lineCov">         36 :   assertEquals(expected, context(obj));</span>
 <span class="lineNum">      51 </span><span class="lineCov">         36 :   assertEquals(4, accessorCallCount);</span>
 <span class="lineNum">      52 </span><span class="lineCov">         36 : }</span>
-<a name="53"><span class="lineNum">      53 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">      54 </span><span class="lineCov">          1 : </span>
+<a name="53"><span class="lineNum">      53 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">      54 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      55 </span><span class="lineCov">         48 : function value_context_for_getter(obj) {</span>
 <span class="lineNum">      56 </span><span class="lineCov">         48 :   return obj.getterProperty;</span>
 <a name="57"><span class="lineNum">      57 </span><span class="lineCov">         48 : }</span></a>
-<span class="lineNum">      58 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      58 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      59 </span><span class="lineCov">         48 : function test_context_for_getter(obj) {</span>
 <span class="lineNum">      60 </span><span class="lineCov">         48 :   if (obj.getterProperty) {</span>
 <span class="lineNum">      61 </span><span class="lineCov">         48 :     return 111;</span>
@@ -125,12 +125,12 @@
 <span class="lineNum">      63 </span><span class="lineCov">         48 :     return 222;</span>
 <span class="lineNum">      64 </span><span class="lineCov">         48 :   }</span>
 <a name="65"><span class="lineNum">      65 </span><span class="lineCov">         48 : }</span></a>
-<span class="lineNum">      66 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      66 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      67 </span><span class="lineCov">         48 : function effect_context_for_getter(obj) {</span>
 <span class="lineNum">      68 </span><span class="lineCov">         48 :   obj.getterProperty;</span>
 <span class="lineNum">      69 </span><span class="lineCov">         48 :   return 5678;</span>
 <a name="70"><span class="lineNum">      70 </span><span class="lineCov">         48 : }</span></a>
-<span class="lineNum">      71 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      71 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      72 </span><span class="lineCov">         36 : function TryGetter(context, getter, obj, expected, expectException) {</span>
 <span class="lineNum">      73 </span><span class="lineCov">         36 :   try {</span>
 <span class="lineNum">      74 </span><span class="lineCov">         36 :     TestInlinedGetter(context, obj, expected);</span>
@@ -143,80 +143,80 @@
 <span class="lineNum">      81 </span><span class="lineCov">         36 :   %ClearFunctionTypeFeedback(context);</span>
 <span class="lineNum">      82 </span><span class="lineCov">         36 :   %ClearFunctionTypeFeedback(getter);</span>
 <a name="83"><span class="lineNum">      83 </span><span class="lineCov">         36 : }</span></a>
-<span class="lineNum">      84 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      84 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      85 </span><span class="lineCov">         12 : function TestGetterInAllContexts(getter, obj, expected, expectException) {</span>
 <span class="lineNum">      86 </span><span class="lineCov">         12 :   TryGetter(value_context_for_getter, getter, obj, expected, expectException);</span>
 <span class="lineNum">      87 </span><span class="lineCov">         12 :   TryGetter(test_context_for_getter, getter, obj, expected ? 111 : 222,</span>
 <span class="lineNum">      88 </span><span class="lineCov">         12 :             expectException);</span>
 <span class="lineNum">      89 </span><span class="lineCov">         12 :   TryGetter(effect_context_for_getter, getter, obj, 5678, expectException);</span>
 <span class="lineNum">      90 </span><span class="lineCov">         12 : }</span>
-<span class="lineNum">      91 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      92 </span><span class="lineCov">          1 : // -----------------------------------------------------------------------------</span>
-<a name="93"><span class="lineNum">      93 </span><span class="lineCov">          1 : // Test getter returning something 'true'ish in all contexts.</span></a>
-<span class="lineNum">      94 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      91 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      92 </span><span class="lineNoCov">          0 : // -----------------------------------------------------------------------------</span>
+<a name="93"><span class="lineNum">      93 </span><span class="lineNoCov">          0 : // Test getter returning something 'true'ish in all contexts.</span></a>
+<span class="lineNum">      94 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      95 </span><span class="lineCov">         24 : function getter1() {</span>
 <span class="lineNum">      96 </span><span class="lineCov">         24 :   assertSame(obj, this);</span>
 <span class="lineNum">      97 </span><span class="lineCov">         24 :   accessorCallCount++;</span>
 <span class="lineNum">      98 </span><span class="lineCov">         24 :   forceDeopt.deopt;</span>
 <span class="lineNum">      99 </span><span class="lineCov">         24 :   return 1234;</span>
 <a name="100"><span class="lineNum">     100 </span><span class="lineCov">         24 : }</span></a>
-<span class="lineNum">     101 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     101 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     102 </span><span class="lineCov">          1 : function ConstrG1() { }</span>
-<span class="lineNum">     103 </span><span class="lineCov">          1 : obj = Object.defineProperty(new ConstrG1(), &quot;getterProperty&quot;, { get: getter1 });</span>
-<span class="lineNum">     104 </span><span class="lineCov">          1 : TestGetterInAllContexts(getter1, obj, 1234, false);</span>
-<span class="lineNum">     105 </span><span class="lineCov">          1 : obj = Object.create(obj);</span>
-<span class="lineNum">     106 </span><span class="lineCov">          1 : TestGetterInAllContexts(getter1, obj, 1234, false);</span>
-<span class="lineNum">     107 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     108 </span><span class="lineCov">          1 : // -----------------------------------------------------------------------------</span>
-<a name="109"><span class="lineNum">     109 </span><span class="lineCov">          1 : // Test getter returning false in all contexts.</span></a>
-<span class="lineNum">     110 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     103 </span><span class="lineNoCov">          0 : obj = Object.defineProperty(new ConstrG1(), &quot;getterProperty&quot;, { get: getter1 });</span>
+<span class="lineNum">     104 </span><span class="lineNoCov">          0 : TestGetterInAllContexts(getter1, obj, 1234, false);</span>
+<span class="lineNum">     105 </span><span class="lineNoCov">          0 : obj = Object.create(obj);</span>
+<span class="lineNum">     106 </span><span class="lineNoCov">          0 : TestGetterInAllContexts(getter1, obj, 1234, false);</span>
+<span class="lineNum">     107 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     108 </span><span class="lineNoCov">          0 : // -----------------------------------------------------------------------------</span>
+<a name="109"><span class="lineNum">     109 </span><span class="lineNoCov">          0 : // Test getter returning false in all contexts.</span></a>
+<span class="lineNum">     110 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     111 </span><span class="lineCov">         24 : function getter2() {</span>
 <span class="lineNum">     112 </span><span class="lineCov">         24 :   assertSame(obj, this);</span>
 <span class="lineNum">     113 </span><span class="lineCov">         24 :   accessorCallCount++;</span>
 <span class="lineNum">     114 </span><span class="lineCov">         24 :   forceDeopt.deopt;</span>
 <span class="lineNum">     115 </span><span class="lineCov">         24 :   return false;</span>
 <a name="116"><span class="lineNum">     116 </span><span class="lineCov">         24 : }</span></a>
-<span class="lineNum">     117 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     117 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     118 </span><span class="lineCov">          1 : function ConstrG2() { }</span>
-<span class="lineNum">     119 </span><span class="lineCov">          1 : obj = Object.defineProperty(new ConstrG2(), &quot;getterProperty&quot;, { get: getter2 });</span>
-<span class="lineNum">     120 </span><span class="lineCov">          1 : TestGetterInAllContexts(getter2, obj, false, false);</span>
-<span class="lineNum">     121 </span><span class="lineCov">          1 : obj = Object.create(obj);</span>
-<span class="lineNum">     122 </span><span class="lineCov">          1 : TestGetterInAllContexts(getter2, obj, false, false);</span>
-<span class="lineNum">     123 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     124 </span><span class="lineCov">          1 : // -----------------------------------------------------------------------------</span>
-<a name="125"><span class="lineNum">     125 </span><span class="lineCov">          1 : // Test getter without a return in all contexts.</span></a>
-<span class="lineNum">     126 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     119 </span><span class="lineNoCov">          0 : obj = Object.defineProperty(new ConstrG2(), &quot;getterProperty&quot;, { get: getter2 });</span>
+<span class="lineNum">     120 </span><span class="lineNoCov">          0 : TestGetterInAllContexts(getter2, obj, false, false);</span>
+<span class="lineNum">     121 </span><span class="lineNoCov">          0 : obj = Object.create(obj);</span>
+<span class="lineNum">     122 </span><span class="lineNoCov">          0 : TestGetterInAllContexts(getter2, obj, false, false);</span>
+<span class="lineNum">     123 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     124 </span><span class="lineNoCov">          0 : // -----------------------------------------------------------------------------</span>
+<a name="125"><span class="lineNum">     125 </span><span class="lineNoCov">          0 : // Test getter without a return in all contexts.</span></a>
+<span class="lineNum">     126 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     127 </span><span class="lineCov">         24 : function getter3() {</span>
 <span class="lineNum">     128 </span><span class="lineCov">         24 :   assertSame(obj, this);</span>
 <span class="lineNum">     129 </span><span class="lineCov">         24 :   accessorCallCount++;</span>
 <span class="lineNum">     130 </span><span class="lineCov">         24 :   forceDeopt.deopt;</span>
 <a name="131"><span class="lineNum">     131 </span><span class="lineCov">         24 : }</span></a>
-<span class="lineNum">     132 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     132 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     133 </span><span class="lineCov">          1 : function ConstrG3() { }</span>
-<span class="lineNum">     134 </span><span class="lineCov">          1 : obj = Object.defineProperty(new ConstrG3(), &quot;getterProperty&quot;, { get: getter3 });</span>
-<span class="lineNum">     135 </span><span class="lineCov">          1 : TestGetterInAllContexts(getter3, obj, undefined, false);</span>
-<span class="lineNum">     136 </span><span class="lineCov">          1 : obj = Object.create(obj);</span>
-<span class="lineNum">     137 </span><span class="lineCov">          1 : TestGetterInAllContexts(getter3, obj, undefined, false);</span>
-<span class="lineNum">     138 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     139 </span><span class="lineCov">          1 : // -----------------------------------------------------------------------------</span>
-<a name="140"><span class="lineNum">     140 </span><span class="lineCov">          1 : // Test getter with too many arguments without a return in all contexts.</span></a>
-<span class="lineNum">     141 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     134 </span><span class="lineNoCov">          0 : obj = Object.defineProperty(new ConstrG3(), &quot;getterProperty&quot;, { get: getter3 });</span>
+<span class="lineNum">     135 </span><span class="lineNoCov">          0 : TestGetterInAllContexts(getter3, obj, undefined, false);</span>
+<span class="lineNum">     136 </span><span class="lineNoCov">          0 : obj = Object.create(obj);</span>
+<span class="lineNum">     137 </span><span class="lineNoCov">          0 : TestGetterInAllContexts(getter3, obj, undefined, false);</span>
+<span class="lineNum">     138 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     139 </span><span class="lineNoCov">          0 : // -----------------------------------------------------------------------------</span>
+<a name="140"><span class="lineNum">     140 </span><span class="lineNoCov">          0 : // Test getter with too many arguments without a return in all contexts.</span></a>
+<span class="lineNum">     141 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     142 </span><span class="lineCov">         24 : function getter4(a) {</span>
 <span class="lineNum">     143 </span><span class="lineCov">         24 :   assertSame(obj, this);</span>
 <span class="lineNum">     144 </span><span class="lineCov">         24 :   assertEquals(undefined, a);</span>
 <span class="lineNum">     145 </span><span class="lineCov">         24 :   accessorCallCount++;</span>
 <span class="lineNum">     146 </span><span class="lineCov">         24 :   forceDeopt.deopt;</span>
 <a name="147"><span class="lineNum">     147 </span><span class="lineCov">         24 : }</span></a>
-<span class="lineNum">     148 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     148 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     149 </span><span class="lineCov">          1 : function ConstrG4() { }</span>
-<span class="lineNum">     150 </span><span class="lineCov">          1 : obj = Object.defineProperty(new ConstrG4(), &quot;getterProperty&quot;, { get: getter4 });</span>
-<span class="lineNum">     151 </span><span class="lineCov">          1 : TestGetterInAllContexts(getter4, obj, undefined, false);</span>
-<span class="lineNum">     152 </span><span class="lineCov">          1 : obj = Object.create(obj);</span>
-<span class="lineNum">     153 </span><span class="lineCov">          1 : TestGetterInAllContexts(getter4, obj, undefined, false);</span>
-<span class="lineNum">     154 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     155 </span><span class="lineCov">          1 : // -----------------------------------------------------------------------------</span>
-<a name="156"><span class="lineNum">     156 </span><span class="lineCov">          1 : // Test getter with too many arguments with a return in all contexts.</span></a>
-<span class="lineNum">     157 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     150 </span><span class="lineNoCov">          0 : obj = Object.defineProperty(new ConstrG4(), &quot;getterProperty&quot;, { get: getter4 });</span>
+<span class="lineNum">     151 </span><span class="lineNoCov">          0 : TestGetterInAllContexts(getter4, obj, undefined, false);</span>
+<span class="lineNum">     152 </span><span class="lineNoCov">          0 : obj = Object.create(obj);</span>
+<span class="lineNum">     153 </span><span class="lineNoCov">          0 : TestGetterInAllContexts(getter4, obj, undefined, false);</span>
+<span class="lineNum">     154 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     155 </span><span class="lineNoCov">          0 : // -----------------------------------------------------------------------------</span>
+<a name="156"><span class="lineNum">     156 </span><span class="lineNoCov">          0 : // Test getter with too many arguments with a return in all contexts.</span></a>
+<span class="lineNum">     157 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     158 </span><span class="lineCov">         24 : function getter5(a) {</span>
 <span class="lineNum">     159 </span><span class="lineCov">         24 :   assertSame(obj, this);</span>
 <span class="lineNum">     160 </span><span class="lineCov">         24 :   assertEquals(undefined, a);</span>
@@ -224,16 +224,16 @@
 <span class="lineNum">     162 </span><span class="lineCov">         24 :   forceDeopt.deopt;</span>
 <span class="lineNum">     163 </span><span class="lineCov">         24 :   return 9876;</span>
 <a name="164"><span class="lineNum">     164 </span><span class="lineCov">         24 : }</span></a>
-<span class="lineNum">     165 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     165 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     166 </span><span class="lineCov">          1 : function ConstrG5() { }</span>
-<span class="lineNum">     167 </span><span class="lineCov">          1 : obj = Object.defineProperty(new ConstrG5(), &quot;getterProperty&quot;, { get: getter5 });</span>
-<span class="lineNum">     168 </span><span class="lineCov">          1 : TestGetterInAllContexts(getter5, obj, 9876, false);</span>
-<span class="lineNum">     169 </span><span class="lineCov">          1 : obj = Object.create(obj);</span>
-<span class="lineNum">     170 </span><span class="lineCov">          1 : TestGetterInAllContexts(getter5, obj, 9876, false);</span>
-<span class="lineNum">     171 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     172 </span><span class="lineCov">          1 : // -----------------------------------------------------------------------------</span>
-<a name="173"><span class="lineNum">     173 </span><span class="lineCov">          1 : // Test getter which throws from optimized code.</span></a>
-<span class="lineNum">     174 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     167 </span><span class="lineNoCov">          0 : obj = Object.defineProperty(new ConstrG5(), &quot;getterProperty&quot;, { get: getter5 });</span>
+<span class="lineNum">     168 </span><span class="lineNoCov">          0 : TestGetterInAllContexts(getter5, obj, 9876, false);</span>
+<span class="lineNum">     169 </span><span class="lineNoCov">          0 : obj = Object.create(obj);</span>
+<span class="lineNum">     170 </span><span class="lineNoCov">          0 : TestGetterInAllContexts(getter5, obj, 9876, false);</span>
+<span class="lineNum">     171 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     172 </span><span class="lineNoCov">          0 : // -----------------------------------------------------------------------------</span>
+<a name="173"><span class="lineNum">     173 </span><span class="lineNoCov">          0 : // Test getter which throws from optimized code.</span></a>
+<span class="lineNum">     174 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     175 </span><span class="lineCov">         24 : function getter6() {</span>
 <span class="lineNum">     176 </span><span class="lineCov">         24 :   assertSame(obj, this);</span>
 <span class="lineNum">     177 </span><span class="lineCov">         24 :   accessorCallCount++;</span>
@@ -241,16 +241,16 @@
 <span class="lineNum">     179 </span><span class="lineCov">         24 :   if (accessorCallCount == 4) { 123 in null; }</span>
 <span class="lineNum">     180 </span><span class="lineCov">         24 :   return 13579;</span>
 <a name="181"><span class="lineNum">     181 </span><span class="lineCov">         24 : }</span></a>
-<span class="lineNum">     182 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     182 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     183 </span><span class="lineCov">          1 : function ConstrG6() { }</span>
-<span class="lineNum">     184 </span><span class="lineCov">          1 : obj = Object.defineProperty(new ConstrG6(), &quot;getterProperty&quot;, { get: getter6 });</span>
-<span class="lineNum">     185 </span><span class="lineCov">          1 : TestGetterInAllContexts(getter6, obj, 13579, true);</span>
-<span class="lineNum">     186 </span><span class="lineCov">          1 : obj = Object.create(obj);</span>
-<span class="lineNum">     187 </span><span class="lineCov">          1 : TestGetterInAllContexts(getter6, obj, 13579, true);</span>
-<span class="lineNum">     188 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     189 </span><span class="lineCov">          1 : // -----------------------------------------------------------------------------</span>
-<a name="190"><span class="lineNum">     190 </span><span class="lineCov">          1 : // Helpers for testing inlining of setters.</span></a>
-<span class="lineNum">     191 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     184 </span><span class="lineNoCov">          0 : obj = Object.defineProperty(new ConstrG6(), &quot;getterProperty&quot;, { get: getter6 });</span>
+<span class="lineNum">     185 </span><span class="lineNoCov">          0 : TestGetterInAllContexts(getter6, obj, 13579, true);</span>
+<span class="lineNum">     186 </span><span class="lineNoCov">          0 : obj = Object.create(obj);</span>
+<span class="lineNum">     187 </span><span class="lineNoCov">          0 : TestGetterInAllContexts(getter6, obj, 13579, true);</span>
+<span class="lineNum">     188 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     189 </span><span class="lineNoCov">          0 : // -----------------------------------------------------------------------------</span>
+<a name="190"><span class="lineNum">     190 </span><span class="lineNoCov">          0 : // Helpers for testing inlining of setters.</span></a>
+<span class="lineNum">     191 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     192 </span><span class="lineCov">         56 : function TestInlinedSetter(context, obj, value, expected) {</span>
 <span class="lineNum">     193 </span><span class="lineCov">         56 :   forceDeopt = { deopt: 0 };</span>
 <span class="lineNum">     194 </span><span class="lineCov">         56 :   accessorCallCount = 0;</span>
@@ -274,11 +274,11 @@
 <span class="lineNum">     212 </span><span class="lineCov">         56 :   assertEquals(value, setterValue);</span>
 <span class="lineNum">     213 </span><span class="lineCov">         56 :   assertEquals(4, accessorCallCount);</span>
 <a name="214"><span class="lineNum">     214 </span><span class="lineCov">         56 : }</span></a>
-<span class="lineNum">     215 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     215 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     216 </span><span class="lineCov">         56 : function value_context_for_setter(obj, value) {</span>
 <span class="lineNum">     217 </span><span class="lineCov">         56 :   return obj.setterProperty = value;</span>
 <a name="218"><span class="lineNum">     218 </span><span class="lineCov">         56 : }</span></a>
-<span class="lineNum">     219 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     219 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     220 </span><span class="lineCov">        112 : function test_context_for_setter(obj, value) {</span>
 <span class="lineNum">     221 </span><span class="lineCov">        112 :   if (obj.setterProperty = value) {</span>
 <span class="lineNum">     222 </span><span class="lineCov">        112 :     return 333;</span>
@@ -286,12 +286,12 @@
 <span class="lineNum">     224 </span><span class="lineCov">        112 :     return 444;</span>
 <span class="lineNum">     225 </span><span class="lineCov">        112 :   }</span>
 <a name="226"><span class="lineNum">     226 </span><span class="lineCov">        112 : }</span></a>
-<span class="lineNum">     227 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     227 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     228 </span><span class="lineCov">         56 : function effect_context_for_setter(obj, value) {</span>
 <span class="lineNum">     229 </span><span class="lineCov">         56 :   obj.setterProperty = value;</span>
 <span class="lineNum">     230 </span><span class="lineCov">         56 :   return 666;</span>
 <a name="231"><span class="lineNum">     231 </span><span class="lineCov">         56 : }</span></a>
-<span class="lineNum">     232 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     232 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     233 </span><span class="lineCov">         56 : function TrySetter(context, setter, obj, expectException, value, expected) {</span>
 <span class="lineNum">     234 </span><span class="lineCov">         56 :   try {</span>
 <span class="lineNum">     235 </span><span class="lineCov">         56 :     TestInlinedSetter(context, obj, value, expected);</span>
@@ -304,33 +304,33 @@
 <span class="lineNum">     242 </span><span class="lineCov">         56 :   %ClearFunctionTypeFeedback(context);</span>
 <span class="lineNum">     243 </span><span class="lineCov">         56 :   %ClearFunctionTypeFeedback(setter);</span>
 <a name="244"><span class="lineNum">     244 </span><span class="lineCov">         56 : }</span></a>
-<span class="lineNum">     245 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     245 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     246 </span><span class="lineCov">         14 : function TestSetterInAllContexts(setter, obj, expectException) {</span>
 <span class="lineNum">     247 </span><span class="lineCov">         14 :   TrySetter(value_context_for_setter, setter, obj, expectException, 111, 111);</span>
 <span class="lineNum">     248 </span><span class="lineCov">         14 :   TrySetter(test_context_for_setter, setter, obj, expectException, true, 333);</span>
 <span class="lineNum">     249 </span><span class="lineCov">         14 :   TrySetter(test_context_for_setter, setter, obj, expectException, false, 444);</span>
 <span class="lineNum">     250 </span><span class="lineCov">         14 :   TrySetter(effect_context_for_setter, setter, obj, expectException, 555, 666);</span>
 <span class="lineNum">     251 </span><span class="lineCov">         14 : }</span>
-<span class="lineNum">     252 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     253 </span><span class="lineCov">          1 : // -----------------------------------------------------------------------------</span>
-<a name="254"><span class="lineNum">     254 </span><span class="lineCov">          1 : // Test setter without a return in all contexts.</span></a>
-<span class="lineNum">     255 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     252 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     253 </span><span class="lineNoCov">          0 : // -----------------------------------------------------------------------------</span>
+<a name="254"><span class="lineNum">     254 </span><span class="lineNoCov">          0 : // Test setter without a return in all contexts.</span></a>
+<span class="lineNum">     255 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     256 </span><span class="lineCov">         32 : function setter1(value) {</span>
 <span class="lineNum">     257 </span><span class="lineCov">         32 :   assertSame(obj, this);</span>
 <span class="lineNum">     258 </span><span class="lineCov">         32 :   accessorCallCount++;</span>
 <span class="lineNum">     259 </span><span class="lineCov">         32 :   forceDeopt.deopt;</span>
 <span class="lineNum">     260 </span><span class="lineCov">         32 :   setterValue = value;</span>
 <a name="261"><span class="lineNum">     261 </span><span class="lineCov">         32 : }</span></a>
-<span class="lineNum">     262 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     262 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     263 </span><span class="lineCov">          1 : function ConstrS1() { }</span>
-<span class="lineNum">     264 </span><span class="lineCov">          1 : obj = Object.defineProperty(new ConstrS1(), &quot;setterProperty&quot;, { set: setter1 });</span>
-<span class="lineNum">     265 </span><span class="lineCov">          1 : TestSetterInAllContexts(setter1, obj, false);</span>
-<span class="lineNum">     266 </span><span class="lineCov">          1 : obj = Object.create(obj);</span>
-<span class="lineNum">     267 </span><span class="lineCov">          1 : TestSetterInAllContexts(setter1, obj, false);</span>
-<span class="lineNum">     268 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     269 </span><span class="lineCov">          1 : // -----------------------------------------------------------------------------</span>
-<a name="270"><span class="lineNum">     270 </span><span class="lineCov">          1 : // Test setter returning something different than the RHS in all contexts.</span></a>
-<span class="lineNum">     271 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     264 </span><span class="lineNoCov">          0 : obj = Object.defineProperty(new ConstrS1(), &quot;setterProperty&quot;, { set: setter1 });</span>
+<span class="lineNum">     265 </span><span class="lineNoCov">          0 : TestSetterInAllContexts(setter1, obj, false);</span>
+<span class="lineNum">     266 </span><span class="lineNoCov">          0 : obj = Object.create(obj);</span>
+<span class="lineNum">     267 </span><span class="lineNoCov">          0 : TestSetterInAllContexts(setter1, obj, false);</span>
+<span class="lineNum">     268 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     269 </span><span class="lineNoCov">          0 : // -----------------------------------------------------------------------------</span>
+<a name="270"><span class="lineNum">     270 </span><span class="lineNoCov">          0 : // Test setter returning something different than the RHS in all contexts.</span></a>
+<span class="lineNum">     271 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     272 </span><span class="lineCov">         32 : function setter2(value) {</span>
 <span class="lineNum">     273 </span><span class="lineCov">         32 :   assertSame(obj, this);</span>
 <span class="lineNum">     274 </span><span class="lineCov">         32 :   accessorCallCount++;</span>
@@ -338,32 +338,32 @@
 <span class="lineNum">     276 </span><span class="lineCov">         32 :   setterValue = value;</span>
 <span class="lineNum">     277 </span><span class="lineCov">         32 :   return 1000000;</span>
 <a name="278"><span class="lineNum">     278 </span><span class="lineCov">         32 : }</span></a>
-<span class="lineNum">     279 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     279 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     280 </span><span class="lineCov">          1 : function ConstrS2() { }</span>
-<span class="lineNum">     281 </span><span class="lineCov">          1 : obj = Object.defineProperty(new ConstrS2(), &quot;setterProperty&quot;, { set: setter2 });</span>
-<span class="lineNum">     282 </span><span class="lineCov">          1 : TestSetterInAllContexts(setter2, obj, false);</span>
-<span class="lineNum">     283 </span><span class="lineCov">          1 : obj = Object.create(obj);</span>
-<span class="lineNum">     284 </span><span class="lineCov">          1 : TestSetterInAllContexts(setter2, obj, false);</span>
-<span class="lineNum">     285 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     286 </span><span class="lineCov">          1 : // -----------------------------------------------------------------------------</span>
-<a name="287"><span class="lineNum">     287 </span><span class="lineCov">          1 : // Test setter with too few arguments without a return in all contexts.</span></a>
-<span class="lineNum">     288 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     281 </span><span class="lineNoCov">          0 : obj = Object.defineProperty(new ConstrS2(), &quot;setterProperty&quot;, { set: setter2 });</span>
+<span class="lineNum">     282 </span><span class="lineNoCov">          0 : TestSetterInAllContexts(setter2, obj, false);</span>
+<span class="lineNum">     283 </span><span class="lineNoCov">          0 : obj = Object.create(obj);</span>
+<span class="lineNum">     284 </span><span class="lineNoCov">          0 : TestSetterInAllContexts(setter2, obj, false);</span>
+<span class="lineNum">     285 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     286 </span><span class="lineNoCov">          0 : // -----------------------------------------------------------------------------</span>
+<a name="287"><span class="lineNum">     287 </span><span class="lineNoCov">          0 : // Test setter with too few arguments without a return in all contexts.</span></a>
+<span class="lineNum">     288 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     289 </span><span class="lineCov">         32 : function setter3() {</span>
 <span class="lineNum">     290 </span><span class="lineCov">         32 :   assertSame(obj, this);</span>
 <span class="lineNum">     291 </span><span class="lineCov">         32 :   accessorCallCount++;</span>
 <span class="lineNum">     292 </span><span class="lineCov">         32 :   forceDeopt.deopt;</span>
 <span class="lineNum">     293 </span><span class="lineCov">         32 :   setterValue = setterArgument;</span>
 <a name="294"><span class="lineNum">     294 </span><span class="lineCov">         32 : }</span></a>
-<span class="lineNum">     295 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     295 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     296 </span><span class="lineCov">          1 : function ConstrS3() { }</span>
-<span class="lineNum">     297 </span><span class="lineCov">          1 : obj = Object.defineProperty(new ConstrS3(), &quot;setterProperty&quot;, { set: setter3 });</span>
-<span class="lineNum">     298 </span><span class="lineCov">          1 : TestSetterInAllContexts(setter3, obj, false);</span>
-<span class="lineNum">     299 </span><span class="lineCov">          1 : obj = Object.create(obj);</span>
-<span class="lineNum">     300 </span><span class="lineCov">          1 : TestSetterInAllContexts(setter3, obj, false);</span>
-<span class="lineNum">     301 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     302 </span><span class="lineCov">          1 : // -----------------------------------------------------------------------------</span>
-<a name="303"><span class="lineNum">     303 </span><span class="lineCov">          1 : // Test setter with too few arguments with a return in all contexts.</span></a>
-<span class="lineNum">     304 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     297 </span><span class="lineNoCov">          0 : obj = Object.defineProperty(new ConstrS3(), &quot;setterProperty&quot;, { set: setter3 });</span>
+<span class="lineNum">     298 </span><span class="lineNoCov">          0 : TestSetterInAllContexts(setter3, obj, false);</span>
+<span class="lineNum">     299 </span><span class="lineNoCov">          0 : obj = Object.create(obj);</span>
+<span class="lineNum">     300 </span><span class="lineNoCov">          0 : TestSetterInAllContexts(setter3, obj, false);</span>
+<span class="lineNum">     301 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     302 </span><span class="lineNoCov">          0 : // -----------------------------------------------------------------------------</span>
+<a name="303"><span class="lineNum">     303 </span><span class="lineNoCov">          0 : // Test setter with too few arguments with a return in all contexts.</span></a>
+<span class="lineNum">     304 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     305 </span><span class="lineCov">         32 : function setter4() {</span>
 <span class="lineNum">     306 </span><span class="lineCov">         32 :   assertSame(obj, this);</span>
 <span class="lineNum">     307 </span><span class="lineCov">         32 :   accessorCallCount++;</span>
@@ -371,16 +371,16 @@
 <span class="lineNum">     309 </span><span class="lineCov">         32 :   setterValue = setterArgument;</span>
 <span class="lineNum">     310 </span><span class="lineCov">         32 :   return 2000000;</span>
 <a name="311"><span class="lineNum">     311 </span><span class="lineCov">         32 : }</span></a>
-<span class="lineNum">     312 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     312 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     313 </span><span class="lineCov">          1 : function ConstrS4() { }</span>
-<span class="lineNum">     314 </span><span class="lineCov">          1 : obj = Object.defineProperty(new ConstrS4(), &quot;setterProperty&quot;, { set: setter4 });</span>
-<span class="lineNum">     315 </span><span class="lineCov">          1 : TestSetterInAllContexts(setter4, obj, false);</span>
-<span class="lineNum">     316 </span><span class="lineCov">          1 : obj = Object.create(obj);</span>
-<span class="lineNum">     317 </span><span class="lineCov">          1 : TestSetterInAllContexts(setter4, obj, false);</span>
-<span class="lineNum">     318 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     319 </span><span class="lineCov">          1 : // -----------------------------------------------------------------------------</span>
-<a name="320"><span class="lineNum">     320 </span><span class="lineCov">          1 : // Test setter with too many arguments without a return in all contexts.</span></a>
-<span class="lineNum">     321 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     314 </span><span class="lineNoCov">          0 : obj = Object.defineProperty(new ConstrS4(), &quot;setterProperty&quot;, { set: setter4 });</span>
+<span class="lineNum">     315 </span><span class="lineNoCov">          0 : TestSetterInAllContexts(setter4, obj, false);</span>
+<span class="lineNum">     316 </span><span class="lineNoCov">          0 : obj = Object.create(obj);</span>
+<span class="lineNum">     317 </span><span class="lineNoCov">          0 : TestSetterInAllContexts(setter4, obj, false);</span>
+<span class="lineNum">     318 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     319 </span><span class="lineNoCov">          0 : // -----------------------------------------------------------------------------</span>
+<a name="320"><span class="lineNum">     320 </span><span class="lineNoCov">          0 : // Test setter with too many arguments without a return in all contexts.</span></a>
+<span class="lineNum">     321 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     322 </span><span class="lineCov">         32 : function setter5(value, foo) {</span>
 <span class="lineNum">     323 </span><span class="lineCov">         32 :   assertSame(obj, this);</span>
 <span class="lineNum">     324 </span><span class="lineCov">         32 :   assertEquals(undefined, foo);</span>
@@ -388,16 +388,16 @@
 <span class="lineNum">     326 </span><span class="lineCov">         32 :   forceDeopt.deopt;</span>
 <span class="lineNum">     327 </span><span class="lineCov">         32 :   setterValue = value;</span>
 <a name="328"><span class="lineNum">     328 </span><span class="lineCov">         32 : }</span></a>
-<span class="lineNum">     329 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     329 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     330 </span><span class="lineCov">          1 : function ConstrS5() { }</span>
-<span class="lineNum">     331 </span><span class="lineCov">          1 : obj = Object.defineProperty(new ConstrS5(), &quot;setterProperty&quot;, { set: setter5 });</span>
-<span class="lineNum">     332 </span><span class="lineCov">          1 : TestSetterInAllContexts(setter5, obj, false);</span>
-<span class="lineNum">     333 </span><span class="lineCov">          1 : obj = Object.create(obj);</span>
-<span class="lineNum">     334 </span><span class="lineCov">          1 : TestSetterInAllContexts(setter5, obj, false);</span>
-<span class="lineNum">     335 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     336 </span><span class="lineCov">          1 : // -----------------------------------------------------------------------------</span>
-<a name="337"><span class="lineNum">     337 </span><span class="lineCov">          1 : // Test setter with too many arguments with a return in all contexts.</span></a>
-<span class="lineNum">     338 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     331 </span><span class="lineNoCov">          0 : obj = Object.defineProperty(new ConstrS5(), &quot;setterProperty&quot;, { set: setter5 });</span>
+<span class="lineNum">     332 </span><span class="lineNoCov">          0 : TestSetterInAllContexts(setter5, obj, false);</span>
+<span class="lineNum">     333 </span><span class="lineNoCov">          0 : obj = Object.create(obj);</span>
+<span class="lineNum">     334 </span><span class="lineNoCov">          0 : TestSetterInAllContexts(setter5, obj, false);</span>
+<span class="lineNum">     335 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     336 </span><span class="lineNoCov">          0 : // -----------------------------------------------------------------------------</span>
+<a name="337"><span class="lineNum">     337 </span><span class="lineNoCov">          0 : // Test setter with too many arguments with a return in all contexts.</span></a>
+<span class="lineNum">     338 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     339 </span><span class="lineCov">         32 : function setter6(value, foo) {</span>
 <span class="lineNum">     340 </span><span class="lineCov">         32 :   assertSame(obj, this);</span>
 <span class="lineNum">     341 </span><span class="lineCov">         32 :   assertEquals(undefined, foo);</span>
@@ -406,28 +406,28 @@
 <span class="lineNum">     344 </span><span class="lineCov">         32 :   setterValue = value;</span>
 <span class="lineNum">     345 </span><span class="lineCov">         32 :   return 3000000;</span>
 <a name="346"><span class="lineNum">     346 </span><span class="lineCov">         32 : }</span></a>
-<span class="lineNum">     347 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     347 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     348 </span><span class="lineCov">          1 : function ConstrS6() { }</span>
-<span class="lineNum">     349 </span><span class="lineCov">          1 : obj = Object.defineProperty(new ConstrS6(), &quot;setterProperty&quot;, { set: setter6 });</span>
-<span class="lineNum">     350 </span><span class="lineCov">          1 : TestSetterInAllContexts(setter6, obj, false);</span>
-<span class="lineNum">     351 </span><span class="lineCov">          1 : obj = Object.create(obj);</span>
-<span class="lineNum">     352 </span><span class="lineCov">          1 : TestSetterInAllContexts(setter6, obj, false);</span>
-<span class="lineNum">     353 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     354 </span><span class="lineCov">          1 : // -----------------------------------------------------------------------------</span>
-<a name="355"><span class="lineNum">     355 </span><span class="lineCov">          1 : // Test setter which throws from optimized code.</span></a>
-<span class="lineNum">     356 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     349 </span><span class="lineNoCov">          0 : obj = Object.defineProperty(new ConstrS6(), &quot;setterProperty&quot;, { set: setter6 });</span>
+<span class="lineNum">     350 </span><span class="lineNoCov">          0 : TestSetterInAllContexts(setter6, obj, false);</span>
+<span class="lineNum">     351 </span><span class="lineNoCov">          0 : obj = Object.create(obj);</span>
+<span class="lineNum">     352 </span><span class="lineNoCov">          0 : TestSetterInAllContexts(setter6, obj, false);</span>
+<span class="lineNum">     353 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     354 </span><span class="lineNoCov">          0 : // -----------------------------------------------------------------------------</span>
+<a name="355"><span class="lineNum">     355 </span><span class="lineNoCov">          0 : // Test setter which throws from optimized code.</span></a>
+<span class="lineNum">     356 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     357 </span><span class="lineCov">         32 : function setter7(value) {</span>
 <span class="lineNum">     358 </span><span class="lineCov">         32 :   accessorCallCount++;</span>
 <span class="lineNum">     359 </span><span class="lineCov">         32 :   forceDeopt.deopt;</span>
 <span class="lineNum">     360 </span><span class="lineCov">         32 :   if (accessorCallCount == 4) { 123 in null; }</span>
 <span class="lineNum">     361 </span><span class="lineCov">         32 :   setterValue = value;</span>
 <a name="362"><span class="lineNum">     362 </span><span class="lineCov">         32 : }</span></a>
-<span class="lineNum">     363 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     363 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     364 </span><span class="lineCov">          1 : function ConstrS7() { }</span>
-<span class="lineNum">     365 </span><span class="lineCov">          1 : obj = Object.defineProperty(new ConstrS7(), &quot;setterProperty&quot;, { set: setter7 });</span>
-<span class="lineNum">     366 </span><span class="lineCov">          1 : TestSetterInAllContexts(setter7, obj, true);</span>
-<span class="lineNum">     367 </span><span class="lineCov">          1 : obj = Object.create(obj);</span>
-<span class="lineNum">     368 </span><span class="lineCov">          1 : TestSetterInAllContexts(setter7, obj, true);</span>
+<span class="lineNum">     365 </span>            : obj = Object.defineProperty(new ConstrS7(), &quot;setterProperty&quot;, { set: setter7 });
+<span class="lineNum">     366 </span>            : TestSetterInAllContexts(setter7, obj, true);
+<span class="lineNum">     367 </span>            : obj = Object.create(obj);
+<span class="lineNum">     368 </span>            : TestSetterInAllContexts(setter7, obj, true);
 </pre>
       </td>
     </tr>

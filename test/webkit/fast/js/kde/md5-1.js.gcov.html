@@ -31,17 +31,17 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">414</td>
-            <td class="headerCovTableEntry">414</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntry">346</td>
+            <td class="headerCovTableEntry">411</td>
+            <td class="headerCovTableEntryMed">84.2 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">25</td>
-            <td class="headerCovTableEntry">25</td>
+            <td class="headerCovTableEntry">24</td>
+            <td class="headerCovTableEntry">24</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr><td><img src="../../../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -110,15 +110,15 @@
 <span class="lineNum">      48 </span><span class="lineCov">          7 :     for(i=0;i&lt;n;i++) this[i]=0;</span>
 <span class="lineNum">      49 </span><span class="lineCov">          7 :     this.length=n;</span>
 <span class="lineNum">      50 </span><span class="lineCov">          7 : }</span>
-<span class="lineNum">      51 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      52 </span><span class="lineCov">          1 : /* Some basic logical functions had to be rewritten because of a bug in</span>
-<span class="lineNum">      53 </span><span class="lineCov">          1 : * Javascript.. Just try to compute 0xffffffff &gt;&gt; 4 with it..</span>
-<span class="lineNum">      54 </span><span class="lineCov">          1 : * Of course, these functions are slower than the original would be, but</span>
-<span class="lineNum">      55 </span><span class="lineCov">          1 : * at least, they work!</span>
-<a name="56"><span class="lineNum">      56 </span><span class="lineCov">          1 : */</span></a>
-<span class="lineNum">      57 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      51 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      52 </span><span class="lineNoCov">          0 : /* Some basic logical functions had to be rewritten because of a bug in</span>
+<span class="lineNum">      53 </span><span class="lineNoCov">          0 : * Javascript.. Just try to compute 0xffffffff &gt;&gt; 4 with it..</span>
+<span class="lineNum">      54 </span><span class="lineNoCov">          0 : * Of course, these functions are slower than the original would be, but</span>
+<span class="lineNum">      55 </span><span class="lineNoCov">          0 : * at least, they work!</span>
+<a name="56"><span class="lineNum">      56 </span><span class="lineNoCov">          0 : */</span></a>
+<span class="lineNum">      57 </span><span class="lineNoCov">          0 : </span>
 <a name="58"><span class="lineNum">      58 </span><span class="lineCov">       1492 : function integer(n) { return n%(0xffffffff+1); }</span></a>
-<span class="lineNum">      59 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      59 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      60 </span><span class="lineCov">        153 : function shr(a,b) {</span>
 <span class="lineNum">      61 </span><span class="lineCov">        153 :     a=integer(a);</span>
 <span class="lineNum">      62 </span><span class="lineCov">        153 :     b=integer(b);</span>
@@ -130,7 +130,7 @@
 <span class="lineNum">      68 </span><span class="lineCov">        153 :         a&gt;&gt;=b;</span>
 <span class="lineNum">      69 </span><span class="lineCov">        153 :     return a;</span>
 <a name="70"><span class="lineNum">      70 </span><span class="lineCov">        153 : }</span></a>
-<span class="lineNum">      71 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      71 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      72 </span><span class="lineCov">       1808 : function shl1(a) {</span>
 <span class="lineNum">      73 </span><span class="lineCov">       1808 :     a=a%0x80000000;</span>
 <span class="lineNum">      74 </span><span class="lineCov">       1808 :     if (a&amp;0x40000000==0x40000000)</span>
@@ -142,14 +142,14 @@
 <span class="lineNum">      80 </span><span class="lineCov">       1808 :             a*=2;</span>
 <span class="lineNum">      81 </span><span class="lineCov">       1808 :     return a;</span>
 <a name="82"><span class="lineNum">      82 </span><span class="lineCov">       1808 : }</span></a>
-<span class="lineNum">      83 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      83 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      84 </span><span class="lineCov">        128 : function shl(a,b) {</span>
 <span class="lineNum">      85 </span><span class="lineCov">        128 :     a=integer(a);</span>
 <span class="lineNum">      86 </span><span class="lineCov">        128 :     b=integer(b);</span>
 <span class="lineNum">      87 </span><span class="lineCov">        128 :     for (var i=0;i&lt;b;i++) a=shl1(a);</span>
 <span class="lineNum">      88 </span><span class="lineCov">        128 :     return a;</span>
 <a name="89"><span class="lineNum">      89 </span><span class="lineCov">        128 : }</span></a>
-<span class="lineNum">      90 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      90 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      91 </span><span class="lineCov">        281 : function and(a,b) {</span>
 <span class="lineNum">      92 </span><span class="lineCov">        281 :     a=integer(a);</span>
 <span class="lineNum">      93 </span><span class="lineCov">        281 :     b=integer(b);</span>
@@ -166,7 +166,7 @@
 <span class="lineNum">     104 </span><span class="lineCov">        281 :         else</span>
 <span class="lineNum">     105 </span><span class="lineCov">        281 :             return (a&amp;b);</span>
 <a name="106"><span class="lineNum">     106 </span><span class="lineCov">        281 : }</span></a>
-<span class="lineNum">     107 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     107 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     108 </span><span class="lineCov">        112 : function or(a,b) {</span>
 <span class="lineNum">     109 </span><span class="lineCov">        112 :     a=integer(a);</span>
 <span class="lineNum">     110 </span><span class="lineCov">        112 :     b=integer(b);</span>
@@ -183,7 +183,7 @@
 <span class="lineNum">     121 </span><span class="lineCov">        112 :         else</span>
 <span class="lineNum">     122 </span><span class="lineCov">        112 :             return (a|b);</span>
 <a name="123"><span class="lineNum">     123 </span><span class="lineCov">        112 : }</span></a>
-<span class="lineNum">     124 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     124 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     125 </span><span class="lineCov">         48 : function xor(a,b) {</span>
 <span class="lineNum">     126 </span><span class="lineCov">         48 :     a=integer(a);</span>
 <span class="lineNum">     127 </span><span class="lineCov">         48 :     b=integer(b);</span>
@@ -200,90 +200,90 @@
 <span class="lineNum">     138 </span><span class="lineCov">         48 :         else</span>
 <span class="lineNum">     139 </span><span class="lineCov">         48 :             return (a^b);</span>
 <span class="lineNum">     140 </span><span class="lineCov">         48 : }</span>
-<a name="141"><span class="lineNum">     141 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">     142 </span><span class="lineCov">          1 : </span>
+<a name="141"><span class="lineNum">     141 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">     142 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     143 </span><span class="lineCov">         48 : function not(a) {</span>
 <span class="lineNum">     144 </span><span class="lineCov">         48 :     a=integer(a);</span>
 <span class="lineNum">     145 </span><span class="lineCov">         48 :     return (0xffffffff-a);</span>
 <span class="lineNum">     146 </span><span class="lineCov">         48 : }</span>
-<span class="lineNum">     147 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     148 </span><span class="lineCov">          1 : /* Here begin the real algorithm */</span>
-<span class="lineNum">     149 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     150 </span><span class="lineCov">          1 : var state = new array(4);</span>
-<span class="lineNum">     151 </span><span class="lineCov">          1 : var count = new array(2);</span>
-<span class="lineNum">     152 </span><span class="lineCov">          1 : count[0] = 0;</span>
-<span class="lineNum">     153 </span><span class="lineCov">          1 : count[1] = 0;</span>
-<span class="lineNum">     154 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     155 </span><span class="lineCov">          1 : var buffer = new array(64);</span>
-<span class="lineNum">     156 </span><span class="lineCov">          1 : var transformBuffer = new array(16);</span>
-<span class="lineNum">     157 </span><span class="lineCov">          1 : var digestBits = new array(16);</span>
-<span class="lineNum">     158 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     159 </span><span class="lineCov">          1 : var S11 = 7;</span>
-<span class="lineNum">     160 </span><span class="lineCov">          1 : var S12 = 12;</span>
-<span class="lineNum">     161 </span><span class="lineCov">          1 : var S13 = 17;</span>
-<span class="lineNum">     162 </span><span class="lineCov">          1 : var S14 = 22;</span>
-<span class="lineNum">     163 </span><span class="lineCov">          1 : var S21 = 5;</span>
-<span class="lineNum">     164 </span><span class="lineCov">          1 : var S22 = 9;</span>
-<span class="lineNum">     165 </span><span class="lineCov">          1 : var S23 = 14;</span>
-<span class="lineNum">     166 </span><span class="lineCov">          1 : var S24 = 20;</span>
-<span class="lineNum">     167 </span><span class="lineCov">          1 : var S31 = 4;</span>
-<span class="lineNum">     168 </span><span class="lineCov">          1 : var S32 = 11;</span>
-<span class="lineNum">     169 </span><span class="lineCov">          1 : var S33 = 16;</span>
-<span class="lineNum">     170 </span><span class="lineCov">          1 : var S34 = 23;</span>
-<span class="lineNum">     171 </span><span class="lineCov">          1 : var S41 = 6;</span>
-<span class="lineNum">     172 </span><span class="lineCov">          1 : var S42 = 10;</span>
-<span class="lineNum">     173 </span><span class="lineCov">          1 : var S43 = 15;</span>
-<span class="lineNum">     174 </span><span class="lineCov">          1 : var S44 = 21;</span>
-<a name="175"><span class="lineNum">     175 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">     176 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     147 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     148 </span><span class="lineNoCov">          0 : /* Here begin the real algorithm */</span>
+<span class="lineNum">     149 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     150 </span><span class="lineNoCov">          0 : var state = new array(4);</span>
+<span class="lineNum">     151 </span><span class="lineNoCov">          0 : var count = new array(2);</span>
+<span class="lineNum">     152 </span><span class="lineNoCov">          0 : count[0] = 0;</span>
+<span class="lineNum">     153 </span><span class="lineNoCov">          0 : count[1] = 0;</span>
+<span class="lineNum">     154 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     155 </span><span class="lineNoCov">          0 : var buffer = new array(64);</span>
+<span class="lineNum">     156 </span><span class="lineNoCov">          0 : var transformBuffer = new array(16);</span>
+<span class="lineNum">     157 </span><span class="lineNoCov">          0 : var digestBits = new array(16);</span>
+<span class="lineNum">     158 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     159 </span><span class="lineNoCov">          0 : var S11 = 7;</span>
+<span class="lineNum">     160 </span><span class="lineNoCov">          0 : var S12 = 12;</span>
+<span class="lineNum">     161 </span><span class="lineNoCov">          0 : var S13 = 17;</span>
+<span class="lineNum">     162 </span><span class="lineNoCov">          0 : var S14 = 22;</span>
+<span class="lineNum">     163 </span><span class="lineNoCov">          0 : var S21 = 5;</span>
+<span class="lineNum">     164 </span><span class="lineNoCov">          0 : var S22 = 9;</span>
+<span class="lineNum">     165 </span><span class="lineNoCov">          0 : var S23 = 14;</span>
+<span class="lineNum">     166 </span><span class="lineNoCov">          0 : var S24 = 20;</span>
+<span class="lineNum">     167 </span><span class="lineNoCov">          0 : var S31 = 4;</span>
+<span class="lineNum">     168 </span><span class="lineNoCov">          0 : var S32 = 11;</span>
+<span class="lineNum">     169 </span><span class="lineNoCov">          0 : var S33 = 16;</span>
+<span class="lineNum">     170 </span><span class="lineNoCov">          0 : var S34 = 23;</span>
+<span class="lineNum">     171 </span><span class="lineNoCov">          0 : var S41 = 6;</span>
+<span class="lineNum">     172 </span><span class="lineNoCov">          0 : var S42 = 10;</span>
+<span class="lineNum">     173 </span><span class="lineNoCov">          0 : var S43 = 15;</span>
+<span class="lineNum">     174 </span><span class="lineNoCov">          0 : var S44 = 21;</span>
+<a name="175"><span class="lineNum">     175 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">     176 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     177 </span><span class="lineCov">         16 : function F(x,y,z) {</span>
 <span class="lineNum">     178 </span><span class="lineCov">         16 :     return or(and(x,y),and(not(x),z));</span>
 <a name="179"><span class="lineNum">     179 </span><span class="lineCov">         16 : }</span></a>
-<span class="lineNum">     180 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     180 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     181 </span><span class="lineCov">         16 : function G(x,y,z) {</span>
 <span class="lineNum">     182 </span><span class="lineCov">         16 :     return or(and(x,z),and(y,not(z)));</span>
 <a name="183"><span class="lineNum">     183 </span><span class="lineCov">         16 : }</span></a>
-<span class="lineNum">     184 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     184 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     185 </span><span class="lineCov">         16 : function H(x,y,z) {</span>
 <span class="lineNum">     186 </span><span class="lineCov">         16 :     return xor(xor(x,y),z);</span>
 <a name="187"><span class="lineNum">     187 </span><span class="lineCov">         16 : }</span></a>
-<span class="lineNum">     188 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     188 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     189 </span><span class="lineCov">         16 : function I(x,y,z) {</span>
 <span class="lineNum">     190 </span><span class="lineCov">         16 :     return xor(y ,or(x , not(z)));</span>
 <a name="191"><span class="lineNum">     191 </span><span class="lineCov">         16 : }</span></a>
-<span class="lineNum">     192 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     192 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     193 </span><span class="lineCov">         64 : function rotateLeft(a,n) {</span>
 <span class="lineNum">     194 </span><span class="lineCov">         64 :     return or(shl(a, n),(shr(a,(32 - n))));</span>
 <a name="195"><span class="lineNum">     195 </span><span class="lineCov">         64 : }</span></a>
-<span class="lineNum">     196 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     196 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     197 </span><span class="lineCov">         16 : function FF(a,b,c,d,x,s,ac) {</span>
 <span class="lineNum">     198 </span><span class="lineCov">         16 :     a = a+F(b, c, d) + x + ac;</span>
 <span class="lineNum">     199 </span><span class="lineCov">         16 :     a = rotateLeft(a, s);</span>
 <span class="lineNum">     200 </span><span class="lineCov">         16 :     a = a+b;</span>
 <span class="lineNum">     201 </span><span class="lineCov">         16 :     return a;</span>
 <a name="202"><span class="lineNum">     202 </span><span class="lineCov">         16 : }</span></a>
-<span class="lineNum">     203 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     203 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     204 </span><span class="lineCov">         16 : function GG(a,b,c,d,x,s,ac) {</span>
 <span class="lineNum">     205 </span><span class="lineCov">         16 :     a = a+G(b, c, d) +x + ac;</span>
 <span class="lineNum">     206 </span><span class="lineCov">         16 :     a = rotateLeft(a, s);</span>
 <span class="lineNum">     207 </span><span class="lineCov">         16 :     a = a+b;</span>
 <span class="lineNum">     208 </span><span class="lineCov">         16 :     return a;</span>
 <a name="209"><span class="lineNum">     209 </span><span class="lineCov">         16 : }</span></a>
-<span class="lineNum">     210 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     210 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     211 </span><span class="lineCov">         16 : function HH(a,b,c,d,x,s,ac) {</span>
 <span class="lineNum">     212 </span><span class="lineCov">         16 :     a = a+H(b, c, d) + x + ac;</span>
 <span class="lineNum">     213 </span><span class="lineCov">         16 :     a = rotateLeft(a, s);</span>
 <span class="lineNum">     214 </span><span class="lineCov">         16 :     a = a+b;</span>
 <span class="lineNum">     215 </span><span class="lineCov">         16 :     return a;</span>
 <a name="216"><span class="lineNum">     216 </span><span class="lineCov">         16 : }</span></a>
-<span class="lineNum">     217 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     217 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     218 </span><span class="lineCov">         16 : function II(a,b,c,d,x,s,ac) {</span>
 <span class="lineNum">     219 </span><span class="lineCov">         16 :     a = a+I(b, c, d) + x + ac;</span>
 <span class="lineNum">     220 </span><span class="lineCov">         16 :     a = rotateLeft(a, s);</span>
 <span class="lineNum">     221 </span><span class="lineCov">         16 :     a = a+b;</span>
 <span class="lineNum">     222 </span><span class="lineCov">         16 :     return a;</span>
 <a name="223"><span class="lineNum">     223 </span><span class="lineCov">         16 : }</span></a>
-<span class="lineNum">     224 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     224 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     225 </span><span class="lineCov">          1 : function transform(buf,offset) {</span>
 <span class="lineNum">     226 </span><span class="lineCov">          1 :     var a=0, b=0, c=0, d=0;</span>
 <span class="lineNum">     227 </span><span class="lineCov">          1 :     var x = transformBuffer;</span>
@@ -377,7 +377,7 @@
 <span class="lineNum">     315 </span><span class="lineCov">          1 :     state[2] +=c;</span>
 <span class="lineNum">     316 </span><span class="lineCov">          1 :     state[3] +=d;</span>
 <a name="317"><span class="lineNum">     317 </span><span class="lineCov">          1 : }</span></a>
-<span class="lineNum">     318 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     318 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     319 </span><span class="lineCov">          1 : function init() {</span>
 <span class="lineNum">     320 </span><span class="lineCov">          1 :     count[0]=count[1] = 0;</span>
 <span class="lineNum">     321 </span><span class="lineCov">          1 :     state[0] = 0x67452301;</span>
@@ -387,7 +387,7 @@
 <span class="lineNum">     325 </span><span class="lineCov">          1 :     for (i = 0; i &lt; digestBits.length; i++)</span>
 <span class="lineNum">     326 </span><span class="lineCov">          1 :         digestBits[i] = 0;</span>
 <a name="327"><span class="lineNum">     327 </span><span class="lineCov">          1 : }</span></a>
-<span class="lineNum">     328 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     328 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     329 </span><span class="lineCov">         64 : function update(b) {</span>
 <span class="lineNum">     330 </span><span class="lineCov">         64 :     var index,i;</span>
 <span class="lineNum">     331 </span><span class="lineCov">         64 : </span>
@@ -405,7 +405,7 @@
 <span class="lineNum">     343 </span><span class="lineCov">         64 :         transform(buffer, 0);</span>
 <span class="lineNum">     344 </span><span class="lineCov">         64 :     }</span>
 <a name="345"><span class="lineNum">     345 </span><span class="lineCov">         64 : }</span></a>
-<span class="lineNum">     346 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     346 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     347 </span><span class="lineCov">          1 : function finish() {</span>
 <span class="lineNum">     348 </span><span class="lineCov">          1 :     var bits = new array(8);</span>
 <span class="lineNum">     349 </span><span class="lineCov">          1 :     var padding;</span>
@@ -435,9 +435,9 @@
 <span class="lineNum">     373 </span><span class="lineCov">          1 :         }</span>
 <span class="lineNum">     374 </span><span class="lineCov">          1 :     }</span>
 <span class="lineNum">     375 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">     376 </span><span class="lineCov">          1 : </span>
-<a name="377"><span class="lineNum">     377 </span><span class="lineCov">          1 : /* End of the MD5 algorithm */</span></a>
-<span class="lineNum">     378 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     376 </span><span class="lineNoCov">          0 : </span>
+<a name="377"><span class="lineNum">     377 </span><span class="lineNoCov">          0 : /* End of the MD5 algorithm */</span></a>
+<span class="lineNum">     378 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     379 </span><span class="lineCov">          4 : function hexa(n) {</span>
 <span class="lineNum">     380 </span><span class="lineCov">          4 :     var hexa_h = &quot;0123456789abcdef&quot;;</span>
 <span class="lineNum">     381 </span><span class="lineCov">          4 :     var hexa_c=&quot;&quot;;</span>
@@ -448,11 +448,11 @@
 <span class="lineNum">     386 </span><span class="lineCov">          4 :     }</span>
 <span class="lineNum">     387 </span><span class="lineCov">          4 :     return hexa_c;</span>
 <span class="lineNum">     388 </span><span class="lineCov">          4 : }</span>
-<span class="lineNum">     389 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     390 </span><span class="lineCov">          1 : var ascii=&quot;01234567890123456789012345678901&quot; +</span>
-<span class="lineNum">     391 </span><span class="lineCov">          1 : &quot; !\&quot;#$%&amp;'()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;+</span>
-<a name="392"><span class="lineNum">     392 </span><span class="lineCov">          1 : &quot;[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~&quot;;</span></a>
-<span class="lineNum">     393 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     389 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     390 </span><span class="lineNoCov">          0 : var ascii=&quot;01234567890123456789012345678901&quot; +</span>
+<span class="lineNum">     391 </span><span class="lineNoCov">          0 : &quot; !\&quot;#$%&amp;'()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;+</span>
+<a name="392"><span class="lineNum">     392 </span><span class="lineNoCov">          0 : &quot;[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~&quot;;</span></a>
+<span class="lineNum">     393 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     394 </span><span class="lineCov">          1 : function MD5(entree)</span>
 <span class="lineNum">     395 </span><span class="lineCov">          1 : {</span>
 <span class="lineNum">     396 </span><span class="lineCov">          1 :     var l,s,k,ka,kb,kc,kd;</span>
@@ -471,8 +471,8 @@
 <span class="lineNum">     409 </span><span class="lineCov">          1 :     s=hexa(kd)+hexa(kc)+hexa(kb)+hexa(ka);</span>
 <span class="lineNum">     410 </span><span class="lineCov">          1 :     return s;</span>
 <span class="lineNum">     411 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">     412 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     413 </span><span class="lineCov">          1 : shouldBe(&quot;MD5('kde')&quot;, &quot;'186cf28b76f2264e9fea8fcf91cb4f5d'&quot;);</span>
+<span class="lineNum">     412 </span>            : 
+<span class="lineNum">     413 </span>            : shouldBe(&quot;MD5('kde')&quot;, &quot;'186cf28b76f2264e9fea8fcf91cb4f5d'&quot;);
 </pre>
       </td>
     </tr>

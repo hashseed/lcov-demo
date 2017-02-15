@@ -31,17 +31,17 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">4915</td>
-            <td class="headerCovTableEntry">4915</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntry">4875</td>
+            <td class="headerCovTableEntry">4914</td>
+            <td class="headerCovTableEntryHi">99.2 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">9</td>
-            <td class="headerCovTableEntry">9</td>
+            <td class="headerCovTableEntry">7</td>
+            <td class="headerCovTableEntry">7</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -107,17 +107,17 @@
 <span class="lineNum">      45 </span><span class="lineCov">      55500 :   return String.fromCharCode(+0xd800 + (c &gt;&gt; 10)) +</span>
 <span class="lineNum">      46 </span><span class="lineCov">      55500 :          String.fromCharCode(+0xdc00 + (c &amp; 0x3ff));</span>
 <span class="lineNum">      47 </span><span class="lineCov">      55500 : }</span>
-<span class="lineNum">      48 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      49 </span><span class="lineCov">          1 : fuzz_index = 0;</span>
-<span class="lineNum">      50 </span><span class="lineCov">          1 : fuzz();</span>
-<span class="lineNum">      51 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      52 </span><span class="lineCov">          1 : for (var i = 0x10000; i &lt; 0x110000 &amp;&amp; i &lt; answer.length + 256; i++) {</span>
-<span class="lineNum">      53 </span><span class="lineCov">          1 :   var c = i - 0x10000;</span>
-<span class="lineNum">      54 </span><span class="lineCov">          1 :   assertTrue(!!re.test(BuildSurrogatePair(c)) == !!answer[i]);</span>
-<span class="lineNum">      55 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">      56 </span><span class="lineCov">          1 : </span>
-<a name="57"><span class="lineNum">      57 </span><span class="lineCov">          1 : var seed = 49734321;</span></a>
-<span class="lineNum">      58 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      48 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      49 </span><span class="lineNoCov">          0 : fuzz_index = 0;</span>
+<span class="lineNum">      50 </span><span class="lineNoCov">          0 : fuzz();</span>
+<span class="lineNum">      51 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      52 </span><span class="lineNoCov">          0 : for (var i = 0x10000; i &lt; 0x110000 &amp;&amp; i &lt; answer.length + 256; i++) {</span>
+<span class="lineNum">      53 </span><span class="lineNoCov">          0 :   var c = i - 0x10000;</span>
+<span class="lineNum">      54 </span><span class="lineNoCov">          0 :   assertTrue(!!re.test(BuildSurrogatePair(c)) == !!answer[i]);</span>
+<span class="lineNum">      55 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      56 </span><span class="lineNoCov">          0 : </span>
+<a name="57"><span class="lineNum">      57 </span><span class="lineNoCov">          0 : var seed = 49734321;</span></a>
+<span class="lineNum">      58 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      59 </span><span class="lineCov">      99918 : function rand() {</span>
 <span class="lineNum">      60 </span><span class="lineCov">      99918 :   // To make the test results predictable, we use a 100% deterministic</span>
 <span class="lineNum">      61 </span><span class="lineCov">      99918 :   // alternative.</span>
@@ -130,9 +130,9 @@
 <span class="lineNum">      68 </span><span class="lineCov">      99918 :   seed = ((seed ^ 0xb55a4f09) ^ (seed &gt;&gt;&gt; 16)) &amp; 0xffffffff;</span>
 <span class="lineNum">      69 </span><span class="lineCov">      99918 :   return (seed &amp; 0xffff)</span>
 <span class="lineNum">      70 </span><span class="lineCov">      99918 : }</span>
-<span class="lineNum">      71 </span><span class="lineCov">          1 : </span>
-<a name="72"><span class="lineNum">      72 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">      73 </span><span class="lineCov">          1 : // Random character.</span>
+<span class="lineNum">      71 </span><span class="lineNoCov">          0 : </span>
+<a name="72"><span class="lineNum">      72 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">      73 </span><span class="lineNoCov">          0 : // Random character.</span>
 <span class="lineNum">      74 </span><span class="lineCov">      15210 : function rc(last) {</span>
 <span class="lineNum">      75 </span><span class="lineCov">      15210 :   var c = rand();</span>
 <span class="lineNum">      76 </span><span class="lineCov">      15210 :   // Increase the concentration of problematic values around the page</span>
@@ -148,8 +148,8 @@
 <span class="lineNum">      86 </span><span class="lineCov">      15210 :   if (rand() &amp; 1) c = last + (rand() &amp; 15) - 8;</span>
 <span class="lineNum">      87 </span><span class="lineCov">      15210 :   return c &amp; 0xffff;  // Only code unit values.</span>
 <span class="lineNum">      88 </span><span class="lineCov">      15210 : }</span>
-<a name="89"><span class="lineNum">      89 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">      90 </span><span class="lineCov">          1 : </span>
+<a name="89"><span class="lineNum">      89 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">      90 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      91 </span><span class="lineCov">          1 : function fuzz() {</span>
 <span class="lineNum">      92 </span><span class="lineCov">          1 :   fuzz_index = 0;</span>
 <span class="lineNum">      93 </span><span class="lineCov">          1 :   seed = 49734321;</span>
@@ -160,34 +160,34 @@
 <span class="lineNum">      98 </span><span class="lineCov">          1 :     var last = rand();</span>
 <span class="lineNum">      99 </span><span class="lineCov">          1 :     for (var j = 0; j &lt; len; j++) {</span>
 <span class="lineNum">     100 </span><span class="lineCov">          1 :       ranges.push(last);</span>
-<a name="101"><span class="lineNum">     101 </span><span class="lineCov">          1 :       last = rc(last);</span></a>
+<span class="lineNum">     101 </span><span class="lineCov">          1 :       last = rc(last);</span>
 <span class="lineNum">     102 </span><span class="lineCov">          1 :     }</span>
 <span class="lineNum">     103 </span><span class="lineCov">      51566 :     ranges.sort(function (a, b) { return a - b });</span>
-<span class="lineNum">     104 </span><span class="lineCov">          1 :     var cc = &quot;&quot;;</span>
-<span class="lineNum">     105 </span><span class="lineCov">          1 :     for (var j = 0; j &lt; len; j++) {</span>
-<span class="lineNum">     106 </span><span class="lineCov">          1 :       var ch = String.fromCharCode(ranges[j]);</span>
-<span class="lineNum">     107 </span><span class="lineCov">          1 :       if (ch == '\\' || ch == ']') ch = '\\' + ch;</span>
-<span class="lineNum">     108 </span><span class="lineCov">          1 :       cc += ch;</span>
-<span class="lineNum">     109 </span><span class="lineCov">          1 :       if (j &lt; len - 1 &amp;&amp; rand() &amp; 1) cc += '-';</span>
-<span class="lineNum">     110 </span><span class="lineCov">          1 :     }</span>
-<span class="lineNum">     111 </span><span class="lineCov">          1 :     var negated = (last &amp; 2) != 0;</span>
-<span class="lineNum">     112 </span><span class="lineCov">          1 :     var prefix = negated ? &quot;[^&quot; : &quot;[&quot;;</span>
-<span class="lineNum">     113 </span><span class="lineCov">          1 :     var re = new RegExp(prefix + cc + &quot;]&quot;);</span>
-<span class="lineNum">     114 </span><span class="lineCov">          1 :     for (var j = 0; j &lt; len; j++) {</span>
-<span class="lineNum">     115 </span><span class="lineCov">          1 :       retest(re, (ranges[j] - 1), negated);</span>
-<span class="lineNum">     116 </span><span class="lineCov">          1 :       retest(re, (ranges[j]), negated);</span>
-<span class="lineNum">     117 </span><span class="lineCov">          1 :       retest(re, (ranges[j] + 1), negated);</span>
-<span class="lineNum">     118 </span><span class="lineCov">          1 :     }</span>
-<span class="lineNum">     119 </span><span class="lineCov">          1 :   }</span>
-<span class="lineNum">     120 </span><span class="lineCov">          1 : }</span>
-<a name="121"><span class="lineNum">     121 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">     122 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     104 </span><span class="lineNoCov">          0 :     var cc = &quot;&quot;;</span>
+<span class="lineNum">     105 </span><span class="lineNoCov">          0 :     for (var j = 0; j &lt; len; j++) {</span>
+<span class="lineNum">     106 </span><span class="lineNoCov">          0 :       var ch = String.fromCharCode(ranges[j]);</span>
+<span class="lineNum">     107 </span><span class="lineNoCov">          0 :       if (ch == '\\' || ch == ']') ch = '\\' + ch;</span>
+<span class="lineNum">     108 </span><span class="lineNoCov">          0 :       cc += ch;</span>
+<span class="lineNum">     109 </span><span class="lineNoCov">          0 :       if (j &lt; len - 1 &amp;&amp; rand() &amp; 1) cc += '-';</span>
+<span class="lineNum">     110 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     111 </span><span class="lineNoCov">          0 :     var negated = (last &amp; 2) != 0;</span>
+<span class="lineNum">     112 </span><span class="lineNoCov">          0 :     var prefix = negated ? &quot;[^&quot; : &quot;[&quot;;</span>
+<span class="lineNum">     113 </span><span class="lineNoCov">          0 :     var re = new RegExp(prefix + cc + &quot;]&quot;);</span>
+<span class="lineNum">     114 </span><span class="lineNoCov">          0 :     for (var j = 0; j &lt; len; j++) {</span>
+<span class="lineNum">     115 </span><span class="lineNoCov">          0 :       retest(re, (ranges[j] - 1), negated);</span>
+<span class="lineNum">     116 </span><span class="lineNoCov">          0 :       retest(re, (ranges[j]), negated);</span>
+<span class="lineNum">     117 </span><span class="lineNoCov">          0 :       retest(re, (ranges[j] + 1), negated);</span>
+<span class="lineNum">     118 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     119 </span><span class="lineNoCov">          0 :   }</span>
+<span class="lineNum">     120 </span><span class="lineNoCov">          0 : }</span>
+<a name="121"><span class="lineNum">     121 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">     122 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     123 </span><span class="lineCov">      45630 : function retest(re, code, negated) {</span>
 <span class="lineNum">     124 </span><span class="lineCov">      45630 :   var s = String.fromCharCode(code &gt;&gt;&gt; 0);</span>
 <span class="lineNum">     125 </span><span class="lineCov">      45630 :   assertTrue(negated != (!!re.test(s) == !!fuzz_answer[fuzz_index++]));</span>
 <span class="lineNum">     126 </span><span class="lineCov">      45630 : }</span>
-<a name="127"><span class="lineNum">     127 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">     128 </span><span class="lineCov">          1 : </span>
+<a name="127"><span class="lineNum">     127 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">     128 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     129 </span><span class="lineCov">          1 : function get_fuzz_answer() {</span>
 <span class="lineNum">     130 </span><span class="lineCov">          1 :   // Test data generated with V8 version 3.7.</span>
 <span class="lineNum">     131 </span><span class="lineCov">          1 : return [</span>
@@ -1193,8 +1193,8 @@
 <span class="lineNum">    1131 </span><span class="lineCov">          1 :   0,1,1,1,1,0,0,1,0,0,1,0,0,1,0,0,1,1,1,1,0,0,1,0,0,1,0,0,1,1,1,1,0,0,1,0,0,1,0,0,1,0,0,1,1,1,1,1,1,1,0,0,1,1,1,1,0,0,1,0,0,1,1,1,1,0,</span>
 <span class="lineNum">    1132 </span><span class="lineCov">          1 : ];</span>
 <span class="lineNum">    1133 </span><span class="lineCov">          1 : }</span>
-<a name="1134"><span class="lineNum">    1134 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">    1135 </span><span class="lineCov">          1 : </span>
+<a name="1134"><span class="lineNum">    1134 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">    1135 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">    1136 </span><span class="lineCov">          1 : function get_answer() {</span>
 <span class="lineNum">    1137 </span><span class="lineCov">          1 :   // Test data generated with V8 version 3.7.</span>
 <span class="lineNum">    1138 </span><span class="lineCov">          1 : return [</span>

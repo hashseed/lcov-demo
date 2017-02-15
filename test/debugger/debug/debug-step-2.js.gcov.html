@@ -31,17 +31,17 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">62</td>
-            <td class="headerCovTableEntry">62</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntry">30</td>
+            <td class="headerCovTableEntry">34</td>
+            <td class="headerCovTableEntryMed">88.2 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">4</td>
-            <td class="headerCovTableEntry">4</td>
+            <td class="headerCovTableEntry">3</td>
+            <td class="headerCovTableEntry">3</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -81,46 +81,46 @@
 <span class="lineNum">      19 </span><span class="lineCov">          8 :     step_count++;</span>
 <span class="lineNum">      20 </span><span class="lineCov">          8 :   }</span>
 <span class="lineNum">      21 </span><span class="lineCov">          8 : };</span>
-<a name="22"><span class="lineNum">      22 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">      23 </span><span class="lineCov">          1 : // Set the global variables state to prpare the stepping test.</span>
+<a name="22"><span class="lineNum">      22 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">      23 </span><span class="lineNoCov">          0 : // Set the global variables state to prpare the stepping test.</span>
 <span class="lineNum">      24 </span><span class="lineCov">          4 : function prepare_step_test() {</span>
 <span class="lineNum">      25 </span><span class="lineCov">          4 :   done = false;</span>
 <span class="lineNum">      26 </span><span class="lineCov">          4 :   step_count = 0;</span>
 <span class="lineNum">      27 </span><span class="lineCov">          4 : }</span>
-<a name="28"><span class="lineNum">      28 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">      29 </span><span class="lineCov">          1 : // Test function to step through.</span>
+<a name="28"><span class="lineNum">      28 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">      29 </span><span class="lineNoCov">          0 : // Test function to step through.</span>
 <span class="lineNum">      30 </span><span class="lineCov">          4 : function f() {</span>
 <span class="lineNum">      31 </span><span class="lineCov">          4 :   var i = 1;</span>
 <span class="lineNum">      32 </span><span class="lineCov">          4 :   var j = 2;</span>
 <span class="lineNum">      33 </span><span class="lineCov">          4 :   done = true;</span>
 <span class="lineNum">      34 </span><span class="lineCov">          4 : };</span>
-<span class="lineNum">      35 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      36 </span><span class="lineCov">          1 : prepare_step_test();</span>
-<span class="lineNum">      37 </span><span class="lineCov">          1 : f();</span>
-<span class="lineNum">      38 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      39 </span><span class="lineCov">          1 : // Add the debug event listener.</span>
-<span class="lineNum">      40 </span><span class="lineCov">          1 : Debug.setListener(listener);</span>
-<span class="lineNum">      41 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      42 </span><span class="lineCov">          1 : bp = Debug.setBreakPoint(f, 1);</span>
-<span class="lineNum">      43 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      44 </span><span class="lineCov">          1 : prepare_step_test();</span>
-<span class="lineNum">      45 </span><span class="lineCov">          1 : f();</span>
-<span class="lineNum">      46 </span><span class="lineCov">          1 : assertEquals(4, step_count);</span>
-<span class="lineNum">      47 </span><span class="lineCov">          1 : Debug.clearBreakPoint(bp);</span>
-<span class="lineNum">      48 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      49 </span><span class="lineCov">          1 : // Set a breakpoint on the first var statement (line 1).</span>
-<span class="lineNum">      50 </span><span class="lineCov">          1 : bp = Debug.setBreakPoint(f, 1);</span>
-<span class="lineNum">      51 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      52 </span><span class="lineCov">          1 : // Step through the function ensuring that the var statements are hit as well.</span>
-<span class="lineNum">      53 </span><span class="lineCov">          1 : prepare_step_test();</span>
-<span class="lineNum">      54 </span><span class="lineCov">          1 : f();</span>
-<span class="lineNum">      55 </span><span class="lineCov">          1 : assertEquals(4, step_count);</span>
-<span class="lineNum">      56 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      57 </span><span class="lineCov">          1 : // Clear the breakpoint and check that no stepping happens.</span>
-<span class="lineNum">      58 </span><span class="lineCov">          1 : Debug.clearBreakPoint(bp);</span>
-<span class="lineNum">      59 </span><span class="lineCov">          1 : prepare_step_test();</span>
-<span class="lineNum">      60 </span><span class="lineCov">          1 : f();</span>
-<span class="lineNum">      61 </span><span class="lineCov">          1 : assertEquals(0, step_count);</span>
+<span class="lineNum">      35 </span>            : 
+<span class="lineNum">      36 </span>            : prepare_step_test();
+<span class="lineNum">      37 </span>            : f();
+<span class="lineNum">      38 </span>            : 
+<span class="lineNum">      39 </span>            : // Add the debug event listener.
+<span class="lineNum">      40 </span>            : Debug.setListener(listener);
+<span class="lineNum">      41 </span>            : 
+<span class="lineNum">      42 </span>            : bp = Debug.setBreakPoint(f, 1);
+<span class="lineNum">      43 </span>            : 
+<span class="lineNum">      44 </span>            : prepare_step_test();
+<span class="lineNum">      45 </span>            : f();
+<span class="lineNum">      46 </span>            : assertEquals(4, step_count);
+<span class="lineNum">      47 </span>            : Debug.clearBreakPoint(bp);
+<span class="lineNum">      48 </span>            : 
+<span class="lineNum">      49 </span>            : // Set a breakpoint on the first var statement (line 1).
+<span class="lineNum">      50 </span>            : bp = Debug.setBreakPoint(f, 1);
+<span class="lineNum">      51 </span>            : 
+<span class="lineNum">      52 </span>            : // Step through the function ensuring that the var statements are hit as well.
+<span class="lineNum">      53 </span>            : prepare_step_test();
+<span class="lineNum">      54 </span>            : f();
+<span class="lineNum">      55 </span>            : assertEquals(4, step_count);
+<span class="lineNum">      56 </span>            : 
+<span class="lineNum">      57 </span>            : // Clear the breakpoint and check that no stepping happens.
+<span class="lineNum">      58 </span>            : Debug.clearBreakPoint(bp);
+<span class="lineNum">      59 </span>            : prepare_step_test();
+<span class="lineNum">      60 </span>            : f();
+<span class="lineNum">      61 </span>            : assertEquals(0, step_count);
 </pre>
       </td>
     </tr>

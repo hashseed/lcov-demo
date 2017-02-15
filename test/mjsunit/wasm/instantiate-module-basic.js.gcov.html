@@ -31,18 +31,18 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">268</td>
-            <td class="headerCovTableEntry">268</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntry">227</td>
+            <td class="headerCovTableEntry">267</td>
+            <td class="headerCovTableEntryMed">85.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">19</td>
             <td class="headerCovTableEntry">20</td>
-            <td class="headerCovTableEntry">21</td>
-            <td class="headerCovTableEntryHi">95.2 %</td>
+            <td class="headerCovTableEntryHi">95.0 %</td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
         </table>
@@ -80,7 +80,7 @@
 <span class="lineNum">      18 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      19 </span><span class="lineCov">          1 :   return builder.toBuffer();</span>
 <a name="20"><span class="lineNum">      20 </span><span class="lineCov">          1 : })()</span></a>
-<span class="lineNum">      21 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      21 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      22 </span><span class="lineCov">          3 : function CheckInstance(instance) {</span>
 <span class="lineNum">      23 </span><span class="lineCov">          3 :   assertFalse(instance === undefined);</span>
 <span class="lineNum">      24 </span><span class="lineCov">          3 :   assertFalse(instance === null);</span>
@@ -117,8 +117,8 @@
 <span class="lineNum">      55 </span><span class="lineCov">          3 : </span>
 <span class="lineNum">      56 </span><span class="lineCov">          3 :   assertEquals(kReturnValue, main());</span>
 <span class="lineNum">      57 </span><span class="lineCov">          3 : }</span>
-<a name="58"><span class="lineNum">      58 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">      59 </span><span class="lineCov">          1 : // Official API</span>
+<a name="58"><span class="lineNum">      58 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">      59 </span><span class="lineNoCov">          0 : // Official API</span>
 <span class="lineNum">      60 </span><span class="lineCov">          1 : (function BasicJSAPITest() {</span>
 <span class="lineNum">      61 </span><span class="lineCov">          1 :   print(&quot;sync module compile...&quot;);</span>
 <span class="lineNum">      62 </span><span class="lineCov">          1 :   let module = new WebAssembly.Module(buffer);</span>
@@ -128,17 +128,17 @@
 <a name="66"><span class="lineNum">      66 </span><span class="lineCov">          1 :   print(&quot;async module compile...&quot;);</span></a>
 <span class="lineNum">      67 </span><span class="lineCov">          1 :   let promise = WebAssembly.compile(buffer);</span>
 <span class="lineNum">      68 </span><span class="lineCov">          1 :   promise.then(module =&gt; CheckInstance(new WebAssembly.Instance(module)));</span>
-<span class="lineNum">      69 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      70 </span><span class="lineCov">          1 :   print(&quot;async instantiate...&quot;);</span>
-<span class="lineNum">      71 </span><span class="lineCov">          1 :   let instance_promise = WebAssembly.instantiate(buffer);</span>
-<span class="lineNum">      72 </span><span class="lineCov">          1 :   instance_promise.then(CheckInstance);</span>
-<span class="lineNum">      73 </span><span class="lineCov">          1 : })();</span>
-<span class="lineNum">      74 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      75 </span><span class="lineCov">          1 : // Check that validate works correctly for a module.</span>
-<span class="lineNum">      76 </span><span class="lineCov">          1 : assertTrue(WebAssembly.validate(buffer));</span>
-<span class="lineNum">      77 </span><span class="lineCov">          1 : assertFalse(WebAssembly.validate(bytes(88, 88, 88, 88, 88, 88, 88, 88)));</span>
-<a name="78"><span class="lineNum">      78 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">      79 </span><span class="lineCov">          1 : // Negative tests.</span>
+<span class="lineNum">      69 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      70 </span><span class="lineNoCov">          0 :   print(&quot;async instantiate...&quot;);</span>
+<span class="lineNum">      71 </span><span class="lineNoCov">          0 :   let instance_promise = WebAssembly.instantiate(buffer);</span>
+<span class="lineNum">      72 </span><span class="lineNoCov">          0 :   instance_promise.then(CheckInstance);</span>
+<span class="lineNum">      73 </span><span class="lineNoCov">          0 : })();</span>
+<span class="lineNum">      74 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      75 </span><span class="lineNoCov">          0 : // Check that validate works correctly for a module.</span>
+<span class="lineNum">      76 </span><span class="lineNoCov">          0 : assertTrue(WebAssembly.validate(buffer));</span>
+<span class="lineNum">      77 </span><span class="lineNoCov">          0 : assertFalse(WebAssembly.validate(bytes(88, 88, 88, 88, 88, 88, 88, 88)));</span>
+<a name="78"><span class="lineNum">      78 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">      79 </span><span class="lineNoCov">          0 : // Negative tests.</span>
 <span class="lineNum">      80 </span><span class="lineCov">          1 : (function InvalidModules() {</span>
 <span class="lineNum">      81 </span><span class="lineCov">          1 :   print(&quot;InvalidModules...&quot;);</span>
 <span class="lineNum">      82 </span><span class="lineCov">          1 :   let invalid_cases = [undefined, 1, &quot;&quot;, &quot;a&quot;, {some:1, obj: &quot;b&quot;}];</span>
@@ -152,8 +152,8 @@
 <span class="lineNum">      90 </span><span class="lineCov">          1 :     }</span>
 <span class="lineNum">      91 </span><span class="lineCov">          1 :   }</span>
 <span class="lineNum">      92 </span><span class="lineCov">          1 : })();</span>
-<a name="93"><span class="lineNum">      93 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">      94 </span><span class="lineCov">          1 : // Compile async an invalid blob.</span>
+<a name="93"><span class="lineNum">      93 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">      94 </span><span class="lineNoCov">          0 : // Compile async an invalid blob.</span>
 <span class="lineNum">      95 </span><span class="lineCov">          1 : (function InvalidBinaryAsyncCompilation() {</span>
 <span class="lineNum">      96 </span><span class="lineCov">          1 :   print(&quot;InvalidBinaryAsyncCompilation...&quot;);</span>
 <span class="lineNum">      97 </span><span class="lineCov">          1 :   let builder = new WasmModuleBuilder();</span>
@@ -164,9 +164,9 @@
 <a name="102"><span class="lineNum">     102 </span><span class="lineCov">          1 :     .then(compiled =&gt;</span></a>
 <span class="lineNum">     103 </span><span class="lineCov">          1 :        assertUnreachable(&quot;should not be able to compile invalid blob.&quot;))</span>
 <span class="lineNum">     104 </span><span class="lineCov">          1 :     .catch(e =&gt; assertContains(&quot;invalid signature index&quot;, e.toString()));</span>
-<span class="lineNum">     105 </span><span class="lineCov">          1 : })();</span>
-<a name="106"><span class="lineNum">     106 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">     107 </span><span class="lineCov">          1 : // Multiple instances tests.</span>
+<span class="lineNum">     105 </span><span class="lineNoCov">          0 : })();</span>
+<a name="106"><span class="lineNum">     106 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">     107 </span><span class="lineNoCov">          0 : // Multiple instances tests.</span>
 <span class="lineNum">     108 </span><span class="lineCov">          1 : (function ManyInstances() {</span>
 <span class="lineNum">     109 </span><span class="lineCov">          1 :   print(&quot;ManyInstances...&quot;);</span>
 <span class="lineNum">     110 </span><span class="lineCov">          1 :   let compiled_module = new WebAssembly.Module(buffer);</span>
@@ -174,7 +174,7 @@
 <span class="lineNum">     112 </span><span class="lineCov">          1 :   let instance_2 = new WebAssembly.Instance(compiled_module);</span>
 <span class="lineNum">     113 </span><span class="lineCov">          1 :   assertTrue(instance_1 != instance_2);</span>
 <a name="114"><span class="lineNum">     114 </span><span class="lineCov">          1 : })();</span></a>
-<span class="lineNum">     115 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     115 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     116 </span><span class="lineCov">          1 : (function ManyInstancesAsync() {</span>
 <a name="117"><span class="lineNum">     117 </span><span class="lineCov">          1 :   print(&quot;ManyInstancesAsync...&quot;);</span></a>
 <span class="lineNum">     118 </span><span class="lineCov">          1 :   let promise = WebAssembly.compile(buffer);</span>
@@ -183,8 +183,8 @@
 <span class="lineNum">     121 </span><span class="lineCov">          1 :     let instance_2 = new WebAssembly.Instance(compiled_module);</span>
 <span class="lineNum">     122 </span><span class="lineCov">          1 :     assertTrue(instance_1 != instance_2);</span>
 <span class="lineNum">     123 </span><span class="lineCov">          1 :   });</span>
-<a name="124"><span class="lineNum">     124 </span><span class="lineCov">          1 : })();</span></a>
-<span class="lineNum">     125 </span><span class="lineCov">          1 : </span>
+<a name="124"><span class="lineNum">     124 </span><span class="lineNoCov">          0 : })();</span></a>
+<span class="lineNum">     125 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     126 </span><span class="lineCov">          1 : (function InstancesAreIsolatedFromEachother() {</span>
 <span class="lineNum">     127 </span><span class="lineCov">          1 :   print(&quot;InstancesAreIsolatedFromEachother...&quot;);</span>
 <span class="lineNum">     128 </span><span class="lineCov">          1 :   var builder = new WasmModuleBuilder();</span>
@@ -228,19 +228,19 @@
 <span class="lineNum">     166 </span><span class="lineCov">          1 :   var outval_2;</span>
 <span class="lineNum">     167 </span><span class="lineCov">          1 :   var i1 = new WebAssembly.Instance(module, {m: {some_value: () =&gt; 1,</span>
 <span class="lineNum">     168 </span><span class="lineCov">          1 :                                                  writer: (x)=&gt;outval_1 = x },</span>
-<a name="169"><span class="lineNum">     169 </span><span class="lineCov">          1 :                                              &quot;&quot;: {memory: mem_1}});</span></a>
-<a name="170"><span class="lineNum">     170 </span><span class="lineCov">          1 : </span></a>
+<a name="169"><span class="lineNum">     169 </span><span class="lineNoCov">          0 :                                              &quot;&quot;: {memory: mem_1}});</span></a>
+<a name="170"><span class="lineNum">     170 </span><span class="lineNoCov">          0 : </span></a>
 <span class="lineNum">     171 </span><span class="lineCov">          1 :   var i2 = new WebAssembly.Instance(module, {m: {some_value: () =&gt; 2,</span>
 <span class="lineNum">     172 </span><span class="lineCov">          1 :                                                  writer: (x)=&gt;outval_2 = x },</span>
-<span class="lineNum">     173 </span><span class="lineCov">          1 :                                              &quot;&quot;: {memory: mem_2}});</span>
-<span class="lineNum">     174 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     175 </span><span class="lineCov">          1 :   assertEquals(43, i1.exports.main(0));</span>
-<span class="lineNum">     176 </span><span class="lineCov">          1 :   assertEquals(1002, i2.exports.main(0));</span>
-<span class="lineNum">     177 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     178 </span><span class="lineCov">          1 :   assertEquals(42, outval_1);</span>
-<span class="lineNum">     179 </span><span class="lineCov">          1 :   assertEquals(1000, outval_2);</span>
-<a name="180"><span class="lineNum">     180 </span><span class="lineCov">          1 : })();</span></a>
-<span class="lineNum">     181 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     173 </span><span class="lineNoCov">          0 :                                              &quot;&quot;: {memory: mem_2}});</span>
+<span class="lineNum">     174 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     175 </span><span class="lineNoCov">          0 :   assertEquals(43, i1.exports.main(0));</span>
+<span class="lineNum">     176 </span><span class="lineNoCov">          0 :   assertEquals(1002, i2.exports.main(0));</span>
+<span class="lineNum">     177 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     178 </span><span class="lineNoCov">          0 :   assertEquals(42, outval_1);</span>
+<span class="lineNum">     179 </span><span class="lineNoCov">          0 :   assertEquals(1000, outval_2);</span>
+<a name="180"><span class="lineNum">     180 </span><span class="lineNoCov">          0 : })();</span></a>
+<span class="lineNum">     181 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     182 </span><span class="lineCov">          1 : (function GlobalsArePrivateToTheInstance() {</span>
 <span class="lineNum">     183 </span><span class="lineCov">          1 :   print(&quot;GlobalsArePrivateToTheInstance...&quot;);</span>
 <span class="lineNum">     184 </span><span class="lineCov">          1 :     var builder = new WasmModuleBuilder();</span>
@@ -264,8 +264,8 @@
 <span class="lineNum">     202 </span><span class="lineCov">          1 :     assertEquals(1, i1.exports.read());</span>
 <span class="lineNum">     203 </span><span class="lineCov">          1 :     assertEquals(2, i2.exports.read());</span>
 <span class="lineNum">     204 </span><span class="lineCov">          1 : })();</span>
-<a name="205"><span class="lineNum">     205 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">     206 </span><span class="lineCov">          1 : </span>
+<a name="205"><span class="lineNum">     205 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">     206 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     207 </span><span class="lineCov">          1 : (function InstanceMemoryIsIsolated() {</span>
 <span class="lineNum">     208 </span><span class="lineCov">          1 :   print(&quot;InstanceMemoryIsIsolated...&quot;);</span>
 <span class="lineNum">     209 </span><span class="lineCov">          1 :   var builder = new WasmModuleBuilder();</span>
@@ -291,7 +291,7 @@
 <span class="lineNum">     229 </span><span class="lineCov">          1 :   assertEquals(1, i1.exports.f());</span>
 <span class="lineNum">     230 </span><span class="lineCov">          1 :   assertEquals(1000, i2.exports.f());</span>
 <a name="231"><span class="lineNum">     231 </span><span class="lineCov">          1 : })();</span></a>
-<span class="lineNum">     232 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     232 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     233 </span><span class="lineCov">          1 : (function MustBeMemory() {</span>
 <span class="lineNum">     234 </span><span class="lineCov">          1 :   print(&quot;MustBeMemory...&quot;);</span>
 <span class="lineNum">     235 </span><span class="lineCov">          1 :   var memory = new ArrayBuffer(65536);</span>
@@ -302,14 +302,14 @@
 <span class="lineNum">     240 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     241 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     242 </span><span class="lineCov">          1 :   assertThrows(() =&gt; new WebAssembly.Instance(module, {&quot;&quot;:{memory:memory}}), WebAssembly.LinkError);</span>
-<a name="243"><span class="lineNum">     243 </span><span class="lineCov">          1 : })();</span></a>
-<span class="lineNum">     244 </span><span class="lineCov">          1 : </span>
+<a name="243"><span class="lineNum">     243 </span><span class="lineNoCov">          0 : })();</span></a>
+<span class="lineNum">     244 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     245 </span><span class="lineCov">          1 : (function TestNoMemoryToExport() {</span>
 <a name="246"><span class="lineNum">     246 </span><span class="lineCov">          1 :   let builder = new WasmModuleBuilder();</span></a>
 <span class="lineNum">     247 </span><span class="lineCov">          1 :   builder.exportMemoryAs('memory');</span>
 <span class="lineNum">     248 </span><span class="lineCov">          1 :   assertThrows(() =&gt; builder.instantiate(), WebAssembly.CompileError);</span>
-<a name="249"><span class="lineNum">     249 </span><span class="lineCov">          1 : })();</span></a>
-<span class="lineNum">     250 </span><span class="lineCov">          1 : </span>
+<a name="249"><span class="lineNum">     249 </span><span class="lineNoCov">          0 : })();</span></a>
+<span class="lineNum">     250 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     251 </span><span class="lineCov">          1 : (function TestIterableExports() {</span>
 <span class="lineNum">     252 </span><span class="lineCov">          1 :   print(&quot;TestIterableExports...&quot;);</span>
 <span class="lineNum">     253 </span><span class="lineCov">          1 :   let builder = new WasmModuleBuilder;</span>

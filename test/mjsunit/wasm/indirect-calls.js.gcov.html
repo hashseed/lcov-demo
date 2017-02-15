@@ -31,17 +31,17 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">209</td>
-            <td class="headerCovTableEntry">209</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntry">155</td>
+            <td class="headerCovTableEntry">208</td>
+            <td class="headerCovTableEntryLo">74.5 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">10</td>
-            <td class="headerCovTableEntry">10</td>
+            <td class="headerCovTableEntry">6</td>
+            <td class="headerCovTableEntry">6</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -67,7 +67,7 @@
 <span class="lineNum">       5 </span><span class="lineCov">          1 : // Flags: --expose-wasm</span>
 <span class="lineNum">       6 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">       7 </span><span class="lineCov">          1 : load(&quot;test/mjsunit/wasm/wasm-constants.js&quot;);</span>
-<a name="8"><span class="lineNum">       8 </span><span class="lineCov">          1 : load(&quot;test/mjsunit/wasm/wasm-module-builder.js&quot;);</span></a>
+<span class="lineNum">       8 </span><span class="lineCov">          1 : load(&quot;test/mjsunit/wasm/wasm-module-builder.js&quot;);</span>
 <span class="lineNum">       9 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      10 </span><span class="lineCov">          1 : var module = (function () {</span>
 <span class="lineNum">      11 </span><span class="lineCov">          1 :   var builder = new WasmModuleBuilder();</span>
@@ -95,22 +95,22 @@
 <a name="33"><span class="lineNum">      33 </span><span class="lineCov">          1 :   builder.appendToTable([1, 2, 3]);</span></a>
 <span class="lineNum">      34 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      35 </span><span class="lineCov">          1 :   return builder.instantiate({q: {add: function(a, b) { return a + b | 0; }}});</span>
-<span class="lineNum">      36 </span><span class="lineCov">          1 : })();</span>
-<span class="lineNum">      37 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      38 </span><span class="lineCov">          1 : // Check the module exists.</span>
-<span class="lineNum">      39 </span><span class="lineCov">          1 : assertFalse(module === undefined);</span>
-<span class="lineNum">      40 </span><span class="lineCov">          1 : assertFalse(module === null);</span>
-<span class="lineNum">      41 </span><span class="lineCov">          1 : assertFalse(module === 0);</span>
-<span class="lineNum">      42 </span><span class="lineCov">          1 : assertEquals(&quot;object&quot;, typeof module.exports);</span>
-<span class="lineNum">      43 </span><span class="lineCov">          1 : assertEquals(&quot;function&quot;, typeof module.exports.main);</span>
-<span class="lineNum">      44 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      45 </span><span class="lineCov">          1 : assertEquals(5, module.exports.main(1, 12, 7));</span>
-<span class="lineNum">      46 </span><span class="lineCov">          1 : assertEquals(19, module.exports.main(0, 12, 7));</span>
-<span class="lineNum">      47 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      48 </span><span class="lineCov">          1 : assertTraps(kTrapFuncSigMismatch, &quot;module.exports.main(2, 12, 33)&quot;);</span>
-<span class="lineNum">      49 </span><span class="lineCov">          1 : assertTraps(kTrapFuncInvalid, &quot;module.exports.main(3, 12, 33)&quot;);</span>
-<a name="50"><span class="lineNum">      50 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">      51 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      36 </span><span class="lineNoCov">          0 : })();</span>
+<span class="lineNum">      37 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      38 </span><span class="lineNoCov">          0 : // Check the module exists.</span>
+<span class="lineNum">      39 </span><span class="lineNoCov">          0 : assertFalse(module === undefined);</span>
+<span class="lineNum">      40 </span><span class="lineNoCov">          0 : assertFalse(module === null);</span>
+<span class="lineNum">      41 </span><span class="lineNoCov">          0 : assertFalse(module === 0);</span>
+<span class="lineNum">      42 </span><span class="lineNoCov">          0 : assertEquals(&quot;object&quot;, typeof module.exports);</span>
+<span class="lineNum">      43 </span><span class="lineNoCov">          0 : assertEquals(&quot;function&quot;, typeof module.exports.main);</span>
+<span class="lineNum">      44 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      45 </span><span class="lineNoCov">          0 : assertEquals(5, module.exports.main(1, 12, 7));</span>
+<span class="lineNum">      46 </span><span class="lineNoCov">          0 : assertEquals(19, module.exports.main(0, 12, 7));</span>
+<span class="lineNum">      47 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      48 </span><span class="lineNoCov">          0 : assertTraps(kTrapFuncSigMismatch, &quot;module.exports.main(2, 12, 33)&quot;);</span>
+<span class="lineNum">      49 </span><span class="lineNoCov">          0 : assertTraps(kTrapFuncInvalid, &quot;module.exports.main(3, 12, 33)&quot;);</span>
+<span class="lineNum">      50 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      51 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      52 </span><span class="lineCov">          1 : module = (function () {</span>
 <span class="lineNum">      53 </span><span class="lineCov">          1 :   var builder = new WasmModuleBuilder();</span>
 <span class="lineNum">      54 </span><span class="lineCov">          1 : </span>
@@ -139,14 +139,14 @@
 <a name="77"><span class="lineNum">      77 </span><span class="lineCov">          1 :   builder.appendToTable([mul.index, add.index, popcnt.index, main.index]);</span></a>
 <span class="lineNum">      78 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      79 </span><span class="lineCov">          1 :   return builder.instantiate({q: {mul: function(a, b) { return a * b | 0; }}});</span>
-<span class="lineNum">      80 </span><span class="lineCov">          1 : })();</span>
-<span class="lineNum">      81 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      82 </span><span class="lineCov">          1 : assertEquals(-6, module.exports.main(0, -2, 3));</span>
-<span class="lineNum">      83 </span><span class="lineCov">          1 : assertEquals(99, module.exports.main(1, 22, 77));</span>
-<span class="lineNum">      84 </span><span class="lineCov">          1 : assertTraps(kTrapFuncSigMismatch, &quot;module.exports.main(2, 12, 33)&quot;);</span>
-<span class="lineNum">      85 </span><span class="lineCov">          1 : assertTraps(kTrapFuncSigMismatch, &quot;module.exports.main(3, 12, 33)&quot;);</span>
-<a name="86"><span class="lineNum">      86 </span><span class="lineCov">          1 : assertTraps(kTrapFuncInvalid, &quot;module.exports.main(4, 12, 33)&quot;);</span></a>
-<span class="lineNum">      87 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      80 </span><span class="lineNoCov">          0 : })();</span>
+<span class="lineNum">      81 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      82 </span><span class="lineNoCov">          0 : assertEquals(-6, module.exports.main(0, -2, 3));</span>
+<span class="lineNum">      83 </span><span class="lineNoCov">          0 : assertEquals(99, module.exports.main(1, 22, 77));</span>
+<span class="lineNum">      84 </span><span class="lineNoCov">          0 : assertTraps(kTrapFuncSigMismatch, &quot;module.exports.main(2, 12, 33)&quot;);</span>
+<span class="lineNum">      85 </span><span class="lineNoCov">          0 : assertTraps(kTrapFuncSigMismatch, &quot;module.exports.main(3, 12, 33)&quot;);</span>
+<a name="86"><span class="lineNum">      86 </span><span class="lineNoCov">          0 : assertTraps(kTrapFuncInvalid, &quot;module.exports.main(4, 12, 33)&quot;);</span></a>
+<span class="lineNum">      87 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      88 </span><span class="lineCov">          7 : function AddFunctions(builder) {</span>
 <span class="lineNum">      89 </span><span class="lineCov">          7 :   var mul = builder.addFunction(&quot;mul&quot;, kSig_i_ii)</span>
 <span class="lineNum">      90 </span><span class="lineCov">          7 :     .addBody([</span>
@@ -168,8 +168,8 @@
 <span class="lineNum">     106 </span><span class="lineCov">          7 :     ]);</span>
 <span class="lineNum">     107 </span><span class="lineCov">          7 :   return {mul: mul, add: add, sub: sub};</span>
 <span class="lineNum">     108 </span><span class="lineCov">          7 : }</span>
-<a name="109"><span class="lineNum">     109 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">     110 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     109 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     110 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     111 </span><span class="lineCov">          1 : module = (function () {</span>
 <span class="lineNum">     112 </span><span class="lineCov">          1 :   var builder = new WasmModuleBuilder();</span>
 <span class="lineNum">     113 </span><span class="lineCov">          1 : </span>
@@ -186,15 +186,15 @@
 <span class="lineNum">     124 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     125 </span><span class="lineCov">          1 :   return builder.instantiate();</span>
 <span class="lineNum">     126 </span><span class="lineCov">          1 : })();</span>
-<span class="lineNum">     127 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     128 </span><span class="lineCov">          1 : assertEquals(33, module.exports.main(1, 0));</span>
-<span class="lineNum">     129 </span><span class="lineCov">          1 : assertEquals(66, module.exports.main(2, 0));</span>
-<span class="lineNum">     130 </span><span class="lineCov">          1 : assertEquals(34, module.exports.main(1, 1));</span>
-<span class="lineNum">     131 </span><span class="lineCov">          1 : assertEquals(35, module.exports.main(2, 1));</span>
-<span class="lineNum">     132 </span><span class="lineCov">          1 : assertEquals(32, module.exports.main(1, 2));</span>
-<span class="lineNum">     133 </span><span class="lineCov">          1 : assertEquals(31, module.exports.main(2, 2));</span>
-<a name="134"><span class="lineNum">     134 </span><span class="lineCov">          1 : assertTraps(kTrapFuncInvalid, &quot;module.exports.main(12, 3)&quot;);</span></a>
-<span class="lineNum">     135 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     127 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     128 </span><span class="lineNoCov">          0 : assertEquals(33, module.exports.main(1, 0));</span>
+<span class="lineNum">     129 </span><span class="lineNoCov">          0 : assertEquals(66, module.exports.main(2, 0));</span>
+<span class="lineNum">     130 </span><span class="lineNoCov">          0 : assertEquals(34, module.exports.main(1, 1));</span>
+<span class="lineNum">     131 </span><span class="lineNoCov">          0 : assertEquals(35, module.exports.main(2, 1));</span>
+<span class="lineNum">     132 </span><span class="lineNoCov">          0 : assertEquals(32, module.exports.main(1, 2));</span>
+<span class="lineNum">     133 </span><span class="lineNoCov">          0 : assertEquals(31, module.exports.main(2, 2));</span>
+<a name="134"><span class="lineNum">     134 </span><span class="lineNoCov">          0 : assertTraps(kTrapFuncInvalid, &quot;module.exports.main(12, 3)&quot;);</span></a>
+<span class="lineNum">     135 </span><span class="lineNoCov">          0 : </span>
 <a name="136"><span class="lineNum">     136 </span><span class="lineCov">          1 : (function ConstBaseTest() {</span></a>
 <span class="lineNum">     137 </span><span class="lineCov">          1 :   print(&quot;ConstBaseTest...&quot;);</span>
 <span class="lineNum">     138 </span><span class="lineCov">          5 :   function instanceWithTable(base, length) {</span>
@@ -214,24 +214,24 @@
 <span class="lineNum">     152 </span><span class="lineCov">          5 : </span>
 <span class="lineNum">     153 </span><span class="lineCov">          5 :     return builder.instantiate();</span>
 <span class="lineNum">     154 </span><span class="lineCov">          5 :   }</span>
-<span class="lineNum">     155 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     156 </span><span class="lineCov">          1 :   for (var i = 0; i &lt; 5; i++) {</span>
-<span class="lineNum">     157 </span><span class="lineCov">          1 :     print(&quot; base = &quot; + i);</span>
-<span class="lineNum">     158 </span><span class="lineCov">          1 :     var module = instanceWithTable(i, 10);</span>
-<span class="lineNum">     159 </span><span class="lineCov">          1 :     main = module.exports.main;</span>
-<span class="lineNum">     160 </span><span class="lineCov">          1 :     for (var j = 0; j &lt; i; j++) {</span>
-<span class="lineNum">     161 </span><span class="lineCov">          1 :       assertTraps(kTrapFuncSigMismatch, &quot;main(12, &quot; + j + &quot;)&quot;);</span>
-<span class="lineNum">     162 </span><span class="lineCov">          1 :     }</span>
-<span class="lineNum">     163 </span><span class="lineCov">          1 :     assertEquals(34, main(1, i + 0));</span>
-<span class="lineNum">     164 </span><span class="lineCov">          1 :     assertEquals(35, main(2, i + 0));</span>
-<span class="lineNum">     165 </span><span class="lineCov">          1 :     assertEquals(32, main(1, i + 1));</span>
-<span class="lineNum">     166 </span><span class="lineCov">          1 :     assertEquals(31, main(2, i + 1));</span>
-<span class="lineNum">     167 </span><span class="lineCov">          1 :     assertEquals(33, main(1, i + 2));</span>
-<span class="lineNum">     168 </span><span class="lineCov">          1 :     assertEquals(66, main(2, i + 2));</span>
-<span class="lineNum">     169 </span><span class="lineCov">          1 :     assertTraps(kTrapFuncInvalid, &quot;main(12, 10)&quot;);</span>
-<span class="lineNum">     170 </span><span class="lineCov">          1 :   }</span>
-<a name="171"><span class="lineNum">     171 </span><span class="lineCov">          1 : })();</span></a>
-<span class="lineNum">     172 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     155 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     156 </span><span class="lineNoCov">          0 :   for (var i = 0; i &lt; 5; i++) {</span>
+<span class="lineNum">     157 </span><span class="lineNoCov">          0 :     print(&quot; base = &quot; + i);</span>
+<span class="lineNum">     158 </span><span class="lineNoCov">          0 :     var module = instanceWithTable(i, 10);</span>
+<span class="lineNum">     159 </span><span class="lineNoCov">          0 :     main = module.exports.main;</span>
+<span class="lineNum">     160 </span><span class="lineNoCov">          0 :     for (var j = 0; j &lt; i; j++) {</span>
+<span class="lineNum">     161 </span><span class="lineNoCov">          0 :       assertTraps(kTrapFuncSigMismatch, &quot;main(12, &quot; + j + &quot;)&quot;);</span>
+<span class="lineNum">     162 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     163 </span><span class="lineNoCov">          0 :     assertEquals(34, main(1, i + 0));</span>
+<span class="lineNum">     164 </span><span class="lineNoCov">          0 :     assertEquals(35, main(2, i + 0));</span>
+<span class="lineNum">     165 </span><span class="lineNoCov">          0 :     assertEquals(32, main(1, i + 1));</span>
+<span class="lineNum">     166 </span><span class="lineNoCov">          0 :     assertEquals(31, main(2, i + 1));</span>
+<span class="lineNum">     167 </span><span class="lineNoCov">          0 :     assertEquals(33, main(1, i + 2));</span>
+<span class="lineNum">     168 </span><span class="lineNoCov">          0 :     assertEquals(66, main(2, i + 2));</span>
+<span class="lineNum">     169 </span><span class="lineNoCov">          0 :     assertTraps(kTrapFuncInvalid, &quot;main(12, 10)&quot;);</span>
+<span class="lineNum">     170 </span><span class="lineNoCov">          0 :   }</span>
+<a name="171"><span class="lineNum">     171 </span><span class="lineNoCov">          0 : })();</span></a>
+<span class="lineNum">     172 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     173 </span><span class="lineCov">          1 : (function GlobalBaseTest() {</span>
 <span class="lineNum">     174 </span><span class="lineCov">          1 :   print(&quot;GlobalBaseTest...&quot;);</span>
 <span class="lineNum">     175 </span><span class="lineCov">          1 : </span>

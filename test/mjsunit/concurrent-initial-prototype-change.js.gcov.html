@@ -31,17 +31,17 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">68</td>
-            <td class="headerCovTableEntry">68</td>
+            <td class="headerCovTableEntry">46</td>
+            <td class="headerCovTableEntry">46</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">2</td>
-            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntry">1</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -106,27 +106,27 @@
 <span class="lineNum">      44 </span><span class="lineCov">          4 : function f1(a, i) {</span>
 <span class="lineNum">      45 </span><span class="lineCov">          4 :   return a[i] + 0.5;</span>
 <span class="lineNum">      46 </span><span class="lineCov">          4 : }</span>
-<span class="lineNum">      47 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      48 </span><span class="lineCov">          1 : var arr = [0.0,,2.5];</span>
-<span class="lineNum">      49 </span><span class="lineCov">          1 : assertEquals(0.5, f1(arr, 0));</span>
-<span class="lineNum">      50 </span><span class="lineCov">          1 : assertEquals(0.5, f1(arr, 0));</span>
-<span class="lineNum">      51 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      52 </span><span class="lineCov">          1 : // Optimized code of f1 depends on initial object and array maps.</span>
-<span class="lineNum">      53 </span><span class="lineCov">          1 : %OptimizeFunctionOnNextCall(f1, &quot;concurrent&quot;);</span>
-<span class="lineNum">      54 </span><span class="lineCov">          1 : // Kick off recompilation;</span>
-<span class="lineNum">      55 </span><span class="lineCov">          1 : assertEquals(0.5, f1(arr, 0));</span>
-<span class="lineNum">      56 </span><span class="lineCov">          1 : // Invalidate current initial object map after compile graph has been created.</span>
-<span class="lineNum">      57 </span><span class="lineCov">          1 : Object.prototype[1] = 1.5;</span>
-<span class="lineNum">      58 </span><span class="lineCov">          1 : assertEquals(2, f1(arr, 1));</span>
-<span class="lineNum">      59 </span><span class="lineCov">          1 : // Not yet optimized since concurrent recompilation is blocked.</span>
-<span class="lineNum">      60 </span><span class="lineCov">          1 : assertUnoptimized(f1, &quot;no sync&quot;);</span>
-<span class="lineNum">      61 </span><span class="lineCov">          1 : // Let concurrent recompilation proceed.</span>
-<span class="lineNum">      62 </span><span class="lineCov">          1 : %UnblockConcurrentRecompilation();</span>
-<span class="lineNum">      63 </span><span class="lineCov">          1 : // Sync with background thread to conclude optimization, which bails out</span>
-<span class="lineNum">      64 </span><span class="lineCov">          1 : // due to map dependency.</span>
-<span class="lineNum">      65 </span><span class="lineCov">          1 : assertUnoptimized(f1, &quot;sync&quot;);</span>
-<span class="lineNum">      66 </span><span class="lineCov">          1 : //Clear type info for stress runs.</span>
-<span class="lineNum">      67 </span><span class="lineCov">          1 : %ClearFunctionTypeFeedback(f1);</span>
+<span class="lineNum">      47 </span>            : 
+<span class="lineNum">      48 </span>            : var arr = [0.0,,2.5];
+<span class="lineNum">      49 </span>            : assertEquals(0.5, f1(arr, 0));
+<span class="lineNum">      50 </span>            : assertEquals(0.5, f1(arr, 0));
+<span class="lineNum">      51 </span>            : 
+<span class="lineNum">      52 </span>            : // Optimized code of f1 depends on initial object and array maps.
+<span class="lineNum">      53 </span>            : %OptimizeFunctionOnNextCall(f1, &quot;concurrent&quot;);
+<span class="lineNum">      54 </span>            : // Kick off recompilation;
+<span class="lineNum">      55 </span>            : assertEquals(0.5, f1(arr, 0));
+<span class="lineNum">      56 </span>            : // Invalidate current initial object map after compile graph has been created.
+<span class="lineNum">      57 </span>            : Object.prototype[1] = 1.5;
+<span class="lineNum">      58 </span>            : assertEquals(2, f1(arr, 1));
+<span class="lineNum">      59 </span>            : // Not yet optimized since concurrent recompilation is blocked.
+<span class="lineNum">      60 </span>            : assertUnoptimized(f1, &quot;no sync&quot;);
+<span class="lineNum">      61 </span>            : // Let concurrent recompilation proceed.
+<span class="lineNum">      62 </span>            : %UnblockConcurrentRecompilation();
+<span class="lineNum">      63 </span>            : // Sync with background thread to conclude optimization, which bails out
+<span class="lineNum">      64 </span>            : // due to map dependency.
+<span class="lineNum">      65 </span>            : assertUnoptimized(f1, &quot;sync&quot;);
+<span class="lineNum">      66 </span>            : //Clear type info for stress runs.
+<span class="lineNum">      67 </span>            : %ClearFunctionTypeFeedback(f1);
 </pre>
       </td>
     </tr>

@@ -31,17 +31,17 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">58</td>
-            <td class="headerCovTableEntry">58</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntry">36</td>
+            <td class="headerCovTableEntry">53</td>
+            <td class="headerCovTableEntryLo">67.9 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">5</td>
-            <td class="headerCovTableEntry">5</td>
+            <td class="headerCovTableEntry">3</td>
+            <td class="headerCovTableEntry">3</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -93,30 +93,30 @@
 <a name="31"><span class="lineNum">      31 </span><span class="lineCov">          1 : </span></a>
 <span class="lineNum">      32 </span><span class="lineCov">          1 : // Function is defined on the prototype chain.</span>
 <span class="lineNum">      33 </span><span class="lineCov">          3 : var holder = { f: function() { return 42; } };</span>
-<span class="lineNum">      34 </span><span class="lineCov">          1 : var receiver = { };</span>
-<span class="lineNum">      35 </span><span class="lineCov">          1 : receiver.__proto__ = { };</span>
-<span class="lineNum">      36 </span><span class="lineCov">          1 : receiver.__proto__.__proto__ = holder;</span>
-<a name="37"><span class="lineNum">      37 </span><span class="lineCov">          1 : </span></a>
-<a name="38"><span class="lineNum">      38 </span><span class="lineCov">          1 : // Inline two levels.</span></a>
+<span class="lineNum">      34 </span><span class="lineNoCov">          0 : var receiver = { };</span>
+<span class="lineNum">      35 </span><span class="lineNoCov">          0 : receiver.__proto__ = { };</span>
+<span class="lineNum">      36 </span><span class="lineNoCov">          0 : receiver.__proto__.__proto__ = holder;</span>
+<a name="37"><span class="lineNum">      37 </span><span class="lineNoCov">          0 : </span></a>
+<a name="38"><span class="lineNum">      38 </span><span class="lineNoCov">          0 : // Inline two levels.</span></a>
 <span class="lineNum">      39 </span><span class="lineCov">          4 : function h(o) { return o.f.apply(this, arguments); }</span>
 <span class="lineNum">      40 </span><span class="lineCov">          4 : function g(o) { return h(o); }</span>
-<span class="lineNum">      41 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      42 </span><span class="lineCov">          1 : // Collect type information for apply call.</span>
-<span class="lineNum">      43 </span><span class="lineCov">          1 : assertEquals(42, g(receiver));</span>
-<span class="lineNum">      44 </span><span class="lineCov">          1 : assertEquals(42, g(receiver));</span>
-<span class="lineNum">      45 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      46 </span><span class="lineCov">          1 : // Sneakily remove the function from the prototype chain.</span>
-<span class="lineNum">      47 </span><span class="lineCov">          1 : // The receiver map does not change.</span>
-<span class="lineNum">      48 </span><span class="lineCov">          1 : receiver.__proto__.__proto__ = {};</span>
-<span class="lineNum">      49 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      50 </span><span class="lineCov">          1 : // Lookup of o.f during graph creation fails.</span>
-<a name="51"><span class="lineNum">      51 </span><span class="lineCov">          1 : %OptimizeFunctionOnNextCall(g);</span></a>
-<span class="lineNum">      52 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      41 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      42 </span><span class="lineNoCov">          0 : // Collect type information for apply call.</span>
+<span class="lineNum">      43 </span><span class="lineNoCov">          0 : assertEquals(42, g(receiver));</span>
+<span class="lineNum">      44 </span><span class="lineNoCov">          0 : assertEquals(42, g(receiver));</span>
+<span class="lineNum">      45 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      46 </span><span class="lineNoCov">          0 : // Sneakily remove the function from the prototype chain.</span>
+<span class="lineNum">      47 </span><span class="lineNoCov">          0 : // The receiver map does not change.</span>
+<span class="lineNum">      48 </span><span class="lineNoCov">          0 : receiver.__proto__.__proto__ = {};</span>
+<span class="lineNum">      49 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      50 </span><span class="lineNoCov">          0 : // Lookup of o.f during graph creation fails.</span>
+<span class="lineNum">      51 </span><span class="lineNoCov">          0 : %OptimizeFunctionOnNextCall(g);</span>
+<span class="lineNum">      52 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      53 </span><span class="lineCov">          1 : assertThrows(function() { g(receiver); });</span>
-<span class="lineNum">      54 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      55 </span><span class="lineCov">          1 : // Put function back.</span>
-<span class="lineNum">      56 </span><span class="lineCov">          1 : receiver.__proto__.__proto__ = holder;</span>
-<span class="lineNum">      57 </span><span class="lineCov">          1 : assertEquals(42, g(receiver));</span>
+<span class="lineNum">      54 </span>            : 
+<span class="lineNum">      55 </span>            : // Put function back.
+<span class="lineNum">      56 </span>            : receiver.__proto__.__proto__ = holder;
+<span class="lineNum">      57 </span>            : assertEquals(42, g(receiver));
 </pre>
       </td>
     </tr>

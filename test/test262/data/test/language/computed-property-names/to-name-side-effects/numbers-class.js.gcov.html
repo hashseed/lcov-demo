@@ -31,17 +31,17 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">44</td>
-            <td class="headerCovTableEntry">44</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntry">23</td>
+            <td class="headerCovTableEntry">29</td>
+            <td class="headerCovTableEntryMed">79.3 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">7</td>
-            <td class="headerCovTableEntry">7</td>
+            <td class="headerCovTableEntry">4</td>
+            <td class="headerCovTableEntry">4</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr><td><img src="../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -74,35 +74,35 @@
 <span class="lineNum">      12 </span><span class="lineCov">          2 :     assert.sameValue(counter++, 0, &quot;The result of `counter++` is `0`&quot;);</span>
 <span class="lineNum">      13 </span><span class="lineCov">          2 :     return 1;</span>
 <span class="lineNum">      14 </span><span class="lineCov">          2 :   },</span>
-<span class="lineNum">      15 </span><span class="lineCov">          2 :   toString: null</span>
-<a name="16"><span class="lineNum">      16 </span><span class="lineCov">          2 : };</span></a>
-<span class="lineNum">      17 </span><span class="lineCov">          2 : var key2 = {</span>
+<span class="lineNum">      15 </span><span class="lineNoCov">          0 :   toString: null</span>
+<a name="16"><span class="lineNum">      16 </span><span class="lineNoCov">          0 : };</span></a>
+<span class="lineNum">      17 </span><span class="lineNoCov">          0 : var key2 = {</span>
 <span class="lineNum">      18 </span><span class="lineCov">          2 :   valueOf: function() {</span>
 <span class="lineNum">      19 </span><span class="lineCov">          2 :     assert.sameValue(counter++, 1, &quot;The result of `counter++` is `1`&quot;);</span>
 <span class="lineNum">      20 </span><span class="lineCov">          2 :     return 2;</span>
 <span class="lineNum">      21 </span><span class="lineCov">          2 :   },</span>
-<span class="lineNum">      22 </span><span class="lineCov">          2 :   toString: null</span>
-<a name="23"><span class="lineNum">      23 </span><span class="lineCov">          2 : };</span></a>
-<a name="24"><span class="lineNum">      24 </span><span class="lineCov">          2 : </span></a>
-<a name="25"><span class="lineNum">      25 </span><span class="lineCov">          8 : class C {</span></a>
+<span class="lineNum">      22 </span><span class="lineNoCov">          0 :   toString: null</span>
+<a name="23"><span class="lineNum">      23 </span><span class="lineNoCov">          0 : };</span></a>
+<a name="24"><span class="lineNum">      24 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">      25 </span><span class="lineCov">          8 : class C {</span>
 <a name="26"><span class="lineNum">      26 </span><span class="lineCov">          2 :   a() { return 'A'; }</span></a>
-<a name="27"><span class="lineNum">      27 </span><span class="lineCov">          2 :   [key1]() { return 'B'; }</span></a>
+<span class="lineNum">      27 </span><span class="lineCov">          2 :   [key1]() { return 'B'; }</span>
 <span class="lineNum">      28 </span><span class="lineCov">          2 :   c() { return 'C'; }</span>
 <span class="lineNum">      29 </span><span class="lineCov">          2 :   [key2]() { return 'D'; }</span>
-<span class="lineNum">      30 </span><span class="lineCov">          2 : }</span>
-<span class="lineNum">      31 </span><span class="lineCov">          2 : assert.sameValue(counter, 2, &quot;The value of `counter` is `2`&quot;);</span>
-<span class="lineNum">      32 </span><span class="lineCov">          2 : assert.sameValue(new C().a(), 'A', &quot;`new C().a()` returns `'A'`. Defined as `a() { return 'A'; }`&quot;);</span>
-<span class="lineNum">      33 </span><span class="lineCov">          2 : assert.sameValue(new C()[1](), 'B', &quot;`new C()[1]()` returns `'B'`. Defined as `[key1]() { return 'B'; }`&quot;);</span>
-<span class="lineNum">      34 </span><span class="lineCov">          2 : assert.sameValue(new C().c(), 'C', &quot;`new C().c()` returns `'C'`. Defined as `c() { return 'C'; }`&quot;);</span>
-<span class="lineNum">      35 </span><span class="lineCov">          2 : assert.sameValue(new C()[2](), 'D', &quot;`new C()[2]()` returns `'D'`. Defined as `[key2]() { return 'D'; }`&quot;);</span>
-<span class="lineNum">      36 </span><span class="lineCov">          2 : assert(</span>
-<span class="lineNum">      37 </span><span class="lineCov">          2 :   compareArray(Object.keys(C.prototype), []),</span>
-<span class="lineNum">      38 </span><span class="lineCov">          2 :   &quot;`compareArray(Object.keys(C.prototype), [])` returns `true`&quot;</span>
-<span class="lineNum">      39 </span><span class="lineCov">          2 : );</span>
-<span class="lineNum">      40 </span><span class="lineCov">          2 : assert(</span>
-<span class="lineNum">      41 </span><span class="lineCov">          2 :   compareArray(Object.getOwnPropertyNames(C.prototype), ['1', '2', 'constructor', 'a', 'c']),</span>
-<span class="lineNum">      42 </span><span class="lineCov">          2 :   &quot;`compareArray(Object.getOwnPropertyNames(C.prototype), ['1', '2', 'constructor', 'a', 'c'])` returns `true`&quot;</span>
-<span class="lineNum">      43 </span><span class="lineCov">          2 : );</span>
+<span class="lineNum">      30 </span>            : }
+<span class="lineNum">      31 </span>            : assert.sameValue(counter, 2, &quot;The value of `counter` is `2`&quot;);
+<span class="lineNum">      32 </span>            : assert.sameValue(new C().a(), 'A', &quot;`new C().a()` returns `'A'`. Defined as `a() { return 'A'; }`&quot;);
+<span class="lineNum">      33 </span>            : assert.sameValue(new C()[1](), 'B', &quot;`new C()[1]()` returns `'B'`. Defined as `[key1]() { return 'B'; }`&quot;);
+<span class="lineNum">      34 </span>            : assert.sameValue(new C().c(), 'C', &quot;`new C().c()` returns `'C'`. Defined as `c() { return 'C'; }`&quot;);
+<span class="lineNum">      35 </span>            : assert.sameValue(new C()[2](), 'D', &quot;`new C()[2]()` returns `'D'`. Defined as `[key2]() { return 'D'; }`&quot;);
+<span class="lineNum">      36 </span>            : assert(
+<span class="lineNum">      37 </span>            :   compareArray(Object.keys(C.prototype), []),
+<span class="lineNum">      38 </span>            :   &quot;`compareArray(Object.keys(C.prototype), [])` returns `true`&quot;
+<span class="lineNum">      39 </span>            : );
+<span class="lineNum">      40 </span>            : assert(
+<span class="lineNum">      41 </span>            :   compareArray(Object.getOwnPropertyNames(C.prototype), ['1', '2', 'constructor', 'a', 'c']),
+<span class="lineNum">      42 </span>            :   &quot;`compareArray(Object.getOwnPropertyNames(C.prototype), ['1', '2', 'constructor', 'a', 'c'])` returns `true`&quot;
+<span class="lineNum">      43 </span>            : );
 </pre>
       </td>
     </tr>

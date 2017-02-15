@@ -31,18 +31,18 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">73</td>
-            <td class="headerCovTableEntry">75</td>
-            <td class="headerCovTableEntryHi">97.3 %</td>
+            <td class="headerCovTableEntry">59</td>
+            <td class="headerCovTableEntry">69</td>
+            <td class="headerCovTableEntryMed">85.5 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">2</td>
             <td class="headerCovTableEntry">4</td>
-            <td class="headerCovTableEntry">6</td>
-            <td class="headerCovTableEntryLo">66.7 %</td>
+            <td class="headerCovTableEntryLo">50.0 %</td>
           </tr>
           <tr><td><img src="../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
         </table>
@@ -107,33 +107,33 @@
 <span class="lineNum">      45 </span><span class="lineCov">          2 : var thrower = function() {</span>
 <span class="lineNum">      46 </span><span class="lineNoCov">          0 :   throw new Test262Error();</span>
 <a name="47"><span class="lineNum">      47 </span><span class="lineCov">          2 : };</span></a>
-<span class="lineNum">      48 </span><span class="lineCov">          2 : var iterator = {</span>
+<span class="lineNum">      48 </span><span class="lineNoCov">          0 : var iterator = {</span>
 <span class="lineNum">      49 </span><span class="lineCov">          2 :   next: function() {</span>
 <span class="lineNum">      50 </span><span class="lineCov">          2 :     nextCount += 1;</span>
 <a name="51"><span class="lineNum">      51 </span><span class="lineCov">          2 :     throw new Test262Error();</span></a>
 <span class="lineNum">      52 </span><span class="lineCov">          2 :   },</span>
-<span class="lineNum">      53 </span><span class="lineCov">          2 :   return: function() {</span>
+<span class="lineNum">      53 </span><span class="lineNoCov">          0 :   return: function() {</span>
 <span class="lineNum">      54 </span><span class="lineNoCov">          0 :     returnCount += 1;</span>
-<a name="55"><span class="lineNum">      55 </span><span class="lineCov">          2 :   }</span></a>
-<span class="lineNum">      56 </span><span class="lineCov">          2 : };</span>
+<a name="55"><span class="lineNum">      55 </span><span class="lineNoCov">          0 :   }</span></a>
+<span class="lineNum">      56 </span><span class="lineNoCov">          0 : };</span>
 <span class="lineNum">      57 </span><span class="lineCov">          2 : iterable[Symbol.iterator] = function() {</span>
 <span class="lineNum">      58 </span><span class="lineCov">          2 :   return iterator;</span>
 <span class="lineNum">      59 </span><span class="lineCov">          2 : };</span>
-<span class="lineNum">      60 </span><span class="lineCov">          2 : var x;</span>
-<span class="lineNum">      61 </span><span class="lineCov">          2 : </span>
-<a name="62"><span class="lineNum">      62 </span><span class="lineCov">          2 : var counter = 0;</span></a>
-<span class="lineNum">      63 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      60 </span><span class="lineNoCov">          0 : var x;</span>
+<span class="lineNum">      61 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      62 </span><span class="lineNoCov">          0 : var counter = 0;</span>
+<span class="lineNum">      63 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      64 </span><span class="lineCov">          2 : assert.throws(Test262Error, function() {</span>
 <span class="lineNum">      65 </span><span class="lineCov">          2 :   for ([ x , ] of [iterable]) {</span>
 <span class="lineNum">      66 </span><span class="lineCov">          2 :     counter += 1;</span>
 <span class="lineNum">      67 </span><span class="lineCov">          2 :   }</span>
 <span class="lineNum">      68 </span><span class="lineCov">          2 :   counter += 1;</span>
 <span class="lineNum">      69 </span><span class="lineCov">          2 : });</span>
-<span class="lineNum">      70 </span><span class="lineCov">          2 : </span>
-<span class="lineNum">      71 </span><span class="lineCov">          2 : assert.sameValue(counter, 0);</span>
-<span class="lineNum">      72 </span><span class="lineCov">          2 : </span>
-<span class="lineNum">      73 </span><span class="lineCov">          2 : assert.sameValue(nextCount, 1);</span>
-<span class="lineNum">      74 </span><span class="lineCov">          2 : assert.sameValue(returnCount, 0);</span>
+<span class="lineNum">      70 </span>            : 
+<span class="lineNum">      71 </span>            : assert.sameValue(counter, 0);
+<span class="lineNum">      72 </span>            : 
+<span class="lineNum">      73 </span>            : assert.sameValue(nextCount, 1);
+<span class="lineNum">      74 </span>            : assert.sameValue(returnCount, 0);
 </pre>
       </td>
     </tr>

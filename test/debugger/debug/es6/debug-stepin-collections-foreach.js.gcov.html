@@ -31,17 +31,17 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">100</td>
-            <td class="headerCovTableEntry">100</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntry">47</td>
+            <td class="headerCovTableEntry">83</td>
+            <td class="headerCovTableEntryLo">56.6 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">8</td>
-            <td class="headerCovTableEntry">8</td>
+            <td class="headerCovTableEntry">7</td>
+            <td class="headerCovTableEntry">7</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr><td><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -83,82 +83,82 @@
 <span class="lineNum">      21 </span><span class="lineCov">        102 :     exception = e;</span>
 <span class="lineNum">      22 </span><span class="lineCov">        102 :   }</span>
 <a name="23"><span class="lineNum">      23 </span><span class="lineCov">        102 : }</span></a>
-<span class="lineNum">      24 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      24 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      25 </span><span class="lineCov">          3 : function cb_set(num) {</span>
 <span class="lineNum">      26 </span><span class="lineCov">          3 :   print(&quot;element &quot; + num);  // B2 B5 B8</span>
 <span class="lineNum">      27 </span><span class="lineCov">          3 :   return true;              // B3 B6 B9</span>
 <a name="28"><span class="lineNum">      28 </span><span class="lineCov">          3 : }                           // B4 B7 B10</span></a>
-<span class="lineNum">      29 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      29 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      30 </span><span class="lineCov">          3 : function cb_map(key, val) {</span>
 <span class="lineNum">      31 </span><span class="lineCov">          3 :   print(&quot;key &quot; + key + &quot;, value &quot; + val);  // B2 B5 B8</span>
 <span class="lineNum">      32 </span><span class="lineCov">          3 :   return true;                             // B3 B6 B9</span>
 <span class="lineNum">      33 </span><span class="lineCov">          3 : }                                          // B4 B7 B10</span>
-<span class="lineNum">      34 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      35 </span><span class="lineCov">          1 : var s = new Set();</span>
-<span class="lineNum">      36 </span><span class="lineCov">          1 : s.add(1);</span>
-<span class="lineNum">      37 </span><span class="lineCov">          1 : s.add(2);</span>
-<span class="lineNum">      38 </span><span class="lineCov">          1 : s.add(3);</span>
-<span class="lineNum">      39 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      40 </span><span class="lineCov">          1 : var m = new Map();</span>
-<span class="lineNum">      41 </span><span class="lineCov">          1 : m.set('foo', 1);</span>
-<span class="lineNum">      42 </span><span class="lineCov">          1 : m.set('bar', 2);</span>
-<span class="lineNum">      43 </span><span class="lineCov">          1 : m.set('baz', 3);</span>
-<span class="lineNum">      44 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      45 </span><span class="lineCov">          1 : var breaks = 0;</span>
-<span class="lineNum">      46 </span><span class="lineCov">          1 : Debug.setListener(listener);</span>
-<span class="lineNum">      47 </span><span class="lineCov">          1 : debugger;                 // B0</span>
-<span class="lineNum">      48 </span><span class="lineCov">          1 : s.forEach(cb_set);        // B1</span>
-<span class="lineNum">      49 </span><span class="lineCov">          1 : Debug.setListener(null);  // B11</span>
-<span class="lineNum">      50 </span><span class="lineCov">          1 : assertNull(exception);</span>
-<span class="lineNum">      51 </span><span class="lineCov">          1 : assertEquals(12, breaks);</span>
-<span class="lineNum">      52 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      53 </span><span class="lineCov">          1 : breaks = 0;</span>
-<span class="lineNum">      54 </span><span class="lineCov">          1 : Debug.setListener(listener);</span>
-<span class="lineNum">      55 </span><span class="lineCov">          1 : debugger;                 // B0</span>
-<span class="lineNum">      56 </span><span class="lineCov">          1 : m.forEach(cb_map);        // B1</span>
-<span class="lineNum">      57 </span><span class="lineCov">          1 : Debug.setListener(null);  // B11</span>
-<span class="lineNum">      58 </span><span class="lineCov">          1 : assertNull(exception);</span>
-<span class="lineNum">      59 </span><span class="lineCov">          1 : assertEquals(12, breaks);</span>
-<span class="lineNum">      60 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      61 </span><span class="lineCov">          1 : // Test two levels of builtin callbacks:</span>
-<span class="lineNum">      62 </span><span class="lineCov">          1 : // Array.forEach calls a callback function, which by itself uses</span>
-<a name="63"><span class="lineNum">      63 </span><span class="lineCov">          1 : // Array.forEach with another callback function.</span></a>
-<span class="lineNum">      64 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      34 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      35 </span><span class="lineNoCov">          0 : var s = new Set();</span>
+<span class="lineNum">      36 </span><span class="lineNoCov">          0 : s.add(1);</span>
+<span class="lineNum">      37 </span><span class="lineNoCov">          0 : s.add(2);</span>
+<span class="lineNum">      38 </span><span class="lineNoCov">          0 : s.add(3);</span>
+<span class="lineNum">      39 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      40 </span><span class="lineNoCov">          0 : var m = new Map();</span>
+<span class="lineNum">      41 </span><span class="lineNoCov">          0 : m.set('foo', 1);</span>
+<span class="lineNum">      42 </span><span class="lineNoCov">          0 : m.set('bar', 2);</span>
+<span class="lineNum">      43 </span><span class="lineNoCov">          0 : m.set('baz', 3);</span>
+<span class="lineNum">      44 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      45 </span><span class="lineNoCov">          0 : var breaks = 0;</span>
+<span class="lineNum">      46 </span><span class="lineNoCov">          0 : Debug.setListener(listener);</span>
+<span class="lineNum">      47 </span><span class="lineNoCov">          0 : debugger;                 // B0</span>
+<span class="lineNum">      48 </span><span class="lineNoCov">          0 : s.forEach(cb_set);        // B1</span>
+<span class="lineNum">      49 </span><span class="lineNoCov">          0 : Debug.setListener(null);  // B11</span>
+<span class="lineNum">      50 </span><span class="lineNoCov">          0 : assertNull(exception);</span>
+<span class="lineNum">      51 </span><span class="lineNoCov">          0 : assertEquals(12, breaks);</span>
+<span class="lineNum">      52 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      53 </span><span class="lineNoCov">          0 : breaks = 0;</span>
+<span class="lineNum">      54 </span><span class="lineNoCov">          0 : Debug.setListener(listener);</span>
+<span class="lineNum">      55 </span><span class="lineNoCov">          0 : debugger;                 // B0</span>
+<span class="lineNum">      56 </span><span class="lineNoCov">          0 : m.forEach(cb_map);        // B1</span>
+<span class="lineNum">      57 </span><span class="lineNoCov">          0 : Debug.setListener(null);  // B11</span>
+<span class="lineNum">      58 </span><span class="lineNoCov">          0 : assertNull(exception);</span>
+<span class="lineNum">      59 </span><span class="lineNoCov">          0 : assertEquals(12, breaks);</span>
+<span class="lineNum">      60 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      61 </span><span class="lineNoCov">          0 : // Test two levels of builtin callbacks:</span>
+<span class="lineNum">      62 </span><span class="lineNoCov">          0 : // Array.forEach calls a callback function, which by itself uses</span>
+<a name="63"><span class="lineNum">      63 </span><span class="lineNoCov">          0 : // Array.forEach with another callback function.</span></a>
+<span class="lineNum">      64 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      65 </span><span class="lineCov">          9 : function cb_set_2(num) {</span>
 <span class="lineNum">      66 </span><span class="lineCov">          9 :   print(&quot;element &quot; + num);  // B3 B6 B9  B15 B18 B21 B27 B30 B33</span>
 <span class="lineNum">      67 </span><span class="lineCov">          9 :   return true;              // B4 B7 B10 B16 B19 B22 B28 B31 B34</span>
 <a name="68"><span class="lineNum">      68 </span><span class="lineCov">          9 : }                           // B5 B8 B11 B17 B20 B23 B29 B32 B35</span></a>
-<span class="lineNum">      69 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      69 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      70 </span><span class="lineCov">          9 : function cb_map_2(k, v) {</span>
 <span class="lineNum">      71 </span><span class="lineCov">          9 :   print(`key ${k}, value ${v}`);  // B3 B6 B9  B15 B18 B21 B27 B30 B33</span>
 <span class="lineNum">      72 </span><span class="lineCov">          9 :   return true;                    // B4 B7 B10 B16 B19 B22 B28 B31 B34</span>
 <a name="73"><span class="lineNum">      73 </span><span class="lineCov">          9 : }                                 // B5 B8 B11 B17 B20 B23 B29 B32 B35</span></a>
-<span class="lineNum">      74 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      74 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      75 </span><span class="lineCov">          3 : function cb_set_foreach(num) {</span>
 <span class="lineNum">      76 </span><span class="lineCov">          3 :   s.forEach(cb_set_2);      // B2  B14 B26</span>
 <span class="lineNum">      77 </span><span class="lineCov">          3 :   print(&quot;back.&quot;);           // B12 B24 B36</span>
 <a name="78"><span class="lineNum">      78 </span><span class="lineCov">          3 : }                           // B13 B25 B37</span></a>
-<span class="lineNum">      79 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      79 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      80 </span><span class="lineCov">          3 : function cb_map_foreach(key, val) {</span>
 <span class="lineNum">      81 </span><span class="lineCov">          3 :   m.forEach(cb_map_2);      // B2  B14 B26</span>
 <span class="lineNum">      82 </span><span class="lineCov">          3 :   print(&quot;back.&quot;);           // B12 B24 B36</span>
 <span class="lineNum">      83 </span><span class="lineCov">          3 : }                           // B13 B25 B37</span>
-<span class="lineNum">      84 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      85 </span><span class="lineCov">          1 : breaks = 0;</span>
-<span class="lineNum">      86 </span><span class="lineCov">          1 : Debug.setListener(listener);</span>
-<span class="lineNum">      87 </span><span class="lineCov">          1 : debugger;                   // B0</span>
-<span class="lineNum">      88 </span><span class="lineCov">          1 : s.forEach(cb_set_foreach);  // B1</span>
-<span class="lineNum">      89 </span><span class="lineCov">          1 : Debug.setListener(null);    // B38</span>
-<span class="lineNum">      90 </span><span class="lineCov">          1 : assertNull(exception);</span>
-<span class="lineNum">      91 </span><span class="lineCov">          1 : assertEquals(39, breaks);</span>
-<span class="lineNum">      92 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      93 </span><span class="lineCov">          1 : breaks = 0;</span>
-<span class="lineNum">      94 </span><span class="lineCov">          1 : Debug.setListener(listener);</span>
-<span class="lineNum">      95 </span><span class="lineCov">          1 : debugger;                   // B0</span>
-<span class="lineNum">      96 </span><span class="lineCov">          1 : m.forEach(cb_map_foreach);  // B1</span>
-<span class="lineNum">      97 </span><span class="lineCov">          1 : Debug.setListener(null);    // B38</span>
-<span class="lineNum">      98 </span><span class="lineCov">          1 : assertNull(exception);</span>
-<span class="lineNum">      99 </span><span class="lineCov">          1 : assertEquals(39, breaks);</span>
+<span class="lineNum">      84 </span>            : 
+<span class="lineNum">      85 </span>            : breaks = 0;
+<span class="lineNum">      86 </span>            : Debug.setListener(listener);
+<span class="lineNum">      87 </span>            : debugger;                   // B0
+<span class="lineNum">      88 </span>            : s.forEach(cb_set_foreach);  // B1
+<span class="lineNum">      89 </span>            : Debug.setListener(null);    // B38
+<span class="lineNum">      90 </span>            : assertNull(exception);
+<span class="lineNum">      91 </span>            : assertEquals(39, breaks);
+<span class="lineNum">      92 </span>            : 
+<span class="lineNum">      93 </span>            : breaks = 0;
+<span class="lineNum">      94 </span>            : Debug.setListener(listener);
+<span class="lineNum">      95 </span>            : debugger;                   // B0
+<span class="lineNum">      96 </span>            : m.forEach(cb_map_foreach);  // B1
+<span class="lineNum">      97 </span>            : Debug.setListener(null);    // B38
+<span class="lineNum">      98 </span>            : assertNull(exception);
+<span class="lineNum">      99 </span>            : assertEquals(39, breaks);
 </pre>
       </td>
     </tr>

@@ -31,17 +31,17 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">67</td>
-            <td class="headerCovTableEntry">67</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntry">51</td>
+            <td class="headerCovTableEntry">53</td>
+            <td class="headerCovTableEntryHi">96.2 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">4</td>
-            <td class="headerCovTableEntry">4</td>
+            <td class="headerCovTableEntry">3</td>
+            <td class="headerCovTableEntry">3</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -92,11 +92,11 @@
 <span class="lineNum">      30 </span><span class="lineCov">         13 : function f() {</span>
 <span class="lineNum">      31 </span><span class="lineCov">         13 :   return 23;</span>
 <a name="32"><span class="lineNum">      32 </span><span class="lineCov">         13 : }</span></a>
-<span class="lineNum">      33 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      33 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      34 </span><span class="lineCov">         13 : function call(o) {</span>
 <span class="lineNum">      35 </span><span class="lineCov">         13 :   return o['']();</span>
 <a name="36"><span class="lineNum">      36 </span><span class="lineCov">         13 : }</span></a>
-<span class="lineNum">      37 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      37 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      38 </span><span class="lineCov">          2 : function test() {</span>
 <span class="lineNum">      39 </span><span class="lineCov">          2 :   var o1 = %ToFastProperties(Object.create({ foo:1 }, { '': { value:f }}));</span>
 <span class="lineNum">      40 </span><span class="lineCov">          2 :   var o2 = %ToFastProperties(Object.create({ bar:1 }, { '': { value:f }}));</span>
@@ -113,19 +113,19 @@
 <span class="lineNum">      51 </span><span class="lineCov">          2 :   assertEquals(23, call(o5));</span>
 <span class="lineNum">      52 </span><span class="lineCov">          2 :   return o1;</span>
 <span class="lineNum">      53 </span><span class="lineCov">          2 : }</span>
-<span class="lineNum">      54 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      55 </span><span class="lineCov">          1 : // Fill stub cache with entries.</span>
-<span class="lineNum">      56 </span><span class="lineCov">          1 : test();</span>
-<span class="lineNum">      57 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      58 </span><span class="lineCov">          1 : // Clear stub cache during GC.</span>
-<span class="lineNum">      59 </span><span class="lineCov">          1 : gc();</span>
-<span class="lineNum">      60 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      61 </span><span class="lineCov">          1 : // Turn IC megamorphic again.</span>
-<span class="lineNum">      62 </span><span class="lineCov">          1 : var oboom = test();</span>
-<span class="lineNum">      63 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      64 </span><span class="lineCov">          1 : // Optimize with previously cleared stub cache.</span>
-<span class="lineNum">      65 </span><span class="lineCov">          1 : %OptimizeFunctionOnNextCall(call);</span>
-<span class="lineNum">      66 </span><span class="lineCov">          1 : assertEquals(23, call(oboom));</span>
+<span class="lineNum">      54 </span>            : 
+<span class="lineNum">      55 </span>            : // Fill stub cache with entries.
+<span class="lineNum">      56 </span>            : test();
+<span class="lineNum">      57 </span>            : 
+<span class="lineNum">      58 </span>            : // Clear stub cache during GC.
+<span class="lineNum">      59 </span>            : gc();
+<span class="lineNum">      60 </span>            : 
+<span class="lineNum">      61 </span>            : // Turn IC megamorphic again.
+<span class="lineNum">      62 </span>            : var oboom = test();
+<span class="lineNum">      63 </span>            : 
+<span class="lineNum">      64 </span>            : // Optimize with previously cleared stub cache.
+<span class="lineNum">      65 </span>            : %OptimizeFunctionOnNextCall(call);
+<span class="lineNum">      66 </span>            : assertEquals(23, call(oboom));
 </pre>
       </td>
     </tr>

@@ -31,17 +31,17 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">34</td>
-            <td class="headerCovTableEntry">34</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntry">16</td>
+            <td class="headerCovTableEntry">20</td>
+            <td class="headerCovTableEntryMed">80.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">5</td>
-            <td class="headerCovTableEntry">5</td>
+            <td class="headerCovTableEntry">4</td>
+            <td class="headerCovTableEntry">4</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr><td><img src="../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -72,27 +72,27 @@
 <span class="lineNum">      10 </span><span class="lineCov">          2 : function ID(x) {</span>
 <span class="lineNum">      11 </span><span class="lineCov">          2 :   return x;</span>
 <span class="lineNum">      12 </span><span class="lineCov">          2 : }</span>
-<span class="lineNum">      13 </span><span class="lineCov">          2 : </span>
-<span class="lineNum">      14 </span><span class="lineCov">          2 : var sym1 = Symbol();</span>
-<a name="15"><span class="lineNum">      15 </span><span class="lineCov">          2 : var sym2 = Symbol();</span></a>
-<span class="lineNum">      16 </span><span class="lineCov">          2 : var object = {</span>
+<span class="lineNum">      13 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      14 </span><span class="lineNoCov">          0 : var sym1 = Symbol();</span>
+<a name="15"><span class="lineNum">      15 </span><span class="lineNoCov">          0 : var sym2 = Symbol();</span></a>
+<span class="lineNum">      16 </span><span class="lineNoCov">          0 : var object = {</span>
 <a name="17"><span class="lineNum">      17 </span><span class="lineCov">          2 :   a() { return 'A'; },</span></a>
 <a name="18"><span class="lineNum">      18 </span><span class="lineCov">          2 :   [sym1]() { return 'B'; },</span></a>
 <span class="lineNum">      19 </span><span class="lineCov">          2 :   c() { return 'C'; },</span>
 <span class="lineNum">      20 </span><span class="lineCov">          2 :   [ID(sym2)]() { return 'D'; },</span>
-<span class="lineNum">      21 </span><span class="lineCov">          2 : };</span>
-<span class="lineNum">      22 </span><span class="lineCov">          2 : assert.sameValue(object.a(), 'A', &quot;`object.a()` returns `'A'`. Defined as `a() { return 'A'; }`&quot;);</span>
-<span class="lineNum">      23 </span><span class="lineCov">          2 : assert.sameValue(object[sym1](), 'B', &quot;`object[sym1]()` returns `'B'`. Defined as `[sym1]() { return 'B'; }`&quot;);</span>
-<span class="lineNum">      24 </span><span class="lineCov">          2 : assert.sameValue(object.c(), 'C', &quot;`object.c()` returns `'C'`. Defined as `c() { return 'C'; }`&quot;);</span>
-<span class="lineNum">      25 </span><span class="lineCov">          2 : assert.sameValue(object[sym2](), 'D', &quot;`object[sym2]()` returns `'D'`. Defined as `[ID(sym2)]() { return 'D'; }`&quot;);</span>
-<span class="lineNum">      26 </span><span class="lineCov">          2 : assert(</span>
-<span class="lineNum">      27 </span><span class="lineCov">          2 :   compareArray(Object.keys(object), ['a', 'c']),</span>
-<span class="lineNum">      28 </span><span class="lineCov">          2 :   &quot;`compareArray(Object.keys(object), ['a', 'c'])` returns `true`&quot;</span>
-<span class="lineNum">      29 </span><span class="lineCov">          2 : );</span>
-<span class="lineNum">      30 </span><span class="lineCov">          2 : assert(</span>
-<span class="lineNum">      31 </span><span class="lineCov">          2 :   compareArray(Object.getOwnPropertySymbols(object), [sym1, sym2]),</span>
-<span class="lineNum">      32 </span><span class="lineCov">          2 :   &quot;`compareArray(Object.getOwnPropertySymbols(object), [sym1, sym2])` returns `true`&quot;</span>
-<span class="lineNum">      33 </span><span class="lineCov">          2 : );</span>
+<span class="lineNum">      21 </span>            : };
+<span class="lineNum">      22 </span>            : assert.sameValue(object.a(), 'A', &quot;`object.a()` returns `'A'`. Defined as `a() { return 'A'; }`&quot;);
+<span class="lineNum">      23 </span>            : assert.sameValue(object[sym1](), 'B', &quot;`object[sym1]()` returns `'B'`. Defined as `[sym1]() { return 'B'; }`&quot;);
+<span class="lineNum">      24 </span>            : assert.sameValue(object.c(), 'C', &quot;`object.c()` returns `'C'`. Defined as `c() { return 'C'; }`&quot;);
+<span class="lineNum">      25 </span>            : assert.sameValue(object[sym2](), 'D', &quot;`object[sym2]()` returns `'D'`. Defined as `[ID(sym2)]() { return 'D'; }`&quot;);
+<span class="lineNum">      26 </span>            : assert(
+<span class="lineNum">      27 </span>            :   compareArray(Object.keys(object), ['a', 'c']),
+<span class="lineNum">      28 </span>            :   &quot;`compareArray(Object.keys(object), ['a', 'c'])` returns `true`&quot;
+<span class="lineNum">      29 </span>            : );
+<span class="lineNum">      30 </span>            : assert(
+<span class="lineNum">      31 </span>            :   compareArray(Object.getOwnPropertySymbols(object), [sym1, sym2]),
+<span class="lineNum">      32 </span>            :   &quot;`compareArray(Object.getOwnPropertySymbols(object), [sym1, sym2])` returns `true`&quot;
+<span class="lineNum">      33 </span>            : );
 </pre>
       </td>
     </tr>

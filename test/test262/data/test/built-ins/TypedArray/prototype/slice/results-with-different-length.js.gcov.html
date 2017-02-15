@@ -31,17 +31,17 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">53</td>
-            <td class="headerCovTableEntry">53</td>
+            <td class="headerCovTableEntry">14</td>
+            <td class="headerCovTableEntry">14</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">3</td>
-            <td class="headerCovTableEntry">3</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntry">1</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr><td><img src="../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -66,7 +66,7 @@
 <span class="lineNum">       4 </span><span class="lineCov">          2 : esid: sec-%typedarray%.prototype.slice</span>
 <span class="lineNum">       5 </span><span class="lineCov">          2 : description: slice may return a new instance with a smaller length</span>
 <span class="lineNum">       6 </span><span class="lineCov">          2 : includes: [testTypedArray.js, compareArray.js]</span>
-<a name="7"><span class="lineNum">       7 </span><span class="lineCov">          2 : ---*/</span></a>
+<span class="lineNum">       7 </span><span class="lineCov">          2 : ---*/</span>
 <span class="lineNum">       8 </span><span class="lineCov">          2 : </span>
 <span class="lineNum">       9 </span><span class="lineCov">         18 : testWithTypedArrayConstructors(function(TA) {</span>
 <a name="10"><span class="lineNum">      10 </span><span class="lineCov">         18 :   var sample = new TA([40, 41, 42, 43]);</span></a>
@@ -74,44 +74,44 @@
 <span class="lineNum">      12 </span><span class="lineCov">        504 :   function testRes(result, expected, msg) {</span>
 <span class="lineNum">      13 </span><span class="lineCov">        504 :     assert(compareArray(result, expected), msg + &quot;, result: [&quot; + result + &quot;]&quot;);</span>
 <span class="lineNum">      14 </span><span class="lineCov">        504 :   }</span>
-<span class="lineNum">      15 </span><span class="lineCov">         18 : </span>
-<span class="lineNum">      16 </span><span class="lineCov">         18 :   testRes(sample.slice(1), [41, 42, 43], &quot;begin == 1&quot;);</span>
-<span class="lineNum">      17 </span><span class="lineCov">         18 :   testRes(sample.slice(2), [42, 43], &quot;begin == 2&quot;);</span>
-<span class="lineNum">      18 </span><span class="lineCov">         18 :   testRes(sample.slice(3), [43], &quot;begin == 3&quot;);</span>
-<span class="lineNum">      19 </span><span class="lineCov">         18 : </span>
-<span class="lineNum">      20 </span><span class="lineCov">         18 :   testRes(sample.slice(1, 4), [41, 42, 43], &quot;begin == 1, end == length&quot;);</span>
-<span class="lineNum">      21 </span><span class="lineCov">         18 :   testRes(sample.slice(2, 4), [42, 43], &quot;begin == 2, end == length&quot;);</span>
-<span class="lineNum">      22 </span><span class="lineCov">         18 :   testRes(sample.slice(3, 4), [43], &quot;begin == 3, end == length&quot;);</span>
-<span class="lineNum">      23 </span><span class="lineCov">         18 : </span>
-<span class="lineNum">      24 </span><span class="lineCov">         18 :   testRes(sample.slice(0, 1), [40], &quot;begin == 0, end == 1&quot;);</span>
-<span class="lineNum">      25 </span><span class="lineCov">         18 :   testRes(sample.slice(0, 2), [40, 41], &quot;begin == 0, end == 2&quot;);</span>
-<span class="lineNum">      26 </span><span class="lineCov">         18 :   testRes(sample.slice(0, 3), [40, 41, 42], &quot;begin == 0, end == 3&quot;);</span>
-<span class="lineNum">      27 </span><span class="lineCov">         18 : </span>
-<span class="lineNum">      28 </span><span class="lineCov">         18 :   testRes(sample.slice(-1), [43], &quot;begin == -1&quot;);</span>
-<span class="lineNum">      29 </span><span class="lineCov">         18 :   testRes(sample.slice(-2), [42, 43], &quot;begin == -2&quot;);</span>
-<span class="lineNum">      30 </span><span class="lineCov">         18 :   testRes(sample.slice(-3), [41, 42, 43], &quot;begin == -3&quot;);</span>
-<span class="lineNum">      31 </span><span class="lineCov">         18 : </span>
-<span class="lineNum">      32 </span><span class="lineCov">         18 :   testRes(sample.slice(-1, 4), [43], &quot;begin == -1, end == length&quot;);</span>
-<span class="lineNum">      33 </span><span class="lineCov">         18 :   testRes(sample.slice(-2, 4), [42, 43], &quot;begin == -2, end == length&quot;);</span>
-<span class="lineNum">      34 </span><span class="lineCov">         18 :   testRes(sample.slice(-3, 4), [41, 42, 43], &quot;begin == -3, end == length&quot;);</span>
-<span class="lineNum">      35 </span><span class="lineCov">         18 : </span>
-<span class="lineNum">      36 </span><span class="lineCov">         18 :   testRes(sample.slice(0, -1), [40, 41, 42], &quot;begin == 0, end == -1&quot;);</span>
-<span class="lineNum">      37 </span><span class="lineCov">         18 :   testRes(sample.slice(0, -2), [40, 41], &quot;begin == 0, end == -2&quot;);</span>
-<span class="lineNum">      38 </span><span class="lineCov">         18 :   testRes(sample.slice(0, -3), [40], &quot;begin == 0, end == -3&quot;);</span>
-<span class="lineNum">      39 </span><span class="lineCov">         18 : </span>
-<span class="lineNum">      40 </span><span class="lineCov">         18 :   testRes(sample.slice(-0, -1), [40, 41, 42], &quot;begin == -0, end == -1&quot;);</span>
-<span class="lineNum">      41 </span><span class="lineCov">         18 :   testRes(sample.slice(-0, -2), [40, 41], &quot;begin == -0, end == -2&quot;);</span>
-<span class="lineNum">      42 </span><span class="lineCov">         18 :   testRes(sample.slice(-0, -3), [40], &quot;begin == -0, end == -3&quot;);</span>
-<span class="lineNum">      43 </span><span class="lineCov">         18 : </span>
-<span class="lineNum">      44 </span><span class="lineCov">         18 :   testRes(sample.slice(-2, -1), [42], &quot;length == 4, begin == -2, end == -1&quot;);</span>
-<span class="lineNum">      45 </span><span class="lineCov">         18 :   testRes(sample.slice(1, -1), [41, 42], &quot;length == 4, begin == 1, end == -1&quot;);</span>
-<span class="lineNum">      46 </span><span class="lineCov">         18 :   testRes(sample.slice(1, -2), [41], &quot;length == 4, begin == 1, end == -2&quot;);</span>
-<span class="lineNum">      47 </span><span class="lineCov">         18 :   testRes(sample.slice(2, -1), [42], &quot;length == 4, begin == 2, end == -1&quot;);</span>
-<span class="lineNum">      48 </span><span class="lineCov">         18 : </span>
-<span class="lineNum">      49 </span><span class="lineCov">         18 :   testRes(sample.slice(-1, 5), [43], &quot;begin == -1, end &gt; length&quot;);</span>
-<span class="lineNum">      50 </span><span class="lineCov">         18 :   testRes(sample.slice(-2, 4), [42, 43], &quot;begin == -2, end &gt; length&quot;);</span>
-<span class="lineNum">      51 </span><span class="lineCov">         18 :   testRes(sample.slice(-3, 4), [41, 42, 43], &quot;begin == -3, end &gt; length&quot;);</span>
-<span class="lineNum">      52 </span><span class="lineCov">         18 : });</span>
+<span class="lineNum">      15 </span>            : 
+<span class="lineNum">      16 </span>            :   testRes(sample.slice(1), [41, 42, 43], &quot;begin == 1&quot;);
+<span class="lineNum">      17 </span>            :   testRes(sample.slice(2), [42, 43], &quot;begin == 2&quot;);
+<span class="lineNum">      18 </span>            :   testRes(sample.slice(3), [43], &quot;begin == 3&quot;);
+<span class="lineNum">      19 </span>            : 
+<span class="lineNum">      20 </span>            :   testRes(sample.slice(1, 4), [41, 42, 43], &quot;begin == 1, end == length&quot;);
+<span class="lineNum">      21 </span>            :   testRes(sample.slice(2, 4), [42, 43], &quot;begin == 2, end == length&quot;);
+<span class="lineNum">      22 </span>            :   testRes(sample.slice(3, 4), [43], &quot;begin == 3, end == length&quot;);
+<span class="lineNum">      23 </span>            : 
+<span class="lineNum">      24 </span>            :   testRes(sample.slice(0, 1), [40], &quot;begin == 0, end == 1&quot;);
+<span class="lineNum">      25 </span>            :   testRes(sample.slice(0, 2), [40, 41], &quot;begin == 0, end == 2&quot;);
+<span class="lineNum">      26 </span>            :   testRes(sample.slice(0, 3), [40, 41, 42], &quot;begin == 0, end == 3&quot;);
+<span class="lineNum">      27 </span>            : 
+<span class="lineNum">      28 </span>            :   testRes(sample.slice(-1), [43], &quot;begin == -1&quot;);
+<span class="lineNum">      29 </span>            :   testRes(sample.slice(-2), [42, 43], &quot;begin == -2&quot;);
+<span class="lineNum">      30 </span>            :   testRes(sample.slice(-3), [41, 42, 43], &quot;begin == -3&quot;);
+<span class="lineNum">      31 </span>            : 
+<span class="lineNum">      32 </span>            :   testRes(sample.slice(-1, 4), [43], &quot;begin == -1, end == length&quot;);
+<span class="lineNum">      33 </span>            :   testRes(sample.slice(-2, 4), [42, 43], &quot;begin == -2, end == length&quot;);
+<span class="lineNum">      34 </span>            :   testRes(sample.slice(-3, 4), [41, 42, 43], &quot;begin == -3, end == length&quot;);
+<span class="lineNum">      35 </span>            : 
+<span class="lineNum">      36 </span>            :   testRes(sample.slice(0, -1), [40, 41, 42], &quot;begin == 0, end == -1&quot;);
+<span class="lineNum">      37 </span>            :   testRes(sample.slice(0, -2), [40, 41], &quot;begin == 0, end == -2&quot;);
+<span class="lineNum">      38 </span>            :   testRes(sample.slice(0, -3), [40], &quot;begin == 0, end == -3&quot;);
+<span class="lineNum">      39 </span>            : 
+<span class="lineNum">      40 </span>            :   testRes(sample.slice(-0, -1), [40, 41, 42], &quot;begin == -0, end == -1&quot;);
+<span class="lineNum">      41 </span>            :   testRes(sample.slice(-0, -2), [40, 41], &quot;begin == -0, end == -2&quot;);
+<span class="lineNum">      42 </span>            :   testRes(sample.slice(-0, -3), [40], &quot;begin == -0, end == -3&quot;);
+<span class="lineNum">      43 </span>            : 
+<span class="lineNum">      44 </span>            :   testRes(sample.slice(-2, -1), [42], &quot;length == 4, begin == -2, end == -1&quot;);
+<span class="lineNum">      45 </span>            :   testRes(sample.slice(1, -1), [41, 42], &quot;length == 4, begin == 1, end == -1&quot;);
+<span class="lineNum">      46 </span>            :   testRes(sample.slice(1, -2), [41], &quot;length == 4, begin == 1, end == -2&quot;);
+<span class="lineNum">      47 </span>            :   testRes(sample.slice(2, -1), [42], &quot;length == 4, begin == 2, end == -1&quot;);
+<span class="lineNum">      48 </span>            : 
+<span class="lineNum">      49 </span>            :   testRes(sample.slice(-1, 5), [43], &quot;begin == -1, end &gt; length&quot;);
+<span class="lineNum">      50 </span>            :   testRes(sample.slice(-2, 4), [42, 43], &quot;begin == -2, end &gt; length&quot;);
+<span class="lineNum">      51 </span>            :   testRes(sample.slice(-3, 4), [41, 42, 43], &quot;begin == -3, end &gt; length&quot;);
+<span class="lineNum">      52 </span>            : });
 </pre>
       </td>
     </tr>

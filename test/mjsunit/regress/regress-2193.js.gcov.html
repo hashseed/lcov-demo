@@ -31,18 +31,18 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">59</td>
-            <td class="headerCovTableEntry">59</td>
+            <td class="headerCovTableEntry">38</td>
+            <td class="headerCovTableEntry">38</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">2</td>
             <td class="headerCovTableEntry">3</td>
-            <td class="headerCovTableEntry">4</td>
-            <td class="headerCovTableEntryMed">75.0 %</td>
+            <td class="headerCovTableEntryLo">66.7 %</td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
         </table>
@@ -98,26 +98,26 @@
 <span class="lineNum">      36 </span><span class="lineCov">          5 :       return 0;</span>
 <span class="lineNum">      37 </span><span class="lineCov">          5 :     }</span>
 <span class="lineNum">      38 </span><span class="lineCov">          5 :   }</span>
-<span class="lineNum">      39 </span><span class="lineCov">          2 : }</span>
-<span class="lineNum">      40 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      41 </span><span class="lineCov">          1 : // Create two closures that share the same literal boilerplates.</span>
-<span class="lineNum">      42 </span><span class="lineCov">          1 : var closure1 = MakeClosure();</span>
-<span class="lineNum">      43 </span><span class="lineCov">          1 : var closure2 = MakeClosure();</span>
-<span class="lineNum">      44 </span><span class="lineCov">          1 : var expected = [1,2,3,3,4,5,6,7,8,9,bozo];</span>
-<span class="lineNum">      45 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      46 </span><span class="lineCov">          1 : // Make sure we generate optimized code for the first closure after</span>
-<span class="lineNum">      47 </span><span class="lineCov">          1 : // warming it up properly so that the literals boilerplate is generated</span>
-<span class="lineNum">      48 </span><span class="lineCov">          1 : // and the optimized code uses CreateArrayLiteralShallow runtime call.</span>
-<span class="lineNum">      49 </span><span class="lineCov">          1 : assertEquals(0, closure1(false));</span>
-<span class="lineNum">      50 </span><span class="lineCov">          1 : assertEquals(expected, closure1(true));</span>
-<span class="lineNum">      51 </span><span class="lineCov">          1 : %OptimizeFunctionOnNextCall(closure1);</span>
-<span class="lineNum">      52 </span><span class="lineCov">          1 : assertEquals(expected, closure1(true));</span>
-<span class="lineNum">      53 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      54 </span><span class="lineCov">          1 : // Optimize the second closure, which should reuse the optimized code</span>
-<span class="lineNum">      55 </span><span class="lineCov">          1 : // from the first closure with the same literal boilerplates.</span>
-<span class="lineNum">      56 </span><span class="lineCov">          1 : assertEquals(0, closure2(false));</span>
-<span class="lineNum">      57 </span><span class="lineCov">          1 : %OptimizeFunctionOnNextCall(closure2);</span>
-<span class="lineNum">      58 </span><span class="lineCov">          1 : assertEquals(expected, closure2(true));</span>
+<span class="lineNum">      39 </span>            : }
+<span class="lineNum">      40 </span>            : 
+<span class="lineNum">      41 </span>            : // Create two closures that share the same literal boilerplates.
+<span class="lineNum">      42 </span>            : var closure1 = MakeClosure();
+<span class="lineNum">      43 </span>            : var closure2 = MakeClosure();
+<span class="lineNum">      44 </span>            : var expected = [1,2,3,3,4,5,6,7,8,9,bozo];
+<span class="lineNum">      45 </span>            : 
+<span class="lineNum">      46 </span>            : // Make sure we generate optimized code for the first closure after
+<span class="lineNum">      47 </span>            : // warming it up properly so that the literals boilerplate is generated
+<span class="lineNum">      48 </span>            : // and the optimized code uses CreateArrayLiteralShallow runtime call.
+<span class="lineNum">      49 </span>            : assertEquals(0, closure1(false));
+<span class="lineNum">      50 </span>            : assertEquals(expected, closure1(true));
+<span class="lineNum">      51 </span>            : %OptimizeFunctionOnNextCall(closure1);
+<span class="lineNum">      52 </span>            : assertEquals(expected, closure1(true));
+<span class="lineNum">      53 </span>            : 
+<span class="lineNum">      54 </span>            : // Optimize the second closure, which should reuse the optimized code
+<span class="lineNum">      55 </span>            : // from the first closure with the same literal boilerplates.
+<span class="lineNum">      56 </span>            : assertEquals(0, closure2(false));
+<span class="lineNum">      57 </span>            : %OptimizeFunctionOnNextCall(closure2);
+<span class="lineNum">      58 </span>            : assertEquals(expected, closure2(true));
 </pre>
       </td>
     </tr>

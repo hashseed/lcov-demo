@@ -31,17 +31,17 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">102</td>
-            <td class="headerCovTableEntry">102</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntry">73</td>
+            <td class="headerCovTableEntry">97</td>
+            <td class="headerCovTableEntryMed">75.3 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">10</td>
-            <td class="headerCovTableEntry">10</td>
+            <td class="headerCovTableEntry">9</td>
+            <td class="headerCovTableEntry">9</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -102,17 +102,17 @@
 <span class="lineNum">      40 </span><span class="lineCov">          7 :     assertTrue(false);  // Should not happen.</span>
 <span class="lineNum">      41 </span><span class="lineCov">          7 :   }</span>
 <span class="lineNum">      42 </span><span class="lineCov">          7 : }</span>
-<a name="43"><span class="lineNum">      43 </span><span class="lineCov">          1 : </span></a>
-<a name="44"><span class="lineNum">      44 </span><span class="lineCov">          1 : var o2 = {};</span></a>
+<a name="43"><span class="lineNum">      43 </span><span class="lineNoCov">          0 : </span></a>
+<a name="44"><span class="lineNum">      44 </span><span class="lineNoCov">          0 : var o2 = {};</span></a>
 <span class="lineNum">      45 </span><span class="lineCov">         28 : o2.size = function() { return 42; }</span>
 <span class="lineNum">      46 </span><span class="lineCov">         28 : o2.g = function() { return this.size(); };</span>
-<span class="lineNum">      47 </span><span class="lineCov">          1 : for (var i = 0; i &lt; 5; i++) TestInlineX(o2);</span>
-<span class="lineNum">      48 </span><span class="lineCov">          1 : %OptimizeFunctionOnNextCall(TestInlineX);</span>
-<span class="lineNum">      49 </span><span class="lineCov">          1 : TestInlineX(o2);</span>
-<span class="lineNum">      50 </span><span class="lineCov">          1 : TestInlineX({g: o2.g, size:o2.size});</span>
-<span class="lineNum">      51 </span><span class="lineCov">          1 : </span>
-<a name="52"><span class="lineNum">      52 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">      53 </span><span class="lineCov">          1 : // Test that we can inline a call on a non-variable receiver.</span>
+<span class="lineNum">      47 </span><span class="lineNoCov">          0 : for (var i = 0; i &lt; 5; i++) TestInlineX(o2);</span>
+<span class="lineNum">      48 </span><span class="lineNoCov">          0 : %OptimizeFunctionOnNextCall(TestInlineX);</span>
+<span class="lineNum">      49 </span><span class="lineNoCov">          0 : TestInlineX(o2);</span>
+<span class="lineNum">      50 </span><span class="lineNoCov">          0 : TestInlineX({g: o2.g, size:o2.size});</span>
+<span class="lineNum">      51 </span><span class="lineNoCov">          0 : </span>
+<a name="52"><span class="lineNum">      52 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">      53 </span><span class="lineNoCov">          0 : // Test that we can inline a call on a non-variable receiver.</span>
 <span class="lineNum">      54 </span><span class="lineCov">          7 : function TestInlineX2(o) {</span>
 <span class="lineNum">      55 </span><span class="lineCov">          7 :   // Effect context.</span>
 <span class="lineNum">      56 </span><span class="lineCov">          7 :   o.h();</span>
@@ -125,19 +125,19 @@
 <span class="lineNum">      63 </span><span class="lineCov">          7 :     assertTrue(false);  // Should not happen.</span>
 <span class="lineNum">      64 </span><span class="lineCov">          7 :   }</span>
 <span class="lineNum">      65 </span><span class="lineCov">          7 : }</span>
-<a name="66"><span class="lineNum">      66 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">      67 </span><span class="lineCov">          1 : var obj = {}</span>
+<a name="66"><span class="lineNum">      66 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">      67 </span><span class="lineNoCov">          0 : var obj = {}</span>
 <span class="lineNum">      68 </span><span class="lineCov">         28 : obj.foo = function() { return 42; }</span>
-<span class="lineNum">      69 </span><span class="lineCov">          1 : var o3 = {};</span>
-<span class="lineNum">      70 </span><span class="lineCov">          1 : o3.v = obj;</span>
+<span class="lineNum">      69 </span><span class="lineNoCov">          0 : var o3 = {};</span>
+<span class="lineNum">      70 </span><span class="lineNoCov">          0 : o3.v = obj;</span>
 <span class="lineNum">      71 </span><span class="lineCov">         28 : o3.h = function() { return this.v.foo(); };</span>
-<span class="lineNum">      72 </span><span class="lineCov">          1 : for (var i = 0; i &lt; 5; i++) TestInlineX2(o3);</span>
-<span class="lineNum">      73 </span><span class="lineCov">          1 : %OptimizeFunctionOnNextCall(TestInlineX2);</span>
-<span class="lineNum">      74 </span><span class="lineCov">          1 : TestInlineX2(o3);</span>
-<span class="lineNum">      75 </span><span class="lineCov">          1 : TestInlineX2({h: o3.h, v:obj});</span>
-<span class="lineNum">      76 </span><span class="lineCov">          1 : </span>
-<a name="77"><span class="lineNum">      77 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">      78 </span><span class="lineCov">          1 : // Test that we can inline a call on a non-variable receiver.</span>
+<span class="lineNum">      72 </span><span class="lineNoCov">          0 : for (var i = 0; i &lt; 5; i++) TestInlineX2(o3);</span>
+<span class="lineNum">      73 </span><span class="lineNoCov">          0 : %OptimizeFunctionOnNextCall(TestInlineX2);</span>
+<span class="lineNum">      74 </span><span class="lineNoCov">          0 : TestInlineX2(o3);</span>
+<span class="lineNum">      75 </span><span class="lineNoCov">          0 : TestInlineX2({h: o3.h, v:obj});</span>
+<span class="lineNum">      76 </span><span class="lineNoCov">          0 : </span>
+<a name="77"><span class="lineNum">      77 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">      78 </span><span class="lineNoCov">          0 : // Test that we can inline a call on a non-variable receiver.</span>
 <span class="lineNum">      79 </span><span class="lineCov">          7 : function TestInlineFG(o) {</span>
 <span class="lineNum">      80 </span><span class="lineCov">          7 :   // Effect context.</span>
 <span class="lineNum">      81 </span><span class="lineCov">          7 :   o.h();</span>
@@ -150,17 +150,17 @@
 <span class="lineNum">      88 </span><span class="lineCov">          7 :     assertTrue(false);  // Should not happen.</span>
 <span class="lineNum">      89 </span><span class="lineCov">          7 :   }</span>
 <span class="lineNum">      90 </span><span class="lineCov">          7 : }</span>
-<a name="91"><span class="lineNum">      91 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">      92 </span><span class="lineCov">          1 : var obj = {}</span>
+<a name="91"><span class="lineNum">      91 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">      92 </span><span class="lineNoCov">          0 : var obj = {}</span>
 <span class="lineNum">      93 </span><span class="lineCov">         28 : obj.g = function() { return 42; }</span>
-<a name="94"><span class="lineNum">      94 </span><span class="lineCov">          1 : var o3 = {};</span></a>
-<a name="95"><span class="lineNum">      95 </span><span class="lineCov">          1 : o3.v = obj;</span></a>
+<a name="94"><span class="lineNum">      94 </span><span class="lineNoCov">          0 : var o3 = {};</span></a>
+<a name="95"><span class="lineNum">      95 </span><span class="lineNoCov">          0 : o3.v = obj;</span></a>
 <span class="lineNum">      96 </span><span class="lineCov">         28 : o3.f = function() { return this.v; }</span>
 <span class="lineNum">      97 </span><span class="lineCov">         28 : o3.h = function() { return this.f().g(); };</span>
-<span class="lineNum">      98 </span><span class="lineCov">          1 : for (var i = 0; i &lt; 5; i++) TestInlineFG(o3);</span>
-<span class="lineNum">      99 </span><span class="lineCov">          1 : %OptimizeFunctionOnNextCall(TestInlineFG);</span>
-<span class="lineNum">     100 </span><span class="lineCov">          1 : TestInlineFG(o3);</span>
-<span class="lineNum">     101 </span><span class="lineCov">          1 : TestInlineFG({h: o3.h, f: o3.f, v:obj});</span>
+<span class="lineNum">      98 </span>            : for (var i = 0; i &lt; 5; i++) TestInlineFG(o3);
+<span class="lineNum">      99 </span>            : %OptimizeFunctionOnNextCall(TestInlineFG);
+<span class="lineNum">     100 </span>            : TestInlineFG(o3);
+<span class="lineNum">     101 </span>            : TestInlineFG({h: o3.h, f: o3.f, v:obj});
 </pre>
       </td>
     </tr>

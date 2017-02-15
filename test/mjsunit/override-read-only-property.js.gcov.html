@@ -31,17 +31,17 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">65</td>
-            <td class="headerCovTableEntry">65</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntry">39</td>
+            <td class="headerCovTableEntry">64</td>
+            <td class="headerCovTableEntryLo">60.9 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">3</td>
-            <td class="headerCovTableEntry">3</td>
+            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntry">2</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -95,31 +95,31 @@
 <a name="33"><span class="lineNum">      33 </span><span class="lineCov">          1 : // of read-only properties in prototype chains.</span></a>
 <span class="lineNum">      34 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      35 </span><span class="lineCov">          2 : function F() {};</span>
-<span class="lineNum">      36 </span><span class="lineCov">          1 : F.prototype = Number;</span>
-<span class="lineNum">      37 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      38 </span><span class="lineCov">          1 : var original_number_max = Number.MAX_VALUE;</span>
-<span class="lineNum">      39 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      40 </span><span class="lineCov">          1 : // Assignment to a property which does not exist on the object itself,</span>
-<span class="lineNum">      41 </span><span class="lineCov">          1 : // but is read-only in a prototype does not take effect.</span>
-<span class="lineNum">      42 </span><span class="lineCov">          1 : var f = new F();</span>
-<span class="lineNum">      43 </span><span class="lineCov">          1 : assertEquals(original_number_max, f.MAX_VALUE);</span>
-<span class="lineNum">      44 </span><span class="lineCov">          1 : f.MAX_VALUE = 42;</span>
-<span class="lineNum">      45 </span><span class="lineCov">          1 : assertEquals(original_number_max, f.MAX_VALUE);</span>
-<span class="lineNum">      46 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      47 </span><span class="lineCov">          1 : // Assignment to a property which does not exist on the object itself,</span>
-<span class="lineNum">      48 </span><span class="lineCov">          1 : // but is read-only in a prototype does not take effect.</span>
-<span class="lineNum">      49 </span><span class="lineCov">          1 : f = new F();</span>
-<span class="lineNum">      50 </span><span class="lineCov">          1 : with (f) {</span>
-<span class="lineNum">      51 </span><span class="lineCov">          1 :   MAX_VALUE = 42;</span>
-<span class="lineNum">      52 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">      53 </span><span class="lineCov">          1 : assertEquals(original_number_max, f.MAX_VALUE);</span>
-<span class="lineNum">      54 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      55 </span><span class="lineCov">          1 : // Assignment to read-only property on the object itself is ignored.</span>
-<span class="lineNum">      56 </span><span class="lineCov">          1 : Number.MAX_VALUE = 42;</span>
-<span class="lineNum">      57 </span><span class="lineCov">          1 : assertEquals(original_number_max, Number.MAX_VALUE);</span>
-<span class="lineNum">      58 </span><span class="lineCov">          1 : </span>
-<a name="59"><span class="lineNum">      59 </span><span class="lineCov">          1 : // G should be read-only on the global object and the assignment is</span></a>
-<span class="lineNum">      60 </span><span class="lineCov">          1 : // ignored.</span>
+<span class="lineNum">      36 </span><span class="lineNoCov">          0 : F.prototype = Number;</span>
+<span class="lineNum">      37 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      38 </span><span class="lineNoCov">          0 : var original_number_max = Number.MAX_VALUE;</span>
+<span class="lineNum">      39 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      40 </span><span class="lineNoCov">          0 : // Assignment to a property which does not exist on the object itself,</span>
+<span class="lineNum">      41 </span><span class="lineNoCov">          0 : // but is read-only in a prototype does not take effect.</span>
+<span class="lineNum">      42 </span><span class="lineNoCov">          0 : var f = new F();</span>
+<span class="lineNum">      43 </span><span class="lineNoCov">          0 : assertEquals(original_number_max, f.MAX_VALUE);</span>
+<span class="lineNum">      44 </span><span class="lineNoCov">          0 : f.MAX_VALUE = 42;</span>
+<span class="lineNum">      45 </span><span class="lineNoCov">          0 : assertEquals(original_number_max, f.MAX_VALUE);</span>
+<span class="lineNum">      46 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      47 </span><span class="lineNoCov">          0 : // Assignment to a property which does not exist on the object itself,</span>
+<span class="lineNum">      48 </span><span class="lineNoCov">          0 : // but is read-only in a prototype does not take effect.</span>
+<span class="lineNum">      49 </span><span class="lineNoCov">          0 : f = new F();</span>
+<span class="lineNum">      50 </span><span class="lineNoCov">          0 : with (f) {</span>
+<span class="lineNum">      51 </span><span class="lineNoCov">          0 :   MAX_VALUE = 42;</span>
+<span class="lineNum">      52 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      53 </span><span class="lineNoCov">          0 : assertEquals(original_number_max, f.MAX_VALUE);</span>
+<span class="lineNum">      54 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      55 </span><span class="lineNoCov">          0 : // Assignment to read-only property on the object itself is ignored.</span>
+<span class="lineNum">      56 </span><span class="lineNoCov">          0 : Number.MAX_VALUE = 42;</span>
+<span class="lineNum">      57 </span><span class="lineNoCov">          0 : assertEquals(original_number_max, Number.MAX_VALUE);</span>
+<span class="lineNum">      58 </span><span class="lineNoCov">          0 : </span>
+<a name="59"><span class="lineNum">      59 </span><span class="lineNoCov">          0 : // G should be read-only on the global object and the assignment is</span></a>
+<span class="lineNum">      60 </span><span class="lineNoCov">          0 : // ignored.</span>
 <span class="lineNum">      61 </span><span class="lineCov">          1 : (function G() {</span>
 <span class="lineNum">      62 </span><span class="lineCov">          1 :   eval(&quot;G = 42;&quot;);</span>
 <span class="lineNum">      63 </span><span class="lineCov">          1 :   assertTrue(typeof G === 'function');</span>

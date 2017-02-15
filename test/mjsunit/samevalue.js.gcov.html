@@ -31,17 +31,17 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">121</td>
-            <td class="headerCovTableEntry">121</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntry">46</td>
+            <td class="headerCovTableEntry">50</td>
+            <td class="headerCovTableEntryHi">92.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">4</td>
-            <td class="headerCovTableEntry">4</td>
+            <td class="headerCovTableEntry">3</td>
+            <td class="headerCovTableEntry">3</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -96,90 +96,90 @@
 <a name="34"><span class="lineNum">      34 </span><span class="lineCov">          1 : </span></a>
 <span class="lineNum">      35 </span><span class="lineCov">          1 : var sameValue = Object.is;</span>
 <span class="lineNum">      36 </span><span class="lineCov">         56 : var sameValueZero = function(x, y) { return %SameValueZero(x, y); }</span>
-<a name="37"><span class="lineNum">      37 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">      38 </span><span class="lineCov">          1 : // Calls SameValue and SameValueZero and checks that their results match.</span>
+<a name="37"><span class="lineNum">      37 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">      38 </span><span class="lineNoCov">          0 : // Calls SameValue and SameValueZero and checks that their results match.</span>
 <span class="lineNum">      39 </span><span class="lineCov">         54 : function sameValueBoth(a, b) {</span>
 <span class="lineNum">      40 </span><span class="lineCov">         54 :   var result = sameValue(a, b);</span>
 <span class="lineNum">      41 </span><span class="lineCov">         54 :   assertTrue(result === sameValueZero(a, b));</span>
 <span class="lineNum">      42 </span><span class="lineCov">         54 :   return result;</span>
 <span class="lineNum">      43 </span><span class="lineCov">         54 : }</span>
-<a name="44"><span class="lineNum">      44 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">      45 </span><span class="lineCov">          1 : // Calls SameValue and SameValueZero and checks that their results don't match.</span>
+<a name="44"><span class="lineNum">      44 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">      45 </span><span class="lineNoCov">          0 : // Calls SameValue and SameValueZero and checks that their results don't match.</span>
 <span class="lineNum">      46 </span><span class="lineCov">          2 : function sameValueZeroOnly(a, b) {</span>
 <span class="lineNum">      47 </span><span class="lineCov">          2 :   var result = sameValueZero(a, b);</span>
 <span class="lineNum">      48 </span><span class="lineCov">          2 :   assertTrue(result &amp;&amp; !sameValue(a, b));</span>
 <span class="lineNum">      49 </span><span class="lineCov">          2 :   return result;</span>
 <span class="lineNum">      50 </span><span class="lineCov">          2 : }</span>
-<span class="lineNum">      51 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      52 </span><span class="lineCov">          1 : assertTrue(sameValueBoth(0, 0));</span>
-<span class="lineNum">      53 </span><span class="lineCov">          1 : assertTrue(sameValueBoth(+0, +0));</span>
-<span class="lineNum">      54 </span><span class="lineCov">          1 : assertTrue(sameValueBoth(-0, -0));</span>
-<span class="lineNum">      55 </span><span class="lineCov">          1 : assertTrue(sameValueBoth(1, 1));</span>
-<span class="lineNum">      56 </span><span class="lineCov">          1 : assertTrue(sameValueBoth(2, 2));</span>
-<span class="lineNum">      57 </span><span class="lineCov">          1 : assertTrue(sameValueBoth(-1, -1));</span>
-<span class="lineNum">      58 </span><span class="lineCov">          1 : assertTrue(sameValueBoth(0.5, 0.5));</span>
-<span class="lineNum">      59 </span><span class="lineCov">          1 : assertTrue(sameValueBoth(true, true));</span>
-<span class="lineNum">      60 </span><span class="lineCov">          1 : assertTrue(sameValueBoth(false, false));</span>
-<span class="lineNum">      61 </span><span class="lineCov">          1 : assertTrue(sameValueBoth(NaN, NaN));</span>
-<span class="lineNum">      62 </span><span class="lineCov">          1 : assertTrue(sameValueBoth(null, null));</span>
-<span class="lineNum">      63 </span><span class="lineCov">          1 : assertTrue(sameValueBoth(&quot;foo&quot;, &quot;foo&quot;));</span>
-<span class="lineNum">      64 </span><span class="lineCov">          1 : assertTrue(sameValueBoth(obj1, obj1));</span>
-<span class="lineNum">      65 </span><span class="lineCov">          1 : // Undefined values.</span>
-<span class="lineNum">      66 </span><span class="lineCov">          1 : assertTrue(sameValueBoth());</span>
-<span class="lineNum">      67 </span><span class="lineCov">          1 : assertTrue(sameValueBoth(undefined, undefined));</span>
-<span class="lineNum">      68 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      69 </span><span class="lineCov">          1 : assertFalse(sameValueBoth(0,1));</span>
-<span class="lineNum">      70 </span><span class="lineCov">          1 : assertFalse(sameValueBoth(&quot;foo&quot;, &quot;bar&quot;));</span>
-<span class="lineNum">      71 </span><span class="lineCov">          1 : assertFalse(sameValueBoth(obj1, obj2));</span>
-<span class="lineNum">      72 </span><span class="lineCov">          1 : assertFalse(sameValueBoth(true, false));</span>
-<span class="lineNum">      73 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      74 </span><span class="lineCov">          1 : assertFalse(sameValueBoth(obj1, true));</span>
-<span class="lineNum">      75 </span><span class="lineCov">          1 : assertFalse(sameValueBoth(obj1, &quot;foo&quot;));</span>
-<span class="lineNum">      76 </span><span class="lineCov">          1 : assertFalse(sameValueBoth(obj1, 1));</span>
-<span class="lineNum">      77 </span><span class="lineCov">          1 : assertFalse(sameValueBoth(obj1, undefined));</span>
-<span class="lineNum">      78 </span><span class="lineCov">          1 : assertFalse(sameValueBoth(obj1, NaN));</span>
-<span class="lineNum">      79 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      80 </span><span class="lineCov">          1 : assertFalse(sameValueBoth(undefined, true));</span>
-<span class="lineNum">      81 </span><span class="lineCov">          1 : assertFalse(sameValueBoth(undefined, &quot;foo&quot;));</span>
-<span class="lineNum">      82 </span><span class="lineCov">          1 : assertFalse(sameValueBoth(undefined, 1));</span>
-<span class="lineNum">      83 </span><span class="lineCov">          1 : assertFalse(sameValueBoth(undefined, obj1));</span>
-<span class="lineNum">      84 </span><span class="lineCov">          1 : assertFalse(sameValueBoth(undefined, NaN));</span>
-<span class="lineNum">      85 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      86 </span><span class="lineCov">          1 : assertFalse(sameValueBoth(NaN, true));</span>
-<span class="lineNum">      87 </span><span class="lineCov">          1 : assertFalse(sameValueBoth(NaN, &quot;foo&quot;));</span>
-<span class="lineNum">      88 </span><span class="lineCov">          1 : assertFalse(sameValueBoth(NaN, 1));</span>
-<span class="lineNum">      89 </span><span class="lineCov">          1 : assertFalse(sameValueBoth(NaN, obj1));</span>
-<span class="lineNum">      90 </span><span class="lineCov">          1 : assertFalse(sameValueBoth(NaN, undefined));</span>
-<span class="lineNum">      91 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      92 </span><span class="lineCov">          1 : assertFalse(sameValueBoth(&quot;foo&quot;, true));</span>
-<span class="lineNum">      93 </span><span class="lineCov">          1 : assertFalse(sameValueBoth(&quot;foo&quot;, 1));</span>
-<span class="lineNum">      94 </span><span class="lineCov">          1 : assertFalse(sameValueBoth(&quot;foo&quot;, obj1));</span>
-<span class="lineNum">      95 </span><span class="lineCov">          1 : assertFalse(sameValueBoth(&quot;foo&quot;, undefined));</span>
-<span class="lineNum">      96 </span><span class="lineCov">          1 : assertFalse(sameValueBoth(&quot;foo&quot;, NaN));</span>
-<span class="lineNum">      97 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      98 </span><span class="lineCov">          1 : assertFalse(sameValueBoth(true, 1));</span>
-<span class="lineNum">      99 </span><span class="lineCov">          1 : assertFalse(sameValueBoth(true, obj1));</span>
-<span class="lineNum">     100 </span><span class="lineCov">          1 : assertFalse(sameValueBoth(true, undefined));</span>
-<span class="lineNum">     101 </span><span class="lineCov">          1 : assertFalse(sameValueBoth(true, NaN));</span>
-<span class="lineNum">     102 </span><span class="lineCov">          1 : assertFalse(sameValueBoth(true, &quot;foo&quot;));</span>
-<span class="lineNum">     103 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     104 </span><span class="lineCov">          1 : assertFalse(sameValueBoth(1, true));</span>
-<span class="lineNum">     105 </span><span class="lineCov">          1 : assertFalse(sameValueBoth(1, obj1));</span>
-<span class="lineNum">     106 </span><span class="lineCov">          1 : assertFalse(sameValueBoth(1, undefined));</span>
-<span class="lineNum">     107 </span><span class="lineCov">          1 : assertFalse(sameValueBoth(1, NaN));</span>
-<span class="lineNum">     108 </span><span class="lineCov">          1 : assertFalse(sameValueBoth(1, &quot;foo&quot;));</span>
-<span class="lineNum">     109 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     110 </span><span class="lineCov">          1 : // Special string cases.</span>
-<span class="lineNum">     111 </span><span class="lineCov">          1 : assertFalse(sameValueBoth(&quot;1&quot;, 1));</span>
-<span class="lineNum">     112 </span><span class="lineCov">          1 : assertFalse(sameValueBoth(&quot;true&quot;, true));</span>
-<span class="lineNum">     113 </span><span class="lineCov">          1 : assertFalse(sameValueBoth(&quot;false&quot;, false));</span>
-<span class="lineNum">     114 </span><span class="lineCov">          1 : assertFalse(sameValueBoth(&quot;undefined&quot;, undefined));</span>
-<span class="lineNum">     115 </span><span class="lineCov">          1 : assertFalse(sameValueBoth(&quot;NaN&quot;, NaN));</span>
-<span class="lineNum">     116 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     117 </span><span class="lineCov">          1 : // SameValue considers -0 and +0 to be different; SameValueZero considers</span>
-<span class="lineNum">     118 </span><span class="lineCov">          1 : // -0 and +0 to be the same.</span>
-<span class="lineNum">     119 </span><span class="lineCov">          1 : assertTrue(sameValueZeroOnly(+0, -0));</span>
-<span class="lineNum">     120 </span><span class="lineCov">          1 : assertTrue(sameValueZeroOnly(-0, +0));</span>
+<span class="lineNum">      51 </span>            : 
+<span class="lineNum">      52 </span>            : assertTrue(sameValueBoth(0, 0));
+<span class="lineNum">      53 </span>            : assertTrue(sameValueBoth(+0, +0));
+<span class="lineNum">      54 </span>            : assertTrue(sameValueBoth(-0, -0));
+<span class="lineNum">      55 </span>            : assertTrue(sameValueBoth(1, 1));
+<span class="lineNum">      56 </span>            : assertTrue(sameValueBoth(2, 2));
+<span class="lineNum">      57 </span>            : assertTrue(sameValueBoth(-1, -1));
+<span class="lineNum">      58 </span>            : assertTrue(sameValueBoth(0.5, 0.5));
+<span class="lineNum">      59 </span>            : assertTrue(sameValueBoth(true, true));
+<span class="lineNum">      60 </span>            : assertTrue(sameValueBoth(false, false));
+<span class="lineNum">      61 </span>            : assertTrue(sameValueBoth(NaN, NaN));
+<span class="lineNum">      62 </span>            : assertTrue(sameValueBoth(null, null));
+<span class="lineNum">      63 </span>            : assertTrue(sameValueBoth(&quot;foo&quot;, &quot;foo&quot;));
+<span class="lineNum">      64 </span>            : assertTrue(sameValueBoth(obj1, obj1));
+<span class="lineNum">      65 </span>            : // Undefined values.
+<span class="lineNum">      66 </span>            : assertTrue(sameValueBoth());
+<span class="lineNum">      67 </span>            : assertTrue(sameValueBoth(undefined, undefined));
+<span class="lineNum">      68 </span>            : 
+<span class="lineNum">      69 </span>            : assertFalse(sameValueBoth(0,1));
+<span class="lineNum">      70 </span>            : assertFalse(sameValueBoth(&quot;foo&quot;, &quot;bar&quot;));
+<span class="lineNum">      71 </span>            : assertFalse(sameValueBoth(obj1, obj2));
+<span class="lineNum">      72 </span>            : assertFalse(sameValueBoth(true, false));
+<span class="lineNum">      73 </span>            : 
+<span class="lineNum">      74 </span>            : assertFalse(sameValueBoth(obj1, true));
+<span class="lineNum">      75 </span>            : assertFalse(sameValueBoth(obj1, &quot;foo&quot;));
+<span class="lineNum">      76 </span>            : assertFalse(sameValueBoth(obj1, 1));
+<span class="lineNum">      77 </span>            : assertFalse(sameValueBoth(obj1, undefined));
+<span class="lineNum">      78 </span>            : assertFalse(sameValueBoth(obj1, NaN));
+<span class="lineNum">      79 </span>            : 
+<span class="lineNum">      80 </span>            : assertFalse(sameValueBoth(undefined, true));
+<span class="lineNum">      81 </span>            : assertFalse(sameValueBoth(undefined, &quot;foo&quot;));
+<span class="lineNum">      82 </span>            : assertFalse(sameValueBoth(undefined, 1));
+<span class="lineNum">      83 </span>            : assertFalse(sameValueBoth(undefined, obj1));
+<span class="lineNum">      84 </span>            : assertFalse(sameValueBoth(undefined, NaN));
+<span class="lineNum">      85 </span>            : 
+<span class="lineNum">      86 </span>            : assertFalse(sameValueBoth(NaN, true));
+<span class="lineNum">      87 </span>            : assertFalse(sameValueBoth(NaN, &quot;foo&quot;));
+<span class="lineNum">      88 </span>            : assertFalse(sameValueBoth(NaN, 1));
+<span class="lineNum">      89 </span>            : assertFalse(sameValueBoth(NaN, obj1));
+<span class="lineNum">      90 </span>            : assertFalse(sameValueBoth(NaN, undefined));
+<span class="lineNum">      91 </span>            : 
+<span class="lineNum">      92 </span>            : assertFalse(sameValueBoth(&quot;foo&quot;, true));
+<span class="lineNum">      93 </span>            : assertFalse(sameValueBoth(&quot;foo&quot;, 1));
+<span class="lineNum">      94 </span>            : assertFalse(sameValueBoth(&quot;foo&quot;, obj1));
+<span class="lineNum">      95 </span>            : assertFalse(sameValueBoth(&quot;foo&quot;, undefined));
+<span class="lineNum">      96 </span>            : assertFalse(sameValueBoth(&quot;foo&quot;, NaN));
+<span class="lineNum">      97 </span>            : 
+<span class="lineNum">      98 </span>            : assertFalse(sameValueBoth(true, 1));
+<span class="lineNum">      99 </span>            : assertFalse(sameValueBoth(true, obj1));
+<span class="lineNum">     100 </span>            : assertFalse(sameValueBoth(true, undefined));
+<span class="lineNum">     101 </span>            : assertFalse(sameValueBoth(true, NaN));
+<span class="lineNum">     102 </span>            : assertFalse(sameValueBoth(true, &quot;foo&quot;));
+<span class="lineNum">     103 </span>            : 
+<span class="lineNum">     104 </span>            : assertFalse(sameValueBoth(1, true));
+<span class="lineNum">     105 </span>            : assertFalse(sameValueBoth(1, obj1));
+<span class="lineNum">     106 </span>            : assertFalse(sameValueBoth(1, undefined));
+<span class="lineNum">     107 </span>            : assertFalse(sameValueBoth(1, NaN));
+<span class="lineNum">     108 </span>            : assertFalse(sameValueBoth(1, &quot;foo&quot;));
+<span class="lineNum">     109 </span>            : 
+<span class="lineNum">     110 </span>            : // Special string cases.
+<span class="lineNum">     111 </span>            : assertFalse(sameValueBoth(&quot;1&quot;, 1));
+<span class="lineNum">     112 </span>            : assertFalse(sameValueBoth(&quot;true&quot;, true));
+<span class="lineNum">     113 </span>            : assertFalse(sameValueBoth(&quot;false&quot;, false));
+<span class="lineNum">     114 </span>            : assertFalse(sameValueBoth(&quot;undefined&quot;, undefined));
+<span class="lineNum">     115 </span>            : assertFalse(sameValueBoth(&quot;NaN&quot;, NaN));
+<span class="lineNum">     116 </span>            : 
+<span class="lineNum">     117 </span>            : // SameValue considers -0 and +0 to be different; SameValueZero considers
+<span class="lineNum">     118 </span>            : // -0 and +0 to be the same.
+<span class="lineNum">     119 </span>            : assertTrue(sameValueZeroOnly(+0, -0));
+<span class="lineNum">     120 </span>            : assertTrue(sameValueZeroOnly(-0, +0));
 </pre>
       </td>
     </tr>

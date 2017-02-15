@@ -31,17 +31,17 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">58</td>
-            <td class="headerCovTableEntry">58</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntry">53</td>
+            <td class="headerCovTableEntry">57</td>
+            <td class="headerCovTableEntryHi">93.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">6</td>
-            <td class="headerCovTableEntry">6</td>
+            <td class="headerCovTableEntry">5</td>
+            <td class="headerCovTableEntry">5</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -73,7 +73,7 @@
 <span class="lineNum">      11 </span><span class="lineCov">          4 :   assertEquals(value, eval(&quot;(function() { 'use strict'; var x = 0; {&quot;</span>
 <span class="lineNum">      12 </span><span class="lineCov">          4 :                            + code + &quot;} })()&quot;));</span>
 <a name="13"><span class="lineNum">      13 </span><span class="lineCov">          4 : }</span></a>
-<span class="lineNum">      14 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      14 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      15 </span><span class="lineCov">         11 : function AssertThrowsStrictAndSloppy(code, error) {</span>
 <span class="lineNum">      16 </span><span class="lineCov">         11 :   assertThrows(&quot;(function() {&quot; + code + &quot;})()&quot;, error);</span>
 <span class="lineNum">      17 </span><span class="lineCov">         11 :   assertThrows(&quot;(function() { 'use strict'; &quot; + code + &quot;})()&quot;, error);</span>
@@ -81,7 +81,7 @@
 <span class="lineNum">      19 </span><span class="lineCov">         11 :   assertThrows(&quot;(function() { 'use strict'; var x = 0; {&quot; + code + &quot;} })()&quot;,</span>
 <span class="lineNum">      20 </span><span class="lineCov">         11 :                error);</span>
 <a name="21"><span class="lineNum">      21 </span><span class="lineCov">         11 : }</span></a>
-<span class="lineNum">      22 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      22 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      23 </span><span class="lineCov">          1 : (function TestClassTDZ() {</span>
 <span class="lineNum">      24 </span><span class="lineCov">          1 :   AssertEqualsStrictAndSloppy(</span>
 <span class="lineNum">      25 </span><span class="lineCov">          1 :       &quot;x&quot;, &quot;function f() { return x; }; class x { }; return f().name;&quot;);</span>
@@ -101,7 +101,7 @@
 <span class="lineNum">      39 </span><span class="lineCov">          1 :       ReferenceError);</span>
 <span class="lineNum">      40 </span><span class="lineCov">          1 :   AssertThrowsStrictAndSloppy(&quot;x = 3; class x { };&quot;, ReferenceError)</span>
 <a name="41"><span class="lineNum">      41 </span><span class="lineCov">          1 : })();</span></a>
-<span class="lineNum">      42 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      42 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      43 </span><span class="lineCov">          1 : (function TestClassNameConflict() {</span>
 <span class="lineNum">      44 </span><span class="lineCov">          1 :   AssertThrowsStrictAndSloppy(&quot;class x { }; var x;&quot;, SyntaxError);</span>
 <span class="lineNum">      45 </span><span class="lineCov">          1 :   AssertThrowsStrictAndSloppy(&quot;var x; class x { };&quot;, SyntaxError);</span>
@@ -112,7 +112,7 @@
 <span class="lineNum">      50 </span><span class="lineCov">          1 :   AssertThrowsStrictAndSloppy(&quot;for (var x = 0; false;) { }; class x { };&quot;,</span>
 <span class="lineNum">      51 </span><span class="lineCov">          1 :                               SyntaxError);</span>
 <a name="52"><span class="lineNum">      52 </span><span class="lineCov">          1 : })();</span></a>
-<span class="lineNum">      53 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      53 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      54 </span><span class="lineCov">          1 : (function TestClassMutableBinding() {</span>
 <span class="lineNum">      55 </span><span class="lineCov">          1 :   AssertEqualsStrictAndSloppy(</span>
 <span class="lineNum">      56 </span><span class="lineCov">          1 :       &quot;x3&quot;, &quot;class x { }; var y = x.name; x = 3; return y + x;&quot;)</span>

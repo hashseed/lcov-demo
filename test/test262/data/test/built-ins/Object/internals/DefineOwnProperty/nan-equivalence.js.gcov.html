@@ -31,17 +31,17 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">79</td>
-            <td class="headerCovTableEntry">79</td>
+            <td class="headerCovTableEntry">52</td>
+            <td class="headerCovTableEntry">52</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">2</td>
-            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntry">1</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr><td><img src="../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -112,32 +112,32 @@
 <span class="lineNum">      50 </span><span class="lineCov">        148 :   return ints[0] + (ints[1] &lt;&lt; 8) + (ints[2] &lt;&lt; 16) + (ints[3] &lt;&lt; 32) +</span>
 <span class="lineNum">      51 </span><span class="lineCov">        148 :     (ints[4] &lt;&lt; 64) + (ints[5] &lt;&lt; 64) + (ints[6] &lt;&lt; 128) + (ints[7] &lt;&lt; 256);</span>
 <span class="lineNum">      52 </span><span class="lineCov">        148 : }</span>
-<span class="lineNum">      53 </span><span class="lineCov">          2 : </span>
-<span class="lineNum">      54 </span><span class="lineCov">          2 : /**</span>
-<span class="lineNum">      55 </span><span class="lineCov">          2 :  * Iterate over each pair of distinct NaN values (with replacement). If two or</span>
-<span class="lineNum">      56 </span><span class="lineCov">          2 :  * more suitable NaN values cannot be identified, the semantics under test</span>
-<span class="lineNum">      57 </span><span class="lineCov">          2 :  * cannot be verified and this test is expected to pass without evaluating any</span>
-<span class="lineNum">      58 </span><span class="lineCov">          2 :  * assertions.</span>
-<span class="lineNum">      59 </span><span class="lineCov">          2 :  */</span>
-<span class="lineNum">      60 </span><span class="lineCov">          2 : for (idx = 0; idx &lt; length; ++idx) {</span>
-<span class="lineNum">      61 </span><span class="lineCov">          2 :   for (jdx = 0 ; jdx &lt; length; ++jdx) {</span>
-<span class="lineNum">      62 </span><span class="lineCov">          2 :     first = distinctNaNs[idx];</span>
-<span class="lineNum">      63 </span><span class="lineCov">          2 :     second = distinctNaNs[jdx];</span>
-<span class="lineNum">      64 </span><span class="lineCov">          2 :     if (byteValue(first) === byteValue(second)) {</span>
-<span class="lineNum">      65 </span><span class="lineCov">          2 :       continue;</span>
-<span class="lineNum">      66 </span><span class="lineCov">          2 :     }</span>
-<span class="lineNum">      67 </span><span class="lineCov">          2 : </span>
-<span class="lineNum">      68 </span><span class="lineCov">          2 :     subject = {};</span>
-<span class="lineNum">      69 </span><span class="lineCov">          2 :     subject.prop = first;</span>
-<span class="lineNum">      70 </span><span class="lineCov">          2 :     subject.prop = second;</span>
-<span class="lineNum">      71 </span><span class="lineCov">          2 : </span>
-<span class="lineNum">      72 </span><span class="lineCov">          2 :     assert.sameValue(</span>
-<span class="lineNum">      73 </span><span class="lineCov">          2 :       byteValue(subject.prop),</span>
-<span class="lineNum">      74 </span><span class="lineCov">          2 :       byteValue(second),</span>
-<span class="lineNum">      75 </span><span class="lineCov">          2 :       'Property value was re-set'</span>
-<span class="lineNum">      76 </span><span class="lineCov">          2 :     );</span>
-<span class="lineNum">      77 </span><span class="lineCov">          2 :   }</span>
-<span class="lineNum">      78 </span><span class="lineCov">          2 : }</span>
+<span class="lineNum">      53 </span>            : 
+<span class="lineNum">      54 </span>            : /**
+<span class="lineNum">      55 </span>            :  * Iterate over each pair of distinct NaN values (with replacement). If two or
+<span class="lineNum">      56 </span>            :  * more suitable NaN values cannot be identified, the semantics under test
+<span class="lineNum">      57 </span>            :  * cannot be verified and this test is expected to pass without evaluating any
+<span class="lineNum">      58 </span>            :  * assertions.
+<span class="lineNum">      59 </span>            :  */
+<span class="lineNum">      60 </span>            : for (idx = 0; idx &lt; length; ++idx) {
+<span class="lineNum">      61 </span>            :   for (jdx = 0 ; jdx &lt; length; ++jdx) {
+<span class="lineNum">      62 </span>            :     first = distinctNaNs[idx];
+<span class="lineNum">      63 </span>            :     second = distinctNaNs[jdx];
+<span class="lineNum">      64 </span>            :     if (byteValue(first) === byteValue(second)) {
+<span class="lineNum">      65 </span>            :       continue;
+<span class="lineNum">      66 </span>            :     }
+<span class="lineNum">      67 </span>            : 
+<span class="lineNum">      68 </span>            :     subject = {};
+<span class="lineNum">      69 </span>            :     subject.prop = first;
+<span class="lineNum">      70 </span>            :     subject.prop = second;
+<span class="lineNum">      71 </span>            : 
+<span class="lineNum">      72 </span>            :     assert.sameValue(
+<span class="lineNum">      73 </span>            :       byteValue(subject.prop),
+<span class="lineNum">      74 </span>            :       byteValue(second),
+<span class="lineNum">      75 </span>            :       'Property value was re-set'
+<span class="lineNum">      76 </span>            :     );
+<span class="lineNum">      77 </span>            :   }
+<span class="lineNum">      78 </span>            : }
 </pre>
       </td>
     </tr>

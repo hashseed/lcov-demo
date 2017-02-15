@@ -31,17 +31,17 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">126</td>
-            <td class="headerCovTableEntry">126</td>
+            <td class="headerCovTableEntry">105</td>
+            <td class="headerCovTableEntry">105</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">3</td>
-            <td class="headerCovTableEntry">3</td>
+            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntry">2</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -165,26 +165,26 @@
 <a name="103"><span class="lineNum">     103 </span><span class="lineCov">          1 : var state;</span></a>
 <span class="lineNum">     104 </span><span class="lineCov">          1 : var throwingRadix = { valueOf: function() { state = &quot;throwingRadix&quot;; throw null; } };</span>
 <span class="lineNum">     105 </span><span class="lineCov">          2 : var throwingString = { toString: function() { state = &quot;throwingString&quot;; throw null; } };</span>
-<span class="lineNum">     106 </span><span class="lineCov">          1 : state = null;</span>
-<span class="lineNum">     107 </span><span class="lineCov">          1 : try { parseInt('123', throwingRadix); } catch (e) {}</span>
-<span class="lineNum">     108 </span><span class="lineCov">          1 : assertEquals(state, &quot;throwingRadix&quot;);</span>
-<span class="lineNum">     109 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     110 </span><span class="lineCov">          1 : state = null;</span>
-<span class="lineNum">     111 </span><span class="lineCov">          1 : try { parseInt(throwingString, 10); } catch (e) {}</span>
-<span class="lineNum">     112 </span><span class="lineCov">          1 : assertEquals(state, &quot;throwingString&quot;);</span>
-<span class="lineNum">     113 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     114 </span><span class="lineCov">          1 : state = null;</span>
-<span class="lineNum">     115 </span><span class="lineCov">          1 : try { parseInt(throwingString, throwingRadix); } catch (e) {}</span>
-<span class="lineNum">     116 </span><span class="lineCov">          1 : assertEquals(state, &quot;throwingString&quot;);</span>
-<span class="lineNum">     117 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     118 </span><span class="lineCov">          1 : // And finally, check that the Harmony additions to the Number</span>
-<span class="lineNum">     119 </span><span class="lineCov">          1 : // constructor is available:</span>
-<span class="lineNum">     120 </span><span class="lineCov">          1 : assertTrue(&quot;parseInt&quot; in Number);</span>
-<span class="lineNum">     121 </span><span class="lineCov">          1 : assertTrue(&quot;parseFloat&quot; in Number);</span>
-<span class="lineNum">     122 </span><span class="lineCov">          1 : assertSame( Number.parseInt, parseInt);</span>
-<span class="lineNum">     123 </span><span class="lineCov">          1 : assertSame(Number.parseFloat, parseFloat);</span>
-<span class="lineNum">     124 </span><span class="lineCov">          1 : assertEquals(Number.parseFloat('0.1'), parseFloat('0.1'));</span>
-<span class="lineNum">     125 </span><span class="lineCov">          1 : assertEquals(Number.parseInt('0xea'), parseInt('0xEA'));</span>
+<span class="lineNum">     106 </span>            : state = null;
+<span class="lineNum">     107 </span>            : try { parseInt('123', throwingRadix); } catch (e) {}
+<span class="lineNum">     108 </span>            : assertEquals(state, &quot;throwingRadix&quot;);
+<span class="lineNum">     109 </span>            : 
+<span class="lineNum">     110 </span>            : state = null;
+<span class="lineNum">     111 </span>            : try { parseInt(throwingString, 10); } catch (e) {}
+<span class="lineNum">     112 </span>            : assertEquals(state, &quot;throwingString&quot;);
+<span class="lineNum">     113 </span>            : 
+<span class="lineNum">     114 </span>            : state = null;
+<span class="lineNum">     115 </span>            : try { parseInt(throwingString, throwingRadix); } catch (e) {}
+<span class="lineNum">     116 </span>            : assertEquals(state, &quot;throwingString&quot;);
+<span class="lineNum">     117 </span>            : 
+<span class="lineNum">     118 </span>            : // And finally, check that the Harmony additions to the Number
+<span class="lineNum">     119 </span>            : // constructor is available:
+<span class="lineNum">     120 </span>            : assertTrue(&quot;parseInt&quot; in Number);
+<span class="lineNum">     121 </span>            : assertTrue(&quot;parseFloat&quot; in Number);
+<span class="lineNum">     122 </span>            : assertSame( Number.parseInt, parseInt);
+<span class="lineNum">     123 </span>            : assertSame(Number.parseFloat, parseFloat);
+<span class="lineNum">     124 </span>            : assertEquals(Number.parseFloat('0.1'), parseFloat('0.1'));
+<span class="lineNum">     125 </span>            : assertEquals(Number.parseInt('0xea'), parseInt('0xEA'));
 </pre>
       </td>
     </tr>

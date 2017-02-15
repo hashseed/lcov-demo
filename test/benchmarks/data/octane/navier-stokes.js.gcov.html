@@ -31,18 +31,18 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">358</td>
             <td class="headerCovTableEntry">412</td>
-            <td class="headerCovTableEntry">415</td>
-            <td class="headerCovTableEntryHi">99.3 %</td>
+            <td class="headerCovTableEntryMed">86.9 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">30</td>
-            <td class="headerCovTableEntry">37</td>
-            <td class="headerCovTableEntryMed">81.1 %</td>
+            <td class="headerCovTableEntry">28</td>
+            <td class="headerCovTableEntry">35</td>
+            <td class="headerCovTableEntryMed">80.0 %</td>
           </tr>
           <tr><td><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
         </table>
@@ -109,7 +109,7 @@
 <span class="lineNum">      47 </span><span class="lineCov">         38 :     if(nsFrameCounter==15)</span>
 <span class="lineNum">      48 </span><span class="lineCov">         38 :         checkResult(solver.getDens());</span>
 <a name="49"><span class="lineNum">      49 </span><span class="lineCov">         38 : }</span></a>
-<span class="lineNum">      50 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      50 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      51 </span><span class="lineCov">          1 : function checkResult(dens) {</span>
 <span class="lineNum">      52 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      53 </span><span class="lineCov">          1 :     this.result = 0;</span>
@@ -121,22 +121,22 @@
 <span class="lineNum">      59 </span><span class="lineCov">          1 :         throw(new Error(&quot;checksum failed&quot;));</span>
 <span class="lineNum">      60 </span><span class="lineCov">          1 :     }</span>
 <a name="61"><span class="lineNum">      61 </span><span class="lineCov">          1 : }</span></a>
-<span class="lineNum">      62 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      62 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      63 </span><span class="lineCov">          1 : function setupNavierStokes()</span>
 <span class="lineNum">      64 </span><span class="lineCov">          1 : {</span>
 <span class="lineNum">      65 </span><span class="lineCov">          1 :     solver = new FluidField(null);</span>
-<a name="66"><span class="lineNum">      66 </span><span class="lineCov">          1 :     solver.setResolution(128, 128);</span></a>
+<span class="lineNum">      66 </span><span class="lineCov">          1 :     solver.setResolution(128, 128);</span>
 <span class="lineNum">      67 </span><span class="lineCov">          1 :     solver.setIterations(20);</span>
 <span class="lineNum">      68 </span><span class="lineCov">         38 :     solver.setDisplayFunction(function(){});</span>
-<span class="lineNum">      69 </span><span class="lineCov">          1 :     solver.setUICallback(prepareFrame);</span>
-<span class="lineNum">      70 </span><span class="lineCov">          1 :     solver.reset();</span>
-<a name="71"><span class="lineNum">      71 </span><span class="lineCov">          1 : }</span></a>
-<span class="lineNum">      72 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      69 </span><span class="lineNoCov">          0 :     solver.setUICallback(prepareFrame);</span>
+<span class="lineNum">      70 </span><span class="lineNoCov">          0 :     solver.reset();</span>
+<a name="71"><span class="lineNum">      71 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">      72 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      73 </span><span class="lineCov">          1 : function tearDownNavierStokes()</span>
 <span class="lineNum">      74 </span><span class="lineCov">          1 : {</span>
 <span class="lineNum">      75 </span><span class="lineCov">          1 :     solver = null;</span>
 <a name="76"><span class="lineNum">      76 </span><span class="lineCov">          1 : }</span></a>
-<span class="lineNum">      77 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      77 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      78 </span><span class="lineCov">          5 : function addPoints(field) {</span>
 <span class="lineNum">      79 </span><span class="lineCov">          5 :     var n = 64;</span>
 <span class="lineNum">      80 </span><span class="lineCov">          5 :     for (var i = 1; i &lt;= n; i++) {</span>
@@ -148,10 +148,10 @@
 <span class="lineNum">      86 </span><span class="lineCov">          5 :         field.setDensity(128 - i, n + i, 30);</span>
 <span class="lineNum">      87 </span><span class="lineCov">          5 :     }</span>
 <span class="lineNum">      88 </span><span class="lineCov">          5 : }</span>
-<span class="lineNum">      89 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      90 </span><span class="lineCov">          1 : var framesTillAddingPoints = 0;</span>
-<a name="91"><span class="lineNum">      91 </span><span class="lineCov">          1 : var framesBetweenAddingPoints = 5;</span></a>
-<span class="lineNum">      92 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      89 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      90 </span><span class="lineNoCov">          0 : var framesTillAddingPoints = 0;</span>
+<a name="91"><span class="lineNum">      91 </span><span class="lineNoCov">          0 : var framesBetweenAddingPoints = 5;</span></a>
+<span class="lineNum">      92 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      93 </span><span class="lineCov">         38 : function prepareFrame(field)</span>
 <span class="lineNum">      94 </span><span class="lineCov">         38 : {</span>
 <span class="lineNum">      95 </span><span class="lineCov">         38 :     if (framesTillAddingPoints == 0) {</span>
@@ -162,14 +162,14 @@
 <span class="lineNum">     100 </span><span class="lineCov">         38 :         framesTillAddingPoints--;</span>
 <span class="lineNum">     101 </span><span class="lineCov">         38 :     }</span>
 <span class="lineNum">     102 </span><span class="lineCov">         38 : }</span>
-<a name="103"><span class="lineNum">     103 </span><span class="lineCov">          1 : </span></a>
-<a name="104"><span class="lineNum">     104 </span><span class="lineCov">          1 : // Code from Oliver Hunt (http://nerget.com/fluidSim/pressure.js) starts here.</span></a>
+<a name="103"><span class="lineNum">     103 </span><span class="lineNoCov">          0 : </span></a>
+<a name="104"><span class="lineNum">     104 </span><span class="lineNoCov">          0 : // Code from Oliver Hunt (http://nerget.com/fluidSim/pressure.js) starts here.</span></a>
 <span class="lineNum">     105 </span><span class="lineCov">          1 : function FluidField(canvas) {</span>
 <span class="lineNum">     106 </span><span class="lineCov">        114 :     function addFields(x, s, dt)</span>
 <span class="lineNum">     107 </span><span class="lineCov">        114 :     {</span>
 <span class="lineNum">     108 </span><span class="lineCov">        114 :         for (var i=0; i&lt;size ; i++ ) x[i] += dt*s[i];</span>
 <a name="109"><span class="lineNum">     109 </span><span class="lineCov">        114 :     }</span></a>
-<span class="lineNum">     110 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     110 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     111 </span><span class="lineCov">       2052 :     function set_bnd(b, x)</span>
 <span class="lineNum">     112 </span><span class="lineCov">       2052 :     {</span>
 <span class="lineNum">     113 </span><span class="lineCov">       2052 :         if (b===1) {</span>
@@ -209,7 +209,7 @@
 <span class="lineNum">     147 </span><span class="lineCov">       2052 :         x[(width+1)]         = 0.5 * (x[width] + x[(width + 1) + rowSize]);</span>
 <span class="lineNum">     148 </span><span class="lineCov">       2052 :         x[(width+1)+maxEdge] = 0.5 * (x[width + maxEdge] + x[(width + 1) + height * rowSize]);</span>
 <a name="149"><span class="lineNum">     149 </span><span class="lineCov">       2052 :     }</span></a>
-<span class="lineNum">     150 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     150 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     151 </span><span class="lineCov">        114 :     function lin_solve(b, x, x0, a, c)</span>
 <span class="lineNum">     152 </span><span class="lineCov">        114 :     {</span>
 <span class="lineNum">     153 </span><span class="lineCov">        114 :         if (a === 0 &amp;&amp; c === 1) {</span>
@@ -238,13 +238,13 @@
 <span class="lineNum">     176 </span><span class="lineCov">        114 :             }</span>
 <span class="lineNum">     177 </span><span class="lineCov">        114 :         }</span>
 <a name="178"><span class="lineNum">     178 </span><span class="lineCov">        114 :     }</span></a>
-<span class="lineNum">     179 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     179 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     180 </span><span class="lineCov">         38 :     function diffuse(b, x, x0, dt)</span>
 <span class="lineNum">     181 </span><span class="lineCov">         38 :     {</span>
 <span class="lineNum">     182 </span><span class="lineCov">         38 :         var a = 0;</span>
 <span class="lineNum">     183 </span><span class="lineCov">         38 :         lin_solve(b, x, x0, a, 1 + 4*a);</span>
 <a name="184"><span class="lineNum">     184 </span><span class="lineCov">         38 :     }</span></a>
-<span class="lineNum">     185 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     185 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     186 </span><span class="lineCov">         38 :     function lin_solve2(x, x0, y, y0, a, c)</span>
 <span class="lineNum">     187 </span><span class="lineCov">         38 :     {</span>
 <span class="lineNum">     188 </span><span class="lineCov">         38 :         if (a === 0 &amp;&amp; c === 1) {</span>
@@ -279,13 +279,13 @@
 <span class="lineNum">     217 </span><span class="lineCov">         38 :             }</span>
 <span class="lineNum">     218 </span><span class="lineCov">         38 :         }</span>
 <a name="219"><span class="lineNum">     219 </span><span class="lineCov">         38 :     }</span></a>
-<span class="lineNum">     220 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     220 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     221 </span><span class="lineCov">         38 :     function diffuse2(x, x0, y, y0, dt)</span>
 <span class="lineNum">     222 </span><span class="lineCov">         38 :     {</span>
 <span class="lineNum">     223 </span><span class="lineCov">         38 :         var a = 0;</span>
 <span class="lineNum">     224 </span><span class="lineCov">         38 :         lin_solve2(x, x0, y, y0, a, 1 + 4 * a);</span>
 <a name="225"><span class="lineNum">     225 </span><span class="lineCov">         38 :     }</span></a>
-<span class="lineNum">     226 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     226 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     227 </span><span class="lineCov">        114 :     function advect(b, d, d0, u, v, dt)</span>
 <span class="lineNum">     228 </span><span class="lineCov">        114 :     {</span>
 <span class="lineNum">     229 </span><span class="lineCov">        114 :         var Wdt0 = dt * width;</span>
@@ -320,7 +320,7 @@
 <span class="lineNum">     258 </span><span class="lineCov">        114 :         }</span>
 <span class="lineNum">     259 </span><span class="lineCov">        114 :         set_bnd(b, d);</span>
 <a name="260"><span class="lineNum">     260 </span><span class="lineCov">        114 :     }</span></a>
-<span class="lineNum">     261 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     261 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     262 </span><span class="lineCov">         76 :     function project(u, v, p, div)</span>
 <span class="lineNum">     263 </span><span class="lineCov">         76 :     {</span>
 <span class="lineNum">     264 </span><span class="lineCov">         76 :         var h = -0.5 / Math.sqrt(width * height);</span>
@@ -358,14 +358,14 @@
 <span class="lineNum">     296 </span><span class="lineCov">         76 :         set_bnd(1, u);</span>
 <span class="lineNum">     297 </span><span class="lineCov">         76 :         set_bnd(2, v);</span>
 <a name="298"><span class="lineNum">     298 </span><span class="lineCov">         76 :     }</span></a>
-<span class="lineNum">     299 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     299 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     300 </span><span class="lineCov">         38 :     function dens_step(x, x0, u, v, dt)</span>
 <span class="lineNum">     301 </span><span class="lineCov">         38 :     {</span>
 <span class="lineNum">     302 </span><span class="lineCov">         38 :         addFields(x, x0, dt);</span>
 <span class="lineNum">     303 </span><span class="lineCov">         38 :         diffuse(0, x0, x, dt );</span>
 <span class="lineNum">     304 </span><span class="lineCov">         38 :         advect(0, x, x0, u, v, dt );</span>
 <a name="305"><span class="lineNum">     305 </span><span class="lineCov">         38 :     }</span></a>
-<span class="lineNum">     306 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     306 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     307 </span><span class="lineCov">         38 :     function vel_step(u, v, u0, v0, dt)</span>
 <span class="lineNum">     308 </span><span class="lineCov">         38 :     {</span>
 <span class="lineNum">     309 </span><span class="lineCov">         38 :         addFields(u, u0, dt );</span>
@@ -380,37 +380,37 @@
 <span class="lineNum">     318 </span><span class="lineCov">         38 :         advect(2, v, v0, u0, v0, dt);</span>
 <a name="319"><span class="lineNum">     319 </span><span class="lineCov">         38 :         project(u, v, u0, v0 );</span></a>
 <span class="lineNum">     320 </span><span class="lineCov">         38 :     }</span>
-<a name="321"><span class="lineNum">     321 </span><span class="lineCov">          1 :     var uiCallback = function(d,u,v) {};</span></a>
-<span class="lineNum">     322 </span><span class="lineCov">          1 : </span>
+<a name="321"><span class="lineNum">     321 </span><span class="lineNoCov">          0 :     var uiCallback = function(d,u,v) {};</span></a>
+<span class="lineNum">     322 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     323 </span><span class="lineCov">         76 :     function Field(dens, u, v) {</span>
 <a name="324"><span class="lineNum">     324 </span><span class="lineCov">         76 :         // Just exposing the fields here rather than using accessors is a measurable win during display (maybe 5%)</span></a>
 <span class="lineNum">     325 </span><span class="lineCov">         76 :         // but makes the code ugly.</span>
 <span class="lineNum">     326 </span><span class="lineCov">        960 :         this.setDensity = function(x, y, d) {</span>
 <a name="327"><span class="lineNum">     327 </span><span class="lineCov">        960 :              dens[(x + 1) + (y + 1) * rowSize] = d;</span></a>
 <span class="lineNum">     328 </span><span class="lineCov">        960 :         }</span>
-<span class="lineNum">     329 </span><span class="lineCov">         76 :         this.getDensity = function(x, y) {</span>
+<span class="lineNum">     329 </span><span class="lineNoCov">          0 :         this.getDensity = function(x, y) {</span>
 <a name="330"><span class="lineNum">     330 </span><span class="lineNoCov">          0 :              return dens[(x + 1) + (y + 1) * rowSize];</span></a>
-<span class="lineNum">     331 </span><span class="lineCov">         76 :         }</span>
+<span class="lineNum">     331 </span><span class="lineNoCov">          0 :         }</span>
 <span class="lineNum">     332 </span><span class="lineCov">        960 :         this.setVelocity = function(x, y, xv, yv) {</span>
 <span class="lineNum">     333 </span><span class="lineCov">        960 :              u[(x + 1) + (y + 1) * rowSize] = xv;</span>
 <a name="334"><span class="lineNum">     334 </span><span class="lineCov">        960 :              v[(x + 1) + (y + 1) * rowSize] = yv;</span></a>
 <span class="lineNum">     335 </span><span class="lineCov">        960 :         }</span>
-<span class="lineNum">     336 </span><span class="lineCov">         76 :         this.getXVelocity = function(x, y) {</span>
+<span class="lineNum">     336 </span><span class="lineNoCov">          0 :         this.getXVelocity = function(x, y) {</span>
 <a name="337"><span class="lineNum">     337 </span><span class="lineNoCov">          0 :              return u[(x + 1) + (y + 1) * rowSize];</span></a>
-<span class="lineNum">     338 </span><span class="lineCov">         76 :         }</span>
-<span class="lineNum">     339 </span><span class="lineCov">         76 :         this.getYVelocity = function(x, y) {</span>
+<span class="lineNum">     338 </span><span class="lineNoCov">          0 :         }</span>
+<span class="lineNum">     339 </span><span class="lineNoCov">          0 :         this.getYVelocity = function(x, y) {</span>
 <a name="340"><span class="lineNum">     340 </span><span class="lineNoCov">          0 :              return v[(x + 1) + (y + 1) * rowSize];</span></a>
-<a name="341"><span class="lineNum">     341 </span><span class="lineCov">         76 :         }</span></a>
-<span class="lineNum">     342 </span><span class="lineCov">         76 :         this.width = function() { return width; }</span>
-<a name="343"><span class="lineNum">     343 </span><span class="lineCov">         76 :         this.height = function() { return height; }</span></a>
-<span class="lineNum">     344 </span><span class="lineCov">         76 :     }</span>
+<a name="341"><span class="lineNum">     341 </span><span class="lineNoCov">          0 :         }</span></a>
+<span class="lineNum">     342 </span><span class="lineNoCov">          0 :         this.width = function() { return width; }</span>
+<a name="343"><span class="lineNum">     343 </span><span class="lineNoCov">          0 :         this.height = function() { return height; }</span></a>
+<span class="lineNum">     344 </span><span class="lineNoCov">          0 :     }</span>
 <span class="lineNum">     345 </span><span class="lineCov">         38 :     function queryUI(d, u, v)</span>
 <span class="lineNum">     346 </span><span class="lineCov">         38 :     {</span>
 <span class="lineNum">     347 </span><span class="lineCov">         38 :         for (var i = 0; i &lt; size; i++)</span>
 <span class="lineNum">     348 </span><span class="lineCov">         38 :             u[i] = v[i] = d[i] = 0.0;</span>
 <span class="lineNum">     349 </span><span class="lineCov">         38 :         uiCallback(new Field(d, u, v));</span>
 <a name="350"><span class="lineNum">     350 </span><span class="lineCov">         38 :     }</span></a>
-<span class="lineNum">     351 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     351 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     352 </span><span class="lineCov">         38 :     this.update = function () {</span>
 <span class="lineNum">     353 </span><span class="lineCov">         38 :         queryUI(dens_prev, u_prev, v_prev);</span>
 <span class="lineNum">     354 </span><span class="lineCov">         38 :         vel_step(u, v, u_prev, v_prev, dt);</span>
@@ -420,8 +420,8 @@
 <span class="lineNum">     358 </span><span class="lineCov">          1 :     this.setDisplayFunction = function(func) {</span>
 <span class="lineNum">     359 </span><span class="lineCov">          1 :         displayFunc = func;</span>
 <a name="360"><span class="lineNum">     360 </span><span class="lineCov">          1 :     }</span></a>
-<a name="361"><span class="lineNum">     361 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">     362 </span><span class="lineCov">          1 :     this.iterations = function() { return iterations; }</span>
+<a name="361"><span class="lineNum">     361 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">     362 </span><span class="lineNoCov">          0 :     this.iterations = function() { return iterations; }</span>
 <span class="lineNum">     363 </span><span class="lineCov">          1 :     this.setIterations = function(iters) {</span>
 <span class="lineNum">     364 </span><span class="lineCov">          1 :         if (iters &gt; 0 &amp;&amp; iters &lt;= 100)</span>
 <a name="365"><span class="lineNum">     365 </span><span class="lineCov">          1 :            iterations = iters;</span></a>
@@ -429,20 +429,20 @@
 <span class="lineNum">     367 </span><span class="lineCov">          1 :     this.setUICallback = function(callback) {</span>
 <span class="lineNum">     368 </span><span class="lineCov">          1 :         uiCallback = callback;</span>
 <span class="lineNum">     369 </span><span class="lineCov">          1 :     }</span>
-<span class="lineNum">     370 </span><span class="lineCov">          1 :     var iterations = 10;</span>
-<span class="lineNum">     371 </span><span class="lineCov">          1 :     var visc = 0.5;</span>
-<span class="lineNum">     372 </span><span class="lineCov">          1 :     var dt = 0.1;</span>
-<span class="lineNum">     373 </span><span class="lineCov">          1 :     var dens;</span>
-<span class="lineNum">     374 </span><span class="lineCov">          1 :     var dens_prev;</span>
-<span class="lineNum">     375 </span><span class="lineCov">          1 :     var u;</span>
-<span class="lineNum">     376 </span><span class="lineCov">          1 :     var u_prev;</span>
-<span class="lineNum">     377 </span><span class="lineCov">          1 :     var v;</span>
-<span class="lineNum">     378 </span><span class="lineCov">          1 :     var v_prev;</span>
-<span class="lineNum">     379 </span><span class="lineCov">          1 :     var width;</span>
-<span class="lineNum">     380 </span><span class="lineCov">          1 :     var height;</span>
-<span class="lineNum">     381 </span><span class="lineCov">          1 :     var rowSize;</span>
-<a name="382"><span class="lineNum">     382 </span><span class="lineCov">          1 :     var size;</span></a>
-<span class="lineNum">     383 </span><span class="lineCov">          1 :     var displayFunc;</span>
+<span class="lineNum">     370 </span><span class="lineNoCov">          0 :     var iterations = 10;</span>
+<span class="lineNum">     371 </span><span class="lineNoCov">          0 :     var visc = 0.5;</span>
+<span class="lineNum">     372 </span><span class="lineNoCov">          0 :     var dt = 0.1;</span>
+<span class="lineNum">     373 </span><span class="lineNoCov">          0 :     var dens;</span>
+<span class="lineNum">     374 </span><span class="lineNoCov">          0 :     var dens_prev;</span>
+<span class="lineNum">     375 </span><span class="lineNoCov">          0 :     var u;</span>
+<span class="lineNum">     376 </span><span class="lineNoCov">          0 :     var u_prev;</span>
+<span class="lineNum">     377 </span><span class="lineNoCov">          0 :     var v;</span>
+<span class="lineNum">     378 </span><span class="lineNoCov">          0 :     var v_prev;</span>
+<span class="lineNum">     379 </span><span class="lineNoCov">          0 :     var width;</span>
+<span class="lineNum">     380 </span><span class="lineNoCov">          0 :     var height;</span>
+<span class="lineNum">     381 </span><span class="lineNoCov">          0 :     var rowSize;</span>
+<a name="382"><span class="lineNum">     382 </span><span class="lineNoCov">          0 :     var size;</span></a>
+<span class="lineNum">     383 </span><span class="lineNoCov">          0 :     var displayFunc;</span>
 <span class="lineNum">     384 </span><span class="lineCov">          3 :     function reset()</span>
 <span class="lineNum">     385 </span><span class="lineCov">          3 :     {</span>
 <span class="lineNum">     386 </span><span class="lineCov">          3 :         rowSize = width + 2;</span>
@@ -456,7 +456,7 @@
 <span class="lineNum">     394 </span><span class="lineCov">          3 :         for (var i = 0; i &lt; size; i++)</span>
 <span class="lineNum">     395 </span><span class="lineCov">          3 :             dens_prev[i] = u_prev[i] = v_prev[i] = dens[i] = u[i] = v[i] = 0;</span>
 <a name="396"><span class="lineNum">     396 </span><span class="lineCov">          3 :     }</span></a>
-<span class="lineNum">     397 </span><span class="lineCov">          1 :     this.reset = reset;</span>
+<span class="lineNum">     397 </span><span class="lineNoCov">          0 :     this.reset = reset;</span>
 <span class="lineNum">     398 </span><span class="lineCov">          1 :     this.getDens = function()</span>
 <span class="lineNum">     399 </span><span class="lineCov">          1 :     {</span>
 <a name="400"><span class="lineNum">     400 </span><span class="lineCov">          1 :         return dens;</span></a>
@@ -472,8 +472,8 @@
 <span class="lineNum">     410 </span><span class="lineCov">          2 :         }</span>
 <span class="lineNum">     411 </span><span class="lineCov">          2 :         return false;</span>
 <span class="lineNum">     412 </span><span class="lineCov">          2 :     }</span>
-<span class="lineNum">     413 </span><span class="lineCov">          1 :     this.setResolution(64, 64);</span>
-<span class="lineNum">     414 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     413 </span>            :     this.setResolution(64, 64);
+<span class="lineNum">     414 </span>            : }
 </pre>
       </td>
     </tr>

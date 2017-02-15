@@ -31,17 +31,17 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">86</td>
-            <td class="headerCovTableEntry">86</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntry">52</td>
+            <td class="headerCovTableEntry">80</td>
+            <td class="headerCovTableEntryLo">65.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">10</td>
-            <td class="headerCovTableEntry">10</td>
+            <td class="headerCovTableEntry">3</td>
+            <td class="headerCovTableEntry">3</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -63,7 +63,7 @@
 <a name="1"><span class="lineNum">       1 </span><span class="lineCov">          1 : // Copyright 2015 the V8 project authors. All rights reserved.</span></a>
 <span class="lineNum">       2 </span><span class="lineCov">          1 : // Use of this source code is governed by a BSD-style license that can be</span>
 <span class="lineNum">       3 </span><span class="lineCov">          1 : // found in the LICENSE file.</span>
-<a name="4"><span class="lineNum">       4 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">       4 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">       5 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">       6 </span><span class="lineCov">          1 : (function () {</span>
 <span class="lineNum">       7 </span><span class="lineCov">          1 :   // No trap.</span>
@@ -78,8 +78,8 @@
 <span class="lineNum">      16 </span><span class="lineCov">          1 :   assertFalse(Reflect.isExtensible(target));</span>
 <span class="lineNum">      17 </span><span class="lineCov">          1 :   assertFalse(Reflect.isExtensible(proxy));</span>
 <span class="lineNum">      18 </span><span class="lineCov">          1 : })();</span>
-<a name="19"><span class="lineNum">      19 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">      20 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      19 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      20 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      21 </span><span class="lineCov">          1 : (function () {</span>
 <span class="lineNum">      22 </span><span class="lineCov">          1 :   // &quot;Undefined&quot; trap.</span>
 <span class="lineNum">      23 </span><span class="lineCov">          1 : </span>
@@ -93,8 +93,8 @@
 <span class="lineNum">      31 </span><span class="lineCov">          1 :   assertFalse(Reflect.isExtensible(target));</span>
 <span class="lineNum">      32 </span><span class="lineCov">          1 :   assertFalse(Reflect.isExtensible(proxy));</span>
 <span class="lineNum">      33 </span><span class="lineCov">          1 : })();</span>
-<a name="34"><span class="lineNum">      34 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">      35 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      34 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      35 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      36 </span><span class="lineCov">          1 : (function () {</span>
 <span class="lineNum">      37 </span><span class="lineCov">          1 :   // Invalid trap.</span>
 <span class="lineNum">      38 </span><span class="lineCov">          1 : </span>
@@ -103,48 +103,48 @@
 <span class="lineNum">      41 </span><span class="lineCov">          1 :   var proxy = new Proxy(target, handler);</span>
 <span class="lineNum">      42 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      43 </span><span class="lineCov">          1 :   assertThrows(() =&gt; {Reflect.preventExtensions(proxy)}, TypeError);</span>
-<span class="lineNum">      44 </span><span class="lineCov">          1 : })();</span>
-<a name="45"><span class="lineNum">      45 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">      46 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      44 </span><span class="lineNoCov">          0 : })();</span>
+<span class="lineNum">      45 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      46 </span><span class="lineNoCov">          0 : </span>
 <a name="47"><span class="lineNum">      47 </span><span class="lineCov">          1 : (function () {</span></a>
 <span class="lineNum">      48 </span><span class="lineCov">          1 :   var target = {};</span>
 <span class="lineNum">      49 </span><span class="lineCov">          2 :   var handler = { isExtensible() {return &quot;bla&quot;} };</span>
-<span class="lineNum">      50 </span><span class="lineCov">          1 :   var proxy = new Proxy(target, handler);</span>
-<span class="lineNum">      51 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      52 </span><span class="lineCov">          1 :   // Trap returns trueish and target is extensible.</span>
-<span class="lineNum">      53 </span><span class="lineCov">          1 :   assertTrue(Reflect.isExtensible(proxy));</span>
-<span class="lineNum">      54 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      55 </span><span class="lineCov">          1 :   // Trap returns trueish but target is not extensible.</span>
-<span class="lineNum">      56 </span><span class="lineCov">          1 :   Reflect.preventExtensions(target);</span>
+<span class="lineNum">      50 </span><span class="lineNoCov">          0 :   var proxy = new Proxy(target, handler);</span>
+<span class="lineNum">      51 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      52 </span><span class="lineNoCov">          0 :   // Trap returns trueish and target is extensible.</span>
+<span class="lineNum">      53 </span><span class="lineNoCov">          0 :   assertTrue(Reflect.isExtensible(proxy));</span>
+<span class="lineNum">      54 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      55 </span><span class="lineNoCov">          0 :   // Trap returns trueish but target is not extensible.</span>
+<span class="lineNum">      56 </span><span class="lineNoCov">          0 :   Reflect.preventExtensions(target);</span>
 <span class="lineNum">      57 </span><span class="lineCov">          1 :   assertThrows(() =&gt; {Reflect.isExtensible(proxy)}, TypeError);</span>
-<span class="lineNum">      58 </span><span class="lineCov">          1 : })();</span>
-<a name="59"><span class="lineNum">      59 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">      60 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      58 </span><span class="lineNoCov">          0 : })();</span>
+<span class="lineNum">      59 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      60 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      61 </span><span class="lineCov">          1 : (function () {</span>
 <span class="lineNum">      62 </span><span class="lineCov">          1 :   // Trap returns falsish.</span>
 <span class="lineNum">      63 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      64 </span><span class="lineCov">          1 :   var target = {};</span>
 <span class="lineNum">      65 </span><span class="lineCov">          2 :   var handler = { preventExtensions() {return 0} };</span>
-<span class="lineNum">      66 </span><span class="lineCov">          1 :   var proxy = new Proxy(target, handler);</span>
-<span class="lineNum">      67 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      68 </span><span class="lineCov">          1 :   assertFalse(Reflect.preventExtensions(proxy));</span>
-<span class="lineNum">      69 </span><span class="lineCov">          1 :   Reflect.preventExtensions(target);</span>
-<span class="lineNum">      70 </span><span class="lineCov">          1 :   assertFalse(Reflect.preventExtensions(proxy));</span>
-<span class="lineNum">      71 </span><span class="lineCov">          1 : })();</span>
-<a name="72"><span class="lineNum">      72 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">      73 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      66 </span><span class="lineNoCov">          0 :   var proxy = new Proxy(target, handler);</span>
+<span class="lineNum">      67 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      68 </span><span class="lineNoCov">          0 :   assertFalse(Reflect.preventExtensions(proxy));</span>
+<span class="lineNum">      69 </span><span class="lineNoCov">          0 :   Reflect.preventExtensions(target);</span>
+<span class="lineNum">      70 </span><span class="lineNoCov">          0 :   assertFalse(Reflect.preventExtensions(proxy));</span>
+<span class="lineNum">      71 </span><span class="lineNoCov">          0 : })();</span>
+<span class="lineNum">      72 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      73 </span><span class="lineNoCov">          0 : </span>
 <a name="74"><span class="lineNum">      74 </span><span class="lineCov">          1 : (function () {</span></a>
 <span class="lineNum">      75 </span><span class="lineCov">          1 :   var target = {};</span>
 <span class="lineNum">      76 </span><span class="lineCov">          2 :   var handler = { preventExtensions() {return Symbol()} };</span>
-<span class="lineNum">      77 </span><span class="lineCov">          1 :   var proxy = new Proxy(target, handler);</span>
-<a name="78"><span class="lineNum">      78 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">      79 </span><span class="lineCov">          1 :   // Trap returns trueish but target is extensible.</span>
+<span class="lineNum">      77 </span><span class="lineNoCov">          0 :   var proxy = new Proxy(target, handler);</span>
+<a name="78"><span class="lineNum">      78 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">      79 </span><span class="lineNoCov">          0 :   // Trap returns trueish but target is extensible.</span>
 <span class="lineNum">      80 </span><span class="lineCov">          1 :   assertThrows(() =&gt; {Reflect.preventExtensions(proxy)}, TypeError);</span>
-<span class="lineNum">      81 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      82 </span><span class="lineCov">          1 :   // Trap returns trueish and target is not extensible.</span>
-<span class="lineNum">      83 </span><span class="lineCov">          1 :   Reflect.preventExtensions(target);</span>
-<span class="lineNum">      84 </span><span class="lineCov">          1 :   assertTrue(Reflect.preventExtensions(proxy));</span>
-<span class="lineNum">      85 </span><span class="lineCov">          1 : })();</span>
+<span class="lineNum">      81 </span>            : 
+<span class="lineNum">      82 </span>            :   // Trap returns trueish and target is not extensible.
+<span class="lineNum">      83 </span>            :   Reflect.preventExtensions(target);
+<span class="lineNum">      84 </span>            :   assertTrue(Reflect.preventExtensions(proxy));
+<span class="lineNum">      85 </span>            : })();
 </pre>
       </td>
     </tr>

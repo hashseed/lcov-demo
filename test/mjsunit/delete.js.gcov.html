@@ -31,17 +31,17 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">195</td>
-            <td class="headerCovTableEntry">195</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntry">58</td>
+            <td class="headerCovTableEntry">194</td>
+            <td class="headerCovTableEntryLo">29.9 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">5</td>
-            <td class="headerCovTableEntry">5</td>
+            <td class="headerCovTableEntry">4</td>
+            <td class="headerCovTableEntry">4</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -90,137 +90,137 @@
 <a name="28"><span class="lineNum">      28 </span><span class="lineCov">          1 : // We use the has() function to avoid relying on a functioning</span></a>
 <span class="lineNum">      29 </span><span class="lineCov">          1 : // implementation of 'in'.</span>
 <span class="lineNum">      30 </span><span class="lineCov">        773 : function has(o, k) { return typeof o[k] !== 'undefined'; }</span>
-<span class="lineNum">      31 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      32 </span><span class="lineCov">          1 : assertTrue(delete null);</span>
-<span class="lineNum">      33 </span><span class="lineCov">          1 : assertTrue(delete 2);</span>
-<span class="lineNum">      34 </span><span class="lineCov">          1 : assertTrue(delete 'foo');</span>
-<span class="lineNum">      35 </span><span class="lineCov">          1 : assertTrue(delete Number(7));</span>
-<span class="lineNum">      36 </span><span class="lineCov">          1 : assertTrue(delete new Number(8));</span>
-<span class="lineNum">      37 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      38 </span><span class="lineCov">          1 : assertTrue(delete {}.x);</span>
-<span class="lineNum">      39 </span><span class="lineCov">          1 : assertTrue(delete {}.y);</span>
-<span class="lineNum">      40 </span><span class="lineCov">          1 : assertTrue(delete {}.toString);</span>
-<span class="lineNum">      41 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      42 </span><span class="lineCov">          1 : x = 42;</span>
-<span class="lineNum">      43 </span><span class="lineCov">          1 : assertEquals(42, x);</span>
-<span class="lineNum">      44 </span><span class="lineCov">          1 : assertTrue(delete x);</span>
-<span class="lineNum">      45 </span><span class="lineCov">          1 : assertTrue(typeof x === 'undefined', &quot;x is gone&quot;);</span>
-<span class="lineNum">      46 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      47 </span><span class="lineCov">          1 : var y = 87; // should have DontDelete attribute</span>
-<span class="lineNum">      48 </span><span class="lineCov">          1 : assertEquals(87, y);</span>
-<span class="lineNum">      49 </span><span class="lineCov">          1 : assertFalse(delete y, &quot;don't delete&quot;);</span>
-<span class="lineNum">      50 </span><span class="lineCov">          1 : assertFalse(typeof y === 'undefined');</span>
-<span class="lineNum">      51 </span><span class="lineCov">          1 : assertEquals(87, y);</span>
-<span class="lineNum">      52 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      53 </span><span class="lineCov">          1 : var o = { x: 42, y: 87 };</span>
-<span class="lineNum">      54 </span><span class="lineCov">          1 : assertTrue(has(o, 'x'));</span>
-<span class="lineNum">      55 </span><span class="lineCov">          1 : assertTrue(has(o, 'y'));</span>
-<span class="lineNum">      56 </span><span class="lineCov">          1 : assertTrue(delete o.x);</span>
-<span class="lineNum">      57 </span><span class="lineCov">          1 : assertFalse(has(o, 'x'));</span>
-<span class="lineNum">      58 </span><span class="lineCov">          1 : assertTrue(has(o, 'y'));</span>
-<span class="lineNum">      59 </span><span class="lineCov">          1 : assertTrue(delete o['y']);</span>
-<span class="lineNum">      60 </span><span class="lineCov">          1 : assertFalse(has(o, 'x'));</span>
-<span class="lineNum">      61 </span><span class="lineCov">          1 : assertFalse(has(o, 'y'));</span>
-<span class="lineNum">      62 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      63 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      64 </span><span class="lineCov">          1 : var o = {};</span>
-<span class="lineNum">      65 </span><span class="lineCov">          1 : for (var i = 0x0020; i &lt; 0x02ff; i+=2) {</span>
-<span class="lineNum">      66 </span><span class="lineCov">          1 :   o[String.fromCharCode(i)] = i;</span>
-<span class="lineNum">      67 </span><span class="lineCov">          1 :   o[String.fromCharCode(i+1)] = i+1;</span>
-<span class="lineNum">      68 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">      69 </span><span class="lineCov">          1 : for (var i = 0x0020; i &lt; 0x02ff; i+=2) {</span>
-<span class="lineNum">      70 </span><span class="lineCov">          1 :   assertTrue(delete o[String.fromCharCode(i)]);</span>
-<span class="lineNum">      71 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">      72 </span><span class="lineCov">          1 : for (var i = 0x0020; i &lt; 0x02ff; i+=2) {</span>
-<span class="lineNum">      73 </span><span class="lineCov">          1 :   assertFalse(has(o, String.fromCharCode(i)), &quot;deleted (&quot; + i + &quot;)&quot;);</span>
-<span class="lineNum">      74 </span><span class="lineCov">          1 :   assertTrue(has(o, String.fromCharCode(i+1)), &quot;still here (&quot; + i + &quot;)&quot;);</span>
-<span class="lineNum">      75 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">      76 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      77 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      78 </span><span class="lineCov">          1 : var a = [0,1,2];</span>
-<span class="lineNum">      79 </span><span class="lineCov">          1 : assertTrue(has(a, 0));</span>
-<span class="lineNum">      80 </span><span class="lineCov">          1 : assertTrue(delete a[0]);</span>
-<span class="lineNum">      81 </span><span class="lineCov">          1 : assertFalse(has(a, 0), &quot;delete 0&quot;);</span>
-<span class="lineNum">      82 </span><span class="lineCov">          1 : assertEquals(1, a[1]);</span>
-<span class="lineNum">      83 </span><span class="lineCov">          1 : assertEquals(2, a[2]);</span>
-<span class="lineNum">      84 </span><span class="lineCov">          1 : assertTrue(delete a[100], &quot;delete 100&quot;);</span>
-<span class="lineNum">      85 </span><span class="lineCov">          1 : assertTrue(delete a[Math.pow(2,31)-1], &quot;delete 2^31-1&quot;);</span>
-<span class="lineNum">      86 </span><span class="lineCov">          1 : assertFalse(has(a, 0), &quot;delete 0&quot;);</span>
-<span class="lineNum">      87 </span><span class="lineCov">          1 : assertEquals(1, a[1]);</span>
-<span class="lineNum">      88 </span><span class="lineCov">          1 : assertEquals(2, a[2]);</span>
-<span class="lineNum">      89 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      90 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      91 </span><span class="lineCov">          1 : var a = [0,1,2];</span>
-<span class="lineNum">      92 </span><span class="lineCov">          1 : assertEquals(3, a.length);</span>
-<span class="lineNum">      93 </span><span class="lineCov">          1 : assertTrue(delete a[2]);</span>
-<span class="lineNum">      94 </span><span class="lineCov">          1 : assertEquals(3, a.length);</span>
-<span class="lineNum">      95 </span><span class="lineCov">          1 : assertTrue(delete a[0]);</span>
-<span class="lineNum">      96 </span><span class="lineCov">          1 : assertEquals(3, a.length);</span>
-<span class="lineNum">      97 </span><span class="lineCov">          1 : assertTrue(delete a[1]);</span>
-<span class="lineNum">      98 </span><span class="lineCov">          1 : assertEquals(3, a.length);</span>
-<span class="lineNum">      99 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     100 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     101 </span><span class="lineCov">          1 : var o = {};</span>
-<span class="lineNum">     102 </span><span class="lineCov">          1 : o[Math.pow(2,30)-1] = 0;</span>
-<span class="lineNum">     103 </span><span class="lineCov">          1 : o[Math.pow(2,31)-1] = 0;</span>
-<span class="lineNum">     104 </span><span class="lineCov">          1 : o[1] = 0;</span>
-<span class="lineNum">     105 </span><span class="lineCov">          1 : assertTrue(delete o[0]);</span>
-<span class="lineNum">     106 </span><span class="lineCov">          1 : assertTrue(delete o[Math.pow(2,30)]);</span>
-<span class="lineNum">     107 </span><span class="lineCov">          1 : assertFalse(has(o, 0), &quot;delete 0&quot;);</span>
-<span class="lineNum">     108 </span><span class="lineCov">          1 : assertFalse(has(o, Math.pow(2,30)));</span>
-<span class="lineNum">     109 </span><span class="lineCov">          1 : assertTrue(has(o, 1));</span>
-<span class="lineNum">     110 </span><span class="lineCov">          1 : assertTrue(has(o, Math.pow(2,30)-1));</span>
-<span class="lineNum">     111 </span><span class="lineCov">          1 : assertTrue(has(o, Math.pow(2,31)-1));</span>
-<span class="lineNum">     112 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     113 </span><span class="lineCov">          1 : assertTrue(delete o[Math.pow(2,30)-1]);</span>
-<span class="lineNum">     114 </span><span class="lineCov">          1 : assertTrue(has(o, 1));</span>
-<span class="lineNum">     115 </span><span class="lineCov">          1 : assertFalse(has(o, Math.pow(2,30)-1), &quot;delete 2^30-1&quot;);</span>
-<span class="lineNum">     116 </span><span class="lineCov">          1 : assertTrue(has(o, Math.pow(2,31)-1));</span>
-<span class="lineNum">     117 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     118 </span><span class="lineCov">          1 : assertTrue(delete o[1]);</span>
-<span class="lineNum">     119 </span><span class="lineCov">          1 : assertFalse(has(o, 1), &quot;delete 1&quot;);</span>
-<span class="lineNum">     120 </span><span class="lineCov">          1 : assertFalse(has(o, Math.pow(2,30)-1), &quot;delete 2^30-1&quot;);</span>
-<span class="lineNum">     121 </span><span class="lineCov">          1 : assertTrue(has(o, Math.pow(2,31)-1));</span>
-<span class="lineNum">     122 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     123 </span><span class="lineCov">          1 : assertTrue(delete o[Math.pow(2,31)-1]);</span>
-<span class="lineNum">     124 </span><span class="lineCov">          1 : assertFalse(has(o, 1), &quot;delete 1&quot;);</span>
-<span class="lineNum">     125 </span><span class="lineCov">          1 : assertFalse(has(o, Math.pow(2,30)-1), &quot;delete 2^30-1&quot;);</span>
-<span class="lineNum">     126 </span><span class="lineCov">          1 : assertFalse(has(o, Math.pow(2,31)-1), &quot;delete 2^31-1&quot;);</span>
-<span class="lineNum">     127 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     128 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     129 </span><span class="lineCov">          1 : var a = [];</span>
-<span class="lineNum">     130 </span><span class="lineCov">          1 : a[Math.pow(2,30)-1] = 0;</span>
-<span class="lineNum">     131 </span><span class="lineCov">          1 : a[Math.pow(2,31)-1] = 0;</span>
-<span class="lineNum">     132 </span><span class="lineCov">          1 : a[1] = 0;</span>
-<span class="lineNum">     133 </span><span class="lineCov">          1 : assertTrue(delete a[0]);</span>
-<span class="lineNum">     134 </span><span class="lineCov">          1 : assertTrue(delete a[Math.pow(2,30)]);</span>
-<span class="lineNum">     135 </span><span class="lineCov">          1 : assertFalse(has(a, 0), &quot;delete 0&quot;);</span>
-<span class="lineNum">     136 </span><span class="lineCov">          1 : assertFalse(has(a, Math.pow(2,30)), &quot;delete 2^30&quot;);</span>
-<span class="lineNum">     137 </span><span class="lineCov">          1 : assertTrue(has(a, 1));</span>
-<span class="lineNum">     138 </span><span class="lineCov">          1 : assertTrue(has(a, Math.pow(2,30)-1));</span>
-<span class="lineNum">     139 </span><span class="lineCov">          1 : assertTrue(has(a, Math.pow(2,31)-1));</span>
-<span class="lineNum">     140 </span><span class="lineCov">          1 : assertEquals(Math.pow(2,31), a.length);</span>
-<span class="lineNum">     141 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     142 </span><span class="lineCov">          1 : assertTrue(delete a[Math.pow(2,30)-1]);</span>
-<span class="lineNum">     143 </span><span class="lineCov">          1 : assertTrue(has(a, 1));</span>
-<span class="lineNum">     144 </span><span class="lineCov">          1 : assertFalse(has(a, Math.pow(2,30)-1), &quot;delete 2^30-1&quot;);</span>
-<span class="lineNum">     145 </span><span class="lineCov">          1 : assertTrue(has(a, Math.pow(2,31)-1));</span>
-<span class="lineNum">     146 </span><span class="lineCov">          1 : assertEquals(Math.pow(2,31), a.length);</span>
-<span class="lineNum">     147 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     148 </span><span class="lineCov">          1 : assertTrue(delete a[1]);</span>
-<span class="lineNum">     149 </span><span class="lineCov">          1 : assertFalse(has(a, 1), &quot;delete 1&quot;);</span>
-<span class="lineNum">     150 </span><span class="lineCov">          1 : assertFalse(has(a, Math.pow(2,30)-1), &quot;delete 2^30-1&quot;);</span>
-<span class="lineNum">     151 </span><span class="lineCov">          1 : assertTrue(has(a, Math.pow(2,31)-1));</span>
-<span class="lineNum">     152 </span><span class="lineCov">          1 : assertEquals(Math.pow(2,31), a.length);</span>
-<span class="lineNum">     153 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     154 </span><span class="lineCov">          1 : assertTrue(delete a[Math.pow(2,31)-1]);</span>
-<span class="lineNum">     155 </span><span class="lineCov">          1 : assertFalse(has(a, 1), &quot;delete 1&quot;);</span>
-<span class="lineNum">     156 </span><span class="lineCov">          1 : assertFalse(has(a, Math.pow(2,30)-1), &quot;delete 2^30-1&quot;);</span>
-<span class="lineNum">     157 </span><span class="lineCov">          1 : assertFalse(has(a, Math.pow(2,31)-1), &quot;delete 2^31-1&quot;);</span>
-<span class="lineNum">     158 </span><span class="lineCov">          1 : assertEquals(Math.pow(2,31), a.length);</span>
-<span class="lineNum">     159 </span><span class="lineCov">          1 : </span>
-<a name="160"><span class="lineNum">     160 </span><span class="lineCov">          1 : // Check that a LoadIC for a dictionary field works, even</span></a>
-<span class="lineNum">     161 </span><span class="lineCov">          1 : // when the dictionary probe misses.</span>
+<span class="lineNum">      31 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      32 </span><span class="lineNoCov">          0 : assertTrue(delete null);</span>
+<span class="lineNum">      33 </span><span class="lineNoCov">          0 : assertTrue(delete 2);</span>
+<span class="lineNum">      34 </span><span class="lineNoCov">          0 : assertTrue(delete 'foo');</span>
+<span class="lineNum">      35 </span><span class="lineNoCov">          0 : assertTrue(delete Number(7));</span>
+<span class="lineNum">      36 </span><span class="lineNoCov">          0 : assertTrue(delete new Number(8));</span>
+<span class="lineNum">      37 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      38 </span><span class="lineNoCov">          0 : assertTrue(delete {}.x);</span>
+<span class="lineNum">      39 </span><span class="lineNoCov">          0 : assertTrue(delete {}.y);</span>
+<span class="lineNum">      40 </span><span class="lineNoCov">          0 : assertTrue(delete {}.toString);</span>
+<span class="lineNum">      41 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      42 </span><span class="lineNoCov">          0 : x = 42;</span>
+<span class="lineNum">      43 </span><span class="lineNoCov">          0 : assertEquals(42, x);</span>
+<span class="lineNum">      44 </span><span class="lineNoCov">          0 : assertTrue(delete x);</span>
+<span class="lineNum">      45 </span><span class="lineNoCov">          0 : assertTrue(typeof x === 'undefined', &quot;x is gone&quot;);</span>
+<span class="lineNum">      46 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      47 </span><span class="lineNoCov">          0 : var y = 87; // should have DontDelete attribute</span>
+<span class="lineNum">      48 </span><span class="lineNoCov">          0 : assertEquals(87, y);</span>
+<span class="lineNum">      49 </span><span class="lineNoCov">          0 : assertFalse(delete y, &quot;don't delete&quot;);</span>
+<span class="lineNum">      50 </span><span class="lineNoCov">          0 : assertFalse(typeof y === 'undefined');</span>
+<span class="lineNum">      51 </span><span class="lineNoCov">          0 : assertEquals(87, y);</span>
+<span class="lineNum">      52 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      53 </span><span class="lineNoCov">          0 : var o = { x: 42, y: 87 };</span>
+<span class="lineNum">      54 </span><span class="lineNoCov">          0 : assertTrue(has(o, 'x'));</span>
+<span class="lineNum">      55 </span><span class="lineNoCov">          0 : assertTrue(has(o, 'y'));</span>
+<span class="lineNum">      56 </span><span class="lineNoCov">          0 : assertTrue(delete o.x);</span>
+<span class="lineNum">      57 </span><span class="lineNoCov">          0 : assertFalse(has(o, 'x'));</span>
+<span class="lineNum">      58 </span><span class="lineNoCov">          0 : assertTrue(has(o, 'y'));</span>
+<span class="lineNum">      59 </span><span class="lineNoCov">          0 : assertTrue(delete o['y']);</span>
+<span class="lineNum">      60 </span><span class="lineNoCov">          0 : assertFalse(has(o, 'x'));</span>
+<span class="lineNum">      61 </span><span class="lineNoCov">          0 : assertFalse(has(o, 'y'));</span>
+<span class="lineNum">      62 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      63 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      64 </span><span class="lineNoCov">          0 : var o = {};</span>
+<span class="lineNum">      65 </span><span class="lineNoCov">          0 : for (var i = 0x0020; i &lt; 0x02ff; i+=2) {</span>
+<span class="lineNum">      66 </span><span class="lineNoCov">          0 :   o[String.fromCharCode(i)] = i;</span>
+<span class="lineNum">      67 </span><span class="lineNoCov">          0 :   o[String.fromCharCode(i+1)] = i+1;</span>
+<span class="lineNum">      68 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      69 </span><span class="lineNoCov">          0 : for (var i = 0x0020; i &lt; 0x02ff; i+=2) {</span>
+<span class="lineNum">      70 </span><span class="lineNoCov">          0 :   assertTrue(delete o[String.fromCharCode(i)]);</span>
+<span class="lineNum">      71 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      72 </span><span class="lineNoCov">          0 : for (var i = 0x0020; i &lt; 0x02ff; i+=2) {</span>
+<span class="lineNum">      73 </span><span class="lineNoCov">          0 :   assertFalse(has(o, String.fromCharCode(i)), &quot;deleted (&quot; + i + &quot;)&quot;);</span>
+<span class="lineNum">      74 </span><span class="lineNoCov">          0 :   assertTrue(has(o, String.fromCharCode(i+1)), &quot;still here (&quot; + i + &quot;)&quot;);</span>
+<span class="lineNum">      75 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      76 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      77 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      78 </span><span class="lineNoCov">          0 : var a = [0,1,2];</span>
+<span class="lineNum">      79 </span><span class="lineNoCov">          0 : assertTrue(has(a, 0));</span>
+<span class="lineNum">      80 </span><span class="lineNoCov">          0 : assertTrue(delete a[0]);</span>
+<span class="lineNum">      81 </span><span class="lineNoCov">          0 : assertFalse(has(a, 0), &quot;delete 0&quot;);</span>
+<span class="lineNum">      82 </span><span class="lineNoCov">          0 : assertEquals(1, a[1]);</span>
+<span class="lineNum">      83 </span><span class="lineNoCov">          0 : assertEquals(2, a[2]);</span>
+<span class="lineNum">      84 </span><span class="lineNoCov">          0 : assertTrue(delete a[100], &quot;delete 100&quot;);</span>
+<span class="lineNum">      85 </span><span class="lineNoCov">          0 : assertTrue(delete a[Math.pow(2,31)-1], &quot;delete 2^31-1&quot;);</span>
+<span class="lineNum">      86 </span><span class="lineNoCov">          0 : assertFalse(has(a, 0), &quot;delete 0&quot;);</span>
+<span class="lineNum">      87 </span><span class="lineNoCov">          0 : assertEquals(1, a[1]);</span>
+<span class="lineNum">      88 </span><span class="lineNoCov">          0 : assertEquals(2, a[2]);</span>
+<span class="lineNum">      89 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      90 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      91 </span><span class="lineNoCov">          0 : var a = [0,1,2];</span>
+<span class="lineNum">      92 </span><span class="lineNoCov">          0 : assertEquals(3, a.length);</span>
+<span class="lineNum">      93 </span><span class="lineNoCov">          0 : assertTrue(delete a[2]);</span>
+<span class="lineNum">      94 </span><span class="lineNoCov">          0 : assertEquals(3, a.length);</span>
+<span class="lineNum">      95 </span><span class="lineNoCov">          0 : assertTrue(delete a[0]);</span>
+<span class="lineNum">      96 </span><span class="lineNoCov">          0 : assertEquals(3, a.length);</span>
+<span class="lineNum">      97 </span><span class="lineNoCov">          0 : assertTrue(delete a[1]);</span>
+<span class="lineNum">      98 </span><span class="lineNoCov">          0 : assertEquals(3, a.length);</span>
+<span class="lineNum">      99 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     100 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     101 </span><span class="lineNoCov">          0 : var o = {};</span>
+<span class="lineNum">     102 </span><span class="lineNoCov">          0 : o[Math.pow(2,30)-1] = 0;</span>
+<span class="lineNum">     103 </span><span class="lineNoCov">          0 : o[Math.pow(2,31)-1] = 0;</span>
+<span class="lineNum">     104 </span><span class="lineNoCov">          0 : o[1] = 0;</span>
+<span class="lineNum">     105 </span><span class="lineNoCov">          0 : assertTrue(delete o[0]);</span>
+<span class="lineNum">     106 </span><span class="lineNoCov">          0 : assertTrue(delete o[Math.pow(2,30)]);</span>
+<span class="lineNum">     107 </span><span class="lineNoCov">          0 : assertFalse(has(o, 0), &quot;delete 0&quot;);</span>
+<span class="lineNum">     108 </span><span class="lineNoCov">          0 : assertFalse(has(o, Math.pow(2,30)));</span>
+<span class="lineNum">     109 </span><span class="lineNoCov">          0 : assertTrue(has(o, 1));</span>
+<span class="lineNum">     110 </span><span class="lineNoCov">          0 : assertTrue(has(o, Math.pow(2,30)-1));</span>
+<span class="lineNum">     111 </span><span class="lineNoCov">          0 : assertTrue(has(o, Math.pow(2,31)-1));</span>
+<span class="lineNum">     112 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     113 </span><span class="lineNoCov">          0 : assertTrue(delete o[Math.pow(2,30)-1]);</span>
+<span class="lineNum">     114 </span><span class="lineNoCov">          0 : assertTrue(has(o, 1));</span>
+<span class="lineNum">     115 </span><span class="lineNoCov">          0 : assertFalse(has(o, Math.pow(2,30)-1), &quot;delete 2^30-1&quot;);</span>
+<span class="lineNum">     116 </span><span class="lineNoCov">          0 : assertTrue(has(o, Math.pow(2,31)-1));</span>
+<span class="lineNum">     117 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     118 </span><span class="lineNoCov">          0 : assertTrue(delete o[1]);</span>
+<span class="lineNum">     119 </span><span class="lineNoCov">          0 : assertFalse(has(o, 1), &quot;delete 1&quot;);</span>
+<span class="lineNum">     120 </span><span class="lineNoCov">          0 : assertFalse(has(o, Math.pow(2,30)-1), &quot;delete 2^30-1&quot;);</span>
+<span class="lineNum">     121 </span><span class="lineNoCov">          0 : assertTrue(has(o, Math.pow(2,31)-1));</span>
+<span class="lineNum">     122 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     123 </span><span class="lineNoCov">          0 : assertTrue(delete o[Math.pow(2,31)-1]);</span>
+<span class="lineNum">     124 </span><span class="lineNoCov">          0 : assertFalse(has(o, 1), &quot;delete 1&quot;);</span>
+<span class="lineNum">     125 </span><span class="lineNoCov">          0 : assertFalse(has(o, Math.pow(2,30)-1), &quot;delete 2^30-1&quot;);</span>
+<span class="lineNum">     126 </span><span class="lineNoCov">          0 : assertFalse(has(o, Math.pow(2,31)-1), &quot;delete 2^31-1&quot;);</span>
+<span class="lineNum">     127 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     128 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     129 </span><span class="lineNoCov">          0 : var a = [];</span>
+<span class="lineNum">     130 </span><span class="lineNoCov">          0 : a[Math.pow(2,30)-1] = 0;</span>
+<span class="lineNum">     131 </span><span class="lineNoCov">          0 : a[Math.pow(2,31)-1] = 0;</span>
+<span class="lineNum">     132 </span><span class="lineNoCov">          0 : a[1] = 0;</span>
+<span class="lineNum">     133 </span><span class="lineNoCov">          0 : assertTrue(delete a[0]);</span>
+<span class="lineNum">     134 </span><span class="lineNoCov">          0 : assertTrue(delete a[Math.pow(2,30)]);</span>
+<span class="lineNum">     135 </span><span class="lineNoCov">          0 : assertFalse(has(a, 0), &quot;delete 0&quot;);</span>
+<span class="lineNum">     136 </span><span class="lineNoCov">          0 : assertFalse(has(a, Math.pow(2,30)), &quot;delete 2^30&quot;);</span>
+<span class="lineNum">     137 </span><span class="lineNoCov">          0 : assertTrue(has(a, 1));</span>
+<span class="lineNum">     138 </span><span class="lineNoCov">          0 : assertTrue(has(a, Math.pow(2,30)-1));</span>
+<span class="lineNum">     139 </span><span class="lineNoCov">          0 : assertTrue(has(a, Math.pow(2,31)-1));</span>
+<span class="lineNum">     140 </span><span class="lineNoCov">          0 : assertEquals(Math.pow(2,31), a.length);</span>
+<span class="lineNum">     141 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     142 </span><span class="lineNoCov">          0 : assertTrue(delete a[Math.pow(2,30)-1]);</span>
+<span class="lineNum">     143 </span><span class="lineNoCov">          0 : assertTrue(has(a, 1));</span>
+<span class="lineNum">     144 </span><span class="lineNoCov">          0 : assertFalse(has(a, Math.pow(2,30)-1), &quot;delete 2^30-1&quot;);</span>
+<span class="lineNum">     145 </span><span class="lineNoCov">          0 : assertTrue(has(a, Math.pow(2,31)-1));</span>
+<span class="lineNum">     146 </span><span class="lineNoCov">          0 : assertEquals(Math.pow(2,31), a.length);</span>
+<span class="lineNum">     147 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     148 </span><span class="lineNoCov">          0 : assertTrue(delete a[1]);</span>
+<span class="lineNum">     149 </span><span class="lineNoCov">          0 : assertFalse(has(a, 1), &quot;delete 1&quot;);</span>
+<span class="lineNum">     150 </span><span class="lineNoCov">          0 : assertFalse(has(a, Math.pow(2,30)-1), &quot;delete 2^30-1&quot;);</span>
+<span class="lineNum">     151 </span><span class="lineNoCov">          0 : assertTrue(has(a, Math.pow(2,31)-1));</span>
+<span class="lineNum">     152 </span><span class="lineNoCov">          0 : assertEquals(Math.pow(2,31), a.length);</span>
+<span class="lineNum">     153 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     154 </span><span class="lineNoCov">          0 : assertTrue(delete a[Math.pow(2,31)-1]);</span>
+<span class="lineNum">     155 </span><span class="lineNoCov">          0 : assertFalse(has(a, 1), &quot;delete 1&quot;);</span>
+<span class="lineNum">     156 </span><span class="lineNoCov">          0 : assertFalse(has(a, Math.pow(2,30)-1), &quot;delete 2^30-1&quot;);</span>
+<span class="lineNum">     157 </span><span class="lineNoCov">          0 : assertFalse(has(a, Math.pow(2,31)-1), &quot;delete 2^31-1&quot;);</span>
+<span class="lineNum">     158 </span><span class="lineNoCov">          0 : assertEquals(Math.pow(2,31), a.length);</span>
+<span class="lineNum">     159 </span><span class="lineNoCov">          0 : </span>
+<a name="160"><span class="lineNum">     160 </span><span class="lineNoCov">          0 : // Check that a LoadIC for a dictionary field works, even</span></a>
+<span class="lineNum">     161 </span><span class="lineNoCov">          0 : // when the dictionary probe misses.</span>
 <span class="lineNum">     162 </span><span class="lineCov">          1 : function load_deleted_property_using_IC() {</span>
 <span class="lineNum">     163 </span><span class="lineCov">          1 :   var x = new Object();</span>
 <span class="lineNum">     164 </span><span class="lineCov">          1 :   x.a = 3;</span>
@@ -234,14 +234,14 @@
 <span class="lineNum">     172 </span><span class="lineCov">          1 :   assertTrue(typeof load_a(x) === 'undefined', &quot;x.a is gone&quot;);</span>
 <span class="lineNum">     173 </span><span class="lineCov">          1 :   assertTrue(typeof load_a(x) === 'undefined', &quot;x.a is gone&quot;);</span>
 <a name="174"><span class="lineNum">     174 </span><span class="lineCov">          1 : }</span></a>
-<span class="lineNum">     175 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     175 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     176 </span><span class="lineCov">          4 : function load_a(x) {</span>
 <span class="lineNum">     177 </span><span class="lineCov">          4 :   return x.a;</span>
 <span class="lineNum">     178 </span><span class="lineCov">          4 : }</span>
-<span class="lineNum">     179 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     180 </span><span class="lineCov">          1 : load_deleted_property_using_IC();</span>
-<a name="181"><span class="lineNum">     181 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">     182 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     179 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     180 </span><span class="lineNoCov">          0 : load_deleted_property_using_IC();</span>
+<a name="181"><span class="lineNum">     181 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">     182 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     183 </span><span class="lineCov">          1 : (function deleteLargeDoubleArrayAtEnd() {</span>
 <span class="lineNum">     184 </span><span class="lineCov">          1 :   var o = {};</span>
 <span class="lineNum">     185 </span><span class="lineCov">          1 :   var max = 100000;</span>

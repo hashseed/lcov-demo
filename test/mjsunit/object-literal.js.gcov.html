@@ -31,18 +31,18 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">304</td>
-            <td class="headerCovTableEntry">304</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntry">159</td>
+            <td class="headerCovTableEntry">291</td>
+            <td class="headerCovTableEntryLo">54.6 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">18</td>
-            <td class="headerCovTableEntry">40</td>
-            <td class="headerCovTableEntryLo">45.0 %</td>
+            <td class="headerCovTableEntry">15</td>
+            <td class="headerCovTableEntry">37</td>
+            <td class="headerCovTableEntryLo">40.5 %</td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
         </table>
@@ -131,76 +131,76 @@
 <span class="lineNum">      69 </span><span class="lineCov">          2 :     '1000000': { x: 0, y: 0 }</span>
 <span class="lineNum">      70 </span><span class="lineCov">          2 :   };</span>
 <span class="lineNum">      71 </span><span class="lineCov">          2 : }</span>
-<span class="lineNum">      72 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      73 </span><span class="lineCov">          1 : var sa1 = makeSparseArray();</span>
-<span class="lineNum">      74 </span><span class="lineCov">          1 : sa1[0].x = 0;</span>
-<span class="lineNum">      75 </span><span class="lineCov">          1 : var sa2 = makeSparseArray();</span>
-<span class="lineNum">      76 </span><span class="lineCov">          1 : assertEquals(12, sa2[0].x);</span>
-<span class="lineNum">      77 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      78 </span><span class="lineCov">          1 : // Test that non-constant literals work.</span>
-<a name="79"><span class="lineNum">      79 </span><span class="lineCov">          1 : var n = new Object();</span></a>
-<span class="lineNum">      80 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      72 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      73 </span><span class="lineNoCov">          0 : var sa1 = makeSparseArray();</span>
+<span class="lineNum">      74 </span><span class="lineNoCov">          0 : sa1[0].x = 0;</span>
+<span class="lineNum">      75 </span><span class="lineNoCov">          0 : var sa2 = makeSparseArray();</span>
+<span class="lineNum">      76 </span><span class="lineNoCov">          0 : assertEquals(12, sa2[0].x);</span>
+<span class="lineNum">      77 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      78 </span><span class="lineNoCov">          0 : // Test that non-constant literals work.</span>
+<a name="79"><span class="lineNum">      79 </span><span class="lineNoCov">          0 : var n = new Object();</span></a>
+<span class="lineNum">      80 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      81 </span><span class="lineCov">          1 : function makeNonConstantArray() { return [ [ n ] ]; }</span>
-<span class="lineNum">      82 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      83 </span><span class="lineCov">          1 : var a = makeNonConstantArray();</span>
-<span class="lineNum">      84 </span><span class="lineCov">          1 : a[0][0].foo = &quot;bar&quot;;</span>
-<a name="85"><span class="lineNum">      85 </span><span class="lineCov">          1 : assertEquals(&quot;bar&quot;, n.foo);</span></a>
-<span class="lineNum">      86 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      82 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      83 </span><span class="lineNoCov">          0 : var a = makeNonConstantArray();</span>
+<span class="lineNum">      84 </span><span class="lineNoCov">          0 : a[0][0].foo = &quot;bar&quot;;</span>
+<a name="85"><span class="lineNum">      85 </span><span class="lineNoCov">          0 : assertEquals(&quot;bar&quot;, n.foo);</span></a>
+<span class="lineNum">      86 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      87 </span><span class="lineCov">          1 : function makeNonConstantObject() { return { a: { b: n } }; }</span>
-<span class="lineNum">      88 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      89 </span><span class="lineCov">          1 : a = makeNonConstantObject();</span>
-<span class="lineNum">      90 </span><span class="lineCov">          1 : a.a.b.bar = &quot;foo&quot;;</span>
-<span class="lineNum">      91 </span><span class="lineCov">          1 : assertEquals(&quot;foo&quot;, n.bar);</span>
-<a name="92"><span class="lineNum">      92 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">      93 </span><span class="lineCov">          1 : // Test that exceptions for regexps still hold.</span>
+<span class="lineNum">      88 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      89 </span><span class="lineNoCov">          0 : a = makeNonConstantObject();</span>
+<span class="lineNum">      90 </span><span class="lineNoCov">          0 : a.a.b.bar = &quot;foo&quot;;</span>
+<span class="lineNum">      91 </span><span class="lineNoCov">          0 : assertEquals(&quot;foo&quot;, n.bar);</span>
+<a name="92"><span class="lineNum">      92 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">      93 </span><span class="lineNoCov">          0 : // Test that exceptions for regexps still hold.</span>
 <span class="lineNum">      94 </span><span class="lineCov">          2 : function makeRegexpInArray() { return [ [ /a*/, {} ] ]; }</span>
-<span class="lineNum">      95 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      96 </span><span class="lineCov">          1 : a = makeRegexpInArray();</span>
-<span class="lineNum">      97 </span><span class="lineCov">          1 : var b = makeRegexpInArray();</span>
-<span class="lineNum">      98 </span><span class="lineCov">          1 : assertFalse(a[0][0] === b[0][0]);</span>
-<a name="99"><span class="lineNum">      99 </span><span class="lineCov">          1 : assertFalse(a[0][1] === b[0][1]);</span></a>
-<span class="lineNum">     100 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      95 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      96 </span><span class="lineNoCov">          0 : a = makeRegexpInArray();</span>
+<span class="lineNum">      97 </span><span class="lineNoCov">          0 : var b = makeRegexpInArray();</span>
+<span class="lineNum">      98 </span><span class="lineNoCov">          0 : assertFalse(a[0][0] === b[0][0]);</span>
+<a name="99"><span class="lineNum">      99 </span><span class="lineNoCov">          0 : assertFalse(a[0][1] === b[0][1]);</span></a>
+<span class="lineNum">     100 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     101 </span><span class="lineCov">          2 : function makeRegexpInObject() { return { a: { b: /b*/, c: {} } }; }</span>
-<span class="lineNum">     102 </span><span class="lineCov">          1 : a = makeRegexpInObject();</span>
-<span class="lineNum">     103 </span><span class="lineCov">          1 : b = makeRegexpInObject();</span>
-<span class="lineNum">     104 </span><span class="lineCov">          1 : assertFalse(a.a.b === b.a.b);</span>
-<span class="lineNum">     105 </span><span class="lineCov">          1 : assertFalse(a.a.c === b.a.c);</span>
-<span class="lineNum">     106 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     107 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     108 </span><span class="lineCov">          1 : // Test keywords are valid as property names in initializers and dot-access.</span>
-<span class="lineNum">     109 </span><span class="lineCov">          1 : var keywords = [</span>
-<span class="lineNum">     110 </span><span class="lineCov">          1 :   &quot;break&quot;,</span>
-<span class="lineNum">     111 </span><span class="lineCov">          1 :   &quot;case&quot;,</span>
-<span class="lineNum">     112 </span><span class="lineCov">          1 :   &quot;catch&quot;,</span>
-<span class="lineNum">     113 </span><span class="lineCov">          1 :   &quot;const&quot;,</span>
-<span class="lineNum">     114 </span><span class="lineCov">          1 :   &quot;continue&quot;,</span>
-<span class="lineNum">     115 </span><span class="lineCov">          1 :   &quot;debugger&quot;,</span>
-<span class="lineNum">     116 </span><span class="lineCov">          1 :   &quot;default&quot;,</span>
-<span class="lineNum">     117 </span><span class="lineCov">          1 :   &quot;delete&quot;,</span>
-<span class="lineNum">     118 </span><span class="lineCov">          1 :   &quot;do&quot;,</span>
-<span class="lineNum">     119 </span><span class="lineCov">          1 :   &quot;else&quot;,</span>
-<span class="lineNum">     120 </span><span class="lineCov">          1 :   &quot;false&quot;,</span>
-<span class="lineNum">     121 </span><span class="lineCov">          1 :   &quot;finally&quot;,</span>
-<span class="lineNum">     122 </span><span class="lineCov">          1 :   &quot;for&quot;,</span>
-<span class="lineNum">     123 </span><span class="lineCov">          1 :   &quot;function&quot;,</span>
-<span class="lineNum">     124 </span><span class="lineCov">          1 :   &quot;if&quot;,</span>
-<span class="lineNum">     125 </span><span class="lineCov">          1 :   &quot;in&quot;,</span>
-<span class="lineNum">     126 </span><span class="lineCov">          1 :   &quot;instanceof&quot;,</span>
-<span class="lineNum">     127 </span><span class="lineCov">          1 :   &quot;new&quot;,</span>
-<span class="lineNum">     128 </span><span class="lineCov">          1 :   &quot;null&quot;,</span>
-<span class="lineNum">     129 </span><span class="lineCov">          1 :   &quot;return&quot;,</span>
-<span class="lineNum">     130 </span><span class="lineCov">          1 :   &quot;switch&quot;,</span>
-<span class="lineNum">     131 </span><span class="lineCov">          1 :   &quot;this&quot;,</span>
-<span class="lineNum">     132 </span><span class="lineCov">          1 :   &quot;throw&quot;,</span>
-<span class="lineNum">     133 </span><span class="lineCov">          1 :   &quot;true&quot;,</span>
-<span class="lineNum">     134 </span><span class="lineCov">          1 :   &quot;try&quot;,</span>
-<span class="lineNum">     135 </span><span class="lineCov">          1 :   &quot;typeof&quot;,</span>
-<span class="lineNum">     136 </span><span class="lineCov">          1 :   &quot;var&quot;,</span>
-<span class="lineNum">     137 </span><span class="lineCov">          1 :   &quot;void&quot;,</span>
-<span class="lineNum">     138 </span><span class="lineCov">          1 :   &quot;while&quot;,</span>
-<span class="lineNum">     139 </span><span class="lineCov">          1 :   &quot;with&quot;</span>
-<a name="140"><span class="lineNum">     140 </span><span class="lineCov">          1 : ];</span></a>
-<span class="lineNum">     141 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     102 </span><span class="lineNoCov">          0 : a = makeRegexpInObject();</span>
+<span class="lineNum">     103 </span><span class="lineNoCov">          0 : b = makeRegexpInObject();</span>
+<span class="lineNum">     104 </span><span class="lineNoCov">          0 : assertFalse(a.a.b === b.a.b);</span>
+<span class="lineNum">     105 </span><span class="lineNoCov">          0 : assertFalse(a.a.c === b.a.c);</span>
+<span class="lineNum">     106 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     107 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     108 </span><span class="lineNoCov">          0 : // Test keywords are valid as property names in initializers and dot-access.</span>
+<span class="lineNum">     109 </span><span class="lineNoCov">          0 : var keywords = [</span>
+<span class="lineNum">     110 </span><span class="lineNoCov">          0 :   &quot;break&quot;,</span>
+<span class="lineNum">     111 </span><span class="lineNoCov">          0 :   &quot;case&quot;,</span>
+<span class="lineNum">     112 </span><span class="lineNoCov">          0 :   &quot;catch&quot;,</span>
+<span class="lineNum">     113 </span><span class="lineNoCov">          0 :   &quot;const&quot;,</span>
+<span class="lineNum">     114 </span><span class="lineNoCov">          0 :   &quot;continue&quot;,</span>
+<span class="lineNum">     115 </span><span class="lineNoCov">          0 :   &quot;debugger&quot;,</span>
+<span class="lineNum">     116 </span><span class="lineNoCov">          0 :   &quot;default&quot;,</span>
+<span class="lineNum">     117 </span><span class="lineNoCov">          0 :   &quot;delete&quot;,</span>
+<span class="lineNum">     118 </span><span class="lineNoCov">          0 :   &quot;do&quot;,</span>
+<span class="lineNum">     119 </span><span class="lineNoCov">          0 :   &quot;else&quot;,</span>
+<span class="lineNum">     120 </span><span class="lineNoCov">          0 :   &quot;false&quot;,</span>
+<span class="lineNum">     121 </span><span class="lineNoCov">          0 :   &quot;finally&quot;,</span>
+<span class="lineNum">     122 </span><span class="lineNoCov">          0 :   &quot;for&quot;,</span>
+<span class="lineNum">     123 </span><span class="lineNoCov">          0 :   &quot;function&quot;,</span>
+<span class="lineNum">     124 </span><span class="lineNoCov">          0 :   &quot;if&quot;,</span>
+<span class="lineNum">     125 </span><span class="lineNoCov">          0 :   &quot;in&quot;,</span>
+<span class="lineNum">     126 </span><span class="lineNoCov">          0 :   &quot;instanceof&quot;,</span>
+<span class="lineNum">     127 </span><span class="lineNoCov">          0 :   &quot;new&quot;,</span>
+<span class="lineNum">     128 </span><span class="lineNoCov">          0 :   &quot;null&quot;,</span>
+<span class="lineNum">     129 </span><span class="lineNoCov">          0 :   &quot;return&quot;,</span>
+<span class="lineNum">     130 </span><span class="lineNoCov">          0 :   &quot;switch&quot;,</span>
+<span class="lineNum">     131 </span><span class="lineNoCov">          0 :   &quot;this&quot;,</span>
+<span class="lineNum">     132 </span><span class="lineNoCov">          0 :   &quot;throw&quot;,</span>
+<span class="lineNum">     133 </span><span class="lineNoCov">          0 :   &quot;true&quot;,</span>
+<span class="lineNum">     134 </span><span class="lineNoCov">          0 :   &quot;try&quot;,</span>
+<span class="lineNum">     135 </span><span class="lineNoCov">          0 :   &quot;typeof&quot;,</span>
+<span class="lineNum">     136 </span><span class="lineNoCov">          0 :   &quot;var&quot;,</span>
+<span class="lineNum">     137 </span><span class="lineNoCov">          0 :   &quot;void&quot;,</span>
+<span class="lineNum">     138 </span><span class="lineNoCov">          0 :   &quot;while&quot;,</span>
+<span class="lineNum">     139 </span><span class="lineNoCov">          0 :   &quot;with&quot;</span>
+<a name="140"><span class="lineNum">     140 </span><span class="lineNoCov">          0 : ];</span></a>
+<span class="lineNum">     141 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     142 </span><span class="lineCov">         30 : function testKeywordProperty(keyword) {</span>
 <span class="lineNum">     143 </span><span class="lineCov">         30 :   var exception = false;</span>
 <span class="lineNum">     144 </span><span class="lineCov">         30 :   try {</span>
@@ -236,24 +236,24 @@
 <a name="174"><span class="lineNum">     174 </span><span class="lineCov">         30 :   // Function property, called.</span></a>
 <span class="lineNum">     175 </span><span class="lineCov">         30 :   var was_called;</span>
 <span class="lineNum">     176 </span><span class="lineCov">         30 :   function test_call() { this.was_called = true; was_called = true; }</span>
-<span class="lineNum">     177 </span><span class="lineCov">         30 :   var w = eval(&quot;({&quot; + keyword + &quot;: test_call, was_called: false})&quot;);</span>
-<span class="lineNum">     178 </span><span class="lineCov">         30 :   eval(&quot;w.&quot; + keyword + &quot;();&quot;);</span>
-<span class="lineNum">     179 </span><span class="lineCov">         30 :   assertTrue(was_called);</span>
-<span class="lineNum">     180 </span><span class="lineCov">         30 :   assertTrue(w.was_called);</span>
-<a name="181"><span class="lineNum">     181 </span><span class="lineCov">         30 : </span></a>
-<span class="lineNum">     182 </span><span class="lineCov">         30 :   // Function property, constructed.</span>
+<span class="lineNum">     177 </span><span class="lineNoCov">          0 :   var w = eval(&quot;({&quot; + keyword + &quot;: test_call, was_called: false})&quot;);</span>
+<span class="lineNum">     178 </span><span class="lineNoCov">          0 :   eval(&quot;w.&quot; + keyword + &quot;();&quot;);</span>
+<span class="lineNum">     179 </span><span class="lineNoCov">          0 :   assertTrue(was_called);</span>
+<span class="lineNum">     180 </span><span class="lineNoCov">          0 :   assertTrue(w.was_called);</span>
+<a name="181"><span class="lineNum">     181 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">     182 </span><span class="lineNoCov">          0 :   // Function property, constructed.</span>
 <span class="lineNum">     183 </span><span class="lineCov">         30 :   function construct() { this.constructed = true; }</span>
-<span class="lineNum">     184 </span><span class="lineCov">         30 :   var v = eval(&quot;({&quot; + keyword + &quot;: construct})&quot;);</span>
-<span class="lineNum">     185 </span><span class="lineCov">         30 :   var vo = eval(&quot;new v.&quot; + keyword + &quot;()&quot;);</span>
-<span class="lineNum">     186 </span><span class="lineCov">         30 :   assertTrue(vo instanceof construct);</span>
-<span class="lineNum">     187 </span><span class="lineCov">         30 :   assertTrue(vo.constructed);</span>
-<span class="lineNum">     188 </span><span class="lineCov">         30 : }</span>
-<span class="lineNum">     189 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     190 </span><span class="lineCov">          1 : for (var i = 0; i &lt; keywords.length; i++) {</span>
-<span class="lineNum">     191 </span><span class="lineCov">          1 :   testKeywordProperty(keywords[i]);</span>
-<span class="lineNum">     192 </span><span class="lineCov">          1 : }</span>
-<a name="193"><span class="lineNum">     193 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">     194 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     184 </span><span class="lineNoCov">          0 :   var v = eval(&quot;({&quot; + keyword + &quot;: construct})&quot;);</span>
+<span class="lineNum">     185 </span><span class="lineNoCov">          0 :   var vo = eval(&quot;new v.&quot; + keyword + &quot;()&quot;);</span>
+<span class="lineNum">     186 </span><span class="lineNoCov">          0 :   assertTrue(vo instanceof construct);</span>
+<span class="lineNum">     187 </span><span class="lineNoCov">          0 :   assertTrue(vo.constructed);</span>
+<span class="lineNum">     188 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     189 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     190 </span><span class="lineNoCov">          0 : for (var i = 0; i &lt; keywords.length; i++) {</span>
+<span class="lineNum">     191 </span><span class="lineNoCov">          0 :   testKeywordProperty(keywords[i]);</span>
+<span class="lineNum">     192 </span><span class="lineNoCov">          0 : }</span>
+<a name="193"><span class="lineNum">     193 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">     194 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     195 </span><span class="lineCov">          1 : (function TestNumericNames() {</span>
 <span class="lineNum">     196 </span><span class="lineCov">          1 :   var o = {</span>
 <span class="lineNum">     197 </span><span class="lineCov">          1 :     1: 1,</span>
@@ -274,55 +274,55 @@
 <span class="lineNum">     212 </span><span class="lineCov">          1 :   };</span>
 <span class="lineNum">     213 </span><span class="lineCov">          1 :   assertEquals(['1.2', '1.3'], Object.keys(o));</span>
 <span class="lineNum">     214 </span><span class="lineCov">          1 : })();</span>
-<a name="215"><span class="lineNum">     215 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">     216 </span><span class="lineCov">          1 : </span>
-<a name="217"><span class="lineNum">     217 </span><span class="lineCov">          2 : function TestNumericNamesGetter(expectedKeys, object) {</span></a>
+<a name="215"><span class="lineNum">     215 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">     216 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     217 </span><span class="lineCov">          2 : function TestNumericNamesGetter(expectedKeys, object) {</span>
 <span class="lineNum">     218 </span><span class="lineCov">          2 :   assertEquals(expectedKeys, Object.keys(object));</span>
 <span class="lineNum">     219 </span><span class="lineCov">         11 :   expectedKeys.forEach(function(key) {</span>
 <span class="lineNum">     220 </span><span class="lineCov">         11 :     var descr = Object.getOwnPropertyDescriptor(object, key);</span>
 <span class="lineNum">     221 </span><span class="lineCov">         11 :     assertEquals('get ' + key, descr.get.name);</span>
 <span class="lineNum">     222 </span><span class="lineCov">         11 :   });</span>
-<a name="223"><span class="lineNum">     223 </span><span class="lineCov">          2 : }</span></a>
-<a name="224"><span class="lineNum">     224 </span><span class="lineCov">          1 : TestNumericNamesGetter(['1', '2', '3', '4', '5', '6', '7', '8', '9'], {</span></a>
-<a name="225"><span class="lineNum">     225 </span><span class="lineCov">          1 :   get 1() {},</span></a>
-<a name="226"><span class="lineNum">     226 </span><span class="lineCov">          1 :   get 2.() {},</span></a>
-<a name="227"><span class="lineNum">     227 </span><span class="lineCov">          1 :   get 3.0() {},</span></a>
-<a name="228"><span class="lineNum">     228 </span><span class="lineCov">          1 :   get 4e0() {},</span></a>
-<a name="229"><span class="lineNum">     229 </span><span class="lineCov">          1 :   get 5E0() {},</span></a>
-<a name="230"><span class="lineNum">     230 </span><span class="lineCov">          1 :   get 6e-0() {},</span></a>
-<a name="231"><span class="lineNum">     231 </span><span class="lineCov">          1 :   get 7E-0() {},</span></a>
-<span class="lineNum">     232 </span><span class="lineCov">          1 :   get 0x8() {},</span>
-<span class="lineNum">     233 </span><span class="lineCov">          1 :   get 0X9() {},</span>
-<a name="234"><span class="lineNum">     234 </span><span class="lineCov">          1 : });</span></a>
-<a name="235"><span class="lineNum">     235 </span><span class="lineCov">          1 : TestNumericNamesGetter(['1.2', '1.3'], {</span></a>
-<span class="lineNum">     236 </span><span class="lineCov">          1 :   get 1.2() {},</span>
-<span class="lineNum">     237 </span><span class="lineCov">          1 :   get 1.30() {}</span>
-<span class="lineNum">     238 </span><span class="lineCov">          1 : });</span>
-<a name="239"><span class="lineNum">     239 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">     240 </span><span class="lineCov">          1 : </span>
-<a name="241"><span class="lineNum">     241 </span><span class="lineCov">          2 : function TestNumericNamesSetter(expectedKeys, object) {</span></a>
+<a name="223"><span class="lineNum">     223 </span><span class="lineNoCov">          0 : }</span></a>
+<a name="224"><span class="lineNum">     224 </span><span class="lineNoCov">          0 : TestNumericNamesGetter(['1', '2', '3', '4', '5', '6', '7', '8', '9'], {</span></a>
+<a name="225"><span class="lineNum">     225 </span><span class="lineNoCov">          0 :   get 1() {},</span></a>
+<a name="226"><span class="lineNum">     226 </span><span class="lineNoCov">          0 :   get 2.() {},</span></a>
+<a name="227"><span class="lineNum">     227 </span><span class="lineNoCov">          0 :   get 3.0() {},</span></a>
+<a name="228"><span class="lineNum">     228 </span><span class="lineNoCov">          0 :   get 4e0() {},</span></a>
+<a name="229"><span class="lineNum">     229 </span><span class="lineNoCov">          0 :   get 5E0() {},</span></a>
+<a name="230"><span class="lineNum">     230 </span><span class="lineNoCov">          0 :   get 6e-0() {},</span></a>
+<a name="231"><span class="lineNum">     231 </span><span class="lineNoCov">          0 :   get 7E-0() {},</span></a>
+<span class="lineNum">     232 </span><span class="lineNoCov">          0 :   get 0x8() {},</span>
+<span class="lineNum">     233 </span><span class="lineNoCov">          0 :   get 0X9() {},</span>
+<a name="234"><span class="lineNum">     234 </span><span class="lineNoCov">          0 : });</span></a>
+<a name="235"><span class="lineNum">     235 </span><span class="lineNoCov">          0 : TestNumericNamesGetter(['1.2', '1.3'], {</span></a>
+<span class="lineNum">     236 </span><span class="lineNoCov">          0 :   get 1.2() {},</span>
+<span class="lineNum">     237 </span><span class="lineNoCov">          0 :   get 1.30() {}</span>
+<span class="lineNum">     238 </span><span class="lineNoCov">          0 : });</span>
+<a name="239"><span class="lineNum">     239 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">     240 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     241 </span><span class="lineCov">          2 : function TestNumericNamesSetter(expectedKeys, object) {</span>
 <span class="lineNum">     242 </span><span class="lineCov">          2 :   assertEquals(expectedKeys, Object.keys(object));</span>
 <span class="lineNum">     243 </span><span class="lineCov">         11 :   expectedKeys.forEach(function(key) {</span>
 <span class="lineNum">     244 </span><span class="lineCov">         11 :     var descr = Object.getOwnPropertyDescriptor(object, key);</span>
 <span class="lineNum">     245 </span><span class="lineCov">         11 :     assertEquals('set ' + key, descr.set.name);</span>
 <span class="lineNum">     246 </span><span class="lineCov">         11 :   });</span>
-<a name="247"><span class="lineNum">     247 </span><span class="lineCov">          2 : }</span></a>
-<a name="248"><span class="lineNum">     248 </span><span class="lineCov">          1 : TestNumericNamesSetter(['1', '2', '3', '4', '5', '6', '7', '8', '9'], {</span></a>
-<a name="249"><span class="lineNum">     249 </span><span class="lineCov">          1 :   set 1(_) {},</span></a>
-<a name="250"><span class="lineNum">     250 </span><span class="lineCov">          1 :   set 2.(_) {},</span></a>
-<a name="251"><span class="lineNum">     251 </span><span class="lineCov">          1 :   set 3.0(_) {},</span></a>
-<a name="252"><span class="lineNum">     252 </span><span class="lineCov">          1 :   set 4e0(_) {},</span></a>
-<a name="253"><span class="lineNum">     253 </span><span class="lineCov">          1 :   set 5E0(_) {},</span></a>
-<a name="254"><span class="lineNum">     254 </span><span class="lineCov">          1 :   set 6e-0(_) {},</span></a>
-<a name="255"><span class="lineNum">     255 </span><span class="lineCov">          1 :   set 7E-0(_) {},</span></a>
-<span class="lineNum">     256 </span><span class="lineCov">          1 :   set 0x8(_) {},</span>
-<span class="lineNum">     257 </span><span class="lineCov">          1 :   set 0X9(_) {},</span>
-<a name="258"><span class="lineNum">     258 </span><span class="lineCov">          1 : });</span></a>
-<a name="259"><span class="lineNum">     259 </span><span class="lineCov">          1 : TestNumericNamesSetter(['1.2', '1.3'], {</span></a>
-<span class="lineNum">     260 </span><span class="lineCov">          1 :   set 1.2(_) {; },</span>
-<span class="lineNum">     261 </span><span class="lineCov">          1 :   set 1.30(_) {; }</span>
-<a name="262"><span class="lineNum">     262 </span><span class="lineCov">          1 : });</span></a>
-<span class="lineNum">     263 </span><span class="lineCov">          1 : </span>
+<a name="247"><span class="lineNum">     247 </span><span class="lineNoCov">          0 : }</span></a>
+<a name="248"><span class="lineNum">     248 </span><span class="lineNoCov">          0 : TestNumericNamesSetter(['1', '2', '3', '4', '5', '6', '7', '8', '9'], {</span></a>
+<a name="249"><span class="lineNum">     249 </span><span class="lineNoCov">          0 :   set 1(_) {},</span></a>
+<a name="250"><span class="lineNum">     250 </span><span class="lineNoCov">          0 :   set 2.(_) {},</span></a>
+<a name="251"><span class="lineNum">     251 </span><span class="lineNoCov">          0 :   set 3.0(_) {},</span></a>
+<a name="252"><span class="lineNum">     252 </span><span class="lineNoCov">          0 :   set 4e0(_) {},</span></a>
+<a name="253"><span class="lineNum">     253 </span><span class="lineNoCov">          0 :   set 5E0(_) {},</span></a>
+<a name="254"><span class="lineNum">     254 </span><span class="lineNoCov">          0 :   set 6e-0(_) {},</span></a>
+<a name="255"><span class="lineNum">     255 </span><span class="lineNoCov">          0 :   set 7E-0(_) {},</span></a>
+<span class="lineNum">     256 </span><span class="lineNoCov">          0 :   set 0x8(_) {},</span>
+<span class="lineNum">     257 </span><span class="lineNoCov">          0 :   set 0X9(_) {},</span>
+<a name="258"><span class="lineNum">     258 </span><span class="lineNoCov">          0 : });</span></a>
+<a name="259"><span class="lineNum">     259 </span><span class="lineNoCov">          0 : TestNumericNamesSetter(['1.2', '1.3'], {</span></a>
+<span class="lineNum">     260 </span><span class="lineNoCov">          0 :   set 1.2(_) {; },</span>
+<span class="lineNum">     261 </span><span class="lineNoCov">          0 :   set 1.30(_) {; }</span>
+<a name="262"><span class="lineNum">     262 </span><span class="lineNoCov">          0 : });</span></a>
+<span class="lineNum">     263 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     264 </span><span class="lineCov">          1 : (function TestPrototypeInObjectLiteral() {</span>
 <span class="lineNum">     265 </span><span class="lineCov">          1 :   // The prototype chain should not be used if the definition</span>
 <span class="lineNum">     266 </span><span class="lineCov">          1 :   // happens in the object literal.</span>
@@ -333,36 +333,36 @@
 <span class="lineNum">     271 </span><span class="lineCov">          1 :     },</span>
 <span class="lineNum">     272 </span><span class="lineCov">          1 :     set: function () {</span>
 <span class="lineNum">     273 </span><span class="lineCov">          1 :     }</span>
-<span class="lineNum">     274 </span><span class="lineCov">          1 :   });</span>
-<span class="lineNum">     275 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     276 </span><span class="lineCov">          1 :   var o = {};</span>
-<span class="lineNum">     277 </span><span class="lineCov">          1 :   o.c = 7;</span>
-<span class="lineNum">     278 </span><span class="lineCov">          1 :   assertEquals(21, o.c);</span>
-<span class="lineNum">     279 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     280 </span><span class="lineCov">          1 :   var l = {c: 7};</span>
-<span class="lineNum">     281 </span><span class="lineCov">          1 :   assertEquals(7, l.c);</span>
-<span class="lineNum">     282 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     283 </span><span class="lineCov">          1 :   delete Object.prototype.c;</span>
-<a name="284"><span class="lineNum">     284 </span><span class="lineCov">          1 : })();</span></a>
-<span class="lineNum">     285 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     274 </span><span class="lineNoCov">          0 :   });</span>
+<span class="lineNum">     275 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     276 </span><span class="lineNoCov">          0 :   var o = {};</span>
+<span class="lineNum">     277 </span><span class="lineNoCov">          0 :   o.c = 7;</span>
+<span class="lineNum">     278 </span><span class="lineNoCov">          0 :   assertEquals(21, o.c);</span>
+<span class="lineNum">     279 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     280 </span><span class="lineNoCov">          0 :   var l = {c: 7};</span>
+<span class="lineNum">     281 </span><span class="lineNoCov">          0 :   assertEquals(7, l.c);</span>
+<span class="lineNum">     282 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     283 </span><span class="lineNoCov">          0 :   delete Object.prototype.c;</span>
+<a name="284"><span class="lineNum">     284 </span><span class="lineNoCov">          0 : })();</span></a>
+<span class="lineNum">     285 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     286 </span><span class="lineCov">          1 : (function TestProxyWithDefinitionInObjectLiteral() {</span>
 <span class="lineNum">     287 </span><span class="lineCov">          1 :   // Trap for set should not be used if the definition</span>
 <a name="288"><span class="lineNum">     288 </span><span class="lineCov">          1 :   // happens in the object literal.</span></a>
 <span class="lineNum">     289 </span><span class="lineCov">          1 :   var handler = {</span>
 <span class="lineNum">     290 </span><span class="lineCov">          1 :     set: function(target, name, value) {</span>
 <span class="lineNum">     291 </span><span class="lineCov">          1 :     }</span>
-<span class="lineNum">     292 </span><span class="lineCov">          1 :   };</span>
-<span class="lineNum">     293 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     294 </span><span class="lineCov">          1 :   const prop = 'a';</span>
-<span class="lineNum">     295 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     296 </span><span class="lineCov">          1 :   var p = new Proxy({}, handler);</span>
-<span class="lineNum">     297 </span><span class="lineCov">          1 :   p[prop] = 'my value';</span>
-<span class="lineNum">     298 </span><span class="lineCov">          1 :   assertEquals(undefined, p[prop]);</span>
-<span class="lineNum">     299 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     300 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     301 </span><span class="lineCov">          1 :   var l = new Proxy({[prop]: 'my value'}, handler);</span>
-<span class="lineNum">     302 </span><span class="lineCov">          1 :   assertEquals('my value', l[prop]);</span>
-<span class="lineNum">     303 </span><span class="lineCov">          1 : })();</span>
+<span class="lineNum">     292 </span>            :   };
+<span class="lineNum">     293 </span>            : 
+<span class="lineNum">     294 </span>            :   const prop = 'a';
+<span class="lineNum">     295 </span>            : 
+<span class="lineNum">     296 </span>            :   var p = new Proxy({}, handler);
+<span class="lineNum">     297 </span>            :   p[prop] = 'my value';
+<span class="lineNum">     298 </span>            :   assertEquals(undefined, p[prop]);
+<span class="lineNum">     299 </span>            : 
+<span class="lineNum">     300 </span>            : 
+<span class="lineNum">     301 </span>            :   var l = new Proxy({[prop]: 'my value'}, handler);
+<span class="lineNum">     302 </span>            :   assertEquals('my value', l[prop]);
+<span class="lineNum">     303 </span>            : })();
 </pre>
       </td>
     </tr>

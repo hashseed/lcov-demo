@@ -31,18 +31,18 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">700</td>
-            <td class="headerCovTableEntry">719</td>
-            <td class="headerCovTableEntryHi">97.4 %</td>
+            <td class="headerCovTableEntry">303</td>
+            <td class="headerCovTableEntry">714</td>
+            <td class="headerCovTableEntryLo">42.4 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">73</td>
-            <td class="headerCovTableEntry">77</td>
-            <td class="headerCovTableEntryHi">94.8 %</td>
+            <td class="headerCovTableEntry">35</td>
+            <td class="headerCovTableEntry">39</td>
+            <td class="headerCovTableEntryMed">89.7 %</td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
         </table>
@@ -67,12 +67,12 @@
 <span class="lineNum">       5 </span><span class="lineCov">          1 : var num = 5;</span>
 <span class="lineNum">       6 </span><span class="lineCov">          1 : var str = &quot;str&quot;;</span>
 <span class="lineNum">       7 </span><span class="lineCov">          2 : function fn() { return &quot;result&quot;; }</span>
-<span class="lineNum">       8 </span><span class="lineCov">          1 : var obj = {</span>
-<span class="lineNum">       9 </span><span class="lineCov">          1 :   num: num,</span>
-<span class="lineNum">      10 </span><span class="lineCov">          1 :   str: str,</span>
+<span class="lineNum">       8 </span><span class="lineNoCov">          0 : var obj = {</span>
+<span class="lineNum">       9 </span><span class="lineNoCov">          0 :   num: num,</span>
+<span class="lineNum">      10 </span><span class="lineNoCov">          0 :   str: str,</span>
 <span class="lineNum">      11 </span><span class="lineCov">          1 :   fn: function() { return &quot;result&quot;; }</span>
-<a name="12"><span class="lineNum">      12 </span><span class="lineCov">          1 : };</span></a>
-<span class="lineNum">      13 </span><span class="lineCov">          1 : </span>
+<a name="12"><span class="lineNum">      12 </span><span class="lineNoCov">          0 : };</span></a>
+<span class="lineNum">      13 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      14 </span><span class="lineCov">          1 : (function testBasicExpressions() {</span>
 <span class="lineNum">      15 </span><span class="lineCov">          1 :   assertEquals(&quot;foo 5 bar&quot;, `foo ${num} bar`);</span>
 <span class="lineNum">      16 </span><span class="lineCov">          1 :   assertEquals(&quot;foo str bar&quot;, `foo ${str} bar`);</span>
@@ -82,11 +82,11 @@
 <span class="lineNum">      20 </span><span class="lineCov">          1 :   assertEquals(&quot;foo str bar&quot;, `foo ${obj.str} bar`);</span>
 <span class="lineNum">      21 </span><span class="lineCov">          1 :   assertEquals(&quot;foo result bar&quot;, `foo ${obj.fn()} bar`);</span>
 <a name="22"><span class="lineNum">      22 </span><span class="lineCov">          1 : })();</span></a>
-<span class="lineNum">      23 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      23 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      24 </span><span class="lineCov">          1 : (function testExpressionsContainingTemplates() {</span>
 <span class="lineNum">      25 </span><span class="lineCov">          1 :   assertEquals(&quot;foo bar 5&quot;, `foo ${`bar ${num}`}`);</span>
 <a name="26"><span class="lineNum">      26 </span><span class="lineCov">          1 : })();</span></a>
-<span class="lineNum">      27 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      27 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      28 </span><span class="lineCov">          1 : (function testMultilineTemplates() {</span>
 <span class="lineNum">      29 </span><span class="lineCov">          1 :   assertEquals(&quot;foo\n    bar\n    baz&quot;, `foo</span>
 <span class="lineNum">      30 </span><span class="lineCov">          1 :     bar</span>
@@ -94,42 +94,42 @@
 <span class="lineNum">      32 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      33 </span><span class="lineCov">          1 :   assertEquals(&quot;foo\n  bar\n  baz&quot;, eval(&quot;`foo\r\n  bar\r  baz`&quot;));</span>
 <a name="34"><span class="lineNum">      34 </span><span class="lineCov">          1 : })();</span></a>
-<span class="lineNum">      35 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      35 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      36 </span><span class="lineCov">          1 : (function testLineContinuation() {</span>
 <span class="lineNum">      37 </span><span class="lineCov">          1 :   assertEquals(&quot;\n&quot;, `\</span>
 <span class="lineNum">      38 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      39 </span><span class="lineCov">          1 : `);</span>
 <a name="40"><span class="lineNum">      40 </span><span class="lineCov">          1 : })();</span></a>
-<span class="lineNum">      41 </span><span class="lineCov">          1 : </span>
-<a name="42"><span class="lineNum">      42 </span><span class="lineCov">          1 : (function testTaggedTemplates() {</span></a>
+<span class="lineNum">      41 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      42 </span><span class="lineCov">          1 : (function testTaggedTemplates() {</span>
 <span class="lineNum">      43 </span><span class="lineCov">          1 :   var calls = 0;</span>
 <span class="lineNum">      44 </span><span class="lineCov">          1 :   (function(s) {</span>
 <span class="lineNum">      45 </span><span class="lineCov">          1 :     calls++;</span>
 <span class="lineNum">      46 </span><span class="lineCov">          1 :   })`test`;</span>
-<span class="lineNum">      47 </span><span class="lineCov">          1 :   assertEquals(1, calls);</span>
-<span class="lineNum">      48 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      49 </span><span class="lineCov">          1 :   calls = 0;</span>
-<a name="50"><span class="lineNum">      50 </span><span class="lineCov">          1 :   // assert tag is invoked in right context</span></a>
-<span class="lineNum">      51 </span><span class="lineCov">          1 :   obj = {</span>
+<span class="lineNum">      47 </span><span class="lineNoCov">          0 :   assertEquals(1, calls);</span>
+<span class="lineNum">      48 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      49 </span><span class="lineNoCov">          0 :   calls = 0;</span>
+<a name="50"><span class="lineNum">      50 </span><span class="lineNoCov">          0 :   // assert tag is invoked in right context</span></a>
+<span class="lineNum">      51 </span><span class="lineNoCov">          0 :   obj = {</span>
 <span class="lineNum">      52 </span><span class="lineCov">          1 :     fn: function() {</span>
 <span class="lineNum">      53 </span><span class="lineCov">          1 :       calls++;</span>
 <span class="lineNum">      54 </span><span class="lineCov">          1 :       assertEquals(obj, this);</span>
 <span class="lineNum">      55 </span><span class="lineCov">          1 :     }</span>
-<span class="lineNum">      56 </span><span class="lineCov">          1 :   };</span>
-<span class="lineNum">      57 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      58 </span><span class="lineCov">          1 :   obj.fn`test`;</span>
-<span class="lineNum">      59 </span><span class="lineCov">          1 :   assertEquals(1, calls);</span>
-<span class="lineNum">      60 </span><span class="lineCov">          1 : </span>
-<a name="61"><span class="lineNum">      61 </span><span class="lineCov">          1 :   calls = 0;</span></a>
-<span class="lineNum">      62 </span><span class="lineCov">          1 :   // Simple templates only have a callSiteObj</span>
+<span class="lineNum">      56 </span><span class="lineNoCov">          0 :   };</span>
+<span class="lineNum">      57 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      58 </span><span class="lineNoCov">          0 :   obj.fn`test`;</span>
+<span class="lineNum">      59 </span><span class="lineNoCov">          0 :   assertEquals(1, calls);</span>
+<span class="lineNum">      60 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      61 </span><span class="lineNoCov">          0 :   calls = 0;</span>
+<span class="lineNum">      62 </span><span class="lineNoCov">          0 :   // Simple templates only have a callSiteObj</span>
 <span class="lineNum">      63 </span><span class="lineCov">          1 :   (function(s) {</span>
 <span class="lineNum">      64 </span><span class="lineCov">          1 :     calls++;</span>
 <span class="lineNum">      65 </span><span class="lineCov">          1 :     assertEquals(1, arguments.length);</span>
 <span class="lineNum">      66 </span><span class="lineCov">          1 :   })`test`;</span>
-<span class="lineNum">      67 </span><span class="lineCov">          1 :   assertEquals(1, calls);</span>
-<span class="lineNum">      68 </span><span class="lineCov">          1 : </span>
-<a name="69"><span class="lineNum">      69 </span><span class="lineCov">          1 :   // Templates containing expressions have the values of evaluated expressions</span></a>
-<span class="lineNum">      70 </span><span class="lineCov">          1 :   calls = 0;</span>
+<span class="lineNum">      67 </span><span class="lineNoCov">          0 :   assertEquals(1, calls);</span>
+<span class="lineNum">      68 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      69 </span><span class="lineNoCov">          0 :   // Templates containing expressions have the values of evaluated expressions</span>
+<span class="lineNum">      70 </span><span class="lineNoCov">          0 :   calls = 0;</span>
 <span class="lineNum">      71 </span><span class="lineCov">          1 :   (function(site, n, s, o, f, r) {</span>
 <span class="lineNum">      72 </span><span class="lineCov">          1 :     calls++;</span>
 <span class="lineNum">      73 </span><span class="lineCov">          1 :     assertEquals(6, arguments.length);</span>
@@ -139,11 +139,11 @@
 <span class="lineNum">      77 </span><span class="lineCov">          1 :     assertEquals(&quot;function&quot;, typeof f);</span>
 <span class="lineNum">      78 </span><span class="lineCov">          1 :     assertEquals(&quot;result&quot;, r);</span>
 <span class="lineNum">      79 </span><span class="lineCov">          1 :   })`${num}${str}${obj}${fn}${fn()}`;</span>
-<span class="lineNum">      80 </span><span class="lineCov">          1 :   assertEquals(1, calls);</span>
-<span class="lineNum">      81 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      82 </span><span class="lineCov">          1 :   // The TV and TRV of NoSubstitutionTemplate :: `` is the empty code unit</span>
-<a name="83"><span class="lineNum">      83 </span><span class="lineCov">          1 :   // sequence.</span></a>
-<span class="lineNum">      84 </span><span class="lineCov">          1 :   calls = 0;</span>
+<span class="lineNum">      80 </span><span class="lineNoCov">          0 :   assertEquals(1, calls);</span>
+<span class="lineNum">      81 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      82 </span><span class="lineNoCov">          0 :   // The TV and TRV of NoSubstitutionTemplate :: `` is the empty code unit</span>
+<span class="lineNum">      83 </span><span class="lineNoCov">          0 :   // sequence.</span>
+<span class="lineNum">      84 </span><span class="lineNoCov">          0 :   calls = 0;</span>
 <span class="lineNum">      85 </span><span class="lineCov">          1 :   (function(s) {</span>
 <span class="lineNum">      86 </span><span class="lineCov">          1 :     calls++;</span>
 <span class="lineNum">      87 </span><span class="lineCov">          1 :     assertEquals(1, s.length);</span>
@@ -153,10 +153,10 @@
 <span class="lineNum">      91 </span><span class="lineCov">          1 :     // Failure: expected &lt;&quot;&quot;&gt; found &lt;&quot;foo  barfoo  barfoo foo foo foo testtest&quot;&gt;</span>
 <span class="lineNum">      92 </span><span class="lineCov">          1 :     assertEquals(&quot;&quot;, s.raw[0]);</span>
 <span class="lineNum">      93 </span><span class="lineCov">          1 :   })``;</span>
-<span class="lineNum">      94 </span><span class="lineCov">          1 :   assertEquals(1, calls);</span>
-<span class="lineNum">      95 </span><span class="lineCov">          1 : </span>
-<a name="96"><span class="lineNum">      96 </span><span class="lineCov">          1 :   // The TV and TRV of TemplateHead :: `${ is the empty code unit sequence.</span></a>
-<span class="lineNum">      97 </span><span class="lineCov">          1 :   calls = 0;</span>
+<span class="lineNum">      94 </span><span class="lineNoCov">          0 :   assertEquals(1, calls);</span>
+<span class="lineNum">      95 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      96 </span><span class="lineNoCov">          0 :   // The TV and TRV of TemplateHead :: `${ is the empty code unit sequence.</span>
+<span class="lineNum">      97 </span><span class="lineNoCov">          0 :   calls = 0;</span>
 <span class="lineNum">      98 </span><span class="lineCov">          1 :   (function(s) {</span>
 <span class="lineNum">      99 </span><span class="lineCov">          1 :     calls++;</span>
 <span class="lineNum">     100 </span><span class="lineCov">          1 :     assertEquals(2, s.length);</span>
@@ -164,10 +164,10 @@
 <span class="lineNum">     102 </span><span class="lineCov">          1 :     assertEquals(&quot;&quot;, s[0]);</span>
 <span class="lineNum">     103 </span><span class="lineCov">          1 :     assertEquals(&quot;&quot;, s.raw[0]);</span>
 <span class="lineNum">     104 </span><span class="lineCov">          1 :   })`${1}`;</span>
-<span class="lineNum">     105 </span><span class="lineCov">          1 :   assertEquals(1, calls);</span>
-<span class="lineNum">     106 </span><span class="lineCov">          1 : </span>
-<a name="107"><span class="lineNum">     107 </span><span class="lineCov">          1 :   // The TV and TRV of TemplateMiddle :: }${ is the empty code unit sequence.</span></a>
-<span class="lineNum">     108 </span><span class="lineCov">          1 :   calls = 0;</span>
+<span class="lineNum">     105 </span><span class="lineNoCov">          0 :   assertEquals(1, calls);</span>
+<span class="lineNum">     106 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     107 </span><span class="lineNoCov">          0 :   // The TV and TRV of TemplateMiddle :: }${ is the empty code unit sequence.</span>
+<span class="lineNum">     108 </span><span class="lineNoCov">          0 :   calls = 0;</span>
 <span class="lineNum">     109 </span><span class="lineCov">          1 :   (function(s) {</span>
 <span class="lineNum">     110 </span><span class="lineCov">          1 :     calls++;</span>
 <span class="lineNum">     111 </span><span class="lineCov">          1 :     assertEquals(3, s.length);</span>
@@ -175,10 +175,10 @@
 <span class="lineNum">     113 </span><span class="lineCov">          1 :     assertEquals(&quot;&quot;, s[1]);</span>
 <span class="lineNum">     114 </span><span class="lineCov">          1 :     assertEquals(&quot;&quot;, s.raw[1]);</span>
 <span class="lineNum">     115 </span><span class="lineCov">          1 :   })`${1}${2}`;</span>
-<span class="lineNum">     116 </span><span class="lineCov">          1 :   assertEquals(1, calls);</span>
-<span class="lineNum">     117 </span><span class="lineCov">          1 : </span>
-<a name="118"><span class="lineNum">     118 </span><span class="lineCov">          1 :   // The TV and TRV of TemplateTail :: }` is the empty code unit sequence.</span></a>
-<span class="lineNum">     119 </span><span class="lineCov">          1 :   calls = 0;</span>
+<span class="lineNum">     116 </span><span class="lineNoCov">          0 :   assertEquals(1, calls);</span>
+<span class="lineNum">     117 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     118 </span><span class="lineNoCov">          0 :   // The TV and TRV of TemplateTail :: }` is the empty code unit sequence.</span>
+<span class="lineNum">     119 </span><span class="lineNoCov">          0 :   calls = 0;</span>
 <span class="lineNum">     120 </span><span class="lineCov">          1 :   (function(s) {</span>
 <span class="lineNum">     121 </span><span class="lineCov">          1 :     calls++;</span>
 <span class="lineNum">     122 </span><span class="lineCov">          1 :     assertEquals(2, s.length);</span>
@@ -186,163 +186,163 @@
 <span class="lineNum">     124 </span><span class="lineCov">          1 :     assertEquals(&quot;&quot;, s[1]);</span>
 <span class="lineNum">     125 </span><span class="lineCov">          1 :     assertEquals(&quot;&quot;, s.raw[1]);</span>
 <span class="lineNum">     126 </span><span class="lineCov">          1 :   })`${1}`;</span>
-<span class="lineNum">     127 </span><span class="lineCov">          1 :   assertEquals(1, calls);</span>
-<span class="lineNum">     128 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     129 </span><span class="lineCov">          1 :   // The TV of NoSubstitutionTemplate :: ` TemplateCharacters ` is the TV of</span>
-<a name="130"><span class="lineNum">     130 </span><span class="lineCov">          1 :   // TemplateCharacters.</span></a>
-<span class="lineNum">     131 </span><span class="lineCov">          1 :   calls = 0;</span>
+<span class="lineNum">     127 </span><span class="lineNoCov">          0 :   assertEquals(1, calls);</span>
+<span class="lineNum">     128 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     129 </span><span class="lineNoCov">          0 :   // The TV of NoSubstitutionTemplate :: ` TemplateCharacters ` is the TV of</span>
+<span class="lineNum">     130 </span><span class="lineNoCov">          0 :   // TemplateCharacters.</span>
+<span class="lineNum">     131 </span><span class="lineNoCov">          0 :   calls = 0;</span>
 <span class="lineNum">     132 </span><span class="lineCov">          1 :   (function(s) { calls++; assertEquals(&quot;foo&quot;, s[0]); })`foo`;</span>
-<span class="lineNum">     133 </span><span class="lineCov">          1 :   assertEquals(1, calls);</span>
-<span class="lineNum">     134 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     135 </span><span class="lineCov">          1 :   // The TV of TemplateHead :: ` TemplateCharacters ${ is the TV of</span>
-<a name="136"><span class="lineNum">     136 </span><span class="lineCov">          1 :   // TemplateCharacters.</span></a>
-<span class="lineNum">     137 </span><span class="lineCov">          1 :   calls = 0;</span>
+<span class="lineNum">     133 </span><span class="lineNoCov">          0 :   assertEquals(1, calls);</span>
+<span class="lineNum">     134 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     135 </span><span class="lineNoCov">          0 :   // The TV of TemplateHead :: ` TemplateCharacters ${ is the TV of</span>
+<span class="lineNum">     136 </span><span class="lineNoCov">          0 :   // TemplateCharacters.</span>
+<span class="lineNum">     137 </span><span class="lineNoCov">          0 :   calls = 0;</span>
 <span class="lineNum">     138 </span><span class="lineCov">          1 :   (function(s) { calls++; assertEquals(&quot;foo&quot;, s[0]); })`foo${1}`;</span>
-<span class="lineNum">     139 </span><span class="lineCov">          1 :   assertEquals(1, calls);</span>
-<span class="lineNum">     140 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     141 </span><span class="lineCov">          1 :   // The TV of TemplateMiddle :: } TemplateCharacters ${ is the TV of</span>
-<a name="142"><span class="lineNum">     142 </span><span class="lineCov">          1 :   // TemplateCharacters.</span></a>
-<span class="lineNum">     143 </span><span class="lineCov">          1 :   calls = 0;</span>
+<span class="lineNum">     139 </span><span class="lineNoCov">          0 :   assertEquals(1, calls);</span>
+<span class="lineNum">     140 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     141 </span><span class="lineNoCov">          0 :   // The TV of TemplateMiddle :: } TemplateCharacters ${ is the TV of</span>
+<span class="lineNum">     142 </span><span class="lineNoCov">          0 :   // TemplateCharacters.</span>
+<span class="lineNum">     143 </span><span class="lineNoCov">          0 :   calls = 0;</span>
 <span class="lineNum">     144 </span><span class="lineCov">          1 :   (function(s) { calls++; assertEquals(&quot;foo&quot;, s[1]); })`${1}foo${2}`;</span>
-<span class="lineNum">     145 </span><span class="lineCov">          1 :   assertEquals(1, calls);</span>
-<span class="lineNum">     146 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     147 </span><span class="lineCov">          1 :   // The TV of TemplateTail :: } TemplateCharacters ` is the TV of</span>
-<a name="148"><span class="lineNum">     148 </span><span class="lineCov">          1 :   // TemplateCharacters.</span></a>
-<span class="lineNum">     149 </span><span class="lineCov">          1 :   calls = 0;</span>
+<span class="lineNum">     145 </span><span class="lineNoCov">          0 :   assertEquals(1, calls);</span>
+<span class="lineNum">     146 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     147 </span><span class="lineNoCov">          0 :   // The TV of TemplateTail :: } TemplateCharacters ` is the TV of</span>
+<span class="lineNum">     148 </span><span class="lineNoCov">          0 :   // TemplateCharacters.</span>
+<span class="lineNum">     149 </span><span class="lineNoCov">          0 :   calls = 0;</span>
 <span class="lineNum">     150 </span><span class="lineCov">          1 :   (function(s) { calls++; assertEquals(&quot;foo&quot;, s[1]); })`${1}foo`;</span>
-<span class="lineNum">     151 </span><span class="lineCov">          1 :   assertEquals(1, calls);</span>
-<span class="lineNum">     152 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     153 </span><span class="lineCov">          1 :   // The TV of TemplateCharacters :: TemplateCharacter is the TV of</span>
-<a name="154"><span class="lineNum">     154 </span><span class="lineCov">          1 :   // TemplateCharacter.</span></a>
-<span class="lineNum">     155 </span><span class="lineCov">          1 :   calls = 0;</span>
+<span class="lineNum">     151 </span><span class="lineNoCov">          0 :   assertEquals(1, calls);</span>
+<span class="lineNum">     152 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     153 </span><span class="lineNoCov">          0 :   // The TV of TemplateCharacters :: TemplateCharacter is the TV of</span>
+<span class="lineNum">     154 </span><span class="lineNoCov">          0 :   // TemplateCharacter.</span>
+<span class="lineNum">     155 </span><span class="lineNoCov">          0 :   calls = 0;</span>
 <span class="lineNum">     156 </span><span class="lineCov">          1 :   (function(s) { calls++; assertEquals(&quot;f&quot;, s[0]); })`f`;</span>
-<span class="lineNum">     157 </span><span class="lineCov">          1 :   assertEquals(1, calls);</span>
-<span class="lineNum">     158 </span><span class="lineCov">          1 : </span>
-<a name="159"><span class="lineNum">     159 </span><span class="lineCov">          1 :   // The TV of TemplateCharacter :: $ is the code unit value 0x0024.</span></a>
-<span class="lineNum">     160 </span><span class="lineCov">          1 :   calls = 0;</span>
+<span class="lineNum">     157 </span><span class="lineNoCov">          0 :   assertEquals(1, calls);</span>
+<span class="lineNum">     158 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     159 </span><span class="lineNoCov">          0 :   // The TV of TemplateCharacter :: $ is the code unit value 0x0024.</span>
+<span class="lineNum">     160 </span><span class="lineNoCov">          0 :   calls = 0;</span>
 <span class="lineNum">     161 </span><span class="lineCov">          1 :   (function(s) { calls++; assertEquals(&quot;$&quot;, s[0]); })`$`;</span>
-<span class="lineNum">     162 </span><span class="lineCov">          1 :   assertEquals(1, calls);</span>
-<span class="lineNum">     163 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     164 </span><span class="lineCov">          1 :   // The TV of TemplateCharacter :: \ EscapeSequence is the CV of</span>
-<a name="165"><span class="lineNum">     165 </span><span class="lineCov">          1 :   // EscapeSequence.</span></a>
-<a name="166"><span class="lineNum">     166 </span><span class="lineCov">          1 :   calls = 0;</span></a>
-<a name="167"><span class="lineNum">     167 </span><span class="lineCov">          1 :   (function(s) { calls++; assertEquals(&quot;안녕&quot;, s[0]); })`\uc548\uB155`;</span></a>
+<span class="lineNum">     162 </span><span class="lineNoCov">          0 :   assertEquals(1, calls);</span>
+<span class="lineNum">     163 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     164 </span><span class="lineNoCov">          0 :   // The TV of TemplateCharacter :: \ EscapeSequence is the CV of</span>
+<span class="lineNum">     165 </span><span class="lineNoCov">          0 :   // EscapeSequence.</span>
+<span class="lineNum">     166 </span><span class="lineNoCov">          0 :   calls = 0;</span>
+<span class="lineNum">     167 </span><span class="lineCov">          1 :   (function(s) { calls++; assertEquals(&quot;안녕&quot;, s[0]); })`\uc548\uB155`;</span>
 <span class="lineNum">     168 </span><span class="lineCov">          1 :   (function(s) { calls++; assertEquals(&quot;\xff&quot;, s[0]); })`\xff`;</span>
 <span class="lineNum">     169 </span><span class="lineCov">          1 :   (function(s) { calls++; assertEquals(&quot;\n&quot;, s[0]); })`\n`;</span>
-<span class="lineNum">     170 </span><span class="lineCov">          1 :   assertEquals(3, calls);</span>
-<span class="lineNum">     171 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     172 </span><span class="lineCov">          1 :   // The TV of TemplateCharacter :: LineContinuation is the TV of</span>
-<span class="lineNum">     173 </span><span class="lineCov">          1 :   // LineContinuation. The TV of LineContinuation :: \ LineTerminatorSequence is</span>
-<a name="174"><span class="lineNum">     174 </span><span class="lineCov">          1 :   // the empty code unit sequence.</span></a>
-<span class="lineNum">     175 </span><span class="lineCov">          1 :   calls = 0;</span>
+<span class="lineNum">     170 </span><span class="lineNoCov">          0 :   assertEquals(3, calls);</span>
+<span class="lineNum">     171 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     172 </span><span class="lineNoCov">          0 :   // The TV of TemplateCharacter :: LineContinuation is the TV of</span>
+<span class="lineNum">     173 </span><span class="lineNoCov">          0 :   // LineContinuation. The TV of LineContinuation :: \ LineTerminatorSequence is</span>
+<span class="lineNum">     174 </span><span class="lineNoCov">          0 :   // the empty code unit sequence.</span>
+<span class="lineNum">     175 </span><span class="lineNoCov">          0 :   calls = 0;</span>
 <span class="lineNum">     176 </span><span class="lineCov">          1 :   (function(s) { calls++; assertEquals(&quot;&quot;, s[0]); })`\</span>
-<span class="lineNum">     177 </span><span class="lineCov">          1 : `;</span>
-<span class="lineNum">     178 </span><span class="lineCov">          1 :   assertEquals(1, calls);</span>
-<span class="lineNum">     179 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     180 </span><span class="lineCov">          1 :   // The TRV of NoSubstitutionTemplate :: ` TemplateCharacters ` is the TRV of</span>
-<a name="181"><span class="lineNum">     181 </span><span class="lineCov">          1 :   // TemplateCharacters.</span></a>
-<span class="lineNum">     182 </span><span class="lineCov">          1 :   calls = 0;</span>
+<span class="lineNum">     177 </span><span class="lineNoCov">          0 : `;</span>
+<span class="lineNum">     178 </span><span class="lineNoCov">          0 :   assertEquals(1, calls);</span>
+<span class="lineNum">     179 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     180 </span><span class="lineNoCov">          0 :   // The TRV of NoSubstitutionTemplate :: ` TemplateCharacters ` is the TRV of</span>
+<span class="lineNum">     181 </span><span class="lineNoCov">          0 :   // TemplateCharacters.</span>
+<span class="lineNum">     182 </span><span class="lineNoCov">          0 :   calls = 0;</span>
 <span class="lineNum">     183 </span><span class="lineCov">          1 :   (function(s) { calls++; assertEquals(&quot;test&quot;, s.raw[0]); })`test`;</span>
-<span class="lineNum">     184 </span><span class="lineCov">          1 :   assertEquals(1, calls);</span>
-<span class="lineNum">     185 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     186 </span><span class="lineCov">          1 :   // The TRV of TemplateHead :: ` TemplateCharacters ${ is the TRV of</span>
-<a name="187"><span class="lineNum">     187 </span><span class="lineCov">          1 :   // TemplateCharacters.</span></a>
-<span class="lineNum">     188 </span><span class="lineCov">          1 :   calls = 0;</span>
+<span class="lineNum">     184 </span><span class="lineNoCov">          0 :   assertEquals(1, calls);</span>
+<span class="lineNum">     185 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     186 </span><span class="lineNoCov">          0 :   // The TRV of TemplateHead :: ` TemplateCharacters ${ is the TRV of</span>
+<span class="lineNum">     187 </span><span class="lineNoCov">          0 :   // TemplateCharacters.</span>
+<span class="lineNum">     188 </span><span class="lineNoCov">          0 :   calls = 0;</span>
 <span class="lineNum">     189 </span><span class="lineCov">          1 :   (function(s) { calls++; assertEquals(&quot;test&quot;, s.raw[0]); })`test${1}`;</span>
-<span class="lineNum">     190 </span><span class="lineCov">          1 :   assertEquals(1, calls);</span>
-<span class="lineNum">     191 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     192 </span><span class="lineCov">          1 :   // The TRV of TemplateMiddle :: } TemplateCharacters ${ is the TRV of</span>
-<a name="193"><span class="lineNum">     193 </span><span class="lineCov">          1 :   // TemplateCharacters.</span></a>
-<span class="lineNum">     194 </span><span class="lineCov">          1 :   calls = 0;</span>
+<span class="lineNum">     190 </span><span class="lineNoCov">          0 :   assertEquals(1, calls);</span>
+<span class="lineNum">     191 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     192 </span><span class="lineNoCov">          0 :   // The TRV of TemplateMiddle :: } TemplateCharacters ${ is the TRV of</span>
+<span class="lineNum">     193 </span><span class="lineNoCov">          0 :   // TemplateCharacters.</span>
+<span class="lineNum">     194 </span><span class="lineNoCov">          0 :   calls = 0;</span>
 <span class="lineNum">     195 </span><span class="lineCov">          1 :   (function(s) { calls++; assertEquals(&quot;test&quot;, s.raw[1]); })`${1}test${2}`;</span>
-<span class="lineNum">     196 </span><span class="lineCov">          1 :   assertEquals(1, calls);</span>
-<span class="lineNum">     197 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     198 </span><span class="lineCov">          1 :   // The TRV of TemplateTail :: } TemplateCharacters ` is the TRV of</span>
-<a name="199"><span class="lineNum">     199 </span><span class="lineCov">          1 :   // TemplateCharacters.</span></a>
-<span class="lineNum">     200 </span><span class="lineCov">          1 :   calls = 0;</span>
+<span class="lineNum">     196 </span><span class="lineNoCov">          0 :   assertEquals(1, calls);</span>
+<span class="lineNum">     197 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     198 </span><span class="lineNoCov">          0 :   // The TRV of TemplateTail :: } TemplateCharacters ` is the TRV of</span>
+<span class="lineNum">     199 </span><span class="lineNoCov">          0 :   // TemplateCharacters.</span>
+<span class="lineNum">     200 </span><span class="lineNoCov">          0 :   calls = 0;</span>
 <span class="lineNum">     201 </span><span class="lineCov">          1 :   (function(s) { calls++; assertEquals(&quot;test&quot;, s.raw[1]); })`${1}test`;</span>
-<span class="lineNum">     202 </span><span class="lineCov">          1 :   assertEquals(1, calls);</span>
-<span class="lineNum">     203 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     204 </span><span class="lineCov">          1 :   // The TRV of TemplateCharacters :: TemplateCharacter is the TRV of</span>
-<a name="205"><span class="lineNum">     205 </span><span class="lineCov">          1 :   // TemplateCharacter.</span></a>
-<span class="lineNum">     206 </span><span class="lineCov">          1 :   calls = 0;</span>
+<span class="lineNum">     202 </span><span class="lineNoCov">          0 :   assertEquals(1, calls);</span>
+<span class="lineNum">     203 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     204 </span><span class="lineNoCov">          0 :   // The TRV of TemplateCharacters :: TemplateCharacter is the TRV of</span>
+<span class="lineNum">     205 </span><span class="lineNoCov">          0 :   // TemplateCharacter.</span>
+<span class="lineNum">     206 </span><span class="lineNoCov">          0 :   calls = 0;</span>
 <span class="lineNum">     207 </span><span class="lineCov">          1 :   (function(s) { calls++; assertEquals(&quot;f&quot;, s.raw[0]); })`f`;</span>
-<span class="lineNum">     208 </span><span class="lineCov">          1 :   assertEquals(1, calls);</span>
-<span class="lineNum">     209 </span><span class="lineCov">          1 : </span>
-<a name="210"><span class="lineNum">     210 </span><span class="lineCov">          1 :   // The TRV of TemplateCharacter :: $ is the code unit value 0x0024.</span></a>
-<span class="lineNum">     211 </span><span class="lineCov">          1 :   calls = 0;</span>
+<span class="lineNum">     208 </span><span class="lineNoCov">          0 :   assertEquals(1, calls);</span>
+<span class="lineNum">     209 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     210 </span><span class="lineNoCov">          0 :   // The TRV of TemplateCharacter :: $ is the code unit value 0x0024.</span>
+<span class="lineNum">     211 </span><span class="lineNoCov">          0 :   calls = 0;</span>
 <span class="lineNum">     212 </span><span class="lineCov">          1 :   (function(s) { calls++; assertEquals(&quot;\u0024&quot;, s.raw[0]); })`$`;</span>
-<span class="lineNum">     213 </span><span class="lineCov">          1 :   assertEquals(1, calls);</span>
-<span class="lineNum">     214 </span><span class="lineCov">          1 : </span>
-<a name="215"><span class="lineNum">     215 </span><span class="lineCov">          1 :   // The TRV of EscapeSequence :: 0 is the code unit value 0x0030.</span></a>
-<span class="lineNum">     216 </span><span class="lineCov">          1 :   calls = 0;</span>
+<span class="lineNum">     213 </span><span class="lineNoCov">          0 :   assertEquals(1, calls);</span>
+<span class="lineNum">     214 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     215 </span><span class="lineNoCov">          0 :   // The TRV of EscapeSequence :: 0 is the code unit value 0x0030.</span>
+<span class="lineNum">     216 </span><span class="lineNoCov">          0 :   calls = 0;</span>
 <span class="lineNum">     217 </span><span class="lineCov">          1 :   (function(s) { calls++; assertEquals(&quot;\u005C\u0030&quot;, s.raw[0]); })`\0`;</span>
-<span class="lineNum">     218 </span><span class="lineCov">          1 :   assertEquals(1, calls);</span>
-<span class="lineNum">     219 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     220 </span><span class="lineCov">          1 :   // The TRV of TemplateCharacter :: \ EscapeSequence is the sequence consisting</span>
-<span class="lineNum">     221 </span><span class="lineCov">          1 :   // of the code unit value 0x005C followed by the code units of TRV of</span>
-<span class="lineNum">     222 </span><span class="lineCov">          1 :   // EscapeSequence.</span>
-<span class="lineNum">     223 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     224 </span><span class="lineCov">          1 :   //   The TRV of EscapeSequence :: HexEscapeSequence is the TRV of the</span>
-<a name="225"><span class="lineNum">     225 </span><span class="lineCov">          1 :   //   HexEscapeSequence.</span></a>
-<span class="lineNum">     226 </span><span class="lineCov">          1 :   calls = 0;</span>
+<span class="lineNum">     218 </span><span class="lineNoCov">          0 :   assertEquals(1, calls);</span>
+<span class="lineNum">     219 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     220 </span><span class="lineNoCov">          0 :   // The TRV of TemplateCharacter :: \ EscapeSequence is the sequence consisting</span>
+<span class="lineNum">     221 </span><span class="lineNoCov">          0 :   // of the code unit value 0x005C followed by the code units of TRV of</span>
+<span class="lineNum">     222 </span><span class="lineNoCov">          0 :   // EscapeSequence.</span>
+<span class="lineNum">     223 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     224 </span><span class="lineNoCov">          0 :   //   The TRV of EscapeSequence :: HexEscapeSequence is the TRV of the</span>
+<span class="lineNum">     225 </span><span class="lineNoCov">          0 :   //   HexEscapeSequence.</span>
+<span class="lineNum">     226 </span><span class="lineNoCov">          0 :   calls = 0;</span>
 <span class="lineNum">     227 </span><span class="lineCov">          1 :   (function(s) { calls++; assertEquals(&quot;\u005Cxff&quot;, s.raw[0]); })`\xff`;</span>
-<span class="lineNum">     228 </span><span class="lineCov">          1 :   assertEquals(1, calls);</span>
-<span class="lineNum">     229 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     230 </span><span class="lineCov">          1 :   //   The TRV of EscapeSequence :: UnicodeEscapeSequence is the TRV of the</span>
-<a name="231"><span class="lineNum">     231 </span><span class="lineCov">          1 :   //   UnicodeEscapeSequence.</span></a>
-<span class="lineNum">     232 </span><span class="lineCov">          1 :   calls = 0;</span>
+<span class="lineNum">     228 </span><span class="lineNoCov">          0 :   assertEquals(1, calls);</span>
+<span class="lineNum">     229 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     230 </span><span class="lineNoCov">          0 :   //   The TRV of EscapeSequence :: UnicodeEscapeSequence is the TRV of the</span>
+<span class="lineNum">     231 </span><span class="lineNoCov">          0 :   //   UnicodeEscapeSequence.</span>
+<span class="lineNum">     232 </span><span class="lineNoCov">          0 :   calls = 0;</span>
 <span class="lineNum">     233 </span><span class="lineCov">          1 :   (function(s) { calls++; assertEquals(&quot;\u005Cuc548&quot;, s.raw[0]); })`\uc548`;</span>
-<span class="lineNum">     234 </span><span class="lineCov">          1 :   assertEquals(1, calls);</span>
-<span class="lineNum">     235 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     236 </span><span class="lineCov">          1 :   //   The TRV of CharacterEscapeSequence :: SingleEscapeCharacter is the TRV of</span>
-<a name="237"><span class="lineNum">     237 </span><span class="lineCov">          1 :   //   the SingleEscapeCharacter.</span></a>
-<a name="238"><span class="lineNum">     238 </span><span class="lineCov">          1 :   calls = 0;</span></a>
-<a name="239"><span class="lineNum">     239 </span><span class="lineCov">          1 :   (function(s) { calls++; assertEquals(&quot;\u005C\u0027&quot;, s.raw[0]); })`\'`;</span></a>
-<a name="240"><span class="lineNum">     240 </span><span class="lineCov">          1 :   (function(s) { calls++; assertEquals(&quot;\u005C\u0022&quot;, s.raw[0]); })`\&quot;`;</span></a>
-<a name="241"><span class="lineNum">     241 </span><span class="lineCov">          1 :   (function(s) { calls++; assertEquals(&quot;\u005C\u005C&quot;, s.raw[0]); })`\\`;</span></a>
-<a name="242"><span class="lineNum">     242 </span><span class="lineCov">          1 :   (function(s) { calls++; assertEquals(&quot;\u005Cb&quot;, s.raw[0]); })`\b`;</span></a>
-<a name="243"><span class="lineNum">     243 </span><span class="lineCov">          1 :   (function(s) { calls++; assertEquals(&quot;\u005Cf&quot;, s.raw[0]); })`\f`;</span></a>
-<a name="244"><span class="lineNum">     244 </span><span class="lineCov">          1 :   (function(s) { calls++; assertEquals(&quot;\u005Cn&quot;, s.raw[0]); })`\n`;</span></a>
-<a name="245"><span class="lineNum">     245 </span><span class="lineCov">          1 :   (function(s) { calls++; assertEquals(&quot;\u005Cr&quot;, s.raw[0]); })`\r`;</span></a>
-<a name="246"><span class="lineNum">     246 </span><span class="lineCov">          1 :   (function(s) { calls++; assertEquals(&quot;\u005Ct&quot;, s.raw[0]); })`\t`;</span></a>
+<span class="lineNum">     234 </span><span class="lineNoCov">          0 :   assertEquals(1, calls);</span>
+<span class="lineNum">     235 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     236 </span><span class="lineNoCov">          0 :   //   The TRV of CharacterEscapeSequence :: SingleEscapeCharacter is the TRV of</span>
+<span class="lineNum">     237 </span><span class="lineNoCov">          0 :   //   the SingleEscapeCharacter.</span>
+<span class="lineNum">     238 </span><span class="lineNoCov">          0 :   calls = 0;</span>
+<span class="lineNum">     239 </span><span class="lineCov">          1 :   (function(s) { calls++; assertEquals(&quot;\u005C\u0027&quot;, s.raw[0]); })`\'`;</span>
+<span class="lineNum">     240 </span><span class="lineCov">          1 :   (function(s) { calls++; assertEquals(&quot;\u005C\u0022&quot;, s.raw[0]); })`\&quot;`;</span>
+<span class="lineNum">     241 </span><span class="lineCov">          1 :   (function(s) { calls++; assertEquals(&quot;\u005C\u005C&quot;, s.raw[0]); })`\\`;</span>
+<span class="lineNum">     242 </span><span class="lineCov">          1 :   (function(s) { calls++; assertEquals(&quot;\u005Cb&quot;, s.raw[0]); })`\b`;</span>
+<span class="lineNum">     243 </span><span class="lineCov">          1 :   (function(s) { calls++; assertEquals(&quot;\u005Cf&quot;, s.raw[0]); })`\f`;</span>
+<span class="lineNum">     244 </span><span class="lineCov">          1 :   (function(s) { calls++; assertEquals(&quot;\u005Cn&quot;, s.raw[0]); })`\n`;</span>
+<span class="lineNum">     245 </span><span class="lineCov">          1 :   (function(s) { calls++; assertEquals(&quot;\u005Cr&quot;, s.raw[0]); })`\r`;</span>
+<span class="lineNum">     246 </span><span class="lineCov">          1 :   (function(s) { calls++; assertEquals(&quot;\u005Ct&quot;, s.raw[0]); })`\t`;</span>
 <span class="lineNum">     247 </span><span class="lineCov">          1 :   (function(s) { calls++; assertEquals(&quot;\u005Cv&quot;, s.raw[0]); })`\v`;</span>
 <span class="lineNum">     248 </span><span class="lineCov">          1 :   (function(s) { calls++; assertEquals(&quot;\u005C`&quot;, s.raw[0]); })`\``;</span>
-<span class="lineNum">     249 </span><span class="lineCov">          1 :   assertEquals(10, calls);</span>
-<span class="lineNum">     250 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     251 </span><span class="lineCov">          1 :   //   The TRV of CharacterEscapeSequence :: NonEscapeCharacter is the CV of the</span>
-<a name="252"><span class="lineNum">     252 </span><span class="lineCov">          1 :   //   NonEscapeCharacter.</span></a>
-<span class="lineNum">     253 </span><span class="lineCov">          1 :   calls = 0;</span>
+<span class="lineNum">     249 </span><span class="lineNoCov">          0 :   assertEquals(10, calls);</span>
+<span class="lineNum">     250 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     251 </span><span class="lineNoCov">          0 :   //   The TRV of CharacterEscapeSequence :: NonEscapeCharacter is the CV of the</span>
+<span class="lineNum">     252 </span><span class="lineNoCov">          0 :   //   NonEscapeCharacter.</span>
+<span class="lineNum">     253 </span><span class="lineNoCov">          0 :   calls = 0;</span>
 <span class="lineNum">     254 </span><span class="lineCov">          1 :   (function(s) { calls++; assertEquals(&quot;\u005Cz&quot;, s.raw[0]); })`\z`;</span>
-<span class="lineNum">     255 </span><span class="lineCov">          1 :   assertEquals(1, calls);</span>
-<span class="lineNum">     256 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     257 </span><span class="lineCov">          1 :   // The TRV of LineTerminatorSequence :: &lt;LF&gt; is the code unit value 0x000A.</span>
-<span class="lineNum">     258 </span><span class="lineCov">          1 :   // The TRV of LineTerminatorSequence :: &lt;CR&gt; is the code unit value 0x000A.</span>
-<span class="lineNum">     259 </span><span class="lineCov">          1 :   // The TRV of LineTerminatorSequence :: &lt;CR&gt;&lt;LF&gt; is the sequence consisting of</span>
-<span class="lineNum">     260 </span><span class="lineCov">          1 :   // the code unit value 0x000A.</span>
-<span class="lineNum">     261 </span><span class="lineCov">          1 :   calls = 0;</span>
+<span class="lineNum">     255 </span><span class="lineNoCov">          0 :   assertEquals(1, calls);</span>
+<span class="lineNum">     256 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     257 </span><span class="lineNoCov">          0 :   // The TRV of LineTerminatorSequence :: &lt;LF&gt; is the code unit value 0x000A.</span>
+<span class="lineNum">     258 </span><span class="lineNoCov">          0 :   // The TRV of LineTerminatorSequence :: &lt;CR&gt; is the code unit value 0x000A.</span>
+<span class="lineNum">     259 </span><span class="lineNoCov">          0 :   // The TRV of LineTerminatorSequence :: &lt;CR&gt;&lt;LF&gt; is the sequence consisting of</span>
+<span class="lineNum">     260 </span><span class="lineNoCov">          0 :   // the code unit value 0x000A.</span>
+<span class="lineNum">     261 </span><span class="lineNoCov">          0 :   calls = 0;</span>
 <span class="lineNum">     262 </span><span class="lineCov">          1 :   function testRawLineNormalization(cs) {</span>
 <span class="lineNum">     263 </span><span class="lineCov">          1 :     calls++;</span>
 <span class="lineNum">     264 </span><span class="lineCov">          1 :     assertEquals(cs.raw[0], &quot;\n\n\n&quot;);</span>
 <span class="lineNum">     265 </span><span class="lineCov">          1 :     assertEquals(cs.raw[1], &quot;\n\n\n&quot;);</span>
 <span class="lineNum">     266 </span><span class="lineCov">          1 :   }</span>
-<span class="lineNum">     267 </span><span class="lineCov">          1 :   eval(&quot;testRawLineNormalization`\r\n\n\r${1}\r\n\n\r`&quot;);</span>
-<span class="lineNum">     268 </span><span class="lineCov">          1 :   assertEquals(1, calls);</span>
-<span class="lineNum">     269 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     270 </span><span class="lineCov">          1 :   // The TRV of LineContinuation :: \ LineTerminatorSequence is the sequence</span>
-<span class="lineNum">     271 </span><span class="lineCov">          1 :   // consisting of the code unit value 0x005C followed by the code units of TRV</span>
-<a name="272"><span class="lineNum">     272 </span><span class="lineCov">          1 :   // of LineTerminatorSequence.</span></a>
-<span class="lineNum">     273 </span><span class="lineCov">          1 :   calls = 0;</span>
+<span class="lineNum">     267 </span><span class="lineNoCov">          0 :   eval(&quot;testRawLineNormalization`\r\n\n\r${1}\r\n\n\r`&quot;);</span>
+<span class="lineNum">     268 </span><span class="lineNoCov">          0 :   assertEquals(1, calls);</span>
+<span class="lineNum">     269 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     270 </span><span class="lineNoCov">          0 :   // The TRV of LineContinuation :: \ LineTerminatorSequence is the sequence</span>
+<span class="lineNum">     271 </span><span class="lineNoCov">          0 :   // consisting of the code unit value 0x005C followed by the code units of TRV</span>
+<a name="272"><span class="lineNum">     272 </span><span class="lineNoCov">          0 :   // of LineTerminatorSequence.</span></a>
+<span class="lineNum">     273 </span><span class="lineNoCov">          0 :   calls = 0;</span>
 <span class="lineNum">     274 </span><span class="lineCov">          1 :   function testRawLineContinuation(cs) {</span>
 <span class="lineNum">     275 </span><span class="lineCov">          1 :     calls++;</span>
 <span class="lineNum">     276 </span><span class="lineCov">          1 :     assertEquals(cs.raw[0], &quot;\u005C\n\u005C\n\u005C\n&quot;);</span>
 <span class="lineNum">     277 </span><span class="lineCov">          1 :     assertEquals(cs.raw[1], &quot;\u005C\n\u005C\n\u005C\n&quot;);</span>
 <span class="lineNum">     278 </span><span class="lineCov">          1 :   }</span>
-<span class="lineNum">     279 </span><span class="lineCov">          1 :   eval(&quot;testRawLineContinuation`\\\r\n\\\n\\\r${1}\\\r\n\\\n\\\r`&quot;);</span>
-<span class="lineNum">     280 </span><span class="lineCov">          1 :   assertEquals(1, calls);</span>
-<span class="lineNum">     281 </span><span class="lineCov">          1 : })();</span>
-<a name="282"><span class="lineNum">     282 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">     283 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     279 </span><span class="lineNoCov">          0 :   eval(&quot;testRawLineContinuation`\\\r\n\\\n\\\r${1}\\\r\n\\\n\\\r`&quot;);</span>
+<span class="lineNum">     280 </span><span class="lineNoCov">          0 :   assertEquals(1, calls);</span>
+<span class="lineNum">     281 </span><span class="lineNoCov">          0 : })();</span>
+<a name="282"><span class="lineNum">     282 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">     283 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     284 </span><span class="lineCov">          1 : (function testCallSiteObj() {</span>
 <span class="lineNum">     285 </span><span class="lineCov">          1 :   var calls = 0;</span>
 <span class="lineNum">     286 </span><span class="lineCov">          1 :   function tag(cs) {</span>
@@ -379,162 +379,162 @@
 <span class="lineNum">     317 </span><span class="lineCov">          1 :     assertFalse(length.configurable);</span>
 <span class="lineNum">     318 </span><span class="lineCov">          1 :     assertFalse(length.enumerable);</span>
 <span class="lineNum">     319 </span><span class="lineCov">          1 :   }</span>
-<span class="lineNum">     320 </span><span class="lineCov">          1 :   tag`${1}`;</span>
-<span class="lineNum">     321 </span><span class="lineCov">          1 :   assertEquals(1, calls);</span>
-<span class="lineNum">     322 </span><span class="lineCov">          1 : })();</span>
-<a name="323"><span class="lineNum">     323 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">     324 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     320 </span><span class="lineNoCov">          0 :   tag`${1}`;</span>
+<span class="lineNum">     321 </span><span class="lineNoCov">          0 :   assertEquals(1, calls);</span>
+<span class="lineNum">     322 </span><span class="lineNoCov">          0 : })();</span>
+<a name="323"><span class="lineNum">     323 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">     324 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     325 </span><span class="lineCov">          1 : (function testUTF16ByteOrderMark() {</span>
 <span class="lineNum">     326 </span><span class="lineCov">          1 :   assertEquals(&quot;\uFEFFtest&quot;, `\uFEFFtest`);</span>
 <span class="lineNum">     327 </span><span class="lineCov">          1 :   assertEquals(&quot;\uFEFFtest&quot;, eval(&quot;`\uFEFFtest`&quot;));</span>
 <span class="lineNum">     328 </span><span class="lineCov">          1 : })();</span>
-<a name="329"><span class="lineNum">     329 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">     330 </span><span class="lineCov">          1 : </span>
+<a name="329"><span class="lineNum">     329 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">     330 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     331 </span><span class="lineCov">          1 : (function testStringRawAsTagFn() {</span>
 <span class="lineNum">     332 </span><span class="lineCov">          1 :   assertEquals(&quot;\\u0065\\`\\r\\r\\n\\ntestcheck&quot;,</span>
 <span class="lineNum">     333 </span><span class="lineCov">          1 :                String.raw`\u0065\`\r\r\n\n${&quot;test&quot;}check`);</span>
 <span class="lineNum">     334 </span><span class="lineCov">          1 :   assertEquals(&quot;\\\n\\\n\\\n&quot;, eval(&quot;String.raw`\\\r\\\r\n\\\n`&quot;));</span>
 <span class="lineNum">     335 </span><span class="lineCov">          1 :   assertEquals(&quot;&quot;, String.raw``);</span>
 <span class="lineNum">     336 </span><span class="lineCov">          1 : })();</span>
-<a name="337"><span class="lineNum">     337 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">     338 </span><span class="lineCov">          1 : </span>
+<a name="337"><span class="lineNum">     337 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">     338 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     339 </span><span class="lineCov">          1 : (function testCallSiteCaching() {</span>
 <span class="lineNum">     340 </span><span class="lineCov">          1 :   var callSites = [];</span>
 <span class="lineNum">     341 </span><span class="lineCov">         16 :   function tag(cs) { callSites.push(cs); }</span>
-<span class="lineNum">     342 </span><span class="lineCov">          1 :   var a = 1;</span>
-<span class="lineNum">     343 </span><span class="lineCov">          1 :   var b = 2;</span>
-<span class="lineNum">     344 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     345 </span><span class="lineCov">          1 :   tag`head${a}tail`;</span>
-<span class="lineNum">     346 </span><span class="lineCov">          1 :   tag`head${b}tail`;</span>
-<span class="lineNum">     347 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     348 </span><span class="lineCov">          1 :   assertEquals(2, callSites.length);</span>
-<span class="lineNum">     349 </span><span class="lineCov">          1 :   assertSame(callSites[0], callSites[1]);</span>
-<span class="lineNum">     350 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     351 </span><span class="lineCov">          1 :   eval(&quot;tag`head${a}tail`&quot;);</span>
-<span class="lineNum">     352 </span><span class="lineCov">          1 :   assertEquals(3, callSites.length);</span>
-<span class="lineNum">     353 </span><span class="lineCov">          1 :   assertSame(callSites[1], callSites[2]);</span>
-<span class="lineNum">     354 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     355 </span><span class="lineCov">          1 :   eval(&quot;tag`head${b}tail`&quot;);</span>
-<span class="lineNum">     356 </span><span class="lineCov">          1 :   assertEquals(4, callSites.length);</span>
-<span class="lineNum">     357 </span><span class="lineCov">          1 :   assertSame(callSites[2], callSites[3]);</span>
-<span class="lineNum">     358 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     359 </span><span class="lineCov">          1 :   (new Function(&quot;tag&quot;, &quot;a&quot;, &quot;b&quot;, &quot;return tag`head${a}tail`;&quot;))(tag, 1, 2);</span>
-<span class="lineNum">     360 </span><span class="lineCov">          1 :   assertEquals(5, callSites.length);</span>
-<span class="lineNum">     361 </span><span class="lineCov">          1 :   assertSame(callSites[3], callSites[4]);</span>
-<span class="lineNum">     362 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     363 </span><span class="lineCov">          1 :   (new Function(&quot;tag&quot;, &quot;a&quot;, &quot;b&quot;, &quot;return tag`head${b}tail`;&quot;))(tag, 1, 2);</span>
-<span class="lineNum">     364 </span><span class="lineCov">          1 :   assertEquals(6, callSites.length);</span>
-<span class="lineNum">     365 </span><span class="lineCov">          1 :   assertSame(callSites[4], callSites[5]);</span>
-<span class="lineNum">     366 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     367 </span><span class="lineCov">          1 :   callSites = [];</span>
-<span class="lineNum">     368 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     369 </span><span class="lineCov">          1 :   tag`foo${a}bar`;</span>
-<span class="lineNum">     370 </span><span class="lineCov">          1 :   tag`foo\${.}bar`;</span>
-<span class="lineNum">     371 </span><span class="lineCov">          1 :   assertEquals(2, callSites.length);</span>
-<span class="lineNum">     372 </span><span class="lineCov">          1 :   assertEquals(2, callSites[0].length);</span>
-<span class="lineNum">     373 </span><span class="lineCov">          1 :   assertEquals(1, callSites[1].length);</span>
-<span class="lineNum">     374 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     375 </span><span class="lineCov">          1 :   callSites = [];</span>
-<span class="lineNum">     376 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     377 </span><span class="lineCov">          1 :   eval(&quot;tag`\\\r\n\\\n\\\r`&quot;);</span>
-<span class="lineNum">     378 </span><span class="lineCov">          1 :   eval(&quot;tag`\\\r\n\\\n\\\r`&quot;);</span>
-<span class="lineNum">     379 </span><span class="lineCov">          1 :   assertEquals(2, callSites.length);</span>
-<span class="lineNum">     380 </span><span class="lineCov">          1 :   assertSame(callSites[0], callSites[1]);</span>
-<span class="lineNum">     381 </span><span class="lineCov">          1 :   assertEquals(&quot;&quot;, callSites[0][0]);</span>
-<span class="lineNum">     382 </span><span class="lineCov">          1 :   assertEquals(&quot;\\\n\\\n\\\n&quot;, callSites[0].raw[0]);</span>
-<span class="lineNum">     383 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     384 </span><span class="lineCov">          1 :   callSites = [];</span>
-<span class="lineNum">     385 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     386 </span><span class="lineCov">          1 :   tag`\uc548\ub155`;</span>
-<span class="lineNum">     387 </span><span class="lineCov">          1 :   tag`\uc548\ub155`;</span>
-<span class="lineNum">     388 </span><span class="lineCov">          1 :   assertEquals(2, callSites.length);</span>
-<span class="lineNum">     389 </span><span class="lineCov">          1 :   assertSame(callSites[0], callSites[1]);</span>
-<span class="lineNum">     390 </span><span class="lineCov">          1 :   assertEquals(&quot;안녕&quot;, callSites[0][0]);</span>
-<span class="lineNum">     391 </span><span class="lineCov">          1 :   assertEquals(&quot;\\uc548\\ub155&quot;, callSites[0].raw[0]);</span>
-<span class="lineNum">     392 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     393 </span><span class="lineCov">          1 :   callSites = [];</span>
-<span class="lineNum">     394 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     395 </span><span class="lineCov">          1 :   tag`\uc548\ub155`;</span>
-<span class="lineNum">     396 </span><span class="lineCov">          1 :   tag`안녕`;</span>
-<span class="lineNum">     397 </span><span class="lineCov">          1 :   assertEquals(2, callSites.length);</span>
-<span class="lineNum">     398 </span><span class="lineCov">          1 :   assertTrue(callSites[0] !== callSites[1]);</span>
-<span class="lineNum">     399 </span><span class="lineCov">          1 :   assertEquals(&quot;안녕&quot;, callSites[0][0]);</span>
-<span class="lineNum">     400 </span><span class="lineCov">          1 :   assertEquals(&quot;\\uc548\\ub155&quot;, callSites[0].raw[0]);</span>
-<span class="lineNum">     401 </span><span class="lineCov">          1 :   assertEquals(&quot;안녕&quot;, callSites[1][0]);</span>
-<span class="lineNum">     402 </span><span class="lineCov">          1 :   assertEquals(&quot;안녕&quot;, callSites[1].raw[0]);</span>
-<span class="lineNum">     403 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     404 </span><span class="lineCov">          1 :   // Extra-thorough UTF8 decoding test.</span>
-<span class="lineNum">     405 </span><span class="lineCov">          1 :   callSites = [];</span>
-<span class="lineNum">     406 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     407 </span><span class="lineCov">          1 :   tag`Iñtërnâtiônàlizætiøn\u2603\uD83D\uDCA9`;</span>
-<span class="lineNum">     408 </span><span class="lineCov">          1 :   tag`Iñtërnâtiônàlizætiøn☃💩`;</span>
-<span class="lineNum">     409 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     410 </span><span class="lineCov">          1 :   assertEquals(2, callSites.length);</span>
-<span class="lineNum">     411 </span><span class="lineCov">          1 :   assertTrue(callSites[0] !== callSites[1]);</span>
-<span class="lineNum">     412 </span><span class="lineCov">          1 :   assertEquals(&quot;Iñtërnâtiônàlizætiøn☃💩&quot;, callSites[0][0]);</span>
-<span class="lineNum">     413 </span><span class="lineCov">          1 :   assertEquals(</span>
-<span class="lineNum">     414 </span><span class="lineCov">          1 :       &quot;Iñtërnâtiônàlizætiøn\\u2603\\uD83D\\uDCA9&quot;, callSites[0].raw[0]);</span>
-<span class="lineNum">     415 </span><span class="lineCov">          1 :   assertEquals(&quot;Iñtërnâtiônàlizætiøn☃💩&quot;, callSites[1][0]);</span>
-<span class="lineNum">     416 </span><span class="lineCov">          1 :   assertEquals(&quot;Iñtërnâtiônàlizætiøn☃💩&quot;, callSites[1].raw[0]);</span>
-<span class="lineNum">     417 </span><span class="lineCov">          1 : })();</span>
-<a name="418"><span class="lineNum">     418 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">     419 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     342 </span><span class="lineNoCov">          0 :   var a = 1;</span>
+<span class="lineNum">     343 </span><span class="lineNoCov">          0 :   var b = 2;</span>
+<span class="lineNum">     344 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     345 </span><span class="lineNoCov">          0 :   tag`head${a}tail`;</span>
+<span class="lineNum">     346 </span><span class="lineNoCov">          0 :   tag`head${b}tail`;</span>
+<span class="lineNum">     347 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     348 </span><span class="lineNoCov">          0 :   assertEquals(2, callSites.length);</span>
+<span class="lineNum">     349 </span><span class="lineNoCov">          0 :   assertSame(callSites[0], callSites[1]);</span>
+<span class="lineNum">     350 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     351 </span><span class="lineNoCov">          0 :   eval(&quot;tag`head${a}tail`&quot;);</span>
+<span class="lineNum">     352 </span><span class="lineNoCov">          0 :   assertEquals(3, callSites.length);</span>
+<span class="lineNum">     353 </span><span class="lineNoCov">          0 :   assertSame(callSites[1], callSites[2]);</span>
+<span class="lineNum">     354 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     355 </span><span class="lineNoCov">          0 :   eval(&quot;tag`head${b}tail`&quot;);</span>
+<span class="lineNum">     356 </span><span class="lineNoCov">          0 :   assertEquals(4, callSites.length);</span>
+<span class="lineNum">     357 </span><span class="lineNoCov">          0 :   assertSame(callSites[2], callSites[3]);</span>
+<span class="lineNum">     358 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     359 </span><span class="lineNoCov">          0 :   (new Function(&quot;tag&quot;, &quot;a&quot;, &quot;b&quot;, &quot;return tag`head${a}tail`;&quot;))(tag, 1, 2);</span>
+<span class="lineNum">     360 </span><span class="lineNoCov">          0 :   assertEquals(5, callSites.length);</span>
+<span class="lineNum">     361 </span><span class="lineNoCov">          0 :   assertSame(callSites[3], callSites[4]);</span>
+<span class="lineNum">     362 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     363 </span><span class="lineNoCov">          0 :   (new Function(&quot;tag&quot;, &quot;a&quot;, &quot;b&quot;, &quot;return tag`head${b}tail`;&quot;))(tag, 1, 2);</span>
+<span class="lineNum">     364 </span><span class="lineNoCov">          0 :   assertEquals(6, callSites.length);</span>
+<span class="lineNum">     365 </span><span class="lineNoCov">          0 :   assertSame(callSites[4], callSites[5]);</span>
+<span class="lineNum">     366 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     367 </span><span class="lineNoCov">          0 :   callSites = [];</span>
+<span class="lineNum">     368 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     369 </span><span class="lineNoCov">          0 :   tag`foo${a}bar`;</span>
+<span class="lineNum">     370 </span><span class="lineNoCov">          0 :   tag`foo\${.}bar`;</span>
+<span class="lineNum">     371 </span><span class="lineNoCov">          0 :   assertEquals(2, callSites.length);</span>
+<span class="lineNum">     372 </span><span class="lineNoCov">          0 :   assertEquals(2, callSites[0].length);</span>
+<span class="lineNum">     373 </span><span class="lineNoCov">          0 :   assertEquals(1, callSites[1].length);</span>
+<span class="lineNum">     374 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     375 </span><span class="lineNoCov">          0 :   callSites = [];</span>
+<span class="lineNum">     376 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     377 </span><span class="lineNoCov">          0 :   eval(&quot;tag`\\\r\n\\\n\\\r`&quot;);</span>
+<span class="lineNum">     378 </span><span class="lineNoCov">          0 :   eval(&quot;tag`\\\r\n\\\n\\\r`&quot;);</span>
+<span class="lineNum">     379 </span><span class="lineNoCov">          0 :   assertEquals(2, callSites.length);</span>
+<span class="lineNum">     380 </span><span class="lineNoCov">          0 :   assertSame(callSites[0], callSites[1]);</span>
+<span class="lineNum">     381 </span><span class="lineNoCov">          0 :   assertEquals(&quot;&quot;, callSites[0][0]);</span>
+<span class="lineNum">     382 </span><span class="lineNoCov">          0 :   assertEquals(&quot;\\\n\\\n\\\n&quot;, callSites[0].raw[0]);</span>
+<span class="lineNum">     383 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     384 </span><span class="lineNoCov">          0 :   callSites = [];</span>
+<span class="lineNum">     385 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     386 </span><span class="lineNoCov">          0 :   tag`\uc548\ub155`;</span>
+<span class="lineNum">     387 </span><span class="lineNoCov">          0 :   tag`\uc548\ub155`;</span>
+<span class="lineNum">     388 </span><span class="lineNoCov">          0 :   assertEquals(2, callSites.length);</span>
+<span class="lineNum">     389 </span><span class="lineNoCov">          0 :   assertSame(callSites[0], callSites[1]);</span>
+<span class="lineNum">     390 </span><span class="lineNoCov">          0 :   assertEquals(&quot;안녕&quot;, callSites[0][0]);</span>
+<span class="lineNum">     391 </span><span class="lineNoCov">          0 :   assertEquals(&quot;\\uc548\\ub155&quot;, callSites[0].raw[0]);</span>
+<span class="lineNum">     392 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     393 </span><span class="lineNoCov">          0 :   callSites = [];</span>
+<span class="lineNum">     394 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     395 </span><span class="lineNoCov">          0 :   tag`\uc548\ub155`;</span>
+<span class="lineNum">     396 </span><span class="lineNoCov">          0 :   tag`안녕`;</span>
+<span class="lineNum">     397 </span><span class="lineNoCov">          0 :   assertEquals(2, callSites.length);</span>
+<span class="lineNum">     398 </span><span class="lineNoCov">          0 :   assertTrue(callSites[0] !== callSites[1]);</span>
+<span class="lineNum">     399 </span><span class="lineNoCov">          0 :   assertEquals(&quot;안녕&quot;, callSites[0][0]);</span>
+<span class="lineNum">     400 </span><span class="lineNoCov">          0 :   assertEquals(&quot;\\uc548\\ub155&quot;, callSites[0].raw[0]);</span>
+<span class="lineNum">     401 </span><span class="lineNoCov">          0 :   assertEquals(&quot;안녕&quot;, callSites[1][0]);</span>
+<span class="lineNum">     402 </span><span class="lineNoCov">          0 :   assertEquals(&quot;안녕&quot;, callSites[1].raw[0]);</span>
+<span class="lineNum">     403 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     404 </span><span class="lineNoCov">          0 :   // Extra-thorough UTF8 decoding test.</span>
+<span class="lineNum">     405 </span><span class="lineNoCov">          0 :   callSites = [];</span>
+<span class="lineNum">     406 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     407 </span><span class="lineNoCov">          0 :   tag`Iñtërnâtiônàlizætiøn\u2603\uD83D\uDCA9`;</span>
+<span class="lineNum">     408 </span><span class="lineNoCov">          0 :   tag`Iñtërnâtiônàlizætiøn☃💩`;</span>
+<span class="lineNum">     409 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     410 </span><span class="lineNoCov">          0 :   assertEquals(2, callSites.length);</span>
+<span class="lineNum">     411 </span><span class="lineNoCov">          0 :   assertTrue(callSites[0] !== callSites[1]);</span>
+<span class="lineNum">     412 </span><span class="lineNoCov">          0 :   assertEquals(&quot;Iñtërnâtiônàlizætiøn☃💩&quot;, callSites[0][0]);</span>
+<span class="lineNum">     413 </span><span class="lineNoCov">          0 :   assertEquals(</span>
+<span class="lineNum">     414 </span><span class="lineNoCov">          0 :       &quot;Iñtërnâtiônàlizætiøn\\u2603\\uD83D\\uDCA9&quot;, callSites[0].raw[0]);</span>
+<span class="lineNum">     415 </span><span class="lineNoCov">          0 :   assertEquals(&quot;Iñtërnâtiônàlizætiøn☃💩&quot;, callSites[1][0]);</span>
+<span class="lineNum">     416 </span><span class="lineNoCov">          0 :   assertEquals(&quot;Iñtërnâtiônàlizætiøn☃💩&quot;, callSites[1].raw[0]);</span>
+<span class="lineNum">     417 </span><span class="lineNoCov">          0 : })();</span>
+<a name="418"><span class="lineNum">     418 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">     419 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     420 </span><span class="lineCov">          1 : (function testExtendedArrayPrototype() {</span>
 <span class="lineNum">     421 </span><span class="lineCov">          1 :   Object.defineProperty(Array.prototype, 0, {</span>
 <span class="lineNum">     422 </span><span class="lineCov">          1 :     set: function() {</span>
 <span class="lineNum">     423 </span><span class="lineNoCov">          0 :       assertUnreachable();</span>
 <span class="lineNum">     424 </span><span class="lineCov">          1 :     },</span>
-<span class="lineNum">     425 </span><span class="lineCov">          1 :     configurable: true</span>
-<span class="lineNum">     426 </span><span class="lineCov">          1 :   });</span>
+<span class="lineNum">     425 </span><span class="lineNoCov">          0 :     configurable: true</span>
+<span class="lineNum">     426 </span><span class="lineNoCov">          0 :   });</span>
 <span class="lineNum">     427 </span><span class="lineCov">          1 :   function tag(){}</span>
-<span class="lineNum">     428 </span><span class="lineCov">          1 :   tag`a${1}b`;</span>
-<span class="lineNum">     429 </span><span class="lineCov">          1 :   delete Array.prototype[0];</span>
-<span class="lineNum">     430 </span><span class="lineCov">          1 : })();</span>
-<a name="431"><span class="lineNum">     431 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">     432 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     428 </span><span class="lineNoCov">          0 :   tag`a${1}b`;</span>
+<span class="lineNum">     429 </span><span class="lineNoCov">          0 :   delete Array.prototype[0];</span>
+<span class="lineNum">     430 </span><span class="lineNoCov">          0 : })();</span>
+<a name="431"><span class="lineNum">     431 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">     432 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     433 </span><span class="lineCov">          1 : (function testRawLineNormalization() {</span>
 <span class="lineNum">     434 </span><span class="lineCov">          5 :   function raw0(callSiteObj) {</span>
 <span class="lineNum">     435 </span><span class="lineCov">          5 :     return callSiteObj.raw[0];</span>
 <span class="lineNum">     436 </span><span class="lineCov">          5 :   }</span>
-<span class="lineNum">     437 </span><span class="lineCov">          1 :   assertEquals(eval(&quot;raw0`\r`&quot;), &quot;\n&quot;);</span>
-<span class="lineNum">     438 </span><span class="lineCov">          1 :   assertEquals(eval(&quot;raw0`\r\n`&quot;), &quot;\n&quot;);</span>
-<span class="lineNum">     439 </span><span class="lineCov">          1 :   assertEquals(eval(&quot;raw0`\r\r\n`&quot;), &quot;\n\n&quot;);</span>
-<span class="lineNum">     440 </span><span class="lineCov">          1 :   assertEquals(eval(&quot;raw0`\r\n\r\n`&quot;), &quot;\n\n&quot;);</span>
-<span class="lineNum">     441 </span><span class="lineCov">          1 :   assertEquals(eval(&quot;raw0`\r\r\r\n`&quot;), &quot;\n\n\n&quot;);</span>
-<span class="lineNum">     442 </span><span class="lineCov">          1 : })();</span>
-<a name="443"><span class="lineNum">     443 </span><span class="lineCov">          1 : </span></a>
-<a name="444"><span class="lineNum">     444 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     437 </span><span class="lineNoCov">          0 :   assertEquals(eval(&quot;raw0`\r`&quot;), &quot;\n&quot;);</span>
+<span class="lineNum">     438 </span><span class="lineNoCov">          0 :   assertEquals(eval(&quot;raw0`\r\n`&quot;), &quot;\n&quot;);</span>
+<span class="lineNum">     439 </span><span class="lineNoCov">          0 :   assertEquals(eval(&quot;raw0`\r\r\n`&quot;), &quot;\n\n&quot;);</span>
+<span class="lineNum">     440 </span><span class="lineNoCov">          0 :   assertEquals(eval(&quot;raw0`\r\n\r\n`&quot;), &quot;\n\n&quot;);</span>
+<span class="lineNum">     441 </span><span class="lineNoCov">          0 :   assertEquals(eval(&quot;raw0`\r\r\r\n`&quot;), &quot;\n\n\n&quot;);</span>
+<span class="lineNum">     442 </span><span class="lineNoCov">          0 : })();</span>
+<a name="443"><span class="lineNum">     443 </span><span class="lineNoCov">          0 : </span></a>
+<a name="444"><span class="lineNum">     444 </span><span class="lineNoCov">          0 : </span></a>
 <span class="lineNum">     445 </span><span class="lineCov">          1 : (function testHarmonyUnicode() {</span>
 <span class="lineNum">     446 </span><span class="lineCov">          3 :   function raw0(callSiteObj) {</span>
 <span class="lineNum">     447 </span><span class="lineCov">          3 :     return callSiteObj.raw[0];</span>
 <span class="lineNum">     448 </span><span class="lineCov">          3 :   }</span>
-<span class="lineNum">     449 </span><span class="lineCov">          1 :   assertEquals(raw0`a\u{62}c`, &quot;a\\u{62}c&quot;);</span>
-<span class="lineNum">     450 </span><span class="lineCov">          1 :   assertEquals(raw0`a\u{000062}c`, &quot;a\\u{000062}c&quot;);</span>
-<span class="lineNum">     451 </span><span class="lineCov">          1 :   assertEquals(raw0`a\u{0}c`, &quot;a\\u{0}c&quot;);</span>
-<span class="lineNum">     452 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     453 </span><span class="lineCov">          1 :   assertEquals(`a\u{62}c`, &quot;abc&quot;);</span>
-<span class="lineNum">     454 </span><span class="lineCov">          1 :   assertEquals(`a\u{000062}c`, &quot;abc&quot;);</span>
-<span class="lineNum">     455 </span><span class="lineCov">          1 : })();</span>
-<a name="456"><span class="lineNum">     456 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">     457 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     449 </span><span class="lineNoCov">          0 :   assertEquals(raw0`a\u{62}c`, &quot;a\\u{62}c&quot;);</span>
+<span class="lineNum">     450 </span><span class="lineNoCov">          0 :   assertEquals(raw0`a\u{000062}c`, &quot;a\\u{000062}c&quot;);</span>
+<span class="lineNum">     451 </span><span class="lineNoCov">          0 :   assertEquals(raw0`a\u{0}c`, &quot;a\\u{0}c&quot;);</span>
+<span class="lineNum">     452 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     453 </span><span class="lineNoCov">          0 :   assertEquals(`a\u{62}c`, &quot;abc&quot;);</span>
+<span class="lineNum">     454 </span><span class="lineNoCov">          0 :   assertEquals(`a\u{000062}c`, &quot;abc&quot;);</span>
+<span class="lineNum">     455 </span><span class="lineNoCov">          0 : })();</span>
+<a name="456"><span class="lineNum">     456 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">     457 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     458 </span><span class="lineCov">          1 : (function testLiteralAfterRightBrace() {</span>
 <span class="lineNum">     459 </span><span class="lineCov">          1 :   // Regression test for https://code.google.com/p/v8/issues/detail?id=3734</span>
 <span class="lineNum">     460 </span><span class="lineCov">          1 :   function f() {}</span>
-<a name="461"><span class="lineNum">     461 </span><span class="lineCov">          1 :   `abc`;</span></a>
-<span class="lineNum">     462 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     463 </span><span class="lineCov">          1 :   function g() {}`def`;</span>
-<span class="lineNum">     464 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     465 </span><span class="lineCov">          1 :   {</span>
-<span class="lineNum">     466 </span><span class="lineCov">          1 :     // block</span>
-<span class="lineNum">     467 </span><span class="lineCov">          1 :   }</span>
-<span class="lineNum">     468 </span><span class="lineCov">          1 :   `ghi`;</span>
-<span class="lineNum">     469 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     470 </span><span class="lineCov">          1 :   {</span>
-<span class="lineNum">     471 </span><span class="lineCov">          1 :     // block</span>
-<span class="lineNum">     472 </span><span class="lineCov">          1 :   }`jkl`;</span>
-<span class="lineNum">     473 </span><span class="lineCov">          1 : })();</span>
-<a name="474"><span class="lineNum">     474 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">     475 </span><span class="lineCov">          1 : </span>
+<a name="461"><span class="lineNum">     461 </span><span class="lineNoCov">          0 :   `abc`;</span></a>
+<span class="lineNum">     462 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     463 </span><span class="lineNoCov">          0 :   function g() {}`def`;</span>
+<span class="lineNum">     464 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     465 </span><span class="lineNoCov">          0 :   {</span>
+<span class="lineNum">     466 </span><span class="lineNoCov">          0 :     // block</span>
+<span class="lineNum">     467 </span><span class="lineNoCov">          0 :   }</span>
+<span class="lineNum">     468 </span><span class="lineNoCov">          0 :   `ghi`;</span>
+<span class="lineNum">     469 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     470 </span><span class="lineNoCov">          0 :   {</span>
+<span class="lineNum">     471 </span><span class="lineNoCov">          0 :     // block</span>
+<span class="lineNum">     472 </span><span class="lineNoCov">          0 :   }`jkl`;</span>
+<span class="lineNum">     473 </span><span class="lineNoCov">          0 : })();</span>
+<a name="474"><span class="lineNum">     474 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">     475 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     476 </span><span class="lineCov">          1 : (function testLegacyOctal() {</span>
 <span class="lineNum">     477 </span><span class="lineCov">          1 :   assertEquals('\u0000', `\0`);</span>
 <span class="lineNum">     478 </span><span class="lineCov">          1 :   assertEquals('\u0000a', `\0a`);</span>
@@ -547,8 +547,8 @@
 <span class="lineNum">     485 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     486 </span><span class="lineCov">          1 :   assertEquals('\\0', String.raw`\0`);</span>
 <span class="lineNum">     487 </span><span class="lineCov">          1 : })();</span>
-<a name="488"><span class="lineNum">     488 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">     489 </span><span class="lineCov">          1 : </span>
+<a name="488"><span class="lineNum">     488 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">     489 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     490 </span><span class="lineCov">          1 : (function testSyntaxErrorsNonEscapeCharacter() {</span>
 <span class="lineNum">     491 </span><span class="lineCov">          1 :   assertThrows(&quot;`\\x`&quot;, SyntaxError);</span>
 <span class="lineNum">     492 </span><span class="lineCov">          1 :   assertThrows(&quot;`\\u`&quot;, SyntaxError);</span>
@@ -559,16 +559,16 @@
 <span class="lineNum">     497 </span><span class="lineCov">          1 :     assertThrows(code, SyntaxError);</span>
 <span class="lineNum">     498 </span><span class="lineCov">          1 :   }</span>
 <span class="lineNum">     499 </span><span class="lineCov">          1 : })();</span>
-<a name="500"><span class="lineNum">     500 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">     501 </span><span class="lineCov">          1 : </span>
+<a name="500"><span class="lineNum">     500 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">     501 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     502 </span><span class="lineCov">          1 : (function testValidNumericEscapes() {</span>
 <span class="lineNum">     503 </span><span class="lineCov">          1 :   assertEquals(&quot;8&quot;, `\8`);</span>
 <span class="lineNum">     504 </span><span class="lineCov">          1 :   assertEquals(&quot;9&quot;, `\9`);</span>
 <span class="lineNum">     505 </span><span class="lineCov">          1 :   assertEquals(&quot;\u00008&quot;, `\08`);</span>
 <span class="lineNum">     506 </span><span class="lineCov">          1 :   assertEquals(&quot;\u00009&quot;, `\09`);</span>
 <span class="lineNum">     507 </span><span class="lineCov">          1 : })();</span>
-<a name="508"><span class="lineNum">     508 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">     509 </span><span class="lineCov">          1 : </span>
+<a name="508"><span class="lineNum">     508 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">     509 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     510 </span><span class="lineCov">          1 : (function testLegacyOctalEscapesInExpressions() {</span>
 <span class="lineNum">     511 </span><span class="lineCov">          1 :   // Allowed in sloppy expression</span>
 <span class="lineNum">     512 </span><span class="lineCov">          1 :   assertEquals(&quot;\x07&quot;, `${&quot;\07&quot;}`);</span>
@@ -580,22 +580,22 @@
 <span class="lineNum">     518 </span><span class="lineCov">          1 :   assertThrows(&quot;`${(function() { \&quot;use strict\&quot;; return \&quot;\\07\&quot;; })()}`&quot;,</span>
 <span class="lineNum">     519 </span><span class="lineCov">          1 :                SyntaxError);</span>
 <span class="lineNum">     520 </span><span class="lineCov">          1 : })();</span>
-<span class="lineNum">     521 </span><span class="lineCov">          1 : </span>
-<a name="522"><span class="lineNum">     522 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">     523 </span><span class="lineCov">          1 : var global = this;</span>
+<span class="lineNum">     521 </span><span class="lineNoCov">          0 : </span>
+<a name="522"><span class="lineNum">     522 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">     523 </span><span class="lineNoCov">          0 : var global = this;</span>
 <span class="lineNum">     524 </span><span class="lineCov">          1 : (function testCallNew() {</span>
 <span class="lineNum">     525 </span><span class="lineCov">          1 :   &quot;use strict&quot;;</span>
 <a name="526"><span class="lineNum">     526 </span><span class="lineCov">          1 :   var called = false;</span></a>
 <span class="lineNum">     527 </span><span class="lineCov">          1 :   var calledWith;</span>
 <span class="lineNum">     528 </span><span class="lineCov">          1 :   global.log = function(x) { called = true; calledWith = x; }</span>
-<span class="lineNum">     529 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     530 </span><span class="lineCov">          1 :   assertInstanceof(new Function`log(&quot;test&quot;)`, Object);</span>
-<span class="lineNum">     531 </span><span class="lineCov">          1 :   assertTrue(called);</span>
-<span class="lineNum">     532 </span><span class="lineCov">          1 :   assertSame(&quot;test&quot;, calledWith);</span>
-<span class="lineNum">     533 </span><span class="lineCov">          1 :   delete global.log;</span>
-<span class="lineNum">     534 </span><span class="lineCov">          1 : })();</span>
-<a name="535"><span class="lineNum">     535 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">     536 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     529 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     530 </span><span class="lineNoCov">          0 :   assertInstanceof(new Function`log(&quot;test&quot;)`, Object);</span>
+<span class="lineNum">     531 </span><span class="lineNoCov">          0 :   assertTrue(called);</span>
+<span class="lineNum">     532 </span><span class="lineNoCov">          0 :   assertSame(&quot;test&quot;, calledWith);</span>
+<span class="lineNum">     533 </span><span class="lineNoCov">          0 :   delete global.log;</span>
+<span class="lineNum">     534 </span><span class="lineNoCov">          0 : })();</span>
+<a name="535"><span class="lineNum">     535 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">     536 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     537 </span><span class="lineCov">          1 : (function testCallNew2() {</span>
 <span class="lineNum">     538 </span><span class="lineCov">          1 :   &quot;use strict&quot;;</span>
 <span class="lineNum">     539 </span><span class="lineCov">          1 :   var log = [];</span>
@@ -607,23 +607,23 @@
 <span class="lineNum">     545 </span><span class="lineCov">          8 :     this.x = x === void 0 ? null : x;</span>
 <span class="lineNum">     546 </span><span class="lineCov">          8 :     return this;</span>
 <span class="lineNum">     547 </span><span class="lineCov">          8 :   }</span>
-<span class="lineNum">     548 </span><span class="lineCov">          1 :   // No arguments passed to constructor</span>
-<span class="lineNum">     549 </span><span class="lineCov">          1 :   var instance = new tag`x``y``z`;</span>
-<span class="lineNum">     550 </span><span class="lineCov">          1 :   assertInstanceof(instance, tag);</span>
-<span class="lineNum">     551 </span><span class="lineCov">          1 :   assertSame(tag.prototype, Object.getPrototypeOf(instance));</span>
-<span class="lineNum">     552 </span><span class="lineCov">          1 :   assertEquals({ x: null }, instance);</span>
-<span class="lineNum">     553 </span><span class="lineCov">          1 :   assertEquals([[&quot;x&quot;], [&quot;y&quot;], [&quot;z&quot;], undefined], log);</span>
-<span class="lineNum">     554 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     555 </span><span class="lineCov">          1 :   // Arguments passed to constructor</span>
-<span class="lineNum">     556 </span><span class="lineCov">          1 :   log.length = 0;</span>
-<span class="lineNum">     557 </span><span class="lineCov">          1 :   instance = new tag`x2` `y2` `z2` (`test`);</span>
-<span class="lineNum">     558 </span><span class="lineCov">          1 :   assertInstanceof(instance, tag);</span>
-<span class="lineNum">     559 </span><span class="lineCov">          1 :   assertSame(tag.prototype, Object.getPrototypeOf(instance));</span>
-<span class="lineNum">     560 </span><span class="lineCov">          1 :   assertEquals({ x: &quot;test&quot; }, instance);</span>
-<span class="lineNum">     561 </span><span class="lineCov">          1 :   assertEquals([[&quot;x2&quot;], [&quot;y2&quot;], [&quot;z2&quot;], &quot;test&quot;], log);</span>
-<span class="lineNum">     562 </span><span class="lineCov">          1 : })();</span>
-<a name="563"><span class="lineNum">     563 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">     564 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     548 </span><span class="lineNoCov">          0 :   // No arguments passed to constructor</span>
+<span class="lineNum">     549 </span><span class="lineNoCov">          0 :   var instance = new tag`x``y``z`;</span>
+<span class="lineNum">     550 </span><span class="lineNoCov">          0 :   assertInstanceof(instance, tag);</span>
+<span class="lineNum">     551 </span><span class="lineNoCov">          0 :   assertSame(tag.prototype, Object.getPrototypeOf(instance));</span>
+<span class="lineNum">     552 </span><span class="lineNoCov">          0 :   assertEquals({ x: null }, instance);</span>
+<span class="lineNum">     553 </span><span class="lineNoCov">          0 :   assertEquals([[&quot;x&quot;], [&quot;y&quot;], [&quot;z&quot;], undefined], log);</span>
+<span class="lineNum">     554 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     555 </span><span class="lineNoCov">          0 :   // Arguments passed to constructor</span>
+<span class="lineNum">     556 </span><span class="lineNoCov">          0 :   log.length = 0;</span>
+<span class="lineNum">     557 </span><span class="lineNoCov">          0 :   instance = new tag`x2` `y2` `z2` (`test`);</span>
+<span class="lineNum">     558 </span><span class="lineNoCov">          0 :   assertInstanceof(instance, tag);</span>
+<span class="lineNum">     559 </span><span class="lineNoCov">          0 :   assertSame(tag.prototype, Object.getPrototypeOf(instance));</span>
+<span class="lineNum">     560 </span><span class="lineNoCov">          0 :   assertEquals({ x: &quot;test&quot; }, instance);</span>
+<span class="lineNum">     561 </span><span class="lineNoCov">          0 :   assertEquals([[&quot;x2&quot;], [&quot;y2&quot;], [&quot;z2&quot;], &quot;test&quot;], log);</span>
+<span class="lineNum">     562 </span><span class="lineNoCov">          0 : })();</span>
+<a name="563"><span class="lineNum">     563 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">     564 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     565 </span><span class="lineCov">          1 : (function testCallResultOfTagFn() {</span>
 <span class="lineNum">     566 </span><span class="lineCov">          1 :   &quot;use strict&quot;;</span>
 <span class="lineNum">     567 </span><span class="lineCov">          1 :   var i = 0;</span>
@@ -639,16 +639,16 @@
 <span class="lineNum">     577 </span><span class="lineCov">          3 :     raw.push(&quot;raw;&quot; + text);</span>
 <span class="lineNum">     578 </span><span class="lineCov">          3 :     return text;</span>
 <span class="lineNum">     579 </span><span class="lineCov">          3 :   }</span>
-<span class="lineNum">     580 </span><span class="lineCov">          1 :   assertEquals(&quot;test3&quot;, tag`test1``test2``test3`);</span>
-<span class="lineNum">     581 </span><span class="lineCov">          1 :   assertEquals([</span>
-<span class="lineNum">     582 </span><span class="lineCov">          1 :     &quot;tag;test1&quot;,</span>
-<span class="lineNum">     583 </span><span class="lineCov">          1 :     &quot;tag;test2&quot;,</span>
-<span class="lineNum">     584 </span><span class="lineCov">          1 :     &quot;raw;test3&quot;</span>
-<span class="lineNum">     585 </span><span class="lineCov">          1 :   ], raw);</span>
-<span class="lineNum">     586 </span><span class="lineCov">          1 : })();</span>
-<a name="587"><span class="lineNum">     587 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">     588 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     589 </span><span class="lineCov">          1 : (function testReturnValueAsTagFn() {</span>
+<span class="lineNum">     580 </span><span class="lineNoCov">          0 :   assertEquals(&quot;test3&quot;, tag`test1``test2``test3`);</span>
+<span class="lineNum">     581 </span><span class="lineNoCov">          0 :   assertEquals([</span>
+<span class="lineNum">     582 </span><span class="lineNoCov">          0 :     &quot;tag;test1&quot;,</span>
+<span class="lineNum">     583 </span><span class="lineNoCov">          0 :     &quot;tag;test2&quot;,</span>
+<span class="lineNum">     584 </span><span class="lineNoCov">          0 :     &quot;raw;test3&quot;</span>
+<span class="lineNum">     585 </span><span class="lineNoCov">          0 :   ], raw);</span>
+<span class="lineNum">     586 </span><span class="lineNoCov">          0 : })();</span>
+<a name="587"><span class="lineNum">     587 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">     588 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     589 </span><span class="lineNoCov">          0 : (function testReturnValueAsTagFn() {</span>
 <a name="590"><span class="lineNum">     590 </span><span class="lineNoCov">          0 :   &quot;use strict&quot;;</span></a>
 <span class="lineNum">     591 </span><span class="lineNoCov">          0 :   var i = 0;</span>
 <span class="lineNum">     592 </span><span class="lineNoCov">          0 :   function makeTag() {</span>
@@ -665,29 +665,29 @@
 <span class="lineNum">     603 </span><span class="lineNoCov">          0 :   assertEquals('!hi!', makeTag()`hi`);</span>
 <span class="lineNum">     604 </span><span class="lineNoCov">          0 :   assertEquals('!test!0!test!', makeTag()`test${0}test`);</span>
 <span class="lineNum">     605 </span><span class="lineNoCov">          0 :   assertEquals('!!', makeTag()``);</span>
-<span class="lineNum">     606 </span><span class="lineCov">          1 : });</span>
-<a name="607"><span class="lineNum">     607 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">     608 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     606 </span><span class="lineNoCov">          0 : });</span>
+<a name="607"><span class="lineNum">     607 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">     608 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     609 </span><span class="lineCov">          1 : (function testToStringSubstitutions() {</span>
 <span class="lineNum">     610 </span><span class="lineCov">          1 :   var a = {</span>
 <span class="lineNum">     611 </span><span class="lineCov">          6 :     toString: function() { return &quot;a&quot;; },</span>
 <span class="lineNum">     612 </span><span class="lineCov">          2 :     valueOf: function() { return &quot;-a-&quot;; }</span>
-<a name="613"><span class="lineNum">     613 </span><span class="lineCov">          1 :   };</span></a>
-<a name="614"><span class="lineNum">     614 </span><span class="lineCov">          1 :   var b = {</span></a>
+<a name="613"><span class="lineNum">     613 </span><span class="lineNoCov">          0 :   };</span></a>
+<a name="614"><span class="lineNum">     614 </span><span class="lineNoCov">          0 :   var b = {</span></a>
 <span class="lineNum">     615 </span><span class="lineCov">          3 :     toString: function() { return &quot;b&quot;; },</span>
 <span class="lineNum">     616 </span><span class="lineCov">          1 :     valueOf: function() { return &quot;-b-&quot;; }</span>
-<span class="lineNum">     617 </span><span class="lineCov">          1 :   };</span>
-<span class="lineNum">     618 </span><span class="lineCov">          1 :   assertEquals(&quot;a&quot;, `${a}`);</span>
-<span class="lineNum">     619 </span><span class="lineCov">          1 :   assertEquals(&quot;ab&quot;, `${a}${b}`);</span>
-<span class="lineNum">     620 </span><span class="lineCov">          1 :   assertEquals(&quot;-a--b-&quot;, `${a + b}`);</span>
-<span class="lineNum">     621 </span><span class="lineCov">          1 :   assertEquals(&quot;-a-&quot;, `${a + &quot;&quot;}`);</span>
-<span class="lineNum">     622 </span><span class="lineCov">          1 :   assertEquals(&quot;1a&quot;, `1${a}`);</span>
-<span class="lineNum">     623 </span><span class="lineCov">          1 :   assertEquals(&quot;1a2&quot;, `1${a}2`);</span>
-<span class="lineNum">     624 </span><span class="lineCov">          1 :   assertEquals(&quot;1a2b&quot;, `1${a}2${b}`);</span>
-<span class="lineNum">     625 </span><span class="lineCov">          1 :   assertEquals(&quot;1a2b3&quot;, `1${a}2${b}3`);</span>
-<span class="lineNum">     626 </span><span class="lineCov">          1 : })();</span>
-<a name="627"><span class="lineNum">     627 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">     628 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     617 </span><span class="lineNoCov">          0 :   };</span>
+<span class="lineNum">     618 </span><span class="lineNoCov">          0 :   assertEquals(&quot;a&quot;, `${a}`);</span>
+<span class="lineNum">     619 </span><span class="lineNoCov">          0 :   assertEquals(&quot;ab&quot;, `${a}${b}`);</span>
+<span class="lineNum">     620 </span><span class="lineNoCov">          0 :   assertEquals(&quot;-a--b-&quot;, `${a + b}`);</span>
+<span class="lineNum">     621 </span><span class="lineNoCov">          0 :   assertEquals(&quot;-a-&quot;, `${a + &quot;&quot;}`);</span>
+<span class="lineNum">     622 </span><span class="lineNoCov">          0 :   assertEquals(&quot;1a&quot;, `1${a}`);</span>
+<span class="lineNum">     623 </span><span class="lineNoCov">          0 :   assertEquals(&quot;1a2&quot;, `1${a}2`);</span>
+<span class="lineNum">     624 </span><span class="lineNoCov">          0 :   assertEquals(&quot;1a2b&quot;, `1${a}2${b}`);</span>
+<span class="lineNum">     625 </span><span class="lineNoCov">          0 :   assertEquals(&quot;1a2b3&quot;, `1${a}2${b}3`);</span>
+<span class="lineNum">     626 </span><span class="lineNoCov">          0 : })();</span>
+<a name="627"><span class="lineNum">     627 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">     628 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     629 </span><span class="lineCov">          1 : (function testToStringSubstitutionsOrder() {</span>
 <span class="lineNum">     630 </span><span class="lineCov">          1 :   var subs = [];</span>
 <span class="lineNum">     631 </span><span class="lineCov">          1 :   var log = [];</span>
@@ -697,22 +697,22 @@
 <span class="lineNum">     635 </span><span class="lineCov">          3 :         log.push(&quot;get&quot; + name);</span>
 <span class="lineNum">     636 </span><span class="lineCov">          3 :         return value;</span>
 <span class="lineNum">     637 </span><span class="lineCov">          3 :       },</span>
-<span class="lineNum">     638 </span><span class="lineCov">          3 :       set: function(v) {</span>
+<span class="lineNum">     638 </span><span class="lineNoCov">          0 :       set: function(v) {</span>
 <span class="lineNum">     639 </span><span class="lineNoCov">          0 :         log.push(&quot;set&quot; + name);</span>
-<span class="lineNum">     640 </span><span class="lineCov">          3 :       }</span>
-<span class="lineNum">     641 </span><span class="lineCov">          3 :     };</span>
-<span class="lineNum">     642 </span><span class="lineCov">          3 :   }</span>
-<span class="lineNum">     643 </span><span class="lineCov">          1 :   Object.defineProperties(subs, {</span>
-<span class="lineNum">     644 </span><span class="lineCov">          1 :     0: getter(0, &quot;a&quot;),</span>
-<span class="lineNum">     645 </span><span class="lineCov">          1 :     1: getter(1, &quot;b&quot;),</span>
-<span class="lineNum">     646 </span><span class="lineCov">          1 :     2: getter(2, &quot;c&quot;)</span>
-<span class="lineNum">     647 </span><span class="lineCov">          1 :   });</span>
-<span class="lineNum">     648 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     649 </span><span class="lineCov">          1 :   assertEquals(&quot;-a-b-c-&quot;, `-${subs[0]}-${subs[1]}-${subs[2]}-`);</span>
-<span class="lineNum">     650 </span><span class="lineCov">          1 :   assertArrayEquals([&quot;get0&quot;, &quot;get1&quot;, &quot;get2&quot;], log);</span>
-<span class="lineNum">     651 </span><span class="lineCov">          1 : })();</span>
-<a name="652"><span class="lineNum">     652 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">     653 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     640 </span><span class="lineNoCov">          0 :       }</span>
+<span class="lineNum">     641 </span><span class="lineNoCov">          0 :     };</span>
+<span class="lineNum">     642 </span><span class="lineNoCov">          0 :   }</span>
+<span class="lineNum">     643 </span><span class="lineNoCov">          0 :   Object.defineProperties(subs, {</span>
+<span class="lineNum">     644 </span><span class="lineNoCov">          0 :     0: getter(0, &quot;a&quot;),</span>
+<span class="lineNum">     645 </span><span class="lineNoCov">          0 :     1: getter(1, &quot;b&quot;),</span>
+<span class="lineNum">     646 </span><span class="lineNoCov">          0 :     2: getter(2, &quot;c&quot;)</span>
+<span class="lineNum">     647 </span><span class="lineNoCov">          0 :   });</span>
+<span class="lineNum">     648 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     649 </span><span class="lineNoCov">          0 :   assertEquals(&quot;-a-b-c-&quot;, `-${subs[0]}-${subs[1]}-${subs[2]}-`);</span>
+<span class="lineNum">     650 </span><span class="lineNoCov">          0 :   assertArrayEquals([&quot;get0&quot;, &quot;get1&quot;, &quot;get2&quot;], log);</span>
+<span class="lineNum">     651 </span><span class="lineNoCov">          0 : })();</span>
+<a name="652"><span class="lineNum">     652 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">     653 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     654 </span><span class="lineCov">          1 : (function testTaggedToStringSubstitutionsOrder() {</span>
 <span class="lineNum">     655 </span><span class="lineCov">          1 :   var subs = [];</span>
 <a name="656"><span class="lineNum">     656 </span><span class="lineCov">          1 :   var log = [];</span></a>
@@ -723,17 +723,17 @@
 <span class="lineNum">     661 </span><span class="lineCov">          4 :         log.push(&quot;get&quot; + name);</span>
 <a name="662"><span class="lineNum">     662 </span><span class="lineCov">          4 :         return value;</span></a>
 <span class="lineNum">     663 </span><span class="lineCov">          4 :       },</span>
-<span class="lineNum">     664 </span><span class="lineCov">          3 :       set: function(v) {</span>
+<span class="lineNum">     664 </span><span class="lineNoCov">          0 :       set: function(v) {</span>
 <span class="lineNum">     665 </span><span class="lineNoCov">          0 :         log.push(&quot;set&quot; + name);</span>
-<span class="lineNum">     666 </span><span class="lineCov">          3 :       }</span>
-<span class="lineNum">     667 </span><span class="lineCov">          3 :     };</span>
-<span class="lineNum">     668 </span><span class="lineCov">          3 :   }</span>
-<span class="lineNum">     669 </span><span class="lineCov">          1 :   Object.defineProperties(subs, {</span>
-<span class="lineNum">     670 </span><span class="lineCov">          1 :     0: getter(0, 1),</span>
-<span class="lineNum">     671 </span><span class="lineCov">          1 :     1: getter(1, 2),</span>
-<span class="lineNum">     672 </span><span class="lineCov">          1 :     2: getter(2, 3)</span>
-<a name="673"><span class="lineNum">     673 </span><span class="lineCov">          1 :   });</span></a>
-<span class="lineNum">     674 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     666 </span><span class="lineNoCov">          0 :       }</span>
+<span class="lineNum">     667 </span><span class="lineNoCov">          0 :     };</span>
+<span class="lineNum">     668 </span><span class="lineNoCov">          0 :   }</span>
+<span class="lineNum">     669 </span><span class="lineNoCov">          0 :   Object.defineProperties(subs, {</span>
+<span class="lineNum">     670 </span><span class="lineNoCov">          0 :     0: getter(0, 1),</span>
+<span class="lineNum">     671 </span><span class="lineNoCov">          0 :     1: getter(1, 2),</span>
+<span class="lineNum">     672 </span><span class="lineNoCov">          0 :     2: getter(2, 3)</span>
+<a name="673"><span class="lineNum">     673 </span><span class="lineNoCov">          0 :   });</span></a>
+<span class="lineNum">     674 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     675 </span><span class="lineCov">          2 :   function tag(cs) {</span>
 <span class="lineNum">     676 </span><span class="lineCov">          2 :     var n_substitutions = arguments.length - 1;</span>
 <span class="lineNum">     677 </span><span class="lineCov">          2 :     var n_cooked = cs.length;</span>
@@ -748,36 +748,36 @@
 <span class="lineNum">     686 </span><span class="lineCov">          2 :     }</span>
 <span class="lineNum">     687 </span><span class="lineCov">          2 :     return e;</span>
 <span class="lineNum">     688 </span><span class="lineCov">          2 :   }</span>
-<span class="lineNum">     689 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     690 </span><span class="lineCov">          1 :   assertEquals(&quot;-1-2-3-&quot;, tag`-${subs[0]}-${subs[1]}-${subs[2]}-`);</span>
-<span class="lineNum">     691 </span><span class="lineCov">          1 :   assertArrayEquals([&quot;get0&quot;, &quot;get1&quot;, &quot;get2&quot;], log);</span>
-<span class="lineNum">     692 </span><span class="lineCov">          1 :   assertArrayEquals([1, 2, 3], tagged);</span>
-<span class="lineNum">     693 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     694 </span><span class="lineCov">          1 :   tagged.length = 0;</span>
-<span class="lineNum">     695 </span><span class="lineCov">          1 :   log.length = 0;</span>
-<span class="lineNum">     696 </span><span class="lineCov">          1 :   assertEquals(&quot;-1-&quot;, tag`-${subs[0]}-`);</span>
-<span class="lineNum">     697 </span><span class="lineCov">          1 :   assertArrayEquals([&quot;get0&quot;], log);</span>
-<span class="lineNum">     698 </span><span class="lineCov">          1 :   assertArrayEquals([1], tagged);</span>
-<span class="lineNum">     699 </span><span class="lineCov">          1 : })();</span>
-<span class="lineNum">     700 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     701 </span><span class="lineCov">          1 : </span>
-<a name="702"><span class="lineNum">     702 </span><span class="lineCov">          1 : // Since the first argument to the tag function is always an array,</span></a>
-<span class="lineNum">     703 </span><span class="lineCov">          1 : // eval calls will always just return that array.</span>
+<span class="lineNum">     689 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     690 </span><span class="lineNoCov">          0 :   assertEquals(&quot;-1-2-3-&quot;, tag`-${subs[0]}-${subs[1]}-${subs[2]}-`);</span>
+<span class="lineNum">     691 </span><span class="lineNoCov">          0 :   assertArrayEquals([&quot;get0&quot;, &quot;get1&quot;, &quot;get2&quot;], log);</span>
+<span class="lineNum">     692 </span><span class="lineNoCov">          0 :   assertArrayEquals([1, 2, 3], tagged);</span>
+<span class="lineNum">     693 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     694 </span><span class="lineNoCov">          0 :   tagged.length = 0;</span>
+<span class="lineNum">     695 </span><span class="lineNoCov">          0 :   log.length = 0;</span>
+<span class="lineNum">     696 </span><span class="lineNoCov">          0 :   assertEquals(&quot;-1-&quot;, tag`-${subs[0]}-`);</span>
+<span class="lineNum">     697 </span><span class="lineNoCov">          0 :   assertArrayEquals([&quot;get0&quot;], log);</span>
+<span class="lineNum">     698 </span><span class="lineNoCov">          0 :   assertArrayEquals([1], tagged);</span>
+<span class="lineNum">     699 </span><span class="lineNoCov">          0 : })();</span>
+<span class="lineNum">     700 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     701 </span><span class="lineNoCov">          0 : </span>
+<a name="702"><span class="lineNum">     702 </span><span class="lineNoCov">          0 : // Since the first argument to the tag function is always an array,</span></a>
+<span class="lineNum">     703 </span><span class="lineNoCov">          0 : // eval calls will always just return that array.</span>
 <span class="lineNum">     704 </span><span class="lineCov">          1 : (function testEvalTagStrict() {</span>
 <span class="lineNum">     705 </span><span class="lineCov">          1 :   &quot;use strict&quot;;</span>
 <span class="lineNum">     706 </span><span class="lineCov">          2 :   var f = (x) =&gt; eval`a${x}b`;</span>
-<span class="lineNum">     707 </span><span class="lineCov">          1 :   var result = f();</span>
-<span class="lineNum">     708 </span><span class="lineCov">          1 :   assertEquals([&quot;a&quot;, &quot;b&quot;], result);</span>
-<span class="lineNum">     709 </span><span class="lineCov">          1 :   assertSame(result, f());</span>
-<span class="lineNum">     710 </span><span class="lineCov">          1 : })();</span>
-<a name="711"><span class="lineNum">     711 </span><span class="lineCov">          1 : </span></a>
-<a name="712"><span class="lineNum">     712 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     707 </span><span class="lineNoCov">          0 :   var result = f();</span>
+<span class="lineNum">     708 </span><span class="lineNoCov">          0 :   assertEquals([&quot;a&quot;, &quot;b&quot;], result);</span>
+<span class="lineNum">     709 </span><span class="lineNoCov">          0 :   assertSame(result, f());</span>
+<span class="lineNum">     710 </span><span class="lineNoCov">          0 : })();</span>
+<a name="711"><span class="lineNum">     711 </span><span class="lineNoCov">          0 : </span></a>
+<a name="712"><span class="lineNum">     712 </span><span class="lineNoCov">          0 : </span></a>
 <span class="lineNum">     713 </span><span class="lineCov">          1 : (function testEvalTagSloppy() {</span>
 <span class="lineNum">     714 </span><span class="lineCov">          2 :   var f = (x) =&gt; eval`a${x}b`;</span>
-<span class="lineNum">     715 </span><span class="lineCov">          1 :   var result = f();</span>
-<span class="lineNum">     716 </span><span class="lineCov">          1 :   assertEquals([&quot;a&quot;, &quot;b&quot;], result);</span>
-<span class="lineNum">     717 </span><span class="lineCov">          1 :   assertSame(result, f());</span>
-<span class="lineNum">     718 </span><span class="lineCov">          1 : })();</span>
+<span class="lineNum">     715 </span>            :   var result = f();
+<span class="lineNum">     716 </span>            :   assertEquals([&quot;a&quot;, &quot;b&quot;], result);
+<span class="lineNum">     717 </span>            :   assertSame(result, f());
+<span class="lineNum">     718 </span>            : })();
 </pre>
       </td>
     </tr>

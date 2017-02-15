@@ -31,18 +31,18 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">201</td>
-            <td class="headerCovTableEntry">201</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntry">34</td>
+            <td class="headerCovTableEntry">154</td>
+            <td class="headerCovTableEntryLo">22.1 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">1</td>
             <td class="headerCovTableEntry">2</td>
-            <td class="headerCovTableEntry">3</td>
-            <td class="headerCovTableEntryLo">66.7 %</td>
+            <td class="headerCovTableEntryLo">50.0 %</td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
         </table>
@@ -94,172 +94,172 @@
 <a name="32"><span class="lineNum">      32 </span><span class="lineCov">          1 : </span></a>
 <span class="lineNum">      33 </span><span class="lineCov">          1 : var o = { length: Number.MAX_VALUE };</span>
 <span class="lineNum">      34 </span><span class="lineCov">          1 : assertThrows(() =&gt; Array.prototype.push.call(o, 1), TypeError);</span>
-<span class="lineNum">      35 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      36 </span><span class="lineCov">          1 : // ArrayPop</span>
-<span class="lineNum">      37 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      38 </span><span class="lineCov">          1 : var o = { length: 0 };</span>
-<span class="lineNum">      39 </span><span class="lineCov">          1 : Array.prototype.pop.call(o);</span>
-<span class="lineNum">      40 </span><span class="lineCov">          1 : assertEquals(0, o.length);</span>
-<span class="lineNum">      41 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      42 </span><span class="lineCov">          1 : var o = { length: Number.MIN_VALUE };</span>
-<span class="lineNum">      43 </span><span class="lineCov">          1 : Array.prototype.pop.call(o);</span>
-<span class="lineNum">      44 </span><span class="lineCov">          1 : assertEquals(0, o.length);</span>
-<span class="lineNum">      45 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      46 </span><span class="lineCov">          1 : var o = { length: Number.MAX_VALUE };</span>
-<span class="lineNum">      47 </span><span class="lineCov">          1 : Array.prototype.pop.call(o);</span>
-<span class="lineNum">      48 </span><span class="lineCov">          1 : assertEquals(o.length, Number.MAX_SAFE_INTEGER - 1);</span>
-<span class="lineNum">      49 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      50 </span><span class="lineCov">          1 : // ArrayReverse</span>
-<span class="lineNum">      51 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      52 </span><span class="lineCov">          1 : var o = { 0: 'foo', length: Number.MIN_VALUE }</span>
-<span class="lineNum">      53 </span><span class="lineCov">          1 : var result = Array.prototype.reverse.call(o);</span>
-<span class="lineNum">      54 </span><span class="lineCov">          1 : assertEquals('object', typeof(result));</span>
-<span class="lineNum">      55 </span><span class="lineCov">          1 : assertEquals(Number.MIN_VALUE, result.length);</span>
-<span class="lineNum">      56 </span><span class="lineCov">          1 : assertEquals(Number.MIN_VALUE, o.length);</span>
-<span class="lineNum">      57 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      58 </span><span class="lineCov">          1 : // ArrayShift</span>
-<span class="lineNum">      59 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      60 </span><span class="lineCov">          1 : var o = { 0: &quot;foo&quot;, length: Number.MIN_VALUE }</span>
-<span class="lineNum">      61 </span><span class="lineCov">          1 : var result = Array.prototype.shift.call(o);</span>
-<span class="lineNum">      62 </span><span class="lineCov">          1 : assertEquals(undefined, result);</span>
-<span class="lineNum">      63 </span><span class="lineCov">          1 : assertEquals(0, o.length);</span>
-<span class="lineNum">      64 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      65 </span><span class="lineCov">          1 : // ArrayUnshift</span>
-<span class="lineNum">      66 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      67 </span><span class="lineCov">          1 : var o = { length: 0 };</span>
-<span class="lineNum">      68 </span><span class="lineCov">          1 : Array.prototype.unshift.call(o);</span>
-<span class="lineNum">      69 </span><span class="lineCov">          1 : assertEquals(0, o.length);</span>
-<span class="lineNum">      70 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      71 </span><span class="lineCov">          1 : var o = { length: 0 };</span>
-<span class="lineNum">      72 </span><span class="lineCov">          1 : Array.prototype.unshift.call(o, 'foo');</span>
-<span class="lineNum">      73 </span><span class="lineCov">          1 : assertEquals('foo', o[0]);</span>
-<span class="lineNum">      74 </span><span class="lineCov">          1 : assertEquals(1, o.length);</span>
-<span class="lineNum">      75 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      76 </span><span class="lineCov">          1 : var o = { length: Number.MIN_VALUE };</span>
-<span class="lineNum">      77 </span><span class="lineCov">          1 : Array.prototype.unshift.call(o);</span>
-<span class="lineNum">      78 </span><span class="lineCov">          1 : assertEquals(0, o.length);</span>
-<span class="lineNum">      79 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      80 </span><span class="lineCov">          1 : var o = { length: Number.MIN_VALUE };</span>
-<span class="lineNum">      81 </span><span class="lineCov">          1 : Array.prototype.unshift.call(o, 'foo');</span>
-<span class="lineNum">      82 </span><span class="lineCov">          1 : assertEquals('foo', o[0]);</span>
-<span class="lineNum">      83 </span><span class="lineCov">          1 : assertEquals(1, o.length);</span>
-<span class="lineNum">      84 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      85 </span><span class="lineCov">          1 : // ArraySplice</span>
-<span class="lineNum">      86 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      87 </span><span class="lineCov">          1 : var o = { length: Number.MIN_VALUE };</span>
-<span class="lineNum">      88 </span><span class="lineCov">          1 : Array.prototype.splice.call(o);</span>
-<span class="lineNum">      89 </span><span class="lineCov">          1 : assertEquals(0, o.length);</span>
-<span class="lineNum">      90 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      91 </span><span class="lineCov">          1 : var o = { length: Number.MIN_VALUE };</span>
-<span class="lineNum">      92 </span><span class="lineCov">          1 : Array.prototype.splice.call(o, 0, 10, ['foo']);</span>
-<span class="lineNum">      93 </span><span class="lineCov">          1 : assertEquals(['foo'], o[0]);</span>
-<span class="lineNum">      94 </span><span class="lineCov">          1 : assertEquals(1, o.length);</span>
-<span class="lineNum">      95 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      96 </span><span class="lineCov">          1 : var o = { length: Number.MIN_VALUE };</span>
-<span class="lineNum">      97 </span><span class="lineCov">          1 : Array.prototype.splice.call(o, -1);</span>
-<span class="lineNum">      98 </span><span class="lineCov">          1 : assertEquals(0, o.length);</span>
-<span class="lineNum">      99 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     100 </span><span class="lineCov">          1 : var o = { length: Number.MAX_SAFE_INTEGER };</span>
-<span class="lineNum">     101 </span><span class="lineCov">          1 : Array.prototype.splice.call(o, -1);</span>
-<span class="lineNum">     102 </span><span class="lineCov">          1 : assertEquals(Number.MAX_SAFE_INTEGER - 1, o.length);</span>
-<span class="lineNum">     103 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     104 </span><span class="lineCov">          1 : // ArraySlice</span>
-<span class="lineNum">     105 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     106 </span><span class="lineCov">          1 : var o = { length: Number.MIN_VALUE };</span>
-<span class="lineNum">     107 </span><span class="lineCov">          1 : var result = Array.prototype.slice.call(o);</span>
-<span class="lineNum">     108 </span><span class="lineCov">          1 : assertEquals(0, result.length);</span>
-<span class="lineNum">     109 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     110 </span><span class="lineCov">          1 : var o = { length: Number.MIN_VALUE };</span>
-<span class="lineNum">     111 </span><span class="lineCov">          1 : var result = Array.prototype.slice.call(o, Number.MAX_VALUE);</span>
-<span class="lineNum">     112 </span><span class="lineCov">          1 : assertEquals(0, result.length);</span>
-<span class="lineNum">     113 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     114 </span><span class="lineCov">          1 : var o = { length: Number.MAX_VALUE };</span>
-<span class="lineNum">     115 </span><span class="lineCov">          1 : var result = Array.prototype.slice.call(o, Number.MAX_VALUE - 1);</span>
-<span class="lineNum">     116 </span><span class="lineCov">          1 : assertEquals(0, result.length);</span>
-<span class="lineNum">     117 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     118 </span><span class="lineCov">          1 : // ArrayIndexOf</span>
-<span class="lineNum">     119 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     120 </span><span class="lineCov">          1 : var o = { length: Number.MIN_VALUE };</span>
-<span class="lineNum">     121 </span><span class="lineCov">          1 : var result = Array.prototype.indexOf.call(o);</span>
-<span class="lineNum">     122 </span><span class="lineCov">          1 : assertEquals(-1, result);</span>
-<span class="lineNum">     123 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     124 </span><span class="lineCov">          1 : var o = { length: Number.MAX_SAFE_INTEGER }</span>
-<span class="lineNum">     125 </span><span class="lineCov">          1 : o[Number.MAX_SAFE_INTEGER - 1] = &quot;foo&quot;</span>
-<span class="lineNum">     126 </span><span class="lineCov">          1 : var result = Array.prototype.indexOf.call(o,</span>
-<span class="lineNum">     127 </span><span class="lineCov">          1 :     &quot;foo&quot;, Number.MAX_SAFE_INTEGER - 2);</span>
-<span class="lineNum">     128 </span><span class="lineCov">          1 : assertEquals(Number.MAX_SAFE_INTEGER - 1, result);</span>
-<span class="lineNum">     129 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     130 </span><span class="lineCov">          1 : var o = { length: Number.MAX_SAFE_INTEGER };</span>
-<span class="lineNum">     131 </span><span class="lineCov">          1 : o[Number.MAX_SAFE_INTEGER - 1] = &quot;foo&quot;;</span>
-<span class="lineNum">     132 </span><span class="lineCov">          1 : var result = Array.prototype.indexOf.call(o, &quot;foo&quot;, -1);</span>
-<span class="lineNum">     133 </span><span class="lineCov">          1 : assertEquals(Number.MAX_SAFE_INTEGER - 1, result);</span>
-<span class="lineNum">     134 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     135 </span><span class="lineCov">          1 : // ArrayLastIndexOf</span>
-<span class="lineNum">     136 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     137 </span><span class="lineCov">          1 : var o = { length: Number.MIN_VALUE };</span>
-<span class="lineNum">     138 </span><span class="lineCov">          1 : var result = Array.prototype.lastIndexOf.call(o);</span>
-<span class="lineNum">     139 </span><span class="lineCov">          1 : assertEquals(-1, result);</span>
-<span class="lineNum">     140 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     141 </span><span class="lineCov">          1 : var o = { length: Number.MAX_SAFE_INTEGER }</span>
-<span class="lineNum">     142 </span><span class="lineCov">          1 : o[Number.MAX_SAFE_INTEGER - 1] = &quot;foo&quot;</span>
-<span class="lineNum">     143 </span><span class="lineCov">          1 : var result = Array.prototype.lastIndexOf.call(o,</span>
-<span class="lineNum">     144 </span><span class="lineCov">          1 :     &quot;foo&quot;, Number.MAX_SAFE_INTEGER);</span>
-<span class="lineNum">     145 </span><span class="lineCov">          1 : assertEquals(Number.MAX_SAFE_INTEGER - 1, result);</span>
-<span class="lineNum">     146 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     147 </span><span class="lineCov">          1 : var o = { length: Number.MAX_SAFE_INTEGER };</span>
-<span class="lineNum">     148 </span><span class="lineCov">          1 : o[Number.MAX_SAFE_INTEGER - 1] = &quot;foo&quot;;</span>
-<span class="lineNum">     149 </span><span class="lineCov">          1 : var result = Array.prototype.lastIndexOf.call(o, &quot;foo&quot;, -1);</span>
-<span class="lineNum">     150 </span><span class="lineCov">          1 : assertEquals(Number.MAX_SAFE_INTEGER - 1, result);</span>
-<span class="lineNum">     151 </span><span class="lineCov">          1 : </span>
-<a name="152"><span class="lineNum">     152 </span><span class="lineCov">          1 : // ArrayFilter</span></a>
-<span class="lineNum">     153 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     154 </span><span class="lineCov">          1 : var func = function(v) { return v; }</span>
-<span class="lineNum">     155 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     156 </span><span class="lineCov">          1 : var o = { length: Number.MIN_VALUE };</span>
-<span class="lineNum">     157 </span><span class="lineCov">          1 : Array.prototype.filter.call(o, func);</span>
-<span class="lineNum">     158 </span><span class="lineCov">          1 : assertEquals(Number.MIN_VALUE, o.length);</span>
-<span class="lineNum">     159 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     160 </span><span class="lineCov">          1 : // ArrayForEach</span>
-<span class="lineNum">     161 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     162 </span><span class="lineCov">          1 : var o = { length: Number.MIN_VALUE };</span>
-<span class="lineNum">     163 </span><span class="lineCov">          1 : Array.prototype.forEach.call(o, func);</span>
-<span class="lineNum">     164 </span><span class="lineCov">          1 : assertEquals(Number.MIN_VALUE, o.length);</span>
-<span class="lineNum">     165 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     166 </span><span class="lineCov">          1 : // ArraySome</span>
-<span class="lineNum">     167 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     168 </span><span class="lineCov">          1 : var o = { length: Number.MIN_VALUE };</span>
-<span class="lineNum">     169 </span><span class="lineCov">          1 : Array.prototype.some.call(o, func);</span>
-<span class="lineNum">     170 </span><span class="lineCov">          1 : assertEquals(Number.MIN_VALUE, o.length);</span>
-<span class="lineNum">     171 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     172 </span><span class="lineCov">          1 : // ArrayEvery</span>
-<span class="lineNum">     173 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     174 </span><span class="lineCov">          1 : var o = { length: Number.MIN_VALUE };</span>
-<span class="lineNum">     175 </span><span class="lineCov">          1 : Array.prototype.every.call(o, func);</span>
-<span class="lineNum">     176 </span><span class="lineCov">          1 : assertEquals(Number.MIN_VALUE, o.length);</span>
-<span class="lineNum">     177 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     178 </span><span class="lineCov">          1 : // ArrayMap</span>
-<span class="lineNum">     179 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     180 </span><span class="lineCov">          1 : var o = { length: Number.MIN_VALUE };</span>
-<span class="lineNum">     181 </span><span class="lineCov">          1 : Array.prototype.map.call(o, func);</span>
-<span class="lineNum">     182 </span><span class="lineCov">          1 : assertEquals(Number.MIN_VALUE, o.length);</span>
-<span class="lineNum">     183 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     184 </span><span class="lineCov">          1 : // ArrayReduce</span>
-<span class="lineNum">     185 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     186 </span><span class="lineCov">          1 : var o = { length: Number.MIN_VALUE };</span>
-<span class="lineNum">     187 </span><span class="lineCov">          1 : Array.prototype.reduce.call(o, func, 0);</span>
-<span class="lineNum">     188 </span><span class="lineCov">          1 : assertEquals(Number.MIN_VALUE, o.length);</span>
-<span class="lineNum">     189 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     190 </span><span class="lineCov">          1 : // ArrayReduceRight</span>
-<span class="lineNum">     191 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     192 </span><span class="lineCov">          1 : var o = { length: Number.MIN_VALUE };</span>
-<span class="lineNum">     193 </span><span class="lineCov">          1 : Array.prototype.reduceRight.call(o, func, 0);</span>
-<span class="lineNum">     194 </span><span class="lineCov">          1 : assertEquals(Number.MIN_VALUE, o.length);</span>
-<span class="lineNum">     195 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     196 </span><span class="lineCov">          1 : // ArrayFill</span>
-<span class="lineNum">     197 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     198 </span><span class="lineCov">          1 : var o = { length: Number.MIN_VALUE };</span>
-<span class="lineNum">     199 </span><span class="lineCov">          1 : Array.prototype.fill(o, 0);</span>
-<span class="lineNum">     200 </span><span class="lineCov">          1 : assertEquals(Number.MIN_VALUE, o.length);</span>
+<span class="lineNum">      35 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      36 </span><span class="lineNoCov">          0 : // ArrayPop</span>
+<span class="lineNum">      37 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      38 </span><span class="lineNoCov">          0 : var o = { length: 0 };</span>
+<span class="lineNum">      39 </span><span class="lineNoCov">          0 : Array.prototype.pop.call(o);</span>
+<span class="lineNum">      40 </span><span class="lineNoCov">          0 : assertEquals(0, o.length);</span>
+<span class="lineNum">      41 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      42 </span><span class="lineNoCov">          0 : var o = { length: Number.MIN_VALUE };</span>
+<span class="lineNum">      43 </span><span class="lineNoCov">          0 : Array.prototype.pop.call(o);</span>
+<span class="lineNum">      44 </span><span class="lineNoCov">          0 : assertEquals(0, o.length);</span>
+<span class="lineNum">      45 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      46 </span><span class="lineNoCov">          0 : var o = { length: Number.MAX_VALUE };</span>
+<span class="lineNum">      47 </span><span class="lineNoCov">          0 : Array.prototype.pop.call(o);</span>
+<span class="lineNum">      48 </span><span class="lineNoCov">          0 : assertEquals(o.length, Number.MAX_SAFE_INTEGER - 1);</span>
+<span class="lineNum">      49 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      50 </span><span class="lineNoCov">          0 : // ArrayReverse</span>
+<span class="lineNum">      51 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      52 </span><span class="lineNoCov">          0 : var o = { 0: 'foo', length: Number.MIN_VALUE }</span>
+<span class="lineNum">      53 </span><span class="lineNoCov">          0 : var result = Array.prototype.reverse.call(o);</span>
+<span class="lineNum">      54 </span><span class="lineNoCov">          0 : assertEquals('object', typeof(result));</span>
+<span class="lineNum">      55 </span><span class="lineNoCov">          0 : assertEquals(Number.MIN_VALUE, result.length);</span>
+<span class="lineNum">      56 </span><span class="lineNoCov">          0 : assertEquals(Number.MIN_VALUE, o.length);</span>
+<span class="lineNum">      57 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      58 </span><span class="lineNoCov">          0 : // ArrayShift</span>
+<span class="lineNum">      59 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      60 </span><span class="lineNoCov">          0 : var o = { 0: &quot;foo&quot;, length: Number.MIN_VALUE }</span>
+<span class="lineNum">      61 </span><span class="lineNoCov">          0 : var result = Array.prototype.shift.call(o);</span>
+<span class="lineNum">      62 </span><span class="lineNoCov">          0 : assertEquals(undefined, result);</span>
+<span class="lineNum">      63 </span><span class="lineNoCov">          0 : assertEquals(0, o.length);</span>
+<span class="lineNum">      64 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      65 </span><span class="lineNoCov">          0 : // ArrayUnshift</span>
+<span class="lineNum">      66 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      67 </span><span class="lineNoCov">          0 : var o = { length: 0 };</span>
+<span class="lineNum">      68 </span><span class="lineNoCov">          0 : Array.prototype.unshift.call(o);</span>
+<span class="lineNum">      69 </span><span class="lineNoCov">          0 : assertEquals(0, o.length);</span>
+<span class="lineNum">      70 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      71 </span><span class="lineNoCov">          0 : var o = { length: 0 };</span>
+<span class="lineNum">      72 </span><span class="lineNoCov">          0 : Array.prototype.unshift.call(o, 'foo');</span>
+<span class="lineNum">      73 </span><span class="lineNoCov">          0 : assertEquals('foo', o[0]);</span>
+<span class="lineNum">      74 </span><span class="lineNoCov">          0 : assertEquals(1, o.length);</span>
+<span class="lineNum">      75 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      76 </span><span class="lineNoCov">          0 : var o = { length: Number.MIN_VALUE };</span>
+<span class="lineNum">      77 </span><span class="lineNoCov">          0 : Array.prototype.unshift.call(o);</span>
+<span class="lineNum">      78 </span><span class="lineNoCov">          0 : assertEquals(0, o.length);</span>
+<span class="lineNum">      79 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      80 </span><span class="lineNoCov">          0 : var o = { length: Number.MIN_VALUE };</span>
+<span class="lineNum">      81 </span><span class="lineNoCov">          0 : Array.prototype.unshift.call(o, 'foo');</span>
+<span class="lineNum">      82 </span><span class="lineNoCov">          0 : assertEquals('foo', o[0]);</span>
+<span class="lineNum">      83 </span><span class="lineNoCov">          0 : assertEquals(1, o.length);</span>
+<span class="lineNum">      84 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      85 </span><span class="lineNoCov">          0 : // ArraySplice</span>
+<span class="lineNum">      86 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      87 </span><span class="lineNoCov">          0 : var o = { length: Number.MIN_VALUE };</span>
+<span class="lineNum">      88 </span><span class="lineNoCov">          0 : Array.prototype.splice.call(o);</span>
+<span class="lineNum">      89 </span><span class="lineNoCov">          0 : assertEquals(0, o.length);</span>
+<span class="lineNum">      90 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      91 </span><span class="lineNoCov">          0 : var o = { length: Number.MIN_VALUE };</span>
+<span class="lineNum">      92 </span><span class="lineNoCov">          0 : Array.prototype.splice.call(o, 0, 10, ['foo']);</span>
+<span class="lineNum">      93 </span><span class="lineNoCov">          0 : assertEquals(['foo'], o[0]);</span>
+<span class="lineNum">      94 </span><span class="lineNoCov">          0 : assertEquals(1, o.length);</span>
+<span class="lineNum">      95 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      96 </span><span class="lineNoCov">          0 : var o = { length: Number.MIN_VALUE };</span>
+<span class="lineNum">      97 </span><span class="lineNoCov">          0 : Array.prototype.splice.call(o, -1);</span>
+<span class="lineNum">      98 </span><span class="lineNoCov">          0 : assertEquals(0, o.length);</span>
+<span class="lineNum">      99 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     100 </span><span class="lineNoCov">          0 : var o = { length: Number.MAX_SAFE_INTEGER };</span>
+<span class="lineNum">     101 </span><span class="lineNoCov">          0 : Array.prototype.splice.call(o, -1);</span>
+<span class="lineNum">     102 </span><span class="lineNoCov">          0 : assertEquals(Number.MAX_SAFE_INTEGER - 1, o.length);</span>
+<span class="lineNum">     103 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     104 </span><span class="lineNoCov">          0 : // ArraySlice</span>
+<span class="lineNum">     105 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     106 </span><span class="lineNoCov">          0 : var o = { length: Number.MIN_VALUE };</span>
+<span class="lineNum">     107 </span><span class="lineNoCov">          0 : var result = Array.prototype.slice.call(o);</span>
+<span class="lineNum">     108 </span><span class="lineNoCov">          0 : assertEquals(0, result.length);</span>
+<span class="lineNum">     109 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     110 </span><span class="lineNoCov">          0 : var o = { length: Number.MIN_VALUE };</span>
+<span class="lineNum">     111 </span><span class="lineNoCov">          0 : var result = Array.prototype.slice.call(o, Number.MAX_VALUE);</span>
+<span class="lineNum">     112 </span><span class="lineNoCov">          0 : assertEquals(0, result.length);</span>
+<span class="lineNum">     113 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     114 </span><span class="lineNoCov">          0 : var o = { length: Number.MAX_VALUE };</span>
+<span class="lineNum">     115 </span><span class="lineNoCov">          0 : var result = Array.prototype.slice.call(o, Number.MAX_VALUE - 1);</span>
+<span class="lineNum">     116 </span><span class="lineNoCov">          0 : assertEquals(0, result.length);</span>
+<span class="lineNum">     117 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     118 </span><span class="lineNoCov">          0 : // ArrayIndexOf</span>
+<span class="lineNum">     119 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     120 </span><span class="lineNoCov">          0 : var o = { length: Number.MIN_VALUE };</span>
+<span class="lineNum">     121 </span><span class="lineNoCov">          0 : var result = Array.prototype.indexOf.call(o);</span>
+<span class="lineNum">     122 </span><span class="lineNoCov">          0 : assertEquals(-1, result);</span>
+<span class="lineNum">     123 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     124 </span><span class="lineNoCov">          0 : var o = { length: Number.MAX_SAFE_INTEGER }</span>
+<span class="lineNum">     125 </span><span class="lineNoCov">          0 : o[Number.MAX_SAFE_INTEGER - 1] = &quot;foo&quot;</span>
+<span class="lineNum">     126 </span><span class="lineNoCov">          0 : var result = Array.prototype.indexOf.call(o,</span>
+<span class="lineNum">     127 </span><span class="lineNoCov">          0 :     &quot;foo&quot;, Number.MAX_SAFE_INTEGER - 2);</span>
+<span class="lineNum">     128 </span><span class="lineNoCov">          0 : assertEquals(Number.MAX_SAFE_INTEGER - 1, result);</span>
+<span class="lineNum">     129 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     130 </span><span class="lineNoCov">          0 : var o = { length: Number.MAX_SAFE_INTEGER };</span>
+<span class="lineNum">     131 </span><span class="lineNoCov">          0 : o[Number.MAX_SAFE_INTEGER - 1] = &quot;foo&quot;;</span>
+<span class="lineNum">     132 </span><span class="lineNoCov">          0 : var result = Array.prototype.indexOf.call(o, &quot;foo&quot;, -1);</span>
+<span class="lineNum">     133 </span><span class="lineNoCov">          0 : assertEquals(Number.MAX_SAFE_INTEGER - 1, result);</span>
+<span class="lineNum">     134 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     135 </span><span class="lineNoCov">          0 : // ArrayLastIndexOf</span>
+<span class="lineNum">     136 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     137 </span><span class="lineNoCov">          0 : var o = { length: Number.MIN_VALUE };</span>
+<span class="lineNum">     138 </span><span class="lineNoCov">          0 : var result = Array.prototype.lastIndexOf.call(o);</span>
+<span class="lineNum">     139 </span><span class="lineNoCov">          0 : assertEquals(-1, result);</span>
+<span class="lineNum">     140 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     141 </span><span class="lineNoCov">          0 : var o = { length: Number.MAX_SAFE_INTEGER }</span>
+<span class="lineNum">     142 </span><span class="lineNoCov">          0 : o[Number.MAX_SAFE_INTEGER - 1] = &quot;foo&quot;</span>
+<span class="lineNum">     143 </span><span class="lineNoCov">          0 : var result = Array.prototype.lastIndexOf.call(o,</span>
+<span class="lineNum">     144 </span><span class="lineNoCov">          0 :     &quot;foo&quot;, Number.MAX_SAFE_INTEGER);</span>
+<span class="lineNum">     145 </span><span class="lineNoCov">          0 : assertEquals(Number.MAX_SAFE_INTEGER - 1, result);</span>
+<span class="lineNum">     146 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     147 </span><span class="lineNoCov">          0 : var o = { length: Number.MAX_SAFE_INTEGER };</span>
+<span class="lineNum">     148 </span><span class="lineNoCov">          0 : o[Number.MAX_SAFE_INTEGER - 1] = &quot;foo&quot;;</span>
+<span class="lineNum">     149 </span><span class="lineNoCov">          0 : var result = Array.prototype.lastIndexOf.call(o, &quot;foo&quot;, -1);</span>
+<span class="lineNum">     150 </span><span class="lineNoCov">          0 : assertEquals(Number.MAX_SAFE_INTEGER - 1, result);</span>
+<span class="lineNum">     151 </span><span class="lineNoCov">          0 : </span>
+<a name="152"><span class="lineNum">     152 </span><span class="lineNoCov">          0 : // ArrayFilter</span></a>
+<span class="lineNum">     153 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     154 </span><span class="lineNoCov">          0 : var func = function(v) { return v; }</span>
+<span class="lineNum">     155 </span>            : 
+<span class="lineNum">     156 </span>            : var o = { length: Number.MIN_VALUE };
+<span class="lineNum">     157 </span>            : Array.prototype.filter.call(o, func);
+<span class="lineNum">     158 </span>            : assertEquals(Number.MIN_VALUE, o.length);
+<span class="lineNum">     159 </span>            : 
+<span class="lineNum">     160 </span>            : // ArrayForEach
+<span class="lineNum">     161 </span>            : 
+<span class="lineNum">     162 </span>            : var o = { length: Number.MIN_VALUE };
+<span class="lineNum">     163 </span>            : Array.prototype.forEach.call(o, func);
+<span class="lineNum">     164 </span>            : assertEquals(Number.MIN_VALUE, o.length);
+<span class="lineNum">     165 </span>            : 
+<span class="lineNum">     166 </span>            : // ArraySome
+<span class="lineNum">     167 </span>            : 
+<span class="lineNum">     168 </span>            : var o = { length: Number.MIN_VALUE };
+<span class="lineNum">     169 </span>            : Array.prototype.some.call(o, func);
+<span class="lineNum">     170 </span>            : assertEquals(Number.MIN_VALUE, o.length);
+<span class="lineNum">     171 </span>            : 
+<span class="lineNum">     172 </span>            : // ArrayEvery
+<span class="lineNum">     173 </span>            : 
+<span class="lineNum">     174 </span>            : var o = { length: Number.MIN_VALUE };
+<span class="lineNum">     175 </span>            : Array.prototype.every.call(o, func);
+<span class="lineNum">     176 </span>            : assertEquals(Number.MIN_VALUE, o.length);
+<span class="lineNum">     177 </span>            : 
+<span class="lineNum">     178 </span>            : // ArrayMap
+<span class="lineNum">     179 </span>            : 
+<span class="lineNum">     180 </span>            : var o = { length: Number.MIN_VALUE };
+<span class="lineNum">     181 </span>            : Array.prototype.map.call(o, func);
+<span class="lineNum">     182 </span>            : assertEquals(Number.MIN_VALUE, o.length);
+<span class="lineNum">     183 </span>            : 
+<span class="lineNum">     184 </span>            : // ArrayReduce
+<span class="lineNum">     185 </span>            : 
+<span class="lineNum">     186 </span>            : var o = { length: Number.MIN_VALUE };
+<span class="lineNum">     187 </span>            : Array.prototype.reduce.call(o, func, 0);
+<span class="lineNum">     188 </span>            : assertEquals(Number.MIN_VALUE, o.length);
+<span class="lineNum">     189 </span>            : 
+<span class="lineNum">     190 </span>            : // ArrayReduceRight
+<span class="lineNum">     191 </span>            : 
+<span class="lineNum">     192 </span>            : var o = { length: Number.MIN_VALUE };
+<span class="lineNum">     193 </span>            : Array.prototype.reduceRight.call(o, func, 0);
+<span class="lineNum">     194 </span>            : assertEquals(Number.MIN_VALUE, o.length);
+<span class="lineNum">     195 </span>            : 
+<span class="lineNum">     196 </span>            : // ArrayFill
+<span class="lineNum">     197 </span>            : 
+<span class="lineNum">     198 </span>            : var o = { length: Number.MIN_VALUE };
+<span class="lineNum">     199 </span>            : Array.prototype.fill(o, 0);
+<span class="lineNum">     200 </span>            : assertEquals(Number.MIN_VALUE, o.length);
 </pre>
       </td>
     </tr>

@@ -31,17 +31,17 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">37</td>
-            <td class="headerCovTableEntry">37</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntry">24</td>
+            <td class="headerCovTableEntry">29</td>
+            <td class="headerCovTableEntryMed">82.8 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">6</td>
-            <td class="headerCovTableEntry">6</td>
+            <td class="headerCovTableEntry">4</td>
+            <td class="headerCovTableEntry">4</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -65,13 +65,13 @@
 <span class="lineNum">       3 </span><span class="lineCov">          1 : // found in the LICENSE file.</span>
 <span class="lineNum">       4 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">       5 </span><span class="lineCov">          1 : // Flags: --allow-natives-syntax</span>
-<a name="6"><span class="lineNum">       6 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">       6 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">       7 </span><span class="lineCov">          1 : [NaN, Infinity, -Infinity, 0, -0, &quot;abc&quot;, &quot;Infinity&quot;, &quot;-Infinity&quot;, {}].forEach(</span>
 <span class="lineNum">       8 </span><span class="lineCov">          9 :   function(x) {</span>
 <span class="lineNum">       9 </span><span class="lineCov">          9 :     assertEquals(32, Math.clz32(x));</span>
 <span class="lineNum">      10 </span><span class="lineCov">          9 :   }</span>
-<a name="11"><span class="lineNum">      11 </span><span class="lineCov">          1 : );</span></a>
-<span class="lineNum">      12 </span><span class="lineCov">          1 : </span>
+<a name="11"><span class="lineNum">      11 </span><span class="lineNoCov">          0 : );</span></a>
+<span class="lineNum">      12 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      13 </span><span class="lineCov">       9520 : function testclz(x) {</span>
 <span class="lineNum">      14 </span><span class="lineCov">       9520 :   for (var i = 0; i &lt; 33; i++) {</span>
 <span class="lineNum">      15 </span><span class="lineCov">       9520 :     if (x &amp; 0x80000000) return i;</span>
@@ -79,23 +79,23 @@
 <span class="lineNum">      17 </span><span class="lineCov">       9520 :   }</span>
 <span class="lineNum">      18 </span><span class="lineCov">       9520 :   return 32;</span>
 <span class="lineNum">      19 </span><span class="lineCov">       9520 : }</span>
-<a name="20"><span class="lineNum">      20 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">      21 </span><span class="lineCov">          1 : </span>
+<a name="20"><span class="lineNum">      20 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">      21 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      22 </span><span class="lineCov">          3 : function f(e) {</span>
 <span class="lineNum">      23 </span><span class="lineCov">          3 :   var max = Math.pow(2, e);</span>
 <span class="lineNum">      24 </span><span class="lineCov">          3 :   for (var x = 0; x &lt; max; x = x * 1.01 + 1) {</span>
 <a name="25"><span class="lineNum">      25 </span><span class="lineCov">          3 :     assertEquals(testclz(x), Math.clz32(x));</span></a>
 <span class="lineNum">      26 </span><span class="lineCov">          3 :     assertEquals(testclz(-x), Math.clz32(-x));</span>
 <a name="27"><span class="lineNum">      27 </span><span class="lineCov">       2380 :     assertEquals(testclz(x), Math.clz32({ valueOf: function() { return x; } }));</span></a>
-<span class="lineNum">      28 </span><span class="lineCov">          3 :     assertEquals(testclz(-x),</span>
+<span class="lineNum">      28 </span><span class="lineNoCov">          0 :     assertEquals(testclz(-x),</span>
 <span class="lineNum">      29 </span><span class="lineCov">       2380 :                  Math.clz32({ toString: function() { return -x; } }));</span>
-<span class="lineNum">      30 </span><span class="lineCov">          3 :   }</span>
-<span class="lineNum">      31 </span><span class="lineCov">          3 : }</span>
-<span class="lineNum">      32 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      33 </span><span class="lineCov">          1 : f(5);</span>
-<span class="lineNum">      34 </span><span class="lineCov">          1 : f(5);</span>
-<span class="lineNum">      35 </span><span class="lineCov">          1 : %OptimizeFunctionOnNextCall(f);</span>
-<span class="lineNum">      36 </span><span class="lineCov">          1 : f(40);</span>
+<span class="lineNum">      30 </span>            :   }
+<span class="lineNum">      31 </span>            : }
+<span class="lineNum">      32 </span>            : 
+<span class="lineNum">      33 </span>            : f(5);
+<span class="lineNum">      34 </span>            : f(5);
+<span class="lineNum">      35 </span>            : %OptimizeFunctionOnNextCall(f);
+<span class="lineNum">      36 </span>            : f(40);
 </pre>
       </td>
     </tr>

@@ -31,18 +31,18 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">283</td>
-            <td class="headerCovTableEntry">283</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntry">120</td>
+            <td class="headerCovTableEntry">282</td>
+            <td class="headerCovTableEntryLo">42.6 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">9</td>
-            <td class="headerCovTableEntry">11</td>
-            <td class="headerCovTableEntryMed">81.8 %</td>
+            <td class="headerCovTableEntry">7</td>
+            <td class="headerCovTableEntry">7</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
         </table>
@@ -143,67 +143,67 @@
 <a name="81"><span class="lineNum">      81 </span><span class="lineCov">          1 : var fooValue = { foo: { writable: true, value: function() { ctr2++; }}};</span></a>
 <span class="lineNum">      82 </span><span class="lineCov">          1 : var fooGetter = { foo: { get: function() { return ctr3++; }}};</span>
 <span class="lineNum">      83 </span><span class="lineCov">          1 : var fooSetter = { foo: { set: function() { return ctr4++; }}};</span>
-<span class="lineNum">      84 </span><span class="lineCov">          1 : var fooAmbiguous = { foo: { get: function() { return ctr3++; },</span>
-<a name="85"><span class="lineNum">      85 </span><span class="lineCov">          1 :                             value: 3 }};</span></a>
-<a name="86"><span class="lineNum">      86 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      84 </span><span class="lineNoCov">          0 : var fooAmbiguous = { foo: { get: function() { return ctr3++; },</span>
+<a name="85"><span class="lineNum">      85 </span><span class="lineNoCov">          0 :                             value: 3 }};</span></a>
+<a name="86"><span class="lineNum">      86 </span><span class="lineNoCov">          0 : </span></a>
 <span class="lineNum">      87 </span><span class="lineCov">          1 : function valueGet() { ctr5++; return 3 };</span>
 <span class="lineNum">      88 </span><span class="lineCov">          1 : function getterGet() { ctr5++; return function() { return ctr6++; }; };</span>
-<span class="lineNum">      89 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      90 </span><span class="lineCov">          1 : // Simple object with prototype, no properties added.</span>
-<span class="lineNum">      91 </span><span class="lineCov">          1 : Object.create(protoFoo).foo();</span>
-<span class="lineNum">      92 </span><span class="lineCov">          1 : assertEquals(1, ctr);</span>
-<span class="lineNum">      93 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      94 </span><span class="lineCov">          1 : // Simple object with object with prototype, no properties added.</span>
-<span class="lineNum">      95 </span><span class="lineCov">          1 : Object.create(Object.create(protoFoo)).foo();</span>
-<span class="lineNum">      96 </span><span class="lineCov">          1 : assertEquals(2, ctr);</span>
-<span class="lineNum">      97 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      98 </span><span class="lineCov">          1 : // Add a property foo that returns a function.</span>
-<span class="lineNum">      99 </span><span class="lineCov">          1 : var v = Object.create(protoFoo, fooValue);</span>
-<span class="lineNum">     100 </span><span class="lineCov">          1 : v.foo();</span>
-<span class="lineNum">     101 </span><span class="lineCov">          1 : assertEquals(2, ctr);</span>
-<span class="lineNum">     102 </span><span class="lineCov">          1 : assertEquals(1, ctr2);</span>
-<span class="lineNum">     103 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     104 </span><span class="lineCov">          1 : // Ensure the property is writable.</span>
-<span class="lineNum">     105 </span><span class="lineCov">          1 : v.foo = 42;</span>
-<span class="lineNum">     106 </span><span class="lineCov">          1 : assertEquals(42, v.foo);</span>
-<span class="lineNum">     107 </span><span class="lineCov">          1 : assertEquals(2, ctr);</span>
-<span class="lineNum">     108 </span><span class="lineCov">          1 : assertEquals(1, ctr2);</span>
-<span class="lineNum">     109 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     110 </span><span class="lineCov">          1 : // Ensure by default properties are not writable.</span>
-<span class="lineNum">     111 </span><span class="lineCov">          1 : v = Object.create(null, { foo: {value: 103}});</span>
-<span class="lineNum">     112 </span><span class="lineCov">          1 : assertEquals(103, v.foo);</span>
-<span class="lineNum">     113 </span><span class="lineCov">          1 : v.foo = 42;</span>
-<span class="lineNum">     114 </span><span class="lineCov">          1 : assertEquals(103, v.foo);</span>
-<span class="lineNum">     115 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     116 </span><span class="lineCov">          1 : // Add a getter foo that returns a counter value.</span>
-<span class="lineNum">     117 </span><span class="lineCov">          1 : assertEquals(0, Object.create(protoFoo, fooGetter).foo);</span>
-<span class="lineNum">     118 </span><span class="lineCov">          1 : assertEquals(2, ctr);</span>
-<span class="lineNum">     119 </span><span class="lineCov">          1 : assertEquals(1, ctr2);</span>
-<span class="lineNum">     120 </span><span class="lineCov">          1 : assertEquals(1, ctr3);</span>
-<span class="lineNum">     121 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     122 </span><span class="lineCov">          1 : // Add a setter foo that runs a function.</span>
-<span class="lineNum">     123 </span><span class="lineCov">          1 : assertEquals(1, Object.create(protoFoo, fooSetter).foo = 1);</span>
-<span class="lineNum">     124 </span><span class="lineCov">          1 : assertEquals(2, ctr);</span>
-<span class="lineNum">     125 </span><span class="lineCov">          1 : assertEquals(1, ctr2);</span>
-<span class="lineNum">     126 </span><span class="lineCov">          1 : assertEquals(1, ctr3);</span>
-<span class="lineNum">     127 </span><span class="lineCov">          1 : assertEquals(1, ctr4);</span>
-<span class="lineNum">     128 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     129 </span><span class="lineCov">          1 : // Make sure that trying to add both a value and a getter</span>
-<span class="lineNum">     130 </span><span class="lineCov">          1 : // will result in an exception.</span>
-<span class="lineNum">     131 </span><span class="lineCov">          1 : try {</span>
-<span class="lineNum">     132 </span><span class="lineCov">          1 :   Object.create(protoFoo, fooAmbiguous);</span>
-<span class="lineNum">     133 </span><span class="lineCov">          1 :   assertTrue(false);</span>
-<span class="lineNum">     134 </span><span class="lineCov">          1 : } catch (e) {</span>
-<span class="lineNum">     135 </span><span class="lineCov">          1 :   assertTrue(/Invalid property/.test(e));</span>
-<span class="lineNum">     136 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">     137 </span><span class="lineCov">          1 : assertEquals(2, ctr);</span>
-<span class="lineNum">     138 </span><span class="lineCov">          1 : assertEquals(1, ctr2);</span>
-<span class="lineNum">     139 </span><span class="lineCov">          1 : assertEquals(1, ctr3);</span>
-<span class="lineNum">     140 </span><span class="lineCov">          1 : assertEquals(1, ctr4);</span>
-<span class="lineNum">     141 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     142 </span><span class="lineCov">          1 : var ctr7 = 0;</span>
-<span class="lineNum">     143 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     144 </span><span class="lineCov">          1 : var metaProps = {</span>
+<span class="lineNum">      89 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      90 </span><span class="lineNoCov">          0 : // Simple object with prototype, no properties added.</span>
+<span class="lineNum">      91 </span><span class="lineNoCov">          0 : Object.create(protoFoo).foo();</span>
+<span class="lineNum">      92 </span><span class="lineNoCov">          0 : assertEquals(1, ctr);</span>
+<span class="lineNum">      93 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      94 </span><span class="lineNoCov">          0 : // Simple object with object with prototype, no properties added.</span>
+<span class="lineNum">      95 </span><span class="lineNoCov">          0 : Object.create(Object.create(protoFoo)).foo();</span>
+<span class="lineNum">      96 </span><span class="lineNoCov">          0 : assertEquals(2, ctr);</span>
+<span class="lineNum">      97 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      98 </span><span class="lineNoCov">          0 : // Add a property foo that returns a function.</span>
+<span class="lineNum">      99 </span><span class="lineNoCov">          0 : var v = Object.create(protoFoo, fooValue);</span>
+<span class="lineNum">     100 </span><span class="lineNoCov">          0 : v.foo();</span>
+<span class="lineNum">     101 </span><span class="lineNoCov">          0 : assertEquals(2, ctr);</span>
+<span class="lineNum">     102 </span><span class="lineNoCov">          0 : assertEquals(1, ctr2);</span>
+<span class="lineNum">     103 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     104 </span><span class="lineNoCov">          0 : // Ensure the property is writable.</span>
+<span class="lineNum">     105 </span><span class="lineNoCov">          0 : v.foo = 42;</span>
+<span class="lineNum">     106 </span><span class="lineNoCov">          0 : assertEquals(42, v.foo);</span>
+<span class="lineNum">     107 </span><span class="lineNoCov">          0 : assertEquals(2, ctr);</span>
+<span class="lineNum">     108 </span><span class="lineNoCov">          0 : assertEquals(1, ctr2);</span>
+<span class="lineNum">     109 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     110 </span><span class="lineNoCov">          0 : // Ensure by default properties are not writable.</span>
+<span class="lineNum">     111 </span><span class="lineNoCov">          0 : v = Object.create(null, { foo: {value: 103}});</span>
+<span class="lineNum">     112 </span><span class="lineNoCov">          0 : assertEquals(103, v.foo);</span>
+<span class="lineNum">     113 </span><span class="lineNoCov">          0 : v.foo = 42;</span>
+<span class="lineNum">     114 </span><span class="lineNoCov">          0 : assertEquals(103, v.foo);</span>
+<span class="lineNum">     115 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     116 </span><span class="lineNoCov">          0 : // Add a getter foo that returns a counter value.</span>
+<span class="lineNum">     117 </span><span class="lineNoCov">          0 : assertEquals(0, Object.create(protoFoo, fooGetter).foo);</span>
+<span class="lineNum">     118 </span><span class="lineNoCov">          0 : assertEquals(2, ctr);</span>
+<span class="lineNum">     119 </span><span class="lineNoCov">          0 : assertEquals(1, ctr2);</span>
+<span class="lineNum">     120 </span><span class="lineNoCov">          0 : assertEquals(1, ctr3);</span>
+<span class="lineNum">     121 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     122 </span><span class="lineNoCov">          0 : // Add a setter foo that runs a function.</span>
+<span class="lineNum">     123 </span><span class="lineNoCov">          0 : assertEquals(1, Object.create(protoFoo, fooSetter).foo = 1);</span>
+<span class="lineNum">     124 </span><span class="lineNoCov">          0 : assertEquals(2, ctr);</span>
+<span class="lineNum">     125 </span><span class="lineNoCov">          0 : assertEquals(1, ctr2);</span>
+<span class="lineNum">     126 </span><span class="lineNoCov">          0 : assertEquals(1, ctr3);</span>
+<span class="lineNum">     127 </span><span class="lineNoCov">          0 : assertEquals(1, ctr4);</span>
+<span class="lineNum">     128 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     129 </span><span class="lineNoCov">          0 : // Make sure that trying to add both a value and a getter</span>
+<span class="lineNum">     130 </span><span class="lineNoCov">          0 : // will result in an exception.</span>
+<span class="lineNum">     131 </span><span class="lineNoCov">          0 : try {</span>
+<span class="lineNum">     132 </span><span class="lineNoCov">          0 :   Object.create(protoFoo, fooAmbiguous);</span>
+<span class="lineNum">     133 </span><span class="lineNoCov">          0 :   assertTrue(false);</span>
+<span class="lineNum">     134 </span><span class="lineNoCov">          0 : } catch (e) {</span>
+<span class="lineNum">     135 </span><span class="lineNoCov">          0 :   assertTrue(/Invalid property/.test(e));</span>
+<span class="lineNum">     136 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     137 </span><span class="lineNoCov">          0 : assertEquals(2, ctr);</span>
+<span class="lineNum">     138 </span><span class="lineNoCov">          0 : assertEquals(1, ctr2);</span>
+<span class="lineNum">     139 </span><span class="lineNoCov">          0 : assertEquals(1, ctr3);</span>
+<span class="lineNum">     140 </span><span class="lineNoCov">          0 : assertEquals(1, ctr4);</span>
+<span class="lineNum">     141 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     142 </span><span class="lineNoCov">          0 : var ctr7 = 0;</span>
+<span class="lineNum">     143 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     144 </span><span class="lineNoCov">          0 : var metaProps = {</span>
 <span class="lineNum">     145 </span><span class="lineCov">          1 :   enumerable: { get: function() {</span>
 <span class="lineNum">     146 </span><span class="lineCov">          1 :                        assertEquals(0, ctr7++);</span>
 <span class="lineNum">     147 </span><span class="lineCov">          1 :                        return true;</span>
@@ -220,119 +220,119 @@
 <span class="lineNum">     158 </span><span class="lineCov">          1 :                      assertEquals(3, ctr7++);</span>
 <span class="lineNum">     159 </span><span class="lineCov">          1 :                      return true;</span>
 <span class="lineNum">     160 </span><span class="lineCov">          1 :                    }},</span>
-<a name="161"><span class="lineNum">     161 </span><span class="lineCov">          1 :   get: { get: function() {</span></a>
+<span class="lineNum">     161 </span><span class="lineCov">          1 :   get: { get: function() {</span>
 <span class="lineNum">     162 </span><span class="lineCov">          1 :                 assertEquals(4, ctr7++);</span>
 <span class="lineNum">     163 </span><span class="lineCov">          1 :                 return function() { };</span>
-<span class="lineNum">     164 </span><span class="lineCov">          1 :               }},</span>
-<a name="165"><span class="lineNum">     165 </span><span class="lineCov">          1 :   set: { get: function() {</span></a>
+<span class="lineNum">     164 </span><span class="lineNoCov">          0 :               }},</span>
+<span class="lineNum">     165 </span><span class="lineCov">          1 :   set: { get: function() {</span>
 <span class="lineNum">     166 </span><span class="lineCov">          1 :                 assertEquals(5, ctr7++);</span>
 <span class="lineNum">     167 </span><span class="lineCov">          1 :                 return function() { };</span>
-<span class="lineNum">     168 </span><span class="lineCov">          1 :               }}</span>
-<span class="lineNum">     169 </span><span class="lineCov">          1 : };</span>
-<span class="lineNum">     170 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     171 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     172 </span><span class="lineCov">          1 : // Instead of a plain props object, let's use getters to return its properties.</span>
-<span class="lineNum">     173 </span><span class="lineCov">          1 : var magicValueProps = { foo: Object.create(null, { value: { get: valueGet }})};</span>
-<span class="lineNum">     174 </span><span class="lineCov">          1 : var magicGetterProps = { foo: Object.create(null, { get: { get: getterGet }})};</span>
-<span class="lineNum">     175 </span><span class="lineCov">          1 : var magicAmbiguousProps = { foo: Object.create(null, metaProps) };</span>
-<span class="lineNum">     176 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     177 </span><span class="lineCov">          1 : assertEquals(3, Object.create(null, magicValueProps).foo);</span>
-<span class="lineNum">     178 </span><span class="lineCov">          1 : assertEquals(1, ctr5);</span>
-<span class="lineNum">     179 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     180 </span><span class="lineCov">          1 : assertEquals(1000, Object.create(null, magicGetterProps).foo);</span>
-<span class="lineNum">     181 </span><span class="lineCov">          1 : assertEquals(2, ctr5);</span>
-<span class="lineNum">     182 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     183 </span><span class="lineCov">          1 : // See if we do the steps in ToPropertyDescriptor in the right order.</span>
-<span class="lineNum">     184 </span><span class="lineCov">          1 : // We shouldn't throw the exception for an ambiguous properties object</span>
-<span class="lineNum">     185 </span><span class="lineCov">          1 : // before we got all the values out.</span>
-<span class="lineNum">     186 </span><span class="lineCov">          1 : try {</span>
-<span class="lineNum">     187 </span><span class="lineCov">          1 :   Object.create(null, magicAmbiguousProps);</span>
-<span class="lineNum">     188 </span><span class="lineCov">          1 :   assertTrue(false);</span>
-<span class="lineNum">     189 </span><span class="lineCov">          1 : } catch (e) {</span>
-<span class="lineNum">     190 </span><span class="lineCov">          1 :   assertTrue(/Invalid property/.test(e));</span>
-<span class="lineNum">     191 </span><span class="lineCov">          1 :   assertEquals(6, ctr7);</span>
-<span class="lineNum">     192 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">     193 </span><span class="lineCov">          1 : </span>
-<a name="194"><span class="lineNum">     194 </span><span class="lineCov">          1 : var magicWritableProps = {</span></a>
-<span class="lineNum">     195 </span><span class="lineCov">          1 :   foo: Object.create(null, { value: { value: 4 },</span>
+<span class="lineNum">     168 </span><span class="lineNoCov">          0 :               }}</span>
+<span class="lineNum">     169 </span><span class="lineNoCov">          0 : };</span>
+<span class="lineNum">     170 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     171 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     172 </span><span class="lineNoCov">          0 : // Instead of a plain props object, let's use getters to return its properties.</span>
+<span class="lineNum">     173 </span><span class="lineNoCov">          0 : var magicValueProps = { foo: Object.create(null, { value: { get: valueGet }})};</span>
+<span class="lineNum">     174 </span><span class="lineNoCov">          0 : var magicGetterProps = { foo: Object.create(null, { get: { get: getterGet }})};</span>
+<span class="lineNum">     175 </span><span class="lineNoCov">          0 : var magicAmbiguousProps = { foo: Object.create(null, metaProps) };</span>
+<span class="lineNum">     176 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     177 </span><span class="lineNoCov">          0 : assertEquals(3, Object.create(null, magicValueProps).foo);</span>
+<span class="lineNum">     178 </span><span class="lineNoCov">          0 : assertEquals(1, ctr5);</span>
+<span class="lineNum">     179 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     180 </span><span class="lineNoCov">          0 : assertEquals(1000, Object.create(null, magicGetterProps).foo);</span>
+<span class="lineNum">     181 </span><span class="lineNoCov">          0 : assertEquals(2, ctr5);</span>
+<span class="lineNum">     182 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     183 </span><span class="lineNoCov">          0 : // See if we do the steps in ToPropertyDescriptor in the right order.</span>
+<span class="lineNum">     184 </span><span class="lineNoCov">          0 : // We shouldn't throw the exception for an ambiguous properties object</span>
+<span class="lineNum">     185 </span><span class="lineNoCov">          0 : // before we got all the values out.</span>
+<span class="lineNum">     186 </span><span class="lineNoCov">          0 : try {</span>
+<span class="lineNum">     187 </span><span class="lineNoCov">          0 :   Object.create(null, magicAmbiguousProps);</span>
+<span class="lineNum">     188 </span><span class="lineNoCov">          0 :   assertTrue(false);</span>
+<span class="lineNum">     189 </span><span class="lineNoCov">          0 : } catch (e) {</span>
+<span class="lineNum">     190 </span><span class="lineNoCov">          0 :   assertTrue(/Invalid property/.test(e));</span>
+<span class="lineNum">     191 </span><span class="lineNoCov">          0 :   assertEquals(6, ctr7);</span>
+<span class="lineNum">     192 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     193 </span><span class="lineNoCov">          0 : </span>
+<a name="194"><span class="lineNum">     194 </span><span class="lineNoCov">          0 : var magicWritableProps = {</span></a>
+<span class="lineNum">     195 </span><span class="lineNoCov">          0 :   foo: Object.create(null, { value: { value: 4 },</span>
 <span class="lineNum">     196 </span><span class="lineCov">          1 :                              writable: { get: function() {</span>
 <span class="lineNum">     197 </span><span class="lineCov">          1 :                                                 ctr6++;</span>
 <span class="lineNum">     198 </span><span class="lineCov">          1 :                                                 return false;</span>
 <span class="lineNum">     199 </span><span class="lineCov">          1 :                                               }}})};</span>
-<span class="lineNum">     200 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     201 </span><span class="lineCov">          1 : var fooNotWritable = Object.create(null, magicWritableProps)</span>
-<span class="lineNum">     202 </span><span class="lineCov">          1 : assertEquals(1002, ctr6);</span>
-<span class="lineNum">     203 </span><span class="lineCov">          1 : assertEquals(4, fooNotWritable.foo);</span>
-<span class="lineNum">     204 </span><span class="lineCov">          1 : fooNotWritable.foo = 5;</span>
-<span class="lineNum">     205 </span><span class="lineCov">          1 : assertEquals(4, fooNotWritable.foo);</span>
-<span class="lineNum">     206 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     207 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     208 </span><span class="lineCov">          1 : // Test enumerable flag.</span>
-<span class="lineNum">     209 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     210 </span><span class="lineCov">          1 : var fooNotEnumerable =</span>
-<span class="lineNum">     211 </span><span class="lineCov">          1 :     Object.create({fizz: 14}, {foo: {value: 3, enumerable: false},</span>
-<span class="lineNum">     212 </span><span class="lineCov">          1 :                                bar: {value: 4, enumerable: true},</span>
-<span class="lineNum">     213 </span><span class="lineCov">          1 :                                baz: {value: 5}});</span>
-<span class="lineNum">     214 </span><span class="lineCov">          1 : var sum = 0;</span>
-<span class="lineNum">     215 </span><span class="lineCov">          1 : for (x in fooNotEnumerable) {</span>
-<span class="lineNum">     216 </span><span class="lineCov">          1 :   assertTrue(x === 'bar' || x === 'fizz');</span>
-<span class="lineNum">     217 </span><span class="lineCov">          1 :   sum += fooNotEnumerable[x];</span>
-<span class="lineNum">     218 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">     219 </span><span class="lineCov">          1 : assertEquals(18, sum);</span>
-<span class="lineNum">     220 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     221 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     222 </span><span class="lineCov">          1 : try {</span>
-<span class="lineNum">     223 </span><span class="lineCov">          1 :   Object.create(null, {foo: { get: 0 }});</span>
-<span class="lineNum">     224 </span><span class="lineCov">          1 :   assertTrue(false);</span>
-<span class="lineNum">     225 </span><span class="lineCov">          1 : } catch (e) {</span>
-<span class="lineNum">     226 </span><span class="lineCov">          1 :   assertTrue(/Getter must be a function/.test(e));</span>
-<span class="lineNum">     227 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">     228 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     229 </span><span class="lineCov">          1 : try {</span>
-<span class="lineNum">     230 </span><span class="lineCov">          1 :   Object.create(null, {foo: { set: 0 }});</span>
-<span class="lineNum">     231 </span><span class="lineCov">          1 :   assertTrue(false);</span>
-<span class="lineNum">     232 </span><span class="lineCov">          1 : } catch (e) {</span>
-<span class="lineNum">     233 </span><span class="lineCov">          1 :   assertTrue(/Setter must be a function/.test(e));</span>
-<span class="lineNum">     234 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">     235 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     236 </span><span class="lineCov">          1 : try {</span>
-<span class="lineNum">     237 </span><span class="lineCov">          1 :   Object.create(null, {foo: { set: 0, get: 0 }});</span>
-<span class="lineNum">     238 </span><span class="lineCov">          1 :   assertTrue(false);</span>
-<span class="lineNum">     239 </span><span class="lineCov">          1 : } catch (e) {</span>
-<span class="lineNum">     240 </span><span class="lineCov">          1 :   assertTrue(/Getter must be a function/.test(e));</span>
-<span class="lineNum">     241 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">     242 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     243 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     244 </span><span class="lineCov">          1 : // Ensure that only enumerable own properties on the descriptor are used.</span>
-<span class="lineNum">     245 </span><span class="lineCov">          1 : var tricky = Object.create(</span>
-<span class="lineNum">     246 </span><span class="lineCov">          1 :   { foo: { value: 1, enumerable: true }},</span>
-<span class="lineNum">     247 </span><span class="lineCov">          1 :   { bar: { value: { value: 2, enumerable: true }, enumerable: false },</span>
-<span class="lineNum">     248 </span><span class="lineCov">          1 :     baz: { value: { value: 4, enumerable: false }, enumerable: true },</span>
-<span class="lineNum">     249 </span><span class="lineCov">          1 :     fizz: { value: { value: 8, enumerable: false }, enumerable: false },</span>
-<span class="lineNum">     250 </span><span class="lineCov">          1 :     buzz: { value: { value: 16, enumerable: true }, enumerable: true }});</span>
-<span class="lineNum">     251 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     252 </span><span class="lineCov">          1 : assertEquals(1, tricky.foo.value);</span>
-<span class="lineNum">     253 </span><span class="lineCov">          1 : assertEquals(2, tricky.bar.value);</span>
-<span class="lineNum">     254 </span><span class="lineCov">          1 : assertEquals(4, tricky.baz.value);</span>
-<span class="lineNum">     255 </span><span class="lineCov">          1 : assertEquals(8, tricky.fizz.value);</span>
-<span class="lineNum">     256 </span><span class="lineCov">          1 : assertEquals(16, tricky.buzz.value);</span>
-<span class="lineNum">     257 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     258 </span><span class="lineCov">          1 : var sonOfTricky = Object.create(null, tricky);</span>
-<span class="lineNum">     259 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     260 </span><span class="lineCov">          1 : assertFalse(&quot;foo&quot; in sonOfTricky);</span>
-<span class="lineNum">     261 </span><span class="lineCov">          1 : assertFalse(&quot;bar&quot; in sonOfTricky);</span>
-<span class="lineNum">     262 </span><span class="lineCov">          1 : assertTrue(&quot;baz&quot; in sonOfTricky);</span>
-<span class="lineNum">     263 </span><span class="lineCov">          1 : assertFalse(&quot;fizz&quot; in sonOfTricky);</span>
-<span class="lineNum">     264 </span><span class="lineCov">          1 : assertTrue(&quot;buzz&quot; in sonOfTricky);</span>
-<span class="lineNum">     265 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     266 </span><span class="lineCov">          1 : var sum = 0;</span>
-<span class="lineNum">     267 </span><span class="lineCov">          1 : for (x in sonOfTricky) {</span>
-<span class="lineNum">     268 </span><span class="lineCov">          1 :   assertTrue(x === 'buzz');</span>
-<span class="lineNum">     269 </span><span class="lineCov">          1 :   sum += sonOfTricky[x];</span>
-<span class="lineNum">     270 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">     271 </span><span class="lineCov">          1 : assertEquals(16, sum);</span>
-<a name="272"><span class="lineNum">     272 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">     273 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     200 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     201 </span><span class="lineNoCov">          0 : var fooNotWritable = Object.create(null, magicWritableProps)</span>
+<span class="lineNum">     202 </span><span class="lineNoCov">          0 : assertEquals(1002, ctr6);</span>
+<span class="lineNum">     203 </span><span class="lineNoCov">          0 : assertEquals(4, fooNotWritable.foo);</span>
+<span class="lineNum">     204 </span><span class="lineNoCov">          0 : fooNotWritable.foo = 5;</span>
+<span class="lineNum">     205 </span><span class="lineNoCov">          0 : assertEquals(4, fooNotWritable.foo);</span>
+<span class="lineNum">     206 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     207 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     208 </span><span class="lineNoCov">          0 : // Test enumerable flag.</span>
+<span class="lineNum">     209 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     210 </span><span class="lineNoCov">          0 : var fooNotEnumerable =</span>
+<span class="lineNum">     211 </span><span class="lineNoCov">          0 :     Object.create({fizz: 14}, {foo: {value: 3, enumerable: false},</span>
+<span class="lineNum">     212 </span><span class="lineNoCov">          0 :                                bar: {value: 4, enumerable: true},</span>
+<span class="lineNum">     213 </span><span class="lineNoCov">          0 :                                baz: {value: 5}});</span>
+<span class="lineNum">     214 </span><span class="lineNoCov">          0 : var sum = 0;</span>
+<span class="lineNum">     215 </span><span class="lineNoCov">          0 : for (x in fooNotEnumerable) {</span>
+<span class="lineNum">     216 </span><span class="lineNoCov">          0 :   assertTrue(x === 'bar' || x === 'fizz');</span>
+<span class="lineNum">     217 </span><span class="lineNoCov">          0 :   sum += fooNotEnumerable[x];</span>
+<span class="lineNum">     218 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     219 </span><span class="lineNoCov">          0 : assertEquals(18, sum);</span>
+<span class="lineNum">     220 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     221 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     222 </span><span class="lineNoCov">          0 : try {</span>
+<span class="lineNum">     223 </span><span class="lineNoCov">          0 :   Object.create(null, {foo: { get: 0 }});</span>
+<span class="lineNum">     224 </span><span class="lineNoCov">          0 :   assertTrue(false);</span>
+<span class="lineNum">     225 </span><span class="lineNoCov">          0 : } catch (e) {</span>
+<span class="lineNum">     226 </span><span class="lineNoCov">          0 :   assertTrue(/Getter must be a function/.test(e));</span>
+<span class="lineNum">     227 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     228 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     229 </span><span class="lineNoCov">          0 : try {</span>
+<span class="lineNum">     230 </span><span class="lineNoCov">          0 :   Object.create(null, {foo: { set: 0 }});</span>
+<span class="lineNum">     231 </span><span class="lineNoCov">          0 :   assertTrue(false);</span>
+<span class="lineNum">     232 </span><span class="lineNoCov">          0 : } catch (e) {</span>
+<span class="lineNum">     233 </span><span class="lineNoCov">          0 :   assertTrue(/Setter must be a function/.test(e));</span>
+<span class="lineNum">     234 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     235 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     236 </span><span class="lineNoCov">          0 : try {</span>
+<span class="lineNum">     237 </span><span class="lineNoCov">          0 :   Object.create(null, {foo: { set: 0, get: 0 }});</span>
+<span class="lineNum">     238 </span><span class="lineNoCov">          0 :   assertTrue(false);</span>
+<span class="lineNum">     239 </span><span class="lineNoCov">          0 : } catch (e) {</span>
+<span class="lineNum">     240 </span><span class="lineNoCov">          0 :   assertTrue(/Getter must be a function/.test(e));</span>
+<span class="lineNum">     241 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     242 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     243 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     244 </span><span class="lineNoCov">          0 : // Ensure that only enumerable own properties on the descriptor are used.</span>
+<span class="lineNum">     245 </span><span class="lineNoCov">          0 : var tricky = Object.create(</span>
+<span class="lineNum">     246 </span><span class="lineNoCov">          0 :   { foo: { value: 1, enumerable: true }},</span>
+<span class="lineNum">     247 </span><span class="lineNoCov">          0 :   { bar: { value: { value: 2, enumerable: true }, enumerable: false },</span>
+<span class="lineNum">     248 </span><span class="lineNoCov">          0 :     baz: { value: { value: 4, enumerable: false }, enumerable: true },</span>
+<span class="lineNum">     249 </span><span class="lineNoCov">          0 :     fizz: { value: { value: 8, enumerable: false }, enumerable: false },</span>
+<span class="lineNum">     250 </span><span class="lineNoCov">          0 :     buzz: { value: { value: 16, enumerable: true }, enumerable: true }});</span>
+<span class="lineNum">     251 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     252 </span><span class="lineNoCov">          0 : assertEquals(1, tricky.foo.value);</span>
+<span class="lineNum">     253 </span><span class="lineNoCov">          0 : assertEquals(2, tricky.bar.value);</span>
+<span class="lineNum">     254 </span><span class="lineNoCov">          0 : assertEquals(4, tricky.baz.value);</span>
+<span class="lineNum">     255 </span><span class="lineNoCov">          0 : assertEquals(8, tricky.fizz.value);</span>
+<span class="lineNum">     256 </span><span class="lineNoCov">          0 : assertEquals(16, tricky.buzz.value);</span>
+<span class="lineNum">     257 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     258 </span><span class="lineNoCov">          0 : var sonOfTricky = Object.create(null, tricky);</span>
+<span class="lineNum">     259 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     260 </span><span class="lineNoCov">          0 : assertFalse(&quot;foo&quot; in sonOfTricky);</span>
+<span class="lineNum">     261 </span><span class="lineNoCov">          0 : assertFalse(&quot;bar&quot; in sonOfTricky);</span>
+<span class="lineNum">     262 </span><span class="lineNoCov">          0 : assertTrue(&quot;baz&quot; in sonOfTricky);</span>
+<span class="lineNum">     263 </span><span class="lineNoCov">          0 : assertFalse(&quot;fizz&quot; in sonOfTricky);</span>
+<span class="lineNum">     264 </span><span class="lineNoCov">          0 : assertTrue(&quot;buzz&quot; in sonOfTricky);</span>
+<span class="lineNum">     265 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     266 </span><span class="lineNoCov">          0 : var sum = 0;</span>
+<span class="lineNum">     267 </span><span class="lineNoCov">          0 : for (x in sonOfTricky) {</span>
+<span class="lineNum">     268 </span><span class="lineNoCov">          0 :   assertTrue(x === 'buzz');</span>
+<span class="lineNum">     269 </span><span class="lineNoCov">          0 :   sum += sonOfTricky[x];</span>
+<span class="lineNum">     270 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     271 </span><span class="lineNoCov">          0 : assertEquals(16, sum);</span>
+<a name="272"><span class="lineNum">     272 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">     273 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     274 </span><span class="lineCov">          1 : (function createWithEmptyProtoInfoCreateMap() {</span>
 <span class="lineNum">     275 </span><span class="lineCov">          1 :   var proto = {a:1};</span>
 <span class="lineNum">     276 </span><span class="lineCov">          1 :   var instance = {__proto__: proto };</span>

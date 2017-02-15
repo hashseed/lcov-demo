@@ -31,17 +31,17 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">381</td>
-            <td class="headerCovTableEntry">424</td>
-            <td class="headerCovTableEntryMed">89.9 %</td>
+            <td class="headerCovTableEntry">268</td>
+            <td class="headerCovTableEntry">420</td>
+            <td class="headerCovTableEntryLo">63.8 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">20</td>
-            <td class="headerCovTableEntry">20</td>
+            <td class="headerCovTableEntry">18</td>
+            <td class="headerCovTableEntry">18</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -71,10 +71,10 @@
 <span class="lineNum">       9 </span><span class="lineCov">       2304 :   error.strace = stack;</span>
 <span class="lineNum">      10 </span><span class="lineCov">       2304 :   return error.message + &quot;\n    at &quot; + stack.join(&quot;\n    at &quot;);</span>
 <span class="lineNum">      11 </span><span class="lineCov">       2305 : }</span>
-<span class="lineNum">      12 </span><span class="lineCov">         11 : </span>
-<a name="13"><span class="lineNum">      13 </span><span class="lineCov">         11 : var verbose = typeof(arguments) !== &quot;undefined&quot; &amp;&amp; arguments.indexOf(&quot;-v&quot;) &gt;= 0;</span></a>
-<span class="lineNum">      14 </span><span class="lineCov">         11 : </span>
-<span class="lineNum">      15 </span><span class="lineCov">       2305 : function checkStackTrace(expected) {</span>
+<span class="lineNum">      12 </span><span class="lineNoCov">          0 : </span>
+<a name="13"><span class="lineNum">      13 </span><span class="lineNoCov">          0 : var verbose = typeof(arguments) !== &quot;undefined&quot; &amp;&amp; arguments.indexOf(&quot;-v&quot;) &gt;= 0;</span></a>
+<span class="lineNum">      14 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      15 </span><span class="lineCov">       2304 : function checkStackTrace(expected) {</span>
 <span class="lineNum">      16 </span><span class="lineCov">       2304 :   var e = new Error();</span>
 <span class="lineNum">      17 </span><span class="lineCov">       2304 :   e.stack;  // prepare stack trace</span>
 <span class="lineNum">      18 </span><span class="lineCov">       2304 :   var stack = e.strace;</span>
@@ -82,10 +82,10 @@
 <span class="lineNum">      20 </span><span class="lineCov">       2304 :   for (var i = 0; i &lt; expected.length; i++) {</span>
 <span class="lineNum">      21 </span><span class="lineCov">       2304 :     assertEquals(expected[i].name, stack[i + 1].getFunctionName());</span>
 <span class="lineNum">      22 </span><span class="lineCov">       2304 :   }</span>
-<span class="lineNum">      23 </span><span class="lineCov">       2305 : }</span>
-<span class="lineNum">      24 </span><span class="lineCov">         11 : </span>
-<a name="25"><span class="lineNum">      25 </span><span class="lineCov">         11 : </span></a>
-<span class="lineNum">      26 </span><span class="lineCov">         11 : var CAN_INLINE_COMMENT  = &quot;// Let it be inlined.&quot;;</span>
+<span class="lineNum">      23 </span><span class="lineCov">       2304 : }</span>
+<span class="lineNum">      24 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      25 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      26 </span><span class="lineNoCov">          0 : var CAN_INLINE_COMMENT  = &quot;// Let it be inlined.&quot;;</span>
 <span class="lineNum">      27 </span><span class="lineCov">         11 : var DONT_INLINE_COMMENT = (function() {</span>
 <span class="lineNum">      28 </span><span class="lineCov">         11 :   var line = &quot;1&quot;;</span>
 <span class="lineNum">      29 </span><span class="lineCov">         11 :   for (var i = 0; i &lt; 200; ++i) {</span>
@@ -94,22 +94,22 @@
 <span class="lineNum">      32 </span><span class="lineCov">         11 :   line += &quot;;\n&quot;;</span>
 <span class="lineNum">      33 </span><span class="lineCov">         11 :   return line;</span>
 <span class="lineNum">      34 </span><span class="lineCov">         11 : })();</span>
-<a name="35"><span class="lineNum">      35 </span><span class="lineCov">         11 : </span></a>
-<span class="lineNum">      36 </span><span class="lineCov">         11 : </span>
-<span class="lineNum">      37 </span><span class="lineCov">       1153 : function ident_source(source, ident) {</span>
+<a name="35"><span class="lineNum">      35 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">      36 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      37 </span><span class="lineCov">       1152 : function ident_source(source, ident) {</span>
 <span class="lineNum">      38 </span><span class="lineCov">       1152 :   ident = &quot; &quot;.repeat(ident);</span>
 <span class="lineNum">      39 </span><span class="lineCov">       1152 :   return ident + source.replace(/\n/gi, &quot;\n&quot; + ident);</span>
-<span class="lineNum">      40 </span><span class="lineCov">       1153 : }</span>
-<span class="lineNum">      41 </span><span class="lineCov">         11 : </span>
-<a name="42"><span class="lineNum">      42 </span><span class="lineCov">         11 : var SHARDS_COUNT = 10;</span></a>
-<a name="43"><span class="lineNum">      43 </span><span class="lineCov">         11 : </span></a>
-<span class="lineNum">      44 </span><span class="lineCov">         11 : function run_tests(shard) {</span>
+<span class="lineNum">      40 </span><span class="lineCov">       1152 : }</span>
+<span class="lineNum">      41 </span><span class="lineNoCov">          0 : </span>
+<a name="42"><span class="lineNum">      42 </span><span class="lineNoCov">          0 : var SHARDS_COUNT = 10;</span></a>
+<a name="43"><span class="lineNum">      43 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">      44 </span><span class="lineCov">         10 : function run_tests(shard) {</span>
 <span class="lineNum">      45 </span><span class="lineCov">       1152 :   function inlinable_comment(inlinable) {</span>
 <span class="lineNum">      46 </span><span class="lineCov">       1152 :     return inlinable ? CAN_INLINE_COMMENT : DONT_INLINE_COMMENT;</span>
 <span class="lineNum">      47 </span><span class="lineCov">       1152 :   }</span>
-<span class="lineNum">      48 </span><span class="lineCov">         10 : </span>
-<a name="49"><span class="lineNum">      49 </span><span class="lineCov">         10 :   // Check arguments manually to avoid bailing out with reason &quot;bad value</span></a>
-<span class="lineNum">      50 </span><span class="lineCov">         10 :   // context for arguments value&quot;.</span>
+<span class="lineNum">      48 </span><span class="lineNoCov">          0 : </span>
+<a name="49"><span class="lineNum">      49 </span><span class="lineNoCov">          0 :   // Check arguments manually to avoid bailing out with reason &quot;bad value</span></a>
+<span class="lineNum">      50 </span><span class="lineNoCov">          0 :   // context for arguments value&quot;.</span>
 <span class="lineNum">      51 </span><span class="lineCov">         10 :   function check_arguments_template(expected_name) {</span>
 <span class="lineNum">      52 </span><span class="lineCov">         10 :     var lines = [</span>
 <span class="lineNum">      53 </span><span class="lineCov">         10 :       `  assertEquals_(${expected_name}.length, arguments.length);`,</span>
@@ -119,8 +119,8 @@
 <span class="lineNum">      57 </span><span class="lineCov">         10 :     ];</span>
 <span class="lineNum">      58 </span><span class="lineCov">         10 :     return lines.join(&quot;\n&quot;);</span>
 <span class="lineNum">      59 </span><span class="lineCov">         10 :   }</span>
-<a name="60"><span class="lineNum">      60 </span><span class="lineCov">         10 :   var check_arguments = check_arguments_template(&quot;expected_args&quot;);</span></a>
-<span class="lineNum">      61 </span><span class="lineCov">         10 : </span>
+<a name="60"><span class="lineNum">      60 </span><span class="lineNoCov">          0 :   var check_arguments = check_arguments_template(&quot;expected_args&quot;);</span></a>
+<span class="lineNum">      61 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      62 </span><span class="lineCov">        576 :   function deopt_template(deopt_mode) {</span>
 <span class="lineNum">      63 </span><span class="lineCov">        576 :     switch(deopt_mode) {</span>
 <span class="lineNum">      64 </span><span class="lineCov">        576 :       case &quot;none&quot;:</span>
@@ -133,9 +133,9 @@
 <span class="lineNum">      71 </span><span class="lineCov">        576 :         assertUnreachable();</span>
 <span class="lineNum">      72 </span><span class="lineCov">        576 :     }</span>
 <span class="lineNum">      73 </span><span class="lineCov">        576 :   }</span>
-<span class="lineNum">      74 </span><span class="lineCov">         10 : </span>
-<span class="lineNum">      75 </span><span class="lineCov">         10 :   var f_cfg_sloppy = {</span>
-<span class="lineNum">      76 </span><span class="lineCov">         10 :     func_name: 'f',</span>
+<span class="lineNum">      74 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      75 </span><span class="lineNoCov">          0 :   var f_cfg_sloppy = {</span>
+<span class="lineNum">      76 </span><span class="lineNoCov">          0 :     func_name: 'f',</span>
 <span class="lineNum">      77 </span><span class="lineCov">        144 :     source_template: function(cfg) {</span>
 <span class="lineNum">      78 </span><span class="lineCov">        144 :       var receiver = cfg.f_receiver != undefined ? cfg.f_receiver</span>
 <span class="lineNum">      79 </span><span class="lineCov">        144 :                                                  : &quot;global&quot;;</span>
@@ -159,10 +159,10 @@
 <span class="lineNum">      97 </span><span class="lineCov">        144 :       ];</span>
 <span class="lineNum">      98 </span><span class="lineCov">        144 :       return lines.join(&quot;\n&quot;);</span>
 <span class="lineNum">      99 </span><span class="lineCov">        144 :     },</span>
-<span class="lineNum">     100 </span><span class="lineCov">         10 :   };</span>
-<span class="lineNum">     101 </span><span class="lineCov">         10 : </span>
-<span class="lineNum">     102 </span><span class="lineCov">         10 :   var f_cfg_strict = {</span>
-<span class="lineNum">     103 </span><span class="lineCov">         10 :     func_name: 'f',</span>
+<span class="lineNum">     100 </span><span class="lineNoCov">          0 :   };</span>
+<span class="lineNum">     101 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     102 </span><span class="lineNoCov">          0 :   var f_cfg_strict = {</span>
+<span class="lineNum">     103 </span><span class="lineNoCov">          0 :     func_name: 'f',</span>
 <span class="lineNum">     104 </span><span class="lineCov">        144 :     source_template: function(cfg) {</span>
 <span class="lineNum">     105 </span><span class="lineCov">        144 :       var receiver = cfg.f_receiver != undefined ? cfg.f_receiver</span>
 <span class="lineNum">     106 </span><span class="lineCov">        144 :                                                  : &quot;undefined&quot;;</span>
@@ -187,11 +187,11 @@
 <span class="lineNum">     125 </span><span class="lineCov">        144 :       ];</span>
 <span class="lineNum">     126 </span><span class="lineCov">        144 :       return lines.join(&quot;\n&quot;);</span>
 <span class="lineNum">     127 </span><span class="lineCov">        144 :     },</span>
-<span class="lineNum">     128 </span><span class="lineCov">         10 :   };</span>
-<span class="lineNum">     129 </span><span class="lineCov">         10 : </span>
-<span class="lineNum">     130 </span><span class="lineCov">         10 :   var f_cfg_possibly_eval = {</span>
-<span class="lineNum">     131 </span><span class="lineCov">         10 :     func_name: 'eval',</span>
-<span class="lineNum">     132 </span><span class="lineCov">         10 :     source_template: function(cfg) {</span>
+<span class="lineNum">     128 </span><span class="lineNoCov">          0 :   };</span>
+<span class="lineNum">     129 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     130 </span><span class="lineNoCov">          0 :   var f_cfg_possibly_eval = {</span>
+<span class="lineNum">     131 </span><span class="lineNoCov">          0 :     func_name: 'eval',</span>
+<span class="lineNum">     132 </span><span class="lineNoCov">          0 :     source_template: function(cfg) {</span>
 <span class="lineNum">     133 </span><span class="lineNoCov">          0 :       var receiver = cfg.f_receiver != undefined ? cfg.f_receiver</span>
 <span class="lineNum">     134 </span><span class="lineNoCov">          0 :                                                  : &quot;global&quot;;</span>
 <span class="lineNum">     135 </span><span class="lineNoCov">          0 :       var do_checks = [</span>
@@ -214,11 +214,11 @@
 <span class="lineNum">     152 </span><span class="lineNoCov">          0 :         `var eval = f;`,</span>
 <span class="lineNum">     153 </span><span class="lineNoCov">          0 :       ];</span>
 <span class="lineNum">     154 </span><span class="lineNoCov">          0 :       return lines.join(&quot;\n&quot;);</span>
-<span class="lineNum">     155 </span><span class="lineCov">         10 :     },</span>
-<span class="lineNum">     156 </span><span class="lineCov">         10 :   };</span>
-<span class="lineNum">     157 </span><span class="lineCov">         10 : </span>
-<span class="lineNum">     158 </span><span class="lineCov">         10 :   var f_cfg_bound = {</span>
-<span class="lineNum">     159 </span><span class="lineCov">         10 :     func_name: 'bound',</span>
+<span class="lineNum">     155 </span><span class="lineNoCov">          0 :     },</span>
+<span class="lineNum">     156 </span><span class="lineNoCov">          0 :   };</span>
+<span class="lineNum">     157 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     158 </span><span class="lineNoCov">          0 :   var f_cfg_bound = {</span>
+<span class="lineNum">     159 </span><span class="lineNoCov">          0 :     func_name: 'bound',</span>
 <span class="lineNum">     160 </span><span class="lineCov">        144 :     source_template: function(cfg) {</span>
 <span class="lineNum">     161 </span><span class="lineCov">        144 :       var do_checks = [</span>
 <span class="lineNum">     162 </span><span class="lineCov">        144 :         `  assertEquals_(receiver, this);`,</span>
@@ -243,10 +243,10 @@
 <span class="lineNum">     181 </span><span class="lineCov">        144 :       ];</span>
 <span class="lineNum">     182 </span><span class="lineCov">        144 :       return lines.join(&quot;\n&quot;);</span>
 <span class="lineNum">     183 </span><span class="lineCov">        144 :     },</span>
-<span class="lineNum">     184 </span><span class="lineCov">         10 :   };</span>
-<span class="lineNum">     185 </span><span class="lineCov">         10 : </span>
-<span class="lineNum">     186 </span><span class="lineCov">         10 :   var f_cfg_proxy = {</span>
-<span class="lineNum">     187 </span><span class="lineCov">         10 :     func_name: 'p',</span>
+<span class="lineNum">     184 </span><span class="lineNoCov">          0 :   };</span>
+<span class="lineNum">     185 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     186 </span><span class="lineNoCov">          0 :   var f_cfg_proxy = {</span>
+<span class="lineNum">     187 </span><span class="lineNoCov">          0 :     func_name: 'p',</span>
 <span class="lineNum">     188 </span><span class="lineCov">        144 :     source_template: function(cfg) {</span>
 <span class="lineNum">     189 </span><span class="lineCov">        144 :       var receiver = cfg.f_receiver != undefined ? cfg.f_receiver</span>
 <span class="lineNum">     190 </span><span class="lineCov">        144 :                                                  : &quot;global&quot;;</span>
@@ -271,10 +271,10 @@
 <span class="lineNum">     209 </span><span class="lineCov">        144 :       ];</span>
 <span class="lineNum">     210 </span><span class="lineCov">        144 :       return lines.join(&quot;\n&quot;);</span>
 <span class="lineNum">     211 </span><span class="lineCov">        144 :     },</span>
-<span class="lineNum">     212 </span><span class="lineCov">         10 :   };</span>
-<span class="lineNum">     213 </span><span class="lineCov">         10 : </span>
-<span class="lineNum">     214 </span><span class="lineCov">         10 :   var g_cfg_normal = {</span>
-<span class="lineNum">     215 </span><span class="lineCov">         10 :     receiver: undefined,</span>
+<span class="lineNum">     212 </span><span class="lineNoCov">          0 :   };</span>
+<span class="lineNum">     213 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     214 </span><span class="lineNoCov">          0 :   var g_cfg_normal = {</span>
+<span class="lineNum">     215 </span><span class="lineNoCov">          0 :     receiver: undefined,</span>
 <span class="lineNum">     216 </span><span class="lineCov">        192 :     source_template: function(cfg) {</span>
 <span class="lineNum">     217 </span><span class="lineCov">        192 :       var lines = [</span>
 <span class="lineNum">     218 </span><span class="lineCov">        192 :         `function g(a) {`,</span>
@@ -287,12 +287,12 @@
 <span class="lineNum">     225 </span><span class="lineCov">        192 :       ];</span>
 <span class="lineNum">     226 </span><span class="lineCov">        192 :       return lines.join(&quot;\n&quot;);</span>
 <span class="lineNum">     227 </span><span class="lineCov">        192 :     },</span>
-<span class="lineNum">     228 </span><span class="lineCov">         10 :   };</span>
-<span class="lineNum">     229 </span><span class="lineCov">         10 : </span>
-<span class="lineNum">     230 </span><span class="lineCov">         10 : </span>
-<span class="lineNum">     231 </span><span class="lineCov">         10 :   var g_cfg_reflect_apply = {</span>
-<span class="lineNum">     232 </span><span class="lineCov">         10 :     receiver: &quot;the_receiver&quot;,</span>
-<span class="lineNum">     233 </span><span class="lineCov">         10 :     source_template: function(cfg) {</span>
+<span class="lineNum">     228 </span><span class="lineNoCov">          0 :   };</span>
+<span class="lineNum">     229 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     230 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     231 </span><span class="lineNoCov">          0 :   var g_cfg_reflect_apply = {</span>
+<span class="lineNum">     232 </span><span class="lineNoCov">          0 :     receiver: &quot;the_receiver&quot;,</span>
+<span class="lineNum">     233 </span><span class="lineNoCov">          0 :     source_template: function(cfg) {</span>
 <span class="lineNum">     234 </span><span class="lineNoCov">          0 :       var lines = [</span>
 <span class="lineNum">     235 </span><span class="lineNoCov">          0 :         `function g(a) {`,</span>
 <span class="lineNum">     236 </span><span class="lineNoCov">          0 :         `  &quot;use strict&quot;;`,</span>
@@ -303,12 +303,12 @@
 <span class="lineNum">     241 </span><span class="lineNoCov">          0 :         `}`,</span>
 <span class="lineNum">     242 </span><span class="lineNoCov">          0 :       ];</span>
 <span class="lineNum">     243 </span><span class="lineNoCov">          0 :       return lines.join(&quot;\n&quot;);</span>
-<span class="lineNum">     244 </span><span class="lineCov">         10 :     },</span>
-<span class="lineNum">     245 </span><span class="lineCov">         10 :   };</span>
-<span class="lineNum">     246 </span><span class="lineCov">         10 : </span>
-<span class="lineNum">     247 </span><span class="lineCov">         10 : </span>
-<span class="lineNum">     248 </span><span class="lineCov">         10 :   var g_cfg_function_apply = {</span>
-<span class="lineNum">     249 </span><span class="lineCov">         10 :     receiver: &quot;the_receiver&quot;,</span>
+<span class="lineNum">     244 </span><span class="lineNoCov">          0 :     },</span>
+<span class="lineNum">     245 </span><span class="lineNoCov">          0 :   };</span>
+<span class="lineNum">     246 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     247 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     248 </span><span class="lineNoCov">          0 :   var g_cfg_function_apply = {</span>
+<span class="lineNum">     249 </span><span class="lineNoCov">          0 :     receiver: &quot;the_receiver&quot;,</span>
 <span class="lineNum">     250 </span><span class="lineCov">        192 :     source_template: function(cfg) {</span>
 <span class="lineNum">     251 </span><span class="lineCov">        192 :       var lines = [</span>
 <span class="lineNum">     252 </span><span class="lineCov">        192 :         `function g(a) {`,</span>
@@ -321,12 +321,12 @@
 <span class="lineNum">     259 </span><span class="lineCov">        192 :       ];</span>
 <span class="lineNum">     260 </span><span class="lineCov">        192 :       return lines.join(&quot;\n&quot;);</span>
 <span class="lineNum">     261 </span><span class="lineCov">        192 :     },</span>
-<span class="lineNum">     262 </span><span class="lineCov">         10 :   };</span>
-<span class="lineNum">     263 </span><span class="lineCov">         10 : </span>
-<span class="lineNum">     264 </span><span class="lineCov">         10 : </span>
-<span class="lineNum">     265 </span><span class="lineCov">         10 :   var g_cfg_function_apply_arguments_object = {</span>
-<span class="lineNum">     266 </span><span class="lineCov">         10 :     receiver: &quot;the_receiver&quot;,</span>
-<span class="lineNum">     267 </span><span class="lineCov">         10 :     source_template: function(cfg) {</span>
+<span class="lineNum">     262 </span><span class="lineNoCov">          0 :   };</span>
+<span class="lineNum">     263 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     264 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     265 </span><span class="lineNoCov">          0 :   var g_cfg_function_apply_arguments_object = {</span>
+<span class="lineNum">     266 </span><span class="lineNoCov">          0 :     receiver: &quot;the_receiver&quot;,</span>
+<span class="lineNum">     267 </span><span class="lineNoCov">          0 :     source_template: function(cfg) {</span>
 <span class="lineNum">     268 </span><span class="lineNoCov">          0 :       cfg.f_args = cfg.g_args;</span>
 <span class="lineNum">     269 </span><span class="lineNoCov">          0 :       var lines = [</span>
 <span class="lineNum">     270 </span><span class="lineNoCov">          0 :         `function g(a) {`,</span>
@@ -338,12 +338,12 @@
 <span class="lineNum">     276 </span><span class="lineNoCov">          0 :         `}`,</span>
 <span class="lineNum">     277 </span><span class="lineNoCov">          0 :       ];</span>
 <span class="lineNum">     278 </span><span class="lineNoCov">          0 :       return lines.join(&quot;\n&quot;);</span>
-<span class="lineNum">     279 </span><span class="lineCov">         10 :     },</span>
-<span class="lineNum">     280 </span><span class="lineCov">         10 :   };</span>
-<span class="lineNum">     281 </span><span class="lineCov">         10 : </span>
-<span class="lineNum">     282 </span><span class="lineCov">         10 : </span>
-<a name="283"><span class="lineNum">     283 </span><span class="lineCov">         10 :   var g_cfg_function_call = {</span></a>
-<span class="lineNum">     284 </span><span class="lineCov">         10 :     receiver: &quot;the_receiver&quot;,</span>
+<span class="lineNum">     279 </span><span class="lineNoCov">          0 :     },</span>
+<span class="lineNum">     280 </span><span class="lineNoCov">          0 :   };</span>
+<span class="lineNum">     281 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     282 </span><span class="lineNoCov">          0 : </span>
+<a name="283"><span class="lineNum">     283 </span><span class="lineNoCov">          0 :   var g_cfg_function_call = {</span></a>
+<span class="lineNum">     284 </span><span class="lineNoCov">          0 :     receiver: &quot;the_receiver&quot;,</span>
 <span class="lineNum">     285 </span><span class="lineCov">        192 :     source_template: function(cfg) {</span>
 <span class="lineNum">     286 </span><span class="lineCov">        192 :       var f_args = &quot;the_receiver&quot;;</span>
 <span class="lineNum">     287 </span><span class="lineCov">        192 :       if (cfg.f_args !== &quot;&quot;) f_args += &quot;, &quot;;</span>
@@ -360,9 +360,9 @@
 <span class="lineNum">     298 </span><span class="lineCov">        192 :       ];</span>
 <span class="lineNum">     299 </span><span class="lineCov">        192 :       return lines.join(&quot;\n&quot;);</span>
 <span class="lineNum">     300 </span><span class="lineCov">        192 :     },</span>
-<span class="lineNum">     301 </span><span class="lineCov">         10 :   };</span>
-<a name="302"><span class="lineNum">     302 </span><span class="lineCov">         10 : </span></a>
-<span class="lineNum">     303 </span><span class="lineCov">         10 : </span>
+<span class="lineNum">     301 </span><span class="lineNoCov">          0 :   };</span>
+<a name="302"><span class="lineNum">     302 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">     303 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     304 </span><span class="lineCov">        576 :   function test_template(cfg) {</span>
 <span class="lineNum">     305 </span><span class="lineCov">        576 :     // Note: g_source_template modifies cfg.f_args in some cases.</span>
 <span class="lineNum">     306 </span><span class="lineCov">        576 :     var g_source = cfg.g_source_template(cfg);</span>
@@ -403,35 +403,35 @@
 <span class="lineNum">     341 </span><span class="lineCov">        576 :     var source = lines.join(&quot;\n&quot;);</span>
 <span class="lineNum">     342 </span><span class="lineCov">        576 :     return source;</span>
 <span class="lineNum">     343 </span><span class="lineCov">        576 :   }</span>
-<span class="lineNum">     344 </span><span class="lineCov">         10 : </span>
-<span class="lineNum">     345 </span><span class="lineCov">         10 :   var f_args_variants = [/*&quot;&quot;, &quot;1&quot;,*/ &quot;1, 2&quot;];</span>
-<span class="lineNum">     346 </span><span class="lineCov">         10 :   var g_args_variants = [/*&quot;&quot;, &quot;10&quot;,*/ &quot;10, 20&quot;];</span>
-<span class="lineNum">     347 </span><span class="lineCov">         10 :   var f_inlinable_variants = [true, false];</span>
-<span class="lineNum">     348 </span><span class="lineCov">         10 :   var g_inlinable_variants = [true, false];</span>
-<span class="lineNum">     349 </span><span class="lineCov">         10 :   // This is to avoid bailing out because of referencing new.target.</span>
-<span class="lineNum">     350 </span><span class="lineCov">         10 :   var check_new_target_variants = [/*true,*/ false];</span>
-<span class="lineNum">     351 </span><span class="lineCov">         10 :   var deopt_mode_variants = [&quot;none&quot;, &quot;f&quot;, &quot;g&quot;, &quot;test&quot;];</span>
-<span class="lineNum">     352 </span><span class="lineCov">         10 :   var f_variants = [</span>
-<span class="lineNum">     353 </span><span class="lineCov">         10 :       f_cfg_sloppy,</span>
-<span class="lineNum">     354 </span><span class="lineCov">         10 :       f_cfg_strict,</span>
-<span class="lineNum">     355 </span><span class="lineCov">         10 :       f_cfg_bound,</span>
-<span class="lineNum">     356 </span><span class="lineCov">         10 :       f_cfg_proxy,</span>
-<span class="lineNum">     357 </span><span class="lineCov">         10 : //      f_cfg_possibly_eval,</span>
-<span class="lineNum">     358 </span><span class="lineCov">         10 :   ];</span>
-<span class="lineNum">     359 </span><span class="lineCov">         10 :   var g_variants = [</span>
-<span class="lineNum">     360 </span><span class="lineCov">         10 :       g_cfg_normal,</span>
-<span class="lineNum">     361 </span><span class="lineCov">         10 : //      g_cfg_reflect_apply,</span>
-<span class="lineNum">     362 </span><span class="lineCov">         10 :       g_cfg_function_apply,</span>
-<span class="lineNum">     363 </span><span class="lineCov">         10 : //      g_cfg_function_apply_arguments_object,</span>
-<span class="lineNum">     364 </span><span class="lineCov">         10 :       g_cfg_function_call,</span>
-<span class="lineNum">     365 </span><span class="lineCov">         10 :   ];</span>
-<span class="lineNum">     366 </span><span class="lineCov">         10 :   var test_warmup_counts = [0, 1, 2];</span>
-<span class="lineNum">     367 </span><span class="lineCov">         10 : </span>
-<span class="lineNum">     368 </span><span class="lineCov">         10 :   var iter = 0;</span>
-<span class="lineNum">     369 </span><span class="lineCov">         10 :   var tests_executed = 0;</span>
-<span class="lineNum">     370 </span><span class="lineCov">         10 :   if (verbose &amp;&amp; shard !== undefined) {</span>
-<a name="371"><span class="lineNum">     371 </span><span class="lineCov">         10 :     print(&quot;Running shard #&quot; + shard);</span></a>
-<a name="372"><span class="lineNum">     372 </span><span class="lineCov">         10 :   }</span></a>
+<span class="lineNum">     344 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     345 </span><span class="lineNoCov">          0 :   var f_args_variants = [/*&quot;&quot;, &quot;1&quot;,*/ &quot;1, 2&quot;];</span>
+<span class="lineNum">     346 </span><span class="lineNoCov">          0 :   var g_args_variants = [/*&quot;&quot;, &quot;10&quot;,*/ &quot;10, 20&quot;];</span>
+<span class="lineNum">     347 </span><span class="lineNoCov">          0 :   var f_inlinable_variants = [true, false];</span>
+<span class="lineNum">     348 </span><span class="lineNoCov">          0 :   var g_inlinable_variants = [true, false];</span>
+<span class="lineNum">     349 </span><span class="lineNoCov">          0 :   // This is to avoid bailing out because of referencing new.target.</span>
+<span class="lineNum">     350 </span><span class="lineNoCov">          0 :   var check_new_target_variants = [/*true,*/ false];</span>
+<span class="lineNum">     351 </span><span class="lineNoCov">          0 :   var deopt_mode_variants = [&quot;none&quot;, &quot;f&quot;, &quot;g&quot;, &quot;test&quot;];</span>
+<span class="lineNum">     352 </span><span class="lineNoCov">          0 :   var f_variants = [</span>
+<span class="lineNum">     353 </span><span class="lineNoCov">          0 :       f_cfg_sloppy,</span>
+<span class="lineNum">     354 </span><span class="lineNoCov">          0 :       f_cfg_strict,</span>
+<span class="lineNum">     355 </span><span class="lineNoCov">          0 :       f_cfg_bound,</span>
+<span class="lineNum">     356 </span><span class="lineNoCov">          0 :       f_cfg_proxy,</span>
+<span class="lineNum">     357 </span><span class="lineNoCov">          0 : //      f_cfg_possibly_eval,</span>
+<span class="lineNum">     358 </span><span class="lineNoCov">          0 :   ];</span>
+<span class="lineNum">     359 </span><span class="lineNoCov">          0 :   var g_variants = [</span>
+<span class="lineNum">     360 </span><span class="lineNoCov">          0 :       g_cfg_normal,</span>
+<span class="lineNum">     361 </span><span class="lineNoCov">          0 : //      g_cfg_reflect_apply,</span>
+<span class="lineNum">     362 </span><span class="lineNoCov">          0 :       g_cfg_function_apply,</span>
+<span class="lineNum">     363 </span><span class="lineNoCov">          0 : //      g_cfg_function_apply_arguments_object,</span>
+<span class="lineNum">     364 </span><span class="lineNoCov">          0 :       g_cfg_function_call,</span>
+<span class="lineNum">     365 </span><span class="lineNoCov">          0 :   ];</span>
+<span class="lineNum">     366 </span><span class="lineNoCov">          0 :   var test_warmup_counts = [0, 1, 2];</span>
+<span class="lineNum">     367 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     368 </span><span class="lineNoCov">          0 :   var iter = 0;</span>
+<span class="lineNum">     369 </span><span class="lineNoCov">          0 :   var tests_executed = 0;</span>
+<span class="lineNum">     370 </span><span class="lineNoCov">          0 :   if (verbose &amp;&amp; shard !== undefined) {</span>
+<a name="371"><span class="lineNum">     371 </span><span class="lineNoCov">          0 :     print(&quot;Running shard #&quot; + shard);</span></a>
+<a name="372"><span class="lineNum">     372 </span><span class="lineNoCov">          0 :   }</span></a>
 <a name="373"><span class="lineNum">     373 </span><span class="lineCov">         40 :   f_variants.forEach((f_cfg) =&gt; {</span></a>
 <a name="374"><span class="lineNum">     374 </span><span class="lineCov">         40 :     check_new_target_variants.forEach((check_new_target) =&gt; {</span></a>
 <a name="375"><span class="lineNum">     375 </span><span class="lineCov">        160 :       deopt_mode_variants.forEach((deopt_mode) =&gt; {</span></a>
@@ -468,21 +468,21 @@
 <span class="lineNum">     406 </span><span class="lineCov">       5760 :                     }</span>
 <span class="lineNum">     407 </span><span class="lineCov">       5760 :                     eval(source);</span>
 <span class="lineNum">     408 </span><span class="lineCov">       5760 :                   });</span>
-<span class="lineNum">     409 </span><span class="lineCov">       1920 :                 });</span>
-<span class="lineNum">     410 </span><span class="lineCov">        960 :               });</span>
-<span class="lineNum">     411 </span><span class="lineCov">        480 :             });</span>
-<span class="lineNum">     412 </span><span class="lineCov">        480 :           });</span>
-<span class="lineNum">     413 </span><span class="lineCov">        480 :         });</span>
-<span class="lineNum">     414 </span><span class="lineCov">        160 :       });</span>
-<span class="lineNum">     415 </span><span class="lineCov">         40 :     });</span>
-<span class="lineNum">     416 </span><span class="lineCov">         40 :   });</span>
-<span class="lineNum">     417 </span><span class="lineCov">         10 :   if (verbose) {</span>
-<span class="lineNum">     418 </span><span class="lineCov">         10 :     print(&quot;Number of tests executed: &quot; + tests_executed);</span>
-<span class="lineNum">     419 </span><span class="lineCov">         10 :   }</span>
-<span class="lineNum">     420 </span><span class="lineCov">         11 : }</span>
-<span class="lineNum">     421 </span><span class="lineCov">         11 : </span>
-<span class="lineNum">     422 </span><span class="lineCov">         11 : // Uncomment to run all the tests at once or use shard runners.</span>
-<span class="lineNum">     423 </span><span class="lineCov">         11 : //run_tests();</span>
+<span class="lineNum">     409 </span><span class="lineNoCov">          0 :                 });</span>
+<span class="lineNum">     410 </span><span class="lineNoCov">          0 :               });</span>
+<span class="lineNum">     411 </span><span class="lineNoCov">          0 :             });</span>
+<span class="lineNum">     412 </span><span class="lineNoCov">          0 :           });</span>
+<span class="lineNum">     413 </span><span class="lineNoCov">          0 :         });</span>
+<span class="lineNum">     414 </span><span class="lineNoCov">          0 :       });</span>
+<span class="lineNum">     415 </span><span class="lineNoCov">          0 :     });</span>
+<span class="lineNum">     416 </span><span class="lineNoCov">          0 :   });</span>
+<span class="lineNum">     417 </span><span class="lineNoCov">          0 :   if (verbose) {</span>
+<span class="lineNum">     418 </span><span class="lineNoCov">          0 :     print(&quot;Number of tests executed: &quot; + tests_executed);</span>
+<span class="lineNum">     419 </span><span class="lineNoCov">          0 :   }</span>
+<span class="lineNum">     420 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     421 </span>            : 
+<span class="lineNum">     422 </span>            : // Uncomment to run all the tests at once or use shard runners.
+<span class="lineNum">     423 </span>            : //run_tests();
 </pre>
       </td>
     </tr>

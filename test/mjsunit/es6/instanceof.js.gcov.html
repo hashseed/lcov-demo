@@ -31,18 +31,18 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">68</td>
-            <td class="headerCovTableEntry">68</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntry">26</td>
+            <td class="headerCovTableEntry">63</td>
+            <td class="headerCovTableEntryLo">41.3 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">11</td>
-            <td class="headerCovTableEntry">12</td>
-            <td class="headerCovTableEntryHi">91.7 %</td>
+            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntry">3</td>
+            <td class="headerCovTableEntryLo">66.7 %</td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
         </table>
@@ -63,70 +63,70 @@
 <a name="1"><span class="lineNum">       1 </span><span class="lineCov">          1 : // Copyright 2016 the V8 project authors. All rights reserved.</span></a>
 <span class="lineNum">       2 </span><span class="lineCov">          1 : // Use of this source code is governed by a BSD-style license that can be</span>
 <span class="lineNum">       3 </span><span class="lineCov">          1 : // found in the LICENSE file.</span>
-<a name="4"><span class="lineNum">       4 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">       4 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">       5 </span><span class="lineCov">          1 : // Make sure it's an error if @@hasInstance isn't a function.</span>
 <span class="lineNum">       6 </span><span class="lineCov">          1 : (function() {</span>
-<a name="7"><span class="lineNum">       7 </span><span class="lineCov">          1 :   var F = {};</span></a>
+<span class="lineNum">       7 </span><span class="lineCov">          1 :   var F = {};</span>
 <span class="lineNum">       8 </span><span class="lineCov">          1 :   F[Symbol.hasInstance] = null;</span>
 <span class="lineNum">       9 </span><span class="lineCov">          1 :   assertThrows(function() { 0 instanceof F; }, TypeError);</span>
-<span class="lineNum">      10 </span><span class="lineCov">          1 : })();</span>
-<a name="11"><span class="lineNum">      11 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">      12 </span><span class="lineCov">          1 : // Make sure the result is coerced to boolean.</span>
+<span class="lineNum">      10 </span><span class="lineNoCov">          0 : })();</span>
+<span class="lineNum">      11 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      12 </span><span class="lineNoCov">          0 : // Make sure the result is coerced to boolean.</span>
 <span class="lineNum">      13 </span><span class="lineCov">          1 : (function() {</span>
 <span class="lineNum">      14 </span><span class="lineCov">          1 :   var F = {};</span>
 <span class="lineNum">      15 </span><span class="lineCov">          1 :   F[Symbol.hasInstance] = function() { return undefined; };</span>
-<span class="lineNum">      16 </span><span class="lineCov">          1 :   assertEquals(0 instanceof F, false);</span>
+<span class="lineNum">      16 </span><span class="lineNoCov">          0 :   assertEquals(0 instanceof F, false);</span>
 <span class="lineNum">      17 </span><span class="lineCov">          1 :   F[Symbol.hasInstance] = function() { return null; };</span>
-<span class="lineNum">      18 </span><span class="lineCov">          1 :   assertEquals(0 instanceof F, false);</span>
+<span class="lineNum">      18 </span><span class="lineNoCov">          0 :   assertEquals(0 instanceof F, false);</span>
 <span class="lineNum">      19 </span><span class="lineCov">          1 :   F[Symbol.hasInstance] = function() { return true; };</span>
-<span class="lineNum">      20 </span><span class="lineCov">          1 :   assertEquals(0 instanceof F, true);</span>
-<span class="lineNum">      21 </span><span class="lineCov">          1 : })();</span>
-<a name="22"><span class="lineNum">      22 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">      23 </span><span class="lineCov">          1 : // Make sure if @@hasInstance throws, we catch it.</span>
+<span class="lineNum">      20 </span><span class="lineNoCov">          0 :   assertEquals(0 instanceof F, true);</span>
+<span class="lineNum">      21 </span><span class="lineNoCov">          0 : })();</span>
+<span class="lineNum">      22 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      23 </span><span class="lineNoCov">          0 : // Make sure if @@hasInstance throws, we catch it.</span>
 <span class="lineNum">      24 </span><span class="lineCov">          1 : (function() {</span>
 <span class="lineNum">      25 </span><span class="lineCov">          1 :   var F = {};</span>
 <span class="lineNum">      26 </span><span class="lineCov">          1 :   F[Symbol.hasInstance] = function() { throw new Error(&quot;always throws&quot;); }</span>
-<span class="lineNum">      27 </span><span class="lineCov">          1 :   try {</span>
-<span class="lineNum">      28 </span><span class="lineCov">          1 :     0 instanceof F;</span>
-<span class="lineNum">      29 </span><span class="lineCov">          1 :   } catch (e) {</span>
-<span class="lineNum">      30 </span><span class="lineCov">          1 :     assertEquals(e.message, &quot;always throws&quot;);</span>
-<span class="lineNum">      31 </span><span class="lineCov">          1 :   }</span>
-<span class="lineNum">      32 </span><span class="lineCov">          1 : })();</span>
-<a name="33"><span class="lineNum">      33 </span><span class="lineCov">          1 : </span></a>
-<a name="34"><span class="lineNum">      34 </span><span class="lineCov">          1 : // @@hasInstance works for bound functions.</span></a>
+<span class="lineNum">      27 </span><span class="lineNoCov">          0 :   try {</span>
+<span class="lineNum">      28 </span><span class="lineNoCov">          0 :     0 instanceof F;</span>
+<span class="lineNum">      29 </span><span class="lineNoCov">          0 :   } catch (e) {</span>
+<span class="lineNum">      30 </span><span class="lineNoCov">          0 :     assertEquals(e.message, &quot;always throws&quot;);</span>
+<span class="lineNum">      31 </span><span class="lineNoCov">          0 :   }</span>
+<span class="lineNum">      32 </span><span class="lineNoCov">          0 : })();</span>
+<span class="lineNum">      33 </span><span class="lineNoCov">          0 : </span>
+<a name="34"><span class="lineNum">      34 </span><span class="lineNoCov">          0 : // @@hasInstance works for bound functions.</span></a>
 <span class="lineNum">      35 </span><span class="lineCov">          1 : (function() {</span>
 <span class="lineNum">      36 </span><span class="lineCov">          1 :   var BC = function() {};</span>
-<span class="lineNum">      37 </span><span class="lineCov">          1 :   var bc = new BC();</span>
-<span class="lineNum">      38 </span><span class="lineCov">          1 :   var bound = BC.bind();</span>
-<span class="lineNum">      39 </span><span class="lineCov">          1 :   assertEquals(bound[Symbol.hasInstance](bc), true);</span>
-<span class="lineNum">      40 </span><span class="lineCov">          1 :   assertEquals(bound[Symbol.hasInstance]([]), false);</span>
-<span class="lineNum">      41 </span><span class="lineCov">          1 : })();</span>
-<span class="lineNum">      42 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      43 </span><span class="lineCov">          1 : // if OrdinaryHasInstance is passed a non-callable receiver, return false.</span>
-<span class="lineNum">      44 </span><span class="lineCov">          1 : assertEquals(Function.prototype[Symbol.hasInstance].call(Array, []), true);</span>
-<span class="lineNum">      45 </span><span class="lineCov">          1 : assertEquals(Function.prototype[Symbol.hasInstance].call({}, {}), false);</span>
-<span class="lineNum">      46 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      47 </span><span class="lineCov">          1 : // OrdinaryHasInstance passed a non-object argument returns false.</span>
-<span class="lineNum">      48 </span><span class="lineCov">          1 : assertEquals(Function.prototype[Symbol.hasInstance].call(Array, 0), false);</span>
-<a name="49"><span class="lineNum">      49 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">      50 </span><span class="lineCov">          1 : // Cannot assign to @@hasInstance with %FunctionPrototype%.</span>
+<span class="lineNum">      37 </span><span class="lineNoCov">          0 :   var bc = new BC();</span>
+<span class="lineNum">      38 </span><span class="lineNoCov">          0 :   var bound = BC.bind();</span>
+<span class="lineNum">      39 </span><span class="lineNoCov">          0 :   assertEquals(bound[Symbol.hasInstance](bc), true);</span>
+<span class="lineNum">      40 </span><span class="lineNoCov">          0 :   assertEquals(bound[Symbol.hasInstance]([]), false);</span>
+<span class="lineNum">      41 </span><span class="lineNoCov">          0 : })();</span>
+<span class="lineNum">      42 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      43 </span><span class="lineNoCov">          0 : // if OrdinaryHasInstance is passed a non-callable receiver, return false.</span>
+<span class="lineNum">      44 </span><span class="lineNoCov">          0 : assertEquals(Function.prototype[Symbol.hasInstance].call(Array, []), true);</span>
+<span class="lineNum">      45 </span><span class="lineNoCov">          0 : assertEquals(Function.prototype[Symbol.hasInstance].call({}, {}), false);</span>
+<span class="lineNum">      46 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      47 </span><span class="lineNoCov">          0 : // OrdinaryHasInstance passed a non-object argument returns false.</span>
+<span class="lineNum">      48 </span><span class="lineNoCov">          0 : assertEquals(Function.prototype[Symbol.hasInstance].call(Array, 0), false);</span>
+<span class="lineNum">      49 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      50 </span><span class="lineNoCov">          0 : // Cannot assign to @@hasInstance with %FunctionPrototype%.</span>
 <span class="lineNum">      51 </span><span class="lineCov">          1 : (function() {</span>
-<a name="52"><span class="lineNum">      52 </span><span class="lineCov">          1 :   &quot;use strict&quot;;</span></a>
+<span class="lineNum">      52 </span><span class="lineCov">          1 :   &quot;use strict&quot;;</span>
 <span class="lineNum">      53 </span><span class="lineCov">          1 :   function F() {}</span>
 <span class="lineNum">      54 </span><span class="lineCov">          1 :   assertThrows(function() { F[Symbol.hasInstance] = (v) =&gt; v }, TypeError);</span>
-<span class="lineNum">      55 </span><span class="lineCov">          1 : })();</span>
-<a name="56"><span class="lineNum">      56 </span><span class="lineCov">          1 : </span></a>
-<a name="57"><span class="lineNum">      57 </span><span class="lineCov">          1 : // Check correct invocation of @@hasInstance handler on function instance.</span></a>
+<span class="lineNum">      55 </span><span class="lineNoCov">          0 : })();</span>
+<span class="lineNum">      56 </span><span class="lineNoCov">          0 : </span>
+<a name="57"><span class="lineNum">      57 </span><span class="lineNoCov">          0 : // Check correct invocation of @@hasInstance handler on function instance.</span></a>
 <span class="lineNum">      58 </span><span class="lineCov">          1 : (function() {</span>
 <span class="lineNum">      59 </span><span class="lineCov">          1 :   function F() {}</span>
-<span class="lineNum">      60 </span><span class="lineCov">          1 :   var counter = 0;</span>
-<a name="61"><span class="lineNum">      61 </span><span class="lineCov">          1 :   var proto = Object.getPrototypeOf(F);</span></a>
-<span class="lineNum">      62 </span><span class="lineCov">          1 :   Object.setPrototypeOf(F, null);</span>
+<span class="lineNum">      60 </span><span class="lineNoCov">          0 :   var counter = 0;</span>
+<a name="61"><span class="lineNum">      61 </span><span class="lineNoCov">          0 :   var proto = Object.getPrototypeOf(F);</span></a>
+<span class="lineNum">      62 </span><span class="lineNoCov">          0 :   Object.setPrototypeOf(F, null);</span>
 <span class="lineNum">      63 </span><span class="lineCov">          1 :   F[Symbol.hasInstance] = function(v) { ++counter; return true };</span>
-<span class="lineNum">      64 </span><span class="lineCov">          1 :   Object.setPrototypeOf(F, proto);</span>
-<span class="lineNum">      65 </span><span class="lineCov">          1 :   assertTrue(1 instanceof F);</span>
-<span class="lineNum">      66 </span><span class="lineCov">          1 :   assertEquals(1, counter);</span>
-<span class="lineNum">      67 </span><span class="lineCov">          1 : })();</span>
+<span class="lineNum">      64 </span>            :   Object.setPrototypeOf(F, proto);
+<span class="lineNum">      65 </span>            :   assertTrue(1 instanceof F);
+<span class="lineNum">      66 </span>            :   assertEquals(1, counter);
+<span class="lineNum">      67 </span>            : })();
 </pre>
       </td>
     </tr>

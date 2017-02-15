@@ -31,17 +31,17 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">128</td>
-            <td class="headerCovTableEntry">128</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntry">46</td>
+            <td class="headerCovTableEntry">124</td>
+            <td class="headerCovTableEntryLo">37.1 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">3</td>
-            <td class="headerCovTableEntry">3</td>
+            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntry">2</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -95,98 +95,98 @@
 <span class="lineNum">      33 </span><span class="lineCov">          4 :     }</span>
 <span class="lineNum">      34 </span><span class="lineCov">          4 :     return Object.getOwnPropertyDescriptor(target, name);</span>
 <span class="lineNum">      35 </span><span class="lineCov">          4 :   }</span>
-<span class="lineNum">      36 </span><span class="lineCov">          1 : };</span>
-<span class="lineNum">      37 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      38 </span><span class="lineCov">          1 : var proxy = new Proxy(target, handler);</span>
-<span class="lineNum">      39 </span><span class="lineCov">          1 : var proxy_without_handler = new Proxy(target, {});</span>
-<span class="lineNum">      40 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      41 </span><span class="lineCov">          1 : // Checking basic functionality:</span>
-<span class="lineNum">      42 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      43 </span><span class="lineCov">          1 : assertEquals(configurable_desc,</span>
-<span class="lineNum">      44 </span><span class="lineCov">          1 :              Object.getOwnPropertyDescriptor(proxy, &quot;configurable&quot;));</span>
-<span class="lineNum">      45 </span><span class="lineCov">          1 : assertEquals(nonconfigurable_desc,</span>
-<span class="lineNum">      46 </span><span class="lineCov">          1 :              Object.getOwnPropertyDescriptor(proxy, &quot;nonconfigurable&quot;));</span>
-<span class="lineNum">      47 </span><span class="lineCov">          1 : assertEquals({ value: proxied_desc.value,</span>
-<span class="lineNum">      48 </span><span class="lineCov">          1 :                configurable: proxied_desc.configurable,</span>
-<span class="lineNum">      49 </span><span class="lineCov">          1 :                enumerable: false,</span>
-<span class="lineNum">      50 </span><span class="lineCov">          1 :                writable: false },</span>
-<span class="lineNum">      51 </span><span class="lineCov">          1 :              Object.getOwnPropertyDescriptor(proxy, &quot;proxied&quot;));</span>
-<span class="lineNum">      52 </span><span class="lineCov">          1 : assertEquals(configurable_desc,</span>
-<span class="lineNum">      53 </span><span class="lineCov">          1 :              Object.getOwnPropertyDescriptor(proxy_without_handler,</span>
-<span class="lineNum">      54 </span><span class="lineCov">          1 :                                              &quot;configurable&quot;));</span>
-<span class="lineNum">      55 </span><span class="lineCov">          1 : assertEquals(nonconfigurable_desc,</span>
-<span class="lineNum">      56 </span><span class="lineCov">          1 :              Object.getOwnPropertyDescriptor(proxy_without_handler,</span>
-<span class="lineNum">      57 </span><span class="lineCov">          1 :                                              &quot;nonconfigurable&quot;));</span>
-<span class="lineNum">      58 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      59 </span><span class="lineCov">          1 : assertThrows('Object.getOwnPropertyDescriptor(proxy, &quot;return_null&quot;)');</span>
-<span class="lineNum">      60 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      61 </span><span class="lineCov">          1 : handler.getOwnPropertyDescriptor = undefined;</span>
-<span class="lineNum">      62 </span><span class="lineCov">          1 : assertEquals(configurable_desc,</span>
-<span class="lineNum">      63 </span><span class="lineCov">          1 :              Object.getOwnPropertyDescriptor(proxy, &quot;configurable&quot;));</span>
-<span class="lineNum">      64 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      65 </span><span class="lineCov">          1 : // Checking invariants mentioned explicitly by the ES spec:</span>
-<span class="lineNum">      66 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      67 </span><span class="lineCov">          1 : // (Inv-1) &quot;A property cannot be reported as non-existent, if it exists as a</span>
-<span class="lineNum">      68 </span><span class="lineCov">          1 : // non-configurable own property of the target object.&quot;</span>
+<span class="lineNum">      36 </span><span class="lineNoCov">          0 : };</span>
+<span class="lineNum">      37 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      38 </span><span class="lineNoCov">          0 : var proxy = new Proxy(target, handler);</span>
+<span class="lineNum">      39 </span><span class="lineNoCov">          0 : var proxy_without_handler = new Proxy(target, {});</span>
+<span class="lineNum">      40 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      41 </span><span class="lineNoCov">          0 : // Checking basic functionality:</span>
+<span class="lineNum">      42 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      43 </span><span class="lineNoCov">          0 : assertEquals(configurable_desc,</span>
+<span class="lineNum">      44 </span><span class="lineNoCov">          0 :              Object.getOwnPropertyDescriptor(proxy, &quot;configurable&quot;));</span>
+<span class="lineNum">      45 </span><span class="lineNoCov">          0 : assertEquals(nonconfigurable_desc,</span>
+<span class="lineNum">      46 </span><span class="lineNoCov">          0 :              Object.getOwnPropertyDescriptor(proxy, &quot;nonconfigurable&quot;));</span>
+<span class="lineNum">      47 </span><span class="lineNoCov">          0 : assertEquals({ value: proxied_desc.value,</span>
+<span class="lineNum">      48 </span><span class="lineNoCov">          0 :                configurable: proxied_desc.configurable,</span>
+<span class="lineNum">      49 </span><span class="lineNoCov">          0 :                enumerable: false,</span>
+<span class="lineNum">      50 </span><span class="lineNoCov">          0 :                writable: false },</span>
+<span class="lineNum">      51 </span><span class="lineNoCov">          0 :              Object.getOwnPropertyDescriptor(proxy, &quot;proxied&quot;));</span>
+<span class="lineNum">      52 </span><span class="lineNoCov">          0 : assertEquals(configurable_desc,</span>
+<span class="lineNum">      53 </span><span class="lineNoCov">          0 :              Object.getOwnPropertyDescriptor(proxy_without_handler,</span>
+<span class="lineNum">      54 </span><span class="lineNoCov">          0 :                                              &quot;configurable&quot;));</span>
+<span class="lineNum">      55 </span><span class="lineNoCov">          0 : assertEquals(nonconfigurable_desc,</span>
+<span class="lineNum">      56 </span><span class="lineNoCov">          0 :              Object.getOwnPropertyDescriptor(proxy_without_handler,</span>
+<span class="lineNum">      57 </span><span class="lineNoCov">          0 :                                              &quot;nonconfigurable&quot;));</span>
+<span class="lineNum">      58 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      59 </span><span class="lineNoCov">          0 : assertThrows('Object.getOwnPropertyDescriptor(proxy, &quot;return_null&quot;)');</span>
+<span class="lineNum">      60 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      61 </span><span class="lineNoCov">          0 : handler.getOwnPropertyDescriptor = undefined;</span>
+<span class="lineNum">      62 </span><span class="lineNoCov">          0 : assertEquals(configurable_desc,</span>
+<span class="lineNum">      63 </span><span class="lineNoCov">          0 :              Object.getOwnPropertyDescriptor(proxy, &quot;configurable&quot;));</span>
+<span class="lineNum">      64 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      65 </span><span class="lineNoCov">          0 : // Checking invariants mentioned explicitly by the ES spec:</span>
+<span class="lineNum">      66 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      67 </span><span class="lineNoCov">          0 : // (Inv-1) &quot;A property cannot be reported as non-existent, if it exists as a</span>
+<span class="lineNum">      68 </span><span class="lineNoCov">          0 : // non-configurable own property of the target object.&quot;</span>
 <span class="lineNum">      69 </span><span class="lineCov">          2 : handler.getOwnPropertyDescriptor = function(target, name) { return undefined; };</span>
-<span class="lineNum">      70 </span><span class="lineCov">          1 : assertThrows('Object.getOwnPropertyDescriptor(proxy, &quot;nonconfigurable&quot;)');</span>
-<span class="lineNum">      71 </span><span class="lineCov">          1 : assertEquals(undefined, Object.getOwnPropertyDescriptor(proxy, &quot;configurable&quot;));</span>
-<span class="lineNum">      72 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      73 </span><span class="lineCov">          1 : // (Inv-2) &quot;A property cannot be reported as non-configurable, if it does not</span>
-<span class="lineNum">      74 </span><span class="lineCov">          1 : // exist as an own property of the target object or if it exists as a</span>
-<span class="lineNum">      75 </span><span class="lineCov">          1 : // configurable own property of the target object.&quot;</span>
+<span class="lineNum">      70 </span><span class="lineNoCov">          0 : assertThrows('Object.getOwnPropertyDescriptor(proxy, &quot;nonconfigurable&quot;)');</span>
+<span class="lineNum">      71 </span><span class="lineNoCov">          0 : assertEquals(undefined, Object.getOwnPropertyDescriptor(proxy, &quot;configurable&quot;));</span>
+<span class="lineNum">      72 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      73 </span><span class="lineNoCov">          0 : // (Inv-2) &quot;A property cannot be reported as non-configurable, if it does not</span>
+<span class="lineNum">      74 </span><span class="lineNoCov">          0 : // exist as an own property of the target object or if it exists as a</span>
+<span class="lineNum">      75 </span><span class="lineNoCov">          0 : // configurable own property of the target object.&quot;</span>
 <span class="lineNum">      76 </span><span class="lineCov">          3 : handler.getOwnPropertyDescriptor = function(target, name) {</span>
 <span class="lineNum">      77 </span><span class="lineCov">          3 :   return {value: 234, configurable: false, enumerable: true};</span>
 <span class="lineNum">      78 </span><span class="lineCov">          3 : };</span>
-<span class="lineNum">      79 </span><span class="lineCov">          1 : assertThrows('Object.getOwnPropertyDescriptor(proxy, &quot;nonexistent&quot;)');</span>
-<span class="lineNum">      80 </span><span class="lineCov">          1 : assertThrows('Object.getOwnPropertyDescriptor(proxy, &quot;configurable&quot;)');</span>
-<span class="lineNum">      81 </span><span class="lineCov">          1 : assertEquals(</span>
-<span class="lineNum">      82 </span><span class="lineCov">          1 :     false,</span>
-<span class="lineNum">      83 </span><span class="lineCov">          1 :     Object.getOwnPropertyDescriptor(proxy, &quot;nonconfigurable&quot;).configurable);</span>
-<span class="lineNum">      84 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      85 </span><span class="lineCov">          1 : // (Inv-3) &quot;A property cannot be reported as non-existent, if it exists as an</span>
-<span class="lineNum">      86 </span><span class="lineCov">          1 : // own property of the target object and the target object is not extensible.&quot;</span>
-<span class="lineNum">      87 </span><span class="lineCov">          1 : Object.seal(target);</span>
+<span class="lineNum">      79 </span><span class="lineNoCov">          0 : assertThrows('Object.getOwnPropertyDescriptor(proxy, &quot;nonexistent&quot;)');</span>
+<span class="lineNum">      80 </span><span class="lineNoCov">          0 : assertThrows('Object.getOwnPropertyDescriptor(proxy, &quot;configurable&quot;)');</span>
+<span class="lineNum">      81 </span><span class="lineNoCov">          0 : assertEquals(</span>
+<span class="lineNum">      82 </span><span class="lineNoCov">          0 :     false,</span>
+<span class="lineNum">      83 </span><span class="lineNoCov">          0 :     Object.getOwnPropertyDescriptor(proxy, &quot;nonconfigurable&quot;).configurable);</span>
+<span class="lineNum">      84 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      85 </span><span class="lineNoCov">          0 : // (Inv-3) &quot;A property cannot be reported as non-existent, if it exists as an</span>
+<span class="lineNum">      86 </span><span class="lineNoCov">          0 : // own property of the target object and the target object is not extensible.&quot;</span>
+<span class="lineNum">      87 </span><span class="lineNoCov">          0 : Object.seal(target);</span>
 <span class="lineNum">      88 </span><span class="lineCov">          3 : handler.getOwnPropertyDescriptor = function(target, name) { return undefined; };</span>
-<span class="lineNum">      89 </span><span class="lineCov">          1 : assertThrows('Object.getOwnPropertyDescriptor(proxy, &quot;configurable&quot;)');</span>
-<span class="lineNum">      90 </span><span class="lineCov">          1 : assertThrows('Object.getOwnPropertyDescriptor(proxy, &quot;nonconfigurable&quot;)');</span>
-<span class="lineNum">      91 </span><span class="lineCov">          1 : assertEquals(undefined, Object.getOwnPropertyDescriptor(proxy, &quot;nonexistent&quot;));</span>
-<span class="lineNum">      92 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      93 </span><span class="lineCov">          1 : // (Inv-4) &quot;A property cannot be reported as existent, if it does not exist as</span>
-<span class="lineNum">      94 </span><span class="lineCov">          1 : // an own property of the target object and the target object is not</span>
-<span class="lineNum">      95 </span><span class="lineCov">          1 : // extensible.&quot;</span>
-<span class="lineNum">      96 </span><span class="lineCov">          1 : var existent_desc = {value: &quot;yes&quot;};</span>
+<span class="lineNum">      89 </span><span class="lineNoCov">          0 : assertThrows('Object.getOwnPropertyDescriptor(proxy, &quot;configurable&quot;)');</span>
+<span class="lineNum">      90 </span><span class="lineNoCov">          0 : assertThrows('Object.getOwnPropertyDescriptor(proxy, &quot;nonconfigurable&quot;)');</span>
+<span class="lineNum">      91 </span><span class="lineNoCov">          0 : assertEquals(undefined, Object.getOwnPropertyDescriptor(proxy, &quot;nonexistent&quot;));</span>
+<span class="lineNum">      92 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      93 </span><span class="lineNoCov">          0 : // (Inv-4) &quot;A property cannot be reported as existent, if it does not exist as</span>
+<span class="lineNum">      94 </span><span class="lineNoCov">          0 : // an own property of the target object and the target object is not</span>
+<span class="lineNum">      95 </span><span class="lineNoCov">          0 : // extensible.&quot;</span>
+<span class="lineNum">      96 </span><span class="lineNoCov">          0 : var existent_desc = {value: &quot;yes&quot;};</span>
 <span class="lineNum">      97 </span><span class="lineCov">          2 : handler.getOwnPropertyDescriptor = function() { return existent_desc; };</span>
-<span class="lineNum">      98 </span><span class="lineCov">          1 : assertThrows('Object.getOwnPropertyDescriptor(proxy, &quot;nonexistent&quot;)');</span>
-<span class="lineNum">      99 </span><span class="lineCov">          1 : assertEquals(</span>
-<span class="lineNum">     100 </span><span class="lineCov">          1 :     {value: &quot;yes&quot;, writable: false, enumerable: false, configurable: false},</span>
-<span class="lineNum">     101 </span><span class="lineCov">          1 :     Object.getOwnPropertyDescriptor(proxy, &quot;configurable&quot;));</span>
-<span class="lineNum">     102 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     103 </span><span class="lineCov">          1 : // Checking individual bailout points in the implementation:</span>
-<span class="lineNum">     104 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     105 </span><span class="lineCov">          1 : // Step 6: Trap is not callable.</span>
-<span class="lineNum">     106 </span><span class="lineCov">          1 : handler.getOwnPropertyDescriptor = {};</span>
-<span class="lineNum">     107 </span><span class="lineCov">          1 : assertThrows('Object.getOwnPropertyDescriptor(proxy, &quot;configurable&quot;)');</span>
-<span class="lineNum">     108 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     109 </span><span class="lineCov">          1 : // Step 8: Trap throws.</span>
+<span class="lineNum">      98 </span><span class="lineNoCov">          0 : assertThrows('Object.getOwnPropertyDescriptor(proxy, &quot;nonexistent&quot;)');</span>
+<span class="lineNum">      99 </span><span class="lineNoCov">          0 : assertEquals(</span>
+<span class="lineNum">     100 </span><span class="lineNoCov">          0 :     {value: &quot;yes&quot;, writable: false, enumerable: false, configurable: false},</span>
+<span class="lineNum">     101 </span><span class="lineNoCov">          0 :     Object.getOwnPropertyDescriptor(proxy, &quot;configurable&quot;));</span>
+<span class="lineNum">     102 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     103 </span><span class="lineNoCov">          0 : // Checking individual bailout points in the implementation:</span>
+<span class="lineNum">     104 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     105 </span><span class="lineNoCov">          0 : // Step 6: Trap is not callable.</span>
+<span class="lineNum">     106 </span><span class="lineNoCov">          0 : handler.getOwnPropertyDescriptor = {};</span>
+<span class="lineNum">     107 </span><span class="lineNoCov">          0 : assertThrows('Object.getOwnPropertyDescriptor(proxy, &quot;configurable&quot;)');</span>
+<span class="lineNum">     108 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     109 </span><span class="lineNoCov">          0 : // Step 8: Trap throws.</span>
 <span class="lineNum">     110 </span><span class="lineCov">          1 : handler.getOwnPropertyDescriptor = function() { throw &quot;ball&quot;; };</span>
-<span class="lineNum">     111 </span><span class="lineCov">          1 : assertThrows('Object.getOwnPropertyDescriptor(proxy, &quot;configurable&quot;)');</span>
-<span class="lineNum">     112 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     113 </span><span class="lineCov">          1 : // Step 9: Trap result is neither undefined nor an object.</span>
+<span class="lineNum">     111 </span><span class="lineNoCov">          0 : assertThrows('Object.getOwnPropertyDescriptor(proxy, &quot;configurable&quot;)');</span>
+<span class="lineNum">     112 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     113 </span><span class="lineNoCov">          0 : // Step 9: Trap result is neither undefined nor an object.</span>
 <span class="lineNum">     114 </span><span class="lineCov">          1 : handler.getOwnPropertyDescriptor = function() { return 1; }</span>
-<span class="lineNum">     115 </span><span class="lineCov">          1 : assertThrows('Object.getOwnPropertyDescriptor(proxy, &quot;configurable&quot;)');</span>
-<span class="lineNum">     116 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     117 </span><span class="lineCov">          1 : // Step 11b: See (Inv-1) above.</span>
-<span class="lineNum">     118 </span><span class="lineCov">          1 : // Step 11e: See (Inv-3) above.</span>
-<span class="lineNum">     119 </span><span class="lineCov">          1 : </span>
-<a name="120"><span class="lineNum">     120 </span><span class="lineCov">          1 : // Step 16: Incompatible PropertyDescriptor; a non-configurable property</span></a>
-<span class="lineNum">     121 </span><span class="lineCov">          1 : // cannot be reported as configurable. (Inv-4) above checks more cases.</span>
+<span class="lineNum">     115 </span><span class="lineNoCov">          0 : assertThrows('Object.getOwnPropertyDescriptor(proxy, &quot;configurable&quot;)');</span>
+<span class="lineNum">     116 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     117 </span><span class="lineNoCov">          0 : // Step 11b: See (Inv-1) above.</span>
+<span class="lineNum">     118 </span><span class="lineNoCov">          0 : // Step 11e: See (Inv-3) above.</span>
+<span class="lineNum">     119 </span><span class="lineNoCov">          0 : </span>
+<a name="120"><span class="lineNum">     120 </span><span class="lineNoCov">          0 : // Step 16: Incompatible PropertyDescriptor; a non-configurable property</span></a>
+<span class="lineNum">     121 </span><span class="lineNoCov">          0 : // cannot be reported as configurable. (Inv-4) above checks more cases.</span>
 <span class="lineNum">     122 </span><span class="lineCov">          1 : handler.getOwnPropertyDescriptor = function(target, name) {</span>
 <span class="lineNum">     123 </span><span class="lineCov">          1 :   return {value: 456, configurable: true, writable: true}</span>
 <span class="lineNum">     124 </span><span class="lineCov">          1 : };</span>
-<span class="lineNum">     125 </span><span class="lineCov">          1 : assertThrows('Object.getOwnPropertyDescriptor(proxy, &quot;nonconfigurable&quot;)');</span>
-<span class="lineNum">     126 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     127 </span><span class="lineCov">          1 : // Step 17: See (Inv-2) above.</span>
+<span class="lineNum">     125 </span>            : assertThrows('Object.getOwnPropertyDescriptor(proxy, &quot;nonconfigurable&quot;)');
+<span class="lineNum">     126 </span>            : 
+<span class="lineNum">     127 </span>            : // Step 17: See (Inv-2) above.
 </pre>
       </td>
     </tr>

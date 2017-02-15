@@ -31,18 +31,18 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">530</td>
-            <td class="headerCovTableEntry">530</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntry">419</td>
+            <td class="headerCovTableEntry">515</td>
+            <td class="headerCovTableEntryMed">81.4 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">135</td>
-            <td class="headerCovTableEntry">142</td>
-            <td class="headerCovTableEntryHi">95.1 %</td>
+            <td class="headerCovTableEntry">16</td>
+            <td class="headerCovTableEntry">20</td>
+            <td class="headerCovTableEntryMed">80.0 %</td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
         </table>
@@ -89,463 +89,463 @@
 <a name="27"><span class="lineNum">      27 </span><span class="lineCov">          1 :     var simpleObject = {a:&quot;1&quot;, b:&quot;2&quot;, c:&quot;3&quot;};</span></a>
 <span class="lineNum">      28 </span><span class="lineCov">          1 :     var complexArray = ['a', 'b', 'c',,,simpleObject, simpleArray, [simpleObject,simpleArray]];</span>
 <span class="lineNum">      29 </span><span class="lineCov">          8 :     var complexObject = {a:&quot;1&quot;, b:&quot;2&quot;, c:&quot;3&quot;, d:undefined, e:null, &quot;&quot;:12, get f(){ return simpleArray; }, array: complexArray};</span>
-<span class="lineNum">      30 </span><span class="lineCov">          1 :     var simpleArrayWithProto = ['d', 'e', 'f'];</span>
-<span class="lineNum">      31 </span><span class="lineCov">          1 :     simpleArrayWithProto.__proto__ = simpleObject;</span>
-<span class="lineNum">      32 </span><span class="lineCov">          1 :     var simpleObjectWithProto = {d:&quot;4&quot;, e:&quot;5&quot;, f:&quot;6&quot;, __proto__:simpleObject};</span>
-<a name="33"><span class="lineNum">      33 </span><span class="lineCov">          1 :     var complexArrayWithProto = ['d', 'e', 'f',,,simpleObjectWithProto, simpleArrayWithProto, [simpleObjectWithProto,simpleArrayWithProto]];</span></a>
-<span class="lineNum">      34 </span><span class="lineCov">          1 :     complexArrayWithProto.__proto__ = simpleObjectWithProto;</span>
+<span class="lineNum">      30 </span><span class="lineNoCov">          0 :     var simpleArrayWithProto = ['d', 'e', 'f'];</span>
+<span class="lineNum">      31 </span><span class="lineNoCov">          0 :     simpleArrayWithProto.__proto__ = simpleObject;</span>
+<span class="lineNum">      32 </span><span class="lineNoCov">          0 :     var simpleObjectWithProto = {d:&quot;4&quot;, e:&quot;5&quot;, f:&quot;6&quot;, __proto__:simpleObject};</span>
+<a name="33"><span class="lineNum">      33 </span><span class="lineNoCov">          0 :     var complexArrayWithProto = ['d', 'e', 'f',,,simpleObjectWithProto, simpleArrayWithProto, [simpleObjectWithProto,simpleArrayWithProto]];</span></a>
+<span class="lineNum">      34 </span><span class="lineNoCov">          0 :     complexArrayWithProto.__proto__ = simpleObjectWithProto;</span>
 <span class="lineNum">      35 </span><span class="lineCov">          8 :     var complexObjectWithProto = {d:&quot;4&quot;, e:&quot;5&quot;, f:&quot;6&quot;, g:undefined, h:null, &quot;&quot;:12, get i(){ return simpleArrayWithProto; }, array2: complexArrayWithProto, __proto__:complexObject};</span>
 <span class="lineNum">      36 </span><span class="lineCov">          2 :     var objectWithSideEffectGetter = {get b() {this.foo=1;}};</span>
-<a name="37"><span class="lineNum">      37 </span><span class="lineCov">          2 :     var objectWithSideEffectGetterAndProto = {__proto__:{foo:&quot;bar&quot;}, get b() {this.foo=1;}};</span></a>
-<span class="lineNum">      38 </span><span class="lineCov">          1 :     var arrayWithSideEffectGetter = [];</span>
-<a name="39"><span class="lineNum">      39 </span><span class="lineCov">          1 :     arrayWithSideEffectGetter.__defineGetter__(&quot;b&quot;, function(){this.foo=1;});</span></a>
-<span class="lineNum">      40 </span><span class="lineCov">          1 :     var arrayWithSideEffectGetterAndProto = [];</span>
-<span class="lineNum">      41 </span><span class="lineCov">          1 :     arrayWithSideEffectGetterAndProto.__defineGetter__(&quot;b&quot;, function(){this.foo=1;});</span>
-<a name="42"><span class="lineNum">      42 </span><span class="lineCov">          1 :     arrayWithSideEffectGetterAndProto.__proto__ = {foo:&quot;bar&quot;};</span></a>
-<span class="lineNum">      43 </span><span class="lineCov">          1 :     var result = [];</span>
+<span class="lineNum">      37 </span><span class="lineCov">          2 :     var objectWithSideEffectGetterAndProto = {__proto__:{foo:&quot;bar&quot;}, get b() {this.foo=1;}};</span>
+<span class="lineNum">      38 </span><span class="lineNoCov">          0 :     var arrayWithSideEffectGetter = [];</span>
+<span class="lineNum">      39 </span><span class="lineNoCov">          0 :     arrayWithSideEffectGetter.__defineGetter__(&quot;b&quot;, function(){this.foo=1;});</span>
+<span class="lineNum">      40 </span><span class="lineNoCov">          0 :     var arrayWithSideEffectGetterAndProto = [];</span>
+<span class="lineNum">      41 </span><span class="lineNoCov">          0 :     arrayWithSideEffectGetterAndProto.__defineGetter__(&quot;b&quot;, function(){this.foo=1;});</span>
+<span class="lineNum">      42 </span><span class="lineNoCov">          0 :     arrayWithSideEffectGetterAndProto.__proto__ = {foo:&quot;bar&quot;};</span>
+<span class="lineNum">      43 </span><span class="lineNoCov">          0 :     var result = [];</span>
 <span class="lineNum">      44 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
-<a name="45"><span class="lineNum">      45 </span><span class="lineCov">          2 :         return jsonObject.stringify(1);</span></a>
+<span class="lineNum">      45 </span><span class="lineCov">          2 :         return jsonObject.stringify(1);</span>
 <span class="lineNum">      46 </span><span class="lineCov">          2 :     });</span>
 <span class="lineNum">      47 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
-<a name="48"><span class="lineNum">      48 </span><span class="lineCov">          2 :         return jsonObject.stringify(1.5);</span></a>
+<span class="lineNum">      48 </span><span class="lineCov">          2 :         return jsonObject.stringify(1.5);</span>
 <span class="lineNum">      49 </span><span class="lineCov">          2 :     });</span>
 <span class="lineNum">      50 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
-<a name="51"><span class="lineNum">      51 </span><span class="lineCov">          2 :         return jsonObject.stringify(-1);</span></a>
+<span class="lineNum">      51 </span><span class="lineCov">          2 :         return jsonObject.stringify(-1);</span>
 <span class="lineNum">      52 </span><span class="lineCov">          2 :     });</span>
 <span class="lineNum">      53 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
-<a name="54"><span class="lineNum">      54 </span><span class="lineCov">          2 :         return jsonObject.stringify(-1.5);</span></a>
+<span class="lineNum">      54 </span><span class="lineCov">          2 :         return jsonObject.stringify(-1.5);</span>
 <span class="lineNum">      55 </span><span class="lineCov">          2 :     });</span>
 <span class="lineNum">      56 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
-<a name="57"><span class="lineNum">      57 </span><span class="lineCov">          2 :         return jsonObject.stringify(null);</span></a>
+<span class="lineNum">      57 </span><span class="lineCov">          2 :         return jsonObject.stringify(null);</span>
 <span class="lineNum">      58 </span><span class="lineCov">          2 :     });</span>
 <span class="lineNum">      59 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
-<a name="60"><span class="lineNum">      60 </span><span class="lineCov">          2 :         return jsonObject.stringify(&quot;string&quot;);</span></a>
+<span class="lineNum">      60 </span><span class="lineCov">          2 :         return jsonObject.stringify(&quot;string&quot;);</span>
 <span class="lineNum">      61 </span><span class="lineCov">          2 :     });</span>
 <span class="lineNum">      62 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
-<a name="63"><span class="lineNum">      63 </span><span class="lineCov">          2 :         return jsonObject.stringify(new Number(0));</span></a>
+<span class="lineNum">      63 </span><span class="lineCov">          2 :         return jsonObject.stringify(new Number(0));</span>
 <span class="lineNum">      64 </span><span class="lineCov">          2 :     });</span>
 <span class="lineNum">      65 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
-<a name="66"><span class="lineNum">      66 </span><span class="lineCov">          2 :         return jsonObject.stringify(new Number(1));</span></a>
+<span class="lineNum">      66 </span><span class="lineCov">          2 :         return jsonObject.stringify(new Number(1));</span>
 <span class="lineNum">      67 </span><span class="lineCov">          2 :     });</span>
 <span class="lineNum">      68 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
-<a name="69"><span class="lineNum">      69 </span><span class="lineCov">          2 :         return jsonObject.stringify(new Number(1.5));</span></a>
+<span class="lineNum">      69 </span><span class="lineCov">          2 :         return jsonObject.stringify(new Number(1.5));</span>
 <span class="lineNum">      70 </span><span class="lineCov">          2 :     });</span>
 <span class="lineNum">      71 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
-<a name="72"><span class="lineNum">      72 </span><span class="lineCov">          2 :         return jsonObject.stringify(new Number(-1));</span></a>
+<span class="lineNum">      72 </span><span class="lineCov">          2 :         return jsonObject.stringify(new Number(-1));</span>
 <span class="lineNum">      73 </span><span class="lineCov">          2 :     });</span>
 <span class="lineNum">      74 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
-<a name="75"><span class="lineNum">      75 </span><span class="lineCov">          2 :         return jsonObject.stringify(new Number(-1.5));</span></a>
+<span class="lineNum">      75 </span><span class="lineCov">          2 :         return jsonObject.stringify(new Number(-1.5));</span>
 <span class="lineNum">      76 </span><span class="lineCov">          2 :     });</span>
 <span class="lineNum">      77 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
-<a name="78"><span class="lineNum">      78 </span><span class="lineCov">          2 :         return jsonObject.stringify(new String(&quot;a string object&quot;));</span></a>
+<span class="lineNum">      78 </span><span class="lineCov">          2 :         return jsonObject.stringify(new String(&quot;a string object&quot;));</span>
 <span class="lineNum">      79 </span><span class="lineCov">          2 :     });</span>
 <span class="lineNum">      80 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
-<a name="81"><span class="lineNum">      81 </span><span class="lineCov">          2 :         return jsonObject.stringify(new Boolean(true));</span></a>
+<span class="lineNum">      81 </span><span class="lineCov">          2 :         return jsonObject.stringify(new Boolean(true));</span>
 <span class="lineNum">      82 </span><span class="lineCov">          2 :     });</span>
 <span class="lineNum">      83 </span><span class="lineCov">          1 :     result.push(function (jsonObject){</span>
 <span class="lineNum">      84 </span><span class="lineCov">          1 :         var value = new Number(1);</span>
 <span class="lineNum">      85 </span><span class="lineCov">          1 :         value.valueOf = function() { return 2; }</span>
-<span class="lineNum">      86 </span><span class="lineCov">          1 :         return jsonObject.stringify(value);</span>
-<a name="87"><span class="lineNum">      87 </span><span class="lineCov">          1 :     });</span></a>
-<span class="lineNum">      88 </span><span class="lineCov">          1 :     result[result.length - 1].expected = '2';</span>
+<span class="lineNum">      86 </span><span class="lineNoCov">          0 :         return jsonObject.stringify(value);</span>
+<span class="lineNum">      87 </span><span class="lineNoCov">          0 :     });</span>
+<span class="lineNum">      88 </span><span class="lineNoCov">          0 :     result[result.length - 1].expected = '2';</span>
 <a name="89"><span class="lineNum">      89 </span><span class="lineCov">          1 :     result.push(function (jsonObject){</span></a>
 <span class="lineNum">      90 </span><span class="lineCov">          1 :         var value = new Boolean(true);</span>
 <span class="lineNum">      91 </span><span class="lineCov">          1 :         value.valueOf = function() { return 2; }</span>
-<span class="lineNum">      92 </span><span class="lineCov">          1 :         return jsonObject.stringify(value);</span>
-<a name="93"><span class="lineNum">      93 </span><span class="lineCov">          1 :     });</span></a>
-<span class="lineNum">      94 </span><span class="lineCov">          1 :     result[result.length - 1].expected = '2';</span>
+<span class="lineNum">      92 </span><span class="lineNoCov">          0 :         return jsonObject.stringify(value);</span>
+<span class="lineNum">      93 </span><span class="lineNoCov">          0 :     });</span>
+<span class="lineNum">      94 </span><span class="lineNoCov">          0 :     result[result.length - 1].expected = '2';</span>
 <a name="95"><span class="lineNum">      95 </span><span class="lineCov">          1 :     result.push(function (jsonObject){</span></a>
 <span class="lineNum">      96 </span><span class="lineCov">          1 :         var value = new String(&quot;fail&quot;);</span>
 <span class="lineNum">      97 </span><span class="lineCov">          1 :         value.toString = function() { return &quot;converted string&quot;; }</span>
-<span class="lineNum">      98 </span><span class="lineCov">          1 :         return jsonObject.stringify(value);</span>
-<a name="99"><span class="lineNum">      99 </span><span class="lineCov">          1 :     });</span></a>
-<span class="lineNum">     100 </span><span class="lineCov">          1 :     result[result.length - 1].expected = '&quot;converted string&quot;';</span>
+<span class="lineNum">      98 </span><span class="lineNoCov">          0 :         return jsonObject.stringify(value);</span>
+<span class="lineNum">      99 </span><span class="lineNoCov">          0 :     });</span>
+<span class="lineNum">     100 </span><span class="lineNoCov">          0 :     result[result.length - 1].expected = '&quot;converted string&quot;';</span>
 <span class="lineNum">     101 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
-<a name="102"><span class="lineNum">     102 </span><span class="lineCov">          2 :         return jsonObject.stringify(true);</span></a>
+<span class="lineNum">     102 </span><span class="lineCov">          2 :         return jsonObject.stringify(true);</span>
 <span class="lineNum">     103 </span><span class="lineCov">          2 :     });</span>
 <span class="lineNum">     104 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
-<a name="105"><span class="lineNum">     105 </span><span class="lineCov">          2 :         return jsonObject.stringify(false);</span></a>
+<span class="lineNum">     105 </span><span class="lineCov">          2 :         return jsonObject.stringify(false);</span>
 <span class="lineNum">     106 </span><span class="lineCov">          2 :     });</span>
 <span class="lineNum">     107 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
-<a name="108"><span class="lineNum">     108 </span><span class="lineCov">          2 :         return jsonObject.stringify(new Date(0));</span></a>
+<span class="lineNum">     108 </span><span class="lineCov">          2 :         return jsonObject.stringify(new Date(0));</span>
 <span class="lineNum">     109 </span><span class="lineCov">          2 :     });</span>
 <span class="lineNum">     110 </span><span class="lineCov">          1 :     result.push(function (jsonObject){</span>
 <span class="lineNum">     111 </span><span class="lineCov">          1 :         return jsonObject.stringify({toJSON: Date.prototype.toJSON});</span>
-<a name="112"><span class="lineNum">     112 </span><span class="lineCov">          1 :     });</span></a>
-<span class="lineNum">     113 </span><span class="lineCov">          1 :     result[result.length - 1].throws = true;</span>
+<span class="lineNum">     112 </span><span class="lineCov">          1 :     });</span>
+<span class="lineNum">     113 </span><span class="lineNoCov">          0 :     result[result.length - 1].throws = true;</span>
 <span class="lineNum">     114 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
-<a name="115"><span class="lineNum">     115 </span><span class="lineCov">          2 :         return jsonObject.stringify({toJSON: Date.prototype.toJSON, toISOString: function(){ return &quot;custom toISOString&quot;; }});</span></a>
-<span class="lineNum">     116 </span><span class="lineCov">          2 :     });</span>
+<span class="lineNum">     115 </span><span class="lineCov">          2 :         return jsonObject.stringify({toJSON: Date.prototype.toJSON, toISOString: function(){ return &quot;custom toISOString&quot;; }});</span>
+<span class="lineNum">     116 </span><span class="lineNoCov">          0 :     });</span>
 <span class="lineNum">     117 </span><span class="lineCov">          1 :     result.push(function (jsonObject){</span>
 <span class="lineNum">     118 </span><span class="lineCov">          1 :         return jsonObject.stringify({toJSON: Date.prototype.toJSON, toISOString: function(){ return {}; }});</span>
-<a name="119"><span class="lineNum">     119 </span><span class="lineCov">          1 :     });</span></a>
-<a name="120"><span class="lineNum">     120 </span><span class="lineCov">          1 :     result[result.length - 1].throws = true;</span></a>
+<span class="lineNum">     119 </span><span class="lineNoCov">          0 :     });</span>
+<a name="120"><span class="lineNum">     120 </span><span class="lineNoCov">          0 :     result[result.length - 1].throws = true;</span></a>
 <span class="lineNum">     121 </span><span class="lineCov">          1 :     result.push(function (jsonObject){</span>
 <span class="lineNum">     122 </span><span class="lineCov">          1 :         return jsonObject.stringify({toJSON: Date.prototype.toJSON, toISOString: function(){ throw &quot;An exception&quot;; }});</span>
-<a name="123"><span class="lineNum">     123 </span><span class="lineCov">          1 :     });</span></a>
-<span class="lineNum">     124 </span><span class="lineCov">          1 :     result[result.length - 1].throws = true;</span>
+<span class="lineNum">     123 </span><span class="lineNoCov">          0 :     });</span>
+<span class="lineNum">     124 </span><span class="lineNoCov">          0 :     result[result.length - 1].throws = true;</span>
 <span class="lineNum">     125 </span><span class="lineCov">          1 :     result.push(function (jsonObject){</span>
 <span class="lineNum">     126 </span><span class="lineCov">          1 :         var d = new Date(0);</span>
 <span class="lineNum">     127 </span><span class="lineCov">          1 :         d.toISOString = null;</span>
 <span class="lineNum">     128 </span><span class="lineCov">          1 :         return jsonObject.stringify(d);</span>
-<a name="129"><span class="lineNum">     129 </span><span class="lineCov">          1 :     });</span></a>
-<span class="lineNum">     130 </span><span class="lineCov">          1 :     result[result.length - 1].throws = true;</span>
+<span class="lineNum">     129 </span><span class="lineCov">          1 :     });</span>
+<span class="lineNum">     130 </span><span class="lineNoCov">          0 :     result[result.length - 1].throws = true;</span>
 <span class="lineNum">     131 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
 <span class="lineNum">     132 </span><span class="lineCov">          2 :         var d = new Date(0);</span>
 <span class="lineNum">     133 </span><span class="lineCov">          2 :         d.toJSON = undefined;</span>
-<a name="134"><span class="lineNum">     134 </span><span class="lineCov">          2 :         return jsonObject.stringify(d);</span></a>
+<span class="lineNum">     134 </span><span class="lineCov">          2 :         return jsonObject.stringify(d);</span>
 <span class="lineNum">     135 </span><span class="lineCov">          2 :     });</span>
 <span class="lineNum">     136 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
-<a name="137"><span class="lineNum">     137 </span><span class="lineCov">          2 :         return jsonObject.stringify({get Foo() { return &quot;bar&quot;; }});</span></a>
-<span class="lineNum">     138 </span><span class="lineCov">          2 :     });</span>
+<span class="lineNum">     137 </span><span class="lineCov">          2 :         return jsonObject.stringify({get Foo() { return &quot;bar&quot;; }});</span>
+<span class="lineNum">     138 </span><span class="lineNoCov">          0 :     });</span>
 <span class="lineNum">     139 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
-<a name="140"><span class="lineNum">     140 </span><span class="lineCov">          2 :         return jsonObject.stringify({get Foo() { this.foo=&quot;wibble&quot;; return &quot;bar&quot;; }});</span></a>
-<span class="lineNum">     141 </span><span class="lineCov">          2 :     });</span>
+<span class="lineNum">     140 </span><span class="lineCov">          2 :         return jsonObject.stringify({get Foo() { this.foo=&quot;wibble&quot;; return &quot;bar&quot;; }});</span>
+<span class="lineNum">     141 </span><span class="lineNoCov">          0 :     });</span>
 <span class="lineNum">     142 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
 <span class="lineNum">     143 </span><span class="lineCov">          2 :         var count = 0;</span>
 <span class="lineNum">     144 </span><span class="lineCov">          2 :         jsonObject.stringify({get Foo() { count++; return &quot;bar&quot;; }});</span>
-<a name="145"><span class="lineNum">     145 </span><span class="lineCov">          2 :         return count;</span></a>
-<span class="lineNum">     146 </span><span class="lineCov">          2 :     });</span>
+<span class="lineNum">     145 </span><span class="lineNoCov">          0 :         return count;</span>
+<span class="lineNum">     146 </span><span class="lineNoCov">          0 :     });</span>
 <a name="147"><span class="lineNum">     147 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span></a>
 <span class="lineNum">     148 </span><span class="lineCov">          2 :         var count = 0;</span>
-<a name="149"><span class="lineNum">     149 </span><span class="lineCov">          2 :         return jsonObject.stringify({get Foo() { count++; delete this.bar; return &quot;bar&quot;; }, bar: &quot;wibble&quot;});</span></a>
-<span class="lineNum">     150 </span><span class="lineCov">          2 :     });</span>
+<span class="lineNum">     149 </span><span class="lineCov">          2 :         return jsonObject.stringify({get Foo() { count++; delete this.bar; return &quot;bar&quot;; }, bar: &quot;wibble&quot;});</span>
+<span class="lineNum">     150 </span><span class="lineNoCov">          0 :     });</span>
 <span class="lineNum">     151 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
 <span class="lineNum">     152 </span><span class="lineCov">          2 :         var count = 0;</span>
-<a name="153"><span class="lineNum">     153 </span><span class="lineCov">          2 :         return jsonObject.stringify({a:&quot;1&quot;, b:&quot;2&quot;, c:&quot;3&quot;, 5:4, 4:5, 2:6, 1:7});</span></a>
+<span class="lineNum">     153 </span><span class="lineCov">          2 :         return jsonObject.stringify({a:&quot;1&quot;, b:&quot;2&quot;, c:&quot;3&quot;, 5:4, 4:5, 2:6, 1:7});</span>
 <span class="lineNum">     154 </span><span class="lineCov">          2 :     });</span>
-<a name="155"><span class="lineNum">     155 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span></a>
+<span class="lineNum">     155 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
 <span class="lineNum">     156 </span><span class="lineCov">          2 :         var allString = true;</span>
 <span class="lineNum">     157 </span><span class="lineCov">         16 :         jsonObject.stringify({a:&quot;1&quot;, b:&quot;2&quot;, c:&quot;3&quot;, 5:4, 4:5, 2:6, 1:7}, function(k,v){allString = allString &amp;&amp; (typeof k == &quot;string&quot;); return v});</span>
-<a name="158"><span class="lineNum">     158 </span><span class="lineCov">          2 :         return allString;</span></a>
-<span class="lineNum">     159 </span><span class="lineCov">          2 :     });</span>
-<a name="160"><span class="lineNum">     160 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span></a>
+<span class="lineNum">     158 </span><span class="lineNoCov">          0 :         return allString;</span>
+<span class="lineNum">     159 </span><span class="lineNoCov">          0 :     });</span>
+<span class="lineNum">     160 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
 <span class="lineNum">     161 </span><span class="lineCov">          2 :         var allString = true;</span>
 <span class="lineNum">     162 </span><span class="lineCov">         12 :         jsonObject.stringify([1,2,3,4,5], function(k,v){allString = allString &amp;&amp; (typeof k == &quot;string&quot;); return v});</span>
-<a name="163"><span class="lineNum">     163 </span><span class="lineCov">          2 :         return allString;</span></a>
-<span class="lineNum">     164 </span><span class="lineCov">          2 :     });</span>
+<span class="lineNum">     163 </span><span class="lineNoCov">          0 :         return allString;</span>
+<span class="lineNum">     164 </span><span class="lineNoCov">          0 :     });</span>
 <span class="lineNum">     165 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
 <span class="lineNum">     166 </span><span class="lineCov">          2 :         var allString = true;</span>
 <span class="lineNum">     167 </span><span class="lineCov">          2 :         var array = [];</span>
-<a name="168"><span class="lineNum">     168 </span><span class="lineCov">          2 :         return jsonObject.stringify({a:&quot;1&quot;, b:&quot;2&quot;, c:&quot;3&quot;, 5:4, 4:5, 2:6, 1:7}, array);</span></a>
+<span class="lineNum">     168 </span><span class="lineCov">          2 :         return jsonObject.stringify({a:&quot;1&quot;, b:&quot;2&quot;, c:&quot;3&quot;, 5:4, 4:5, 2:6, 1:7}, array);</span>
 <span class="lineNum">     169 </span><span class="lineCov">          2 :     });</span>
 <span class="lineNum">     170 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
 <a name="171"><span class="lineNum">     171 </span><span class="lineCov">          2 :         var allString = true;</span></a>
 <span class="lineNum">     172 </span><span class="lineCov">          2 :         var array = [&quot;a&quot;];</span>
-<a name="173"><span class="lineNum">     173 </span><span class="lineCov">          2 :         return jsonObject.stringify({get a(){return 1;array[1]=&quot;b&quot;;array[2]=&quot;c&quot;}, b:&quot;2&quot;, c:&quot;3&quot;}, array);</span></a>
-<span class="lineNum">     174 </span><span class="lineCov">          2 :     });</span>
+<span class="lineNum">     173 </span><span class="lineCov">          2 :         return jsonObject.stringify({get a(){return 1;array[1]=&quot;b&quot;;array[2]=&quot;c&quot;}, b:&quot;2&quot;, c:&quot;3&quot;}, array);</span>
+<span class="lineNum">     174 </span><span class="lineNoCov">          0 :     });</span>
 <span class="lineNum">     175 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
 <span class="lineNum">     176 </span><span class="lineCov">          2 :         var allString = true;</span>
 <span class="lineNum">     177 </span><span class="lineCov">          2 :         var array = [{toString:function(){array[0]='a'; array[1]='c'; array[2]='b'; return 'a'}}];</span>
-<a name="178"><span class="lineNum">     178 </span><span class="lineCov">          2 :         return jsonObject.stringify(simpleObject, array);</span></a>
-<span class="lineNum">     179 </span><span class="lineCov">          2 :     });</span>
+<span class="lineNum">     178 </span><span class="lineNoCov">          0 :         return jsonObject.stringify(simpleObject, array);</span>
+<span class="lineNum">     179 </span><span class="lineNoCov">          0 :     });</span>
 <span class="lineNum">     180 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
 <span class="lineNum">     181 </span><span class="lineCov">          2 :         var allString = true;</span>
 <span class="lineNum">     182 </span><span class="lineCov">          2 :         var array = [{toString:function(){array[0]='a'; array[1]='c'; array[2]='b'; return 'a'}}];</span>
-<a name="183"><span class="lineNum">     183 </span><span class="lineCov">          2 :         return jsonObject.stringify(simpleObjectWithProto, array);</span></a>
-<span class="lineNum">     184 </span><span class="lineCov">          2 :     });</span>
+<span class="lineNum">     183 </span><span class="lineNoCov">          0 :         return jsonObject.stringify(simpleObjectWithProto, array);</span>
+<span class="lineNum">     184 </span><span class="lineNoCov">          0 :     });</span>
 <span class="lineNum">     185 </span><span class="lineCov">          1 :     result.push(function (jsonObject){</span>
 <span class="lineNum">     186 </span><span class="lineCov">          1 :         var allString = true;</span>
 <span class="lineNum">     187 </span><span class="lineCov">          1 :         var array = [1, new Number(2), NaN, Infinity, -Infinity, new String(&quot;str&quot;)];</span>
 <span class="lineNum">     188 </span><span class="lineCov">          1 :         return jsonObject.stringify({&quot;1&quot;:&quot;1&quot;,&quot;2&quot;:&quot;2&quot;,&quot;NaN&quot;:&quot;NaN&quot;,&quot;Infinity&quot;:&quot;Infinity&quot;,&quot;-Infinity&quot;:&quot;-Infinity&quot;,&quot;str&quot;:&quot;str&quot;}, array);</span>
-<a name="189"><span class="lineNum">     189 </span><span class="lineCov">          1 :     });</span></a>
-<span class="lineNum">     190 </span><span class="lineCov">          1 :     result[result.length - 1].expected = '{&quot;1&quot;:&quot;1&quot;,&quot;2&quot;:&quot;2&quot;,&quot;NaN&quot;:&quot;NaN&quot;,&quot;Infinity&quot;:&quot;Infinity&quot;,&quot;-Infinity&quot;:&quot;-Infinity&quot;,&quot;str&quot;:&quot;str&quot;}';</span>
+<span class="lineNum">     189 </span><span class="lineCov">          1 :     });</span>
+<span class="lineNum">     190 </span><span class="lineNoCov">          0 :     result[result.length - 1].expected = '{&quot;1&quot;:&quot;1&quot;,&quot;2&quot;:&quot;2&quot;,&quot;NaN&quot;:&quot;NaN&quot;,&quot;Infinity&quot;:&quot;Infinity&quot;,&quot;-Infinity&quot;:&quot;-Infinity&quot;,&quot;str&quot;:&quot;str&quot;}';</span>
 <span class="lineNum">     191 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
 <span class="lineNum">     192 </span><span class="lineCov">          2 :         var allString = true;</span>
 <span class="lineNum">     193 </span><span class="lineCov">          2 :         var array = [&quot;1&quot;,&quot;2&quot;,&quot;3&quot;];</span>
-<a name="194"><span class="lineNum">     194 </span><span class="lineCov">          2 :         return jsonObject.stringify({1:'a', 2:'b', 3:'c'}, array);</span></a>
+<span class="lineNum">     194 </span><span class="lineCov">          2 :         return jsonObject.stringify({1:'a', 2:'b', 3:'c'}, array);</span>
 <span class="lineNum">     195 </span><span class="lineCov">          2 :     });</span>
 <span class="lineNum">     196 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
 <span class="lineNum">     197 </span><span class="lineCov">          2 :         var allString = true;</span>
 <span class="lineNum">     198 </span><span class="lineCov">          2 :         var array = [&quot;1&quot;,&quot;2&quot;,&quot;3&quot;];</span>
-<a name="199"><span class="lineNum">     199 </span><span class="lineCov">          2 :         return jsonObject.stringify(simpleArray, array);</span></a>
+<span class="lineNum">     199 </span><span class="lineCov">          2 :         return jsonObject.stringify(simpleArray, array);</span>
 <span class="lineNum">     200 </span><span class="lineCov">          2 :     });</span>
 <span class="lineNum">     201 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
-<a name="202"><span class="lineNum">     202 </span><span class="lineCov">          2 :         return jsonObject.stringify(simpleArray, null, &quot;  &quot;);</span></a>
+<span class="lineNum">     202 </span><span class="lineCov">          2 :         return jsonObject.stringify(simpleArray, null, &quot;  &quot;);</span>
 <span class="lineNum">     203 </span><span class="lineCov">          2 :     });</span>
 <span class="lineNum">     204 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
-<a name="205"><span class="lineNum">     205 </span><span class="lineCov">          2 :         return jsonObject.stringify(simpleArray, null, 4);</span></a>
+<span class="lineNum">     205 </span><span class="lineCov">          2 :         return jsonObject.stringify(simpleArray, null, 4);</span>
 <span class="lineNum">     206 </span><span class="lineCov">          2 :     });</span>
 <span class="lineNum">     207 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
-<a name="208"><span class="lineNum">     208 </span><span class="lineCov">          2 :         return jsonObject.stringify(simpleArray, null, &quot;ab&quot;);</span></a>
+<span class="lineNum">     208 </span><span class="lineCov">          2 :         return jsonObject.stringify(simpleArray, null, &quot;ab&quot;);</span>
 <span class="lineNum">     209 </span><span class="lineCov">          2 :     });</span>
 <span class="lineNum">     210 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
-<a name="211"><span class="lineNum">     211 </span><span class="lineCov">          2 :         return jsonObject.stringify(simpleArray, null, 4);</span></a>
+<span class="lineNum">     211 </span><span class="lineCov">          2 :         return jsonObject.stringify(simpleArray, null, 4);</span>
 <span class="lineNum">     212 </span><span class="lineCov">          2 :     });</span>
 <span class="lineNum">     213 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
-<a name="214"><span class="lineNum">     214 </span><span class="lineCov">          2 :         return jsonObject.stringify(simpleObject, null, &quot;  &quot;);</span></a>
+<span class="lineNum">     214 </span><span class="lineCov">          2 :         return jsonObject.stringify(simpleObject, null, &quot;  &quot;);</span>
 <span class="lineNum">     215 </span><span class="lineCov">          2 :     });</span>
 <span class="lineNum">     216 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
-<a name="217"><span class="lineNum">     217 </span><span class="lineCov">          2 :         return jsonObject.stringify(simpleObject, null, 4);</span></a>
+<span class="lineNum">     217 </span><span class="lineCov">          2 :         return jsonObject.stringify(simpleObject, null, 4);</span>
 <span class="lineNum">     218 </span><span class="lineCov">          2 :     });</span>
 <span class="lineNum">     219 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
-<a name="220"><span class="lineNum">     220 </span><span class="lineCov">          2 :         return jsonObject.stringify(simpleObject, null, &quot;ab&quot;);</span></a>
+<span class="lineNum">     220 </span><span class="lineCov">          2 :         return jsonObject.stringify(simpleObject, null, &quot;ab&quot;);</span>
 <span class="lineNum">     221 </span><span class="lineCov">          2 :     });</span>
 <span class="lineNum">     222 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
-<a name="223"><span class="lineNum">     223 </span><span class="lineCov">          2 :         return jsonObject.stringify(simpleObject, null, 4);</span></a>
+<span class="lineNum">     223 </span><span class="lineCov">          2 :         return jsonObject.stringify(simpleObject, null, 4);</span>
 <span class="lineNum">     224 </span><span class="lineCov">          2 :     });</span>
 <span class="lineNum">     225 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
-<a name="226"><span class="lineNum">     226 </span><span class="lineCov">          2 :         return jsonObject.stringify(simpleObject, null, 10);</span></a>
+<span class="lineNum">     226 </span><span class="lineCov">          2 :         return jsonObject.stringify(simpleObject, null, 10);</span>
 <span class="lineNum">     227 </span><span class="lineCov">          2 :     });</span>
 <span class="lineNum">     228 </span><span class="lineCov">          1 :     result.push(function (jsonObject){</span>
 <span class="lineNum">     229 </span><span class="lineCov">          1 :         return jsonObject.stringify(simpleObject, null, 11);</span>
-<a name="230"><span class="lineNum">     230 </span><span class="lineCov">          1 :     });</span></a>
-<span class="lineNum">     231 </span><span class="lineCov">          1 :     result[result.length - 1].expected = JSON.stringify(simpleObject, null, 10);</span>
+<span class="lineNum">     230 </span><span class="lineCov">          1 :     });</span>
+<span class="lineNum">     231 </span><span class="lineNoCov">          0 :     result[result.length - 1].expected = JSON.stringify(simpleObject, null, 10);</span>
 <span class="lineNum">     232 </span><span class="lineCov">          1 :     result.push(function (jsonObject){</span>
 <span class="lineNum">     233 </span><span class="lineCov">          1 :         return jsonObject.stringify(simpleObject, null, &quot;          &quot;);</span>
-<a name="234"><span class="lineNum">     234 </span><span class="lineCov">          1 :     });</span></a>
-<span class="lineNum">     235 </span><span class="lineCov">          1 :     result[result.length - 1].expected = JSON.stringify(simpleObject, null, 10);</span>
+<span class="lineNum">     234 </span><span class="lineCov">          1 :     });</span>
+<span class="lineNum">     235 </span><span class="lineNoCov">          0 :     result[result.length - 1].expected = JSON.stringify(simpleObject, null, 10);</span>
 <span class="lineNum">     236 </span><span class="lineCov">          1 :     result.push(function (jsonObject){</span>
 <span class="lineNum">     237 </span><span class="lineCov">          1 :         return jsonObject.stringify(simpleObject, null, &quot;           &quot;);</span>
-<a name="238"><span class="lineNum">     238 </span><span class="lineCov">          1 :     });</span></a>
-<span class="lineNum">     239 </span><span class="lineCov">          1 :     result[result.length - 1].expected = JSON.stringify(simpleObject, null, 10);</span>
+<span class="lineNum">     238 </span><span class="lineCov">          1 :     });</span>
+<span class="lineNum">     239 </span><span class="lineNoCov">          0 :     result[result.length - 1].expected = JSON.stringify(simpleObject, null, 10);</span>
 <span class="lineNum">     240 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
-<a name="241"><span class="lineNum">     241 </span><span class="lineCov">          2 :         return jsonObject.stringify(complexArray, null, &quot;  &quot;);</span></a>
+<span class="lineNum">     241 </span><span class="lineCov">          2 :         return jsonObject.stringify(complexArray, null, &quot;  &quot;);</span>
 <span class="lineNum">     242 </span><span class="lineCov">          2 :     });</span>
 <span class="lineNum">     243 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
-<a name="244"><span class="lineNum">     244 </span><span class="lineCov">          2 :         return jsonObject.stringify(complexArray, null, 4);</span></a>
+<span class="lineNum">     244 </span><span class="lineCov">          2 :         return jsonObject.stringify(complexArray, null, 4);</span>
 <span class="lineNum">     245 </span><span class="lineCov">          2 :     });</span>
 <span class="lineNum">     246 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
-<a name="247"><span class="lineNum">     247 </span><span class="lineCov">          2 :         return jsonObject.stringify(complexArray, null, &quot;ab&quot;);</span></a>
+<span class="lineNum">     247 </span><span class="lineCov">          2 :         return jsonObject.stringify(complexArray, null, &quot;ab&quot;);</span>
 <span class="lineNum">     248 </span><span class="lineCov">          2 :     });</span>
 <span class="lineNum">     249 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
-<a name="250"><span class="lineNum">     250 </span><span class="lineCov">          2 :         return jsonObject.stringify(complexArray, null, 4);</span></a>
+<span class="lineNum">     250 </span><span class="lineCov">          2 :         return jsonObject.stringify(complexArray, null, 4);</span>
 <span class="lineNum">     251 </span><span class="lineCov">          2 :     });</span>
 <span class="lineNum">     252 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
-<a name="253"><span class="lineNum">     253 </span><span class="lineCov">          2 :         return jsonObject.stringify(complexObject, null, &quot;  &quot;);</span></a>
+<span class="lineNum">     253 </span><span class="lineCov">          2 :         return jsonObject.stringify(complexObject, null, &quot;  &quot;);</span>
 <span class="lineNum">     254 </span><span class="lineCov">          2 :     });</span>
 <span class="lineNum">     255 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
-<a name="256"><span class="lineNum">     256 </span><span class="lineCov">          2 :         return jsonObject.stringify(complexObject, null, 4);</span></a>
+<span class="lineNum">     256 </span><span class="lineCov">          2 :         return jsonObject.stringify(complexObject, null, 4);</span>
 <span class="lineNum">     257 </span><span class="lineCov">          2 :     });</span>
 <span class="lineNum">     258 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
-<a name="259"><span class="lineNum">     259 </span><span class="lineCov">          2 :         return jsonObject.stringify(complexObject, null, &quot;ab&quot;);</span></a>
+<span class="lineNum">     259 </span><span class="lineCov">          2 :         return jsonObject.stringify(complexObject, null, &quot;ab&quot;);</span>
 <span class="lineNum">     260 </span><span class="lineCov">          2 :     });</span>
 <span class="lineNum">     261 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
-<a name="262"><span class="lineNum">     262 </span><span class="lineCov">          2 :         return jsonObject.stringify(complexObject, null, 4);</span></a>
+<span class="lineNum">     262 </span><span class="lineCov">          2 :         return jsonObject.stringify(complexObject, null, 4);</span>
 <span class="lineNum">     263 </span><span class="lineCov">          2 :     });</span>
 <span class="lineNum">     264 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
 <span class="lineNum">     265 </span><span class="lineCov">          2 :         var allString = true;</span>
 <span class="lineNum">     266 </span><span class="lineCov">          2 :         var array = [&quot;1&quot;,&quot;2&quot;,&quot;3&quot;];</span>
-<a name="267"><span class="lineNum">     267 </span><span class="lineCov">          2 :         return jsonObject.stringify(simpleArrayWithProto, array);</span></a>
+<span class="lineNum">     267 </span><span class="lineCov">          2 :         return jsonObject.stringify(simpleArrayWithProto, array);</span>
 <span class="lineNum">     268 </span><span class="lineCov">          2 :     });</span>
 <span class="lineNum">     269 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
-<a name="270"><span class="lineNum">     270 </span><span class="lineCov">          2 :         return jsonObject.stringify(simpleArrayWithProto, null, &quot;  &quot;);</span></a>
+<span class="lineNum">     270 </span><span class="lineCov">          2 :         return jsonObject.stringify(simpleArrayWithProto, null, &quot;  &quot;);</span>
 <span class="lineNum">     271 </span><span class="lineCov">          2 :     });</span>
 <span class="lineNum">     272 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
-<a name="273"><span class="lineNum">     273 </span><span class="lineCov">          2 :         return jsonObject.stringify(simpleArrayWithProto, null, 4);</span></a>
+<span class="lineNum">     273 </span><span class="lineCov">          2 :         return jsonObject.stringify(simpleArrayWithProto, null, 4);</span>
 <span class="lineNum">     274 </span><span class="lineCov">          2 :     });</span>
 <span class="lineNum">     275 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
-<a name="276"><span class="lineNum">     276 </span><span class="lineCov">          2 :         return jsonObject.stringify(simpleArrayWithProto, null, &quot;ab&quot;);</span></a>
+<span class="lineNum">     276 </span><span class="lineCov">          2 :         return jsonObject.stringify(simpleArrayWithProto, null, &quot;ab&quot;);</span>
 <span class="lineNum">     277 </span><span class="lineCov">          2 :     });</span>
 <span class="lineNum">     278 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
-<a name="279"><span class="lineNum">     279 </span><span class="lineCov">          2 :         return jsonObject.stringify(simpleArrayWithProto, null, 4);</span></a>
+<span class="lineNum">     279 </span><span class="lineCov">          2 :         return jsonObject.stringify(simpleArrayWithProto, null, 4);</span>
 <span class="lineNum">     280 </span><span class="lineCov">          2 :     });</span>
 <span class="lineNum">     281 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
-<a name="282"><span class="lineNum">     282 </span><span class="lineCov">          2 :         return jsonObject.stringify(simpleObjectWithProto, null, &quot;  &quot;);</span></a>
+<span class="lineNum">     282 </span><span class="lineCov">          2 :         return jsonObject.stringify(simpleObjectWithProto, null, &quot;  &quot;);</span>
 <span class="lineNum">     283 </span><span class="lineCov">          2 :     });</span>
 <span class="lineNum">     284 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
-<a name="285"><span class="lineNum">     285 </span><span class="lineCov">          2 :         return jsonObject.stringify(simpleObjectWithProto, null, 4);</span></a>
+<span class="lineNum">     285 </span><span class="lineCov">          2 :         return jsonObject.stringify(simpleObjectWithProto, null, 4);</span>
 <span class="lineNum">     286 </span><span class="lineCov">          2 :     });</span>
 <span class="lineNum">     287 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
-<a name="288"><span class="lineNum">     288 </span><span class="lineCov">          2 :         return jsonObject.stringify(simpleObjectWithProto, null, &quot;ab&quot;);</span></a>
+<span class="lineNum">     288 </span><span class="lineCov">          2 :         return jsonObject.stringify(simpleObjectWithProto, null, &quot;ab&quot;);</span>
 <span class="lineNum">     289 </span><span class="lineCov">          2 :     });</span>
 <span class="lineNum">     290 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
-<a name="291"><span class="lineNum">     291 </span><span class="lineCov">          2 :         return jsonObject.stringify(simpleObjectWithProto, null, 4);</span></a>
+<span class="lineNum">     291 </span><span class="lineCov">          2 :         return jsonObject.stringify(simpleObjectWithProto, null, 4);</span>
 <span class="lineNum">     292 </span><span class="lineCov">          2 :     });</span>
 <span class="lineNum">     293 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
-<a name="294"><span class="lineNum">     294 </span><span class="lineCov">          2 :         return jsonObject.stringify(simpleObjectWithProto, null, 10);</span></a>
+<span class="lineNum">     294 </span><span class="lineCov">          2 :         return jsonObject.stringify(simpleObjectWithProto, null, 10);</span>
 <span class="lineNum">     295 </span><span class="lineCov">          2 :     });</span>
 <span class="lineNum">     296 </span><span class="lineCov">          1 :     result.push(function (jsonObject){</span>
 <span class="lineNum">     297 </span><span class="lineCov">          1 :         return jsonObject.stringify(simpleObjectWithProto, null, 11);</span>
-<a name="298"><span class="lineNum">     298 </span><span class="lineCov">          1 :     });</span></a>
-<span class="lineNum">     299 </span><span class="lineCov">          1 :     result[result.length - 1].expected = JSON.stringify(simpleObjectWithProto, null, 10);</span>
+<span class="lineNum">     298 </span><span class="lineCov">          1 :     });</span>
+<span class="lineNum">     299 </span><span class="lineNoCov">          0 :     result[result.length - 1].expected = JSON.stringify(simpleObjectWithProto, null, 10);</span>
 <span class="lineNum">     300 </span><span class="lineCov">          1 :     result.push(function (jsonObject){</span>
 <span class="lineNum">     301 </span><span class="lineCov">          1 :         return jsonObject.stringify(simpleObjectWithProto, null, &quot;          &quot;);</span>
-<a name="302"><span class="lineNum">     302 </span><span class="lineCov">          1 :     });</span></a>
-<span class="lineNum">     303 </span><span class="lineCov">          1 :     result[result.length - 1].expected = JSON.stringify(simpleObjectWithProto, null, 10);</span>
+<span class="lineNum">     302 </span><span class="lineCov">          1 :     });</span>
+<span class="lineNum">     303 </span><span class="lineNoCov">          0 :     result[result.length - 1].expected = JSON.stringify(simpleObjectWithProto, null, 10);</span>
 <span class="lineNum">     304 </span><span class="lineCov">          1 :     result.push(function (jsonObject){</span>
 <span class="lineNum">     305 </span><span class="lineCov">          1 :         return jsonObject.stringify(simpleObjectWithProto, null, &quot;           &quot;);</span>
-<a name="306"><span class="lineNum">     306 </span><span class="lineCov">          1 :     });</span></a>
-<span class="lineNum">     307 </span><span class="lineCov">          1 :     result[result.length - 1].expected = JSON.stringify(simpleObjectWithProto, null, 10);</span>
+<span class="lineNum">     306 </span><span class="lineCov">          1 :     });</span>
+<span class="lineNum">     307 </span><span class="lineNoCov">          0 :     result[result.length - 1].expected = JSON.stringify(simpleObjectWithProto, null, 10);</span>
 <span class="lineNum">     308 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
-<a name="309"><span class="lineNum">     309 </span><span class="lineCov">          2 :         return jsonObject.stringify(complexArrayWithProto, null, &quot;  &quot;);</span></a>
+<span class="lineNum">     309 </span><span class="lineCov">          2 :         return jsonObject.stringify(complexArrayWithProto, null, &quot;  &quot;);</span>
 <span class="lineNum">     310 </span><span class="lineCov">          2 :     });</span>
 <span class="lineNum">     311 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
-<a name="312"><span class="lineNum">     312 </span><span class="lineCov">          2 :         return jsonObject.stringify(complexArrayWithProto, null, 4);</span></a>
+<span class="lineNum">     312 </span><span class="lineCov">          2 :         return jsonObject.stringify(complexArrayWithProto, null, 4);</span>
 <span class="lineNum">     313 </span><span class="lineCov">          2 :     });</span>
 <span class="lineNum">     314 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
-<a name="315"><span class="lineNum">     315 </span><span class="lineCov">          2 :         return jsonObject.stringify(complexArrayWithProto, null, &quot;ab&quot;);</span></a>
+<span class="lineNum">     315 </span><span class="lineCov">          2 :         return jsonObject.stringify(complexArrayWithProto, null, &quot;ab&quot;);</span>
 <span class="lineNum">     316 </span><span class="lineCov">          2 :     });</span>
 <span class="lineNum">     317 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
-<a name="318"><span class="lineNum">     318 </span><span class="lineCov">          2 :         return jsonObject.stringify(complexArrayWithProto, null, 4);</span></a>
+<span class="lineNum">     318 </span><span class="lineCov">          2 :         return jsonObject.stringify(complexArrayWithProto, null, 4);</span>
 <span class="lineNum">     319 </span><span class="lineCov">          2 :     });</span>
 <span class="lineNum">     320 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
-<a name="321"><span class="lineNum">     321 </span><span class="lineCov">          2 :         return jsonObject.stringify(complexObjectWithProto, null, &quot;  &quot;);</span></a>
+<span class="lineNum">     321 </span><span class="lineCov">          2 :         return jsonObject.stringify(complexObjectWithProto, null, &quot;  &quot;);</span>
 <span class="lineNum">     322 </span><span class="lineCov">          2 :     });</span>
 <span class="lineNum">     323 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
-<a name="324"><span class="lineNum">     324 </span><span class="lineCov">          2 :         return jsonObject.stringify(complexObjectWithProto, null, 4);</span></a>
+<span class="lineNum">     324 </span><span class="lineCov">          2 :         return jsonObject.stringify(complexObjectWithProto, null, 4);</span>
 <span class="lineNum">     325 </span><span class="lineCov">          2 :     });</span>
 <span class="lineNum">     326 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
-<a name="327"><span class="lineNum">     327 </span><span class="lineCov">          2 :         return jsonObject.stringify(complexObjectWithProto, null, &quot;ab&quot;);</span></a>
+<span class="lineNum">     327 </span><span class="lineCov">          2 :         return jsonObject.stringify(complexObjectWithProto, null, &quot;ab&quot;);</span>
 <span class="lineNum">     328 </span><span class="lineCov">          2 :     });</span>
 <span class="lineNum">     329 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
-<a name="330"><span class="lineNum">     330 </span><span class="lineCov">          2 :         return jsonObject.stringify(complexObjectWithProto, null, 4);</span></a>
+<span class="lineNum">     330 </span><span class="lineCov">          2 :         return jsonObject.stringify(complexObjectWithProto, null, 4);</span>
 <span class="lineNum">     331 </span><span class="lineCov">          2 :     });</span>
 <span class="lineNum">     332 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
-<a name="333"><span class="lineNum">     333 </span><span class="lineCov">          2 :         return jsonObject.stringify(objectWithSideEffectGetter);</span></a>
+<span class="lineNum">     333 </span><span class="lineCov">          2 :         return jsonObject.stringify(objectWithSideEffectGetter);</span>
 <span class="lineNum">     334 </span><span class="lineCov">          2 :     });</span>
 <span class="lineNum">     335 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
-<a name="336"><span class="lineNum">     336 </span><span class="lineCov">          2 :         return jsonObject.stringify(objectWithSideEffectGetterAndProto);</span></a>
+<span class="lineNum">     336 </span><span class="lineCov">          2 :         return jsonObject.stringify(objectWithSideEffectGetterAndProto);</span>
 <span class="lineNum">     337 </span><span class="lineCov">          2 :     });</span>
 <span class="lineNum">     338 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
-<a name="339"><span class="lineNum">     339 </span><span class="lineCov">          2 :         return jsonObject.stringify(arrayWithSideEffectGetter);</span></a>
+<span class="lineNum">     339 </span><span class="lineCov">          2 :         return jsonObject.stringify(arrayWithSideEffectGetter);</span>
 <span class="lineNum">     340 </span><span class="lineCov">          2 :     });</span>
 <span class="lineNum">     341 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
 <span class="lineNum">     342 </span><span class="lineCov">          2 :         return jsonObject.stringify(arrayWithSideEffectGetterAndProto);</span>
 <a name="343"><span class="lineNum">     343 </span><span class="lineCov">          2 :     });</span></a>
-<span class="lineNum">     344 </span><span class="lineCov">          1 :     var replaceTracker;</span>
+<span class="lineNum">     344 </span><span class="lineNoCov">          0 :     var replaceTracker;</span>
 <span class="lineNum">     345 </span><span class="lineCov">         17 :     function replaceFunc(key, value) {</span>
 <span class="lineNum">     346 </span><span class="lineCov">         17 :         replaceTracker += key + &quot;(&quot;+(typeof key)+&quot;)&quot; + JSON.stringify(value) + &quot;;&quot;;</span>
-<a name="347"><span class="lineNum">     347 </span><span class="lineCov">         17 :         return value;</span></a>
+<span class="lineNum">     347 </span><span class="lineCov">         17 :         return value;</span>
 <span class="lineNum">     348 </span><span class="lineCov">         17 :     }</span>
 <span class="lineNum">     349 </span><span class="lineCov">          1 :     result.push(function (jsonObject){</span>
 <span class="lineNum">     350 </span><span class="lineCov">          1 :         replaceTracker = &quot;&quot;;</span>
 <span class="lineNum">     351 </span><span class="lineCov">          1 :         jsonObject.stringify([1,2,3,,,,4,5,6], replaceFunc);</span>
 <span class="lineNum">     352 </span><span class="lineCov">          1 :         return replaceTracker;</span>
-<a name="353"><span class="lineNum">     353 </span><span class="lineCov">          1 :     });</span></a>
-<span class="lineNum">     354 </span><span class="lineCov">          1 :     result[result.length - 1].expected = '(string)[1,2,3,null,null,null,4,5,6];0(number)1;1(number)2;2(number)3;3(number)undefined;4(number)undefined;5(number)undefined;6(number)4;7(number)5;8(number)6;'</span>
+<span class="lineNum">     353 </span><span class="lineCov">          1 :     });</span>
+<span class="lineNum">     354 </span><span class="lineNoCov">          0 :     result[result.length - 1].expected = '(string)[1,2,3,null,null,null,4,5,6];0(number)1;1(number)2;2(number)3;3(number)undefined;4(number)undefined;5(number)undefined;6(number)4;7(number)5;8(number)6;'</span>
 <span class="lineNum">     355 </span><span class="lineCov">          1 :     result.push(function (jsonObject){</span>
 <span class="lineNum">     356 </span><span class="lineCov">          1 :         replaceTracker = &quot;&quot;;</span>
 <span class="lineNum">     357 </span><span class="lineCov">          1 :         jsonObject.stringify({a:&quot;a&quot;, b:&quot;b&quot;, c:&quot;c&quot;, 3: &quot;d&quot;, 2: &quot;e&quot;, 1: &quot;f&quot;}, replaceFunc);</span>
 <span class="lineNum">     358 </span><span class="lineCov">          1 :         return replaceTracker;</span>
-<a name="359"><span class="lineNum">     359 </span><span class="lineCov">          1 :     });</span></a>
-<span class="lineNum">     360 </span><span class="lineCov">          1 :     result[result.length - 1].expected = '(string){&quot;1&quot;:&quot;f&quot;,&quot;2&quot;:&quot;e&quot;,&quot;3&quot;:&quot;d&quot;,&quot;a&quot;:&quot;a&quot;,&quot;b&quot;:&quot;b&quot;,&quot;c&quot;:&quot;c&quot;};1(string)&quot;f&quot;;2(string)&quot;e&quot;;3(string)&quot;d&quot;;a(string)&quot;a&quot;;b(string)&quot;b&quot;;c(string)&quot;c&quot;;';</span>
+<span class="lineNum">     359 </span><span class="lineCov">          1 :     });</span>
+<span class="lineNum">     360 </span><span class="lineNoCov">          0 :     result[result.length - 1].expected = '(string){&quot;1&quot;:&quot;f&quot;,&quot;2&quot;:&quot;e&quot;,&quot;3&quot;:&quot;d&quot;,&quot;a&quot;:&quot;a&quot;,&quot;b&quot;:&quot;b&quot;,&quot;c&quot;:&quot;c&quot;};1(string)&quot;f&quot;;2(string)&quot;e&quot;;3(string)&quot;d&quot;;a(string)&quot;a&quot;;b(string)&quot;b&quot;;c(string)&quot;c&quot;;';</span>
 <span class="lineNum">     361 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
 <span class="lineNum">     362 </span><span class="lineCov">          2 :         var count = 0;</span>
 <span class="lineNum">     363 </span><span class="lineCov">          2 :         var array = [{toString:function(){count++; array[0]='a'; array[1]='c'; array[2]='b'; return 'a'}}];</span>
-<span class="lineNum">     364 </span><span class="lineCov">          2 :         jsonObject.stringify(simpleObject, array);</span>
-<a name="365"><span class="lineNum">     365 </span><span class="lineCov">          2 :         return count;</span></a>
-<span class="lineNum">     366 </span><span class="lineCov">          2 :     });</span>
+<span class="lineNum">     364 </span><span class="lineNoCov">          0 :         jsonObject.stringify(simpleObject, array);</span>
+<span class="lineNum">     365 </span><span class="lineNoCov">          0 :         return count;</span>
+<span class="lineNum">     366 </span><span class="lineNoCov">          0 :     });</span>
 <span class="lineNum">     367 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
 <span class="lineNum">     368 </span><span class="lineCov">          2 :         var allString = true;</span>
 <span class="lineNum">     369 </span><span class="lineCov">          2 :         var array = [{toString:function(){array[0]='a'; array[1]='c'; array[2]='b'; return 'a'}}, 'b', 'c'];</span>
-<a name="370"><span class="lineNum">     370 </span><span class="lineCov">          2 :         return jsonObject.stringify(simpleObject, array);</span></a>
-<span class="lineNum">     371 </span><span class="lineCov">          2 :     });</span>
+<span class="lineNum">     370 </span><span class="lineNoCov">          0 :         return jsonObject.stringify(simpleObject, array);</span>
+<span class="lineNum">     371 </span><span class="lineNoCov">          0 :     });</span>
 <a name="372"><span class="lineNum">     372 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span></a>
 <span class="lineNum">     373 </span><span class="lineCov">          2 :         var count = 0;</span>
 <span class="lineNum">     374 </span><span class="lineCov">          2 :         var array = [{toString:function(){count++; array[0]='a'; array[1]='c'; array[2]='b'; return 'a'}}, 'b', 'c'];</span>
-<span class="lineNum">     375 </span><span class="lineCov">          2 :         jsonObject.stringify(simpleObject, array);</span>
-<a name="376"><span class="lineNum">     376 </span><span class="lineCov">          2 :         return count;</span></a>
-<span class="lineNum">     377 </span><span class="lineCov">          2 :     });</span>
+<span class="lineNum">     375 </span><span class="lineNoCov">          0 :         jsonObject.stringify(simpleObject, array);</span>
+<span class="lineNum">     376 </span><span class="lineNoCov">          0 :         return count;</span>
+<span class="lineNum">     377 </span><span class="lineNoCov">          0 :     });</span>
 <span class="lineNum">     378 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
-<a name="379"><span class="lineNum">     379 </span><span class="lineCov">          2 :         return jsonObject.stringify({a:&quot;1&quot;, get b() { this.a=&quot;foo&quot;; return &quot;getter&quot;; }, c:&quot;3&quot;});</span></a>
-<span class="lineNum">     380 </span><span class="lineCov">          2 :     });</span>
+<span class="lineNum">     379 </span><span class="lineCov">          2 :         return jsonObject.stringify({a:&quot;1&quot;, get b() { this.a=&quot;foo&quot;; return &quot;getter&quot;; }, c:&quot;3&quot;});</span>
+<span class="lineNum">     380 </span><span class="lineNoCov">          0 :     });</span>
 <span class="lineNum">     381 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
-<a name="382"><span class="lineNum">     382 </span><span class="lineCov">          2 :         return jsonObject.stringify({a:&quot;1&quot;, get b() { this.c=&quot;foo&quot;; return &quot;getter&quot;; }, c:&quot;3&quot;});</span></a>
-<span class="lineNum">     383 </span><span class="lineCov">          2 :     });</span>
+<span class="lineNum">     382 </span><span class="lineCov">          2 :         return jsonObject.stringify({a:&quot;1&quot;, get b() { this.c=&quot;foo&quot;; return &quot;getter&quot;; }, c:&quot;3&quot;});</span>
+<span class="lineNum">     383 </span><span class="lineNoCov">          0 :     });</span>
 <span class="lineNum">     384 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
 <span class="lineNum">     385 </span><span class="lineCov">          2 :         var setterCalled = false;</span>
 <span class="lineNum">     386 </span><span class="lineCov">          2 :         jsonObject.stringify({a:&quot;1&quot;, set b(s) { setterCalled = true; return &quot;setter&quot;; }, c:&quot;3&quot;});</span>
-<a name="387"><span class="lineNum">     387 </span><span class="lineCov">          2 :         return setterCalled;</span></a>
-<a name="388"><span class="lineNum">     388 </span><span class="lineCov">          2 :     });</span></a>
+<span class="lineNum">     387 </span><span class="lineNoCov">          0 :         return setterCalled;</span>
+<a name="388"><span class="lineNum">     388 </span><span class="lineNoCov">          0 :     });</span></a>
 <span class="lineNum">     389 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
-<a name="390"><span class="lineNum">     390 </span><span class="lineCov">          2 :         return jsonObject.stringify({a:&quot;1&quot;, get b(){ return &quot;getter&quot;; }, set b(s) { return &quot;setter&quot;; }, c:&quot;3&quot;});</span></a>
-<span class="lineNum">     391 </span><span class="lineCov">          2 :     });</span>
+<span class="lineNum">     390 </span><span class="lineCov">          2 :         return jsonObject.stringify({a:&quot;1&quot;, get b(){ return &quot;getter&quot;; }, set b(s) { return &quot;setter&quot;; }, c:&quot;3&quot;});</span>
+<span class="lineNum">     391 </span><span class="lineNoCov">          0 :     });</span>
 <span class="lineNum">     392 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
-<a name="393"><span class="lineNum">     393 </span><span class="lineCov">          2 :         return jsonObject.stringify(new Array(10));</span></a>
+<span class="lineNum">     393 </span><span class="lineCov">          2 :         return jsonObject.stringify(new Array(10));</span>
 <span class="lineNum">     394 </span><span class="lineCov">          2 :     });</span>
 <span class="lineNum">     395 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
-<a name="396"><span class="lineNum">     396 </span><span class="lineCov">          2 :         return jsonObject.stringify([undefined,,null,0,false]);</span></a>
+<span class="lineNum">     396 </span><span class="lineCov">          2 :         return jsonObject.stringify([undefined,,null,0,false]);</span>
 <span class="lineNum">     397 </span><span class="lineCov">          2 :     });</span>
 <span class="lineNum">     398 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
 <span class="lineNum">     399 </span><span class="lineCov">          2 :         return jsonObject.stringify({p1:undefined,p2:null,p3:0,p4:false});</span>
 <a name="400"><span class="lineNum">     400 </span><span class="lineCov">          2 :     });</span></a>
-<span class="lineNum">     401 </span><span class="lineCov">          1 :     var cycleTracker = &quot;&quot;;</span>
+<span class="lineNum">     401 </span><span class="lineNoCov">          0 :     var cycleTracker = &quot;&quot;;</span>
 <span class="lineNum">     402 </span><span class="lineCov">          2 :     var cyclicObject = { get preSelf1() { cycleTracker+=&quot;preSelf1,&quot;; return &quot;preSelf1&quot;; },</span>
 <a name="403"><span class="lineNum">     403 </span><span class="lineCov">          2 :                              preSelf2: {toJSON:function(){cycleTracker+=&quot;preSelf2,&quot;; return &quot;preSelf2&quot;}},</span></a>
-<span class="lineNum">     404 </span><span class="lineCov">          1 :                              self: [],</span>
-<span class="lineNum">     405 </span><span class="lineCov">          1 :                          get postSelf1() { cycleTracker+=&quot;postSelf1,&quot;; return &quot;postSelf1&quot; },</span>
-<span class="lineNum">     406 </span><span class="lineCov">          1 :                              postSelf2: {toJSON:function(){cycleTracker+=&quot;postSelf2,&quot;; return &quot;postSelf2&quot;}},</span>
+<span class="lineNum">     404 </span><span class="lineNoCov">          0 :                              self: [],</span>
+<span class="lineNum">     405 </span><span class="lineNoCov">          0 :                          get postSelf1() { cycleTracker+=&quot;postSelf1,&quot;; return &quot;postSelf1&quot; },</span>
+<span class="lineNum">     406 </span><span class="lineNoCov">          0 :                              postSelf2: {toJSON:function(){cycleTracker+=&quot;postSelf2,&quot;; return &quot;postSelf2&quot;}},</span>
 <span class="lineNum">     407 </span><span class="lineCov">          4 :                              toJSON : function(key) { cycleTracker += key + &quot;(&quot;+(typeof key)+&quot;):&quot; + this; return this; }</span>
-<a name="408"><span class="lineNum">     408 </span><span class="lineCov">          1 :                        };</span></a>
-<span class="lineNum">     409 </span><span class="lineCov">          1 :     cyclicObject.self = cyclicObject;</span>
+<span class="lineNum">     408 </span><span class="lineNoCov">          0 :                        };</span>
+<span class="lineNum">     409 </span><span class="lineNoCov">          0 :     cyclicObject.self = cyclicObject;</span>
 <span class="lineNum">     410 </span><span class="lineCov">          1 :     result.push(function (jsonObject){</span>
 <span class="lineNum">     411 </span><span class="lineCov">          1 :         cycleTracker = &quot;&quot;;</span>
 <span class="lineNum">     412 </span><span class="lineCov">          1 :         return jsonObject.stringify(cyclicObject);</span>
-<a name="413"><span class="lineNum">     413 </span><span class="lineCov">          1 :     });</span></a>
-<span class="lineNum">     414 </span><span class="lineCov">          1 :     result[result.length - 1].throws = true;</span>
+<span class="lineNum">     413 </span><span class="lineCov">          1 :     });</span>
+<span class="lineNum">     414 </span><span class="lineNoCov">          0 :     result[result.length - 1].throws = true;</span>
 <span class="lineNum">     415 </span><span class="lineCov">          1 :     result.push(function (jsonObject){</span>
 <span class="lineNum">     416 </span><span class="lineCov">          1 :         cycleTracker = &quot;&quot;;</span>
 <span class="lineNum">     417 </span><span class="lineCov">          1 :         try { jsonObject.stringify(cyclicObject); } catch(e) { cycleTracker += &quot; -&gt; exception&quot; }</span>
 <span class="lineNum">     418 </span><span class="lineCov">          1 :         return cycleTracker;</span>
 <span class="lineNum">     419 </span><span class="lineCov">          1 :     });</span>
-<span class="lineNum">     420 </span><span class="lineCov">          1 :     result[result.length - 1].expected = &quot;(string):[object Object]preSelf1,preSelf2,self(string):[object Object] -&gt; exception&quot;</span>
+<span class="lineNum">     420 </span><span class="lineNoCov">          0 :     result[result.length - 1].expected = &quot;(string):[object Object]preSelf1,preSelf2,self(string):[object Object] -&gt; exception&quot;</span>
 <span class="lineNum">     421 </span><span class="lineCov">          2 :     var cyclicArray = [{toJSON : function(key,value) { cycleTracker += key + &quot;(&quot;+(typeof key)+&quot;):&quot; + this; cycleTracker += &quot;first,&quot;; return this; }},</span>
-<span class="lineNum">     422 </span><span class="lineCov">          1 :                        cyclicArray,</span>
-<a name="423"><span class="lineNum">     423 </span><span class="lineCov">          1 :                        {toJSON : function(key,value) { cycleTracker += key + &quot;(&quot;+(typeof key)+&quot;):&quot; + this; cycleTracker += &quot;second,&quot;; return this; }}];</span></a>
-<span class="lineNum">     424 </span><span class="lineCov">          1 :     cyclicArray[1] = cyclicArray;</span>
+<span class="lineNum">     422 </span><span class="lineNoCov">          0 :                        cyclicArray,</span>
+<span class="lineNum">     423 </span><span class="lineNoCov">          0 :                        {toJSON : function(key,value) { cycleTracker += key + &quot;(&quot;+(typeof key)+&quot;):&quot; + this; cycleTracker += &quot;second,&quot;; return this; }}];</span>
+<span class="lineNum">     424 </span><span class="lineNoCov">          0 :     cyclicArray[1] = cyclicArray;</span>
 <span class="lineNum">     425 </span><span class="lineCov">          1 :     result.push(function (jsonObject){</span>
 <span class="lineNum">     426 </span><span class="lineCov">          1 :         cycleTracker = &quot;&quot;;</span>
 <span class="lineNum">     427 </span><span class="lineCov">          1 :         return jsonObject.stringify(cyclicArray);</span>
-<a name="428"><span class="lineNum">     428 </span><span class="lineCov">          1 :     });</span></a>
-<span class="lineNum">     429 </span><span class="lineCov">          1 :     result[result.length - 1].throws = true;</span>
+<span class="lineNum">     428 </span><span class="lineCov">          1 :     });</span>
+<span class="lineNum">     429 </span><span class="lineNoCov">          0 :     result[result.length - 1].throws = true;</span>
 <span class="lineNum">     430 </span><span class="lineCov">          1 :     result.push(function (jsonObject){</span>
 <span class="lineNum">     431 </span><span class="lineCov">          1 :         cycleTracker = &quot;&quot;;</span>
 <span class="lineNum">     432 </span><span class="lineCov">          1 :         try { jsonObject.stringify(cyclicArray); } catch(e) { cycleTracker += &quot; -&gt; exception&quot; }</span>
 <span class="lineNum">     433 </span><span class="lineCov">          1 :         return cycleTracker;</span>
 <a name="434"><span class="lineNum">     434 </span><span class="lineCov">          1 :     });</span></a>
-<span class="lineNum">     435 </span><span class="lineCov">          1 :     result[result.length - 1].expected = &quot;0(number):[object Object]first, -&gt; exception&quot;;</span>
+<span class="lineNum">     435 </span><span class="lineNoCov">          0 :     result[result.length - 1].expected = &quot;0(number):[object Object]first, -&gt; exception&quot;;</span>
 <span class="lineNum">     436 </span><span class="lineCov">          2 :     function createArray(len, o) { var r = []; for (var i = 0; i &lt; len; i++) r[i] = o; return r; }</span>
-<a name="437"><span class="lineNum">     437 </span><span class="lineCov">          1 :     var getterCalls;</span></a>
-<span class="lineNum">     438 </span><span class="lineCov">          1 :     var magicObject = createArray(10, {abcdefg: [1,2,5,&quot;ab&quot;, null, undefined, true, false,,],</span>
+<a name="437"><span class="lineNum">     437 </span><span class="lineNoCov">          0 :     var getterCalls;</span></a>
+<span class="lineNum">     438 </span><span class="lineNoCov">          0 :     var magicObject = createArray(10, {abcdefg: [1,2,5,&quot;ab&quot;, null, undefined, true, false,,],</span>
 <span class="lineNum">     439 </span><span class="lineCov">         20 :                                        get calls() {return ++getterCalls; },</span>
-<a name="440"><span class="lineNum">     440 </span><span class="lineCov">          1 :                                        &quot;123&quot;:createArray(15, &quot;foo&quot;),</span></a>
-<span class="lineNum">     441 </span><span class="lineCov">          1 :                                        &quot;&quot;:{a:&quot;b&quot;}});</span>
+<span class="lineNum">     440 </span><span class="lineNoCov">          0 :                                        &quot;123&quot;:createArray(15, &quot;foo&quot;),</span>
+<span class="lineNum">     441 </span><span class="lineNoCov">          0 :                                        &quot;&quot;:{a:&quot;b&quot;}});</span>
 <span class="lineNum">     442 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
 <span class="lineNum">     443 </span><span class="lineCov">          2 :         getterCalls = 0;</span>
-<a name="444"><span class="lineNum">     444 </span><span class="lineCov">          2 :         return jsonObject.stringify(magicObject) + &quot; :: getter calls = &quot; + getterCalls;</span></a>
+<span class="lineNum">     444 </span><span class="lineCov">          2 :         return jsonObject.stringify(magicObject) + &quot; :: getter calls = &quot; + getterCalls;</span>
 <span class="lineNum">     445 </span><span class="lineCov">          2 :     });</span>
 <span class="lineNum">     446 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
-<a name="447"><span class="lineNum">     447 </span><span class="lineCov">          2 :         return jsonObject.stringify(undefined);</span></a>
+<span class="lineNum">     447 </span><span class="lineCov">          2 :         return jsonObject.stringify(undefined);</span>
 <span class="lineNum">     448 </span><span class="lineCov">          2 :     });</span>
 <span class="lineNum">     449 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
-<a name="450"><span class="lineNum">     450 </span><span class="lineCov">          2 :         return jsonObject.stringify(null);</span></a>
+<span class="lineNum">     450 </span><span class="lineCov">          2 :         return jsonObject.stringify(null);</span>
 <span class="lineNum">     451 </span><span class="lineCov">          2 :     });</span>
 <span class="lineNum">     452 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
-<a name="453"><span class="lineNum">     453 </span><span class="lineCov">          2 :         return jsonObject.stringify({toJSON:function(){ return undefined; }});</span></a>
-<span class="lineNum">     454 </span><span class="lineCov">          2 :     });</span>
+<span class="lineNum">     453 </span><span class="lineCov">          2 :         return jsonObject.stringify({toJSON:function(){ return undefined; }});</span>
+<span class="lineNum">     454 </span><span class="lineNoCov">          0 :     });</span>
 <span class="lineNum">     455 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
-<a name="456"><span class="lineNum">     456 </span><span class="lineCov">          2 :         return jsonObject.stringify({toJSON:function(){ return null; }});</span></a>
-<span class="lineNum">     457 </span><span class="lineCov">          2 :     });</span>
+<span class="lineNum">     456 </span><span class="lineCov">          2 :         return jsonObject.stringify({toJSON:function(){ return null; }});</span>
+<span class="lineNum">     457 </span><span class="lineNoCov">          0 :     });</span>
 <span class="lineNum">     458 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
-<a name="459"><span class="lineNum">     459 </span><span class="lineCov">          2 :         return jsonObject.stringify([{toJSON:function(){ return undefined; }}]);</span></a>
-<span class="lineNum">     460 </span><span class="lineCov">          2 :     });</span>
+<span class="lineNum">     459 </span><span class="lineCov">          2 :         return jsonObject.stringify([{toJSON:function(){ return undefined; }}]);</span>
+<span class="lineNum">     460 </span><span class="lineNoCov">          0 :     });</span>
 <span class="lineNum">     461 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
-<a name="462"><span class="lineNum">     462 </span><span class="lineCov">          2 :         return jsonObject.stringify([{toJSON:function(){ return null; }}]);</span></a>
-<span class="lineNum">     463 </span><span class="lineCov">          2 :     });</span>
+<span class="lineNum">     462 </span><span class="lineCov">          2 :         return jsonObject.stringify([{toJSON:function(){ return null; }}]);</span>
+<span class="lineNum">     463 </span><span class="lineNoCov">          0 :     });</span>
 <span class="lineNum">     464 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
-<a name="465"><span class="lineNum">     465 </span><span class="lineCov">          2 :         return jsonObject.stringify({a:{toJSON:function(){ return undefined; }}});</span></a>
-<span class="lineNum">     466 </span><span class="lineCov">          2 :     });</span>
+<span class="lineNum">     465 </span><span class="lineCov">          2 :         return jsonObject.stringify({a:{toJSON:function(){ return undefined; }}});</span>
+<span class="lineNum">     466 </span><span class="lineNoCov">          0 :     });</span>
 <span class="lineNum">     467 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
-<a name="468"><span class="lineNum">     468 </span><span class="lineCov">          2 :         return jsonObject.stringify({a:{toJSON:function(){ return null; }}});</span></a>
-<a name="469"><span class="lineNum">     469 </span><span class="lineCov">          2 :     });</span></a>
+<span class="lineNum">     468 </span><span class="lineCov">          2 :         return jsonObject.stringify({a:{toJSON:function(){ return null; }}});</span>
+<a name="469"><span class="lineNum">     469 </span><span class="lineNoCov">          0 :     });</span></a>
 <span class="lineNum">     470 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
-<a name="471"><span class="lineNum">     471 </span><span class="lineCov">          2 :         return jsonObject.stringify({a:{toJSON:function(){ return function(){}; }}});</span></a>
-<a name="472"><span class="lineNum">     472 </span><span class="lineCov">          2 :     });</span></a>
+<span class="lineNum">     471 </span><span class="lineCov">          2 :         return jsonObject.stringify({a:{toJSON:function(){ return function(){}; }}});</span>
+<a name="472"><span class="lineNum">     472 </span><span class="lineNoCov">          0 :     });</span></a>
 <span class="lineNum">     473 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
-<a name="474"><span class="lineNum">     474 </span><span class="lineCov">          2 :         return jsonObject.stringify({a:function(){}});</span></a>
-<span class="lineNum">     475 </span><span class="lineCov">          2 :     });</span>
+<span class="lineNum">     474 </span><span class="lineCov">          2 :         return jsonObject.stringify({a:function(){}});</span>
+<span class="lineNum">     475 </span><span class="lineNoCov">          0 :     });</span>
 <span class="lineNum">     476 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
 <span class="lineNum">     477 </span><span class="lineCov">          2 :         var deepObject = {};</span>
 <span class="lineNum">     478 </span><span class="lineCov">          2 :         for (var i = 0; i &lt; 1024; i++)</span>
 <span class="lineNum">     479 </span><span class="lineCov">          2 :             deepObject = {next:deepObject};</span>
-<a name="480"><span class="lineNum">     480 </span><span class="lineCov">          2 :         return jsonObject.stringify(deepObject);</span></a>
+<span class="lineNum">     480 </span><span class="lineCov">          2 :         return jsonObject.stringify(deepObject);</span>
 <span class="lineNum">     481 </span><span class="lineCov">          2 :     });</span>
 <span class="lineNum">     482 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
 <span class="lineNum">     483 </span><span class="lineCov">          2 :         var deepArray = [];</span>
 <span class="lineNum">     484 </span><span class="lineCov">          2 :         for (var i = 0; i &lt; 1024; i++)</span>
 <span class="lineNum">     485 </span><span class="lineCov">          2 :             deepArray = [deepArray];</span>
-<a name="486"><span class="lineNum">     486 </span><span class="lineCov">          2 :         return jsonObject.stringify(deepArray);</span></a>
+<span class="lineNum">     486 </span><span class="lineCov">          2 :         return jsonObject.stringify(deepArray);</span>
 <span class="lineNum">     487 </span><span class="lineCov">          2 :     });</span>
 <a name="488"><span class="lineNum">     488 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span></a>
 <span class="lineNum">     489 </span><span class="lineCov">          2 :         var depth = 0;</span>
@@ -556,8 +556,8 @@
 <span class="lineNum">     494 </span><span class="lineCov">       2048 :             r.toJSON = toDeepVirtualJSONObject;</span>
 <span class="lineNum">     495 </span><span class="lineCov">       2048 :             return {recurse: r};</span>
 <span class="lineNum">     496 </span><span class="lineCov">       2048 :         }</span>
-<a name="497"><span class="lineNum">     497 </span><span class="lineCov">          2 :         return jsonObject.stringify(toDeepVirtualJSONObject());</span></a>
-<span class="lineNum">     498 </span><span class="lineCov">          2 :     });</span>
+<span class="lineNum">     497 </span><span class="lineNoCov">          0 :         return jsonObject.stringify(toDeepVirtualJSONObject());</span>
+<span class="lineNum">     498 </span><span class="lineNoCov">          0 :     });</span>
 <a name="499"><span class="lineNum">     499 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span></a>
 <span class="lineNum">     500 </span><span class="lineCov">          2 :         var depth = 0;</span>
 <span class="lineNum">     501 </span><span class="lineCov">          2 :         function toDeepVirtualJSONArray() {</span>
@@ -567,28 +567,28 @@
 <span class="lineNum">     505 </span><span class="lineCov">          2 :             r.toJSON = toDeepJSONArray;</span>
 <span class="lineNum">     506 </span><span class="lineCov">          2 :             return [r];</span>
 <span class="lineNum">     507 </span><span class="lineCov">          2 :         }</span>
-<span class="lineNum">     508 </span><span class="lineCov">          2 :         return jsonObject.stringify(toDeepVirtualJSONArray());</span>
-<span class="lineNum">     509 </span><span class="lineCov">          2 :     });</span>
-<span class="lineNum">     510 </span><span class="lineCov">          1 :     var fullCharsetString = &quot;&quot;;</span>
-<a name="511"><span class="lineNum">     511 </span><span class="lineCov">          1 :     for (var i = 0; i &lt; 65536; i++)</span></a>
-<span class="lineNum">     512 </span><span class="lineCov">          1 :         fullCharsetString += String.fromCharCode(i);</span>
+<span class="lineNum">     508 </span><span class="lineNoCov">          0 :         return jsonObject.stringify(toDeepVirtualJSONArray());</span>
+<span class="lineNum">     509 </span><span class="lineNoCov">          0 :     });</span>
+<span class="lineNum">     510 </span><span class="lineNoCov">          0 :     var fullCharsetString = &quot;&quot;;</span>
+<span class="lineNum">     511 </span><span class="lineNoCov">          0 :     for (var i = 0; i &lt; 65536; i++)</span>
+<span class="lineNum">     512 </span><span class="lineNoCov">          0 :         fullCharsetString += String.fromCharCode(i);</span>
 <span class="lineNum">     513 </span><span class="lineCov">          2 :     result.push(function (jsonObject){</span>
 <span class="lineNum">     514 </span><span class="lineCov">          2 :         return jsonObject.stringify(fullCharsetString);</span>
 <span class="lineNum">     515 </span><span class="lineCov">          2 :     });</span>
-<span class="lineNum">     516 </span><span class="lineCov">          1 :     return result;</span>
-<span class="lineNum">     517 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">     518 </span><span class="lineCov">          1 : var tests = createTests();</span>
-<span class="lineNum">     519 </span><span class="lineCov">          1 : for (var i = 0; i &lt; tests.length; i++) {</span>
-<span class="lineNum">     520 </span><span class="lineCov">          1 :     try {</span>
-<span class="lineNum">     521 </span><span class="lineCov">          1 :         debug(tests[i]);</span>
-<span class="lineNum">     522 </span><span class="lineCov">          1 :         if (tests[i].throws)</span>
-<span class="lineNum">     523 </span><span class="lineCov">          1 :             shouldThrow('tests[i](nativeJSON)');</span>
-<span class="lineNum">     524 </span><span class="lineCov">          1 :         else if (tests[i].expected)</span>
-<span class="lineNum">     525 </span><span class="lineCov">          1 :             shouldBe('tests[i](nativeJSON)',  &quot;tests[i].expected&quot;);</span>
-<span class="lineNum">     526 </span><span class="lineCov">          1 :         else</span>
-<span class="lineNum">     527 </span><span class="lineCov">          1 :             shouldBe('tests[i](nativeJSON)',  &quot;tests[i](JSON)&quot;);</span>
-<span class="lineNum">     528 </span><span class="lineCov">          1 :     }catch(e){}</span>
-<span class="lineNum">     529 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     516 </span>            :     return result;
+<span class="lineNum">     517 </span>            : }
+<span class="lineNum">     518 </span>            : var tests = createTests();
+<span class="lineNum">     519 </span>            : for (var i = 0; i &lt; tests.length; i++) {
+<span class="lineNum">     520 </span>            :     try {
+<span class="lineNum">     521 </span>            :         debug(tests[i]);
+<span class="lineNum">     522 </span>            :         if (tests[i].throws)
+<span class="lineNum">     523 </span>            :             shouldThrow('tests[i](nativeJSON)');
+<span class="lineNum">     524 </span>            :         else if (tests[i].expected)
+<span class="lineNum">     525 </span>            :             shouldBe('tests[i](nativeJSON)',  &quot;tests[i].expected&quot;);
+<span class="lineNum">     526 </span>            :         else
+<span class="lineNum">     527 </span>            :             shouldBe('tests[i](nativeJSON)',  &quot;tests[i](JSON)&quot;);
+<span class="lineNum">     528 </span>            :     }catch(e){}
+<span class="lineNum">     529 </span>            : }
 </pre>
       </td>
     </tr>

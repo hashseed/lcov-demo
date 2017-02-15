@@ -31,18 +31,18 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">62</td>
-            <td class="headerCovTableEntry">62</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntry">36</td>
+            <td class="headerCovTableEntry">44</td>
+            <td class="headerCovTableEntryMed">81.8 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">1</td>
-            <td class="headerCovTableEntry">3</td>
-            <td class="headerCovTableEntryLo">33.3 %</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
         </table>
@@ -96,31 +96,31 @@
 <a name="34"><span class="lineNum">      34 </span><span class="lineCov">          1 : </span></a>
 <span class="lineNum">      35 </span><span class="lineCov">          1 : // Check redefining getter for __proto__.</span>
 <span class="lineNum">      36 </span><span class="lineCov">          1 : function replaced_get() {};</span>
-<span class="lineNum">      37 </span><span class="lineCov">          1 : Object.defineProperty(Object.prototype, &quot;__proto__&quot;, { get:replaced_get });</span>
-<span class="lineNum">      38 </span><span class="lineCov">          1 : desc = Object.getOwnPropertyDescriptor(Object.prototype, &quot;__proto__&quot;);</span>
-<span class="lineNum">      39 </span><span class="lineCov">          1 : assertFalse(desc.enumerable);</span>
-<span class="lineNum">      40 </span><span class="lineCov">          1 : assertTrue(desc.configurable);</span>
-<span class="lineNum">      41 </span><span class="lineCov">          1 : assertSame(replaced_get, desc.get);</span>
-<a name="42"><span class="lineNum">      42 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">      43 </span><span class="lineCov">          1 : // Check redefining setter for __proto__.</span>
-<span class="lineNum">      44 </span><span class="lineCov">          1 : function replaced_set(x) {};</span>
-<span class="lineNum">      45 </span><span class="lineCov">          1 : Object.defineProperty(Object.prototype, &quot;__proto__&quot;, { set:replaced_set });</span>
-<span class="lineNum">      46 </span><span class="lineCov">          1 : desc = Object.getOwnPropertyDescriptor(Object.prototype, &quot;__proto__&quot;);</span>
-<span class="lineNum">      47 </span><span class="lineCov">          1 : assertFalse(desc.enumerable);</span>
-<span class="lineNum">      48 </span><span class="lineCov">          1 : assertTrue(desc.configurable);</span>
-<span class="lineNum">      49 </span><span class="lineCov">          1 : assertSame(replaced_set, desc.set);</span>
-<span class="lineNum">      50 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      51 </span><span class="lineCov">          1 : // Check changing configurability of __proto__.</span>
-<span class="lineNum">      52 </span><span class="lineCov">          1 : Object.defineProperty(Object.prototype, &quot;__proto__&quot;, { configurable:false });</span>
-<span class="lineNum">      53 </span><span class="lineCov">          1 : desc = Object.getOwnPropertyDescriptor(Object.prototype, &quot;__proto__&quot;);</span>
-<span class="lineNum">      54 </span><span class="lineCov">          1 : assertFalse(desc.enumerable);</span>
-<span class="lineNum">      55 </span><span class="lineCov">          1 : assertFalse(desc.configurable);</span>
-<span class="lineNum">      56 </span><span class="lineCov">          1 : assertSame(replaced_get, desc.get);</span>
-<span class="lineNum">      57 </span><span class="lineCov">          1 : assertSame(replaced_set, desc.set);</span>
-<span class="lineNum">      58 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      59 </span><span class="lineCov">          1 : // Check freezing Object.prototype completely.</span>
-<span class="lineNum">      60 </span><span class="lineCov">          1 : Object.freeze(Object.prototype);</span>
-<span class="lineNum">      61 </span><span class="lineCov">          1 : assertTrue(Object.isFrozen(Object.prototype));</span>
+<span class="lineNum">      37 </span><span class="lineNoCov">          0 : Object.defineProperty(Object.prototype, &quot;__proto__&quot;, { get:replaced_get });</span>
+<span class="lineNum">      38 </span><span class="lineNoCov">          0 : desc = Object.getOwnPropertyDescriptor(Object.prototype, &quot;__proto__&quot;);</span>
+<span class="lineNum">      39 </span><span class="lineNoCov">          0 : assertFalse(desc.enumerable);</span>
+<span class="lineNum">      40 </span><span class="lineNoCov">          0 : assertTrue(desc.configurable);</span>
+<span class="lineNum">      41 </span><span class="lineNoCov">          0 : assertSame(replaced_get, desc.get);</span>
+<a name="42"><span class="lineNum">      42 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">      43 </span><span class="lineNoCov">          0 : // Check redefining setter for __proto__.</span>
+<span class="lineNum">      44 </span><span class="lineNoCov">          0 : function replaced_set(x) {};</span>
+<span class="lineNum">      45 </span>            : Object.defineProperty(Object.prototype, &quot;__proto__&quot;, { set:replaced_set });
+<span class="lineNum">      46 </span>            : desc = Object.getOwnPropertyDescriptor(Object.prototype, &quot;__proto__&quot;);
+<span class="lineNum">      47 </span>            : assertFalse(desc.enumerable);
+<span class="lineNum">      48 </span>            : assertTrue(desc.configurable);
+<span class="lineNum">      49 </span>            : assertSame(replaced_set, desc.set);
+<span class="lineNum">      50 </span>            : 
+<span class="lineNum">      51 </span>            : // Check changing configurability of __proto__.
+<span class="lineNum">      52 </span>            : Object.defineProperty(Object.prototype, &quot;__proto__&quot;, { configurable:false });
+<span class="lineNum">      53 </span>            : desc = Object.getOwnPropertyDescriptor(Object.prototype, &quot;__proto__&quot;);
+<span class="lineNum">      54 </span>            : assertFalse(desc.enumerable);
+<span class="lineNum">      55 </span>            : assertFalse(desc.configurable);
+<span class="lineNum">      56 </span>            : assertSame(replaced_get, desc.get);
+<span class="lineNum">      57 </span>            : assertSame(replaced_set, desc.set);
+<span class="lineNum">      58 </span>            : 
+<span class="lineNum">      59 </span>            : // Check freezing Object.prototype completely.
+<span class="lineNum">      60 </span>            : Object.freeze(Object.prototype);
+<span class="lineNum">      61 </span>            : assertTrue(Object.isFrozen(Object.prototype));
 </pre>
       </td>
     </tr>

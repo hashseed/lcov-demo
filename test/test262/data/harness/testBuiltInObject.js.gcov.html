@@ -31,17 +31,17 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">125</td>
-            <td class="headerCovTableEntry">125</td>
+            <td class="headerCovTableEntry">92</td>
+            <td class="headerCovTableEntry">92</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">3</td>
-            <td class="headerCovTableEntry">3</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntry">1</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr><td><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -134,7 +134,7 @@
 <span class="lineNum">      72 </span><span class="lineCov">         72 :         if (!desc.configurable) {</span>
 <span class="lineNum">      73 </span><span class="lineCov">         72 :             $ERROR(&quot;The length property of a built-in function must be configurable.&quot;);</span>
 <span class="lineNum">      74 </span><span class="lineCov">         72 :         }</span>
-<a name="75"><span class="lineNum">      75 </span><span class="lineCov">         72 :     }</span></a>
+<span class="lineNum">      75 </span><span class="lineCov">         72 :     }</span>
 <span class="lineNum">      76 </span><span class="lineCov">         72 : </span>
 <span class="lineNum">      77 </span><span class="lineCov">         94 :     properties.forEach(function(prop) {</span>
 <span class="lineNum">      78 </span><span class="lineCov">         46 :         var desc = Object.getOwnPropertyDescriptor(obj, prop);</span>
@@ -152,38 +152,38 @@
 <span class="lineNum">      90 </span><span class="lineCov">         46 :             $ERROR(&quot;The &quot; + prop + &quot; property of this built-in object must be configurable.&quot;);</span>
 <span class="lineNum">      91 </span><span class="lineCov">         46 :         }</span>
 <span class="lineNum">      92 </span><span class="lineCov">         94 :     });</span>
-<span class="lineNum">      93 </span><span class="lineCov">         72 : </span>
-<span class="lineNum">      94 </span><span class="lineCov">         72 :     // The remaining sections have been moved to the end of the test because</span>
-<span class="lineNum">      95 </span><span class="lineCov">         72 :     // unbound non-constructor functions written in JavaScript cannot possibly</span>
-<span class="lineNum">      96 </span><span class="lineCov">         72 :     // pass them, and we still want to test JavaScript implementations as much</span>
-<span class="lineNum">      97 </span><span class="lineCov">         72 :     // as possible.</span>
-<span class="lineNum">      98 </span><span class="lineCov">         72 :     </span>
-<span class="lineNum">      99 </span><span class="lineCov">         72 :     var exception;</span>
-<span class="lineNum">     100 </span><span class="lineCov">         72 :     if (isFunction &amp;&amp; !isConstructor) {</span>
-<span class="lineNum">     101 </span><span class="lineCov">         72 :         // this is not a complete test for the presence of [[Construct]]:</span>
-<span class="lineNum">     102 </span><span class="lineCov">         72 :         // if it's absent, the exception must be thrown, but it may also</span>
-<span class="lineNum">     103 </span><span class="lineCov">         72 :         // be thrown if it's present and just has preconditions related to</span>
-<span class="lineNum">     104 </span><span class="lineCov">         72 :         // arguments or the this value that this statement doesn't meet.</span>
-<span class="lineNum">     105 </span><span class="lineCov">         72 :         try {</span>
-<span class="lineNum">     106 </span><span class="lineCov">         72 :             /*jshint newcap:false*/</span>
-<span class="lineNum">     107 </span><span class="lineCov">         72 :             var instance = new obj();</span>
-<span class="lineNum">     108 </span><span class="lineCov">         72 :         } catch (e) {</span>
-<span class="lineNum">     109 </span><span class="lineCov">         72 :             exception = e;</span>
-<span class="lineNum">     110 </span><span class="lineCov">         72 :         }</span>
-<span class="lineNum">     111 </span><span class="lineCov">         72 :         if (exception === undefined || exception.name !== &quot;TypeError&quot;) {</span>
-<span class="lineNum">     112 </span><span class="lineCov">         72 :             $ERROR(&quot;Built-in functions that aren't constructors must throw TypeError when &quot; +</span>
-<span class="lineNum">     113 </span><span class="lineCov">         72 :                 &quot;used in a \&quot;new\&quot; statement.&quot;);</span>
-<span class="lineNum">     114 </span><span class="lineCov">         72 :         }</span>
-<span class="lineNum">     115 </span><span class="lineCov">         72 :     }</span>
-<span class="lineNum">     116 </span><span class="lineCov">         72 : </span>
-<span class="lineNum">     117 </span><span class="lineCov">         72 :     if (isFunction &amp;&amp; !isConstructor &amp;&amp; obj.hasOwnProperty(&quot;prototype&quot;)) {</span>
-<span class="lineNum">     118 </span><span class="lineCov">         72 :         $ERROR(&quot;Built-in functions that aren't constructors must not have a prototype property.&quot;);</span>
-<span class="lineNum">     119 </span><span class="lineCov">         72 :     }</span>
-<span class="lineNum">     120 </span><span class="lineCov">         72 : </span>
-<span class="lineNum">     121 </span><span class="lineCov">         72 :     // passed the complete test!</span>
-<span class="lineNum">     122 </span><span class="lineCov">         72 :     return true;</span>
-<span class="lineNum">     123 </span><span class="lineCov">         72 : }</span>
-<span class="lineNum">     124 </span><span class="lineCov">         70 : </span>
+<span class="lineNum">      93 </span>            : 
+<span class="lineNum">      94 </span>            :     // The remaining sections have been moved to the end of the test because
+<span class="lineNum">      95 </span>            :     // unbound non-constructor functions written in JavaScript cannot possibly
+<span class="lineNum">      96 </span>            :     // pass them, and we still want to test JavaScript implementations as much
+<span class="lineNum">      97 </span>            :     // as possible.
+<span class="lineNum">      98 </span>            :     
+<span class="lineNum">      99 </span>            :     var exception;
+<span class="lineNum">     100 </span>            :     if (isFunction &amp;&amp; !isConstructor) {
+<span class="lineNum">     101 </span>            :         // this is not a complete test for the presence of [[Construct]]:
+<span class="lineNum">     102 </span>            :         // if it's absent, the exception must be thrown, but it may also
+<span class="lineNum">     103 </span>            :         // be thrown if it's present and just has preconditions related to
+<span class="lineNum">     104 </span>            :         // arguments or the this value that this statement doesn't meet.
+<span class="lineNum">     105 </span>            :         try {
+<span class="lineNum">     106 </span>            :             /*jshint newcap:false*/
+<span class="lineNum">     107 </span>            :             var instance = new obj();
+<span class="lineNum">     108 </span>            :         } catch (e) {
+<span class="lineNum">     109 </span>            :             exception = e;
+<span class="lineNum">     110 </span>            :         }
+<span class="lineNum">     111 </span>            :         if (exception === undefined || exception.name !== &quot;TypeError&quot;) {
+<span class="lineNum">     112 </span>            :             $ERROR(&quot;Built-in functions that aren't constructors must throw TypeError when &quot; +
+<span class="lineNum">     113 </span>            :                 &quot;used in a \&quot;new\&quot; statement.&quot;);
+<span class="lineNum">     114 </span>            :         }
+<span class="lineNum">     115 </span>            :     }
+<span class="lineNum">     116 </span>            : 
+<span class="lineNum">     117 </span>            :     if (isFunction &amp;&amp; !isConstructor &amp;&amp; obj.hasOwnProperty(&quot;prototype&quot;)) {
+<span class="lineNum">     118 </span>            :         $ERROR(&quot;Built-in functions that aren't constructors must not have a prototype property.&quot;);
+<span class="lineNum">     119 </span>            :     }
+<span class="lineNum">     120 </span>            : 
+<span class="lineNum">     121 </span>            :     // passed the complete test!
+<span class="lineNum">     122 </span>            :     return true;
+<span class="lineNum">     123 </span>            : }
+<span class="lineNum">     124 </span>            : 
 </pre>
       </td>
     </tr>

@@ -31,18 +31,18 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">398</td>
-            <td class="headerCovTableEntry">482</td>
-            <td class="headerCovTableEntryMed">82.6 %</td>
+            <td class="headerCovTableEntry">356</td>
+            <td class="headerCovTableEntry">479</td>
+            <td class="headerCovTableEntryLo">74.3 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">3</td>
             <td class="headerCovTableEntry">6</td>
-            <td class="headerCovTableEntry">9</td>
-            <td class="headerCovTableEntryLo">66.7 %</td>
+            <td class="headerCovTableEntryLo">50.0 %</td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
         </table>
@@ -225,7 +225,7 @@
 <span class="lineNum">     163 </span><span class="lineCov">          1 : // methods in a closure to avoid creating global variables.</span>
 <span class="lineNum">     164 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     165 </span><span class="lineCov">          1 : if (!this.JSON) {</span>
-<a name="166"><span class="lineNum">     166 </span><span class="lineCov">          1 :     JSON = {};</span></a>
+<span class="lineNum">     166 </span><span class="lineCov">          1 :     JSON = {};</span>
 <span class="lineNum">     167 </span><span class="lineCov">          1 : }</span>
 <a name="168"><span class="lineNum">     168 </span><span class="lineCov">          1 : (function () {</span></a>
 <span class="lineNum">     169 </span><span class="lineCov">          1 : </span>
@@ -233,10 +233,10 @@
 <span class="lineNum">     171 </span><span class="lineNoCov">          0 :         // Format integers to have at least two digits.</span>
 <span class="lineNum">     172 </span><span class="lineNoCov">          0 :         return n &lt; 10 ? '0' + n : n;</span>
 <span class="lineNum">     173 </span><span class="lineCov">          1 :     }</span>
-<span class="lineNum">     174 </span><span class="lineCov">          1 : </span>
-<a name="175"><span class="lineNum">     175 </span><span class="lineCov">          1 :     if (typeof Date.prototype.toJSON !== 'function') {</span></a>
-<span class="lineNum">     176 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     177 </span><span class="lineCov">          1 :         Date.prototype.toJSON = function (key) {</span>
+<span class="lineNum">     174 </span><span class="lineNoCov">          0 : </span>
+<a name="175"><span class="lineNum">     175 </span><span class="lineNoCov">          0 :     if (typeof Date.prototype.toJSON !== 'function') {</span></a>
+<span class="lineNum">     176 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     177 </span><span class="lineNoCov">          0 :         Date.prototype.toJSON = function (key) {</span>
 <span class="lineNum">     178 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     179 </span><span class="lineNoCov">          0 :             return this.getUTCFullYear()   + '-' +</span>
 <span class="lineNum">     180 </span><span class="lineNoCov">          0 :                  f(this.getUTCMonth() + 1) + '-' +</span>
@@ -244,25 +244,25 @@
 <span class="lineNum">     182 </span><span class="lineNoCov">          0 :                  f(this.getUTCHours())     + ':' +</span>
 <span class="lineNum">     183 </span><span class="lineNoCov">          0 :                  f(this.getUTCMinutes())   + ':' +</span>
 <span class="lineNum">     184 </span><span class="lineNoCov">          0 :                  f(this.getUTCSeconds())   + 'Z';</span>
-<span class="lineNum">     185 </span><span class="lineCov">          1 :         };</span>
-<span class="lineNum">     186 </span><span class="lineCov">          1 :     }</span>
-<span class="lineNum">     187 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     188 </span><span class="lineCov">          1 :     var cx = /[\u0000\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g,</span>
-<span class="lineNum">     189 </span><span class="lineCov">          1 :         escapable = /[\\\&quot;\x00-\x1f]/g,</span>
-<span class="lineNum">     190 </span><span class="lineCov">          1 :         gap,</span>
-<span class="lineNum">     191 </span><span class="lineCov">          1 :         indent,</span>
-<span class="lineNum">     192 </span><span class="lineCov">          1 :         meta = {    // table of character substitutions</span>
-<span class="lineNum">     193 </span><span class="lineCov">          1 :             '\b': '\\b',</span>
-<span class="lineNum">     194 </span><span class="lineCov">          1 :             '\t': '\\t',</span>
-<span class="lineNum">     195 </span><span class="lineCov">          1 :             '\n': '\\n',</span>
-<span class="lineNum">     196 </span><span class="lineCov">          1 :             '\f': '\\f',</span>
-<span class="lineNum">     197 </span><span class="lineCov">          1 :             '\r': '\\r',</span>
-<span class="lineNum">     198 </span><span class="lineCov">          1 :             '&quot;' : '\\&quot;',</span>
-<span class="lineNum">     199 </span><span class="lineCov">          1 :             '\\': '\\\\'</span>
-<span class="lineNum">     200 </span><span class="lineCov">          1 :         },</span>
-<span class="lineNum">     201 </span><span class="lineCov">          1 :         rep;</span>
-<a name="202"><span class="lineNum">     202 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">     203 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     185 </span><span class="lineNoCov">          0 :         };</span>
+<span class="lineNum">     186 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     187 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     188 </span><span class="lineNoCov">          0 :     var cx = /[\u0000\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g,</span>
+<span class="lineNum">     189 </span><span class="lineNoCov">          0 :         escapable = /[\\\&quot;\x00-\x1f]/g,</span>
+<span class="lineNum">     190 </span><span class="lineNoCov">          0 :         gap,</span>
+<span class="lineNum">     191 </span><span class="lineNoCov">          0 :         indent,</span>
+<span class="lineNum">     192 </span><span class="lineNoCov">          0 :         meta = {    // table of character substitutions</span>
+<span class="lineNum">     193 </span><span class="lineNoCov">          0 :             '\b': '\\b',</span>
+<span class="lineNum">     194 </span><span class="lineNoCov">          0 :             '\t': '\\t',</span>
+<span class="lineNum">     195 </span><span class="lineNoCov">          0 :             '\n': '\\n',</span>
+<span class="lineNum">     196 </span><span class="lineNoCov">          0 :             '\f': '\\f',</span>
+<span class="lineNum">     197 </span><span class="lineNoCov">          0 :             '\r': '\\r',</span>
+<span class="lineNum">     198 </span><span class="lineNoCov">          0 :             '&quot;' : '\\&quot;',</span>
+<span class="lineNum">     199 </span><span class="lineNoCov">          0 :             '\\': '\\\\'</span>
+<span class="lineNum">     200 </span><span class="lineNoCov">          0 :         },</span>
+<span class="lineNum">     201 </span><span class="lineNoCov">          0 :         rep;</span>
+<a name="202"><span class="lineNum">     202 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">     203 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     204 </span><span class="lineCov">       2927 :     function quote(string) {</span>
 <span class="lineNum">     205 </span><span class="lineCov">       2927 : </span>
 <span class="lineNum">     206 </span><span class="lineCov">       2927 : // If the string contains no control characters, no quote characters, and no</span>
@@ -270,17 +270,17 @@
 <span class="lineNum">     208 </span><span class="lineCov">       2927 : // Otherwise we must also replace the offending characters with safe escape</span>
 <span class="lineNum">     209 </span><span class="lineCov">       2927 : // sequences.</span>
 <span class="lineNum">     210 </span><span class="lineCov">       2927 : </span>
-<a name="211"><span class="lineNum">     211 </span><span class="lineCov">       2927 :         escapable.lastIndex = 0;</span></a>
+<span class="lineNum">     211 </span><span class="lineCov">       2927 :         escapable.lastIndex = 0;</span>
 <span class="lineNum">     212 </span><span class="lineCov">       2927 :         return escapable.test(string) ?</span>
 <span class="lineNum">     213 </span><span class="lineCov">       2927 :             '&quot;' + string.replace(escapable, function (a) {</span>
 <span class="lineNum">     214 </span><span class="lineCov">         34 :                 var c = meta[a];</span>
 <span class="lineNum">     215 </span><span class="lineCov">         34 :                 return typeof c === 'string' ? c :</span>
 <span class="lineNum">     216 </span><span class="lineCov">         34 :                     '\\u' + ('0000' + a.charCodeAt(0).toString(16)).slice(-4);</span>
 <span class="lineNum">     217 </span><span class="lineCov">       2927 :             }) + '&quot;' :</span>
-<span class="lineNum">     218 </span><span class="lineCov">       2927 :             '&quot;' + string + '&quot;';</span>
-<span class="lineNum">     219 </span><span class="lineCov">       2927 :     }</span>
-<a name="220"><span class="lineNum">     220 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">     221 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     218 </span><span class="lineNoCov">          0 :             '&quot;' + string + '&quot;';</span>
+<span class="lineNum">     219 </span><span class="lineNoCov">          0 :     }</span>
+<a name="220"><span class="lineNum">     220 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">     221 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     222 </span><span class="lineCov">       4095 :     function str(key, holder) {</span>
 <span class="lineNum">     223 </span><span class="lineCov">       4095 : </span>
 <span class="lineNum">     224 </span><span class="lineCov">       4095 : // Produce a string from holder[key].</span>
@@ -411,10 +411,10 @@
 <span class="lineNum">     349 </span><span class="lineCov">       4095 :             return v;</span>
 <span class="lineNum">     350 </span><span class="lineCov">       4095 :         }</span>
 <span class="lineNum">     351 </span><span class="lineCov">       4095 :     }</span>
-<span class="lineNum">     352 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     353 </span><span class="lineCov">          1 : // If the JSON object does not yet have a stringify method, give it one.</span>
-<a name="354"><span class="lineNum">     354 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">     355 </span><span class="lineCov">          1 :     if (typeof JSON.stringify !== 'function') {</span>
+<span class="lineNum">     352 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     353 </span><span class="lineNoCov">          0 : // If the JSON object does not yet have a stringify method, give it one.</span>
+<a name="354"><span class="lineNum">     354 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">     355 </span><span class="lineNoCov">          0 :     if (typeof JSON.stringify !== 'function') {</span>
 <span class="lineNum">     356 </span><span class="lineCov">        118 :         JSON.stringify = function (value, replacer, space) {</span>
 <span class="lineNum">     357 </span><span class="lineCov">        118 : </span>
 <span class="lineNum">     358 </span><span class="lineCov">        118 : // The stringify method takes a value and an optional replacer, and an optional</span>
@@ -456,13 +456,13 @@
 <span class="lineNum">     394 </span><span class="lineCov">        118 : </span>
 <span class="lineNum">     395 </span><span class="lineCov">        118 :             return str('', {'': value});</span>
 <span class="lineNum">     396 </span><span class="lineCov">        118 :         };</span>
-<span class="lineNum">     397 </span><span class="lineCov">          1 :     }</span>
-<span class="lineNum">     398 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     399 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     400 </span><span class="lineCov">          1 : // If the JSON object does not yet have a parse method, give it one.</span>
-<a name="401"><span class="lineNum">     401 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">     402 </span><span class="lineCov">          1 :     if (typeof JSON.parse !== 'function') {</span>
-<span class="lineNum">     403 </span><span class="lineCov">          1 :         JSON.parse = function (text, reviver) {</span>
+<span class="lineNum">     397 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     398 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     399 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     400 </span><span class="lineNoCov">          0 : // If the JSON object does not yet have a parse method, give it one.</span>
+<a name="401"><span class="lineNum">     401 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">     402 </span><span class="lineNoCov">          0 :     if (typeof JSON.parse !== 'function') {</span>
+<span class="lineNum">     403 </span><span class="lineNoCov">          0 :         JSON.parse = function (text, reviver) {</span>
 <span class="lineNum">     404 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     405 </span><span class="lineNoCov">          0 : // The parse method takes a text and an optional reviver function, and returns</span>
 <span class="lineNum">     406 </span><span class="lineNoCov">          0 : // a JavaScript value if the text is a valid JSON text.</span>
@@ -538,9 +538,9 @@
 <span class="lineNum">     476 </span><span class="lineNoCov">          0 : // If the text is not JSON parseable, then a SyntaxError is thrown.</span>
 <span class="lineNum">     477 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     478 </span><span class="lineNoCov">          0 :             throw new SyntaxError('JSON.parse');</span>
-<span class="lineNum">     479 </span><span class="lineCov">          1 :         };</span>
-<span class="lineNum">     480 </span><span class="lineCov">          1 :     }</span>
-<span class="lineNum">     481 </span><span class="lineCov">          1 : }());</span>
+<span class="lineNum">     479 </span><span class="lineNoCov">          0 :         };</span>
+<span class="lineNum">     480 </span>            :     }
+<span class="lineNum">     481 </span>            : }());
 </pre>
       </td>
     </tr>

@@ -31,17 +31,17 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">67</td>
-            <td class="headerCovTableEntry">67</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntry">49</td>
+            <td class="headerCovTableEntry">50</td>
+            <td class="headerCovTableEntryHi">98.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">3</td>
-            <td class="headerCovTableEntry">3</td>
+            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntry">2</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -106,26 +106,26 @@
 <span class="lineNum">      44 </span><span class="lineCov">         22 : function do_min(a, b) {</span>
 <span class="lineNum">      45 </span><span class="lineCov">         22 :     return Math.min(a, b);</span>
 <a name="46"><span class="lineNum">      46 </span><span class="lineCov">         22 : }</span></a>
-<span class="lineNum">      47 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      47 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      48 </span><span class="lineCov">         22 : function do_max(a, b) {</span>
 <span class="lineNum">      49 </span><span class="lineCov">         22 :     return Math.max(a, b);</span>
 <span class="lineNum">      50 </span><span class="lineCov">         22 : }</span>
-<span class="lineNum">      51 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      52 </span><span class="lineCov">          1 : // Make sure that non-crankshaft results match expectations.</span>
-<span class="lineNum">      53 </span><span class="lineCov">          1 : for (i = 0; i &lt; cases.length; ++i) {</span>
-<span class="lineNum">      54 </span><span class="lineCov">          1 :     var c = cases[i];</span>
-<span class="lineNum">      55 </span><span class="lineCov">          1 :     assertEquals(c[3], do_min(c[0], c[1]));</span>
-<span class="lineNum">      56 </span><span class="lineCov">          1 :     assertEquals(c[2], do_max(c[0], c[1]));</span>
-<span class="lineNum">      57 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">      58 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      59 </span><span class="lineCov">          1 : // Make sure that crankshaft results match expectations.</span>
-<span class="lineNum">      60 </span><span class="lineCov">          1 : for (i = 0; i &lt; cases.length; ++i) {</span>
-<span class="lineNum">      61 </span><span class="lineCov">          1 :     var c = cases[i];</span>
-<span class="lineNum">      62 </span><span class="lineCov">          1 :     %OptimizeFunctionOnNextCall(do_min);</span>
-<span class="lineNum">      63 </span><span class="lineCov">          1 :     %OptimizeFunctionOnNextCall(do_max);</span>
-<span class="lineNum">      64 </span><span class="lineCov">          1 :     assertEquals(c[3], do_min(c[0], c[1]));</span>
-<span class="lineNum">      65 </span><span class="lineCov">          1 :     assertEquals(c[2], do_max(c[0], c[1]));</span>
-<span class="lineNum">      66 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      51 </span>            : 
+<span class="lineNum">      52 </span>            : // Make sure that non-crankshaft results match expectations.
+<span class="lineNum">      53 </span>            : for (i = 0; i &lt; cases.length; ++i) {
+<span class="lineNum">      54 </span>            :     var c = cases[i];
+<span class="lineNum">      55 </span>            :     assertEquals(c[3], do_min(c[0], c[1]));
+<span class="lineNum">      56 </span>            :     assertEquals(c[2], do_max(c[0], c[1]));
+<span class="lineNum">      57 </span>            : }
+<span class="lineNum">      58 </span>            : 
+<span class="lineNum">      59 </span>            : // Make sure that crankshaft results match expectations.
+<span class="lineNum">      60 </span>            : for (i = 0; i &lt; cases.length; ++i) {
+<span class="lineNum">      61 </span>            :     var c = cases[i];
+<span class="lineNum">      62 </span>            :     %OptimizeFunctionOnNextCall(do_min);
+<span class="lineNum">      63 </span>            :     %OptimizeFunctionOnNextCall(do_max);
+<span class="lineNum">      64 </span>            :     assertEquals(c[3], do_min(c[0], c[1]));
+<span class="lineNum">      65 </span>            :     assertEquals(c[2], do_max(c[0], c[1]));
+<span class="lineNum">      66 </span>            : }
 </pre>
       </td>
     </tr>

@@ -31,17 +31,17 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">56</td>
-            <td class="headerCovTableEntry">56</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntry">28</td>
+            <td class="headerCovTableEntry">54</td>
+            <td class="headerCovTableEntryLo">51.9 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">4</td>
-            <td class="headerCovTableEntry">4</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntry">1</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -86,35 +86,35 @@
 <span class="lineNum">      24 </span><span class="lineCov">         29 :     assertSame(expected[i], value[i]);</span>
 <span class="lineNum">      25 </span><span class="lineCov">         29 :   }</span>
 <span class="lineNum">      26 </span><span class="lineCov">         29 : }</span>
-<span class="lineNum">      27 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      28 </span><span class="lineCov">          1 : for (var constructor of typedArrayConstructors) {</span>
-<span class="lineNum">      29 </span><span class="lineCov">          1 :   // Test default numerical sorting order</span>
-<span class="lineNum">      30 </span><span class="lineCov">          1 :   var a = new constructor([100, 7, 45])</span>
-<span class="lineNum">      31 </span><span class="lineCov">          1 :   assertEquals(a.sort(), a);</span>
-<span class="lineNum">      32 </span><span class="lineCov">          1 :   assertArrayLikeEquals(a, [7, 45, 100], constructor);</span>
-<span class="lineNum">      33 </span><span class="lineCov">          1 :   assertEquals(a.length, 3);</span>
-<span class="lineNum">      34 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      35 </span><span class="lineCov">          1 :   // For arrays of floats, certain handling of +-0/NaN</span>
-<span class="lineNum">      36 </span><span class="lineCov">          1 :   if (constructor === Float32Array || constructor === Float64Array) {</span>
-<span class="lineNum">      37 </span><span class="lineCov">          1 :     var b = new constructor([+0, -0, NaN, -0, NaN, +0])</span>
-<span class="lineNum">      38 </span><span class="lineCov">          1 :     b.sort();</span>
-<span class="lineNum">      39 </span><span class="lineCov">          1 :     assertArrayLikeEquals(b, [-0, -0, +0, +0, NaN, NaN], constructor);</span>
-<span class="lineNum">      40 </span><span class="lineCov">          1 :     assertEquals(b.length, 6);</span>
-<span class="lineNum">      41 </span><span class="lineCov">          1 :   }</span>
-<a name="42"><span class="lineNum">      42 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">      43 </span><span class="lineCov">          1 :   // Custom sort--backwards</span>
+<span class="lineNum">      27 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      28 </span><span class="lineNoCov">          0 : for (var constructor of typedArrayConstructors) {</span>
+<span class="lineNum">      29 </span><span class="lineNoCov">          0 :   // Test default numerical sorting order</span>
+<span class="lineNum">      30 </span><span class="lineNoCov">          0 :   var a = new constructor([100, 7, 45])</span>
+<span class="lineNum">      31 </span><span class="lineNoCov">          0 :   assertEquals(a.sort(), a);</span>
+<span class="lineNum">      32 </span><span class="lineNoCov">          0 :   assertArrayLikeEquals(a, [7, 45, 100], constructor);</span>
+<span class="lineNum">      33 </span><span class="lineNoCov">          0 :   assertEquals(a.length, 3);</span>
+<span class="lineNum">      34 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      35 </span><span class="lineNoCov">          0 :   // For arrays of floats, certain handling of +-0/NaN</span>
+<span class="lineNum">      36 </span><span class="lineNoCov">          0 :   if (constructor === Float32Array || constructor === Float64Array) {</span>
+<span class="lineNum">      37 </span><span class="lineNoCov">          0 :     var b = new constructor([+0, -0, NaN, -0, NaN, +0])</span>
+<span class="lineNum">      38 </span><span class="lineNoCov">          0 :     b.sort();</span>
+<span class="lineNum">      39 </span><span class="lineNoCov">          0 :     assertArrayLikeEquals(b, [-0, -0, +0, +0, NaN, NaN], constructor);</span>
+<span class="lineNum">      40 </span><span class="lineNoCov">          0 :     assertEquals(b.length, 6);</span>
+<span class="lineNum">      41 </span><span class="lineNoCov">          0 :   }</span>
+<span class="lineNum">      42 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      43 </span><span class="lineNoCov">          0 :   // Custom sort--backwards</span>
 <span class="lineNum">      44 </span><span class="lineCov">         27 :   a.sort(function(x, y) { return y - x; });</span>
-<span class="lineNum">      45 </span><span class="lineCov">          1 :   assertArrayLikeEquals(a, [100, 45, 7], constructor);</span>
-<span class="lineNum">      46 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      47 </span><span class="lineCov">          1 :   // Basic TypedArray method properties:</span>
-<span class="lineNum">      48 </span><span class="lineCov">          1 :   // Length field is ignored</span>
-<span class="lineNum">      49 </span><span class="lineCov">          1 :   Object.defineProperty(a, 'length', {value: 1});</span>
-<span class="lineNum">      50 </span><span class="lineCov">          1 :   assertEquals(a.sort(), a);</span>
-<span class="lineNum">      51 </span><span class="lineCov">          1 :   assertArrayLikeEquals(a, [7, 45, 100], constructor);</span>
-<a name="52"><span class="lineNum">      52 </span><span class="lineCov">          1 :   assertEquals(a.length, 1);</span></a>
-<span class="lineNum">      53 </span><span class="lineCov">          1 :   // Method doesn't work on other objects</span>
+<span class="lineNum">      45 </span><span class="lineNoCov">          0 :   assertArrayLikeEquals(a, [100, 45, 7], constructor);</span>
+<span class="lineNum">      46 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      47 </span><span class="lineNoCov">          0 :   // Basic TypedArray method properties:</span>
+<span class="lineNum">      48 </span><span class="lineNoCov">          0 :   // Length field is ignored</span>
+<span class="lineNum">      49 </span><span class="lineNoCov">          0 :   Object.defineProperty(a, 'length', {value: 1});</span>
+<span class="lineNum">      50 </span><span class="lineNoCov">          0 :   assertEquals(a.sort(), a);</span>
+<span class="lineNum">      51 </span><span class="lineNoCov">          0 :   assertArrayLikeEquals(a, [7, 45, 100], constructor);</span>
+<span class="lineNum">      52 </span><span class="lineNoCov">          0 :   assertEquals(a.length, 1);</span>
+<span class="lineNum">      53 </span><span class="lineNoCov">          0 :   // Method doesn't work on other objects</span>
 <span class="lineNum">      54 </span><span class="lineCov">          9 :   assertThrows(function() { a.sort.call([]); }, TypeError);</span>
-<span class="lineNum">      55 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      55 </span>            : }
 </pre>
       </td>
     </tr>

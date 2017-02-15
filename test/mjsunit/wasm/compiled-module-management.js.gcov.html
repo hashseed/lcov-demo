@@ -31,17 +31,17 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">72</td>
-            <td class="headerCovTableEntry">72</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntry">48</td>
+            <td class="headerCovTableEntry">65</td>
+            <td class="headerCovTableEntryLo">73.8 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">7</td>
-            <td class="headerCovTableEntry">7</td>
+            <td class="headerCovTableEntry">6</td>
+            <td class="headerCovTableEntry">6</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -92,45 +92,45 @@
 <span class="lineNum">      30 </span><span class="lineCov">          1 :   %ValidateWasmModuleState(module);</span>
 <span class="lineNum">      31 </span><span class="lineCov">          1 :   %ValidateWasmInstancesChain(module, 0);</span>
 <span class="lineNum">      32 </span><span class="lineCov">          1 :   instance1 = new WebAssembly.Instance(module, {&quot;&quot;: {getValue: () =&gt; 1}});</span>
-<span class="lineNum">      33 </span><span class="lineCov">          1 :   %ValidateWasmInstancesChain(module, 1);</span>
+<span class="lineNum">      33 </span><span class="lineNoCov">          0 :   %ValidateWasmInstancesChain(module, 1);</span>
 <span class="lineNum">      34 </span><span class="lineCov">          1 :   instance2 = new WebAssembly.Instance(module, {&quot;&quot;: {getValue: () =&gt; 2}});</span>
-<span class="lineNum">      35 </span><span class="lineCov">          1 :   %ValidateWasmInstancesChain(module, 2);</span>
+<span class="lineNum">      35 </span><span class="lineNoCov">          0 :   %ValidateWasmInstancesChain(module, 2);</span>
 <span class="lineNum">      36 </span><span class="lineCov">          1 :   instance3 = new WebAssembly.Instance(module, {&quot;&quot;: {getValue: () =&gt; 3}});</span>
-<span class="lineNum">      37 </span><span class="lineCov">          1 :   %ValidateWasmInstancesChain(module, 3);</span>
-<a name="38"><span class="lineNum">      38 </span><span class="lineCov">          1 : })();</span></a>
-<span class="lineNum">      39 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      37 </span><span class="lineNoCov">          0 :   %ValidateWasmInstancesChain(module, 3);</span>
+<a name="38"><span class="lineNum">      38 </span><span class="lineNoCov">          0 : })();</span></a>
+<span class="lineNum">      39 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      40 </span><span class="lineCov">          1 : (function CompiledModuleInstancesClear1() {</span>
 <span class="lineNum">      41 </span><span class="lineCov">          1 :   assertEquals(1, instance1.exports.f());</span>
 <span class="lineNum">      42 </span><span class="lineCov">          1 :   instance1 = null;</span>
 <span class="lineNum">      43 </span><span class="lineCov">          1 : })();</span>
-<span class="lineNum">      44 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      45 </span><span class="lineCov">          1 : gc();</span>
-<a name="46"><span class="lineNum">      46 </span><span class="lineCov">          1 : %ValidateWasmInstancesChain(module, 2);</span></a>
-<span class="lineNum">      47 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      44 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      45 </span><span class="lineNoCov">          0 : gc();</span>
+<a name="46"><span class="lineNum">      46 </span><span class="lineNoCov">          0 : %ValidateWasmInstancesChain(module, 2);</span></a>
+<span class="lineNum">      47 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      48 </span><span class="lineCov">          1 : (function CompiledModuleInstancesClear3() {</span>
 <span class="lineNum">      49 </span><span class="lineCov">          1 :   assertEquals(3, instance3.exports.f());</span>
 <span class="lineNum">      50 </span><span class="lineCov">          1 :   instance3 = null;</span>
 <span class="lineNum">      51 </span><span class="lineCov">          1 : })();</span>
-<span class="lineNum">      52 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      53 </span><span class="lineCov">          1 : gc();</span>
-<a name="54"><span class="lineNum">      54 </span><span class="lineCov">          1 : %ValidateWasmInstancesChain(module, 1);</span></a>
-<span class="lineNum">      55 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      52 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      53 </span><span class="lineNoCov">          0 : gc();</span>
+<a name="54"><span class="lineNum">      54 </span><span class="lineNoCov">          0 : %ValidateWasmInstancesChain(module, 1);</span></a>
+<span class="lineNum">      55 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      56 </span><span class="lineCov">          1 : (function CompiledModuleInstancesClear2() {</span>
 <span class="lineNum">      57 </span><span class="lineCov">          1 :   assertEquals(2, instance2.exports.f());</span>
 <span class="lineNum">      58 </span><span class="lineCov">          1 :   instance2 = null;</span>
 <span class="lineNum">      59 </span><span class="lineCov">          1 : })();</span>
-<span class="lineNum">      60 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      61 </span><span class="lineCov">          1 : gc();</span>
-<a name="62"><span class="lineNum">      62 </span><span class="lineCov">          1 : %ValidateWasmModuleState(module);</span></a>
-<a name="63"><span class="lineNum">      63 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      60 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      61 </span><span class="lineNoCov">          0 : gc();</span>
+<a name="62"><span class="lineNum">      62 </span><span class="lineNoCov">          0 : %ValidateWasmModuleState(module);</span></a>
+<a name="63"><span class="lineNum">      63 </span><span class="lineNoCov">          0 : </span></a>
 <span class="lineNum">      64 </span><span class="lineCov">          1 : (function CompiledModuleInstancesInitialize4AndClearModule() {</span>
 <span class="lineNum">      65 </span><span class="lineCov">          1 :   instance4 = new WebAssembly.Instance(module, {&quot;&quot;: {getValue: () =&gt; 4}});</span>
-<span class="lineNum">      66 </span><span class="lineCov">          1 :   assertEquals(4, instance4.exports.f());</span>
-<span class="lineNum">      67 </span><span class="lineCov">          1 :   module = null;</span>
-<span class="lineNum">      68 </span><span class="lineCov">          1 : })();</span>
-<span class="lineNum">      69 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      70 </span><span class="lineCov">          1 : gc();</span>
-<span class="lineNum">      71 </span><span class="lineCov">          1 : %ValidateWasmOrphanedInstance(instance4);</span>
+<span class="lineNum">      66 </span>            :   assertEquals(4, instance4.exports.f());
+<span class="lineNum">      67 </span>            :   module = null;
+<span class="lineNum">      68 </span>            : })();
+<span class="lineNum">      69 </span>            : 
+<span class="lineNum">      70 </span>            : gc();
+<span class="lineNum">      71 </span>            : %ValidateWasmOrphanedInstance(instance4);
 </pre>
       </td>
     </tr>

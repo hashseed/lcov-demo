@@ -31,17 +31,17 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">48</td>
-            <td class="headerCovTableEntry">48</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntry">26</td>
+            <td class="headerCovTableEntry">33</td>
+            <td class="headerCovTableEntryMed">78.8 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">3</td>
-            <td class="headerCovTableEntry">3</td>
+            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntry">2</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr><td><img src="../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -82,31 +82,31 @@
 <span class="lineNum">      20 </span><span class="lineCov">          4 :             }</span>
 <span class="lineNum">      21 </span><span class="lineCov">          4 :             return false;</span>
 <span class="lineNum">      22 </span><span class="lineCov">          4 :         }</span>
-<span class="lineNum">      23 </span><span class="lineCov">          2 : </span>
-<span class="lineNum">      24 </span><span class="lineCov">          2 :         var toStringAccessed = false;</span>
-<span class="lineNum">      25 </span><span class="lineCov">          2 :         var obj = {</span>
-<span class="lineNum">      26 </span><span class="lineCov">          2 :             0: 12,</span>
-<span class="lineNum">      27 </span><span class="lineCov">          2 :             1: 11,</span>
-<a name="28"><span class="lineNum">      28 </span><span class="lineCov">          2 :             2: 9,</span></a>
-<span class="lineNum">      29 </span><span class="lineCov">          2 :             length: {</span>
+<span class="lineNum">      23 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      24 </span><span class="lineNoCov">          0 :         var toStringAccessed = false;</span>
+<span class="lineNum">      25 </span><span class="lineNoCov">          0 :         var obj = {</span>
+<span class="lineNum">      26 </span><span class="lineNoCov">          0 :             0: 12,</span>
+<span class="lineNum">      27 </span><span class="lineNoCov">          0 :             1: 11,</span>
+<a name="28"><span class="lineNum">      28 </span><span class="lineNoCov">          0 :             2: 9,</span></a>
+<span class="lineNum">      29 </span><span class="lineNoCov">          0 :             length: {</span>
 <span class="lineNum">      30 </span><span class="lineCov">          2 :                 toString: function () {</span>
 <span class="lineNum">      31 </span><span class="lineCov">          2 :                     toStringAccessed = true;</span>
 <span class="lineNum">      32 </span><span class="lineCov">          2 :                     return '2';</span>
 <span class="lineNum">      33 </span><span class="lineCov">          2 :                 }</span>
-<span class="lineNum">      34 </span><span class="lineCov">          2 :             }</span>
-<span class="lineNum">      35 </span><span class="lineCov">          2 :         };</span>
-<span class="lineNum">      36 </span><span class="lineCov">          2 : </span>
-<span class="lineNum">      37 </span><span class="lineCov">          2 :         // objects inherit the default valueOf() method from Object</span>
-<span class="lineNum">      38 </span><span class="lineCov">          2 :         // that simply returns itself. Since the default valueOf() method</span>
-<span class="lineNum">      39 </span><span class="lineCov">          2 :         // does not return a primitive value, ES next tries to convert the object</span>
-<span class="lineNum">      40 </span><span class="lineCov">          2 :         // to a number by calling its toString() method and converting the</span>
-<span class="lineNum">      41 </span><span class="lineCov">          2 :         // resulting string to a number.</span>
-<span class="lineNum">      42 </span><span class="lineCov">          2 : </span>
-<span class="lineNum">      43 </span><span class="lineCov">          2 :         Array.prototype.reduceRight.call(obj, callbackfn, 1);</span>
-<span class="lineNum">      44 </span><span class="lineCov">          2 : </span>
-<span class="lineNum">      45 </span><span class="lineCov">          2 : assert(testResult1, 'testResult1 !== true');</span>
-<span class="lineNum">      46 </span><span class="lineCov">          2 : assert(testResult2, 'testResult2 !== true');</span>
-<span class="lineNum">      47 </span><span class="lineCov">          2 : assert(toStringAccessed, 'toStringAccessed !== true');</span>
+<span class="lineNum">      34 </span>            :             }
+<span class="lineNum">      35 </span>            :         };
+<span class="lineNum">      36 </span>            : 
+<span class="lineNum">      37 </span>            :         // objects inherit the default valueOf() method from Object
+<span class="lineNum">      38 </span>            :         // that simply returns itself. Since the default valueOf() method
+<span class="lineNum">      39 </span>            :         // does not return a primitive value, ES next tries to convert the object
+<span class="lineNum">      40 </span>            :         // to a number by calling its toString() method and converting the
+<span class="lineNum">      41 </span>            :         // resulting string to a number.
+<span class="lineNum">      42 </span>            : 
+<span class="lineNum">      43 </span>            :         Array.prototype.reduceRight.call(obj, callbackfn, 1);
+<span class="lineNum">      44 </span>            : 
+<span class="lineNum">      45 </span>            : assert(testResult1, 'testResult1 !== true');
+<span class="lineNum">      46 </span>            : assert(testResult2, 'testResult2 !== true');
+<span class="lineNum">      47 </span>            : assert(toStringAccessed, 'toStringAccessed !== true');
 </pre>
       </td>
     </tr>

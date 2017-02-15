@@ -31,17 +31,17 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">70</td>
-            <td class="headerCovTableEntry">70</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntry">40</td>
+            <td class="headerCovTableEntry">48</td>
+            <td class="headerCovTableEntryMed">83.3 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">6</td>
-            <td class="headerCovTableEntry">6</td>
+            <td class="headerCovTableEntry">5</td>
+            <td class="headerCovTableEntry">5</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -93,42 +93,42 @@
 <span class="lineNum">      31 </span><span class="lineCov">        200 :     var c = p.g; // Patchable GetById.</span>
 <span class="lineNum">      32 </span><span class="lineCov">        200 :     return b(a + c);</span>
 <a name="33"><span class="lineNum">      33 </span><span class="lineCov">        200 : }</span></a>
-<span class="lineNum">      34 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      34 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      35 </span><span class="lineCov">          1 : function O() {</span>
 <a name="36"><span class="lineNum">      36 </span><span class="lineCov">          1 : }</span></a>
-<span class="lineNum">      37 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      37 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      38 </span><span class="lineCov">        200 : O.prototype.f = function(x) { return x + 1; };</span>
-<span class="lineNum">      39 </span><span class="lineCov">          1 : </span>
-<a name="40"><span class="lineNum">      40 </span><span class="lineCov">          1 : var o = new O();</span></a>
-<span class="lineNum">      41 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      39 </span><span class="lineNoCov">          0 : </span>
+<a name="40"><span class="lineNum">      40 </span><span class="lineNoCov">          0 : var o = new O();</span></a>
+<span class="lineNum">      41 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      42 </span><span class="lineCov">          1 : function P1() {</span>
 <span class="lineNum">      43 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">      44 </span><span class="lineCov">          1 : </span>
-<a name="45"><span class="lineNum">      45 </span><span class="lineCov">          1 : P1.prototype.g = 42;</span></a>
-<span class="lineNum">      46 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      44 </span><span class="lineNoCov">          0 : </span>
+<a name="45"><span class="lineNum">      45 </span><span class="lineNoCov">          0 : P1.prototype.g = 42;</span></a>
+<span class="lineNum">      46 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      47 </span><span class="lineCov">          1 : function P2() {</span>
 <span class="lineNum">      48 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">      49 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      50 </span><span class="lineCov">          1 : P2.prototype.g = 24;</span>
-<span class="lineNum">      51 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      52 </span><span class="lineCov">          1 : var p1 = new P1();</span>
-<span class="lineNum">      53 </span><span class="lineCov">          1 : var p2 = new P2();</span>
-<span class="lineNum">      54 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      55 </span><span class="lineCov">          1 : p1.f = 1;</span>
-<span class="lineNum">      56 </span><span class="lineCov">          1 : p2.f = 2;</span>
-<span class="lineNum">      57 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      58 </span><span class="lineCov">          1 : for (var i = 0; i &lt; 200; ++i) {</span>
-<span class="lineNum">      59 </span><span class="lineCov">          1 :     var p = (i % 2) ? p1 : p2;</span>
-<span class="lineNum">      60 </span><span class="lineCov">          1 :     var expected = (i % 2) ? 44 : 27;</span>
-<span class="lineNum">      61 </span><span class="lineCov">          1 :     if (i == 150) {</span>
-<span class="lineNum">      62 </span><span class="lineCov">          1 :         // Cause first the watchpoint on o.f to fire, and then the GetById</span>
-<span class="lineNum">      63 </span><span class="lineCov">          1 :         // to be reset.</span>
-<span class="lineNum">      64 </span><span class="lineCov">          1 :         O.prototype.g = 57; // Fire the watchpoint.</span>
-<span class="lineNum">      65 </span><span class="lineCov">          1 :         P1.prototype.h = 58; // Reset the GetById.</span>
-<span class="lineNum">      66 </span><span class="lineCov">          1 :         P2.prototype.h = 59; // Not necessary, but what the heck - this resets the GetById even more.</span>
-<span class="lineNum">      67 </span><span class="lineCov">          1 :     }</span>
-<span class="lineNum">      68 </span><span class="lineCov">          1 :     shouldBe(&quot;foo(o, p)&quot;, &quot;&quot; + expected);</span>
-<span class="lineNum">      69 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      49 </span>            : 
+<span class="lineNum">      50 </span>            : P2.prototype.g = 24;
+<span class="lineNum">      51 </span>            : 
+<span class="lineNum">      52 </span>            : var p1 = new P1();
+<span class="lineNum">      53 </span>            : var p2 = new P2();
+<span class="lineNum">      54 </span>            : 
+<span class="lineNum">      55 </span>            : p1.f = 1;
+<span class="lineNum">      56 </span>            : p2.f = 2;
+<span class="lineNum">      57 </span>            : 
+<span class="lineNum">      58 </span>            : for (var i = 0; i &lt; 200; ++i) {
+<span class="lineNum">      59 </span>            :     var p = (i % 2) ? p1 : p2;
+<span class="lineNum">      60 </span>            :     var expected = (i % 2) ? 44 : 27;
+<span class="lineNum">      61 </span>            :     if (i == 150) {
+<span class="lineNum">      62 </span>            :         // Cause first the watchpoint on o.f to fire, and then the GetById
+<span class="lineNum">      63 </span>            :         // to be reset.
+<span class="lineNum">      64 </span>            :         O.prototype.g = 57; // Fire the watchpoint.
+<span class="lineNum">      65 </span>            :         P1.prototype.h = 58; // Reset the GetById.
+<span class="lineNum">      66 </span>            :         P2.prototype.h = 59; // Not necessary, but what the heck - this resets the GetById even more.
+<span class="lineNum">      67 </span>            :     }
+<span class="lineNum">      68 </span>            :     shouldBe(&quot;foo(o, p)&quot;, &quot;&quot; + expected);
+<span class="lineNum">      69 </span>            : }
 </pre>
       </td>
     </tr>

@@ -31,17 +31,17 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">104</td>
-            <td class="headerCovTableEntry">104</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntry">92</td>
+            <td class="headerCovTableEntry">103</td>
+            <td class="headerCovTableEntryMed">89.3 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">9</td>
-            <td class="headerCovTableEntry">9</td>
+            <td class="headerCovTableEntry">8</td>
+            <td class="headerCovTableEntry">8</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -99,11 +99,11 @@
 <span class="lineNum">      37 </span><span class="lineCov">          6 :   global = &quot;strict&quot;;</span>
 <span class="lineNum">      38 </span><span class="lineCov">          6 :   if (n == MAX) { undefined_variable_strict = &quot;value&quot;; }</span>
 <a name="39"><span class="lineNum">      39 </span><span class="lineCov">          6 : }</span></a>
-<span class="lineNum">      40 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      40 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      41 </span><span class="lineCov">          6 : function nonstrictCallStrict(n) {</span>
 <span class="lineNum">      42 </span><span class="lineCov">          6 :   strictToBeInlined(n);</span>
 <a name="43"><span class="lineNum">      43 </span><span class="lineCov">          6 : }</span></a>
-<span class="lineNum">      44 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      44 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      45 </span><span class="lineCov">          1 : (function testInlineStrictInNonStrict() {</span>
 <span class="lineNum">      46 </span><span class="lineCov">          1 :   for (var i = 0; i &lt;= MAX; i ++) {</span>
 <span class="lineNum">      47 </span><span class="lineCov">          1 :     try {</span>
@@ -117,19 +117,19 @@
 <span class="lineNum">      55 </span><span class="lineCov">          1 :   }</span>
 <span class="lineNum">      56 </span><span class="lineCov">          1 :   fail(&quot;ReferenceError after MAX iterations&quot;, &quot;no exception&quot;);</span>
 <span class="lineNum">      57 </span><span class="lineCov">          1 : })();</span>
-<span class="lineNum">      58 </span><span class="lineCov">          1 : </span>
-<a name="59"><span class="lineNum">      59 </span><span class="lineCov">          1 : // Attempt to inline non-strict in strict.</span></a>
-<span class="lineNum">      60 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      58 </span><span class="lineNoCov">          0 : </span>
+<a name="59"><span class="lineNum">      59 </span><span class="lineNoCov">          0 : // Attempt to inline non-strict in strict.</span></a>
+<span class="lineNum">      60 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      61 </span><span class="lineCov">          6 : function nonstrictToBeInlined(n) {</span>
 <span class="lineNum">      62 </span><span class="lineCov">          6 :   global = &quot;nonstrict&quot;;</span>
 <span class="lineNum">      63 </span><span class="lineCov">          6 :   if (n == MAX) { undefined_variable_nonstrict = &quot;The nonstrict value&quot;; }</span>
 <a name="64"><span class="lineNum">      64 </span><span class="lineCov">          6 : }</span></a>
-<span class="lineNum">      65 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      65 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      66 </span><span class="lineCov">          6 : function strictCallNonStrict(n) {</span>
 <span class="lineNum">      67 </span><span class="lineCov">          6 :   &quot;use strict&quot;;</span>
 <span class="lineNum">      68 </span><span class="lineCov">          6 :   nonstrictToBeInlined(n);</span>
 <a name="69"><span class="lineNum">      69 </span><span class="lineCov">          6 : }</span></a>
-<span class="lineNum">      70 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      70 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      71 </span><span class="lineCov">          1 : (function testInlineNonStrictInStrict() {</span>
 <span class="lineNum">      72 </span><span class="lineCov">          1 :   for (var i = 0; i &lt;= MAX; i ++) {</span>
 <span class="lineNum">      73 </span><span class="lineCov">          1 :     try {</span>
@@ -141,15 +141,15 @@
 <span class="lineNum">      79 </span><span class="lineCov">          1 :   }</span>
 <span class="lineNum">      80 </span><span class="lineCov">          1 :   assertEquals(&quot;The nonstrict value&quot;, undefined_variable_nonstrict);</span>
 <span class="lineNum">      81 </span><span class="lineCov">          1 : })();</span>
-<span class="lineNum">      82 </span><span class="lineCov">          1 : </span>
-<a name="83"><span class="lineNum">      83 </span><span class="lineCov">          1 : // Optimize strict function.</span></a>
-<span class="lineNum">      84 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      82 </span><span class="lineNoCov">          0 : </span>
+<a name="83"><span class="lineNum">      83 </span><span class="lineNoCov">          0 : // Optimize strict function.</span></a>
+<span class="lineNum">      84 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      85 </span><span class="lineCov">          6 : function strictAssignToUndefined(n) {</span>
 <span class="lineNum">      86 </span><span class="lineCov">          6 :   &quot;use strict&quot;;</span>
 <span class="lineNum">      87 </span><span class="lineCov">          6 :   global = &quot;strict&quot;;</span>
 <span class="lineNum">      88 </span><span class="lineCov">          6 :   if (n == MAX) { undefined_variable_strict_2 = &quot;value&quot;; }</span>
 <a name="89"><span class="lineNum">      89 </span><span class="lineCov">          6 : }</span></a>
-<span class="lineNum">      90 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      90 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      91 </span><span class="lineCov">          1 : (function testOptimizeStrictAssignToUndefined() {</span>
 <span class="lineNum">      92 </span><span class="lineCov">          1 :   for (var i = 0; i &lt;= MAX; i ++) {</span>
 <span class="lineNum">      93 </span><span class="lineCov">          1 :     try {</span>

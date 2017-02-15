@@ -31,17 +31,17 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">155</td>
-            <td class="headerCovTableEntry">155</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntry">112</td>
+            <td class="headerCovTableEntry">121</td>
+            <td class="headerCovTableEntryHi">92.6 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">12</td>
-            <td class="headerCovTableEntry">12</td>
+            <td class="headerCovTableEntry">11</td>
+            <td class="headerCovTableEntry">11</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -107,7 +107,7 @@
 <span class="lineNum">      45 </span><span class="lineCov">         11 :   }</span>
 <span class="lineNum">      46 </span><span class="lineCov">         11 :   throw new Error(&quot;Failed to find function name &quot; + function_name);</span>
 <a name="47"><span class="lineNum">      47 </span><span class="lineCov">         11 : }</span></a>
-<span class="lineNum">      48 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      48 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      49 </span><span class="lineCov">          9 : function TestCase(test_scenario, expected_output) {</span>
 <span class="lineNum">      50 </span><span class="lineCov">          9 :   // Global variable, accessed from eval'd script.</span>
 <a name="51"><span class="lineNum">      51 </span><span class="lineCov">          9 :   test_output = &quot;&quot;;</span></a>
@@ -145,11 +145,11 @@
 <span class="lineNum">      83 </span><span class="lineCov">         10 :       test_output += 'F';</span>
 <span class="lineNum">      84 </span><span class="lineCov">         10 :       return E();</span>
 <span class="lineNum">      85 </span><span class="lineCov">         10 :     }</span>
-<span class="lineNum">      86 </span><span class="lineCov">          9 :     return F();</span>
-<span class="lineNum">      87 </span><span class="lineCov">          9 :   }</span>
-<span class="lineNum">      88 </span><span class="lineCov">          9 : </span>
-<a name="89"><span class="lineNum">      89 </span><span class="lineCov">          9 :   var scenario_pos = 0;</span></a>
-<span class="lineNum">      90 </span><span class="lineCov">          9 : </span>
+<span class="lineNum">      86 </span><span class="lineNoCov">          0 :     return F();</span>
+<span class="lineNum">      87 </span><span class="lineNoCov">          0 :   }</span>
+<span class="lineNum">      88 </span><span class="lineNoCov">          0 : </span>
+<a name="89"><span class="lineNum">      89 </span><span class="lineNoCov">          0 :   var scenario_pos = 0;</span></a>
+<span class="lineNum">      90 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      91 </span><span class="lineCov">         20 :   function DebuggerStatementHandler(exec_state) {</span>
 <span class="lineNum">      92 </span><span class="lineCov">         20 :     while (true) {</span>
 <span class="lineNum">      93 </span><span class="lineCov">         20 :       assertTrue(scenario_pos &lt; test_scenario.length);</span>
@@ -164,9 +164,9 @@
 <span class="lineNum">     102 </span><span class="lineCov">         20 :           throw new Error(error);</span>
 <span class="lineNum">     103 </span><span class="lineCov">         20 :     }</span>
 <span class="lineNum">     104 </span><span class="lineCov">         20 :   }</span>
-<span class="lineNum">     105 </span><span class="lineCov">          9 : </span>
-<a name="106"><span class="lineNum">     106 </span><span class="lineCov">          9 :   var saved_exception = null;</span></a>
-<span class="lineNum">     107 </span><span class="lineCov">          9 : </span>
+<span class="lineNum">     105 </span><span class="lineNoCov">          0 : </span>
+<a name="106"><span class="lineNum">     106 </span><span class="lineNoCov">          0 :   var saved_exception = null;</span></a>
+<span class="lineNum">     107 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     108 </span><span class="lineCov">         20 :   function listener(event, exec_state, event_data, data) {</span>
 <span class="lineNum">     109 </span><span class="lineCov">         20 :     if (saved_exception != null) {</span>
 <span class="lineNum">     110 </span><span class="lineCov">         20 :       return;</span>
@@ -181,39 +181,39 @@
 <span class="lineNum">     119 </span><span class="lineCov">         20 :       print(&quot;Other: &quot; + event);</span>
 <span class="lineNum">     120 </span><span class="lineCov">         20 :     }</span>
 <span class="lineNum">     121 </span><span class="lineCov">         20 :   }</span>
-<span class="lineNum">     122 </span><span class="lineCov">          9 : </span>
-<span class="lineNum">     123 </span><span class="lineCov">          9 :   Debug.setListener(listener);</span>
-<span class="lineNum">     124 </span><span class="lineCov">          9 :   assertEquals(&quot;Capybara&quot;, TestCode());</span>
-<span class="lineNum">     125 </span><span class="lineCov">          9 :   Debug.setListener(null);</span>
-<span class="lineNum">     126 </span><span class="lineCov">          9 : </span>
-<span class="lineNum">     127 </span><span class="lineCov">          9 :   if (saved_exception) {</span>
-<span class="lineNum">     128 </span><span class="lineCov">          9 :     print(&quot;Exception: &quot; + saved_exception);</span>
-<span class="lineNum">     129 </span><span class="lineCov">          9 :     print(&quot;Stack: &quot; + saved_exception.stack);</span>
-<span class="lineNum">     130 </span><span class="lineCov">          9 :     assertUnreachable();</span>
-<span class="lineNum">     131 </span><span class="lineCov">          9 :   }</span>
-<span class="lineNum">     132 </span><span class="lineCov">          9 : </span>
-<span class="lineNum">     133 </span><span class="lineCov">          9 :   print(test_output);</span>
-<span class="lineNum">     134 </span><span class="lineCov">          9 : </span>
-<span class="lineNum">     135 </span><span class="lineCov">          9 :   assertEquals(expected_output, test_output);</span>
-<span class="lineNum">     136 </span><span class="lineCov">          9 : }</span>
-<span class="lineNum">     137 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     138 </span><span class="lineCov">          1 : TestCase('0==', &quot;FEDCBA=A=&quot;);</span>
-<span class="lineNum">     139 </span><span class="lineCov">          1 : TestCase('1==', &quot;FEDCBA=BA=&quot;);</span>
-<span class="lineNum">     140 </span><span class="lineCov">          1 : TestCase('2==', &quot;FEDCBA=CBA=&quot;);</span>
-<span class="lineNum">     141 </span><span class="lineCov">          1 : TestCase('3==', &quot;FEDCBA=DCBA=&quot;);</span>
-<span class="lineNum">     142 </span><span class="lineCov">          1 : TestCase('4==', &quot;FEDCBA=EDCBA=&quot;);</span>
-<span class="lineNum">     143 </span><span class="lineCov">          1 : TestCase('5==', &quot;FEDCBA=FEDCBA=&quot;);</span>
-<span class="lineNum">     144 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     145 </span><span class="lineCov">          1 : TestCase('=', &quot;FEDCBA=&quot;);</span>
-<span class="lineNum">     146 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     147 </span><span class="lineCov">          1 : TestCase('C==', &quot;FEDCBA=CBA=&quot;);</span>
-<span class="lineNum">     148 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     149 </span><span class="lineCov">          1 : TestCase('B=C=A=D==', &quot;FEDCBA=BA=CBA=A=DCBA=&quot;);</span>
-<span class="lineNum">     150 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     151 </span><span class="lineCov">          1 : // Successive restarts don't work now and require additional fix.</span>
-<span class="lineNum">     152 </span><span class="lineCov">          1 : //TestCase('BCDE==', &quot;FEDCBA=EDCBA=&quot;);</span>
-<span class="lineNum">     153 </span><span class="lineCov">          1 : //TestCase('BC=BCDE==', &quot;FEDCBA=CBA=EDCBA=&quot;);</span>
-<span class="lineNum">     154 </span><span class="lineCov">          1 : //TestCase('EF==', &quot;FEDCBA=FEDCBA=&quot;);</span>
+<span class="lineNum">     122 </span>            : 
+<span class="lineNum">     123 </span>            :   Debug.setListener(listener);
+<span class="lineNum">     124 </span>            :   assertEquals(&quot;Capybara&quot;, TestCode());
+<span class="lineNum">     125 </span>            :   Debug.setListener(null);
+<span class="lineNum">     126 </span>            : 
+<span class="lineNum">     127 </span>            :   if (saved_exception) {
+<span class="lineNum">     128 </span>            :     print(&quot;Exception: &quot; + saved_exception);
+<span class="lineNum">     129 </span>            :     print(&quot;Stack: &quot; + saved_exception.stack);
+<span class="lineNum">     130 </span>            :     assertUnreachable();
+<span class="lineNum">     131 </span>            :   }
+<span class="lineNum">     132 </span>            : 
+<span class="lineNum">     133 </span>            :   print(test_output);
+<span class="lineNum">     134 </span>            : 
+<span class="lineNum">     135 </span>            :   assertEquals(expected_output, test_output);
+<span class="lineNum">     136 </span>            : }
+<span class="lineNum">     137 </span>            : 
+<span class="lineNum">     138 </span>            : TestCase('0==', &quot;FEDCBA=A=&quot;);
+<span class="lineNum">     139 </span>            : TestCase('1==', &quot;FEDCBA=BA=&quot;);
+<span class="lineNum">     140 </span>            : TestCase('2==', &quot;FEDCBA=CBA=&quot;);
+<span class="lineNum">     141 </span>            : TestCase('3==', &quot;FEDCBA=DCBA=&quot;);
+<span class="lineNum">     142 </span>            : TestCase('4==', &quot;FEDCBA=EDCBA=&quot;);
+<span class="lineNum">     143 </span>            : TestCase('5==', &quot;FEDCBA=FEDCBA=&quot;);
+<span class="lineNum">     144 </span>            : 
+<span class="lineNum">     145 </span>            : TestCase('=', &quot;FEDCBA=&quot;);
+<span class="lineNum">     146 </span>            : 
+<span class="lineNum">     147 </span>            : TestCase('C==', &quot;FEDCBA=CBA=&quot;);
+<span class="lineNum">     148 </span>            : 
+<span class="lineNum">     149 </span>            : TestCase('B=C=A=D==', &quot;FEDCBA=BA=CBA=A=DCBA=&quot;);
+<span class="lineNum">     150 </span>            : 
+<span class="lineNum">     151 </span>            : // Successive restarts don't work now and require additional fix.
+<span class="lineNum">     152 </span>            : //TestCase('BCDE==', &quot;FEDCBA=EDCBA=&quot;);
+<span class="lineNum">     153 </span>            : //TestCase('BC=BCDE==', &quot;FEDCBA=CBA=EDCBA=&quot;);
+<span class="lineNum">     154 </span>            : //TestCase('EF==', &quot;FEDCBA=FEDCBA=&quot;);
 </pre>
       </td>
     </tr>

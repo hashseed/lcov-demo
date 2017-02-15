@@ -31,17 +31,17 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">64</td>
-            <td class="headerCovTableEntry">64</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntry">41</td>
+            <td class="headerCovTableEntry">45</td>
+            <td class="headerCovTableEntryHi">91.1 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">4</td>
-            <td class="headerCovTableEntry">4</td>
+            <td class="headerCovTableEntry">3</td>
+            <td class="headerCovTableEntry">3</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr><td><img src="../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -92,10 +92,10 @@
 <span class="lineNum">      30 </span><span class="lineCov">          4 : var mapFn = function(value, idx) {</span>
 <span class="lineNum">      31 </span><span class="lineCov">          4 :   args.push(arguments);</span>
 <span class="lineNum">      32 </span><span class="lineCov">          4 : };</span>
-<span class="lineNum">      33 </span><span class="lineCov">          2 : var items = {};</span>
-<span class="lineNum">      34 </span><span class="lineCov">          2 : var nextResult = firstResult;</span>
-<a name="35"><span class="lineNum">      35 </span><span class="lineCov">          2 : var nextNextResult = secondResult;</span></a>
-<span class="lineNum">      36 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      33 </span><span class="lineNoCov">          0 : var items = {};</span>
+<span class="lineNum">      34 </span><span class="lineNoCov">          0 : var nextResult = firstResult;</span>
+<a name="35"><span class="lineNum">      35 </span><span class="lineNoCov">          0 : var nextNextResult = secondResult;</span></a>
+<span class="lineNum">      36 </span><span class="lineNoCov">          0 : </span>
 <a name="37"><span class="lineNum">      37 </span><span class="lineCov">          2 : items[Symbol.iterator] = function() {</span></a>
 <span class="lineNum">      38 </span><span class="lineCov">          2 :   return {</span>
 <span class="lineNum">      39 </span><span class="lineCov">          6 :     next: function() {</span>
@@ -105,24 +105,24 @@
 <span class="lineNum">      43 </span><span class="lineCov">          6 : </span>
 <span class="lineNum">      44 </span><span class="lineCov">          6 :       return result;</span>
 <span class="lineNum">      45 </span><span class="lineCov">          6 :     }</span>
-<span class="lineNum">      46 </span><span class="lineCov">          2 :   };</span>
-<span class="lineNum">      47 </span><span class="lineCov">          2 : };</span>
-<span class="lineNum">      48 </span><span class="lineCov">          2 : </span>
-<span class="lineNum">      49 </span><span class="lineCov">          2 : Array.from(items, mapFn);</span>
-<span class="lineNum">      50 </span><span class="lineCov">          2 : </span>
-<span class="lineNum">      51 </span><span class="lineCov">          2 : assert.sameValue(args.length, 2, 'Iteration count');</span>
-<span class="lineNum">      52 </span><span class="lineCov">          2 : </span>
-<span class="lineNum">      53 </span><span class="lineCov">          2 : assert.sameValue(args[0].length, 2, 'First iteration: arguments length');</span>
-<span class="lineNum">      54 </span><span class="lineCov">          2 : assert.sameValue(</span>
-<span class="lineNum">      55 </span><span class="lineCov">          2 :   args[0][0], firstResult.value, 'First iteration: first argument'</span>
-<span class="lineNum">      56 </span><span class="lineCov">          2 : );</span>
-<span class="lineNum">      57 </span><span class="lineCov">          2 : assert.sameValue(args[0][1], 0, 'First iteration: second argument');</span>
-<span class="lineNum">      58 </span><span class="lineCov">          2 : </span>
-<span class="lineNum">      59 </span><span class="lineCov">          2 : assert.sameValue(args[1].length, 2, 'Second iteration: arguments length');</span>
-<span class="lineNum">      60 </span><span class="lineCov">          2 : assert.sameValue(</span>
-<span class="lineNum">      61 </span><span class="lineCov">          2 :   args[1][0], secondResult.value, 'Second iteration: first argument'</span>
-<span class="lineNum">      62 </span><span class="lineCov">          2 : );</span>
-<span class="lineNum">      63 </span><span class="lineCov">          2 : assert.sameValue(args[1][1], 1, 'Second iteration: second argument');</span>
+<span class="lineNum">      46 </span>            :   };
+<span class="lineNum">      47 </span>            : };
+<span class="lineNum">      48 </span>            : 
+<span class="lineNum">      49 </span>            : Array.from(items, mapFn);
+<span class="lineNum">      50 </span>            : 
+<span class="lineNum">      51 </span>            : assert.sameValue(args.length, 2, 'Iteration count');
+<span class="lineNum">      52 </span>            : 
+<span class="lineNum">      53 </span>            : assert.sameValue(args[0].length, 2, 'First iteration: arguments length');
+<span class="lineNum">      54 </span>            : assert.sameValue(
+<span class="lineNum">      55 </span>            :   args[0][0], firstResult.value, 'First iteration: first argument'
+<span class="lineNum">      56 </span>            : );
+<span class="lineNum">      57 </span>            : assert.sameValue(args[0][1], 0, 'First iteration: second argument');
+<span class="lineNum">      58 </span>            : 
+<span class="lineNum">      59 </span>            : assert.sameValue(args[1].length, 2, 'Second iteration: arguments length');
+<span class="lineNum">      60 </span>            : assert.sameValue(
+<span class="lineNum">      61 </span>            :   args[1][0], secondResult.value, 'Second iteration: first argument'
+<span class="lineNum">      62 </span>            : );
+<span class="lineNum">      63 </span>            : assert.sameValue(args[1][1], 1, 'Second iteration: second argument');
 </pre>
       </td>
     </tr>

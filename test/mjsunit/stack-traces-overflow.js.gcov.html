@@ -31,17 +31,17 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">159</td>
-            <td class="headerCovTableEntry">159</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntry">43</td>
+            <td class="headerCovTableEntry">86</td>
+            <td class="headerCovTableEntryLo">50.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">6</td>
-            <td class="headerCovTableEntry">6</td>
+            <td class="headerCovTableEntry">5</td>
+            <td class="headerCovTableEntry">5</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -89,56 +89,56 @@
 <span class="lineNum">      27 </span><span class="lineCov">          1 : </span>
 <a name="28"><span class="lineNum">      28 </span><span class="lineCov">          1 : // Flags: --stack-size=100</span></a>
 <span class="lineNum">      29 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      30 </span><span class="lineCov">       1179 : function overflow() {</span>
-<span class="lineNum">      31 </span><span class="lineCov">       1179 :   var a, b, c, d, e;  // Allocates some locals on the function's stack frame.</span>
-<a name="32"><span class="lineNum">      32 </span><span class="lineCov">       1179 :   overflow();</span></a>
-<a name="33"><span class="lineNum">      33 </span><span class="lineCov">       1179 : }</span></a>
-<a name="34"><span class="lineNum">      34 </span><span class="lineCov">      20383 : function rec1(a) { rec1(a+1); }</span></a>
-<span class="lineNum">      35 </span><span class="lineCov">        927 : function rec2(a) { rec3(a+1); }</span>
-<span class="lineNum">      36 </span><span class="lineCov">        926 : function rec3(a) { rec2(a+1); }</span>
-<span class="lineNum">      37 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      38 </span><span class="lineCov">          1 : // Test stack trace has correct function location at top of the stack.</span>
-<span class="lineNum">      39 </span><span class="lineCov">          1 : try {</span>
-<span class="lineNum">      40 </span><span class="lineCov">          1 :   overflow();</span>
-<span class="lineNum">      41 </span><span class="lineCov">          1 : } catch (e) {</span>
-<span class="lineNum">      42 </span><span class="lineCov">          1 :   var first_frame = e.stack.split(&quot;\n&quot;)[1]</span>
-<span class="lineNum">      43 </span><span class="lineCov">          1 :   // The overflow can happen when pushing the arguments (in interpreter) or when</span>
-<span class="lineNum">      44 </span><span class="lineCov">          1 :   // the new function execution is starting. So the stack trace could either</span>
-<span class="lineNum">      45 </span><span class="lineCov">          1 :   // point to start of the function (stack-traces-overflow.js30:18) or to the</span>
-<span class="lineNum">      46 </span><span class="lineCov">          1 :   // location of call (stack-traces-overflow.js32:3).</span>
-<span class="lineNum">      47 </span><span class="lineCov">          1 :   assertTrue((first_frame.indexOf(&quot;stack-traces-overflow.js:30:18&quot;) &gt; 0) ||</span>
-<span class="lineNum">      48 </span><span class="lineCov">          1 :              (first_frame.indexOf(&quot;stack-traces-overflow.js:32:3&quot;) &gt; 0) );</span>
-<span class="lineNum">      49 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">      50 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      51 </span><span class="lineCov">          1 : // Test stack trace getter and setter.</span>
-<span class="lineNum">      52 </span><span class="lineCov">          1 : try {</span>
-<span class="lineNum">      53 </span><span class="lineCov">          1 :   rec1(0);</span>
-<span class="lineNum">      54 </span><span class="lineCov">          1 : } catch (e) {</span>
-<span class="lineNum">      55 </span><span class="lineCov">          1 :   assertTrue(e.stack.indexOf(&quot;rec1&quot;) &gt; 0);</span>
-<span class="lineNum">      56 </span><span class="lineCov">          1 :   e.stack = &quot;123&quot;;</span>
-<span class="lineNum">      57 </span><span class="lineCov">          1 :   assertEquals(&quot;123&quot;, e.stack);</span>
-<span class="lineNum">      58 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">      59 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      60 </span><span class="lineCov">          1 : // Test setter w/o calling the getter.</span>
-<span class="lineNum">      61 </span><span class="lineCov">          1 : try {</span>
-<span class="lineNum">      62 </span><span class="lineCov">          1 :   rec2(0);</span>
-<span class="lineNum">      63 </span><span class="lineCov">          1 : } catch (e) {</span>
-<span class="lineNum">      64 </span><span class="lineCov">          1 :   assertTrue(e.stack.indexOf(&quot;rec2&quot;) &gt; 0);</span>
-<span class="lineNum">      65 </span><span class="lineCov">          1 :   assertTrue(e.stack.indexOf(&quot;rec3&quot;) &gt; 0);</span>
-<span class="lineNum">      66 </span><span class="lineCov">          1 :   e.stack = &quot;123&quot;;</span>
-<span class="lineNum">      67 </span><span class="lineCov">          1 :   assertEquals(&quot;123&quot;, e.stack);</span>
-<span class="lineNum">      68 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">      69 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      70 </span><span class="lineCov">          1 : // Test getter to make sure setter does not affect the boilerplate.</span>
-<span class="lineNum">      71 </span><span class="lineCov">          1 : try {</span>
-<span class="lineNum">      72 </span><span class="lineCov">          1 :   rec1(0);</span>
-<span class="lineNum">      73 </span><span class="lineCov">          1 : } catch (e) {</span>
-<span class="lineNum">      74 </span><span class="lineCov">          1 :   assertTrue(e.stack.indexOf(&quot;rec1&quot;) &gt; 0);</span>
-<span class="lineNum">      75 </span><span class="lineCov">          1 :   assertInstanceof(e, RangeError);</span>
-<span class="lineNum">      76 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">      77 </span><span class="lineCov">          1 : </span>
-<a name="78"><span class="lineNum">      78 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">      79 </span><span class="lineCov">          1 : // Check setting/getting stack property on the prototype chain.</span>
+<span class="lineNum">      30 </span><span class="lineCov">       1177 : function overflow() {</span>
+<span class="lineNum">      31 </span><span class="lineCov">       1177 :   var a, b, c, d, e;  // Allocates some locals on the function's stack frame.</span>
+<a name="32"><span class="lineNum">      32 </span><span class="lineCov">       1177 :   overflow();</span></a>
+<a name="33"><span class="lineNum">      33 </span><span class="lineCov">       1177 : }</span></a>
+<a name="34"><span class="lineNum">      34 </span><span class="lineCov">      20350 : function rec1(a) { rec1(a+1); }</span></a>
+<span class="lineNum">      35 </span><span class="lineCov">        925 : function rec2(a) { rec3(a+1); }</span>
+<span class="lineNum">      36 </span><span class="lineCov">        925 : function rec3(a) { rec2(a+1); }</span>
+<span class="lineNum">      37 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      38 </span><span class="lineNoCov">          0 : // Test stack trace has correct function location at top of the stack.</span>
+<span class="lineNum">      39 </span><span class="lineNoCov">          0 : try {</span>
+<span class="lineNum">      40 </span><span class="lineNoCov">          0 :   overflow();</span>
+<span class="lineNum">      41 </span><span class="lineNoCov">          0 : } catch (e) {</span>
+<span class="lineNum">      42 </span><span class="lineNoCov">          0 :   var first_frame = e.stack.split(&quot;\n&quot;)[1]</span>
+<span class="lineNum">      43 </span><span class="lineNoCov">          0 :   // The overflow can happen when pushing the arguments (in interpreter) or when</span>
+<span class="lineNum">      44 </span><span class="lineNoCov">          0 :   // the new function execution is starting. So the stack trace could either</span>
+<span class="lineNum">      45 </span><span class="lineNoCov">          0 :   // point to start of the function (stack-traces-overflow.js30:18) or to the</span>
+<span class="lineNum">      46 </span><span class="lineNoCov">          0 :   // location of call (stack-traces-overflow.js32:3).</span>
+<span class="lineNum">      47 </span><span class="lineNoCov">          0 :   assertTrue((first_frame.indexOf(&quot;stack-traces-overflow.js:30:18&quot;) &gt; 0) ||</span>
+<span class="lineNum">      48 </span><span class="lineNoCov">          0 :              (first_frame.indexOf(&quot;stack-traces-overflow.js:32:3&quot;) &gt; 0) );</span>
+<span class="lineNum">      49 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      50 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      51 </span><span class="lineNoCov">          0 : // Test stack trace getter and setter.</span>
+<span class="lineNum">      52 </span><span class="lineNoCov">          0 : try {</span>
+<span class="lineNum">      53 </span><span class="lineNoCov">          0 :   rec1(0);</span>
+<span class="lineNum">      54 </span><span class="lineNoCov">          0 : } catch (e) {</span>
+<span class="lineNum">      55 </span><span class="lineNoCov">          0 :   assertTrue(e.stack.indexOf(&quot;rec1&quot;) &gt; 0);</span>
+<span class="lineNum">      56 </span><span class="lineNoCov">          0 :   e.stack = &quot;123&quot;;</span>
+<span class="lineNum">      57 </span><span class="lineNoCov">          0 :   assertEquals(&quot;123&quot;, e.stack);</span>
+<span class="lineNum">      58 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      59 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      60 </span><span class="lineNoCov">          0 : // Test setter w/o calling the getter.</span>
+<span class="lineNum">      61 </span><span class="lineNoCov">          0 : try {</span>
+<span class="lineNum">      62 </span><span class="lineNoCov">          0 :   rec2(0);</span>
+<span class="lineNum">      63 </span><span class="lineNoCov">          0 : } catch (e) {</span>
+<span class="lineNum">      64 </span><span class="lineNoCov">          0 :   assertTrue(e.stack.indexOf(&quot;rec2&quot;) &gt; 0);</span>
+<span class="lineNum">      65 </span><span class="lineNoCov">          0 :   assertTrue(e.stack.indexOf(&quot;rec3&quot;) &gt; 0);</span>
+<span class="lineNum">      66 </span><span class="lineNoCov">          0 :   e.stack = &quot;123&quot;;</span>
+<span class="lineNum">      67 </span><span class="lineNoCov">          0 :   assertEquals(&quot;123&quot;, e.stack);</span>
+<span class="lineNum">      68 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      69 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      70 </span><span class="lineNoCov">          0 : // Test getter to make sure setter does not affect the boilerplate.</span>
+<span class="lineNum">      71 </span><span class="lineNoCov">          0 : try {</span>
+<span class="lineNum">      72 </span><span class="lineNoCov">          0 :   rec1(0);</span>
+<span class="lineNum">      73 </span><span class="lineNoCov">          0 : } catch (e) {</span>
+<span class="lineNum">      74 </span><span class="lineNoCov">          0 :   assertTrue(e.stack.indexOf(&quot;rec1&quot;) &gt; 0);</span>
+<span class="lineNum">      75 </span><span class="lineNoCov">          0 :   assertInstanceof(e, RangeError);</span>
+<span class="lineNum">      76 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      77 </span><span class="lineNoCov">          0 : </span>
+<a name="78"><span class="lineNum">      78 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">      79 </span><span class="lineNoCov">          0 : // Check setting/getting stack property on the prototype chain.</span>
 <span class="lineNum">      80 </span><span class="lineCov">          3 : function testErrorPrototype(prototype) {</span>
 <span class="lineNum">      81 </span><span class="lineCov">          3 :   var object = {};</span>
 <span class="lineNum">      82 </span><span class="lineCov">          3 :   object.__proto__ = prototype;</span>
@@ -146,78 +146,78 @@
 <span class="lineNum">      84 </span><span class="lineCov">          3 :   assertTrue(prototype.stack != object.stack);</span>
 <span class="lineNum">      85 </span><span class="lineCov">          3 :   assertEquals(&quot;123&quot;, object.stack);</span>
 <span class="lineNum">      86 </span><span class="lineCov">          3 : }</span>
-<span class="lineNum">      87 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      88 </span><span class="lineCov">          1 : try {</span>
-<span class="lineNum">      89 </span><span class="lineCov">          1 :   rec1(0);</span>
-<span class="lineNum">      90 </span><span class="lineCov">          1 : } catch (e) {</span>
-<span class="lineNum">      91 </span><span class="lineCov">          1 :   e.stack;</span>
-<span class="lineNum">      92 </span><span class="lineCov">          1 :   testErrorPrototype(e);</span>
-<span class="lineNum">      93 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">      94 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      95 </span><span class="lineCov">          1 : try {</span>
-<span class="lineNum">      96 </span><span class="lineCov">          1 :   rec1(0);</span>
-<span class="lineNum">      97 </span><span class="lineCov">          1 : } catch (e) {</span>
-<span class="lineNum">      98 </span><span class="lineCov">          1 :   testErrorPrototype(e);</span>
-<span class="lineNum">      99 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">     100 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     101 </span><span class="lineCov">          1 : try {</span>
-<span class="lineNum">     102 </span><span class="lineCov">          1 :   throw new Error();</span>
-<span class="lineNum">     103 </span><span class="lineCov">          1 : } catch (e) {</span>
-<span class="lineNum">     104 </span><span class="lineCov">          1 :   testErrorPrototype(e);</span>
-<span class="lineNum">     105 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">     106 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     107 </span><span class="lineCov">          1 : Error.stackTraceLimit = 3;</span>
-<span class="lineNum">     108 </span><span class="lineCov">          1 : try {</span>
-<span class="lineNum">     109 </span><span class="lineCov">          1 :   rec1(0);</span>
-<span class="lineNum">     110 </span><span class="lineCov">          1 : } catch (e) {</span>
-<span class="lineNum">     111 </span><span class="lineCov">          1 :   assertEquals(4, e.stack.split('\n').length);</span>
-<span class="lineNum">     112 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">     113 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     114 </span><span class="lineCov">          1 : Error.stackTraceLimit = 25.9;</span>
-<span class="lineNum">     115 </span><span class="lineCov">          1 : try {</span>
-<span class="lineNum">     116 </span><span class="lineCov">          1 :   rec1(0);</span>
-<span class="lineNum">     117 </span><span class="lineCov">          1 : } catch (e) {</span>
-<span class="lineNum">     118 </span><span class="lineCov">          1 :   assertEquals(26, e.stack.split('\n').length);</span>
-<span class="lineNum">     119 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">     120 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     121 </span><span class="lineCov">          1 : Error.stackTraceLimit = NaN;</span>
-<span class="lineNum">     122 </span><span class="lineCov">          1 : try {</span>
-<span class="lineNum">     123 </span><span class="lineCov">          1 :   rec1(0);</span>
-<span class="lineNum">     124 </span><span class="lineCov">          1 : } catch (e) {</span>
-<span class="lineNum">     125 </span><span class="lineCov">          1 :   assertEquals(1, e.stack.split('\n').length);</span>
-<span class="lineNum">     126 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">     127 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     128 </span><span class="lineCov">          1 : // A limit outside the range of integers.</span>
-<span class="lineNum">     129 </span><span class="lineCov">          1 : Error.stackTraceLimit = 1e12;</span>
-<span class="lineNum">     130 </span><span class="lineCov">          1 : try {</span>
-<span class="lineNum">     131 </span><span class="lineCov">          1 :   rec1(0);</span>
-<span class="lineNum">     132 </span><span class="lineCov">          1 : } catch (e) {</span>
-<span class="lineNum">     133 </span><span class="lineCov">          1 :   assertTrue(e.stack.split('\n').length &gt; 100);</span>
-<span class="lineNum">     134 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">     135 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     136 </span><span class="lineCov">          1 : Error.stackTraceLimit = Infinity;</span>
-<span class="lineNum">     137 </span><span class="lineCov">          1 : try {</span>
-<span class="lineNum">     138 </span><span class="lineCov">          1 :   rec1(0);</span>
-<span class="lineNum">     139 </span><span class="lineCov">          1 : } catch (e) {</span>
-<span class="lineNum">     140 </span><span class="lineCov">          1 :   assertTrue(e.stack.split('\n').length &gt; 100);</span>
-<span class="lineNum">     141 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">     142 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     143 </span><span class="lineCov">          1 : Error.stackTraceLimit = &quot;not a number&quot;;</span>
-<span class="lineNum">     144 </span><span class="lineCov">          1 : try {</span>
-<span class="lineNum">     145 </span><span class="lineCov">          1 :   rec1(0);</span>
-<span class="lineNum">     146 </span><span class="lineCov">          1 : } catch (e) {</span>
-<span class="lineNum">     147 </span><span class="lineCov">          1 :   assertEquals(undefined, e.stack);</span>
-<span class="lineNum">     148 </span><span class="lineCov">          1 :   e.stack = &quot;abc&quot;;</span>
-<span class="lineNum">     149 </span><span class="lineCov">          1 :   assertEquals(&quot;abc&quot;, e.stack);</span>
-<span class="lineNum">     150 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">     151 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     152 </span><span class="lineCov">          1 : Error.stackTraceLimit = 3;</span>
-<span class="lineNum">     153 </span><span class="lineCov">          1 : Error = &quot;&quot;;  // Overwrite Error in the global object.</span>
-<span class="lineNum">     154 </span><span class="lineCov">          1 : try {</span>
-<span class="lineNum">     155 </span><span class="lineCov">          1 :   rec1(0);</span>
-<span class="lineNum">     156 </span><span class="lineCov">          1 : } catch (e) {</span>
-<span class="lineNum">     157 </span><span class="lineCov">          1 :   assertEquals(4, e.stack.split('\n').length);</span>
-<span class="lineNum">     158 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      87 </span>            : 
+<span class="lineNum">      88 </span>            : try {
+<span class="lineNum">      89 </span>            :   rec1(0);
+<span class="lineNum">      90 </span>            : } catch (e) {
+<span class="lineNum">      91 </span>            :   e.stack;
+<span class="lineNum">      92 </span>            :   testErrorPrototype(e);
+<span class="lineNum">      93 </span>            : }
+<span class="lineNum">      94 </span>            : 
+<span class="lineNum">      95 </span>            : try {
+<span class="lineNum">      96 </span>            :   rec1(0);
+<span class="lineNum">      97 </span>            : } catch (e) {
+<span class="lineNum">      98 </span>            :   testErrorPrototype(e);
+<span class="lineNum">      99 </span>            : }
+<span class="lineNum">     100 </span>            : 
+<span class="lineNum">     101 </span>            : try {
+<span class="lineNum">     102 </span>            :   throw new Error();
+<span class="lineNum">     103 </span>            : } catch (e) {
+<span class="lineNum">     104 </span>            :   testErrorPrototype(e);
+<span class="lineNum">     105 </span>            : }
+<span class="lineNum">     106 </span>            : 
+<span class="lineNum">     107 </span>            : Error.stackTraceLimit = 3;
+<span class="lineNum">     108 </span>            : try {
+<span class="lineNum">     109 </span>            :   rec1(0);
+<span class="lineNum">     110 </span>            : } catch (e) {
+<span class="lineNum">     111 </span>            :   assertEquals(4, e.stack.split('\n').length);
+<span class="lineNum">     112 </span>            : }
+<span class="lineNum">     113 </span>            : 
+<span class="lineNum">     114 </span>            : Error.stackTraceLimit = 25.9;
+<span class="lineNum">     115 </span>            : try {
+<span class="lineNum">     116 </span>            :   rec1(0);
+<span class="lineNum">     117 </span>            : } catch (e) {
+<span class="lineNum">     118 </span>            :   assertEquals(26, e.stack.split('\n').length);
+<span class="lineNum">     119 </span>            : }
+<span class="lineNum">     120 </span>            : 
+<span class="lineNum">     121 </span>            : Error.stackTraceLimit = NaN;
+<span class="lineNum">     122 </span>            : try {
+<span class="lineNum">     123 </span>            :   rec1(0);
+<span class="lineNum">     124 </span>            : } catch (e) {
+<span class="lineNum">     125 </span>            :   assertEquals(1, e.stack.split('\n').length);
+<span class="lineNum">     126 </span>            : }
+<span class="lineNum">     127 </span>            : 
+<span class="lineNum">     128 </span>            : // A limit outside the range of integers.
+<span class="lineNum">     129 </span>            : Error.stackTraceLimit = 1e12;
+<span class="lineNum">     130 </span>            : try {
+<span class="lineNum">     131 </span>            :   rec1(0);
+<span class="lineNum">     132 </span>            : } catch (e) {
+<span class="lineNum">     133 </span>            :   assertTrue(e.stack.split('\n').length &gt; 100);
+<span class="lineNum">     134 </span>            : }
+<span class="lineNum">     135 </span>            : 
+<span class="lineNum">     136 </span>            : Error.stackTraceLimit = Infinity;
+<span class="lineNum">     137 </span>            : try {
+<span class="lineNum">     138 </span>            :   rec1(0);
+<span class="lineNum">     139 </span>            : } catch (e) {
+<span class="lineNum">     140 </span>            :   assertTrue(e.stack.split('\n').length &gt; 100);
+<span class="lineNum">     141 </span>            : }
+<span class="lineNum">     142 </span>            : 
+<span class="lineNum">     143 </span>            : Error.stackTraceLimit = &quot;not a number&quot;;
+<span class="lineNum">     144 </span>            : try {
+<span class="lineNum">     145 </span>            :   rec1(0);
+<span class="lineNum">     146 </span>            : } catch (e) {
+<span class="lineNum">     147 </span>            :   assertEquals(undefined, e.stack);
+<span class="lineNum">     148 </span>            :   e.stack = &quot;abc&quot;;
+<span class="lineNum">     149 </span>            :   assertEquals(&quot;abc&quot;, e.stack);
+<span class="lineNum">     150 </span>            : }
+<span class="lineNum">     151 </span>            : 
+<span class="lineNum">     152 </span>            : Error.stackTraceLimit = 3;
+<span class="lineNum">     153 </span>            : Error = &quot;&quot;;  // Overwrite Error in the global object.
+<span class="lineNum">     154 </span>            : try {
+<span class="lineNum">     155 </span>            :   rec1(0);
+<span class="lineNum">     156 </span>            : } catch (e) {
+<span class="lineNum">     157 </span>            :   assertEquals(4, e.stack.split('\n').length);
+<span class="lineNum">     158 </span>            : }
 </pre>
       </td>
     </tr>

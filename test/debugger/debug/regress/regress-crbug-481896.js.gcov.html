@@ -31,17 +31,17 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">56</td>
-            <td class="headerCovTableEntry">56</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntry">24</td>
+            <td class="headerCovTableEntry">32</td>
+            <td class="headerCovTableEntryMed">75.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">4</td>
-            <td class="headerCovTableEntry">4</td>
+            <td class="headerCovTableEntry">3</td>
+            <td class="headerCovTableEntry">3</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr><td><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -68,11 +68,11 @@
 <span class="lineNum">       6 </span><span class="lineCov">          1 : function static() {</span>
 <span class="lineNum">       7 </span><span class="lineCov">          1 :   print(&quot;&gt; static&quot;);  // Break</span>
 <span class="lineNum">       8 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">       9 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      10 </span><span class="lineCov">          1 : var Debug = debug.Debug;</span>
-<span class="lineNum">      11 </span><span class="lineCov">          1 : var exception = null;</span>
-<a name="12"><span class="lineNum">      12 </span><span class="lineCov">          1 : var break_count = 0;</span></a>
-<span class="lineNum">      13 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">       9 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      10 </span><span class="lineNoCov">          0 : var Debug = debug.Debug;</span>
+<span class="lineNum">      11 </span><span class="lineNoCov">          0 : var exception = null;</span>
+<a name="12"><span class="lineNum">      12 </span><span class="lineNoCov">          0 : var break_count = 0;</span></a>
+<span class="lineNum">      13 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      14 </span><span class="lineCov">          3 : function listener(event, exec_state, event_data, data) {</span>
 <span class="lineNum">      15 </span><span class="lineCov">          3 :   if (event != Debug.DebugEvent.Break) return;</span>
 <span class="lineNum">      16 </span><span class="lineCov">          3 :   try {</span>
@@ -83,38 +83,38 @@
 <span class="lineNum">      21 </span><span class="lineCov">          3 :     exception = e;</span>
 <span class="lineNum">      22 </span><span class="lineCov">          3 :   }</span>
 <span class="lineNum">      23 </span><span class="lineCov">          3 : }</span>
-<span class="lineNum">      24 </span><span class="lineCov">          1 : </span>
-<a name="25"><span class="lineNum">      25 </span><span class="lineCov">          1 : Debug.setListener(listener);</span></a>
-<span class="lineNum">      26 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      24 </span><span class="lineNoCov">          0 : </span>
+<a name="25"><span class="lineNum">      25 </span><span class="lineNoCov">          0 : Debug.setListener(listener);</span></a>
+<span class="lineNum">      26 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      27 </span><span class="lineCov">          1 : function install() {</span>
 <span class="lineNum">      28 </span><span class="lineCov">          1 :   eval(&quot;this.dynamic = function dynamic() { \n&quot; +</span>
 <span class="lineNum">      29 </span><span class="lineCov">          1 :        &quot;  print(\&quot;&gt; dynamic\&quot;);  // Break\n&quot; +</span>
 <span class="lineNum">      30 </span><span class="lineCov">          1 :        &quot;}\n&quot; +</span>
 <span class="lineNum">      31 </span><span class="lineCov">          1 :        &quot;//@ sourceURL=dynamicScript&quot;);</span>
 <span class="lineNum">      32 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">      33 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      34 </span><span class="lineCov">          1 : install();</span>
-<span class="lineNum">      35 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      36 </span><span class="lineCov">          1 : var scripts = Debug.scripts();</span>
-<span class="lineNum">      37 </span><span class="lineCov">          1 : var dynamic_script;</span>
-<span class="lineNum">      38 </span><span class="lineCov">          1 : var static_script;</span>
-<span class="lineNum">      39 </span><span class="lineCov">          1 : for (var script of scripts) {</span>
-<span class="lineNum">      40 </span><span class="lineCov">          1 :   if (script.source_url == &quot;dynamicScript&quot;) dynamic_script = script;</span>
-<span class="lineNum">      41 </span><span class="lineCov">          1 :   if (script.source_url == &quot;staticScript&quot;) static_script = script;</span>
-<span class="lineNum">      42 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">      43 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      44 </span><span class="lineCov">          1 : Debug.setScriptBreakPointById(dynamic_script.id, 1);</span>
-<span class="lineNum">      45 </span><span class="lineCov">          1 : Debug.setScriptBreakPointById(static_script.id, 6);</span>
-<span class="lineNum">      46 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      47 </span><span class="lineCov">          1 : dynamic();</span>
-<span class="lineNum">      48 </span><span class="lineCov">          1 : static();</span>
-<span class="lineNum">      49 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      50 </span><span class="lineCov">          1 : Debug.setListener(null);</span>
-<span class="lineNum">      51 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      52 </span><span class="lineCov">          1 : assertNull(exception);</span>
-<span class="lineNum">      53 </span><span class="lineCov">          1 : assertEquals(2, break_count);</span>
-<span class="lineNum">      54 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      55 </span><span class="lineCov">          1 : //@ sourceURL=staticScript</span>
+<span class="lineNum">      33 </span>            : 
+<span class="lineNum">      34 </span>            : install();
+<span class="lineNum">      35 </span>            : 
+<span class="lineNum">      36 </span>            : var scripts = Debug.scripts();
+<span class="lineNum">      37 </span>            : var dynamic_script;
+<span class="lineNum">      38 </span>            : var static_script;
+<span class="lineNum">      39 </span>            : for (var script of scripts) {
+<span class="lineNum">      40 </span>            :   if (script.source_url == &quot;dynamicScript&quot;) dynamic_script = script;
+<span class="lineNum">      41 </span>            :   if (script.source_url == &quot;staticScript&quot;) static_script = script;
+<span class="lineNum">      42 </span>            : }
+<span class="lineNum">      43 </span>            : 
+<span class="lineNum">      44 </span>            : Debug.setScriptBreakPointById(dynamic_script.id, 1);
+<span class="lineNum">      45 </span>            : Debug.setScriptBreakPointById(static_script.id, 6);
+<span class="lineNum">      46 </span>            : 
+<span class="lineNum">      47 </span>            : dynamic();
+<span class="lineNum">      48 </span>            : static();
+<span class="lineNum">      49 </span>            : 
+<span class="lineNum">      50 </span>            : Debug.setListener(null);
+<span class="lineNum">      51 </span>            : 
+<span class="lineNum">      52 </span>            : assertNull(exception);
+<span class="lineNum">      53 </span>            : assertEquals(2, break_count);
+<span class="lineNum">      54 </span>            : 
+<span class="lineNum">      55 </span>            : //@ sourceURL=staticScript
 </pre>
       </td>
     </tr>

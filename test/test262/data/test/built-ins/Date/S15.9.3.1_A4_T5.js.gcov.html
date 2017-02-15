@@ -31,18 +31,18 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">90</td>
-            <td class="headerCovTableEntry">90</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntry">21</td>
+            <td class="headerCovTableEntry">22</td>
+            <td class="headerCovTableEntryHi">95.5 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">2</td>
             <td class="headerCovTableEntry">3</td>
-            <td class="headerCovTableEntry">4</td>
-            <td class="headerCovTableEntryMed">75.0 %</td>
+            <td class="headerCovTableEntryLo">66.7 %</td>
           </tr>
           <tr><td><img src="../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
         </table>
@@ -81,74 +81,74 @@
 <a name="19"><span class="lineNum">      19 </span><span class="lineCov">         42 : var myObj = function(val){</span></a>
 <a name="20"><span class="lineNum">      20 </span><span class="lineCov">         42 :   this.value = val;</span></a>
 <span class="lineNum">      21 </span><span class="lineCov">         42 :   this.valueOf = function(){throw &quot;valueOf-&quot;+this.value;};</span>
-<span class="lineNum">      22 </span><span class="lineCov">         42 :   this.toString = function(){throw &quot;toString-&quot;+this.value;};</span>
-<span class="lineNum">      23 </span><span class="lineCov">         42 : };</span>
-<span class="lineNum">      24 </span><span class="lineCov">          2 : </span>
-<span class="lineNum">      25 </span><span class="lineCov">          2 : //CHECK#1</span>
-<span class="lineNum">      26 </span><span class="lineCov">          2 : try{</span>
-<span class="lineNum">      27 </span><span class="lineCov">          2 :   var x1 = new Date(new myObj(1), new myObj(2), new myObj(3), new myObj(4), new myObj(5), new myObj(6));</span>
-<span class="lineNum">      28 </span><span class="lineCov">          2 :   $ERROR(&quot;#1: The 1st step is calling ToNumber(year)&quot;);</span>
-<span class="lineNum">      29 </span><span class="lineCov">          2 : }</span>
-<span class="lineNum">      30 </span><span class="lineCov">          2 : catch(e){</span>
-<span class="lineNum">      31 </span><span class="lineCov">          2 :   if(e !== &quot;valueOf-1&quot;){</span>
-<span class="lineNum">      32 </span><span class="lineCov">          2 :     $ERROR(&quot;#1: The 1st step is calling ToNumber(year)&quot;);</span>
-<span class="lineNum">      33 </span><span class="lineCov">          2 :   }</span>
-<span class="lineNum">      34 </span><span class="lineCov">          2 : }</span>
-<span class="lineNum">      35 </span><span class="lineCov">          2 : </span>
-<span class="lineNum">      36 </span><span class="lineCov">          2 : //CHECK#2</span>
-<span class="lineNum">      37 </span><span class="lineCov">          2 : try{</span>
-<span class="lineNum">      38 </span><span class="lineCov">          2 :   var x2 = new Date(1, new myObj(2), new myObj(3), new myObj(4), new myObj(5), new myObj(6));</span>
-<span class="lineNum">      39 </span><span class="lineCov">          2 :   $ERROR(&quot;#2: The 2nd step is calling ToNumber(month)&quot;);</span>
-<span class="lineNum">      40 </span><span class="lineCov">          2 : }</span>
-<span class="lineNum">      41 </span><span class="lineCov">          2 : catch(e){</span>
-<span class="lineNum">      42 </span><span class="lineCov">          2 :   if(e !== &quot;valueOf-2&quot;){</span>
-<span class="lineNum">      43 </span><span class="lineCov">          2 :     $ERROR(&quot;#2: The 2nd step is calling ToNumber(month)&quot;);</span>
-<span class="lineNum">      44 </span><span class="lineCov">          2 :   }</span>
-<span class="lineNum">      45 </span><span class="lineCov">          2 : }</span>
-<span class="lineNum">      46 </span><span class="lineCov">          2 : </span>
-<span class="lineNum">      47 </span><span class="lineCov">          2 : //CHECK#3</span>
-<span class="lineNum">      48 </span><span class="lineCov">          2 : try{</span>
-<span class="lineNum">      49 </span><span class="lineCov">          2 :   var x3 = new Date(1, 2, new myObj(3), new myObj(4), new myObj(5), new myObj(6));</span>
-<span class="lineNum">      50 </span><span class="lineCov">          2 :   $ERROR(&quot;#3: The 3rd step is calling ToNumber(date)&quot;);</span>
-<span class="lineNum">      51 </span><span class="lineCov">          2 : }</span>
-<span class="lineNum">      52 </span><span class="lineCov">          2 : catch(e){</span>
-<span class="lineNum">      53 </span><span class="lineCov">          2 :   if(e !== &quot;valueOf-3&quot;){</span>
-<span class="lineNum">      54 </span><span class="lineCov">          2 :     $ERROR(&quot;#3: The 3rd step is calling ToNumber(date)&quot;);</span>
-<span class="lineNum">      55 </span><span class="lineCov">          2 :   }</span>
-<span class="lineNum">      56 </span><span class="lineCov">          2 : }</span>
-<span class="lineNum">      57 </span><span class="lineCov">          2 : </span>
-<span class="lineNum">      58 </span><span class="lineCov">          2 : //CHECK#4</span>
-<span class="lineNum">      59 </span><span class="lineCov">          2 : try{</span>
-<span class="lineNum">      60 </span><span class="lineCov">          2 :   var x4 = new Date(1, 2, 3, new myObj(4), new myObj(5), new myObj(6));</span>
-<span class="lineNum">      61 </span><span class="lineCov">          2 :   $ERROR(&quot;#4: The 4th step is calling ToNumber(hours)&quot;);</span>
-<span class="lineNum">      62 </span><span class="lineCov">          2 : }</span>
-<span class="lineNum">      63 </span><span class="lineCov">          2 : catch(e){</span>
-<span class="lineNum">      64 </span><span class="lineCov">          2 :   if(e !== &quot;valueOf-4&quot;){</span>
-<span class="lineNum">      65 </span><span class="lineCov">          2 :     $ERROR(&quot;#4: The 4th step is calling ToNumber(hours)&quot;);</span>
-<span class="lineNum">      66 </span><span class="lineCov">          2 :   }</span>
-<span class="lineNum">      67 </span><span class="lineCov">          2 : }</span>
-<span class="lineNum">      68 </span><span class="lineCov">          2 : </span>
-<span class="lineNum">      69 </span><span class="lineCov">          2 : //CHECK#5</span>
-<span class="lineNum">      70 </span><span class="lineCov">          2 : try{</span>
-<span class="lineNum">      71 </span><span class="lineCov">          2 :   var x5 = new Date(1, 2, 3, 4, new myObj(5), new myObj(6));</span>
-<span class="lineNum">      72 </span><span class="lineCov">          2 :   $ERROR(&quot;#5: The 5th step is calling ToNumber(minutes)&quot;);</span>
-<span class="lineNum">      73 </span><span class="lineCov">          2 : }</span>
-<span class="lineNum">      74 </span><span class="lineCov">          2 : catch(e){</span>
-<span class="lineNum">      75 </span><span class="lineCov">          2 :   if(e !== &quot;valueOf-5&quot;){</span>
-<span class="lineNum">      76 </span><span class="lineCov">          2 :     $ERROR(&quot;#5: The 5th step is calling ToNumber(minutes)&quot;);</span>
-<span class="lineNum">      77 </span><span class="lineCov">          2 :   }</span>
-<span class="lineNum">      78 </span><span class="lineCov">          2 : }</span>
-<span class="lineNum">      79 </span><span class="lineCov">          2 : </span>
-<span class="lineNum">      80 </span><span class="lineCov">          2 : //CHECK#6</span>
-<span class="lineNum">      81 </span><span class="lineCov">          2 : try{</span>
-<span class="lineNum">      82 </span><span class="lineCov">          2 :   var x6 = new Date(1, 2, 3, 4, 5, new myObj(6));</span>
-<span class="lineNum">      83 </span><span class="lineCov">          2 :   $ERROR(&quot;#6: The 6th step is calling ToNumber(seconds)&quot;);</span>
-<span class="lineNum">      84 </span><span class="lineCov">          2 : }</span>
-<span class="lineNum">      85 </span><span class="lineCov">          2 : catch(e){</span>
-<span class="lineNum">      86 </span><span class="lineCov">          2 :   if(e !== &quot;valueOf-6&quot;){</span>
-<span class="lineNum">      87 </span><span class="lineCov">          2 :     $ERROR(&quot;#6: The 6th step is calling ToNumber(seconds)&quot;);</span>
-<span class="lineNum">      88 </span><span class="lineCov">          2 :   }</span>
-<span class="lineNum">      89 </span><span class="lineCov">          2 : }</span>
+<span class="lineNum">      22 </span><span class="lineNoCov">          0 :   this.toString = function(){throw &quot;toString-&quot;+this.value;};</span>
+<span class="lineNum">      23 </span>            : };
+<span class="lineNum">      24 </span>            : 
+<span class="lineNum">      25 </span>            : //CHECK#1
+<span class="lineNum">      26 </span>            : try{
+<span class="lineNum">      27 </span>            :   var x1 = new Date(new myObj(1), new myObj(2), new myObj(3), new myObj(4), new myObj(5), new myObj(6));
+<span class="lineNum">      28 </span>            :   $ERROR(&quot;#1: The 1st step is calling ToNumber(year)&quot;);
+<span class="lineNum">      29 </span>            : }
+<span class="lineNum">      30 </span>            : catch(e){
+<span class="lineNum">      31 </span>            :   if(e !== &quot;valueOf-1&quot;){
+<span class="lineNum">      32 </span>            :     $ERROR(&quot;#1: The 1st step is calling ToNumber(year)&quot;);
+<span class="lineNum">      33 </span>            :   }
+<span class="lineNum">      34 </span>            : }
+<span class="lineNum">      35 </span>            : 
+<span class="lineNum">      36 </span>            : //CHECK#2
+<span class="lineNum">      37 </span>            : try{
+<span class="lineNum">      38 </span>            :   var x2 = new Date(1, new myObj(2), new myObj(3), new myObj(4), new myObj(5), new myObj(6));
+<span class="lineNum">      39 </span>            :   $ERROR(&quot;#2: The 2nd step is calling ToNumber(month)&quot;);
+<span class="lineNum">      40 </span>            : }
+<span class="lineNum">      41 </span>            : catch(e){
+<span class="lineNum">      42 </span>            :   if(e !== &quot;valueOf-2&quot;){
+<span class="lineNum">      43 </span>            :     $ERROR(&quot;#2: The 2nd step is calling ToNumber(month)&quot;);
+<span class="lineNum">      44 </span>            :   }
+<span class="lineNum">      45 </span>            : }
+<span class="lineNum">      46 </span>            : 
+<span class="lineNum">      47 </span>            : //CHECK#3
+<span class="lineNum">      48 </span>            : try{
+<span class="lineNum">      49 </span>            :   var x3 = new Date(1, 2, new myObj(3), new myObj(4), new myObj(5), new myObj(6));
+<span class="lineNum">      50 </span>            :   $ERROR(&quot;#3: The 3rd step is calling ToNumber(date)&quot;);
+<span class="lineNum">      51 </span>            : }
+<span class="lineNum">      52 </span>            : catch(e){
+<span class="lineNum">      53 </span>            :   if(e !== &quot;valueOf-3&quot;){
+<span class="lineNum">      54 </span>            :     $ERROR(&quot;#3: The 3rd step is calling ToNumber(date)&quot;);
+<span class="lineNum">      55 </span>            :   }
+<span class="lineNum">      56 </span>            : }
+<span class="lineNum">      57 </span>            : 
+<span class="lineNum">      58 </span>            : //CHECK#4
+<span class="lineNum">      59 </span>            : try{
+<span class="lineNum">      60 </span>            :   var x4 = new Date(1, 2, 3, new myObj(4), new myObj(5), new myObj(6));
+<span class="lineNum">      61 </span>            :   $ERROR(&quot;#4: The 4th step is calling ToNumber(hours)&quot;);
+<span class="lineNum">      62 </span>            : }
+<span class="lineNum">      63 </span>            : catch(e){
+<span class="lineNum">      64 </span>            :   if(e !== &quot;valueOf-4&quot;){
+<span class="lineNum">      65 </span>            :     $ERROR(&quot;#4: The 4th step is calling ToNumber(hours)&quot;);
+<span class="lineNum">      66 </span>            :   }
+<span class="lineNum">      67 </span>            : }
+<span class="lineNum">      68 </span>            : 
+<span class="lineNum">      69 </span>            : //CHECK#5
+<span class="lineNum">      70 </span>            : try{
+<span class="lineNum">      71 </span>            :   var x5 = new Date(1, 2, 3, 4, new myObj(5), new myObj(6));
+<span class="lineNum">      72 </span>            :   $ERROR(&quot;#5: The 5th step is calling ToNumber(minutes)&quot;);
+<span class="lineNum">      73 </span>            : }
+<span class="lineNum">      74 </span>            : catch(e){
+<span class="lineNum">      75 </span>            :   if(e !== &quot;valueOf-5&quot;){
+<span class="lineNum">      76 </span>            :     $ERROR(&quot;#5: The 5th step is calling ToNumber(minutes)&quot;);
+<span class="lineNum">      77 </span>            :   }
+<span class="lineNum">      78 </span>            : }
+<span class="lineNum">      79 </span>            : 
+<span class="lineNum">      80 </span>            : //CHECK#6
+<span class="lineNum">      81 </span>            : try{
+<span class="lineNum">      82 </span>            :   var x6 = new Date(1, 2, 3, 4, 5, new myObj(6));
+<span class="lineNum">      83 </span>            :   $ERROR(&quot;#6: The 6th step is calling ToNumber(seconds)&quot;);
+<span class="lineNum">      84 </span>            : }
+<span class="lineNum">      85 </span>            : catch(e){
+<span class="lineNum">      86 </span>            :   if(e !== &quot;valueOf-6&quot;){
+<span class="lineNum">      87 </span>            :     $ERROR(&quot;#6: The 6th step is calling ToNumber(seconds)&quot;);
+<span class="lineNum">      88 </span>            :   }
+<span class="lineNum">      89 </span>            : }
 </pre>
       </td>
     </tr>

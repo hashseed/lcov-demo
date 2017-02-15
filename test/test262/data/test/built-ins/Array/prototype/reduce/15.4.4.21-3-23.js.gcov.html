@@ -31,18 +31,18 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">42</td>
-            <td class="headerCovTableEntry">44</td>
-            <td class="headerCovTableEntryHi">95.5 %</td>
+            <td class="headerCovTableEntry">21</td>
+            <td class="headerCovTableEntry">33</td>
+            <td class="headerCovTableEntryLo">63.6 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">3</td>
             <td class="headerCovTableEntry">4</td>
-            <td class="headerCovTableEntry">5</td>
-            <td class="headerCovTableEntryMed">80.0 %</td>
+            <td class="headerCovTableEntryMed">75.0 %</td>
           </tr>
           <tr><td><img src="../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
         </table>
@@ -76,33 +76,33 @@
 <span class="lineNum">      14 </span><span class="lineCov">          2 :         function callbackfn(prevVal, curVal, idx, obj) {</span>
 <span class="lineNum">      15 </span><span class="lineCov">          2 :             return (curVal === 11 &amp;&amp; idx === 1);</span>
 <span class="lineNum">      16 </span><span class="lineCov">          2 :         }</span>
-<a name="17"><span class="lineNum">      17 </span><span class="lineCov">          2 : </span></a>
-<span class="lineNum">      18 </span><span class="lineCov">          2 :         var proto = {</span>
+<a name="17"><span class="lineNum">      17 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">      18 </span><span class="lineNoCov">          0 :         var proto = {</span>
 <span class="lineNum">      19 </span><span class="lineCov">          2 :             valueOf: function () {</span>
 <span class="lineNum">      20 </span><span class="lineCov">          2 :                 valueOfAccessed = true;</span>
 <span class="lineNum">      21 </span><span class="lineCov">          2 :                 return 2;</span>
 <span class="lineNum">      22 </span><span class="lineCov">          2 :             }</span>
-<a name="23"><span class="lineNum">      23 </span><span class="lineCov">          2 :         };</span></a>
-<span class="lineNum">      24 </span><span class="lineCov">          2 : </span>
+<a name="23"><span class="lineNum">      23 </span><span class="lineNoCov">          0 :         };</span></a>
+<span class="lineNum">      24 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      25 </span><span class="lineCov">          2 :         var Con = function () { };</span>
-<span class="lineNum">      26 </span><span class="lineCov">          2 :         Con.prototype = proto;</span>
-<span class="lineNum">      27 </span><span class="lineCov">          2 : </span>
-<a name="28"><span class="lineNum">      28 </span><span class="lineCov">          2 :         var child = new Con();</span></a>
-<span class="lineNum">      29 </span><span class="lineCov">          2 : </span>
-<span class="lineNum">      30 </span><span class="lineCov">          2 :         child.toString = function () {</span>
+<span class="lineNum">      26 </span><span class="lineNoCov">          0 :         Con.prototype = proto;</span>
+<span class="lineNum">      27 </span><span class="lineNoCov">          0 : </span>
+<a name="28"><span class="lineNum">      28 </span><span class="lineNoCov">          0 :         var child = new Con();</span></a>
+<span class="lineNum">      29 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      30 </span><span class="lineNoCov">          0 :         child.toString = function () {</span>
 <span class="lineNum">      31 </span><span class="lineNoCov">          0 :             toStringAccessed = true;</span>
 <span class="lineNum">      32 </span><span class="lineNoCov">          0 :             return '1';</span>
-<span class="lineNum">      33 </span><span class="lineCov">          2 :         };</span>
-<span class="lineNum">      34 </span><span class="lineCov">          2 : </span>
-<span class="lineNum">      35 </span><span class="lineCov">          2 :         var obj = {</span>
-<span class="lineNum">      36 </span><span class="lineCov">          2 :             1: 11,</span>
-<span class="lineNum">      37 </span><span class="lineCov">          2 :             2: 9,</span>
-<span class="lineNum">      38 </span><span class="lineCov">          2 :             length: child</span>
-<span class="lineNum">      39 </span><span class="lineCov">          2 :         };</span>
-<span class="lineNum">      40 </span><span class="lineCov">          2 : </span>
-<span class="lineNum">      41 </span><span class="lineCov">          2 : assert.sameValue(Array.prototype.reduce.call(obj, callbackfn, 1), true, 'Array.prototype.reduce.call(obj, callbackfn, 1)');</span>
-<span class="lineNum">      42 </span><span class="lineCov">          2 : assert(valueOfAccessed, 'valueOfAccessed !== true');</span>
-<span class="lineNum">      43 </span><span class="lineCov">          2 : assert.sameValue(toStringAccessed, false, 'toStringAccessed');</span>
+<span class="lineNum">      33 </span><span class="lineNoCov">          0 :         };</span>
+<span class="lineNum">      34 </span>            : 
+<span class="lineNum">      35 </span>            :         var obj = {
+<span class="lineNum">      36 </span>            :             1: 11,
+<span class="lineNum">      37 </span>            :             2: 9,
+<span class="lineNum">      38 </span>            :             length: child
+<span class="lineNum">      39 </span>            :         };
+<span class="lineNum">      40 </span>            : 
+<span class="lineNum">      41 </span>            : assert.sameValue(Array.prototype.reduce.call(obj, callbackfn, 1), true, 'Array.prototype.reduce.call(obj, callbackfn, 1)');
+<span class="lineNum">      42 </span>            : assert(valueOfAccessed, 'valueOfAccessed !== true');
+<span class="lineNum">      43 </span>            : assert.sameValue(toStringAccessed, false, 'toStringAccessed');
 </pre>
       </td>
     </tr>

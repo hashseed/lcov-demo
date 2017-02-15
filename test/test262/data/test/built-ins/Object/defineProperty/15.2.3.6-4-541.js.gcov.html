@@ -31,18 +31,18 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">43</td>
-            <td class="headerCovTableEntry">45</td>
-            <td class="headerCovTableEntryHi">95.6 %</td>
+            <td class="headerCovTableEntry">17</td>
+            <td class="headerCovTableEntry">23</td>
+            <td class="headerCovTableEntryLo">73.9 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">1</td>
-            <td class="headerCovTableEntry">3</td>
-            <td class="headerCovTableEntryLo">33.3 %</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
           </tr>
           <tr><td><img src="../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
         </table>
@@ -78,32 +78,32 @@
 <span class="lineNum">      16 </span><span class="lineCov">          2 :         var getFunc = function () {</span>
 <span class="lineNum">      17 </span><span class="lineNoCov">          0 :             return 1001;</span>
 <span class="lineNum">      18 </span><span class="lineCov">          2 :         };</span>
-<a name="19"><span class="lineNum">      19 </span><span class="lineCov">          2 : </span></a>
-<span class="lineNum">      20 </span><span class="lineCov">          2 :         var verifySetFunc = &quot;data&quot;;</span>
-<span class="lineNum">      21 </span><span class="lineCov">          2 :         var setFunc = function (value) {</span>
+<a name="19"><span class="lineNum">      19 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">      20 </span><span class="lineNoCov">          0 :         var verifySetFunc = &quot;data&quot;;</span>
+<span class="lineNum">      21 </span><span class="lineNoCov">          0 :         var setFunc = function (value) {</span>
 <span class="lineNum">      22 </span><span class="lineNoCov">          0 :             verifySetFunc = value;</span>
-<span class="lineNum">      23 </span><span class="lineCov">          2 :         };</span>
-<span class="lineNum">      24 </span><span class="lineCov">          2 : </span>
-<span class="lineNum">      25 </span><span class="lineCov">          2 :         Object.defineProperty(obj, &quot;prop&quot;, {</span>
-<span class="lineNum">      26 </span><span class="lineCov">          2 :             get: getFunc,</span>
-<span class="lineNum">      27 </span><span class="lineCov">          2 :             set: setFunc,</span>
-<span class="lineNum">      28 </span><span class="lineCov">          2 :             enumerable: true,</span>
-<span class="lineNum">      29 </span><span class="lineCov">          2 :             configurable: false</span>
-<span class="lineNum">      30 </span><span class="lineCov">          2 :         });</span>
-<span class="lineNum">      31 </span><span class="lineCov">          2 : </span>
-<span class="lineNum">      32 </span><span class="lineCov">          2 :         var propertyDefineCorrect = obj.hasOwnProperty(&quot;prop&quot;);</span>
-<span class="lineNum">      33 </span><span class="lineCov">          2 :         var desc = Object.getOwnPropertyDescriptor(obj, &quot;prop&quot;);</span>
-<span class="lineNum">      34 </span><span class="lineCov">          2 : </span>
-<span class="lineNum">      35 </span><span class="lineCov">          2 :         for (var p in obj) {</span>
-<span class="lineNum">      36 </span><span class="lineCov">          2 :             if (p === &quot;prop&quot;) {</span>
-<span class="lineNum">      37 </span><span class="lineCov">          2 :                 propertyFound = true;</span>
-<span class="lineNum">      38 </span><span class="lineCov">          2 :                 break;</span>
-<span class="lineNum">      39 </span><span class="lineCov">          2 :             }</span>
-<span class="lineNum">      40 </span><span class="lineCov">          2 :         }</span>
-<span class="lineNum">      41 </span><span class="lineCov">          2 : </span>
-<span class="lineNum">      42 </span><span class="lineCov">          2 : assert(propertyFound, 'Property not found');</span>
-<span class="lineNum">      43 </span><span class="lineCov">          2 : assert(propertyDefineCorrect, 'propertyDefineCorrect !== true');</span>
-<span class="lineNum">      44 </span><span class="lineCov">          2 : assert.sameValue(desc.enumerable, true, 'desc.enumerable');</span>
+<span class="lineNum">      23 </span><span class="lineNoCov">          0 :         };</span>
+<span class="lineNum">      24 </span>            : 
+<span class="lineNum">      25 </span>            :         Object.defineProperty(obj, &quot;prop&quot;, {
+<span class="lineNum">      26 </span>            :             get: getFunc,
+<span class="lineNum">      27 </span>            :             set: setFunc,
+<span class="lineNum">      28 </span>            :             enumerable: true,
+<span class="lineNum">      29 </span>            :             configurable: false
+<span class="lineNum">      30 </span>            :         });
+<span class="lineNum">      31 </span>            : 
+<span class="lineNum">      32 </span>            :         var propertyDefineCorrect = obj.hasOwnProperty(&quot;prop&quot;);
+<span class="lineNum">      33 </span>            :         var desc = Object.getOwnPropertyDescriptor(obj, &quot;prop&quot;);
+<span class="lineNum">      34 </span>            : 
+<span class="lineNum">      35 </span>            :         for (var p in obj) {
+<span class="lineNum">      36 </span>            :             if (p === &quot;prop&quot;) {
+<span class="lineNum">      37 </span>            :                 propertyFound = true;
+<span class="lineNum">      38 </span>            :                 break;
+<span class="lineNum">      39 </span>            :             }
+<span class="lineNum">      40 </span>            :         }
+<span class="lineNum">      41 </span>            : 
+<span class="lineNum">      42 </span>            : assert(propertyFound, 'Property not found');
+<span class="lineNum">      43 </span>            : assert(propertyDefineCorrect, 'propertyDefineCorrect !== true');
+<span class="lineNum">      44 </span>            : assert.sameValue(desc.enumerable, true, 'desc.enumerable');
 </pre>
       </td>
     </tr>

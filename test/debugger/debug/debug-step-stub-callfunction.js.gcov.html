@@ -31,17 +31,17 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">86</td>
-            <td class="headerCovTableEntry">86</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntry">49</td>
+            <td class="headerCovTableEntry">74</td>
+            <td class="headerCovTableEntryLo">66.2 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">6</td>
-            <td class="headerCovTableEntry">6</td>
+            <td class="headerCovTableEntry">5</td>
+            <td class="headerCovTableEntry">5</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -100,51 +100,51 @@
 <span class="lineNum">      38 </span><span class="lineCov">         17 :     }</span>
 <span class="lineNum">      39 </span><span class="lineCov">         17 :   }</span>
 <span class="lineNum">      40 </span><span class="lineCov">         17 : };</span>
-<span class="lineNum">      41 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      42 </span><span class="lineCov">          1 : // Add the debug event listener.</span>
-<span class="lineNum">      43 </span><span class="lineCov">          1 : Debug.setListener(listener);</span>
-<span class="lineNum">      44 </span><span class="lineCov">          1 : </span>
-<a name="45"><span class="lineNum">      45 </span><span class="lineCov">          1 : // Use 'eval' to ensure that the call to print is through CodeStub CallFunction.</span></a>
-<span class="lineNum">      46 </span><span class="lineCov">          1 : // See Ia32CodeGenerator::VisitCall and Ia32CodeGenerator::CallWithArguments.</span>
+<span class="lineNum">      41 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      42 </span><span class="lineNoCov">          0 : // Add the debug event listener.</span>
+<span class="lineNum">      43 </span><span class="lineNoCov">          0 : Debug.setListener(listener);</span>
+<span class="lineNum">      44 </span><span class="lineNoCov">          0 : </span>
+<a name="45"><span class="lineNum">      45 </span><span class="lineNoCov">          0 : // Use 'eval' to ensure that the call to print is through CodeStub CallFunction.</span></a>
+<span class="lineNum">      46 </span><span class="lineNoCov">          0 : // See Ia32CodeGenerator::VisitCall and Ia32CodeGenerator::CallWithArguments.</span>
 <span class="lineNum">      47 </span><span class="lineCov">          1 : function f() {</span>
 <span class="lineNum">      48 </span><span class="lineCov">          1 :   debugger;</span>
 <span class="lineNum">      49 </span><span class="lineCov">          1 :   eval('');</span>
 <span class="lineNum">      50 </span><span class="lineCov">          1 :   print('Hello, world!');</span>
 <span class="lineNum">      51 </span><span class="lineCov">          1 : };</span>
-<span class="lineNum">      52 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      53 </span><span class="lineCov">          1 : break_break_point_hit_count = 0;</span>
-<span class="lineNum">      54 </span><span class="lineCov">          1 : f();</span>
-<span class="lineNum">      55 </span><span class="lineCov">          1 : assertEquals(6, break_break_point_hit_count);</span>
-<span class="lineNum">      56 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      57 </span><span class="lineCov">          1 : // Use an inner function to ensure that the function call is through CodeStub</span>
-<a name="58"><span class="lineNum">      58 </span><span class="lineCov">          1 : // CallFunction see Ia32CodeGenerator::VisitCall and</span></a>
-<span class="lineNum">      59 </span><span class="lineCov">          1 : // Ia32CodeGenerator::CallWithArguments.</span>
+<span class="lineNum">      52 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      53 </span><span class="lineNoCov">          0 : break_break_point_hit_count = 0;</span>
+<span class="lineNum">      54 </span><span class="lineNoCov">          0 : f();</span>
+<span class="lineNum">      55 </span><span class="lineNoCov">          0 : assertEquals(6, break_break_point_hit_count);</span>
+<span class="lineNum">      56 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      57 </span><span class="lineNoCov">          0 : // Use an inner function to ensure that the function call is through CodeStub</span>
+<a name="58"><span class="lineNum">      58 </span><span class="lineNoCov">          0 : // CallFunction see Ia32CodeGenerator::VisitCall and</span></a>
+<span class="lineNum">      59 </span><span class="lineNoCov">          0 : // Ia32CodeGenerator::CallWithArguments.</span>
 <span class="lineNum">      60 </span><span class="lineCov">          1 : function g() {</span>
 <span class="lineNum">      61 </span><span class="lineCov">          1 :   function h() {}</span>
-<span class="lineNum">      62 </span><span class="lineCov">          1 :   debugger;</span>
-<span class="lineNum">      63 </span><span class="lineCov">          1 :   h();</span>
-<span class="lineNum">      64 </span><span class="lineCov">          1 : };</span>
-<span class="lineNum">      65 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      66 </span><span class="lineCov">          1 : break_break_point_hit_count = 0;</span>
-<span class="lineNum">      67 </span><span class="lineCov">          1 : g();</span>
-<span class="lineNum">      68 </span><span class="lineCov">          1 : assertEquals(5, break_break_point_hit_count);</span>
-<span class="lineNum">      69 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      70 </span><span class="lineCov">          1 : </span>
-<a name="71"><span class="lineNum">      71 </span><span class="lineCov">          1 : // Use an inner function to ensure that the function call is through CodeStub</span></a>
-<a name="72"><span class="lineNum">      72 </span><span class="lineCov">          1 : // CallFunction.</span></a>
+<span class="lineNum">      62 </span><span class="lineNoCov">          0 :   debugger;</span>
+<span class="lineNum">      63 </span><span class="lineNoCov">          0 :   h();</span>
+<span class="lineNum">      64 </span><span class="lineNoCov">          0 : };</span>
+<span class="lineNum">      65 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      66 </span><span class="lineNoCov">          0 : break_break_point_hit_count = 0;</span>
+<span class="lineNum">      67 </span><span class="lineNoCov">          0 : g();</span>
+<span class="lineNum">      68 </span><span class="lineNoCov">          0 : assertEquals(5, break_break_point_hit_count);</span>
+<span class="lineNum">      69 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      70 </span><span class="lineNoCov">          0 : </span>
+<a name="71"><span class="lineNum">      71 </span><span class="lineNoCov">          0 : // Use an inner function to ensure that the function call is through CodeStub</span></a>
+<a name="72"><span class="lineNum">      72 </span><span class="lineNoCov">          0 : // CallFunction.</span></a>
 <span class="lineNum">      73 </span><span class="lineCov">          1 : function testCallInExpreesion() {</span>
 <span class="lineNum">      74 </span><span class="lineCov">          1 :   function h() {}</span>
-<span class="lineNum">      75 </span><span class="lineCov">          1 :   debugger;</span>
-<span class="lineNum">      76 </span><span class="lineCov">          1 :   var x = 's' + h(10, 20);</span>
-<span class="lineNum">      77 </span><span class="lineCov">          1 : };</span>
-<span class="lineNum">      78 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      79 </span><span class="lineCov">          1 : break_break_point_hit_count = 0;</span>
-<span class="lineNum">      80 </span><span class="lineCov">          1 : testCallInExpreesion();</span>
-<span class="lineNum">      81 </span><span class="lineCov">          1 : assertEquals(5, break_break_point_hit_count);</span>
-<span class="lineNum">      82 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      83 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      84 </span><span class="lineCov">          1 : // Get rid of the debug event listener.</span>
-<span class="lineNum">      85 </span><span class="lineCov">          1 : Debug.setListener(null);</span>
+<span class="lineNum">      75 </span>            :   debugger;
+<span class="lineNum">      76 </span>            :   var x = 's' + h(10, 20);
+<span class="lineNum">      77 </span>            : };
+<span class="lineNum">      78 </span>            : 
+<span class="lineNum">      79 </span>            : break_break_point_hit_count = 0;
+<span class="lineNum">      80 </span>            : testCallInExpreesion();
+<span class="lineNum">      81 </span>            : assertEquals(5, break_break_point_hit_count);
+<span class="lineNum">      82 </span>            : 
+<span class="lineNum">      83 </span>            : 
+<span class="lineNum">      84 </span>            : // Get rid of the debug event listener.
+<span class="lineNum">      85 </span>            : Debug.setListener(null);
 </pre>
       </td>
     </tr>

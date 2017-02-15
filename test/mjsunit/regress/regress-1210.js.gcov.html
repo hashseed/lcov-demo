@@ -31,17 +31,17 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">53</td>
-            <td class="headerCovTableEntry">53</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntry">42</td>
+            <td class="headerCovTableEntry">44</td>
+            <td class="headerCovTableEntryHi">95.5 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">4</td>
-            <td class="headerCovTableEntry">4</td>
+            <td class="headerCovTableEntry">3</td>
+            <td class="headerCovTableEntry">3</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -95,23 +95,23 @@
 <a name="33"><span class="lineNum">      33 </span><span class="lineCov">          1 : var a = 0;</span></a>
 <span class="lineNum">      34 </span><span class="lineCov">          1 : </span>
 <a name="35"><span class="lineNum">      35 </span><span class="lineCov">         12 : function observe(x, y) { return x; }</span></a>
-<span class="lineNum">      36 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      36 </span><span class="lineNoCov">          0 : </span>
 <a name="37"><span class="lineNum">      37 </span><span class="lineCov">         12 : function side_effect(x) { a = x; }</span></a>
-<span class="lineNum">      38 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      38 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      39 </span><span class="lineCov">         12 : function test() {</span>
 <span class="lineNum">      40 </span><span class="lineCov">         12 :   // We will trigger deoptimization of 'a + 0' which should bail out to</span>
 <span class="lineNum">      41 </span><span class="lineCov">         12 :   // immediately after the call to 'side_effect' (i.e., still in the key</span>
 <span class="lineNum">      42 </span><span class="lineCov">         12 :   // subexpression of the arguments access).</span>
 <span class="lineNum">      43 </span><span class="lineCov">         12 :   return observe(a, arguments[side_effect(a), a + 0]);</span>
 <span class="lineNum">      44 </span><span class="lineCov">         12 : }</span>
-<span class="lineNum">      45 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      46 </span><span class="lineCov">          1 : // Run enough to optimize assuming global 'a' is a smi.</span>
-<span class="lineNum">      47 </span><span class="lineCov">          1 : for (var i = 0; i &lt; 10; ++i) test(0);</span>
-<span class="lineNum">      48 </span><span class="lineCov">          1 : %OptimizeFunctionOnNextCall(test);</span>
-<span class="lineNum">      49 </span><span class="lineCov">          1 : test(0);</span>
-<span class="lineNum">      50 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      51 </span><span class="lineCov">          1 : a = &quot;hello&quot;;</span>
-<span class="lineNum">      52 </span><span class="lineCov">          1 : test(0);</span>
+<span class="lineNum">      45 </span>            : 
+<span class="lineNum">      46 </span>            : // Run enough to optimize assuming global 'a' is a smi.
+<span class="lineNum">      47 </span>            : for (var i = 0; i &lt; 10; ++i) test(0);
+<span class="lineNum">      48 </span>            : %OptimizeFunctionOnNextCall(test);
+<span class="lineNum">      49 </span>            : test(0);
+<span class="lineNum">      50 </span>            : 
+<span class="lineNum">      51 </span>            : a = &quot;hello&quot;;
+<span class="lineNum">      52 </span>            : test(0);
 </pre>
       </td>
     </tr>

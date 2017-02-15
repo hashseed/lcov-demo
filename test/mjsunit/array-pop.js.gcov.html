@@ -31,17 +31,17 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">141</td>
-            <td class="headerCovTableEntry">141</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntry">128</td>
+            <td class="headerCovTableEntry">132</td>
+            <td class="headerCovTableEntryHi">97.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">5</td>
-            <td class="headerCovTableEntry">5</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntry">1</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -88,7 +88,7 @@
 <span class="lineNum">      26 </span><span class="lineCov">          1 : // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span>
 <span class="lineNum">      27 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      28 </span><span class="lineCov">          1 : // Flags: --allow-natives-syntax</span>
-<a name="29"><span class="lineNum">      29 </span><span class="lineCov">          1 : //</span></a>
+<span class="lineNum">      29 </span><span class="lineCov">          1 : //</span>
 <span class="lineNum">      30 </span><span class="lineCov">          1 : // Check pops with various number of arguments.</span>
 <span class="lineNum">      31 </span><span class="lineCov">          1 : (function() {</span>
 <span class="lineNum">      32 </span><span class="lineCov">          1 :   var a = [];</span>
@@ -174,9 +174,9 @@
 <span class="lineNum">     112 </span><span class="lineCov">          1 :   // Check that pop works on inherited properties for</span>
 <span class="lineNum">     113 </span><span class="lineCov">          1 :   // arrays with array prototype.</span>
 <span class="lineNum">     114 </span><span class="lineCov">          1 : })();</span>
-<span class="lineNum">     115 </span><span class="lineCov">          1 : </span>
-<a name="116"><span class="lineNum">     116 </span><span class="lineCov">          1 : // Test the case of not JSArray receiver.</span></a>
-<span class="lineNum">     117 </span><span class="lineCov">          1 : // Regression test for custom call generators, see issue 684.</span>
+<span class="lineNum">     115 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     116 </span><span class="lineNoCov">          0 : // Test the case of not JSArray receiver.</span>
+<span class="lineNum">     117 </span><span class="lineNoCov">          0 : // Regression test for custom call generators, see issue 684.</span>
 <span class="lineNum">     118 </span><span class="lineCov">          1 : (function() {</span>
 <span class="lineNum">     119 </span><span class="lineCov">          1 :   var a = [];</span>
 <span class="lineNum">     120 </span><span class="lineCov">          1 :   for (var i = 0; i &lt; 100; i++) a.push(i);</span>
@@ -184,22 +184,22 @@
 <span class="lineNum">     122 </span><span class="lineCov">          1 :   for (var i = 0; i &lt; 100; i++) {</span>
 <span class="lineNum">     123 </span><span class="lineCov">          1 :     assertEquals(99 - i, x.pop(), i + 'th iteration');</span>
 <span class="lineNum">     124 </span><span class="lineCov">          1 :   }</span>
-<a name="125"><span class="lineNum">     125 </span><span class="lineCov">          1 : })();</span></a>
-<a name="126"><span class="lineNum">     126 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     125 </span><span class="lineCov">          1 : })();</span>
+<a name="126"><span class="lineNum">     126 </span><span class="lineNoCov">          0 : </span></a>
 <span class="lineNum">     127 </span><span class="lineCov">          1 : (function () {</span>
 <span class="lineNum">     128 </span><span class="lineCov">          4 :   function f(a, deopt) {</span>
 <span class="lineNum">     129 </span><span class="lineCov">          4 :     var v = a.pop() ? 1 : 2;</span>
 <span class="lineNum">     130 </span><span class="lineCov">          4 :     if (deopt) %DeoptimizeFunction(f);</span>
 <span class="lineNum">     131 </span><span class="lineCov">          4 :     return v;</span>
 <span class="lineNum">     132 </span><span class="lineCov">          4 :   }</span>
-<span class="lineNum">     133 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     134 </span><span class="lineCov">          1 :   var a = [true, true, true, true]</span>
-<span class="lineNum">     135 </span><span class="lineCov">          1 :   assertEquals(1, f(a, false));</span>
-<span class="lineNum">     136 </span><span class="lineCov">          1 :   assertEquals(1, f(a, false));</span>
-<span class="lineNum">     137 </span><span class="lineCov">          1 :   %OptimizeFunctionOnNextCall(f);</span>
-<span class="lineNum">     138 </span><span class="lineCov">          1 :   assertEquals(1, f(a, false));</span>
-<span class="lineNum">     139 </span><span class="lineCov">          1 :   assertEquals(1, f(a, true));</span>
-<span class="lineNum">     140 </span><span class="lineCov">          1 : })();</span>
+<span class="lineNum">     133 </span>            : 
+<span class="lineNum">     134 </span>            :   var a = [true, true, true, true]
+<span class="lineNum">     135 </span>            :   assertEquals(1, f(a, false));
+<span class="lineNum">     136 </span>            :   assertEquals(1, f(a, false));
+<span class="lineNum">     137 </span>            :   %OptimizeFunctionOnNextCall(f);
+<span class="lineNum">     138 </span>            :   assertEquals(1, f(a, false));
+<span class="lineNum">     139 </span>            :   assertEquals(1, f(a, true));
+<span class="lineNum">     140 </span>            : })();
 </pre>
       </td>
     </tr>

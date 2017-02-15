@@ -31,18 +31,18 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">56</td>
-            <td class="headerCovTableEntry">56</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntry">32</td>
+            <td class="headerCovTableEntry">35</td>
+            <td class="headerCovTableEntryHi">91.4 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">1</td>
-            <td class="headerCovTableEntry">4</td>
-            <td class="headerCovTableEntryLo">25.0 %</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
         </table>
@@ -91,30 +91,30 @@
 <a name="29"><span class="lineNum">      29 </span><span class="lineCov">          1 : // bound functions.</span></a>
 <span class="lineNum">      30 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      31 </span><span class="lineCov">          1 : function foo() {</span>
-<a name="32"><span class="lineNum">      32 </span><span class="lineCov">          1 : }</span></a>
-<a name="33"><span class="lineNum">      33 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">      34 </span><span class="lineCov">          1 : var f1 = function (x) {}.bind(foo);</span>
-<span class="lineNum">      35 </span><span class="lineCov">          1 : var f2 = function () {};</span>
-<span class="lineNum">      36 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      37 </span><span class="lineCov">          1 : assertEquals(1, f1.length);</span>
-<span class="lineNum">      38 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      39 </span><span class="lineCov">          1 : // the object we bind to can be any object</span>
-<span class="lineNum">      40 </span><span class="lineCov">          1 : f2.bind(foo);</span>
-<span class="lineNum">      41 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      42 </span><span class="lineCov">          1 : assertEquals(1, f1.length);</span>
-<span class="lineNum">      43 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      44 </span><span class="lineCov">          1 : var desc = Object.getOwnPropertyDescriptor(f1, 'length');</span>
-<span class="lineNum">      45 </span><span class="lineCov">          1 : assertEquals(false, desc.writable);</span>
-<span class="lineNum">      46 </span><span class="lineCov">          1 : assertEquals(false, desc.enumerable);</span>
-<span class="lineNum">      47 </span><span class="lineCov">          1 : assertEquals(true, desc.configurable);</span>
-<span class="lineNum">      48 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      49 </span><span class="lineCov">          1 : Object.defineProperty(f1, 'length', {</span>
-<span class="lineNum">      50 </span><span class="lineCov">          1 :   value: 'abc',</span>
-<span class="lineNum">      51 </span><span class="lineCov">          1 :   writable: true</span>
-<span class="lineNum">      52 </span><span class="lineCov">          1 : });</span>
-<span class="lineNum">      53 </span><span class="lineCov">          1 : assertEquals('abc', f1.length);</span>
-<span class="lineNum">      54 </span><span class="lineCov">          1 : f1.length = 42;</span>
-<span class="lineNum">      55 </span><span class="lineCov">          1 : assertEquals(42, f1.length);</span>
+<span class="lineNum">      32 </span><span class="lineCov">          1 : }</span>
+<a name="33"><span class="lineNum">      33 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">      34 </span><span class="lineNoCov">          0 : var f1 = function (x) {}.bind(foo);</span>
+<span class="lineNum">      35 </span><span class="lineNoCov">          0 : var f2 = function () {};</span>
+<span class="lineNum">      36 </span>            : 
+<span class="lineNum">      37 </span>            : assertEquals(1, f1.length);
+<span class="lineNum">      38 </span>            : 
+<span class="lineNum">      39 </span>            : // the object we bind to can be any object
+<span class="lineNum">      40 </span>            : f2.bind(foo);
+<span class="lineNum">      41 </span>            : 
+<span class="lineNum">      42 </span>            : assertEquals(1, f1.length);
+<span class="lineNum">      43 </span>            : 
+<span class="lineNum">      44 </span>            : var desc = Object.getOwnPropertyDescriptor(f1, 'length');
+<span class="lineNum">      45 </span>            : assertEquals(false, desc.writable);
+<span class="lineNum">      46 </span>            : assertEquals(false, desc.enumerable);
+<span class="lineNum">      47 </span>            : assertEquals(true, desc.configurable);
+<span class="lineNum">      48 </span>            : 
+<span class="lineNum">      49 </span>            : Object.defineProperty(f1, 'length', {
+<span class="lineNum">      50 </span>            :   value: 'abc',
+<span class="lineNum">      51 </span>            :   writable: true
+<span class="lineNum">      52 </span>            : });
+<span class="lineNum">      53 </span>            : assertEquals('abc', f1.length);
+<span class="lineNum">      54 </span>            : f1.length = 42;
+<span class="lineNum">      55 </span>            : assertEquals(42, f1.length);
 </pre>
       </td>
     </tr>

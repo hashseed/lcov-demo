@@ -31,17 +31,17 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">29</td>
-            <td class="headerCovTableEntry">29</td>
+            <td class="headerCovTableEntry">12</td>
+            <td class="headerCovTableEntry">12</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">2</td>
-            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntry">1</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -72,22 +72,22 @@
 <a name="10"><span class="lineNum">      10 </span><span class="lineCov">          1 : var Proto = new Function(body);</span></a>
 <span class="lineNum">      11 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      12 </span><span class="lineCov">          1 : function A() {}</span>
-<span class="lineNum">      13 </span><span class="lineCov">          1 : A.prototype = new Proto();</span>
-<span class="lineNum">      14 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      15 </span><span class="lineCov">          1 : // Create a object and add properties that already exist in the prototype.</span>
-<span class="lineNum">      16 </span><span class="lineCov">          1 : // At some point the object will turn into a dictionary mode and one of</span>
-<span class="lineNum">      17 </span><span class="lineCov">          1 : // the fast details from the prototype will be reinterpreted as a details</span>
-<span class="lineNum">      18 </span><span class="lineCov">          1 : // for a new property ...</span>
-<span class="lineNum">      19 </span><span class="lineCov">          1 : var o = new A();</span>
-<span class="lineNum">      20 </span><span class="lineCov">          1 : for (var i = 0; i &lt; 100; i++) {</span>
-<span class="lineNum">      21 </span><span class="lineCov">          1 :   o[&quot;a&quot; + i] = i;</span>
-<span class="lineNum">      22 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">      23 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      24 </span><span class="lineCov">          1 : // ... which will break the enumeration order of the slow properties.</span>
-<span class="lineNum">      25 </span><span class="lineCov">          1 : var names = Object.getOwnPropertyNames(o);</span>
-<span class="lineNum">      26 </span><span class="lineCov">          1 : for (var i = 0; i &lt; 100; i++) {</span>
-<span class="lineNum">      27 </span><span class="lineCov">          1 :   assertEquals(&quot;a&quot; + i, names[i]);</span>
-<span class="lineNum">      28 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      13 </span>            : A.prototype = new Proto();
+<span class="lineNum">      14 </span>            : 
+<span class="lineNum">      15 </span>            : // Create a object and add properties that already exist in the prototype.
+<span class="lineNum">      16 </span>            : // At some point the object will turn into a dictionary mode and one of
+<span class="lineNum">      17 </span>            : // the fast details from the prototype will be reinterpreted as a details
+<span class="lineNum">      18 </span>            : // for a new property ...
+<span class="lineNum">      19 </span>            : var o = new A();
+<span class="lineNum">      20 </span>            : for (var i = 0; i &lt; 100; i++) {
+<span class="lineNum">      21 </span>            :   o[&quot;a&quot; + i] = i;
+<span class="lineNum">      22 </span>            : }
+<span class="lineNum">      23 </span>            : 
+<span class="lineNum">      24 </span>            : // ... which will break the enumeration order of the slow properties.
+<span class="lineNum">      25 </span>            : var names = Object.getOwnPropertyNames(o);
+<span class="lineNum">      26 </span>            : for (var i = 0; i &lt; 100; i++) {
+<span class="lineNum">      27 </span>            :   assertEquals(&quot;a&quot; + i, names[i]);
+<span class="lineNum">      28 </span>            : }
 </pre>
       </td>
     </tr>

@@ -31,17 +31,17 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">64</td>
-            <td class="headerCovTableEntry">64</td>
+            <td class="headerCovTableEntry">40</td>
+            <td class="headerCovTableEntry">40</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">2</td>
-            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntry">1</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr><td><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -100,29 +100,29 @@
 <span class="lineNum">      38 </span><span class="lineCov">         15 :         }</span>
 <span class="lineNum">      39 </span><span class="lineCov">         15 :     }</span>
 <span class="lineNum">      40 </span><span class="lineCov">         15 : }</span>
-<span class="lineNum">      41 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      42 </span><span class="lineCov">          1 :     </span>
-<span class="lineNum">      43 </span><span class="lineCov">          1 : var a = Array()</span>
-<span class="lineNum">      44 </span><span class="lineCov">          1 : for (var i=0; i &lt; nx*nz*3; ++i) </span>
-<span class="lineNum">      45 </span><span class="lineCov">          1 :     a[i] = 0</span>
-<span class="lineNum">      46 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      47 </span><span class="lineCov">          1 : for (var i = 0; i &lt; loops; ++i) {</span>
-<span class="lineNum">      48 </span><span class="lineCov">          1 :     morph(a, i/loops)</span>
-<span class="lineNum">      49 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">      50 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      51 </span><span class="lineCov">          1 : testOutput = 0;</span>
-<span class="lineNum">      52 </span><span class="lineCov">          1 : for (var i = 0; i &lt; nx; i++)</span>
-<span class="lineNum">      53 </span><span class="lineCov">          1 :     testOutput += a[3*(i*nx+i)+1];</span>
-<span class="lineNum">      54 </span><span class="lineCov">          1 : a = null;</span>
-<span class="lineNum">      55 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      56 </span><span class="lineCov">          1 : // This has to be an approximate test since ECMAscript doesn't formally specify</span>
-<span class="lineNum">      57 </span><span class="lineCov">          1 : // what sin() returns. Even if it did specify something like for example what Java 7</span>
-<span class="lineNum">      58 </span><span class="lineCov">          1 : // says - that sin() has to return a value within 1 ulp of exact - then we still</span>
-<span class="lineNum">      59 </span><span class="lineCov">          1 : // would not be able to do an exact test here since that would allow for just enough</span>
-<span class="lineNum">      60 </span><span class="lineCov">          1 : // low-bit slop to create possibly big errors due to testOutput being a sum.</span>
-<span class="lineNum">      61 </span><span class="lineCov">          1 : var epsilon = 1e-13;</span>
-<span class="lineNum">      62 </span><span class="lineCov">          1 : if (Math.abs(testOutput) &gt;= epsilon)</span>
-<span class="lineNum">      63 </span><span class="lineCov">          1 :     throw &quot;Error: bad test output: expected magnitude below &quot; + epsilon + &quot; but got &quot; + testOutput;</span>
+<span class="lineNum">      41 </span>            : 
+<span class="lineNum">      42 </span>            :     
+<span class="lineNum">      43 </span>            : var a = Array()
+<span class="lineNum">      44 </span>            : for (var i=0; i &lt; nx*nz*3; ++i) 
+<span class="lineNum">      45 </span>            :     a[i] = 0
+<span class="lineNum">      46 </span>            : 
+<span class="lineNum">      47 </span>            : for (var i = 0; i &lt; loops; ++i) {
+<span class="lineNum">      48 </span>            :     morph(a, i/loops)
+<span class="lineNum">      49 </span>            : }
+<span class="lineNum">      50 </span>            : 
+<span class="lineNum">      51 </span>            : testOutput = 0;
+<span class="lineNum">      52 </span>            : for (var i = 0; i &lt; nx; i++)
+<span class="lineNum">      53 </span>            :     testOutput += a[3*(i*nx+i)+1];
+<span class="lineNum">      54 </span>            : a = null;
+<span class="lineNum">      55 </span>            : 
+<span class="lineNum">      56 </span>            : // This has to be an approximate test since ECMAscript doesn't formally specify
+<span class="lineNum">      57 </span>            : // what sin() returns. Even if it did specify something like for example what Java 7
+<span class="lineNum">      58 </span>            : // says - that sin() has to return a value within 1 ulp of exact - then we still
+<span class="lineNum">      59 </span>            : // would not be able to do an exact test here since that would allow for just enough
+<span class="lineNum">      60 </span>            : // low-bit slop to create possibly big errors due to testOutput being a sum.
+<span class="lineNum">      61 </span>            : var epsilon = 1e-13;
+<span class="lineNum">      62 </span>            : if (Math.abs(testOutput) &gt;= epsilon)
+<span class="lineNum">      63 </span>            :     throw &quot;Error: bad test output: expected magnitude below &quot; + epsilon + &quot; but got &quot; + testOutput;
 </pre>
       </td>
     </tr>

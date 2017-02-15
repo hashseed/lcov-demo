@@ -31,17 +31,17 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">373</td>
-            <td class="headerCovTableEntry">373</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntry">346</td>
+            <td class="headerCovTableEntry">351</td>
+            <td class="headerCovTableEntryHi">98.6 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">5</td>
-            <td class="headerCovTableEntry">5</td>
+            <td class="headerCovTableEntry">4</td>
+            <td class="headerCovTableEntry">4</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr><td><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -103,14 +103,14 @@
 <span class="lineNum">      41 </span><span class="lineCov">        580 :     step_count++;</span>
 <span class="lineNum">      42 </span><span class="lineCov">        580 :   }</span>
 <span class="lineNum">      43 </span><span class="lineCov">        580 : };</span>
-<a name="44"><span class="lineNum">      44 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">      45 </span><span class="lineCov">          1 : // Set the global variables state to prpare the stepping test.</span>
+<a name="44"><span class="lineNum">      44 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">      45 </span><span class="lineNoCov">          0 : // Set the global variables state to prpare the stepping test.</span>
 <span class="lineNum">      46 </span><span class="lineCov">          3 : function prepare_step_test() {</span>
 <span class="lineNum">      47 </span><span class="lineCov">          3 :   done = false;</span>
 <span class="lineNum">      48 </span><span class="lineCov">          3 :   step_count = 0;</span>
 <span class="lineNum">      49 </span><span class="lineCov">          3 : }</span>
-<a name="50"><span class="lineNum">      50 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">      51 </span><span class="lineCov">          1 : // Test function to step through, uses widended bytecodes.</span>
+<a name="50"><span class="lineNum">      50 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">      51 </span><span class="lineNoCov">          0 : // Test function to step through, uses widended bytecodes.</span>
 <span class="lineNum">      52 </span><span class="lineCov">          3 : function f() {</span>
 <span class="lineNum">      53 </span><span class="lineCov">          3 : var x = 10000000;</span>
 <span class="lineNum">      54 </span><span class="lineCov">          3 : var y = x + 1;</span>
@@ -404,34 +404,34 @@
 <span class="lineNum">     342 </span><span class="lineCov">          3 : var _rp = 287; values[_rp] = _rp;</span>
 <span class="lineNum">     343 </span><span class="lineCov">          3 :   done = true;</span>
 <a name="344"><span class="lineNum">     344 </span><span class="lineCov">          3 : };</span></a>
-<span class="lineNum">     345 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     345 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     346 </span><span class="lineCov">          3 : function check_values() {</span>
 <span class="lineNum">     347 </span><span class="lineCov">          3 :   for (var i = 0; i &lt; values.length; i++) {</span>
 <span class="lineNum">     348 </span><span class="lineCov">          3 :     assertEquals(values[i], i);</span>
 <span class="lineNum">     349 </span><span class="lineCov">          3 :     values[i] = -i;</span>
 <span class="lineNum">     350 </span><span class="lineCov">          3 :   }</span>
 <span class="lineNum">     351 </span><span class="lineCov">          3 : }</span>
-<span class="lineNum">     352 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     353 </span><span class="lineCov">          1 : // Pass 1 - no debugger, no steps seen</span>
-<span class="lineNum">     354 </span><span class="lineCov">          1 : prepare_step_test();</span>
-<span class="lineNum">     355 </span><span class="lineCov">          1 : f();</span>
-<span class="lineNum">     356 </span><span class="lineCov">          1 : check_values();</span>
-<span class="lineNum">     357 </span><span class="lineCov">          1 : assertEquals(0, step_count);</span>
-<span class="lineNum">     358 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     359 </span><span class="lineCov">          1 : // Pass 2 - debugger attached and stepping from BP</span>
-<span class="lineNum">     360 </span><span class="lineCov">          1 : Debug.setListener(listener);</span>
-<span class="lineNum">     361 </span><span class="lineCov">          1 : var bp = Debug.setBreakPoint(f, 1);</span>
-<span class="lineNum">     362 </span><span class="lineCov">          1 : prepare_step_test();</span>
-<span class="lineNum">     363 </span><span class="lineCov">          1 : f();</span>
-<span class="lineNum">     364 </span><span class="lineCov">          1 : check_values();</span>
-<span class="lineNum">     365 </span><span class="lineCov">          1 : assertEquals(580, step_count);</span>
-<span class="lineNum">     366 </span><span class="lineCov">          1 : Debug.clearBreakPoint(bp);</span>
-<span class="lineNum">     367 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     368 </span><span class="lineCov">          1 : // Pass 3 - debugger attached and no BP</span>
-<span class="lineNum">     369 </span><span class="lineCov">          1 : prepare_step_test();</span>
-<span class="lineNum">     370 </span><span class="lineCov">          1 : f();</span>
-<span class="lineNum">     371 </span><span class="lineCov">          1 : check_values();</span>
-<span class="lineNum">     372 </span><span class="lineCov">          1 : assertEquals(0, step_count);</span>
+<span class="lineNum">     352 </span>            : 
+<span class="lineNum">     353 </span>            : // Pass 1 - no debugger, no steps seen
+<span class="lineNum">     354 </span>            : prepare_step_test();
+<span class="lineNum">     355 </span>            : f();
+<span class="lineNum">     356 </span>            : check_values();
+<span class="lineNum">     357 </span>            : assertEquals(0, step_count);
+<span class="lineNum">     358 </span>            : 
+<span class="lineNum">     359 </span>            : // Pass 2 - debugger attached and stepping from BP
+<span class="lineNum">     360 </span>            : Debug.setListener(listener);
+<span class="lineNum">     361 </span>            : var bp = Debug.setBreakPoint(f, 1);
+<span class="lineNum">     362 </span>            : prepare_step_test();
+<span class="lineNum">     363 </span>            : f();
+<span class="lineNum">     364 </span>            : check_values();
+<span class="lineNum">     365 </span>            : assertEquals(580, step_count);
+<span class="lineNum">     366 </span>            : Debug.clearBreakPoint(bp);
+<span class="lineNum">     367 </span>            : 
+<span class="lineNum">     368 </span>            : // Pass 3 - debugger attached and no BP
+<span class="lineNum">     369 </span>            : prepare_step_test();
+<span class="lineNum">     370 </span>            : f();
+<span class="lineNum">     371 </span>            : check_values();
+<span class="lineNum">     372 </span>            : assertEquals(0, step_count);
 </pre>
       </td>
     </tr>

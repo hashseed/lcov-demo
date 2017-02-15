@@ -31,17 +31,17 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">75</td>
-            <td class="headerCovTableEntry">75</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntry">36</td>
+            <td class="headerCovTableEntry">64</td>
+            <td class="headerCovTableEntryLo">56.2 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">4</td>
-            <td class="headerCovTableEntry">4</td>
+            <td class="headerCovTableEntry">3</td>
+            <td class="headerCovTableEntry">3</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr><td><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -94,46 +94,46 @@
 <span class="lineNum">      32 </span><span class="lineCov">          4 :     if (proxy_has_x) { return 19 }</span>
 <span class="lineNum">      33 </span><span class="lineCov">          4 :     return 8;</span>
 <span class="lineNum">      34 </span><span class="lineCov">          4 :   }</span>
-<span class="lineNum">      35 </span><span class="lineCov">          1 : });</span>
-<span class="lineNum">      36 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      37 </span><span class="lineCov">          1 : // Test __lookupGetter__/__lookupSetter__ with proxy.</span>
-<span class="lineNum">      38 </span><span class="lineCov">          1 : assertSame(undefined, Object.prototype.__lookupGetter__.call(proxy, 'foo'));</span>
-<span class="lineNum">      39 </span><span class="lineCov">          1 : assertSame(undefined, Object.prototype.__lookupSetter__.call(proxy, 'bar'));</span>
-<span class="lineNum">      40 </span><span class="lineCov">          1 : assertSame(undefined, Object.prototype.__lookupGetter__.call(proxy, '123'));</span>
-<span class="lineNum">      41 </span><span class="lineCov">          1 : assertSame(undefined, Object.prototype.__lookupSetter__.call(proxy, '456'));</span>
-<span class="lineNum">      42 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      43 </span><span class="lineCov">          1 : // Test __lookupGetter__/__lookupSetter__ with proxy in prototype chain.</span>
-<span class="lineNum">      44 </span><span class="lineCov">          1 : var object = Object.create(proxy);</span>
-<span class="lineNum">      45 </span><span class="lineCov">          1 : assertSame(undefined, Object.prototype.__lookupGetter__.call(object, 'foo'));</span>
-<span class="lineNum">      46 </span><span class="lineCov">          1 : assertSame(undefined, Object.prototype.__lookupSetter__.call(object, 'bar'));</span>
-<span class="lineNum">      47 </span><span class="lineCov">          1 : assertSame(undefined, Object.prototype.__lookupGetter__.call(object, '123'));</span>
-<span class="lineNum">      48 </span><span class="lineCov">          1 : assertSame(undefined, Object.prototype.__lookupSetter__.call(object, '456'));</span>
-<a name="49"><span class="lineNum">      49 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">      50 </span><span class="lineCov">          1 : // Test inline constructors with proxy as prototype.</span>
+<span class="lineNum">      35 </span><span class="lineNoCov">          0 : });</span>
+<span class="lineNum">      36 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      37 </span><span class="lineNoCov">          0 : // Test __lookupGetter__/__lookupSetter__ with proxy.</span>
+<span class="lineNum">      38 </span><span class="lineNoCov">          0 : assertSame(undefined, Object.prototype.__lookupGetter__.call(proxy, 'foo'));</span>
+<span class="lineNum">      39 </span><span class="lineNoCov">          0 : assertSame(undefined, Object.prototype.__lookupSetter__.call(proxy, 'bar'));</span>
+<span class="lineNum">      40 </span><span class="lineNoCov">          0 : assertSame(undefined, Object.prototype.__lookupGetter__.call(proxy, '123'));</span>
+<span class="lineNum">      41 </span><span class="lineNoCov">          0 : assertSame(undefined, Object.prototype.__lookupSetter__.call(proxy, '456'));</span>
+<span class="lineNum">      42 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      43 </span><span class="lineNoCov">          0 : // Test __lookupGetter__/__lookupSetter__ with proxy in prototype chain.</span>
+<span class="lineNum">      44 </span><span class="lineNoCov">          0 : var object = Object.create(proxy);</span>
+<span class="lineNum">      45 </span><span class="lineNoCov">          0 : assertSame(undefined, Object.prototype.__lookupGetter__.call(object, 'foo'));</span>
+<span class="lineNum">      46 </span><span class="lineNoCov">          0 : assertSame(undefined, Object.prototype.__lookupSetter__.call(object, 'bar'));</span>
+<span class="lineNum">      47 </span><span class="lineNoCov">          0 : assertSame(undefined, Object.prototype.__lookupGetter__.call(object, '123'));</span>
+<span class="lineNum">      48 </span><span class="lineNoCov">          0 : assertSame(undefined, Object.prototype.__lookupSetter__.call(object, '456'));</span>
+<a name="49"><span class="lineNum">      49 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">      50 </span><span class="lineNoCov">          0 : // Test inline constructors with proxy as prototype.</span>
 <span class="lineNum">      51 </span><span class="lineCov">          1 : function F() { this.x = 42 }</span>
-<span class="lineNum">      52 </span><span class="lineCov">          1 : F.prototype = proxy;</span>
-<span class="lineNum">      53 </span><span class="lineCov">          1 : var instance = new F();</span>
-<span class="lineNum">      54 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      55 </span><span class="lineCov">          1 : proxy_has_x = false;</span>
-<span class="lineNum">      56 </span><span class="lineCov">          1 : assertSame(42, instance.x);</span>
-<span class="lineNum">      57 </span><span class="lineCov">          1 : delete instance.x;</span>
-<span class="lineNum">      58 </span><span class="lineCov">          1 : assertSame(8, instance.x);</span>
-<span class="lineNum">      59 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      60 </span><span class="lineCov">          1 : proxy_has_x = true;</span>
-<span class="lineNum">      61 </span><span class="lineCov">          1 : assertSame(19, instance.x);</span>
-<a name="62"><span class="lineNum">      62 </span><span class="lineCov">          1 : </span></a>
-<span class="lineNum">      63 </span><span class="lineCov">          1 : // Test inline constructors with proxy in prototype chain.</span>
+<span class="lineNum">      52 </span><span class="lineNoCov">          0 : F.prototype = proxy;</span>
+<span class="lineNum">      53 </span><span class="lineNoCov">          0 : var instance = new F();</span>
+<span class="lineNum">      54 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      55 </span><span class="lineNoCov">          0 : proxy_has_x = false;</span>
+<span class="lineNum">      56 </span><span class="lineNoCov">          0 : assertSame(42, instance.x);</span>
+<span class="lineNum">      57 </span><span class="lineNoCov">          0 : delete instance.x;</span>
+<span class="lineNum">      58 </span><span class="lineNoCov">          0 : assertSame(8, instance.x);</span>
+<span class="lineNum">      59 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      60 </span><span class="lineNoCov">          0 : proxy_has_x = true;</span>
+<span class="lineNum">      61 </span><span class="lineNoCov">          0 : assertSame(19, instance.x);</span>
+<a name="62"><span class="lineNum">      62 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">      63 </span><span class="lineNoCov">          0 : // Test inline constructors with proxy in prototype chain.</span>
 <span class="lineNum">      64 </span><span class="lineCov">          1 : function G() { this.x = 42; }</span>
-<span class="lineNum">      65 </span><span class="lineCov">          1 : G.prototype.__proto__ = proxy;</span>
-<span class="lineNum">      66 </span><span class="lineCov">          1 : instance = new G();</span>
-<span class="lineNum">      67 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      68 </span><span class="lineCov">          1 : proxy_has_x = false;</span>
-<span class="lineNum">      69 </span><span class="lineCov">          1 : assertSame(42, instance.x);</span>
-<span class="lineNum">      70 </span><span class="lineCov">          1 : delete instance.x;</span>
-<span class="lineNum">      71 </span><span class="lineCov">          1 : assertSame(8, instance.x);</span>
-<span class="lineNum">      72 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      73 </span><span class="lineCov">          1 : proxy_has_x = true;</span>
-<span class="lineNum">      74 </span><span class="lineCov">          1 : assertSame(19, instance.x);</span>
+<span class="lineNum">      65 </span>            : G.prototype.__proto__ = proxy;
+<span class="lineNum">      66 </span>            : instance = new G();
+<span class="lineNum">      67 </span>            : 
+<span class="lineNum">      68 </span>            : proxy_has_x = false;
+<span class="lineNum">      69 </span>            : assertSame(42, instance.x);
+<span class="lineNum">      70 </span>            : delete instance.x;
+<span class="lineNum">      71 </span>            : assertSame(8, instance.x);
+<span class="lineNum">      72 </span>            : 
+<span class="lineNum">      73 </span>            : proxy_has_x = true;
+<span class="lineNum">      74 </span>            : assertSame(19, instance.x);
 </pre>
       </td>
     </tr>

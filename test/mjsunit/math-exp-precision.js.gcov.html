@@ -31,17 +31,17 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">65</td>
-            <td class="headerCovTableEntry">65</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntry">43</td>
+            <td class="headerCovTableEntry">47</td>
+            <td class="headerCovTableEntryHi">91.5 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">3</td>
-            <td class="headerCovTableEntry">3</td>
+            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntry">2</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -93,10 +93,10 @@
 <span class="lineNum">      31 </span><span class="lineCov">      15801 : function exp(x) {</span>
 <span class="lineNum">      32 </span><span class="lineCov">      15801 :   return Math.exp(x);</span>
 <span class="lineNum">      33 </span><span class="lineCov">      15801 : }</span>
-<span class="lineNum">      34 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      35 </span><span class="lineCov">          1 : var first_call_result = exp(Math.PI);</span>
-<a name="36"><span class="lineNum">      36 </span><span class="lineCov">          1 : var second_call_result = exp(Math.PI);</span></a>
-<span class="lineNum">      37 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      34 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      35 </span><span class="lineNoCov">          0 : var first_call_result = exp(Math.PI);</span>
+<a name="36"><span class="lineNum">      36 </span><span class="lineNoCov">          0 : var second_call_result = exp(Math.PI);</span></a>
+<span class="lineNum">      37 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      38 </span><span class="lineCov">      31594 : function assertAlmostEquals(expected, actual, x) {</span>
 <span class="lineNum">      39 </span><span class="lineCov">      31594 :   if (expected == 0 &amp;&amp; actual == 0) return;  // OK</span>
 <span class="lineNum">      40 </span><span class="lineCov">      31594 :   if (expected == Number.POSITIVE_INFINITY &amp;&amp;</span>
@@ -107,23 +107,23 @@
 <span class="lineNum">      45 </span><span class="lineCov">      31594 :   assertTrue(relative_diff &lt; 1e-12, &quot;relative difference of &quot; + relative_diff +</span>
 <span class="lineNum">      46 </span><span class="lineCov">      31594 :                                     &quot; for input &quot; + x);</span>
 <span class="lineNum">      47 </span><span class="lineCov">      31594 : }</span>
-<span class="lineNum">      48 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      49 </span><span class="lineCov">          1 : var increment = Math.PI / 35;  // Roughly 0.1, but we want to try many</span>
-<span class="lineNum">      50 </span><span class="lineCov">          1 :                                // different mantissae.</span>
-<span class="lineNum">      51 </span><span class="lineCov">          1 : for (var x = -708; x &lt; 710; x += increment) {</span>
-<span class="lineNum">      52 </span><span class="lineCov">          1 :   var ex = exp(x);</span>
-<span class="lineNum">      53 </span><span class="lineCov">          1 :   var reference = Math.pow(Math.E, x);</span>
-<span class="lineNum">      54 </span><span class="lineCov">          1 :   assertAlmostEquals(reference, ex, x);</span>
-<span class="lineNum">      55 </span><span class="lineCov">          1 :   if (ex &gt; 0 &amp;&amp; isFinite(ex)) {</span>
-<span class="lineNum">      56 </span><span class="lineCov">          1 :     var back = Math.log(ex);</span>
-<span class="lineNum">      57 </span><span class="lineCov">          1 :     assertAlmostEquals(x, back, x + &quot; (backwards)&quot;);</span>
-<span class="lineNum">      58 </span><span class="lineCov">          1 :   }</span>
-<span class="lineNum">      59 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">      60 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      61 </span><span class="lineCov">          1 : // Make sure optimizing the function does not alter the result.</span>
-<span class="lineNum">      62 </span><span class="lineCov">          1 : var last_call_result = exp(Math.PI);</span>
-<span class="lineNum">      63 </span><span class="lineCov">          1 : assertEquals(first_call_result, second_call_result);</span>
-<span class="lineNum">      64 </span><span class="lineCov">          1 : assertEquals(first_call_result, last_call_result);</span>
+<span class="lineNum">      48 </span>            : 
+<span class="lineNum">      49 </span>            : var increment = Math.PI / 35;  // Roughly 0.1, but we want to try many
+<span class="lineNum">      50 </span>            :                                // different mantissae.
+<span class="lineNum">      51 </span>            : for (var x = -708; x &lt; 710; x += increment) {
+<span class="lineNum">      52 </span>            :   var ex = exp(x);
+<span class="lineNum">      53 </span>            :   var reference = Math.pow(Math.E, x);
+<span class="lineNum">      54 </span>            :   assertAlmostEquals(reference, ex, x);
+<span class="lineNum">      55 </span>            :   if (ex &gt; 0 &amp;&amp; isFinite(ex)) {
+<span class="lineNum">      56 </span>            :     var back = Math.log(ex);
+<span class="lineNum">      57 </span>            :     assertAlmostEquals(x, back, x + &quot; (backwards)&quot;);
+<span class="lineNum">      58 </span>            :   }
+<span class="lineNum">      59 </span>            : }
+<span class="lineNum">      60 </span>            : 
+<span class="lineNum">      61 </span>            : // Make sure optimizing the function does not alter the result.
+<span class="lineNum">      62 </span>            : var last_call_result = exp(Math.PI);
+<span class="lineNum">      63 </span>            : assertEquals(first_call_result, second_call_result);
+<span class="lineNum">      64 </span>            : assertEquals(first_call_result, last_call_result);
 </pre>
       </td>
     </tr>

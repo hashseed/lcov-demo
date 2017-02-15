@@ -31,17 +31,17 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">95</td>
-            <td class="headerCovTableEntry">95</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntry">51</td>
+            <td class="headerCovTableEntry">57</td>
+            <td class="headerCovTableEntryMed">89.5 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">5</td>
-            <td class="headerCovTableEntry">5</td>
+            <td class="headerCovTableEntry">4</td>
+            <td class="headerCovTableEntry">4</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -92,12 +92,12 @@
 <a name="30"><span class="lineNum">      30 </span><span class="lineCov">        696 :     var expr = start + expression + end;</span></a>
 <span class="lineNum">      31 </span><span class="lineCov">        696 :     var result = [];</span>
 <span class="lineNum">      32 </span><span class="lineCov">       2784 :     function func(content) { var f = new Function(content); f.toString = function(){ return content}; return f; }</span>
-<span class="lineNum">      33 </span><span class="lineCov">        696 :     result.push([new func(&quot;return &quot; + expr + &quot;;&quot;), resultValue]);</span>
-<span class="lineNum">      34 </span><span class="lineCov">        696 :     result.push([new func(&quot;if (&quot; + expr + &quot;) return true; return false;&quot;), resultValue]);</span>
-<span class="lineNum">      35 </span><span class="lineCov">        696 :     result.push([new func(&quot;var k = 0; while (&quot; + expr + &quot;) if (k++) return true; return false;&quot;), resultValue]);</span>
-<span class="lineNum">      36 </span><span class="lineCov">        696 :     result.push([new func(&quot;var k = 0; for (; &quot; + expr + &quot;; ) if (k++) return true; return false;&quot;), resultValue]);</span>
-<a name="37"><span class="lineNum">      37 </span><span class="lineCov">        696 :     return result;</span></a>
-<span class="lineNum">      38 </span><span class="lineCov">        696 : }</span>
+<span class="lineNum">      33 </span><span class="lineNoCov">          0 :     result.push([new func(&quot;return &quot; + expr + &quot;;&quot;), resultValue]);</span>
+<span class="lineNum">      34 </span><span class="lineNoCov">          0 :     result.push([new func(&quot;if (&quot; + expr + &quot;) return true; return false;&quot;), resultValue]);</span>
+<span class="lineNum">      35 </span><span class="lineNoCov">          0 :     result.push([new func(&quot;var k = 0; while (&quot; + expr + &quot;) if (k++) return true; return false;&quot;), resultValue]);</span>
+<span class="lineNum">      36 </span><span class="lineNoCov">          0 :     result.push([new func(&quot;var k = 0; for (; &quot; + expr + &quot;; ) if (k++) return true; return false;&quot;), resultValue]);</span>
+<a name="37"><span class="lineNum">      37 </span><span class="lineNoCov">          0 :     return result;</span></a>
+<span class="lineNum">      38 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">      39 </span><span class="lineCov">         29 : function doTest(lhs, rhs, relationship) {</span>
 <span class="lineNum">      40 </span><span class="lineCov">         29 :     var expressionParts = [[&quot;(&quot;,&quot;)&quot;],[&quot;(&quot;, &quot;) || 1&quot;, true],[&quot;(&quot;, &quot;) &amp;&amp; 1&quot;],[&quot;(&quot;, &quot;) || 1&quot;, true],[&quot;1 || (&quot;,&quot;)&quot;, true],[&quot;1 &amp;&amp; (&quot;,&quot;)&quot;]];</span>
 <span class="lineNum">      41 </span><span class="lineCov">         29 :     var expressions = [];</span>
@@ -117,43 +117,43 @@
 <span class="lineNum">      55 </span><span class="lineCov">         29 :             testFailed(tests[i][0] + &quot; is &quot; + r + &quot; and should be &quot; + tests[i][1] + &quot;.&quot;);</span>
 <span class="lineNum">      56 </span><span class="lineCov">         29 :     }</span>
 <span class="lineNum">      57 </span><span class="lineCov">         29 : }</span>
-<span class="lineNum">      58 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      59 </span><span class="lineCov">          1 : var letterA = &quot;a&quot;;</span>
-<span class="lineNum">      60 </span><span class="lineCov">          1 : var letterB = &quot;b&quot;;</span>
-<span class="lineNum">      61 </span><span class="lineCov">          1 : var One = 1;</span>
-<span class="lineNum">      62 </span><span class="lineCov">          1 : var Zero = 0;</span>
-<span class="lineNum">      63 </span><span class="lineCov">          1 : doTest('&quot;a&quot;', '&quot;b&quot;', -1);</span>
-<span class="lineNum">      64 </span><span class="lineCov">          1 : doTest('&quot;a&quot;', '&quot;a&quot;', 0);</span>
-<span class="lineNum">      65 </span><span class="lineCov">          1 : doTest('&quot;b&quot;', '&quot;a&quot;', 1);</span>
-<span class="lineNum">      66 </span><span class="lineCov">          1 : doTest('letterA', '&quot;b&quot;', -1);</span>
-<span class="lineNum">      67 </span><span class="lineCov">          1 : doTest('letterA', '&quot;a&quot;', 0);</span>
-<span class="lineNum">      68 </span><span class="lineCov">          1 : doTest('&quot;b&quot;', '&quot;a&quot;', 1);</span>
-<span class="lineNum">      69 </span><span class="lineCov">          1 : doTest('letterA', '&quot;b&quot;', -1);</span>
-<span class="lineNum">      70 </span><span class="lineCov">          1 : doTest('letterA', 'letterA', 0);</span>
-<span class="lineNum">      71 </span><span class="lineCov">          1 : doTest('&quot;b&quot;', 'letterA', 1);</span>
-<span class="lineNum">      72 </span><span class="lineCov">          1 : doTest('&quot;a&quot;', '&quot;b&quot;', -1);</span>
-<span class="lineNum">      73 </span><span class="lineCov">          1 : doTest('&quot;a&quot;', 'letterA', 0);</span>
-<span class="lineNum">      74 </span><span class="lineCov">          1 : doTest('&quot;b&quot;', 'letterA', 1);</span>
-<span class="lineNum">      75 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      76 </span><span class="lineCov">          1 : doTest('&quot;a&quot;', '0', NaN);</span>
-<span class="lineNum">      77 </span><span class="lineCov">          1 : doTest('0', '&quot;a&quot;', NaN);</span>
-<span class="lineNum">      78 </span><span class="lineCov">          1 : doTest('letterA', '0', NaN);</span>
-<span class="lineNum">      79 </span><span class="lineCov">          1 : doTest('letterA', '&quot;a&quot;', 0);</span>
-<span class="lineNum">      80 </span><span class="lineCov">          1 : doTest('0', '&quot;a&quot;', NaN);</span>
-<span class="lineNum">      81 </span><span class="lineCov">          1 : doTest('letterA', 'letterA', 0);</span>
-<span class="lineNum">      82 </span><span class="lineCov">          1 : doTest('0', 'letterA', NaN);</span>
-<span class="lineNum">      83 </span><span class="lineCov">          1 : doTest('&quot;a&quot;', 'letterA', 0);</span>
-<span class="lineNum">      84 </span><span class="lineCov">          1 : doTest('0', 'letterA', NaN);</span>
-<span class="lineNum">      85 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      86 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      87 </span><span class="lineCov">          1 : doTest('0', '1', -1);</span>
-<span class="lineNum">      88 </span><span class="lineCov">          1 : doTest('0', '0', 0);</span>
-<span class="lineNum">      89 </span><span class="lineCov">          1 : doTest('1', '0', 1);</span>
-<span class="lineNum">      90 </span><span class="lineCov">          1 : doTest('Zero', '1', -1);</span>
-<span class="lineNum">      91 </span><span class="lineCov">          1 : doTest('Zero', '0', 0);</span>
-<span class="lineNum">      92 </span><span class="lineCov">          1 : doTest('1', 'Zero', 1);</span>
-<span class="lineNum">      93 </span><span class="lineCov">          1 : doTest('0', 'One', -1);</span>
-<span class="lineNum">      94 </span><span class="lineCov">          1 : doTest('One', '0', 1);</span>
+<span class="lineNum">      58 </span>            : 
+<span class="lineNum">      59 </span>            : var letterA = &quot;a&quot;;
+<span class="lineNum">      60 </span>            : var letterB = &quot;b&quot;;
+<span class="lineNum">      61 </span>            : var One = 1;
+<span class="lineNum">      62 </span>            : var Zero = 0;
+<span class="lineNum">      63 </span>            : doTest('&quot;a&quot;', '&quot;b&quot;', -1);
+<span class="lineNum">      64 </span>            : doTest('&quot;a&quot;', '&quot;a&quot;', 0);
+<span class="lineNum">      65 </span>            : doTest('&quot;b&quot;', '&quot;a&quot;', 1);
+<span class="lineNum">      66 </span>            : doTest('letterA', '&quot;b&quot;', -1);
+<span class="lineNum">      67 </span>            : doTest('letterA', '&quot;a&quot;', 0);
+<span class="lineNum">      68 </span>            : doTest('&quot;b&quot;', '&quot;a&quot;', 1);
+<span class="lineNum">      69 </span>            : doTest('letterA', '&quot;b&quot;', -1);
+<span class="lineNum">      70 </span>            : doTest('letterA', 'letterA', 0);
+<span class="lineNum">      71 </span>            : doTest('&quot;b&quot;', 'letterA', 1);
+<span class="lineNum">      72 </span>            : doTest('&quot;a&quot;', '&quot;b&quot;', -1);
+<span class="lineNum">      73 </span>            : doTest('&quot;a&quot;', 'letterA', 0);
+<span class="lineNum">      74 </span>            : doTest('&quot;b&quot;', 'letterA', 1);
+<span class="lineNum">      75 </span>            : 
+<span class="lineNum">      76 </span>            : doTest('&quot;a&quot;', '0', NaN);
+<span class="lineNum">      77 </span>            : doTest('0', '&quot;a&quot;', NaN);
+<span class="lineNum">      78 </span>            : doTest('letterA', '0', NaN);
+<span class="lineNum">      79 </span>            : doTest('letterA', '&quot;a&quot;', 0);
+<span class="lineNum">      80 </span>            : doTest('0', '&quot;a&quot;', NaN);
+<span class="lineNum">      81 </span>            : doTest('letterA', 'letterA', 0);
+<span class="lineNum">      82 </span>            : doTest('0', 'letterA', NaN);
+<span class="lineNum">      83 </span>            : doTest('&quot;a&quot;', 'letterA', 0);
+<span class="lineNum">      84 </span>            : doTest('0', 'letterA', NaN);
+<span class="lineNum">      85 </span>            : 
+<span class="lineNum">      86 </span>            : 
+<span class="lineNum">      87 </span>            : doTest('0', '1', -1);
+<span class="lineNum">      88 </span>            : doTest('0', '0', 0);
+<span class="lineNum">      89 </span>            : doTest('1', '0', 1);
+<span class="lineNum">      90 </span>            : doTest('Zero', '1', -1);
+<span class="lineNum">      91 </span>            : doTest('Zero', '0', 0);
+<span class="lineNum">      92 </span>            : doTest('1', 'Zero', 1);
+<span class="lineNum">      93 </span>            : doTest('0', 'One', -1);
+<span class="lineNum">      94 </span>            : doTest('One', '0', 1);
 </pre>
       </td>
     </tr>

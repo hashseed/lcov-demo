@@ -31,17 +31,17 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">86</td>
-            <td class="headerCovTableEntry">86</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntry">64</td>
+            <td class="headerCovTableEntry">69</td>
+            <td class="headerCovTableEntryHi">92.8 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">4</td>
-            <td class="headerCovTableEntry">4</td>
+            <td class="headerCovTableEntry">3</td>
+            <td class="headerCovTableEntry">3</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -116,35 +116,35 @@
 <span class="lineNum">      54 </span><span class="lineCov">         10 :    exception = e</span>
 <span class="lineNum">      55 </span><span class="lineCov">         10 :   };</span>
 <span class="lineNum">      56 </span><span class="lineCov">         10 : };</span>
-<span class="lineNum">      57 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      58 </span><span class="lineCov">          1 : // Add the debug event listener.</span>
-<a name="59"><span class="lineNum">      59 </span><span class="lineCov">          1 : Debug.setListener(listener);</span></a>
-<span class="lineNum">      60 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      57 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      58 </span><span class="lineNoCov">          0 : // Add the debug event listener.</span>
+<a name="59"><span class="lineNum">      59 </span><span class="lineNoCov">          0 : Debug.setListener(listener);</span></a>
+<span class="lineNum">      60 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      61 </span><span class="lineCov">          1 : function f() {</span>
 <span class="lineNum">      62 </span><span class="lineCov">          1 :   var a = 3;</span>
 <a name="63"><span class="lineNum">      63 </span><span class="lineCov">          1 : };</span></a>
-<span class="lineNum">      64 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      64 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      65 </span><span class="lineCov">          1 : function g() {</span>
 <span class="lineNum">      66 </span><span class="lineCov">          1 :   var a = 2;</span>
 <span class="lineNum">      67 </span><span class="lineCov">          1 :   f();</span>
 <span class="lineNum">      68 </span><span class="lineCov">          1 :   return a;  // Use the value to prevent it being removed by DCE.</span>
 <span class="lineNum">      69 </span><span class="lineCov">          1 : };</span>
-<span class="lineNum">      70 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      71 </span><span class="lineCov">          1 : a = 1;</span>
-<span class="lineNum">      72 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      73 </span><span class="lineCov">          1 : // String which is longer than 80 chars.</span>
-<span class="lineNum">      74 </span><span class="lineCov">          1 : var longString = &quot;1234567890_&quot;;</span>
-<span class="lineNum">      75 </span><span class="lineCov">          1 : for (var i = 0; i &lt; 4; i++) {</span>
-<span class="lineNum">      76 </span><span class="lineCov">          1 :   longString += longString;</span>
-<span class="lineNum">      77 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">      78 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      79 </span><span class="lineCov">          1 : // Set a break point at return in f and invoke g to hit the breakpoint.</span>
-<span class="lineNum">      80 </span><span class="lineCov">          1 : Debug.setBreakPoint(f, 2, 0);</span>
-<span class="lineNum">      81 </span><span class="lineCov">          1 : g();</span>
-<span class="lineNum">      82 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      83 </span><span class="lineCov">          1 : assertFalse(exception, &quot;exception in listener&quot;)</span>
-<span class="lineNum">      84 </span><span class="lineCov">          1 : // Make sure that the debug event listener vas invoked.</span>
-<span class="lineNum">      85 </span><span class="lineCov">          1 : assertTrue(listenerComplete, &quot;listener did not run to completion&quot;);</span>
+<span class="lineNum">      70 </span>            : 
+<span class="lineNum">      71 </span>            : a = 1;
+<span class="lineNum">      72 </span>            : 
+<span class="lineNum">      73 </span>            : // String which is longer than 80 chars.
+<span class="lineNum">      74 </span>            : var longString = &quot;1234567890_&quot;;
+<span class="lineNum">      75 </span>            : for (var i = 0; i &lt; 4; i++) {
+<span class="lineNum">      76 </span>            :   longString += longString;
+<span class="lineNum">      77 </span>            : }
+<span class="lineNum">      78 </span>            : 
+<span class="lineNum">      79 </span>            : // Set a break point at return in f and invoke g to hit the breakpoint.
+<span class="lineNum">      80 </span>            : Debug.setBreakPoint(f, 2, 0);
+<span class="lineNum">      81 </span>            : g();
+<span class="lineNum">      82 </span>            : 
+<span class="lineNum">      83 </span>            : assertFalse(exception, &quot;exception in listener&quot;)
+<span class="lineNum">      84 </span>            : // Make sure that the debug event listener vas invoked.
+<span class="lineNum">      85 </span>            : assertTrue(listenerComplete, &quot;listener did not run to completion&quot;);
 </pre>
       </td>
     </tr>

@@ -31,17 +31,17 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">82</td>
-            <td class="headerCovTableEntry">82</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntry">58</td>
+            <td class="headerCovTableEntry">67</td>
+            <td class="headerCovTableEntryMed">86.6 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-14</td>
+            <td class="headerValue">2017-02-15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">7</td>
-            <td class="headerCovTableEntry">7</td>
+            <td class="headerCovTableEntry">4</td>
+            <td class="headerCovTableEntry">4</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr><td><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -82,7 +82,7 @@
 <a name="20"><span class="lineNum">      20 </span><span class="lineCov">          1 : `);</span></a>
 <span class="lineNum">      21 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      22 </span><span class="lineCov">          3 : function ExecuteInDebugContext(f) {</span>
-<a name="23"><span class="lineNum">      23 </span><span class="lineCov">          3 :   var result;</span></a>
+<span class="lineNum">      23 </span><span class="lineCov">          3 :   var result;</span>
 <span class="lineNum">      24 </span><span class="lineCov">          3 :   var exception = null;</span>
 <span class="lineNum">      25 </span><span class="lineCov">          3 :   Debug.setListener(function(event) {</span>
 <span class="lineNum">      26 </span><span class="lineCov">          3 :     if (event == Debug.DebugEvent.Break) {</span>
@@ -94,12 +94,12 @@
 <span class="lineNum">      32 </span><span class="lineCov">          3 :       }</span>
 <span class="lineNum">      33 </span><span class="lineCov">          3 :     }</span>
 <span class="lineNum">      34 </span><span class="lineCov">          3 :   });</span>
-<span class="lineNum">      35 </span><span class="lineCov">          3 :   debugger;</span>
-<span class="lineNum">      36 </span><span class="lineCov">          3 :   Debug.setListener(null);</span>
-<span class="lineNum">      37 </span><span class="lineCov">          3 :   if (exception !== null) throw exception;</span>
-<span class="lineNum">      38 </span><span class="lineCov">          3 :   return result;</span>
-<a name="39"><span class="lineNum">      39 </span><span class="lineCov">          3 : }</span></a>
-<a name="40"><span class="lineNum">      40 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      35 </span><span class="lineNoCov">          0 :   debugger;</span>
+<span class="lineNum">      36 </span><span class="lineNoCov">          0 :   Debug.setListener(null);</span>
+<span class="lineNum">      37 </span><span class="lineNoCov">          0 :   if (exception !== null) throw exception;</span>
+<span class="lineNum">      38 </span><span class="lineNoCov">          0 :   return result;</span>
+<a name="39"><span class="lineNum">      39 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">      40 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      41 </span><span class="lineCov">          3 : function Replace(fun, original, patch) {</span>
 <span class="lineNum">      42 </span><span class="lineCov">          3 :   ExecuteInDebugContext(function() {</span>
 <span class="lineNum">      43 </span><span class="lineCov">          3 :     var change_log = [];</span>
@@ -115,32 +115,32 @@
 <span class="lineNum">      53 </span><span class="lineCov">          3 :       exceptions++;</span>
 <span class="lineNum">      54 </span><span class="lineCov">          3 :     }</span>
 <span class="lineNum">      55 </span><span class="lineCov">          3 :   });</span>
-<a name="56"><span class="lineNum">      56 </span><span class="lineCov">          3 : }</span></a>
-<span class="lineNum">      57 </span><span class="lineCov">          1 : </span>
+<a name="56"><span class="lineNum">      56 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">      57 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      58 </span><span class="lineCov">          3 : function ReplaceOnce(x) {</span>
 <span class="lineNum">      59 </span><span class="lineCov">          3 :   if (replace_again) {</span>
 <span class="lineNum">      60 </span><span class="lineCov">          3 :     replace_again = false;</span>
 <span class="lineNum">      61 </span><span class="lineCov">          3 :     Replace(LogNewTarget, &quot;true&quot;, &quot;new.target&quot;);</span>
 <span class="lineNum">      62 </span><span class="lineCov">          3 :   }</span>
 <a name="63"><span class="lineNum">      63 </span><span class="lineCov">          3 : }</span></a>
-<span class="lineNum">      64 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      64 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      65 </span><span class="lineCov">          1 : function Revert() {</span>
 <span class="lineNum">      66 </span><span class="lineCov">          1 :   Replace(LogNewTarget, &quot;new.target&quot;, &quot;true&quot;);</span>
 <span class="lineNum">      67 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">      68 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      69 </span><span class="lineCov">          1 : replace_again = true;</span>
-<span class="lineNum">      70 </span><span class="lineCov">          1 : ReplaceOnce();</span>
-<span class="lineNum">      71 </span><span class="lineCov">          1 : new LogNewTarget();</span>
-<span class="lineNum">      72 </span><span class="lineCov">          1 : Revert();</span>
-<span class="lineNum">      73 </span><span class="lineCov">          1 : assertEquals(1, calls);</span>
-<span class="lineNum">      74 </span><span class="lineCov">          1 : assertEquals(0, exceptions);</span>
-<span class="lineNum">      75 </span><span class="lineCov">          1 : assertEquals([LogNewTarget], results);</span>
-<span class="lineNum">      76 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      77 </span><span class="lineCov">          1 : replace_again = true;</span>
-<span class="lineNum">      78 </span><span class="lineCov">          1 : new LogNewTarget();</span>
-<span class="lineNum">      79 </span><span class="lineCov">          1 : assertEquals(2, calls);  // No restarts</span>
-<span class="lineNum">      80 </span><span class="lineCov">          1 : assertEquals(1, exceptions);  // Replace failed.</span>
-<span class="lineNum">      81 </span><span class="lineCov">          1 : assertEquals([LogNewTarget, true], results);</span>
+<span class="lineNum">      68 </span>            : 
+<span class="lineNum">      69 </span>            : replace_again = true;
+<span class="lineNum">      70 </span>            : ReplaceOnce();
+<span class="lineNum">      71 </span>            : new LogNewTarget();
+<span class="lineNum">      72 </span>            : Revert();
+<span class="lineNum">      73 </span>            : assertEquals(1, calls);
+<span class="lineNum">      74 </span>            : assertEquals(0, exceptions);
+<span class="lineNum">      75 </span>            : assertEquals([LogNewTarget], results);
+<span class="lineNum">      76 </span>            : 
+<span class="lineNum">      77 </span>            : replace_again = true;
+<span class="lineNum">      78 </span>            : new LogNewTarget();
+<span class="lineNum">      79 </span>            : assertEquals(2, calls);  // No restarts
+<span class="lineNum">      80 </span>            : assertEquals(1, exceptions);  // Replace failed.
+<span class="lineNum">      81 </span>            : assertEquals([LogNewTarget, true], results);
 </pre>
       </td>
     </tr>
