@@ -1,1 +1,1 @@
-Demo for d8 --coverage.
+Demo for d8 --lcov.
