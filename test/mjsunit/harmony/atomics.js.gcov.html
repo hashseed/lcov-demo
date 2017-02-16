@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">458</td>
-            <td class="headerCovTableEntry">565</td>
-            <td class="headerCovTableEntryMed">81.1 %</td>
+            <td class="headerCovTableEntry">553</td>
+            <td class="headerCovTableEntry">567</td>
+            <td class="headerCovTableEntryHi">97.5 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">21</td>
@@ -77,22 +77,22 @@
 <span class="lineNum">      15 </span><span class="lineCov">        216 :   }</span>
 <span class="lineNum">      16 </span><span class="lineCov">        216 :   return value;</span>
 <a name="17"><span class="lineNum">      17 </span><span class="lineCov">        216 : }</span></a>
-<span class="lineNum">      18 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      18 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      19 </span><span class="lineCov">          6 : function makeConstructorObject(constr, min, max, toRange) {</span>
 <span class="lineNum">      20 </span><span class="lineCov">          6 :   var o = {constr: constr, min: min, max: max};</span>
 <span class="lineNum">      21 </span><span class="lineCov">          6 :   o.toRange = toRangeWrapped.bind(o);</span>
 <span class="lineNum">      22 </span><span class="lineCov">          6 :   return o;</span>
 <span class="lineNum">      23 </span><span class="lineCov">          6 : }</span>
-<span class="lineNum">      24 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      25 </span><span class="lineNoCov">          0 : var IntegerTypedArrayConstructors = [</span>
-<span class="lineNum">      26 </span><span class="lineNoCov">          0 :   makeConstructorObject(Int8Array, -128, 127),</span>
-<span class="lineNum">      27 </span><span class="lineNoCov">          0 :   makeConstructorObject(Int16Array, -32768, 32767),</span>
-<span class="lineNum">      28 </span><span class="lineNoCov">          0 :   makeConstructorObject(Int32Array, -0x80000000, 0x7fffffff),</span>
-<span class="lineNum">      29 </span><span class="lineNoCov">          0 :   makeConstructorObject(Uint8Array, 0, 255),</span>
-<span class="lineNum">      30 </span><span class="lineNoCov">          0 :   makeConstructorObject(Uint16Array, 0, 65535),</span>
-<span class="lineNum">      31 </span><span class="lineNoCov">          0 :   makeConstructorObject(Uint32Array, 0, 0xffffffff),</span>
-<a name="32"><span class="lineNum">      32 </span><span class="lineNoCov">          0 : ];</span></a>
-<span class="lineNum">      33 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      24 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      25 </span><span class="lineCov">          1 : var IntegerTypedArrayConstructors = [</span>
+<span class="lineNum">      26 </span><span class="lineCov">          1 :   makeConstructorObject(Int8Array, -128, 127),</span>
+<span class="lineNum">      27 </span><span class="lineCov">          1 :   makeConstructorObject(Int16Array, -32768, 32767),</span>
+<span class="lineNum">      28 </span><span class="lineCov">          1 :   makeConstructorObject(Int32Array, -0x80000000, 0x7fffffff),</span>
+<span class="lineNum">      29 </span><span class="lineCov">          1 :   makeConstructorObject(Uint8Array, 0, 255),</span>
+<span class="lineNum">      30 </span><span class="lineCov">          1 :   makeConstructorObject(Uint16Array, 0, 65535),</span>
+<span class="lineNum">      31 </span><span class="lineCov">          1 :   makeConstructorObject(Uint32Array, 0, 0xffffffff),</span>
+<a name="32"><span class="lineNum">      32 </span><span class="lineCov">          1 : ];</span></a>
+<span class="lineNum">      33 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      34 </span><span class="lineCov">          1 : (function TestBadArray() {</span>
 <span class="lineNum">      35 </span><span class="lineCov">          1 :   var ab = new ArrayBuffer(16);</span>
 <span class="lineNum">      36 </span><span class="lineCov">          1 :   var u32a = new Uint32Array(16);</span>
@@ -107,7 +107,7 @@
 <span class="lineNum">      45 </span><span class="lineCov">          1 :   ];</span>
 <span class="lineNum">      46 </span><span class="lineCov">         10 :   badArrayTypes.forEach(function(o) {</span>
 <span class="lineNum">      47 </span><span class="lineCov">         10 :     assertThrows(function() { Atomics.compareExchange(o, 0, 0, 0); },</span>
-<span class="lineNum">      48 </span><span class="lineNoCov">          0 :                  TypeError);</span>
+<span class="lineNum">      48 </span><span class="lineCov">         10 :                  TypeError);</span>
 <span class="lineNum">      49 </span><span class="lineCov">         10 :     assertThrows(function() { Atomics.load(o, 0); }, TypeError);</span>
 <span class="lineNum">      50 </span><span class="lineCov">         10 :     assertThrows(function() { Atomics.store(o, 0, 0); }, TypeError);</span>
 <span class="lineNum">      51 </span><span class="lineCov">         10 :     assertThrows(function() { Atomics.add(o, 0, 0); }, TypeError);</span>
@@ -116,9 +116,9 @@
 <span class="lineNum">      54 </span><span class="lineCov">         10 :     assertThrows(function() { Atomics.or(o, 0, 0); }, TypeError);</span>
 <span class="lineNum">      55 </span><span class="lineCov">         10 :     assertThrows(function() { Atomics.xor(o, 0, 0); }, TypeError);</span>
 <span class="lineNum">      56 </span><span class="lineCov">         10 :     assertThrows(function() { Atomics.exchange(o, 0, 0); }, TypeError);</span>
-<span class="lineNum">      57 </span><span class="lineNoCov">          0 :   });</span>
-<a name="58"><span class="lineNum">      58 </span><span class="lineNoCov">          0 : })();</span></a>
-<span class="lineNum">      59 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      57 </span><span class="lineCov">         10 :   });</span>
+<a name="58"><span class="lineNum">      58 </span><span class="lineCov">          1 : })();</span></a>
+<span class="lineNum">      59 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      60 </span><span class="lineCov">          1 : (function TestBadIndex() {</span>
 <span class="lineNum">      61 </span><span class="lineCov">          1 :   var sab = new SharedArrayBuffer(8);</span>
 <span class="lineNum">      62 </span><span class="lineCov">          1 :   var si32a = new Int32Array(sab);</span>
@@ -128,7 +128,7 @@
 <span class="lineNum">      66 </span><span class="lineCov">          1 :   var nonInteger = [1.4, '1.4', NaN, -Infinity, Infinity, undefined, 'hi', {}];</span>
 <span class="lineNum">      67 </span><span class="lineCov">          8 :   nonInteger.forEach(function(i) {</span>
 <span class="lineNum">      68 </span><span class="lineCov">          8 :     assertThrows(function() { Atomics.compareExchange(si32a, i, 0); },</span>
-<span class="lineNum">      69 </span><span class="lineNoCov">          0 :                  RangeError);</span>
+<span class="lineNum">      69 </span><span class="lineCov">          8 :                  RangeError);</span>
 <span class="lineNum">      70 </span><span class="lineCov">          8 :     assertThrows(function() { Atomics.load(si32a, i, 0); }, RangeError);</span>
 <span class="lineNum">      71 </span><span class="lineCov">          8 :     assertThrows(function() { Atomics.store(si32a, i, 0); }, RangeError);</span>
 <span class="lineNum">      72 </span><span class="lineCov">          8 :     assertThrows(function() { Atomics.add(si32a, i, 0); }, RangeError);</span>
@@ -137,12 +137,12 @@
 <span class="lineNum">      75 </span><span class="lineCov">          8 :     assertThrows(function() { Atomics.or(si32a, i, 0); }, RangeError);</span>
 <span class="lineNum">      76 </span><span class="lineCov">          8 :     assertThrows(function() { Atomics.xor(si32a, i, 0); }, RangeError);</span>
 <span class="lineNum">      77 </span><span class="lineCov">          8 :     assertThrows(function() { Atomics.exchange(si32a, i, 0); }, RangeError);</span>
-<span class="lineNum">      78 </span><span class="lineNoCov">          0 :   }, RangeError);</span>
-<span class="lineNum">      79 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      80 </span><span class="lineNoCov">          0 :   // Out-of-bounds indexes should throw RangeError.</span>
+<span class="lineNum">      78 </span><span class="lineCov">          8 :   }, RangeError);</span>
+<span class="lineNum">      79 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      80 </span><span class="lineCov">          1 :   // Out-of-bounds indexes should throw RangeError.</span>
 <span class="lineNum">      81 </span><span class="lineCov">          3 :   [-1, 2, 100].forEach(function(i) {</span>
 <span class="lineNum">      82 </span><span class="lineCov">          3 :     assertThrows(function() { Atomics.compareExchange(si32a, i, 0, 0); },</span>
-<span class="lineNum">      83 </span><span class="lineNoCov">          0 :                  RangeError);</span>
+<span class="lineNum">      83 </span><span class="lineCov">          3 :                  RangeError);</span>
 <span class="lineNum">      84 </span><span class="lineCov">          3 :     assertThrows(function() { Atomics.load(si32a, i); }, RangeError);</span>
 <span class="lineNum">      85 </span><span class="lineCov">          3 :     assertThrows(function() { Atomics.store(si32a, i, 0); }, RangeError);</span>
 <span class="lineNum">      86 </span><span class="lineCov">          3 :     assertThrows(function() { Atomics.add(si32a, i, 0); }, RangeError);</span>
@@ -151,9 +151,9 @@
 <span class="lineNum">      89 </span><span class="lineCov">          3 :     assertThrows(function() { Atomics.or(si32a, i, 0); }, RangeError);</span>
 <span class="lineNum">      90 </span><span class="lineCov">          3 :     assertThrows(function() { Atomics.xor(si32a, i, 0); }, RangeError);</span>
 <span class="lineNum">      91 </span><span class="lineCov">          3 :     assertThrows(function() { Atomics.exchange(si32a, i, 0); }, RangeError);</span>
-<span class="lineNum">      92 </span><span class="lineNoCov">          0 :   }, RangeError);</span>
-<span class="lineNum">      93 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      94 </span><span class="lineNoCov">          0 :   // Out-of-bounds indexes for array with offset should throw RangeError.</span>
+<span class="lineNum">      92 </span><span class="lineCov">          3 :   }, RangeError);</span>
+<span class="lineNum">      93 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      94 </span><span class="lineCov">          1 :   // Out-of-bounds indexes for array with offset should throw RangeError.</span>
 <span class="lineNum">      95 </span><span class="lineCov">          3 :   [-1, 1, 100].forEach(function(i) {</span>
 <span class="lineNum">      96 </span><span class="lineCov">          3 :     assertThrows(function() { Atomics.compareExchange(si32a2, i, 0, 0); });</span>
 <span class="lineNum">      97 </span><span class="lineCov">          3 :     assertThrows(function() { Atomics.load(si32a2, i); }, RangeError);</span>
@@ -164,10 +164,10 @@
 <span class="lineNum">     102 </span><span class="lineCov">          3 :     assertThrows(function() { Atomics.or(si32a2, i, 0); }, RangeError);</span>
 <span class="lineNum">     103 </span><span class="lineCov">          3 :     assertThrows(function() { Atomics.xor(si32a2, i, 0); }, RangeError);</span>
 <span class="lineNum">     104 </span><span class="lineCov">          3 :     assertThrows(function() { Atomics.exchange(si32a2, i, 0); }, RangeError);</span>
-<span class="lineNum">     105 </span><span class="lineNoCov">          0 :   });</span>
-<a name="106"><span class="lineNum">     106 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     107 </span><span class="lineNoCov">          0 :   // Monkey-patch length and make sure these functions still throw.</span>
-<span class="lineNum">     108 </span><span class="lineNoCov">          0 :   Object.defineProperty(si32a, 'length', {get: function() { return 1000; }});</span>
+<span class="lineNum">     105 </span><span class="lineCov">          3 :   });</span>
+<a name="106"><span class="lineNum">     106 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     107 </span><span class="lineCov">          1 :   // Monkey-patch length and make sure these functions still throw.</span>
+<span class="lineNum">     108 </span><span class="lineCov">          1 :   Object.defineProperty(si32a, 'length', {get: function() { return 1000; }});</span>
 <span class="lineNum">     109 </span><span class="lineCov">          2 :   [2, 100].forEach(function(i) {</span>
 <span class="lineNum">     110 </span><span class="lineCov">          2 :     assertThrows(function() { Atomics.compareExchange(si32a, i, 0, 0); });</span>
 <span class="lineNum">     111 </span><span class="lineCov">          2 :     assertThrows(function() { Atomics.load(si32a, i); });</span>
@@ -178,9 +178,9 @@
 <span class="lineNum">     116 </span><span class="lineCov">          2 :     assertThrows(function() { Atomics.or(si32a, i, 0); });</span>
 <span class="lineNum">     117 </span><span class="lineCov">          2 :     assertThrows(function() { Atomics.xor(si32a, i, 0); });</span>
 <span class="lineNum">     118 </span><span class="lineCov">          2 :     assertThrows(function() { Atomics.exchange(si32a, i, 0); });</span>
-<span class="lineNum">     119 </span><span class="lineNoCov">          0 :   });</span>
-<a name="120"><span class="lineNum">     120 </span><span class="lineNoCov">          0 : })();</span></a>
-<span class="lineNum">     121 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     119 </span><span class="lineCov">          2 :   });</span>
+<a name="120"><span class="lineNum">     120 </span><span class="lineCov">          1 : })();</span></a>
+<span class="lineNum">     121 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     122 </span><span class="lineCov">          1 : (function TestGoodIndex() {</span>
 <span class="lineNum">     123 </span><span class="lineCov">          1 :   var sab = new SharedArrayBuffer(64);</span>
 <span class="lineNum">     124 </span><span class="lineCov">          1 :   var si32a = new Int32Array(sab);</span>
@@ -200,8 +200,8 @@
 <span class="lineNum">     138 </span><span class="lineCov">        198 :       assertEquals(i * 2, ia[i], name);</span>
 <span class="lineNum">     139 </span><span class="lineCov">        198 :     }</span>
 <span class="lineNum">     140 </span><span class="lineCov">        198 :   };</span>
-<span class="lineNum">     141 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     142 </span><span class="lineNoCov">          0 :   // These values all map to index 0</span>
+<span class="lineNum">     141 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     142 </span><span class="lineCov">          1 :   // These values all map to index 0</span>
 <span class="lineNum">     143 </span><span class="lineCov">          5 :   [-0, 0, 0.0, null, false].forEach(function(i) {</span>
 <span class="lineNum">     144 </span><span class="lineCov">          5 :     var name = String(i);</span>
 <span class="lineNum">     145 </span><span class="lineCov">         10 :     [si32a, si32a2].forEach(function(array) {</span>
@@ -215,9 +215,9 @@
 <span class="lineNum">     153 </span><span class="lineCov">         10 :       testOp(Atomics.xor, array, i, 0, name);</span>
 <span class="lineNum">     154 </span><span class="lineCov">         10 :       testOp(Atomics.exchange, array, i, 0, name);</span>
 <span class="lineNum">     155 </span><span class="lineCov">         10 :     });</span>
-<span class="lineNum">     156 </span><span class="lineNoCov">          0 :   });</span>
-<span class="lineNum">     157 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     158 </span><span class="lineNoCov">          0 :   // These values all map to index 3</span>
+<span class="lineNum">     156 </span><span class="lineCov">          5 :   });</span>
+<span class="lineNum">     157 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     158 </span><span class="lineCov">          1 :   // These values all map to index 3</span>
 <span class="lineNum">     159 </span><span class="lineCov">         18 :   var valueOf = {valueOf: function(){ return 3;}};</span>
 <span class="lineNum">     160 </span><span class="lineCov">         19 :   var toString = {toString: function(){ return '3';}};</span>
 <span class="lineNum">     161 </span><span class="lineCov">          6 :   [3, 3.0, '3', '3.0', valueOf, toString].forEach(function(i) {</span>
@@ -233,16 +233,16 @@
 <span class="lineNum">     171 </span><span class="lineCov">         12 :       testOp(Atomics.xor, array, i, 3, name);</span>
 <span class="lineNum">     172 </span><span class="lineCov">         12 :       testOp(Atomics.exchange, array, i, 3, name);</span>
 <span class="lineNum">     173 </span><span class="lineCov">         12 :     });</span>
-<span class="lineNum">     174 </span><span class="lineNoCov">          0 :   });</span>
-<a name="175"><span class="lineNum">     175 </span><span class="lineNoCov">          0 : })();</span></a>
-<span class="lineNum">     176 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     174 </span><span class="lineCov">          6 :   });</span>
+<a name="175"><span class="lineNum">     175 </span><span class="lineCov">          1 : })();</span></a>
+<span class="lineNum">     176 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     177 </span><span class="lineCov">        108 : function clearArray(sab) {</span>
 <span class="lineNum">     178 </span><span class="lineCov">        108 :   var ui8 = new Uint8Array(sab);</span>
 <span class="lineNum">     179 </span><span class="lineCov">        108 :   for (var i = 0; i &lt; sab.byteLength; ++i) {</span>
 <span class="lineNum">     180 </span><span class="lineCov">        108 :     ui8[i] = 0;</span>
 <span class="lineNum">     181 </span><span class="lineCov">        108 :   }</span>
 <a name="182"><span class="lineNum">     182 </span><span class="lineCov">        108 : }</span></a>
-<span class="lineNum">     183 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     183 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     184 </span><span class="lineCov">          1 : (function TestCompareExchange() {</span>
 <span class="lineNum">     185 </span><span class="lineCov">          6 :   IntegerTypedArrayConstructors.forEach(function(t) {</span>
 <span class="lineNum">     186 </span><span class="lineCov">          6 :     var sab = new SharedArrayBuffer(10 * t.constr.BYTES_PER_ELEMENT);</span>
@@ -262,9 +262,9 @@
 <span class="lineNum">     200 </span><span class="lineCov">         12 :         assertEquals(50, array[i], name);</span>
 <span class="lineNum">     201 </span><span class="lineCov">         12 :       }</span>
 <span class="lineNum">     202 </span><span class="lineCov">         12 :     })</span>
-<span class="lineNum">     203 </span><span class="lineNoCov">          0 :   });</span>
-<a name="204"><span class="lineNum">     204 </span><span class="lineNoCov">          0 : })();</span></a>
-<span class="lineNum">     205 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     203 </span><span class="lineCov">          6 :   });</span>
+<a name="204"><span class="lineNum">     204 </span><span class="lineCov">          1 : })();</span></a>
+<span class="lineNum">     205 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     206 </span><span class="lineCov">          1 : (function TestLoad() {</span>
 <span class="lineNum">     207 </span><span class="lineCov">          6 :   IntegerTypedArrayConstructors.forEach(function(t) {</span>
 <span class="lineNum">     208 </span><span class="lineCov">          6 :     var sab = new SharedArrayBuffer(10 * t.constr.BYTES_PER_ELEMENT);</span>
@@ -281,10 +281,10 @@
 <span class="lineNum">     219 </span><span class="lineCov">         12 :         assertEquals(50, Atomics.load(array, i), name);</span>
 <span class="lineNum">     220 </span><span class="lineCov">         12 :       }</span>
 <span class="lineNum">     221 </span><span class="lineCov">         12 :     })</span>
-<span class="lineNum">     222 </span><span class="lineNoCov">          0 :   });</span>
-<span class="lineNum">     223 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     224 </span><span class="lineNoCov">          0 :   // Test Smi range</span>
-<span class="lineNum">     225 </span><span class="lineNoCov">          0 :   (function () {</span>
+<span class="lineNum">     222 </span><span class="lineCov">          6 :   });</span>
+<span class="lineNum">     223 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     224 </span><span class="lineCov">          1 :   // Test Smi range</span>
+<span class="lineNum">     225 </span><span class="lineCov">          1 :   (function () {</span>
 <span class="lineNum">     226 </span><span class="lineNoCov">          0 :     var sab = new SharedArrayBuffer(4);</span>
 <span class="lineNum">     227 </span><span class="lineNoCov">          0 :     var i32 = new Int32Array(sab);</span>
 <a name="228"><span class="lineNum">     228 </span><span class="lineNoCov">          0 :     var u32 = new Uint32Array(sab);</span></a>
@@ -299,9 +299,9 @@
 <span class="lineNum">     237 </span><span class="lineNoCov">          0 :     testLoad(0x40000000,  0x40000000); // 2**30 (smi if signed and 32-bits)</span>
 <span class="lineNum">     238 </span><span class="lineNoCov">          0 :     testLoad(0x80000000, -0x80000000); // 2**31 (smi if signed and 32-bits)</span>
 <span class="lineNum">     239 </span><span class="lineNoCov">          0 :     testLoad(0xffffffff, -1);          // 2**31 (smi if signed)</span>
-<span class="lineNum">     240 </span><span class="lineNoCov">          0 :   });</span>
-<a name="241"><span class="lineNum">     241 </span><span class="lineNoCov">          0 : })();</span></a>
-<span class="lineNum">     242 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     240 </span><span class="lineCov">          1 :   });</span>
+<a name="241"><span class="lineNum">     241 </span><span class="lineCov">          1 : })();</span></a>
+<span class="lineNum">     242 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     243 </span><span class="lineCov">          1 : (function TestStore() {</span>
 <span class="lineNum">     244 </span><span class="lineCov">          6 :   IntegerTypedArrayConstructors.forEach(function(t) {</span>
 <span class="lineNum">     245 </span><span class="lineCov">          6 :     var sab = new SharedArrayBuffer(10 * t.constr.BYTES_PER_ELEMENT);</span>
@@ -319,9 +319,9 @@
 <span class="lineNum">     257 </span><span class="lineCov">         12 :         assertEquals(100, array[i], name);</span>
 <span class="lineNum">     258 </span><span class="lineCov">         12 :       }</span>
 <span class="lineNum">     259 </span><span class="lineCov">         12 :     })</span>
-<span class="lineNum">     260 </span><span class="lineNoCov">          0 :   });</span>
-<a name="261"><span class="lineNum">     261 </span><span class="lineNoCov">          0 : })();</span></a>
-<span class="lineNum">     262 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     260 </span><span class="lineCov">          6 :   });</span>
+<a name="261"><span class="lineNum">     261 </span><span class="lineCov">          1 : })();</span></a>
+<span class="lineNum">     262 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     263 </span><span class="lineCov">          1 : (function TestAdd() {</span>
 <span class="lineNum">     264 </span><span class="lineCov">          6 :   IntegerTypedArrayConstructors.forEach(function(t) {</span>
 <span class="lineNum">     265 </span><span class="lineCov">          6 :     var sab = new SharedArrayBuffer(10 * t.constr.BYTES_PER_ELEMENT);</span>
@@ -339,9 +339,9 @@
 <span class="lineNum">     277 </span><span class="lineCov">         12 :         assertEquals(120, array[i], name);</span>
 <span class="lineNum">     278 </span><span class="lineCov">         12 :       }</span>
 <span class="lineNum">     279 </span><span class="lineCov">         12 :     })</span>
-<span class="lineNum">     280 </span><span class="lineNoCov">          0 :   });</span>
-<a name="281"><span class="lineNum">     281 </span><span class="lineNoCov">          0 : })();</span></a>
-<span class="lineNum">     282 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     280 </span><span class="lineCov">          6 :   });</span>
+<a name="281"><span class="lineNum">     281 </span><span class="lineCov">          1 : })();</span></a>
+<span class="lineNum">     282 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     283 </span><span class="lineCov">          1 : (function TestSub() {</span>
 <span class="lineNum">     284 </span><span class="lineCov">          6 :   IntegerTypedArrayConstructors.forEach(function(t) {</span>
 <span class="lineNum">     285 </span><span class="lineCov">          6 :     var sab = new SharedArrayBuffer(10 * t.constr.BYTES_PER_ELEMENT);</span>
@@ -360,9 +360,9 @@
 <span class="lineNum">     298 </span><span class="lineCov">         12 :         assertEquals(0, array[i], name);</span>
 <span class="lineNum">     299 </span><span class="lineCov">         12 :       }</span>
 <span class="lineNum">     300 </span><span class="lineCov">         12 :     })</span>
-<span class="lineNum">     301 </span><span class="lineNoCov">          0 :   });</span>
-<a name="302"><span class="lineNum">     302 </span><span class="lineNoCov">          0 : })();</span></a>
-<span class="lineNum">     303 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     301 </span><span class="lineCov">          6 :   });</span>
+<a name="302"><span class="lineNum">     302 </span><span class="lineCov">          1 : })();</span></a>
+<span class="lineNum">     303 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     304 </span><span class="lineCov">          1 : (function TestAnd() {</span>
 <span class="lineNum">     305 </span><span class="lineCov">          6 :   IntegerTypedArrayConstructors.forEach(function(t) {</span>
 <span class="lineNum">     306 </span><span class="lineCov">          6 :     var sab = new SharedArrayBuffer(10 * t.constr.BYTES_PER_ELEMENT);</span>
@@ -381,9 +381,9 @@
 <span class="lineNum">     319 </span><span class="lineCov">         12 :         assertEquals(0x20, array[i], name);</span>
 <span class="lineNum">     320 </span><span class="lineCov">         12 :       }</span>
 <span class="lineNum">     321 </span><span class="lineCov">         12 :     })</span>
-<span class="lineNum">     322 </span><span class="lineNoCov">          0 :   });</span>
-<a name="323"><span class="lineNum">     323 </span><span class="lineNoCov">          0 : })();</span></a>
-<span class="lineNum">     324 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     322 </span><span class="lineCov">          6 :   });</span>
+<a name="323"><span class="lineNum">     323 </span><span class="lineCov">          1 : })();</span></a>
+<span class="lineNum">     324 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     325 </span><span class="lineCov">          1 : (function TestOr() {</span>
 <span class="lineNum">     326 </span><span class="lineCov">          6 :   IntegerTypedArrayConstructors.forEach(function(t) {</span>
 <span class="lineNum">     327 </span><span class="lineCov">          6 :     var sab = new SharedArrayBuffer(10 * t.constr.BYTES_PER_ELEMENT);</span>
@@ -402,9 +402,9 @@
 <span class="lineNum">     340 </span><span class="lineCov">         12 :         assertEquals(0x3d, array[i], name);</span>
 <span class="lineNum">     341 </span><span class="lineCov">         12 :       }</span>
 <span class="lineNum">     342 </span><span class="lineCov">         12 :     })</span>
-<span class="lineNum">     343 </span><span class="lineNoCov">          0 :   });</span>
-<a name="344"><span class="lineNum">     344 </span><span class="lineNoCov">          0 : })();</span></a>
-<span class="lineNum">     345 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     343 </span><span class="lineCov">          6 :   });</span>
+<a name="344"><span class="lineNum">     344 </span><span class="lineCov">          1 : })();</span></a>
+<span class="lineNum">     345 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     346 </span><span class="lineCov">          1 : (function TestXor() {</span>
 <span class="lineNum">     347 </span><span class="lineCov">          6 :   IntegerTypedArrayConstructors.forEach(function(t) {</span>
 <span class="lineNum">     348 </span><span class="lineCov">          6 :     var sab = new SharedArrayBuffer(10 * t.constr.BYTES_PER_ELEMENT);</span>
@@ -423,9 +423,9 @@
 <span class="lineNum">     361 </span><span class="lineCov">         12 :         assertEquals(0x25, array[i], name);</span>
 <span class="lineNum">     362 </span><span class="lineCov">         12 :       }</span>
 <span class="lineNum">     363 </span><span class="lineCov">         12 :     })</span>
-<span class="lineNum">     364 </span><span class="lineNoCov">          0 :   });</span>
-<a name="365"><span class="lineNum">     365 </span><span class="lineNoCov">          0 : })();</span></a>
-<span class="lineNum">     366 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     364 </span><span class="lineCov">          6 :   });</span>
+<a name="365"><span class="lineNum">     365 </span><span class="lineCov">          1 : })();</span></a>
+<span class="lineNum">     366 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     367 </span><span class="lineCov">          1 : (function TestExchange() {</span>
 <span class="lineNum">     368 </span><span class="lineCov">          6 :   IntegerTypedArrayConstructors.forEach(function(t) {</span>
 <span class="lineNum">     369 </span><span class="lineCov">          6 :     var sab = new SharedArrayBuffer(10 * t.constr.BYTES_PER_ELEMENT);</span>
@@ -444,38 +444,38 @@
 <span class="lineNum">     382 </span><span class="lineCov">         12 :         assertEquals(0x09, array[i], name);</span>
 <span class="lineNum">     383 </span><span class="lineCov">         12 :       }</span>
 <span class="lineNum">     384 </span><span class="lineCov">         12 :     })</span>
-<span class="lineNum">     385 </span><span class="lineNoCov">          0 :   });</span>
-<a name="386"><span class="lineNum">     386 </span><span class="lineNoCov">          0 : })();</span></a>
-<span class="lineNum">     387 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     385 </span><span class="lineCov">          6 :   });</span>
+<a name="386"><span class="lineNum">     386 </span><span class="lineCov">          1 : })();</span></a>
+<span class="lineNum">     387 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     388 </span><span class="lineCov">          1 : (function TestIsLockFree() {</span>
 <span class="lineNum">     389 </span><span class="lineCov">          1 :   // Various invalid cases.</span>
 <span class="lineNum">     390 </span><span class="lineCov">          1 :   var valueOf = {valueOf: function(){ return 3;}};</span>
 <span class="lineNum">     391 </span><span class="lineCov">          1 :   var toString = {toString: function(){ return '3';}};</span>
-<span class="lineNum">     392 </span><span class="lineNoCov">          0 :   var invalid = [3.14, 'foo', Infinity, NaN, false, undefined, valueOf,</span>
-<span class="lineNum">     393 </span><span class="lineNoCov">          0 :                  toString];</span>
+<span class="lineNum">     392 </span><span class="lineCov">          1 :   var invalid = [3.14, 'foo', Infinity, NaN, false, undefined, valueOf,</span>
+<span class="lineNum">     393 </span><span class="lineCov">          1 :                  toString];</span>
 <span class="lineNum">     394 </span><span class="lineCov">          8 :   invalid.forEach(function(v) {</span>
 <span class="lineNum">     395 </span><span class="lineCov">          8 :     assertEquals(false, Atomics.isLockFree(v), JSON.stringify(v));</span>
 <span class="lineNum">     396 </span><span class="lineCov">          8 :   });</span>
-<span class="lineNum">     397 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     398 </span><span class="lineNoCov">          0 :   // For all platforms we support, 1, 2 and 4 bytes should be lock-free.</span>
-<span class="lineNum">     399 </span><span class="lineNoCov">          0 :   assertEquals(true, Atomics.isLockFree(1));</span>
-<span class="lineNum">     400 </span><span class="lineNoCov">          0 :   assertEquals(true, Atomics.isLockFree(2));</span>
-<span class="lineNum">     401 </span><span class="lineNoCov">          0 :   assertEquals(true, Atomics.isLockFree(4));</span>
-<span class="lineNum">     402 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     403 </span><span class="lineNoCov">          0 :   // Sizes that aren't equal to a typedarray BYTES_PER_ELEMENT always return</span>
-<span class="lineNum">     404 </span><span class="lineNoCov">          0 :   // false.</span>
-<span class="lineNum">     405 </span><span class="lineNoCov">          0 :   var validSizes = {};</span>
+<span class="lineNum">     397 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     398 </span><span class="lineCov">          1 :   // For all platforms we support, 1, 2 and 4 bytes should be lock-free.</span>
+<span class="lineNum">     399 </span><span class="lineCov">          1 :   assertEquals(true, Atomics.isLockFree(1));</span>
+<span class="lineNum">     400 </span><span class="lineCov">          1 :   assertEquals(true, Atomics.isLockFree(2));</span>
+<span class="lineNum">     401 </span><span class="lineCov">          1 :   assertEquals(true, Atomics.isLockFree(4));</span>
+<span class="lineNum">     402 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     403 </span><span class="lineCov">          1 :   // Sizes that aren't equal to a typedarray BYTES_PER_ELEMENT always return</span>
+<span class="lineNum">     404 </span><span class="lineCov">          1 :   // false.</span>
+<span class="lineNum">     405 </span><span class="lineCov">          1 :   var validSizes = {};</span>
 <span class="lineNum">     406 </span><span class="lineCov">          6 :   IntegerTypedArrayConstructors.forEach(function(t) {</span>
 <span class="lineNum">     407 </span><span class="lineCov">          6 :     validSizes[t.constr.BYTES_PER_ELEMENT] = true;</span>
 <span class="lineNum">     408 </span><span class="lineCov">          6 :   });</span>
-<span class="lineNum">     409 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     410 </span><span class="lineNoCov">          0 :   for (var i = 0; i &lt; 1000; ++i) {</span>
-<span class="lineNum">     411 </span><span class="lineNoCov">          0 :     if (!validSizes[i]) {</span>
-<span class="lineNum">     412 </span><span class="lineNoCov">          0 :       assertEquals(false, Atomics.isLockFree(i));</span>
-<span class="lineNum">     413 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">     414 </span><span class="lineNoCov">          0 :   }</span>
-<a name="415"><span class="lineNum">     415 </span><span class="lineNoCov">          0 : })();</span></a>
-<span class="lineNum">     416 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     409 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     410 </span><span class="lineCov">          1 :   for (var i = 0; i &lt; 1000; ++i) {</span>
+<span class="lineNum">     411 </span><span class="lineCov">          1 :     if (!validSizes[i]) {</span>
+<span class="lineNum">     412 </span><span class="lineCov">          1 :       assertEquals(false, Atomics.isLockFree(i));</span>
+<span class="lineNum">     413 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">     414 </span><span class="lineCov">          1 :   }</span>
+<a name="415"><span class="lineNum">     415 </span><span class="lineCov">          1 : })();</span></a>
+<span class="lineNum">     416 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     417 </span><span class="lineCov">          1 : (function TestToNumber() {</span>
 <span class="lineNum">     418 </span><span class="lineCov">          6 :   IntegerTypedArrayConstructors.forEach(function(t) {</span>
 <span class="lineNum">     419 </span><span class="lineCov">          6 :     var sab = new SharedArrayBuffer(1 * t.constr.BYTES_PER_ELEMENT);</span>
@@ -483,7 +483,7 @@
 <a name="421"><span class="lineNum">     421 </span><span class="lineCov">          6 : </span></a>
 <span class="lineNum">     422 </span><span class="lineCov">        108 :     var valueOf = {valueOf: function(){ return 3;}};</span>
 <span class="lineNum">     423 </span><span class="lineCov">        108 :     var toString = {toString: function(){ return '3';}};</span>
-<span class="lineNum">     424 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     424 </span><span class="lineCov">          6 : </span>
 <span class="lineNum">     425 </span><span class="lineCov">         30 :     [false, true, undefined, valueOf, toString].forEach(function(v) {</span>
 <span class="lineNum">     426 </span><span class="lineCov">         30 :       var name = Object.prototype.toString.call(sta) + ' - ' + v;</span>
 <span class="lineNum">     427 </span><span class="lineCov">         30 : </span>
@@ -525,9 +525,9 @@
 <span class="lineNum">     463 </span><span class="lineCov">         30 :       assertEquals(0x09, Atomics.exchange(sta, 0, v), name);</span>
 <span class="lineNum">     464 </span><span class="lineCov">         30 :       assertEquals(v|0, sta[0]);</span>
 <span class="lineNum">     465 </span><span class="lineCov">         30 :     });</span>
-<span class="lineNum">     466 </span><span class="lineNoCov">          0 :   });</span>
-<a name="467"><span class="lineNum">     467 </span><span class="lineNoCov">          0 : })();</span></a>
-<span class="lineNum">     468 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     466 </span><span class="lineCov">          6 :   });</span>
+<a name="467"><span class="lineNum">     467 </span><span class="lineCov">          1 : })();</span></a>
+<span class="lineNum">     468 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     469 </span><span class="lineCov">          1 : (function TestWrapping() {</span>
 <span class="lineNum">     470 </span><span class="lineCov">          6 :   IntegerTypedArrayConstructors.forEach(function(t) {</span>
 <span class="lineNum">     471 </span><span class="lineCov">          6 :     var sab = new SharedArrayBuffer(10 * t.constr.BYTES_PER_ELEMENT);</span>
@@ -625,7 +625,7 @@
 <span class="lineNum">     563 </span><span class="lineCov">          6 :     }</span>
 <span class="lineNum">     564 </span><span class="lineCov">          6 : </span>
 <span class="lineNum">     565 </span><span class="lineCov">          6 :   });</span>
-<span class="lineNum">     566 </span>            : })();
+<span class="lineNum">     566 </span><span class="lineCov">          1 : })();</span>
 </pre>
       </td>
     </tr>

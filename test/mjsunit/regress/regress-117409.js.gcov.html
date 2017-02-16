@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">30</td>
-            <td class="headerCovTableEntry">30</td>
+            <td class="headerCovTableEntry">53</td>
+            <td class="headerCovTableEntry">53</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">1</td>
@@ -90,28 +90,28 @@
 <a name="28"><span class="lineNum">      28 </span><span class="lineCov">          1 : // Flags: --expose-gc</span></a>
 <span class="lineNum">      29 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      30 </span><span class="lineCov">          3 : function KeyedStoreIC(a) { a[0] = Math.E; }</span>
-<span class="lineNum">      31 </span>            : 
-<span class="lineNum">      32 </span>            : // Create literal with a fast double elements backing store
-<span class="lineNum">      33 </span>            : var literal = [1.2];
-<span class="lineNum">      34 </span>            : 
-<span class="lineNum">      35 </span>            : // Specialize the IC for fast double elements
-<span class="lineNum">      36 </span>            : KeyedStoreIC(literal);
-<span class="lineNum">      37 </span>            : KeyedStoreIC(literal);
-<span class="lineNum">      38 </span>            : 
-<span class="lineNum">      39 </span>            : // Truncate array to 0 elements, at which point backing store will be replaced
-<span class="lineNum">      40 </span>            : // with empty fixed array.
-<span class="lineNum">      41 </span>            : literal.length = 0;
-<span class="lineNum">      42 </span>            : 
-<span class="lineNum">      43 </span>            : // ArrayPush built-in will replace empty fixed array backing store with 19
-<span class="lineNum">      44 </span>            : // elements fixed array backing store.  This leads to a mismatch between the map
-<span class="lineNum">      45 </span>            : // and the backing store.  Debug mode will crash here in set_elements accessor.
-<span class="lineNum">      46 </span>            : literal.push(Math.E, Math.E);
-<span class="lineNum">      47 </span>            : 
-<span class="lineNum">      48 </span>            : // Corrupt the backing store!
-<span class="lineNum">      49 </span>            : KeyedStoreIC(literal);
-<span class="lineNum">      50 </span>            : 
-<span class="lineNum">      51 </span>            : // Release mode will crash here when trying to visit parts of E as pointers.
-<span class="lineNum">      52 </span>            : gc();
+<span class="lineNum">      31 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      32 </span><span class="lineCov">          1 : // Create literal with a fast double elements backing store</span>
+<span class="lineNum">      33 </span><span class="lineCov">          1 : var literal = [1.2];</span>
+<span class="lineNum">      34 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      35 </span><span class="lineCov">          1 : // Specialize the IC for fast double elements</span>
+<span class="lineNum">      36 </span><span class="lineCov">          1 : KeyedStoreIC(literal);</span>
+<span class="lineNum">      37 </span><span class="lineCov">          1 : KeyedStoreIC(literal);</span>
+<span class="lineNum">      38 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      39 </span><span class="lineCov">          1 : // Truncate array to 0 elements, at which point backing store will be replaced</span>
+<span class="lineNum">      40 </span><span class="lineCov">          1 : // with empty fixed array.</span>
+<span class="lineNum">      41 </span><span class="lineCov">          1 : literal.length = 0;</span>
+<span class="lineNum">      42 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      43 </span><span class="lineCov">          1 : // ArrayPush built-in will replace empty fixed array backing store with 19</span>
+<span class="lineNum">      44 </span><span class="lineCov">          1 : // elements fixed array backing store.  This leads to a mismatch between the map</span>
+<span class="lineNum">      45 </span><span class="lineCov">          1 : // and the backing store.  Debug mode will crash here in set_elements accessor.</span>
+<span class="lineNum">      46 </span><span class="lineCov">          1 : literal.push(Math.E, Math.E);</span>
+<span class="lineNum">      47 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      48 </span><span class="lineCov">          1 : // Corrupt the backing store!</span>
+<span class="lineNum">      49 </span><span class="lineCov">          1 : KeyedStoreIC(literal);</span>
+<span class="lineNum">      50 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      51 </span><span class="lineCov">          1 : // Release mode will crash here when trying to visit parts of E as pointers.</span>
+<span class="lineNum">      52 </span><span class="lineCov">          1 : gc();</span>
 </pre>
       </td>
     </tr>

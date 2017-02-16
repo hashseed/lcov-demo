@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">19</td>
-            <td class="headerCovTableEntry">19</td>
+            <td class="headerCovTableEntry">32</td>
+            <td class="headerCovTableEntry">32</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">1</td>
@@ -70,25 +70,27 @@
 <span class="lineNum">       8 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">       9 </span><span class="lineCov">          9 : function Word32And(rhs) {</span>
 <span class="lineNum">      10 </span><span class="lineCov">          9 :   var name = &quot;and_0x&quot; + Number(rhs).toString(16);</span>
-<span class="lineNum">      11 </span><span class="lineCov">          9 :   var m = eval(&quot;function Module(stdlib, foreign, heap) {\n&quot;</span>
-<span class="lineNum">      12 </span><span class="lineCov">          9 :       + &quot; \&quot;use asm\&quot;;\n&quot;</span>
-<span class="lineNum">      13 </span><span class="lineCov">          9 :       + &quot; function &quot; + name + &quot;(lhs) {\n&quot;</span>
-<span class="lineNum">      14 </span><span class="lineCov">          9 :       + &quot;  return (lhs | 0) &amp; 0x&quot; + Number(rhs).toString(16) + &quot;;\n&quot;</span>
-<span class="lineNum">      15 </span><span class="lineCov">          9 :       + &quot; }\n&quot;</span>
-<span class="lineNum">      16 </span><span class="lineCov">          9 :       + &quot; return { f: &quot; + name + &quot;}\n&quot;</span>
-<span class="lineNum">      17 </span><span class="lineCov">          9 :       + &quot;}; Module&quot;);</span>
-<span class="lineNum">      18 </span><span class="lineCov">          9 :   return m(stdlib, foreign, heap).f;</span>
-<span class="lineNum">      19 </span><span class="lineCov">          9 : }</span>
-<span class="lineNum">      20 </span>            : 
-<span class="lineNum">      21 </span>            : var masks = [0xffffffff, 0xf0f0f0f0, 0x80ffffff, 0x07f77f0f, 0xdeadbeef,
-<span class="lineNum">      22 </span>            :              0x0fffff00, 0x0ff0, 0xff, 0x00];
-<span class="lineNum">      23 </span>            : for (var i in masks) {
-<span class="lineNum">      24 </span>            :   var rhs = masks[i];
-<span class="lineNum">      25 </span>            :   var and = Word32And(rhs);
-<span class="lineNum">      26 </span>            :   for (var lhs = -2147483648; lhs &lt; 2147483648; lhs += 3999773) {
-<span class="lineNum">      27 </span>            :     assertEquals(lhs &amp; rhs, and(lhs));
-<span class="lineNum">      28 </span>            :   }
-<span class="lineNum">      29 </span>            : }
+<span class="lineNum">      11 </span><span class="lineCov">          9 :   var m = eval(</span>
+<span class="lineNum">      12 </span><span class="lineCov">          9 :       'function Module(stdlib, foreign, heap) {\n' +</span>
+<span class="lineNum">      13 </span><span class="lineCov">          9 :       ' &quot;use asm&quot;;\n' +</span>
+<span class="lineNum">      14 </span><span class="lineCov">          9 :       ' function ' + name + '(lhs) {\n' +</span>
+<span class="lineNum">      15 </span><span class="lineCov">          9 :       '  lhs = lhs | 0;\n' +</span>
+<span class="lineNum">      16 </span><span class="lineCov">          9 :       '  return (lhs &amp; 0x' + Number(rhs).toString(16) + ') | 0;\n' +</span>
+<span class="lineNum">      17 </span><span class="lineCov">          9 :       ' }\n' +</span>
+<span class="lineNum">      18 </span><span class="lineCov">          9 :       ' return { f: ' + name + '}\n' +</span>
+<span class="lineNum">      19 </span><span class="lineCov">          9 :       '}; Module');</span>
+<span class="lineNum">      20 </span><span class="lineCov">          9 :   return m(stdlib, foreign, heap).f;</span>
+<span class="lineNum">      21 </span><span class="lineCov">          9 : }</span>
+<span class="lineNum">      22 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      23 </span><span class="lineCov">          1 : var masks = [0xffffffff, 0xf0f0f0f0, 0x80ffffff, 0x07f77f0f, 0xdeadbeef,</span>
+<span class="lineNum">      24 </span><span class="lineCov">          1 :              0x0fffff00, 0x0ff0, 0xff, 0x00];</span>
+<span class="lineNum">      25 </span><span class="lineCov">          1 : for (var i in masks) {</span>
+<span class="lineNum">      26 </span><span class="lineCov">          1 :   var rhs = masks[i];</span>
+<span class="lineNum">      27 </span><span class="lineCov">          1 :   var and = Word32And(rhs);</span>
+<span class="lineNum">      28 </span><span class="lineCov">          1 :   for (var lhs = -2147483648; lhs &lt; 2147483648; lhs += 3999773) {</span>
+<span class="lineNum">      29 </span><span class="lineCov">          1 :     assertEquals(lhs &amp; rhs, and(lhs));</span>
+<span class="lineNum">      30 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">      31 </span><span class="lineCov">          1 : }</span>
 </pre>
       </td>
     </tr>

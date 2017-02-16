@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">159</td>
-            <td class="headerCovTableEntry">233</td>
-            <td class="headerCovTableEntryLo">68.2 %</td>
+            <td class="headerCovTableEntry">227</td>
+            <td class="headerCovTableEntry">234</td>
+            <td class="headerCovTableEntryHi">97.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">20</td>
@@ -94,36 +94,36 @@
 <span class="lineNum">      32 </span><span class="lineCov">        840 : function CreateFromLiteral() {</span>
 <span class="lineNum">      33 </span><span class="lineCov">        840 :   return {};</span>
 <a name="34"><span class="lineNum">      34 </span><span class="lineCov">        840 : }</span></a>
-<span class="lineNum">      35 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      35 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      36 </span><span class="lineCov">        840 : function CreateFromObject() {</span>
 <span class="lineNum">      37 </span><span class="lineCov">        840 :   return new Object;</span>
 <a name="38"><span class="lineNum">      38 </span><span class="lineCov">        840 : }</span></a>
-<span class="lineNum">      39 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      39 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      40 </span><span class="lineCov">        840 : function CreateDefault() {</span>
 <span class="lineNum">      41 </span><span class="lineCov">        840 :   return Object.create(Object.prototype);</span>
 <a name="42"><span class="lineNum">      42 </span><span class="lineCov">        840 : }</span></a>
-<span class="lineNum">      43 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      44 </span><span class="lineCov">       2680 : function CreateFromConstructor(proto) {</span>
-<span class="lineNum">      45 </span><span class="lineCov">      26963 :   function C() {}</span>
-<span class="lineNum">      46 </span><span class="lineNoCov">          0 :   (new C).b = 9;  // Make sure that we can have an in-object property.</span>
-<span class="lineNum">      47 </span><span class="lineNoCov">          0 :   C.prototype = proto;</span>
-<span class="lineNum">      48 </span><span class="lineCov">      24283 :   return function() { return new C; }</span>
-<a name="49"><span class="lineNum">      49 </span><span class="lineNoCov">          0 : }</span></a>
-<span class="lineNum">      50 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      51 </span><span class="lineCov">       2616 : function CreateFromApi(proto) {</span>
-<span class="lineNum">      52 </span><span class="lineCov">      24216 :   return function() { return Object.create(proto); }</span>
-<a name="53"><span class="lineNum">      53 </span><span class="lineNoCov">          0 : }</span></a>
-<a name="54"><span class="lineNum">      54 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">      55 </span><span class="lineCov">        586 : function CreateWithProperty(proto) {</span>
-<span class="lineNum">      56 </span><span class="lineCov">        586 :   function C() { this.a = -100; }</span>
-<span class="lineNum">      57 </span><span class="lineNoCov">          0 :   C.prototype = proto;</span>
-<span class="lineNum">      58 </span><span class="lineCov">        586 :   return function() { return new C; }</span>
-<span class="lineNum">      59 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">      60 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      61 </span><span class="lineNoCov">          0 : var bases = [CreateFromLiteral, CreateFromObject, CreateDefault];</span>
-<span class="lineNum">      62 </span><span class="lineNoCov">          0 : var inherits = [CreateFromConstructor, CreateFromApi, CreateWithProperty];</span>
-<a name="63"><span class="lineNum">      63 </span><span class="lineNoCov">          0 : var constructs = [CreateFromConstructor, CreateFromApi];</span></a>
-<span class="lineNum">      64 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      43 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      44 </span><span class="lineCov">       2667 : function CreateFromConstructor(proto) {</span>
+<span class="lineNum">      45 </span><span class="lineCov">      26937 :   function C() {}</span>
+<span class="lineNum">      46 </span><span class="lineCov">       2667 :   (new C).b = 9;  // Make sure that we can have an in-object property.</span>
+<span class="lineNum">      47 </span><span class="lineCov">       2667 :   C.prototype = proto;</span>
+<span class="lineNum">      48 </span><span class="lineCov">      24270 :   return function() { return new C; }</span>
+<a name="49"><span class="lineNum">      49 </span><span class="lineCov">       2667 : }</span></a>
+<span class="lineNum">      50 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      51 </span><span class="lineCov">       2654 : function CreateFromApi(proto) {</span>
+<span class="lineNum">      52 </span><span class="lineCov">      24254 :   return function() { return Object.create(proto); }</span>
+<a name="53"><span class="lineNum">      53 </span><span class="lineCov">       2654 : }</span></a>
+<a name="54"><span class="lineNum">      54 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      55 </span><span class="lineCov">        561 : function CreateWithProperty(proto) {</span>
+<span class="lineNum">      56 </span><span class="lineCov">        561 :   function C() { this.a = -100; }</span>
+<span class="lineNum">      57 </span><span class="lineCov">        561 :   C.prototype = proto;</span>
+<span class="lineNum">      58 </span><span class="lineCov">        561 :   return function() { return new C; }</span>
+<span class="lineNum">      59 </span><span class="lineCov">        561 : }</span>
+<span class="lineNum">      60 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      61 </span><span class="lineCov">          1 : var bases = [CreateFromLiteral, CreateFromObject, CreateDefault];</span>
+<span class="lineNum">      62 </span><span class="lineCov">          1 : var inherits = [CreateFromConstructor, CreateFromApi, CreateWithProperty];</span>
+<a name="63"><span class="lineNum">      63 </span><span class="lineCov">          1 : var constructs = [CreateFromConstructor, CreateFromApi];</span></a>
+<span class="lineNum">      64 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      65 </span><span class="lineCov">         70 : function TestAllCreates(f) {</span>
 <span class="lineNum">      66 </span><span class="lineCov">         70 :   // The depth of the prototype chain up the.</span>
 <span class="lineNum">      67 </span><span class="lineCov">         70 :   for (var depth = 0; depth &lt; 3; ++depth) {</span>
@@ -150,43 +150,43 @@
 <span class="lineNum">      88 </span><span class="lineCov">      45720 :             for (var j = 0; j &lt; up; ++j) o.up = Object.getPrototypeOf(o.up);</span>
 <span class="lineNum">      89 </span><span class="lineCov">      45720 :             return o;</span>
 <span class="lineNum">      90 </span><span class="lineCov">      45720 :           })</span>
-<span class="lineNum">      91 </span><span class="lineNoCov">          0 :         }</span>
-<span class="lineNum">      92 </span><span class="lineNoCov">          0 :       }</span>
-<span class="lineNum">      93 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">      94 </span><span class="lineNoCov">          0 :   }</span>
-<span class="lineNum">      95 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">      96 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      97 </span><span class="lineNoCov">          0 : </span>
-<a name="98"><span class="lineNum">      98 </span><span class="lineNoCov">          0 : // Different ways to make a property read-only.</span></a>
-<span class="lineNum">      99 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      91 </span><span class="lineCov">         70 :         }</span>
+<span class="lineNum">      92 </span><span class="lineCov">         70 :       }</span>
+<span class="lineNum">      93 </span><span class="lineCov">         70 :     }</span>
+<span class="lineNum">      94 </span><span class="lineCov">         70 :   }</span>
+<span class="lineNum">      95 </span><span class="lineCov">         70 : }</span>
+<span class="lineNum">      96 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      97 </span><span class="lineCov">          1 : </span>
+<a name="98"><span class="lineNum">      98 </span><span class="lineCov">          1 : // Different ways to make a property read-only.</span></a>
+<span class="lineNum">      99 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     100 </span><span class="lineCov">        505 : function ReadonlyByNonwritableDataProperty(o, name) {</span>
 <span class="lineNum">     101 </span><span class="lineCov">        505 :   Object.defineProperty(o, name, {value: -41, writable: false});</span>
 <a name="102"><span class="lineNum">     102 </span><span class="lineCov">        505 : }</span></a>
-<a name="103"><span class="lineNum">     103 </span><span class="lineNoCov">          0 : </span></a>
+<a name="103"><span class="lineNum">     103 </span><span class="lineCov">          1 : </span></a>
 <span class="lineNum">     104 </span><span class="lineCov">        504 : function ReadonlyByAccessorPropertyWithoutSetter(o, name) {</span>
 <span class="lineNum">     105 </span><span class="lineCov">        504 :   Object.defineProperty(o, name, {get: function() { return -42; }});</span>
-<a name="106"><span class="lineNum">     106 </span><span class="lineNoCov">          0 : }</span></a>
-<span class="lineNum">     107 </span><span class="lineNoCov">          0 : </span>
+<a name="106"><span class="lineNum">     106 </span><span class="lineCov">        504 : }</span></a>
+<span class="lineNum">     107 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     108 </span><span class="lineCov">        504 : function ReadonlyByGetter(o, name) {</span>
 <span class="lineNum">     109 </span><span class="lineCov">        504 :   o.__defineGetter__(&quot;a&quot;, function() { return -43; });</span>
-<a name="110"><span class="lineNum">     110 </span><span class="lineNoCov">          0 : }</span></a>
-<span class="lineNum">     111 </span><span class="lineNoCov">          0 : </span>
+<a name="110"><span class="lineNum">     110 </span><span class="lineCov">        504 : }</span></a>
+<span class="lineNum">     111 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     112 </span><span class="lineCov">        504 : function ReadonlyByFreeze(o, name) {</span>
 <span class="lineNum">     113 </span><span class="lineCov">        504 :   o[name] = -44;</span>
 <span class="lineNum">     114 </span><span class="lineCov">        504 :   Object.freeze(o);</span>
 <a name="115"><span class="lineNum">     115 </span><span class="lineCov">        504 : }</span></a>
-<span class="lineNum">     116 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     116 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     117 </span><span class="lineCov">        504 : function ReadonlyByProto(o, name) {</span>
 <span class="lineNum">     118 </span><span class="lineCov">        504 :   var p = Object.create(o.__proto__);</span>
 <span class="lineNum">     119 </span><span class="lineCov">        504 :   Object.defineProperty(p, name, {value: -45, writable: false});</span>
 <span class="lineNum">     120 </span><span class="lineCov">        504 :   o.__proto__ = p;</span>
 <span class="lineNum">     121 </span><span class="lineCov">        504 : }</span>
-<span class="lineNum">     122 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     123 </span><span class="lineNoCov">          0 : // TODO(neis,cbruni): Enable once the necessary traps work again.</span>
-<span class="lineNum">     124 </span><span class="lineNoCov">          0 : // Allow Proxy to be undefined, so test can run in non-Harmony mode as well.</span>
-<a name="125"><span class="lineNum">     125 </span><span class="lineNoCov">          0 : var global = this;</span></a>
-<span class="lineNum">     126 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     127 </span><span class="lineNoCov">          0 : function ReadonlyByProxy(o, name) {</span>
+<span class="lineNum">     122 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     123 </span><span class="lineCov">          1 : // TODO(neis,cbruni): Enable once the necessary traps work again.</span>
+<span class="lineNum">     124 </span><span class="lineCov">          1 : // Allow Proxy to be undefined, so test can run in non-Harmony mode as well.</span>
+<a name="125"><span class="lineNum">     125 </span><span class="lineCov">          1 : var global = this;</span></a>
+<span class="lineNum">     126 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     127 </span><span class="lineCov">          1 : function ReadonlyByProxy(o, name) {</span>
 <span class="lineNum">     128 </span><span class="lineNoCov">          0 :   if (!global.Proxy) return ReadonlyByFreeze(o, name);  // Dummy.</span>
 <span class="lineNum">     129 </span><span class="lineNoCov">          0 :   var p = new global.Proxy({}, {</span>
 <span class="lineNum">     130 </span><span class="lineNoCov">          0 :     getPropertyDescriptor: function() {</span>
@@ -194,13 +194,13 @@
 <span class="lineNum">     132 </span><span class="lineNoCov">          0 :     }</span>
 <span class="lineNum">     133 </span><span class="lineNoCov">          0 :   });</span>
 <span class="lineNum">     134 </span><span class="lineNoCov">          0 :   o.__proto__ = p;</span>
-<span class="lineNum">     135 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">     136 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     137 </span><span class="lineNoCov">          0 : var readonlys = [</span>
-<span class="lineNum">     138 </span><span class="lineNoCov">          0 :   ReadonlyByNonwritableDataProperty, ReadonlyByAccessorPropertyWithoutSetter,</span>
-<span class="lineNum">     139 </span><span class="lineNoCov">          0 :   ReadonlyByGetter, ReadonlyByFreeze, ReadonlyByProto // ReadonlyByProxy</span>
-<a name="140"><span class="lineNum">     140 </span><span class="lineNoCov">          0 : ]</span></a>
-<span class="lineNum">     141 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     135 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     136 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     137 </span><span class="lineCov">          1 : var readonlys = [</span>
+<span class="lineNum">     138 </span><span class="lineCov">          1 :   ReadonlyByNonwritableDataProperty, ReadonlyByAccessorPropertyWithoutSetter,</span>
+<span class="lineNum">     139 </span><span class="lineCov">          1 :   ReadonlyByGetter, ReadonlyByFreeze, ReadonlyByProto // ReadonlyByProxy</span>
+<a name="140"><span class="lineNum">     140 </span><span class="lineCov">          1 : ]</span></a>
+<span class="lineNum">     141 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     142 </span><span class="lineCov">         14 : function TestAllReadonlys(f) {</span>
 <span class="lineNum">     143 </span><span class="lineCov">         14 :   // Provide various methods to making a property read-only.</span>
 <span class="lineNum">     144 </span><span class="lineCov">         14 :   for (var i = 0; i &lt; readonlys.length; ++i) {</span>
@@ -208,26 +208,26 @@
 <span class="lineNum">     146 </span><span class="lineCov">         14 :     f(readonlys[i]);</span>
 <span class="lineNum">     147 </span><span class="lineCov">         14 :   }</span>
 <span class="lineNum">     148 </span><span class="lineCov">         14 : }</span>
-<span class="lineNum">     149 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     150 </span><span class="lineNoCov">          0 : </span>
-<a name="151"><span class="lineNum">     151 </span><span class="lineNoCov">          0 : // Different use scenarios.</span></a>
-<span class="lineNum">     152 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     149 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     150 </span><span class="lineCov">          1 : </span>
+<a name="151"><span class="lineNum">     151 </span><span class="lineCov">          1 : // Different use scenarios.</span></a>
+<span class="lineNum">     152 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     153 </span><span class="lineCov">      22860 : function Assign(o, x) {</span>
 <span class="lineNum">     154 </span><span class="lineCov">      22860 :   o.a = x;</span>
 <a name="155"><span class="lineNum">     155 </span><span class="lineCov">      22860 : }</span></a>
-<span class="lineNum">     156 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     156 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     157 </span><span class="lineCov">      22860 : function AssignStrict(o, x) {</span>
 <span class="lineNum">     158 </span><span class="lineCov">      22860 :   &quot;use strict&quot;;</span>
 <span class="lineNum">     159 </span><span class="lineCov">      22860 :   o.a = x;</span>
 <a name="160"><span class="lineNum">     160 </span><span class="lineCov">      22860 : }</span></a>
-<span class="lineNum">     161 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     161 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     162 </span><span class="lineCov">          7 : function TestAllModes(f) {</span>
 <span class="lineNum">     163 </span><span class="lineCov">          7 :   for (var strict = 0; strict &lt; 2; ++strict) {</span>
 <span class="lineNum">     164 </span><span class="lineCov">          7 :     print(&quot; strict =&quot;, strict);</span>
 <span class="lineNum">     165 </span><span class="lineCov">          7 :     f(strict);</span>
 <span class="lineNum">     166 </span><span class="lineCov">          7 :   }</span>
 <a name="167"><span class="lineNum">     167 </span><span class="lineCov">          7 : }</span></a>
-<span class="lineNum">     168 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     168 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     169 </span><span class="lineCov">          1 : function TestAllScenarios(f) {</span>
 <span class="lineNum">     170 </span><span class="lineCov">          1 :   for (var t = 0; t &lt; 100; t = 2*t + 1) {</span>
 <span class="lineNum">     171 </span><span class="lineCov">          1 :     print(&quot;t =&quot;, t)</span>
@@ -235,8 +235,8 @@
 <span class="lineNum">     173 </span><span class="lineCov">       2520 :       // Make sure that the assignments are monomorphic.</span>
 <span class="lineNum">     174 </span><span class="lineCov">       2520 :       %DeoptimizeFunction(Assign);</span>
 <span class="lineNum">     175 </span><span class="lineCov">       2520 :       %DeoptimizeFunction(AssignStrict);</span>
-<span class="lineNum">     176 </span><span class="lineCov">       2520 :       %ClearFunctionTypeFeedback(Assign);</span>
-<span class="lineNum">     177 </span><span class="lineCov">       2520 :       %ClearFunctionTypeFeedback(AssignStrict);</span>
+<span class="lineNum">     176 </span><span class="lineCov">       2520 :       %ClearFunctionFeedback(Assign);</span>
+<span class="lineNum">     177 </span><span class="lineCov">       2520 :       %ClearFunctionFeedback(AssignStrict);</span>
 <span class="lineNum">     178 </span><span class="lineCov">       2520 :       for (var i = 0; i &lt; t; ++i) {</span>
 <span class="lineNum">     179 </span><span class="lineCov">       2520 :         var o = create();</span>
 <span class="lineNum">     180 </span><span class="lineCov">       2520 :         assertFalse(&quot;a&quot; in o &amp;&amp; !(&quot;a&quot; in o.__proto__));</span>
@@ -256,29 +256,29 @@
 <span class="lineNum">     194 </span><span class="lineCov">       2520 :         Assign(o, t + 1);</span>
 <span class="lineNum">     195 </span><span class="lineCov">       2520 :       else</span>
 <span class="lineNum">     196 </span><span class="lineCov">       2520 :         assertThrows(function() { AssignStrict(o, t + 1) }, TypeError);</span>
-<span class="lineNum">     197 </span><span class="lineNoCov">          0 :       assertTrue(o.a &lt; 0);</span>
-<span class="lineNum">     198 </span><span class="lineNoCov">          0 :     });</span>
-<span class="lineNum">     199 </span><span class="lineNoCov">          0 :   }</span>
-<span class="lineNum">     200 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">     201 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     202 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     203 </span><span class="lineNoCov">          0 : // Runner.</span>
-<span class="lineNum">     204 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     197 </span><span class="lineCov">       2520 :       assertTrue(o.a &lt; 0);</span>
+<span class="lineNum">     198 </span><span class="lineCov">       2520 :     });</span>
+<span class="lineNum">     199 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     200 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     201 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     202 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     203 </span><span class="lineCov">          1 : // Runner.</span>
+<span class="lineNum">     204 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     205 </span><span class="lineCov">          7 : TestAllScenarios(function(scenario) {</span>
 <span class="lineNum">     206 </span><span class="lineCov">         14 :   TestAllModes(function(strict) {</span>
 <span class="lineNum">     207 </span><span class="lineCov">         70 :     TestAllReadonlys(function(readonly) {</span>
 <span class="lineNum">     208 </span><span class="lineCov">       2520 :       TestAllCreates(function(create) {</span>
 <span class="lineNum">     209 </span><span class="lineCov">       2520 :         scenario(strict, create, readonly);</span>
 <span class="lineNum">     210 </span><span class="lineCov">       2520 :       });</span>
-<span class="lineNum">     211 </span><span class="lineNoCov">          0 :     });</span>
-<span class="lineNum">     212 </span><span class="lineNoCov">          0 :   });</span>
-<span class="lineNum">     213 </span><span class="lineNoCov">          0 : });</span>
-<span class="lineNum">     214 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     215 </span><span class="lineNoCov">          0 : </span>
-<a name="216"><span class="lineNum">     216 </span><span class="lineNoCov">          0 : // Extra test forcing bailout.</span></a>
-<span class="lineNum">     217 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     211 </span><span class="lineCov">         70 :     });</span>
+<span class="lineNum">     212 </span><span class="lineCov">         14 :   });</span>
+<span class="lineNum">     213 </span><span class="lineCov">          7 : });</span>
+<span class="lineNum">     214 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     215 </span><span class="lineCov">          1 : </span>
+<a name="216"><span class="lineNum">     216 </span><span class="lineCov">          1 : // Extra test forcing bailout.</span></a>
+<span class="lineNum">     217 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     218 </span><span class="lineCov">          4 : function Assign2(o, x) { o.a = x }</span>
-<span class="lineNum">     219 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     219 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     220 </span><span class="lineCov">          1 : (function() {</span>
 <span class="lineNum">     221 </span><span class="lineCov">          1 :   var p = CreateFromConstructor(Object.prototype)();</span>
 <span class="lineNum">     222 </span><span class="lineCov">          1 :   var c = CreateFromConstructor(p);</span>

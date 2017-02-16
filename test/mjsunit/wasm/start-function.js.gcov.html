@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">93</td>
-            <td class="headerCovTableEntry">105</td>
-            <td class="headerCovTableEntryMed">88.6 %</td>
+            <td class="headerCovTableEntry">119</td>
+            <td class="headerCovTableEntry">119</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">9</td>
@@ -79,7 +79,7 @@
 <span class="lineNum">      17 </span><span class="lineCov">          5 : </span>
 <span class="lineNum">      18 </span><span class="lineCov">          5 :   return builder.instantiate();</span>
 <a name="19"><span class="lineNum">      19 </span><span class="lineCov">          5 : }</span></a>
-<span class="lineNum">      20 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      20 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      21 </span><span class="lineCov">          1 : function assertVerifies(sig, body) {</span>
 <span class="lineNum">      22 </span><span class="lineCov">          1 :   var module = instantiate(sig, body);</span>
 <span class="lineNum">      23 </span><span class="lineCov">          1 :   assertFalse(module === undefined);</span>
@@ -88,15 +88,15 @@
 <span class="lineNum">      26 </span><span class="lineCov">          1 :   assertEquals(&quot;object&quot;, typeof module);</span>
 <span class="lineNum">      27 </span><span class="lineCov">          1 :   return module;</span>
 <span class="lineNum">      28 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">      29 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      30 </span><span class="lineNoCov">          0 : assertVerifies(kSig_v_v, [kExprNop]);</span>
-<span class="lineNum">      31 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      32 </span><span class="lineNoCov">          0 : // Arguments aren't allow to start functions.</span>
+<span class="lineNum">      29 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      30 </span><span class="lineCov">          1 : assertVerifies(kSig_v_v, [kExprNop]);</span>
+<span class="lineNum">      31 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      32 </span><span class="lineCov">          1 : // Arguments aren't allow to start functions.</span>
 <span class="lineNum">      33 </span><span class="lineCov">          1 : assertThrows(() =&gt; {instantiate(kSig_i_i, [kExprGetLocal, 0]);});</span>
 <a name="34"><span class="lineNum">      34 </span><span class="lineCov">          1 : assertThrows(() =&gt; {instantiate(kSig_i_ii, [kExprGetLocal, 0]);});</span></a>
 <span class="lineNum">      35 </span><span class="lineCov">          1 : assertThrows(() =&gt; {instantiate(kSig_i_dd, [kExprGetLocal, 0]);});</span>
 <a name="36"><span class="lineNum">      36 </span><span class="lineCov">          1 : assertThrows(() =&gt; {instantiate(kSig_i_v, [kExprI32Const, 0]);});</span></a>
-<span class="lineNum">      37 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      37 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      38 </span><span class="lineCov">          1 : (function testInvalidIndex() {</span>
 <span class="lineNum">      39 </span><span class="lineCov">          1 :   print(&quot;testInvalidIndex&quot;);</span>
 <span class="lineNum">      40 </span><span class="lineCov">          1 :   var builder = new WasmModuleBuilder();</span>
@@ -108,8 +108,8 @@
 <span class="lineNum">      46 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      47 </span><span class="lineCov">          1 :   assertThrows(builder.instantiate);</span>
 <span class="lineNum">      48 </span><span class="lineCov">          1 : })();</span>
-<a name="49"><span class="lineNum">      49 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">      50 </span><span class="lineNoCov">          0 : </span>
+<a name="49"><span class="lineNum">      49 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      50 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      51 </span><span class="lineCov">          1 : (function testTwoStartFuncs() {</span>
 <span class="lineNum">      52 </span><span class="lineCov">          1 :   print(&quot;testTwoStartFuncs&quot;);</span>
 <span class="lineNum">      53 </span><span class="lineCov">          1 :   var builder = new WasmModuleBuilder();</span>
@@ -122,8 +122,8 @@
 <span class="lineNum">      60 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      61 </span><span class="lineCov">          1 :   assertThrows(builder.instantiate);</span>
 <span class="lineNum">      62 </span><span class="lineCov">          1 : })();</span>
-<a name="63"><span class="lineNum">      63 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">      64 </span><span class="lineNoCov">          0 : </span>
+<a name="63"><span class="lineNum">      63 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      64 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      65 </span><span class="lineCov">          1 : (function testRun1() {</span>
 <span class="lineNum">      66 </span><span class="lineCov">          1 :   print(&quot;testRun1&quot;);</span>
 <span class="lineNum">      67 </span><span class="lineCov">          1 :   var builder = new WasmModuleBuilder();</span>
@@ -140,7 +140,7 @@
 <span class="lineNum">      78 </span><span class="lineCov">          1 :   var view = new Int8Array(memory);</span>
 <span class="lineNum">      79 </span><span class="lineCov">          1 :   assertEquals(55, view[0]);</span>
 <a name="80"><span class="lineNum">      80 </span><span class="lineCov">          1 : })();</span></a>
-<span class="lineNum">      81 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      81 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      82 </span><span class="lineCov">          1 : (function testRun2() {</span>
 <span class="lineNum">      83 </span><span class="lineCov">          1 :   print(&quot;testRun2&quot;);</span>
 <span class="lineNum">      84 </span><span class="lineCov">          1 :   var builder = new WasmModuleBuilder();</span>
@@ -157,7 +157,7 @@
 <span class="lineNum">      95 </span><span class="lineCov">          1 :   var view = new Int8Array(memory);</span>
 <span class="lineNum">      96 </span><span class="lineCov">          1 :   assertEquals(77, view[0]);</span>
 <a name="97"><span class="lineNum">      97 </span><span class="lineCov">          1 : })();</span></a>
-<span class="lineNum">      98 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      98 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      99 </span><span class="lineCov">          1 : (function testStartFFI() {</span>
 <a name="100"><span class="lineNum">     100 </span><span class="lineCov">          1 :   print(&quot;testStartFFI&quot;);</span></a>
 <span class="lineNum">     101 </span><span class="lineCov">          1 :   var ranned = false;</span>
@@ -165,19 +165,19 @@
 <span class="lineNum">     103 </span><span class="lineCov">          1 :     print(&quot;we ranned at stert!&quot;);</span>
 <span class="lineNum">     104 </span><span class="lineCov">          1 :     ranned = true;</span>
 <span class="lineNum">     105 </span><span class="lineCov">          1 :   }}};</span>
-<span class="lineNum">     106 </span>            : 
-<span class="lineNum">     107 </span>            :   var builder = new WasmModuleBuilder();
-<span class="lineNum">     108 </span>            :   var sig_index = builder.addType(kSig_v_v);
-<span class="lineNum">     109 </span>            : 
-<span class="lineNum">     110 </span>            :   builder.addImport(&quot;gak&quot;, &quot;foo&quot;, sig_index);
-<span class="lineNum">     111 </span>            :   var func = builder.addFunction(&quot;&quot;, sig_index)
-<span class="lineNum">     112 </span>            :     .addBody([kExprCallFunction, 0]);
-<span class="lineNum">     113 </span>            : 
-<span class="lineNum">     114 </span>            :   builder.addStart(func.index);
-<span class="lineNum">     115 </span>            : 
-<span class="lineNum">     116 </span>            :   var module = builder.instantiate(ffi);
-<span class="lineNum">     117 </span>            :   assertTrue(ranned);
-<span class="lineNum">     118 </span>            : })();
+<span class="lineNum">     106 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     107 </span><span class="lineCov">          1 :   var builder = new WasmModuleBuilder();</span>
+<span class="lineNum">     108 </span><span class="lineCov">          1 :   var sig_index = builder.addType(kSig_v_v);</span>
+<span class="lineNum">     109 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     110 </span><span class="lineCov">          1 :   builder.addImport(&quot;gak&quot;, &quot;foo&quot;, sig_index);</span>
+<span class="lineNum">     111 </span><span class="lineCov">          1 :   var func = builder.addFunction(&quot;&quot;, sig_index)</span>
+<span class="lineNum">     112 </span><span class="lineCov">          1 :     .addBody([kExprCallFunction, 0]);</span>
+<span class="lineNum">     113 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     114 </span><span class="lineCov">          1 :   builder.addStart(func.index);</span>
+<span class="lineNum">     115 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     116 </span><span class="lineCov">          1 :   var module = builder.instantiate(ffi);</span>
+<span class="lineNum">     117 </span><span class="lineCov">          1 :   assertTrue(ranned);</span>
+<span class="lineNum">     118 </span><span class="lineCov">          1 : })();</span>
 </pre>
       </td>
     </tr>

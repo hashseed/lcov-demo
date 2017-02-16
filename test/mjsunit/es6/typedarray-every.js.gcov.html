@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">70</td>
-            <td class="headerCovTableEntry">146</td>
-            <td class="headerCovTableEntryLo">47.9 %</td>
+            <td class="headerCovTableEntry">153</td>
+            <td class="headerCovTableEntry">153</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">3</td>
@@ -82,7 +82,7 @@
 <span class="lineNum">      20 </span><span class="lineCov">          9 :   assertEquals(0, array.byteOffset);</span>
 <span class="lineNum">      21 </span><span class="lineCov">          9 :   assertEquals(0, array.length);</span>
 <a name="22"><span class="lineNum">      22 </span><span class="lineCov">          9 : }</span></a>
-<span class="lineNum">      23 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      23 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      24 </span><span class="lineCov">          9 : function TestTypedArrayForEach(constructor) {</span>
 <span class="lineNum">      25 </span><span class="lineCov">          9 :   assertEquals(1, constructor.prototype.every.length);</span>
 <span class="lineNum">      26 </span><span class="lineCov">          9 : </span>
@@ -92,36 +92,36 @@
 <span class="lineNum">      30 </span><span class="lineCov">          9 :   a[2] = 2;</span>
 <span class="lineNum">      31 </span><span class="lineCov">          9 : </span>
 <span class="lineNum">      32 </span><span class="lineCov">         27 :   var result = a.every(function (n) { return n &lt; 2; });</span>
-<span class="lineNum">      33 </span><span class="lineNoCov">          0 :   assertFalse(result);</span>
-<span class="lineNum">      34 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      33 </span><span class="lineCov">          9 :   assertFalse(result);</span>
+<span class="lineNum">      34 </span><span class="lineCov">          9 : </span>
 <span class="lineNum">      35 </span><span class="lineCov">          9 :   var result = a.every(function (n) { return n &gt; 2; });</span>
-<span class="lineNum">      36 </span><span class="lineNoCov">          0 :   assertFalse(result);</span>
-<span class="lineNum">      37 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      36 </span><span class="lineCov">          9 :   assertFalse(result);</span>
+<span class="lineNum">      37 </span><span class="lineCov">          9 : </span>
 <span class="lineNum">      38 </span><span class="lineCov">         27 :   var result = a.every(function (n) { return n &gt;= 0; });</span>
-<span class="lineNum">      39 </span><span class="lineNoCov">          0 :   assertEquals(true, result);</span>
-<span class="lineNum">      40 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      41 </span><span class="lineNoCov">          0 :   // Use specified object as this object when calling the function.</span>
-<span class="lineNum">      42 </span><span class="lineNoCov">          0 :   var o = { value: 42 };</span>
+<span class="lineNum">      39 </span><span class="lineCov">          9 :   assertEquals(true, result);</span>
+<span class="lineNum">      40 </span><span class="lineCov">          9 : </span>
+<span class="lineNum">      41 </span><span class="lineCov">          9 :   // Use specified object as this object when calling the function.</span>
+<span class="lineNum">      42 </span><span class="lineCov">          9 :   var o = { value: 42 };</span>
 <span class="lineNum">      43 </span><span class="lineCov">         27 :   result = a.every(function (n, index, array) { return n == index &amp;&amp; n &lt; this.value; }, o);</span>
-<span class="lineNum">      44 </span><span class="lineNoCov">          0 :   assertEquals(true, result);</span>
-<span class="lineNum">      45 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      46 </span><span class="lineNoCov">          0 :   // Early exit happens when appropriate</span>
-<span class="lineNum">      47 </span><span class="lineNoCov">          0 :   count = 0;</span>
+<span class="lineNum">      44 </span><span class="lineCov">          9 :   assertEquals(true, result);</span>
+<span class="lineNum">      45 </span><span class="lineCov">          9 : </span>
+<span class="lineNum">      46 </span><span class="lineCov">          9 :   // Early exit happens when appropriate</span>
+<span class="lineNum">      47 </span><span class="lineCov">          9 :   count = 0;</span>
 <span class="lineNum">      48 </span><span class="lineCov">          9 :   result = a.every(function () { count++; return false; });</span>
-<span class="lineNum">      49 </span><span class="lineNoCov">          0 :   assertEquals(1, count);</span>
-<span class="lineNum">      50 </span><span class="lineNoCov">          0 :   assertFalse(result);</span>
-<span class="lineNum">      51 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      52 </span><span class="lineNoCov">          0 :   // Modify the original array.</span>
-<span class="lineNum">      53 </span><span class="lineNoCov">          0 :   count = 0;</span>
+<span class="lineNum">      49 </span><span class="lineCov">          9 :   assertEquals(1, count);</span>
+<span class="lineNum">      50 </span><span class="lineCov">          9 :   assertFalse(result);</span>
+<span class="lineNum">      51 </span><span class="lineCov">          9 : </span>
+<span class="lineNum">      52 </span><span class="lineCov">          9 :   // Modify the original array.</span>
+<span class="lineNum">      53 </span><span class="lineCov">          9 :   count = 0;</span>
 <span class="lineNum">      54 </span><span class="lineCov">         27 :   result = a.every(function (n, index, array) {</span>
 <span class="lineNum">      55 </span><span class="lineCov">         27 :     array[index] = n + 1; count++; return true;</span>
 <span class="lineNum">      56 </span><span class="lineCov">         27 :   });</span>
-<span class="lineNum">      57 </span><span class="lineNoCov">          0 :   assertEquals(3, count);</span>
-<span class="lineNum">      58 </span><span class="lineNoCov">          0 :   assertEquals(true, result);</span>
-<span class="lineNum">      59 </span><span class="lineNoCov">          0 :   assertArrayEquals([1, 2, 3], a);</span>
-<span class="lineNum">      60 </span><span class="lineNoCov">          0 : </span>
-<a name="61"><span class="lineNum">      61 </span><span class="lineNoCov">          0 :   // Check that values passed as second argument are wrapped into</span></a>
-<span class="lineNum">      62 </span><span class="lineNoCov">          0 :   // objects when calling into sloppy mode functions.</span>
+<span class="lineNum">      57 </span><span class="lineCov">          9 :   assertEquals(3, count);</span>
+<span class="lineNum">      58 </span><span class="lineCov">          9 :   assertEquals(true, result);</span>
+<span class="lineNum">      59 </span><span class="lineCov">          9 :   assertArrayEquals([1, 2, 3], a);</span>
+<span class="lineNum">      60 </span><span class="lineCov">          9 : </span>
+<a name="61"><span class="lineNum">      61 </span><span class="lineCov">          9 :   // Check that values passed as second argument are wrapped into</span></a>
+<span class="lineNum">      62 </span><span class="lineCov">          9 :   // objects when calling into sloppy mode functions.</span>
 <span class="lineNum">      63 </span><span class="lineCov">         54 :   function CheckWrapping(value, wrapper) {</span>
 <span class="lineNum">      64 </span><span class="lineCov">         54 :     var wrappedValue = new wrapper(value);</span>
 <span class="lineNum">      65 </span><span class="lineCov">         54 : </span>
@@ -129,25 +129,25 @@
 <span class="lineNum">      67 </span><span class="lineCov">         54 :       assertEquals(&quot;object&quot;, typeof this);</span>
 <span class="lineNum">      68 </span><span class="lineCov">         54 :       assertEquals(wrappedValue, this);</span>
 <span class="lineNum">      69 </span><span class="lineCov">         54 :     }, value);</span>
-<span class="lineNum">      70 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      70 </span><span class="lineCov">         54 : </span>
 <span class="lineNum">      71 </span><span class="lineCov">         54 :     a.every(function () {</span>
 <span class="lineNum">      72 </span><span class="lineCov">         54 :       &quot;use strict&quot;;</span>
 <span class="lineNum">      73 </span><span class="lineCov">         54 :       assertEquals(typeof value, typeof this);</span>
 <span class="lineNum">      74 </span><span class="lineCov">         54 :       assertEquals(value, this);</span>
 <span class="lineNum">      75 </span><span class="lineCov">         54 :     }, value);</span>
-<span class="lineNum">      76 </span><span class="lineNoCov">          0 :   }</span>
-<span class="lineNum">      77 </span><span class="lineNoCov">          0 :   CheckWrapping(true, Boolean);</span>
-<span class="lineNum">      78 </span><span class="lineNoCov">          0 :   CheckWrapping(false, Boolean);</span>
-<span class="lineNum">      79 </span><span class="lineNoCov">          0 :   CheckWrapping(&quot;xxx&quot;, String);</span>
-<span class="lineNum">      80 </span><span class="lineNoCov">          0 :   CheckWrapping(42, Number);</span>
-<span class="lineNum">      81 </span><span class="lineNoCov">          0 :   CheckWrapping(3.14, Number);</span>
-<span class="lineNum">      82 </span><span class="lineNoCov">          0 :   CheckWrapping({}, Object);</span>
-<span class="lineNum">      83 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      84 </span><span class="lineNoCov">          0 :   // Neutering the buffer backing the typed array mid-way should</span>
-<span class="lineNum">      85 </span><span class="lineNoCov">          0 :   // still make .forEach() finish, and the array should keep being</span>
-<span class="lineNum">      86 </span><span class="lineNoCov">          0 :   // empty after neutering it.</span>
-<span class="lineNum">      87 </span><span class="lineNoCov">          0 :   count = 0;</span>
-<span class="lineNum">      88 </span><span class="lineNoCov">          0 :   a = new constructor(3);</span>
+<span class="lineNum">      76 </span><span class="lineCov">         54 :   }</span>
+<span class="lineNum">      77 </span><span class="lineCov">          9 :   CheckWrapping(true, Boolean);</span>
+<span class="lineNum">      78 </span><span class="lineCov">          9 :   CheckWrapping(false, Boolean);</span>
+<span class="lineNum">      79 </span><span class="lineCov">          9 :   CheckWrapping(&quot;xxx&quot;, String);</span>
+<span class="lineNum">      80 </span><span class="lineCov">          9 :   CheckWrapping(42, Number);</span>
+<span class="lineNum">      81 </span><span class="lineCov">          9 :   CheckWrapping(3.14, Number);</span>
+<span class="lineNum">      82 </span><span class="lineCov">          9 :   CheckWrapping({}, Object);</span>
+<span class="lineNum">      83 </span><span class="lineCov">          9 : </span>
+<span class="lineNum">      84 </span><span class="lineCov">          9 :   // Neutering the buffer backing the typed array mid-way should</span>
+<span class="lineNum">      85 </span><span class="lineCov">          9 :   // still make .forEach() finish, and the array should keep being</span>
+<span class="lineNum">      86 </span><span class="lineCov">          9 :   // empty after neutering it.</span>
+<span class="lineNum">      87 </span><span class="lineCov">          9 :   count = 0;</span>
+<span class="lineNum">      88 </span><span class="lineCov">          9 :   a = new constructor(3);</span>
 <span class="lineNum">      89 </span><span class="lineCov">         18 :   result = a.every(function (n, index, array) {</span>
 <span class="lineNum">      90 </span><span class="lineCov">         18 :     assertFalse(array[index] === undefined);  // don't get here if neutered</span>
 <span class="lineNum">      91 </span><span class="lineCov">         18 :     if (count &gt; 0) %ArrayBufferNeuter(array.buffer);</span>
@@ -155,63 +155,63 @@
 <span class="lineNum">      93 </span><span class="lineCov">         18 :     count++;</span>
 <span class="lineNum">      94 </span><span class="lineCov">         18 :     return count &gt; 1 ? array[index] === undefined : true;</span>
 <span class="lineNum">      95 </span><span class="lineCov">         18 :   });</span>
-<span class="lineNum">      96 </span><span class="lineNoCov">          0 :   assertEquals(2, count);</span>
-<span class="lineNum">      97 </span><span class="lineNoCov">          0 :   assertEquals(true, result);</span>
-<span class="lineNum">      98 </span><span class="lineNoCov">          0 :   CheckTypedArrayIsNeutered(a);</span>
-<span class="lineNum">      99 </span><span class="lineNoCov">          0 :   assertEquals(undefined, a[0]);</span>
-<span class="lineNum">     100 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     101 </span><span class="lineNoCov">          0 :   // The method must work for typed arrays created from ArrayBuffer.</span>
-<span class="lineNum">     102 </span><span class="lineNoCov">          0 :   // The length of the ArrayBuffer is chosen so it is a multiple of</span>
-<span class="lineNum">     103 </span><span class="lineNoCov">          0 :   // all lengths of the typed array items.</span>
-<span class="lineNum">     104 </span><span class="lineNoCov">          0 :   a = new constructor(new ArrayBuffer(64));</span>
-<span class="lineNum">     105 </span><span class="lineNoCov">          0 :   count = 0;</span>
+<span class="lineNum">      96 </span><span class="lineCov">          9 :   assertEquals(2, count);</span>
+<span class="lineNum">      97 </span><span class="lineCov">          9 :   assertEquals(true, result);</span>
+<span class="lineNum">      98 </span><span class="lineCov">          9 :   CheckTypedArrayIsNeutered(a);</span>
+<span class="lineNum">      99 </span><span class="lineCov">          9 :   assertEquals(undefined, a[0]);</span>
+<span class="lineNum">     100 </span><span class="lineCov">          9 : </span>
+<span class="lineNum">     101 </span><span class="lineCov">          9 :   // The method must work for typed arrays created from ArrayBuffer.</span>
+<span class="lineNum">     102 </span><span class="lineCov">          9 :   // The length of the ArrayBuffer is chosen so it is a multiple of</span>
+<span class="lineNum">     103 </span><span class="lineCov">          9 :   // all lengths of the typed array items.</span>
+<span class="lineNum">     104 </span><span class="lineCov">          9 :   a = new constructor(new ArrayBuffer(64));</span>
+<span class="lineNum">     105 </span><span class="lineCov">          9 :   count = 0;</span>
 <span class="lineNum">     106 </span><span class="lineCov">        312 :   result = a.every(function (n) { return n == 0; });</span>
-<span class="lineNum">     107 </span><span class="lineNoCov">          0 :   assertEquals(result, true);</span>
-<span class="lineNum">     108 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     109 </span><span class="lineNoCov">          0 :   // Externalizing the array mid-way accessing the .buffer property</span>
-<span class="lineNum">     110 </span><span class="lineNoCov">          0 :   // should work.</span>
-<span class="lineNum">     111 </span><span class="lineNoCov">          0 :   a = new constructor(2);</span>
-<span class="lineNum">     112 </span><span class="lineNoCov">          0 :   count = 0;</span>
-<span class="lineNum">     113 </span><span class="lineNoCov">          0 :   var buffer = undefined;</span>
+<span class="lineNum">     107 </span><span class="lineCov">          9 :   assertEquals(result, true);</span>
+<span class="lineNum">     108 </span><span class="lineCov">          9 : </span>
+<span class="lineNum">     109 </span><span class="lineCov">          9 :   // Externalizing the array mid-way accessing the .buffer property</span>
+<span class="lineNum">     110 </span><span class="lineCov">          9 :   // should work.</span>
+<span class="lineNum">     111 </span><span class="lineCov">          9 :   a = new constructor(2);</span>
+<span class="lineNum">     112 </span><span class="lineCov">          9 :   count = 0;</span>
+<span class="lineNum">     113 </span><span class="lineCov">          9 :   var buffer = undefined;</span>
 <span class="lineNum">     114 </span><span class="lineCov">         18 :   a.every(function (n, index, array) {</span>
 <span class="lineNum">     115 </span><span class="lineCov">         18 :     if (count++ &gt; 0)</span>
 <span class="lineNum">     116 </span><span class="lineCov">         18 :       buffer = array.buffer;</span>
 <span class="lineNum">     117 </span><span class="lineCov">         18 :     return true;</span>
 <span class="lineNum">     118 </span><span class="lineCov">         18 :   });</span>
-<span class="lineNum">     119 </span><span class="lineNoCov">          0 :   assertEquals(2, count);</span>
-<span class="lineNum">     120 </span><span class="lineNoCov">          0 :   assertTrue(!!buffer);</span>
-<span class="lineNum">     121 </span><span class="lineNoCov">          0 :   assertEquals(&quot;ArrayBuffer&quot;, %_ClassOf(buffer));</span>
-<span class="lineNum">     122 </span><span class="lineNoCov">          0 :   assertSame(buffer, a.buffer);</span>
-<span class="lineNum">     123 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     124 </span><span class="lineNoCov">          0 :   // The %TypedArray%.every() method should not work when</span>
-<span class="lineNum">     125 </span><span class="lineNoCov">          0 :   // transplanted to objects that are not typed arrays.</span>
+<span class="lineNum">     119 </span><span class="lineCov">          9 :   assertEquals(2, count);</span>
+<span class="lineNum">     120 </span><span class="lineCov">          9 :   assertTrue(!!buffer);</span>
+<span class="lineNum">     121 </span><span class="lineCov">          9 :   assertEquals(&quot;ArrayBuffer&quot;, %_ClassOf(buffer));</span>
+<span class="lineNum">     122 </span><span class="lineCov">          9 :   assertSame(buffer, a.buffer);</span>
+<span class="lineNum">     123 </span><span class="lineCov">          9 : </span>
+<span class="lineNum">     124 </span><span class="lineCov">          9 :   // The %TypedArray%.every() method should not work when</span>
+<span class="lineNum">     125 </span><span class="lineCov">          9 :   // transplanted to objects that are not typed arrays.</span>
 <span class="lineNum">     126 </span><span class="lineCov">          9 :   assertThrows(function () { constructor.prototype.every.call([1, 2, 3], function (x) {}) }, TypeError);</span>
 <span class="lineNum">     127 </span><span class="lineCov">          9 :   assertThrows(function () { constructor.prototype.every.call(&quot;abc&quot;, function (x) {}) }, TypeError);</span>
 <span class="lineNum">     128 </span><span class="lineCov">          9 :   assertThrows(function () { constructor.prototype.every.call({}, function (x) {}) }, TypeError);</span>
 <span class="lineNum">     129 </span><span class="lineCov">          9 :   assertThrows(function () { constructor.prototype.every.call(0, function (x) {}) }, TypeError);</span>
-<span class="lineNum">     130 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     131 </span><span class="lineNoCov">          0 :   // Method must be useable on instances of other typed arrays.</span>
-<span class="lineNum">     132 </span><span class="lineNoCov">          0 :   for (var i = 0; i &lt; typedArrayConstructors.length; i++) {</span>
-<span class="lineNum">     133 </span><span class="lineNoCov">          0 :     count = 0;</span>
-<span class="lineNum">     134 </span><span class="lineNoCov">          0 :     a = new typedArrayConstructors[i](4);</span>
+<span class="lineNum">     130 </span><span class="lineCov">          9 : </span>
+<span class="lineNum">     131 </span><span class="lineCov">          9 :   // Method must be useable on instances of other typed arrays.</span>
+<span class="lineNum">     132 </span><span class="lineCov">          9 :   for (var i = 0; i &lt; typedArrayConstructors.length; i++) {</span>
+<span class="lineNum">     133 </span><span class="lineCov">          9 :     count = 0;</span>
+<span class="lineNum">     134 </span><span class="lineCov">          9 :     a = new typedArrayConstructors[i](4);</span>
 <span class="lineNum">     135 </span><span class="lineCov">        324 :     constructor.prototype.every.call(a, function (x) { count++; return true; });</span>
-<span class="lineNum">     136 </span><span class="lineNoCov">          0 :     assertEquals(a.length, count);</span>
-<span class="lineNum">     137 </span><span class="lineNoCov">          0 :   }</span>
-<span class="lineNum">     138 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     139 </span><span class="lineNoCov">          0 :   // Shadowing length doesn't affect every, unlike Array.prototype.every</span>
-<span class="lineNum">     140 </span><span class="lineNoCov">          0 :   a = new constructor([1, 2]);</span>
-<span class="lineNum">     141 </span><span class="lineNoCov">          0 :   Object.defineProperty(a, 'length', {value: 1});</span>
-<span class="lineNum">     142 </span><span class="lineNoCov">          0 :   var x = 0;</span>
+<span class="lineNum">     136 </span><span class="lineCov">          9 :     assertEquals(a.length, count);</span>
+<span class="lineNum">     137 </span><span class="lineCov">          9 :   }</span>
+<span class="lineNum">     138 </span><span class="lineCov">          9 : </span>
+<span class="lineNum">     139 </span><span class="lineCov">          9 :   // Shadowing length doesn't affect every, unlike Array.prototype.every</span>
+<span class="lineNum">     140 </span><span class="lineCov">          9 :   a = new constructor([1, 2]);</span>
+<span class="lineNum">     141 </span><span class="lineCov">          9 :   Object.defineProperty(a, 'length', {value: 1});</span>
+<span class="lineNum">     142 </span><span class="lineCov">          9 :   var x = 0;</span>
 <span class="lineNum">     143 </span><span class="lineCov">         18 :   assertEquals(a.every(function(elt) { x += elt; return true; }), true);</span>
-<span class="lineNum">     144 </span><span class="lineNoCov">          0 :   assertEquals(x, 3);</span>
-<span class="lineNum">     145 </span><span class="lineNoCov">          0 :   assertEquals(Array.prototype.every.call(a,</span>
+<span class="lineNum">     144 </span><span class="lineCov">          9 :   assertEquals(x, 3);</span>
+<span class="lineNum">     145 </span><span class="lineCov">          9 :   assertEquals(Array.prototype.every.call(a,</span>
 <span class="lineNum">     146 </span><span class="lineCov">          9 :       function(elt) { x += elt; return true; }), true);</span>
-<span class="lineNum">     147 </span>            :   assertEquals(x, 4);
-<span class="lineNum">     148 </span>            : }
-<span class="lineNum">     149 </span>            : 
-<span class="lineNum">     150 </span>            : for (i = 0; i &lt; typedArrayConstructors.length; i++) {
-<span class="lineNum">     151 </span>            :   TestTypedArrayForEach(typedArrayConstructors[i]);
-<span class="lineNum">     152 </span>            : }
+<span class="lineNum">     147 </span><span class="lineCov">          9 :   assertEquals(x, 4);</span>
+<span class="lineNum">     148 </span><span class="lineCov">          9 : }</span>
+<span class="lineNum">     149 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     150 </span><span class="lineCov">          1 : for (i = 0; i &lt; typedArrayConstructors.length; i++) {</span>
+<span class="lineNum">     151 </span><span class="lineCov">          1 :   TestTypedArrayForEach(typedArrayConstructors[i]);</span>
+<span class="lineNum">     152 </span><span class="lineCov">          1 : }</span>
 </pre>
       </td>
     </tr>

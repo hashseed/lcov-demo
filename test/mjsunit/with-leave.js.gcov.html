@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">171</td>
-            <td class="headerCovTableEntry">171</td>
+            <td class="headerCovTableEntry">221</td>
+            <td class="headerCovTableEntry">221</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">1</td>
@@ -231,55 +231,55 @@
 <a name="169"><span class="lineNum">     169 </span><span class="lineCov">          1 : // Verify that the context is correctly set in the stack frame after exiting</span></a>
 <span class="lineNum">     170 </span><span class="lineCov">          1 : // from with.</span>
 <span class="lineNum">     171 </span><span class="lineCov">          4 : function f() {}</span>
-<span class="lineNum">     172 </span>            : 
-<span class="lineNum">     173 </span>            : with ({x: 'outer'}) {
-<span class="lineNum">     174 </span>            :   label: {
-<span class="lineNum">     175 </span>            :     with ({x: 'inner'}) {
-<span class="lineNum">     176 </span>            :       break label;
-<span class="lineNum">     177 </span>            :     }
-<span class="lineNum">     178 </span>            :   }
-<span class="lineNum">     179 </span>            :   f();  // The context could be restored from the stack after the call.
-<span class="lineNum">     180 </span>            :   assertEquals('outer', x);
-<span class="lineNum">     181 </span>            : }
-<span class="lineNum">     182 </span>            : 
-<span class="lineNum">     183 </span>            : 
-<span class="lineNum">     184 </span>            : with ({x: 'outer'}) {
-<span class="lineNum">     185 </span>            :   for (var i = 0; i &lt; 10; ++i) {
-<span class="lineNum">     186 </span>            :     with ({x: 'inner' + i}) {
-<span class="lineNum">     187 </span>            :       continue;
-<span class="lineNum">     188 </span>            :     }
-<span class="lineNum">     189 </span>            :   }
-<span class="lineNum">     190 </span>            :   f();
-<span class="lineNum">     191 </span>            :   assertEquals('outer', x);
-<span class="lineNum">     192 </span>            : }
-<span class="lineNum">     193 </span>            : 
-<span class="lineNum">     194 </span>            : 
-<span class="lineNum">     195 </span>            : with ({x: 'outer'}) {
-<span class="lineNum">     196 </span>            :   try {
-<span class="lineNum">     197 </span>            :     with ({x: 'inner'}) {
-<span class="lineNum">     198 </span>            :       throw 0;
-<span class="lineNum">     199 </span>            :     }
-<span class="lineNum">     200 </span>            :   } catch (e) {
-<span class="lineNum">     201 </span>            :     f();
-<span class="lineNum">     202 </span>            :     assertEquals('outer', x);
-<span class="lineNum">     203 </span>            :   }
-<span class="lineNum">     204 </span>            : }
-<span class="lineNum">     205 </span>            : 
-<span class="lineNum">     206 </span>            : 
-<span class="lineNum">     207 </span>            : try {
-<span class="lineNum">     208 </span>            :   with ({x: 'outer'}) {
-<span class="lineNum">     209 </span>            :     try {
-<span class="lineNum">     210 </span>            :       with ({x: 'inner'}) {
-<span class="lineNum">     211 </span>            :         throw 0;
-<span class="lineNum">     212 </span>            :       }
-<span class="lineNum">     213 </span>            :     } finally {
-<span class="lineNum">     214 </span>            :       f();
-<span class="lineNum">     215 </span>            :       assertEquals('outer', x);
-<span class="lineNum">     216 </span>            :     }
-<span class="lineNum">     217 </span>            :   }
-<span class="lineNum">     218 </span>            : } catch (e) {
-<span class="lineNum">     219 </span>            :   if (e instanceof MjsUnitAssertionError) throw e;
-<span class="lineNum">     220 </span>            : }
+<span class="lineNum">     172 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     173 </span><span class="lineCov">          1 : with ({x: 'outer'}) {</span>
+<span class="lineNum">     174 </span><span class="lineCov">          1 :   label: {</span>
+<span class="lineNum">     175 </span><span class="lineCov">          1 :     with ({x: 'inner'}) {</span>
+<span class="lineNum">     176 </span><span class="lineCov">          1 :       break label;</span>
+<span class="lineNum">     177 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">     178 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     179 </span><span class="lineCov">          1 :   f();  // The context could be restored from the stack after the call.</span>
+<span class="lineNum">     180 </span><span class="lineCov">          1 :   assertEquals('outer', x);</span>
+<span class="lineNum">     181 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     182 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     183 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     184 </span><span class="lineCov">          1 : with ({x: 'outer'}) {</span>
+<span class="lineNum">     185 </span><span class="lineCov">          1 :   for (var i = 0; i &lt; 10; ++i) {</span>
+<span class="lineNum">     186 </span><span class="lineCov">          1 :     with ({x: 'inner' + i}) {</span>
+<span class="lineNum">     187 </span><span class="lineCov">          1 :       continue;</span>
+<span class="lineNum">     188 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">     189 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     190 </span><span class="lineCov">          1 :   f();</span>
+<span class="lineNum">     191 </span><span class="lineCov">          1 :   assertEquals('outer', x);</span>
+<span class="lineNum">     192 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     193 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     194 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     195 </span><span class="lineCov">          1 : with ({x: 'outer'}) {</span>
+<span class="lineNum">     196 </span><span class="lineCov">          1 :   try {</span>
+<span class="lineNum">     197 </span><span class="lineCov">          1 :     with ({x: 'inner'}) {</span>
+<span class="lineNum">     198 </span><span class="lineCov">          1 :       throw 0;</span>
+<span class="lineNum">     199 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">     200 </span><span class="lineCov">          1 :   } catch (e) {</span>
+<span class="lineNum">     201 </span><span class="lineCov">          1 :     f();</span>
+<span class="lineNum">     202 </span><span class="lineCov">          1 :     assertEquals('outer', x);</span>
+<span class="lineNum">     203 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     204 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     205 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     206 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     207 </span><span class="lineCov">          1 : try {</span>
+<span class="lineNum">     208 </span><span class="lineCov">          1 :   with ({x: 'outer'}) {</span>
+<span class="lineNum">     209 </span><span class="lineCov">          1 :     try {</span>
+<span class="lineNum">     210 </span><span class="lineCov">          1 :       with ({x: 'inner'}) {</span>
+<span class="lineNum">     211 </span><span class="lineCov">          1 :         throw 0;</span>
+<span class="lineNum">     212 </span><span class="lineCov">          1 :       }</span>
+<span class="lineNum">     213 </span><span class="lineCov">          1 :     } finally {</span>
+<span class="lineNum">     214 </span><span class="lineCov">          1 :       f();</span>
+<span class="lineNum">     215 </span><span class="lineCov">          1 :       assertEquals('outer', x);</span>
+<span class="lineNum">     216 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">     217 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     218 </span><span class="lineCov">          1 : } catch (e) {</span>
+<span class="lineNum">     219 </span><span class="lineCov">          1 :   if (e instanceof MjsUnitAssertionError) throw e;</span>
+<span class="lineNum">     220 </span><span class="lineCov">          1 : }</span>
 </pre>
       </td>
     </tr>

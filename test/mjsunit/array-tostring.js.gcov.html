@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">59</td>
-            <td class="headerCovTableEntry">166</td>
-            <td class="headerCovTableEntryLo">35.5 %</td>
+            <td class="headerCovTableEntry">182</td>
+            <td class="headerCovTableEntry">182</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">7</td>
@@ -97,150 +97,150 @@
 <span class="lineNum">      35 </span><span class="lineCov">          4 :   assertSame(expectedThis, this);</span>
 <span class="lineNum">      36 </span><span class="lineCov">          4 :   return success;</span>
 <span class="lineNum">      37 </span><span class="lineCov">          4 : }</span>
-<span class="lineNum">      38 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      39 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      40 </span><span class="lineNoCov">          0 : // On an Array object.</span>
-<span class="lineNum">      41 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      42 </span><span class="lineNoCov">          0 : // Default case.</span>
-<span class="lineNum">      43 </span><span class="lineNoCov">          0 : var a1 = [1, 2, 3];</span>
-<span class="lineNum">      44 </span><span class="lineNoCov">          0 : assertEquals(a1.join(), a1.toString());</span>
-<span class="lineNum">      45 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      46 </span><span class="lineNoCov">          0 : // Non-standard &quot;join&quot; function is called correctly.</span>
-<span class="lineNum">      47 </span><span class="lineNoCov">          0 : var a2 = [1, 2, 3];</span>
-<span class="lineNum">      48 </span><span class="lineNoCov">          0 : a2.join = testJoin;</span>
-<span class="lineNum">      49 </span><span class="lineNoCov">          0 : expectedThis = a2;</span>
-<span class="lineNum">      50 </span><span class="lineNoCov">          0 : assertEquals(success, a2.toString());</span>
-<span class="lineNum">      51 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      52 </span><span class="lineNoCov">          0 : // Non-callable join function is ignored and Object.prototype.toString is</span>
-<span class="lineNum">      53 </span><span class="lineNoCov">          0 : // used instead.</span>
-<span class="lineNum">      54 </span><span class="lineNoCov">          0 : var a3 = [1, 2, 3];</span>
-<span class="lineNum">      55 </span><span class="lineNoCov">          0 : a3.join = &quot;not callable&quot;;</span>
-<span class="lineNum">      56 </span><span class="lineNoCov">          0 : assertEquals(&quot;[object Array]&quot;, a3.toString());</span>
-<span class="lineNum">      57 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      58 </span><span class="lineNoCov">          0 : // Non-existing join function is treated same as non-callable.</span>
-<span class="lineNum">      59 </span><span class="lineNoCov">          0 : var a4 = [1, 2, 3];</span>
-<span class="lineNum">      60 </span><span class="lineNoCov">          0 : a4.__proto__ = { toString: Array.prototype.toString };</span>
-<span class="lineNum">      61 </span><span class="lineNoCov">          0 : // No join on Array.</span>
-<span class="lineNum">      62 </span><span class="lineNoCov">          0 : assertEquals(&quot;[object Array]&quot;, a4.toString());</span>
-<span class="lineNum">      63 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      64 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      65 </span><span class="lineNoCov">          0 : // On a non-Array object.</span>
-<span class="lineNum">      66 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      67 </span><span class="lineNoCov">          0 : // Default looks-like-an-array case.</span>
-<span class="lineNum">      68 </span><span class="lineNoCov">          0 : var o1 = {length: 3, 0: 1, 1: 2, 2: 3,</span>
-<span class="lineNum">      69 </span><span class="lineNoCov">          0 :           toString: Array.prototype.toString,</span>
-<span class="lineNum">      70 </span><span class="lineNoCov">          0 :           join: Array.prototype.join};</span>
-<span class="lineNum">      71 </span><span class="lineNoCov">          0 : assertEquals(o1.join(), o1.toString());</span>
-<span class="lineNum">      72 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      73 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      74 </span><span class="lineNoCov">          0 : // Non-standard join is called correctly.</span>
-<span class="lineNum">      75 </span><span class="lineNoCov">          0 : // Check that we don't read, e.g., length before calling join.</span>
-<a name="76"><span class="lineNum">      76 </span><span class="lineNoCov">          0 : var o2 = {toString : Array.prototype.toString,</span></a>
-<a name="77"><span class="lineNum">      77 </span><span class="lineNoCov">          0 :           join: testJoin,</span></a>
-<span class="lineNum">      78 </span><span class="lineNoCov">          0 :           get length() { assertUnreachable(); },</span>
-<span class="lineNum">      79 </span><span class="lineNoCov">          0 :           get 0() { assertUnreachable(); }};</span>
-<span class="lineNum">      80 </span><span class="lineNoCov">          0 : expectedThis = o2;</span>
-<span class="lineNum">      81 </span><span class="lineNoCov">          0 : assertEquals(success, o2.toString());</span>
-<span class="lineNum">      82 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      83 </span><span class="lineNoCov">          0 : // Non-standard join is called even if it looks like an array.</span>
-<span class="lineNum">      84 </span><span class="lineNoCov">          0 : var o3 = {length: 3, 0: 1, 1: 2, 2: 3,</span>
-<span class="lineNum">      85 </span><span class="lineNoCov">          0 :           toString: Array.prototype.toString,</span>
-<span class="lineNum">      86 </span><span class="lineNoCov">          0 :           join: testJoin};</span>
-<span class="lineNum">      87 </span><span class="lineNoCov">          0 : expectedThis = o3;</span>
-<span class="lineNum">      88 </span><span class="lineNoCov">          0 : assertEquals(success, o3.toString());</span>
-<span class="lineNum">      89 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      90 </span><span class="lineNoCov">          0 : // Non-callable join works same as for Array.</span>
-<span class="lineNum">      91 </span><span class="lineNoCov">          0 : var o4 = {length: 3, 0: 1, 1: 2, 2: 3,</span>
-<span class="lineNum">      92 </span><span class="lineNoCov">          0 :           toString: Array.prototype.toString,</span>
-<span class="lineNum">      93 </span><span class="lineNoCov">          0 :           join: &quot;not callable&quot;};</span>
-<span class="lineNum">      94 </span><span class="lineNoCov">          0 : assertEquals(&quot;[object Object]&quot;, o4.toString());</span>
-<span class="lineNum">      95 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      96 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      97 </span><span class="lineNoCov">          0 : // Non-existing join works same as for Array.</span>
-<span class="lineNum">      98 </span><span class="lineNoCov">          0 : var o5 = {length: 3, 0: 1, 1: 2, 2: 3,</span>
-<span class="lineNum">      99 </span><span class="lineNoCov">          0 :           toString: Array.prototype.toString</span>
-<span class="lineNum">     100 </span><span class="lineNoCov">          0 :           /* no join */};</span>
-<span class="lineNum">     101 </span><span class="lineNoCov">          0 : assertEquals(&quot;[object Object]&quot;, o5.toString());</span>
-<span class="lineNum">     102 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     103 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     104 </span><span class="lineNoCov">          0 : // Test that ToObject is called before getting &quot;join&quot;, so the instance</span>
-<span class="lineNum">     105 </span><span class="lineNoCov">          0 : // that &quot;join&quot; is read from is the same one passed as receiver later.</span>
-<span class="lineNum">     106 </span><span class="lineNoCov">          0 : var called_before = false;</span>
-<span class="lineNum">     107 </span><span class="lineNoCov">          0 : expectedThis = null;</span>
+<span class="lineNum">      38 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      39 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      40 </span><span class="lineCov">          1 : // On an Array object.</span>
+<span class="lineNum">      41 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      42 </span><span class="lineCov">          1 : // Default case.</span>
+<span class="lineNum">      43 </span><span class="lineCov">          1 : var a1 = [1, 2, 3];</span>
+<span class="lineNum">      44 </span><span class="lineCov">          1 : assertEquals(a1.join(), a1.toString());</span>
+<span class="lineNum">      45 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      46 </span><span class="lineCov">          1 : // Non-standard &quot;join&quot; function is called correctly.</span>
+<span class="lineNum">      47 </span><span class="lineCov">          1 : var a2 = [1, 2, 3];</span>
+<span class="lineNum">      48 </span><span class="lineCov">          1 : a2.join = testJoin;</span>
+<span class="lineNum">      49 </span><span class="lineCov">          1 : expectedThis = a2;</span>
+<span class="lineNum">      50 </span><span class="lineCov">          1 : assertEquals(success, a2.toString());</span>
+<span class="lineNum">      51 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      52 </span><span class="lineCov">          1 : // Non-callable join function is ignored and Object.prototype.toString is</span>
+<span class="lineNum">      53 </span><span class="lineCov">          1 : // used instead.</span>
+<span class="lineNum">      54 </span><span class="lineCov">          1 : var a3 = [1, 2, 3];</span>
+<span class="lineNum">      55 </span><span class="lineCov">          1 : a3.join = &quot;not callable&quot;;</span>
+<span class="lineNum">      56 </span><span class="lineCov">          1 : assertEquals(&quot;[object Array]&quot;, a3.toString());</span>
+<span class="lineNum">      57 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      58 </span><span class="lineCov">          1 : // Non-existing join function is treated same as non-callable.</span>
+<span class="lineNum">      59 </span><span class="lineCov">          1 : var a4 = [1, 2, 3];</span>
+<span class="lineNum">      60 </span><span class="lineCov">          1 : a4.__proto__ = { toString: Array.prototype.toString };</span>
+<span class="lineNum">      61 </span><span class="lineCov">          1 : // No join on Array.</span>
+<span class="lineNum">      62 </span><span class="lineCov">          1 : assertEquals(&quot;[object Array]&quot;, a4.toString());</span>
+<span class="lineNum">      63 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      64 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      65 </span><span class="lineCov">          1 : // On a non-Array object.</span>
+<span class="lineNum">      66 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      67 </span><span class="lineCov">          1 : // Default looks-like-an-array case.</span>
+<span class="lineNum">      68 </span><span class="lineCov">          1 : var o1 = {length: 3, 0: 1, 1: 2, 2: 3,</span>
+<span class="lineNum">      69 </span><span class="lineCov">          1 :           toString: Array.prototype.toString,</span>
+<span class="lineNum">      70 </span><span class="lineCov">          1 :           join: Array.prototype.join};</span>
+<span class="lineNum">      71 </span><span class="lineCov">          1 : assertEquals(o1.join(), o1.toString());</span>
+<span class="lineNum">      72 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      73 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      74 </span><span class="lineCov">          1 : // Non-standard join is called correctly.</span>
+<span class="lineNum">      75 </span><span class="lineCov">          1 : // Check that we don't read, e.g., length before calling join.</span>
+<a name="76"><span class="lineNum">      76 </span><span class="lineCov">          1 : var o2 = {toString : Array.prototype.toString,</span></a>
+<a name="77"><span class="lineNum">      77 </span><span class="lineCov">          1 :           join: testJoin,</span></a>
+<span class="lineNum">      78 </span><span class="lineCov">          1 :           get length() { assertUnreachable(); },</span>
+<span class="lineNum">      79 </span><span class="lineCov">          1 :           get 0() { assertUnreachable(); }};</span>
+<span class="lineNum">      80 </span><span class="lineCov">          1 : expectedThis = o2;</span>
+<span class="lineNum">      81 </span><span class="lineCov">          1 : assertEquals(success, o2.toString());</span>
+<span class="lineNum">      82 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      83 </span><span class="lineCov">          1 : // Non-standard join is called even if it looks like an array.</span>
+<span class="lineNum">      84 </span><span class="lineCov">          1 : var o3 = {length: 3, 0: 1, 1: 2, 2: 3,</span>
+<span class="lineNum">      85 </span><span class="lineCov">          1 :           toString: Array.prototype.toString,</span>
+<span class="lineNum">      86 </span><span class="lineCov">          1 :           join: testJoin};</span>
+<span class="lineNum">      87 </span><span class="lineCov">          1 : expectedThis = o3;</span>
+<span class="lineNum">      88 </span><span class="lineCov">          1 : assertEquals(success, o3.toString());</span>
+<span class="lineNum">      89 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      90 </span><span class="lineCov">          1 : // Non-callable join works same as for Array.</span>
+<span class="lineNum">      91 </span><span class="lineCov">          1 : var o4 = {length: 3, 0: 1, 1: 2, 2: 3,</span>
+<span class="lineNum">      92 </span><span class="lineCov">          1 :           toString: Array.prototype.toString,</span>
+<span class="lineNum">      93 </span><span class="lineCov">          1 :           join: &quot;not callable&quot;};</span>
+<span class="lineNum">      94 </span><span class="lineCov">          1 : assertEquals(&quot;[object Object]&quot;, o4.toString());</span>
+<span class="lineNum">      95 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      96 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      97 </span><span class="lineCov">          1 : // Non-existing join works same as for Array.</span>
+<span class="lineNum">      98 </span><span class="lineCov">          1 : var o5 = {length: 3, 0: 1, 1: 2, 2: 3,</span>
+<span class="lineNum">      99 </span><span class="lineCov">          1 :           toString: Array.prototype.toString</span>
+<span class="lineNum">     100 </span><span class="lineCov">          1 :           /* no join */};</span>
+<span class="lineNum">     101 </span><span class="lineCov">          1 : assertEquals(&quot;[object Object]&quot;, o5.toString());</span>
+<span class="lineNum">     102 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     103 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     104 </span><span class="lineCov">          1 : // Test that ToObject is called before getting &quot;join&quot;, so the instance</span>
+<span class="lineNum">     105 </span><span class="lineCov">          1 : // that &quot;join&quot; is read from is the same one passed as receiver later.</span>
+<span class="lineNum">     106 </span><span class="lineCov">          1 : var called_before = false;</span>
+<span class="lineNum">     107 </span><span class="lineCov">          1 : expectedThis = null;</span>
 <span class="lineNum">     108 </span><span class="lineCov">          1 : Object.defineProperty(Number.prototype, &quot;join&quot;, {get: function() {</span>
 <span class="lineNum">     109 </span><span class="lineCov">          1 :             assertFalse(called_before);</span>
 <span class="lineNum">     110 </span><span class="lineCov">          1 :             called_before = true;</span>
 <span class="lineNum">     111 </span><span class="lineCov">          1 :             expectedThis = this;</span>
 <span class="lineNum">     112 </span><span class="lineCov">          1 :             return testJoin;</span>
 <span class="lineNum">     113 </span><span class="lineCov">          1 :         }});</span>
-<span class="lineNum">     114 </span><span class="lineNoCov">          0 : Number.prototype.arrayToString = Array.prototype.toString;</span>
-<span class="lineNum">     115 </span><span class="lineNoCov">          0 : assertEquals(success, (42).arrayToString());</span>
-<span class="lineNum">     116 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     117 </span><span class="lineNoCov">          0 : // ----------------------------------------------------------</span>
-<span class="lineNum">     118 </span><span class="lineNoCov">          0 : // Testing Array.prototype.toLocaleString</span>
-<a name="119"><span class="lineNum">     119 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     120 </span><span class="lineNoCov">          0 : // Ensure that it never uses Array.prototype.toString for anything.</span>
-<span class="lineNum">     121 </span><span class="lineNoCov">          0 : Array.prototype.toString = function() { assertUnreachable(); };</span>
-<span class="lineNum">     122 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     123 </span><span class="lineNoCov">          0 : // Default case.</span>
-<span class="lineNum">     124 </span><span class="lineNoCov">          0 : var la1 = [1, [2, 3], 4];</span>
-<span class="lineNum">     125 </span><span class="lineNoCov">          0 : assertEquals(&quot;1,2,3,4&quot;, la1.toLocaleString());</span>
-<a name="126"><span class="lineNum">     126 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     127 </span><span class="lineNoCov">          0 : // Used on a string (which looks like an array of characters).</span>
+<span class="lineNum">     114 </span><span class="lineCov">          1 : Number.prototype.arrayToString = Array.prototype.toString;</span>
+<span class="lineNum">     115 </span><span class="lineCov">          1 : assertEquals(success, (42).arrayToString());</span>
+<span class="lineNum">     116 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     117 </span><span class="lineCov">          1 : // ----------------------------------------------------------</span>
+<span class="lineNum">     118 </span><span class="lineCov">          1 : // Testing Array.prototype.toLocaleString</span>
+<a name="119"><span class="lineNum">     119 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     120 </span><span class="lineCov">          1 : // Ensure that it never uses Array.prototype.toString for anything.</span>
+<span class="lineNum">     121 </span><span class="lineCov">          1 : Array.prototype.toString = function() { assertUnreachable(); };</span>
+<span class="lineNum">     122 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     123 </span><span class="lineCov">          1 : // Default case.</span>
+<span class="lineNum">     124 </span><span class="lineCov">          1 : var la1 = [1, [2, 3], 4];</span>
+<span class="lineNum">     125 </span><span class="lineCov">          1 : assertEquals(&quot;1,2,3,4&quot;, la1.toLocaleString());</span>
+<a name="126"><span class="lineNum">     126 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     127 </span><span class="lineCov">          1 : // Used on a string (which looks like an array of characters).</span>
 <span class="lineNum">     128 </span><span class="lineCov">          5 : String.prototype.toLocaleString = function() {</span>
 <span class="lineNum">     129 </span><span class="lineCov">          5 :   return (this.length == 1) ? this : Array.prototype.toLocaleString.call(this);</span>
 <span class="lineNum">     130 </span><span class="lineCov">          5 : }</span>
-<span class="lineNum">     131 </span><span class="lineNoCov">          0 : assertEquals(&quot;1,2,3,4&quot;, &quot;1234&quot;.toLocaleString());</span>
-<span class="lineNum">     132 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     133 </span><span class="lineNoCov">          0 : // If toLocaleString of element is not callable, throw a TypeError.</span>
-<span class="lineNum">     134 </span><span class="lineNoCov">          0 : var la2 = [1, {toLocaleString: &quot;not callable&quot;}, 3];</span>
+<span class="lineNum">     131 </span><span class="lineCov">          1 : assertEquals(&quot;1,2,3,4&quot;, &quot;1234&quot;.toLocaleString());</span>
+<span class="lineNum">     132 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     133 </span><span class="lineCov">          1 : // If toLocaleString of element is not callable, throw a TypeError.</span>
+<span class="lineNum">     134 </span><span class="lineCov">          1 : var la2 = [1, {toLocaleString: &quot;not callable&quot;}, 3];</span>
 <span class="lineNum">     135 </span><span class="lineCov">          1 : assertThrows(function() { la2.toLocaleString(); }, TypeError);</span>
-<a name="136"><span class="lineNum">     136 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     137 </span><span class="lineNoCov">          0 : // If toLocaleString of element is callable, call it.</span>
+<a name="136"><span class="lineNum">     136 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     137 </span><span class="lineCov">          1 : // If toLocaleString of element is callable, call it.</span>
 <span class="lineNum">     138 </span><span class="lineCov">          1 : var la3 = [1, {toLocaleString: function() { return &quot;XX&quot;;}}, 3];</span>
-<span class="lineNum">     139 </span><span class="lineNoCov">          0 : assertEquals(&quot;1,XX,3&quot;, la3.toLocaleString());</span>
-<span class="lineNum">     140 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     141 </span><span class="lineNoCov">          0 : // Omitted elements, as well as undefined and null, become empty string.</span>
-<span class="lineNum">     142 </span><span class="lineNoCov">          0 : var la4 = [1, null, 3, undefined, 5,, 7];</span>
-<span class="lineNum">     143 </span><span class="lineNoCov">          0 : assertEquals(&quot;1,,3,,5,,7&quot;, la4.toLocaleString());</span>
-<span class="lineNum">     144 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     145 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     146 </span><span class="lineNoCov">          0 : // ToObject is called first and the same object is being used for the</span>
-<span class="lineNum">     147 </span><span class="lineNoCov">          0 : // rest of the operations.</span>
-<span class="lineNum">     148 </span><span class="lineNoCov">          0 : Object.defineProperty(Number.prototype, &quot;length&quot;, {</span>
+<span class="lineNum">     139 </span><span class="lineCov">          1 : assertEquals(&quot;1,XX,3&quot;, la3.toLocaleString());</span>
+<span class="lineNum">     140 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     141 </span><span class="lineCov">          1 : // Omitted elements, as well as undefined and null, become empty string.</span>
+<span class="lineNum">     142 </span><span class="lineCov">          1 : var la4 = [1, null, 3, undefined, 5,, 7];</span>
+<span class="lineNum">     143 </span><span class="lineCov">          1 : assertEquals(&quot;1,,3,,5,,7&quot;, la4.toLocaleString());</span>
+<span class="lineNum">     144 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     145 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     146 </span><span class="lineCov">          1 : // ToObject is called first and the same object is being used for the</span>
+<span class="lineNum">     147 </span><span class="lineCov">          1 : // rest of the operations.</span>
+<span class="lineNum">     148 </span><span class="lineCov">          1 : Object.defineProperty(Number.prototype, &quot;length&quot;, {</span>
 <span class="lineNum">     149 </span><span class="lineCov">          1 :     get: function() {</span>
 <span class="lineNum">     150 </span><span class="lineCov">          1 :       exptectedThis = this;</span>
 <span class="lineNum">     151 </span><span class="lineCov">          1 :       return 3;</span>
 <span class="lineNum">     152 </span><span class="lineCov">          1 :     }});</span>
-<a name="153"><span class="lineNum">     153 </span><span class="lineNoCov">          0 : for (var i = 0; i &lt; 3; i++) {</span></a>
-<span class="lineNum">     154 </span><span class="lineNoCov">          0 :   Object.defineProperty(Number.prototype, i, {</span>
+<a name="153"><span class="lineNum">     153 </span><span class="lineCov">          1 : for (var i = 0; i &lt; 3; i++) {</span></a>
+<span class="lineNum">     154 </span><span class="lineCov">          1 :   Object.defineProperty(Number.prototype, i, {</span>
 <span class="lineNum">     155 </span><span class="lineCov">          3 :       get: function() {</span>
 <span class="lineNum">     156 </span><span class="lineCov">          3 :         assertEquals(expectedThis, this);</span>
 <span class="lineNum">     157 </span><span class="lineCov">          3 :         return +this;</span>
 <span class="lineNum">     158 </span><span class="lineCov">          3 :       }});</span>
-<span class="lineNum">     159 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">     160 </span><span class="lineNoCov">          0 : Number.prototype.arrayToLocaleString = Array.prototype.toLocaleString;</span>
-<span class="lineNum">     161 </span><span class="lineNoCov">          0 : assertEquals(&quot;42,42,42&quot;, (42).arrayToLocaleString());</span>
-<a name="162"><span class="lineNum">     162 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     163 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     159 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     160 </span><span class="lineCov">          1 : Number.prototype.arrayToLocaleString = Array.prototype.toLocaleString;</span>
+<span class="lineNum">     161 </span><span class="lineCov">          1 : assertEquals(&quot;42,42,42&quot;, (42).arrayToLocaleString());</span>
+<a name="162"><span class="lineNum">     162 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     163 </span><span class="lineCov">          1 : </span>
 <a name="164"><span class="lineNum">     164 </span><span class="lineCov">          1 : (function TestToLocaleStringCalls() {</span></a>
 <span class="lineNum">     165 </span><span class="lineCov">          1 :   let log = [];</span>
 <span class="lineNum">     166 </span><span class="lineCov">          3 :   let pushArgs = (label) =&gt; (...args) =&gt; log.push(label, args);</span>
-<span class="lineNum">     167 </span>            : 
-<span class="lineNum">     168 </span>            :   let NumberToLocaleString = Number.prototype.toLocaleString;
-<span class="lineNum">     169 </span>            :   let StringToLocaleString = String.prototype.toLocaleString;
-<span class="lineNum">     170 </span>            :   let ObjectToLocaleString = Object.prototype.toLocaleString;
-<span class="lineNum">     171 </span>            :   Number.prototype.toLocaleString = pushArgs(&quot;Number&quot;);
-<span class="lineNum">     172 </span>            :   String.prototype.toLocaleString = pushArgs(&quot;String&quot;);
-<span class="lineNum">     173 </span>            :   Object.prototype.toLocaleString = pushArgs(&quot;Object&quot;);
-<span class="lineNum">     174 </span>            : 
-<span class="lineNum">     175 </span>            :   [42, &quot;foo&quot;, {}].toLocaleString();
-<span class="lineNum">     176 </span>            :   assertEquals([&quot;Number&quot;, [], &quot;String&quot;, [], &quot;Object&quot;, []], log);
-<span class="lineNum">     177 </span>            : 
-<span class="lineNum">     178 </span>            :   Number.prototype.toLocaleString = NumberToLocaleString;
-<span class="lineNum">     179 </span>            :   String.prototype.toLocaleString = StringToLocaleString;
-<span class="lineNum">     180 </span>            :   Object.prototype.toLocaleString = ObjectToLocaleString;
-<span class="lineNum">     181 </span>            : })();
+<span class="lineNum">     167 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     168 </span><span class="lineCov">          1 :   let NumberToLocaleString = Number.prototype.toLocaleString;</span>
+<span class="lineNum">     169 </span><span class="lineCov">          1 :   let StringToLocaleString = String.prototype.toLocaleString;</span>
+<span class="lineNum">     170 </span><span class="lineCov">          1 :   let ObjectToLocaleString = Object.prototype.toLocaleString;</span>
+<span class="lineNum">     171 </span><span class="lineCov">          1 :   Number.prototype.toLocaleString = pushArgs(&quot;Number&quot;);</span>
+<span class="lineNum">     172 </span><span class="lineCov">          1 :   String.prototype.toLocaleString = pushArgs(&quot;String&quot;);</span>
+<span class="lineNum">     173 </span><span class="lineCov">          1 :   Object.prototype.toLocaleString = pushArgs(&quot;Object&quot;);</span>
+<span class="lineNum">     174 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     175 </span><span class="lineCov">          1 :   [42, &quot;foo&quot;, {}].toLocaleString();</span>
+<span class="lineNum">     176 </span><span class="lineCov">          1 :   assertEquals([&quot;Number&quot;, [], &quot;String&quot;, [], &quot;Object&quot;, []], log);</span>
+<span class="lineNum">     177 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     178 </span><span class="lineCov">          1 :   Number.prototype.toLocaleString = NumberToLocaleString;</span>
+<span class="lineNum">     179 </span><span class="lineCov">          1 :   String.prototype.toLocaleString = StringToLocaleString;</span>
+<span class="lineNum">     180 </span><span class="lineCov">          1 :   Object.prototype.toLocaleString = ObjectToLocaleString;</span>
+<span class="lineNum">     181 </span><span class="lineCov">          1 : })();</span>
 </pre>
       </td>
     </tr>

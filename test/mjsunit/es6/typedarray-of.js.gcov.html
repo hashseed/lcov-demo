@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">71</td>
-            <td class="headerCovTableEntry">131</td>
-            <td class="headerCovTableEntryLo">54.2 %</td>
+            <td class="headerCovTableEntry">138</td>
+            <td class="headerCovTableEntry">138</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">4</td>
@@ -124,79 +124,79 @@
 <span class="lineNum">      62 </span><span class="lineCov">         18 :       assertEquals(length, 2);</span>
 <span class="lineNum">      63 </span><span class="lineCov">         18 :       hits++;</span>
 <span class="lineNum">      64 </span><span class="lineCov">         18 :     }</span>
-<span class="lineNum">      65 </span><span class="lineNoCov">          0 :   }</span>
-<span class="lineNum">      66 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      67 </span><span class="lineNoCov">          0 :   hits = 0;</span>
-<span class="lineNum">      68 </span><span class="lineNoCov">          0 :   a = Bag.of(5, 6);</span>
-<span class="lineNum">      69 </span><span class="lineNoCov">          0 :   assertEquals(1, hits);</span>
-<span class="lineNum">      70 </span><span class="lineNoCov">          0 :   assertEquals(2, a.length);</span>
-<span class="lineNum">      71 </span><span class="lineNoCov">          0 :   assertArrayEquals([5, 6], a);</span>
-<span class="lineNum">      72 </span><span class="lineNoCov">          0 :   assertEquals(Bag.prototype, a.__proto__);</span>
-<span class="lineNum">      73 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      74 </span><span class="lineNoCov">          0 :   hits = 0;</span>
-<span class="lineNum">      75 </span><span class="lineNoCov">          0 :   var actual = constructor.of.call(Bag, 5, 6);</span>
-<span class="lineNum">      76 </span><span class="lineNoCov">          0 :   assertEquals(1, hits);</span>
-<span class="lineNum">      77 </span><span class="lineNoCov">          0 :   assertEquals(2, a.length);</span>
-<span class="lineNum">      78 </span><span class="lineNoCov">          0 :   assertArrayEquals([5, 6], a);</span>
-<span class="lineNum">      79 </span><span class="lineNoCov">          0 :   assertEquals(Bag.prototype, a.__proto__);</span>
-<span class="lineNum">      80 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      81 </span><span class="lineNoCov">          0 :   // %TypedArray%.of does not trigger prototype setters.</span>
-<span class="lineNum">      82 </span><span class="lineNoCov">          0 :   // (It defines elements rather than assigning to them.)</span>
-<span class="lineNum">      83 </span><span class="lineNoCov">          0 :   var status = &quot;pass&quot;;</span>
-<span class="lineNum">      84 </span><span class="lineNoCov">          0 :   Object.defineProperty(constructor.prototype, &quot;0&quot;, {</span>
-<span class="lineNum">      85 </span><span class="lineNoCov">          0 :     set: function(v) { status = &quot;fail&quot;; }</span>
-<span class="lineNum">      86 </span><span class="lineNoCov">          0 :   });</span>
-<span class="lineNum">      87 </span><span class="lineNoCov">          0 :   assertEquals(1, constructor.of(1)[0], 1);</span>
-<span class="lineNum">      88 </span><span class="lineNoCov">          0 :   assertEquals(&quot;pass&quot;, status);</span>
-<span class="lineNum">      89 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      90 </span><span class="lineNoCov">          0 :   // Note that %TypedArray%.of does not trigger &quot;length&quot; setter itself, as</span>
-<span class="lineNum">      91 </span><span class="lineNoCov">          0 :   // it relies on the constructor to set &quot;length&quot; to the value passed to it.</span>
-<span class="lineNum">      92 </span><span class="lineNoCov">          0 :   // If the constructor does not assign &quot;length&quot;, the setter should not be</span>
-<span class="lineNum">      93 </span><span class="lineNoCov">          0 :   // invoked.</span>
-<span class="lineNum">      94 </span><span class="lineNoCov">          0 : </span>
-<a name="95"><span class="lineNum">      95 </span><span class="lineNoCov">          0 :   // Setter on the newly created object.</span></a>
-<span class="lineNum">      96 </span><span class="lineNoCov">          0 :   class Pack extends constructor {</span>
+<span class="lineNum">      65 </span><span class="lineCov">          9 :   }</span>
+<span class="lineNum">      66 </span><span class="lineCov">          9 : </span>
+<span class="lineNum">      67 </span><span class="lineCov">          9 :   hits = 0;</span>
+<span class="lineNum">      68 </span><span class="lineCov">          9 :   a = Bag.of(5, 6);</span>
+<span class="lineNum">      69 </span><span class="lineCov">          9 :   assertEquals(1, hits);</span>
+<span class="lineNum">      70 </span><span class="lineCov">          9 :   assertEquals(2, a.length);</span>
+<span class="lineNum">      71 </span><span class="lineCov">          9 :   assertArrayEquals([5, 6], a);</span>
+<span class="lineNum">      72 </span><span class="lineCov">          9 :   assertEquals(Bag.prototype, a.__proto__);</span>
+<span class="lineNum">      73 </span><span class="lineCov">          9 : </span>
+<span class="lineNum">      74 </span><span class="lineCov">          9 :   hits = 0;</span>
+<span class="lineNum">      75 </span><span class="lineCov">          9 :   var actual = constructor.of.call(Bag, 5, 6);</span>
+<span class="lineNum">      76 </span><span class="lineCov">          9 :   assertEquals(1, hits);</span>
+<span class="lineNum">      77 </span><span class="lineCov">          9 :   assertEquals(2, a.length);</span>
+<span class="lineNum">      78 </span><span class="lineCov">          9 :   assertArrayEquals([5, 6], a);</span>
+<span class="lineNum">      79 </span><span class="lineCov">          9 :   assertEquals(Bag.prototype, a.__proto__);</span>
+<span class="lineNum">      80 </span><span class="lineCov">          9 : </span>
+<span class="lineNum">      81 </span><span class="lineCov">          9 :   // %TypedArray%.of does not trigger prototype setters.</span>
+<span class="lineNum">      82 </span><span class="lineCov">          9 :   // (It defines elements rather than assigning to them.)</span>
+<span class="lineNum">      83 </span><span class="lineCov">          9 :   var status = &quot;pass&quot;;</span>
+<span class="lineNum">      84 </span><span class="lineCov">          9 :   Object.defineProperty(constructor.prototype, &quot;0&quot;, {</span>
+<span class="lineNum">      85 </span><span class="lineCov">          9 :     set: function(v) { status = &quot;fail&quot;; }</span>
+<span class="lineNum">      86 </span><span class="lineCov">          9 :   });</span>
+<span class="lineNum">      87 </span><span class="lineCov">          9 :   assertEquals(1, constructor.of(1)[0], 1);</span>
+<span class="lineNum">      88 </span><span class="lineCov">          9 :   assertEquals(&quot;pass&quot;, status);</span>
+<span class="lineNum">      89 </span><span class="lineCov">          9 : </span>
+<span class="lineNum">      90 </span><span class="lineCov">          9 :   // Note that %TypedArray%.of does not trigger &quot;length&quot; setter itself, as</span>
+<span class="lineNum">      91 </span><span class="lineCov">          9 :   // it relies on the constructor to set &quot;length&quot; to the value passed to it.</span>
+<span class="lineNum">      92 </span><span class="lineCov">          9 :   // If the constructor does not assign &quot;length&quot;, the setter should not be</span>
+<span class="lineNum">      93 </span><span class="lineCov">          9 :   // invoked.</span>
+<span class="lineNum">      94 </span><span class="lineCov">          9 : </span>
+<a name="95"><span class="lineNum">      95 </span><span class="lineCov">          9 :   // Setter on the newly created object.</span></a>
+<span class="lineNum">      96 </span><span class="lineCov">          9 :   class Pack extends constructor {</span>
 <span class="lineNum">      97 </span><span class="lineCov">          9 :     constructor(length) {</span>
 <span class="lineNum">      98 </span><span class="lineCov">          9 :       super(length);</span>
 <span class="lineNum">      99 </span><span class="lineCov">          9 :       Object.defineProperty(this, &quot;length&quot;, {</span>
 <span class="lineNum">     100 </span><span class="lineCov">          9 :         set: function (v) { status = &quot;fail&quot;; }</span>
-<span class="lineNum">     101 </span><span class="lineNoCov">          0 :       });</span>
-<span class="lineNum">     102 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">     103 </span><span class="lineNoCov">          0 :   }</span>
-<span class="lineNum">     104 </span><span class="lineNoCov">          0 :   var pack = Pack.of(5, 6, 7, 8);</span>
-<span class="lineNum">     105 </span><span class="lineNoCov">          0 :   assertEquals(&quot;pass&quot;, status);</span>
-<a name="106"><span class="lineNum">     106 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     107 </span><span class="lineNoCov">          0 :   // when the setter is on the new object's prototype</span>
+<span class="lineNum">     101 </span><span class="lineCov">          9 :       });</span>
+<span class="lineNum">     102 </span><span class="lineCov">          9 :     }</span>
+<span class="lineNum">     103 </span><span class="lineCov">          9 :   }</span>
+<span class="lineNum">     104 </span><span class="lineCov">          9 :   var pack = Pack.of(5, 6, 7, 8);</span>
+<span class="lineNum">     105 </span><span class="lineCov">          9 :   assertEquals(&quot;pass&quot;, status);</span>
+<a name="106"><span class="lineNum">     106 </span><span class="lineCov">          9 : </span></a>
+<span class="lineNum">     107 </span><span class="lineCov">          9 :   // when the setter is on the new object's prototype</span>
 <a name="108"><span class="lineNum">     108 </span><span class="lineCov">          9 :   class Bevy extends constructor {}</span></a>
-<span class="lineNum">     109 </span><span class="lineNoCov">          0 :   Object.defineProperty(Bevy.prototype, &quot;length&quot;, {</span>
-<span class="lineNum">     110 </span><span class="lineNoCov">          0 :     set: function (v) { status = &quot;fail&quot;; }</span>
-<span class="lineNum">     111 </span><span class="lineNoCov">          0 :   });</span>
-<span class="lineNum">     112 </span><span class="lineNoCov">          0 :   var bevy = Bevy.of(3);</span>
-<span class="lineNum">     113 </span><span class="lineNoCov">          0 :   assertEquals(&quot;pass&quot;, status);</span>
-<span class="lineNum">     114 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     115 </span><span class="lineNoCov">          0 :   // Check superficial features of %TypedArray%.of.</span>
-<span class="lineNum">     116 </span><span class="lineNoCov">          0 :   var desc = Object.getOwnPropertyDescriptor(constructor.__proto__, &quot;of&quot;);</span>
-<span class="lineNum">     117 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     118 </span><span class="lineNoCov">          0 :   assertEquals(desc.configurable, true);</span>
-<span class="lineNum">     119 </span><span class="lineNoCov">          0 :   assertEquals(desc.enumerable, false);</span>
-<span class="lineNum">     120 </span><span class="lineNoCov">          0 :   assertEquals(desc.writable, true);</span>
-<span class="lineNum">     121 </span><span class="lineNoCov">          0 :   assertEquals(constructor.of.length, 0);</span>
-<span class="lineNum">     122 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     123 </span><span class="lineNoCov">          0 :   // %TypedArray%.of is not a constructor.</span>
+<span class="lineNum">     109 </span><span class="lineCov">          9 :   Object.defineProperty(Bevy.prototype, &quot;length&quot;, {</span>
+<span class="lineNum">     110 </span><span class="lineCov">          9 :     set: function (v) { status = &quot;fail&quot;; }</span>
+<span class="lineNum">     111 </span><span class="lineCov">          9 :   });</span>
+<span class="lineNum">     112 </span><span class="lineCov">          9 :   var bevy = Bevy.of(3);</span>
+<span class="lineNum">     113 </span><span class="lineCov">          9 :   assertEquals(&quot;pass&quot;, status);</span>
+<span class="lineNum">     114 </span><span class="lineCov">          9 : </span>
+<span class="lineNum">     115 </span><span class="lineCov">          9 :   // Check superficial features of %TypedArray%.of.</span>
+<span class="lineNum">     116 </span><span class="lineCov">          9 :   var desc = Object.getOwnPropertyDescriptor(constructor.__proto__, &quot;of&quot;);</span>
+<span class="lineNum">     117 </span><span class="lineCov">          9 : </span>
+<span class="lineNum">     118 </span><span class="lineCov">          9 :   assertEquals(desc.configurable, true);</span>
+<span class="lineNum">     119 </span><span class="lineCov">          9 :   assertEquals(desc.enumerable, false);</span>
+<span class="lineNum">     120 </span><span class="lineCov">          9 :   assertEquals(desc.writable, true);</span>
+<span class="lineNum">     121 </span><span class="lineCov">          9 :   assertEquals(constructor.of.length, 0);</span>
+<span class="lineNum">     122 </span><span class="lineCov">          9 : </span>
+<span class="lineNum">     123 </span><span class="lineCov">          9 :   // %TypedArray%.of is not a constructor.</span>
 <span class="lineNum">     124 </span><span class="lineCov">          9 :   assertThrows(function() { new constructor.of(); }, TypeError);</span>
-<span class="lineNum">     125 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     126 </span><span class="lineNoCov">          0 :   // For receivers which are not constructors %TypedArray%.of does not</span>
-<span class="lineNum">     127 </span><span class="lineNoCov">          0 :   // allocate a typed array using a default constructor, but throws an</span>
-<span class="lineNum">     128 </span><span class="lineNoCov">          0 :   // exception. Note that this is different from Array.of, which uses</span>
-<span class="lineNum">     129 </span><span class="lineNoCov">          0 :   // Array as default constructor.</span>
-<span class="lineNum">     130 </span><span class="lineNoCov">          0 :   for (var x of [undefined, null, false, true, &quot;cow&quot;, 42, 3.14]) {</span>
+<span class="lineNum">     125 </span><span class="lineCov">          9 : </span>
+<span class="lineNum">     126 </span><span class="lineCov">          9 :   // For receivers which are not constructors %TypedArray%.of does not</span>
+<span class="lineNum">     127 </span><span class="lineCov">          9 :   // allocate a typed array using a default constructor, but throws an</span>
+<span class="lineNum">     128 </span><span class="lineCov">          9 :   // exception. Note that this is different from Array.of, which uses</span>
+<span class="lineNum">     129 </span><span class="lineCov">          9 :   // Array as default constructor.</span>
+<span class="lineNum">     130 </span><span class="lineCov">          9 :   for (var x of [undefined, null, false, true, &quot;cow&quot;, 42, 3.14]) {</span>
 <span class="lineNum">     131 </span><span class="lineCov">         63 :     assertThrows(function () { constructor.of.call(x); }, TypeError);</span>
-<span class="lineNum">     132 </span>            :   }
-<span class="lineNum">     133 </span>            : }
-<span class="lineNum">     134 </span>            : 
-<span class="lineNum">     135 </span>            : for (var constructor of typedArrayConstructors) {
-<span class="lineNum">     136 </span>            :   TestTypedArrayOf(constructor);
-<span class="lineNum">     137 </span>            : }
+<span class="lineNum">     132 </span><span class="lineCov">          9 :   }</span>
+<span class="lineNum">     133 </span><span class="lineCov">          9 : }</span>
+<span class="lineNum">     134 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     135 </span><span class="lineCov">          1 : for (var constructor of typedArrayConstructors) {</span>
+<span class="lineNum">     136 </span><span class="lineCov">          1 :   TestTypedArrayOf(constructor);</span>
+<span class="lineNum">     137 </span><span class="lineCov">          1 : }</span>
 </pre>
       </td>
     </tr>

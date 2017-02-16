@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">101</td>
-            <td class="headerCovTableEntry">130</td>
-            <td class="headerCovTableEntryMed">77.7 %</td>
+            <td class="headerCovTableEntry">139</td>
+            <td class="headerCovTableEntry">139</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">6</td>
@@ -92,8 +92,8 @@
 <span class="lineNum">      30 </span><span class="lineCov">        500 : function zero() {</span>
 <span class="lineNum">      31 </span><span class="lineCov">        500 :   var x = 0.5;</span>
 <span class="lineNum">      32 </span><span class="lineCov">        500 :   return (function() { return x - 0.5; })();</span>
-<a name="33"><span class="lineNum">      33 </span><span class="lineNoCov">          0 : }</span></a>
-<span class="lineNum">      34 </span><span class="lineNoCov">          0 : </span>
+<a name="33"><span class="lineNum">      33 </span><span class="lineCov">        500 : }</span></a>
+<span class="lineNum">      34 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      35 </span><span class="lineCov">        500 : function test() {</span>
 <span class="lineNum">      36 </span><span class="lineCov">        500 :   assertEquals(0, Math.abs(0));</span>
 <span class="lineNum">      37 </span><span class="lineCov">        500 :   assertEquals(0, Math.abs(zero()));</span>
@@ -151,53 +151,53 @@
 <a name="89"><span class="lineNum">      89 </span><span class="lineCov">        500 :   assertEquals(NaN, Math.abs([1, 2, 3]));</span></a>
 <span class="lineNum">      90 </span><span class="lineCov">        500 :   assertEquals(42, Math.abs({valueOf: function() { return 42; } }));</span>
 <span class="lineNum">      91 </span><span class="lineCov">        500 :   assertEquals(42, Math.abs({valueOf: function() { return -42; } }));</span>
-<span class="lineNum">      92 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">      93 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      94 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      95 </span><span class="lineNoCov">          0 : // Test in a loop to cover the custom IC and GC-related issues.</span>
-<span class="lineNum">      96 </span><span class="lineNoCov">          0 : for (var i = 0; i &lt; 500; i++) {</span>
-<span class="lineNum">      97 </span><span class="lineNoCov">          0 :   test();</span>
-<span class="lineNum">      98 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">      99 </span><span class="lineNoCov">          0 : </span>
-<a name="100"><span class="lineNum">     100 </span><span class="lineNoCov">          0 : // Regression test for optimized version of Math.abs, see:</span></a>
-<span class="lineNum">     101 </span><span class="lineNoCov">          0 : // http://codereview.chromium.org/6875002.</span>
+<span class="lineNum">      92 </span><span class="lineCov">        500 : }</span>
+<span class="lineNum">      93 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      94 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      95 </span><span class="lineCov">          1 : // Test in a loop to cover the custom IC and GC-related issues.</span>
+<span class="lineNum">      96 </span><span class="lineCov">          1 : for (var i = 0; i &lt; 500; i++) {</span>
+<span class="lineNum">      97 </span><span class="lineCov">          1 :   test();</span>
+<span class="lineNum">      98 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      99 </span><span class="lineCov">          1 : </span>
+<a name="100"><span class="lineNum">     100 </span><span class="lineCov">          1 : // Regression test for optimized version of Math.abs, see:</span></a>
+<span class="lineNum">     101 </span><span class="lineCov">          1 : // http://codereview.chromium.org/6875002.</span>
 <span class="lineNum">     102 </span><span class="lineCov">       1002 : function foo(x) {</span>
 <span class="lineNum">     103 </span><span class="lineCov">       1002 :   return Math.abs(x);</span>
 <span class="lineNum">     104 </span><span class="lineCov">       1002 : }</span>
-<span class="lineNum">     105 </span><span class="lineNoCov">          0 : // Get some smi type feedback.</span>
-<span class="lineNum">     106 </span><span class="lineNoCov">          0 : for(var i = 0; i &lt; 1000; i++) {</span>
-<span class="lineNum">     107 </span><span class="lineNoCov">          0 :   foo(-i);</span>
-<span class="lineNum">     108 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">     109 </span><span class="lineNoCov">          0 : assertEquals(42, foo(-42));</span>
-<span class="lineNum">     110 </span><span class="lineNoCov">          0 : %OptimizeFunctionOnNextCall(foo)</span>
-<span class="lineNum">     111 </span><span class="lineNoCov">          0 : assertEquals(42, foo(-42));</span>
-<span class="lineNum">     112 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     113 </span><span class="lineNoCov">          0 : // Regression test for SMI input of Math.abs on X64, see:</span>
-<a name="114"><span class="lineNum">     114 </span><span class="lineNoCov">          0 : // https://codereview.chromium.org/21180004/</span></a>
-<span class="lineNum">     115 </span><span class="lineNoCov">          0 : var a = [-1, -2];</span>
+<span class="lineNum">     105 </span><span class="lineCov">          1 : // Get some smi type feedback.</span>
+<span class="lineNum">     106 </span><span class="lineCov">          1 : for(var i = 0; i &lt; 1000; i++) {</span>
+<span class="lineNum">     107 </span><span class="lineCov">          1 :   foo(-i);</span>
+<span class="lineNum">     108 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     109 </span><span class="lineCov">          1 : assertEquals(42, foo(-42));</span>
+<span class="lineNum">     110 </span><span class="lineCov">          1 : %OptimizeFunctionOnNextCall(foo)</span>
+<span class="lineNum">     111 </span><span class="lineCov">          1 : assertEquals(42, foo(-42));</span>
+<span class="lineNum">     112 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     113 </span><span class="lineCov">          1 : // Regression test for SMI input of Math.abs on X64, see:</span>
+<a name="114"><span class="lineNum">     114 </span><span class="lineCov">          1 : // https://codereview.chromium.org/21180004/</span></a>
+<span class="lineNum">     115 </span><span class="lineCov">          1 : var a = [-1, -2];</span>
 <span class="lineNum">     116 </span><span class="lineCov">          3 : function foo2() {</span>
 <span class="lineNum">     117 </span><span class="lineCov">          3 :   return Math.abs(a[0]);</span>
 <span class="lineNum">     118 </span><span class="lineCov">          3 : }</span>
-<span class="lineNum">     119 </span><span class="lineNoCov">          0 : assertEquals(1, foo2());</span>
-<span class="lineNum">     120 </span><span class="lineNoCov">          0 : assertEquals(1, foo2());</span>
-<span class="lineNum">     121 </span><span class="lineNoCov">          0 : %OptimizeFunctionOnNextCall(foo2);</span>
-<span class="lineNum">     122 </span><span class="lineNoCov">          0 : assertEquals(1, foo2());</span>
-<a name="123"><span class="lineNum">     123 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     124 </span><span class="lineNoCov">          0 : // Regression test for Integer input of Math.abs on mips64.</span>
+<span class="lineNum">     119 </span><span class="lineCov">          1 : assertEquals(1, foo2());</span>
+<span class="lineNum">     120 </span><span class="lineCov">          1 : assertEquals(1, foo2());</span>
+<span class="lineNum">     121 </span><span class="lineCov">          1 : %OptimizeFunctionOnNextCall(foo2);</span>
+<span class="lineNum">     122 </span><span class="lineCov">          1 : assertEquals(1, foo2());</span>
+<a name="123"><span class="lineNum">     123 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     124 </span><span class="lineCov">          1 : // Regression test for Integer input of Math.abs on mips64.</span>
 <span class="lineNum">     125 </span><span class="lineCov">          3 : function absHalf(bits) {</span>
 <span class="lineNum">     126 </span><span class="lineCov">          3 :   var x = 1 &lt;&lt; (bits - 1);</span>
 <span class="lineNum">     127 </span><span class="lineCov">          3 :   var half = Math.abs(x);</span>
 <span class="lineNum">     128 </span><span class="lineCov">          3 :   return half;</span>
 <span class="lineNum">     129 </span><span class="lineCov">          3 : </span>
 <span class="lineNum">     130 </span><span class="lineCov">          3 : }</span>
-<span class="lineNum">     131 </span>            : 
-<span class="lineNum">     132 </span>            : // Create minimum integer input for abs() using bitwise operations
-<span class="lineNum">     133 </span>            : // that should overflow.
-<span class="lineNum">     134 </span>            : bits = 32;
-<span class="lineNum">     135 </span>            : assertEquals(2147483648, absHalf(bits));
-<span class="lineNum">     136 </span>            : assertEquals(2147483648, absHalf(bits));
-<span class="lineNum">     137 </span>            : %OptimizeFunctionOnNextCall(absHalf);
-<span class="lineNum">     138 </span>            : assertEquals(2147483648, absHalf(bits));
+<span class="lineNum">     131 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     132 </span><span class="lineCov">          1 : // Create minimum integer input for abs() using bitwise operations</span>
+<span class="lineNum">     133 </span><span class="lineCov">          1 : // that should overflow.</span>
+<span class="lineNum">     134 </span><span class="lineCov">          1 : bits = 32;</span>
+<span class="lineNum">     135 </span><span class="lineCov">          1 : assertEquals(2147483648, absHalf(bits));</span>
+<span class="lineNum">     136 </span><span class="lineCov">          1 : assertEquals(2147483648, absHalf(bits));</span>
+<span class="lineNum">     137 </span><span class="lineCov">          1 : %OptimizeFunctionOnNextCall(absHalf);</span>
+<span class="lineNum">     138 </span><span class="lineCov">          1 : assertEquals(2147483648, absHalf(bits));</span>
 </pre>
       </td>
     </tr>

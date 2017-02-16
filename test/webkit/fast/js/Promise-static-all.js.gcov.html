@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">93</td>
-            <td class="headerCovTableEntry">114</td>
-            <td class="headerCovTableEntryMed">81.6 %</td>
+            <td class="headerCovTableEntry">108</td>
+            <td class="headerCovTableEntry">118</td>
+            <td class="headerCovTableEntryHi">91.5 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -98,14 +98,14 @@
 <span class="lineNum">      36 </span><span class="lineCov">          1 : var p7 = new Promise(function(_, reject) { reject('p7'); });</span>
 <span class="lineNum">      37 </span><span class="lineCov">          1 : var p8 = new Promise(function(_, reject) { reject('p8'); });</span>
 <span class="lineNum">      38 </span><span class="lineCov">          1 : var p9 = new Promise(function(resolve) { resolve(p2); });</span>
-<span class="lineNum">      39 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      40 </span><span class="lineNoCov">          0 : Promise.all([p1, p2, p5]).then(function(result) {</span>
+<span class="lineNum">      39 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      40 </span><span class="lineCov">          1 : Promise.all([p1, p2, p5]).then(function(result) {</span>
 <span class="lineNum">      41 </span><span class="lineNoCov">          0 :   testFailed('Promise.all([p1, p2, p5]) is fulfilled.');</span>
-<span class="lineNum">      42 </span><span class="lineNoCov">          0 : }, function() {</span>
+<span class="lineNum">      42 </span><span class="lineCov">          1 : }, function() {</span>
 <span class="lineNum">      43 </span><span class="lineNoCov">          0 :   testFailed('Promise.all([p1, p2, p5]) is rejected.');</span>
-<span class="lineNum">      44 </span><span class="lineNoCov">          0 : });</span>
-<span class="lineNum">      45 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      46 </span><span class="lineNoCov">          0 : Promise.all().then(function() {</span>
+<span class="lineNum">      44 </span><span class="lineCov">          1 : });</span>
+<span class="lineNum">      45 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      46 </span><span class="lineCov">          1 : Promise.all().then(function() {</span>
 <span class="lineNum">      47 </span><span class="lineNoCov">          0 :   testFailed('Promise.all() is fulfilled.');</span>
 <span class="lineNum">      48 </span><span class="lineCov">          1 : }, function() {</span>
 <span class="lineNum">      49 </span><span class="lineCov">          1 :   testPassed('Promise.all() is rejected.');</span>
@@ -115,7 +115,7 @@
 <span class="lineNum">      53 </span><span class="lineCov">          1 :     shouldBe('result.length', '0');</span>
 <span class="lineNum">      54 </span><span class="lineCov">          1 :   }, function() {</span>
 <span class="lineNum">      55 </span><span class="lineNoCov">          0 :     testFailed('Promise.all([]) is rejected.');</span>
-<span class="lineNum">      56 </span><span class="lineNoCov">          0 :   });</span>
+<span class="lineNum">      56 </span><span class="lineCov">          1 :   });</span>
 <span class="lineNum">      57 </span><span class="lineCov">          1 : }).then(function() {</span>
 <span class="lineNum">      58 </span><span class="lineCov">          1 :   return Promise.all([p1, p2, p3]).then(function(localResult) {</span>
 <span class="lineNum">      59 </span><span class="lineCov">          1 :     testPassed('Promise.all([p1, p2, p3]) is fulfilled.');</span>
@@ -126,7 +126,7 @@
 <span class="lineNum">      64 </span><span class="lineCov">          1 :     shouldBeEqualToString('result[2]', 'p3');</span>
 <span class="lineNum">      65 </span><span class="lineCov">          1 :   }, function() {</span>
 <span class="lineNum">      66 </span><span class="lineNoCov">          0 :     testFailed('Promise.all([p1, p2, p3]) is rejected.');</span>
-<span class="lineNum">      67 </span><span class="lineNoCov">          0 :   });</span>
+<span class="lineNum">      67 </span><span class="lineCov">          1 :   });</span>
 <span class="lineNum">      68 </span><span class="lineCov">          1 : }).then(function() {</span>
 <span class="lineNum">      69 </span><span class="lineCov">          1 :   return Promise.all([p1, p6, p5]).then(function(localResult) {</span>
 <span class="lineNum">      70 </span><span class="lineNoCov">          0 :     testFailed('Promise.all([p1, p6, p5]) is fulfilled.');</span>
@@ -143,7 +143,7 @@
 <span class="lineNum">      81 </span><span class="lineCov">          1 :     shouldBeEqualToString('result[0]', 'p2');</span>
 <span class="lineNum">      82 </span><span class="lineCov">          1 :   }, function(result) {</span>
 <span class="lineNum">      83 </span><span class="lineNoCov">          0 :     testFailed('Promise.all([p9]) is rejected.');</span>
-<span class="lineNum">      84 </span><span class="lineNoCov">          0 :   });</span>
+<span class="lineNum">      84 </span><span class="lineCov">          1 :   });</span>
 <span class="lineNum">      85 </span><span class="lineCov">          1 : }).then(function() {</span>
 <span class="lineNum">      86 </span><span class="lineCov">          1 :   // Array hole should not be skipped.</span>
 <span class="lineNum">      87 </span><span class="lineCov">          1 :   return Promise.all([p9,,,]).then(function(localResult) {</span>
@@ -155,7 +155,7 @@
 <span class="lineNum">      93 </span><span class="lineCov">          1 :     shouldBe('result[2]', 'undefined');</span>
 <span class="lineNum">      94 </span><span class="lineCov">          1 :   }, function(localResult) {</span>
 <span class="lineNum">      95 </span><span class="lineNoCov">          0 :     testFailed('Promise.all([p9,,,]) is rejected.');</span>
-<span class="lineNum">      96 </span><span class="lineNoCov">          0 :   });</span>
+<span class="lineNum">      96 </span><span class="lineCov">          1 :   });</span>
 <span class="lineNum">      97 </span><span class="lineCov">          1 : }).then(function() {</span>
 <span class="lineNum">      98 </span><span class="lineCov">          1 :   // Immediate value should be converted to a promise object by the</span>
 <span class="lineNum">      99 </span><span class="lineCov">          1 :   // ToPromise operation.</span>
@@ -167,16 +167,16 @@
 <span class="lineNum">     105 </span><span class="lineCov">          1 :     shouldBe('result[1]', '42');</span>
 <span class="lineNum">     106 </span><span class="lineCov">          1 :   }, function(localResult) {</span>
 <span class="lineNum">     107 </span><span class="lineNoCov">          0 :     testFailed('Promise.all([p9,42]) is rejected.');</span>
-<span class="lineNum">     108 </span><span class="lineNoCov">          0 :   });</span>
+<span class="lineNum">     108 </span><span class="lineCov">          1 :   });</span>
 <span class="lineNum">     109 </span><span class="lineCov">          1 : }).then(function() {</span>
 <span class="lineNum">     110 </span><span class="lineCov">          1 :   return Promise.all({}).then(function(localResult) {</span>
 <span class="lineNum">     111 </span><span class="lineNoCov">          0 :     testFailed('Promise.all({}) is fulfilled.');</span>
 <span class="lineNum">     112 </span><span class="lineCov">          1 :   }, function(localResult) {</span>
 <span class="lineNum">     113 </span><span class="lineCov">          1 :     testPassed('Promise.all({}) is rejected.');</span>
 <span class="lineNum">     114 </span><span class="lineCov">          1 :   });</span>
-<span class="lineNum">     115 </span>            : }).then(finishJSTest, finishJSTest);
-<span class="lineNum">     116 </span>            : 
-<span class="lineNum">     117 </span>            : shouldBe('result', 'undefined');
+<span class="lineNum">     115 </span><span class="lineCov">          1 : }).then(finishJSTest, finishJSTest);</span>
+<span class="lineNum">     116 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     117 </span><span class="lineCov">          1 : shouldBe('result', 'undefined');</span>
 </pre>
       </td>
     </tr>

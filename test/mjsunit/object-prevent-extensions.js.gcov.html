@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">65</td>
-            <td class="headerCovTableEntry">113</td>
-            <td class="headerCovTableEntryLo">57.5 %</td>
+            <td class="headerCovTableEntry">162</td>
+            <td class="headerCovTableEntry">163</td>
+            <td class="headerCovTableEntryHi">99.4 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -125,103 +125,103 @@
 <span class="lineNum">      63 </span><span class="lineCov">          1 : assertEquals(43, obj2.x)</span>
 <span class="lineNum">      64 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      65 </span><span class="lineCov">          1 : obj2.y = new function() { return 42; };</span>
-<span class="lineNum">      66 </span><span class="lineNoCov">          0 : // obj2.y should still be undefined.</span>
-<span class="lineNum">      67 </span><span class="lineNoCov">          0 : assertEquals(undefined, obj2.y);</span>
-<span class="lineNum">      68 </span><span class="lineNoCov">          0 : assertEquals(43, obj2.x)</span>
-<span class="lineNum">      69 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      70 </span><span class="lineNoCov">          0 : try {</span>
-<span class="lineNum">      71 </span><span class="lineNoCov">          0 :   Object.defineProperty(obj2, &quot;y&quot;, {value: 42});</span>
-<span class="lineNum">      72 </span><span class="lineNoCov">          0 : } catch (e) {</span>
-<span class="lineNum">      73 </span><span class="lineNoCov">          0 :   assertTrue(/object is not extensible/.test(e));</span>
-<span class="lineNum">      74 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">      75 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      76 </span><span class="lineNoCov">          0 : // obj2.y should still be undefined.</span>
-<span class="lineNum">      77 </span><span class="lineNoCov">          0 : assertEquals(undefined, obj2.y);</span>
-<span class="lineNum">      78 </span><span class="lineNoCov">          0 : assertEquals(43, obj2.x);</span>
-<span class="lineNum">      79 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      80 </span><span class="lineNoCov">          0 : obj2[1] = 42;</span>
-<span class="lineNum">      81 </span><span class="lineNoCov">          0 : assertEquals(undefined, obj2[1]);</span>
-<span class="lineNum">      82 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      83 </span><span class="lineNoCov">          0 : var arr = new Array();</span>
-<span class="lineNum">      84 </span><span class="lineNoCov">          0 : arr[1] = 10;</span>
-<span class="lineNum">      85 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      86 </span><span class="lineNoCov">          0 : Object.preventExtensions(arr);</span>
-<span class="lineNum">      87 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      88 </span><span class="lineNoCov">          0 : arr[2] = 42;</span>
-<span class="lineNum">      89 </span><span class="lineNoCov">          0 : assertEquals(10, arr[1]);</span>
-<span class="lineNum">      90 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      91 </span><span class="lineNoCov">          0 : // We should still be able to change existing elements.</span>
-<span class="lineNum">      92 </span><span class="lineNoCov">          0 : arr[1]= 42;</span>
-<span class="lineNum">      93 </span><span class="lineNoCov">          0 : assertEquals(42, arr[1]);</span>
-<span class="lineNum">      94 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      95 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      96 </span><span class="lineNoCov">          0 : // Test the the extensible flag is not inherited.</span>
-<span class="lineNum">      97 </span><span class="lineNoCov">          0 : var parent = {};</span>
-<span class="lineNum">      98 </span><span class="lineNoCov">          0 : parent.x = 42;</span>
-<span class="lineNum">      99 </span><span class="lineNoCov">          0 : Object.preventExtensions(parent);</span>
-<span class="lineNum">     100 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     101 </span><span class="lineNoCov">          0 : var child = Object.create(parent);</span>
-<span class="lineNum">     102 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     103 </span><span class="lineNoCov">          0 : // We should be able to add new properties to the child object.</span>
-<span class="lineNum">     104 </span><span class="lineNoCov">          0 : child.y = 42;</span>
-<span class="lineNum">     105 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     106 </span><span class="lineNoCov">          0 : // This should have no influence on the parent class.</span>
-<span class="lineNum">     107 </span><span class="lineNoCov">          0 : parent.y = 29;</span>
-<span class="lineNum">     108 </span><span class="lineNoCov">          0 : </span>
-<a name="109"><span class="lineNum">     109 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     110 </span><span class="lineNoCov">          0 : // Test that attributes on functions are also handled correctly.</span>
-<span class="lineNum">     111 </span><span class="lineNoCov">          0 : function foo() {</span>
+<span class="lineNum">      66 </span><span class="lineCov">          1 : // obj2.y should still be undefined.</span>
+<span class="lineNum">      67 </span><span class="lineCov">          1 : assertEquals(undefined, obj2.y);</span>
+<span class="lineNum">      68 </span><span class="lineCov">          1 : assertEquals(43, obj2.x)</span>
+<span class="lineNum">      69 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      70 </span><span class="lineCov">          1 : try {</span>
+<span class="lineNum">      71 </span><span class="lineCov">          1 :   Object.defineProperty(obj2, &quot;y&quot;, {value: 42});</span>
+<span class="lineNum">      72 </span><span class="lineCov">          1 : } catch (e) {</span>
+<span class="lineNum">      73 </span><span class="lineCov">          1 :   assertTrue(/object is not extensible/.test(e));</span>
+<span class="lineNum">      74 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      75 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      76 </span><span class="lineCov">          1 : // obj2.y should still be undefined.</span>
+<span class="lineNum">      77 </span><span class="lineCov">          1 : assertEquals(undefined, obj2.y);</span>
+<span class="lineNum">      78 </span><span class="lineCov">          1 : assertEquals(43, obj2.x);</span>
+<span class="lineNum">      79 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      80 </span><span class="lineCov">          1 : obj2[1] = 42;</span>
+<span class="lineNum">      81 </span><span class="lineCov">          1 : assertEquals(undefined, obj2[1]);</span>
+<span class="lineNum">      82 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      83 </span><span class="lineCov">          1 : var arr = new Array();</span>
+<span class="lineNum">      84 </span><span class="lineCov">          1 : arr[1] = 10;</span>
+<span class="lineNum">      85 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      86 </span><span class="lineCov">          1 : Object.preventExtensions(arr);</span>
+<span class="lineNum">      87 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      88 </span><span class="lineCov">          1 : arr[2] = 42;</span>
+<span class="lineNum">      89 </span><span class="lineCov">          1 : assertEquals(10, arr[1]);</span>
+<span class="lineNum">      90 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      91 </span><span class="lineCov">          1 : // We should still be able to change existing elements.</span>
+<span class="lineNum">      92 </span><span class="lineCov">          1 : arr[1]= 42;</span>
+<span class="lineNum">      93 </span><span class="lineCov">          1 : assertEquals(42, arr[1]);</span>
+<span class="lineNum">      94 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      95 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      96 </span><span class="lineCov">          1 : // Test the the extensible flag is not inherited.</span>
+<span class="lineNum">      97 </span><span class="lineCov">          1 : var parent = {};</span>
+<span class="lineNum">      98 </span><span class="lineCov">          1 : parent.x = 42;</span>
+<span class="lineNum">      99 </span><span class="lineCov">          1 : Object.preventExtensions(parent);</span>
+<span class="lineNum">     100 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     101 </span><span class="lineCov">          1 : var child = Object.create(parent);</span>
+<span class="lineNum">     102 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     103 </span><span class="lineCov">          1 : // We should be able to add new properties to the child object.</span>
+<span class="lineNum">     104 </span><span class="lineCov">          1 : child.y = 42;</span>
+<span class="lineNum">     105 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     106 </span><span class="lineCov">          1 : // This should have no influence on the parent class.</span>
+<span class="lineNum">     107 </span><span class="lineCov">          1 : parent.y = 29;</span>
+<span class="lineNum">     108 </span><span class="lineCov">          1 : </span>
+<a name="109"><span class="lineNum">     109 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     110 </span><span class="lineCov">          1 : // Test that attributes on functions are also handled correctly.</span>
+<span class="lineNum">     111 </span><span class="lineCov">          1 : function foo() {</span>
 <span class="lineNum">     112 </span><span class="lineNoCov">          0 :   return 42;</span>
-<span class="lineNum">     113 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">     114 </span>            : 
-<span class="lineNum">     115 </span>            : Object.preventExtensions(foo);
-<span class="lineNum">     116 </span>            : 
-<span class="lineNum">     117 </span>            : foo.x = 29;
-<span class="lineNum">     118 </span>            : assertEquals(undefined, foo.x);
-<span class="lineNum">     119 </span>            : 
-<span class="lineNum">     120 </span>            : // when Object.isExtensible(o) === false
-<span class="lineNum">     121 </span>            : // assignment should return right hand side value
-<span class="lineNum">     122 </span>            : var o = Object.preventExtensions({});
-<span class="lineNum">     123 </span>            : var v = o.v = 50;
-<span class="lineNum">     124 </span>            : assertEquals(undefined, o.v);
-<span class="lineNum">     125 </span>            : assertEquals(50, v);
-<span class="lineNum">     126 </span>            : 
-<span class="lineNum">     127 </span>            : // test same behavior as above, but for integer properties
-<span class="lineNum">     128 </span>            : var n = o[0] = 100;
-<span class="lineNum">     129 </span>            : assertEquals(undefined, o[0]);
-<span class="lineNum">     130 </span>            : assertEquals(100, n);
-<span class="lineNum">     131 </span>            : 
-<span class="lineNum">     132 </span>            : // Fast properties should remain fast
-<span class="lineNum">     133 </span>            : obj = { x: 42, y: 'foo' };
-<span class="lineNum">     134 </span>            : assertTrue(%HasFastProperties(obj));
-<span class="lineNum">     135 </span>            : Object.preventExtensions(obj);
-<span class="lineNum">     136 </span>            : assertFalse(Object.isExtensible(obj));
-<span class="lineNum">     137 </span>            : assertFalse(Object.isSealed(obj));
-<span class="lineNum">     138 </span>            : assertTrue(%HasFastProperties(obj));
-<span class="lineNum">     139 </span>            : 
-<span class="lineNum">     140 </span>            : // Non-extensible objects should share maps where possible
-<span class="lineNum">     141 </span>            : obj = { prop1: 1, prop2: 2 };
-<span class="lineNum">     142 </span>            : obj2 = { prop1: 3, prop2: 4 };
-<span class="lineNum">     143 </span>            : assertTrue(%HaveSameMap(obj, obj2));
-<span class="lineNum">     144 </span>            : Object.preventExtensions(obj);
-<span class="lineNum">     145 </span>            : Object.preventExtensions(obj2);
-<span class="lineNum">     146 </span>            : assertFalse(Object.isExtensible(obj));
-<span class="lineNum">     147 </span>            : assertFalse(Object.isExtensible(obj2));
-<span class="lineNum">     148 </span>            : assertFalse(Object.isSealed(obj));
-<span class="lineNum">     149 </span>            : assertFalse(Object.isSealed(obj2));
-<span class="lineNum">     150 </span>            : assertTrue(%HaveSameMap(obj, obj2));
-<span class="lineNum">     151 </span>            : 
-<span class="lineNum">     152 </span>            : // Non-extensible objects should share maps even when they have elements
-<span class="lineNum">     153 </span>            : obj = { prop1: 1, prop2: 2, 75: 'foo' };
-<span class="lineNum">     154 </span>            : obj2 = { prop1: 3, prop2: 4, 150: 'bar' };
-<span class="lineNum">     155 </span>            : assertTrue(%HaveSameMap(obj, obj2));
-<span class="lineNum">     156 </span>            : Object.preventExtensions(obj);
-<span class="lineNum">     157 </span>            : Object.preventExtensions(obj2);
-<span class="lineNum">     158 </span>            : assertFalse(Object.isExtensible(obj));
-<span class="lineNum">     159 </span>            : assertFalse(Object.isExtensible(obj2));
-<span class="lineNum">     160 </span>            : assertFalse(Object.isSealed(obj));
-<span class="lineNum">     161 </span>            : assertFalse(Object.isSealed(obj2));
-<span class="lineNum">     162 </span>            : assertTrue(%HaveSameMap(obj, obj2));
+<span class="lineNum">     113 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     114 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     115 </span><span class="lineCov">          1 : Object.preventExtensions(foo);</span>
+<span class="lineNum">     116 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     117 </span><span class="lineCov">          1 : foo.x = 29;</span>
+<span class="lineNum">     118 </span><span class="lineCov">          1 : assertEquals(undefined, foo.x);</span>
+<span class="lineNum">     119 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     120 </span><span class="lineCov">          1 : // when Object.isExtensible(o) === false</span>
+<span class="lineNum">     121 </span><span class="lineCov">          1 : // assignment should return right hand side value</span>
+<span class="lineNum">     122 </span><span class="lineCov">          1 : var o = Object.preventExtensions({});</span>
+<span class="lineNum">     123 </span><span class="lineCov">          1 : var v = o.v = 50;</span>
+<span class="lineNum">     124 </span><span class="lineCov">          1 : assertEquals(undefined, o.v);</span>
+<span class="lineNum">     125 </span><span class="lineCov">          1 : assertEquals(50, v);</span>
+<span class="lineNum">     126 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     127 </span><span class="lineCov">          1 : // test same behavior as above, but for integer properties</span>
+<span class="lineNum">     128 </span><span class="lineCov">          1 : var n = o[0] = 100;</span>
+<span class="lineNum">     129 </span><span class="lineCov">          1 : assertEquals(undefined, o[0]);</span>
+<span class="lineNum">     130 </span><span class="lineCov">          1 : assertEquals(100, n);</span>
+<span class="lineNum">     131 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     132 </span><span class="lineCov">          1 : // Fast properties should remain fast</span>
+<span class="lineNum">     133 </span><span class="lineCov">          1 : obj = { x: 42, y: 'foo' };</span>
+<span class="lineNum">     134 </span><span class="lineCov">          1 : assertTrue(%HasFastProperties(obj));</span>
+<span class="lineNum">     135 </span><span class="lineCov">          1 : Object.preventExtensions(obj);</span>
+<span class="lineNum">     136 </span><span class="lineCov">          1 : assertFalse(Object.isExtensible(obj));</span>
+<span class="lineNum">     137 </span><span class="lineCov">          1 : assertFalse(Object.isSealed(obj));</span>
+<span class="lineNum">     138 </span><span class="lineCov">          1 : assertTrue(%HasFastProperties(obj));</span>
+<span class="lineNum">     139 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     140 </span><span class="lineCov">          1 : // Non-extensible objects should share maps where possible</span>
+<span class="lineNum">     141 </span><span class="lineCov">          1 : obj = { prop1: 1, prop2: 2 };</span>
+<span class="lineNum">     142 </span><span class="lineCov">          1 : obj2 = { prop1: 3, prop2: 4 };</span>
+<span class="lineNum">     143 </span><span class="lineCov">          1 : assertTrue(%HaveSameMap(obj, obj2));</span>
+<span class="lineNum">     144 </span><span class="lineCov">          1 : Object.preventExtensions(obj);</span>
+<span class="lineNum">     145 </span><span class="lineCov">          1 : Object.preventExtensions(obj2);</span>
+<span class="lineNum">     146 </span><span class="lineCov">          1 : assertFalse(Object.isExtensible(obj));</span>
+<span class="lineNum">     147 </span><span class="lineCov">          1 : assertFalse(Object.isExtensible(obj2));</span>
+<span class="lineNum">     148 </span><span class="lineCov">          1 : assertFalse(Object.isSealed(obj));</span>
+<span class="lineNum">     149 </span><span class="lineCov">          1 : assertFalse(Object.isSealed(obj2));</span>
+<span class="lineNum">     150 </span><span class="lineCov">          1 : assertTrue(%HaveSameMap(obj, obj2));</span>
+<span class="lineNum">     151 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     152 </span><span class="lineCov">          1 : // Non-extensible objects should share maps even when they have elements</span>
+<span class="lineNum">     153 </span><span class="lineCov">          1 : obj = { prop1: 1, prop2: 2, 75: 'foo' };</span>
+<span class="lineNum">     154 </span><span class="lineCov">          1 : obj2 = { prop1: 3, prop2: 4, 150: 'bar' };</span>
+<span class="lineNum">     155 </span><span class="lineCov">          1 : assertTrue(%HaveSameMap(obj, obj2));</span>
+<span class="lineNum">     156 </span><span class="lineCov">          1 : Object.preventExtensions(obj);</span>
+<span class="lineNum">     157 </span><span class="lineCov">          1 : Object.preventExtensions(obj2);</span>
+<span class="lineNum">     158 </span><span class="lineCov">          1 : assertFalse(Object.isExtensible(obj));</span>
+<span class="lineNum">     159 </span><span class="lineCov">          1 : assertFalse(Object.isExtensible(obj2));</span>
+<span class="lineNum">     160 </span><span class="lineCov">          1 : assertFalse(Object.isSealed(obj));</span>
+<span class="lineNum">     161 </span><span class="lineCov">          1 : assertFalse(Object.isSealed(obj2));</span>
+<span class="lineNum">     162 </span><span class="lineCov">          1 : assertTrue(%HaveSameMap(obj, obj2));</span>
 </pre>
       </td>
     </tr>

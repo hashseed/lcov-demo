@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">49</td>
-            <td class="headerCovTableEntry">55</td>
-            <td class="headerCovTableEntryMed">89.1 %</td>
+            <td class="headerCovTableEntry">106</td>
+            <td class="headerCovTableEntry">106</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">3</td>
@@ -92,7 +92,7 @@
 <span class="lineNum">      30 </span><span class="lineCov">        297 :   for (var name in obj) assertTrue(value &lt; obj[name]);</span>
 <span class="lineNum">      31 </span><span class="lineCov">        297 :   value = obj[name];</span>
 <a name="32"><span class="lineNum">      32 </span><span class="lineCov">        297 : }</span></a>
-<span class="lineNum">      33 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      33 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      34 </span><span class="lineCov">         99 : function make_object(size)  {</span>
 <span class="lineNum">      35 </span><span class="lineCov">         99 :   var a = new Object();</span>
 <span class="lineNum">      36 </span><span class="lineCov">         99 : </span>
@@ -102,11 +102,11 @@
 <span class="lineNum">      40 </span><span class="lineCov">         99 :   for (var i = 0; i &lt; size; i +=3) delete a[&quot;a_&quot; + i];</span>
 <span class="lineNum">      41 </span><span class="lineCov">         99 :   check_enumeration_order(a);</span>
 <span class="lineNum">      42 </span><span class="lineCov">         99 : }</span>
-<span class="lineNum">      43 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      44 </span><span class="lineNoCov">          0 : // Validate the enumeration order for object up to 100 named properties.</span>
-<span class="lineNum">      45 </span><span class="lineNoCov">          0 : for (var j = 1; j&lt; 100; j++) make_object(j);</span>
-<a name="46"><span class="lineNum">      46 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">      47 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      43 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      44 </span><span class="lineCov">          1 : // Validate the enumeration order for object up to 100 named properties.</span>
+<span class="lineNum">      45 </span><span class="lineCov">          1 : for (var j = 1; j&lt; 100; j++) make_object(j);</span>
+<a name="46"><span class="lineNum">      46 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      47 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      48 </span><span class="lineCov">         99 : function make_literal_object(size)  {</span>
 <span class="lineNum">      49 </span><span class="lineCov">         99 :   var code = &quot;{ &quot;;</span>
 <span class="lineNum">      50 </span><span class="lineCov">         99 :   for (var i = 0; i &lt; size-1; i++) code += &quot; a_&quot; + i + &quot; : &quot; + (i + 1) + &quot;, &quot;;</span>
@@ -115,56 +115,56 @@
 <span class="lineNum">      53 </span><span class="lineCov">         99 :   eval(&quot;var a = &quot; + code);</span>
 <span class="lineNum">      54 </span><span class="lineCov">         99 :   check_enumeration_order(a);</span>
 <span class="lineNum">      55 </span><span class="lineCov">         99 : }</span>
-<span class="lineNum">      56 </span>            : 
-<span class="lineNum">      57 </span>            : // Validate the enumeration order for object literals up to 100 named
-<span class="lineNum">      58 </span>            : // properties.
-<span class="lineNum">      59 </span>            : for (var j = 1; j&lt; 100; j++) make_literal_object(j);
-<span class="lineNum">      60 </span>            : 
-<span class="lineNum">      61 </span>            : // We enumerate indexed properties in numerical order followed by
-<span class="lineNum">      62 </span>            : // named properties in insertion order, followed by indexed properties
-<span class="lineNum">      63 </span>            : // of the prototype object in numerical order, followed by named
-<span class="lineNum">      64 </span>            : // properties of the prototype object in insertion order, and so on.
-<span class="lineNum">      65 </span>            : //
-<span class="lineNum">      66 </span>            : // This enumeration order is not required by the specification, so
-<span class="lineNum">      67 </span>            : // this just documents our choice.
-<span class="lineNum">      68 </span>            : var proto2 = {};
-<span class="lineNum">      69 </span>            : proto2[140000] = 0;
-<span class="lineNum">      70 </span>            : proto2.a = 0;
-<span class="lineNum">      71 </span>            : proto2[2] = 0;
-<span class="lineNum">      72 </span>            : proto2[3] = 0;  // also on the 'proto1' object
-<span class="lineNum">      73 </span>            : proto2.b = 0;
-<span class="lineNum">      74 </span>            : proto2[4294967294] = 0;
-<span class="lineNum">      75 </span>            : proto2.c = 0;
-<span class="lineNum">      76 </span>            : proto2[4294967295] = 0;
-<span class="lineNum">      77 </span>            : 
-<span class="lineNum">      78 </span>            : var proto1 = {};
-<span class="lineNum">      79 </span>            : proto1[5] = 0;
-<span class="lineNum">      80 </span>            : proto1.d = 0;
-<span class="lineNum">      81 </span>            : proto1[3] = 0;
-<span class="lineNum">      82 </span>            : proto1.e = 0;
-<span class="lineNum">      83 </span>            : proto1.f = 0;  // also on the 'o' object
-<span class="lineNum">      84 </span>            : 
-<span class="lineNum">      85 </span>            : var o = {};
-<span class="lineNum">      86 </span>            : o[-23] = 0;
-<span class="lineNum">      87 </span>            : o[300000000000] = 0;
-<span class="lineNum">      88 </span>            : o[23] = 0;
-<span class="lineNum">      89 </span>            : o.f = 0;
-<span class="lineNum">      90 </span>            : o.g = 0;
-<span class="lineNum">      91 </span>            : o[-4] = 0;
-<span class="lineNum">      92 </span>            : o[42] = 0;
-<span class="lineNum">      93 </span>            : 
-<span class="lineNum">      94 </span>            : o.__proto__ = proto1;
-<span class="lineNum">      95 </span>            : proto1.__proto__ = proto2;
-<span class="lineNum">      96 </span>            : 
-<span class="lineNum">      97 </span>            : var expected = ['23', '42',  // indexed from 'o'
-<span class="lineNum">      98 </span>            :                 '-23', '300000000000', 'f', 'g', '-4',  // named from 'o'
-<span class="lineNum">      99 </span>            :                 '3', '5',  // indexed from 'proto1'
-<span class="lineNum">     100 </span>            :                 'd', 'e',  // named from 'proto1'
-<span class="lineNum">     101 </span>            :                 '2', '140000', '4294967294',  // indexed from 'proto2'
-<span class="lineNum">     102 </span>            :                 'a', 'b', 'c', '4294967295'];  // named from 'proto2'
-<span class="lineNum">     103 </span>            : var actual = [];
-<span class="lineNum">     104 </span>            : for (var p in o) actual.push(p);
-<span class="lineNum">     105 </span>            : assertArrayEquals(expected, actual);
+<span class="lineNum">      56 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      57 </span><span class="lineCov">          1 : // Validate the enumeration order for object literals up to 100 named</span>
+<span class="lineNum">      58 </span><span class="lineCov">          1 : // properties.</span>
+<span class="lineNum">      59 </span><span class="lineCov">          1 : for (var j = 1; j&lt; 100; j++) make_literal_object(j);</span>
+<span class="lineNum">      60 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      61 </span><span class="lineCov">          1 : // We enumerate indexed properties in numerical order followed by</span>
+<span class="lineNum">      62 </span><span class="lineCov">          1 : // named properties in insertion order, followed by indexed properties</span>
+<span class="lineNum">      63 </span><span class="lineCov">          1 : // of the prototype object in numerical order, followed by named</span>
+<span class="lineNum">      64 </span><span class="lineCov">          1 : // properties of the prototype object in insertion order, and so on.</span>
+<span class="lineNum">      65 </span><span class="lineCov">          1 : //</span>
+<span class="lineNum">      66 </span><span class="lineCov">          1 : // This enumeration order is not required by the specification, so</span>
+<span class="lineNum">      67 </span><span class="lineCov">          1 : // this just documents our choice.</span>
+<span class="lineNum">      68 </span><span class="lineCov">          1 : var proto2 = {};</span>
+<span class="lineNum">      69 </span><span class="lineCov">          1 : proto2[140000] = 0;</span>
+<span class="lineNum">      70 </span><span class="lineCov">          1 : proto2.a = 0;</span>
+<span class="lineNum">      71 </span><span class="lineCov">          1 : proto2[2] = 0;</span>
+<span class="lineNum">      72 </span><span class="lineCov">          1 : proto2[3] = 0;  // also on the 'proto1' object</span>
+<span class="lineNum">      73 </span><span class="lineCov">          1 : proto2.b = 0;</span>
+<span class="lineNum">      74 </span><span class="lineCov">          1 : proto2[4294967294] = 0;</span>
+<span class="lineNum">      75 </span><span class="lineCov">          1 : proto2.c = 0;</span>
+<span class="lineNum">      76 </span><span class="lineCov">          1 : proto2[4294967295] = 0;</span>
+<span class="lineNum">      77 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      78 </span><span class="lineCov">          1 : var proto1 = {};</span>
+<span class="lineNum">      79 </span><span class="lineCov">          1 : proto1[5] = 0;</span>
+<span class="lineNum">      80 </span><span class="lineCov">          1 : proto1.d = 0;</span>
+<span class="lineNum">      81 </span><span class="lineCov">          1 : proto1[3] = 0;</span>
+<span class="lineNum">      82 </span><span class="lineCov">          1 : proto1.e = 0;</span>
+<span class="lineNum">      83 </span><span class="lineCov">          1 : proto1.f = 0;  // also on the 'o' object</span>
+<span class="lineNum">      84 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      85 </span><span class="lineCov">          1 : var o = {};</span>
+<span class="lineNum">      86 </span><span class="lineCov">          1 : o[-23] = 0;</span>
+<span class="lineNum">      87 </span><span class="lineCov">          1 : o[300000000000] = 0;</span>
+<span class="lineNum">      88 </span><span class="lineCov">          1 : o[23] = 0;</span>
+<span class="lineNum">      89 </span><span class="lineCov">          1 : o.f = 0;</span>
+<span class="lineNum">      90 </span><span class="lineCov">          1 : o.g = 0;</span>
+<span class="lineNum">      91 </span><span class="lineCov">          1 : o[-4] = 0;</span>
+<span class="lineNum">      92 </span><span class="lineCov">          1 : o[42] = 0;</span>
+<span class="lineNum">      93 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      94 </span><span class="lineCov">          1 : o.__proto__ = proto1;</span>
+<span class="lineNum">      95 </span><span class="lineCov">          1 : proto1.__proto__ = proto2;</span>
+<span class="lineNum">      96 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      97 </span><span class="lineCov">          1 : var expected = ['23', '42',  // indexed from 'o'</span>
+<span class="lineNum">      98 </span><span class="lineCov">          1 :                 '-23', '300000000000', 'f', 'g', '-4',  // named from 'o'</span>
+<span class="lineNum">      99 </span><span class="lineCov">          1 :                 '3', '5',  // indexed from 'proto1'</span>
+<span class="lineNum">     100 </span><span class="lineCov">          1 :                 'd', 'e',  // named from 'proto1'</span>
+<span class="lineNum">     101 </span><span class="lineCov">          1 :                 '2', '140000', '4294967294',  // indexed from 'proto2'</span>
+<span class="lineNum">     102 </span><span class="lineCov">          1 :                 'a', 'b', 'c', '4294967295'];  // named from 'proto2'</span>
+<span class="lineNum">     103 </span><span class="lineCov">          1 : var actual = [];</span>
+<span class="lineNum">     104 </span><span class="lineCov">          1 : for (var p in o) actual.push(p);</span>
+<span class="lineNum">     105 </span><span class="lineCov">          1 : assertArrayEquals(expected, actual);</span>
 </pre>
       </td>
     </tr>

@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">57</td>
-            <td class="headerCovTableEntry">78</td>
-            <td class="headerCovTableEntryLo">73.1 %</td>
+            <td class="headerCovTableEntry">79</td>
+            <td class="headerCovTableEntry">79</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">2</td>
@@ -93,28 +93,28 @@
 <span class="lineNum">      31 </span><span class="lineCov">          4 :  */</span>
 <span class="lineNum">      32 </span><span class="lineCov">          9 : function CsvParser() {</span>
 <span class="lineNum">      33 </span><span class="lineCov">          9 : };</span>
-<span class="lineNum">      34 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      35 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      36 </span><span class="lineNoCov">          0 : /**</span>
-<span class="lineNum">      37 </span><span class="lineNoCov">          0 :  * A regex for matching a CSV field.</span>
-<span class="lineNum">      38 </span><span class="lineNoCov">          0 :  * @private</span>
-<span class="lineNum">      39 </span><span class="lineNoCov">          0 :  */</span>
-<span class="lineNum">      40 </span><span class="lineNoCov">          0 : CsvParser.CSV_FIELD_RE_ = /^&quot;((?:[^&quot;]|&quot;&quot;)*)&quot;|([^,]*)/;</span>
-<span class="lineNum">      41 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      42 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      43 </span><span class="lineNoCov">          0 : /**</span>
-<span class="lineNum">      44 </span><span class="lineNoCov">          0 :  * A regex for matching a double quote.</span>
-<span class="lineNum">      45 </span><span class="lineNoCov">          0 :  * @private</span>
-<span class="lineNum">      46 </span><span class="lineNoCov">          0 :  */</span>
-<span class="lineNum">      47 </span><span class="lineNoCov">          0 : CsvParser.DOUBLE_QUOTE_RE_ = /&quot;&quot;/g;</span>
-<span class="lineNum">      48 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      49 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      50 </span><span class="lineNoCov">          0 : /**</span>
-<span class="lineNum">      51 </span><span class="lineNoCov">          0 :  * Parses a line of CSV-encoded values. Returns an array of fields.</span>
-<span class="lineNum">      52 </span><span class="lineNoCov">          0 :  *</span>
-<a name="53"><span class="lineNum">      53 </span><span class="lineNoCov">          0 :  * @param {string} line Input line.</span></a>
-<span class="lineNum">      54 </span><span class="lineNoCov">          0 :  */</span>
-<span class="lineNum">      55 </span><span class="lineCov">       2762 : CsvParser.prototype.parseLine = function(line) {</span>
+<span class="lineNum">      34 </span><span class="lineCov">          4 : </span>
+<span class="lineNum">      35 </span><span class="lineCov">          4 : </span>
+<span class="lineNum">      36 </span><span class="lineCov">          4 : /**</span>
+<span class="lineNum">      37 </span><span class="lineCov">          4 :  * A regex for matching a CSV field.</span>
+<span class="lineNum">      38 </span><span class="lineCov">          4 :  * @private</span>
+<span class="lineNum">      39 </span><span class="lineCov">          4 :  */</span>
+<span class="lineNum">      40 </span><span class="lineCov">          4 : CsvParser.CSV_FIELD_RE_ = /^&quot;((?:[^&quot;]|&quot;&quot;)*)&quot;|([^,]*)/;</span>
+<span class="lineNum">      41 </span><span class="lineCov">          4 : </span>
+<span class="lineNum">      42 </span><span class="lineCov">          4 : </span>
+<span class="lineNum">      43 </span><span class="lineCov">          4 : /**</span>
+<span class="lineNum">      44 </span><span class="lineCov">          4 :  * A regex for matching a double quote.</span>
+<span class="lineNum">      45 </span><span class="lineCov">          4 :  * @private</span>
+<span class="lineNum">      46 </span><span class="lineCov">          4 :  */</span>
+<span class="lineNum">      47 </span><span class="lineCov">          4 : CsvParser.DOUBLE_QUOTE_RE_ = /&quot;&quot;/g;</span>
+<span class="lineNum">      48 </span><span class="lineCov">          4 : </span>
+<span class="lineNum">      49 </span><span class="lineCov">          4 : </span>
+<span class="lineNum">      50 </span><span class="lineCov">          4 : /**</span>
+<span class="lineNum">      51 </span><span class="lineCov">          4 :  * Parses a line of CSV-encoded values. Returns an array of fields.</span>
+<span class="lineNum">      52 </span><span class="lineCov">          4 :  *</span>
+<a name="53"><span class="lineNum">      53 </span><span class="lineCov">          4 :  * @param {string} line Input line.</span></a>
+<span class="lineNum">      54 </span><span class="lineCov">          4 :  */</span>
+<span class="lineNum">      55 </span><span class="lineCov">       2763 : CsvParser.prototype.parseLine = function(line) {</span>
 <span class="lineNum">      56 </span><span class="lineCov">       2762 :   var fieldRe = CsvParser.CSV_FIELD_RE_;</span>
 <span class="lineNum">      57 </span><span class="lineCov">       2762 :   var doubleQuoteRe = CsvParser.DOUBLE_QUOTE_RE_;</span>
 <span class="lineNum">      58 </span><span class="lineCov">       2762 :   var pos = 0;</span>
@@ -137,7 +137,7 @@
 <span class="lineNum">      75 </span><span class="lineCov">       2762 :     } while (pos &lt;= endPos);</span>
 <span class="lineNum">      76 </span><span class="lineCov">       2762 :   }</span>
 <span class="lineNum">      77 </span><span class="lineCov">       2762 :   return fields;</span>
-<span class="lineNum">      78 </span><span class="lineCov">       2762 : };</span>
+<span class="lineNum">      78 </span><span class="lineCov">       2763 : };</span>
 </pre>
       </td>
     </tr>

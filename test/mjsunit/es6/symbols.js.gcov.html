@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">383</td>
-            <td class="headerCovTableEntry">560</td>
-            <td class="headerCovTableEntryLo">68.4 %</td>
+            <td class="headerCovTableEntry">569</td>
+            <td class="headerCovTableEntry">569</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">46</td>
@@ -99,31 +99,31 @@
 <span class="lineNum">      37 </span><span class="lineCov">        300 : function isValidSymbolString(s) {</span>
 <span class="lineNum">      38 </span><span class="lineCov">        300 :   return [&quot;Symbol(66)&quot;, &quot;Symbol()&quot;].indexOf(s) &gt;= 0;</span>
 <span class="lineNum">      39 </span><span class="lineCov">        300 : }</span>
-<span class="lineNum">      40 </span><span class="lineNoCov">          0 : </span>
-<a name="41"><span class="lineNum">      41 </span><span class="lineNoCov">          0 : </span></a>
-<a name="42"><span class="lineNum">      42 </span><span class="lineNoCov">          0 : // Test different forms of constructor calls.</span></a>
+<span class="lineNum">      40 </span><span class="lineCov">          1 : </span>
+<a name="41"><span class="lineNum">      41 </span><span class="lineCov">          1 : </span></a>
+<a name="42"><span class="lineNum">      42 </span><span class="lineCov">          1 : // Test different forms of constructor calls.</span></a>
 <a name="43"><span class="lineNum">      43 </span><span class="lineCov">          1 : function TestNew() {</span></a>
 <span class="lineNum">      44 </span><span class="lineCov">         12 :   function indirectSymbol() { return Symbol() }</span>
 <span class="lineNum">      45 </span><span class="lineCov">         12 :   function indirect() { return indirectSymbol() }</span>
-<span class="lineNum">      46 </span><span class="lineNoCov">          0 :   for (var i = 0; i &lt; 2; ++i) {</span>
-<span class="lineNum">      47 </span><span class="lineNoCov">          0 :     for (var j = 0; j &lt; 5; ++j) {</span>
-<span class="lineNum">      48 </span><span class="lineNoCov">          0 :       symbols.push(Symbol())</span>
-<span class="lineNum">      49 </span><span class="lineNoCov">          0 :       symbols.push(Symbol(undefined))</span>
-<span class="lineNum">      50 </span><span class="lineNoCov">          0 :       symbols.push(Symbol(&quot;66&quot;))</span>
-<span class="lineNum">      51 </span><span class="lineNoCov">          0 :       symbols.push(Symbol(66))</span>
-<span class="lineNum">      52 </span><span class="lineNoCov">          0 :       symbols.push(Symbol().valueOf())</span>
-<span class="lineNum">      53 </span><span class="lineNoCov">          0 :       symbols.push(indirect())</span>
-<span class="lineNum">      54 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">      55 </span><span class="lineNoCov">          0 :     %OptimizeFunctionOnNextCall(indirect)</span>
-<span class="lineNum">      56 </span><span class="lineNoCov">          0 :     indirect()  // Call once before GC throws away type feedback.</span>
-<span class="lineNum">      57 </span><span class="lineNoCov">          0 :     gc()        // Promote existing symbols and then allocate some more.</span>
-<span class="lineNum">      58 </span><span class="lineNoCov">          0 :   }</span>
+<span class="lineNum">      46 </span><span class="lineCov">          1 :   for (var i = 0; i &lt; 2; ++i) {</span>
+<span class="lineNum">      47 </span><span class="lineCov">          1 :     for (var j = 0; j &lt; 5; ++j) {</span>
+<span class="lineNum">      48 </span><span class="lineCov">          1 :       symbols.push(Symbol())</span>
+<span class="lineNum">      49 </span><span class="lineCov">          1 :       symbols.push(Symbol(undefined))</span>
+<span class="lineNum">      50 </span><span class="lineCov">          1 :       symbols.push(Symbol(&quot;66&quot;))</span>
+<span class="lineNum">      51 </span><span class="lineCov">          1 :       symbols.push(Symbol(66))</span>
+<span class="lineNum">      52 </span><span class="lineCov">          1 :       symbols.push(Symbol().valueOf())</span>
+<span class="lineNum">      53 </span><span class="lineCov">          1 :       symbols.push(indirect())</span>
+<span class="lineNum">      54 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">      55 </span><span class="lineCov">          1 :     %OptimizeFunctionOnNextCall(indirect)</span>
+<span class="lineNum">      56 </span><span class="lineCov">          1 :     indirect()  // Call once before GC throws away type feedback.</span>
+<span class="lineNum">      57 </span><span class="lineCov">          1 :     gc()        // Promote existing symbols and then allocate some more.</span>
+<span class="lineNum">      58 </span><span class="lineCov">          1 :   }</span>
 <span class="lineNum">      59 </span><span class="lineCov">          1 :   assertThrows(function () { Symbol(Symbol()) }, TypeError)</span>
 <span class="lineNum">      60 </span><span class="lineCov">          1 :   assertThrows(function () { new Symbol(66) }, TypeError)</span>
-<span class="lineNum">      61 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">      62 </span><span class="lineNoCov">          0 : TestNew()</span>
-<a name="63"><span class="lineNum">      63 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">      64 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      61 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      62 </span><span class="lineCov">          1 : TestNew()</span>
+<a name="63"><span class="lineNum">      63 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      64 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      65 </span><span class="lineCov">          1 : function TestType() {</span>
 <span class="lineNum">      66 </span><span class="lineCov">          1 :   for (var i in symbols) {</span>
 <span class="lineNum">      67 </span><span class="lineCov">          1 :     assertEquals(&quot;symbol&quot;, typeof symbols[i])</span>
@@ -133,9 +133,9 @@
 <span class="lineNum">      71 </span><span class="lineCov">          1 :     assertEquals(&quot;Symbol&quot;, %_ClassOf(Object(symbols[i])))</span>
 <span class="lineNum">      72 </span><span class="lineCov">          1 :   }</span>
 <span class="lineNum">      73 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">      74 </span><span class="lineNoCov">          0 : TestType()</span>
-<a name="75"><span class="lineNum">      75 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">      76 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      74 </span><span class="lineCov">          1 : TestType()</span>
+<a name="75"><span class="lineNum">      75 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      76 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      77 </span><span class="lineCov">          1 : function TestPrototype() {</span>
 <span class="lineNum">      78 </span><span class="lineCov">          1 :   assertSame(Object.prototype, Symbol.prototype.__proto__)</span>
 <span class="lineNum">      79 </span><span class="lineCov">          1 :   assertSame(Symbol.prototype, Symbol().__proto__)</span>
@@ -144,9 +144,9 @@
 <span class="lineNum">      82 </span><span class="lineCov">          1 :     assertSame(Symbol.prototype, symbols[i].__proto__)</span>
 <span class="lineNum">      83 </span><span class="lineCov">          1 :   }</span>
 <span class="lineNum">      84 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">      85 </span><span class="lineNoCov">          0 : TestPrototype()</span>
-<a name="86"><span class="lineNum">      86 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">      87 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      85 </span><span class="lineCov">          1 : TestPrototype()</span>
+<a name="86"><span class="lineNum">      86 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      87 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      88 </span><span class="lineCov">          1 : function TestConstructor() {</span>
 <span class="lineNum">      89 </span><span class="lineCov">          1 :   assertEquals(0, Symbol.length);</span>
 <span class="lineNum">      90 </span><span class="lineCov">          1 :   assertSame(Function.prototype, Symbol.__proto__)</span>
@@ -159,9 +159,9 @@
 <span class="lineNum">      97 </span><span class="lineCov">          1 :     assertSame(Symbol, symbols[i].__proto__.constructor)</span>
 <span class="lineNum">      98 </span><span class="lineCov">          1 :   }</span>
 <span class="lineNum">      99 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">     100 </span><span class="lineNoCov">          0 : TestConstructor()</span>
-<a name="101"><span class="lineNum">     101 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     102 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     100 </span><span class="lineCov">          1 : TestConstructor()</span>
+<a name="101"><span class="lineNum">     101 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     102 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     103 </span><span class="lineCov">          1 : function TestValueOf() {</span>
 <span class="lineNum">     104 </span><span class="lineCov">          1 :   for (var i in symbols) {</span>
 <span class="lineNum">     105 </span><span class="lineCov">          1 :     assertTrue(symbols[i] === Object(symbols[i]).valueOf())</span>
@@ -170,26 +170,26 @@
 <span class="lineNum">     108 </span><span class="lineCov">          1 :     assertTrue(Symbol.prototype.valueOf.call(symbols[i]) === symbols[i])</span>
 <span class="lineNum">     109 </span><span class="lineCov">          1 :   }</span>
 <span class="lineNum">     110 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">     111 </span><span class="lineNoCov">          0 : TestValueOf()</span>
-<a name="112"><span class="lineNum">     112 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     113 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     111 </span><span class="lineCov">          1 : TestValueOf()</span>
+<a name="112"><span class="lineNum">     112 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     113 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     114 </span><span class="lineCov">          1 : function TestToString() {</span>
 <span class="lineNum">     115 </span><span class="lineCov">          1 :   for (var i in symbols) {</span>
 <span class="lineNum">     116 </span><span class="lineCov">         60 :     assertThrows(function() { new String(symbols[i]) }, TypeError)</span>
-<span class="lineNum">     117 </span><span class="lineNoCov">          0 :     assertEquals(symbols[i].toString(), String(symbols[i]))</span>
+<span class="lineNum">     117 </span><span class="lineCov">          1 :     assertEquals(symbols[i].toString(), String(symbols[i]))</span>
 <span class="lineNum">     118 </span><span class="lineCov">         60 :     assertThrows(function() { symbols[i] + &quot;&quot; }, TypeError)</span>
 <span class="lineNum">     119 </span><span class="lineCov">         60 :     assertThrows(function() { String(Object(symbols[i])) }, TypeError)</span>
-<span class="lineNum">     120 </span><span class="lineNoCov">          0 :     assertTrue(isValidSymbolString(symbols[i].toString()))</span>
-<span class="lineNum">     121 </span><span class="lineNoCov">          0 :     assertTrue(isValidSymbolString(Object(symbols[i]).toString()))</span>
-<span class="lineNum">     122 </span><span class="lineNoCov">          0 :     assertTrue(</span>
-<span class="lineNum">     123 </span><span class="lineNoCov">          0 :       isValidSymbolString(Symbol.prototype.toString.call(symbols[i])))</span>
-<span class="lineNum">     124 </span><span class="lineNoCov">          0 :     assertEquals(</span>
-<span class="lineNum">     125 </span><span class="lineNoCov">          0 :       &quot;[object Symbol]&quot;, Object.prototype.toString.call(symbols[i]))</span>
-<span class="lineNum">     126 </span><span class="lineNoCov">          0 :   }</span>
-<span class="lineNum">     127 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">     128 </span><span class="lineNoCov">          0 : TestToString()</span>
-<a name="129"><span class="lineNum">     129 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     130 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     120 </span><span class="lineCov">          1 :     assertTrue(isValidSymbolString(symbols[i].toString()))</span>
+<span class="lineNum">     121 </span><span class="lineCov">          1 :     assertTrue(isValidSymbolString(Object(symbols[i]).toString()))</span>
+<span class="lineNum">     122 </span><span class="lineCov">          1 :     assertTrue(</span>
+<span class="lineNum">     123 </span><span class="lineCov">          1 :       isValidSymbolString(Symbol.prototype.toString.call(symbols[i])))</span>
+<span class="lineNum">     124 </span><span class="lineCov">          1 :     assertEquals(</span>
+<span class="lineNum">     125 </span><span class="lineCov">          1 :       &quot;[object Symbol]&quot;, Object.prototype.toString.call(symbols[i]))</span>
+<span class="lineNum">     126 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     127 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     128 </span><span class="lineCov">          1 : TestToString()</span>
+<a name="129"><span class="lineNum">     129 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     130 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     131 </span><span class="lineCov">          1 : function TestToBoolean() {</span>
 <span class="lineNum">     132 </span><span class="lineCov">          1 :   for (var i in symbols) {</span>
 <span class="lineNum">     133 </span><span class="lineCov">          1 :     assertTrue(Boolean(Object(symbols[i])))</span>
@@ -206,20 +206,20 @@
 <span class="lineNum">     144 </span><span class="lineCov">          1 :     if (symbols[i]) {} else assertUnreachable();</span>
 <span class="lineNum">     145 </span><span class="lineCov">          1 :   }</span>
 <span class="lineNum">     146 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">     147 </span><span class="lineNoCov">          0 : TestToBoolean()</span>
-<a name="148"><span class="lineNum">     148 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     149 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     147 </span><span class="lineCov">          1 : TestToBoolean()</span>
+<a name="148"><span class="lineNum">     148 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     149 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     150 </span><span class="lineCov">          1 : function TestToNumber() {</span>
 <span class="lineNum">     151 </span><span class="lineCov">          1 :   for (var i in symbols) {</span>
 <span class="lineNum">     152 </span><span class="lineCov">         60 :     assertThrows(function() { Number(Object(symbols[i])) }, TypeError)</span>
 <span class="lineNum">     153 </span><span class="lineCov">         60 :     assertThrows(function() { +Object(symbols[i]) }, TypeError)</span>
 <span class="lineNum">     154 </span><span class="lineCov">         60 :     assertThrows(function() { Number(symbols[i]) }, TypeError)</span>
 <span class="lineNum">     155 </span><span class="lineCov">         60 :     assertThrows(function() { symbols[i] + 0 }, TypeError)</span>
-<span class="lineNum">     156 </span><span class="lineNoCov">          0 :   }</span>
-<span class="lineNum">     157 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">     158 </span><span class="lineNoCov">          0 : TestToNumber()</span>
-<a name="159"><span class="lineNum">     159 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     160 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     156 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     157 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     158 </span><span class="lineCov">          1 : TestToNumber()</span>
+<a name="159"><span class="lineNum">     159 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     160 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     161 </span><span class="lineCov">          1 : function TestEquality() {</span>
 <span class="lineNum">     162 </span><span class="lineCov">          1 :   // Every symbol should equal itself, and non-strictly equal its wrapper.</span>
 <span class="lineNum">     163 </span><span class="lineCov">          1 :   for (var i in symbols) {</span>
@@ -251,18 +251,18 @@
 <a name="189"><span class="lineNum">     189 </span><span class="lineCov">          1 : </span></a>
 <span class="lineNum">     190 </span><span class="lineCov">          1 :   // Symbols should not be equal to any other value (and the test terminates).</span>
 <span class="lineNum">     191 </span><span class="lineCov">          1 :   var values = [347, 1.275, NaN, &quot;string&quot;, null, undefined, {}, function() {}]</span>
-<span class="lineNum">     192 </span><span class="lineNoCov">          0 :   for (var i in symbols) {</span>
-<span class="lineNum">     193 </span><span class="lineNoCov">          0 :     for (var j in values) {</span>
-<span class="lineNum">     194 </span><span class="lineNoCov">          0 :       assertFalse(symbols[i] === values[j])</span>
-<span class="lineNum">     195 </span><span class="lineNoCov">          0 :       assertFalse(values[j] === symbols[i])</span>
-<span class="lineNum">     196 </span><span class="lineNoCov">          0 :       assertFalse(symbols[i] == values[j])</span>
-<span class="lineNum">     197 </span><span class="lineNoCov">          0 :       assertFalse(values[j] == symbols[i])</span>
-<span class="lineNum">     198 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">     199 </span><span class="lineNoCov">          0 :   }</span>
-<span class="lineNum">     200 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">     201 </span><span class="lineNoCov">          0 : TestEquality()</span>
-<a name="202"><span class="lineNum">     202 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     203 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     192 </span><span class="lineCov">          1 :   for (var i in symbols) {</span>
+<span class="lineNum">     193 </span><span class="lineCov">          1 :     for (var j in values) {</span>
+<span class="lineNum">     194 </span><span class="lineCov">          1 :       assertFalse(symbols[i] === values[j])</span>
+<span class="lineNum">     195 </span><span class="lineCov">          1 :       assertFalse(values[j] === symbols[i])</span>
+<span class="lineNum">     196 </span><span class="lineCov">          1 :       assertFalse(symbols[i] == values[j])</span>
+<span class="lineNum">     197 </span><span class="lineCov">          1 :       assertFalse(values[j] == symbols[i])</span>
+<span class="lineNum">     198 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">     199 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     200 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     201 </span><span class="lineCov">          1 : TestEquality()</span>
+<a name="202"><span class="lineNum">     202 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     203 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     204 </span><span class="lineCov">          1 : function TestGet() {</span>
 <span class="lineNum">     205 </span><span class="lineCov">          1 :   for (var i in symbols) {</span>
 <span class="lineNum">     206 </span><span class="lineCov">          1 :     assertTrue(isValidSymbolString(symbols[i].toString()))</span>
@@ -273,9 +273,9 @@
 <span class="lineNum">     211 </span><span class="lineCov">          1 :     assertEquals(undefined, symbols[i][62])</span>
 <span class="lineNum">     212 </span><span class="lineCov">          1 :   }</span>
 <span class="lineNum">     213 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">     214 </span><span class="lineNoCov">          0 : TestGet()</span>
-<a name="215"><span class="lineNum">     215 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     216 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     214 </span><span class="lineCov">          1 : TestGet()</span>
+<a name="215"><span class="lineNum">     215 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     216 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     217 </span><span class="lineCov">          1 : function TestSet() {</span>
 <span class="lineNum">     218 </span><span class="lineCov">          1 :   for (var i in symbols) {</span>
 <span class="lineNum">     219 </span><span class="lineCov">          1 :     symbols[i].toString = 0</span>
@@ -290,10 +290,10 @@
 <span class="lineNum">     228 </span><span class="lineCov">          1 :     assertEquals(undefined, symbols[i][62])</span>
 <span class="lineNum">     229 </span><span class="lineCov">          1 :   }</span>
 <span class="lineNum">     230 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">     231 </span><span class="lineNoCov">          0 : TestSet()</span>
-<span class="lineNum">     232 </span><span class="lineNoCov">          0 : </span>
-<a name="233"><span class="lineNum">     233 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     234 </span><span class="lineNoCov">          0 : // Test Symbol wrapping/boxing over non-builtins.</span>
+<span class="lineNum">     231 </span><span class="lineCov">          1 : TestSet()</span>
+<span class="lineNum">     232 </span><span class="lineCov">          1 : </span>
+<a name="233"><span class="lineNum">     233 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     234 </span><span class="lineCov">          1 : // Test Symbol wrapping/boxing over non-builtins.</span>
 <span class="lineNum">     235 </span><span class="lineCov">         60 : Symbol.prototype.getThisProto = function () {</span>
 <a name="236"><span class="lineNum">     236 </span><span class="lineCov">         60 :   return Object.getPrototypeOf(this);</span></a>
 <span class="lineNum">     237 </span><span class="lineCov">         60 : }</span>
@@ -302,9 +302,9 @@
 <span class="lineNum">     240 </span><span class="lineCov">          1 :     assertTrue(symbols[i].getThisProto() === Symbol.prototype)</span>
 <span class="lineNum">     241 </span><span class="lineCov">          1 :   }</span>
 <span class="lineNum">     242 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">     243 </span><span class="lineNoCov">          0 : TestCall()</span>
-<a name="244"><span class="lineNum">     244 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     245 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     243 </span><span class="lineCov">          1 : TestCall()</span>
+<a name="244"><span class="lineNum">     244 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     245 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     246 </span><span class="lineCov">          1 : function TestCollections() {</span>
 <span class="lineNum">     247 </span><span class="lineCov">          1 :   var set = new Set</span>
 <span class="lineNum">     248 </span><span class="lineCov">          1 :   var map = new Map</span>
@@ -326,10 +326,10 @@
 <span class="lineNum">     264 </span><span class="lineCov">          1 :   assertEquals(0, set.size)</span>
 <span class="lineNum">     265 </span><span class="lineCov">          1 :   assertEquals(0, map.size)</span>
 <span class="lineNum">     266 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">     267 </span><span class="lineNoCov">          0 : TestCollections()</span>
-<span class="lineNum">     268 </span><span class="lineNoCov">          0 : </span>
-<a name="269"><span class="lineNum">     269 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     270 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     267 </span><span class="lineCov">          1 : TestCollections()</span>
+<span class="lineNum">     268 </span><span class="lineCov">          1 : </span>
+<a name="269"><span class="lineNum">     269 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     270 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     271 </span><span class="lineCov">          6 : function TestKeySet(obj) {</span>
 <span class="lineNum">     272 </span><span class="lineCov">          6 :   assertTrue(%HasFastProperties(obj))</span>
 <span class="lineNum">     273 </span><span class="lineCov">          6 :   // Set the even symbols via assignment.</span>
@@ -339,16 +339,16 @@
 <span class="lineNum">     277 </span><span class="lineCov">          6 :     assertTrue(%HasFastProperties(obj) || i &gt;= 30)</span>
 <span class="lineNum">     278 </span><span class="lineCov">          6 :   }</span>
 <span class="lineNum">     279 </span><span class="lineCov">          6 : }</span>
-<a name="280"><span class="lineNum">     280 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     281 </span><span class="lineNoCov">          0 : </span>
+<a name="280"><span class="lineNum">     280 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     281 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     282 </span><span class="lineCov">          6 : function TestKeyDefine(obj) {</span>
 <span class="lineNum">     283 </span><span class="lineCov">          6 :   // Set the odd symbols via defineProperty (as non-enumerable).</span>
 <span class="lineNum">     284 </span><span class="lineCov">          6 :   for (var i = 1; i &lt; symbols.length; i += 2) {</span>
 <span class="lineNum">     285 </span><span class="lineCov">          6 :     Object.defineProperty(obj, symbols[i], {value: i, configurable: true})</span>
 <span class="lineNum">     286 </span><span class="lineCov">          6 :   }</span>
 <span class="lineNum">     287 </span><span class="lineCov">          6 : }</span>
-<a name="288"><span class="lineNum">     288 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     289 </span><span class="lineNoCov">          0 : </span>
+<a name="288"><span class="lineNum">     288 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     289 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     290 </span><span class="lineCov">          6 : function TestKeyGet(obj) {</span>
 <span class="lineNum">     291 </span><span class="lineCov">          6 :   var obj2 = Object.create(obj)</span>
 <span class="lineNum">     292 </span><span class="lineCov">          6 :   for (var i in symbols) {</span>
@@ -356,23 +356,23 @@
 <span class="lineNum">     294 </span><span class="lineCov">          6 :     assertEquals(i|0, obj2[symbols[i]])</span>
 <span class="lineNum">     295 </span><span class="lineCov">          6 :   }</span>
 <span class="lineNum">     296 </span><span class="lineCov">          6 : }</span>
-<a name="297"><span class="lineNum">     297 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     298 </span><span class="lineNoCov">          0 : </span>
+<a name="297"><span class="lineNum">     297 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     298 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     299 </span><span class="lineCov">          6 : function TestKeyHas(obj) {</span>
 <span class="lineNum">     300 </span><span class="lineCov">          6 :   for (var i in symbols) {</span>
 <span class="lineNum">     301 </span><span class="lineCov">          6 :     assertTrue(symbols[i] in obj)</span>
 <span class="lineNum">     302 </span><span class="lineCov">          6 :     assertTrue(Object.hasOwnProperty.call(obj, symbols[i]))</span>
 <span class="lineNum">     303 </span><span class="lineCov">          6 :   }</span>
 <span class="lineNum">     304 </span><span class="lineCov">          6 : }</span>
-<a name="305"><span class="lineNum">     305 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     306 </span><span class="lineNoCov">          0 : </span>
+<a name="305"><span class="lineNum">     305 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     306 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     307 </span><span class="lineCov">          6 : function TestKeyEnum(obj) {</span>
 <span class="lineNum">     308 </span><span class="lineCov">          6 :   for (var name in obj) {</span>
 <span class="lineNum">     309 </span><span class="lineCov">          6 :     assertEquals(&quot;string&quot;, typeof name)</span>
 <span class="lineNum">     310 </span><span class="lineCov">          6 :   }</span>
 <span class="lineNum">     311 </span><span class="lineCov">          6 : }</span>
-<a name="312"><span class="lineNum">     312 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     313 </span><span class="lineNoCov">          0 : </span>
+<a name="312"><span class="lineNum">     312 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     313 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     314 </span><span class="lineCov">          6 : function TestKeyNames(obj) {</span>
 <span class="lineNum">     315 </span><span class="lineCov">          6 :   assertEquals(0, Object.keys(obj).length)</span>
 <span class="lineNum">     316 </span><span class="lineCov">          6 : </span>
@@ -381,8 +381,8 @@
 <span class="lineNum">     319 </span><span class="lineCov">          6 :     assertEquals(&quot;string&quot;, typeof names[i])</span>
 <span class="lineNum">     320 </span><span class="lineCov">          6 :   }</span>
 <span class="lineNum">     321 </span><span class="lineCov">          6 : }</span>
-<a name="322"><span class="lineNum">     322 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     323 </span><span class="lineNoCov">          0 : </span>
+<a name="322"><span class="lineNum">     322 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     323 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     324 </span><span class="lineCov">          6 : function TestGetOwnPropertySymbols(obj) {</span>
 <span class="lineNum">     325 </span><span class="lineCov">          6 :   var syms = Object.getOwnPropertySymbols(obj)</span>
 <span class="lineNum">     326 </span><span class="lineCov">          6 :   assertEquals(syms.length, symbols.length)</span>
@@ -390,8 +390,8 @@
 <span class="lineNum">     328 </span><span class="lineCov">          6 :     assertEquals(&quot;symbol&quot;, typeof syms[i])</span>
 <span class="lineNum">     329 </span><span class="lineCov">          6 :   }</span>
 <span class="lineNum">     330 </span><span class="lineCov">          6 : }</span>
-<a name="331"><span class="lineNum">     331 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     332 </span><span class="lineNoCov">          0 : </span>
+<a name="331"><span class="lineNum">     331 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     332 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     333 </span><span class="lineCov">          6 : function TestKeyDescriptor(obj) {</span>
 <span class="lineNum">     334 </span><span class="lineCov">          6 :   for (var i in symbols) {</span>
 <span class="lineNum">     335 </span><span class="lineCov">          6 :     var desc = Object.getOwnPropertyDescriptor(obj, symbols[i])</span>
@@ -403,8 +403,8 @@
 <span class="lineNum">     341 </span><span class="lineCov">          6 :         Object.prototype.propertyIsEnumerable.call(obj, symbols[i]))</span>
 <span class="lineNum">     342 </span><span class="lineCov">          6 :   }</span>
 <span class="lineNum">     343 </span><span class="lineCov">          6 : }</span>
-<a name="344"><span class="lineNum">     344 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     345 </span><span class="lineNoCov">          0 : </span>
+<a name="344"><span class="lineNum">     344 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     345 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     346 </span><span class="lineCov">          6 : function TestKeyDelete(obj) {</span>
 <span class="lineNum">     347 </span><span class="lineCov">          6 :   for (var i in symbols) {</span>
 <span class="lineNum">     348 </span><span class="lineCov">          6 :     delete obj[symbols[i]]</span>
@@ -413,24 +413,24 @@
 <span class="lineNum">     351 </span><span class="lineCov">          6 :     assertEquals(undefined, Object.getOwnPropertyDescriptor(obj, symbols[i]))</span>
 <span class="lineNum">     352 </span><span class="lineCov">          6 :   }</span>
 <span class="lineNum">     353 </span><span class="lineCov">          6 : }</span>
-<a name="354"><span class="lineNum">     354 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     355 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     356 </span><span class="lineNoCov">          0 : var objs = [{}, [], Object.create({}), Object(1), new Map, function(){}]</span>
-<span class="lineNum">     357 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     358 </span><span class="lineNoCov">          0 : for (var i in objs) {</span>
-<span class="lineNum">     359 </span><span class="lineNoCov">          0 :   var obj = objs[i]</span>
-<span class="lineNum">     360 </span><span class="lineNoCov">          0 :   TestKeySet(obj)</span>
-<span class="lineNum">     361 </span><span class="lineNoCov">          0 :   TestKeyDefine(obj)</span>
-<span class="lineNum">     362 </span><span class="lineNoCov">          0 :   TestKeyGet(obj)</span>
-<span class="lineNum">     363 </span><span class="lineNoCov">          0 :   TestKeyHas(obj)</span>
-<span class="lineNum">     364 </span><span class="lineNoCov">          0 :   TestKeyEnum(obj)</span>
-<span class="lineNum">     365 </span><span class="lineNoCov">          0 :   TestKeyNames(obj)</span>
-<span class="lineNum">     366 </span><span class="lineNoCov">          0 :   TestGetOwnPropertySymbols(obj)</span>
-<span class="lineNum">     367 </span><span class="lineNoCov">          0 :   TestKeyDescriptor(obj)</span>
-<span class="lineNum">     368 </span><span class="lineNoCov">          0 :   TestKeyDelete(obj)</span>
-<span class="lineNum">     369 </span><span class="lineNoCov">          0 : }</span>
-<a name="370"><span class="lineNum">     370 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     371 </span><span class="lineNoCov">          0 : </span>
+<a name="354"><span class="lineNum">     354 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     355 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     356 </span><span class="lineCov">          1 : var objs = [{}, [], Object.create({}), Object(1), new Map, function(){}]</span>
+<span class="lineNum">     357 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     358 </span><span class="lineCov">          1 : for (var i in objs) {</span>
+<span class="lineNum">     359 </span><span class="lineCov">          1 :   var obj = objs[i]</span>
+<span class="lineNum">     360 </span><span class="lineCov">          1 :   TestKeySet(obj)</span>
+<span class="lineNum">     361 </span><span class="lineCov">          1 :   TestKeyDefine(obj)</span>
+<span class="lineNum">     362 </span><span class="lineCov">          1 :   TestKeyGet(obj)</span>
+<span class="lineNum">     363 </span><span class="lineCov">          1 :   TestKeyHas(obj)</span>
+<span class="lineNum">     364 </span><span class="lineCov">          1 :   TestKeyEnum(obj)</span>
+<span class="lineNum">     365 </span><span class="lineCov">          1 :   TestKeyNames(obj)</span>
+<span class="lineNum">     366 </span><span class="lineCov">          1 :   TestGetOwnPropertySymbols(obj)</span>
+<span class="lineNum">     367 </span><span class="lineCov">          1 :   TestKeyDescriptor(obj)</span>
+<span class="lineNum">     368 </span><span class="lineCov">          1 :   TestKeyDelete(obj)</span>
+<span class="lineNum">     369 </span><span class="lineCov">          1 : }</span>
+<a name="370"><span class="lineNum">     370 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     371 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     372 </span><span class="lineCov">          1 : function TestDefineProperties() {</span>
 <span class="lineNum">     373 </span><span class="lineCov">          1 :   var properties = {}</span>
 <span class="lineNum">     374 </span><span class="lineCov">          1 :   for (var i in symbols) {</span>
@@ -442,9 +442,9 @@
 <span class="lineNum">     380 </span><span class="lineCov">          1 :     assertEquals(i % 2 === 0, symbols[i] in o)</span>
 <span class="lineNum">     381 </span><span class="lineCov">          1 :   }</span>
 <span class="lineNum">     382 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">     383 </span><span class="lineNoCov">          0 : TestDefineProperties()</span>
-<a name="384"><span class="lineNum">     384 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     385 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     383 </span><span class="lineCov">          1 : TestDefineProperties()</span>
+<a name="384"><span class="lineNum">     384 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     385 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     386 </span><span class="lineCov">          1 : function TestCreate() {</span>
 <span class="lineNum">     387 </span><span class="lineCov">          1 :   var properties = {}</span>
 <span class="lineNum">     388 </span><span class="lineCov">          1 :   for (var i in symbols) {</span>
@@ -456,9 +456,9 @@
 <span class="lineNum">     394 </span><span class="lineCov">          1 :     assertEquals(i % 2 === 0, symbols[i] in o)</span>
 <span class="lineNum">     395 </span><span class="lineCov">          1 :   }</span>
 <span class="lineNum">     396 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">     397 </span><span class="lineNoCov">          0 : TestCreate()</span>
-<a name="398"><span class="lineNum">     398 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     399 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     397 </span><span class="lineCov">          1 : TestCreate()</span>
+<a name="398"><span class="lineNum">     398 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     399 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     400 </span><span class="lineCov">          1 : function TestCachedKeyAfterScavenge() {</span>
 <span class="lineNum">     401 </span><span class="lineCov">          1 :   gc();</span>
 <span class="lineNum">     402 </span><span class="lineCov">          1 :   // Keyed property lookup are cached.  Hereby we assume that the keys are</span>
@@ -472,9 +472,9 @@
 <span class="lineNum">     410 </span><span class="lineCov">          1 :     a[key] += &quot;a&quot;;  // Allocations cause a scavenge.</span>
 <span class="lineNum">     411 </span><span class="lineCov">          1 :   }</span>
 <span class="lineNum">     412 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">     413 </span><span class="lineNoCov">          0 : TestCachedKeyAfterScavenge();</span>
-<a name="414"><span class="lineNum">     414 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     415 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     413 </span><span class="lineCov">          1 : TestCachedKeyAfterScavenge();</span>
+<a name="414"><span class="lineNum">     414 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     415 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     416 </span><span class="lineCov">          1 : function TestGetOwnPropertySymbolsWithProto() {</span>
 <span class="lineNum">     417 </span><span class="lineCov">          1 :   // We need to be have fast properties to have insertion order for property</span>
 <span class="lineNum">     418 </span><span class="lineCov">          1 :   // keys. The current limit is currently 30 properties.</span>
@@ -499,9 +499,9 @@
 <span class="lineNum">     437 </span><span class="lineCov">          1 :     assertEquals(objectOwnSymbols[i], syms[i * 2])</span>
 <span class="lineNum">     438 </span><span class="lineCov">          1 :   }</span>
 <span class="lineNum">     439 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">     440 </span><span class="lineNoCov">          0 : TestGetOwnPropertySymbolsWithProto()</span>
-<a name="441"><span class="lineNum">     441 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     442 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     440 </span><span class="lineCov">          1 : TestGetOwnPropertySymbolsWithProto()</span>
+<a name="441"><span class="lineNum">     441 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     442 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     443 </span><span class="lineCov">          1 : function TestWellKnown() {</span>
 <span class="lineNum">     444 </span><span class="lineCov">          1 :   var symbols = [</span>
 <span class="lineNum">     445 </span><span class="lineCov">          1 :     &quot;hasInstance&quot;,</span>
@@ -523,9 +523,9 @@
 <span class="lineNum">     461 </span><span class="lineCov">          1 :     assertTrue(Symbol.keyFor(desc.value) === undefined)</span>
 <span class="lineNum">     462 </span><span class="lineCov">          1 :   }</span>
 <span class="lineNum">     463 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">     464 </span><span class="lineNoCov">          0 : TestWellKnown()</span>
-<a name="465"><span class="lineNum">     465 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     466 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     464 </span><span class="lineCov">          1 : TestWellKnown()</span>
+<a name="465"><span class="lineNum">     465 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     466 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     467 </span><span class="lineCov">          1 : function TestRegistry() {</span>
 <span class="lineNum">     468 </span><span class="lineCov">          1 :   var symbol1 = Symbol.for(&quot;x1&quot;)</span>
 <span class="lineNum">     469 </span><span class="lineCov">          1 :   var symbol2 = Symbol.for(&quot;x2&quot;)</span>
@@ -539,37 +539,37 @@
 <span class="lineNum">     477 </span><span class="lineCov">          1 :   assertSame(Symbol.for(&quot;1&quot;), Symbol.for(1))</span>
 <span class="lineNum">     478 </span><span class="lineCov">          1 :   assertThrows(function() { Symbol.keyFor(&quot;bla&quot;) }, TypeError)</span>
 <span class="lineNum">     479 </span><span class="lineCov">          1 :   assertThrows(function() { Symbol.keyFor({}) }, TypeError)</span>
-<span class="lineNum">     480 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     481 </span><span class="lineNoCov">          0 :   var realm = Realm.create()</span>
-<span class="lineNum">     482 </span><span class="lineNoCov">          0 :   assertFalse(Symbol === Realm.eval(realm, &quot;Symbol&quot;))</span>
-<span class="lineNum">     483 </span><span class="lineNoCov">          0 :   assertFalse(Symbol.for === Realm.eval(realm, &quot;Symbol.for&quot;))</span>
-<span class="lineNum">     484 </span><span class="lineNoCov">          0 :   assertFalse(Symbol.keyFor === Realm.eval(realm, &quot;Symbol.keyFor&quot;))</span>
-<span class="lineNum">     485 </span><span class="lineNoCov">          0 :   assertSame(Symbol.create, Realm.eval(realm, &quot;Symbol.create&quot;))</span>
-<span class="lineNum">     486 </span><span class="lineNoCov">          0 :   assertSame(Symbol.iterator, Realm.eval(realm, &quot;Symbol.iterator&quot;))</span>
-<span class="lineNum">     487 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     488 </span><span class="lineNoCov">          0 :   assertSame(symbol1, Realm.eval(realm, &quot;Symbol.for&quot;)(&quot;x1&quot;))</span>
-<span class="lineNum">     489 </span><span class="lineNoCov">          0 :   assertSame(symbol1, Realm.eval(realm, &quot;Symbol.for('x1')&quot;))</span>
-<span class="lineNum">     490 </span><span class="lineNoCov">          0 :   assertSame(&quot;x1&quot;, Realm.eval(realm, &quot;Symbol.keyFor&quot;)(symbol1))</span>
-<span class="lineNum">     491 </span><span class="lineNoCov">          0 :   Realm.shared = symbol1</span>
-<span class="lineNum">     492 </span><span class="lineNoCov">          0 :   assertSame(&quot;x1&quot;, Realm.eval(realm, &quot;Symbol.keyFor(Realm.shared)&quot;))</span>
-<span class="lineNum">     493 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     494 </span><span class="lineNoCov">          0 :   var symbol3 = Realm.eval(realm, &quot;Symbol.for('x3')&quot;)</span>
-<span class="lineNum">     495 </span><span class="lineNoCov">          0 :   assertFalse(symbol1 === symbol3)</span>
-<span class="lineNum">     496 </span><span class="lineNoCov">          0 :   assertFalse(symbol2 === symbol3)</span>
-<span class="lineNum">     497 </span><span class="lineNoCov">          0 :   assertSame(symbol3, Symbol.for(&quot;x3&quot;))</span>
-<span class="lineNum">     498 </span><span class="lineNoCov">          0 :   assertSame(&quot;x3&quot;, Symbol.keyFor(symbol3))</span>
-<span class="lineNum">     499 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">     500 </span><span class="lineNoCov">          0 : TestRegistry()</span>
-<a name="501"><span class="lineNum">     501 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     502 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     480 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     481 </span><span class="lineCov">          1 :   var realm = Realm.create()</span>
+<span class="lineNum">     482 </span><span class="lineCov">          1 :   assertFalse(Symbol === Realm.eval(realm, &quot;Symbol&quot;))</span>
+<span class="lineNum">     483 </span><span class="lineCov">          1 :   assertFalse(Symbol.for === Realm.eval(realm, &quot;Symbol.for&quot;))</span>
+<span class="lineNum">     484 </span><span class="lineCov">          1 :   assertFalse(Symbol.keyFor === Realm.eval(realm, &quot;Symbol.keyFor&quot;))</span>
+<span class="lineNum">     485 </span><span class="lineCov">          1 :   assertSame(Symbol.create, Realm.eval(realm, &quot;Symbol.create&quot;))</span>
+<span class="lineNum">     486 </span><span class="lineCov">          1 :   assertSame(Symbol.iterator, Realm.eval(realm, &quot;Symbol.iterator&quot;))</span>
+<span class="lineNum">     487 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     488 </span><span class="lineCov">          1 :   assertSame(symbol1, Realm.eval(realm, &quot;Symbol.for&quot;)(&quot;x1&quot;))</span>
+<span class="lineNum">     489 </span><span class="lineCov">          1 :   assertSame(symbol1, Realm.eval(realm, &quot;Symbol.for('x1')&quot;))</span>
+<span class="lineNum">     490 </span><span class="lineCov">          1 :   assertSame(&quot;x1&quot;, Realm.eval(realm, &quot;Symbol.keyFor&quot;)(symbol1))</span>
+<span class="lineNum">     491 </span><span class="lineCov">          1 :   Realm.shared = symbol1</span>
+<span class="lineNum">     492 </span><span class="lineCov">          1 :   assertSame(&quot;x1&quot;, Realm.eval(realm, &quot;Symbol.keyFor(Realm.shared)&quot;))</span>
+<span class="lineNum">     493 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     494 </span><span class="lineCov">          1 :   var symbol3 = Realm.eval(realm, &quot;Symbol.for('x3')&quot;)</span>
+<span class="lineNum">     495 </span><span class="lineCov">          1 :   assertFalse(symbol1 === symbol3)</span>
+<span class="lineNum">     496 </span><span class="lineCov">          1 :   assertFalse(symbol2 === symbol3)</span>
+<span class="lineNum">     497 </span><span class="lineCov">          1 :   assertSame(symbol3, Symbol.for(&quot;x3&quot;))</span>
+<span class="lineNum">     498 </span><span class="lineCov">          1 :   assertSame(&quot;x3&quot;, Symbol.keyFor(symbol3))</span>
+<span class="lineNum">     499 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     500 </span><span class="lineCov">          1 : TestRegistry()</span>
+<a name="501"><span class="lineNum">     501 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     502 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     503 </span><span class="lineCov">          1 : function TestGetOwnPropertySymbolsOnPrimitives() {</span>
 <span class="lineNum">     504 </span><span class="lineCov">          1 :   assertEquals(Object.getOwnPropertySymbols(true), []);</span>
 <span class="lineNum">     505 </span><span class="lineCov">          1 :   assertEquals(Object.getOwnPropertySymbols(5000), []);</span>
 <span class="lineNum">     506 </span><span class="lineCov">          1 :   assertEquals(Object.getOwnPropertySymbols(&quot;OK&quot;), []);</span>
 <span class="lineNum">     507 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">     508 </span><span class="lineNoCov">          0 : TestGetOwnPropertySymbolsOnPrimitives();</span>
-<a name="509"><span class="lineNum">     509 </span><span class="lineNoCov">          0 : </span></a>
-<a name="510"><span class="lineNum">     510 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">     508 </span><span class="lineCov">          1 : TestGetOwnPropertySymbolsOnPrimitives();</span>
+<a name="509"><span class="lineNum">     509 </span><span class="lineCov">          1 : </span></a>
+<a name="510"><span class="lineNum">     510 </span><span class="lineCov">          1 : </span></a>
 <a name="511"><span class="lineNum">     511 </span><span class="lineCov">          1 : function TestComparison() {</span></a>
 <a name="512"><span class="lineNum">     512 </span><span class="lineCov">          3 :   function lt() { var a = Symbol(); var b = Symbol(); a &lt; b; }</span></a>
 <a name="513"><span class="lineNum">     513 </span><span class="lineCov">          3 :   function gt() { var a = Symbol(); var b = Symbol(); a &gt; b; }</span></a>
@@ -579,20 +579,20 @@
 <a name="517"><span class="lineNum">     517 </span><span class="lineCov">          3 :   function gt_same() { var a = Symbol(); a &gt; a; }</span></a>
 <span class="lineNum">     518 </span><span class="lineCov">          3 :   function le_same() { var a = Symbol(); a &lt;= a; }</span>
 <span class="lineNum">     519 </span><span class="lineCov">          3 :   function ge_same() { var a = Symbol(); a &gt;= a; }</span>
-<span class="lineNum">     520 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     521 </span><span class="lineNoCov">          0 :   var throwFuncs = [lt, gt, le, ge, lt_same, gt_same, le_same, ge_same];</span>
-<span class="lineNum">     522 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     523 </span><span class="lineNoCov">          0 :   for (var f of throwFuncs) {</span>
-<span class="lineNum">     524 </span><span class="lineNoCov">          0 :     assertThrows(f, TypeError);</span>
-<span class="lineNum">     525 </span><span class="lineNoCov">          0 :     %OptimizeFunctionOnNextCall(f);</span>
-<span class="lineNum">     526 </span><span class="lineNoCov">          0 :     assertThrows(f, TypeError);</span>
-<span class="lineNum">     527 </span><span class="lineNoCov">          0 :     assertThrows(f, TypeError);</span>
-<span class="lineNum">     528 </span><span class="lineNoCov">          0 :   }</span>
-<span class="lineNum">     529 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">     530 </span><span class="lineNoCov">          0 : TestComparison();</span>
-<span class="lineNum">     531 </span><span class="lineNoCov">          0 : </span>
-<a name="532"><span class="lineNum">     532 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     533 </span><span class="lineNoCov">          0 : // Make sure that throws occur in the context of the Symbol function.</span>
+<span class="lineNum">     520 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     521 </span><span class="lineCov">          1 :   var throwFuncs = [lt, gt, le, ge, lt_same, gt_same, le_same, ge_same];</span>
+<span class="lineNum">     522 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     523 </span><span class="lineCov">          1 :   for (var f of throwFuncs) {</span>
+<span class="lineNum">     524 </span><span class="lineCov">          1 :     assertThrows(f, TypeError);</span>
+<span class="lineNum">     525 </span><span class="lineCov">          1 :     %OptimizeFunctionOnNextCall(f);</span>
+<span class="lineNum">     526 </span><span class="lineCov">          1 :     assertThrows(f, TypeError);</span>
+<span class="lineNum">     527 </span><span class="lineCov">          1 :     assertThrows(f, TypeError);</span>
+<span class="lineNum">     528 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     529 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     530 </span><span class="lineCov">          1 : TestComparison();</span>
+<span class="lineNum">     531 </span><span class="lineCov">          1 : </span>
+<a name="532"><span class="lineNum">     532 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     533 </span><span class="lineCov">          1 : // Make sure that throws occur in the context of the Symbol function.</span>
 <span class="lineNum">     534 </span><span class="lineCov">          1 : function TestContext() {</span>
 <span class="lineNum">     535 </span><span class="lineCov">          1 :   var r = Realm.create();</span>
 <span class="lineNum">     536 </span><span class="lineCov">          1 :   var rSymbol = Realm.eval(r, &quot;Symbol&quot;);</span>
@@ -606,28 +606,28 @@
 <span class="lineNum">     544 </span><span class="lineCov">          4 :     }</span>
 <span class="lineNum">     545 </span><span class="lineCov">          4 :     assertTrue(false);  // should never get here.</span>
 <span class="lineNum">     546 </span><span class="lineCov">          4 :   }</span>
-<span class="lineNum">     547 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     548 </span><span class="lineNoCov">          0 :   assertTrue(verifier(Symbol, TypeError()));</span>
-<span class="lineNum">     549 </span><span class="lineNoCov">          0 :   assertTrue(verifier(rSymbol, rError()));</span>
-<span class="lineNum">     550 </span><span class="lineNoCov">          0 :   assertFalse(verifier(Symbol, rError()));</span>
-<span class="lineNum">     551 </span><span class="lineNoCov">          0 :   assertFalse(verifier(rSymbol, TypeError()));</span>
-<span class="lineNum">     552 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">     553 </span><span class="lineNoCov">          0 : TestContext();</span>
-<a name="554"><span class="lineNum">     554 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     555 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     547 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     548 </span><span class="lineCov">          1 :   assertTrue(verifier(Symbol, TypeError()));</span>
+<span class="lineNum">     549 </span><span class="lineCov">          1 :   assertTrue(verifier(rSymbol, rError()));</span>
+<span class="lineNum">     550 </span><span class="lineCov">          1 :   assertFalse(verifier(Symbol, rError()));</span>
+<span class="lineNum">     551 </span><span class="lineCov">          1 :   assertFalse(verifier(rSymbol, TypeError()));</span>
+<span class="lineNum">     552 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     553 </span><span class="lineCov">          1 : TestContext();</span>
+<a name="554"><span class="lineNum">     554 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     555 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     556 </span><span class="lineCov">          4 : function TestStringify(expected, input) {</span>
 <span class="lineNum">     557 </span><span class="lineCov">          4 :   assertEquals(expected, JSON.stringify(input));</span>
 <a name="558"><span class="lineNum">     558 </span><span class="lineCov">          6 :   assertEquals(expected, JSON.stringify(input, (key, value) =&gt; value));</span></a>
-<span class="lineNum">     559 </span><span class="lineNoCov">          0 :   assertEquals(JSON.stringify(input, null, &quot;=&quot;),</span>
+<span class="lineNum">     559 </span><span class="lineCov">          4 :   assertEquals(JSON.stringify(input, null, &quot;=&quot;),</span>
 <span class="lineNum">     560 </span><span class="lineCov">          6 :                JSON.stringify(input, (key, value) =&gt; value, &quot;=&quot;));</span>
-<span class="lineNum">     561 </span>            : }
-<span class="lineNum">     562 </span>            : 
-<span class="lineNum">     563 </span>            : TestStringify(undefined, Symbol(&quot;a&quot;));
-<span class="lineNum">     564 </span>            : TestStringify('[{}]', [Object(Symbol())]);
-<span class="lineNum">     565 </span>            : var symbol_wrapper = Object(Symbol(&quot;a&quot;))
-<span class="lineNum">     566 </span>            : TestStringify('{}', symbol_wrapper);
-<span class="lineNum">     567 </span>            : symbol_wrapper.a = 1;
-<span class="lineNum">     568 </span>            : TestStringify('{&quot;a&quot;:1}', symbol_wrapper);
+<span class="lineNum">     561 </span><span class="lineCov">          4 : }</span>
+<span class="lineNum">     562 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     563 </span><span class="lineCov">          1 : TestStringify(undefined, Symbol(&quot;a&quot;));</span>
+<span class="lineNum">     564 </span><span class="lineCov">          1 : TestStringify('[{}]', [Object(Symbol())]);</span>
+<span class="lineNum">     565 </span><span class="lineCov">          1 : var symbol_wrapper = Object(Symbol(&quot;a&quot;))</span>
+<span class="lineNum">     566 </span><span class="lineCov">          1 : TestStringify('{}', symbol_wrapper);</span>
+<span class="lineNum">     567 </span><span class="lineCov">          1 : symbol_wrapper.a = 1;</span>
+<span class="lineNum">     568 </span><span class="lineCov">          1 : TestStringify('{&quot;a&quot;:1}', symbol_wrapper);</span>
 </pre>
       </td>
     </tr>

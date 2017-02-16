@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">47</td>
-            <td class="headerCovTableEntry">104</td>
-            <td class="headerCovTableEntryLo">45.2 %</td>
+            <td class="headerCovTableEntry">109</td>
+            <td class="headerCovTableEntry">109</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">2</td>
@@ -92,82 +92,82 @@
 <span class="lineNum">      30 </span><span class="lineCov">          1 : var o = {};</span>
 <span class="lineNum">      31 </span><span class="lineCov">          1 : o.x = 42;</span>
 <span class="lineNum">      32 </span><span class="lineCov">          4 : o.__defineGetter__('0', function() { return o.x; });</span>
-<span class="lineNum">      33 </span><span class="lineNoCov">          0 : assertEquals(o.x, o[0]);</span>
-<span class="lineNum">      34 </span><span class="lineNoCov">          0 : assertEquals(o.x, o.__lookupGetter__('0')());</span>
-<span class="lineNum">      35 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      33 </span><span class="lineCov">          1 : assertEquals(o.x, o[0]);</span>
+<span class="lineNum">      34 </span><span class="lineCov">          1 : assertEquals(o.x, o.__lookupGetter__('0')());</span>
+<span class="lineNum">      35 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      36 </span><span class="lineCov">          2 : o.__defineSetter__('0', function(y) { o.x = y; });</span>
-<span class="lineNum">      37 </span><span class="lineNoCov">          0 : assertEquals(o.x, o[0]);</span>
-<span class="lineNum">      38 </span><span class="lineNoCov">          0 : assertEquals(o.x, o.__lookupGetter__('0')());</span>
-<span class="lineNum">      39 </span><span class="lineNoCov">          0 : o[0] = 21;</span>
-<span class="lineNum">      40 </span><span class="lineNoCov">          0 : assertEquals(21, o.x);</span>
-<span class="lineNum">      41 </span><span class="lineNoCov">          0 : o.__lookupSetter__(0)(7);</span>
-<a name="42"><span class="lineNum">      42 </span><span class="lineNoCov">          0 : assertEquals(7, o.x);</span></a>
-<span class="lineNum">      43 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      37 </span><span class="lineCov">          1 : assertEquals(o.x, o[0]);</span>
+<span class="lineNum">      38 </span><span class="lineCov">          1 : assertEquals(o.x, o.__lookupGetter__('0')());</span>
+<span class="lineNum">      39 </span><span class="lineCov">          1 : o[0] = 21;</span>
+<span class="lineNum">      40 </span><span class="lineCov">          1 : assertEquals(21, o.x);</span>
+<span class="lineNum">      41 </span><span class="lineCov">          1 : o.__lookupSetter__(0)(7);</span>
+<a name="42"><span class="lineNum">      42 </span><span class="lineCov">          1 : assertEquals(7, o.x);</span></a>
+<span class="lineNum">      43 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      44 </span><span class="lineCov">          1 : function Pair(x, y) {</span>
 <span class="lineNum">      45 </span><span class="lineCov">          1 :   this.x = x;</span>
 <span class="lineNum">      46 </span><span class="lineCov">          1 :   this.y = y;</span>
 <span class="lineNum">      47 </span><span class="lineCov">          1 : };</span>
 <span class="lineNum">      48 </span><span class="lineCov">          2 : Pair.prototype.__defineGetter__('0', function() { return this.x; });</span>
 <span class="lineNum">      49 </span><span class="lineCov">          2 : Pair.prototype.__defineGetter__('1', function() { return this.y; });</span>
-<span class="lineNum">      50 </span><span class="lineNoCov">          0 : Pair.prototype.__defineSetter__('0', function(x) { this.x = x; });</span>
+<span class="lineNum">      50 </span><span class="lineCov">          1 : Pair.prototype.__defineSetter__('0', function(x) { this.x = x; });</span>
 <span class="lineNum">      51 </span><span class="lineCov">          1 : Pair.prototype.__defineSetter__('1', function(y) { this.y = y; });</span>
-<span class="lineNum">      52 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      53 </span><span class="lineNoCov">          0 : var p = new Pair(2, 3);</span>
-<span class="lineNum">      54 </span><span class="lineNoCov">          0 : assertEquals(2, p[0]);</span>
-<span class="lineNum">      55 </span><span class="lineNoCov">          0 : assertEquals(3, p[1]);</span>
-<span class="lineNum">      56 </span><span class="lineNoCov">          0 : p.x = 7;</span>
-<span class="lineNum">      57 </span><span class="lineNoCov">          0 : p[1] = 8;</span>
-<span class="lineNum">      58 </span><span class="lineNoCov">          0 : assertEquals(7, p[0]);</span>
-<span class="lineNum">      59 </span><span class="lineNoCov">          0 : assertEquals(7, p.x);</span>
-<span class="lineNum">      60 </span><span class="lineNoCov">          0 : assertEquals(8, p[1]);</span>
-<span class="lineNum">      61 </span><span class="lineNoCov">          0 : assertEquals(8, p.y);</span>
-<span class="lineNum">      62 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      63 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      64 </span><span class="lineNoCov">          0 : // Testing that a defined getter doesn't get lost due to inline caching.</span>
-<span class="lineNum">      65 </span><span class="lineNoCov">          0 : var expected = {};</span>
-<span class="lineNum">      66 </span><span class="lineNoCov">          0 : var actual = {};</span>
-<span class="lineNum">      67 </span><span class="lineNoCov">          0 : for (var i = 0; i &lt; 10; i++) {</span>
-<a name="68"><span class="lineNum">      68 </span><span class="lineNoCov">          0 :   expected[i] = actual[i] = i;</span></a>
-<span class="lineNum">      69 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      52 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      53 </span><span class="lineCov">          1 : var p = new Pair(2, 3);</span>
+<span class="lineNum">      54 </span><span class="lineCov">          1 : assertEquals(2, p[0]);</span>
+<span class="lineNum">      55 </span><span class="lineCov">          1 : assertEquals(3, p[1]);</span>
+<span class="lineNum">      56 </span><span class="lineCov">          1 : p.x = 7;</span>
+<span class="lineNum">      57 </span><span class="lineCov">          1 : p[1] = 8;</span>
+<span class="lineNum">      58 </span><span class="lineCov">          1 : assertEquals(7, p[0]);</span>
+<span class="lineNum">      59 </span><span class="lineCov">          1 : assertEquals(7, p.x);</span>
+<span class="lineNum">      60 </span><span class="lineCov">          1 : assertEquals(8, p[1]);</span>
+<span class="lineNum">      61 </span><span class="lineCov">          1 : assertEquals(8, p.y);</span>
+<span class="lineNum">      62 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      63 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      64 </span><span class="lineCov">          1 : // Testing that a defined getter doesn't get lost due to inline caching.</span>
+<span class="lineNum">      65 </span><span class="lineCov">          1 : var expected = {};</span>
+<span class="lineNum">      66 </span><span class="lineCov">          1 : var actual = {};</span>
+<span class="lineNum">      67 </span><span class="lineCov">          1 : for (var i = 0; i &lt; 10; i++) {</span>
+<a name="68"><span class="lineNum">      68 </span><span class="lineCov">          1 :   expected[i] = actual[i] = i;</span></a>
+<span class="lineNum">      69 </span><span class="lineCov">          1 : }</span>
 <span class="lineNum">      70 </span><span class="lineCov">          4 : function testArray() {</span>
 <span class="lineNum">      71 </span><span class="lineCov">          4 :   for (var i = 0; i &lt; 10; i++) {</span>
 <span class="lineNum">      72 </span><span class="lineCov">          4 :     assertEquals(expected[i], actual[i]);</span>
 <span class="lineNum">      73 </span><span class="lineCov">          4 :   }</span>
 <span class="lineNum">      74 </span><span class="lineCov">          4 : }</span>
-<span class="lineNum">      75 </span><span class="lineNoCov">          0 : actual[1000000] = -1;</span>
-<span class="lineNum">      76 </span><span class="lineNoCov">          0 : testArray();</span>
-<span class="lineNum">      77 </span><span class="lineNoCov">          0 : testArray();</span>
+<span class="lineNum">      75 </span><span class="lineCov">          1 : actual[1000000] = -1;</span>
+<span class="lineNum">      76 </span><span class="lineCov">          1 : testArray();</span>
+<span class="lineNum">      77 </span><span class="lineCov">          1 : testArray();</span>
 <span class="lineNum">      78 </span><span class="lineCov">          2 : actual.__defineGetter__('0', function() { return expected[0]; });</span>
-<span class="lineNum">      79 </span><span class="lineNoCov">          0 : expected[0] = 42;</span>
-<span class="lineNum">      80 </span><span class="lineNoCov">          0 : testArray();</span>
-<span class="lineNum">      81 </span><span class="lineNoCov">          0 : expected[0] = 111;</span>
-<span class="lineNum">      82 </span><span class="lineNoCov">          0 : testArray();</span>
-<span class="lineNum">      83 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      84 </span><span class="lineNoCov">          0 : // Using a setter where only a getter is defined does not throw an exception,</span>
-<span class="lineNum">      85 </span><span class="lineNoCov">          0 : // unless we are in strict mode.</span>
-<span class="lineNum">      86 </span><span class="lineNoCov">          0 : var q = {};</span>
-<span class="lineNum">      87 </span><span class="lineNoCov">          0 : q.__defineGetter__('0', function() { return 42; });</span>
-<span class="lineNum">      88 </span><span class="lineNoCov">          0 : assertDoesNotThrow('q[0] = 7');</span>
-<span class="lineNum">      89 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      90 </span><span class="lineNoCov">          0 : // Using a getter where only a setter is defined returns undefined.</span>
-<span class="lineNum">      91 </span><span class="lineNoCov">          0 : var q1 = {};</span>
+<span class="lineNum">      79 </span><span class="lineCov">          1 : expected[0] = 42;</span>
+<span class="lineNum">      80 </span><span class="lineCov">          1 : testArray();</span>
+<span class="lineNum">      81 </span><span class="lineCov">          1 : expected[0] = 111;</span>
+<span class="lineNum">      82 </span><span class="lineCov">          1 : testArray();</span>
+<span class="lineNum">      83 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      84 </span><span class="lineCov">          1 : // Using a setter where only a getter is defined does not throw an exception,</span>
+<span class="lineNum">      85 </span><span class="lineCov">          1 : // unless we are in strict mode.</span>
+<span class="lineNum">      86 </span><span class="lineCov">          1 : var q = {};</span>
+<span class="lineNum">      87 </span><span class="lineCov">          1 : q.__defineGetter__('0', function() { return 42; });</span>
+<span class="lineNum">      88 </span><span class="lineCov">          1 : assertDoesNotThrow('q[0] = 7');</span>
+<span class="lineNum">      89 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      90 </span><span class="lineCov">          1 : // Using a getter where only a setter is defined returns undefined.</span>
+<span class="lineNum">      91 </span><span class="lineCov">          1 : var q1 = {};</span>
 <span class="lineNum">      92 </span><span class="lineCov">          1 : q1.__defineSetter__('0', function() {q1.b = 17;});</span>
-<span class="lineNum">      93 </span><span class="lineNoCov">          0 : assertEquals(q1[0], undefined);</span>
-<span class="lineNum">      94 </span><span class="lineNoCov">          0 : // Setter works</span>
-<span class="lineNum">      95 </span><span class="lineNoCov">          0 : q1[0] = 3;</span>
-<span class="lineNum">      96 </span><span class="lineNoCov">          0 : assertEquals(q1[0], undefined);</span>
-<span class="lineNum">      97 </span><span class="lineNoCov">          0 : assertEquals(q1.b, 17);</span>
-<span class="lineNum">      98 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      99 </span><span class="lineNoCov">          0 : // Complex case of using an undefined getter.</span>
-<span class="lineNum">     100 </span><span class="lineNoCov">          0 : // From http://code.google.com/p/v8/issues/detail?id=298</span>
-<a name="101"><span class="lineNum">     101 </span><span class="lineNoCov">          0 : // Reported by nth10sd.</span></a>
-<span class="lineNum">     102 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     103 </span><span class="lineNoCov">          0 : a = function() {};</span>
-<span class="lineNum">     104 </span><span class="lineNoCov">          0 : __defineSetter__(&quot;0&quot;, function() {});</span>
-<span class="lineNum">     105 </span>            : if (a |= '') {};
-<span class="lineNum">     106 </span>            : assertThrows('this[a].__parent__');
-<span class="lineNum">     107 </span>            : assertEquals(a, 0);
-<span class="lineNum">     108 </span>            : assertEquals(this[a], undefined);
+<span class="lineNum">      93 </span><span class="lineCov">          1 : assertEquals(q1[0], undefined);</span>
+<span class="lineNum">      94 </span><span class="lineCov">          1 : // Setter works</span>
+<span class="lineNum">      95 </span><span class="lineCov">          1 : q1[0] = 3;</span>
+<span class="lineNum">      96 </span><span class="lineCov">          1 : assertEquals(q1[0], undefined);</span>
+<span class="lineNum">      97 </span><span class="lineCov">          1 : assertEquals(q1.b, 17);</span>
+<span class="lineNum">      98 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      99 </span><span class="lineCov">          1 : // Complex case of using an undefined getter.</span>
+<span class="lineNum">     100 </span><span class="lineCov">          1 : // From http://code.google.com/p/v8/issues/detail?id=298</span>
+<a name="101"><span class="lineNum">     101 </span><span class="lineCov">          1 : // Reported by nth10sd.</span></a>
+<span class="lineNum">     102 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     103 </span><span class="lineCov">          1 : a = function() {};</span>
+<span class="lineNum">     104 </span><span class="lineCov">          1 : __defineSetter__(&quot;0&quot;, function() {});</span>
+<span class="lineNum">     105 </span><span class="lineCov">          1 : if (a |= '') {};</span>
+<span class="lineNum">     106 </span><span class="lineCov">          1 : assertThrows('this[a].__parent__');</span>
+<span class="lineNum">     107 </span><span class="lineCov">          1 : assertEquals(a, 0);</span>
+<span class="lineNum">     108 </span><span class="lineCov">          1 : assertEquals(this[a], undefined);</span>
 </pre>
       </td>
     </tr>

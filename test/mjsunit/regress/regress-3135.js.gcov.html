@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">13</td>
-            <td class="headerCovTableEntry">64</td>
-            <td class="headerCovTableEntryLo">20.3 %</td>
+            <td class="headerCovTableEntry">74</td>
+            <td class="headerCovTableEntry">74</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">1</td>
@@ -73,66 +73,66 @@
 <a name="11"><span class="lineNum">      11 </span><span class="lineCov">          1 : // Properties are visited at most once.</span></a>
 <span class="lineNum">      12 </span><span class="lineCov">          1 : var fired = 0;</span>
 <span class="lineNum">      13 </span><span class="lineCov">          1 : var getter_obj = { get x() { fired++; return 2; } };</span>
-<span class="lineNum">      14 </span><span class="lineNoCov">          0 : assertEquals('{&quot;x&quot;:2}', JSON.stringify(getter_obj, [&quot;x&quot;, &quot;y&quot;, &quot;x&quot;]));</span>
-<span class="lineNum">      15 </span><span class="lineNoCov">          0 : assertEquals(1, fired);</span>
-<span class="lineNum">      16 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      17 </span><span class="lineNoCov">          0 : // Order of the replacer array is followed.</span>
-<span class="lineNum">      18 </span><span class="lineNoCov">          0 : assertEquals('{&quot;y&quot;:4,&quot;x&quot;:3}', JSON.stringify({ x : 3, y : 4}, [&quot;y&quot;, &quot;x&quot;]));</span>
-<span class="lineNum">      19 </span><span class="lineNoCov">          0 : assertEquals('{&quot;y&quot;:4,&quot;1&quot;:2,&quot;x&quot;:3}',</span>
-<span class="lineNum">      20 </span><span class="lineNoCov">          0 :              JSON.stringify({ x : 3, y : 4, 1 : 2 }, [&quot;y&quot;, 1, &quot;x&quot;]));</span>
-<span class="lineNum">      21 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      22 </span><span class="lineNoCov">          0 : // With a replacer array the value of the property is retrieved using [[Get]]</span>
-<span class="lineNum">      23 </span><span class="lineNoCov">          0 : // ignoring own and enumerability.</span>
-<span class="lineNum">      24 </span><span class="lineNoCov">          0 : var a = { x : 8 };</span>
-<span class="lineNum">      25 </span><span class="lineNoCov">          0 : assertEquals('{&quot;__proto__&quot;:{&quot;__proto__&quot;:null},&quot;x&quot;:8}',</span>
-<span class="lineNum">      26 </span><span class="lineNoCov">          0 :              JSON.stringify(a, [&quot;__proto__&quot;, &quot;x&quot;, &quot;__proto__&quot;]));</span>
-<span class="lineNum">      27 </span><span class="lineNoCov">          0 : a.__proto__ = { x : 7 };</span>
-<span class="lineNum">      28 </span><span class="lineNoCov">          0 : assertEquals('{&quot;__proto__&quot;:{&quot;__proto__&quot;:{&quot;__proto__&quot;:null},&quot;x&quot;:7},&quot;x&quot;:8}',</span>
-<span class="lineNum">      29 </span><span class="lineNoCov">          0 :              JSON.stringify(a, [&quot;__proto__&quot;, &quot;x&quot;]));</span>
-<span class="lineNum">      30 </span><span class="lineNoCov">          0 : var b = { __proto__: { x: 9 } };</span>
-<span class="lineNum">      31 </span><span class="lineNoCov">          0 : assertEquals('{}', JSON.stringify(b));</span>
-<span class="lineNum">      32 </span><span class="lineNoCov">          0 : assertEquals('{&quot;x&quot;:9}', JSON.stringify(b, [&quot;x&quot;]));</span>
-<span class="lineNum">      33 </span><span class="lineNoCov">          0 : var c = {x: 10};</span>
-<span class="lineNum">      34 </span><span class="lineNoCov">          0 : Object.defineProperty(c, 'x', { enumerable: false });</span>
-<span class="lineNum">      35 </span><span class="lineNoCov">          0 : assertEquals('{}', JSON.stringify(c));</span>
-<span class="lineNum">      36 </span><span class="lineNoCov">          0 : assertEquals('{&quot;x&quot;:10}', JSON.stringify(c, [&quot;x&quot;]));</span>
-<span class="lineNum">      37 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      38 </span><span class="lineNoCov">          0 : // Arrays are not affected by the replacer array.</span>
-<span class="lineNum">      39 </span><span class="lineNoCov">          0 : assertEquals(&quot;[9,8,7]&quot;, JSON.stringify([9, 8, 7], [1, 1]));</span>
-<span class="lineNum">      40 </span><span class="lineNoCov">          0 : var mixed_arr = [11,12,13];</span>
-<span class="lineNum">      41 </span><span class="lineNoCov">          0 : mixed_arr.x = 10;</span>
-<span class="lineNum">      42 </span><span class="lineNoCov">          0 : assertEquals('[11,12,13]', JSON.stringify(mixed_arr, [1, 0, 1]));</span>
-<span class="lineNum">      43 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      44 </span><span class="lineNoCov">          0 : // Array elements of objects are affected.</span>
-<span class="lineNum">      45 </span><span class="lineNoCov">          0 : var mixed_obj = { x : 3 };</span>
-<span class="lineNum">      46 </span><span class="lineNoCov">          0 : mixed_obj[0] = 6;</span>
-<span class="lineNum">      47 </span><span class="lineNoCov">          0 : mixed_obj[1] = 5;</span>
-<span class="lineNum">      48 </span><span class="lineNoCov">          0 : assertEquals('{&quot;1&quot;:5,&quot;0&quot;:6}', JSON.stringify(mixed_obj, [1, 0, 1]));</span>
-<span class="lineNum">      49 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      50 </span><span class="lineNoCov">          0 : // Nested object.</span>
-<span class="lineNum">      51 </span><span class="lineNoCov">          0 : assertEquals('{&quot;z&quot;:{&quot;x&quot;:3},&quot;x&quot;:1}',</span>
-<span class="lineNum">      52 </span><span class="lineNoCov">          0 :              JSON.stringify({ x: 1, y:2, z: {x:3, b:4}}, [&quot;z&quot;,&quot;x&quot;]));</span>
-<span class="lineNum">      53 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      54 </span><span class="lineNoCov">          0 : // Objects in the replacer array are ignored.</span>
-<span class="lineNum">      55 </span><span class="lineNoCov">          0 : assertEquals('{}',</span>
-<span class="lineNum">      56 </span><span class="lineNoCov">          0 :              JSON.stringify({ x : 1, &quot;1&quot;: 1 }, [{}]));</span>
-<span class="lineNum">      57 </span><span class="lineNoCov">          0 : assertEquals('{}',</span>
-<span class="lineNum">      58 </span><span class="lineNoCov">          0 :              JSON.stringify({ x : 1, &quot;1&quot;: 1 }, [true, undefined, null]));</span>
-<a name="59"><span class="lineNum">      59 </span><span class="lineNoCov">          0 : assertEquals('{}',</span></a>
-<span class="lineNum">      60 </span><span class="lineNoCov">          0 :              JSON.stringify({ x : 1, &quot;1&quot;: 1 },</span>
-<span class="lineNum">      61 </span><span class="lineNoCov">          0 :                             [{ toString: function() { return &quot;x&quot;;} }]));</span>
-<a name="62"><span class="lineNum">      62 </span><span class="lineNoCov">          0 : assertEquals('{}',</span></a>
-<span class="lineNum">      63 </span><span class="lineNoCov">          0 :              JSON.stringify({ x : 1, &quot;1&quot;: 1 },</span>
-<span class="lineNum">      64 </span><span class="lineNoCov">          0 :                             [{ valueOf: function() { return 1;} }]));</span>
-<span class="lineNum">      65 </span>            : 
-<span class="lineNum">      66 </span>            : // Make sure that property names that clash with the names of Object.prototype
-<span class="lineNum">      67 </span>            : // still works.
-<span class="lineNum">      68 </span>            : assertEquals('{&quot;toString&quot;:42}', JSON.stringify({ toString: 42 }, [&quot;toString&quot;]));
-<span class="lineNum">      69 </span>            : 
-<span class="lineNum">      70 </span>            : // Number wrappers and String wrappers should be unwrapped.
-<span class="lineNum">      71 </span>            : assertEquals('{&quot;1&quot;:1,&quot;s&quot;:&quot;s&quot;}',
-<span class="lineNum">      72 </span>            :              JSON.stringify({ 1: 1, s: &quot;s&quot; },
-<span class="lineNum">      73 </span>            :                             [new Number(1), new String(&quot;s&quot;)]));
+<span class="lineNum">      14 </span><span class="lineCov">          1 : assertEquals('{&quot;x&quot;:2}', JSON.stringify(getter_obj, [&quot;x&quot;, &quot;y&quot;, &quot;x&quot;]));</span>
+<span class="lineNum">      15 </span><span class="lineCov">          1 : assertEquals(1, fired);</span>
+<span class="lineNum">      16 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      17 </span><span class="lineCov">          1 : // Order of the replacer array is followed.</span>
+<span class="lineNum">      18 </span><span class="lineCov">          1 : assertEquals('{&quot;y&quot;:4,&quot;x&quot;:3}', JSON.stringify({ x : 3, y : 4}, [&quot;y&quot;, &quot;x&quot;]));</span>
+<span class="lineNum">      19 </span><span class="lineCov">          1 : assertEquals('{&quot;y&quot;:4,&quot;1&quot;:2,&quot;x&quot;:3}',</span>
+<span class="lineNum">      20 </span><span class="lineCov">          1 :              JSON.stringify({ x : 3, y : 4, 1 : 2 }, [&quot;y&quot;, 1, &quot;x&quot;]));</span>
+<span class="lineNum">      21 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      22 </span><span class="lineCov">          1 : // With a replacer array the value of the property is retrieved using [[Get]]</span>
+<span class="lineNum">      23 </span><span class="lineCov">          1 : // ignoring own and enumerability.</span>
+<span class="lineNum">      24 </span><span class="lineCov">          1 : var a = { x : 8 };</span>
+<span class="lineNum">      25 </span><span class="lineCov">          1 : assertEquals('{&quot;__proto__&quot;:{&quot;__proto__&quot;:null},&quot;x&quot;:8}',</span>
+<span class="lineNum">      26 </span><span class="lineCov">          1 :              JSON.stringify(a, [&quot;__proto__&quot;, &quot;x&quot;, &quot;__proto__&quot;]));</span>
+<span class="lineNum">      27 </span><span class="lineCov">          1 : a.__proto__ = { x : 7 };</span>
+<span class="lineNum">      28 </span><span class="lineCov">          1 : assertEquals('{&quot;__proto__&quot;:{&quot;__proto__&quot;:{&quot;__proto__&quot;:null},&quot;x&quot;:7},&quot;x&quot;:8}',</span>
+<span class="lineNum">      29 </span><span class="lineCov">          1 :              JSON.stringify(a, [&quot;__proto__&quot;, &quot;x&quot;]));</span>
+<span class="lineNum">      30 </span><span class="lineCov">          1 : var b = { __proto__: { x: 9 } };</span>
+<span class="lineNum">      31 </span><span class="lineCov">          1 : assertEquals('{}', JSON.stringify(b));</span>
+<span class="lineNum">      32 </span><span class="lineCov">          1 : assertEquals('{&quot;x&quot;:9}', JSON.stringify(b, [&quot;x&quot;]));</span>
+<span class="lineNum">      33 </span><span class="lineCov">          1 : var c = {x: 10};</span>
+<span class="lineNum">      34 </span><span class="lineCov">          1 : Object.defineProperty(c, 'x', { enumerable: false });</span>
+<span class="lineNum">      35 </span><span class="lineCov">          1 : assertEquals('{}', JSON.stringify(c));</span>
+<span class="lineNum">      36 </span><span class="lineCov">          1 : assertEquals('{&quot;x&quot;:10}', JSON.stringify(c, [&quot;x&quot;]));</span>
+<span class="lineNum">      37 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      38 </span><span class="lineCov">          1 : // Arrays are not affected by the replacer array.</span>
+<span class="lineNum">      39 </span><span class="lineCov">          1 : assertEquals(&quot;[9,8,7]&quot;, JSON.stringify([9, 8, 7], [1, 1]));</span>
+<span class="lineNum">      40 </span><span class="lineCov">          1 : var mixed_arr = [11,12,13];</span>
+<span class="lineNum">      41 </span><span class="lineCov">          1 : mixed_arr.x = 10;</span>
+<span class="lineNum">      42 </span><span class="lineCov">          1 : assertEquals('[11,12,13]', JSON.stringify(mixed_arr, [1, 0, 1]));</span>
+<span class="lineNum">      43 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      44 </span><span class="lineCov">          1 : // Array elements of objects are affected.</span>
+<span class="lineNum">      45 </span><span class="lineCov">          1 : var mixed_obj = { x : 3 };</span>
+<span class="lineNum">      46 </span><span class="lineCov">          1 : mixed_obj[0] = 6;</span>
+<span class="lineNum">      47 </span><span class="lineCov">          1 : mixed_obj[1] = 5;</span>
+<span class="lineNum">      48 </span><span class="lineCov">          1 : assertEquals('{&quot;1&quot;:5,&quot;0&quot;:6}', JSON.stringify(mixed_obj, [1, 0, 1]));</span>
+<span class="lineNum">      49 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      50 </span><span class="lineCov">          1 : // Nested object.</span>
+<span class="lineNum">      51 </span><span class="lineCov">          1 : assertEquals('{&quot;z&quot;:{&quot;x&quot;:3},&quot;x&quot;:1}',</span>
+<span class="lineNum">      52 </span><span class="lineCov">          1 :              JSON.stringify({ x: 1, y:2, z: {x:3, b:4}}, [&quot;z&quot;,&quot;x&quot;]));</span>
+<span class="lineNum">      53 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      54 </span><span class="lineCov">          1 : // Objects in the replacer array are ignored.</span>
+<span class="lineNum">      55 </span><span class="lineCov">          1 : assertEquals('{}',</span>
+<span class="lineNum">      56 </span><span class="lineCov">          1 :              JSON.stringify({ x : 1, &quot;1&quot;: 1 }, [{}]));</span>
+<span class="lineNum">      57 </span><span class="lineCov">          1 : assertEquals('{}',</span>
+<span class="lineNum">      58 </span><span class="lineCov">          1 :              JSON.stringify({ x : 1, &quot;1&quot;: 1 }, [true, undefined, null]));</span>
+<a name="59"><span class="lineNum">      59 </span><span class="lineCov">          1 : assertEquals('{}',</span></a>
+<span class="lineNum">      60 </span><span class="lineCov">          1 :              JSON.stringify({ x : 1, &quot;1&quot;: 1 },</span>
+<span class="lineNum">      61 </span><span class="lineCov">          1 :                             [{ toString: function() { return &quot;x&quot;;} }]));</span>
+<a name="62"><span class="lineNum">      62 </span><span class="lineCov">          1 : assertEquals('{}',</span></a>
+<span class="lineNum">      63 </span><span class="lineCov">          1 :              JSON.stringify({ x : 1, &quot;1&quot;: 1 },</span>
+<span class="lineNum">      64 </span><span class="lineCov">          1 :                             [{ valueOf: function() { return 1;} }]));</span>
+<span class="lineNum">      65 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      66 </span><span class="lineCov">          1 : // Make sure that property names that clash with the names of Object.prototype</span>
+<span class="lineNum">      67 </span><span class="lineCov">          1 : // still works.</span>
+<span class="lineNum">      68 </span><span class="lineCov">          1 : assertEquals('{&quot;toString&quot;:42}', JSON.stringify({ toString: 42 }, [&quot;toString&quot;]));</span>
+<span class="lineNum">      69 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      70 </span><span class="lineCov">          1 : // Number wrappers and String wrappers should be unwrapped.</span>
+<span class="lineNum">      71 </span><span class="lineCov">          1 : assertEquals('{&quot;1&quot;:1,&quot;s&quot;:&quot;s&quot;}',</span>
+<span class="lineNum">      72 </span><span class="lineCov">          1 :              JSON.stringify({ 1: 1, s: &quot;s&quot; },</span>
+<span class="lineNum">      73 </span><span class="lineCov">          1 :                             [new Number(1), new String(&quot;s&quot;)]));</span>
 </pre>
       </td>
     </tr>

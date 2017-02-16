@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">58</td>
-            <td class="headerCovTableEntry">67</td>
-            <td class="headerCovTableEntryMed">86.6 %</td>
+            <td class="headerCovTableEntry">192</td>
+            <td class="headerCovTableEntry">192</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">2</td>
@@ -111,15 +111,15 @@
 <span class="lineNum">      49 </span><span class="lineCov">        101 :   %OptimizeFunctionOnNextCall(doRoundToDouble);</span>
 <span class="lineNum">      50 </span><span class="lineCov">        101 :   assertEquals(expect, doRoundToDouble(input));</span>
 <span class="lineNum">      51 </span><span class="lineCov">        101 : }</span>
-<span class="lineNum">      52 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      53 </span><span class="lineNoCov">          0 : testRound(0, 0);</span>
-<span class="lineNum">      54 </span><span class="lineNoCov">          0 : testRound(-0, -0);</span>
-<span class="lineNum">      55 </span><span class="lineNoCov">          0 : testRound(Infinity, Infinity);</span>
-<span class="lineNum">      56 </span><span class="lineNoCov">          0 : testRound(-Infinity, -Infinity);</span>
-<span class="lineNum">      57 </span><span class="lineNoCov">          0 : testRound(NaN, NaN);</span>
-<span class="lineNum">      58 </span><span class="lineNoCov">          0 : </span>
-<a name="59"><span class="lineNum">      59 </span><span class="lineNoCov">          0 : // Regression test for a bug where a negative zero coming from Math.round</span></a>
-<span class="lineNum">      60 </span><span class="lineNoCov">          0 : // was not properly handled by other operations.</span>
+<span class="lineNum">      52 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      53 </span><span class="lineCov">          1 : testRound(0, 0);</span>
+<span class="lineNum">      54 </span><span class="lineCov">          1 : testRound(-0, -0);</span>
+<span class="lineNum">      55 </span><span class="lineCov">          1 : testRound(Infinity, Infinity);</span>
+<span class="lineNum">      56 </span><span class="lineCov">          1 : testRound(-Infinity, -Infinity);</span>
+<span class="lineNum">      57 </span><span class="lineCov">          1 : testRound(NaN, NaN);</span>
+<span class="lineNum">      58 </span><span class="lineCov">          1 : </span>
+<a name="59"><span class="lineNum">      59 </span><span class="lineCov">          1 : // Regression test for a bug where a negative zero coming from Math.round</span></a>
+<span class="lineNum">      60 </span><span class="lineCov">          1 : // was not properly handled by other operations.</span>
 <span class="lineNum">      61 </span><span class="lineCov">          2 : function roundsum(i, n) {</span>
 <span class="lineNum">      62 </span><span class="lineCov">          2 :   var ret = Math.round(n);</span>
 <span class="lineNum">      63 </span><span class="lineCov">          2 :   while (--i &gt; 0) {</span>
@@ -127,130 +127,130 @@
 <span class="lineNum">      65 </span><span class="lineCov">          2 :   }</span>
 <span class="lineNum">      66 </span><span class="lineCov">          2 :   return ret;</span>
 <span class="lineNum">      67 </span><span class="lineCov">          2 : }</span>
-<span class="lineNum">      68 </span>            : assertEquals(-0, roundsum(1, -0));
-<span class="lineNum">      69 </span>            : %OptimizeFunctionOnNextCall(roundsum);
-<span class="lineNum">      70 </span>            : // The optimized function will deopt.  Run it with enough iterations to try
-<span class="lineNum">      71 </span>            : // to optimize via OSR (triggering the bug).
-<span class="lineNum">      72 </span>            : assertEquals(-0, roundsum(100000, -0));
-<span class="lineNum">      73 </span>            : 
-<span class="lineNum">      74 </span>            : testRound(1, 0.5);
-<span class="lineNum">      75 </span>            : testRound(1, 0.7);
-<span class="lineNum">      76 </span>            : testRound(1, 1);
-<span class="lineNum">      77 </span>            : testRound(1, 1.1);
-<span class="lineNum">      78 </span>            : testRound(1, 1.49999);
-<span class="lineNum">      79 </span>            : testRound(-0, -0.5);
-<span class="lineNum">      80 </span>            : testRound(-1, -0.5000000000000001);
-<span class="lineNum">      81 </span>            : testRound(-1, -0.7);
-<span class="lineNum">      82 </span>            : testRound(-1, -1);
-<span class="lineNum">      83 </span>            : testRound(-1, -1.1);
-<span class="lineNum">      84 </span>            : testRound(-1, -1.49999);
-<span class="lineNum">      85 </span>            : testRound(-1, -1.5);
-<span class="lineNum">      86 </span>            : 
-<span class="lineNum">      87 </span>            : testRound(9007199254740990, 9007199254740990);
-<span class="lineNum">      88 </span>            : testRound(9007199254740991, 9007199254740991);
-<span class="lineNum">      89 </span>            : testRound(-9007199254740990, -9007199254740990);
-<span class="lineNum">      90 </span>            : testRound(-9007199254740991, -9007199254740991);
-<span class="lineNum">      91 </span>            : testRound(Number.MAX_VALUE, Number.MAX_VALUE);
-<span class="lineNum">      92 </span>            : testRound(-Number.MAX_VALUE, -Number.MAX_VALUE);
-<span class="lineNum">      93 </span>            : testRound(Number.MAX_SAFE_INTEGER, Number.MAX_SAFE_INTEGER);
-<span class="lineNum">      94 </span>            : testRound(Number.MAX_SAFE_INTEGER + 1, Number.MAX_SAFE_INTEGER + 1);
-<span class="lineNum">      95 </span>            : testRound(Number.MAX_SAFE_INTEGER + 2, Number.MAX_SAFE_INTEGER + 2);
-<span class="lineNum">      96 </span>            : testRound(Number.MAX_SAFE_INTEGER + 3, Number.MAX_SAFE_INTEGER + 3);
-<span class="lineNum">      97 </span>            : testRound(Number.MAX_SAFE_INTEGER + 4, Number.MAX_SAFE_INTEGER + 4);
-<span class="lineNum">      98 </span>            : testRound(Number.MIN_SAFE_INTEGER, Number.MIN_SAFE_INTEGER);
-<span class="lineNum">      99 </span>            : testRound(Number.MIN_SAFE_INTEGER - 1, Number.MIN_SAFE_INTEGER - 1);
-<span class="lineNum">     100 </span>            : testRound(Number.MIN_SAFE_INTEGER - 2, Number.MIN_SAFE_INTEGER - 2);
-<span class="lineNum">     101 </span>            : testRound(Number.MIN_SAFE_INTEGER - 3, Number.MIN_SAFE_INTEGER - 3);
-<span class="lineNum">     102 </span>            : 
-<span class="lineNum">     103 </span>            : testRound(536870911, 536870910.5);
-<span class="lineNum">     104 </span>            : testRound(536870911, 536870911);
-<span class="lineNum">     105 </span>            : testRound(536870911, 536870911.4);
-<span class="lineNum">     106 </span>            : testRound(536870912, 536870911.5);
-<span class="lineNum">     107 </span>            : testRound(536870912, 536870912);
-<span class="lineNum">     108 </span>            : testRound(536870912, 536870912.4);
-<span class="lineNum">     109 </span>            : testRound(536870913, 536870912.5);
-<span class="lineNum">     110 </span>            : testRound(536870913, 536870913);
-<span class="lineNum">     111 </span>            : testRound(536870913, 536870913.4);
-<span class="lineNum">     112 </span>            : testRound(1073741823, 1073741822.5);
-<span class="lineNum">     113 </span>            : testRound(1073741823, 1073741823);
-<span class="lineNum">     114 </span>            : testRound(1073741823, 1073741823.4);
-<span class="lineNum">     115 </span>            : testRound(1073741824, 1073741823.5);
-<span class="lineNum">     116 </span>            : testRound(1073741824, 1073741824);
-<span class="lineNum">     117 </span>            : testRound(1073741824, 1073741824.4);
-<span class="lineNum">     118 </span>            : testRound(1073741825, 1073741824.5);
-<span class="lineNum">     119 </span>            : testRound(2147483647, 2147483646.5);
-<span class="lineNum">     120 </span>            : testRound(2147483647, 2147483647);
-<span class="lineNum">     121 </span>            : testRound(2147483647, 2147483647.4);
-<span class="lineNum">     122 </span>            : testRound(2147483648, 2147483647.5);
-<span class="lineNum">     123 </span>            : testRound(2147483648, 2147483648);
-<span class="lineNum">     124 </span>            : testRound(2147483648, 2147483648.4);
-<span class="lineNum">     125 </span>            : testRound(2147483649, 2147483648.5);
-<span class="lineNum">     126 </span>            : 
-<span class="lineNum">     127 </span>            : // Tests based on WebKit LayoutTests
-<span class="lineNum">     128 </span>            : 
-<span class="lineNum">     129 </span>            : testRound(0, 0.4);
-<span class="lineNum">     130 </span>            : testRound(-0, -0.4);
-<span class="lineNum">     131 </span>            : testRound(-0, -0.5);
-<span class="lineNum">     132 </span>            : testRound(1, 0.6);
-<span class="lineNum">     133 </span>            : testRound(-1, -0.6);
-<span class="lineNum">     134 </span>            : testRound(2, 1.5);
-<span class="lineNum">     135 </span>            : testRound(2, 1.6);
-<span class="lineNum">     136 </span>            : testRound(-2, -1.6);
-<span class="lineNum">     137 </span>            : testRound(8640000000000000, 8640000000000000);
-<span class="lineNum">     138 </span>            : testRound(8640000000000001, 8640000000000001);
-<span class="lineNum">     139 </span>            : testRound(8640000000000002, 8640000000000002);
-<span class="lineNum">     140 </span>            : testRound(9007199254740990, 9007199254740990);
-<span class="lineNum">     141 </span>            : testRound(9007199254740991, 9007199254740991);
-<span class="lineNum">     142 </span>            : testRound(1.7976931348623157e+308, 1.7976931348623157e+308);
-<span class="lineNum">     143 </span>            : testRound(-8640000000000000, -8640000000000000);
-<span class="lineNum">     144 </span>            : testRound(-8640000000000001, -8640000000000001);
-<span class="lineNum">     145 </span>            : testRound(-8640000000000002, -8640000000000002);
-<span class="lineNum">     146 </span>            : testRound(-9007199254740990, -9007199254740990);
-<span class="lineNum">     147 </span>            : testRound(-9007199254740991, -9007199254740991);
-<span class="lineNum">     148 </span>            : testRound(-1.7976931348623157e+308, -1.7976931348623157e+308);
-<span class="lineNum">     149 </span>            : testRound(Infinity, Infinity);
-<span class="lineNum">     150 </span>            : testRound(-Infinity, -Infinity);
-<span class="lineNum">     151 </span>            : 
-<span class="lineNum">     152 </span>            :   // Some special double number cases.
-<span class="lineNum">     153 </span>            : var ulp = Math.pow(2, -1022 - 52);
-<span class="lineNum">     154 </span>            : var max_denormal = (Math.pow(2, 52) - 1) * ulp;
-<span class="lineNum">     155 </span>            : var min_normal = Math.pow(2, -1022);
-<span class="lineNum">     156 </span>            : var max_fraction = Math.pow(2, 52) - 0.5;
-<span class="lineNum">     157 </span>            : var min_nonfraction = Math.pow(2, 52);
-<span class="lineNum">     158 </span>            : var max_non_infinite = Number.MAX_VALUE;
-<span class="lineNum">     159 </span>            : 
-<span class="lineNum">     160 </span>            : var max_smi31 = Math.pow(2,30) - 1;
-<span class="lineNum">     161 </span>            : var min_smi31 = -Math.pow(2,30);
-<span class="lineNum">     162 </span>            : var max_smi32 = Math.pow(2,31) - 1;
-<span class="lineNum">     163 </span>            : var min_smi32 = -Math.pow(2,31);
-<span class="lineNum">     164 </span>            : 
-<span class="lineNum">     165 </span>            : testRound(0, ulp);
-<span class="lineNum">     166 </span>            : testRound(0, max_denormal);
-<span class="lineNum">     167 </span>            : testRound(0, min_normal);
-<span class="lineNum">     168 </span>            : testRound(0, 0.49999999999999994);
-<span class="lineNum">     169 </span>            : testRound(1, 0.5);
-<span class="lineNum">     170 </span>            : testRound(Math.pow(2,52), max_fraction);
-<span class="lineNum">     171 </span>            : testRound(min_nonfraction, min_nonfraction);
-<span class="lineNum">     172 </span>            : testRound(max_non_infinite, max_non_infinite);
-<span class="lineNum">     173 </span>            : 
-<span class="lineNum">     174 </span>            : testRound(max_smi31, max_smi31 - 0.5);
-<span class="lineNum">     175 </span>            : testRound(max_smi31 + 1, max_smi31 + 0.5);
-<span class="lineNum">     176 </span>            : testRound(max_smi32, max_smi32 - 0.5);
-<span class="lineNum">     177 </span>            : testRound(max_smi32 + 1, max_smi32 + 0.5);
-<span class="lineNum">     178 </span>            : 
-<span class="lineNum">     179 </span>            : testRound(-0, -ulp);
-<span class="lineNum">     180 </span>            : testRound(-0, -max_denormal);
-<span class="lineNum">     181 </span>            : testRound(-0, -min_normal);
-<span class="lineNum">     182 </span>            : testRound(-0, -0.49999999999999994);
-<span class="lineNum">     183 </span>            : testRound(-0, -0.5);
-<span class="lineNum">     184 </span>            : testRound(-Math.pow(2,52)+1, -max_fraction);
-<span class="lineNum">     185 </span>            : testRound(-min_nonfraction, -min_nonfraction);
-<span class="lineNum">     186 </span>            : testRound(-max_non_infinite, -max_non_infinite);
-<span class="lineNum">     187 </span>            : 
-<span class="lineNum">     188 </span>            : testRound(min_smi31, min_smi31 - 0.5);
-<span class="lineNum">     189 </span>            : testRound(min_smi31 + 1, min_smi31 + 0.5);
-<span class="lineNum">     190 </span>            : testRound(min_smi32, min_smi32 - 0.5);
-<span class="lineNum">     191 </span>            : testRound(min_smi32 + 1, min_smi32 + 0.5);
+<span class="lineNum">      68 </span><span class="lineCov">          1 : assertEquals(-0, roundsum(1, -0));</span>
+<span class="lineNum">      69 </span><span class="lineCov">          1 : %OptimizeFunctionOnNextCall(roundsum);</span>
+<span class="lineNum">      70 </span><span class="lineCov">          1 : // The optimized function will deopt.  Run it with enough iterations to try</span>
+<span class="lineNum">      71 </span><span class="lineCov">          1 : // to optimize via OSR (triggering the bug).</span>
+<span class="lineNum">      72 </span><span class="lineCov">          1 : assertEquals(-0, roundsum(100000, -0));</span>
+<span class="lineNum">      73 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      74 </span><span class="lineCov">          1 : testRound(1, 0.5);</span>
+<span class="lineNum">      75 </span><span class="lineCov">          1 : testRound(1, 0.7);</span>
+<span class="lineNum">      76 </span><span class="lineCov">          1 : testRound(1, 1);</span>
+<span class="lineNum">      77 </span><span class="lineCov">          1 : testRound(1, 1.1);</span>
+<span class="lineNum">      78 </span><span class="lineCov">          1 : testRound(1, 1.49999);</span>
+<span class="lineNum">      79 </span><span class="lineCov">          1 : testRound(-0, -0.5);</span>
+<span class="lineNum">      80 </span><span class="lineCov">          1 : testRound(-1, -0.5000000000000001);</span>
+<span class="lineNum">      81 </span><span class="lineCov">          1 : testRound(-1, -0.7);</span>
+<span class="lineNum">      82 </span><span class="lineCov">          1 : testRound(-1, -1);</span>
+<span class="lineNum">      83 </span><span class="lineCov">          1 : testRound(-1, -1.1);</span>
+<span class="lineNum">      84 </span><span class="lineCov">          1 : testRound(-1, -1.49999);</span>
+<span class="lineNum">      85 </span><span class="lineCov">          1 : testRound(-1, -1.5);</span>
+<span class="lineNum">      86 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      87 </span><span class="lineCov">          1 : testRound(9007199254740990, 9007199254740990);</span>
+<span class="lineNum">      88 </span><span class="lineCov">          1 : testRound(9007199254740991, 9007199254740991);</span>
+<span class="lineNum">      89 </span><span class="lineCov">          1 : testRound(-9007199254740990, -9007199254740990);</span>
+<span class="lineNum">      90 </span><span class="lineCov">          1 : testRound(-9007199254740991, -9007199254740991);</span>
+<span class="lineNum">      91 </span><span class="lineCov">          1 : testRound(Number.MAX_VALUE, Number.MAX_VALUE);</span>
+<span class="lineNum">      92 </span><span class="lineCov">          1 : testRound(-Number.MAX_VALUE, -Number.MAX_VALUE);</span>
+<span class="lineNum">      93 </span><span class="lineCov">          1 : testRound(Number.MAX_SAFE_INTEGER, Number.MAX_SAFE_INTEGER);</span>
+<span class="lineNum">      94 </span><span class="lineCov">          1 : testRound(Number.MAX_SAFE_INTEGER + 1, Number.MAX_SAFE_INTEGER + 1);</span>
+<span class="lineNum">      95 </span><span class="lineCov">          1 : testRound(Number.MAX_SAFE_INTEGER + 2, Number.MAX_SAFE_INTEGER + 2);</span>
+<span class="lineNum">      96 </span><span class="lineCov">          1 : testRound(Number.MAX_SAFE_INTEGER + 3, Number.MAX_SAFE_INTEGER + 3);</span>
+<span class="lineNum">      97 </span><span class="lineCov">          1 : testRound(Number.MAX_SAFE_INTEGER + 4, Number.MAX_SAFE_INTEGER + 4);</span>
+<span class="lineNum">      98 </span><span class="lineCov">          1 : testRound(Number.MIN_SAFE_INTEGER, Number.MIN_SAFE_INTEGER);</span>
+<span class="lineNum">      99 </span><span class="lineCov">          1 : testRound(Number.MIN_SAFE_INTEGER - 1, Number.MIN_SAFE_INTEGER - 1);</span>
+<span class="lineNum">     100 </span><span class="lineCov">          1 : testRound(Number.MIN_SAFE_INTEGER - 2, Number.MIN_SAFE_INTEGER - 2);</span>
+<span class="lineNum">     101 </span><span class="lineCov">          1 : testRound(Number.MIN_SAFE_INTEGER - 3, Number.MIN_SAFE_INTEGER - 3);</span>
+<span class="lineNum">     102 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     103 </span><span class="lineCov">          1 : testRound(536870911, 536870910.5);</span>
+<span class="lineNum">     104 </span><span class="lineCov">          1 : testRound(536870911, 536870911);</span>
+<span class="lineNum">     105 </span><span class="lineCov">          1 : testRound(536870911, 536870911.4);</span>
+<span class="lineNum">     106 </span><span class="lineCov">          1 : testRound(536870912, 536870911.5);</span>
+<span class="lineNum">     107 </span><span class="lineCov">          1 : testRound(536870912, 536870912);</span>
+<span class="lineNum">     108 </span><span class="lineCov">          1 : testRound(536870912, 536870912.4);</span>
+<span class="lineNum">     109 </span><span class="lineCov">          1 : testRound(536870913, 536870912.5);</span>
+<span class="lineNum">     110 </span><span class="lineCov">          1 : testRound(536870913, 536870913);</span>
+<span class="lineNum">     111 </span><span class="lineCov">          1 : testRound(536870913, 536870913.4);</span>
+<span class="lineNum">     112 </span><span class="lineCov">          1 : testRound(1073741823, 1073741822.5);</span>
+<span class="lineNum">     113 </span><span class="lineCov">          1 : testRound(1073741823, 1073741823);</span>
+<span class="lineNum">     114 </span><span class="lineCov">          1 : testRound(1073741823, 1073741823.4);</span>
+<span class="lineNum">     115 </span><span class="lineCov">          1 : testRound(1073741824, 1073741823.5);</span>
+<span class="lineNum">     116 </span><span class="lineCov">          1 : testRound(1073741824, 1073741824);</span>
+<span class="lineNum">     117 </span><span class="lineCov">          1 : testRound(1073741824, 1073741824.4);</span>
+<span class="lineNum">     118 </span><span class="lineCov">          1 : testRound(1073741825, 1073741824.5);</span>
+<span class="lineNum">     119 </span><span class="lineCov">          1 : testRound(2147483647, 2147483646.5);</span>
+<span class="lineNum">     120 </span><span class="lineCov">          1 : testRound(2147483647, 2147483647);</span>
+<span class="lineNum">     121 </span><span class="lineCov">          1 : testRound(2147483647, 2147483647.4);</span>
+<span class="lineNum">     122 </span><span class="lineCov">          1 : testRound(2147483648, 2147483647.5);</span>
+<span class="lineNum">     123 </span><span class="lineCov">          1 : testRound(2147483648, 2147483648);</span>
+<span class="lineNum">     124 </span><span class="lineCov">          1 : testRound(2147483648, 2147483648.4);</span>
+<span class="lineNum">     125 </span><span class="lineCov">          1 : testRound(2147483649, 2147483648.5);</span>
+<span class="lineNum">     126 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     127 </span><span class="lineCov">          1 : // Tests based on WebKit LayoutTests</span>
+<span class="lineNum">     128 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     129 </span><span class="lineCov">          1 : testRound(0, 0.4);</span>
+<span class="lineNum">     130 </span><span class="lineCov">          1 : testRound(-0, -0.4);</span>
+<span class="lineNum">     131 </span><span class="lineCov">          1 : testRound(-0, -0.5);</span>
+<span class="lineNum">     132 </span><span class="lineCov">          1 : testRound(1, 0.6);</span>
+<span class="lineNum">     133 </span><span class="lineCov">          1 : testRound(-1, -0.6);</span>
+<span class="lineNum">     134 </span><span class="lineCov">          1 : testRound(2, 1.5);</span>
+<span class="lineNum">     135 </span><span class="lineCov">          1 : testRound(2, 1.6);</span>
+<span class="lineNum">     136 </span><span class="lineCov">          1 : testRound(-2, -1.6);</span>
+<span class="lineNum">     137 </span><span class="lineCov">          1 : testRound(8640000000000000, 8640000000000000);</span>
+<span class="lineNum">     138 </span><span class="lineCov">          1 : testRound(8640000000000001, 8640000000000001);</span>
+<span class="lineNum">     139 </span><span class="lineCov">          1 : testRound(8640000000000002, 8640000000000002);</span>
+<span class="lineNum">     140 </span><span class="lineCov">          1 : testRound(9007199254740990, 9007199254740990);</span>
+<span class="lineNum">     141 </span><span class="lineCov">          1 : testRound(9007199254740991, 9007199254740991);</span>
+<span class="lineNum">     142 </span><span class="lineCov">          1 : testRound(1.7976931348623157e+308, 1.7976931348623157e+308);</span>
+<span class="lineNum">     143 </span><span class="lineCov">          1 : testRound(-8640000000000000, -8640000000000000);</span>
+<span class="lineNum">     144 </span><span class="lineCov">          1 : testRound(-8640000000000001, -8640000000000001);</span>
+<span class="lineNum">     145 </span><span class="lineCov">          1 : testRound(-8640000000000002, -8640000000000002);</span>
+<span class="lineNum">     146 </span><span class="lineCov">          1 : testRound(-9007199254740990, -9007199254740990);</span>
+<span class="lineNum">     147 </span><span class="lineCov">          1 : testRound(-9007199254740991, -9007199254740991);</span>
+<span class="lineNum">     148 </span><span class="lineCov">          1 : testRound(-1.7976931348623157e+308, -1.7976931348623157e+308);</span>
+<span class="lineNum">     149 </span><span class="lineCov">          1 : testRound(Infinity, Infinity);</span>
+<span class="lineNum">     150 </span><span class="lineCov">          1 : testRound(-Infinity, -Infinity);</span>
+<span class="lineNum">     151 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     152 </span><span class="lineCov">          1 :   // Some special double number cases.</span>
+<span class="lineNum">     153 </span><span class="lineCov">          1 : var ulp = Math.pow(2, -1022 - 52);</span>
+<span class="lineNum">     154 </span><span class="lineCov">          1 : var max_denormal = (Math.pow(2, 52) - 1) * ulp;</span>
+<span class="lineNum">     155 </span><span class="lineCov">          1 : var min_normal = Math.pow(2, -1022);</span>
+<span class="lineNum">     156 </span><span class="lineCov">          1 : var max_fraction = Math.pow(2, 52) - 0.5;</span>
+<span class="lineNum">     157 </span><span class="lineCov">          1 : var min_nonfraction = Math.pow(2, 52);</span>
+<span class="lineNum">     158 </span><span class="lineCov">          1 : var max_non_infinite = Number.MAX_VALUE;</span>
+<span class="lineNum">     159 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     160 </span><span class="lineCov">          1 : var max_smi31 = Math.pow(2,30) - 1;</span>
+<span class="lineNum">     161 </span><span class="lineCov">          1 : var min_smi31 = -Math.pow(2,30);</span>
+<span class="lineNum">     162 </span><span class="lineCov">          1 : var max_smi32 = Math.pow(2,31) - 1;</span>
+<span class="lineNum">     163 </span><span class="lineCov">          1 : var min_smi32 = -Math.pow(2,31);</span>
+<span class="lineNum">     164 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     165 </span><span class="lineCov">          1 : testRound(0, ulp);</span>
+<span class="lineNum">     166 </span><span class="lineCov">          1 : testRound(0, max_denormal);</span>
+<span class="lineNum">     167 </span><span class="lineCov">          1 : testRound(0, min_normal);</span>
+<span class="lineNum">     168 </span><span class="lineCov">          1 : testRound(0, 0.49999999999999994);</span>
+<span class="lineNum">     169 </span><span class="lineCov">          1 : testRound(1, 0.5);</span>
+<span class="lineNum">     170 </span><span class="lineCov">          1 : testRound(Math.pow(2,52), max_fraction);</span>
+<span class="lineNum">     171 </span><span class="lineCov">          1 : testRound(min_nonfraction, min_nonfraction);</span>
+<span class="lineNum">     172 </span><span class="lineCov">          1 : testRound(max_non_infinite, max_non_infinite);</span>
+<span class="lineNum">     173 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     174 </span><span class="lineCov">          1 : testRound(max_smi31, max_smi31 - 0.5);</span>
+<span class="lineNum">     175 </span><span class="lineCov">          1 : testRound(max_smi31 + 1, max_smi31 + 0.5);</span>
+<span class="lineNum">     176 </span><span class="lineCov">          1 : testRound(max_smi32, max_smi32 - 0.5);</span>
+<span class="lineNum">     177 </span><span class="lineCov">          1 : testRound(max_smi32 + 1, max_smi32 + 0.5);</span>
+<span class="lineNum">     178 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     179 </span><span class="lineCov">          1 : testRound(-0, -ulp);</span>
+<span class="lineNum">     180 </span><span class="lineCov">          1 : testRound(-0, -max_denormal);</span>
+<span class="lineNum">     181 </span><span class="lineCov">          1 : testRound(-0, -min_normal);</span>
+<span class="lineNum">     182 </span><span class="lineCov">          1 : testRound(-0, -0.49999999999999994);</span>
+<span class="lineNum">     183 </span><span class="lineCov">          1 : testRound(-0, -0.5);</span>
+<span class="lineNum">     184 </span><span class="lineCov">          1 : testRound(-Math.pow(2,52)+1, -max_fraction);</span>
+<span class="lineNum">     185 </span><span class="lineCov">          1 : testRound(-min_nonfraction, -min_nonfraction);</span>
+<span class="lineNum">     186 </span><span class="lineCov">          1 : testRound(-max_non_infinite, -max_non_infinite);</span>
+<span class="lineNum">     187 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     188 </span><span class="lineCov">          1 : testRound(min_smi31, min_smi31 - 0.5);</span>
+<span class="lineNum">     189 </span><span class="lineCov">          1 : testRound(min_smi31 + 1, min_smi31 + 0.5);</span>
+<span class="lineNum">     190 </span><span class="lineCov">          1 : testRound(min_smi32, min_smi32 - 0.5);</span>
+<span class="lineNum">     191 </span><span class="lineCov">          1 : testRound(min_smi32 + 1, min_smi32 + 0.5);</span>
 </pre>
       </td>
     </tr>

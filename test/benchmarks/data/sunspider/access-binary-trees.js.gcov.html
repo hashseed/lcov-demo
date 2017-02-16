@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">25</td>
-            <td class="headerCovTableEntry">27</td>
-            <td class="headerCovTableEntryHi">92.6 %</td>
+            <td class="headerCovTableEntry">54</td>
+            <td class="headerCovTableEntry">54</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">3</td>
@@ -69,12 +69,12 @@
 <span class="lineNum">       7 </span><span class="lineCov">      42072 :    this.right = right;</span>
 <span class="lineNum">       8 </span><span class="lineCov">      42072 :    this.item = item;</span>
 <a name="9"><span class="lineNum">       9 </span><span class="lineCov">      42072 : }</span></a>
-<span class="lineNum">      10 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      10 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      11 </span><span class="lineCov">      42072 : TreeNode.prototype.itemCheck = function(){</span>
 <span class="lineNum">      12 </span><span class="lineCov">      42072 :    if (this.left==null) return this.item;</span>
 <span class="lineNum">      13 </span><span class="lineCov">      42072 :    else return this.item + this.left.itemCheck() - this.right.itemCheck();</span>
 <a name="14"><span class="lineNum">      14 </span><span class="lineCov">      42072 : }</span></a>
-<span class="lineNum">      15 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      15 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      16 </span><span class="lineCov">      42072 : function bottomUpTree(item,depth){</span>
 <span class="lineNum">      17 </span><span class="lineCov">      42072 :    if (depth&gt;0){</span>
 <span class="lineNum">      18 </span><span class="lineCov">      42072 :       return new TreeNode(</span>
@@ -87,33 +87,33 @@
 <span class="lineNum">      25 </span><span class="lineCov">      42072 :       return new TreeNode(null,null,item);</span>
 <span class="lineNum">      26 </span><span class="lineCov">      42072 :    }</span>
 <span class="lineNum">      27 </span><span class="lineCov">      42072 : }</span>
-<span class="lineNum">      28 </span>            : 
-<span class="lineNum">      29 </span>            : var ret = 0;
-<span class="lineNum">      30 </span>            : 
-<span class="lineNum">      31 </span>            : for ( var n = 4; n &lt;= 7; n += 1 ) {
-<span class="lineNum">      32 </span>            :     var minDepth = 4;
-<span class="lineNum">      33 </span>            :     var maxDepth = Math.max(minDepth + 2, n);
-<span class="lineNum">      34 </span>            :     var stretchDepth = maxDepth + 1;
-<span class="lineNum">      35 </span>            :     
-<span class="lineNum">      36 </span>            :     var check = bottomUpTree(0,stretchDepth).itemCheck();
-<span class="lineNum">      37 </span>            :     
-<span class="lineNum">      38 </span>            :     var longLivedTree = bottomUpTree(0,maxDepth);
-<span class="lineNum">      39 </span>            :     for (var depth=minDepth; depth&lt;=maxDepth; depth+=2){
-<span class="lineNum">      40 </span>            :         var iterations = 1 &lt;&lt; (maxDepth - depth + minDepth);
-<span class="lineNum">      41 </span>            : 
-<span class="lineNum">      42 </span>            :         check = 0;
-<span class="lineNum">      43 </span>            :         for (var i=1; i&lt;=iterations; i++){
-<span class="lineNum">      44 </span>            :             check += bottomUpTree(i,depth).itemCheck();
-<span class="lineNum">      45 </span>            :             check += bottomUpTree(-i,depth).itemCheck();
-<span class="lineNum">      46 </span>            :         }
-<span class="lineNum">      47 </span>            :     }
-<span class="lineNum">      48 </span>            : 
-<span class="lineNum">      49 </span>            :     ret += longLivedTree.itemCheck();
-<span class="lineNum">      50 </span>            : }
-<span class="lineNum">      51 </span>            : 
-<span class="lineNum">      52 </span>            : var expected = -4;
-<span class="lineNum">      53 </span>            : if (ret != expected)
-<span class="lineNum">      54 </span>            :     throw &quot;ERROR: bad result: expected &quot; + expected + &quot; but got &quot; + ret;
+<span class="lineNum">      28 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      29 </span><span class="lineCov">          1 : var ret = 0;</span>
+<span class="lineNum">      30 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      31 </span><span class="lineCov">          1 : for ( var n = 4; n &lt;= 7; n += 1 ) {</span>
+<span class="lineNum">      32 </span><span class="lineCov">          1 :     var minDepth = 4;</span>
+<span class="lineNum">      33 </span><span class="lineCov">          1 :     var maxDepth = Math.max(minDepth + 2, n);</span>
+<span class="lineNum">      34 </span><span class="lineCov">          1 :     var stretchDepth = maxDepth + 1;</span>
+<span class="lineNum">      35 </span><span class="lineCov">          1 :     </span>
+<span class="lineNum">      36 </span><span class="lineCov">          1 :     var check = bottomUpTree(0,stretchDepth).itemCheck();</span>
+<span class="lineNum">      37 </span><span class="lineCov">          1 :     </span>
+<span class="lineNum">      38 </span><span class="lineCov">          1 :     var longLivedTree = bottomUpTree(0,maxDepth);</span>
+<span class="lineNum">      39 </span><span class="lineCov">          1 :     for (var depth=minDepth; depth&lt;=maxDepth; depth+=2){</span>
+<span class="lineNum">      40 </span><span class="lineCov">          1 :         var iterations = 1 &lt;&lt; (maxDepth - depth + minDepth);</span>
+<span class="lineNum">      41 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      42 </span><span class="lineCov">          1 :         check = 0;</span>
+<span class="lineNum">      43 </span><span class="lineCov">          1 :         for (var i=1; i&lt;=iterations; i++){</span>
+<span class="lineNum">      44 </span><span class="lineCov">          1 :             check += bottomUpTree(i,depth).itemCheck();</span>
+<span class="lineNum">      45 </span><span class="lineCov">          1 :             check += bottomUpTree(-i,depth).itemCheck();</span>
+<span class="lineNum">      46 </span><span class="lineCov">          1 :         }</span>
+<span class="lineNum">      47 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">      48 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      49 </span><span class="lineCov">          1 :     ret += longLivedTree.itemCheck();</span>
+<span class="lineNum">      50 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      51 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      52 </span><span class="lineCov">          1 : var expected = -4;</span>
+<span class="lineNum">      53 </span><span class="lineCov">          1 : if (ret != expected)</span>
+<span class="lineNum">      54 </span><span class="lineCov">          1 :     throw &quot;ERROR: bad result: expected &quot; + expected + &quot; but got &quot; + ret;</span>
 </pre>
       </td>
     </tr>

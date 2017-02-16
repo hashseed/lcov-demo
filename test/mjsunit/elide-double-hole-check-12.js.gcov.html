@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">9</td>
-            <td class="headerCovTableEntry">9</td>
+            <td class="headerCovTableEntry">24</td>
+            <td class="headerCovTableEntry">24</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">1</td>
@@ -69,20 +69,20 @@
 <span class="lineNum">       7 </span><span class="lineCov">          4 : function f1(a, i) {</span>
 <span class="lineNum">       8 </span><span class="lineCov">          4 :   return a[i] + 0.5;</span>
 <span class="lineNum">       9 </span><span class="lineCov">          4 : }</span>
-<span class="lineNum">      10 </span>            : 
-<span class="lineNum">      11 </span>            : var other_realm = Realm.create();
-<span class="lineNum">      12 </span>            : var arr = [,0.0,2.5];
-<span class="lineNum">      13 </span>            : assertEquals(0.5, f1(arr, 1));
-<span class="lineNum">      14 </span>            : assertEquals(0.5, f1(arr, 1));
-<span class="lineNum">      15 </span>            : %OptimizeFunctionOnNextCall(f1);
-<span class="lineNum">      16 </span>            : assertEquals(0.5, f1(arr, 1));
-<span class="lineNum">      17 </span>            : 
-<span class="lineNum">      18 </span>            : Realm.shared = arr.__proto__;
-<span class="lineNum">      19 </span>            : 
-<span class="lineNum">      20 </span>            : // The call syntax is useful to make sure the native context is that of the
-<span class="lineNum">      21 </span>            : // other realm.
-<span class="lineNum">      22 </span>            : Realm.eval(other_realm, &quot;Array.prototype.push.call(Realm.shared, 1);&quot;);
-<span class="lineNum">      23 </span>            : assertEquals(1.5, f1(arr, 0));
+<span class="lineNum">      10 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      11 </span><span class="lineCov">          1 : var other_realm = Realm.create();</span>
+<span class="lineNum">      12 </span><span class="lineCov">          1 : var arr = [,0.0,2.5];</span>
+<span class="lineNum">      13 </span><span class="lineCov">          1 : assertEquals(0.5, f1(arr, 1));</span>
+<span class="lineNum">      14 </span><span class="lineCov">          1 : assertEquals(0.5, f1(arr, 1));</span>
+<span class="lineNum">      15 </span><span class="lineCov">          1 : %OptimizeFunctionOnNextCall(f1);</span>
+<span class="lineNum">      16 </span><span class="lineCov">          1 : assertEquals(0.5, f1(arr, 1));</span>
+<span class="lineNum">      17 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      18 </span><span class="lineCov">          1 : Realm.shared = arr.__proto__;</span>
+<span class="lineNum">      19 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      20 </span><span class="lineCov">          1 : // The call syntax is useful to make sure the native context is that of the</span>
+<span class="lineNum">      21 </span><span class="lineCov">          1 : // other realm.</span>
+<span class="lineNum">      22 </span><span class="lineCov">          1 : Realm.eval(other_realm, &quot;Array.prototype.push.call(Realm.shared, 1);&quot;);</span>
+<span class="lineNum">      23 </span><span class="lineCov">          1 : assertEquals(1.5, f1(arr, 0));</span>
 </pre>
       </td>
     </tr>

@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">39</td>
-            <td class="headerCovTableEntry">64</td>
-            <td class="headerCovTableEntryLo">60.9 %</td>
+            <td class="headerCovTableEntry">73</td>
+            <td class="headerCovTableEntry">73</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">3</td>
@@ -93,45 +93,45 @@
 <a name="31"><span class="lineNum">      31 </span><span class="lineCov">          1 : x = 0;</span></a>
 <span class="lineNum">      32 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      33 </span><span class="lineCov">         10 : function getX() { return x; }</span>
-<span class="lineNum">      34 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      35 </span><span class="lineNoCov">          0 : for (var i = 0; i &lt; 10; i++) {</span>
-<span class="lineNum">      36 </span><span class="lineNoCov">          0 :   assertEquals(i &lt; 5 ? 0 : 42, getX());</span>
+<span class="lineNum">      34 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      35 </span><span class="lineCov">          1 : for (var i = 0; i &lt; 10; i++) {</span>
+<span class="lineNum">      36 </span><span class="lineCov">          1 :   assertEquals(i &lt; 5 ? 0 : 42, getX());</span>
 <span class="lineNum">      37 </span><span class="lineCov">          5 :   if (i == 4) __defineGetter__(&quot;x&quot;, function() { return 42; });</span>
-<span class="lineNum">      38 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">      39 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      40 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      41 </span><span class="lineNoCov">          0 : // Test that installing a setter on the global object instead of a</span>
-<span class="lineNum">      42 </span><span class="lineNoCov">          0 : // normal property works.</span>
-<span class="lineNum">      43 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      44 </span><span class="lineNoCov">          0 : y = 0;</span>
-<a name="45"><span class="lineNum">      45 </span><span class="lineNoCov">          0 : var setter_y;</span></a>
-<span class="lineNum">      46 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      38 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      39 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      40 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      41 </span><span class="lineCov">          1 : // Test that installing a setter on the global object instead of a</span>
+<span class="lineNum">      42 </span><span class="lineCov">          1 : // normal property works.</span>
+<span class="lineNum">      43 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      44 </span><span class="lineCov">          1 : y = 0;</span>
+<a name="45"><span class="lineNum">      45 </span><span class="lineCov">          1 : var setter_y;</span></a>
+<span class="lineNum">      46 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      47 </span><span class="lineCov">         10 : function setY(value) { y = value; }</span>
-<span class="lineNum">      48 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      49 </span><span class="lineNoCov">          0 : for (var i = 0; i &lt; 10; i++) {</span>
-<span class="lineNum">      50 </span><span class="lineNoCov">          0 :   setY(i);</span>
-<span class="lineNum">      51 </span><span class="lineNoCov">          0 :   assertEquals(i &lt; 5 ? i : 2 * i, y);</span>
-<span class="lineNum">      52 </span><span class="lineNoCov">          0 :   if (i == 4) {</span>
+<span class="lineNum">      48 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      49 </span><span class="lineCov">          1 : for (var i = 0; i &lt; 10; i++) {</span>
+<span class="lineNum">      50 </span><span class="lineCov">          1 :   setY(i);</span>
+<span class="lineNum">      51 </span><span class="lineCov">          1 :   assertEquals(i &lt; 5 ? i : 2 * i, y);</span>
+<span class="lineNum">      52 </span><span class="lineCov">          1 :   if (i == 4) {</span>
 <span class="lineNum">      53 </span><span class="lineCov">          5 :     __defineSetter__(&quot;y&quot;, function(value) { setter_y = 2 * value; });</span>
 <span class="lineNum">      54 </span><span class="lineCov">          5 :     __defineGetter__(&quot;y&quot;, function() { return setter_y; });</span>
-<span class="lineNum">      55 </span><span class="lineNoCov">          0 :   }</span>
-<span class="lineNum">      56 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">      57 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      58 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      59 </span><span class="lineNoCov">          0 : // Test that replacing a getter with a normal property works as</span>
-<span class="lineNum">      60 </span><span class="lineNoCov">          0 : // expected.</span>
-<span class="lineNum">      61 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      55 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">      56 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      57 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      58 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      59 </span><span class="lineCov">          1 : // Test that replacing a getter with a normal property works as</span>
+<span class="lineNum">      60 </span><span class="lineCov">          1 : // expected.</span>
+<span class="lineNum">      61 </span><span class="lineCov">          1 : </span>
 <a name="62"><span class="lineNum">      62 </span><span class="lineCov">          5 : __defineGetter__(&quot;z&quot;, function() { return 42; });</span></a>
-<span class="lineNum">      63 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      63 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      64 </span><span class="lineCov">         10 : function getZ() { return z; }</span>
-<span class="lineNum">      65 </span>            : 
-<span class="lineNum">      66 </span>            : for (var i = 0; i &lt; 10; i++) {
-<span class="lineNum">      67 </span>            :   assertEquals(i &lt; 5 ? 42 : 0, getZ());
-<span class="lineNum">      68 </span>            :   if (i == 4) {
-<span class="lineNum">      69 </span>            :     delete z;
-<span class="lineNum">      70 </span>            :     z = 0;
-<span class="lineNum">      71 </span>            :   }
-<span class="lineNum">      72 </span>            : }
+<span class="lineNum">      65 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      66 </span><span class="lineCov">          1 : for (var i = 0; i &lt; 10; i++) {</span>
+<span class="lineNum">      67 </span><span class="lineCov">          1 :   assertEquals(i &lt; 5 ? 42 : 0, getZ());</span>
+<span class="lineNum">      68 </span><span class="lineCov">          1 :   if (i == 4) {</span>
+<span class="lineNum">      69 </span><span class="lineCov">          1 :     delete z;</span>
+<span class="lineNum">      70 </span><span class="lineCov">          1 :     z = 0;</span>
+<span class="lineNum">      71 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">      72 </span><span class="lineCov">          1 : }</span>
 </pre>
       </td>
     </tr>

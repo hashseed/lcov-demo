@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">47</td>
-            <td class="headerCovTableEntry">54</td>
-            <td class="headerCovTableEntryMed">87.0 %</td>
+            <td class="headerCovTableEntry">73</td>
+            <td class="headerCovTableEntry">73</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">6</td>
@@ -93,8 +93,8 @@
 <a name="31"><span class="lineNum">      31 </span><span class="lineCov">         19 : function CallF(o) { return o.f(); }</span></a>
 <span class="lineNum">      32 </span><span class="lineCov">         19 : function SetX(o) { o.x = 42; }</span>
 <span class="lineNum">      33 </span><span class="lineCov">         73 : function SetXY(o,y) { return o.x = y; }</span>
-<a name="34"><span class="lineNum">      34 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">      35 </span><span class="lineNoCov">          0 : </span>
+<a name="34"><span class="lineNum">      34 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      35 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      36 </span><span class="lineCov">         18 : function Test(o) {</span>
 <span class="lineNum">      37 </span><span class="lineCov">         18 :   SetX(o);</span>
 <span class="lineNum">      38 </span><span class="lineCov">         18 :   assertEquals(42, GetX(o));</span>
@@ -108,30 +108,30 @@
 <span class="lineNum">      46 </span><span class="lineCov">         18 :   assertTrue(Test === GetX(o), &quot;Test === GetX(o)&quot;);</span>
 <span class="lineNum">      47 </span><span class="lineCov">         18 :   assertEquals(99, CallF(o));</span>
 <span class="lineNum">      48 </span><span class="lineCov">         18 : }</span>
-<span class="lineNum">      49 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      50 </span><span class="lineNoCov">          0 : // Create a bunch of objects with different layouts.</span>
-<span class="lineNum">      51 </span><span class="lineNoCov">          0 : var o1 = { x: 0, y: 1 };</span>
-<a name="52"><span class="lineNum">      52 </span><span class="lineNoCov">          0 : var o2 = { y: 1, x: 0 };</span></a>
-<span class="lineNum">      53 </span><span class="lineNoCov">          0 : var o3 = { y: 1, z: 2, x: 0 };</span>
+<span class="lineNum">      49 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      50 </span><span class="lineCov">          1 : // Create a bunch of objects with different layouts.</span>
+<span class="lineNum">      51 </span><span class="lineCov">          1 : var o1 = { x: 0, y: 1 };</span>
+<a name="52"><span class="lineNum">      52 </span><span class="lineCov">          1 : var o2 = { y: 1, x: 0 };</span></a>
+<span class="lineNum">      53 </span><span class="lineCov">          1 : var o3 = { y: 1, z: 2, x: 0 };</span>
 <span class="lineNum">      54 </span><span class="lineCov">         18 : o1.f = o2.f = o3.f = function() { return 99; }</span>
-<span class="lineNum">      55 </span>            : 
-<span class="lineNum">      56 </span>            : // Run the test until we're fairly sure we've optimized the
-<span class="lineNum">      57 </span>            : // polymorphic property access.
-<span class="lineNum">      58 </span>            : for (var i = 0; i &lt; 5; i++) {
-<span class="lineNum">      59 </span>            :   Test(o1);
-<span class="lineNum">      60 </span>            :   Test(o2);
-<span class="lineNum">      61 </span>            :   Test(o3);
-<span class="lineNum">      62 </span>            : }
-<span class="lineNum">      63 </span>            : %OptimizeFunctionOnNextCall(Test);
-<span class="lineNum">      64 </span>            : Test(o1);
-<span class="lineNum">      65 </span>            : Test(o2);
-<span class="lineNum">      66 </span>            : Test(o3);
-<span class="lineNum">      67 </span>            : 
-<span class="lineNum">      68 </span>            : // Make sure that the following doesn't crash.
-<span class="lineNum">      69 </span>            : GetX(0);
-<span class="lineNum">      70 </span>            : SetX(0);
-<span class="lineNum">      71 </span>            : SetXY(0, 0);
-<span class="lineNum">      72 </span>            : assertThrows(&quot;CallF(0)&quot;, TypeError);
+<span class="lineNum">      55 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      56 </span><span class="lineCov">          1 : // Run the test until we're fairly sure we've optimized the</span>
+<span class="lineNum">      57 </span><span class="lineCov">          1 : // polymorphic property access.</span>
+<span class="lineNum">      58 </span><span class="lineCov">          1 : for (var i = 0; i &lt; 5; i++) {</span>
+<span class="lineNum">      59 </span><span class="lineCov">          1 :   Test(o1);</span>
+<span class="lineNum">      60 </span><span class="lineCov">          1 :   Test(o2);</span>
+<span class="lineNum">      61 </span><span class="lineCov">          1 :   Test(o3);</span>
+<span class="lineNum">      62 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      63 </span><span class="lineCov">          1 : %OptimizeFunctionOnNextCall(Test);</span>
+<span class="lineNum">      64 </span><span class="lineCov">          1 : Test(o1);</span>
+<span class="lineNum">      65 </span><span class="lineCov">          1 : Test(o2);</span>
+<span class="lineNum">      66 </span><span class="lineCov">          1 : Test(o3);</span>
+<span class="lineNum">      67 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      68 </span><span class="lineCov">          1 : // Make sure that the following doesn't crash.</span>
+<span class="lineNum">      69 </span><span class="lineCov">          1 : GetX(0);</span>
+<span class="lineNum">      70 </span><span class="lineCov">          1 : SetX(0);</span>
+<span class="lineNum">      71 </span><span class="lineCov">          1 : SetXY(0, 0);</span>
+<span class="lineNum">      72 </span><span class="lineCov">          1 : assertThrows(&quot;CallF(0)&quot;, TypeError);</span>
 </pre>
       </td>
     </tr>

@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">45</td>
-            <td class="headerCovTableEntry">61</td>
-            <td class="headerCovTableEntryLo">73.8 %</td>
+            <td class="headerCovTableEntry">63</td>
+            <td class="headerCovTableEntry">63</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">6</td>
@@ -71,7 +71,7 @@
 <span class="lineNum">       9 </span><span class="lineCov">          4 :   assertEquals('b', string[1]);</span>
 <span class="lineNum">      10 </span><span class="lineCov">          4 :   assertEquals('c', string[2]);</span>
 <a name="11"><span class="lineNum">      11 </span><span class="lineCov">          4 : }</span></a>
-<span class="lineNum">      12 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      12 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      13 </span><span class="lineCov">          1 : (function testFastStringWrapperGrow() {</span>
 <span class="lineNum">      14 </span><span class="lineCov">          1 :   var string = new String(&quot;abc&quot;);</span>
 <span class="lineNum">      15 </span><span class="lineCov">          1 :   for (var i = 0; i &lt; limit; i += 2) {</span>
@@ -84,7 +84,7 @@
 <span class="lineNum">      22 </span><span class="lineCov">          1 :   }</span>
 <span class="lineNum">      23 </span><span class="lineCov">          1 :   testStringWrapper(string);</span>
 <a name="24"><span class="lineNum">      24 </span><span class="lineCov">          1 : })();</span></a>
-<span class="lineNum">      25 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      25 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      26 </span><span class="lineCov">          1 : (function testSlowStringWrapperGrow() {</span>
 <span class="lineNum">      27 </span><span class="lineCov">          1 :   var string = new String(&quot;abc&quot;);</span>
 <span class="lineNum">      28 </span><span class="lineCov">          1 :   // Force Slow String Wrapper Elements Kind</span>
@@ -101,27 +101,27 @@
 <span class="lineNum">      39 </span><span class="lineCov">          1 :   testStringWrapper(string);</span>
 <span class="lineNum">      40 </span><span class="lineCov">          1 :   assertEquals(undefined, string[limit]);</span>
 <span class="lineNum">      41 </span><span class="lineCov">          1 : })();</span>
-<a name="42"><span class="lineNum">      42 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">      43 </span><span class="lineNoCov">          0 : </span>
+<a name="42"><span class="lineNum">      42 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      43 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      44 </span><span class="lineCov">          1 : (function testReconfigureStringWrapperElements() {</span>
 <span class="lineNum">      45 </span><span class="lineCov">          1 :   var s = new String('abc');</span>
 <span class="lineNum">      46 </span><span class="lineCov">          1 :   // Can't reconfigure string contents.</span>
 <span class="lineNum">      47 </span><span class="lineCov">          1 :   assertThrows(() =&gt; Object.defineProperty(s, '1', {value: &quot;value&quot;}), TypeError);</span>
-<span class="lineNum">      48 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      49 </span><span class="lineNoCov">          0 :   // Configure a property outside the string range</span>
-<a name="50"><span class="lineNum">      50 </span><span class="lineNoCov">          0 :   var value = 'v1';</span></a>
-<span class="lineNum">      51 </span><span class="lineNoCov">          0 :   Object.defineProperty(s, '3', {</span>
+<span class="lineNum">      48 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      49 </span><span class="lineCov">          1 :   // Configure a property outside the string range</span>
+<a name="50"><span class="lineNum">      50 </span><span class="lineCov">          1 :   var value = 'v1';</span></a>
+<span class="lineNum">      51 </span><span class="lineCov">          1 :   Object.defineProperty(s, '3', {</span>
 <span class="lineNum">      52 </span><span class="lineCov">          2 :     get: () =&gt; {return value},</span>
-<span class="lineNum">      53 </span><span class="lineNoCov">          0 :     configurable:true</span>
-<span class="lineNum">      54 </span><span class="lineNoCov">          0 :   });</span>
-<span class="lineNum">      55 </span><span class="lineNoCov">          0 :   assertEquals('v1', s[3]);</span>
-<span class="lineNum">      56 </span><span class="lineNoCov">          0 :   value = 'v2';</span>
-<span class="lineNum">      57 </span><span class="lineNoCov">          0 :   assertEquals('v2', s[3]);</span>
-<span class="lineNum">      58 </span><span class="lineNoCov">          0 : </span>
-<a name="59"><span class="lineNum">      59 </span><span class="lineNoCov">          0 :   Object.defineProperty(s, '3', {value: 'v3', configurable: false});</span></a>
-<span class="lineNum">      60 </span><span class="lineNoCov">          0 :   assertEquals('v3', s[3]);</span>
+<span class="lineNum">      53 </span><span class="lineCov">          1 :     configurable:true</span>
+<span class="lineNum">      54 </span><span class="lineCov">          1 :   });</span>
+<span class="lineNum">      55 </span><span class="lineCov">          1 :   assertEquals('v1', s[3]);</span>
+<span class="lineNum">      56 </span><span class="lineCov">          1 :   value = 'v2';</span>
+<span class="lineNum">      57 </span><span class="lineCov">          1 :   assertEquals('v2', s[3]);</span>
+<span class="lineNum">      58 </span><span class="lineCov">          1 : </span>
+<a name="59"><span class="lineNum">      59 </span><span class="lineCov">          1 :   Object.defineProperty(s, '3', {value: 'v3', configurable: false});</span></a>
+<span class="lineNum">      60 </span><span class="lineCov">          1 :   assertEquals('v3', s[3]);</span>
 <span class="lineNum">      61 </span><span class="lineCov">          1 :   assertThrows(() =&gt; Object.defineProperty(s, '3', {value:2}), TypeError);</span>
-<span class="lineNum">      62 </span>            : })();
+<span class="lineNum">      62 </span><span class="lineCov">          1 : })();</span>
 </pre>
       </td>
     </tr>

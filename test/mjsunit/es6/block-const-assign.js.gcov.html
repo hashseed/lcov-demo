@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">126</td>
-            <td class="headerCovTableEntry">148</td>
-            <td class="headerCovTableEntryMed">85.1 %</td>
+            <td class="headerCovTableEntry">159</td>
+            <td class="headerCovTableEntry">159</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">4</td>
@@ -102,12 +102,12 @@
 <span class="lineNum">      40 </span><span class="lineCov">         80 :   function(use) { return use + &quot;; const x = 0, c = 1;&quot; }, ReferenceError,</span>
 <span class="lineNum">      41 </span><span class="lineCov">         80 :   function(use) { return &quot;const x = (&quot; + use + &quot;), c = 1;&quot; }, ReferenceError,</span>
 <span class="lineNum">      42 </span><span class="lineCov">         80 :   function(use) { return &quot;const c = (&quot; + use + &quot;);&quot; }, ReferenceError,</span>
-<span class="lineNum">      43 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      44 </span><span class="lineNoCov">          0 :   // Function expression.</span>
+<span class="lineNum">      43 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      44 </span><span class="lineCov">          1 :   // Function expression.</span>
 <span class="lineNum">      45 </span><span class="lineCov">         80 :   function(use) { return &quot;(function c() { &quot; + use + &quot;; })();&quot;; }, TypeError,</span>
-<span class="lineNum">      46 </span><span class="lineNoCov">          0 :   // TODO(rossberg): Once we have default parameters, test using 'c' there.</span>
-<span class="lineNum">      47 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      48 </span><span class="lineNoCov">          0 :   // Class expression.</span>
+<span class="lineNum">      46 </span><span class="lineCov">          1 :   // TODO(rossberg): Once we have default parameters, test using 'c' there.</span>
+<span class="lineNum">      47 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      48 </span><span class="lineCov">          1 :   // Class expression.</span>
 <span class="lineNum">      49 </span><span class="lineCov">         80 :   function(use) {</span>
 <span class="lineNum">      50 </span><span class="lineCov">         80 :     return &quot;new class c { constructor() { &quot; + use + &quot; } };&quot;;</span>
 <span class="lineNum">      51 </span><span class="lineCov">         80 :   }, TypeError,</span>
@@ -138,8 +138,8 @@
 <span class="lineNum">      76 </span><span class="lineCov">         80 :   function(use) {</span>
 <span class="lineNum">      77 </span><span class="lineCov">         80 :     return &quot;(class c { static [&quot; + use + &quot;]() {} });&quot;;</span>
 <span class="lineNum">      78 </span><span class="lineCov">         80 :   }, ReferenceError,</span>
-<span class="lineNum">      79 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      80 </span><span class="lineNoCov">          0 :   // For loop.</span>
+<span class="lineNum">      79 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      80 </span><span class="lineCov">          1 :   // For loop.</span>
 <span class="lineNum">      81 </span><span class="lineCov">         80 :   function(use) {</span>
 <span class="lineNum">      82 </span><span class="lineCov">         80 :     return &quot;for (const c = 0; &quot; + use + &quot;;) {}&quot;</span>
 <span class="lineNum">      83 </span><span class="lineCov">         80 :   }, TypeError,</span>
@@ -170,30 +170,30 @@
 <span class="lineNum">     108 </span><span class="lineCov">         80 :   function(use) {</span>
 <span class="lineNum">     109 </span><span class="lineCov">         80 :     return &quot;for (const c = (&quot; + use + &quot;); ;) {}&quot;</span>
 <span class="lineNum">     110 </span><span class="lineCov">         80 :   }, ReferenceError,</span>
-<span class="lineNum">     111 </span><span class="lineNoCov">          0 : ]</span>
-<span class="lineNum">     112 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     113 </span><span class="lineNoCov">          0 : let uses = [</span>
-<span class="lineNum">     114 </span><span class="lineNoCov">          0 :   'c = 1',</span>
-<span class="lineNum">     115 </span><span class="lineNoCov">          0 :   'c += 1',</span>
-<span class="lineNum">     116 </span><span class="lineNoCov">          0 :   '++c',</span>
-<span class="lineNum">     117 </span><span class="lineNoCov">          0 :   'c--',</span>
-<span class="lineNum">     118 </span><span class="lineNoCov">          0 : ];</span>
-<span class="lineNum">     119 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     120 </span><span class="lineNoCov">          0 : let declcontexts = [</span>
+<span class="lineNum">     111 </span><span class="lineCov">          1 : ]</span>
+<span class="lineNum">     112 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     113 </span><span class="lineCov">          1 : let uses = [</span>
+<span class="lineNum">     114 </span><span class="lineCov">          1 :   'c = 1',</span>
+<span class="lineNum">     115 </span><span class="lineCov">          1 :   'c += 1',</span>
+<span class="lineNum">     116 </span><span class="lineCov">          1 :   '++c',</span>
+<span class="lineNum">     117 </span><span class="lineCov">          1 :   'c--',</span>
+<span class="lineNum">     118 </span><span class="lineCov">          1 : ];</span>
+<span class="lineNum">     119 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     120 </span><span class="lineCov">          1 : let declcontexts = [</span>
 <span class="lineNum">     121 </span><span class="lineCov">        560 :   function(decl) { return decl; },</span>
 <a name="122"><span class="lineNum">     122 </span><span class="lineCov">        560 :   function(decl) { return &quot;eval(\'&quot; + decl + &quot;\')&quot;; },</span></a>
 <span class="lineNum">     123 </span><span class="lineCov">        560 :   function(decl) { return &quot;{ &quot; + decl + &quot; }&quot;; },</span>
 <span class="lineNum">     124 </span><span class="lineCov">        560 :   function(decl) { return &quot;(function() { &quot; + decl + &quot; })()&quot;; },</span>
-<span class="lineNum">     125 </span><span class="lineNoCov">          0 : ];</span>
-<span class="lineNum">     126 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     127 </span><span class="lineNoCov">          0 : let usecontexts = [</span>
+<span class="lineNum">     125 </span><span class="lineCov">          1 : ];</span>
+<span class="lineNum">     126 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     127 </span><span class="lineCov">          1 : let usecontexts = [</span>
 <span class="lineNum">     128 </span><span class="lineCov">        448 :   function(use) { return use; },</span>
 <span class="lineNum">     129 </span><span class="lineCov">        448 :   function(use) { return &quot;eval(\&quot;&quot; + use + &quot;\&quot;)&quot;; },</span>
 <a name="130"><span class="lineNum">     130 </span><span class="lineCov">        448 :   function(use) { return &quot;(function() { &quot; + use + &quot; })()&quot;; },</span></a>
 <span class="lineNum">     131 </span><span class="lineCov">        448 :   function(use) { return &quot;(function() { eval(\&quot;&quot; + use + &quot;\&quot;); })()&quot;; },</span>
 <span class="lineNum">     132 </span><span class="lineCov">        448 :   function(use) { return &quot;eval(\&quot;(function() { &quot; + use + &quot;; })\&quot;)()&quot;; },</span>
-<a name="133"><span class="lineNum">     133 </span><span class="lineNoCov">          0 : ];</span></a>
-<span class="lineNum">     134 </span><span class="lineNoCov">          0 : </span>
+<a name="133"><span class="lineNum">     133 </span><span class="lineCov">          1 : ];</span></a>
+<span class="lineNum">     134 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     135 </span><span class="lineCov">       2240 : function Test(program, error) {</span>
 <span class="lineNum">     136 </span><span class="lineCov">       2240 :   program = &quot;'use strict'; &quot; + program;</span>
 <span class="lineNum">     137 </span><span class="lineCov">       2240 :   try {</span>
@@ -208,16 +208,16 @@
 <span class="lineNum">     146 </span><span class="lineCov">       2240 :   }</span>
 <span class="lineNum">     147 </span><span class="lineCov">       2240 :   assertUnreachable();</span>
 <span class="lineNum">     148 </span><span class="lineCov">       2240 : }</span>
-<span class="lineNum">     149 </span>            : 
-<span class="lineNum">     150 </span>            : for (var d = 0; d &lt; decls.length; d += 2) {
-<span class="lineNum">     151 </span>            :   for (var u = 0; u &lt; uses.length; ++u) {
-<span class="lineNum">     152 </span>            :     for (var o = 0; o &lt; declcontexts.length; ++o) {
-<span class="lineNum">     153 </span>            :       for (var i = 0; i &lt; usecontexts.length; ++i) {
-<span class="lineNum">     154 </span>            :         Test(declcontexts[o](decls[d](usecontexts[i](uses[u]))), decls[d + 1]);
-<span class="lineNum">     155 </span>            :       }
-<span class="lineNum">     156 </span>            :     }
-<span class="lineNum">     157 </span>            :   }
-<span class="lineNum">     158 </span>            : }
+<span class="lineNum">     149 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     150 </span><span class="lineCov">          1 : for (var d = 0; d &lt; decls.length; d += 2) {</span>
+<span class="lineNum">     151 </span><span class="lineCov">          1 :   for (var u = 0; u &lt; uses.length; ++u) {</span>
+<span class="lineNum">     152 </span><span class="lineCov">          1 :     for (var o = 0; o &lt; declcontexts.length; ++o) {</span>
+<span class="lineNum">     153 </span><span class="lineCov">          1 :       for (var i = 0; i &lt; usecontexts.length; ++i) {</span>
+<span class="lineNum">     154 </span><span class="lineCov">          1 :         Test(declcontexts[o](decls[d](usecontexts[i](uses[u]))), decls[d + 1]);</span>
+<span class="lineNum">     155 </span><span class="lineCov">          1 :       }</span>
+<span class="lineNum">     156 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">     157 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     158 </span><span class="lineCov">          1 : }</span>
 </pre>
       </td>
     </tr>

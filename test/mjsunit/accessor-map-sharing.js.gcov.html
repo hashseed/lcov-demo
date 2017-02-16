@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">34</td>
-            <td class="headerCovTableEntry">37</td>
-            <td class="headerCovTableEntryHi">91.9 %</td>
+            <td class="headerCovTableEntry">193</td>
+            <td class="headerCovTableEntry">193</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -94,164 +94,164 @@
 <a name="32"><span class="lineNum">      32 </span><span class="lineCov">          1 : var gop = Object.getOwnPropertyDescriptor;</span></a>
 <a name="33"><span class="lineNum">      33 </span><span class="lineCov">          1 : </span></a>
 <a name="34"><span class="lineNum">      34 </span><span class="lineCov">          1 : function getter() { return 111; }</span></a>
-<a name="35"><span class="lineNum">      35 </span><span class="lineNoCov">          0 : function setter(x) { print(222); }</span></a>
-<span class="lineNum">      36 </span><span class="lineNoCov">          0 : function anotherGetter() { return 333; }</span>
-<span class="lineNum">      37 </span><span class="lineNoCov">          0 : function anotherSetter(x) { print(444); }</span>
-<span class="lineNum">      38 </span>            : var obj1, obj2, obj3, obj4;
-<span class="lineNum">      39 </span>            : 
-<span class="lineNum">      40 </span>            : // Two objects with the same getter.
-<span class="lineNum">      41 </span>            : obj1 = {};
-<span class="lineNum">      42 </span>            : dp(obj1, &quot;alpha&quot;, { get: getter });
-<span class="lineNum">      43 </span>            : obj2 = {};
-<span class="lineNum">      44 </span>            : dp(obj2, &quot;alpha&quot;, { get: getter });
-<span class="lineNum">      45 </span>            : assertTrue(%HaveSameMap(obj1, obj2));
-<span class="lineNum">      46 </span>            : 
-<span class="lineNum">      47 </span>            : // Two objects with the same getter, oldskool.
-<span class="lineNum">      48 </span>            : obj1 = {};
-<span class="lineNum">      49 </span>            : obj1.__defineGetter__(&quot;bravo&quot;, getter);
-<span class="lineNum">      50 </span>            : assertEquals(getter, obj1.__lookupGetter__(&quot;bravo&quot;));
-<span class="lineNum">      51 </span>            : obj2 = {};
-<span class="lineNum">      52 </span>            : obj2.__defineGetter__(&quot;bravo&quot;, getter);
-<span class="lineNum">      53 </span>            : assertEquals(getter, obj2.__lookupGetter__(&quot;bravo&quot;));
-<span class="lineNum">      54 </span>            : assertTrue(%HaveSameMap(obj1, obj2));
-<span class="lineNum">      55 </span>            : 
-<span class="lineNum">      56 </span>            : // Two objects with the same setter.
-<span class="lineNum">      57 </span>            : obj1 = {};
-<span class="lineNum">      58 </span>            : dp(obj1, &quot;charlie&quot;, { set: setter });
-<span class="lineNum">      59 </span>            : obj2 = {};
-<span class="lineNum">      60 </span>            : dp(obj2, &quot;charlie&quot;, { set: setter });
-<span class="lineNum">      61 </span>            : assertTrue(%HaveSameMap(obj1, obj2));
-<span class="lineNum">      62 </span>            : 
-<span class="lineNum">      63 </span>            : // Two objects with the same setter, oldskool.
-<span class="lineNum">      64 </span>            : obj1 = {};
-<span class="lineNum">      65 </span>            : obj1.__defineSetter__(&quot;delta&quot;, setter);
-<span class="lineNum">      66 </span>            : assertEquals(setter, obj1.__lookupSetter__(&quot;delta&quot;));
-<span class="lineNum">      67 </span>            : obj2 = {};
-<span class="lineNum">      68 </span>            : obj2.__defineSetter__(&quot;delta&quot;, setter);
-<span class="lineNum">      69 </span>            : assertEquals(setter, obj2.__lookupSetter__(&quot;delta&quot;));
-<span class="lineNum">      70 </span>            : assertTrue(%HaveSameMap(obj1, obj2));
-<span class="lineNum">      71 </span>            : 
-<span class="lineNum">      72 </span>            : // Two objects with the same getter and setter.
-<span class="lineNum">      73 </span>            : obj1 = {};
-<span class="lineNum">      74 </span>            : dp(obj1, &quot;foxtrot&quot;, { get: getter, set: setter });
-<span class="lineNum">      75 </span>            : obj2 = {};
-<span class="lineNum">      76 </span>            : dp(obj2, &quot;foxtrot&quot;, { get: getter, set: setter });
-<span class="lineNum">      77 </span>            : assertTrue(%HaveSameMap(obj1, obj2));
-<span class="lineNum">      78 </span>            : 
-<span class="lineNum">      79 </span>            : // Two objects with the same getter and setter, set separately.
-<span class="lineNum">      80 </span>            : obj1 = {};
-<span class="lineNum">      81 </span>            : dp(obj1, &quot;golf&quot;, { get: getter, configurable: true });
-<span class="lineNum">      82 </span>            : dp(obj1, &quot;golf&quot;, { set: setter, configurable: true });
-<span class="lineNum">      83 </span>            : obj2 = {};
-<span class="lineNum">      84 </span>            : dp(obj2, &quot;golf&quot;, { get: getter, configurable: true });
-<span class="lineNum">      85 </span>            : dp(obj2, &quot;golf&quot;, { set: setter, configurable: true });
-<span class="lineNum">      86 </span>            : assertTrue(%HaveSameMap(obj1, obj2));
-<span class="lineNum">      87 </span>            : 
-<span class="lineNum">      88 </span>            : // Two objects with the same getter and setter, set separately, oldskool.
-<span class="lineNum">      89 </span>            : obj1 = {};
-<span class="lineNum">      90 </span>            : obj1.__defineGetter__(&quot;hotel&quot;, getter);
-<span class="lineNum">      91 </span>            : obj1.__defineSetter__(&quot;hotel&quot;, setter);
-<span class="lineNum">      92 </span>            : obj2 = {};
-<span class="lineNum">      93 </span>            : obj2.__defineGetter__(&quot;hotel&quot;, getter);
-<span class="lineNum">      94 </span>            : obj2.__defineSetter__(&quot;hotel&quot;, setter);
-<span class="lineNum">      95 </span>            : assertTrue(%HaveSameMap(obj1, obj2));
-<span class="lineNum">      96 </span>            : 
-<span class="lineNum">      97 </span>            : // Attribute-only change, shouldn't affect previous descriptor properties.
-<span class="lineNum">      98 </span>            : obj1 = {};
-<span class="lineNum">      99 </span>            : dp(obj1, &quot;india&quot;, { get: getter, configurable: true, enumerable: true });
-<span class="lineNum">     100 </span>            : assertEquals(getter, gop(obj1, &quot;india&quot;).get);
-<span class="lineNum">     101 </span>            : assertTrue(gop(obj1, &quot;india&quot;).configurable);
-<span class="lineNum">     102 </span>            : assertTrue(gop(obj1, &quot;india&quot;).enumerable);
-<span class="lineNum">     103 </span>            : dp(obj1, &quot;india&quot;, { enumerable: false });
-<span class="lineNum">     104 </span>            : assertEquals(getter, gop(obj1, &quot;india&quot;).get);
-<span class="lineNum">     105 </span>            : assertTrue(gop(obj1, &quot;india&quot;).configurable);
-<span class="lineNum">     106 </span>            : assertFalse(gop(obj1, &quot;india&quot;).enumerable);
-<span class="lineNum">     107 </span>            : 
-<span class="lineNum">     108 </span>            : // Attribute-only change, shouldn't affect objects with previously shared maps.
-<span class="lineNum">     109 </span>            : obj1 = {};
-<span class="lineNum">     110 </span>            : dp(obj1, &quot;juliet&quot;, { set: setter, configurable: true, enumerable: false });
-<span class="lineNum">     111 </span>            : assertEquals(setter, gop(obj1, &quot;juliet&quot;).set);
-<span class="lineNum">     112 </span>            : assertTrue(gop(obj1, &quot;juliet&quot;).configurable);
-<span class="lineNum">     113 </span>            : assertFalse(gop(obj1, &quot;juliet&quot;).enumerable);
-<span class="lineNum">     114 </span>            : obj2 = {};
-<span class="lineNum">     115 </span>            : dp(obj2, &quot;juliet&quot;, { set: setter, configurable: true, enumerable: false });
-<span class="lineNum">     116 </span>            : assertEquals(setter, gop(obj2, &quot;juliet&quot;).set);
-<span class="lineNum">     117 </span>            : assertTrue(gop(obj2, &quot;juliet&quot;).configurable);
-<span class="lineNum">     118 </span>            : assertFalse(gop(obj2, &quot;juliet&quot;).enumerable);
-<span class="lineNum">     119 </span>            : dp(obj1, &quot;juliet&quot;, { set: setter, configurable: false, enumerable: true });
-<span class="lineNum">     120 </span>            : assertEquals(setter, gop(obj1, &quot;juliet&quot;).set);
-<span class="lineNum">     121 </span>            : assertFalse(gop(obj1, &quot;juliet&quot;).configurable);
-<span class="lineNum">     122 </span>            : assertTrue(gop(obj1, &quot;juliet&quot;).enumerable);
-<span class="lineNum">     123 </span>            : assertEquals(setter, gop(obj2, &quot;juliet&quot;).set);
-<span class="lineNum">     124 </span>            : assertTrue(gop(obj2, &quot;juliet&quot;).configurable);
-<span class="lineNum">     125 </span>            : assertFalse(gop(obj2, &quot;juliet&quot;).enumerable);
-<span class="lineNum">     126 </span>            : 
-<span class="lineNum">     127 </span>            : // Two objects with the different getters.
-<span class="lineNum">     128 </span>            : obj1 = {};
-<span class="lineNum">     129 </span>            : dp(obj1, &quot;kilo&quot;, { get: getter });
-<span class="lineNum">     130 </span>            : obj2 = {};
-<span class="lineNum">     131 </span>            : dp(obj2, &quot;kilo&quot;, { get: anotherGetter });
-<span class="lineNum">     132 </span>            : assertEquals(getter, gop(obj1, &quot;kilo&quot;).get);
-<span class="lineNum">     133 </span>            : assertEquals(anotherGetter, gop(obj2, &quot;kilo&quot;).get);
-<span class="lineNum">     134 </span>            : assertFalse(%HaveSameMap(obj1, obj2));
-<span class="lineNum">     135 </span>            : 
-<span class="lineNum">     136 </span>            : // Two objects with the same getters and different setters.
-<span class="lineNum">     137 </span>            : obj1 = {};
-<span class="lineNum">     138 </span>            : dp(obj1, &quot;lima&quot;, { get: getter, set: setter });
-<span class="lineNum">     139 </span>            : obj2 = {};
-<span class="lineNum">     140 </span>            : dp(obj2, &quot;lima&quot;, { get: getter, set: anotherSetter });
-<span class="lineNum">     141 </span>            : assertEquals(setter, gop(obj1, &quot;lima&quot;).set);
-<span class="lineNum">     142 </span>            : assertEquals(anotherSetter, gop(obj2, &quot;lima&quot;).set);
-<span class="lineNum">     143 </span>            : assertFalse(%HaveSameMap(obj1, obj2));
-<span class="lineNum">     144 </span>            : 
-<span class="lineNum">     145 </span>            : // Even 'undefined' is a kind of getter.
-<span class="lineNum">     146 </span>            : obj1 = {};
-<span class="lineNum">     147 </span>            : dp(obj1, &quot;mike&quot;, { get: undefined });
-<span class="lineNum">     148 </span>            : assertTrue(&quot;mike&quot; in obj1);
-<span class="lineNum">     149 </span>            : assertEquals(undefined, gop(obj1, &quot;mike&quot;).get);
-<span class="lineNum">     150 </span>            : assertEquals(undefined, obj1.__lookupGetter__(&quot;mike&quot;));
-<span class="lineNum">     151 </span>            : assertEquals(undefined, gop(obj1, &quot;mike&quot;).set);
-<span class="lineNum">     152 </span>            : assertEquals(undefined, obj1.__lookupSetter__(&quot;mike&quot;));
-<span class="lineNum">     153 </span>            : 
-<span class="lineNum">     154 </span>            : // Even 'undefined' is a kind of setter.
-<span class="lineNum">     155 </span>            : obj1 = {};
-<span class="lineNum">     156 </span>            : dp(obj1, &quot;november&quot;, { set: undefined });
-<span class="lineNum">     157 </span>            : assertTrue(&quot;november&quot; in obj1);
-<span class="lineNum">     158 </span>            : assertEquals(undefined, gop(obj1, &quot;november&quot;).get);
-<span class="lineNum">     159 </span>            : assertEquals(undefined, obj1.__lookupGetter__(&quot;november&quot;));
-<span class="lineNum">     160 </span>            : assertEquals(undefined, gop(obj1, &quot;november&quot;).set);
-<span class="lineNum">     161 </span>            : assertEquals(undefined, obj1.__lookupSetter__(&quot;november&quot;));
-<span class="lineNum">     162 </span>            : 
-<span class="lineNum">     163 </span>            : // Redefining a data property.
-<span class="lineNum">     164 </span>            : obj1 = {};
-<span class="lineNum">     165 </span>            : obj1.oscar = 12345;
-<span class="lineNum">     166 </span>            : dp(obj1, &quot;oscar&quot;, { set: setter });
-<span class="lineNum">     167 </span>            : assertEquals(setter, gop(obj1, &quot;oscar&quot;).set);
-<span class="lineNum">     168 </span>            : 
-<span class="lineNum">     169 </span>            : // Re-adding the same getter/attributes pair.
-<span class="lineNum">     170 </span>            : obj1 = {};
-<span class="lineNum">     171 </span>            : dp(obj1, &quot;papa&quot;, { get: getter, configurable: true });
-<span class="lineNum">     172 </span>            : dp(obj1, &quot;papa&quot;, { get: getter, set: setter, configurable: true });
-<span class="lineNum">     173 </span>            : assertEquals(getter, gop(obj1, &quot;papa&quot;).get);
-<span class="lineNum">     174 </span>            : assertEquals(setter, gop(obj1, &quot;papa&quot;).set);
-<span class="lineNum">     175 </span>            : assertTrue(gop(obj1, &quot;papa&quot;).configurable);
-<span class="lineNum">     176 </span>            : assertFalse(gop(obj1, &quot;papa&quot;).enumerable);
-<span class="lineNum">     177 </span>            : 
-<span class="lineNum">     178 </span>            : // Two objects with the same getter on the prototype chain.
-<span class="lineNum">     179 </span>            : obj1 = {};
-<span class="lineNum">     180 </span>            : dp(obj1, &quot;quebec&quot;, { get: getter });
-<span class="lineNum">     181 </span>            : obj2 = Object.create(obj1);
-<span class="lineNum">     182 </span>            : obj3 = Object.create(obj2);
-<span class="lineNum">     183 </span>            : obj4 = Object.create(obj2);
-<span class="lineNum">     184 </span>            : assertTrue(%HaveSameMap(obj3, obj4));
-<span class="lineNum">     185 </span>            : 
-<span class="lineNum">     186 </span>            : // Two objects with the same setter on the prototype chain.
-<span class="lineNum">     187 </span>            : obj1 = {};
-<span class="lineNum">     188 </span>            : dp(obj1, &quot;romeo&quot;, { set: setter });
-<span class="lineNum">     189 </span>            : obj2 = Object.create(obj1);
-<span class="lineNum">     190 </span>            : obj3 = Object.create(obj2);
-<span class="lineNum">     191 </span>            : obj4 = Object.create(obj2);
-<span class="lineNum">     192 </span>            : assertTrue(%HaveSameMap(obj3, obj4));
+<a name="35"><span class="lineNum">      35 </span><span class="lineCov">          1 : function setter(x) { print(222); }</span></a>
+<span class="lineNum">      36 </span><span class="lineCov">          1 : function anotherGetter() { return 333; }</span>
+<span class="lineNum">      37 </span><span class="lineCov">          1 : function anotherSetter(x) { print(444); }</span>
+<span class="lineNum">      38 </span><span class="lineCov">          1 : var obj1, obj2, obj3, obj4;</span>
+<span class="lineNum">      39 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      40 </span><span class="lineCov">          1 : // Two objects with the same getter.</span>
+<span class="lineNum">      41 </span><span class="lineCov">          1 : obj1 = {};</span>
+<span class="lineNum">      42 </span><span class="lineCov">          1 : dp(obj1, &quot;alpha&quot;, { get: getter });</span>
+<span class="lineNum">      43 </span><span class="lineCov">          1 : obj2 = {};</span>
+<span class="lineNum">      44 </span><span class="lineCov">          1 : dp(obj2, &quot;alpha&quot;, { get: getter });</span>
+<span class="lineNum">      45 </span><span class="lineCov">          1 : assertTrue(%HaveSameMap(obj1, obj2));</span>
+<span class="lineNum">      46 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      47 </span><span class="lineCov">          1 : // Two objects with the same getter, oldskool.</span>
+<span class="lineNum">      48 </span><span class="lineCov">          1 : obj1 = {};</span>
+<span class="lineNum">      49 </span><span class="lineCov">          1 : obj1.__defineGetter__(&quot;bravo&quot;, getter);</span>
+<span class="lineNum">      50 </span><span class="lineCov">          1 : assertEquals(getter, obj1.__lookupGetter__(&quot;bravo&quot;));</span>
+<span class="lineNum">      51 </span><span class="lineCov">          1 : obj2 = {};</span>
+<span class="lineNum">      52 </span><span class="lineCov">          1 : obj2.__defineGetter__(&quot;bravo&quot;, getter);</span>
+<span class="lineNum">      53 </span><span class="lineCov">          1 : assertEquals(getter, obj2.__lookupGetter__(&quot;bravo&quot;));</span>
+<span class="lineNum">      54 </span><span class="lineCov">          1 : assertTrue(%HaveSameMap(obj1, obj2));</span>
+<span class="lineNum">      55 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      56 </span><span class="lineCov">          1 : // Two objects with the same setter.</span>
+<span class="lineNum">      57 </span><span class="lineCov">          1 : obj1 = {};</span>
+<span class="lineNum">      58 </span><span class="lineCov">          1 : dp(obj1, &quot;charlie&quot;, { set: setter });</span>
+<span class="lineNum">      59 </span><span class="lineCov">          1 : obj2 = {};</span>
+<span class="lineNum">      60 </span><span class="lineCov">          1 : dp(obj2, &quot;charlie&quot;, { set: setter });</span>
+<span class="lineNum">      61 </span><span class="lineCov">          1 : assertTrue(%HaveSameMap(obj1, obj2));</span>
+<span class="lineNum">      62 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      63 </span><span class="lineCov">          1 : // Two objects with the same setter, oldskool.</span>
+<span class="lineNum">      64 </span><span class="lineCov">          1 : obj1 = {};</span>
+<span class="lineNum">      65 </span><span class="lineCov">          1 : obj1.__defineSetter__(&quot;delta&quot;, setter);</span>
+<span class="lineNum">      66 </span><span class="lineCov">          1 : assertEquals(setter, obj1.__lookupSetter__(&quot;delta&quot;));</span>
+<span class="lineNum">      67 </span><span class="lineCov">          1 : obj2 = {};</span>
+<span class="lineNum">      68 </span><span class="lineCov">          1 : obj2.__defineSetter__(&quot;delta&quot;, setter);</span>
+<span class="lineNum">      69 </span><span class="lineCov">          1 : assertEquals(setter, obj2.__lookupSetter__(&quot;delta&quot;));</span>
+<span class="lineNum">      70 </span><span class="lineCov">          1 : assertTrue(%HaveSameMap(obj1, obj2));</span>
+<span class="lineNum">      71 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      72 </span><span class="lineCov">          1 : // Two objects with the same getter and setter.</span>
+<span class="lineNum">      73 </span><span class="lineCov">          1 : obj1 = {};</span>
+<span class="lineNum">      74 </span><span class="lineCov">          1 : dp(obj1, &quot;foxtrot&quot;, { get: getter, set: setter });</span>
+<span class="lineNum">      75 </span><span class="lineCov">          1 : obj2 = {};</span>
+<span class="lineNum">      76 </span><span class="lineCov">          1 : dp(obj2, &quot;foxtrot&quot;, { get: getter, set: setter });</span>
+<span class="lineNum">      77 </span><span class="lineCov">          1 : assertTrue(%HaveSameMap(obj1, obj2));</span>
+<span class="lineNum">      78 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      79 </span><span class="lineCov">          1 : // Two objects with the same getter and setter, set separately.</span>
+<span class="lineNum">      80 </span><span class="lineCov">          1 : obj1 = {};</span>
+<span class="lineNum">      81 </span><span class="lineCov">          1 : dp(obj1, &quot;golf&quot;, { get: getter, configurable: true });</span>
+<span class="lineNum">      82 </span><span class="lineCov">          1 : dp(obj1, &quot;golf&quot;, { set: setter, configurable: true });</span>
+<span class="lineNum">      83 </span><span class="lineCov">          1 : obj2 = {};</span>
+<span class="lineNum">      84 </span><span class="lineCov">          1 : dp(obj2, &quot;golf&quot;, { get: getter, configurable: true });</span>
+<span class="lineNum">      85 </span><span class="lineCov">          1 : dp(obj2, &quot;golf&quot;, { set: setter, configurable: true });</span>
+<span class="lineNum">      86 </span><span class="lineCov">          1 : assertTrue(%HaveSameMap(obj1, obj2));</span>
+<span class="lineNum">      87 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      88 </span><span class="lineCov">          1 : // Two objects with the same getter and setter, set separately, oldskool.</span>
+<span class="lineNum">      89 </span><span class="lineCov">          1 : obj1 = {};</span>
+<span class="lineNum">      90 </span><span class="lineCov">          1 : obj1.__defineGetter__(&quot;hotel&quot;, getter);</span>
+<span class="lineNum">      91 </span><span class="lineCov">          1 : obj1.__defineSetter__(&quot;hotel&quot;, setter);</span>
+<span class="lineNum">      92 </span><span class="lineCov">          1 : obj2 = {};</span>
+<span class="lineNum">      93 </span><span class="lineCov">          1 : obj2.__defineGetter__(&quot;hotel&quot;, getter);</span>
+<span class="lineNum">      94 </span><span class="lineCov">          1 : obj2.__defineSetter__(&quot;hotel&quot;, setter);</span>
+<span class="lineNum">      95 </span><span class="lineCov">          1 : assertTrue(%HaveSameMap(obj1, obj2));</span>
+<span class="lineNum">      96 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      97 </span><span class="lineCov">          1 : // Attribute-only change, shouldn't affect previous descriptor properties.</span>
+<span class="lineNum">      98 </span><span class="lineCov">          1 : obj1 = {};</span>
+<span class="lineNum">      99 </span><span class="lineCov">          1 : dp(obj1, &quot;india&quot;, { get: getter, configurable: true, enumerable: true });</span>
+<span class="lineNum">     100 </span><span class="lineCov">          1 : assertEquals(getter, gop(obj1, &quot;india&quot;).get);</span>
+<span class="lineNum">     101 </span><span class="lineCov">          1 : assertTrue(gop(obj1, &quot;india&quot;).configurable);</span>
+<span class="lineNum">     102 </span><span class="lineCov">          1 : assertTrue(gop(obj1, &quot;india&quot;).enumerable);</span>
+<span class="lineNum">     103 </span><span class="lineCov">          1 : dp(obj1, &quot;india&quot;, { enumerable: false });</span>
+<span class="lineNum">     104 </span><span class="lineCov">          1 : assertEquals(getter, gop(obj1, &quot;india&quot;).get);</span>
+<span class="lineNum">     105 </span><span class="lineCov">          1 : assertTrue(gop(obj1, &quot;india&quot;).configurable);</span>
+<span class="lineNum">     106 </span><span class="lineCov">          1 : assertFalse(gop(obj1, &quot;india&quot;).enumerable);</span>
+<span class="lineNum">     107 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     108 </span><span class="lineCov">          1 : // Attribute-only change, shouldn't affect objects with previously shared maps.</span>
+<span class="lineNum">     109 </span><span class="lineCov">          1 : obj1 = {};</span>
+<span class="lineNum">     110 </span><span class="lineCov">          1 : dp(obj1, &quot;juliet&quot;, { set: setter, configurable: true, enumerable: false });</span>
+<span class="lineNum">     111 </span><span class="lineCov">          1 : assertEquals(setter, gop(obj1, &quot;juliet&quot;).set);</span>
+<span class="lineNum">     112 </span><span class="lineCov">          1 : assertTrue(gop(obj1, &quot;juliet&quot;).configurable);</span>
+<span class="lineNum">     113 </span><span class="lineCov">          1 : assertFalse(gop(obj1, &quot;juliet&quot;).enumerable);</span>
+<span class="lineNum">     114 </span><span class="lineCov">          1 : obj2 = {};</span>
+<span class="lineNum">     115 </span><span class="lineCov">          1 : dp(obj2, &quot;juliet&quot;, { set: setter, configurable: true, enumerable: false });</span>
+<span class="lineNum">     116 </span><span class="lineCov">          1 : assertEquals(setter, gop(obj2, &quot;juliet&quot;).set);</span>
+<span class="lineNum">     117 </span><span class="lineCov">          1 : assertTrue(gop(obj2, &quot;juliet&quot;).configurable);</span>
+<span class="lineNum">     118 </span><span class="lineCov">          1 : assertFalse(gop(obj2, &quot;juliet&quot;).enumerable);</span>
+<span class="lineNum">     119 </span><span class="lineCov">          1 : dp(obj1, &quot;juliet&quot;, { set: setter, configurable: false, enumerable: true });</span>
+<span class="lineNum">     120 </span><span class="lineCov">          1 : assertEquals(setter, gop(obj1, &quot;juliet&quot;).set);</span>
+<span class="lineNum">     121 </span><span class="lineCov">          1 : assertFalse(gop(obj1, &quot;juliet&quot;).configurable);</span>
+<span class="lineNum">     122 </span><span class="lineCov">          1 : assertTrue(gop(obj1, &quot;juliet&quot;).enumerable);</span>
+<span class="lineNum">     123 </span><span class="lineCov">          1 : assertEquals(setter, gop(obj2, &quot;juliet&quot;).set);</span>
+<span class="lineNum">     124 </span><span class="lineCov">          1 : assertTrue(gop(obj2, &quot;juliet&quot;).configurable);</span>
+<span class="lineNum">     125 </span><span class="lineCov">          1 : assertFalse(gop(obj2, &quot;juliet&quot;).enumerable);</span>
+<span class="lineNum">     126 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     127 </span><span class="lineCov">          1 : // Two objects with the different getters.</span>
+<span class="lineNum">     128 </span><span class="lineCov">          1 : obj1 = {};</span>
+<span class="lineNum">     129 </span><span class="lineCov">          1 : dp(obj1, &quot;kilo&quot;, { get: getter });</span>
+<span class="lineNum">     130 </span><span class="lineCov">          1 : obj2 = {};</span>
+<span class="lineNum">     131 </span><span class="lineCov">          1 : dp(obj2, &quot;kilo&quot;, { get: anotherGetter });</span>
+<span class="lineNum">     132 </span><span class="lineCov">          1 : assertEquals(getter, gop(obj1, &quot;kilo&quot;).get);</span>
+<span class="lineNum">     133 </span><span class="lineCov">          1 : assertEquals(anotherGetter, gop(obj2, &quot;kilo&quot;).get);</span>
+<span class="lineNum">     134 </span><span class="lineCov">          1 : assertFalse(%HaveSameMap(obj1, obj2));</span>
+<span class="lineNum">     135 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     136 </span><span class="lineCov">          1 : // Two objects with the same getters and different setters.</span>
+<span class="lineNum">     137 </span><span class="lineCov">          1 : obj1 = {};</span>
+<span class="lineNum">     138 </span><span class="lineCov">          1 : dp(obj1, &quot;lima&quot;, { get: getter, set: setter });</span>
+<span class="lineNum">     139 </span><span class="lineCov">          1 : obj2 = {};</span>
+<span class="lineNum">     140 </span><span class="lineCov">          1 : dp(obj2, &quot;lima&quot;, { get: getter, set: anotherSetter });</span>
+<span class="lineNum">     141 </span><span class="lineCov">          1 : assertEquals(setter, gop(obj1, &quot;lima&quot;).set);</span>
+<span class="lineNum">     142 </span><span class="lineCov">          1 : assertEquals(anotherSetter, gop(obj2, &quot;lima&quot;).set);</span>
+<span class="lineNum">     143 </span><span class="lineCov">          1 : assertFalse(%HaveSameMap(obj1, obj2));</span>
+<span class="lineNum">     144 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     145 </span><span class="lineCov">          1 : // Even 'undefined' is a kind of getter.</span>
+<span class="lineNum">     146 </span><span class="lineCov">          1 : obj1 = {};</span>
+<span class="lineNum">     147 </span><span class="lineCov">          1 : dp(obj1, &quot;mike&quot;, { get: undefined });</span>
+<span class="lineNum">     148 </span><span class="lineCov">          1 : assertTrue(&quot;mike&quot; in obj1);</span>
+<span class="lineNum">     149 </span><span class="lineCov">          1 : assertEquals(undefined, gop(obj1, &quot;mike&quot;).get);</span>
+<span class="lineNum">     150 </span><span class="lineCov">          1 : assertEquals(undefined, obj1.__lookupGetter__(&quot;mike&quot;));</span>
+<span class="lineNum">     151 </span><span class="lineCov">          1 : assertEquals(undefined, gop(obj1, &quot;mike&quot;).set);</span>
+<span class="lineNum">     152 </span><span class="lineCov">          1 : assertEquals(undefined, obj1.__lookupSetter__(&quot;mike&quot;));</span>
+<span class="lineNum">     153 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     154 </span><span class="lineCov">          1 : // Even 'undefined' is a kind of setter.</span>
+<span class="lineNum">     155 </span><span class="lineCov">          1 : obj1 = {};</span>
+<span class="lineNum">     156 </span><span class="lineCov">          1 : dp(obj1, &quot;november&quot;, { set: undefined });</span>
+<span class="lineNum">     157 </span><span class="lineCov">          1 : assertTrue(&quot;november&quot; in obj1);</span>
+<span class="lineNum">     158 </span><span class="lineCov">          1 : assertEquals(undefined, gop(obj1, &quot;november&quot;).get);</span>
+<span class="lineNum">     159 </span><span class="lineCov">          1 : assertEquals(undefined, obj1.__lookupGetter__(&quot;november&quot;));</span>
+<span class="lineNum">     160 </span><span class="lineCov">          1 : assertEquals(undefined, gop(obj1, &quot;november&quot;).set);</span>
+<span class="lineNum">     161 </span><span class="lineCov">          1 : assertEquals(undefined, obj1.__lookupSetter__(&quot;november&quot;));</span>
+<span class="lineNum">     162 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     163 </span><span class="lineCov">          1 : // Redefining a data property.</span>
+<span class="lineNum">     164 </span><span class="lineCov">          1 : obj1 = {};</span>
+<span class="lineNum">     165 </span><span class="lineCov">          1 : obj1.oscar = 12345;</span>
+<span class="lineNum">     166 </span><span class="lineCov">          1 : dp(obj1, &quot;oscar&quot;, { set: setter });</span>
+<span class="lineNum">     167 </span><span class="lineCov">          1 : assertEquals(setter, gop(obj1, &quot;oscar&quot;).set);</span>
+<span class="lineNum">     168 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     169 </span><span class="lineCov">          1 : // Re-adding the same getter/attributes pair.</span>
+<span class="lineNum">     170 </span><span class="lineCov">          1 : obj1 = {};</span>
+<span class="lineNum">     171 </span><span class="lineCov">          1 : dp(obj1, &quot;papa&quot;, { get: getter, configurable: true });</span>
+<span class="lineNum">     172 </span><span class="lineCov">          1 : dp(obj1, &quot;papa&quot;, { get: getter, set: setter, configurable: true });</span>
+<span class="lineNum">     173 </span><span class="lineCov">          1 : assertEquals(getter, gop(obj1, &quot;papa&quot;).get);</span>
+<span class="lineNum">     174 </span><span class="lineCov">          1 : assertEquals(setter, gop(obj1, &quot;papa&quot;).set);</span>
+<span class="lineNum">     175 </span><span class="lineCov">          1 : assertTrue(gop(obj1, &quot;papa&quot;).configurable);</span>
+<span class="lineNum">     176 </span><span class="lineCov">          1 : assertFalse(gop(obj1, &quot;papa&quot;).enumerable);</span>
+<span class="lineNum">     177 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     178 </span><span class="lineCov">          1 : // Two objects with the same getter on the prototype chain.</span>
+<span class="lineNum">     179 </span><span class="lineCov">          1 : obj1 = {};</span>
+<span class="lineNum">     180 </span><span class="lineCov">          1 : dp(obj1, &quot;quebec&quot;, { get: getter });</span>
+<span class="lineNum">     181 </span><span class="lineCov">          1 : obj2 = Object.create(obj1);</span>
+<span class="lineNum">     182 </span><span class="lineCov">          1 : obj3 = Object.create(obj2);</span>
+<span class="lineNum">     183 </span><span class="lineCov">          1 : obj4 = Object.create(obj2);</span>
+<span class="lineNum">     184 </span><span class="lineCov">          1 : assertTrue(%HaveSameMap(obj3, obj4));</span>
+<span class="lineNum">     185 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     186 </span><span class="lineCov">          1 : // Two objects with the same setter on the prototype chain.</span>
+<span class="lineNum">     187 </span><span class="lineCov">          1 : obj1 = {};</span>
+<span class="lineNum">     188 </span><span class="lineCov">          1 : dp(obj1, &quot;romeo&quot;, { set: setter });</span>
+<span class="lineNum">     189 </span><span class="lineCov">          1 : obj2 = Object.create(obj1);</span>
+<span class="lineNum">     190 </span><span class="lineCov">          1 : obj3 = Object.create(obj2);</span>
+<span class="lineNum">     191 </span><span class="lineCov">          1 : obj4 = Object.create(obj2);</span>
+<span class="lineNum">     192 </span><span class="lineCov">          1 : assertTrue(%HaveSameMap(obj3, obj4));</span>
 </pre>
       </td>
     </tr>

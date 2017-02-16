@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">104</td>
-            <td class="headerCovTableEntry">122</td>
-            <td class="headerCovTableEntryMed">85.2 %</td>
+            <td class="headerCovTableEntry">148</td>
+            <td class="headerCovTableEntry">148</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">2</td>
@@ -158,55 +158,55 @@
 <span class="lineNum">      96 </span><span class="lineCov">          2 :       t[i] = i;</span>
 <span class="lineNum">      97 </span><span class="lineCov">          2 :     return ab;</span>
 <span class="lineNum">      98 </span><span class="lineCov">          2 :   }</span>
-<span class="lineNum">      99 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     100 </span><span class="lineNoCov">          0 :   var w = new Worker(workerScript);</span>
-<span class="lineNum">     101 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     102 </span><span class="lineNoCov">          0 :   assertEquals(&quot;Starting worker&quot;, w.getMessage());</span>
-<span class="lineNum">     103 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     104 </span><span class="lineNoCov">          0 :   w.postMessage(undefined);</span>
-<span class="lineNum">     105 </span><span class="lineNoCov">          0 :   w.postMessage(null);</span>
-<span class="lineNum">     106 </span><span class="lineNoCov">          0 :   w.postMessage(true);</span>
-<span class="lineNum">     107 </span><span class="lineNoCov">          0 :   w.postMessage(false);</span>
-<span class="lineNum">     108 </span><span class="lineNoCov">          0 :   w.postMessage(100);</span>
-<span class="lineNum">     109 </span><span class="lineNoCov">          0 :   w.postMessage(&quot;hi&quot;);</span>
-<span class="lineNum">     110 </span><span class="lineNoCov">          0 :   w.postMessage([4, true, &quot;bye&quot;]);</span>
-<span class="lineNum">     111 </span><span class="lineNoCov">          0 :   w.postMessage({a: 1, b: 2.5, c: &quot;three&quot;});</span>
-<span class="lineNum">     112 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     113 </span><span class="lineNoCov">          0 :   // Test bad get in transfer list.</span>
-<a name="114"><span class="lineNum">     114 </span><span class="lineNoCov">          0 :   var transferList = [undefined];</span></a>
-<span class="lineNum">     115 </span><span class="lineNoCov">          0 :   Object.defineProperty(transferList, '0', {</span>
+<span class="lineNum">      99 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     100 </span><span class="lineCov">          1 :   var w = new Worker(workerScript);</span>
+<span class="lineNum">     101 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     102 </span><span class="lineCov">          1 :   assertEquals(&quot;Starting worker&quot;, w.getMessage());</span>
+<span class="lineNum">     103 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     104 </span><span class="lineCov">          1 :   w.postMessage(undefined);</span>
+<span class="lineNum">     105 </span><span class="lineCov">          1 :   w.postMessage(null);</span>
+<span class="lineNum">     106 </span><span class="lineCov">          1 :   w.postMessage(true);</span>
+<span class="lineNum">     107 </span><span class="lineCov">          1 :   w.postMessage(false);</span>
+<span class="lineNum">     108 </span><span class="lineCov">          1 :   w.postMessage(100);</span>
+<span class="lineNum">     109 </span><span class="lineCov">          1 :   w.postMessage(&quot;hi&quot;);</span>
+<span class="lineNum">     110 </span><span class="lineCov">          1 :   w.postMessage([4, true, &quot;bye&quot;]);</span>
+<span class="lineNum">     111 </span><span class="lineCov">          1 :   w.postMessage({a: 1, b: 2.5, c: &quot;three&quot;});</span>
+<span class="lineNum">     112 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     113 </span><span class="lineCov">          1 :   // Test bad get in transfer list.</span>
+<a name="114"><span class="lineNum">     114 </span><span class="lineCov">          1 :   var transferList = [undefined];</span></a>
+<span class="lineNum">     115 </span><span class="lineCov">          1 :   Object.defineProperty(transferList, '0', {</span>
 <span class="lineNum">     116 </span><span class="lineCov">          1 :     get: function() {</span>
 <span class="lineNum">     117 </span><span class="lineCov">          1 :       throw 'unexpected!';</span>
 <span class="lineNum">     118 </span><span class="lineCov">          1 :     }</span>
-<span class="lineNum">     119 </span><span class="lineNoCov">          0 :   });</span>
+<span class="lineNum">     119 </span><span class="lineCov">          1 :   });</span>
 <span class="lineNum">     120 </span><span class="lineCov">          1 :   assertThrows(function() {</span>
 <span class="lineNum">     121 </span><span class="lineCov">          1 :     w.postMessage([], transferList);</span>
 <span class="lineNum">     122 </span><span class="lineCov">          1 :   });</span>
-<span class="lineNum">     123 </span>            : 
-<span class="lineNum">     124 </span>            :   // Clone ArrayBuffer
-<span class="lineNum">     125 </span>            :   var ab1 = createArrayBuffer(16);
-<span class="lineNum">     126 </span>            :   w.postMessage(ab1);
-<span class="lineNum">     127 </span>            :   assertEquals(16, ab1.byteLength);  // ArrayBuffer should not be neutered.
-<span class="lineNum">     128 </span>            : 
-<span class="lineNum">     129 </span>            :   // Transfer ArrayBuffer
-<span class="lineNum">     130 </span>            :   var ab2 = createArrayBuffer(32);
-<span class="lineNum">     131 </span>            :   w.postMessage(ab2, [ab2]);
-<span class="lineNum">     132 </span>            :   assertEquals(0, ab2.byteLength);  // ArrayBuffer should be neutered.
-<span class="lineNum">     133 </span>            : 
-<span class="lineNum">     134 </span>            :   assertEquals(&quot;undefined&quot;, typeof foo);
-<span class="lineNum">     135 </span>            : 
-<span class="lineNum">     136 </span>            :   // Read a message from the worker.
-<span class="lineNum">     137 </span>            :   assertEquals(&quot;DONE&quot;, w.getMessage());
-<span class="lineNum">     138 </span>            : 
-<span class="lineNum">     139 </span>            :   w.terminate();
-<span class="lineNum">     140 </span>            : 
-<span class="lineNum">     141 </span>            : 
-<span class="lineNum">     142 </span>            :   // Make sure that the main thread doesn't block forever in getMessage() if
-<span class="lineNum">     143 </span>            :   // the worker dies without posting a message.
-<span class="lineNum">     144 </span>            :   var w2 = new Worker('');
-<span class="lineNum">     145 </span>            :   var msg = w2.getMessage();
-<span class="lineNum">     146 </span>            :   assertEquals(undefined, msg);
-<span class="lineNum">     147 </span>            : }
+<span class="lineNum">     123 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     124 </span><span class="lineCov">          1 :   // Clone ArrayBuffer</span>
+<span class="lineNum">     125 </span><span class="lineCov">          1 :   var ab1 = createArrayBuffer(16);</span>
+<span class="lineNum">     126 </span><span class="lineCov">          1 :   w.postMessage(ab1);</span>
+<span class="lineNum">     127 </span><span class="lineCov">          1 :   assertEquals(16, ab1.byteLength);  // ArrayBuffer should not be neutered.</span>
+<span class="lineNum">     128 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     129 </span><span class="lineCov">          1 :   // Transfer ArrayBuffer</span>
+<span class="lineNum">     130 </span><span class="lineCov">          1 :   var ab2 = createArrayBuffer(32);</span>
+<span class="lineNum">     131 </span><span class="lineCov">          1 :   w.postMessage(ab2, [ab2]);</span>
+<span class="lineNum">     132 </span><span class="lineCov">          1 :   assertEquals(0, ab2.byteLength);  // ArrayBuffer should be neutered.</span>
+<span class="lineNum">     133 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     134 </span><span class="lineCov">          1 :   assertEquals(&quot;undefined&quot;, typeof foo);</span>
+<span class="lineNum">     135 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     136 </span><span class="lineCov">          1 :   // Read a message from the worker.</span>
+<span class="lineNum">     137 </span><span class="lineCov">          1 :   assertEquals(&quot;DONE&quot;, w.getMessage());</span>
+<span class="lineNum">     138 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     139 </span><span class="lineCov">          1 :   w.terminate();</span>
+<span class="lineNum">     140 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     141 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     142 </span><span class="lineCov">          1 :   // Make sure that the main thread doesn't block forever in getMessage() if</span>
+<span class="lineNum">     143 </span><span class="lineCov">          1 :   // the worker dies without posting a message.</span>
+<span class="lineNum">     144 </span><span class="lineCov">          1 :   var w2 = new Worker('');</span>
+<span class="lineNum">     145 </span><span class="lineCov">          1 :   var msg = w2.getMessage();</span>
+<span class="lineNum">     146 </span><span class="lineCov">          1 :   assertEquals(undefined, msg);</span>
+<span class="lineNum">     147 </span><span class="lineCov">          1 : }</span>
 </pre>
       </td>
     </tr>

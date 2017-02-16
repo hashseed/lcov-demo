@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">40</td>
-            <td class="headerCovTableEntry">54</td>
-            <td class="headerCovTableEntryLo">74.1 %</td>
+            <td class="headerCovTableEntry">62</td>
+            <td class="headerCovTableEntry">62</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">3</td>
@@ -93,34 +93,34 @@
 <span class="lineNum">      31 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      32 </span><span class="lineCov">          1 : assertThrows(function() { %ToNumber(Symbol.toPrimitive) }, TypeError);</span>
 <span class="lineNum">      33 </span><span class="lineCov">          1 : assertThrows(function() { %_ToNumber(Symbol.toPrimitive) }, TypeError);</span>
-<span class="lineNum">      34 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      34 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      35 </span><span class="lineCov">          2 : var a = { toString: function() { return 54321 }};</span>
-<span class="lineNum">      36 </span><span class="lineNoCov">          0 : assertEquals(54321, %ToNumber(a));</span>
-<span class="lineNum">      37 </span><span class="lineNoCov">          0 : assertEquals(54321, %_ToNumber(a));</span>
-<span class="lineNum">      38 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      36 </span><span class="lineCov">          1 : assertEquals(54321, %ToNumber(a));</span>
+<span class="lineNum">      37 </span><span class="lineCov">          1 : assertEquals(54321, %_ToNumber(a));</span>
+<span class="lineNum">      38 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      39 </span><span class="lineCov">          2 : var b = { valueOf: function() { return 42 }};</span>
-<span class="lineNum">      40 </span><span class="lineNoCov">          0 : assertEquals(42, %ToNumber(b));</span>
-<span class="lineNum">      41 </span><span class="lineNoCov">          0 : assertEquals(42, %_ToNumber(b));</span>
-<a name="42"><span class="lineNum">      42 </span><span class="lineNoCov">          0 : </span></a>
-<a name="43"><span class="lineNum">      43 </span><span class="lineNoCov">          0 : var c = {</span></a>
-<span class="lineNum">      44 </span><span class="lineNoCov">          0 :   toString: function() { return &quot;x&quot;},</span>
+<span class="lineNum">      40 </span><span class="lineCov">          1 : assertEquals(42, %ToNumber(b));</span>
+<span class="lineNum">      41 </span><span class="lineCov">          1 : assertEquals(42, %_ToNumber(b));</span>
+<a name="42"><span class="lineNum">      42 </span><span class="lineCov">          1 : </span></a>
+<a name="43"><span class="lineNum">      43 </span><span class="lineCov">          1 : var c = {</span></a>
+<span class="lineNum">      44 </span><span class="lineCov">          1 :   toString: function() { return &quot;x&quot;},</span>
 <span class="lineNum">      45 </span><span class="lineCov">          2 :   valueOf: function() { return 123 }</span>
-<span class="lineNum">      46 </span><span class="lineNoCov">          0 : };</span>
-<span class="lineNum">      47 </span><span class="lineNoCov">          0 : assertEquals(123, %ToNumber(c));</span>
-<span class="lineNum">      48 </span><span class="lineNoCov">          0 : assertEquals(123, %_ToNumber(c));</span>
-<a name="49"><span class="lineNum">      49 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">      50 </span><span class="lineNoCov">          0 : var d = {</span>
+<span class="lineNum">      46 </span><span class="lineCov">          1 : };</span>
+<span class="lineNum">      47 </span><span class="lineCov">          1 : assertEquals(123, %ToNumber(c));</span>
+<span class="lineNum">      48 </span><span class="lineCov">          1 : assertEquals(123, %_ToNumber(c));</span>
+<a name="49"><span class="lineNum">      49 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      50 </span><span class="lineCov">          1 : var d = {</span>
 <span class="lineNum">      51 </span><span class="lineCov">          2 :   [Symbol.toPrimitive]: function(hint) {</span>
 <span class="lineNum">      52 </span><span class="lineCov">          2 :     assertEquals(&quot;number&quot;, hint);</span>
 <span class="lineNum">      53 </span><span class="lineCov">          2 :     return 987654321;</span>
 <span class="lineNum">      54 </span><span class="lineCov">          2 :   }</span>
-<span class="lineNum">      55 </span>            : };
-<span class="lineNum">      56 </span>            : assertEquals(987654321, %ToNumber(d));
-<span class="lineNum">      57 </span>            : assertEquals(987654321, %_ToNumber(d));
-<span class="lineNum">      58 </span>            : 
-<span class="lineNum">      59 </span>            : var e = new Date(0);
-<span class="lineNum">      60 </span>            : assertEquals(0, %ToNumber(e));
-<span class="lineNum">      61 </span>            : assertEquals(0, %_ToNumber(e));
+<span class="lineNum">      55 </span><span class="lineCov">          1 : };</span>
+<span class="lineNum">      56 </span><span class="lineCov">          1 : assertEquals(987654321, %ToNumber(d));</span>
+<span class="lineNum">      57 </span><span class="lineCov">          1 : assertEquals(987654321, %_ToNumber(d));</span>
+<span class="lineNum">      58 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      59 </span><span class="lineCov">          1 : var e = new Date(0);</span>
+<span class="lineNum">      60 </span><span class="lineCov">          1 : assertEquals(0, %ToNumber(e));</span>
+<span class="lineNum">      61 </span><span class="lineCov">          1 : assertEquals(0, %_ToNumber(e));</span>
 </pre>
       </td>
     </tr>

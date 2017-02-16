@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">36</td>
-            <td class="headerCovTableEntry">116</td>
-            <td class="headerCovTableEntryLo">31.0 %</td>
+            <td class="headerCovTableEntry">121</td>
+            <td class="headerCovTableEntry">121</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">3</td>
@@ -92,94 +92,94 @@
 <span class="lineNum">      30 </span><span class="lineCov">          1 : // object prototype.  ECMA-262 13.2.2.</span>
 <span class="lineNum">      31 </span><span class="lineCov">          3 : function TestNonObjectPrototype(value) {</span>
 <span class="lineNum">      32 </span><span class="lineCov">          3 :   function F() {};</span>
-<span class="lineNum">      33 </span><span class="lineNoCov">          0 :   F.prototype = value;</span>
-<span class="lineNum">      34 </span><span class="lineNoCov">          0 :   var f = new F();</span>
-<span class="lineNum">      35 </span><span class="lineNoCov">          0 :   assertEquals(value, F.prototype);</span>
-<span class="lineNum">      36 </span><span class="lineNoCov">          0 :   assertEquals(Object.prototype, f.__proto__);</span>
-<span class="lineNum">      37 </span><span class="lineNoCov">          0 :   // Test that map transitions don't break anything.</span>
-<span class="lineNum">      38 </span><span class="lineNoCov">          0 :   F.property = &quot;value&quot;;</span>
-<span class="lineNum">      39 </span><span class="lineNoCov">          0 :   assertEquals(value, F.prototype);</span>
-<span class="lineNum">      40 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">      41 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      42 </span><span class="lineNoCov">          0 : var values = [123, &quot;asdf&quot;, true];</span>
-<span class="lineNum">      43 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      44 </span><span class="lineNoCov">          0 : values.forEach(TestNonObjectPrototype);</span>
-<span class="lineNum">      45 </span><span class="lineNoCov">          0 : </span>
-<a name="46"><span class="lineNum">      46 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">      47 </span><span class="lineNoCov">          0 : // Test moving between non-object and object values.</span>
+<span class="lineNum">      33 </span><span class="lineCov">          3 :   F.prototype = value;</span>
+<span class="lineNum">      34 </span><span class="lineCov">          3 :   var f = new F();</span>
+<span class="lineNum">      35 </span><span class="lineCov">          3 :   assertEquals(value, F.prototype);</span>
+<span class="lineNum">      36 </span><span class="lineCov">          3 :   assertEquals(Object.prototype, f.__proto__);</span>
+<span class="lineNum">      37 </span><span class="lineCov">          3 :   // Test that map transitions don't break anything.</span>
+<span class="lineNum">      38 </span><span class="lineCov">          3 :   F.property = &quot;value&quot;;</span>
+<span class="lineNum">      39 </span><span class="lineCov">          3 :   assertEquals(value, F.prototype);</span>
+<span class="lineNum">      40 </span><span class="lineCov">          3 : }</span>
+<span class="lineNum">      41 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      42 </span><span class="lineCov">          1 : var values = [123, &quot;asdf&quot;, true];</span>
+<span class="lineNum">      43 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      44 </span><span class="lineCov">          1 : values.forEach(TestNonObjectPrototype);</span>
+<span class="lineNum">      45 </span><span class="lineCov">          1 : </span>
+<a name="46"><span class="lineNum">      46 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      47 </span><span class="lineCov">          1 : // Test moving between non-object and object values.</span>
 <span class="lineNum">      48 </span><span class="lineCov">          3 : function F() {};</span>
-<span class="lineNum">      49 </span><span class="lineNoCov">          0 : var f = new F();</span>
-<span class="lineNum">      50 </span><span class="lineNoCov">          0 : assertEquals(f.__proto__, F.prototype);</span>
-<span class="lineNum">      51 </span><span class="lineNoCov">          0 : F.prototype = 42;</span>
-<span class="lineNum">      52 </span><span class="lineNoCov">          0 : f = new F();</span>
-<span class="lineNum">      53 </span><span class="lineNoCov">          0 : assertEquals(Object.prototype, f.__proto__);</span>
-<span class="lineNum">      54 </span><span class="lineNoCov">          0 : assertEquals(42, F.prototype);</span>
-<span class="lineNum">      55 </span><span class="lineNoCov">          0 : F.prototype = { a: 42 };</span>
-<span class="lineNum">      56 </span><span class="lineNoCov">          0 : f = new F();</span>
-<span class="lineNum">      57 </span><span class="lineNoCov">          0 : assertEquals(42, F.prototype.a);</span>
-<span class="lineNum">      58 </span><span class="lineNoCov">          0 : assertEquals(f.__proto__, F.prototype);</span>
-<span class="lineNum">      59 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      60 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      61 </span><span class="lineNoCov">          0 : // Test that the fast case optimizations can handle non-functions,</span>
-<span class="lineNum">      62 </span><span class="lineNoCov">          0 : // functions with no prototypes (yet), non-object prototypes,</span>
-<a name="63"><span class="lineNum">      63 </span><span class="lineNoCov">          0 : // functions without initial maps, and the fully initialized</span></a>
-<span class="lineNum">      64 </span><span class="lineNoCov">          0 : // functions.</span>
+<span class="lineNum">      49 </span><span class="lineCov">          1 : var f = new F();</span>
+<span class="lineNum">      50 </span><span class="lineCov">          1 : assertEquals(f.__proto__, F.prototype);</span>
+<span class="lineNum">      51 </span><span class="lineCov">          1 : F.prototype = 42;</span>
+<span class="lineNum">      52 </span><span class="lineCov">          1 : f = new F();</span>
+<span class="lineNum">      53 </span><span class="lineCov">          1 : assertEquals(Object.prototype, f.__proto__);</span>
+<span class="lineNum">      54 </span><span class="lineCov">          1 : assertEquals(42, F.prototype);</span>
+<span class="lineNum">      55 </span><span class="lineCov">          1 : F.prototype = { a: 42 };</span>
+<span class="lineNum">      56 </span><span class="lineCov">          1 : f = new F();</span>
+<span class="lineNum">      57 </span><span class="lineCov">          1 : assertEquals(42, F.prototype.a);</span>
+<span class="lineNum">      58 </span><span class="lineCov">          1 : assertEquals(f.__proto__, F.prototype);</span>
+<span class="lineNum">      59 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      60 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      61 </span><span class="lineCov">          1 : // Test that the fast case optimizations can handle non-functions,</span>
+<span class="lineNum">      62 </span><span class="lineCov">          1 : // functions with no prototypes (yet), non-object prototypes,</span>
+<a name="63"><span class="lineNum">      63 </span><span class="lineCov">          1 : // functions without initial maps, and the fully initialized</span></a>
+<span class="lineNum">      64 </span><span class="lineCov">          1 : // functions.</span>
 <span class="lineNum">      65 </span><span class="lineCov">          7 : function GetPrototypeOf(f) {</span>
 <span class="lineNum">      66 </span><span class="lineCov">          7 :   return f.prototype;</span>
 <span class="lineNum">      67 </span><span class="lineCov">          7 : };</span>
-<span class="lineNum">      68 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      69 </span><span class="lineNoCov">          0 : // Seed the GetPrototypeOf function to enable the fast case</span>
-<span class="lineNum">      70 </span><span class="lineNoCov">          0 : // optimizations.</span>
-<span class="lineNum">      71 </span><span class="lineNoCov">          0 : var p = GetPrototypeOf(GetPrototypeOf);</span>
-<span class="lineNum">      72 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      73 </span><span class="lineNoCov">          0 : // Check that getting the prototype of a tagged integer works.</span>
-<a name="74"><span class="lineNum">      74 </span><span class="lineNoCov">          0 : assertTrue(typeof GetPrototypeOf(1) == 'undefined');</span></a>
-<span class="lineNum">      75 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      76 </span><span class="lineNoCov">          0 : function NoPrototypeYet() { }</span>
-<span class="lineNum">      77 </span><span class="lineNoCov">          0 : var p = GetPrototypeOf(NoPrototypeYet);</span>
-<a name="78"><span class="lineNum">      78 </span><span class="lineNoCov">          0 : assertEquals(NoPrototypeYet.prototype, p);</span></a>
-<span class="lineNum">      79 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      80 </span><span class="lineNoCov">          0 : function NonObjectPrototype() { }</span>
-<span class="lineNum">      81 </span><span class="lineNoCov">          0 : NonObjectPrototype.prototype = 42;</span>
-<a name="82"><span class="lineNum">      82 </span><span class="lineNoCov">          0 : assertEquals(42, GetPrototypeOf(NonObjectPrototype));</span></a>
-<span class="lineNum">      83 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      84 </span><span class="lineNoCov">          0 : function NoInitialMap() { }</span>
-<span class="lineNum">      85 </span><span class="lineNoCov">          0 : var p = NoInitialMap.prototype;</span>
-<span class="lineNum">      86 </span><span class="lineNoCov">          0 : assertEquals(p, GetPrototypeOf(NoInitialMap));</span>
-<span class="lineNum">      87 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      88 </span><span class="lineNoCov">          0 : // Check the standard fast case.</span>
-<span class="lineNum">      89 </span><span class="lineNoCov">          0 : assertEquals(F.prototype, GetPrototypeOf(F));</span>
-<span class="lineNum">      90 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      91 </span><span class="lineNoCov">          0 : // Check that getting the prototype of a non-function works. This must</span>
-<span class="lineNum">      92 </span><span class="lineNoCov">          0 : // be the last thing we do because this will clobber the optimizations</span>
-<span class="lineNum">      93 </span><span class="lineNoCov">          0 : // in GetPrototypeOf and go to a monomorphic IC load instead.</span>
-<span class="lineNum">      94 </span><span class="lineNoCov">          0 : assertEquals(87, GetPrototypeOf({prototype:87}));</span>
-<span class="lineNum">      95 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      96 </span><span class="lineNoCov">          0 : // Check the prototype is not enumerable, as per ES5 section 15.3.5.2.  Note</span>
-<span class="lineNum">      97 </span><span class="lineNoCov">          0 : // that this is in difference to ES3, which specified that function instances</span>
-<span class="lineNum">      98 </span><span class="lineNoCov">          0 : // would have enumerable prototypes (section 15.3.5.2 also).</span>
-<span class="lineNum">      99 </span><span class="lineNoCov">          0 : var foo = new Function(&quot;return x&quot;);</span>
-<span class="lineNum">     100 </span><span class="lineNoCov">          0 : var result  = &quot;&quot;</span>
-<span class="lineNum">     101 </span><span class="lineNoCov">          0 : for (var n in foo) result += n;</span>
-<span class="lineNum">     102 </span><span class="lineNoCov">          0 : assertEquals(result, &quot;&quot;);</span>
-<span class="lineNum">     103 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     104 </span><span class="lineNoCov">          0 : f = new Function('return 1;')</span>
-<span class="lineNum">     105 </span><span class="lineNoCov">          0 : var desc = Object.getOwnPropertyDescriptor(f, &quot;prototype&quot;);</span>
-<span class="lineNum">     106 </span><span class="lineNoCov">          0 : assertFalse(desc.configurable);</span>
-<span class="lineNum">     107 </span><span class="lineNoCov">          0 : assertFalse(desc.enumerable);</span>
-<span class="lineNum">     108 </span><span class="lineNoCov">          0 : assertTrue(desc.writable);</span>
-<span class="lineNum">     109 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     110 </span><span class="lineNoCov">          0 : f = Function('return 1;')</span>
-<span class="lineNum">     111 </span><span class="lineNoCov">          0 : var desc = Object.getOwnPropertyDescriptor(f, &quot;prototype&quot;);</span>
-<span class="lineNum">     112 </span><span class="lineNoCov">          0 : assertFalse(desc.configurable);</span>
-<span class="lineNum">     113 </span><span class="lineNoCov">          0 : assertFalse(desc.enumerable);</span>
-<a name="114"><span class="lineNum">     114 </span><span class="lineNoCov">          0 : assertTrue(desc.writable);</span></a>
-<span class="lineNum">     115 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     116 </span><span class="lineNoCov">          0 : f = function () { return 1; }</span>
-<span class="lineNum">     117 </span>            : var desc = Object.getOwnPropertyDescriptor(f, &quot;prototype&quot;);
-<span class="lineNum">     118 </span>            : assertFalse(desc.configurable);
-<span class="lineNum">     119 </span>            : assertFalse(desc.enumerable);
-<span class="lineNum">     120 </span>            : assertTrue(desc.writable);
+<span class="lineNum">      68 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      69 </span><span class="lineCov">          1 : // Seed the GetPrototypeOf function to enable the fast case</span>
+<span class="lineNum">      70 </span><span class="lineCov">          1 : // optimizations.</span>
+<span class="lineNum">      71 </span><span class="lineCov">          1 : var p = GetPrototypeOf(GetPrototypeOf);</span>
+<span class="lineNum">      72 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      73 </span><span class="lineCov">          1 : // Check that getting the prototype of a tagged integer works.</span>
+<a name="74"><span class="lineNum">      74 </span><span class="lineCov">          1 : assertTrue(typeof GetPrototypeOf(1) == 'undefined');</span></a>
+<span class="lineNum">      75 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      76 </span><span class="lineCov">          1 : function NoPrototypeYet() { }</span>
+<span class="lineNum">      77 </span><span class="lineCov">          1 : var p = GetPrototypeOf(NoPrototypeYet);</span>
+<a name="78"><span class="lineNum">      78 </span><span class="lineCov">          1 : assertEquals(NoPrototypeYet.prototype, p);</span></a>
+<span class="lineNum">      79 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      80 </span><span class="lineCov">          1 : function NonObjectPrototype() { }</span>
+<span class="lineNum">      81 </span><span class="lineCov">          1 : NonObjectPrototype.prototype = 42;</span>
+<a name="82"><span class="lineNum">      82 </span><span class="lineCov">          1 : assertEquals(42, GetPrototypeOf(NonObjectPrototype));</span></a>
+<span class="lineNum">      83 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      84 </span><span class="lineCov">          1 : function NoInitialMap() { }</span>
+<span class="lineNum">      85 </span><span class="lineCov">          1 : var p = NoInitialMap.prototype;</span>
+<span class="lineNum">      86 </span><span class="lineCov">          1 : assertEquals(p, GetPrototypeOf(NoInitialMap));</span>
+<span class="lineNum">      87 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      88 </span><span class="lineCov">          1 : // Check the standard fast case.</span>
+<span class="lineNum">      89 </span><span class="lineCov">          1 : assertEquals(F.prototype, GetPrototypeOf(F));</span>
+<span class="lineNum">      90 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      91 </span><span class="lineCov">          1 : // Check that getting the prototype of a non-function works. This must</span>
+<span class="lineNum">      92 </span><span class="lineCov">          1 : // be the last thing we do because this will clobber the optimizations</span>
+<span class="lineNum">      93 </span><span class="lineCov">          1 : // in GetPrototypeOf and go to a monomorphic IC load instead.</span>
+<span class="lineNum">      94 </span><span class="lineCov">          1 : assertEquals(87, GetPrototypeOf({prototype:87}));</span>
+<span class="lineNum">      95 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      96 </span><span class="lineCov">          1 : // Check the prototype is not enumerable, as per ES5 section 15.3.5.2.  Note</span>
+<span class="lineNum">      97 </span><span class="lineCov">          1 : // that this is in difference to ES3, which specified that function instances</span>
+<span class="lineNum">      98 </span><span class="lineCov">          1 : // would have enumerable prototypes (section 15.3.5.2 also).</span>
+<span class="lineNum">      99 </span><span class="lineCov">          1 : var foo = new Function(&quot;return x&quot;);</span>
+<span class="lineNum">     100 </span><span class="lineCov">          1 : var result  = &quot;&quot;</span>
+<span class="lineNum">     101 </span><span class="lineCov">          1 : for (var n in foo) result += n;</span>
+<span class="lineNum">     102 </span><span class="lineCov">          1 : assertEquals(result, &quot;&quot;);</span>
+<span class="lineNum">     103 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     104 </span><span class="lineCov">          1 : f = new Function('return 1;')</span>
+<span class="lineNum">     105 </span><span class="lineCov">          1 : var desc = Object.getOwnPropertyDescriptor(f, &quot;prototype&quot;);</span>
+<span class="lineNum">     106 </span><span class="lineCov">          1 : assertFalse(desc.configurable);</span>
+<span class="lineNum">     107 </span><span class="lineCov">          1 : assertFalse(desc.enumerable);</span>
+<span class="lineNum">     108 </span><span class="lineCov">          1 : assertTrue(desc.writable);</span>
+<span class="lineNum">     109 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     110 </span><span class="lineCov">          1 : f = Function('return 1;')</span>
+<span class="lineNum">     111 </span><span class="lineCov">          1 : var desc = Object.getOwnPropertyDescriptor(f, &quot;prototype&quot;);</span>
+<span class="lineNum">     112 </span><span class="lineCov">          1 : assertFalse(desc.configurable);</span>
+<span class="lineNum">     113 </span><span class="lineCov">          1 : assertFalse(desc.enumerable);</span>
+<a name="114"><span class="lineNum">     114 </span><span class="lineCov">          1 : assertTrue(desc.writable);</span></a>
+<span class="lineNum">     115 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     116 </span><span class="lineCov">          1 : f = function () { return 1; }</span>
+<span class="lineNum">     117 </span><span class="lineCov">          1 : var desc = Object.getOwnPropertyDescriptor(f, &quot;prototype&quot;);</span>
+<span class="lineNum">     118 </span><span class="lineCov">          1 : assertFalse(desc.configurable);</span>
+<span class="lineNum">     119 </span><span class="lineCov">          1 : assertFalse(desc.enumerable);</span>
+<span class="lineNum">     120 </span><span class="lineCov">          1 : assertTrue(desc.writable);</span>
 </pre>
       </td>
     </tr>

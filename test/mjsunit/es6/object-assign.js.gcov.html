@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">94</td>
-            <td class="headerCovTableEntry">172</td>
-            <td class="headerCovTableEntryLo">54.7 %</td>
+            <td class="headerCovTableEntry">174</td>
+            <td class="headerCovTableEntry">174</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">23</td>
@@ -75,11 +75,11 @@
 <span class="lineNum">      13 </span><span class="lineCov">          9 :   assertEquals(desc.enumerable, enumerable);</span>
 <span class="lineNum">      14 </span><span class="lineCov">          9 :   assertEquals(desc.configurable, configurable);</span>
 <span class="lineNum">      15 </span><span class="lineCov">          9 : }</span>
-<span class="lineNum">      16 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      17 </span><span class="lineNoCov">          0 : // 19.1.2.1 Object.assign ( target, ...sources )</span>
-<span class="lineNum">      18 </span><span class="lineNoCov">          0 : assertEquals(Object.assign.length, 2);</span>
-<a name="19"><span class="lineNum">      19 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">      20 </span><span class="lineNoCov">          0 : // Basic functionality works with multiple sources</span>
+<span class="lineNum">      16 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      17 </span><span class="lineCov">          1 : // 19.1.2.1 Object.assign ( target, ...sources )</span>
+<span class="lineNum">      18 </span><span class="lineCov">          1 : assertEquals(Object.assign.length, 2);</span>
+<a name="19"><span class="lineNum">      19 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      20 </span><span class="lineCov">          1 : // Basic functionality works with multiple sources</span>
 <span class="lineNum">      21 </span><span class="lineCov">          1 : (function basicMultipleSources() {</span>
 <span class="lineNum">      22 </span><span class="lineCov">          1 :   var a = {};</span>
 <span class="lineNum">      23 </span><span class="lineCov">          1 :   var b = { bProp: 1 };</span>
@@ -90,8 +90,8 @@
 <span class="lineNum">      28 </span><span class="lineCov">          1 :     cProp: 2</span>
 <span class="lineNum">      29 </span><span class="lineCov">          1 :   });</span>
 <span class="lineNum">      30 </span><span class="lineCov">          1 : })();</span>
-<a name="31"><span class="lineNum">      31 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">      32 </span><span class="lineNoCov">          0 : // Basic functionality works with symbols</span>
+<a name="31"><span class="lineNum">      31 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      32 </span><span class="lineCov">          1 : // Basic functionality works with symbols</span>
 <span class="lineNum">      33 </span><span class="lineCov">          1 : (function basicSymbols() {</span>
 <span class="lineNum">      34 </span><span class="lineCov">          1 :   var a = {};</span>
 <span class="lineNum">      35 </span><span class="lineCov">          1 :   var b = { bProp: 1 };</span>
@@ -101,21 +101,21 @@
 <span class="lineNum">      39 </span><span class="lineCov">          1 :   assertEquals(1, a.bProp);</span>
 <span class="lineNum">      40 </span><span class="lineCov">          1 :   assertEquals(2, a[aSymbol]);</span>
 <span class="lineNum">      41 </span><span class="lineCov">          1 : })();</span>
-<span class="lineNum">      42 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      43 </span><span class="lineNoCov">          0 : // Dies if target is null or undefined</span>
+<span class="lineNum">      42 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      43 </span><span class="lineCov">          1 : // Dies if target is null or undefined</span>
 <span class="lineNum">      44 </span><span class="lineCov">          1 : assertThrows(function() { return Object.assign(null, null); }, TypeError);</span>
 <span class="lineNum">      45 </span><span class="lineCov">          1 : assertThrows(function() { return Object.assign(null, {}); }, TypeError);</span>
 <span class="lineNum">      46 </span><span class="lineCov">          1 : assertThrows(function() { return Object.assign(undefined); }, TypeError);</span>
 <span class="lineNum">      47 </span><span class="lineCov">          1 : assertThrows(function() { return Object.assign(); }, TypeError);</span>
-<span class="lineNum">      48 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      49 </span><span class="lineNoCov">          0 : // Calls ToObject for target</span>
-<span class="lineNum">      50 </span><span class="lineNoCov">          0 : assertTrue(Object.assign(true, {}) instanceof Boolean);</span>
-<span class="lineNum">      51 </span><span class="lineNoCov">          0 : assertTrue(Object.assign(1, {}) instanceof Number);</span>
-<span class="lineNum">      52 </span><span class="lineNoCov">          0 : assertTrue(Object.assign(&quot;string&quot;, {}) instanceof String);</span>
-<span class="lineNum">      53 </span><span class="lineNoCov">          0 : var o = {};</span>
-<span class="lineNum">      54 </span><span class="lineNoCov">          0 : assertSame(Object.assign(o, {}), o);</span>
-<a name="55"><span class="lineNum">      55 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">      56 </span><span class="lineNoCov">          0 : // Only [[Enumerable]] properties are assigned to target</span>
+<span class="lineNum">      48 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      49 </span><span class="lineCov">          1 : // Calls ToObject for target</span>
+<span class="lineNum">      50 </span><span class="lineCov">          1 : assertTrue(Object.assign(true, {}) instanceof Boolean);</span>
+<span class="lineNum">      51 </span><span class="lineCov">          1 : assertTrue(Object.assign(1, {}) instanceof Number);</span>
+<span class="lineNum">      52 </span><span class="lineCov">          1 : assertTrue(Object.assign(&quot;string&quot;, {}) instanceof String);</span>
+<span class="lineNum">      53 </span><span class="lineCov">          1 : var o = {};</span>
+<span class="lineNum">      54 </span><span class="lineCov">          1 : assertSame(Object.assign(o, {}), o);</span>
+<a name="55"><span class="lineNum">      55 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      56 </span><span class="lineCov">          1 : // Only [[Enumerable]] properties are assigned to target</span>
 <span class="lineNum">      57 </span><span class="lineCov">          1 : (function onlyEnumerablePropertiesAssigned() {</span>
 <span class="lineNum">      58 </span><span class="lineCov">          1 :   var source = Object.defineProperties({}, {</span>
 <span class="lineNum">      59 </span><span class="lineCov">          1 :     a: {value: 1, enumerable: true},</span>
@@ -125,17 +125,17 @@
 <span class="lineNum">      63 </span><span class="lineCov">          1 :   assertTrue(&quot;a&quot; in target);</span>
 <span class="lineNum">      64 </span><span class="lineCov">          1 :   assertFalse(&quot;b&quot; in target);</span>
 <span class="lineNum">      65 </span><span class="lineCov">          1 : })();</span>
-<span class="lineNum">      66 </span><span class="lineNoCov">          0 : </span>
-<a name="67"><span class="lineNum">      67 </span><span class="lineNoCov">          0 : // Properties are retrieved through Get()</span></a>
-<span class="lineNum">      68 </span><span class="lineNoCov">          0 : // Properties are assigned through Put()</span>
+<span class="lineNum">      66 </span><span class="lineCov">          1 : </span>
+<a name="67"><span class="lineNum">      67 </span><span class="lineCov">          1 : // Properties are retrieved through Get()</span></a>
+<span class="lineNum">      68 </span><span class="lineCov">          1 : // Properties are assigned through Put()</span>
 <span class="lineNum">      69 </span><span class="lineCov">          1 : (function testPropertiesAssignedThroughPut() {</span>
 <span class="lineNum">      70 </span><span class="lineCov">          1 :   var setterCalled = false;</span>
 <span class="lineNum">      71 </span><span class="lineCov">          1 :   Object.assign({set a(v) { setterCalled = v }}, {a: true});</span>
-<span class="lineNum">      72 </span><span class="lineNoCov">          0 :   assertTrue(setterCalled);</span>
-<span class="lineNum">      73 </span><span class="lineNoCov">          0 : })();</span>
-<span class="lineNum">      74 </span><span class="lineNoCov">          0 : </span>
-<a name="75"><span class="lineNum">      75 </span><span class="lineNoCov">          0 : // Properties are retrieved through Get()</span></a>
-<span class="lineNum">      76 </span><span class="lineNoCov">          0 : // Properties are assigned through Put(): Existing property attributes are not altered</span>
+<span class="lineNum">      72 </span><span class="lineCov">          1 :   assertTrue(setterCalled);</span>
+<span class="lineNum">      73 </span><span class="lineCov">          1 : })();</span>
+<span class="lineNum">      74 </span><span class="lineCov">          1 : </span>
+<a name="75"><span class="lineNum">      75 </span><span class="lineCov">          1 : // Properties are retrieved through Get()</span></a>
+<span class="lineNum">      76 </span><span class="lineCov">          1 : // Properties are assigned through Put(): Existing property attributes are not altered</span>
 <span class="lineNum">      77 </span><span class="lineCov">          1 : (function propertiesAssignedExistingNotAltered() {</span>
 <span class="lineNum">      78 </span><span class="lineCov">          1 :   var source = {a: 1, b: 2, c: 3};</span>
 <span class="lineNum">      79 </span><span class="lineCov">          1 :   var target = {a: 0, b: 0, c: 0};</span>
@@ -147,92 +147,92 @@
 <span class="lineNum">      85 </span><span class="lineCov">          1 :   checkDataProperty(target, &quot;b&quot;, 2, true, true, false);</span>
 <span class="lineNum">      86 </span><span class="lineCov">          1 :   checkDataProperty(target, &quot;c&quot;, 3, true, false, false);</span>
 <span class="lineNum">      87 </span><span class="lineCov">          1 : })();</span>
-<span class="lineNum">      88 </span><span class="lineNoCov">          0 : </span>
-<a name="89"><span class="lineNum">      89 </span><span class="lineNoCov">          0 : // Properties are retrieved through Get()</span></a>
-<span class="lineNum">      90 </span><span class="lineNoCov">          0 : // Properties are assigned through Put(): Throws TypeError if non-writable</span>
+<span class="lineNum">      88 </span><span class="lineCov">          1 : </span>
+<a name="89"><span class="lineNum">      89 </span><span class="lineCov">          1 : // Properties are retrieved through Get()</span></a>
+<span class="lineNum">      90 </span><span class="lineCov">          1 : // Properties are assigned through Put(): Throws TypeError if non-writable</span>
 <span class="lineNum">      91 </span><span class="lineCov">          1 : (function propertiesAssignedTypeErrorNonWritable() {</span>
 <span class="lineNum">      92 </span><span class="lineCov">          1 :   var source = {a: 1};</span>
 <span class="lineNum">      93 </span><span class="lineCov">          1 :   var target = {a: 0};</span>
 <span class="lineNum">      94 </span><span class="lineCov">          1 :   Object.defineProperty(target, &quot;a&quot;, {writable: false});</span>
 <span class="lineNum">      95 </span><span class="lineCov">          1 :   assertThrows(function() { return Object.assign(target, source); }, TypeError);</span>
-<span class="lineNum">      96 </span><span class="lineNoCov">          0 :   checkDataProperty(target, &quot;a&quot;, 0, false, true, true);</span>
-<span class="lineNum">      97 </span><span class="lineNoCov">          0 : })();</span>
-<span class="lineNum">      98 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      99 </span><span class="lineNoCov">          0 : // Properties are retrieved through Get()</span>
-<a name="100"><span class="lineNum">     100 </span><span class="lineNoCov">          0 : // Put() creates standard properties; Property attributes from source are</span></a>
-<a name="101"><span class="lineNum">     101 </span><span class="lineNoCov">          0 : // ignored</span></a>
+<span class="lineNum">      96 </span><span class="lineCov">          1 :   checkDataProperty(target, &quot;a&quot;, 0, false, true, true);</span>
+<span class="lineNum">      97 </span><span class="lineCov">          1 : })();</span>
+<span class="lineNum">      98 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      99 </span><span class="lineCov">          1 : // Properties are retrieved through Get()</span>
+<a name="100"><span class="lineNum">     100 </span><span class="lineCov">          1 : // Put() creates standard properties; Property attributes from source are</span></a>
+<a name="101"><span class="lineNum">     101 </span><span class="lineCov">          1 : // ignored</span></a>
 <span class="lineNum">     102 </span><span class="lineCov">          1 : (function createsStandardProperties() {</span>
 <span class="lineNum">     103 </span><span class="lineCov">          1 :   var source = {a: 1, b: 2, c: 3, get d() { return 4 }};</span>
-<span class="lineNum">     104 </span><span class="lineNoCov">          0 :   Object.defineProperty(source, &quot;b&quot;, {writable: false});</span>
-<span class="lineNum">     105 </span><span class="lineNoCov">          0 :   Object.defineProperty(source, &quot;c&quot;, {configurable: false});</span>
-<span class="lineNum">     106 </span><span class="lineNoCov">          0 :   var target = Object.assign({}, source);</span>
-<span class="lineNum">     107 </span><span class="lineNoCov">          0 :   checkDataProperty(target, &quot;a&quot;, 1, true, true, true);</span>
-<span class="lineNum">     108 </span><span class="lineNoCov">          0 :   checkDataProperty(target, &quot;b&quot;, 2, true, true, true);</span>
-<span class="lineNum">     109 </span><span class="lineNoCov">          0 :   checkDataProperty(target, &quot;c&quot;, 3, true, true, true);</span>
-<span class="lineNum">     110 </span><span class="lineNoCov">          0 :   checkDataProperty(target, &quot;d&quot;, 4, true, true, true);</span>
-<span class="lineNum">     111 </span><span class="lineNoCov">          0 : })();</span>
-<a name="112"><span class="lineNum">     112 </span><span class="lineNoCov">          0 : </span></a>
-<a name="113"><span class="lineNum">     113 </span><span class="lineNoCov">          0 : // Properties created during traversal are not copied</span></a>
+<span class="lineNum">     104 </span><span class="lineCov">          1 :   Object.defineProperty(source, &quot;b&quot;, {writable: false});</span>
+<span class="lineNum">     105 </span><span class="lineCov">          1 :   Object.defineProperty(source, &quot;c&quot;, {configurable: false});</span>
+<span class="lineNum">     106 </span><span class="lineCov">          1 :   var target = Object.assign({}, source);</span>
+<span class="lineNum">     107 </span><span class="lineCov">          1 :   checkDataProperty(target, &quot;a&quot;, 1, true, true, true);</span>
+<span class="lineNum">     108 </span><span class="lineCov">          1 :   checkDataProperty(target, &quot;b&quot;, 2, true, true, true);</span>
+<span class="lineNum">     109 </span><span class="lineCov">          1 :   checkDataProperty(target, &quot;c&quot;, 3, true, true, true);</span>
+<span class="lineNum">     110 </span><span class="lineCov">          1 :   checkDataProperty(target, &quot;d&quot;, 4, true, true, true);</span>
+<span class="lineNum">     111 </span><span class="lineCov">          1 : })();</span>
+<a name="112"><span class="lineNum">     112 </span><span class="lineCov">          1 : </span></a>
+<a name="113"><span class="lineNum">     113 </span><span class="lineCov">          1 : // Properties created during traversal are not copied</span></a>
 <span class="lineNum">     114 </span><span class="lineCov">          1 : (function propertiesCreatedDuringTraversalNotCopied() {</span>
 <span class="lineNum">     115 </span><span class="lineCov">          1 :   var source = {get a() { this.b = 2 }};</span>
-<span class="lineNum">     116 </span><span class="lineNoCov">          0 :   var target = Object.assign({}, source);</span>
-<span class="lineNum">     117 </span><span class="lineNoCov">          0 :   assertTrue(&quot;a&quot; in target);</span>
-<span class="lineNum">     118 </span><span class="lineNoCov">          0 :   assertFalse(&quot;b&quot; in target);</span>
-<span class="lineNum">     119 </span><span class="lineNoCov">          0 : })();</span>
-<a name="120"><span class="lineNum">     120 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     121 </span><span class="lineNoCov">          0 : // String and Symbol valued properties are copied</span>
+<span class="lineNum">     116 </span><span class="lineCov">          1 :   var target = Object.assign({}, source);</span>
+<span class="lineNum">     117 </span><span class="lineCov">          1 :   assertTrue(&quot;a&quot; in target);</span>
+<span class="lineNum">     118 </span><span class="lineCov">          1 :   assertFalse(&quot;b&quot; in target);</span>
+<span class="lineNum">     119 </span><span class="lineCov">          1 : })();</span>
+<a name="120"><span class="lineNum">     120 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     121 </span><span class="lineCov">          1 : // String and Symbol valued properties are copied</span>
 <span class="lineNum">     122 </span><span class="lineCov">          1 : (function testStringAndSymbolPropertiesCopied() {</span>
 <span class="lineNum">     123 </span><span class="lineCov">          1 :   var keyA = &quot;str-prop&quot;;</span>
 <span class="lineNum">     124 </span><span class="lineCov">          1 :   var source = {&quot;str-prop&quot;: 1};</span>
 <span class="lineNum">     125 </span><span class="lineCov">          1 :   var target = Object.assign({}, source);</span>
 <span class="lineNum">     126 </span><span class="lineCov">          1 :   checkDataProperty(target, keyA, 1, true, true, true);</span>
 <a name="127"><span class="lineNum">     127 </span><span class="lineCov">          1 : })();</span></a>
-<a name="128"><span class="lineNum">     128 </span><span class="lineNoCov">          0 : </span></a>
+<a name="128"><span class="lineNum">     128 </span><span class="lineCov">          1 : </span></a>
 <a name="129"><span class="lineNum">     129 </span><span class="lineCov">          1 : (function testExceptionsStopFirstException() {</span></a>
 <span class="lineNum">     130 </span><span class="lineCov">          1 :   var ErrorA = function ErrorA() {};</span>
 <span class="lineNum">     131 </span><span class="lineCov">          1 :   var ErrorB = function ErrorB() {};</span>
-<span class="lineNum">     132 </span><span class="lineNoCov">          0 :   var log = &quot;&quot;;</span>
-<a name="133"><span class="lineNum">     133 </span><span class="lineNoCov">          0 :   var source = { b: 1, a: 1 };</span></a>
-<a name="134"><span class="lineNum">     134 </span><span class="lineNoCov">          0 :   var target = {</span></a>
-<span class="lineNum">     135 </span><span class="lineNoCov">          0 :       set a(v) { log += &quot;a&quot;; throw new ErrorA },</span>
+<span class="lineNum">     132 </span><span class="lineCov">          1 :   var log = &quot;&quot;;</span>
+<a name="133"><span class="lineNum">     133 </span><span class="lineCov">          1 :   var source = { b: 1, a: 1 };</span></a>
+<a name="134"><span class="lineNum">     134 </span><span class="lineCov">          1 :   var target = {</span></a>
+<span class="lineNum">     135 </span><span class="lineCov">          1 :       set a(v) { log += &quot;a&quot;; throw new ErrorA },</span>
 <span class="lineNum">     136 </span><span class="lineCov">          1 :       set b(v) { log += &quot;b&quot;; throw new ErrorB },</span>
-<span class="lineNum">     137 </span><span class="lineNoCov">          0 :   };</span>
+<span class="lineNum">     137 </span><span class="lineCov">          1 :   };</span>
 <span class="lineNum">     138 </span><span class="lineCov">          1 :   assertThrows(function() { return Object.assign(target, source); }, ErrorB);</span>
-<span class="lineNum">     139 </span><span class="lineNoCov">          0 :   assertEquals(log, &quot;b&quot;);</span>
-<a name="140"><span class="lineNum">     140 </span><span class="lineNoCov">          0 : })();</span></a>
-<span class="lineNum">     141 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     139 </span><span class="lineCov">          1 :   assertEquals(log, &quot;b&quot;);</span>
+<a name="140"><span class="lineNum">     140 </span><span class="lineCov">          1 : })();</span></a>
+<span class="lineNum">     141 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     142 </span><span class="lineCov">          1 : (function add_to_source() {</span>
 <span class="lineNum">     143 </span><span class="lineCov">          1 :   var target = {set k1(v) { source.k3 = 100; }};</span>
-<span class="lineNum">     144 </span><span class="lineNoCov">          0 :   var source = {k1:10};</span>
-<span class="lineNum">     145 </span><span class="lineNoCov">          0 :   Object.defineProperty(source, &quot;k2&quot;,</span>
-<span class="lineNum">     146 </span><span class="lineNoCov">          0 :       {value: 20, enumerable: false, configurable: true});</span>
-<span class="lineNum">     147 </span><span class="lineNoCov">          0 :   Object.assign(target, source);</span>
-<span class="lineNum">     148 </span><span class="lineNoCov">          0 :   assertEquals(undefined, target.k2);</span>
-<span class="lineNum">     149 </span><span class="lineNoCov">          0 :   assertEquals(undefined, target.k3);</span>
-<a name="150"><span class="lineNum">     150 </span><span class="lineNoCov">          0 : })();</span></a>
-<span class="lineNum">     151 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     144 </span><span class="lineCov">          1 :   var source = {k1:10};</span>
+<span class="lineNum">     145 </span><span class="lineCov">          1 :   Object.defineProperty(source, &quot;k2&quot;,</span>
+<span class="lineNum">     146 </span><span class="lineCov">          1 :       {value: 20, enumerable: false, configurable: true});</span>
+<span class="lineNum">     147 </span><span class="lineCov">          1 :   Object.assign(target, source);</span>
+<span class="lineNum">     148 </span><span class="lineCov">          1 :   assertEquals(undefined, target.k2);</span>
+<span class="lineNum">     149 </span><span class="lineCov">          1 :   assertEquals(undefined, target.k3);</span>
+<a name="150"><span class="lineNum">     150 </span><span class="lineCov">          1 : })();</span></a>
+<span class="lineNum">     151 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     152 </span><span class="lineCov">          1 : (function reconfigure_enumerable_source() {</span>
 <span class="lineNum">     153 </span><span class="lineCov">          1 :   var target = {set k1(v) {</span>
 <span class="lineNum">     154 </span><span class="lineCov">          1 :     Object.defineProperty(source, &quot;k2&quot;, {value: 20, enumerable: true});</span>
 <span class="lineNum">     155 </span><span class="lineCov">          1 :   }};</span>
-<span class="lineNum">     156 </span><span class="lineNoCov">          0 :   var source = {k1:10};</span>
-<span class="lineNum">     157 </span><span class="lineNoCov">          0 :   Object.defineProperty(source, &quot;k2&quot;,</span>
-<span class="lineNum">     158 </span><span class="lineNoCov">          0 :       {value: 20, enumerable: false, configurable: true});</span>
-<span class="lineNum">     159 </span><span class="lineNoCov">          0 :   Object.assign(target, source);</span>
-<span class="lineNum">     160 </span><span class="lineNoCov">          0 :   assertEquals(20, target.k2);</span>
-<a name="161"><span class="lineNum">     161 </span><span class="lineNoCov">          0 : })();</span></a>
-<a name="162"><span class="lineNum">     162 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">     156 </span><span class="lineCov">          1 :   var source = {k1:10};</span>
+<span class="lineNum">     157 </span><span class="lineCov">          1 :   Object.defineProperty(source, &quot;k2&quot;,</span>
+<span class="lineNum">     158 </span><span class="lineCov">          1 :       {value: 20, enumerable: false, configurable: true});</span>
+<span class="lineNum">     159 </span><span class="lineCov">          1 :   Object.assign(target, source);</span>
+<span class="lineNum">     160 </span><span class="lineCov">          1 :   assertEquals(20, target.k2);</span>
+<a name="161"><span class="lineNum">     161 </span><span class="lineCov">          1 : })();</span></a>
+<a name="162"><span class="lineNum">     162 </span><span class="lineCov">          1 : </span></a>
 <span class="lineNum">     163 </span><span class="lineCov">          1 : (function propagate_assign_failure() {</span>
 <span class="lineNum">     164 </span><span class="lineCov">          1 :   var target = {set k1(v) { throw &quot;fail&quot; }};</span>
-<span class="lineNum">     165 </span><span class="lineNoCov">          0 :   var source = {k1:10};</span>
+<span class="lineNum">     165 </span><span class="lineCov">          1 :   var source = {k1:10};</span>
 <span class="lineNum">     166 </span><span class="lineCov">          1 :   assertThrows(()=&gt;Object.assign(target, source));</span>
-<a name="167"><span class="lineNum">     167 </span><span class="lineNoCov">          0 : })();</span></a>
-<span class="lineNum">     168 </span><span class="lineNoCov">          0 : </span>
+<a name="167"><span class="lineNum">     167 </span><span class="lineCov">          1 : })();</span></a>
+<span class="lineNum">     168 </span><span class="lineCov">          1 : </span>
 <a name="169"><span class="lineNum">     169 </span><span class="lineCov">          1 : (function propagate_read_failure() {</span></a>
 <a name="170"><span class="lineNum">     170 </span><span class="lineCov">          1 :   var target = {};</span></a>
 <span class="lineNum">     171 </span><span class="lineCov">          1 :   var source = {get k1() { throw &quot;fail&quot; }};</span>
 <span class="lineNum">     172 </span><span class="lineCov">          1 :   assertThrows(()=&gt;Object.assign(target, source));</span>
-<span class="lineNum">     173 </span>            : })();
+<span class="lineNum">     173 </span><span class="lineCov">          1 : })();</span>
 </pre>
       </td>
     </tr>

@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">40</td>
-            <td class="headerCovTableEntry">48</td>
-            <td class="headerCovTableEntryMed">83.3 %</td>
+            <td class="headerCovTableEntry">62</td>
+            <td class="headerCovTableEntry">62</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">3</td>
@@ -94,33 +94,33 @@
 <span class="lineNum">      32 </span><span class="lineCov">          4 :  this.b = b;</span>
 <span class="lineNum">      33 </span><span class="lineCov">          4 :  this.c = c;</span>
 <span class="lineNum">      34 </span><span class="lineCov">          4 : }</span>
-<span class="lineNum">      35 </span><span class="lineNoCov">          0 : var o3 = new f(1, 2, 3.5);</span>
-<span class="lineNum">      36 </span><span class="lineNoCov">          0 : var o4 = new f(1, 2.5, 3);</span>
-<a name="37"><span class="lineNum">      37 </span><span class="lineNoCov">          0 : var o1 = new f(1.5, 2, 3);</span></a>
-<span class="lineNum">      38 </span><span class="lineNoCov">          0 : var o2 = new f(1.5, 2, 3);</span>
+<span class="lineNum">      35 </span><span class="lineCov">          1 : var o3 = new f(1, 2, 3.5);</span>
+<span class="lineNum">      36 </span><span class="lineCov">          1 : var o4 = new f(1, 2.5, 3);</span>
+<a name="37"><span class="lineNum">      37 </span><span class="lineCov">          1 : var o1 = new f(1.5, 2, 3);</span></a>
+<span class="lineNum">      38 </span><span class="lineCov">          1 : var o2 = new f(1.5, 2, 3);</span>
 <span class="lineNum">      39 </span><span class="lineCov">          3 : function migrate(o) {</span>
 <span class="lineNum">      40 </span><span class="lineCov">          3 :  return o.a;</span>
 <span class="lineNum">      41 </span><span class="lineCov">          3 : }</span>
-<span class="lineNum">      42 </span><span class="lineNoCov">          0 : // Use migrate to stabilize o1, o2 and o4 in [double, double, smi].</span>
-<span class="lineNum">      43 </span><span class="lineNoCov">          0 : migrate(o4);</span>
-<a name="44"><span class="lineNum">      44 </span><span class="lineNoCov">          0 : migrate(o1);</span></a>
-<span class="lineNum">      45 </span><span class="lineNoCov">          0 : migrate(o2);</span>
+<span class="lineNum">      42 </span><span class="lineCov">          1 : // Use migrate to stabilize o1, o2 and o4 in [double, double, smi].</span>
+<span class="lineNum">      43 </span><span class="lineCov">          1 : migrate(o4);</span>
+<a name="44"><span class="lineNum">      44 </span><span class="lineCov">          1 : migrate(o1);</span></a>
+<span class="lineNum">      45 </span><span class="lineCov">          1 : migrate(o2);</span>
 <span class="lineNum">      46 </span><span class="lineCov">          4 : function store_transition(o) {</span>
 <span class="lineNum">      47 </span><span class="lineCov">          4 :  o.d = 1;</span>
 <span class="lineNum">      48 </span><span class="lineCov">          4 : }</span>
-<span class="lineNum">      49 </span>            : // Optimize &quot;store_transition&quot; to transition from [double, double, smi] to
-<span class="lineNum">      50 </span>            : // [double, double, smi, smi]. This adds a dependency on the
-<span class="lineNum">      51 </span>            : // [double, double, smi] map.
-<span class="lineNum">      52 </span>            : store_transition(o4);
-<span class="lineNum">      53 </span>            : store_transition(o1);
-<span class="lineNum">      54 </span>            : store_transition(o2);
-<span class="lineNum">      55 </span>            : %OptimizeFunctionOnNextCall(store_transition);
-<span class="lineNum">      56 </span>            : // Pass in a deprecated object of format [smi, smi, double]. This will migrate
-<span class="lineNum">      57 </span>            : // the instance, forcing a merge with [double, double, smi], ending up with
-<span class="lineNum">      58 </span>            : // [double, double, double], which deprecates [double, double, smi] and
-<span class="lineNum">      59 </span>            : // deoptimizes all dependencies of [double, double, smi], including
-<span class="lineNum">      60 </span>            : // store_transition itself.
-<span class="lineNum">      61 </span>            : store_transition(o3);
+<span class="lineNum">      49 </span><span class="lineCov">          1 : // Optimize &quot;store_transition&quot; to transition from [double, double, smi] to</span>
+<span class="lineNum">      50 </span><span class="lineCov">          1 : // [double, double, smi, smi]. This adds a dependency on the</span>
+<span class="lineNum">      51 </span><span class="lineCov">          1 : // [double, double, smi] map.</span>
+<span class="lineNum">      52 </span><span class="lineCov">          1 : store_transition(o4);</span>
+<span class="lineNum">      53 </span><span class="lineCov">          1 : store_transition(o1);</span>
+<span class="lineNum">      54 </span><span class="lineCov">          1 : store_transition(o2);</span>
+<span class="lineNum">      55 </span><span class="lineCov">          1 : %OptimizeFunctionOnNextCall(store_transition);</span>
+<span class="lineNum">      56 </span><span class="lineCov">          1 : // Pass in a deprecated object of format [smi, smi, double]. This will migrate</span>
+<span class="lineNum">      57 </span><span class="lineCov">          1 : // the instance, forcing a merge with [double, double, smi], ending up with</span>
+<span class="lineNum">      58 </span><span class="lineCov">          1 : // [double, double, double], which deprecates [double, double, smi] and</span>
+<span class="lineNum">      59 </span><span class="lineCov">          1 : // deoptimizes all dependencies of [double, double, smi], including</span>
+<span class="lineNum">      60 </span><span class="lineCov">          1 : // store_transition itself.</span>
+<span class="lineNum">      61 </span><span class="lineCov">          1 : store_transition(o3);</span>
 </pre>
       </td>
     </tr>

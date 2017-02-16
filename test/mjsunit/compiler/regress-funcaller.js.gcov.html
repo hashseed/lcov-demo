@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">47</td>
-            <td class="headerCovTableEntry">71</td>
-            <td class="headerCovTableEntryLo">66.2 %</td>
+            <td class="headerCovTableEntry">79</td>
+            <td class="headerCovTableEntry">79</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">5</td>
@@ -91,53 +91,53 @@
 <a name="29"><span class="lineNum">      29 </span><span class="lineCov">          1 : </span></a>
 <span class="lineNum">      30 </span><span class="lineCov">          1 : // Test function.caller.</span>
 <a name="31"><span class="lineNum">      31 </span><span class="lineCov">          1 : function A() {}</span></a>
-<span class="lineNum">      32 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      32 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      33 </span><span class="lineCov">         21 : function fun(x) {</span>
 <span class="lineNum">      34 </span><span class="lineCov">         21 :   if (x == 0) return fun.caller;</span>
 <span class="lineNum">      35 </span><span class="lineCov">         21 :   if (x == 1) return gee.caller;</span>
 <a name="36"><span class="lineNum">      36 </span><span class="lineCov">         21 :   return 42;</span></a>
 <span class="lineNum">      37 </span><span class="lineCov">         21 : }</span>
 <span class="lineNum">      38 </span><span class="lineCov">         21 : function gee(x) { return this.f(x); }</span>
-<span class="lineNum">      39 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      40 </span><span class="lineNoCov">          0 : A.prototype.f = fun;</span>
-<span class="lineNum">      41 </span><span class="lineNoCov">          0 : A.prototype.g = gee;</span>
-<span class="lineNum">      42 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      43 </span><span class="lineNoCov">          0 : var o = new A();</span>
-<span class="lineNum">      44 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      45 </span><span class="lineNoCov">          0 : for (var i=0; i&lt;5; i++) {</span>
-<span class="lineNum">      46 </span><span class="lineNoCov">          0 :   o.g(i);</span>
-<span class="lineNum">      47 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">      48 </span><span class="lineNoCov">          0 : %OptimizeFunctionOnNextCall(o.g);</span>
-<span class="lineNum">      49 </span><span class="lineNoCov">          0 : assertEquals(gee, o.g(0));</span>
-<span class="lineNum">      50 </span><span class="lineNoCov">          0 : assertEquals(null, o.g(1));</span>
-<a name="51"><span class="lineNum">      51 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">      52 </span><span class="lineNoCov">          0 : // Test when called from another function.</span>
+<span class="lineNum">      39 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      40 </span><span class="lineCov">          1 : A.prototype.f = fun;</span>
+<span class="lineNum">      41 </span><span class="lineCov">          1 : A.prototype.g = gee;</span>
+<span class="lineNum">      42 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      43 </span><span class="lineCov">          1 : var o = new A();</span>
+<span class="lineNum">      44 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      45 </span><span class="lineCov">          1 : for (var i=0; i&lt;5; i++) {</span>
+<span class="lineNum">      46 </span><span class="lineCov">          1 :   o.g(i);</span>
+<span class="lineNum">      47 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      48 </span><span class="lineCov">          1 : %OptimizeFunctionOnNextCall(o.g);</span>
+<span class="lineNum">      49 </span><span class="lineCov">          1 : assertEquals(gee, o.g(0));</span>
+<span class="lineNum">      50 </span><span class="lineCov">          1 : assertEquals(null, o.g(1));</span>
+<a name="51"><span class="lineNum">      51 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      52 </span><span class="lineCov">          1 : // Test when called from another function.</span>
 <span class="lineNum">      53 </span><span class="lineCov">          7 : function hej(x) {</span>
 <span class="lineNum">      54 </span><span class="lineCov">          7 :   if (x == 0) return o.g(x);</span>
 <span class="lineNum">      55 </span><span class="lineCov">          7 :   if (x == 1) return o.g(x);</span>
 <span class="lineNum">      56 </span><span class="lineCov">          7 :   return o.g(x);</span>
 <span class="lineNum">      57 </span><span class="lineCov">          7 : }</span>
-<span class="lineNum">      58 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      59 </span><span class="lineNoCov">          0 : for (var j=0; j&lt;5; j++) {</span>
-<span class="lineNum">      60 </span><span class="lineNoCov">          0 :   hej(j);</span>
-<span class="lineNum">      61 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">      62 </span><span class="lineNoCov">          0 : %OptimizeFunctionOnNextCall(hej);</span>
-<span class="lineNum">      63 </span><span class="lineNoCov">          0 : assertEquals(gee, hej(0));</span>
-<span class="lineNum">      64 </span><span class="lineNoCov">          0 : assertEquals(hej, hej(1));</span>
-<a name="65"><span class="lineNum">      65 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">      66 </span><span class="lineNoCov">          0 : // Test when called from eval.</span>
+<span class="lineNum">      58 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      59 </span><span class="lineCov">          1 : for (var j=0; j&lt;5; j++) {</span>
+<span class="lineNum">      60 </span><span class="lineCov">          1 :   hej(j);</span>
+<span class="lineNum">      61 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      62 </span><span class="lineCov">          1 : %OptimizeFunctionOnNextCall(hej);</span>
+<span class="lineNum">      63 </span><span class="lineCov">          1 : assertEquals(gee, hej(0));</span>
+<span class="lineNum">      64 </span><span class="lineCov">          1 : assertEquals(hej, hej(1));</span>
+<a name="65"><span class="lineNum">      65 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      66 </span><span class="lineCov">          1 : // Test when called from eval.</span>
 <span class="lineNum">      67 </span><span class="lineCov">          6 : function from_eval(x) {</span>
 <span class="lineNum">      68 </span><span class="lineCov">          6 :   if (x == 0) return eval(&quot;o.g(x);&quot;);</span>
 <span class="lineNum">      69 </span><span class="lineCov">          6 :   if (x == 1) return eval(&quot;o.g(x);&quot;);</span>
 <span class="lineNum">      70 </span><span class="lineCov">          6 :   return o.g(x);</span>
 <span class="lineNum">      71 </span><span class="lineCov">          6 : }</span>
-<span class="lineNum">      72 </span>            : 
-<span class="lineNum">      73 </span>            : for (var j=0; j&lt;5; j++) {
-<span class="lineNum">      74 </span>            :   from_eval(j);
-<span class="lineNum">      75 </span>            : }
-<span class="lineNum">      76 </span>            : %OptimizeFunctionOnNextCall(from_eval);
-<span class="lineNum">      77 </span>            : assertEquals(gee, from_eval(0));
-<span class="lineNum">      78 </span>            : assertEquals(from_eval, from_eval(1));
+<span class="lineNum">      72 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      73 </span><span class="lineCov">          1 : for (var j=0; j&lt;5; j++) {</span>
+<span class="lineNum">      74 </span><span class="lineCov">          1 :   from_eval(j);</span>
+<span class="lineNum">      75 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      76 </span><span class="lineCov">          1 : %OptimizeFunctionOnNextCall(from_eval);</span>
+<span class="lineNum">      77 </span><span class="lineCov">          1 : assertEquals(gee, from_eval(0));</span>
+<span class="lineNum">      78 </span><span class="lineCov">          1 : assertEquals(from_eval, from_eval(1));</span>
 </pre>
       </td>
     </tr>

@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">102</td>
-            <td class="headerCovTableEntry">105</td>
-            <td class="headerCovTableEntryHi">97.1 %</td>
+            <td class="headerCovTableEntry">178</td>
+            <td class="headerCovTableEntry">178</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">4</td>
@@ -104,7 +104,7 @@
 <span class="lineNum">      42 </span><span class="lineCov">         64 : </span>
 <span class="lineNum">      43 </span><span class="lineCov">         64 :   return false;</span>
 <a name="44"><span class="lineNum">      44 </span><span class="lineCov">         64 : }</span></a>
-<span class="lineNum">      45 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      45 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      46 </span><span class="lineCov">         64 : function isStrictKeyword(x)</span>
 <span class="lineNum">      47 </span><span class="lineCov">         64 : {</span>
 <span class="lineNum">      48 </span><span class="lineCov">         64 :   try {</span>
@@ -115,7 +115,7 @@
 <span class="lineNum">      53 </span><span class="lineCov">         64 : </span>
 <span class="lineNum">      54 </span><span class="lineCov">         64 :   return false;</span>
 <a name="55"><span class="lineNum">      55 </span><span class="lineCov">         64 : }</span></a>
-<span class="lineNum">      56 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      56 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      57 </span><span class="lineCov">         64 : function classifyIdentifier(x)</span>
 <span class="lineNum">      58 </span><span class="lineCov">         64 : {</span>
 <span class="lineNum">      59 </span><span class="lineCov">         64 :   if (isKeyword(x)) {</span>
@@ -133,7 +133,7 @@
 <span class="lineNum">      71 </span><span class="lineCov">         64 : </span>
 <span class="lineNum">      72 </span><span class="lineCov">         64 :   return &quot;identifier&quot;;</span>
 <a name="73"><span class="lineNum">      73 </span><span class="lineCov">         64 : }</span></a>
-<span class="lineNum">      74 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      74 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      75 </span><span class="lineCov">         33 : function testKeyword(word) {</span>
 <span class="lineNum">      76 </span><span class="lineCov">         33 :   // Classify word</span>
 <span class="lineNum">      77 </span><span class="lineCov">         33 :   assertEquals(&quot;keyword&quot;, classifyIdentifier(word));</span>
@@ -165,78 +165,78 @@
 <span class="lineNum">     103 </span><span class="lineCov">         33 :   // setter parameter</span>
 <span class="lineNum">     104 </span><span class="lineCov">         33 :   assertThrows(&quot;var x = { set foo(&quot; + word + &quot;) { } };&quot;, SyntaxError);</span>
 <span class="lineNum">     105 </span><span class="lineCov">         33 : }</span>
-<span class="lineNum">     106 </span>            : 
-<span class="lineNum">     107 </span>            : // Not keywords - these are all just identifiers.
-<span class="lineNum">     108 </span>            : var identifiers = [
-<span class="lineNum">     109 </span>            :   &quot;x&quot;,            &quot;keyword&quot;,
-<span class="lineNum">     110 </span>            :   &quot;id&quot;,           &quot;strict&quot;,
-<span class="lineNum">     111 </span>            :   &quot;identifier&quot;,   &quot;use&quot;,
-<span class="lineNum">     112 </span>            :   // The following are reserved in ES3 but not in ES5.
-<span class="lineNum">     113 </span>            :   &quot;abstract&quot;,     &quot;int&quot;,
-<span class="lineNum">     114 </span>            :   &quot;boolean&quot;,      &quot;long&quot;,
-<span class="lineNum">     115 </span>            :   &quot;byte&quot;,         &quot;native&quot;,
-<span class="lineNum">     116 </span>            :   &quot;char&quot;,         &quot;short&quot;,
-<span class="lineNum">     117 </span>            :   &quot;double&quot;,       &quot;synchronized&quot;,
-<span class="lineNum">     118 </span>            :   &quot;final&quot;,        &quot;throws&quot;,
-<span class="lineNum">     119 </span>            :   &quot;float&quot;,        &quot;transient&quot;,
-<span class="lineNum">     120 </span>            :   &quot;goto&quot;,         &quot;volatile&quot; ];
-<span class="lineNum">     121 </span>            : 
-<span class="lineNum">     122 </span>            : for (var i = 0; i &lt; identifiers.length; i++) {
-<span class="lineNum">     123 </span>            :   assertEquals (&quot;identifier&quot;, classifyIdentifier(identifiers[i]));
-<span class="lineNum">     124 </span>            : }
-<span class="lineNum">     125 </span>            : 
-<span class="lineNum">     126 </span>            : // 7.6.1.1 Keywords
-<span class="lineNum">     127 </span>            : var keywords = [
-<span class="lineNum">     128 </span>            :   &quot;break&quot;,        &quot;in&quot;,
-<span class="lineNum">     129 </span>            :   &quot;case&quot;,         &quot;instanceof&quot;,
-<span class="lineNum">     130 </span>            :   &quot;catch&quot;,        &quot;new&quot;,
-<span class="lineNum">     131 </span>            :   &quot;continue&quot;,     &quot;return&quot;,
-<span class="lineNum">     132 </span>            :   &quot;debugger&quot;,     &quot;switch&quot;,
-<span class="lineNum">     133 </span>            :   &quot;default&quot;,      &quot;this&quot;,
-<span class="lineNum">     134 </span>            :   &quot;delete&quot;,       &quot;throw&quot;,
-<span class="lineNum">     135 </span>            :   &quot;do&quot;,           &quot;try&quot;,
-<span class="lineNum">     136 </span>            :   &quot;else&quot;,         &quot;typeof&quot;,
-<span class="lineNum">     137 </span>            :   &quot;finally&quot;,      &quot;var&quot;,
-<span class="lineNum">     138 </span>            :   &quot;for&quot;,          &quot;void&quot;,
-<span class="lineNum">     139 </span>            :   &quot;function&quot;,     &quot;while&quot;,
-<span class="lineNum">     140 </span>            :   &quot;if&quot;,           &quot;with&quot;,
-<span class="lineNum">     141 </span>            :   // In ES5 &quot;const&quot; is a &quot;future reserved word&quot; but we treat it as a keyword.
-<span class="lineNum">     142 </span>            :   &quot;const&quot; ];
-<span class="lineNum">     143 </span>            : 
-<span class="lineNum">     144 </span>            : for (var i = 0; i &lt; keywords.length; i++) {
-<span class="lineNum">     145 </span>            :   testKeyword(keywords[i]);
-<span class="lineNum">     146 </span>            : }
-<span class="lineNum">     147 </span>            : 
-<span class="lineNum">     148 </span>            : // 7.6.1.2 Future Reserved Words (without &quot;const&quot;)
-<span class="lineNum">     149 </span>            : var future_reserved_words = [
-<span class="lineNum">     150 </span>            :   &quot;class&quot;,
-<span class="lineNum">     151 </span>            :   &quot;enum&quot;,
-<span class="lineNum">     152 </span>            :   &quot;export&quot;,
-<span class="lineNum">     153 </span>            :   &quot;extends&quot;,
-<span class="lineNum">     154 </span>            :   &quot;import&quot;,
-<span class="lineNum">     155 </span>            :   &quot;super&quot; ];
-<span class="lineNum">     156 </span>            : 
-<span class="lineNum">     157 </span>            : for (var i = 0; i &lt; future_reserved_words.length; i++) {
-<span class="lineNum">     158 </span>            :   testKeyword(future_reserved_words[i]);
-<span class="lineNum">     159 </span>            : }
-<span class="lineNum">     160 </span>            : 
-<span class="lineNum">     161 </span>            : // 7.6.1.2 Future Reserved Words, in strict mode only.
-<span class="lineNum">     162 </span>            : var future_strict_reserved_words = [
-<span class="lineNum">     163 </span>            :   &quot;implements&quot;,
-<span class="lineNum">     164 </span>            :   &quot;interface&quot;,
-<span class="lineNum">     165 </span>            :   &quot;let&quot;,
-<span class="lineNum">     166 </span>            :   &quot;package&quot;,
-<span class="lineNum">     167 </span>            :   &quot;private&quot;,
-<span class="lineNum">     168 </span>            :   &quot;protected&quot;,
-<span class="lineNum">     169 </span>            :   &quot;public&quot;,
-<span class="lineNum">     170 </span>            :   &quot;static&quot;,
-<span class="lineNum">     171 </span>            :   &quot;yield&quot; ];
-<span class="lineNum">     172 </span>            : 
-<span class="lineNum">     173 </span>            : for (var i = 0; i &lt; future_strict_reserved_words.length; i++) {
-<span class="lineNum">     174 </span>            :   assertEquals (&quot;strict&quot;, classifyIdentifier(future_strict_reserved_words[i]));
-<span class="lineNum">     175 </span>            : }
-<span class="lineNum">     176 </span>            : 
-<span class="lineNum">     177 </span>            : // More strict mode specific tests can be found in mjsunit/strict-mode.js.
+<span class="lineNum">     106 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     107 </span><span class="lineCov">          1 : // Not keywords - these are all just identifiers.</span>
+<span class="lineNum">     108 </span><span class="lineCov">          1 : var identifiers = [</span>
+<span class="lineNum">     109 </span><span class="lineCov">          1 :   &quot;x&quot;,            &quot;keyword&quot;,</span>
+<span class="lineNum">     110 </span><span class="lineCov">          1 :   &quot;id&quot;,           &quot;strict&quot;,</span>
+<span class="lineNum">     111 </span><span class="lineCov">          1 :   &quot;identifier&quot;,   &quot;use&quot;,</span>
+<span class="lineNum">     112 </span><span class="lineCov">          1 :   // The following are reserved in ES3 but not in ES5.</span>
+<span class="lineNum">     113 </span><span class="lineCov">          1 :   &quot;abstract&quot;,     &quot;int&quot;,</span>
+<span class="lineNum">     114 </span><span class="lineCov">          1 :   &quot;boolean&quot;,      &quot;long&quot;,</span>
+<span class="lineNum">     115 </span><span class="lineCov">          1 :   &quot;byte&quot;,         &quot;native&quot;,</span>
+<span class="lineNum">     116 </span><span class="lineCov">          1 :   &quot;char&quot;,         &quot;short&quot;,</span>
+<span class="lineNum">     117 </span><span class="lineCov">          1 :   &quot;double&quot;,       &quot;synchronized&quot;,</span>
+<span class="lineNum">     118 </span><span class="lineCov">          1 :   &quot;final&quot;,        &quot;throws&quot;,</span>
+<span class="lineNum">     119 </span><span class="lineCov">          1 :   &quot;float&quot;,        &quot;transient&quot;,</span>
+<span class="lineNum">     120 </span><span class="lineCov">          1 :   &quot;goto&quot;,         &quot;volatile&quot; ];</span>
+<span class="lineNum">     121 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     122 </span><span class="lineCov">          1 : for (var i = 0; i &lt; identifiers.length; i++) {</span>
+<span class="lineNum">     123 </span><span class="lineCov">          1 :   assertEquals (&quot;identifier&quot;, classifyIdentifier(identifiers[i]));</span>
+<span class="lineNum">     124 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     125 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     126 </span><span class="lineCov">          1 : // 7.6.1.1 Keywords</span>
+<span class="lineNum">     127 </span><span class="lineCov">          1 : var keywords = [</span>
+<span class="lineNum">     128 </span><span class="lineCov">          1 :   &quot;break&quot;,        &quot;in&quot;,</span>
+<span class="lineNum">     129 </span><span class="lineCov">          1 :   &quot;case&quot;,         &quot;instanceof&quot;,</span>
+<span class="lineNum">     130 </span><span class="lineCov">          1 :   &quot;catch&quot;,        &quot;new&quot;,</span>
+<span class="lineNum">     131 </span><span class="lineCov">          1 :   &quot;continue&quot;,     &quot;return&quot;,</span>
+<span class="lineNum">     132 </span><span class="lineCov">          1 :   &quot;debugger&quot;,     &quot;switch&quot;,</span>
+<span class="lineNum">     133 </span><span class="lineCov">          1 :   &quot;default&quot;,      &quot;this&quot;,</span>
+<span class="lineNum">     134 </span><span class="lineCov">          1 :   &quot;delete&quot;,       &quot;throw&quot;,</span>
+<span class="lineNum">     135 </span><span class="lineCov">          1 :   &quot;do&quot;,           &quot;try&quot;,</span>
+<span class="lineNum">     136 </span><span class="lineCov">          1 :   &quot;else&quot;,         &quot;typeof&quot;,</span>
+<span class="lineNum">     137 </span><span class="lineCov">          1 :   &quot;finally&quot;,      &quot;var&quot;,</span>
+<span class="lineNum">     138 </span><span class="lineCov">          1 :   &quot;for&quot;,          &quot;void&quot;,</span>
+<span class="lineNum">     139 </span><span class="lineCov">          1 :   &quot;function&quot;,     &quot;while&quot;,</span>
+<span class="lineNum">     140 </span><span class="lineCov">          1 :   &quot;if&quot;,           &quot;with&quot;,</span>
+<span class="lineNum">     141 </span><span class="lineCov">          1 :   // In ES5 &quot;const&quot; is a &quot;future reserved word&quot; but we treat it as a keyword.</span>
+<span class="lineNum">     142 </span><span class="lineCov">          1 :   &quot;const&quot; ];</span>
+<span class="lineNum">     143 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     144 </span><span class="lineCov">          1 : for (var i = 0; i &lt; keywords.length; i++) {</span>
+<span class="lineNum">     145 </span><span class="lineCov">          1 :   testKeyword(keywords[i]);</span>
+<span class="lineNum">     146 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     147 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     148 </span><span class="lineCov">          1 : // 7.6.1.2 Future Reserved Words (without &quot;const&quot;)</span>
+<span class="lineNum">     149 </span><span class="lineCov">          1 : var future_reserved_words = [</span>
+<span class="lineNum">     150 </span><span class="lineCov">          1 :   &quot;class&quot;,</span>
+<span class="lineNum">     151 </span><span class="lineCov">          1 :   &quot;enum&quot;,</span>
+<span class="lineNum">     152 </span><span class="lineCov">          1 :   &quot;export&quot;,</span>
+<span class="lineNum">     153 </span><span class="lineCov">          1 :   &quot;extends&quot;,</span>
+<span class="lineNum">     154 </span><span class="lineCov">          1 :   &quot;import&quot;,</span>
+<span class="lineNum">     155 </span><span class="lineCov">          1 :   &quot;super&quot; ];</span>
+<span class="lineNum">     156 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     157 </span><span class="lineCov">          1 : for (var i = 0; i &lt; future_reserved_words.length; i++) {</span>
+<span class="lineNum">     158 </span><span class="lineCov">          1 :   testKeyword(future_reserved_words[i]);</span>
+<span class="lineNum">     159 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     160 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     161 </span><span class="lineCov">          1 : // 7.6.1.2 Future Reserved Words, in strict mode only.</span>
+<span class="lineNum">     162 </span><span class="lineCov">          1 : var future_strict_reserved_words = [</span>
+<span class="lineNum">     163 </span><span class="lineCov">          1 :   &quot;implements&quot;,</span>
+<span class="lineNum">     164 </span><span class="lineCov">          1 :   &quot;interface&quot;,</span>
+<span class="lineNum">     165 </span><span class="lineCov">          1 :   &quot;let&quot;,</span>
+<span class="lineNum">     166 </span><span class="lineCov">          1 :   &quot;package&quot;,</span>
+<span class="lineNum">     167 </span><span class="lineCov">          1 :   &quot;private&quot;,</span>
+<span class="lineNum">     168 </span><span class="lineCov">          1 :   &quot;protected&quot;,</span>
+<span class="lineNum">     169 </span><span class="lineCov">          1 :   &quot;public&quot;,</span>
+<span class="lineNum">     170 </span><span class="lineCov">          1 :   &quot;static&quot;,</span>
+<span class="lineNum">     171 </span><span class="lineCov">          1 :   &quot;yield&quot; ];</span>
+<span class="lineNum">     172 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     173 </span><span class="lineCov">          1 : for (var i = 0; i &lt; future_strict_reserved_words.length; i++) {</span>
+<span class="lineNum">     174 </span><span class="lineCov">          1 :   assertEquals (&quot;strict&quot;, classifyIdentifier(future_strict_reserved_words[i]));</span>
+<span class="lineNum">     175 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     176 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     177 </span><span class="lineCov">          1 : // More strict mode specific tests can be found in mjsunit/strict-mode.js.</span>
 </pre>
       </td>
     </tr>

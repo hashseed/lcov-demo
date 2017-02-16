@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">23</td>
-            <td class="headerCovTableEntry">23</td>
+            <td class="headerCovTableEntry">36</td>
+            <td class="headerCovTableEntry">36</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">1</td>
@@ -74,25 +74,27 @@
 <span class="lineNum">      12 </span><span class="lineCov">         16 :     name += &quot;minus_&quot;;</span>
 <span class="lineNum">      13 </span><span class="lineCov">         16 :   }</span>
 <span class="lineNum">      14 </span><span class="lineCov">         16 :   name += Math.abs(divisor);</span>
-<span class="lineNum">      15 </span><span class="lineCov">         16 :   var m = eval(&quot;function Module(stdlib, foreign, heap) {\n&quot;</span>
-<span class="lineNum">      16 </span><span class="lineCov">         16 :       + &quot; \&quot;use asm\&quot;;\n&quot;</span>
-<span class="lineNum">      17 </span><span class="lineCov">         16 :       + &quot; function &quot; + name + &quot;(dividend) {\n&quot;</span>
-<span class="lineNum">      18 </span><span class="lineCov">         16 :       + &quot;  return ((dividend | 0) / &quot; + divisor + &quot;) | 0;\n&quot;</span>
-<span class="lineNum">      19 </span><span class="lineCov">         16 :       + &quot; }\n&quot;</span>
-<span class="lineNum">      20 </span><span class="lineCov">         16 :       + &quot; return { f: &quot; + name + &quot;}\n&quot;</span>
-<span class="lineNum">      21 </span><span class="lineCov">         16 :       + &quot;}; Module&quot;);</span>
-<span class="lineNum">      22 </span><span class="lineCov">         16 :   return m(stdlib, foreign, heap).f;</span>
-<span class="lineNum">      23 </span><span class="lineCov">         16 : }</span>
-<span class="lineNum">      24 </span>            : 
-<span class="lineNum">      25 </span>            : var divisors = [-2147483648, -32 * 1024, -1000, -16, -7, -2, -1, 0,
-<span class="lineNum">      26 </span>            :                 1, 3, 4, 10, 64, 100, 1024, 2147483647];
-<span class="lineNum">      27 </span>            : for (var i in divisors) {
-<span class="lineNum">      28 </span>            :   var divisor = divisors[i];
-<span class="lineNum">      29 </span>            :   var div = Int32Div(divisor);
-<span class="lineNum">      30 </span>            :   for (var dividend = -2147483648; dividend &lt; 2147483648; dividend += 3999773) {
-<span class="lineNum">      31 </span>            :     assertEquals((dividend / divisor) | 0, div(dividend));
-<span class="lineNum">      32 </span>            :   }
-<span class="lineNum">      33 </span>            : }
+<span class="lineNum">      15 </span><span class="lineCov">         16 :   var m = eval(</span>
+<span class="lineNum">      16 </span><span class="lineCov">         16 :       'function Module(stdlib, foreign, heap) {\n' +</span>
+<span class="lineNum">      17 </span><span class="lineCov">         16 :       ' &quot;use asm&quot;;\n' +</span>
+<span class="lineNum">      18 </span><span class="lineCov">         16 :       ' function ' + name + '(dividend) {\n' +</span>
+<span class="lineNum">      19 </span><span class="lineCov">         16 :       '  dividend = dividend | 0;\n' +</span>
+<span class="lineNum">      20 </span><span class="lineCov">         16 :       '  return ((dividend | 0) / ' + divisor + ') | 0;\n' +</span>
+<span class="lineNum">      21 </span><span class="lineCov">         16 :       ' }\n' +</span>
+<span class="lineNum">      22 </span><span class="lineCov">         16 :       ' return { f: ' + name + '}\n' +</span>
+<span class="lineNum">      23 </span><span class="lineCov">         16 :       '}; Module');</span>
+<span class="lineNum">      24 </span><span class="lineCov">         16 :   return m(stdlib, foreign, heap).f;</span>
+<span class="lineNum">      25 </span><span class="lineCov">         16 : }</span>
+<span class="lineNum">      26 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      27 </span><span class="lineCov">          1 : var divisors = [-2147483648, -32 * 1024, -1000, -16, -7, -2, -1, 0,</span>
+<span class="lineNum">      28 </span><span class="lineCov">          1 :                 1, 3, 4, 10, 64, 100, 1024, 2147483647];</span>
+<span class="lineNum">      29 </span><span class="lineCov">          1 : for (var i in divisors) {</span>
+<span class="lineNum">      30 </span><span class="lineCov">          1 :   var divisor = divisors[i];</span>
+<span class="lineNum">      31 </span><span class="lineCov">          1 :   var div = Int32Div(divisor);</span>
+<span class="lineNum">      32 </span><span class="lineCov">          1 :   for (var dividend = -2147483648; dividend &lt; 2147483648; dividend += 3999773) {</span>
+<span class="lineNum">      33 </span><span class="lineCov">          1 :     assertEquals((dividend / divisor) | 0, div(dividend));</span>
+<span class="lineNum">      34 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">      35 </span><span class="lineCov">          1 : }</span>
 </pre>
       </td>
     </tr>

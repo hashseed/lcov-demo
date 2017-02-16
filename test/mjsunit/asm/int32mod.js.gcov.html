@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">15</td>
-            <td class="headerCovTableEntry">15</td>
+            <td class="headerCovTableEntry">27</td>
+            <td class="headerCovTableEntry">27</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">2</td>
@@ -73,19 +73,19 @@
 <span class="lineNum">      11 </span><span class="lineCov">      17184 :   function mod(dividend, divisor) {</span>
 <span class="lineNum">      12 </span><span class="lineCov">      17184 :     dividend = dividend|0;</span>
 <span class="lineNum">      13 </span><span class="lineCov">      17184 :     divisor = divisor|0;</span>
-<span class="lineNum">      14 </span><span class="lineCov">      17184 :     return (dividend % divisor) | 0;</span>
+<span class="lineNum">      14 </span><span class="lineCov">      17184 :     return ((dividend | 0) % (divisor | 0)) | 0;</span>
 <span class="lineNum">      15 </span><span class="lineCov">      17184 :   }</span>
-<span class="lineNum">      16 </span>            :   return { mod: mod };
-<span class="lineNum">      17 </span>            : })(stdlib, foreign, heap).mod;
-<span class="lineNum">      18 </span>            : 
-<span class="lineNum">      19 </span>            : var divisors = [-2147483648, -32 * 1024, -1000, -16, -7, -2, -1, 0,
-<span class="lineNum">      20 </span>            :                 1, 3, 4, 10, 64, 100, 1024, 2147483647];
-<span class="lineNum">      21 </span>            : for (var i in divisors) {
-<span class="lineNum">      22 </span>            :   var divisor = divisors[i];
-<span class="lineNum">      23 </span>            :   for (var dividend = -2147483648; dividend &lt; 2147483648; dividend += 3999773) {
-<span class="lineNum">      24 </span>            :     assertEquals((dividend % divisor) | 0, mod(dividend, divisor));
-<span class="lineNum">      25 </span>            :   }
-<span class="lineNum">      26 </span>            : }
+<span class="lineNum">      16 </span><span class="lineCov">          1 :   return { mod: mod };</span>
+<span class="lineNum">      17 </span><span class="lineCov">          1 : })(stdlib, foreign, heap).mod;</span>
+<span class="lineNum">      18 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      19 </span><span class="lineCov">          1 : var divisors = [-2147483648, -32 * 1024, -1000, -16, -7, -2, -1, 0,</span>
+<span class="lineNum">      20 </span><span class="lineCov">          1 :                 1, 3, 4, 10, 64, 100, 1024, 2147483647];</span>
+<span class="lineNum">      21 </span><span class="lineCov">          1 : for (var i in divisors) {</span>
+<span class="lineNum">      22 </span><span class="lineCov">          1 :   var divisor = divisors[i];</span>
+<span class="lineNum">      23 </span><span class="lineCov">          1 :   for (var dividend = -2147483648; dividend &lt; 2147483648; dividend += 3999773) {</span>
+<span class="lineNum">      24 </span><span class="lineCov">          1 :     assertEquals((dividend % divisor) | 0, mod(dividend, divisor));</span>
+<span class="lineNum">      25 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">      26 </span><span class="lineCov">          1 : }</span>
 </pre>
       </td>
     </tr>

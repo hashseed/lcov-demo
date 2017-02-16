@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">34</td>
-            <td class="headerCovTableEntry">61</td>
-            <td class="headerCovTableEntryLo">55.7 %</td>
+            <td class="headerCovTableEntry">63</td>
+            <td class="headerCovTableEntry">63</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">7</td>
@@ -73,28 +73,28 @@
 <span class="lineNum">      11 </span><span class="lineCov">          6 :   function foo(x) {</span>
 <span class="lineNum">      12 </span><span class="lineCov">          6 :     return x instanceof Array;</span>
 <span class="lineNum">      13 </span><span class="lineCov">          6 :   }</span>
-<span class="lineNum">      14 </span><span class="lineNoCov">          0 :   assertTrue(foo([]));</span>
-<span class="lineNum">      15 </span><span class="lineNoCov">          0 :   assertFalse(foo({}));</span>
-<span class="lineNum">      16 </span><span class="lineNoCov">          0 :   %OptimizeFunctionOnNextCall(foo);</span>
-<span class="lineNum">      17 </span><span class="lineNoCov">          0 :   assertTrue(foo([]));</span>
-<span class="lineNum">      18 </span><span class="lineNoCov">          0 :   assertFalse(foo({}));</span>
-<span class="lineNum">      19 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      20 </span><span class="lineNoCov">          0 :   var handler = {</span>
+<span class="lineNum">      14 </span><span class="lineCov">          1 :   assertTrue(foo([]));</span>
+<span class="lineNum">      15 </span><span class="lineCov">          1 :   assertFalse(foo({}));</span>
+<span class="lineNum">      16 </span><span class="lineCov">          1 :   %OptimizeFunctionOnNextCall(foo);</span>
+<span class="lineNum">      17 </span><span class="lineCov">          1 :   assertTrue(foo([]));</span>
+<span class="lineNum">      18 </span><span class="lineCov">          1 :   assertFalse(foo({}));</span>
+<span class="lineNum">      19 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      20 </span><span class="lineCov">          1 :   var handler = {</span>
 <span class="lineNum">      21 </span><span class="lineCov">          2 :     getPrototypeOf: function(target) { return Array.prototype; }</span>
-<span class="lineNum">      22 </span><span class="lineNoCov">          0 :   };</span>
-<span class="lineNum">      23 </span><span class="lineNoCov">          0 :   var p = new Proxy({}, handler);</span>
-<span class="lineNum">      24 </span><span class="lineNoCov">          0 :   assertTrue(foo(p));</span>
-<span class="lineNum">      25 </span><span class="lineNoCov">          0 :   var o = {};</span>
-<span class="lineNum">      26 </span><span class="lineNoCov">          0 :   o.__proto__ = p;</span>
-<span class="lineNum">      27 </span><span class="lineNoCov">          0 :   assertTrue(foo(o));</span>
-<span class="lineNum">      28 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      29 </span><span class="lineNoCov">          0 :   // Make sure we are also correct if the handler throws.</span>
+<span class="lineNum">      22 </span><span class="lineCov">          1 :   };</span>
+<span class="lineNum">      23 </span><span class="lineCov">          1 :   var p = new Proxy({}, handler);</span>
+<span class="lineNum">      24 </span><span class="lineCov">          1 :   assertTrue(foo(p));</span>
+<span class="lineNum">      25 </span><span class="lineCov">          1 :   var o = {};</span>
+<span class="lineNum">      26 </span><span class="lineCov">          1 :   o.__proto__ = p;</span>
+<span class="lineNum">      27 </span><span class="lineCov">          1 :   assertTrue(foo(o));</span>
+<span class="lineNum">      28 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      29 </span><span class="lineCov">          1 :   // Make sure we are also correct if the handler throws.</span>
 <span class="lineNum">      30 </span><span class="lineCov">          2 :   handler.getPrototypeOf = function(target) {</span>
 <span class="lineNum">      31 </span><span class="lineCov">          2 :     throw &quot;uncooperative&quot;;</span>
 <span class="lineNum">      32 </span><span class="lineCov">          2 :   }</span>
-<span class="lineNum">      33 </span><span class="lineNoCov">          0 :   assertThrows(&quot;foo(o)&quot;);</span>
-<a name="34"><span class="lineNum">      34 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">      35 </span><span class="lineNoCov">          0 :   // Including if the optimized function has a catch handler.</span>
+<span class="lineNum">      33 </span><span class="lineCov">          1 :   assertThrows(&quot;foo(o)&quot;);</span>
+<a name="34"><span class="lineNum">      34 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      35 </span><span class="lineCov">          1 :   // Including if the optimized function has a catch handler.</span>
 <span class="lineNum">      36 </span><span class="lineCov">          1 :   function foo_catch(x) {</span>
 <span class="lineNum">      37 </span><span class="lineCov">          1 :     try {</span>
 <span class="lineNum">      38 </span><span class="lineCov">          1 :       x instanceof Array;</span>
@@ -104,24 +104,24 @@
 <span class="lineNum">      42 </span><span class="lineCov">          1 :     }</span>
 <span class="lineNum">      43 </span><span class="lineCov">          1 :     return false;</span>
 <span class="lineNum">      44 </span><span class="lineCov">          1 :   }</span>
-<span class="lineNum">      45 </span><span class="lineNoCov">          0 :   assertTrue(foo_catch(o));</span>
-<a name="46"><span class="lineNum">      46 </span><span class="lineNoCov">          0 :   %OptimizeFunctionOnNextCall(foo_catch);</span></a>
-<span class="lineNum">      47 </span><span class="lineNoCov">          0 :   assertTrue(foo_catch(o));</span>
+<span class="lineNum">      45 </span><span class="lineCov">          1 :   assertTrue(foo_catch(o));</span>
+<a name="46"><span class="lineNum">      46 </span><span class="lineCov">          1 :   %OptimizeFunctionOnNextCall(foo_catch);</span></a>
+<span class="lineNum">      47 </span><span class="lineCov">          1 :   assertTrue(foo_catch(o));</span>
 <span class="lineNum">      48 </span><span class="lineCov">          1 :   handler.getPrototypeOf = function(target) { return Array.prototype; }</span>
-<span class="lineNum">      49 </span><span class="lineNoCov">          0 :   assertFalse(foo_catch(o));</span>
-<span class="lineNum">      50 </span><span class="lineNoCov">          0 : })();</span>
-<a name="51"><span class="lineNum">      51 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">      52 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      49 </span><span class="lineCov">          1 :   assertFalse(foo_catch(o));</span>
+<span class="lineNum">      50 </span><span class="lineCov">          1 : })();</span>
+<a name="51"><span class="lineNum">      51 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      52 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      53 </span><span class="lineCov">          1 : (function testInstanceOfWithRecursiveProxy() {</span>
 <span class="lineNum">      54 </span><span class="lineCov">          1 :   // Make sure we gracefully deal with recursive proxies.</span>
 <span class="lineNum">      55 </span><span class="lineCov">          1 :   var proxy = new Proxy({},{});</span>
 <span class="lineNum">      56 </span><span class="lineCov">          1 :   proxy.__proto__ = proxy;</span>
 <span class="lineNum">      57 </span><span class="lineCov">          1 :   // instanceof will cause an inifinite prototype walk.</span>
 <a name="58"><span class="lineNum">      58 </span><span class="lineCov">          1 :   assertThrows(() =&gt; { proxy instanceof Object }, RangeError);</span></a>
-<a name="59"><span class="lineNum">      59 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">      60 </span><span class="lineNoCov">          0 :   var proxy2 = new Proxy({}, {getPrototypeOf() { return proxy2 }});</span>
+<a name="59"><span class="lineNum">      59 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      60 </span><span class="lineCov">          1 :   var proxy2 = new Proxy({}, {getPrototypeOf() { return proxy2 }});</span>
 <span class="lineNum">      61 </span><span class="lineCov">          1 :   assertThrows(() =&gt; { proxy instanceof Object }, RangeError);</span>
-<span class="lineNum">      62 </span>            : })();
+<span class="lineNum">      62 </span><span class="lineCov">          1 : })();</span>
 </pre>
       </td>
     </tr>

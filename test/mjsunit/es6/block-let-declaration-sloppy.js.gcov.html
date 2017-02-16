@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">46</td>
-            <td class="headerCovTableEntry">159</td>
-            <td class="headerCovTableEntryLo">28.9 %</td>
+            <td class="headerCovTableEntry">167</td>
+            <td class="headerCovTableEntry">173</td>
+            <td class="headerCovTableEntryHi">96.5 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">5</td>
@@ -94,119 +94,119 @@
 <span class="lineNum">      32 </span><span class="lineCov">          1 : let y = 2;</span>
 <span class="lineNum">      33 </span><span class="lineCov">          1 : const z = 4;</span>
 <span class="lineNum">      34 </span><span class="lineCov">          1 : class c { static foo() { return 1; } }</span>
-<span class="lineNum">      35 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      36 </span><span class="lineNoCov">          0 : // Block local</span>
-<span class="lineNum">      37 </span><span class="lineNoCov">          0 : {</span>
-<span class="lineNum">      38 </span><span class="lineNoCov">          0 :   let y;</span>
-<a name="39"><span class="lineNum">      39 </span><span class="lineNoCov">          0 :   let x = 3;</span></a>
-<span class="lineNum">      40 </span><span class="lineNoCov">          0 :   const z = 5;</span>
-<span class="lineNum">      41 </span><span class="lineNoCov">          0 :   class c { static foo() { return 2; } }</span>
-<span class="lineNum">      42 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">      43 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      44 </span><span class="lineNoCov">          0 : assertEquals(undefined, x);</span>
-<span class="lineNum">      45 </span><span class="lineNoCov">          0 : assertEquals(2,y);</span>
-<span class="lineNum">      46 </span><span class="lineNoCov">          0 : assertEquals(4,z);</span>
-<span class="lineNum">      47 </span><span class="lineNoCov">          0 : assertEquals(1, c.foo());</span>
-<span class="lineNum">      48 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      49 </span><span class="lineNoCov">          0 : if (true) {</span>
-<span class="lineNum">      50 </span><span class="lineNoCov">          0 :   let y;</span>
-<span class="lineNum">      51 </span><span class="lineNoCov">          0 :   assertEquals(undefined, y);</span>
-<span class="lineNum">      52 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">      53 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      54 </span><span class="lineNoCov">          0 : // Invalid declarations are early errors in harmony mode and thus should trigger</span>
-<a name="55"><span class="lineNum">      55 </span><span class="lineNoCov">          0 : // an exception in eval code during parsing, before even compiling or executing</span></a>
-<span class="lineNum">      56 </span><span class="lineNoCov">          0 : // the code. Thus the generated function is not called here.</span>
+<span class="lineNum">      35 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      36 </span><span class="lineCov">          1 : // Block local</span>
+<span class="lineNum">      37 </span><span class="lineCov">          1 : {</span>
+<span class="lineNum">      38 </span><span class="lineCov">          1 :   let y;</span>
+<a name="39"><span class="lineNum">      39 </span><span class="lineCov">          1 :   let x = 3;</span></a>
+<span class="lineNum">      40 </span><span class="lineCov">          1 :   const z = 5;</span>
+<span class="lineNum">      41 </span><span class="lineCov">          1 :   class c { static foo() { return 2; } }</span>
+<span class="lineNum">      42 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      43 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      44 </span><span class="lineCov">          1 : assertEquals(undefined, x);</span>
+<span class="lineNum">      45 </span><span class="lineCov">          1 : assertEquals(2,y);</span>
+<span class="lineNum">      46 </span><span class="lineCov">          1 : assertEquals(4,z);</span>
+<span class="lineNum">      47 </span><span class="lineCov">          1 : assertEquals(1, c.foo());</span>
+<span class="lineNum">      48 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      49 </span><span class="lineCov">          1 : if (true) {</span>
+<span class="lineNum">      50 </span><span class="lineCov">          1 :   let y;</span>
+<span class="lineNum">      51 </span><span class="lineCov">          1 :   assertEquals(undefined, y);</span>
+<span class="lineNum">      52 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      53 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      54 </span><span class="lineCov">          1 : // Invalid declarations are early errors in harmony mode and thus should trigger</span>
+<a name="55"><span class="lineNum">      55 </span><span class="lineCov">          1 : // an exception in eval code during parsing, before even compiling or executing</span></a>
+<span class="lineNum">      56 </span><span class="lineCov">          1 : // the code. Thus the generated function is not called here.</span>
 <span class="lineNum">      57 </span><span class="lineCov">         48 : function TestLocalThrows(str, expect) {</span>
 <span class="lineNum">      58 </span><span class="lineCov">         48 :   assertThrows(&quot;(function(arg){ 'use strict'; &quot; + str + &quot;})&quot;, expect);</span>
 <a name="59"><span class="lineNum">      59 </span><span class="lineCov">         48 : }</span></a>
-<span class="lineNum">      60 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      60 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      61 </span><span class="lineCov">         20 : function TestLocalDoesNotThrow(str) {</span>
 <span class="lineNum">      62 </span><span class="lineCov">         20 :   assertDoesNotThrow(&quot;(function(arg){ 'use strict'; &quot; + str + &quot;})()&quot;);</span>
 <span class="lineNum">      63 </span><span class="lineCov">         20 : }</span>
-<span class="lineNum">      64 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      65 </span><span class="lineNoCov">          0 : // Test let declarations in statement positions.</span>
-<span class="lineNum">      66 </span><span class="lineNoCov">          0 : TestLocalThrows(&quot;if (true) let x;&quot;, SyntaxError);</span>
-<span class="lineNum">      67 </span><span class="lineNoCov">          0 : TestLocalThrows(&quot;if (true) {} else let x;&quot;, SyntaxError);</span>
-<span class="lineNum">      68 </span><span class="lineNoCov">          0 : TestLocalThrows(&quot;do let x; while (false)&quot;, SyntaxError);</span>
-<span class="lineNum">      69 </span><span class="lineNoCov">          0 : TestLocalThrows(&quot;while (false) let x;&quot;, SyntaxError);</span>
-<span class="lineNum">      70 </span><span class="lineNoCov">          0 : TestLocalThrows(&quot;label: let x;&quot;, SyntaxError);</span>
-<span class="lineNum">      71 </span><span class="lineNoCov">          0 : TestLocalThrows(&quot;for (;false;) let x;&quot;, SyntaxError);</span>
-<span class="lineNum">      72 </span><span class="lineNoCov">          0 : TestLocalDoesNotThrow(&quot;switch (true) { case true: let x; }&quot;);</span>
-<span class="lineNum">      73 </span><span class="lineNoCov">          0 : TestLocalDoesNotThrow(&quot;switch (true) { default: let x; }&quot;);</span>
-<span class="lineNum">      74 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      75 </span><span class="lineNoCov">          0 : // Test const declarations with initialisers in statement positions.</span>
-<span class="lineNum">      76 </span><span class="lineNoCov">          0 : TestLocalThrows(&quot;if (true) const x = 1;&quot;, SyntaxError);</span>
-<span class="lineNum">      77 </span><span class="lineNoCov">          0 : TestLocalThrows(&quot;if (true) {} else const x = 1;&quot;, SyntaxError);</span>
-<span class="lineNum">      78 </span><span class="lineNoCov">          0 : TestLocalThrows(&quot;do const x = 1; while (false)&quot;, SyntaxError);</span>
-<span class="lineNum">      79 </span><span class="lineNoCov">          0 : TestLocalThrows(&quot;while (false) const x = 1;&quot;, SyntaxError);</span>
-<span class="lineNum">      80 </span><span class="lineNoCov">          0 : TestLocalThrows(&quot;label: const x = 1;&quot;, SyntaxError);</span>
-<span class="lineNum">      81 </span><span class="lineNoCov">          0 : TestLocalThrows(&quot;for (;false;) const x = 1;&quot;, SyntaxError);</span>
-<span class="lineNum">      82 </span><span class="lineNoCov">          0 : TestLocalDoesNotThrow(&quot;switch (true) { case true: const x = 1; }&quot;);</span>
-<span class="lineNum">      83 </span><span class="lineNoCov">          0 : TestLocalDoesNotThrow(&quot;switch (true) { default: const x = 1; }&quot;);</span>
-<span class="lineNum">      84 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      85 </span><span class="lineNoCov">          0 : // Test const declarations without initialisers.</span>
-<span class="lineNum">      86 </span><span class="lineNoCov">          0 : TestLocalThrows(&quot;const x;&quot;, SyntaxError);</span>
-<span class="lineNum">      87 </span><span class="lineNoCov">          0 : TestLocalThrows(&quot;const x = 1, y;&quot;, SyntaxError);</span>
-<span class="lineNum">      88 </span><span class="lineNoCov">          0 : TestLocalThrows(&quot;const x, y = 1;&quot;, SyntaxError);</span>
-<span class="lineNum">      89 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      90 </span><span class="lineNoCov">          0 : // Test const declarations without initialisers in statement positions.</span>
-<span class="lineNum">      91 </span><span class="lineNoCov">          0 : TestLocalThrows(&quot;if (true) const x;&quot;, SyntaxError);</span>
-<span class="lineNum">      92 </span><span class="lineNoCov">          0 : TestLocalThrows(&quot;if (true) {} else const x;&quot;, SyntaxError);</span>
-<span class="lineNum">      93 </span><span class="lineNoCov">          0 : TestLocalThrows(&quot;do const x; while (false)&quot;, SyntaxError);</span>
-<span class="lineNum">      94 </span><span class="lineNoCov">          0 : TestLocalThrows(&quot;while (false) const x;&quot;, SyntaxError);</span>
-<span class="lineNum">      95 </span><span class="lineNoCov">          0 : TestLocalThrows(&quot;label: const x;&quot;, SyntaxError);</span>
-<span class="lineNum">      96 </span><span class="lineNoCov">          0 : TestLocalThrows(&quot;for (;false;) const x;&quot;, SyntaxError);</span>
-<span class="lineNum">      97 </span><span class="lineNoCov">          0 : TestLocalThrows(&quot;switch (true) { case true: const x; }&quot;, SyntaxError);</span>
-<span class="lineNum">      98 </span><span class="lineNoCov">          0 : TestLocalThrows(&quot;switch (true) { default: const x; }&quot;, SyntaxError);</span>
-<span class="lineNum">      99 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     100 </span><span class="lineNoCov">          0 : // Test var declarations in statement positions.</span>
-<span class="lineNum">     101 </span><span class="lineNoCov">          0 : TestLocalDoesNotThrow(&quot;if (true) var x;&quot;);</span>
-<span class="lineNum">     102 </span><span class="lineNoCov">          0 : TestLocalDoesNotThrow(&quot;if (true) {} else var x;&quot;);</span>
-<span class="lineNum">     103 </span><span class="lineNoCov">          0 : TestLocalDoesNotThrow(&quot;do var x; while (false)&quot;);</span>
-<span class="lineNum">     104 </span><span class="lineNoCov">          0 : TestLocalDoesNotThrow(&quot;while (false) var x;&quot;);</span>
-<span class="lineNum">     105 </span><span class="lineNoCov">          0 : TestLocalDoesNotThrow(&quot;label: var x;&quot;);</span>
-<span class="lineNum">     106 </span><span class="lineNoCov">          0 : TestLocalDoesNotThrow(&quot;for (;false;) var x;&quot;);</span>
-<span class="lineNum">     107 </span><span class="lineNoCov">          0 : TestLocalDoesNotThrow(&quot;switch (true) { case true: var x; }&quot;);</span>
-<span class="lineNum">     108 </span><span class="lineNoCov">          0 : TestLocalDoesNotThrow(&quot;switch (true) { default: var x; }&quot;);</span>
-<span class="lineNum">     109 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     110 </span><span class="lineNoCov">          0 : // Test class declarations with initialisers in statement positions.</span>
-<span class="lineNum">     111 </span><span class="lineNoCov">          0 : TestLocalThrows(&quot;if (true) class x { };&quot;, SyntaxError);</span>
-<span class="lineNum">     112 </span><span class="lineNoCov">          0 : TestLocalThrows(&quot;if (true) {} else class x { };&quot;, SyntaxError);</span>
-<span class="lineNum">     113 </span><span class="lineNoCov">          0 : TestLocalThrows(&quot;do class x { }; while (false)&quot;, SyntaxError);</span>
-<span class="lineNum">     114 </span><span class="lineNoCov">          0 : TestLocalThrows(&quot;while (false) class x { };&quot;, SyntaxError);</span>
-<span class="lineNum">     115 </span><span class="lineNoCov">          0 : TestLocalThrows(&quot;label: class x { };&quot;, SyntaxError);</span>
-<span class="lineNum">     116 </span><span class="lineNoCov">          0 : TestLocalThrows(&quot;for (;false;) class x { };&quot;, SyntaxError);</span>
-<span class="lineNum">     117 </span><span class="lineNoCov">          0 : TestLocalDoesNotThrow(&quot;switch (true) { case true: class x { }; }&quot;);</span>
-<span class="lineNum">     118 </span><span class="lineNoCov">          0 : TestLocalDoesNotThrow(&quot;switch (true) { default: class x { }; }&quot;);</span>
-<span class="lineNum">     119 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     120 </span><span class="lineNoCov">          0 : // Test that redeclarations of functions are only allowed in outermost scope.</span>
-<span class="lineNum">     121 </span><span class="lineNoCov">          0 : TestLocalThrows(&quot;{ let f; var f; }&quot;);</span>
-<span class="lineNum">     122 </span><span class="lineNoCov">          0 : TestLocalThrows(&quot;{ var f; let f; }&quot;);</span>
-<span class="lineNum">     123 </span><span class="lineNoCov">          0 : TestLocalThrows(&quot;{ function f() {} let f; }&quot;);</span>
-<span class="lineNum">     124 </span><span class="lineNoCov">          0 : TestLocalThrows(&quot;{ let f; function f() {} }&quot;);</span>
-<span class="lineNum">     125 </span><span class="lineNoCov">          0 : TestLocalThrows(&quot;{ function f() {} var f; }&quot;);</span>
-<span class="lineNum">     126 </span><span class="lineNoCov">          0 : TestLocalThrows(&quot;{ var f; function f() {} }&quot;);</span>
-<span class="lineNum">     127 </span><span class="lineNoCov">          0 : TestLocalThrows(&quot;{ function f() {} class f {} }&quot;);</span>
-<span class="lineNum">     128 </span><span class="lineNoCov">          0 : TestLocalThrows(&quot;{ class f {}; function f() {} }&quot;);</span>
-<span class="lineNum">     129 </span><span class="lineNoCov">          0 : TestLocalThrows(&quot;{ function f() {} function f() {} }&quot;);</span>
-<span class="lineNum">     130 </span><span class="lineNoCov">          0 : TestLocalThrows(&quot;function f() {} let f;&quot;);</span>
-<span class="lineNum">     131 </span><span class="lineNoCov">          0 : TestLocalThrows(&quot;let f; function f() {}&quot;);</span>
-<span class="lineNum">     132 </span><span class="lineNoCov">          0 : TestLocalThrows(&quot;function f() {} class f {}&quot;);</span>
-<span class="lineNum">     133 </span><span class="lineNoCov">          0 : TestLocalThrows(&quot;class f {}; function f() {}&quot;);</span>
-<span class="lineNum">     134 </span><span class="lineNoCov">          0 : TestLocalDoesNotThrow(&quot;function arg() {}&quot;);</span>
-<span class="lineNum">     135 </span><span class="lineNoCov">          0 : TestLocalDoesNotThrow(&quot;function f() {} var f;&quot;);</span>
-<span class="lineNum">     136 </span><span class="lineNoCov">          0 : TestLocalDoesNotThrow(&quot;var f; function f() {}&quot;);</span>
-<a name="137"><span class="lineNum">     137 </span><span class="lineNoCov">          0 : TestLocalDoesNotThrow(&quot;function f() {} function f() {}&quot;);</span></a>
-<span class="lineNum">     138 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      64 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      65 </span><span class="lineCov">          1 : // Test let declarations in statement positions.</span>
+<span class="lineNum">      66 </span><span class="lineCov">          1 : TestLocalThrows(&quot;if (true) let x;&quot;, SyntaxError);</span>
+<span class="lineNum">      67 </span><span class="lineCov">          1 : TestLocalThrows(&quot;if (true) {} else let x;&quot;, SyntaxError);</span>
+<span class="lineNum">      68 </span><span class="lineCov">          1 : TestLocalThrows(&quot;do let x; while (false)&quot;, SyntaxError);</span>
+<span class="lineNum">      69 </span><span class="lineCov">          1 : TestLocalThrows(&quot;while (false) let x;&quot;, SyntaxError);</span>
+<span class="lineNum">      70 </span><span class="lineCov">          1 : TestLocalThrows(&quot;label: let x;&quot;, SyntaxError);</span>
+<span class="lineNum">      71 </span><span class="lineCov">          1 : TestLocalThrows(&quot;for (;false;) let x;&quot;, SyntaxError);</span>
+<span class="lineNum">      72 </span><span class="lineCov">          1 : TestLocalDoesNotThrow(&quot;switch (true) { case true: let x; }&quot;);</span>
+<span class="lineNum">      73 </span><span class="lineCov">          1 : TestLocalDoesNotThrow(&quot;switch (true) { default: let x; }&quot;);</span>
+<span class="lineNum">      74 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      75 </span><span class="lineCov">          1 : // Test const declarations with initialisers in statement positions.</span>
+<span class="lineNum">      76 </span><span class="lineCov">          1 : TestLocalThrows(&quot;if (true) const x = 1;&quot;, SyntaxError);</span>
+<span class="lineNum">      77 </span><span class="lineCov">          1 : TestLocalThrows(&quot;if (true) {} else const x = 1;&quot;, SyntaxError);</span>
+<span class="lineNum">      78 </span><span class="lineCov">          1 : TestLocalThrows(&quot;do const x = 1; while (false)&quot;, SyntaxError);</span>
+<span class="lineNum">      79 </span><span class="lineCov">          1 : TestLocalThrows(&quot;while (false) const x = 1;&quot;, SyntaxError);</span>
+<span class="lineNum">      80 </span><span class="lineCov">          1 : TestLocalThrows(&quot;label: const x = 1;&quot;, SyntaxError);</span>
+<span class="lineNum">      81 </span><span class="lineCov">          1 : TestLocalThrows(&quot;for (;false;) const x = 1;&quot;, SyntaxError);</span>
+<span class="lineNum">      82 </span><span class="lineCov">          1 : TestLocalDoesNotThrow(&quot;switch (true) { case true: const x = 1; }&quot;);</span>
+<span class="lineNum">      83 </span><span class="lineCov">          1 : TestLocalDoesNotThrow(&quot;switch (true) { default: const x = 1; }&quot;);</span>
+<span class="lineNum">      84 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      85 </span><span class="lineCov">          1 : // Test const declarations without initialisers.</span>
+<span class="lineNum">      86 </span><span class="lineCov">          1 : TestLocalThrows(&quot;const x;&quot;, SyntaxError);</span>
+<span class="lineNum">      87 </span><span class="lineCov">          1 : TestLocalThrows(&quot;const x = 1, y;&quot;, SyntaxError);</span>
+<span class="lineNum">      88 </span><span class="lineCov">          1 : TestLocalThrows(&quot;const x, y = 1;&quot;, SyntaxError);</span>
+<span class="lineNum">      89 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      90 </span><span class="lineCov">          1 : // Test const declarations without initialisers in statement positions.</span>
+<span class="lineNum">      91 </span><span class="lineCov">          1 : TestLocalThrows(&quot;if (true) const x;&quot;, SyntaxError);</span>
+<span class="lineNum">      92 </span><span class="lineCov">          1 : TestLocalThrows(&quot;if (true) {} else const x;&quot;, SyntaxError);</span>
+<span class="lineNum">      93 </span><span class="lineCov">          1 : TestLocalThrows(&quot;do const x; while (false)&quot;, SyntaxError);</span>
+<span class="lineNum">      94 </span><span class="lineCov">          1 : TestLocalThrows(&quot;while (false) const x;&quot;, SyntaxError);</span>
+<span class="lineNum">      95 </span><span class="lineCov">          1 : TestLocalThrows(&quot;label: const x;&quot;, SyntaxError);</span>
+<span class="lineNum">      96 </span><span class="lineCov">          1 : TestLocalThrows(&quot;for (;false;) const x;&quot;, SyntaxError);</span>
+<span class="lineNum">      97 </span><span class="lineCov">          1 : TestLocalThrows(&quot;switch (true) { case true: const x; }&quot;, SyntaxError);</span>
+<span class="lineNum">      98 </span><span class="lineCov">          1 : TestLocalThrows(&quot;switch (true) { default: const x; }&quot;, SyntaxError);</span>
+<span class="lineNum">      99 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     100 </span><span class="lineCov">          1 : // Test var declarations in statement positions.</span>
+<span class="lineNum">     101 </span><span class="lineCov">          1 : TestLocalDoesNotThrow(&quot;if (true) var x;&quot;);</span>
+<span class="lineNum">     102 </span><span class="lineCov">          1 : TestLocalDoesNotThrow(&quot;if (true) {} else var x;&quot;);</span>
+<span class="lineNum">     103 </span><span class="lineCov">          1 : TestLocalDoesNotThrow(&quot;do var x; while (false)&quot;);</span>
+<span class="lineNum">     104 </span><span class="lineCov">          1 : TestLocalDoesNotThrow(&quot;while (false) var x;&quot;);</span>
+<span class="lineNum">     105 </span><span class="lineCov">          1 : TestLocalDoesNotThrow(&quot;label: var x;&quot;);</span>
+<span class="lineNum">     106 </span><span class="lineCov">          1 : TestLocalDoesNotThrow(&quot;for (;false;) var x;&quot;);</span>
+<span class="lineNum">     107 </span><span class="lineCov">          1 : TestLocalDoesNotThrow(&quot;switch (true) { case true: var x; }&quot;);</span>
+<span class="lineNum">     108 </span><span class="lineCov">          1 : TestLocalDoesNotThrow(&quot;switch (true) { default: var x; }&quot;);</span>
+<span class="lineNum">     109 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     110 </span><span class="lineCov">          1 : // Test class declarations with initialisers in statement positions.</span>
+<span class="lineNum">     111 </span><span class="lineCov">          1 : TestLocalThrows(&quot;if (true) class x { };&quot;, SyntaxError);</span>
+<span class="lineNum">     112 </span><span class="lineCov">          1 : TestLocalThrows(&quot;if (true) {} else class x { };&quot;, SyntaxError);</span>
+<span class="lineNum">     113 </span><span class="lineCov">          1 : TestLocalThrows(&quot;do class x { }; while (false)&quot;, SyntaxError);</span>
+<span class="lineNum">     114 </span><span class="lineCov">          1 : TestLocalThrows(&quot;while (false) class x { };&quot;, SyntaxError);</span>
+<span class="lineNum">     115 </span><span class="lineCov">          1 : TestLocalThrows(&quot;label: class x { };&quot;, SyntaxError);</span>
+<span class="lineNum">     116 </span><span class="lineCov">          1 : TestLocalThrows(&quot;for (;false;) class x { };&quot;, SyntaxError);</span>
+<span class="lineNum">     117 </span><span class="lineCov">          1 : TestLocalDoesNotThrow(&quot;switch (true) { case true: class x { }; }&quot;);</span>
+<span class="lineNum">     118 </span><span class="lineCov">          1 : TestLocalDoesNotThrow(&quot;switch (true) { default: class x { }; }&quot;);</span>
+<span class="lineNum">     119 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     120 </span><span class="lineCov">          1 : // Test that redeclarations of functions are only allowed in outermost scope.</span>
+<span class="lineNum">     121 </span><span class="lineCov">          1 : TestLocalThrows(&quot;{ let f; var f; }&quot;);</span>
+<span class="lineNum">     122 </span><span class="lineCov">          1 : TestLocalThrows(&quot;{ var f; let f; }&quot;);</span>
+<span class="lineNum">     123 </span><span class="lineCov">          1 : TestLocalThrows(&quot;{ function f() {} let f; }&quot;);</span>
+<span class="lineNum">     124 </span><span class="lineCov">          1 : TestLocalThrows(&quot;{ let f; function f() {} }&quot;);</span>
+<span class="lineNum">     125 </span><span class="lineCov">          1 : TestLocalThrows(&quot;{ function f() {} var f; }&quot;);</span>
+<span class="lineNum">     126 </span><span class="lineCov">          1 : TestLocalThrows(&quot;{ var f; function f() {} }&quot;);</span>
+<span class="lineNum">     127 </span><span class="lineCov">          1 : TestLocalThrows(&quot;{ function f() {} class f {} }&quot;);</span>
+<span class="lineNum">     128 </span><span class="lineCov">          1 : TestLocalThrows(&quot;{ class f {}; function f() {} }&quot;);</span>
+<span class="lineNum">     129 </span><span class="lineCov">          1 : TestLocalThrows(&quot;{ function f() {} function f() {} }&quot;);</span>
+<span class="lineNum">     130 </span><span class="lineCov">          1 : TestLocalThrows(&quot;function f() {} let f;&quot;);</span>
+<span class="lineNum">     131 </span><span class="lineCov">          1 : TestLocalThrows(&quot;let f; function f() {}&quot;);</span>
+<span class="lineNum">     132 </span><span class="lineCov">          1 : TestLocalThrows(&quot;function f() {} class f {}&quot;);</span>
+<span class="lineNum">     133 </span><span class="lineCov">          1 : TestLocalThrows(&quot;class f {}; function f() {}&quot;);</span>
+<span class="lineNum">     134 </span><span class="lineCov">          1 : TestLocalDoesNotThrow(&quot;function arg() {}&quot;);</span>
+<span class="lineNum">     135 </span><span class="lineCov">          1 : TestLocalDoesNotThrow(&quot;function f() {} var f;&quot;);</span>
+<span class="lineNum">     136 </span><span class="lineCov">          1 : TestLocalDoesNotThrow(&quot;var f; function f() {}&quot;);</span>
+<a name="137"><span class="lineNum">     137 </span><span class="lineCov">          1 : TestLocalDoesNotThrow(&quot;function f() {} function f() {}&quot;);</span></a>
+<span class="lineNum">     138 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     139 </span><span class="lineCov">          1 : function g(f) {</span>
 <span class="lineNum">     140 </span><span class="lineCov">          1 :   function f() { return 1 }</span>
-<span class="lineNum">     141 </span><span class="lineNoCov">          0 :   return f()</span>
-<span class="lineNum">     142 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">     143 </span><span class="lineNoCov">          0 : assertEquals(1, g(function() { return 2 }))</span>
-<span class="lineNum">     144 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     145 </span><span class="lineNoCov">          0 : </span>
-<a name="146"><span class="lineNum">     146 </span><span class="lineNoCov">          0 : // Test function declarations in source element and</span></a>
-<span class="lineNum">     147 </span><span class="lineNoCov">          0 : // sloppy statement positions.</span>
+<span class="lineNum">     141 </span><span class="lineCov">          1 :   return f()</span>
+<span class="lineNum">     142 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     143 </span><span class="lineCov">          1 : assertEquals(1, g(function() { return 2 }))</span>
+<span class="lineNum">     144 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     145 </span><span class="lineCov">          1 : </span>
+<a name="146"><span class="lineNum">     146 </span><span class="lineCov">          1 : // Test function declarations in source element and</span></a>
+<span class="lineNum">     147 </span><span class="lineCov">          1 : // sloppy statement positions.</span>
 <a name="148"><span class="lineNum">     148 </span><span class="lineCov">          1 : function f() {</span></a>
 <span class="lineNum">     149 </span><span class="lineCov">          1 :   // Sloppy source element positions.</span>
 <span class="lineNum">     150 </span><span class="lineCov">          1 :   function g0() {</span>
@@ -217,21 +217,21 @@
 <span class="lineNum">     155 </span><span class="lineNoCov">          0 :       function h1() { }</span>
 <span class="lineNum">     156 </span><span class="lineNoCov">          0 :     }</span>
 <a name="157"><span class="lineNum">     157 </span><span class="lineCov">          1 :   }</span></a>
-<span class="lineNum">     158 </span><span class="lineNoCov">          0 :   {</span>
-<span class="lineNum">     159 </span><span class="lineNoCov">          0 :     function g1() { }</span>
-<span class="lineNum">     160 </span>            :   }
-<span class="lineNum">     161 </span>            : }
-<span class="lineNum">     162 </span>            : f();
-<span class="lineNum">     163 </span>            : 
-<span class="lineNum">     164 </span>            : // Test function declarations in statement position in strict mode.
-<span class="lineNum">     165 </span>            : TestLocalThrows(&quot;function f() { if (true) function g() {} }&quot;, SyntaxError);
-<span class="lineNum">     166 </span>            : TestLocalThrows(&quot;function f() { if (true) {} else function g() {} }&quot;, SyntaxError);
-<span class="lineNum">     167 </span>            : TestLocalThrows(&quot;function f() { do function g() {} while (false) }&quot;, SyntaxError);
-<span class="lineNum">     168 </span>            : TestLocalThrows(&quot;function f() { while (false) function g() {} }&quot;, SyntaxError);
-<span class="lineNum">     169 </span>            : TestLocalThrows(&quot;function f() { label: function g() {} }&quot;, SyntaxError);
-<span class="lineNum">     170 </span>            : TestLocalThrows(&quot;function f() { for (;false;) function g() {} }&quot;, SyntaxError);
-<span class="lineNum">     171 </span>            : TestLocalDoesNotThrow(&quot;function f() { switch (true) { case true: function g() {} } }&quot;);
-<span class="lineNum">     172 </span>            : TestLocalDoesNotThrow(&quot;function f() { switch (true) { default: function g() {} } }&quot;);
+<span class="lineNum">     158 </span><span class="lineCov">          1 :   {</span>
+<span class="lineNum">     159 </span><span class="lineCov">          1 :     function g1() { }</span>
+<span class="lineNum">     160 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     161 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     162 </span><span class="lineCov">          1 : f();</span>
+<span class="lineNum">     163 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     164 </span><span class="lineCov">          1 : // Test function declarations in statement position in strict mode.</span>
+<span class="lineNum">     165 </span><span class="lineCov">          1 : TestLocalThrows(&quot;function f() { if (true) function g() {} }&quot;, SyntaxError);</span>
+<span class="lineNum">     166 </span><span class="lineCov">          1 : TestLocalThrows(&quot;function f() { if (true) {} else function g() {} }&quot;, SyntaxError);</span>
+<span class="lineNum">     167 </span><span class="lineCov">          1 : TestLocalThrows(&quot;function f() { do function g() {} while (false) }&quot;, SyntaxError);</span>
+<span class="lineNum">     168 </span><span class="lineCov">          1 : TestLocalThrows(&quot;function f() { while (false) function g() {} }&quot;, SyntaxError);</span>
+<span class="lineNum">     169 </span><span class="lineCov">          1 : TestLocalThrows(&quot;function f() { label: function g() {} }&quot;, SyntaxError);</span>
+<span class="lineNum">     170 </span><span class="lineCov">          1 : TestLocalThrows(&quot;function f() { for (;false;) function g() {} }&quot;, SyntaxError);</span>
+<span class="lineNum">     171 </span><span class="lineCov">          1 : TestLocalDoesNotThrow(&quot;function f() { switch (true) { case true: function g() {} } }&quot;);</span>
+<span class="lineNum">     172 </span><span class="lineCov">          1 : TestLocalDoesNotThrow(&quot;function f() { switch (true) { default: function g() {} } }&quot;);</span>
 </pre>
       </td>
     </tr>

@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">38</td>
-            <td class="headerCovTableEntry">42</td>
-            <td class="headerCovTableEntryHi">90.5 %</td>
+            <td class="headerCovTableEntry">50</td>
+            <td class="headerCovTableEntry">50</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">2</td>
@@ -95,20 +95,20 @@
 <span class="lineNum">      33 </span><span class="lineCov">          1 :   for (var p in arguments) arr.push(p);</span>
 <span class="lineNum">      34 </span><span class="lineCov">          1 :   return arr;</span>
 <span class="lineNum">      35 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">      36 </span><span class="lineNoCov">          0 : assertEquals([&quot;0&quot;, &quot;10&quot;], test(0));</span>
-<span class="lineNum">      37 </span><span class="lineNoCov">          0 : </span>
-<a name="38"><span class="lineNum">      38 </span><span class="lineNoCov">          0 : // Regression test for lookup after delete of a dictionary-mode arguments</span></a>
-<span class="lineNum">      39 </span><span class="lineNoCov">          0 : // backing store.  Should not crash or assert.</span>
+<span class="lineNum">      36 </span><span class="lineCov">          1 : assertEquals([&quot;0&quot;, &quot;10&quot;], test(0));</span>
+<span class="lineNum">      37 </span><span class="lineCov">          1 : </span>
+<a name="38"><span class="lineNum">      38 </span><span class="lineCov">          1 : // Regression test for lookup after delete of a dictionary-mode arguments</span></a>
+<span class="lineNum">      39 </span><span class="lineCov">          1 : // backing store.  Should not crash or assert.</span>
 <span class="lineNum">      40 </span><span class="lineCov">          1 : function test1(x, y, z) {</span>
 <span class="lineNum">      41 </span><span class="lineCov">          1 :   // Put into dictionary mode.</span>
 <span class="lineNum">      42 </span><span class="lineCov">          1 :   arguments.__defineGetter__(&quot;5&quot;, function () { return 0; });</span>
-<span class="lineNum">      43 </span>            :   // Delete a property from the dictionary.
-<span class="lineNum">      44 </span>            :   delete arguments[5];
-<span class="lineNum">      45 </span>            :   // Look up a property in the dictionary.
-<span class="lineNum">      46 </span>            :   return arguments[2];
-<span class="lineNum">      47 </span>            : }
-<span class="lineNum">      48 </span>            : 
-<span class="lineNum">      49 </span>            : assertEquals(void 0, test1(0));
+<span class="lineNum">      43 </span><span class="lineCov">          1 :   // Delete a property from the dictionary.</span>
+<span class="lineNum">      44 </span><span class="lineCov">          1 :   delete arguments[5];</span>
+<span class="lineNum">      45 </span><span class="lineCov">          1 :   // Look up a property in the dictionary.</span>
+<span class="lineNum">      46 </span><span class="lineCov">          1 :   return arguments[2];</span>
+<span class="lineNum">      47 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      48 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      49 </span><span class="lineCov">          1 : assertEquals(void 0, test1(0));</span>
 </pre>
       </td>
     </tr>

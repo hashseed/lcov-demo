@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">23</td>
-            <td class="headerCovTableEntry">48</td>
-            <td class="headerCovTableEntryLo">47.9 %</td>
+            <td class="headerCovTableEntry">49</td>
+            <td class="headerCovTableEntry">49</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">3</td>
@@ -79,34 +79,34 @@
 <a name="17"><span class="lineNum">      17 </span><span class="lineCov">          2 :   }</span></a>
 <span class="lineNum">      18 </span><span class="lineCov">          2 : </span>
 <span class="lineNum">      19 </span><span class="lineCov">          2 :   promise.then(function(value) { hadValue = true; actual = value; },</span>
-<span class="lineNum">      20 </span><span class="lineNoCov">          0 :                function(error) { hadError = true; actual = error; });</span>
-<span class="lineNum">      21 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      22 </span><span class="lineNoCov">          0 :   assertFalse(hadValue || hadError);</span>
-<span class="lineNum">      23 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      24 </span><span class="lineNoCov">          0 :   %RunMicrotasks();</span>
-<span class="lineNum">      25 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      26 </span><span class="lineNoCov">          0 :   if (hadError) throw actual;</span>
-<span class="lineNum">      27 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      28 </span><span class="lineNoCov">          0 :   assertTrue(</span>
-<span class="lineNum">      29 </span><span class="lineNoCov">          0 :       hadValue, &quot;Expected '&quot; + run.toString() + &quot;' to produce a value&quot;);</span>
-<span class="lineNum">      30 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      31 </span><span class="lineNoCov">          0 :   assertEquals(expected, actual, msg);</span>
-<span class="lineNum">      32 </span><span class="lineNoCov">          0 : };</span>
-<span class="lineNum">      33 </span><span class="lineNoCov">          0 : </span>
-<a name="34"><span class="lineNum">      34 </span><span class="lineNoCov">          0 : var O = {</span></a>
-<span class="lineNum">      35 </span><span class="lineNoCov">          0 :   [Symbol.toStringTag]: &quot;LexicalThis&quot;,</span>
+<span class="lineNum">      20 </span><span class="lineCov">          2 :                function(error) { hadError = true; actual = error; });</span>
+<span class="lineNum">      21 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      22 </span><span class="lineCov">          2 :   assertFalse(hadValue || hadError);</span>
+<span class="lineNum">      23 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      24 </span><span class="lineCov">          2 :   %RunMicrotasks();</span>
+<span class="lineNum">      25 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      26 </span><span class="lineCov">          2 :   if (hadError) throw actual;</span>
+<span class="lineNum">      27 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      28 </span><span class="lineCov">          2 :   assertTrue(</span>
+<span class="lineNum">      29 </span><span class="lineCov">          2 :       hadValue, &quot;Expected '&quot; + run.toString() + &quot;' to produce a value&quot;);</span>
+<span class="lineNum">      30 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      31 </span><span class="lineCov">          2 :   assertEquals(expected, actual, msg);</span>
+<span class="lineNum">      32 </span><span class="lineCov">          2 : };</span>
+<span class="lineNum">      33 </span><span class="lineCov">          1 : </span>
+<a name="34"><span class="lineNum">      34 </span><span class="lineCov">          1 : var O = {</span></a>
+<span class="lineNum">      35 </span><span class="lineCov">          1 :   [Symbol.toStringTag]: &quot;LexicalThis&quot;,</span>
 <span class="lineNum">      36 </span><span class="lineCov">          2 :   run(n) {</span>
 <span class="lineNum">      37 </span><span class="lineCov">          2 :     return async passFail =&gt; `${n}. ${passFail}: ${this}`;</span>
-<span class="lineNum">      38 </span><span class="lineNoCov">          0 :   },</span>
-<span class="lineNum">      39 </span><span class="lineNoCov">          0 : };</span>
-<span class="lineNum">      40 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      38 </span><span class="lineCov">          2 :   },</span>
+<span class="lineNum">      39 </span><span class="lineCov">          1 : };</span>
+<span class="lineNum">      40 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      41 </span><span class="lineCov">          1 : assertEqualsAsync(&quot;1. PASS: [object LexicalThis]&quot;, () =&gt; O.run(1)(&quot;PASS&quot;));</span>
-<span class="lineNum">      42 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      43 </span><span class="lineNoCov">          0 : var O2 = {</span>
-<span class="lineNum">      44 </span><span class="lineNoCov">          0 :   [Symbol.toStringTag]: &quot;LexicalThis&quot;,</span>
-<span class="lineNum">      45 </span><span class="lineNoCov">          0 :   run: O.run(2)</span>
-<a name="46"><span class="lineNum">      46 </span><span class="lineNoCov">          0 : };</span></a>
-<span class="lineNum">      47 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      42 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      43 </span><span class="lineCov">          1 : var O2 = {</span>
+<span class="lineNum">      44 </span><span class="lineCov">          1 :   [Symbol.toStringTag]: &quot;LexicalThis&quot;,</span>
+<span class="lineNum">      45 </span><span class="lineCov">          1 :   run: O.run(2)</span>
+<a name="46"><span class="lineNum">      46 </span><span class="lineCov">          1 : };</span></a>
+<span class="lineNum">      47 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      48 </span><span class="lineCov">          1 : assertEqualsAsync(&quot;2. PASS: [object LexicalThis]&quot;, () =&gt; O2.run(&quot;PASS&quot;));</span>
 </pre>
       </td>

@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">269</td>
-            <td class="headerCovTableEntry">520</td>
-            <td class="headerCovTableEntryLo">51.7 %</td>
+            <td class="headerCovTableEntry">547</td>
+            <td class="headerCovTableEntry">550</td>
+            <td class="headerCovTableEntryHi">99.5 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">26</td>
@@ -91,8 +91,8 @@
 <span class="lineNum">      29 </span><span class="lineCov">        480 :   if (this.length == 0) return undefined;</span>
 <span class="lineNum">      30 </span><span class="lineCov">        480 :   return this[this.length - 1];</span>
 <span class="lineNum">      31 </span><span class="lineCov">        480 : }</span>
-<a name="32"><span class="lineNum">      32 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">      33 </span><span class="lineNoCov">          0 : </span>
+<a name="32"><span class="lineNum">      32 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      33 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      34 </span><span class="lineCov">          1 : function PlotScriptComposer(kResX, kResY, error_output) {</span>
 <span class="lineNum">      35 </span><span class="lineCov">          1 :   // Constants.</span>
 <span class="lineNum">      36 </span><span class="lineCov">          1 :   var kV8BinarySuffixes = [&quot;/d8&quot;, &quot;/libv8.so&quot;];</span>
@@ -130,7 +130,7 @@
 <span class="lineNum">      68 </span><span class="lineCov">         12 :     this.thread_id = thread_id;</span>
 <span class="lineNum">      69 </span><span class="lineCov">         12 :     this.index = ++num_timer_event;</span>
 <a name="70"><span class="lineNum">      70 </span><span class="lineCov">         12 :   }</span></a>
-<span class="lineNum">      71 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      71 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      72 </span><span class="lineCov">          8 :   function CodeKind(color, kinds) {</span>
 <span class="lineNum">      73 </span><span class="lineCov">          8 :     this.color = color;</span>
 <span class="lineNum">      74 </span><span class="lineCov">          8 :     this.in_execution = [];</span>
@@ -138,87 +138,87 @@
 <span class="lineNum">      76 </span><span class="lineCov">          8 :     for (var i = 0; i &lt; kStackFrames; i++) this.stack_frames.push([]);</span>
 <span class="lineNum">      77 </span><span class="lineCov">          8 :     this.kinds = kinds;</span>
 <a name="78"><span class="lineNum">      78 </span><span class="lineCov">          8 :   }</span></a>
-<span class="lineNum">      79 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      79 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      80 </span><span class="lineCov">       4287 :   function Range(start, end) {</span>
 <span class="lineNum">      81 </span><span class="lineCov">       4287 :     this.start = start;  // In milliseconds.</span>
 <span class="lineNum">      82 </span><span class="lineCov">       4287 :     this.end = end;      // In milliseconds.</span>
 <a name="83"><span class="lineNum">      83 </span><span class="lineCov">       4287 :   }</span></a>
-<span class="lineNum">      84 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      84 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      85 </span><span class="lineCov">          8 :   function Deopt(time, size) {</span>
 <span class="lineNum">      86 </span><span class="lineCov">          8 :     this.time = time;  // In milliseconds.</span>
 <span class="lineNum">      87 </span><span class="lineCov">          8 :     this.size = size;  // In bytes.</span>
 <a name="88"><span class="lineNum">      88 </span><span class="lineCov">          8 :   }</span></a>
-<span class="lineNum">      89 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      89 </span><span class="lineCov">          1 : </span>
 <a name="90"><span class="lineNum">      90 </span><span class="lineCov">       3739 :   Range.prototype.duration = function() { return this.end - this.start; }</span></a>
-<span class="lineNum">      91 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      91 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      92 </span><span class="lineCov">        122 :   function Tick(tick) {</span>
 <span class="lineNum">      93 </span><span class="lineCov">        122 :     this.tick = tick;</span>
 <span class="lineNum">      94 </span><span class="lineCov">        122 :   }</span>
-<span class="lineNum">      95 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      96 </span><span class="lineNoCov">          0 :   var TimerEvents = {</span>
-<span class="lineNum">      97 </span><span class="lineNoCov">          0 :       'V8.Execute':</span>
-<span class="lineNum">      98 </span><span class="lineNoCov">          0 :         new TimerEvent(&quot;execution&quot;, &quot;#000000&quot;, false, 0),</span>
-<span class="lineNum">      99 </span><span class="lineNoCov">          0 :       'V8.External':</span>
-<span class="lineNum">     100 </span><span class="lineNoCov">          0 :         new TimerEvent(&quot;external&quot;, &quot;#3399FF&quot;, false, 0),</span>
-<span class="lineNum">     101 </span><span class="lineNoCov">          0 :       'V8.CompileFullCode':</span>
-<span class="lineNum">     102 </span><span class="lineNoCov">          0 :         new TimerEvent(&quot;compile unopt&quot;, &quot;#CC0000&quot;,  true, 0),</span>
-<span class="lineNum">     103 </span><span class="lineNoCov">          0 :       'V8.RecompileSynchronous':</span>
-<span class="lineNum">     104 </span><span class="lineNoCov">          0 :         new TimerEvent(&quot;recompile sync&quot;, &quot;#CC0044&quot;,  true, 0),</span>
-<span class="lineNum">     105 </span><span class="lineNoCov">          0 :       'V8.RecompileConcurrent':</span>
-<span class="lineNum">     106 </span><span class="lineNoCov">          0 :         new TimerEvent(&quot;recompile async&quot;, &quot;#CC4499&quot;, false, 1),</span>
-<span class="lineNum">     107 </span><span class="lineNoCov">          0 :       'V8.CompileEvalMicroSeconds':</span>
-<span class="lineNum">     108 </span><span class="lineNoCov">          0 :         new TimerEvent(&quot;compile eval&quot;, &quot;#CC4400&quot;,  true, 0),</span>
-<span class="lineNum">     109 </span><span class="lineNoCov">          0 :       'V8.ParseMicroSeconds':</span>
-<span class="lineNum">     110 </span><span class="lineNoCov">          0 :         new TimerEvent(&quot;parse&quot;, &quot;#00CC00&quot;,  true, 0),</span>
-<span class="lineNum">     111 </span><span class="lineNoCov">          0 :       'V8.PreParseMicroSeconds':</span>
-<span class="lineNum">     112 </span><span class="lineNoCov">          0 :         new TimerEvent(&quot;preparse&quot;, &quot;#44CC00&quot;,  true, 0),</span>
-<span class="lineNum">     113 </span><span class="lineNoCov">          0 :       'V8.ParseLazyMicroSeconds':</span>
-<span class="lineNum">     114 </span><span class="lineNoCov">          0 :         new TimerEvent(&quot;lazy parse&quot;, &quot;#00CC44&quot;,  true, 0),</span>
-<span class="lineNum">     115 </span><span class="lineNoCov">          0 :       'V8.GCScavenger':</span>
-<span class="lineNum">     116 </span><span class="lineNoCov">          0 :         new TimerEvent(&quot;gc scavenge&quot;, &quot;#0044CC&quot;,  true, 0),</span>
-<span class="lineNum">     117 </span><span class="lineNoCov">          0 :       'V8.GCCompactor':</span>
-<span class="lineNum">     118 </span><span class="lineNoCov">          0 :         new TimerEvent(&quot;gc compaction&quot;, &quot;#4444CC&quot;,  true, 0),</span>
-<span class="lineNum">     119 </span><span class="lineNoCov">          0 :       'V8.GCContext':</span>
-<span class="lineNum">     120 </span><span class="lineNoCov">          0 :         new TimerEvent(&quot;gc context&quot;, &quot;#4400CC&quot;,  true, 0),</span>
-<span class="lineNum">     121 </span><span class="lineNoCov">          0 :   };</span>
-<span class="lineNum">     122 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     123 </span><span class="lineNoCov">          0 :   var CodeKinds = {</span>
-<span class="lineNum">     124 </span><span class="lineNoCov">          0 :       'external ': new CodeKind(&quot;#3399FF&quot;, [-2]),</span>
-<span class="lineNum">     125 </span><span class="lineNoCov">          0 :       'runtime  ': new CodeKind(&quot;#000000&quot;, [-1]),</span>
-<span class="lineNum">     126 </span><span class="lineNoCov">          0 :       'full code': new CodeKind(&quot;#DD0000&quot;, [0]),</span>
-<span class="lineNum">     127 </span><span class="lineNoCov">          0 :       'opt code ': new CodeKind(&quot;#00EE00&quot;, [1]),</span>
-<span class="lineNum">     128 </span><span class="lineNoCov">          0 :       'code stub': new CodeKind(&quot;#FF00FF&quot;, [2]),</span>
-<span class="lineNum">     129 </span><span class="lineNoCov">          0 :       'built-in ': new CodeKind(&quot;#AA00AA&quot;, [3]),</span>
-<span class="lineNum">     130 </span><span class="lineNoCov">          0 :       'inl.cache': new CodeKind(&quot;#4444AA&quot;,</span>
-<span class="lineNum">     131 </span><span class="lineNoCov">          0 :                                 [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]),</span>
-<span class="lineNum">     132 </span><span class="lineNoCov">          0 :       'reg.exp. ': new CodeKind(&quot;#0000FF&quot;, [15]),</span>
-<span class="lineNum">     133 </span><span class="lineNoCov">          0 :   };</span>
-<span class="lineNum">     134 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     135 </span><span class="lineNoCov">          0 :   var code_map = new CodeMap();</span>
-<span class="lineNum">     136 </span><span class="lineNoCov">          0 :   var execution_pauses = [];</span>
-<span class="lineNum">     137 </span><span class="lineNoCov">          0 :   var deopts = [];</span>
-<span class="lineNum">     138 </span><span class="lineNoCov">          0 :   var gettime = [];</span>
-<span class="lineNum">     139 </span><span class="lineNoCov">          0 :   var event_stack = [];</span>
-<span class="lineNum">     140 </span><span class="lineNoCov">          0 :   var last_time_stamp = [];</span>
-<span class="lineNum">     141 </span><span class="lineNoCov">          0 :   for (var i = 0; i &lt; kNumThreads; i++) {</span>
-<span class="lineNum">     142 </span><span class="lineNoCov">          0 :     event_stack[i] = [];</span>
-<span class="lineNum">     143 </span><span class="lineNoCov">          0 :     last_time_stamp[i] = -1;</span>
-<span class="lineNum">     144 </span><span class="lineNoCov">          0 :   }</span>
-<span class="lineNum">     145 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     146 </span><span class="lineNoCov">          0 :   var range_start = undefined;</span>
-<span class="lineNum">     147 </span><span class="lineNoCov">          0 :   var range_end = undefined;</span>
-<span class="lineNum">     148 </span><span class="lineNoCov">          0 :   var obj_index = 0;</span>
-<span class="lineNum">     149 </span><span class="lineNoCov">          0 :   var pause_tolerance = 0.005;  // Milliseconds.</span>
-<span class="lineNum">     150 </span><span class="lineNoCov">          0 :   var distortion = 0;</span>
-<a name="151"><span class="lineNum">     151 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     152 </span><span class="lineNoCov">          0 :   // Utility functions.</span>
+<span class="lineNum">      95 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      96 </span><span class="lineCov">          1 :   var TimerEvents = {</span>
+<span class="lineNum">      97 </span><span class="lineCov">          1 :       'V8.Execute':</span>
+<span class="lineNum">      98 </span><span class="lineCov">          1 :         new TimerEvent(&quot;execution&quot;, &quot;#000000&quot;, false, 0),</span>
+<span class="lineNum">      99 </span><span class="lineCov">          1 :       'V8.External':</span>
+<span class="lineNum">     100 </span><span class="lineCov">          1 :         new TimerEvent(&quot;external&quot;, &quot;#3399FF&quot;, false, 0),</span>
+<span class="lineNum">     101 </span><span class="lineCov">          1 :       'V8.CompileFullCode':</span>
+<span class="lineNum">     102 </span><span class="lineCov">          1 :         new TimerEvent(&quot;compile unopt&quot;, &quot;#CC0000&quot;,  true, 0),</span>
+<span class="lineNum">     103 </span><span class="lineCov">          1 :       'V8.RecompileSynchronous':</span>
+<span class="lineNum">     104 </span><span class="lineCov">          1 :         new TimerEvent(&quot;recompile sync&quot;, &quot;#CC0044&quot;,  true, 0),</span>
+<span class="lineNum">     105 </span><span class="lineCov">          1 :       'V8.RecompileConcurrent':</span>
+<span class="lineNum">     106 </span><span class="lineCov">          1 :         new TimerEvent(&quot;recompile async&quot;, &quot;#CC4499&quot;, false, 1),</span>
+<span class="lineNum">     107 </span><span class="lineCov">          1 :       'V8.CompileEvalMicroSeconds':</span>
+<span class="lineNum">     108 </span><span class="lineCov">          1 :         new TimerEvent(&quot;compile eval&quot;, &quot;#CC4400&quot;,  true, 0),</span>
+<span class="lineNum">     109 </span><span class="lineCov">          1 :       'V8.ParseMicroSeconds':</span>
+<span class="lineNum">     110 </span><span class="lineCov">          1 :         new TimerEvent(&quot;parse&quot;, &quot;#00CC00&quot;,  true, 0),</span>
+<span class="lineNum">     111 </span><span class="lineCov">          1 :       'V8.PreParseMicroSeconds':</span>
+<span class="lineNum">     112 </span><span class="lineCov">          1 :         new TimerEvent(&quot;preparse&quot;, &quot;#44CC00&quot;,  true, 0),</span>
+<span class="lineNum">     113 </span><span class="lineCov">          1 :       'V8.ParseLazyMicroSeconds':</span>
+<span class="lineNum">     114 </span><span class="lineCov">          1 :         new TimerEvent(&quot;lazy parse&quot;, &quot;#00CC44&quot;,  true, 0),</span>
+<span class="lineNum">     115 </span><span class="lineCov">          1 :       'V8.GCScavenger':</span>
+<span class="lineNum">     116 </span><span class="lineCov">          1 :         new TimerEvent(&quot;gc scavenge&quot;, &quot;#0044CC&quot;,  true, 0),</span>
+<span class="lineNum">     117 </span><span class="lineCov">          1 :       'V8.GCCompactor':</span>
+<span class="lineNum">     118 </span><span class="lineCov">          1 :         new TimerEvent(&quot;gc compaction&quot;, &quot;#4444CC&quot;,  true, 0),</span>
+<span class="lineNum">     119 </span><span class="lineCov">          1 :       'V8.GCContext':</span>
+<span class="lineNum">     120 </span><span class="lineCov">          1 :         new TimerEvent(&quot;gc context&quot;, &quot;#4400CC&quot;,  true, 0),</span>
+<span class="lineNum">     121 </span><span class="lineCov">          1 :   };</span>
+<span class="lineNum">     122 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     123 </span><span class="lineCov">          1 :   var CodeKinds = {</span>
+<span class="lineNum">     124 </span><span class="lineCov">          1 :       'external ': new CodeKind(&quot;#3399FF&quot;, [-2]),</span>
+<span class="lineNum">     125 </span><span class="lineCov">          1 :       'runtime  ': new CodeKind(&quot;#000000&quot;, [-1]),</span>
+<span class="lineNum">     126 </span><span class="lineCov">          1 :       'full code': new CodeKind(&quot;#DD0000&quot;, [0]),</span>
+<span class="lineNum">     127 </span><span class="lineCov">          1 :       'opt code ': new CodeKind(&quot;#00EE00&quot;, [1]),</span>
+<span class="lineNum">     128 </span><span class="lineCov">          1 :       'code stub': new CodeKind(&quot;#FF00FF&quot;, [2]),</span>
+<span class="lineNum">     129 </span><span class="lineCov">          1 :       'built-in ': new CodeKind(&quot;#AA00AA&quot;, [3]),</span>
+<span class="lineNum">     130 </span><span class="lineCov">          1 :       'inl.cache': new CodeKind(&quot;#4444AA&quot;,</span>
+<span class="lineNum">     131 </span><span class="lineCov">          1 :                                 [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]),</span>
+<span class="lineNum">     132 </span><span class="lineCov">          1 :       'reg.exp. ': new CodeKind(&quot;#0000FF&quot;, [15]),</span>
+<span class="lineNum">     133 </span><span class="lineCov">          1 :   };</span>
+<span class="lineNum">     134 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     135 </span><span class="lineCov">          1 :   var code_map = new CodeMap();</span>
+<span class="lineNum">     136 </span><span class="lineCov">          1 :   var execution_pauses = [];</span>
+<span class="lineNum">     137 </span><span class="lineCov">          1 :   var deopts = [];</span>
+<span class="lineNum">     138 </span><span class="lineCov">          1 :   var gettime = [];</span>
+<span class="lineNum">     139 </span><span class="lineCov">          1 :   var event_stack = [];</span>
+<span class="lineNum">     140 </span><span class="lineCov">          1 :   var last_time_stamp = [];</span>
+<span class="lineNum">     141 </span><span class="lineCov">          1 :   for (var i = 0; i &lt; kNumThreads; i++) {</span>
+<span class="lineNum">     142 </span><span class="lineCov">          1 :     event_stack[i] = [];</span>
+<span class="lineNum">     143 </span><span class="lineCov">          1 :     last_time_stamp[i] = -1;</span>
+<span class="lineNum">     144 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     145 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     146 </span><span class="lineCov">          1 :   var range_start = undefined;</span>
+<span class="lineNum">     147 </span><span class="lineCov">          1 :   var range_end = undefined;</span>
+<span class="lineNum">     148 </span><span class="lineCov">          1 :   var obj_index = 0;</span>
+<span class="lineNum">     149 </span><span class="lineCov">          1 :   var pause_tolerance = 0.005;  // Milliseconds.</span>
+<span class="lineNum">     150 </span><span class="lineCov">          1 :   var distortion = 0;</span>
+<a name="151"><span class="lineNum">     151 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     152 </span><span class="lineCov">          1 :   // Utility functions.</span>
 <span class="lineNum">     153 </span><span class="lineCov">       1730 :   function assert(something, message) {</span>
 <span class="lineNum">     154 </span><span class="lineCov">       1730 :     if (!something) {</span>
 <span class="lineNum">     155 </span><span class="lineCov">       1730 :       var error = new Error(message);</span>
 <span class="lineNum">     156 </span><span class="lineCov">       1730 :       error_output(error.stack);</span>
 <span class="lineNum">     157 </span><span class="lineCov">       1730 :     }</span>
 <a name="158"><span class="lineNum">     158 </span><span class="lineCov">       1730 :   }</span></a>
-<span class="lineNum">     159 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     159 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     160 </span><span class="lineCov">        833 :   function FindCodeKind(kind) {</span>
 <span class="lineNum">     161 </span><span class="lineCov">        833 :     for (name in CodeKinds) {</span>
 <span class="lineNum">     162 </span><span class="lineCov">        833 :       if (CodeKinds[name].kinds.indexOf(kind) &gt;= 0) {</span>
@@ -226,7 +226,7 @@
 <span class="lineNum">     164 </span><span class="lineCov">        833 :       }</span>
 <span class="lineNum">     165 </span><span class="lineCov">        833 :     }</span>
 <a name="166"><span class="lineNum">     166 </span><span class="lineCov">        833 :   }</span></a>
-<span class="lineNum">     167 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     167 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     168 </span><span class="lineCov">         72 :   function TicksToRanges(ticks) {</span>
 <span class="lineNum">     169 </span><span class="lineCov">         72 :     var ranges = [];</span>
 <span class="lineNum">     170 </span><span class="lineCov">         72 :     for (var i = 0; i &lt; ticks.length; i++) {</span>
@@ -236,31 +236,31 @@
 <span class="lineNum">     174 </span><span class="lineCov">         72 :     }</span>
 <span class="lineNum">     175 </span><span class="lineCov">         72 :     return ranges;</span>
 <a name="176"><span class="lineNum">     176 </span><span class="lineCov">         72 :   }</span></a>
-<span class="lineNum">     177 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     177 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     178 </span><span class="lineCov">         85 :   function MergeRanges(ranges) {</span>
 <span class="lineNum">     179 </span><span class="lineCov">      16068 :     ranges.sort(function(a, b) { return a.start - b.start; });</span>
-<span class="lineNum">     180 </span><span class="lineNoCov">          0 :     var result = [];</span>
-<span class="lineNum">     181 </span><span class="lineNoCov">          0 :     var j = 0;</span>
-<span class="lineNum">     182 </span><span class="lineNoCov">          0 :     for (var i = 0; i &lt; ranges.length; i = j) {</span>
-<span class="lineNum">     183 </span><span class="lineNoCov">          0 :       var merge_start = ranges[i].start;</span>
-<span class="lineNum">     184 </span><span class="lineNoCov">          0 :       if (merge_start &gt; range_end) break;  // Out of plot range.</span>
-<span class="lineNum">     185 </span><span class="lineNoCov">          0 :       var merge_end = ranges[i].end;</span>
-<span class="lineNum">     186 </span><span class="lineNoCov">          0 :       for (j = i + 1; j &lt; ranges.length; j++) {</span>
-<span class="lineNum">     187 </span><span class="lineNoCov">          0 :         var next_range = ranges[j];</span>
-<span class="lineNum">     188 </span><span class="lineNoCov">          0 :         // Don't merge ranges if there is no overlap (incl. merge tolerance).</span>
-<span class="lineNum">     189 </span><span class="lineNoCov">          0 :         if (next_range.start &gt; merge_end + pause_tolerance) break;</span>
-<span class="lineNum">     190 </span><span class="lineNoCov">          0 :         // Merge ranges.</span>
-<span class="lineNum">     191 </span><span class="lineNoCov">          0 :         if (next_range.end &gt; merge_end) {  // Extend range end.</span>
-<span class="lineNum">     192 </span><span class="lineNoCov">          0 :           merge_end = next_range.end;</span>
-<span class="lineNum">     193 </span><span class="lineNoCov">          0 :         }</span>
-<span class="lineNum">     194 </span><span class="lineNoCov">          0 :       }</span>
-<span class="lineNum">     195 </span><span class="lineNoCov">          0 :       if (merge_end &lt; range_start) continue;  // Out of plot range.</span>
-<span class="lineNum">     196 </span><span class="lineNoCov">          0 :       if (merge_end &lt; merge_start) continue;  // Not an actual range.</span>
-<span class="lineNum">     197 </span><span class="lineNoCov">          0 :       result.push(new Range(merge_start, merge_end));</span>
-<span class="lineNum">     198 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">     199 </span><span class="lineNoCov">          0 :     return result;</span>
-<a name="200"><span class="lineNum">     200 </span><span class="lineNoCov">          0 :   }</span></a>
-<span class="lineNum">     201 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     180 </span><span class="lineCov">         85 :     var result = [];</span>
+<span class="lineNum">     181 </span><span class="lineCov">         85 :     var j = 0;</span>
+<span class="lineNum">     182 </span><span class="lineCov">         85 :     for (var i = 0; i &lt; ranges.length; i = j) {</span>
+<span class="lineNum">     183 </span><span class="lineCov">         85 :       var merge_start = ranges[i].start;</span>
+<span class="lineNum">     184 </span><span class="lineCov">         85 :       if (merge_start &gt; range_end) break;  // Out of plot range.</span>
+<span class="lineNum">     185 </span><span class="lineCov">         85 :       var merge_end = ranges[i].end;</span>
+<span class="lineNum">     186 </span><span class="lineCov">         85 :       for (j = i + 1; j &lt; ranges.length; j++) {</span>
+<span class="lineNum">     187 </span><span class="lineCov">         85 :         var next_range = ranges[j];</span>
+<span class="lineNum">     188 </span><span class="lineCov">         85 :         // Don't merge ranges if there is no overlap (incl. merge tolerance).</span>
+<span class="lineNum">     189 </span><span class="lineCov">         85 :         if (next_range.start &gt; merge_end + pause_tolerance) break;</span>
+<span class="lineNum">     190 </span><span class="lineCov">         85 :         // Merge ranges.</span>
+<span class="lineNum">     191 </span><span class="lineCov">         85 :         if (next_range.end &gt; merge_end) {  // Extend range end.</span>
+<span class="lineNum">     192 </span><span class="lineCov">         85 :           merge_end = next_range.end;</span>
+<span class="lineNum">     193 </span><span class="lineCov">         85 :         }</span>
+<span class="lineNum">     194 </span><span class="lineCov">         85 :       }</span>
+<span class="lineNum">     195 </span><span class="lineCov">         85 :       if (merge_end &lt; range_start) continue;  // Out of plot range.</span>
+<span class="lineNum">     196 </span><span class="lineCov">         85 :       if (merge_end &lt; merge_start) continue;  // Not an actual range.</span>
+<span class="lineNum">     197 </span><span class="lineCov">         85 :       result.push(new Range(merge_start, merge_end));</span>
+<span class="lineNum">     198 </span><span class="lineCov">         85 :     }</span>
+<span class="lineNum">     199 </span><span class="lineCov">         85 :     return result;</span>
+<a name="200"><span class="lineNum">     200 </span><span class="lineCov">         85 :   }</span></a>
+<span class="lineNum">     201 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     202 </span><span class="lineCov">         13 :   function RestrictRangesTo(ranges, start, end) {</span>
 <span class="lineNum">     203 </span><span class="lineCov">         13 :     var result = [];</span>
 <span class="lineNum">     204 </span><span class="lineCov">         13 :     for (var i = 0; i &lt; ranges.length; i++) {</span>
@@ -271,8 +271,8 @@
 <span class="lineNum">     209 </span><span class="lineCov">         13 :     }</span>
 <span class="lineNum">     210 </span><span class="lineCov">         13 :     return result;</span>
 <span class="lineNum">     211 </span><span class="lineCov">         13 :   }</span>
-<a name="212"><span class="lineNum">     212 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     213 </span><span class="lineNoCov">          0 :   // Public methods.</span>
+<a name="212"><span class="lineNum">     212 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     213 </span><span class="lineCov">          1 :   // Public methods.</span>
 <span class="lineNum">     214 </span><span class="lineCov">          1 :   this.collectData = function(input, distortion_per_entry) {</span>
 <span class="lineNum">     215 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     216 </span><span class="lineCov">          1 :     var last_timestamp = 0;</span>
@@ -285,7 +285,7 @@
 <span class="lineNum">     223 </span><span class="lineCov">       1238 :       distortion += distortion_per_entry;</span>
 <span class="lineNum">     224 </span><span class="lineCov">       1238 :       return int_timestamp / 1000 - distortion;</span>
 <a name="225"><span class="lineNum">     225 </span><span class="lineCov">       1238 :     }</span></a>
-<span class="lineNum">     226 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     226 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     227 </span><span class="lineCov">        554 :     var processTimerEventStart = function(name, start) {</span>
 <span class="lineNum">     228 </span><span class="lineCov">        554 :       // Find out the thread id.</span>
 <span class="lineNum">     229 </span><span class="lineCov">        554 :       var new_event = TimerEvents[name];</span>
@@ -303,7 +303,7 @@
 <span class="lineNum">     241 </span><span class="lineCov">        554 :       event_stack[thread_id].push(new_event);</span>
 <span class="lineNum">     242 </span><span class="lineCov">        554 :       last_time_stamp[thread_id] = start;</span>
 <a name="243"><span class="lineNum">     243 </span><span class="lineCov">        554 :     };</span></a>
-<span class="lineNum">     244 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     244 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     245 </span><span class="lineCov">        554 :     var processTimerEventEnd = function(name, end) {</span>
 <span class="lineNum">     246 </span><span class="lineCov">        554 :       // Find out about the thread_id.</span>
 <span class="lineNum">     247 </span><span class="lineCov">        554 :       var finished_event = TimerEvents[name];</span>
@@ -317,29 +317,29 @@
 <span class="lineNum">     255 </span><span class="lineCov">        554 :       finished_event.ranges.push(new_range);</span>
 <span class="lineNum">     256 </span><span class="lineCov">        554 :       last_time_stamp[thread_id] = end;</span>
 <a name="257"><span class="lineNum">     257 </span><span class="lineCov">        554 :     };</span></a>
-<span class="lineNum">     258 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     258 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     259 </span><span class="lineCov">       1359 :     var processCodeCreateEvent = function(type, kind, address, size, name) {</span>
 <span class="lineNum">     260 </span><span class="lineCov">       1359 :       var code_entry = new CodeMap.CodeEntry(size, name);</span>
 <span class="lineNum">     261 </span><span class="lineCov">       1359 :       code_entry.kind = kind;</span>
 <span class="lineNum">     262 </span><span class="lineCov">       1359 :       code_map.addCode(address, code_entry);</span>
 <a name="263"><span class="lineNum">     263 </span><span class="lineCov">       1359 :     };</span></a>
-<span class="lineNum">     264 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     265 </span><span class="lineNoCov">          0 :     var processCodeMoveEvent = function(from, to) {</span>
+<span class="lineNum">     264 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     265 </span><span class="lineCov">          1 :     var processCodeMoveEvent = function(from, to) {</span>
 <span class="lineNum">     266 </span><span class="lineNoCov">          0 :       code_map.moveCode(from, to);</span>
-<a name="267"><span class="lineNum">     267 </span><span class="lineNoCov">          0 :     };</span></a>
-<span class="lineNum">     268 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     269 </span><span class="lineNoCov">          0 :     var processCodeDeleteEvent = function(address) {</span>
+<a name="267"><span class="lineNum">     267 </span><span class="lineCov">          1 :     };</span></a>
+<span class="lineNum">     268 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     269 </span><span class="lineCov">          1 :     var processCodeDeleteEvent = function(address) {</span>
 <span class="lineNum">     270 </span><span class="lineNoCov">          0 :       code_map.deleteCode(address);</span>
-<a name="271"><span class="lineNum">     271 </span><span class="lineNoCov">          0 :     };</span></a>
-<span class="lineNum">     272 </span><span class="lineNoCov">          0 : </span>
+<a name="271"><span class="lineNum">     271 </span><span class="lineCov">          1 :     };</span></a>
+<span class="lineNum">     272 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     273 </span><span class="lineCov">          8 :     var processCodeDeoptEvent = function(time, size) {</span>
 <span class="lineNum">     274 </span><span class="lineCov">          8 :       deopts.push(new Deopt(time, size));</span>
 <a name="275"><span class="lineNum">     275 </span><span class="lineCov">          8 :     }</span></a>
-<span class="lineNum">     276 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     277 </span><span class="lineNoCov">          0 :     var processCurrentTimeEvent = function(time) {</span>
+<span class="lineNum">     276 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     277 </span><span class="lineCov">          1 :     var processCurrentTimeEvent = function(time) {</span>
 <span class="lineNum">     278 </span><span class="lineNoCov">          0 :       gettime.push(time);</span>
-<a name="279"><span class="lineNum">     279 </span><span class="lineNoCov">          0 :     }</span></a>
-<span class="lineNum">     280 </span><span class="lineNoCov">          0 : </span>
+<a name="279"><span class="lineNum">     279 </span><span class="lineCov">          1 :     }</span></a>
+<span class="lineNum">     280 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     281 </span><span class="lineCov">         14 :     var processSharedLibrary = function(name, start, end) {</span>
 <span class="lineNum">     282 </span><span class="lineCov">         14 :       var code_entry = new CodeMap.CodeEntry(end - start, name);</span>
 <span class="lineNum">     283 </span><span class="lineCov">         14 :       code_entry.kind = -3;  // External code kind.</span>
@@ -352,7 +352,7 @@
 <span class="lineNum">     290 </span><span class="lineCov">         14 :       }</span>
 <span class="lineNum">     291 </span><span class="lineCov">         14 :       code_map.addLibrary(start, code_entry);</span>
 <a name="292"><span class="lineNum">     292 </span><span class="lineCov">         14 :     };</span></a>
-<span class="lineNum">     293 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     293 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     294 </span><span class="lineCov">        122 :     var processTickEvent = function(</span>
 <span class="lineNum">     295 </span><span class="lineCov">        122 :         pc, timer, unused_x, unused_y, vmstate, stack) {</span>
 <span class="lineNum">     296 </span><span class="lineCov">        122 :       var tick = new Tick(timer);</span>
@@ -366,45 +366,45 @@
 <span class="lineNum">     304 </span><span class="lineCov">        122 :         if (entry) FindCodeKind(entry.kind).stack_frames[i].push(tick);</span>
 <span class="lineNum">     305 </span><span class="lineCov">        122 :       }</span>
 <span class="lineNum">     306 </span><span class="lineCov">        122 :     };</span>
-<span class="lineNum">     307 </span><span class="lineNoCov">          0 :     // Collect data from log.</span>
-<span class="lineNum">     308 </span><span class="lineNoCov">          0 :     var logreader = new LogReader(</span>
-<span class="lineNum">     309 </span><span class="lineNoCov">          0 :       { 'timer-event-start': { parsers: [null, parseTimeStamp],</span>
-<span class="lineNum">     310 </span><span class="lineNoCov">          0 :                                processor: processTimerEventStart },</span>
-<span class="lineNum">     311 </span><span class="lineNoCov">          0 :         'timer-event-end':   { parsers: [null, parseTimeStamp],</span>
-<span class="lineNum">     312 </span><span class="lineNoCov">          0 :                                processor: processTimerEventEnd },</span>
-<span class="lineNum">     313 </span><span class="lineNoCov">          0 :         'shared-library': { parsers: [null, parseInt, parseInt],</span>
-<span class="lineNum">     314 </span><span class="lineNoCov">          0 :                             processor: processSharedLibrary },</span>
-<span class="lineNum">     315 </span><span class="lineNoCov">          0 :         'code-creation':  { parsers: [null, parseInt, parseInt, parseInt, null],</span>
-<span class="lineNum">     316 </span><span class="lineNoCov">          0 :                             processor: processCodeCreateEvent },</span>
-<span class="lineNum">     317 </span><span class="lineNoCov">          0 :         'code-move':      { parsers: [parseInt, parseInt],</span>
-<span class="lineNum">     318 </span><span class="lineNoCov">          0 :                             processor: processCodeMoveEvent },</span>
-<span class="lineNum">     319 </span><span class="lineNoCov">          0 :         'code-delete':    { parsers: [parseInt],</span>
-<span class="lineNum">     320 </span><span class="lineNoCov">          0 :                             processor: processCodeDeleteEvent },</span>
-<span class="lineNum">     321 </span><span class="lineNoCov">          0 :         'code-deopt':     { parsers: [parseTimeStamp, parseInt],</span>
-<span class="lineNum">     322 </span><span class="lineNoCov">          0 :                             processor: processCodeDeoptEvent },</span>
-<span class="lineNum">     323 </span><span class="lineNoCov">          0 :         'current-time':   { parsers: [parseTimeStamp],</span>
-<span class="lineNum">     324 </span><span class="lineNoCov">          0 :                             processor: processCurrentTimeEvent },</span>
-<span class="lineNum">     325 </span><span class="lineNoCov">          0 :         'tick':           { parsers: [parseInt, parseTimeStamp,</span>
-<span class="lineNum">     326 </span><span class="lineNoCov">          0 :                                       null, null, parseInt, 'var-args'],</span>
-<span class="lineNum">     327 </span><span class="lineNoCov">          0 :                             processor: processTickEvent }</span>
-<span class="lineNum">     328 </span><span class="lineNoCov">          0 :       });</span>
-<span class="lineNum">     329 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     330 </span><span class="lineNoCov">          0 :     var line;</span>
-<span class="lineNum">     331 </span><span class="lineNoCov">          0 :     while (line = input()) {</span>
-<span class="lineNum">     332 </span><span class="lineNoCov">          0 :       for (var s of line.split(&quot;\n&quot;)) logreader.processLogLine(s);</span>
-<span class="lineNum">     333 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">     334 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     335 </span><span class="lineNoCov">          0 :     // Collect execution pauses.</span>
-<span class="lineNum">     336 </span><span class="lineNoCov">          0 :     for (name in TimerEvents) {</span>
-<span class="lineNum">     337 </span><span class="lineNoCov">          0 :       var event = TimerEvents[name];</span>
-<span class="lineNum">     338 </span><span class="lineNoCov">          0 :       if (!event.pause) continue;</span>
-<span class="lineNum">     339 </span><span class="lineNoCov">          0 :       var ranges = event.ranges;</span>
-<span class="lineNum">     340 </span><span class="lineNoCov">          0 :       for (var j = 0; j &lt; ranges.length; j++) execution_pauses.push(ranges[j]);</span>
-<span class="lineNum">     341 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">     342 </span><span class="lineNoCov">          0 :     execution_pauses = MergeRanges(execution_pauses);</span>
-<span class="lineNum">     343 </span><span class="lineNoCov">          0 :   };</span>
-<a name="344"><span class="lineNum">     344 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     345 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     307 </span><span class="lineCov">          1 :     // Collect data from log.</span>
+<span class="lineNum">     308 </span><span class="lineCov">          1 :     var logreader = new LogReader(</span>
+<span class="lineNum">     309 </span><span class="lineCov">          1 :       { 'timer-event-start': { parsers: [null, parseTimeStamp],</span>
+<span class="lineNum">     310 </span><span class="lineCov">          1 :                                processor: processTimerEventStart },</span>
+<span class="lineNum">     311 </span><span class="lineCov">          1 :         'timer-event-end':   { parsers: [null, parseTimeStamp],</span>
+<span class="lineNum">     312 </span><span class="lineCov">          1 :                                processor: processTimerEventEnd },</span>
+<span class="lineNum">     313 </span><span class="lineCov">          1 :         'shared-library': { parsers: [null, parseInt, parseInt],</span>
+<span class="lineNum">     314 </span><span class="lineCov">          1 :                             processor: processSharedLibrary },</span>
+<span class="lineNum">     315 </span><span class="lineCov">          1 :         'code-creation':  { parsers: [null, parseInt, parseInt, parseInt, null],</span>
+<span class="lineNum">     316 </span><span class="lineCov">          1 :                             processor: processCodeCreateEvent },</span>
+<span class="lineNum">     317 </span><span class="lineCov">          1 :         'code-move':      { parsers: [parseInt, parseInt],</span>
+<span class="lineNum">     318 </span><span class="lineCov">          1 :                             processor: processCodeMoveEvent },</span>
+<span class="lineNum">     319 </span><span class="lineCov">          1 :         'code-delete':    { parsers: [parseInt],</span>
+<span class="lineNum">     320 </span><span class="lineCov">          1 :                             processor: processCodeDeleteEvent },</span>
+<span class="lineNum">     321 </span><span class="lineCov">          1 :         'code-deopt':     { parsers: [parseTimeStamp, parseInt],</span>
+<span class="lineNum">     322 </span><span class="lineCov">          1 :                             processor: processCodeDeoptEvent },</span>
+<span class="lineNum">     323 </span><span class="lineCov">          1 :         'current-time':   { parsers: [parseTimeStamp],</span>
+<span class="lineNum">     324 </span><span class="lineCov">          1 :                             processor: processCurrentTimeEvent },</span>
+<span class="lineNum">     325 </span><span class="lineCov">          1 :         'tick':           { parsers: [parseInt, parseTimeStamp,</span>
+<span class="lineNum">     326 </span><span class="lineCov">          1 :                                       null, null, parseInt, 'var-args'],</span>
+<span class="lineNum">     327 </span><span class="lineCov">          1 :                             processor: processTickEvent }</span>
+<span class="lineNum">     328 </span><span class="lineCov">          1 :       });</span>
+<span class="lineNum">     329 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     330 </span><span class="lineCov">          1 :     var line;</span>
+<span class="lineNum">     331 </span><span class="lineCov">          1 :     while (line = input()) {</span>
+<span class="lineNum">     332 </span><span class="lineCov">          1 :       for (var s of line.split(&quot;\n&quot;)) logreader.processLogLine(s);</span>
+<span class="lineNum">     333 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">     334 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     335 </span><span class="lineCov">          1 :     // Collect execution pauses.</span>
+<span class="lineNum">     336 </span><span class="lineCov">          1 :     for (name in TimerEvents) {</span>
+<span class="lineNum">     337 </span><span class="lineCov">          1 :       var event = TimerEvents[name];</span>
+<span class="lineNum">     338 </span><span class="lineCov">          1 :       if (!event.pause) continue;</span>
+<span class="lineNum">     339 </span><span class="lineCov">          1 :       var ranges = event.ranges;</span>
+<span class="lineNum">     340 </span><span class="lineCov">          1 :       for (var j = 0; j &lt; ranges.length; j++) execution_pauses.push(ranges[j]);</span>
+<span class="lineNum">     341 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">     342 </span><span class="lineCov">          1 :     execution_pauses = MergeRanges(execution_pauses);</span>
+<span class="lineNum">     343 </span><span class="lineCov">          1 :   };</span>
+<a name="344"><span class="lineNum">     344 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     345 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     346 </span><span class="lineCov">          1 :   this.findPlotRange = function(</span>
 <span class="lineNum">     347 </span><span class="lineCov">          1 :     range_start_override, range_end_override, result_callback) {</span>
 <span class="lineNum">     348 </span><span class="lineCov">          1 :     var start_found = (range_start_override || range_start_override == 0);</span>
@@ -445,8 +445,8 @@
 <span class="lineNum">     383 </span><span class="lineCov">          1 :       result_callback(range_start, range_end);</span>
 <span class="lineNum">     384 </span><span class="lineCov">          1 :     }</span>
 <span class="lineNum">     385 </span><span class="lineCov">          1 :   };</span>
-<a name="386"><span class="lineNum">     386 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     387 </span><span class="lineNoCov">          0 : </span>
+<a name="386"><span class="lineNum">     386 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     387 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     388 </span><span class="lineCov">          1 :   this.assembleOutput = function(output) {</span>
 <span class="lineNum">     389 </span><span class="lineCov">          1 :     output(&quot;set yrange [0:&quot; + (num_timer_event + 1) + &quot;]&quot;);</span>
 <span class="lineNum">     390 </span><span class="lineCov">          1 :     output(&quot;set xlabel \&quot;execution time in ms\&quot;&quot;);</span>
@@ -470,145 +470,145 @@
 <span class="lineNum">     408 </span><span class="lineCov">       1346 :       }</span>
 <span class="lineNum">     409 </span><span class="lineCov">       1346 :       output(command);</span>
 <a name="410"><span class="lineNum">     410 </span><span class="lineCov">       1346 :     }</span></a>
-<span class="lineNum">     411 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     411 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     412 </span><span class="lineCov">       1338 :     function DrawBar(row, color, start, end, width) {</span>
 <span class="lineNum">     413 </span><span class="lineCov">       1338 :       DrawBarBase(color, start, end, row + width, row - width);</span>
 <a name="414"><span class="lineNum">     414 </span><span class="lineCov">       1338 :     }</span></a>
-<span class="lineNum">     415 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     415 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     416 </span><span class="lineCov">          8 :     function DrawHalfBar(row, color, start, end, width) {</span>
 <span class="lineNum">     417 </span><span class="lineCov">          8 :       DrawBarBase(color, start, end, row, row - width);</span>
 <span class="lineNum">     418 </span><span class="lineCov">          8 :     }</span>
-<span class="lineNum">     419 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     420 </span><span class="lineNoCov">          0 :     var percentages = {};</span>
-<span class="lineNum">     421 </span><span class="lineNoCov">          0 :     var total = 0;</span>
-<span class="lineNum">     422 </span><span class="lineNoCov">          0 :     for (var name in TimerEvents) {</span>
-<span class="lineNum">     423 </span><span class="lineNoCov">          0 :       var event = TimerEvents[name];</span>
-<span class="lineNum">     424 </span><span class="lineNoCov">          0 :       var ranges = RestrictRangesTo(event.ranges, range_start, range_end);</span>
-<span class="lineNum">     425 </span><span class="lineNoCov">          0 :       var sum =</span>
+<span class="lineNum">     419 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     420 </span><span class="lineCov">          1 :     var percentages = {};</span>
+<span class="lineNum">     421 </span><span class="lineCov">          1 :     var total = 0;</span>
+<span class="lineNum">     422 </span><span class="lineCov">          1 :     for (var name in TimerEvents) {</span>
+<span class="lineNum">     423 </span><span class="lineCov">          1 :       var event = TimerEvents[name];</span>
+<span class="lineNum">     424 </span><span class="lineCov">          1 :       var ranges = RestrictRangesTo(event.ranges, range_start, range_end);</span>
+<span class="lineNum">     425 </span><span class="lineCov">          1 :       var sum =</span>
 <span class="lineNum">     426 </span><span class="lineCov">        880 :         ranges.map(function(range) { return range.duration(); })</span>
 <span class="lineNum">     427 </span><span class="lineCov">        880 :             .reduce(function(a, b) { return a + b; }, 0);</span>
-<span class="lineNum">     428 </span><span class="lineNoCov">          0 :       percentages[name] = (sum / (range_end - range_start) * 100).toFixed(1);</span>
-<span class="lineNum">     429 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">     430 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     431 </span><span class="lineNoCov">          0 :     // Plot deopts.</span>
+<span class="lineNum">     428 </span><span class="lineCov">          1 :       percentages[name] = (sum / (range_end - range_start) * 100).toFixed(1);</span>
+<span class="lineNum">     429 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">     430 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     431 </span><span class="lineCov">          1 :     // Plot deopts.</span>
 <span class="lineNum">     432 </span><span class="lineCov">         25 :     deopts.sort(function(a, b) { return b.size - a.size; });</span>
-<span class="lineNum">     433 </span><span class="lineNoCov">          0 :     var max_deopt_size = deopts.length &gt; 0 ? deopts[0].size : Infinity;</span>
-<span class="lineNum">     434 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     435 </span><span class="lineNoCov">          0 :     for (var i = 0; i &lt; deopts.length; i++) {</span>
-<span class="lineNum">     436 </span><span class="lineNoCov">          0 :       var deopt = deopts[i];</span>
-<span class="lineNum">     437 </span><span class="lineNoCov">          0 :       DrawHalfBar(kDeoptRow, &quot;#9944CC&quot;, deopt.time,</span>
-<span class="lineNum">     438 </span><span class="lineNoCov">          0 :                   deopt.time + 10 * pause_tolerance,</span>
-<span class="lineNum">     439 </span><span class="lineNoCov">          0 :                   deopt.size / max_deopt_size * kMaxDeoptLength);</span>
-<span class="lineNum">     440 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">     441 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     442 </span><span class="lineNoCov">          0 :     // Plot current time polls.</span>
-<span class="lineNum">     443 </span><span class="lineNoCov">          0 :     if (gettime.length &gt; 1) {</span>
-<span class="lineNum">     444 </span><span class="lineNoCov">          0 :       var start = gettime[0];</span>
-<span class="lineNum">     445 </span><span class="lineNoCov">          0 :       var end = gettime.pop();</span>
-<span class="lineNum">     446 </span><span class="lineNoCov">          0 :       DrawBarBase(&quot;#0000BB&quot;, start, end, kGetTimeHeight, 0, 0.2);</span>
-<span class="lineNum">     447 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">     448 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     449 </span><span class="lineNoCov">          0 :     // Name Y-axis.</span>
-<span class="lineNum">     450 </span><span class="lineNoCov">          0 :     var ytics = [];</span>
-<span class="lineNum">     451 </span><span class="lineNoCov">          0 :     for (name in TimerEvents) {</span>
-<span class="lineNum">     452 </span><span class="lineNoCov">          0 :       var index = TimerEvents[name].index;</span>
-<span class="lineNum">     453 </span><span class="lineNoCov">          0 :       var label = TimerEvents[name].label;</span>
-<span class="lineNum">     454 </span><span class="lineNoCov">          0 :       ytics.push('&quot;' + label + ' (' + percentages[name] + '%%)&quot; ' + index);</span>
-<span class="lineNum">     455 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">     456 </span><span class="lineNoCov">          0 :     ytics.push('&quot;code kind color coding&quot; ' + kY1Offset);</span>
-<span class="lineNum">     457 </span><span class="lineNoCov">          0 :     ytics.push('&quot;code kind in execution&quot; ' + (kY1Offset - 1));</span>
-<span class="lineNum">     458 </span><span class="lineNoCov">          0 :     ytics.push('&quot;top ' + kStackFrames + ' js stack frames&quot;' + ' ' +</span>
-<span class="lineNum">     459 </span><span class="lineNoCov">          0 :                (kY1Offset - 2));</span>
-<span class="lineNum">     460 </span><span class="lineNoCov">          0 :     ytics.push('&quot;pause times&quot; 0');</span>
-<span class="lineNum">     461 </span><span class="lineNoCov">          0 :     ytics.push('&quot;max deopt size: ' + (max_deopt_size / 1024).toFixed(1) +</span>
-<span class="lineNum">     462 </span><span class="lineNoCov">          0 :                ' kB&quot; ' + kDeoptRow);</span>
-<span class="lineNum">     463 </span><span class="lineNoCov">          0 :     output(&quot;set ytics out nomirror (&quot; + ytics.join(', ') + &quot;)&quot;);</span>
-<span class="lineNum">     464 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     465 </span><span class="lineNoCov">          0 :     // Plot timeline.</span>
-<span class="lineNum">     466 </span><span class="lineNoCov">          0 :     for (var name in TimerEvents) {</span>
-<span class="lineNum">     467 </span><span class="lineNoCov">          0 :       var event = TimerEvents[name];</span>
-<span class="lineNum">     468 </span><span class="lineNoCov">          0 :       var ranges = MergeRanges(event.ranges);</span>
-<span class="lineNum">     469 </span><span class="lineNoCov">          0 :       for (var i = 0; i &lt; ranges.length; i++) {</span>
-<span class="lineNum">     470 </span><span class="lineNoCov">          0 :         DrawBar(event.index, event.color,</span>
-<span class="lineNum">     471 </span><span class="lineNoCov">          0 :                 ranges[i].start, ranges[i].end,</span>
-<span class="lineNum">     472 </span><span class="lineNoCov">          0 :                 kTimerEventWidth);</span>
-<span class="lineNum">     473 </span><span class="lineNoCov">          0 :       }</span>
-<span class="lineNum">     474 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">     475 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     476 </span><span class="lineNoCov">          0 :     // Plot code kind gathered from ticks.</span>
-<span class="lineNum">     477 </span><span class="lineNoCov">          0 :     for (var name in CodeKinds) {</span>
-<span class="lineNum">     478 </span><span class="lineNoCov">          0 :       var code_kind = CodeKinds[name];</span>
-<span class="lineNum">     479 </span><span class="lineNoCov">          0 :       var offset = kY1Offset - 1;</span>
-<span class="lineNum">     480 </span><span class="lineNoCov">          0 :       // Top most frame.</span>
-<span class="lineNum">     481 </span><span class="lineNoCov">          0 :       var row = MergeRanges(TicksToRanges(code_kind.in_execution));</span>
-<span class="lineNum">     482 </span><span class="lineNoCov">          0 :       for (var j = 0; j &lt; row.length; j++) {</span>
-<span class="lineNum">     483 </span><span class="lineNoCov">          0 :         DrawBar(offset, code_kind.color,</span>
-<span class="lineNum">     484 </span><span class="lineNoCov">          0 :                 row[j].start, row[j].end, kExecutionFrameWidth);</span>
-<span class="lineNum">     485 </span><span class="lineNoCov">          0 :       }</span>
-<span class="lineNum">     486 </span><span class="lineNoCov">          0 :       offset = offset - 2 * kExecutionFrameWidth - kGapWidth;</span>
-<span class="lineNum">     487 </span><span class="lineNoCov">          0 :       // Javascript frames.</span>
-<span class="lineNum">     488 </span><span class="lineNoCov">          0 :       for (var i = 0; i &lt; kStackFrames; i++) {</span>
-<span class="lineNum">     489 </span><span class="lineNoCov">          0 :         offset = offset - 2 * kStackFrameWidth - kGapWidth;</span>
-<span class="lineNum">     490 </span><span class="lineNoCov">          0 :         row = MergeRanges(TicksToRanges(code_kind.stack_frames[i]));</span>
-<span class="lineNum">     491 </span><span class="lineNoCov">          0 :         for (var j = 0; j &lt; row.length; j++) {</span>
-<span class="lineNum">     492 </span><span class="lineNoCov">          0 :           DrawBar(offset, code_kind.color,</span>
-<span class="lineNum">     493 </span><span class="lineNoCov">          0 :                   row[j].start, row[j].end, kStackFrameWidth);</span>
-<span class="lineNum">     494 </span><span class="lineNoCov">          0 :         }</span>
-<span class="lineNum">     495 </span><span class="lineNoCov">          0 :       }</span>
-<span class="lineNum">     496 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">     497 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     498 </span><span class="lineNoCov">          0 :     // Add labels as legend for code kind colors.</span>
-<span class="lineNum">     499 </span><span class="lineNoCov">          0 :     var padding = kCodeKindLabelPadding * (range_end - range_start) / kResX;</span>
-<span class="lineNum">     500 </span><span class="lineNoCov">          0 :     var label_x = range_start;</span>
-<span class="lineNum">     501 </span><span class="lineNoCov">          0 :     var label_y = kY1Offset;</span>
-<span class="lineNum">     502 </span><span class="lineNoCov">          0 :     for (var name in CodeKinds) {</span>
-<span class="lineNum">     503 </span><span class="lineNoCov">          0 :       label_x += padding;</span>
-<span class="lineNum">     504 </span><span class="lineNoCov">          0 :       output(&quot;set label \&quot;&quot; + name + &quot;\&quot; at &quot; + label_x + &quot;,&quot; + label_y +</span>
-<span class="lineNum">     505 </span><span class="lineNoCov">          0 :              &quot; textcolor rgb \&quot;&quot; + CodeKinds[name].color + &quot;\&quot;&quot; +</span>
-<span class="lineNum">     506 </span><span class="lineNoCov">          0 :              &quot; font \&quot;Helvetica,9'\&quot;&quot;);</span>
-<span class="lineNum">     507 </span><span class="lineNoCov">          0 :       obj_index++;</span>
-<span class="lineNum">     508 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">     509 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     510 </span><span class="lineNoCov">          0 :     if (execution_pauses.length == 0) {</span>
-<span class="lineNum">     511 </span><span class="lineNoCov">          0 :       // Force plot and return without plotting execution pause impulses.</span>
-<span class="lineNum">     512 </span><span class="lineNoCov">          0 :       output(&quot;plot 1/0&quot;);</span>
-<span class="lineNum">     513 </span><span class="lineNoCov">          0 :       return;</span>
-<span class="lineNum">     514 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">     515 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     516 </span><span class="lineNoCov">          0 :     // Label the longest pauses.</span>
-<span class="lineNum">     517 </span><span class="lineNoCov">          0 :     execution_pauses =</span>
-<span class="lineNum">     518 </span><span class="lineNoCov">          0 :         RestrictRangesTo(execution_pauses, range_start, range_end);</span>
-<span class="lineNum">     519 </span><span class="lineNoCov">          0 :     execution_pauses.sort(</span>
+<span class="lineNum">     433 </span><span class="lineCov">          1 :     var max_deopt_size = deopts.length &gt; 0 ? deopts[0].size : Infinity;</span>
+<span class="lineNum">     434 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     435 </span><span class="lineCov">          1 :     for (var i = 0; i &lt; deopts.length; i++) {</span>
+<span class="lineNum">     436 </span><span class="lineCov">          1 :       var deopt = deopts[i];</span>
+<span class="lineNum">     437 </span><span class="lineCov">          1 :       DrawHalfBar(kDeoptRow, &quot;#9944CC&quot;, deopt.time,</span>
+<span class="lineNum">     438 </span><span class="lineCov">          1 :                   deopt.time + 10 * pause_tolerance,</span>
+<span class="lineNum">     439 </span><span class="lineCov">          1 :                   deopt.size / max_deopt_size * kMaxDeoptLength);</span>
+<span class="lineNum">     440 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">     441 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     442 </span><span class="lineCov">          1 :     // Plot current time polls.</span>
+<span class="lineNum">     443 </span><span class="lineCov">          1 :     if (gettime.length &gt; 1) {</span>
+<span class="lineNum">     444 </span><span class="lineCov">          1 :       var start = gettime[0];</span>
+<span class="lineNum">     445 </span><span class="lineCov">          1 :       var end = gettime.pop();</span>
+<span class="lineNum">     446 </span><span class="lineCov">          1 :       DrawBarBase(&quot;#0000BB&quot;, start, end, kGetTimeHeight, 0, 0.2);</span>
+<span class="lineNum">     447 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">     448 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     449 </span><span class="lineCov">          1 :     // Name Y-axis.</span>
+<span class="lineNum">     450 </span><span class="lineCov">          1 :     var ytics = [];</span>
+<span class="lineNum">     451 </span><span class="lineCov">          1 :     for (name in TimerEvents) {</span>
+<span class="lineNum">     452 </span><span class="lineCov">          1 :       var index = TimerEvents[name].index;</span>
+<span class="lineNum">     453 </span><span class="lineCov">          1 :       var label = TimerEvents[name].label;</span>
+<span class="lineNum">     454 </span><span class="lineCov">          1 :       ytics.push('&quot;' + label + ' (' + percentages[name] + '%%)&quot; ' + index);</span>
+<span class="lineNum">     455 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">     456 </span><span class="lineCov">          1 :     ytics.push('&quot;code kind color coding&quot; ' + kY1Offset);</span>
+<span class="lineNum">     457 </span><span class="lineCov">          1 :     ytics.push('&quot;code kind in execution&quot; ' + (kY1Offset - 1));</span>
+<span class="lineNum">     458 </span><span class="lineCov">          1 :     ytics.push('&quot;top ' + kStackFrames + ' js stack frames&quot;' + ' ' +</span>
+<span class="lineNum">     459 </span><span class="lineCov">          1 :                (kY1Offset - 2));</span>
+<span class="lineNum">     460 </span><span class="lineCov">          1 :     ytics.push('&quot;pause times&quot; 0');</span>
+<span class="lineNum">     461 </span><span class="lineCov">          1 :     ytics.push('&quot;max deopt size: ' + (max_deopt_size / 1024).toFixed(1) +</span>
+<span class="lineNum">     462 </span><span class="lineCov">          1 :                ' kB&quot; ' + kDeoptRow);</span>
+<span class="lineNum">     463 </span><span class="lineCov">          1 :     output(&quot;set ytics out nomirror (&quot; + ytics.join(', ') + &quot;)&quot;);</span>
+<span class="lineNum">     464 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     465 </span><span class="lineCov">          1 :     // Plot timeline.</span>
+<span class="lineNum">     466 </span><span class="lineCov">          1 :     for (var name in TimerEvents) {</span>
+<span class="lineNum">     467 </span><span class="lineCov">          1 :       var event = TimerEvents[name];</span>
+<span class="lineNum">     468 </span><span class="lineCov">          1 :       var ranges = MergeRanges(event.ranges);</span>
+<span class="lineNum">     469 </span><span class="lineCov">          1 :       for (var i = 0; i &lt; ranges.length; i++) {</span>
+<span class="lineNum">     470 </span><span class="lineCov">          1 :         DrawBar(event.index, event.color,</span>
+<span class="lineNum">     471 </span><span class="lineCov">          1 :                 ranges[i].start, ranges[i].end,</span>
+<span class="lineNum">     472 </span><span class="lineCov">          1 :                 kTimerEventWidth);</span>
+<span class="lineNum">     473 </span><span class="lineCov">          1 :       }</span>
+<span class="lineNum">     474 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">     475 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     476 </span><span class="lineCov">          1 :     // Plot code kind gathered from ticks.</span>
+<span class="lineNum">     477 </span><span class="lineCov">          1 :     for (var name in CodeKinds) {</span>
+<span class="lineNum">     478 </span><span class="lineCov">          1 :       var code_kind = CodeKinds[name];</span>
+<span class="lineNum">     479 </span><span class="lineCov">          1 :       var offset = kY1Offset - 1;</span>
+<span class="lineNum">     480 </span><span class="lineCov">          1 :       // Top most frame.</span>
+<span class="lineNum">     481 </span><span class="lineCov">          1 :       var row = MergeRanges(TicksToRanges(code_kind.in_execution));</span>
+<span class="lineNum">     482 </span><span class="lineCov">          1 :       for (var j = 0; j &lt; row.length; j++) {</span>
+<span class="lineNum">     483 </span><span class="lineCov">          1 :         DrawBar(offset, code_kind.color,</span>
+<span class="lineNum">     484 </span><span class="lineCov">          1 :                 row[j].start, row[j].end, kExecutionFrameWidth);</span>
+<span class="lineNum">     485 </span><span class="lineCov">          1 :       }</span>
+<span class="lineNum">     486 </span><span class="lineCov">          1 :       offset = offset - 2 * kExecutionFrameWidth - kGapWidth;</span>
+<span class="lineNum">     487 </span><span class="lineCov">          1 :       // Javascript frames.</span>
+<span class="lineNum">     488 </span><span class="lineCov">          1 :       for (var i = 0; i &lt; kStackFrames; i++) {</span>
+<span class="lineNum">     489 </span><span class="lineCov">          1 :         offset = offset - 2 * kStackFrameWidth - kGapWidth;</span>
+<span class="lineNum">     490 </span><span class="lineCov">          1 :         row = MergeRanges(TicksToRanges(code_kind.stack_frames[i]));</span>
+<span class="lineNum">     491 </span><span class="lineCov">          1 :         for (var j = 0; j &lt; row.length; j++) {</span>
+<span class="lineNum">     492 </span><span class="lineCov">          1 :           DrawBar(offset, code_kind.color,</span>
+<span class="lineNum">     493 </span><span class="lineCov">          1 :                   row[j].start, row[j].end, kStackFrameWidth);</span>
+<span class="lineNum">     494 </span><span class="lineCov">          1 :         }</span>
+<span class="lineNum">     495 </span><span class="lineCov">          1 :       }</span>
+<span class="lineNum">     496 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">     497 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     498 </span><span class="lineCov">          1 :     // Add labels as legend for code kind colors.</span>
+<span class="lineNum">     499 </span><span class="lineCov">          1 :     var padding = kCodeKindLabelPadding * (range_end - range_start) / kResX;</span>
+<span class="lineNum">     500 </span><span class="lineCov">          1 :     var label_x = range_start;</span>
+<span class="lineNum">     501 </span><span class="lineCov">          1 :     var label_y = kY1Offset;</span>
+<span class="lineNum">     502 </span><span class="lineCov">          1 :     for (var name in CodeKinds) {</span>
+<span class="lineNum">     503 </span><span class="lineCov">          1 :       label_x += padding;</span>
+<span class="lineNum">     504 </span><span class="lineCov">          1 :       output(&quot;set label \&quot;&quot; + name + &quot;\&quot; at &quot; + label_x + &quot;,&quot; + label_y +</span>
+<span class="lineNum">     505 </span><span class="lineCov">          1 :              &quot; textcolor rgb \&quot;&quot; + CodeKinds[name].color + &quot;\&quot;&quot; +</span>
+<span class="lineNum">     506 </span><span class="lineCov">          1 :              &quot; font \&quot;Helvetica,9'\&quot;&quot;);</span>
+<span class="lineNum">     507 </span><span class="lineCov">          1 :       obj_index++;</span>
+<span class="lineNum">     508 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">     509 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     510 </span><span class="lineCov">          1 :     if (execution_pauses.length == 0) {</span>
+<span class="lineNum">     511 </span><span class="lineCov">          1 :       // Force plot and return without plotting execution pause impulses.</span>
+<span class="lineNum">     512 </span><span class="lineCov">          1 :       output(&quot;plot 1/0&quot;);</span>
+<span class="lineNum">     513 </span><span class="lineCov">          1 :       return;</span>
+<span class="lineNum">     514 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">     515 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     516 </span><span class="lineCov">          1 :     // Label the longest pauses.</span>
+<span class="lineNum">     517 </span><span class="lineCov">          1 :     execution_pauses =</span>
+<span class="lineNum">     518 </span><span class="lineCov">          1 :         RestrictRangesTo(execution_pauses, range_start, range_end);</span>
+<span class="lineNum">     519 </span><span class="lineCov">          1 :     execution_pauses.sort(</span>
 <span class="lineNum">     520 </span><span class="lineCov">       1329 :         function(a, b) { return b.duration() - a.duration(); });</span>
-<span class="lineNum">     521 </span>            : 
-<span class="lineNum">     522 </span>            :     var max_pause_time = execution_pauses.length &gt; 0
-<span class="lineNum">     523 </span>            :         ? execution_pauses[0].duration() : 0;
-<span class="lineNum">     524 </span>            :     padding = kPauseLabelPadding * (range_end - range_start) / kResX;
-<span class="lineNum">     525 </span>            :     var y_scale = kY1Offset / max_pause_time / 2;
-<span class="lineNum">     526 </span>            :     for (var i = 0; i &lt; execution_pauses.length &amp;&amp; i &lt; kNumPauseLabels; i++) {
-<span class="lineNum">     527 </span>            :       var pause = execution_pauses[i];
-<span class="lineNum">     528 </span>            :       var label_content = (pause.duration() | 0) + &quot; ms&quot;;
-<span class="lineNum">     529 </span>            :       var label_x = pause.end + padding;
-<span class="lineNum">     530 </span>            :       var label_y = Math.max(1, (pause.duration() * y_scale));
-<span class="lineNum">     531 </span>            :       output(&quot;set label \&quot;&quot; + label_content + &quot;\&quot; at &quot; +
-<span class="lineNum">     532 </span>            :              label_x + &quot;,&quot; + label_y + &quot; font \&quot;Helvetica,7'\&quot;&quot;);
-<span class="lineNum">     533 </span>            :       obj_index++;
-<span class="lineNum">     534 </span>            :     }
-<span class="lineNum">     535 </span>            : 
-<span class="lineNum">     536 </span>            :     // Scale second Y-axis appropriately.
-<span class="lineNum">     537 </span>            :     var y2range = max_pause_time * num_timer_event / kY1Offset * 2;
-<span class="lineNum">     538 </span>            :     output(&quot;set y2range [0:&quot; + y2range + &quot;]&quot;);
-<span class="lineNum">     539 </span>            :     // Plot graph with impulses as data set.
-<span class="lineNum">     540 </span>            :     output(&quot;plot '-' using 1:2 axes x1y2 with impulses ls 1&quot;);
-<span class="lineNum">     541 </span>            :     for (var i = 0; i &lt; execution_pauses.length; i++) {
-<span class="lineNum">     542 </span>            :       var pause = execution_pauses[i];
-<span class="lineNum">     543 </span>            :       output(pause.end + &quot; &quot; + pause.duration());
-<span class="lineNum">     544 </span>            :       obj_index++;
-<span class="lineNum">     545 </span>            :     }
-<span class="lineNum">     546 </span>            :     output(&quot;e&quot;);
-<span class="lineNum">     547 </span>            :     return obj_index;
-<span class="lineNum">     548 </span>            :   };
-<span class="lineNum">     549 </span>            : }
+<span class="lineNum">     521 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     522 </span><span class="lineCov">          1 :     var max_pause_time = execution_pauses.length &gt; 0</span>
+<span class="lineNum">     523 </span><span class="lineCov">          1 :         ? execution_pauses[0].duration() : 0;</span>
+<span class="lineNum">     524 </span><span class="lineCov">          1 :     padding = kPauseLabelPadding * (range_end - range_start) / kResX;</span>
+<span class="lineNum">     525 </span><span class="lineCov">          1 :     var y_scale = kY1Offset / max_pause_time / 2;</span>
+<span class="lineNum">     526 </span><span class="lineCov">          1 :     for (var i = 0; i &lt; execution_pauses.length &amp;&amp; i &lt; kNumPauseLabels; i++) {</span>
+<span class="lineNum">     527 </span><span class="lineCov">          1 :       var pause = execution_pauses[i];</span>
+<span class="lineNum">     528 </span><span class="lineCov">          1 :       var label_content = (pause.duration() | 0) + &quot; ms&quot;;</span>
+<span class="lineNum">     529 </span><span class="lineCov">          1 :       var label_x = pause.end + padding;</span>
+<span class="lineNum">     530 </span><span class="lineCov">          1 :       var label_y = Math.max(1, (pause.duration() * y_scale));</span>
+<span class="lineNum">     531 </span><span class="lineCov">          1 :       output(&quot;set label \&quot;&quot; + label_content + &quot;\&quot; at &quot; +</span>
+<span class="lineNum">     532 </span><span class="lineCov">          1 :              label_x + &quot;,&quot; + label_y + &quot; font \&quot;Helvetica,7'\&quot;&quot;);</span>
+<span class="lineNum">     533 </span><span class="lineCov">          1 :       obj_index++;</span>
+<span class="lineNum">     534 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">     535 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     536 </span><span class="lineCov">          1 :     // Scale second Y-axis appropriately.</span>
+<span class="lineNum">     537 </span><span class="lineCov">          1 :     var y2range = max_pause_time * num_timer_event / kY1Offset * 2;</span>
+<span class="lineNum">     538 </span><span class="lineCov">          1 :     output(&quot;set y2range [0:&quot; + y2range + &quot;]&quot;);</span>
+<span class="lineNum">     539 </span><span class="lineCov">          1 :     // Plot graph with impulses as data set.</span>
+<span class="lineNum">     540 </span><span class="lineCov">          1 :     output(&quot;plot '-' using 1:2 axes x1y2 with impulses ls 1&quot;);</span>
+<span class="lineNum">     541 </span><span class="lineCov">          1 :     for (var i = 0; i &lt; execution_pauses.length; i++) {</span>
+<span class="lineNum">     542 </span><span class="lineCov">          1 :       var pause = execution_pauses[i];</span>
+<span class="lineNum">     543 </span><span class="lineCov">          1 :       output(pause.end + &quot; &quot; + pause.duration());</span>
+<span class="lineNum">     544 </span><span class="lineCov">          1 :       obj_index++;</span>
+<span class="lineNum">     545 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">     546 </span><span class="lineCov">          1 :     output(&quot;e&quot;);</span>
+<span class="lineNum">     547 </span><span class="lineCov">          1 :     return obj_index;</span>
+<span class="lineNum">     548 </span><span class="lineCov">          1 :   };</span>
+<span class="lineNum">     549 </span><span class="lineCov">          1 : }</span>
 </pre>
       </td>
     </tr>

@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">53</td>
-            <td class="headerCovTableEntry">63</td>
-            <td class="headerCovTableEntryMed">84.1 %</td>
+            <td class="headerCovTableEntry">73</td>
+            <td class="headerCovTableEntry">73</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">4</td>
@@ -96,7 +96,7 @@
 <span class="lineNum">      34 </span><span class="lineCov">          8 :   o.smi = 0;</span>
 <span class="lineNum">      35 </span><span class="lineCov">          8 :   return o;</span>
 <a name="36"><span class="lineNum">      36 </span><span class="lineCov">          8 : }</span></a>
-<span class="lineNum">      37 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      37 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      38 </span><span class="lineCov">          3 : function check_smi_repr(o, d1, d2) {</span>
 <span class="lineNum">      39 </span><span class="lineCov">          3 :   var s = o.smi;</span>
 <span class="lineNum">      40 </span><span class="lineCov">          3 :   var d = d1 - d2;</span>
@@ -104,34 +104,34 @@
 <span class="lineNum">      42 </span><span class="lineCov">          3 :   o.smi = s;</span>
 <span class="lineNum">      43 </span><span class="lineCov">          3 :   return o;</span>
 <span class="lineNum">      44 </span><span class="lineCov">          3 : }</span>
-<span class="lineNum">      45 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      46 </span><span class="lineNoCov">          0 : var test = smi_field();</span>
-<span class="lineNum">      47 </span><span class="lineNoCov">          0 : check_smi_repr(smi_field(), 5, 3);</span>
-<span class="lineNum">      48 </span><span class="lineNoCov">          0 : check_smi_repr(smi_field(), 6, 2);</span>
-<span class="lineNum">      49 </span><span class="lineNoCov">          0 : %OptimizeFunctionOnNextCall(check_smi_repr);</span>
-<span class="lineNum">      50 </span><span class="lineNoCov">          0 : var val = check_smi_repr(smi_field(), 8, 1);</span>
-<a name="51"><span class="lineNum">      51 </span><span class="lineNoCov">          0 : assertTrue(%HaveSameMap(val, test));</span></a>
-<span class="lineNum">      52 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      45 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      46 </span><span class="lineCov">          1 : var test = smi_field();</span>
+<span class="lineNum">      47 </span><span class="lineCov">          1 : check_smi_repr(smi_field(), 5, 3);</span>
+<span class="lineNum">      48 </span><span class="lineCov">          1 : check_smi_repr(smi_field(), 6, 2);</span>
+<span class="lineNum">      49 </span><span class="lineCov">          1 : %OptimizeFunctionOnNextCall(check_smi_repr);</span>
+<span class="lineNum">      50 </span><span class="lineCov">          1 : var val = check_smi_repr(smi_field(), 8, 1);</span>
+<a name="51"><span class="lineNum">      51 </span><span class="lineCov">          1 : assertTrue(%HaveSameMap(val, test));</span></a>
+<span class="lineNum">      52 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      53 </span><span class="lineCov">          4 : function tagged_smi_field() {</span>
 <span class="lineNum">      54 </span><span class="lineCov">          4 :   var o = {&quot;tag&quot;:false};</span>
 <span class="lineNum">      55 </span><span class="lineCov">          4 :   o.tag = 10;</span>
 <span class="lineNum">      56 </span><span class="lineCov">          4 :   return o;</span>
 <a name="57"><span class="lineNum">      57 </span><span class="lineCov">          4 : }</span></a>
-<span class="lineNum">      58 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      58 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      59 </span><span class="lineCov">          4 : function check_smi_repr_from_tagged(o, o2) {</span>
 <span class="lineNum">      60 </span><span class="lineCov">          4 :   var t = o2.tag;</span>
 <span class="lineNum">      61 </span><span class="lineCov">          4 :   o.smi = t;</span>
 <span class="lineNum">      62 </span><span class="lineCov">          4 :   return o;</span>
 <span class="lineNum">      63 </span><span class="lineCov">          4 : }</span>
-<span class="lineNum">      64 </span>            : 
-<span class="lineNum">      65 </span>            : check_smi_repr_from_tagged(smi_field(), tagged_smi_field());
-<span class="lineNum">      66 </span>            : check_smi_repr_from_tagged(smi_field(), tagged_smi_field());
-<span class="lineNum">      67 </span>            : %OptimizeFunctionOnNextCall(check_smi_repr_from_tagged);
-<span class="lineNum">      68 </span>            : var val = check_smi_repr_from_tagged(smi_field(), tagged_smi_field());
-<span class="lineNum">      69 </span>            : assertTrue(%HaveSameMap(val, test));
-<span class="lineNum">      70 </span>            : var overflow = tagged_smi_field();
-<span class="lineNum">      71 </span>            : overflow.tag = 0x80000000;
-<span class="lineNum">      72 </span>            : var val = check_smi_repr_from_tagged(smi_field(), overflow);
+<span class="lineNum">      64 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      65 </span><span class="lineCov">          1 : check_smi_repr_from_tagged(smi_field(), tagged_smi_field());</span>
+<span class="lineNum">      66 </span><span class="lineCov">          1 : check_smi_repr_from_tagged(smi_field(), tagged_smi_field());</span>
+<span class="lineNum">      67 </span><span class="lineCov">          1 : %OptimizeFunctionOnNextCall(check_smi_repr_from_tagged);</span>
+<span class="lineNum">      68 </span><span class="lineCov">          1 : var val = check_smi_repr_from_tagged(smi_field(), tagged_smi_field());</span>
+<span class="lineNum">      69 </span><span class="lineCov">          1 : assertTrue(%HaveSameMap(val, test));</span>
+<span class="lineNum">      70 </span><span class="lineCov">          1 : var overflow = tagged_smi_field();</span>
+<span class="lineNum">      71 </span><span class="lineCov">          1 : overflow.tag = 0x80000000;</span>
+<span class="lineNum">      72 </span><span class="lineCov">          1 : var val = check_smi_repr_from_tagged(smi_field(), overflow);</span>
 </pre>
       </td>
     </tr>

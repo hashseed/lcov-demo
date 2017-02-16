@@ -1,0 +1,861 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - test/wasm-js/test/js-api/jsapi.js</title>
+  <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../index.html">top level</a> - <a href="index.html">test/wasm-js/test/js-api</a> - jsapi.js<span style="font-size: 80%;"> (source / <a href="jsapi.js.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">784</td>
+            <td class="headerCovTableEntry">786</td>
+            <td class="headerCovTableEntryHi">99.7 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2017-02-16</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">19</td>
+            <td class="headerCovTableEntry">24</td>
+            <td class="headerCovTableEntryMed">79.2 %</td>
+          </tr>
+          <tr><td><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span><span class="lineCov">          1 : /*</span></a>
+<span class="lineNum">       2 </span><span class="lineCov">          1 :  * Copyright 2017 WebAssembly Community Group participants</span>
+<span class="lineNum">       3 </span><span class="lineCov">          1 :  *</span>
+<span class="lineNum">       4 </span><span class="lineCov">          1 :  * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="lineNum">       5 </span><span class="lineCov">          1 :  * you may not use this file except in compliance with the License.</span>
+<span class="lineNum">       6 </span><span class="lineCov">          1 :  * You may obtain a copy of the License at</span>
+<span class="lineNum">       7 </span><span class="lineCov">          1 :  *</span>
+<span class="lineNum">       8 </span><span class="lineCov">          1 :  *     http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="lineNum">       9 </span><span class="lineCov">          1 :  *</span>
+<span class="lineNum">      10 </span><span class="lineCov">          1 :  * Unless required by applicable law or agreed to in writing, software</span>
+<span class="lineNum">      11 </span><span class="lineCov">          1 :  * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="lineNum">      12 </span><span class="lineCov">          1 :  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="lineNum">      13 </span><span class="lineCov">          1 :  * See the License for the specific language governing permissions and</span>
+<span class="lineNum">      14 </span><span class="lineCov">          1 :  * limitations under the License.</span>
+<a name="15"><span class="lineNum">      15 </span><span class="lineCov">          1 : */</span></a>
+<span class="lineNum">      16 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      17 </span><span class="lineCov">          1 : (function testJSAPI() {</span>
+<span class="lineNum">      18 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      19 </span><span class="lineCov">          1 : const WasmPage = 64 * 1024;</span>
+<span class="lineNum">      20 </span><span class="lineCov">          1 : </span>
+<a name="21"><span class="lineNum">      21 </span><span class="lineCov">          1 : const emptyModuleBinary = new WasmModuleBuilder().toBuffer();</span></a>
+<span class="lineNum">      22 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      23 </span><span class="lineCov">          1 : const importingModuleBinary = (() =&gt; {</span>
+<span class="lineNum">      24 </span><span class="lineCov">          1 :     let builder = new WasmModuleBuilder();</span>
+<span class="lineNum">      25 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      26 </span><span class="lineCov">          1 :     builder.addImport('', 'f', kSig_v_v);</span>
+<span class="lineNum">      27 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      28 </span><span class="lineCov">          1 :     return builder.toBuffer();</span>
+<a name="29"><span class="lineNum">      29 </span><span class="lineCov">          1 : })();</span></a>
+<span class="lineNum">      30 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      31 </span><span class="lineCov">          1 : const complexImportingModuleBinary = (() =&gt; {</span>
+<span class="lineNum">      32 </span><span class="lineCov">          1 :     let builder = new WasmModuleBuilder();</span>
+<span class="lineNum">      33 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      34 </span><span class="lineCov">          1 :     builder.addImport('a', 'b', kSig_v_v);</span>
+<span class="lineNum">      35 </span><span class="lineCov">          1 :     builder.addImportedMemory('c', 'd', 1);</span>
+<span class="lineNum">      36 </span><span class="lineCov">          1 :     builder.addImportedTable('e', 'f', 1);</span>
+<span class="lineNum">      37 </span><span class="lineCov">          1 :     builder.addImportedGlobal('g', '⚡', kWasmI32);</span>
+<span class="lineNum">      38 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      39 </span><span class="lineCov">          1 :     return builder.toBuffer();</span>
+<a name="40"><span class="lineNum">      40 </span><span class="lineCov">          1 : })();</span></a>
+<span class="lineNum">      41 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      42 </span><span class="lineCov">          1 : const exportingModuleBinary = (() =&gt; {</span>
+<span class="lineNum">      43 </span><span class="lineCov">          1 :     let builder = new WasmModuleBuilder();</span>
+<span class="lineNum">      44 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      45 </span><span class="lineCov">          1 :     builder</span>
+<span class="lineNum">      46 </span><span class="lineCov">          1 :         .addFunction('f', kSig_i_v)</span>
+<span class="lineNum">      47 </span><span class="lineCov">          1 :         .addBody([</span>
+<span class="lineNum">      48 </span><span class="lineCov">          1 :             kExprI32Const,</span>
+<span class="lineNum">      49 </span><span class="lineCov">          1 :             42,</span>
+<span class="lineNum">      50 </span><span class="lineCov">          1 :             kExprEnd</span>
+<span class="lineNum">      51 </span><span class="lineCov">          1 :         ])</span>
+<span class="lineNum">      52 </span><span class="lineCov">          1 :         .exportFunc();</span>
+<span class="lineNum">      53 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      54 </span><span class="lineCov">          1 :     return builder.toBuffer();</span>
+<a name="55"><span class="lineNum">      55 </span><span class="lineCov">          1 : })();</span></a>
+<span class="lineNum">      56 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      57 </span><span class="lineCov">          1 : const complexExportingModuleBinary = (() =&gt; {</span>
+<span class="lineNum">      58 </span><span class="lineCov">          1 :     let builder = new WasmModuleBuilder();</span>
+<span class="lineNum">      59 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      60 </span><span class="lineCov">          1 :     builder</span>
+<span class="lineNum">      61 </span><span class="lineCov">          1 :         .addFunction('a', kSig_v_v)</span>
+<span class="lineNum">      62 </span><span class="lineCov">          1 :         .addBody([</span>
+<span class="lineNum">      63 </span><span class="lineCov">          1 :             kExprEnd</span>
+<span class="lineNum">      64 </span><span class="lineCov">          1 :         ])</span>
+<span class="lineNum">      65 </span><span class="lineCov">          1 :         .exportFunc();</span>
+<span class="lineNum">      66 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      67 </span><span class="lineCov">          1 :     builder.addMemory(1, 1, /* exported */ false);</span>
+<span class="lineNum">      68 </span><span class="lineCov">          1 :     builder.exportMemoryAs('b');</span>
+<span class="lineNum">      69 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      70 </span><span class="lineCov">          1 :     builder.setFunctionTableLength(1);</span>
+<span class="lineNum">      71 </span><span class="lineCov">          1 :     builder.addExportOfKind('c', kExternalTable, 0);</span>
+<span class="lineNum">      72 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      73 </span><span class="lineCov">          1 :     // Default init for global values is 0. Keep that.</span>
+<span class="lineNum">      74 </span><span class="lineCov">          1 :     builder.addGlobal(kWasmI32, /* mutable */ false)</span>
+<span class="lineNum">      75 </span><span class="lineCov">          1 :         .exportAs(&quot;⚡&quot;);</span>
+<span class="lineNum">      76 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      77 </span><span class="lineCov">          1 :     return builder.toBuffer();</span>
+<a name="78"><span class="lineNum">      78 </span><span class="lineCov">          1 : })();</span></a>
+<span class="lineNum">      79 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      80 </span><span class="lineCov">          1 : const moduleBinaryImporting2Memories = (() =&gt; {</span>
+<span class="lineNum">      81 </span><span class="lineCov">          1 :     var builder = new WasmModuleBuilder();</span>
+<span class="lineNum">      82 </span><span class="lineCov">          1 :     builder.addImportedMemory(&quot;&quot;, &quot;memory1&quot;);</span>
+<span class="lineNum">      83 </span><span class="lineCov">          1 :     builder.addImportedMemory(&quot;&quot;, &quot;memory2&quot;);</span>
+<span class="lineNum">      84 </span><span class="lineCov">          1 :     return builder.toBuffer();</span>
+<a name="85"><span class="lineNum">      85 </span><span class="lineCov">          1 : })();</span></a>
+<span class="lineNum">      86 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      87 </span><span class="lineCov">          1 : const moduleBinaryWithMemSectionAndMemImport = (() =&gt; {</span>
+<span class="lineNum">      88 </span><span class="lineCov">          1 :     var builder = new WasmModuleBuilder();</span>
+<span class="lineNum">      89 </span><span class="lineCov">          1 :     builder.addMemory(1, 1, false);</span>
+<span class="lineNum">      90 </span><span class="lineCov">          1 :     builder.addImportedMemory(&quot;&quot;, &quot;memory1&quot;);</span>
+<span class="lineNum">      91 </span><span class="lineCov">          1 :     return builder.toBuffer();</span>
+<span class="lineNum">      92 </span><span class="lineCov">          1 : })();</span>
+<span class="lineNum">      93 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      94 </span><span class="lineCov">          1 : let Module;</span>
+<span class="lineNum">      95 </span><span class="lineCov">          1 : let Instance;</span>
+<span class="lineNum">      96 </span><span class="lineCov">          1 : let CompileError;</span>
+<span class="lineNum">      97 </span><span class="lineCov">          1 : let LinkError;</span>
+<span class="lineNum">      98 </span><span class="lineCov">          1 : let RuntimeError;</span>
+<span class="lineNum">      99 </span><span class="lineCov">          1 : let Memory;</span>
+<span class="lineNum">     100 </span><span class="lineCov">          1 : let memoryProto;</span>
+<span class="lineNum">     101 </span><span class="lineCov">          1 : let mem1;</span>
+<span class="lineNum">     102 </span><span class="lineCov">          1 : let Table;</span>
+<span class="lineNum">     103 </span><span class="lineCov">          1 : let tbl1;</span>
+<span class="lineNum">     104 </span><span class="lineCov">          1 : let tableProto;</span>
+<span class="lineNum">     105 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     106 </span><span class="lineCov">          1 : let emptyModule;</span>
+<span class="lineNum">     107 </span><span class="lineCov">          1 : let exportingModule;</span>
+<span class="lineNum">     108 </span><span class="lineCov">          1 : let exportingInstance;</span>
+<span class="lineNum">     109 </span><span class="lineCov">          1 : let exportsObj;</span>
+<span class="lineNum">     110 </span><span class="lineCov">          1 : let importingModule;</span>
+<span class="lineNum">     111 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     112 </span><span class="lineCov">          1 : // Start of tests.</span>
+<span class="lineNum">     113 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     114 </span><span class="lineCov">          1 : test(() =&gt; {</span>
+<span class="lineNum">     115 </span><span class="lineCov">          1 :     const wasmDesc = Object.getOwnPropertyDescriptor(this, 'WebAssembly');</span>
+<span class="lineNum">     116 </span><span class="lineCov">          1 :     assert_equals(typeof wasmDesc.value, &quot;object&quot;);</span>
+<span class="lineNum">     117 </span><span class="lineCov">          1 :     assert_true(wasmDesc.writable);</span>
+<span class="lineNum">     118 </span><span class="lineCov">          1 :     assert_false(wasmDesc.enumerable);</span>
+<span class="lineNum">     119 </span><span class="lineCov">          1 :     assert_true(wasmDesc.configurable);</span>
+<span class="lineNum">     120 </span><span class="lineCov">          1 : }, &quot;'WebAssembly' data property on global object&quot;);</span>
+<span class="lineNum">     121 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     122 </span><span class="lineCov">          1 : test(() =&gt; {</span>
+<span class="lineNum">     123 </span><span class="lineCov">          1 :     const wasmDesc = Object.getOwnPropertyDescriptor(this, 'WebAssembly');</span>
+<span class="lineNum">     124 </span><span class="lineCov">          1 :     assert_equals(WebAssembly, wasmDesc.value);</span>
+<span class="lineNum">     125 </span><span class="lineCov">          1 :     assert_equals(String(WebAssembly), &quot;[object WebAssembly]&quot;);</span>
+<span class="lineNum">     126 </span><span class="lineCov">          1 : }, &quot;'WebAssembly' object&quot;);</span>
+<span class="lineNum">     127 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     128 </span><span class="lineCov">          1 : test(() =&gt; {</span>
+<span class="lineNum">     129 </span><span class="lineCov">          1 :     const compileErrorDesc = Object.getOwnPropertyDescriptor(WebAssembly, 'CompileError');</span>
+<span class="lineNum">     130 </span><span class="lineCov">          1 :     const linkErrorDesc = Object.getOwnPropertyDescriptor(WebAssembly, 'LinkError');</span>
+<span class="lineNum">     131 </span><span class="lineCov">          1 :     const runtimeErrorDesc = Object.getOwnPropertyDescriptor(WebAssembly, 'RuntimeError');</span>
+<span class="lineNum">     132 </span><span class="lineCov">          1 :     assert_equals(typeof compileErrorDesc.value, &quot;function&quot;);</span>
+<span class="lineNum">     133 </span><span class="lineCov">          1 :     assert_equals(typeof linkErrorDesc.value, &quot;function&quot;);</span>
+<span class="lineNum">     134 </span><span class="lineCov">          1 :     assert_equals(typeof runtimeErrorDesc.value, &quot;function&quot;);</span>
+<span class="lineNum">     135 </span><span class="lineCov">          1 :     assert_equals(compileErrorDesc.writable, true);</span>
+<span class="lineNum">     136 </span><span class="lineCov">          1 :     assert_equals(linkErrorDesc.writable, true);</span>
+<span class="lineNum">     137 </span><span class="lineCov">          1 :     assert_equals(runtimeErrorDesc.writable, true);</span>
+<span class="lineNum">     138 </span><span class="lineCov">          1 :     assert_equals(compileErrorDesc.enumerable, false);</span>
+<span class="lineNum">     139 </span><span class="lineCov">          1 :     assert_equals(linkErrorDesc.enumerable, false);</span>
+<span class="lineNum">     140 </span><span class="lineCov">          1 :     assert_equals(runtimeErrorDesc.enumerable, false);</span>
+<span class="lineNum">     141 </span><span class="lineCov">          1 :     assert_equals(compileErrorDesc.configurable, true);</span>
+<span class="lineNum">     142 </span><span class="lineCov">          1 :     assert_equals(linkErrorDesc.configurable, true);</span>
+<span class="lineNum">     143 </span><span class="lineCov">          1 :     assert_equals(runtimeErrorDesc.configurable, true);</span>
+<span class="lineNum">     144 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     145 </span><span class="lineCov">          1 :     CompileError = WebAssembly.CompileError;</span>
+<span class="lineNum">     146 </span><span class="lineCov">          1 :     LinkError = WebAssembly.LinkError;</span>
+<span class="lineNum">     147 </span><span class="lineCov">          1 :     RuntimeError = WebAssembly.RuntimeError;</span>
+<span class="lineNum">     148 </span><span class="lineCov">          1 : }, &quot;'WebAssembly.(Compile|Link|Runtime)Error' data property&quot;);</span>
+<span class="lineNum">     149 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     150 </span><span class="lineCov">          1 : test(() =&gt; {</span>
+<span class="lineNum">     151 </span><span class="lineCov">          1 :     const compileErrorDesc = Object.getOwnPropertyDescriptor(WebAssembly, 'CompileError');</span>
+<span class="lineNum">     152 </span><span class="lineCov">          1 :     const linkErrorDesc = Object.getOwnPropertyDescriptor(WebAssembly, 'LinkError');</span>
+<span class="lineNum">     153 </span><span class="lineCov">          1 :     const runtimeErrorDesc = Object.getOwnPropertyDescriptor(WebAssembly, 'RuntimeError');</span>
+<span class="lineNum">     154 </span><span class="lineCov">          1 :     assert_equals(CompileError, compileErrorDesc.value);</span>
+<span class="lineNum">     155 </span><span class="lineCov">          1 :     assert_equals(LinkError, linkErrorDesc.value);</span>
+<span class="lineNum">     156 </span><span class="lineCov">          1 :     assert_equals(RuntimeError, runtimeErrorDesc.value);</span>
+<span class="lineNum">     157 </span><span class="lineCov">          1 :     assert_equals(CompileError.length, 1);</span>
+<span class="lineNum">     158 </span><span class="lineCov">          1 :     assert_equals(LinkError.length, 1);</span>
+<span class="lineNum">     159 </span><span class="lineCov">          1 :     assert_equals(RuntimeError.length, 1);</span>
+<span class="lineNum">     160 </span><span class="lineCov">          1 :     assert_equals(CompileError.name, &quot;CompileError&quot;);</span>
+<span class="lineNum">     161 </span><span class="lineCov">          1 :     assert_equals(LinkError.name, &quot;LinkError&quot;);</span>
+<span class="lineNum">     162 </span><span class="lineCov">          1 :     assert_equals(RuntimeError.name, &quot;RuntimeError&quot;);</span>
+<span class="lineNum">     163 </span><span class="lineCov">          1 : }, &quot;'WebAssembly.(Compile|Runtime)Error' constructor function&quot;);</span>
+<span class="lineNum">     164 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     165 </span><span class="lineCov">          1 : test(() =&gt; {</span>
+<span class="lineNum">     166 </span><span class="lineCov">          1 :     const compileError = new CompileError;</span>
+<span class="lineNum">     167 </span><span class="lineCov">          1 :     const runtimeError = new RuntimeError;</span>
+<span class="lineNum">     168 </span><span class="lineCov">          1 :     assert_equals(compileError instanceof CompileError, true);</span>
+<span class="lineNum">     169 </span><span class="lineCov">          1 :     assert_equals(runtimeError instanceof RuntimeError, true);</span>
+<span class="lineNum">     170 </span><span class="lineCov">          1 :     assert_equals(compileError instanceof Error, true);</span>
+<span class="lineNum">     171 </span><span class="lineCov">          1 :     assert_equals(runtimeError instanceof Error, true);</span>
+<span class="lineNum">     172 </span><span class="lineCov">          1 :     assert_equals(compileError instanceof TypeError, false);</span>
+<span class="lineNum">     173 </span><span class="lineCov">          1 :     assert_equals(runtimeError instanceof TypeError, false);</span>
+<span class="lineNum">     174 </span><span class="lineCov">          1 :     assert_equals(compileError.message, &quot;&quot;);</span>
+<span class="lineNum">     175 </span><span class="lineCov">          1 :     assert_equals(runtimeError.message, &quot;&quot;);</span>
+<span class="lineNum">     176 </span><span class="lineCov">          1 :     assert_equals(new CompileError(&quot;hi&quot;).message, &quot;hi&quot;);</span>
+<span class="lineNum">     177 </span><span class="lineCov">          1 :     assert_equals(new RuntimeError(&quot;hi&quot;).message, &quot;hi&quot;);</span>
+<span class="lineNum">     178 </span><span class="lineCov">          1 : }, &quot;'WebAssembly.(Compile|Runtime)Error' instance objects&quot;);</span>
+<span class="lineNum">     179 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     180 </span><span class="lineCov">          1 : test(() =&gt; {</span>
+<span class="lineNum">     181 </span><span class="lineCov">          1 :     const moduleDesc = Object.getOwnPropertyDescriptor(WebAssembly, 'Module');</span>
+<span class="lineNum">     182 </span><span class="lineCov">          1 :     assert_equals(typeof moduleDesc.value, &quot;function&quot;);</span>
+<span class="lineNum">     183 </span><span class="lineCov">          1 :     assert_equals(moduleDesc.writable, true);</span>
+<span class="lineNum">     184 </span><span class="lineCov">          1 :     assert_equals(moduleDesc.enumerable, false);</span>
+<span class="lineNum">     185 </span><span class="lineCov">          1 :     assert_equals(moduleDesc.configurable, true);</span>
+<span class="lineNum">     186 </span><span class="lineCov">          1 :     Module = WebAssembly.Module;</span>
+<span class="lineNum">     187 </span><span class="lineCov">          1 : }, &quot;'WebAssembly.Module' data property&quot;);</span>
+<span class="lineNum">     188 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     189 </span><span class="lineCov">          1 : test(() =&gt; {</span>
+<span class="lineNum">     190 </span><span class="lineCov">          1 :     const moduleDesc = Object.getOwnPropertyDescriptor(WebAssembly, 'Module');</span>
+<span class="lineNum">     191 </span><span class="lineCov">          1 :     assert_equals(Module, moduleDesc.value);</span>
+<span class="lineNum">     192 </span><span class="lineCov">          1 :     assert_equals(Module.length, 1);</span>
+<span class="lineNum">     193 </span><span class="lineCov">          1 :     assert_equals(Module.name, &quot;Module&quot;);</span>
+<span class="lineNum">     194 </span><span class="lineCov">          1 :     assertThrows(() =&gt; Module(), TypeError);</span>
+<span class="lineNum">     195 </span><span class="lineCov">          1 :     assertThrows(() =&gt; new Module(), TypeError);</span>
+<span class="lineNum">     196 </span><span class="lineCov">          1 :     assertThrows(() =&gt; new Module(undefined), TypeError);</span>
+<span class="lineNum">     197 </span><span class="lineCov">          1 :     assertThrows(() =&gt; new Module(1), TypeError);</span>
+<span class="lineNum">     198 </span><span class="lineCov">          1 :     assertThrows(() =&gt; new Module({}), TypeError);</span>
+<span class="lineNum">     199 </span><span class="lineCov">          1 :     assertThrows(() =&gt; new Module(new Uint8Array()), CompileError);</span>
+<span class="lineNum">     200 </span><span class="lineCov">          1 :     assertThrows(() =&gt; new Module(new ArrayBuffer()), CompileError);</span>
+<span class="lineNum">     201 </span><span class="lineCov">          1 :     assert_equals(new Module(emptyModuleBinary) instanceof Module, true);</span>
+<span class="lineNum">     202 </span><span class="lineCov">          1 :     assert_equals(new Module(emptyModuleBinary.buffer) instanceof Module, true);</span>
+<span class="lineNum">     203 </span><span class="lineCov">          1 : }, &quot;'WebAssembly.Module' constructor function&quot;);</span>
+<span class="lineNum">     204 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     205 </span><span class="lineCov">          1 : test(() =&gt; {</span>
+<span class="lineNum">     206 </span><span class="lineCov">          1 :     const moduleProtoDesc = Object.getOwnPropertyDescriptor(Module, 'prototype');</span>
+<span class="lineNum">     207 </span><span class="lineCov">          1 :     assert_equals(typeof moduleProtoDesc.value, &quot;object&quot;);</span>
+<span class="lineNum">     208 </span><span class="lineCov">          1 :     assert_equals(moduleProtoDesc.writable, false);</span>
+<span class="lineNum">     209 </span><span class="lineCov">          1 :     assert_equals(moduleProtoDesc.enumerable, false);</span>
+<span class="lineNum">     210 </span><span class="lineCov">          1 :     assert_equals(moduleProtoDesc.configurable, false);</span>
+<span class="lineNum">     211 </span><span class="lineCov">          1 : }, &quot;'WebAssembly.Module.prototype' data property&quot;);</span>
+<span class="lineNum">     212 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     213 </span><span class="lineCov">          1 : test(() =&gt; {</span>
+<span class="lineNum">     214 </span><span class="lineCov">          1 :     const moduleProtoDesc = Object.getOwnPropertyDescriptor(Module, 'prototype');</span>
+<span class="lineNum">     215 </span><span class="lineCov">          1 :     const moduleProto = Module.prototype;</span>
+<span class="lineNum">     216 </span><span class="lineCov">          1 :     assert_equals(moduleProto, moduleProtoDesc.value);</span>
+<span class="lineNum">     217 </span><span class="lineCov">          1 :     assert_equals(String(moduleProto), &quot;[object WebAssembly.Module]&quot;);</span>
+<span class="lineNum">     218 </span><span class="lineCov">          1 :     assert_equals(Object.getPrototypeOf(moduleProto), Object.prototype);</span>
+<span class="lineNum">     219 </span><span class="lineCov">          1 : }, &quot;'WebAssembly.Module.prototype' object&quot;);</span>
+<span class="lineNum">     220 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     221 </span><span class="lineCov">          1 : test(() =&gt; {</span>
+<span class="lineNum">     222 </span><span class="lineCov">          1 :     const moduleProto = Module.prototype;</span>
+<span class="lineNum">     223 </span><span class="lineCov">          1 :     emptyModule = new Module(emptyModuleBinary);</span>
+<span class="lineNum">     224 </span><span class="lineCov">          1 :     exportingModule = new Module(exportingModuleBinary);</span>
+<span class="lineNum">     225 </span><span class="lineCov">          1 :     importingModule = new Module(importingModuleBinary);</span>
+<span class="lineNum">     226 </span><span class="lineCov">          1 :     assert_equals(typeof emptyModule, &quot;object&quot;);</span>
+<span class="lineNum">     227 </span><span class="lineCov">          1 :     assert_equals(String(emptyModule), &quot;[object WebAssembly.Module]&quot;);</span>
+<span class="lineNum">     228 </span><span class="lineCov">          1 :     assert_equals(Object.getPrototypeOf(emptyModule), moduleProto);</span>
+<span class="lineNum">     229 </span><span class="lineCov">          1 : }, &quot;'WebAssembly.Module' instance objects&quot;);</span>
+<span class="lineNum">     230 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     231 </span><span class="lineCov">          1 : test(() =&gt; {</span>
+<span class="lineNum">     232 </span><span class="lineCov">          1 :     const moduleImportsDesc = Object.getOwnPropertyDescriptor(Module, 'imports');</span>
+<span class="lineNum">     233 </span><span class="lineCov">          1 :     assert_equals(typeof moduleImportsDesc.value, &quot;function&quot;);</span>
+<span class="lineNum">     234 </span><span class="lineCov">          1 :     assert_equals(moduleImportsDesc.writable, true);</span>
+<span class="lineNum">     235 </span><span class="lineCov">          1 :     assert_equals(moduleImportsDesc.enumerable, false);</span>
+<span class="lineNum">     236 </span><span class="lineCov">          1 :     assert_equals(moduleImportsDesc.configurable, true);</span>
+<span class="lineNum">     237 </span><span class="lineCov">          1 : }, &quot;'WebAssembly.Module.imports' data property&quot;);</span>
+<span class="lineNum">     238 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     239 </span><span class="lineCov">          1 : test(() =&gt; {</span>
+<span class="lineNum">     240 </span><span class="lineCov">          1 :     const moduleImportsDesc = Object.getOwnPropertyDescriptor(Module, 'imports');</span>
+<span class="lineNum">     241 </span><span class="lineCov">          1 :     const moduleImports = moduleImportsDesc.value;</span>
+<span class="lineNum">     242 </span><span class="lineCov">          1 :     assert_equals(moduleImports.length, 1);</span>
+<span class="lineNum">     243 </span><span class="lineCov">          1 :     assertThrows(() =&gt; moduleImports(), TypeError);</span>
+<span class="lineNum">     244 </span><span class="lineCov">          1 :     assertThrows(() =&gt; moduleImports(undefined), TypeError);</span>
+<span class="lineNum">     245 </span><span class="lineCov">          1 :     assertThrows(() =&gt; moduleImports({}), TypeError);</span>
+<span class="lineNum">     246 </span><span class="lineCov">          1 :     var arr = moduleImports(emptyModule);</span>
+<span class="lineNum">     247 </span><span class="lineCov">          1 :     assert_equals(arr instanceof Array, true);</span>
+<span class="lineNum">     248 </span><span class="lineCov">          1 :     assert_equals(arr.length, 0);</span>
+<span class="lineNum">     249 </span><span class="lineCov">          1 :     var arr = moduleImports(new Module(complexImportingModuleBinary));</span>
+<span class="lineNum">     250 </span><span class="lineCov">          1 :     assert_equals(arr instanceof Array, true);</span>
+<span class="lineNum">     251 </span><span class="lineCov">          1 :     assert_equals(arr.length, 4);</span>
+<span class="lineNum">     252 </span><span class="lineCov">          1 :     assert_equals(arr[0].kind, &quot;function&quot;);</span>
+<span class="lineNum">     253 </span><span class="lineCov">          1 :     assert_equals(arr[0].module, &quot;a&quot;);</span>
+<span class="lineNum">     254 </span><span class="lineCov">          1 :     assert_equals(arr[0].name, &quot;b&quot;);</span>
+<span class="lineNum">     255 </span><span class="lineCov">          1 :     assert_equals(arr[1].kind, &quot;memory&quot;);</span>
+<span class="lineNum">     256 </span><span class="lineCov">          1 :     assert_equals(arr[1].module, &quot;c&quot;);</span>
+<span class="lineNum">     257 </span><span class="lineCov">          1 :     assert_equals(arr[1].name, &quot;d&quot;);</span>
+<span class="lineNum">     258 </span><span class="lineCov">          1 :     assert_equals(arr[2].kind, &quot;table&quot;);</span>
+<span class="lineNum">     259 </span><span class="lineCov">          1 :     assert_equals(arr[2].module, &quot;e&quot;);</span>
+<span class="lineNum">     260 </span><span class="lineCov">          1 :     assert_equals(arr[2].name, &quot;f&quot;);</span>
+<span class="lineNum">     261 </span><span class="lineCov">          1 :     assert_equals(arr[3].kind, &quot;global&quot;);</span>
+<span class="lineNum">     262 </span><span class="lineCov">          1 :     assert_equals(arr[3].module, &quot;g&quot;);</span>
+<span class="lineNum">     263 </span><span class="lineCov">          1 :     assert_equals(arr[3].name, &quot;⚡&quot;);</span>
+<span class="lineNum">     264 </span><span class="lineCov">          1 : }, &quot;'WebAssembly.Module.imports' method&quot;);</span>
+<span class="lineNum">     265 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     266 </span><span class="lineCov">          1 : test(() =&gt; {</span>
+<span class="lineNum">     267 </span><span class="lineCov">          1 :     const moduleExportsDesc = Object.getOwnPropertyDescriptor(Module, 'exports');</span>
+<span class="lineNum">     268 </span><span class="lineCov">          1 :     assert_equals(typeof moduleExportsDesc.value, &quot;function&quot;);</span>
+<span class="lineNum">     269 </span><span class="lineCov">          1 :     assert_equals(moduleExportsDesc.writable, true);</span>
+<span class="lineNum">     270 </span><span class="lineCov">          1 :     assert_equals(moduleExportsDesc.enumerable, false);</span>
+<span class="lineNum">     271 </span><span class="lineCov">          1 :     assert_equals(moduleExportsDesc.configurable, true);</span>
+<span class="lineNum">     272 </span><span class="lineCov">          1 : }, &quot;'WebAssembly.Module.exports' data property&quot;);</span>
+<span class="lineNum">     273 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     274 </span><span class="lineCov">          1 : test(() =&gt; {</span>
+<span class="lineNum">     275 </span><span class="lineCov">          1 :     const moduleExportsDesc = Object.getOwnPropertyDescriptor(Module, 'exports');</span>
+<span class="lineNum">     276 </span><span class="lineCov">          1 :     const moduleExports = moduleExportsDesc.value;</span>
+<span class="lineNum">     277 </span><span class="lineCov">          1 :     assert_equals(moduleExports.length, 1);</span>
+<span class="lineNum">     278 </span><span class="lineCov">          1 :     assertThrows(() =&gt; moduleExports(), TypeError);</span>
+<span class="lineNum">     279 </span><span class="lineCov">          1 :     assertThrows(() =&gt; moduleExports(undefined), TypeError);</span>
+<span class="lineNum">     280 </span><span class="lineCov">          1 :     assertThrows(() =&gt; moduleExports({}), TypeError);</span>
+<span class="lineNum">     281 </span><span class="lineCov">          1 :     var arr = moduleExports(emptyModule);</span>
+<span class="lineNum">     282 </span><span class="lineCov">          1 :     assert_equals(arr instanceof Array, true);</span>
+<span class="lineNum">     283 </span><span class="lineCov">          1 :     assert_equals(arr.length, 0);</span>
+<span class="lineNum">     284 </span><span class="lineCov">          1 :     var arr = moduleExports(new Module(complexExportingModuleBinary));</span>
+<span class="lineNum">     285 </span><span class="lineCov">          1 :     assert_equals(arr instanceof Array, true);</span>
+<span class="lineNum">     286 </span><span class="lineCov">          1 :     assert_equals(arr.length, 4);</span>
+<span class="lineNum">     287 </span><span class="lineCov">          1 :     assert_equals(arr[0].kind, &quot;function&quot;);</span>
+<span class="lineNum">     288 </span><span class="lineCov">          1 :     assert_equals(arr[0].name, &quot;a&quot;);</span>
+<span class="lineNum">     289 </span><span class="lineCov">          1 :     assert_equals(arr[1].kind, &quot;memory&quot;);</span>
+<span class="lineNum">     290 </span><span class="lineCov">          1 :     assert_equals(arr[1].name, &quot;b&quot;);</span>
+<span class="lineNum">     291 </span><span class="lineCov">          1 :     assert_equals(arr[2].kind, &quot;table&quot;);</span>
+<span class="lineNum">     292 </span><span class="lineCov">          1 :     assert_equals(arr[2].name, &quot;c&quot;);</span>
+<span class="lineNum">     293 </span><span class="lineCov">          1 :     assert_equals(arr[3].kind, &quot;global&quot;);</span>
+<span class="lineNum">     294 </span><span class="lineCov">          1 :     assert_equals(arr[3].name, &quot;⚡&quot;);</span>
+<span class="lineNum">     295 </span><span class="lineCov">          1 : }, &quot;'WebAssembly.Module.exports' method&quot;);</span>
+<span class="lineNum">     296 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     297 </span><span class="lineCov">          1 : test(() =&gt; {</span>
+<span class="lineNum">     298 </span><span class="lineCov">          1 :     const customSectionsDesc = Object.getOwnPropertyDescriptor(Module, 'customSections');</span>
+<span class="lineNum">     299 </span><span class="lineCov">          1 :     assert_equals(typeof customSectionsDesc.value, &quot;function&quot;);</span>
+<span class="lineNum">     300 </span><span class="lineCov">          1 :     assert_equals(customSectionsDesc.writable, true);</span>
+<span class="lineNum">     301 </span><span class="lineCov">          1 :     assert_equals(customSectionsDesc.enumerable, false);</span>
+<span class="lineNum">     302 </span><span class="lineCov">          1 :     assert_equals(customSectionsDesc.configurable, true);</span>
+<span class="lineNum">     303 </span><span class="lineCov">          1 : }, &quot;'WebAssembly.Module.customSections' data property&quot;);</span>
+<span class="lineNum">     304 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     305 </span><span class="lineCov">          1 : test(() =&gt; {</span>
+<span class="lineNum">     306 </span><span class="lineCov">          1 :     const customSectionsDesc = Object.getOwnPropertyDescriptor(Module, 'customSections');</span>
+<span class="lineNum">     307 </span><span class="lineCov">          1 :     const moduleCustomSections = customSectionsDesc.value;</span>
+<span class="lineNum">     308 </span><span class="lineCov">          1 :     assert_equals(moduleCustomSections.length, 2);</span>
+<span class="lineNum">     309 </span><span class="lineCov">          1 :     assertThrows(() =&gt; moduleCustomSections(), TypeError);</span>
+<span class="lineNum">     310 </span><span class="lineCov">          1 :     assertThrows(() =&gt; moduleCustomSections(undefined), TypeError);</span>
+<span class="lineNum">     311 </span><span class="lineCov">          1 :     assertThrows(() =&gt; moduleCustomSections({}), TypeError);</span>
+<span class="lineNum">     312 </span><span class="lineCov">          1 :     var arr = moduleCustomSections(emptyModule);</span>
+<span class="lineNum">     313 </span><span class="lineCov">          1 :     assert_equals(arr instanceof Array, true);</span>
+<span class="lineNum">     314 </span><span class="lineCov">          1 :     assert_equals(arr.length, 0);</span>
+<span class="lineNum">     315 </span><span class="lineCov">          1 : }, &quot;'WebAssembly.Module.customSections' method&quot;);</span>
+<span class="lineNum">     316 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     317 </span><span class="lineCov">          1 : test(() =&gt; {</span>
+<span class="lineNum">     318 </span><span class="lineCov">          1 :     const instanceDesc = Object.getOwnPropertyDescriptor(WebAssembly, 'Instance');</span>
+<span class="lineNum">     319 </span><span class="lineCov">          1 :     assert_equals(typeof instanceDesc.value, &quot;function&quot;);</span>
+<span class="lineNum">     320 </span><span class="lineCov">          1 :     assert_equals(instanceDesc.writable, true);</span>
+<span class="lineNum">     321 </span><span class="lineCov">          1 :     assert_equals(instanceDesc.enumerable, false);</span>
+<span class="lineNum">     322 </span><span class="lineCov">          1 :     assert_equals(instanceDesc.configurable, true);</span>
+<span class="lineNum">     323 </span><span class="lineCov">          1 :     Instance = WebAssembly.Instance;</span>
+<span class="lineNum">     324 </span><span class="lineCov">          1 : }, &quot;'WebAssembly.Instance' data property&quot;);</span>
+<span class="lineNum">     325 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     326 </span><span class="lineCov">          1 : test(() =&gt; {</span>
+<span class="lineNum">     327 </span><span class="lineCov">          1 :     const instanceDesc = Object.getOwnPropertyDescriptor(WebAssembly, 'Instance');</span>
+<span class="lineNum">     328 </span><span class="lineCov">          1 :     assert_equals(Instance, instanceDesc.value);</span>
+<span class="lineNum">     329 </span><span class="lineCov">          1 :     assert_equals(Instance.length, 1);</span>
+<span class="lineNum">     330 </span><span class="lineCov">          1 :     assert_equals(Instance.name, &quot;Instance&quot;);</span>
+<span class="lineNum">     331 </span><span class="lineCov">          1 :     assertThrows(() =&gt; Instance(), TypeError);</span>
+<span class="lineNum">     332 </span><span class="lineCov">          1 :     assertThrows(() =&gt; new Instance(1), TypeError);</span>
+<span class="lineNum">     333 </span><span class="lineCov">          1 :     assertThrows(() =&gt; new Instance({}), TypeError);</span>
+<span class="lineNum">     334 </span><span class="lineCov">          1 :     assertThrows(() =&gt; new Instance(emptyModule, null), TypeError);</span>
+<span class="lineNum">     335 </span><span class="lineCov">          1 :     assertThrows(() =&gt; new Instance(importingModule, null), TypeError);</span>
+<span class="lineNum">     336 </span><span class="lineCov">          1 :     assertThrows(() =&gt; new Instance(importingModule, undefined), TypeError);</span>
+<span class="lineNum">     337 </span><span class="lineCov">          1 :     assertThrows(() =&gt; new Instance(importingModule, {&quot;&quot;:{g:()=&gt;{}}}), LinkError);</span>
+<span class="lineNum">     338 </span><span class="lineCov">          1 :     assertThrows(() =&gt; new Instance(importingModule, {t:{f:()=&gt;{}}}), LinkError);</span>
+<span class="lineNum">     339 </span><span class="lineCov">          1 :     assert_equals(new Instance(emptyModule) instanceof Instance, true);</span>
+<span class="lineNum">     340 </span><span class="lineCov">          1 :     assert_equals(new Instance(emptyModule, {}) instanceof Instance, true);</span>
+<span class="lineNum">     341 </span><span class="lineCov">          1 : }, &quot;'WebAssembly.Instance' constructor function&quot;);</span>
+<span class="lineNum">     342 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     343 </span><span class="lineCov">          1 : test(() =&gt; {</span>
+<span class="lineNum">     344 </span><span class="lineCov">          1 :     const instanceProtoDesc = Object.getOwnPropertyDescriptor(Instance, 'prototype');</span>
+<span class="lineNum">     345 </span><span class="lineCov">          1 :     assert_equals(typeof instanceProtoDesc.value, &quot;object&quot;);</span>
+<span class="lineNum">     346 </span><span class="lineCov">          1 :     assert_equals(instanceProtoDesc.writable, false);</span>
+<span class="lineNum">     347 </span><span class="lineCov">          1 :     assert_equals(instanceProtoDesc.enumerable, false);</span>
+<span class="lineNum">     348 </span><span class="lineCov">          1 :     assert_equals(instanceProtoDesc.configurable, false);</span>
+<span class="lineNum">     349 </span><span class="lineCov">          1 : }, &quot;'WebAssembly.Instance.prototype' data property&quot;);</span>
+<span class="lineNum">     350 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     351 </span><span class="lineCov">          1 : test(() =&gt; {</span>
+<span class="lineNum">     352 </span><span class="lineCov">          1 :     const instanceProto = Instance.prototype;</span>
+<span class="lineNum">     353 </span><span class="lineCov">          1 :     const instanceProtoDesc = Object.getOwnPropertyDescriptor(Instance, 'prototype');</span>
+<span class="lineNum">     354 </span><span class="lineCov">          1 :     assert_equals(instanceProto, instanceProtoDesc.value);</span>
+<span class="lineNum">     355 </span><span class="lineCov">          1 :     assert_equals(String(instanceProto), &quot;[object WebAssembly.Instance]&quot;);</span>
+<span class="lineNum">     356 </span><span class="lineCov">          1 :     assert_equals(Object.getPrototypeOf(instanceProto), Object.prototype);</span>
+<span class="lineNum">     357 </span><span class="lineCov">          1 : }, &quot;'WebAssembly.Instance.prototype' object&quot;);</span>
+<span class="lineNum">     358 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     359 </span><span class="lineCov">          1 : test(() =&gt; {</span>
+<span class="lineNum">     360 </span><span class="lineCov">          1 :     const instanceProto = Instance.prototype;</span>
+<span class="lineNum">     361 </span><span class="lineCov">          1 :     exportingInstance = new Instance(exportingModule);</span>
+<span class="lineNum">     362 </span><span class="lineCov">          1 :     assert_equals(typeof exportingInstance, &quot;object&quot;);</span>
+<span class="lineNum">     363 </span><span class="lineCov">          1 :     assert_equals(String(exportingInstance), &quot;[object WebAssembly.Instance]&quot;);</span>
+<span class="lineNum">     364 </span><span class="lineCov">          1 :     assert_equals(Object.getPrototypeOf(exportingInstance), instanceProto);</span>
+<span class="lineNum">     365 </span><span class="lineCov">          1 : }, &quot;'WebAssembly.Instance' instance objects&quot;);</span>
+<span class="lineNum">     366 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     367 </span><span class="lineCov">          1 : test(() =&gt; {</span>
+<span class="lineNum">     368 </span><span class="lineCov">          1 :     const instanceExportsDesc = Object.getOwnPropertyDescriptor(exportingInstance, 'exports');</span>
+<span class="lineNum">     369 </span><span class="lineCov">          1 :     assert_equals(typeof instanceExportsDesc.value, &quot;object&quot;);</span>
+<span class="lineNum">     370 </span><span class="lineCov">          1 :     assert_equals(instanceExportsDesc.writable, true);</span>
+<span class="lineNum">     371 </span><span class="lineCov">          1 :     assert_equals(instanceExportsDesc.enumerable, true);</span>
+<span class="lineNum">     372 </span><span class="lineCov">          1 :     assert_equals(instanceExportsDesc.configurable, true);</span>
+<span class="lineNum">     373 </span><span class="lineCov">          1 : }, &quot;'WebAssembly.Instance' 'exports' data property&quot;);</span>
+<span class="lineNum">     374 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     375 </span><span class="lineCov">          1 : test(() =&gt; {</span>
+<span class="lineNum">     376 </span><span class="lineCov">          1 :     exportsObj = exportingInstance.exports;</span>
+<span class="lineNum">     377 </span><span class="lineCov">          1 :     assert_equals(typeof exportsObj, &quot;object&quot;);</span>
+<span class="lineNum">     378 </span><span class="lineCov">          1 :     assert_equals(Object.isExtensible(exportsObj), false);</span>
+<span class="lineNum">     379 </span><span class="lineCov">          1 :     assert_equals(Object.getPrototypeOf(exportsObj), null);</span>
+<span class="lineNum">     380 </span><span class="lineCov">          1 :     assert_equals(Object.keys(exportsObj).join(), &quot;f&quot;);</span>
+<span class="lineNum">     381 </span><span class="lineCov">          1 :     exportsObj.g = 1;</span>
+<span class="lineNum">     382 </span><span class="lineCov">          1 :     assert_equals(Object.keys(exportsObj).join(), &quot;f&quot;);</span>
+<span class="lineNum">     383 </span><span class="lineCov">          1 :     assertThrows(() =&gt; Object.setPrototypeOf(exportsObj, {}), TypeError);</span>
+<span class="lineNum">     384 </span><span class="lineCov">          1 :     assert_equals(Object.getPrototypeOf(exportsObj), null);</span>
+<span class="lineNum">     385 </span><span class="lineCov">          1 :     assertThrows(() =&gt; Object.defineProperty(exportsObj, 'g', {}), TypeError);</span>
+<span class="lineNum">     386 </span><span class="lineCov">          1 :     assert_equals(Object.keys(exportsObj).join(), &quot;f&quot;);</span>
+<span class="lineNum">     387 </span><span class="lineCov">          1 : }, &quot;'WebAssembly.Instance' 'exports' object&quot;);</span>
+<span class="lineNum">     388 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     389 </span><span class="lineCov">          1 : test(() =&gt; {</span>
+<span class="lineNum">     390 </span><span class="lineCov">          1 :     const f = exportsObj.f;</span>
+<span class="lineNum">     391 </span><span class="lineCov">          1 :     assert_equals(f instanceof Function, true);</span>
+<span class="lineNum">     392 </span><span class="lineCov">          1 :     assert_equals(f.length, 0);</span>
+<span class="lineNum">     393 </span><span class="lineCov">          1 :     assert_equals('name' in f, true);</span>
+<span class="lineNum">     394 </span><span class="lineCov">          1 :     assert_equals(Function.prototype.call.call(f), 42);</span>
+<span class="lineNum">     395 </span><span class="lineCov">          1 :     assertThrows(() =&gt; new f(), TypeError);</span>
+<span class="lineNum">     396 </span><span class="lineCov">          1 : }, &quot;Exported WebAssembly functions&quot;);</span>
+<span class="lineNum">     397 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     398 </span><span class="lineCov">          1 : test(() =&gt; {</span>
+<span class="lineNum">     399 </span><span class="lineCov">          1 :     const memoryDesc = Object.getOwnPropertyDescriptor(WebAssembly, 'Memory');</span>
+<span class="lineNum">     400 </span><span class="lineCov">          1 :     assert_equals(typeof memoryDesc.value, &quot;function&quot;);</span>
+<span class="lineNum">     401 </span><span class="lineCov">          1 :     assert_equals(memoryDesc.writable, true);</span>
+<span class="lineNum">     402 </span><span class="lineCov">          1 :     assert_equals(memoryDesc.enumerable, false);</span>
+<span class="lineNum">     403 </span><span class="lineCov">          1 :     assert_equals(memoryDesc.configurable, true);</span>
+<span class="lineNum">     404 </span><span class="lineCov">          1 :     Memory = WebAssembly.Memory;</span>
+<span class="lineNum">     405 </span><span class="lineCov">          1 : }, &quot;'WebAssembly.Memory' data property&quot;);</span>
+<span class="lineNum">     406 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     407 </span><span class="lineCov">          1 : test(() =&gt; {</span>
+<span class="lineNum">     408 </span><span class="lineCov">          1 :     const memoryDesc = Object.getOwnPropertyDescriptor(WebAssembly, 'Memory');</span>
+<span class="lineNum">     409 </span><span class="lineCov">          1 :     assert_equals(Memory, memoryDesc.value);</span>
+<span class="lineNum">     410 </span><span class="lineCov">          1 :     assert_equals(Memory.length, 1);</span>
+<span class="lineNum">     411 </span><span class="lineCov">          1 :     assert_equals(Memory.name, &quot;Memory&quot;);</span>
+<span class="lineNum">     412 </span><span class="lineCov">          1 :     assertThrows(() =&gt; Memory(), TypeError);</span>
+<span class="lineNum">     413 </span><span class="lineCov">          1 :     assertThrows(() =&gt; new Memory(1), TypeError);</span>
+<span class="lineNum">     414 </span><span class="lineCov">          1 :     assertThrows(() =&gt; new Memory({initial:{valueOf() { throw new Error(&quot;here&quot;)}}}), Error);</span>
+<span class="lineNum">     415 </span><span class="lineCov">          1 :     assertThrows(() =&gt; new Memory({initial:-1}), RangeError);</span>
+<span class="lineNum">     416 </span><span class="lineCov">          1 :     assertThrows(() =&gt; new Memory({initial:Math.pow(2,32)}), RangeError);</span>
+<span class="lineNum">     417 </span><span class="lineCov">          1 :     assertThrows(() =&gt; new Memory({initial:1, maximum: Math.pow(2,32)/Math.pow(2,14) }), RangeError);</span>
+<span class="lineNum">     418 </span><span class="lineCov">          1 :     assertThrows(() =&gt; new Memory({initial:2, maximum:1 }), RangeError);</span>
+<span class="lineNum">     419 </span><span class="lineCov">          1 :     assertThrows(() =&gt; new Memory({maximum: -1 }), RangeError);</span>
+<span class="lineNum">     420 </span><span class="lineCov">          1 :     assert_equals(new Memory({initial:1}) instanceof Memory, true);</span>
+<span class="lineNum">     421 </span><span class="lineCov">          1 :     assert_equals(new Memory({initial:1.5}).buffer.byteLength, WasmPage);</span>
+<span class="lineNum">     422 </span><span class="lineCov">          1 : }, &quot;'WebAssembly.Memory' constructor function&quot;);</span>
+<span class="lineNum">     423 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     424 </span><span class="lineCov">          1 : test(() =&gt; {</span>
+<span class="lineNum">     425 </span><span class="lineCov">          1 :     const memoryProtoDesc = Object.getOwnPropertyDescriptor(Memory, 'prototype');</span>
+<span class="lineNum">     426 </span><span class="lineCov">          1 :     assert_equals(typeof memoryProtoDesc.value, &quot;object&quot;);</span>
+<span class="lineNum">     427 </span><span class="lineCov">          1 :     assert_equals(memoryProtoDesc.writable, false);</span>
+<span class="lineNum">     428 </span><span class="lineCov">          1 :     assert_equals(memoryProtoDesc.enumerable, false);</span>
+<span class="lineNum">     429 </span><span class="lineCov">          1 :     assert_equals(memoryProtoDesc.configurable, false);</span>
+<span class="lineNum">     430 </span><span class="lineCov">          1 : }, &quot;'WebAssembly.Memory.prototype' data property&quot;);</span>
+<span class="lineNum">     431 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     432 </span><span class="lineCov">          1 : test(() =&gt; {</span>
+<span class="lineNum">     433 </span><span class="lineCov">          1 :     memoryProto = Memory.prototype;</span>
+<span class="lineNum">     434 </span><span class="lineCov">          1 :     const memoryProtoDesc = Object.getOwnPropertyDescriptor(Memory, 'prototype');</span>
+<span class="lineNum">     435 </span><span class="lineCov">          1 :     assert_equals(memoryProto, memoryProtoDesc.value);</span>
+<span class="lineNum">     436 </span><span class="lineCov">          1 :     assert_equals(String(memoryProto), &quot;[object WebAssembly.Memory]&quot;);</span>
+<span class="lineNum">     437 </span><span class="lineCov">          1 :     assert_equals(Object.getPrototypeOf(memoryProto), Object.prototype);</span>
+<span class="lineNum">     438 </span><span class="lineCov">          1 : }, &quot;'WebAssembly.Memory.prototype' object&quot;);</span>
+<span class="lineNum">     439 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     440 </span><span class="lineCov">          1 : test(() =&gt; {</span>
+<span class="lineNum">     441 </span><span class="lineCov">          1 :     mem1 = new Memory({initial:1});</span>
+<span class="lineNum">     442 </span><span class="lineCov">          1 :     assert_equals(typeof mem1, &quot;object&quot;);</span>
+<span class="lineNum">     443 </span><span class="lineCov">          1 :     assert_equals(String(mem1), &quot;[object WebAssembly.Memory]&quot;);</span>
+<span class="lineNum">     444 </span><span class="lineCov">          1 :     assert_equals(Object.getPrototypeOf(mem1), memoryProto);</span>
+<span class="lineNum">     445 </span><span class="lineCov">          1 : }, &quot;'WebAssembly.Memory' instance objects&quot;);</span>
+<span class="lineNum">     446 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     447 </span><span class="lineCov">          1 : test(() =&gt; {</span>
+<span class="lineNum">     448 </span><span class="lineCov">          1 :     const bufferDesc = Object.getOwnPropertyDescriptor(memoryProto, 'buffer');</span>
+<span class="lineNum">     449 </span><span class="lineCov">          1 :     assert_equals(typeof bufferDesc.get, &quot;function&quot;);</span>
+<span class="lineNum">     450 </span><span class="lineCov">          1 :     assert_equals(bufferDesc.set, undefined);</span>
+<span class="lineNum">     451 </span><span class="lineCov">          1 :     assert_equals(bufferDesc.enumerable, false);</span>
+<span class="lineNum">     452 </span><span class="lineCov">          1 :     assert_equals(bufferDesc.configurable, true);</span>
+<span class="lineNum">     453 </span><span class="lineCov">          1 : }, &quot;'WebAssembly.Memory.prototype.buffer' accessor property&quot;);</span>
+<span class="lineNum">     454 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     455 </span><span class="lineCov">          1 : test(() =&gt; {</span>
+<span class="lineNum">     456 </span><span class="lineCov">          1 :     const bufferDesc = Object.getOwnPropertyDescriptor(memoryProto, 'buffer');</span>
+<span class="lineNum">     457 </span><span class="lineCov">          1 :     const bufferGetter = bufferDesc.get;</span>
+<span class="lineNum">     458 </span><span class="lineCov">          1 :     assertThrows(() =&gt; bufferGetter.call(), TypeError);</span>
+<span class="lineNum">     459 </span><span class="lineCov">          1 :     assertThrows(() =&gt; bufferGetter.call({}), TypeError);</span>
+<span class="lineNum">     460 </span><span class="lineCov">          1 :     assert_equals(bufferGetter.call(mem1) instanceof ArrayBuffer, true);</span>
+<span class="lineNum">     461 </span><span class="lineCov">          1 :     assert_equals(bufferGetter.call(mem1).byteLength, WasmPage);</span>
+<span class="lineNum">     462 </span><span class="lineCov">          1 : }, &quot;'WebAssembly.Memory.prototype.buffer' getter&quot;);</span>
+<span class="lineNum">     463 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     464 </span><span class="lineCov">          1 : test(() =&gt; {</span>
+<span class="lineNum">     465 </span><span class="lineCov">          1 :     const memGrowDesc = Object.getOwnPropertyDescriptor(memoryProto, 'grow');</span>
+<span class="lineNum">     466 </span><span class="lineCov">          1 :     assert_equals(typeof memGrowDesc.value, &quot;function&quot;);</span>
+<span class="lineNum">     467 </span><span class="lineCov">          1 :     assert_equals(memGrowDesc.enumerable, false);</span>
+<span class="lineNum">     468 </span><span class="lineCov">          1 :     assert_equals(memGrowDesc.configurable, true);</span>
+<span class="lineNum">     469 </span><span class="lineCov">          1 : }, &quot;'WebAssembly.Memory.prototype.grow' data property&quot;);</span>
+<span class="lineNum">     470 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     471 </span><span class="lineCov">          1 : test(() =&gt; {</span>
+<span class="lineNum">     472 </span><span class="lineCov">          1 :     const memGrowDesc = Object.getOwnPropertyDescriptor(memoryProto, 'grow');</span>
+<span class="lineNum">     473 </span><span class="lineCov">          1 :     const memGrow = memGrowDesc.value;</span>
+<span class="lineNum">     474 </span><span class="lineCov">          1 :     assert_equals(memGrow.length, 1);</span>
+<span class="lineNum">     475 </span><span class="lineCov">          1 :     assertThrows(() =&gt; memGrow.call(), TypeError);</span>
+<span class="lineNum">     476 </span><span class="lineCov">          1 :     assertThrows(() =&gt; memGrow.call({}), TypeError);</span>
+<span class="lineNum">     477 </span><span class="lineCov">          1 :     assertThrows(() =&gt; memGrow.call(mem1, -1), RangeError);</span>
+<span class="lineNum">     478 </span><span class="lineCov">          1 :     assertThrows(() =&gt; memGrow.call(mem1, Math.pow(2,32)), RangeError);</span>
+<span class="lineNum">     479 </span><span class="lineCov">          1 :     var mem = new Memory({initial:1, maximum:2});</span>
+<span class="lineNum">     480 </span><span class="lineCov">          1 :     var buf = mem.buffer;</span>
+<span class="lineNum">     481 </span><span class="lineCov">          1 :     assert_equals(buf.byteLength, WasmPage);</span>
+<span class="lineNum">     482 </span><span class="lineCov">          1 :     assert_equals(mem.grow(0), 1);</span>
+<span class="lineNum">     483 </span><span class="lineCov">          1 :     assert_equals(buf !== mem.buffer, true);</span>
+<span class="lineNum">     484 </span><span class="lineCov">          1 :     assert_equals(buf.byteLength, 0);</span>
+<span class="lineNum">     485 </span><span class="lineCov">          1 :     buf = mem.buffer;</span>
+<span class="lineNum">     486 </span><span class="lineCov">          1 :     assert_equals(buf.byteLength, WasmPage);</span>
+<span class="lineNum">     487 </span><span class="lineCov">          1 :     assert_equals(mem.grow(1), 1);</span>
+<span class="lineNum">     488 </span><span class="lineCov">          1 :     assert_equals(buf !== mem.buffer, true);</span>
+<span class="lineNum">     489 </span><span class="lineCov">          1 :     assert_equals(buf.byteLength, 0);</span>
+<span class="lineNum">     490 </span><span class="lineCov">          1 :     buf = mem.buffer;</span>
+<span class="lineNum">     491 </span><span class="lineCov">          1 :     assert_equals(buf.byteLength, 2 * WasmPage);</span>
+<span class="lineNum">     492 </span><span class="lineCov">          1 :     assertThrows(() =&gt; mem.grow(1), Error);</span>
+<span class="lineNum">     493 </span><span class="lineCov">          1 :     assert_equals(buf, mem.buffer);</span>
+<span class="lineNum">     494 </span><span class="lineCov">          1 : }, &quot;'WebAssembly.Memory.prototype.grow' method&quot;);</span>
+<span class="lineNum">     495 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     496 </span><span class="lineCov">          1 : test(() =&gt; {</span>
+<span class="lineNum">     497 </span><span class="lineCov">          1 :     const tableDesc = Object.getOwnPropertyDescriptor(WebAssembly, 'Table');</span>
+<span class="lineNum">     498 </span><span class="lineCov">          1 :     assert_equals(typeof tableDesc.value, &quot;function&quot;);</span>
+<span class="lineNum">     499 </span><span class="lineCov">          1 :     assert_equals(tableDesc.writable, true);</span>
+<span class="lineNum">     500 </span><span class="lineCov">          1 :     assert_equals(tableDesc.enumerable, false);</span>
+<span class="lineNum">     501 </span><span class="lineCov">          1 :     assert_equals(tableDesc.configurable, true);</span>
+<span class="lineNum">     502 </span><span class="lineCov">          1 :     Table = WebAssembly.Table;</span>
+<span class="lineNum">     503 </span><span class="lineCov">          1 : }, &quot;'WebAssembly.Table' data property&quot;);</span>
+<span class="lineNum">     504 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     505 </span><span class="lineCov">          1 : test(() =&gt; {</span>
+<span class="lineNum">     506 </span><span class="lineCov">          1 :     const tableDesc = Object.getOwnPropertyDescriptor(WebAssembly, 'Table');</span>
+<span class="lineNum">     507 </span><span class="lineCov">          1 :     assert_equals(Table, tableDesc.value);</span>
+<span class="lineNum">     508 </span><span class="lineCov">          1 :     assert_equals(Table.length, 1);</span>
+<span class="lineNum">     509 </span><span class="lineCov">          1 :     assert_equals(Table.name, &quot;Table&quot;);</span>
+<span class="lineNum">     510 </span><span class="lineCov">          1 :     assertThrows(() =&gt; Table(), TypeError);</span>
+<span class="lineNum">     511 </span><span class="lineCov">          1 :     assertThrows(() =&gt; new Table(1), TypeError);</span>
+<span class="lineNum">     512 </span><span class="lineCov">          1 :     assertThrows(() =&gt; new Table({initial:1, element:1}), TypeError);</span>
+<a name="513"><span class="lineNum">     513 </span><span class="lineCov">          1 :     assertThrows(() =&gt; new Table({initial:1, element:&quot;any&quot;}), TypeError);</span></a>
+<span class="lineNum">     514 </span><span class="lineCov">          1 :     assertThrows(() =&gt; new Table({initial:1, element:{valueOf() { return &quot;anyfunc&quot; }}}), TypeError);</span>
+<span class="lineNum">     515 </span><span class="lineCov">          1 :     assertThrows(() =&gt; new Table({initial:{valueOf() { throw new Error(&quot;here&quot;)}}, element:&quot;anyfunc&quot;}), Error);</span>
+<span class="lineNum">     516 </span><span class="lineCov">          1 :     assertThrows(() =&gt; new Table({initial:-1, element:&quot;anyfunc&quot;}), RangeError);</span>
+<span class="lineNum">     517 </span><span class="lineCov">          1 :     assertThrows(() =&gt; new Table({initial:Math.pow(2,32), element:&quot;anyfunc&quot;}), RangeError);</span>
+<span class="lineNum">     518 </span><span class="lineCov">          1 :     assertThrows(() =&gt; new Table({initial:2, maximum:1, element:&quot;anyfunc&quot;}), RangeError);</span>
+<span class="lineNum">     519 </span><span class="lineCov">          1 :     assertThrows(() =&gt; new Table({initial:2, maximum:Math.pow(2,32), element:&quot;anyfunc&quot;}), RangeError);</span>
+<span class="lineNum">     520 </span><span class="lineCov">          1 :     assert_equals(new Table({initial:1, element:&quot;anyfunc&quot;}) instanceof Table, true);</span>
+<span class="lineNum">     521 </span><span class="lineCov">          1 :     assert_equals(new Table({initial:1.5, element:&quot;anyfunc&quot;}) instanceof Table, true);</span>
+<span class="lineNum">     522 </span><span class="lineCov">          1 :     assert_equals(new Table({initial:1, maximum:1.5, element:&quot;anyfunc&quot;}) instanceof Table, true);</span>
+<span class="lineNum">     523 </span><span class="lineCov">          1 :     assert_equals(new Table({initial:1, maximum:Math.pow(2,32)-1, element:&quot;anyfunc&quot;}) instanceof Table, true);</span>
+<span class="lineNum">     524 </span><span class="lineCov">          1 : }, &quot;'WebAssembly.Table' constructor function&quot;);</span>
+<span class="lineNum">     525 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     526 </span><span class="lineCov">          1 : test(() =&gt; {</span>
+<span class="lineNum">     527 </span><span class="lineCov">          1 :     const tableProtoDesc = Object.getOwnPropertyDescriptor(Table, 'prototype');</span>
+<span class="lineNum">     528 </span><span class="lineCov">          1 :     assert_equals(typeof tableProtoDesc.value, &quot;object&quot;);</span>
+<span class="lineNum">     529 </span><span class="lineCov">          1 :     assert_equals(tableProtoDesc.writable, false);</span>
+<span class="lineNum">     530 </span><span class="lineCov">          1 :     assert_equals(tableProtoDesc.enumerable, false);</span>
+<span class="lineNum">     531 </span><span class="lineCov">          1 :     assert_equals(tableProtoDesc.configurable, false);</span>
+<span class="lineNum">     532 </span><span class="lineCov">          1 : }, &quot;'WebAssembly.Table.prototype' data property&quot;);</span>
+<span class="lineNum">     533 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     534 </span><span class="lineCov">          1 : test(() =&gt; {</span>
+<span class="lineNum">     535 </span><span class="lineCov">          1 :     const tableProtoDesc = Object.getOwnPropertyDescriptor(Table, 'prototype');</span>
+<span class="lineNum">     536 </span><span class="lineCov">          1 :     tableProto = Table.prototype;</span>
+<span class="lineNum">     537 </span><span class="lineCov">          1 :     assert_equals(tableProto, tableProtoDesc.value);</span>
+<span class="lineNum">     538 </span><span class="lineCov">          1 :     assert_equals(String(tableProto), &quot;[object WebAssembly.Table]&quot;);</span>
+<span class="lineNum">     539 </span><span class="lineCov">          1 :     assert_equals(Object.getPrototypeOf(tableProto), Object.prototype);</span>
+<span class="lineNum">     540 </span><span class="lineCov">          1 : }, &quot;'WebAssembly.Table.prototype' object&quot;);</span>
+<span class="lineNum">     541 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     542 </span><span class="lineCov">          1 : test(() =&gt; {</span>
+<span class="lineNum">     543 </span><span class="lineCov">          1 :     tbl1 = new Table({initial:2, element:&quot;anyfunc&quot;});</span>
+<span class="lineNum">     544 </span><span class="lineCov">          1 :     assert_equals(typeof tbl1, &quot;object&quot;);</span>
+<span class="lineNum">     545 </span><span class="lineCov">          1 :     assert_equals(String(tbl1), &quot;[object WebAssembly.Table]&quot;);</span>
+<span class="lineNum">     546 </span><span class="lineCov">          1 :     assert_equals(Object.getPrototypeOf(tbl1), tableProto);</span>
+<span class="lineNum">     547 </span><span class="lineCov">          1 : }, &quot;'WebAssembly.Table' instance objects&quot;);</span>
+<span class="lineNum">     548 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     549 </span><span class="lineCov">          1 : test(() =&gt; {</span>
+<span class="lineNum">     550 </span><span class="lineCov">          1 :     const lengthDesc = Object.getOwnPropertyDescriptor(tableProto, 'length');</span>
+<span class="lineNum">     551 </span><span class="lineCov">          1 :     assert_equals(typeof lengthDesc.get, &quot;function&quot;);</span>
+<span class="lineNum">     552 </span><span class="lineCov">          1 :     assert_equals(lengthDesc.set, undefined);</span>
+<span class="lineNum">     553 </span><span class="lineCov">          1 :     assert_equals(lengthDesc.enumerable, false);</span>
+<span class="lineNum">     554 </span><span class="lineCov">          1 :     assert_equals(lengthDesc.configurable, true);</span>
+<span class="lineNum">     555 </span><span class="lineCov">          1 : }, &quot;'WebAssembly.Table.prototype.length' accessor data property&quot;);</span>
+<span class="lineNum">     556 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     557 </span><span class="lineCov">          1 : test(() =&gt; {</span>
+<span class="lineNum">     558 </span><span class="lineCov">          1 :     const lengthDesc = Object.getOwnPropertyDescriptor(tableProto, 'length');</span>
+<span class="lineNum">     559 </span><span class="lineCov">          1 :     const lengthGetter = lengthDesc.get;</span>
+<span class="lineNum">     560 </span><span class="lineCov">          1 :     assert_equals(lengthGetter.length, 0);</span>
+<span class="lineNum">     561 </span><span class="lineCov">          1 :     assertThrows(() =&gt; lengthGetter.call(), TypeError);</span>
+<span class="lineNum">     562 </span><span class="lineCov">          1 :     assertThrows(() =&gt; lengthGetter.call({}), TypeError);</span>
+<span class="lineNum">     563 </span><span class="lineCov">          1 :     assert_equals(typeof lengthGetter.call(tbl1), &quot;number&quot;);</span>
+<span class="lineNum">     564 </span><span class="lineCov">          1 :     assert_equals(lengthGetter.call(tbl1), 2);</span>
+<span class="lineNum">     565 </span><span class="lineCov">          1 : }, &quot;'WebAssembly.Table.prototype.length' getter&quot;);</span>
+<span class="lineNum">     566 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     567 </span><span class="lineCov">          1 : test(() =&gt; {</span>
+<span class="lineNum">     568 </span><span class="lineCov">          1 :     const getDesc = Object.getOwnPropertyDescriptor(tableProto, 'get');</span>
+<span class="lineNum">     569 </span><span class="lineCov">          1 :     assert_equals(typeof getDesc.value, &quot;function&quot;);</span>
+<span class="lineNum">     570 </span><span class="lineCov">          1 :     assert_equals(getDesc.enumerable, false);</span>
+<span class="lineNum">     571 </span><span class="lineCov">          1 :     assert_equals(getDesc.configurable, true);</span>
+<span class="lineNum">     572 </span><span class="lineCov">          1 : }, &quot;'WebAssembly.Table.prototype.get' data property&quot;);</span>
+<span class="lineNum">     573 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     574 </span><span class="lineCov">          1 : test(() =&gt; {</span>
+<span class="lineNum">     575 </span><span class="lineCov">          1 :     const getDesc = Object.getOwnPropertyDescriptor(tableProto, 'get');</span>
+<span class="lineNum">     576 </span><span class="lineCov">          1 :     const get = getDesc.value;</span>
+<span class="lineNum">     577 </span><span class="lineCov">          1 :     assert_equals(get.length, 1);</span>
+<span class="lineNum">     578 </span><span class="lineCov">          1 :     assertThrows(() =&gt; get.call(), TypeError);</span>
+<span class="lineNum">     579 </span><span class="lineCov">          1 :     assertThrows(() =&gt; get.call({}), TypeError);</span>
+<span class="lineNum">     580 </span><span class="lineCov">          1 :     assert_equals(get.call(tbl1, 0), null);</span>
+<span class="lineNum">     581 </span><span class="lineCov">          1 :     assert_equals(get.call(tbl1, 1), null);</span>
+<span class="lineNum">     582 </span><span class="lineCov">          1 :     assert_equals(get.call(tbl1, 1.5), null);</span>
+<span class="lineNum">     583 </span><span class="lineCov">          1 :     assertThrows(() =&gt; get.call(tbl1, 2), RangeError);</span>
+<span class="lineNum">     584 </span><span class="lineCov">          1 :     assertThrows(() =&gt; get.call(tbl1, 2.5), RangeError);</span>
+<span class="lineNum">     585 </span><span class="lineCov">          1 :     assertThrows(() =&gt; get.call(tbl1, -1), RangeError);</span>
+<span class="lineNum">     586 </span><span class="lineCov">          1 :     assertThrows(() =&gt; get.call(tbl1, Math.pow(2,33)), RangeError);</span>
+<span class="lineNum">     587 </span><span class="lineCov">          1 :     assertThrows(() =&gt; get.call(tbl1, {valueOf() { throw new Error(&quot;hi&quot;) }}), Error);</span>
+<span class="lineNum">     588 </span><span class="lineCov">          1 : }, &quot;'WebAssembly.Table.prototype.get' method&quot;);</span>
+<span class="lineNum">     589 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     590 </span><span class="lineCov">          1 : test(() =&gt; {</span>
+<span class="lineNum">     591 </span><span class="lineCov">          1 :     const setDesc = Object.getOwnPropertyDescriptor(tableProto, 'set');</span>
+<span class="lineNum">     592 </span><span class="lineCov">          1 :     assert_equals(typeof setDesc.value, &quot;function&quot;);</span>
+<span class="lineNum">     593 </span><span class="lineCov">          1 :     assert_equals(setDesc.enumerable, false);</span>
+<span class="lineNum">     594 </span><span class="lineCov">          1 :     assert_equals(setDesc.configurable, true);</span>
+<span class="lineNum">     595 </span><span class="lineCov">          1 : }, &quot;'WebAssembly.Table.prototype.set' data property&quot;);</span>
+<span class="lineNum">     596 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     597 </span><span class="lineCov">          1 : test(() =&gt; {</span>
+<span class="lineNum">     598 </span><span class="lineCov">          1 :     const setDesc = Object.getOwnPropertyDescriptor(tableProto, 'set');</span>
+<span class="lineNum">     599 </span><span class="lineCov">          1 :     const set = setDesc.value;</span>
+<span class="lineNum">     600 </span><span class="lineCov">          1 :     assert_equals(set.length, 2);</span>
+<span class="lineNum">     601 </span><span class="lineCov">          1 :     assertThrows(() =&gt; set.call(), TypeError);</span>
+<span class="lineNum">     602 </span><span class="lineCov">          1 :     assertThrows(() =&gt; set.call({}), TypeError);</span>
+<span class="lineNum">     603 </span><span class="lineCov">          1 :     assertThrows(() =&gt; set.call(tbl1, 0), TypeError);</span>
+<span class="lineNum">     604 </span><span class="lineCov">          1 :     assertThrows(() =&gt; set.call(tbl1, 2, null), RangeError);</span>
+<span class="lineNum">     605 </span><span class="lineCov">          1 :     assertThrows(() =&gt; set.call(tbl1, -1, null), RangeError);</span>
+<span class="lineNum">     606 </span><span class="lineCov">          1 :     assertThrows(() =&gt; set.call(tbl1, Math.pow(2,33), null), RangeError);</span>
+<span class="lineNum">     607 </span><span class="lineCov">          1 :     assertThrows(() =&gt; set.call(tbl1, 0, undefined), TypeError);</span>
+<span class="lineNum">     608 </span><span class="lineCov">          1 :     assertThrows(() =&gt; set.call(tbl1, 0, {}), TypeError);</span>
+<span class="lineNum">     609 </span><span class="lineCov">          1 :     assertThrows(() =&gt; set.call(tbl1, 0, function() {}), TypeError);</span>
+<span class="lineNum">     610 </span><span class="lineCov">          1 :     assertThrows(() =&gt; set.call(tbl1, 0, Math.sin), TypeError);</span>
+<span class="lineNum">     611 </span><span class="lineCov">          1 :     assertThrows(() =&gt; set.call(tbl1, {valueOf() { throw Error(&quot;hai&quot;) }}, null), Error);</span>
+<span class="lineNum">     612 </span><span class="lineCov">          1 :     assert_equals(set.call(tbl1, 0, null), undefined);</span>
+<span class="lineNum">     613 </span><span class="lineCov">          1 :     assert_equals(set.call(tbl1, 1, null), undefined);</span>
+<span class="lineNum">     614 </span><span class="lineCov">          1 : }, &quot;'WebAssembly.Table.prototype.set' method&quot;);</span>
+<span class="lineNum">     615 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     616 </span><span class="lineCov">          1 : test(() =&gt; {</span>
+<span class="lineNum">     617 </span><span class="lineCov">          1 :     const tblGrowDesc = Object.getOwnPropertyDescriptor(tableProto, 'grow');</span>
+<span class="lineNum">     618 </span><span class="lineCov">          1 :     assert_equals(typeof tblGrowDesc.value, &quot;function&quot;);</span>
+<span class="lineNum">     619 </span><span class="lineCov">          1 :     assert_equals(tblGrowDesc.enumerable, false);</span>
+<span class="lineNum">     620 </span><span class="lineCov">          1 :     assert_equals(tblGrowDesc.configurable, true);</span>
+<span class="lineNum">     621 </span><span class="lineCov">          1 : }, &quot;'WebAssembly.Table.prototype.grow' data property&quot;);</span>
+<span class="lineNum">     622 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     623 </span><span class="lineCov">          1 : test(() =&gt; {</span>
+<span class="lineNum">     624 </span><span class="lineCov">          1 :     const tblGrowDesc = Object.getOwnPropertyDescriptor(tableProto, 'grow');</span>
+<span class="lineNum">     625 </span><span class="lineCov">          1 :     const tblGrow = tblGrowDesc.value;</span>
+<span class="lineNum">     626 </span><span class="lineCov">          1 :     assert_equals(tblGrow.length, 1);</span>
+<span class="lineNum">     627 </span><span class="lineCov">          1 :     assertThrows(() =&gt; tblGrow.call(), TypeError);</span>
+<span class="lineNum">     628 </span><span class="lineCov">          1 :     assertThrows(() =&gt; tblGrow.call({}), TypeError);</span>
+<span class="lineNum">     629 </span><span class="lineCov">          1 :     assertThrows(() =&gt; tblGrow.call(tbl1, -1), RangeError);</span>
+<span class="lineNum">     630 </span><span class="lineCov">          1 :     assertThrows(() =&gt; tblGrow.call(tbl1, Math.pow(2,32)), RangeError);</span>
+<span class="lineNum">     631 </span><span class="lineCov">          1 :     var tbl = new Table({element:&quot;anyfunc&quot;, initial:1, maximum:2});</span>
+<span class="lineNum">     632 </span><span class="lineCov">          1 :     assert_equals(tbl.length, 1);</span>
+<span class="lineNum">     633 </span><span class="lineCov">          1 :     assert_equals(tbl.grow(0), 1);</span>
+<span class="lineNum">     634 </span><span class="lineCov">          1 :     assert_equals(tbl.length, 1);</span>
+<span class="lineNum">     635 </span><span class="lineCov">          1 :     assert_equals(tbl.grow(1), 1);</span>
+<span class="lineNum">     636 </span><span class="lineCov">          1 :     assert_equals(tbl.length, 2);</span>
+<span class="lineNum">     637 </span><span class="lineCov">          1 :     assertThrows(() =&gt; tbl.grow(1), Error);</span>
+<span class="lineNum">     638 </span><span class="lineCov">          1 : }, &quot;'WebAssembly.Table.prototype.grow' method&quot;);</span>
+<span class="lineNum">     639 </span><span class="lineCov">          1 : </span>
+<a name="640"><span class="lineNum">     640 </span><span class="lineCov">          1 : test(() =&gt; {</span></a>
+<span class="lineNum">     641 </span><span class="lineCov">          1 :     assertThrows(() =&gt; WebAssembly.validate(), TypeError);</span>
+<span class="lineNum">     642 </span><span class="lineCov">          1 :     assertThrows(() =&gt; WebAssembly.validate(&quot;hi&quot;), TypeError);</span>
+<span class="lineNum">     643 </span><span class="lineCov">          1 :     assert_true(WebAssembly.validate(emptyModuleBinary));</span>
+<span class="lineNum">     644 </span><span class="lineCov">          1 :     assert_true(WebAssembly.validate(complexImportingModuleBinary));</span>
+<span class="lineNum">     645 </span><span class="lineCov">          1 :     assert_false(WebAssembly.validate(moduleBinaryImporting2Memories));</span>
+<span class="lineNum">     646 </span><span class="lineCov">          1 :     assert_false(WebAssembly.validate(moduleBinaryWithMemSectionAndMemImport));</span>
+<span class="lineNum">     647 </span><span class="lineCov">          1 : }, &quot;'WebAssembly.validate' method&quot;),</span>
+<span class="lineNum">     648 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     649 </span><span class="lineCov">          1 : test(() =&gt; {</span>
+<span class="lineNum">     650 </span><span class="lineCov">          1 :     const compileDesc = Object.getOwnPropertyDescriptor(WebAssembly, 'compile');</span>
+<span class="lineNum">     651 </span><span class="lineCov">          1 :     assert_equals(typeof compileDesc.value, &quot;function&quot;);</span>
+<span class="lineNum">     652 </span><span class="lineCov">          1 :     assert_equals(compileDesc.writable, true);</span>
+<span class="lineNum">     653 </span><span class="lineCov">          1 :     assert_equals(compileDesc.enumerable, false);</span>
+<span class="lineNum">     654 </span><span class="lineCov">          1 :     assert_equals(compileDesc.configurable, true);</span>
+<span class="lineNum">     655 </span><span class="lineCov">          1 : }, &quot;'WebAssembly.compile' data property&quot;);</span>
+<span class="lineNum">     656 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     657 </span><span class="lineCov">          1 : test(() =&gt; {</span>
+<span class="lineNum">     658 </span><span class="lineCov">          1 :     const compile = WebAssembly.compile;</span>
+<span class="lineNum">     659 </span><span class="lineCov">          1 :     const compileDesc = Object.getOwnPropertyDescriptor(WebAssembly, 'compile');</span>
+<span class="lineNum">     660 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     661 </span><span class="lineCov">          1 :     assert_equals(compile, compileDesc.value);</span>
+<span class="lineNum">     662 </span><span class="lineCov">          1 :     assert_equals(compile.length, 1);</span>
+<span class="lineNum">     663 </span><span class="lineCov">          1 :     assert_equals(compile.name, &quot;compile&quot;);</span>
+<span class="lineNum">     664 </span><span class="lineCov">          1 : }, &quot;'WebAssembly.compile' function&quot;);</span>
+<a name="665"><span class="lineNum">     665 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     666 </span><span class="lineCov">          1 : var num_tests = 1;</span>
+<span class="lineNum">     667 </span><span class="lineCov">          8 : function assertCompileError(args, err) {</span>
+<a name="668"><span class="lineNum">     668 </span><span class="lineCov">          8 :     promise_test(() =&gt; {</span></a>
+<span class="lineNum">     669 </span><span class="lineCov">          8 :         return WebAssembly.compile(...args)</span>
+<span class="lineNum">     670 </span><span class="lineCov">          8 :         .then(_ =&gt; {</span>
+<a name="671"><span class="lineNum">     671 </span><span class="lineNoCov">          0 :             throw null;</span></a>
+<span class="lineNum">     672 </span><span class="lineCov">          8 :         })</span>
+<span class="lineNum">     673 </span><span class="lineCov">          8 :         .catch(error =&gt; {</span>
+<span class="lineNum">     674 </span><span class="lineCov">          8 :             assert_equals(error instanceof err, true);</span>
+<span class="lineNum">     675 </span><span class="lineCov">          8 :             return Promise.resolve()</span>
+<span class="lineNum">     676 </span><span class="lineCov">          8 :         });</span>
+<span class="lineNum">     677 </span><span class="lineCov">          8 :     }, `assertCompileError ${num_tests++}`);</span>
+<span class="lineNum">     678 </span><span class="lineCov">          8 : }</span>
+<span class="lineNum">     679 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     680 </span><span class="lineCov">          1 : assertCompileError([], TypeError);</span>
+<span class="lineNum">     681 </span><span class="lineCov">          1 : assertCompileError([undefined], TypeError);</span>
+<span class="lineNum">     682 </span><span class="lineCov">          1 : assertCompileError([1], TypeError);</span>
+<span class="lineNum">     683 </span><span class="lineCov">          1 : assertCompileError([{}], TypeError);</span>
+<span class="lineNum">     684 </span><span class="lineCov">          1 : assertCompileError([new Uint8Array()], CompileError);</span>
+<span class="lineNum">     685 </span><span class="lineCov">          1 : assertCompileError([new ArrayBuffer()], CompileError);</span>
+<span class="lineNum">     686 </span><span class="lineCov">          1 : assertCompileError([new Uint8Array(&quot;hi!&quot;)], CompileError);</span>
+<span class="lineNum">     687 </span><span class="lineCov">          1 : assertCompileError([new ArrayBuffer(&quot;hi!&quot;)], CompileError);</span>
+<a name="688"><span class="lineNum">     688 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     689 </span><span class="lineCov">          1 : num_tests = 1;</span>
+<span class="lineNum">     690 </span><span class="lineCov">          2 : function assertCompileSuccess(bytes) {</span>
+<a name="691"><span class="lineNum">     691 </span><span class="lineCov">          2 :     promise_test(() =&gt; {</span></a>
+<span class="lineNum">     692 </span><span class="lineCov">          2 :         return WebAssembly.compile(bytes)</span>
+<span class="lineNum">     693 </span><span class="lineCov">          2 :         .then(module =&gt; {</span>
+<span class="lineNum">     694 </span><span class="lineCov">          2 :             assert_equals(module instanceof Module, true);</span>
+<span class="lineNum">     695 </span><span class="lineCov">          2 :         });</span>
+<span class="lineNum">     696 </span><span class="lineCov">          2 :     }, `assertCompileSuccess ${num_tests++}`);</span>
+<span class="lineNum">     697 </span><span class="lineCov">          2 : }</span>
+<span class="lineNum">     698 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     699 </span><span class="lineCov">          1 : assertCompileSuccess(emptyModuleBinary);</span>
+<span class="lineNum">     700 </span><span class="lineCov">          1 : assertCompileSuccess(emptyModuleBinary.buffer);</span>
+<span class="lineNum">     701 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     702 </span><span class="lineCov">          1 : test(() =&gt; {</span>
+<span class="lineNum">     703 </span><span class="lineCov">          1 :     const instantiateDesc = Object.getOwnPropertyDescriptor(WebAssembly, 'instantiate');</span>
+<span class="lineNum">     704 </span><span class="lineCov">          1 :     assert_equals(typeof instantiateDesc.value, &quot;function&quot;);</span>
+<span class="lineNum">     705 </span><span class="lineCov">          1 :     assert_equals(instantiateDesc.writable, true);</span>
+<span class="lineNum">     706 </span><span class="lineCov">          1 :     assert_equals(instantiateDesc.enumerable, false);</span>
+<span class="lineNum">     707 </span><span class="lineCov">          1 :     assert_equals(instantiateDesc.configurable, true);</span>
+<a name="708"><span class="lineNum">     708 </span><span class="lineCov">          1 : }, &quot;'WebAssembly.instantiate' data property&quot;);</span></a>
+<span class="lineNum">     709 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     710 </span><span class="lineCov">          1 : test(() =&gt; {</span>
+<span class="lineNum">     711 </span><span class="lineCov">          1 :     const instantiateDesc = Object.getOwnPropertyDescriptor(WebAssembly, 'instantiate');</span>
+<span class="lineNum">     712 </span><span class="lineCov">          1 :     const instantiate = WebAssembly.instantiate;</span>
+<span class="lineNum">     713 </span><span class="lineCov">          1 :     assert_equals(instantiate, instantiateDesc.value);</span>
+<a name="714"><span class="lineNum">     714 </span><span class="lineCov">          1 :     assert_equals(instantiate.length, 1);</span></a>
+<span class="lineNum">     715 </span><span class="lineCov">          1 :     assert_equals(instantiate.name, &quot;instantiate&quot;);</span>
+<span class="lineNum">     716 </span><span class="lineCov">         21 :     function assertInstantiateError(args, err) {</span>
+<a name="717"><span class="lineNum">     717 </span><span class="lineCov">         21 :         promise_test(() =&gt; {</span></a>
+<span class="lineNum">     718 </span><span class="lineCov">         21 :             return instantiate(...args)</span>
+<span class="lineNum">     719 </span><span class="lineCov">         21 :                 .then(m =&gt; {</span>
+<a name="720"><span class="lineNum">     720 </span><span class="lineNoCov">          0 :                     throw null;</span></a>
+<span class="lineNum">     721 </span><span class="lineCov">         21 :                 })</span>
+<span class="lineNum">     722 </span><span class="lineCov">         21 :                 .catch(error =&gt; {</span>
+<span class="lineNum">     723 </span><span class="lineCov">         21 :                     assert_equals(error instanceof err, true);</span>
+<span class="lineNum">     724 </span><span class="lineCov">         21 :                     assert_equals(Boolean(error.stack.match(&quot;jsapi.js&quot;)), true);</span>
+<span class="lineNum">     725 </span><span class="lineCov">         21 :                 })</span>
+<span class="lineNum">     726 </span><span class="lineCov">         21 :         }, 'unexpected success in assertInstantiateError');</span>
+<span class="lineNum">     727 </span><span class="lineCov">         21 :     }</span>
+<span class="lineNum">     728 </span><span class="lineCov">          1 :     var scratch_memory = new WebAssembly.Memory({initial:1});</span>
+<span class="lineNum">     729 </span><span class="lineCov">          1 :     var scratch_table = new WebAssembly.Table({element:&quot;anyfunc&quot;, initial:1, maximum:1});</span>
+<span class="lineNum">     730 </span><span class="lineCov">          1 :     assertInstantiateError([], TypeError);</span>
+<span class="lineNum">     731 </span><span class="lineCov">          1 :     assertInstantiateError([undefined], TypeError);</span>
+<span class="lineNum">     732 </span><span class="lineCov">          1 :     assertInstantiateError([1], TypeError);</span>
+<span class="lineNum">     733 </span><span class="lineCov">          1 :     assertInstantiateError([{}], TypeError);</span>
+<span class="lineNum">     734 </span><span class="lineCov">          1 :     assertInstantiateError([new Uint8Array()], CompileError);</span>
+<span class="lineNum">     735 </span><span class="lineCov">          1 :     assertInstantiateError([new ArrayBuffer()], CompileError);</span>
+<span class="lineNum">     736 </span><span class="lineCov">          1 :     assertInstantiateError([new Uint8Array(&quot;hi!&quot;)], CompileError);</span>
+<span class="lineNum">     737 </span><span class="lineCov">          1 :     assertInstantiateError([new ArrayBuffer(&quot;hi!&quot;)], CompileError);</span>
+<span class="lineNum">     738 </span><span class="lineCov">          1 :     assertInstantiateError([importingModule], TypeError);</span>
+<span class="lineNum">     739 </span><span class="lineCov">          1 :     assertInstantiateError([importingModule, null], TypeError);</span>
+<span class="lineNum">     740 </span><span class="lineCov">          1 :     assertInstantiateError([importingModuleBinary, null], TypeError);</span>
+<span class="lineNum">     741 </span><span class="lineCov">          1 :     assertInstantiateError([emptyModule, null], TypeError);</span>
+<span class="lineNum">     742 </span><span class="lineCov">          1 :     assertInstantiateError([importingModuleBinary, null], TypeError);</span>
+<a name="743"><span class="lineNum">     743 </span><span class="lineCov">          1 :     assertInstantiateError([importingModuleBinary, undefined], TypeError);</span></a>
+<span class="lineNum">     744 </span><span class="lineCov">          1 :     assertInstantiateError([importingModuleBinary, {}], LinkError);</span>
+<span class="lineNum">     745 </span><span class="lineCov">          1 :     assertInstantiateError([importingModuleBinary, {&quot;&quot;:{g:()=&gt;{}}}], LinkError);</span>
+<span class="lineNum">     746 </span><span class="lineCov">          1 :     assertInstantiateError([importingModuleBinary, {t:{f:()=&gt;{}}}], LinkError);</span>
+<span class="lineNum">     747 </span><span class="lineCov">          1 :     assertInstantiateError([complexImportingModuleBinary, null], TypeError);</span>
+<span class="lineNum">     748 </span><span class="lineCov">          1 :     assertInstantiateError([complexImportingModuleBinary, undefined], TypeError);</span>
+<span class="lineNum">     749 </span><span class="lineCov">          1 :     assertInstantiateError([complexImportingModuleBinary, {}], LinkError);</span>
+<a name="750"><span class="lineNum">     750 </span><span class="lineCov">          1 :     assertInstantiateError([complexImportingModuleBinary, {&quot;c&quot;: {&quot;d&quot;: scratch_memory}}], LinkError);</span></a>
+<a name="751"><span class="lineNum">     751 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     752 </span><span class="lineCov">          7 :     function assertInstantiateSuccess(module, imports) {</span>
+<a name="753"><span class="lineNum">     753 </span><span class="lineCov">          7 :         promise_test(()=&gt; {</span></a>
+<span class="lineNum">     754 </span><span class="lineCov">          7 :             return instantiate(module, imports)</span>
+<span class="lineNum">     755 </span><span class="lineCov">          7 :                 .then(result =&gt; {</span>
+<span class="lineNum">     756 </span><span class="lineCov">          7 :                     if (module instanceof Module) {</span>
+<span class="lineNum">     757 </span><span class="lineCov">          7 :                         assert_equals(result instanceof Instance, true);</span>
+<span class="lineNum">     758 </span><span class="lineCov">          7 :                     } else {</span>
+<span class="lineNum">     759 </span><span class="lineCov">          7 :                         assert_equals(result.module instanceof Module, true);</span>
+<span class="lineNum">     760 </span><span class="lineCov">          7 :                         assert_equals(result.instance instanceof Instance, true);</span>
+<span class="lineNum">     761 </span><span class="lineCov">          7 :                         var desc = Object.getOwnPropertyDescriptor(result, 'module');</span>
+<span class="lineNum">     762 </span><span class="lineCov">          7 :                         assert_equals(desc.writable, true);</span>
+<span class="lineNum">     763 </span><span class="lineCov">          7 :                         assert_equals(desc.enumerable, true);</span>
+<span class="lineNum">     764 </span><span class="lineCov">          7 :                         assert_equals(desc.configurable, true);</span>
+<span class="lineNum">     765 </span><span class="lineCov">          7 :                         desc = Object.getOwnPropertyDescriptor(result, 'instance');</span>
+<span class="lineNum">     766 </span><span class="lineCov">          7 :                         assert_equals(desc.writable, true);</span>
+<span class="lineNum">     767 </span><span class="lineCov">          7 :                         assert_equals(desc.enumerable, true);</span>
+<span class="lineNum">     768 </span><span class="lineCov">          7 :                         assert_equals(desc.configurable, true);</span>
+<span class="lineNum">     769 </span><span class="lineCov">          7 :                     }</span>
+<span class="lineNum">     770 </span><span class="lineCov">          7 :                 })}, 'unexpected failure in assertInstantiateSuccess');</span>
+<span class="lineNum">     771 </span><span class="lineCov">          7 :     }</span>
+<span class="lineNum">     772 </span><span class="lineCov">          1 :     assertInstantiateSuccess(emptyModule);</span>
+<span class="lineNum">     773 </span><span class="lineCov">          1 :     assertInstantiateSuccess(emptyModuleBinary);</span>
+<span class="lineNum">     774 </span><span class="lineCov">          1 :     assertInstantiateSuccess(emptyModuleBinary.buffer);</span>
+<a name="775"><span class="lineNum">     775 </span><span class="lineCov">          1 :     assertInstantiateSuccess(importingModule, {&quot;&quot;:{f:()=&gt;{}}});</span></a>
+<span class="lineNum">     776 </span><span class="lineCov">          1 :     assertInstantiateSuccess(importingModuleBinary, {&quot;&quot;:{f:()=&gt;{}}});</span>
+<a name="777"><span class="lineNum">     777 </span><span class="lineCov">          1 :     assertInstantiateSuccess(importingModuleBinary.buffer, {&quot;&quot;:{f:()=&gt;{}}});</span></a>
+<span class="lineNum">     778 </span><span class="lineCov">          1 :     assertInstantiateSuccess(complexImportingModuleBinary, {</span>
+<span class="lineNum">     779 </span><span class="lineCov">          1 :         a:{b:()=&gt;{}},</span>
+<span class="lineNum">     780 </span><span class="lineCov">          1 :         c:{d:scratch_memory},</span>
+<span class="lineNum">     781 </span><span class="lineCov">          1 :         e:{f:scratch_table},</span>
+<span class="lineNum">     782 </span><span class="lineCov">          1 :         g:{'⚡':1}});</span>
+<span class="lineNum">     783 </span><span class="lineCov">          1 : }, &quot;'WebAssembly.instantiate' function&quot;);</span>
+<span class="lineNum">     784 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     785 </span><span class="lineCov">          1 : })();</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

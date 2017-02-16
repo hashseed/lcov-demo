@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">134</td>
-            <td class="headerCovTableEntry">148</td>
-            <td class="headerCovTableEntryHi">90.5 %</td>
+            <td class="headerCovTableEntry">157</td>
+            <td class="headerCovTableEntry">157</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">9</td>
@@ -144,16 +144,16 @@
 <span class="lineNum">      82 </span><span class="lineCov">         90 :     return elements_kind.fixed_uint8_clamped;</span>
 <span class="lineNum">      83 </span><span class="lineCov">         90 :   }</span>
 <a name="84"><span class="lineNum">      84 </span><span class="lineCov">         90 : }</span></a>
-<span class="lineNum">      85 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      85 </span><span class="lineCov">          2 : </span>
 <span class="lineNum">      86 </span><span class="lineCov">         90 : function assertKind(expected, obj, name_opt) {</span>
 <span class="lineNum">      87 </span><span class="lineCov">         90 :   assertEquals(expected, getKind(obj), name_opt);</span>
 <span class="lineNum">      88 </span><span class="lineCov">         90 : }</span>
-<span class="lineNum">      89 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      90 </span><span class="lineNoCov">          0 : %NeverOptimizeFunction(construct_smis);</span>
-<span class="lineNum">      91 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      92 </span><span class="lineNoCov">          0 : // This code exists to eliminate the learning influence of AllocationSites</span>
-<a name="93"><span class="lineNum">      93 </span><span class="lineNoCov">          0 : // on the following tests.</span></a>
-<span class="lineNum">      94 </span><span class="lineNoCov">          0 : var __sequence = 0;</span>
+<span class="lineNum">      89 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      90 </span><span class="lineCov">          2 : %NeverOptimizeFunction(construct_smis);</span>
+<span class="lineNum">      91 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      92 </span><span class="lineCov">          2 : // This code exists to eliminate the learning influence of AllocationSites</span>
+<a name="93"><span class="lineNum">      93 </span><span class="lineCov">          2 : // on the following tests.</span></a>
+<span class="lineNum">      94 </span><span class="lineCov">          2 : var __sequence = 0;</span>
 <span class="lineNum">      95 </span><span class="lineCov">         36 : function make_array_string() {</span>
 <span class="lineNum">      96 </span><span class="lineCov">         36 :   this.__sequence = this.__sequence + 1;</span>
 <a name="97"><span class="lineNum">      97 </span><span class="lineCov">         36 :   return &quot;/* &quot; + this.__sequence + &quot; */  [0, 0, 0];&quot;</span></a>
@@ -161,29 +161,29 @@
 <span class="lineNum">      99 </span><span class="lineCov">         36 : function make_array() {</span>
 <span class="lineNum">     100 </span><span class="lineCov">         36 :   return eval(make_array_string());</span>
 <a name="101"><span class="lineNum">     101 </span><span class="lineCov">         36 : }</span></a>
-<span class="lineNum">     102 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     102 </span><span class="lineCov">          2 : </span>
 <span class="lineNum">     103 </span><span class="lineCov">         36 : function construct_smis() {</span>
 <span class="lineNum">     104 </span><span class="lineCov">         36 :   var a = make_array();</span>
 <span class="lineNum">     105 </span><span class="lineCov">         36 :   a[0] = 0;  // Send the COW array map to the steak house.</span>
 <span class="lineNum">     106 </span><span class="lineCov">         36 :   assertKind(elements_kind.fast_smi_only, a);</span>
 <span class="lineNum">     107 </span><span class="lineCov">         36 :   return a;</span>
 <span class="lineNum">     108 </span><span class="lineCov">         36 : }</span>
-<a name="109"><span class="lineNum">     109 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     110 </span><span class="lineNoCov">          0 : %NeverOptimizeFunction(construct_doubles);</span>
+<a name="109"><span class="lineNum">     109 </span><span class="lineCov">          2 : </span></a>
+<span class="lineNum">     110 </span><span class="lineCov">          2 : %NeverOptimizeFunction(construct_doubles);</span>
 <span class="lineNum">     111 </span><span class="lineCov">         18 : function construct_doubles() {</span>
 <span class="lineNum">     112 </span><span class="lineCov">         18 :   var a = construct_smis();</span>
 <span class="lineNum">     113 </span><span class="lineCov">         18 :   a[0] = 1.5;</span>
 <span class="lineNum">     114 </span><span class="lineCov">         18 :   assertKind(elements_kind.fast_double, a);</span>
 <span class="lineNum">     115 </span><span class="lineCov">         18 :   return a;</span>
 <span class="lineNum">     116 </span><span class="lineCov">         18 : }</span>
-<a name="117"><span class="lineNum">     117 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     118 </span><span class="lineNoCov">          0 : %NeverOptimizeFunction(convert_mixed);</span>
+<a name="117"><span class="lineNum">     117 </span><span class="lineCov">          2 : </span></a>
+<span class="lineNum">     118 </span><span class="lineCov">          2 : %NeverOptimizeFunction(convert_mixed);</span>
 <span class="lineNum">     119 </span><span class="lineCov">         36 : function convert_mixed(array, value, kind) {</span>
 <span class="lineNum">     120 </span><span class="lineCov">         36 :   array[1] = value;</span>
 <span class="lineNum">     121 </span><span class="lineCov">         36 :   assertKind(kind, array);</span>
 <span class="lineNum">     122 </span><span class="lineCov">         36 :   assertEquals(value, array[1]);</span>
 <a name="123"><span class="lineNum">     123 </span><span class="lineCov">         36 : }</span></a>
-<span class="lineNum">     124 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     124 </span><span class="lineCov">          2 : </span>
 <span class="lineNum">     125 </span><span class="lineCov">          6 : function test1() {</span>
 <span class="lineNum">     126 </span><span class="lineCov">          6 :   // Test transition chain SMI-&gt;DOUBLE-&gt;FAST (crankshafted function will</span>
 <span class="lineNum">     127 </span><span class="lineCov">          6 :   // transition to FAST directly).</span>
@@ -202,20 +202,20 @@
 <span class="lineNum">     140 </span><span class="lineCov">          6 :   convert_mixed(doubles, 1, elements_kind.fast);</span>
 <span class="lineNum">     141 </span><span class="lineCov">          6 :   assertTrue(%HaveSameMap(smis, doubles));</span>
 <a name="142"><span class="lineNum">     142 </span><span class="lineCov">          6 : }</span></a>
-<span class="lineNum">     143 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     143 </span><span class="lineCov">          2 : </span>
 <span class="lineNum">     144 </span><span class="lineCov">          6 : function clear_ic_state() {</span>
-<span class="lineNum">     145 </span><span class="lineCov">          6 :   %ClearFunctionTypeFeedback(construct_smis);</span>
-<span class="lineNum">     146 </span><span class="lineCov">          6 :   %ClearFunctionTypeFeedback(construct_doubles);</span>
-<span class="lineNum">     147 </span><span class="lineCov">          6 :   %ClearFunctionTypeFeedback(convert_mixed);</span>
+<span class="lineNum">     145 </span><span class="lineCov">          6 :   %ClearFunctionFeedback(construct_smis);</span>
+<span class="lineNum">     146 </span><span class="lineCov">          6 :   %ClearFunctionFeedback(construct_doubles);</span>
+<span class="lineNum">     147 </span><span class="lineCov">          6 :   %ClearFunctionFeedback(convert_mixed);</span>
 <span class="lineNum">     148 </span><span class="lineCov">          6 : }</span>
-<span class="lineNum">     149 </span>            : 
-<span class="lineNum">     150 </span>            : test1();
-<span class="lineNum">     151 </span>            : clear_ic_state();
-<span class="lineNum">     152 </span>            : test1();
-<span class="lineNum">     153 </span>            : clear_ic_state();
-<span class="lineNum">     154 </span>            : %OptimizeFunctionOnNextCall(test1);
-<span class="lineNum">     155 </span>            : test1();
-<span class="lineNum">     156 </span>            : clear_ic_state();
+<span class="lineNum">     149 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">     150 </span><span class="lineCov">          2 : test1();</span>
+<span class="lineNum">     151 </span><span class="lineCov">          2 : clear_ic_state();</span>
+<span class="lineNum">     152 </span><span class="lineCov">          2 : test1();</span>
+<span class="lineNum">     153 </span><span class="lineCov">          2 : clear_ic_state();</span>
+<span class="lineNum">     154 </span><span class="lineCov">          2 : %OptimizeFunctionOnNextCall(test1);</span>
+<span class="lineNum">     155 </span><span class="lineCov">          2 : test1();</span>
+<span class="lineNum">     156 </span><span class="lineCov">          2 : clear_ic_state();</span>
 </pre>
       </td>
     </tr>

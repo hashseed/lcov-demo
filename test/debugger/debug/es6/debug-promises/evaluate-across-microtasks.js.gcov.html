@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">32</td>
-            <td class="headerCovTableEntry">35</td>
-            <td class="headerCovTableEntryHi">91.4 %</td>
+            <td class="headerCovTableEntry">66</td>
+            <td class="headerCovTableEntry">66</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">4</td>
@@ -77,15 +77,15 @@
 <span class="lineNum">      15 </span><span class="lineCov">         13 :   return function() {</span>
 <span class="lineNum">      16 </span><span class="lineCov">         13 :     log.push(`[${stored_count}] ${x}`);</span>
 <span class="lineNum">      17 </span><span class="lineCov">         13 :   };</span>
-<a name="18"><span class="lineNum">      18 </span><span class="lineNoCov">          0 : }</span></a>
-<span class="lineNum">      19 </span><span class="lineNoCov">          0 : </span>
+<a name="18"><span class="lineNum">      18 </span><span class="lineCov">         13 : }</span></a>
+<span class="lineNum">      19 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      20 </span><span class="lineCov">          4 : function DebuggerStatement() {</span>
 <span class="lineNum">      21 </span><span class="lineCov">          4 :   log.push(`[${count}] debugger`);</span>
 <span class="lineNum">      22 </span><span class="lineCov">          4 :   if (count++ &lt; 3) {</span>
 <span class="lineNum">      23 </span><span class="lineCov">          4 :     debugger;</span>
 <span class="lineNum">      24 </span><span class="lineCov">          4 :   }</span>
 <a name="25"><span class="lineNum">      25 </span><span class="lineCov">          4 : }</span></a>
-<span class="lineNum">      26 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      26 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      27 </span><span class="lineCov">          3 : function listener(event, exec_state, event_data, data) {</span>
 <span class="lineNum">      28 </span><span class="lineCov">          3 :   if (event != Debug.DebugEvent.Break) return;</span>
 <span class="lineNum">      29 </span><span class="lineCov">          3 :   try {</span>
@@ -95,36 +95,36 @@
 <a name="33"><span class="lineNum">      33 </span><span class="lineCov">          3 :     q.then(LogX(&quot;then 3&quot;));</span></a>
 <span class="lineNum">      34 </span><span class="lineCov">          3 :     q.then(DebuggerStatement);</span>
 <span class="lineNum">      35 </span><span class="lineCov">          3 :     var r = q.then(() =&gt; { throw 1; });</span>
-<span class="lineNum">      36 </span>            :     r.catch(LogX(&quot;catch&quot;));
-<span class="lineNum">      37 </span>            :     listenerComplete = true;
-<span class="lineNum">      38 </span>            :   } catch (e) {
-<span class="lineNum">      39 </span>            :     exception = e;
-<span class="lineNum">      40 </span>            :     print(e, e.stack);
-<span class="lineNum">      41 </span>            :     quit(1);
-<span class="lineNum">      42 </span>            :   };
-<span class="lineNum">      43 </span>            : };
-<span class="lineNum">      44 </span>            : 
-<span class="lineNum">      45 </span>            : // Add the debug event listener.
-<span class="lineNum">      46 </span>            : Debug.setListener(listener);
-<span class="lineNum">      47 </span>            : 
-<span class="lineNum">      48 </span>            : DebuggerStatement();
-<span class="lineNum">      49 </span>            : LogX(&quot;start&quot;)();
-<span class="lineNum">      50 </span>            : 
-<span class="lineNum">      51 </span>            : // Make sure that the debug event listener was invoked.
-<span class="lineNum">      52 </span>            : assertTrue(listenerComplete);
-<span class="lineNum">      53 </span>            : 
-<span class="lineNum">      54 </span>            : %RunMicrotasks();
-<span class="lineNum">      55 </span>            : 
-<span class="lineNum">      56 </span>            : var expectation =
-<span class="lineNum">      57 </span>            :   [ &quot;[0] debugger&quot;, &quot;[1] start&quot;, &quot;[1] then 1&quot;,
-<span class="lineNum">      58 </span>            :     &quot;[1] then 2&quot;, &quot;[1] then 3&quot;, &quot;[1] debugger&quot;,
-<span class="lineNum">      59 </span>            :     &quot;[2] then 1&quot;, &quot;[2] then 2&quot;, &quot;[1] catch&quot;,
-<span class="lineNum">      60 </span>            :     &quot;[2] then 3&quot;, &quot;[2] debugger&quot;, &quot;[3] then 1&quot;,
-<span class="lineNum">      61 </span>            :     &quot;[3] then 2&quot;, &quot;[2] catch&quot;, &quot;[3] then 3&quot;,
-<span class="lineNum">      62 </span>            :     &quot;[3] debugger&quot;, &quot;[3] catch&quot;,
-<span class="lineNum">      63 </span>            :   ];
-<span class="lineNum">      64 </span>            : 
-<span class="lineNum">      65 </span>            : assertEquals(expectation, log);
+<span class="lineNum">      36 </span><span class="lineCov">          3 :     r.catch(LogX(&quot;catch&quot;));</span>
+<span class="lineNum">      37 </span><span class="lineCov">          3 :     listenerComplete = true;</span>
+<span class="lineNum">      38 </span><span class="lineCov">          3 :   } catch (e) {</span>
+<span class="lineNum">      39 </span><span class="lineCov">          3 :     exception = e;</span>
+<span class="lineNum">      40 </span><span class="lineCov">          3 :     print(e, e.stack);</span>
+<span class="lineNum">      41 </span><span class="lineCov">          3 :     quit(1);</span>
+<span class="lineNum">      42 </span><span class="lineCov">          3 :   };</span>
+<span class="lineNum">      43 </span><span class="lineCov">          3 : };</span>
+<span class="lineNum">      44 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      45 </span><span class="lineCov">          1 : // Add the debug event listener.</span>
+<span class="lineNum">      46 </span><span class="lineCov">          1 : Debug.setListener(listener);</span>
+<span class="lineNum">      47 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      48 </span><span class="lineCov">          1 : DebuggerStatement();</span>
+<span class="lineNum">      49 </span><span class="lineCov">          1 : LogX(&quot;start&quot;)();</span>
+<span class="lineNum">      50 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      51 </span><span class="lineCov">          1 : // Make sure that the debug event listener was invoked.</span>
+<span class="lineNum">      52 </span><span class="lineCov">          1 : assertTrue(listenerComplete);</span>
+<span class="lineNum">      53 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      54 </span><span class="lineCov">          1 : %RunMicrotasks();</span>
+<span class="lineNum">      55 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      56 </span><span class="lineCov">          1 : var expectation =</span>
+<span class="lineNum">      57 </span><span class="lineCov">          1 :   [ &quot;[0] debugger&quot;, &quot;[1] start&quot;, &quot;[1] then 1&quot;,</span>
+<span class="lineNum">      58 </span><span class="lineCov">          1 :     &quot;[1] then 2&quot;, &quot;[1] then 3&quot;, &quot;[1] debugger&quot;,</span>
+<span class="lineNum">      59 </span><span class="lineCov">          1 :     &quot;[2] then 1&quot;, &quot;[2] then 2&quot;, &quot;[1] catch&quot;,</span>
+<span class="lineNum">      60 </span><span class="lineCov">          1 :     &quot;[2] then 3&quot;, &quot;[2] debugger&quot;, &quot;[3] then 1&quot;,</span>
+<span class="lineNum">      61 </span><span class="lineCov">          1 :     &quot;[3] then 2&quot;, &quot;[2] catch&quot;, &quot;[3] then 3&quot;,</span>
+<span class="lineNum">      62 </span><span class="lineCov">          1 :     &quot;[3] debugger&quot;, &quot;[3] catch&quot;,</span>
+<span class="lineNum">      63 </span><span class="lineCov">          1 :   ];</span>
+<span class="lineNum">      64 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      65 </span><span class="lineCov">          1 : assertEquals(expectation, log);</span>
 </pre>
       </td>
     </tr>

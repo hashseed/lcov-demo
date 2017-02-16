@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">180</td>
-            <td class="headerCovTableEntry">243</td>
-            <td class="headerCovTableEntryLo">74.1 %</td>
+            <td class="headerCovTableEntry">226</td>
+            <td class="headerCovTableEntry">244</td>
+            <td class="headerCovTableEntryHi">92.6 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">11</td>
@@ -104,18 +104,18 @@
 <span class="lineNum">      42 </span><span class="lineCov">        260 :   var msw = (x &gt;&gt; 16) + (y &gt;&gt; 16) + (lsw &gt;&gt; 16)</span>
 <span class="lineNum">      43 </span><span class="lineCov">        260 :   return (msw &lt;&lt; 16) | (lsw &amp; 0xFFFF)</span>
 <span class="lineNum">      44 </span><span class="lineCov">        260 : }</span>
-<span class="lineNum">      45 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      46 </span><span class="lineNoCov">          0 : /*</span>
-<a name="47"><span class="lineNum">      47 </span><span class="lineNoCov">          0 :  * Bitwise rotate a 32-bit number to the left.</span></a>
-<span class="lineNum">      48 </span><span class="lineNoCov">          0 :  */</span>
+<span class="lineNum">      45 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      46 </span><span class="lineCov">          1 : /*</span>
+<a name="47"><span class="lineNum">      47 </span><span class="lineCov">          1 :  * Bitwise rotate a 32-bit number to the left.</span></a>
+<span class="lineNum">      48 </span><span class="lineCov">          1 :  */</span>
 <span class="lineNum">      49 </span><span class="lineCov">         64 : function rol(num, cnt)</span>
 <span class="lineNum">      50 </span><span class="lineCov">         64 : {</span>
 <span class="lineNum">      51 </span><span class="lineCov">         64 :   return (num &lt;&lt; cnt) | (num &gt;&gt;&gt; (32 - cnt))</span>
 <span class="lineNum">      52 </span><span class="lineCov">         64 : }</span>
-<span class="lineNum">      53 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      54 </span><span class="lineNoCov">          0 : /*</span>
-<a name="55"><span class="lineNum">      55 </span><span class="lineNoCov">          0 :  * These functions implement the four basic operations the algorithm uses.</span></a>
-<span class="lineNum">      56 </span><span class="lineNoCov">          0 :  */</span>
+<span class="lineNum">      53 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      54 </span><span class="lineCov">          1 : /*</span>
+<a name="55"><span class="lineNum">      55 </span><span class="lineCov">          1 :  * These functions implement the four basic operations the algorithm uses.</span></a>
+<span class="lineNum">      56 </span><span class="lineCov">          1 :  */</span>
 <span class="lineNum">      57 </span><span class="lineCov">         64 : function cmn(q, a, b, x, s, t)</span>
 <span class="lineNum">      58 </span><span class="lineCov">         64 : {</span>
 <a name="59"><span class="lineNum">      59 </span><span class="lineCov">         64 :   return safe_add(rol(safe_add(safe_add(a, q), safe_add(x, t)), s), b)</span></a>
@@ -136,11 +136,11 @@
 <span class="lineNum">      74 </span><span class="lineCov">         16 : {</span>
 <span class="lineNum">      75 </span><span class="lineCov">         16 :   return cmn(c ^ (b | (~d)), a, b, x, s, t)</span>
 <span class="lineNum">      76 </span><span class="lineCov">         16 : }</span>
-<span class="lineNum">      77 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      78 </span><span class="lineNoCov">          0 : /*</span>
-<span class="lineNum">      79 </span><span class="lineNoCov">          0 :  * Calculate the MD5 of an array of little-endian words, producing an array</span>
-<a name="80"><span class="lineNum">      80 </span><span class="lineNoCov">          0 :  * of little-endian words.</span></a>
-<span class="lineNum">      81 </span><span class="lineNoCov">          0 :  */</span>
+<span class="lineNum">      77 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      78 </span><span class="lineCov">          1 : /*</span>
+<span class="lineNum">      79 </span><span class="lineCov">          1 :  * Calculate the MD5 of an array of little-endian words, producing an array</span>
+<a name="80"><span class="lineNum">      80 </span><span class="lineCov">          1 :  * of little-endian words.</span></a>
+<span class="lineNum">      81 </span><span class="lineCov">          1 :  */</span>
 <span class="lineNum">      82 </span><span class="lineCov">          1 : function coreMD5(x)</span>
 <span class="lineNum">      83 </span><span class="lineCov">          1 : {</span>
 <span class="lineNum">      84 </span><span class="lineCov">          1 :   var a =  1732584193</span>
@@ -230,10 +230,10 @@
 <span class="lineNum">     168 </span><span class="lineCov">          1 :   }</span>
 <span class="lineNum">     169 </span><span class="lineCov">          1 :   return [a, b, c, d]</span>
 <span class="lineNum">     170 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">     171 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     172 </span><span class="lineNoCov">          0 : /*</span>
-<a name="173"><span class="lineNum">     173 </span><span class="lineNoCov">          0 :  * Convert an array of little-endian words to a hex string.</span></a>
-<span class="lineNum">     174 </span><span class="lineNoCov">          0 :  */</span>
+<span class="lineNum">     171 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     172 </span><span class="lineCov">          1 : /*</span>
+<a name="173"><span class="lineNum">     173 </span><span class="lineCov">          1 :  * Convert an array of little-endian words to a hex string.</span></a>
+<span class="lineNum">     174 </span><span class="lineCov">          1 :  */</span>
 <span class="lineNum">     175 </span><span class="lineCov">          1 : function binl2hex(binarray)</span>
 <span class="lineNum">     176 </span><span class="lineCov">          1 : {</span>
 <span class="lineNum">     177 </span><span class="lineCov">          1 :   var hex_tab = &quot;0123456789abcdef&quot;</span>
@@ -245,11 +245,11 @@
 <span class="lineNum">     183 </span><span class="lineCov">          1 :   }</span>
 <span class="lineNum">     184 </span><span class="lineCov">          1 :   return str</span>
 <span class="lineNum">     185 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">     186 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     187 </span><span class="lineNoCov">          0 : /*</span>
-<a name="188"><span class="lineNum">     188 </span><span class="lineNoCov">          0 :  * Convert an array of little-endian words to a base64 encoded string.</span></a>
-<span class="lineNum">     189 </span><span class="lineNoCov">          0 :  */</span>
-<span class="lineNum">     190 </span><span class="lineNoCov">          0 : function binl2b64(binarray)</span>
+<span class="lineNum">     186 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     187 </span><span class="lineCov">          1 : /*</span>
+<a name="188"><span class="lineNum">     188 </span><span class="lineCov">          1 :  * Convert an array of little-endian words to a base64 encoded string.</span></a>
+<span class="lineNum">     189 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">     190 </span><span class="lineCov">          1 : function binl2b64(binarray)</span>
 <span class="lineNum">     191 </span><span class="lineNoCov">          0 : {</span>
 <span class="lineNum">     192 </span><span class="lineNoCov">          0 :   var tab = &quot;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/&quot;</span>
 <span class="lineNum">     193 </span><span class="lineNoCov">          0 :   var str = &quot;&quot;</span>
@@ -259,13 +259,13 @@
 <span class="lineNum">     197 </span><span class="lineNoCov">          0 :                       ((binarray[i&gt;&gt;5+1] &gt;&gt; (32-i%32)) &amp; 0x3F))</span>
 <span class="lineNum">     198 </span><span class="lineNoCov">          0 :   }</span>
 <span class="lineNum">     199 </span><span class="lineNoCov">          0 :   return str</span>
-<span class="lineNum">     200 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">     201 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     202 </span><span class="lineNoCov">          0 : /*</span>
-<span class="lineNum">     203 </span><span class="lineNoCov">          0 :  * Convert an 8-bit character string to a sequence of 16-word blocks, stored</span>
-<span class="lineNum">     204 </span><span class="lineNoCov">          0 :  * as an array, and append appropriate padding for MD4/5 calculation.</span>
-<a name="205"><span class="lineNum">     205 </span><span class="lineNoCov">          0 :  * If any of the characters are &gt;255, the high byte is silently ignored.</span></a>
-<span class="lineNum">     206 </span><span class="lineNoCov">          0 :  */</span>
+<span class="lineNum">     200 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     201 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     202 </span><span class="lineCov">          1 : /*</span>
+<span class="lineNum">     203 </span><span class="lineCov">          1 :  * Convert an 8-bit character string to a sequence of 16-word blocks, stored</span>
+<span class="lineNum">     204 </span><span class="lineCov">          1 :  * as an array, and append appropriate padding for MD4/5 calculation.</span>
+<a name="205"><span class="lineNum">     205 </span><span class="lineCov">          1 :  * If any of the characters are &gt;255, the high byte is silently ignored.</span></a>
+<span class="lineNum">     206 </span><span class="lineCov">          1 :  */</span>
 <span class="lineNum">     207 </span><span class="lineCov">          1 : function str2binl(str)</span>
 <span class="lineNum">     208 </span><span class="lineCov">          1 : {</span>
 <span class="lineNum">     209 </span><span class="lineCov">          1 :   var nblk = ((str.length + 8) &gt;&gt; 6) + 1 // number of 16-word blocks</span>
@@ -277,12 +277,12 @@
 <span class="lineNum">     215 </span><span class="lineCov">          1 :   blks[nblk*16-2] = str.length * 8</span>
 <span class="lineNum">     216 </span><span class="lineCov">          1 :   return blks</span>
 <span class="lineNum">     217 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">     218 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     219 </span><span class="lineNoCov">          0 : /*</span>
-<span class="lineNum">     220 </span><span class="lineNoCov">          0 :  * Convert a wide-character string to a sequence of 16-word blocks, stored as</span>
-<a name="221"><span class="lineNum">     221 </span><span class="lineNoCov">          0 :  * an array, and append appropriate padding for MD4/5 calculation.</span></a>
-<span class="lineNum">     222 </span><span class="lineNoCov">          0 :  */</span>
-<span class="lineNum">     223 </span><span class="lineNoCov">          0 : function strw2binl(str)</span>
+<span class="lineNum">     218 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     219 </span><span class="lineCov">          1 : /*</span>
+<span class="lineNum">     220 </span><span class="lineCov">          1 :  * Convert a wide-character string to a sequence of 16-word blocks, stored as</span>
+<a name="221"><span class="lineNum">     221 </span><span class="lineCov">          1 :  * an array, and append appropriate padding for MD4/5 calculation.</span></a>
+<span class="lineNum">     222 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">     223 </span><span class="lineCov">          1 : function strw2binl(str)</span>
 <span class="lineNum">     224 </span><span class="lineNoCov">          0 : {</span>
 <span class="lineNum">     225 </span><span class="lineNoCov">          0 :   var nblk = ((str.length + 4) &gt;&gt; 5) + 1 // number of 16-word blocks</span>
 <span class="lineNum">     226 </span><span class="lineNoCov">          0 :   var blks = new Array(nblk * 16)</span>
@@ -292,17 +292,17 @@
 <span class="lineNum">     230 </span><span class="lineNoCov">          0 :   blks[i&gt;&gt;1] |= 0x80 &lt;&lt; ((i%2) * 16)</span>
 <span class="lineNum">     231 </span><span class="lineNoCov">          0 :   blks[nblk*16-2] = str.length * 16</span>
 <span class="lineNum">     232 </span><span class="lineNoCov">          0 :   return blks</span>
-<span class="lineNum">     233 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">     234 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     235 </span><span class="lineNoCov">          0 : /*</span>
-<a name="236"><span class="lineNum">     236 </span><span class="lineNoCov">          0 :  * External interface</span></a>
-<a name="237"><span class="lineNum">     237 </span><span class="lineNoCov">          0 :  */</span></a>
+<span class="lineNum">     233 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     234 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     235 </span><span class="lineCov">          1 : /*</span>
+<a name="236"><span class="lineNum">     236 </span><span class="lineCov">          1 :  * External interface</span></a>
+<a name="237"><span class="lineNum">     237 </span><span class="lineCov">          1 :  */</span></a>
 <a name="238"><span class="lineNum">     238 </span><span class="lineCov">          1 : function hexMD5 (str) { return binl2hex(coreMD5( str2binl(str))) }</span></a>
-<a name="239"><span class="lineNum">     239 </span><span class="lineNoCov">          0 : function hexMD5w(str) { return binl2hex(coreMD5(strw2binl(str))) }</span></a>
-<span class="lineNum">     240 </span><span class="lineNoCov">          0 : function b64MD5 (str) { return binl2b64(coreMD5( str2binl(str))) }</span>
-<a name="241"><span class="lineNum">     241 </span><span class="lineNoCov">          0 : function b64MD5w(str) { return binl2b64(coreMD5(strw2binl(str))) }</span></a>
-<span class="lineNum">     242 </span><span class="lineNoCov">          0 : /* Backward compatibility */</span>
-<span class="lineNum">     243 </span><span class="lineNoCov">          0 : function calcMD5(str) { return binl2hex(coreMD5( str2binl(str))) }</span>
+<a name="239"><span class="lineNum">     239 </span><span class="lineCov">          1 : function hexMD5w(str) { return binl2hex(coreMD5(strw2binl(str))) }</span></a>
+<span class="lineNum">     240 </span><span class="lineCov">          1 : function b64MD5 (str) { return binl2b64(coreMD5( str2binl(str))) }</span>
+<a name="241"><span class="lineNum">     241 </span><span class="lineCov">          1 : function b64MD5w(str) { return binl2b64(coreMD5(strw2binl(str))) }</span></a>
+<span class="lineNum">     242 </span><span class="lineCov">          1 : /* Backward compatibility */</span>
+<span class="lineNum">     243 </span><span class="lineCov">          1 : function calcMD5(str) { return binl2hex(coreMD5( str2binl(str))) }</span>
 </pre>
       </td>
     </tr>

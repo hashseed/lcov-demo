@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">67</td>
-            <td class="headerCovTableEntry">70</td>
-            <td class="headerCovTableEntryHi">95.7 %</td>
+            <td class="headerCovTableEntry">108</td>
+            <td class="headerCovTableEntry">108</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">5</td>
@@ -103,7 +103,7 @@
 <span class="lineNum">      41 </span><span class="lineCov">         45 :     binary(operator, '&quot;x&quot;', true);</span>
 <span class="lineNum">      42 </span><span class="lineCov">         45 :     unary(operator, &quot;&quot;);</span>
 <a name="43"><span class="lineNum">      43 </span><span class="lineCov">         45 :   }</span></a>
-<span class="lineNum">      44 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      44 </span><span class="lineCov">          3 : </span>
 <span class="lineNum">      45 </span><span class="lineCov">         54 :   function unary(op, after) {</span>
 <span class="lineNum">      46 </span><span class="lineCov">         54 :     // Capture:</span>
 <span class="lineNum">      47 </span><span class="lineCov">         54 :     try {</span>
@@ -111,7 +111,7 @@
 <span class="lineNum">      49 </span><span class="lineCov">         54 :     } catch(e) {</span>
 <span class="lineNum">      50 </span><span class="lineCov">         54 :     }</span>
 <a name="51"><span class="lineNum">      51 </span><span class="lineCov">         54 :   }</span></a>
-<span class="lineNum">      52 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      52 </span><span class="lineCov">          3 : </span>
 <span class="lineNum">      53 </span><span class="lineCov">        270 :   function binary(op, other_side, inverted) {</span>
 <span class="lineNum">      54 </span><span class="lineCov">        270 :     // Capture:</span>
 <span class="lineNum">      55 </span><span class="lineCov">        270 :     try {</span>
@@ -123,50 +123,50 @@
 <span class="lineNum">      61 </span><span class="lineCov">        270 :     } catch(e) {</span>
 <span class="lineNum">      62 </span><span class="lineCov">        270 :     }</span>
 <a name="63"><span class="lineNum">      63 </span><span class="lineCov">        270 :   }</span></a>
-<span class="lineNum">      64 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      64 </span><span class="lineCov">          3 : </span>
 <span class="lineNum">      65 </span><span class="lineCov">        204 :   function catcher() {</span>
 <span class="lineNum">      66 </span><span class="lineCov">        204 :     var caller = catcher.caller;</span>
 <span class="lineNum">      67 </span><span class="lineCov">        204 :     if (/native/i.test(caller) || /ADD/.test(caller)) {</span>
 <span class="lineNum">      68 </span><span class="lineCov">        204 :       net[caller] = 0;</span>
 <span class="lineNum">      69 </span><span class="lineCov">        204 :     }</span>
 <span class="lineNum">      70 </span><span class="lineCov">        204 :   }</span>
-<span class="lineNum">      71 </span>            : 
-<span class="lineNum">      72 </span>            :   var custom = Object.create(null, {
-<span class="lineNum">      73 </span>            :     toString: { value: catcher },
-<span class="lineNum">      74 </span>            :     length: { get: catcher }
-<span class="lineNum">      75 </span>            :   });
-<span class="lineNum">      76 </span>            : 
-<span class="lineNum">      77 </span>            :   item('^');
-<span class="lineNum">      78 </span>            :   item('~');
-<span class="lineNum">      79 </span>            :   item('&lt;&lt;');
-<span class="lineNum">      80 </span>            :   item('&lt;');
-<span class="lineNum">      81 </span>            :   item('==');
-<span class="lineNum">      82 </span>            :   item('&gt;&gt;&gt;');
-<span class="lineNum">      83 </span>            :   item('&gt;&gt;');
-<span class="lineNum">      84 </span>            :   item('|');
-<span class="lineNum">      85 </span>            :   item('-');
-<span class="lineNum">      86 </span>            :   item('*');
-<span class="lineNum">      87 </span>            :   item('&amp;');
-<span class="lineNum">      88 </span>            :   item('%');
-<span class="lineNum">      89 </span>            :   item('+');
-<span class="lineNum">      90 </span>            :   item('in');
-<span class="lineNum">      91 </span>            :   item('instanceof');
-<span class="lineNum">      92 </span>            :   unary('{}[', ']');
-<span class="lineNum">      93 </span>            :   unary('delete {}[', ']');
-<span class="lineNum">      94 </span>            :   unary('(function() {}).apply(null, ', ')');
-<span class="lineNum">      95 </span>            : }
-<span class="lineNum">      96 </span>            : 
-<span class="lineNum">      97 </span>            : collect();
-<span class="lineNum">      98 </span>            : collect();
-<span class="lineNum">      99 </span>            : collect();
-<span class="lineNum">     100 </span>            : 
-<span class="lineNum">     101 </span>            : var keys = 0;
-<span class="lineNum">     102 </span>            : for (var key in net) {
-<span class="lineNum">     103 </span>            :   print(key);
-<span class="lineNum">     104 </span>            :   keys++;
-<span class="lineNum">     105 </span>            : }
-<span class="lineNum">     106 </span>            : 
-<span class="lineNum">     107 </span>            : assertTrue(keys == 0);
+<span class="lineNum">      71 </span><span class="lineCov">          3 : </span>
+<span class="lineNum">      72 </span><span class="lineCov">          3 :   var custom = Object.create(null, {</span>
+<span class="lineNum">      73 </span><span class="lineCov">          3 :     toString: { value: catcher },</span>
+<span class="lineNum">      74 </span><span class="lineCov">          3 :     length: { get: catcher }</span>
+<span class="lineNum">      75 </span><span class="lineCov">          3 :   });</span>
+<span class="lineNum">      76 </span><span class="lineCov">          3 : </span>
+<span class="lineNum">      77 </span><span class="lineCov">          3 :   item('^');</span>
+<span class="lineNum">      78 </span><span class="lineCov">          3 :   item('~');</span>
+<span class="lineNum">      79 </span><span class="lineCov">          3 :   item('&lt;&lt;');</span>
+<span class="lineNum">      80 </span><span class="lineCov">          3 :   item('&lt;');</span>
+<span class="lineNum">      81 </span><span class="lineCov">          3 :   item('==');</span>
+<span class="lineNum">      82 </span><span class="lineCov">          3 :   item('&gt;&gt;&gt;');</span>
+<span class="lineNum">      83 </span><span class="lineCov">          3 :   item('&gt;&gt;');</span>
+<span class="lineNum">      84 </span><span class="lineCov">          3 :   item('|');</span>
+<span class="lineNum">      85 </span><span class="lineCov">          3 :   item('-');</span>
+<span class="lineNum">      86 </span><span class="lineCov">          3 :   item('*');</span>
+<span class="lineNum">      87 </span><span class="lineCov">          3 :   item('&amp;');</span>
+<span class="lineNum">      88 </span><span class="lineCov">          3 :   item('%');</span>
+<span class="lineNum">      89 </span><span class="lineCov">          3 :   item('+');</span>
+<span class="lineNum">      90 </span><span class="lineCov">          3 :   item('in');</span>
+<span class="lineNum">      91 </span><span class="lineCov">          3 :   item('instanceof');</span>
+<span class="lineNum">      92 </span><span class="lineCov">          3 :   unary('{}[', ']');</span>
+<span class="lineNum">      93 </span><span class="lineCov">          3 :   unary('delete {}[', ']');</span>
+<span class="lineNum">      94 </span><span class="lineCov">          3 :   unary('(function() {}).apply(null, ', ')');</span>
+<span class="lineNum">      95 </span><span class="lineCov">          3 : }</span>
+<span class="lineNum">      96 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      97 </span><span class="lineCov">          1 : collect();</span>
+<span class="lineNum">      98 </span><span class="lineCov">          1 : collect();</span>
+<span class="lineNum">      99 </span><span class="lineCov">          1 : collect();</span>
+<span class="lineNum">     100 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     101 </span><span class="lineCov">          1 : var keys = 0;</span>
+<span class="lineNum">     102 </span><span class="lineCov">          1 : for (var key in net) {</span>
+<span class="lineNum">     103 </span><span class="lineCov">          1 :   print(key);</span>
+<span class="lineNum">     104 </span><span class="lineCov">          1 :   keys++;</span>
+<span class="lineNum">     105 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     106 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     107 </span><span class="lineCov">          1 : assertTrue(keys == 0);</span>
 </pre>
       </td>
     </tr>

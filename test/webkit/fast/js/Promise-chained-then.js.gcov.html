@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">57</td>
-            <td class="headerCovTableEntry">69</td>
-            <td class="headerCovTableEntryMed">82.6 %</td>
+            <td class="headerCovTableEntry">67</td>
+            <td class="headerCovTableEntry">73</td>
+            <td class="headerCovTableEntryHi">91.8 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -88,8 +88,8 @@
 <span class="lineNum">      26 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      27 </span><span class="lineCov">          1 : var resolve;</span>
 <span class="lineNum">      28 </span><span class="lineCov">          1 : var promise = new Promise(function (r) {resolve = r;});</span>
-<span class="lineNum">      29 </span><span class="lineNoCov">          0 : var result;</span>
-<span class="lineNum">      30 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      29 </span><span class="lineCov">          1 : var result;</span>
+<span class="lineNum">      30 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      31 </span><span class="lineCov">          1 : promise.then(function(localResult) {  // fulfilled - continue</span>
 <span class="lineNum">      32 </span><span class="lineCov">          1 :   testPassed('fulfilled');</span>
 <span class="lineNum">      33 </span><span class="lineCov">          1 :   result = localResult;</span>
@@ -97,7 +97,7 @@
 <span class="lineNum">      35 </span><span class="lineCov">          1 :   return 'hello2';</span>
 <span class="lineNum">      36 </span><span class="lineCov">          1 : }, function() {</span>
 <span class="lineNum">      37 </span><span class="lineNoCov">          0 :   testFailed('rrejected');</span>
-<span class="lineNum">      38 </span><span class="lineNoCov">          0 : }).then()  // pass through</span>
+<span class="lineNum">      38 </span><span class="lineCov">          1 : }).then()  // pass through</span>
 <span class="lineNum">      39 </span><span class="lineCov">          1 : .then(function(localResult) {  // fulfilled - throw an exception</span>
 <span class="lineNum">      40 </span><span class="lineCov">          1 :   testPassed('fulfilled');</span>
 <span class="lineNum">      41 </span><span class="lineCov">          1 :   result = localResult;</span>
@@ -105,7 +105,7 @@
 <span class="lineNum">      43 </span><span class="lineCov">          1 :   throw 'error';</span>
 <span class="lineNum">      44 </span><span class="lineCov">          1 : }, function() {</span>
 <span class="lineNum">      45 </span><span class="lineNoCov">          0 :   testFailed('rejected');</span>
-<span class="lineNum">      46 </span><span class="lineNoCov">          0 : }).then(function() {  // rejected - throw an exception</span>
+<span class="lineNum">      46 </span><span class="lineCov">          1 : }).then(function() {  // rejected - throw an exception</span>
 <span class="lineNum">      47 </span><span class="lineNoCov">          0 :   testFailed('fulfilled');</span>
 <span class="lineNum">      48 </span><span class="lineCov">          1 : }, function(localResult) {</span>
 <span class="lineNum">      49 </span><span class="lineCov">          1 :   testPassed('rejected');</span>
@@ -113,7 +113,7 @@
 <span class="lineNum">      51 </span><span class="lineCov">          1 :   shouldBeEqualToString('result', 'error');</span>
 <span class="lineNum">      52 </span><span class="lineCov">          1 :   throw 'error2';</span>
 <span class="lineNum">      53 </span><span class="lineCov">          1 : }).then() // pass through</span>
-<span class="lineNum">      54 </span><span class="lineNoCov">          0 : .then(function() {  // rejected - recover</span>
+<span class="lineNum">      54 </span><span class="lineCov">          1 : .then(function() {  // rejected - recover</span>
 <span class="lineNum">      55 </span><span class="lineNoCov">          0 :   testFailed('fulfilled');</span>
 <span class="lineNum">      56 </span><span class="lineCov">          1 : }, function(localResult) {</span>
 <span class="lineNum">      57 </span><span class="lineCov">          1 :   testPassed('rejected');</span>
@@ -128,10 +128,10 @@
 <span class="lineNum">      66 </span><span class="lineCov">          1 : }, function() {</span>
 <span class="lineNum">      67 </span><span class="lineNoCov">          0 :   testFailed('rejected');</span>
 <span class="lineNum">      68 </span><span class="lineNoCov">          0 :   finishJSTest();</span>
-<span class="lineNum">      69 </span><span class="lineNoCov">          0 : });</span>
-<span class="lineNum">      70 </span>            : 
-<span class="lineNum">      71 </span>            : resolve('hello');
-<span class="lineNum">      72 </span>            : debug('This should be the first debug output.');
+<span class="lineNum">      69 </span><span class="lineCov">          1 : });</span>
+<span class="lineNum">      70 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      71 </span><span class="lineCov">          1 : resolve('hello');</span>
+<span class="lineNum">      72 </span><span class="lineCov">          1 : debug('This should be the first debug output.');</span>
 </pre>
       </td>
     </tr>

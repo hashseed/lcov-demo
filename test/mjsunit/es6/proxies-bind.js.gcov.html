@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">33</td>
-            <td class="headerCovTableEntry">135</td>
-            <td class="headerCovTableEntryLo">24.4 %</td>
+            <td class="headerCovTableEntry">136</td>
+            <td class="headerCovTableEntry">136</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">6</td>
@@ -78,122 +78,122 @@
 <span class="lineNum">      16 </span><span class="lineCov">         12 :     log.push([trap, ...arguments]);</span>
 <span class="lineNum">      17 </span><span class="lineCov">         12 :     return Reflect[trap](...arguments);</span>
 <span class="lineNum">      18 </span><span class="lineCov">         12 :   }</span>
-<span class="lineNum">      19 </span><span class="lineNoCov">          0 : };</span>
-<span class="lineNum">      20 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      21 </span><span class="lineNoCov">          0 : </span>
-<a name="22"><span class="lineNum">      22 </span><span class="lineNoCov">          0 : // Simple case</span></a>
-<span class="lineNum">      23 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      19 </span><span class="lineCov">         12 : };</span>
+<span class="lineNum">      20 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      21 </span><span class="lineCov">          1 : </span>
+<a name="22"><span class="lineNum">      22 </span><span class="lineCov">          1 : // Simple case</span></a>
+<span class="lineNum">      23 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      24 </span><span class="lineCov">          9 : var target = function(a, b, c) { &quot;use strict&quot;; return this };</span>
-<span class="lineNum">      25 </span><span class="lineNoCov">          0 : var proxy = new Proxy(target, handler);</span>
-<span class="lineNum">      26 </span><span class="lineNoCov">          0 : var this_value = Symbol();</span>
-<span class="lineNum">      27 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      28 </span><span class="lineNoCov">          0 : log.length = 0;</span>
-<span class="lineNum">      29 </span><span class="lineNoCov">          0 : result = Function.prototype.bind.call(proxy, this_value, &quot;foo&quot;);</span>
-<span class="lineNum">      30 </span><span class="lineNoCov">          0 : assertEquals(2, result.length);</span>
-<span class="lineNum">      31 </span><span class="lineNoCov">          0 : assertEquals(target.__proto__, result.__proto__);</span>
-<span class="lineNum">      32 </span><span class="lineNoCov">          0 : assertEquals(this_value, result());</span>
-<span class="lineNum">      33 </span><span class="lineNoCov">          0 : assertEquals(5, log.length);</span>
-<span class="lineNum">      34 </span><span class="lineNoCov">          0 : for (var i in log) assertSame(target, log[i][1]);</span>
-<span class="lineNum">      35 </span><span class="lineNoCov">          0 : assertEquals([&quot;getPrototypeOf&quot;, target], log[0]);</span>
-<span class="lineNum">      36 </span><span class="lineNoCov">          0 : assertEquals([&quot;getOwnPropertyDescriptor&quot;, target, &quot;length&quot;], log[1]);</span>
-<span class="lineNum">      37 </span><span class="lineNoCov">          0 : assertEquals([&quot;get&quot;, target, &quot;length&quot;, proxy], log[2]);</span>
-<span class="lineNum">      38 </span><span class="lineNoCov">          0 : assertEquals([&quot;get&quot;, target, &quot;name&quot;, proxy], log[3]);</span>
-<span class="lineNum">      39 </span><span class="lineNoCov">          0 : assertEquals([&quot;apply&quot;, target, this_value, [&quot;foo&quot;]], log[4]);</span>
-<span class="lineNum">      40 </span><span class="lineNoCov">          0 : assertEquals(new target(), new result());</span>
-<span class="lineNum">      41 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      42 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      43 </span><span class="lineNoCov">          0 : // Custom prototype</span>
-<span class="lineNum">      44 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      45 </span><span class="lineNoCov">          0 : log.length = 0;</span>
-<span class="lineNum">      46 </span><span class="lineNoCov">          0 : target.__proto__ = {radio: &quot;gaga&quot;};</span>
-<span class="lineNum">      47 </span><span class="lineNoCov">          0 : result = Function.prototype.bind.call(proxy, this_value, &quot;foo&quot;);</span>
-<span class="lineNum">      48 </span><span class="lineNoCov">          0 : assertEquals(2, result.length);</span>
-<span class="lineNum">      49 </span><span class="lineNoCov">          0 : assertSame(target.__proto__, result.__proto__);</span>
-<span class="lineNum">      50 </span><span class="lineNoCov">          0 : assertEquals(this_value, result());</span>
-<span class="lineNum">      51 </span><span class="lineNoCov">          0 : assertEquals(5, log.length);</span>
-<span class="lineNum">      52 </span><span class="lineNoCov">          0 : for (var i in log) assertSame(target, log[i][1]);</span>
-<span class="lineNum">      53 </span><span class="lineNoCov">          0 : assertEquals([&quot;getPrototypeOf&quot;, target], log[0]);</span>
-<span class="lineNum">      54 </span><span class="lineNoCov">          0 : assertEquals([&quot;getOwnPropertyDescriptor&quot;, target, &quot;length&quot;], log[1]);</span>
-<span class="lineNum">      55 </span><span class="lineNoCov">          0 : assertEquals([&quot;get&quot;, target, &quot;length&quot;, proxy], log[2]);</span>
-<span class="lineNum">      56 </span><span class="lineNoCov">          0 : assertEquals([&quot;get&quot;, target, &quot;name&quot;, proxy], log[3]);</span>
-<span class="lineNum">      57 </span><span class="lineNoCov">          0 : assertEquals([&quot;apply&quot;, target, this_value, [&quot;foo&quot;]], log[4]);</span>
-<span class="lineNum">      58 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      59 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      60 </span><span class="lineNoCov">          0 : // Custom length</span>
-<span class="lineNum">      61 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      62 </span><span class="lineNoCov">          0 : handler = {</span>
+<span class="lineNum">      25 </span><span class="lineCov">          1 : var proxy = new Proxy(target, handler);</span>
+<span class="lineNum">      26 </span><span class="lineCov">          1 : var this_value = Symbol();</span>
+<span class="lineNum">      27 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      28 </span><span class="lineCov">          1 : log.length = 0;</span>
+<span class="lineNum">      29 </span><span class="lineCov">          1 : result = Function.prototype.bind.call(proxy, this_value, &quot;foo&quot;);</span>
+<span class="lineNum">      30 </span><span class="lineCov">          1 : assertEquals(2, result.length);</span>
+<span class="lineNum">      31 </span><span class="lineCov">          1 : assertEquals(target.__proto__, result.__proto__);</span>
+<span class="lineNum">      32 </span><span class="lineCov">          1 : assertEquals(this_value, result());</span>
+<span class="lineNum">      33 </span><span class="lineCov">          1 : assertEquals(5, log.length);</span>
+<span class="lineNum">      34 </span><span class="lineCov">          1 : for (var i in log) assertSame(target, log[i][1]);</span>
+<span class="lineNum">      35 </span><span class="lineCov">          1 : assertEquals([&quot;getPrototypeOf&quot;, target], log[0]);</span>
+<span class="lineNum">      36 </span><span class="lineCov">          1 : assertEquals([&quot;getOwnPropertyDescriptor&quot;, target, &quot;length&quot;], log[1]);</span>
+<span class="lineNum">      37 </span><span class="lineCov">          1 : assertEquals([&quot;get&quot;, target, &quot;length&quot;, proxy], log[2]);</span>
+<span class="lineNum">      38 </span><span class="lineCov">          1 : assertEquals([&quot;get&quot;, target, &quot;name&quot;, proxy], log[3]);</span>
+<span class="lineNum">      39 </span><span class="lineCov">          1 : assertEquals([&quot;apply&quot;, target, this_value, [&quot;foo&quot;]], log[4]);</span>
+<span class="lineNum">      40 </span><span class="lineCov">          1 : assertEquals(new target(), new result());</span>
+<span class="lineNum">      41 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      42 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      43 </span><span class="lineCov">          1 : // Custom prototype</span>
+<span class="lineNum">      44 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      45 </span><span class="lineCov">          1 : log.length = 0;</span>
+<span class="lineNum">      46 </span><span class="lineCov">          1 : target.__proto__ = {radio: &quot;gaga&quot;};</span>
+<span class="lineNum">      47 </span><span class="lineCov">          1 : result = Function.prototype.bind.call(proxy, this_value, &quot;foo&quot;);</span>
+<span class="lineNum">      48 </span><span class="lineCov">          1 : assertEquals(2, result.length);</span>
+<span class="lineNum">      49 </span><span class="lineCov">          1 : assertSame(target.__proto__, result.__proto__);</span>
+<span class="lineNum">      50 </span><span class="lineCov">          1 : assertEquals(this_value, result());</span>
+<span class="lineNum">      51 </span><span class="lineCov">          1 : assertEquals(5, log.length);</span>
+<span class="lineNum">      52 </span><span class="lineCov">          1 : for (var i in log) assertSame(target, log[i][1]);</span>
+<span class="lineNum">      53 </span><span class="lineCov">          1 : assertEquals([&quot;getPrototypeOf&quot;, target], log[0]);</span>
+<span class="lineNum">      54 </span><span class="lineCov">          1 : assertEquals([&quot;getOwnPropertyDescriptor&quot;, target, &quot;length&quot;], log[1]);</span>
+<span class="lineNum">      55 </span><span class="lineCov">          1 : assertEquals([&quot;get&quot;, target, &quot;length&quot;, proxy], log[2]);</span>
+<span class="lineNum">      56 </span><span class="lineCov">          1 : assertEquals([&quot;get&quot;, target, &quot;name&quot;, proxy], log[3]);</span>
+<span class="lineNum">      57 </span><span class="lineCov">          1 : assertEquals([&quot;apply&quot;, target, this_value, [&quot;foo&quot;]], log[4]);</span>
+<span class="lineNum">      58 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      59 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      60 </span><span class="lineCov">          1 : // Custom length</span>
+<span class="lineNum">      61 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      62 </span><span class="lineCov">          1 : handler = {</span>
 <span class="lineNum">      63 </span><span class="lineCov">          2 :   get() {return 42},</span>
 <span class="lineNum">      64 </span><span class="lineCov">          1 :   getOwnPropertyDescriptor() {return {configurable: true}}</span>
-<span class="lineNum">      65 </span><span class="lineNoCov">          0 : };</span>
-<span class="lineNum">      66 </span><span class="lineNoCov">          0 : proxy = new Proxy(target, handler);</span>
-<span class="lineNum">      67 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      68 </span><span class="lineNoCov">          0 : result = Function.prototype.bind.call(proxy, this_value, &quot;foo&quot;);</span>
-<span class="lineNum">      69 </span><span class="lineNoCov">          0 : assertEquals(41, result.length);</span>
-<span class="lineNum">      70 </span><span class="lineNoCov">          0 : assertEquals(this_value, result());</span>
-<span class="lineNum">      71 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      72 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      73 </span><span class="lineNoCov">          0 : // Long length</span>
-<span class="lineNum">      74 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      75 </span><span class="lineNoCov">          0 : handler = {</span>
+<span class="lineNum">      65 </span><span class="lineCov">          1 : };</span>
+<span class="lineNum">      66 </span><span class="lineCov">          1 : proxy = new Proxy(target, handler);</span>
+<span class="lineNum">      67 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      68 </span><span class="lineCov">          1 : result = Function.prototype.bind.call(proxy, this_value, &quot;foo&quot;);</span>
+<span class="lineNum">      69 </span><span class="lineCov">          1 : assertEquals(41, result.length);</span>
+<span class="lineNum">      70 </span><span class="lineCov">          1 : assertEquals(this_value, result());</span>
+<span class="lineNum">      71 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      72 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      73 </span><span class="lineCov">          1 : // Long length</span>
+<span class="lineNum">      74 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      75 </span><span class="lineCov">          1 : handler = {</span>
 <span class="lineNum">      76 </span><span class="lineCov">          2 :   get() {return Math.pow(2, 100)},</span>
 <span class="lineNum">      77 </span><span class="lineCov">          1 :   getOwnPropertyDescriptor() {return {configurable: true}}</span>
-<span class="lineNum">      78 </span><span class="lineNoCov">          0 : };</span>
-<span class="lineNum">      79 </span><span class="lineNoCov">          0 : proxy = new Proxy(target, handler);</span>
-<span class="lineNum">      80 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      81 </span><span class="lineNoCov">          0 : result = Function.prototype.bind.call(proxy, this_value, &quot;foo&quot;);</span>
-<span class="lineNum">      82 </span><span class="lineNoCov">          0 : assertEquals(Math.pow(2, 100) - 1, result.length);</span>
-<span class="lineNum">      83 </span><span class="lineNoCov">          0 : assertEquals(this_value, result());</span>
-<span class="lineNum">      84 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      85 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      86 </span><span class="lineNoCov">          0 : // Very long length</span>
-<span class="lineNum">      87 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      88 </span><span class="lineNoCov">          0 : handler = {</span>
+<span class="lineNum">      78 </span><span class="lineCov">          1 : };</span>
+<span class="lineNum">      79 </span><span class="lineCov">          1 : proxy = new Proxy(target, handler);</span>
+<span class="lineNum">      80 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      81 </span><span class="lineCov">          1 : result = Function.prototype.bind.call(proxy, this_value, &quot;foo&quot;);</span>
+<span class="lineNum">      82 </span><span class="lineCov">          1 : assertEquals(Math.pow(2, 100) - 1, result.length);</span>
+<span class="lineNum">      83 </span><span class="lineCov">          1 : assertEquals(this_value, result());</span>
+<span class="lineNum">      84 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      85 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      86 </span><span class="lineCov">          1 : // Very long length</span>
+<span class="lineNum">      87 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      88 </span><span class="lineCov">          1 : handler = {</span>
 <span class="lineNum">      89 </span><span class="lineCov">          2 :   get() {return 1/0},</span>
 <span class="lineNum">      90 </span><span class="lineCov">          1 :   getOwnPropertyDescriptor() {return {configurable: true}}</span>
-<span class="lineNum">      91 </span><span class="lineNoCov">          0 : };</span>
-<span class="lineNum">      92 </span><span class="lineNoCov">          0 : proxy = new Proxy(target, handler);</span>
-<span class="lineNum">      93 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      94 </span><span class="lineNoCov">          0 : result = Function.prototype.bind.call(proxy, this_value, &quot;foo&quot;);</span>
-<span class="lineNum">      95 </span><span class="lineNoCov">          0 : assertEquals(1/0, result.length);</span>
-<span class="lineNum">      96 </span><span class="lineNoCov">          0 : assertEquals(this_value, result());</span>
-<span class="lineNum">      97 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      98 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      99 </span><span class="lineNoCov">          0 : // Non-integer length</span>
-<span class="lineNum">     100 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     101 </span><span class="lineNoCov">          0 : handler = {</span>
+<span class="lineNum">      91 </span><span class="lineCov">          1 : };</span>
+<span class="lineNum">      92 </span><span class="lineCov">          1 : proxy = new Proxy(target, handler);</span>
+<span class="lineNum">      93 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      94 </span><span class="lineCov">          1 : result = Function.prototype.bind.call(proxy, this_value, &quot;foo&quot;);</span>
+<span class="lineNum">      95 </span><span class="lineCov">          1 : assertEquals(1/0, result.length);</span>
+<span class="lineNum">      96 </span><span class="lineCov">          1 : assertEquals(this_value, result());</span>
+<span class="lineNum">      97 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      98 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      99 </span><span class="lineCov">          1 : // Non-integer length</span>
+<span class="lineNum">     100 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     101 </span><span class="lineCov">          1 : handler = {</span>
 <span class="lineNum">     102 </span><span class="lineCov">          2 :   get() {return 4.2},</span>
 <span class="lineNum">     103 </span><span class="lineCov">          1 :   getOwnPropertyDescriptor() {return {configurable: true}}</span>
-<span class="lineNum">     104 </span><span class="lineNoCov">          0 : };</span>
-<span class="lineNum">     105 </span><span class="lineNoCov">          0 : proxy = new Proxy(target, handler);</span>
-<span class="lineNum">     106 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     107 </span><span class="lineNoCov">          0 : result = Function.prototype.bind.call(proxy, this_value, &quot;foo&quot;);</span>
-<span class="lineNum">     108 </span><span class="lineNoCov">          0 : assertEquals(3, result.length);</span>
-<span class="lineNum">     109 </span><span class="lineNoCov">          0 : assertEquals(this_value, result());</span>
-<span class="lineNum">     110 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     111 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     112 </span><span class="lineNoCov">          0 : // Undefined length</span>
-<a name="113"><span class="lineNum">     113 </span><span class="lineNoCov">          0 : </span></a>
-<a name="114"><span class="lineNum">     114 </span><span class="lineNoCov">          0 : handler = {</span></a>
+<span class="lineNum">     104 </span><span class="lineCov">          1 : };</span>
+<span class="lineNum">     105 </span><span class="lineCov">          1 : proxy = new Proxy(target, handler);</span>
+<span class="lineNum">     106 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     107 </span><span class="lineCov">          1 : result = Function.prototype.bind.call(proxy, this_value, &quot;foo&quot;);</span>
+<span class="lineNum">     108 </span><span class="lineCov">          1 : assertEquals(3, result.length);</span>
+<span class="lineNum">     109 </span><span class="lineCov">          1 : assertEquals(this_value, result());</span>
+<span class="lineNum">     110 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     111 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     112 </span><span class="lineCov">          1 : // Undefined length</span>
+<a name="113"><span class="lineNum">     113 </span><span class="lineCov">          1 : </span></a>
+<a name="114"><span class="lineNum">     114 </span><span class="lineCov">          1 : handler = {</span></a>
 <span class="lineNum">     115 </span><span class="lineCov">          2 :   get() {},</span>
 <span class="lineNum">     116 </span><span class="lineCov">          1 :   getOwnPropertyDescriptor() {return {configurable: true}}</span>
-<span class="lineNum">     117 </span><span class="lineNoCov">          0 : };</span>
-<span class="lineNum">     118 </span><span class="lineNoCov">          0 : proxy = new Proxy(target, handler);</span>
-<span class="lineNum">     119 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     120 </span><span class="lineNoCov">          0 : result = Function.prototype.bind.call(proxy, this_value, &quot;foo&quot;);</span>
-<span class="lineNum">     121 </span><span class="lineNoCov">          0 : assertEquals(0, result.length);</span>
-<span class="lineNum">     122 </span><span class="lineNoCov">          0 : assertEquals(this_value, result());</span>
-<span class="lineNum">     123 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     124 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     125 </span><span class="lineNoCov">          0 : // Non-callable</span>
-<span class="lineNum">     126 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     117 </span><span class="lineCov">          1 : };</span>
+<span class="lineNum">     118 </span><span class="lineCov">          1 : proxy = new Proxy(target, handler);</span>
+<span class="lineNum">     119 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     120 </span><span class="lineCov">          1 : result = Function.prototype.bind.call(proxy, this_value, &quot;foo&quot;);</span>
+<span class="lineNum">     121 </span><span class="lineCov">          1 : assertEquals(0, result.length);</span>
+<span class="lineNum">     122 </span><span class="lineCov">          1 : assertEquals(this_value, result());</span>
+<span class="lineNum">     123 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     124 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     125 </span><span class="lineCov">          1 : // Non-callable</span>
+<span class="lineNum">     126 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     127 </span><span class="lineCov">          1 : assertThrows(() =&gt; Function.prototype.bind.call(new Proxy({}, {})), TypeError);</span>
 <span class="lineNum">     128 </span><span class="lineCov">          1 : assertThrows(() =&gt; Function.prototype.bind.call(new Proxy([], {})), TypeError);</span>
-<span class="lineNum">     129 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     130 </span><span class="lineNoCov">          0 : </span>
-<a name="131"><span class="lineNum">     131 </span><span class="lineNoCov">          0 : // Non-constructable</span></a>
-<span class="lineNum">     132 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     129 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     130 </span><span class="lineCov">          1 : </span>
+<a name="131"><span class="lineNum">     131 </span><span class="lineCov">          1 : // Non-constructable</span></a>
+<span class="lineNum">     132 </span><span class="lineCov">          1 : </span>
 <a name="133"><span class="lineNum">     133 </span><span class="lineCov">          1 : result = Function.prototype.bind.call(() =&gt; 42, this_value, &quot;foo&quot;);</span></a>
-<span class="lineNum">     134 </span><span class="lineNoCov">          0 : assertEquals(42, result());</span>
+<span class="lineNum">     134 </span><span class="lineCov">          1 : assertEquals(42, result());</span>
 <span class="lineNum">     135 </span><span class="lineCov">          1 : assertThrows(() =&gt; new result());</span>
 </pre>
       </td>

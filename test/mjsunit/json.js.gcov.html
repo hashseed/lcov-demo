@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">98</td>
-            <td class="headerCovTableEntry">524</td>
-            <td class="headerCovTableEntryLo">18.7 %</td>
+            <td class="headerCovTableEntry">526</td>
+            <td class="headerCovTableEntry">526</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">27</td>
@@ -93,498 +93,498 @@
 <a name="31"><span class="lineNum">      31 </span><span class="lineCov">          1 : assertEquals(&quot;2005-05-05T05:05:05.000Z&quot;, new Date(&quot;2005-05-05 05:05:05 GMT&quot;).toJSON());</span></a>
 <span class="lineNum">      32 </span><span class="lineCov">          1 : var n1 = new Date(10000);</span>
 <span class="lineNum">      33 </span><span class="lineCov">          1 : n1.toISOString = function () { return &quot;foo&quot;; };</span>
-<span class="lineNum">      34 </span><span class="lineNoCov">          0 : assertEquals(&quot;foo&quot;, n1.toJSON());</span>
-<span class="lineNum">      35 </span><span class="lineNoCov">          0 : var n2 = new Date(10001);</span>
-<span class="lineNum">      36 </span><span class="lineNoCov">          0 : n2.toISOString = null;</span>
+<span class="lineNum">      34 </span><span class="lineCov">          1 : assertEquals(&quot;foo&quot;, n1.toJSON());</span>
+<span class="lineNum">      35 </span><span class="lineCov">          1 : var n2 = new Date(10001);</span>
+<span class="lineNum">      36 </span><span class="lineCov">          1 : n2.toISOString = null;</span>
 <a name="37"><span class="lineNum">      37 </span><span class="lineCov">          1 : assertThrows(function () { n2.toJSON(); }, TypeError);</span></a>
-<span class="lineNum">      38 </span><span class="lineNoCov">          0 : var n4 = new Date(10003);</span>
+<span class="lineNum">      38 </span><span class="lineCov">          1 : var n4 = new Date(10003);</span>
 <span class="lineNum">      39 </span><span class="lineCov">          1 : n4.toISOString = function () {</span>
 <span class="lineNum">      40 </span><span class="lineCov">          1 :   assertEquals(0, arguments.length);</span>
 <span class="lineNum">      41 </span><span class="lineCov">          1 :   assertEquals(this, n4);</span>
 <span class="lineNum">      42 </span><span class="lineCov">          1 :   return null;</span>
 <span class="lineNum">      43 </span><span class="lineCov">          1 : };</span>
-<span class="lineNum">      44 </span><span class="lineNoCov">          0 : assertEquals(null, n4.toJSON());</span>
-<span class="lineNum">      45 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      46 </span><span class="lineNoCov">          0 : assertTrue(Object.prototype === JSON.__proto__);</span>
-<span class="lineNum">      47 </span><span class="lineNoCov">          0 : assertEquals(&quot;[object JSON]&quot;, Object.prototype.toString.call(JSON));</span>
-<span class="lineNum">      48 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      49 </span><span class="lineNoCov">          0 : //Test Date.prototype.toJSON as generic function.</span>
-<span class="lineNum">      50 </span><span class="lineNoCov">          0 : var d1 = {toJSON: Date.prototype.toJSON,</span>
+<span class="lineNum">      44 </span><span class="lineCov">          1 : assertEquals(null, n4.toJSON());</span>
+<span class="lineNum">      45 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      46 </span><span class="lineCov">          1 : assertTrue(Object.prototype === JSON.__proto__);</span>
+<span class="lineNum">      47 </span><span class="lineCov">          1 : assertEquals(&quot;[object JSON]&quot;, Object.prototype.toString.call(JSON));</span>
+<span class="lineNum">      48 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      49 </span><span class="lineCov">          1 : //Test Date.prototype.toJSON as generic function.</span>
+<span class="lineNum">      50 </span><span class="lineCov">          1 : var d1 = {toJSON: Date.prototype.toJSON,</span>
 <span class="lineNum">      51 </span><span class="lineCov">          1 :          toISOString: function() { return 42; }};</span>
-<span class="lineNum">      52 </span><span class="lineNoCov">          0 : assertEquals(42, d1.toJSON());</span>
-<span class="lineNum">      53 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      54 </span><span class="lineNoCov">          0 : var d2 = {toJSON: Date.prototype.toJSON,</span>
+<span class="lineNum">      52 </span><span class="lineCov">          1 : assertEquals(42, d1.toJSON());</span>
+<span class="lineNum">      53 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      54 </span><span class="lineCov">          1 : var d2 = {toJSON: Date.prototype.toJSON,</span>
 <span class="lineNum">      55 </span><span class="lineCov">          1 :           valueOf: function() { return Infinity; },</span>
-<span class="lineNum">      56 </span><span class="lineNoCov">          0 :           toISOString: function() { return 42; }};</span>
-<span class="lineNum">      57 </span><span class="lineNoCov">          0 : assertEquals(null, d2.toJSON());</span>
-<span class="lineNum">      58 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      59 </span><span class="lineNoCov">          0 : var d3 = {toJSON: Date.prototype.toJSON,</span>
-<span class="lineNum">      60 </span><span class="lineNoCov">          0 :           valueOf: &quot;not callable&quot;,</span>
+<span class="lineNum">      56 </span><span class="lineCov">          1 :           toISOString: function() { return 42; }};</span>
+<span class="lineNum">      57 </span><span class="lineCov">          1 : assertEquals(null, d2.toJSON());</span>
+<span class="lineNum">      58 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      59 </span><span class="lineCov">          1 : var d3 = {toJSON: Date.prototype.toJSON,</span>
+<span class="lineNum">      60 </span><span class="lineCov">          1 :           valueOf: &quot;not callable&quot;,</span>
 <span class="lineNum">      61 </span><span class="lineCov">          1 :           toString: function() { return Infinity; },</span>
-<span class="lineNum">      62 </span><span class="lineNoCov">          0 :           toISOString: function() { return 42; }};</span>
-<span class="lineNum">      63 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      64 </span><span class="lineNoCov">          0 : assertEquals(null, d3.toJSON());</span>
-<span class="lineNum">      65 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      66 </span><span class="lineNoCov">          0 : var d4 = {toJSON: Date.prototype.toJSON,</span>
-<span class="lineNum">      67 </span><span class="lineNoCov">          0 :           valueOf: &quot;not callable&quot;,</span>
-<span class="lineNum">      68 </span><span class="lineNoCov">          0 :           toString: &quot;not callable either&quot;,</span>
-<span class="lineNum">      69 </span><span class="lineNoCov">          0 :           toISOString: function() { return 42; }};</span>
-<span class="lineNum">      70 </span><span class="lineNoCov">          0 : assertThrows(&quot;d4.toJSON()&quot;, TypeError);  // ToPrimitive throws.</span>
-<span class="lineNum">      71 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      72 </span><span class="lineNoCov">          0 : var d5 = {toJSON: Date.prototype.toJSON,</span>
-<span class="lineNum">      73 </span><span class="lineNoCov">          0 :           valueOf: &quot;not callable&quot;,</span>
+<span class="lineNum">      62 </span><span class="lineCov">          1 :           toISOString: function() { return 42; }};</span>
+<span class="lineNum">      63 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      64 </span><span class="lineCov">          1 : assertEquals(null, d3.toJSON());</span>
+<span class="lineNum">      65 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      66 </span><span class="lineCov">          1 : var d4 = {toJSON: Date.prototype.toJSON,</span>
+<span class="lineNum">      67 </span><span class="lineCov">          1 :           valueOf: &quot;not callable&quot;,</span>
+<span class="lineNum">      68 </span><span class="lineCov">          1 :           toString: &quot;not callable either&quot;,</span>
+<span class="lineNum">      69 </span><span class="lineCov">          1 :           toISOString: function() { return 42; }};</span>
+<span class="lineNum">      70 </span><span class="lineCov">          1 : assertThrows(&quot;d4.toJSON()&quot;, TypeError);  // ToPrimitive throws.</span>
+<span class="lineNum">      71 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      72 </span><span class="lineCov">          1 : var d5 = {toJSON: Date.prototype.toJSON,</span>
+<span class="lineNum">      73 </span><span class="lineCov">          1 :           valueOf: &quot;not callable&quot;,</span>
 <span class="lineNum">      74 </span><span class="lineCov">          1 :           toString: function() { return &quot;Infinity&quot;; },</span>
 <span class="lineNum">      75 </span><span class="lineCov">          1 :           toISOString: function() { return 42; }};</span>
-<span class="lineNum">      76 </span><span class="lineNoCov">          0 : assertEquals(42, d5.toJSON());</span>
-<a name="77"><span class="lineNum">      77 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">      78 </span><span class="lineNoCov">          0 : var d6 = {toJSON: Date.prototype.toJSON,</span>
+<span class="lineNum">      76 </span><span class="lineCov">          1 : assertEquals(42, d5.toJSON());</span>
+<a name="77"><span class="lineNum">      77 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      78 </span><span class="lineCov">          1 : var d6 = {toJSON: Date.prototype.toJSON,</span>
 <span class="lineNum">      79 </span><span class="lineCov">          1 :           toISOString: function() { return [&quot;not primitive&quot;]; }};</span>
-<span class="lineNum">      80 </span><span class="lineNoCov">          0 : assertEquals([&quot;not primitive&quot;], d6.toJSON());</span>
-<span class="lineNum">      81 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      82 </span><span class="lineNoCov">          0 : var d7 = {toJSON: Date.prototype.toJSON,</span>
-<span class="lineNum">      83 </span><span class="lineNoCov">          0 :           ISOString: &quot;not callable&quot;};</span>
-<span class="lineNum">      84 </span><span class="lineNoCov">          0 : assertThrows(&quot;d7.toJSON()&quot;, TypeError);</span>
-<span class="lineNum">      85 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      86 </span><span class="lineNoCov">          0 : // DontEnum</span>
-<span class="lineNum">      87 </span><span class="lineNoCov">          0 : for (var p in this) {</span>
-<span class="lineNum">      88 </span><span class="lineNoCov">          0 :   assertFalse(p == &quot;JSON&quot;);</span>
-<span class="lineNum">      89 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">      90 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      91 </span><span class="lineNoCov">          0 : // Parse</span>
-<span class="lineNum">      92 </span><span class="lineNoCov">          0 : assertEquals({}, JSON.parse(&quot;{}&quot;));</span>
-<span class="lineNum">      93 </span><span class="lineNoCov">          0 : assertEquals({42:37}, JSON.parse('{&quot;42&quot;:37}'));</span>
-<span class="lineNum">      94 </span><span class="lineNoCov">          0 : assertEquals(null, JSON.parse(&quot;null&quot;));</span>
-<span class="lineNum">      95 </span><span class="lineNoCov">          0 : assertEquals(true, JSON.parse(&quot;true&quot;));</span>
-<span class="lineNum">      96 </span><span class="lineNoCov">          0 : assertEquals(false, JSON.parse(&quot;false&quot;));</span>
-<span class="lineNum">      97 </span><span class="lineNoCov">          0 : assertEquals(&quot;foo&quot;, JSON.parse('&quot;foo&quot;'));</span>
-<span class="lineNum">      98 </span><span class="lineNoCov">          0 : assertEquals(&quot;f\no&quot;, JSON.parse('&quot;f\\no&quot;'));</span>
-<span class="lineNum">      99 </span><span class="lineNoCov">          0 : assertEquals(&quot;\b\f\n\r\t\&quot;\u2028\/\\&quot;,</span>
-<span class="lineNum">     100 </span><span class="lineNoCov">          0 :              JSON.parse('&quot;\\b\\f\\n\\r\\t\\&quot;\\u2028\\/\\\\&quot;'));</span>
-<span class="lineNum">     101 </span><span class="lineNoCov">          0 : assertEquals([1.1], JSON.parse(&quot;[1.1]&quot;));</span>
-<span class="lineNum">     102 </span><span class="lineNoCov">          0 : assertEquals([1], JSON.parse(&quot;[1.0]&quot;));</span>
-<span class="lineNum">     103 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     104 </span><span class="lineNoCov">          0 : assertEquals(0, JSON.parse(&quot;0&quot;));</span>
-<span class="lineNum">     105 </span><span class="lineNoCov">          0 : assertEquals(1, JSON.parse(&quot;1&quot;));</span>
-<span class="lineNum">     106 </span><span class="lineNoCov">          0 : assertEquals(0.1, JSON.parse(&quot;0.1&quot;));</span>
-<span class="lineNum">     107 </span><span class="lineNoCov">          0 : assertEquals(1.1, JSON.parse(&quot;1.1&quot;));</span>
-<span class="lineNum">     108 </span><span class="lineNoCov">          0 : assertEquals(1.1, JSON.parse(&quot;1.100000&quot;));</span>
-<span class="lineNum">     109 </span><span class="lineNoCov">          0 : assertEquals(1.111111, JSON.parse(&quot;1.111111&quot;));</span>
-<span class="lineNum">     110 </span><span class="lineNoCov">          0 : assertEquals(-0, JSON.parse(&quot;-0&quot;));</span>
-<span class="lineNum">     111 </span><span class="lineNoCov">          0 : assertEquals(-1, JSON.parse(&quot;-1&quot;));</span>
-<span class="lineNum">     112 </span><span class="lineNoCov">          0 : assertEquals(-0.1, JSON.parse(&quot;-0.1&quot;));</span>
-<span class="lineNum">     113 </span><span class="lineNoCov">          0 : assertEquals(-1.1, JSON.parse(&quot;-1.1&quot;));</span>
-<span class="lineNum">     114 </span><span class="lineNoCov">          0 : assertEquals(-1.1, JSON.parse(&quot;-1.100000&quot;));</span>
-<span class="lineNum">     115 </span><span class="lineNoCov">          0 : assertEquals(-1.111111, JSON.parse(&quot;-1.111111&quot;));</span>
-<span class="lineNum">     116 </span><span class="lineNoCov">          0 : assertEquals(11, JSON.parse(&quot;1.1e1&quot;));</span>
-<span class="lineNum">     117 </span><span class="lineNoCov">          0 : assertEquals(11, JSON.parse(&quot;1.1e+1&quot;));</span>
-<span class="lineNum">     118 </span><span class="lineNoCov">          0 : assertEquals(0.11, JSON.parse(&quot;1.1e-1&quot;));</span>
-<span class="lineNum">     119 </span><span class="lineNoCov">          0 : assertEquals(11, JSON.parse(&quot;1.1E1&quot;));</span>
-<span class="lineNum">     120 </span><span class="lineNoCov">          0 : assertEquals(11, JSON.parse(&quot;1.1E+1&quot;));</span>
-<span class="lineNum">     121 </span><span class="lineNoCov">          0 : assertEquals(0.11, JSON.parse(&quot;1.1E-1&quot;));</span>
-<span class="lineNum">     122 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     123 </span><span class="lineNoCov">          0 : assertEquals([], JSON.parse(&quot;[]&quot;));</span>
-<span class="lineNum">     124 </span><span class="lineNoCov">          0 : assertEquals([1], JSON.parse(&quot;[1]&quot;));</span>
-<span class="lineNum">     125 </span><span class="lineNoCov">          0 : assertEquals([1, &quot;2&quot;, true, null], JSON.parse('[1, &quot;2&quot;, true, null]'));</span>
-<span class="lineNum">     126 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     127 </span><span class="lineNoCov">          0 : assertEquals(&quot;&quot;, JSON.parse('&quot;&quot;'));</span>
-<span class="lineNum">     128 </span><span class="lineNoCov">          0 : assertEquals([&quot;&quot;, &quot;&quot;, -0, &quot;&quot;], JSON.parse('[    &quot;&quot;  ,    &quot;&quot;  ,   -0,    &quot;&quot;]'));</span>
-<span class="lineNum">     129 </span><span class="lineNoCov">          0 : assertEquals(&quot;&quot;, JSON.parse('&quot;&quot;'));</span>
-<a name="130"><span class="lineNum">     130 </span><span class="lineNoCov">          0 : </span></a>
-<a name="131"><span class="lineNum">     131 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">      80 </span><span class="lineCov">          1 : assertEquals([&quot;not primitive&quot;], d6.toJSON());</span>
+<span class="lineNum">      81 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      82 </span><span class="lineCov">          1 : var d7 = {toJSON: Date.prototype.toJSON,</span>
+<span class="lineNum">      83 </span><span class="lineCov">          1 :           ISOString: &quot;not callable&quot;};</span>
+<span class="lineNum">      84 </span><span class="lineCov">          1 : assertThrows(&quot;d7.toJSON()&quot;, TypeError);</span>
+<span class="lineNum">      85 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      86 </span><span class="lineCov">          1 : // DontEnum</span>
+<span class="lineNum">      87 </span><span class="lineCov">          1 : for (var p in this) {</span>
+<span class="lineNum">      88 </span><span class="lineCov">          1 :   assertFalse(p == &quot;JSON&quot;);</span>
+<span class="lineNum">      89 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      90 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      91 </span><span class="lineCov">          1 : // Parse</span>
+<span class="lineNum">      92 </span><span class="lineCov">          1 : assertEquals({}, JSON.parse(&quot;{}&quot;));</span>
+<span class="lineNum">      93 </span><span class="lineCov">          1 : assertEquals({42:37}, JSON.parse('{&quot;42&quot;:37}'));</span>
+<span class="lineNum">      94 </span><span class="lineCov">          1 : assertEquals(null, JSON.parse(&quot;null&quot;));</span>
+<span class="lineNum">      95 </span><span class="lineCov">          1 : assertEquals(true, JSON.parse(&quot;true&quot;));</span>
+<span class="lineNum">      96 </span><span class="lineCov">          1 : assertEquals(false, JSON.parse(&quot;false&quot;));</span>
+<span class="lineNum">      97 </span><span class="lineCov">          1 : assertEquals(&quot;foo&quot;, JSON.parse('&quot;foo&quot;'));</span>
+<span class="lineNum">      98 </span><span class="lineCov">          1 : assertEquals(&quot;f\no&quot;, JSON.parse('&quot;f\\no&quot;'));</span>
+<span class="lineNum">      99 </span><span class="lineCov">          1 : assertEquals(&quot;\b\f\n\r\t\&quot;\u2028\/\\&quot;,</span>
+<span class="lineNum">     100 </span><span class="lineCov">          1 :              JSON.parse('&quot;\\b\\f\\n\\r\\t\\&quot;\\u2028\\/\\\\&quot;'));</span>
+<span class="lineNum">     101 </span><span class="lineCov">          1 : assertEquals([1.1], JSON.parse(&quot;[1.1]&quot;));</span>
+<span class="lineNum">     102 </span><span class="lineCov">          1 : assertEquals([1], JSON.parse(&quot;[1.0]&quot;));</span>
+<span class="lineNum">     103 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     104 </span><span class="lineCov">          1 : assertEquals(0, JSON.parse(&quot;0&quot;));</span>
+<span class="lineNum">     105 </span><span class="lineCov">          1 : assertEquals(1, JSON.parse(&quot;1&quot;));</span>
+<span class="lineNum">     106 </span><span class="lineCov">          1 : assertEquals(0.1, JSON.parse(&quot;0.1&quot;));</span>
+<span class="lineNum">     107 </span><span class="lineCov">          1 : assertEquals(1.1, JSON.parse(&quot;1.1&quot;));</span>
+<span class="lineNum">     108 </span><span class="lineCov">          1 : assertEquals(1.1, JSON.parse(&quot;1.100000&quot;));</span>
+<span class="lineNum">     109 </span><span class="lineCov">          1 : assertEquals(1.111111, JSON.parse(&quot;1.111111&quot;));</span>
+<span class="lineNum">     110 </span><span class="lineCov">          1 : assertEquals(-0, JSON.parse(&quot;-0&quot;));</span>
+<span class="lineNum">     111 </span><span class="lineCov">          1 : assertEquals(-1, JSON.parse(&quot;-1&quot;));</span>
+<span class="lineNum">     112 </span><span class="lineCov">          1 : assertEquals(-0.1, JSON.parse(&quot;-0.1&quot;));</span>
+<span class="lineNum">     113 </span><span class="lineCov">          1 : assertEquals(-1.1, JSON.parse(&quot;-1.1&quot;));</span>
+<span class="lineNum">     114 </span><span class="lineCov">          1 : assertEquals(-1.1, JSON.parse(&quot;-1.100000&quot;));</span>
+<span class="lineNum">     115 </span><span class="lineCov">          1 : assertEquals(-1.111111, JSON.parse(&quot;-1.111111&quot;));</span>
+<span class="lineNum">     116 </span><span class="lineCov">          1 : assertEquals(11, JSON.parse(&quot;1.1e1&quot;));</span>
+<span class="lineNum">     117 </span><span class="lineCov">          1 : assertEquals(11, JSON.parse(&quot;1.1e+1&quot;));</span>
+<span class="lineNum">     118 </span><span class="lineCov">          1 : assertEquals(0.11, JSON.parse(&quot;1.1e-1&quot;));</span>
+<span class="lineNum">     119 </span><span class="lineCov">          1 : assertEquals(11, JSON.parse(&quot;1.1E1&quot;));</span>
+<span class="lineNum">     120 </span><span class="lineCov">          1 : assertEquals(11, JSON.parse(&quot;1.1E+1&quot;));</span>
+<span class="lineNum">     121 </span><span class="lineCov">          1 : assertEquals(0.11, JSON.parse(&quot;1.1E-1&quot;));</span>
+<span class="lineNum">     122 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     123 </span><span class="lineCov">          1 : assertEquals([], JSON.parse(&quot;[]&quot;));</span>
+<span class="lineNum">     124 </span><span class="lineCov">          1 : assertEquals([1], JSON.parse(&quot;[1]&quot;));</span>
+<span class="lineNum">     125 </span><span class="lineCov">          1 : assertEquals([1, &quot;2&quot;, true, null], JSON.parse('[1, &quot;2&quot;, true, null]'));</span>
+<span class="lineNum">     126 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     127 </span><span class="lineCov">          1 : assertEquals(&quot;&quot;, JSON.parse('&quot;&quot;'));</span>
+<span class="lineNum">     128 </span><span class="lineCov">          1 : assertEquals([&quot;&quot;, &quot;&quot;, -0, &quot;&quot;], JSON.parse('[    &quot;&quot;  ,    &quot;&quot;  ,   -0,    &quot;&quot;]'));</span>
+<span class="lineNum">     129 </span><span class="lineCov">          1 : assertEquals(&quot;&quot;, JSON.parse('&quot;&quot;'));</span>
+<a name="130"><span class="lineNum">     130 </span><span class="lineCov">          1 : </span></a>
+<a name="131"><span class="lineNum">     131 </span><span class="lineCov">          1 : </span></a>
 <span class="lineNum">     132 </span><span class="lineCov">          4 : function GetFilter(name) {</span>
 <span class="lineNum">     133 </span><span class="lineCov">         14 :   function Filter(key, value) {</span>
 <span class="lineNum">     134 </span><span class="lineCov">         14 :     return (key == name) ? undefined : value;</span>
 <span class="lineNum">     135 </span><span class="lineCov">         14 :   }</span>
-<span class="lineNum">     136 </span><span class="lineNoCov">          0 :   return Filter;</span>
-<span class="lineNum">     137 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">     138 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     139 </span><span class="lineNoCov">          0 : var pointJson = '{&quot;x&quot;: 1, &quot;y&quot;: 2}';</span>
-<span class="lineNum">     140 </span><span class="lineNoCov">          0 : assertEquals({'x': 1, 'y': 2}, JSON.parse(pointJson));</span>
-<span class="lineNum">     141 </span><span class="lineNoCov">          0 : assertEquals({'x': 1}, JSON.parse(pointJson, GetFilter('y')));</span>
-<span class="lineNum">     142 </span><span class="lineNoCov">          0 : assertEquals({'y': 2}, JSON.parse(pointJson, GetFilter('x')));</span>
-<span class="lineNum">     143 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     144 </span><span class="lineNoCov">          0 : assertEquals([1, 2, 3], JSON.parse(&quot;[1, 2, 3]&quot;));</span>
-<span class="lineNum">     145 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     146 </span><span class="lineNoCov">          0 : var array1 = JSON.parse(&quot;[1, 2, 3]&quot;, GetFilter(1));</span>
-<span class="lineNum">     147 </span><span class="lineNoCov">          0 : assertEquals([1, , 3], array1);</span>
-<span class="lineNum">     148 </span><span class="lineNoCov">          0 : assertFalse(array1.hasOwnProperty(1));  // assertEquals above is not enough</span>
-<span class="lineNum">     149 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     150 </span><span class="lineNoCov">          0 : var array2 = JSON.parse(&quot;[1, 2, 3]&quot;, GetFilter(2));</span>
-<span class="lineNum">     151 </span><span class="lineNoCov">          0 : assertEquals([1, 2, ,], array2);</span>
-<a name="152"><span class="lineNum">     152 </span><span class="lineNoCov">          0 : assertFalse(array2.hasOwnProperty(2));</span></a>
-<span class="lineNum">     153 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     136 </span><span class="lineCov">          4 :   return Filter;</span>
+<span class="lineNum">     137 </span><span class="lineCov">          4 : }</span>
+<span class="lineNum">     138 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     139 </span><span class="lineCov">          1 : var pointJson = '{&quot;x&quot;: 1, &quot;y&quot;: 2}';</span>
+<span class="lineNum">     140 </span><span class="lineCov">          1 : assertEquals({'x': 1, 'y': 2}, JSON.parse(pointJson));</span>
+<span class="lineNum">     141 </span><span class="lineCov">          1 : assertEquals({'x': 1}, JSON.parse(pointJson, GetFilter('y')));</span>
+<span class="lineNum">     142 </span><span class="lineCov">          1 : assertEquals({'y': 2}, JSON.parse(pointJson, GetFilter('x')));</span>
+<span class="lineNum">     143 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     144 </span><span class="lineCov">          1 : assertEquals([1, 2, 3], JSON.parse(&quot;[1, 2, 3]&quot;));</span>
+<span class="lineNum">     145 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     146 </span><span class="lineCov">          1 : var array1 = JSON.parse(&quot;[1, 2, 3]&quot;, GetFilter(1));</span>
+<span class="lineNum">     147 </span><span class="lineCov">          1 : assertEquals([1, , 3], array1);</span>
+<span class="lineNum">     148 </span><span class="lineCov">          1 : assertFalse(array1.hasOwnProperty(1));  // assertEquals above is not enough</span>
+<span class="lineNum">     149 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     150 </span><span class="lineCov">          1 : var array2 = JSON.parse(&quot;[1, 2, 3]&quot;, GetFilter(2));</span>
+<span class="lineNum">     151 </span><span class="lineCov">          1 : assertEquals([1, 2, ,], array2);</span>
+<a name="152"><span class="lineNum">     152 </span><span class="lineCov">          1 : assertFalse(array2.hasOwnProperty(2));</span></a>
+<span class="lineNum">     153 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     154 </span><span class="lineCov">         17 : function DoubleNumbers(key, value) {</span>
 <span class="lineNum">     155 </span><span class="lineCov">         17 :   return (typeof value == 'number') ? 2 * value : value;</span>
 <span class="lineNum">     156 </span><span class="lineCov">         17 : }</span>
-<span class="lineNum">     157 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     158 </span><span class="lineNoCov">          0 : var deepObject = '{&quot;a&quot;: {&quot;b&quot;: 1, &quot;c&quot;: 2}, &quot;d&quot;: {&quot;e&quot;: {&quot;f&quot;: 3}}}';</span>
-<span class="lineNum">     159 </span><span class="lineNoCov">          0 : assertEquals({&quot;a&quot;: {&quot;b&quot;: 1, &quot;c&quot;: 2}, &quot;d&quot;: {&quot;e&quot;: {&quot;f&quot;: 3}}},</span>
-<span class="lineNum">     160 </span><span class="lineNoCov">          0 :              JSON.parse(deepObject));</span>
-<span class="lineNum">     161 </span><span class="lineNoCov">          0 : assertEquals({&quot;a&quot;: {&quot;b&quot;: 2, &quot;c&quot;: 4}, &quot;d&quot;: {&quot;e&quot;: {&quot;f&quot;: 6}}},</span>
-<a name="162"><span class="lineNum">     162 </span><span class="lineNoCov">          0 :              JSON.parse(deepObject, DoubleNumbers));</span></a>
-<span class="lineNum">     163 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     157 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     158 </span><span class="lineCov">          1 : var deepObject = '{&quot;a&quot;: {&quot;b&quot;: 1, &quot;c&quot;: 2}, &quot;d&quot;: {&quot;e&quot;: {&quot;f&quot;: 3}}}';</span>
+<span class="lineNum">     159 </span><span class="lineCov">          1 : assertEquals({&quot;a&quot;: {&quot;b&quot;: 1, &quot;c&quot;: 2}, &quot;d&quot;: {&quot;e&quot;: {&quot;f&quot;: 3}}},</span>
+<span class="lineNum">     160 </span><span class="lineCov">          1 :              JSON.parse(deepObject));</span>
+<span class="lineNum">     161 </span><span class="lineCov">          1 : assertEquals({&quot;a&quot;: {&quot;b&quot;: 2, &quot;c&quot;: 4}, &quot;d&quot;: {&quot;e&quot;: {&quot;f&quot;: 6}}},</span>
+<a name="162"><span class="lineNum">     162 </span><span class="lineCov">          1 :              JSON.parse(deepObject, DoubleNumbers));</span></a>
+<span class="lineNum">     163 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     164 </span><span class="lineCov">         55 : function TestInvalid(str) {</span>
 <span class="lineNum">     165 </span><span class="lineCov">         55 :   assertThrows(function () { JSON.parse(str); }, SyntaxError);</span>
-<span class="lineNum">     166 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">     167 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     168 </span><span class="lineNoCov">          0 : TestInvalid('abcdef');</span>
-<span class="lineNum">     169 </span><span class="lineNoCov">          0 : TestInvalid('isNaN()');</span>
-<span class="lineNum">     170 </span><span class="lineNoCov">          0 : TestInvalid('{&quot;x&quot;: [1, 2, deepObject]}');</span>
-<span class="lineNum">     171 </span><span class="lineNoCov">          0 : TestInvalid('[1, [2, [deepObject], 3], 4]');</span>
-<span class="lineNum">     172 </span><span class="lineNoCov">          0 : TestInvalid('function () { return 0; }');</span>
-<span class="lineNum">     173 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     174 </span><span class="lineNoCov">          0 : TestInvalid(&quot;[1, 2&quot;);</span>
-<span class="lineNum">     175 </span><span class="lineNoCov">          0 : TestInvalid('{&quot;x&quot;: 3');</span>
-<span class="lineNum">     176 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     177 </span><span class="lineNoCov">          0 : // JavaScript number literals not valid in JSON.</span>
-<span class="lineNum">     178 </span><span class="lineNoCov">          0 : TestInvalid('[01]');</span>
-<span class="lineNum">     179 </span><span class="lineNoCov">          0 : TestInvalid('[.1]');</span>
-<span class="lineNum">     180 </span><span class="lineNoCov">          0 : TestInvalid('[1.]');</span>
-<span class="lineNum">     181 </span><span class="lineNoCov">          0 : TestInvalid('[1.e1]');</span>
-<span class="lineNum">     182 </span><span class="lineNoCov">          0 : TestInvalid('[-.1]');</span>
-<span class="lineNum">     183 </span><span class="lineNoCov">          0 : TestInvalid('[-1.]');</span>
-<span class="lineNum">     184 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     185 </span><span class="lineNoCov">          0 : // Plain invalid number literals.</span>
-<span class="lineNum">     186 </span><span class="lineNoCov">          0 : TestInvalid('-');</span>
-<span class="lineNum">     187 </span><span class="lineNoCov">          0 : TestInvalid('--1');</span>
-<span class="lineNum">     188 </span><span class="lineNoCov">          0 : TestInvalid('-1e');</span>
-<span class="lineNum">     189 </span><span class="lineNoCov">          0 : TestInvalid('1e--1]');</span>
-<span class="lineNum">     190 </span><span class="lineNoCov">          0 : TestInvalid('1e+-1');</span>
-<span class="lineNum">     191 </span><span class="lineNoCov">          0 : TestInvalid('1e-+1');</span>
-<span class="lineNum">     192 </span><span class="lineNoCov">          0 : TestInvalid('1e++1');</span>
-<span class="lineNum">     193 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     194 </span><span class="lineNoCov">          0 : // JavaScript string literals not valid in JSON.</span>
-<span class="lineNum">     195 </span><span class="lineNoCov">          0 : TestInvalid(&quot;'single quote'&quot;);  // Valid JavaScript</span>
-<span class="lineNum">     196 </span><span class="lineNoCov">          0 : TestInvalid('&quot;\\a invalid escape&quot;');</span>
-<span class="lineNum">     197 </span><span class="lineNoCov">          0 : TestInvalid('&quot;\\v invalid escape&quot;');  // Valid JavaScript</span>
-<span class="lineNum">     198 </span><span class="lineNoCov">          0 : TestInvalid('&quot;\\\' invalid escape&quot;');  // Valid JavaScript</span>
-<span class="lineNum">     199 </span><span class="lineNoCov">          0 : TestInvalid('&quot;\\x42 invalid escape&quot;');  // Valid JavaScript</span>
-<span class="lineNum">     200 </span><span class="lineNoCov">          0 : TestInvalid('&quot;\\u202 invalid escape&quot;');</span>
-<span class="lineNum">     201 </span><span class="lineNoCov">          0 : TestInvalid('&quot;\\012 invalid escape&quot;');</span>
-<span class="lineNum">     202 </span><span class="lineNoCov">          0 : TestInvalid('&quot;Unterminated string');</span>
-<span class="lineNum">     203 </span><span class="lineNoCov">          0 : TestInvalid('&quot;Unterminated string\\&quot;');</span>
-<span class="lineNum">     204 </span><span class="lineNoCov">          0 : TestInvalid('&quot;Unterminated string\\\\\\&quot;');</span>
-<span class="lineNum">     205 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     206 </span><span class="lineNoCov">          0 : // Test bad JSON that would be good JavaScript (ES5).</span>
-<span class="lineNum">     207 </span><span class="lineNoCov">          0 : TestInvalid(&quot;{true:42}&quot;);</span>
-<span class="lineNum">     208 </span><span class="lineNoCov">          0 : TestInvalid(&quot;{false:42}&quot;);</span>
-<span class="lineNum">     209 </span><span class="lineNoCov">          0 : TestInvalid(&quot;{null:42}&quot;);</span>
-<span class="lineNum">     210 </span><span class="lineNoCov">          0 : TestInvalid(&quot;{'foo':42}&quot;);</span>
-<span class="lineNum">     211 </span><span class="lineNoCov">          0 : TestInvalid(&quot;{42:42}&quot;);</span>
-<span class="lineNum">     212 </span><span class="lineNoCov">          0 : TestInvalid(&quot;{0:42}&quot;);</span>
-<span class="lineNum">     213 </span><span class="lineNoCov">          0 : TestInvalid(&quot;{-1:42}&quot;);</span>
-<span class="lineNum">     214 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     215 </span><span class="lineNoCov">          0 : // Test for trailing garbage detection.</span>
-<span class="lineNum">     216 </span><span class="lineNoCov">          0 : TestInvalid('42 px');</span>
-<span class="lineNum">     217 </span><span class="lineNoCov">          0 : TestInvalid('42 .2');</span>
-<span class="lineNum">     218 </span><span class="lineNoCov">          0 : TestInvalid('42 2');</span>
-<span class="lineNum">     219 </span><span class="lineNoCov">          0 : TestInvalid('42 e1');</span>
-<span class="lineNum">     220 </span><span class="lineNoCov">          0 : TestInvalid('&quot;42&quot; &quot;&quot;');</span>
-<span class="lineNum">     221 </span><span class="lineNoCov">          0 : TestInvalid('&quot;42&quot; &quot;&quot;');</span>
-<span class="lineNum">     222 </span><span class="lineNoCov">          0 : TestInvalid('&quot;&quot; &quot;&quot;');</span>
-<span class="lineNum">     223 </span><span class="lineNoCov">          0 : TestInvalid('true &quot;&quot;');</span>
-<span class="lineNum">     224 </span><span class="lineNoCov">          0 : TestInvalid('false &quot;&quot;');</span>
-<span class="lineNum">     225 </span><span class="lineNoCov">          0 : TestInvalid('null &quot;&quot;');</span>
-<span class="lineNum">     226 </span><span class="lineNoCov">          0 : TestInvalid('null &quot;&quot;');</span>
-<span class="lineNum">     227 </span><span class="lineNoCov">          0 : TestInvalid('[] &quot;&quot;');</span>
-<span class="lineNum">     228 </span><span class="lineNoCov">          0 : TestInvalid('[true] &quot;&quot;');</span>
-<span class="lineNum">     229 </span><span class="lineNoCov">          0 : TestInvalid('{} &quot;&quot;');</span>
-<span class="lineNum">     230 </span><span class="lineNoCov">          0 : TestInvalid('{&quot;x&quot;:true} &quot;&quot;');</span>
-<span class="lineNum">     231 </span><span class="lineNoCov">          0 : TestInvalid('&quot;Garbage&quot;&quot;After string&quot;');</span>
-<span class="lineNum">     232 </span><span class="lineNoCov">          0 : </span>
-<a name="233"><span class="lineNum">     233 </span><span class="lineNoCov">          0 : // Stringify</span></a>
-<span class="lineNum">     234 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     166 </span><span class="lineCov">         55 : }</span>
+<span class="lineNum">     167 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     168 </span><span class="lineCov">          1 : TestInvalid('abcdef');</span>
+<span class="lineNum">     169 </span><span class="lineCov">          1 : TestInvalid('isNaN()');</span>
+<span class="lineNum">     170 </span><span class="lineCov">          1 : TestInvalid('{&quot;x&quot;: [1, 2, deepObject]}');</span>
+<span class="lineNum">     171 </span><span class="lineCov">          1 : TestInvalid('[1, [2, [deepObject], 3], 4]');</span>
+<span class="lineNum">     172 </span><span class="lineCov">          1 : TestInvalid('function () { return 0; }');</span>
+<span class="lineNum">     173 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     174 </span><span class="lineCov">          1 : TestInvalid(&quot;[1, 2&quot;);</span>
+<span class="lineNum">     175 </span><span class="lineCov">          1 : TestInvalid('{&quot;x&quot;: 3');</span>
+<span class="lineNum">     176 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     177 </span><span class="lineCov">          1 : // JavaScript number literals not valid in JSON.</span>
+<span class="lineNum">     178 </span><span class="lineCov">          1 : TestInvalid('[01]');</span>
+<span class="lineNum">     179 </span><span class="lineCov">          1 : TestInvalid('[.1]');</span>
+<span class="lineNum">     180 </span><span class="lineCov">          1 : TestInvalid('[1.]');</span>
+<span class="lineNum">     181 </span><span class="lineCov">          1 : TestInvalid('[1.e1]');</span>
+<span class="lineNum">     182 </span><span class="lineCov">          1 : TestInvalid('[-.1]');</span>
+<span class="lineNum">     183 </span><span class="lineCov">          1 : TestInvalid('[-1.]');</span>
+<span class="lineNum">     184 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     185 </span><span class="lineCov">          1 : // Plain invalid number literals.</span>
+<span class="lineNum">     186 </span><span class="lineCov">          1 : TestInvalid('-');</span>
+<span class="lineNum">     187 </span><span class="lineCov">          1 : TestInvalid('--1');</span>
+<span class="lineNum">     188 </span><span class="lineCov">          1 : TestInvalid('-1e');</span>
+<span class="lineNum">     189 </span><span class="lineCov">          1 : TestInvalid('1e--1]');</span>
+<span class="lineNum">     190 </span><span class="lineCov">          1 : TestInvalid('1e+-1');</span>
+<span class="lineNum">     191 </span><span class="lineCov">          1 : TestInvalid('1e-+1');</span>
+<span class="lineNum">     192 </span><span class="lineCov">          1 : TestInvalid('1e++1');</span>
+<span class="lineNum">     193 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     194 </span><span class="lineCov">          1 : // JavaScript string literals not valid in JSON.</span>
+<span class="lineNum">     195 </span><span class="lineCov">          1 : TestInvalid(&quot;'single quote'&quot;);  // Valid JavaScript</span>
+<span class="lineNum">     196 </span><span class="lineCov">          1 : TestInvalid('&quot;\\a invalid escape&quot;');</span>
+<span class="lineNum">     197 </span><span class="lineCov">          1 : TestInvalid('&quot;\\v invalid escape&quot;');  // Valid JavaScript</span>
+<span class="lineNum">     198 </span><span class="lineCov">          1 : TestInvalid('&quot;\\\' invalid escape&quot;');  // Valid JavaScript</span>
+<span class="lineNum">     199 </span><span class="lineCov">          1 : TestInvalid('&quot;\\x42 invalid escape&quot;');  // Valid JavaScript</span>
+<span class="lineNum">     200 </span><span class="lineCov">          1 : TestInvalid('&quot;\\u202 invalid escape&quot;');</span>
+<span class="lineNum">     201 </span><span class="lineCov">          1 : TestInvalid('&quot;\\012 invalid escape&quot;');</span>
+<span class="lineNum">     202 </span><span class="lineCov">          1 : TestInvalid('&quot;Unterminated string');</span>
+<span class="lineNum">     203 </span><span class="lineCov">          1 : TestInvalid('&quot;Unterminated string\\&quot;');</span>
+<span class="lineNum">     204 </span><span class="lineCov">          1 : TestInvalid('&quot;Unterminated string\\\\\\&quot;');</span>
+<span class="lineNum">     205 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     206 </span><span class="lineCov">          1 : // Test bad JSON that would be good JavaScript (ES5).</span>
+<span class="lineNum">     207 </span><span class="lineCov">          1 : TestInvalid(&quot;{true:42}&quot;);</span>
+<span class="lineNum">     208 </span><span class="lineCov">          1 : TestInvalid(&quot;{false:42}&quot;);</span>
+<span class="lineNum">     209 </span><span class="lineCov">          1 : TestInvalid(&quot;{null:42}&quot;);</span>
+<span class="lineNum">     210 </span><span class="lineCov">          1 : TestInvalid(&quot;{'foo':42}&quot;);</span>
+<span class="lineNum">     211 </span><span class="lineCov">          1 : TestInvalid(&quot;{42:42}&quot;);</span>
+<span class="lineNum">     212 </span><span class="lineCov">          1 : TestInvalid(&quot;{0:42}&quot;);</span>
+<span class="lineNum">     213 </span><span class="lineCov">          1 : TestInvalid(&quot;{-1:42}&quot;);</span>
+<span class="lineNum">     214 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     215 </span><span class="lineCov">          1 : // Test for trailing garbage detection.</span>
+<span class="lineNum">     216 </span><span class="lineCov">          1 : TestInvalid('42 px');</span>
+<span class="lineNum">     217 </span><span class="lineCov">          1 : TestInvalid('42 .2');</span>
+<span class="lineNum">     218 </span><span class="lineCov">          1 : TestInvalid('42 2');</span>
+<span class="lineNum">     219 </span><span class="lineCov">          1 : TestInvalid('42 e1');</span>
+<span class="lineNum">     220 </span><span class="lineCov">          1 : TestInvalid('&quot;42&quot; &quot;&quot;');</span>
+<span class="lineNum">     221 </span><span class="lineCov">          1 : TestInvalid('&quot;42&quot; &quot;&quot;');</span>
+<span class="lineNum">     222 </span><span class="lineCov">          1 : TestInvalid('&quot;&quot; &quot;&quot;');</span>
+<span class="lineNum">     223 </span><span class="lineCov">          1 : TestInvalid('true &quot;&quot;');</span>
+<span class="lineNum">     224 </span><span class="lineCov">          1 : TestInvalid('false &quot;&quot;');</span>
+<span class="lineNum">     225 </span><span class="lineCov">          1 : TestInvalid('null &quot;&quot;');</span>
+<span class="lineNum">     226 </span><span class="lineCov">          1 : TestInvalid('null &quot;&quot;');</span>
+<span class="lineNum">     227 </span><span class="lineCov">          1 : TestInvalid('[] &quot;&quot;');</span>
+<span class="lineNum">     228 </span><span class="lineCov">          1 : TestInvalid('[true] &quot;&quot;');</span>
+<span class="lineNum">     229 </span><span class="lineCov">          1 : TestInvalid('{} &quot;&quot;');</span>
+<span class="lineNum">     230 </span><span class="lineCov">          1 : TestInvalid('{&quot;x&quot;:true} &quot;&quot;');</span>
+<span class="lineNum">     231 </span><span class="lineCov">          1 : TestInvalid('&quot;Garbage&quot;&quot;After string&quot;');</span>
+<span class="lineNum">     232 </span><span class="lineCov">          1 : </span>
+<a name="233"><span class="lineNum">     233 </span><span class="lineCov">          1 : // Stringify</span></a>
+<span class="lineNum">     234 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     235 </span><span class="lineCov">         36 : function TestStringify(expected, input) {</span>
 <span class="lineNum">     236 </span><span class="lineCov">         36 :   assertEquals(expected, JSON.stringify(input));</span>
 <a name="237"><span class="lineNum">     237 </span><span class="lineCov">      10075 :   assertEquals(expected, JSON.stringify(input, (key, value) =&gt; value));</span></a>
-<span class="lineNum">     238 </span><span class="lineNoCov">          0 :   assertEquals(JSON.stringify(input, null, &quot;=&quot;),</span>
+<span class="lineNum">     238 </span><span class="lineCov">         36 :   assertEquals(JSON.stringify(input, null, &quot;=&quot;),</span>
 <span class="lineNum">     239 </span><span class="lineCov">      10075 :                JSON.stringify(input, (key, value) =&gt; value, &quot;=&quot;));</span>
-<span class="lineNum">     240 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">     241 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     242 </span><span class="lineNoCov">          0 : TestStringify(&quot;true&quot;, true);</span>
-<span class="lineNum">     243 </span><span class="lineNoCov">          0 : TestStringify(&quot;false&quot;, false);</span>
-<span class="lineNum">     244 </span><span class="lineNoCov">          0 : TestStringify(&quot;null&quot;, null);</span>
+<span class="lineNum">     240 </span><span class="lineCov">         36 : }</span>
+<span class="lineNum">     241 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     242 </span><span class="lineCov">          1 : TestStringify(&quot;true&quot;, true);</span>
+<span class="lineNum">     243 </span><span class="lineCov">          1 : TestStringify(&quot;false&quot;, false);</span>
+<span class="lineNum">     244 </span><span class="lineCov">          1 : TestStringify(&quot;null&quot;, null);</span>
 <span class="lineNum">     245 </span><span class="lineCov">          4 : TestStringify(&quot;false&quot;, {toJSON: function () { return false; }});</span>
-<span class="lineNum">     246 </span><span class="lineNoCov">          0 : TestStringify(&quot;4&quot;, 4);</span>
-<span class="lineNum">     247 </span><span class="lineNoCov">          0 : TestStringify('&quot;foo&quot;', &quot;foo&quot;);</span>
-<span class="lineNum">     248 </span><span class="lineNoCov">          0 : TestStringify(&quot;null&quot;, Infinity);</span>
-<span class="lineNum">     249 </span><span class="lineNoCov">          0 : TestStringify(&quot;null&quot;, -Infinity);</span>
-<span class="lineNum">     250 </span><span class="lineNoCov">          0 : TestStringify(&quot;null&quot;, NaN);</span>
-<span class="lineNum">     251 </span><span class="lineNoCov">          0 : TestStringify(&quot;4&quot;, new Number(4));</span>
-<span class="lineNum">     252 </span><span class="lineNoCov">          0 : TestStringify('&quot;bar&quot;', new String(&quot;bar&quot;));</span>
-<span class="lineNum">     253 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     254 </span><span class="lineNoCov">          0 : TestStringify('&quot;foo\\u0000bar&quot;', &quot;foo\0bar&quot;);</span>
-<span class="lineNum">     255 </span><span class="lineNoCov">          0 : TestStringify('&quot;f\\&quot;o\'o\\\\b\\ba\\fr\\nb\\ra\\tz&quot;',</span>
-<span class="lineNum">     256 </span><span class="lineNoCov">          0 :               &quot;f\&quot;o\'o\\b\ba\fr\nb\ra\tz&quot;);</span>
-<span class="lineNum">     257 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     258 </span><span class="lineNoCov">          0 : TestStringify(&quot;[1,2,3]&quot;, [1, 2, 3]);</span>
-<span class="lineNum">     259 </span><span class="lineNoCov">          0 : assertEquals(&quot;[\n 1,\n 2,\n 3\n]&quot;, JSON.stringify([1, 2, 3], null, 1));</span>
-<span class="lineNum">     260 </span><span class="lineNoCov">          0 : assertEquals(&quot;[\n  1,\n  2,\n  3\n]&quot;, JSON.stringify([1, 2, 3], null, 2));</span>
-<span class="lineNum">     261 </span><span class="lineNoCov">          0 : assertEquals(&quot;[\n  1,\n  2,\n  3\n]&quot;,</span>
-<span class="lineNum">     262 </span><span class="lineNoCov">          0 :              JSON.stringify([1, 2, 3], null, new Number(2)));</span>
-<span class="lineNum">     263 </span><span class="lineNoCov">          0 : assertEquals(&quot;[\n^1,\n^2,\n^3\n]&quot;, JSON.stringify([1, 2, 3], null, &quot;^&quot;));</span>
-<span class="lineNum">     264 </span><span class="lineNoCov">          0 : assertEquals(&quot;[\n^1,\n^2,\n^3\n]&quot;,</span>
-<span class="lineNum">     265 </span><span class="lineNoCov">          0 :              JSON.stringify([1, 2, 3], null, new String(&quot;^&quot;)));</span>
-<span class="lineNum">     266 </span><span class="lineNoCov">          0 : assertEquals(&quot;[\n 1,\n 2,\n [\n  3,\n  [\n   4\n  ],\n  5\n ],\n 6,\n 7\n]&quot;,</span>
-<span class="lineNum">     267 </span><span class="lineNoCov">          0 :              JSON.stringify([1, 2, [3, [4], 5], 6, 7], null, 1));</span>
-<span class="lineNum">     268 </span><span class="lineNoCov">          0 : assertEquals(&quot;[]&quot;, JSON.stringify([], null, 1));</span>
-<span class="lineNum">     269 </span><span class="lineNoCov">          0 : assertEquals(&quot;[1,2,[3,[4],5],6,7]&quot;,</span>
-<span class="lineNum">     270 </span><span class="lineNoCov">          0 :              JSON.stringify([1, 2, [3, [4], 5], 6, 7], null));</span>
-<span class="lineNum">     271 </span><span class="lineNoCov">          0 : assertEquals(&quot;[2,4,[6,[8],10],12,14]&quot;,</span>
-<span class="lineNum">     272 </span><span class="lineNoCov">          0 :              JSON.stringify([1, 2, [3, [4], 5], 6, 7], DoubleNumbers));</span>
-<span class="lineNum">     273 </span><span class="lineNoCov">          0 : TestStringify('[&quot;a&quot;,&quot;ab&quot;,&quot;abc&quot;]', [&quot;a&quot;,&quot;ab&quot;,&quot;abc&quot;]);</span>
-<span class="lineNum">     274 </span><span class="lineNoCov">          0 : TestStringify('{&quot;a&quot;:1,&quot;c&quot;:true}', { a : 1,</span>
-<a name="275"><span class="lineNum">     275 </span><span class="lineNoCov">          0 :                                     b : function() { 1 },</span></a>
-<span class="lineNum">     276 </span><span class="lineNoCov">          0 :                                     c : true,</span>
-<span class="lineNum">     277 </span><span class="lineNoCov">          0 :                                     d : function() { 2 } });</span>
-<span class="lineNum">     278 </span><span class="lineNoCov">          0 : TestStringify('[1,null,true,null]',</span>
-<span class="lineNum">     279 </span><span class="lineNoCov">          0 :               [1, function() { 1 }, true, function() { 2 }]);</span>
-<span class="lineNum">     280 </span><span class="lineNoCov">          0 : TestStringify('&quot;toJSON 123&quot;',</span>
+<span class="lineNum">     246 </span><span class="lineCov">          1 : TestStringify(&quot;4&quot;, 4);</span>
+<span class="lineNum">     247 </span><span class="lineCov">          1 : TestStringify('&quot;foo&quot;', &quot;foo&quot;);</span>
+<span class="lineNum">     248 </span><span class="lineCov">          1 : TestStringify(&quot;null&quot;, Infinity);</span>
+<span class="lineNum">     249 </span><span class="lineCov">          1 : TestStringify(&quot;null&quot;, -Infinity);</span>
+<span class="lineNum">     250 </span><span class="lineCov">          1 : TestStringify(&quot;null&quot;, NaN);</span>
+<span class="lineNum">     251 </span><span class="lineCov">          1 : TestStringify(&quot;4&quot;, new Number(4));</span>
+<span class="lineNum">     252 </span><span class="lineCov">          1 : TestStringify('&quot;bar&quot;', new String(&quot;bar&quot;));</span>
+<span class="lineNum">     253 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     254 </span><span class="lineCov">          1 : TestStringify('&quot;foo\\u0000bar&quot;', &quot;foo\0bar&quot;);</span>
+<span class="lineNum">     255 </span><span class="lineCov">          1 : TestStringify('&quot;f\\&quot;o\'o\\\\b\\ba\\fr\\nb\\ra\\tz&quot;',</span>
+<span class="lineNum">     256 </span><span class="lineCov">          1 :               &quot;f\&quot;o\'o\\b\ba\fr\nb\ra\tz&quot;);</span>
+<span class="lineNum">     257 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     258 </span><span class="lineCov">          1 : TestStringify(&quot;[1,2,3]&quot;, [1, 2, 3]);</span>
+<span class="lineNum">     259 </span><span class="lineCov">          1 : assertEquals(&quot;[\n 1,\n 2,\n 3\n]&quot;, JSON.stringify([1, 2, 3], null, 1));</span>
+<span class="lineNum">     260 </span><span class="lineCov">          1 : assertEquals(&quot;[\n  1,\n  2,\n  3\n]&quot;, JSON.stringify([1, 2, 3], null, 2));</span>
+<span class="lineNum">     261 </span><span class="lineCov">          1 : assertEquals(&quot;[\n  1,\n  2,\n  3\n]&quot;,</span>
+<span class="lineNum">     262 </span><span class="lineCov">          1 :              JSON.stringify([1, 2, 3], null, new Number(2)));</span>
+<span class="lineNum">     263 </span><span class="lineCov">          1 : assertEquals(&quot;[\n^1,\n^2,\n^3\n]&quot;, JSON.stringify([1, 2, 3], null, &quot;^&quot;));</span>
+<span class="lineNum">     264 </span><span class="lineCov">          1 : assertEquals(&quot;[\n^1,\n^2,\n^3\n]&quot;,</span>
+<span class="lineNum">     265 </span><span class="lineCov">          1 :              JSON.stringify([1, 2, 3], null, new String(&quot;^&quot;)));</span>
+<span class="lineNum">     266 </span><span class="lineCov">          1 : assertEquals(&quot;[\n 1,\n 2,\n [\n  3,\n  [\n   4\n  ],\n  5\n ],\n 6,\n 7\n]&quot;,</span>
+<span class="lineNum">     267 </span><span class="lineCov">          1 :              JSON.stringify([1, 2, [3, [4], 5], 6, 7], null, 1));</span>
+<span class="lineNum">     268 </span><span class="lineCov">          1 : assertEquals(&quot;[]&quot;, JSON.stringify([], null, 1));</span>
+<span class="lineNum">     269 </span><span class="lineCov">          1 : assertEquals(&quot;[1,2,[3,[4],5],6,7]&quot;,</span>
+<span class="lineNum">     270 </span><span class="lineCov">          1 :              JSON.stringify([1, 2, [3, [4], 5], 6, 7], null));</span>
+<span class="lineNum">     271 </span><span class="lineCov">          1 : assertEquals(&quot;[2,4,[6,[8],10],12,14]&quot;,</span>
+<span class="lineNum">     272 </span><span class="lineCov">          1 :              JSON.stringify([1, 2, [3, [4], 5], 6, 7], DoubleNumbers));</span>
+<span class="lineNum">     273 </span><span class="lineCov">          1 : TestStringify('[&quot;a&quot;,&quot;ab&quot;,&quot;abc&quot;]', [&quot;a&quot;,&quot;ab&quot;,&quot;abc&quot;]);</span>
+<span class="lineNum">     274 </span><span class="lineCov">          1 : TestStringify('{&quot;a&quot;:1,&quot;c&quot;:true}', { a : 1,</span>
+<a name="275"><span class="lineNum">     275 </span><span class="lineCov">          1 :                                     b : function() { 1 },</span></a>
+<span class="lineNum">     276 </span><span class="lineCov">          1 :                                     c : true,</span>
+<span class="lineNum">     277 </span><span class="lineCov">          1 :                                     d : function() { 2 } });</span>
+<span class="lineNum">     278 </span><span class="lineCov">          1 : TestStringify('[1,null,true,null]',</span>
+<span class="lineNum">     279 </span><span class="lineCov">          1 :               [1, function() { 1 }, true, function() { 2 }]);</span>
+<span class="lineNum">     280 </span><span class="lineCov">          1 : TestStringify('&quot;toJSON 123&quot;',</span>
 <span class="lineNum">     281 </span><span class="lineCov">          4 :               { toJSON : function() { return 'toJSON 123'; } });</span>
-<span class="lineNum">     282 </span><span class="lineNoCov">          0 : TestStringify('{&quot;a&quot;:321}',</span>
+<span class="lineNum">     282 </span><span class="lineCov">          1 : TestStringify('{&quot;a&quot;:321}',</span>
 <span class="lineNum">     283 </span><span class="lineCov">          4 :               { a : { toJSON : function() { return 321; } } });</span>
-<span class="lineNum">     284 </span><span class="lineNoCov">          0 : var counter = 0;</span>
-<span class="lineNum">     285 </span><span class="lineNoCov">          0 : assertEquals('{&quot;getter&quot;:123}',</span>
+<span class="lineNum">     284 </span><span class="lineCov">          1 : var counter = 0;</span>
+<span class="lineNum">     285 </span><span class="lineCov">          1 : assertEquals('{&quot;getter&quot;:123}',</span>
 <span class="lineNum">     286 </span><span class="lineCov">          1 :              JSON.stringify({ get getter() { counter++; return 123; } }));</span>
-<a name="287"><span class="lineNum">     287 </span><span class="lineNoCov">          0 : assertEquals(1, counter);</span></a>
-<span class="lineNum">     288 </span><span class="lineNoCov">          0 : assertEquals('{&quot;getter&quot;:123}',</span>
+<a name="287"><span class="lineNum">     287 </span><span class="lineCov">          1 : assertEquals(1, counter);</span></a>
+<span class="lineNum">     288 </span><span class="lineCov">          1 : assertEquals('{&quot;getter&quot;:123}',</span>
 <span class="lineNum">     289 </span><span class="lineCov">          1 :              JSON.stringify({ get getter() { counter++; return 123; } },</span>
-<span class="lineNum">     290 </span><span class="lineNoCov">          0 :                             null,</span>
-<span class="lineNum">     291 </span><span class="lineNoCov">          0 :                             0));</span>
-<span class="lineNum">     292 </span><span class="lineNoCov">          0 : assertEquals(2, counter);</span>
-<span class="lineNum">     293 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     294 </span><span class="lineNoCov">          0 : TestStringify('{&quot;a&quot;:&quot;abc&quot;,&quot;b&quot;:&quot;\u1234bc&quot;}',</span>
-<span class="lineNum">     295 </span><span class="lineNoCov">          0 :               { a : &quot;abc&quot;, b : &quot;\u1234bc&quot; });</span>
-<span class="lineNum">     296 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     297 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     298 </span><span class="lineNoCov">          0 : var a = { a : 1, b : 2 };</span>
-<span class="lineNum">     299 </span><span class="lineNoCov">          0 : delete a.a;</span>
-<span class="lineNum">     300 </span><span class="lineNoCov">          0 : TestStringify('{&quot;b&quot;:2}', a);</span>
-<span class="lineNum">     301 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     302 </span><span class="lineNoCov">          0 : var b = {};</span>
+<span class="lineNum">     290 </span><span class="lineCov">          1 :                             null,</span>
+<span class="lineNum">     291 </span><span class="lineCov">          1 :                             0));</span>
+<span class="lineNum">     292 </span><span class="lineCov">          1 : assertEquals(2, counter);</span>
+<span class="lineNum">     293 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     294 </span><span class="lineCov">          1 : TestStringify('{&quot;a&quot;:&quot;abc&quot;,&quot;b&quot;:&quot;\u1234bc&quot;}',</span>
+<span class="lineNum">     295 </span><span class="lineCov">          1 :               { a : &quot;abc&quot;, b : &quot;\u1234bc&quot; });</span>
+<span class="lineNum">     296 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     297 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     298 </span><span class="lineCov">          1 : var a = { a : 1, b : 2 };</span>
+<span class="lineNum">     299 </span><span class="lineCov">          1 : delete a.a;</span>
+<span class="lineNum">     300 </span><span class="lineCov">          1 : TestStringify('{&quot;b&quot;:2}', a);</span>
+<span class="lineNum">     301 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     302 </span><span class="lineCov">          1 : var b = {};</span>
 <span class="lineNum">     303 </span><span class="lineCov">          4 : b.__proto__ = { toJSON : function() { return 321;} };</span>
-<span class="lineNum">     304 </span><span class="lineNoCov">          0 : TestStringify(&quot;321&quot;, b);</span>
-<span class="lineNum">     305 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     306 </span><span class="lineNoCov">          0 : var array = [&quot;&quot;];</span>
-<span class="lineNum">     307 </span><span class="lineNoCov">          0 : var expected = '&quot;&quot;';</span>
-<span class="lineNum">     308 </span><span class="lineNoCov">          0 : for (var i = 0; i &lt; 10000; i++) {</span>
-<span class="lineNum">     309 </span><span class="lineNoCov">          0 :   array.push(&quot;&quot;);</span>
-<span class="lineNum">     310 </span><span class="lineNoCov">          0 :   expected = '&quot;&quot;,' + expected;</span>
-<span class="lineNum">     311 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">     312 </span><span class="lineNoCov">          0 : expected = '[' + expected + ']';</span>
-<span class="lineNum">     313 </span><span class="lineNoCov">          0 : TestStringify(expected, array);</span>
-<span class="lineNum">     314 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     315 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     316 </span><span class="lineNoCov">          0 : var circular = [1, 2, 3];</span>
-<span class="lineNum">     317 </span><span class="lineNoCov">          0 : circular[2] = circular;</span>
+<span class="lineNum">     304 </span><span class="lineCov">          1 : TestStringify(&quot;321&quot;, b);</span>
+<span class="lineNum">     305 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     306 </span><span class="lineCov">          1 : var array = [&quot;&quot;];</span>
+<span class="lineNum">     307 </span><span class="lineCov">          1 : var expected = '&quot;&quot;';</span>
+<span class="lineNum">     308 </span><span class="lineCov">          1 : for (var i = 0; i &lt; 10000; i++) {</span>
+<span class="lineNum">     309 </span><span class="lineCov">          1 :   array.push(&quot;&quot;);</span>
+<span class="lineNum">     310 </span><span class="lineCov">          1 :   expected = '&quot;&quot;,' + expected;</span>
+<span class="lineNum">     311 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     312 </span><span class="lineCov">          1 : expected = '[' + expected + ']';</span>
+<span class="lineNum">     313 </span><span class="lineCov">          1 : TestStringify(expected, array);</span>
+<span class="lineNum">     314 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     315 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     316 </span><span class="lineCov">          1 : var circular = [1, 2, 3];</span>
+<span class="lineNum">     317 </span><span class="lineCov">          1 : circular[2] = circular;</span>
 <span class="lineNum">     318 </span><span class="lineCov">          1 : assertThrows(function () { JSON.stringify(circular); }, TypeError);</span>
 <span class="lineNum">     319 </span><span class="lineCov">          1 : assertThrows(function () { JSON.stringify(circular, null, 0); }, TypeError);</span>
-<span class="lineNum">     320 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     321 </span><span class="lineNoCov">          0 : var singleton = [];</span>
-<span class="lineNum">     322 </span><span class="lineNoCov">          0 : var multiOccurrence = [singleton, singleton, singleton];</span>
-<span class="lineNum">     323 </span><span class="lineNoCov">          0 : TestStringify(&quot;[[],[],[]]&quot;, multiOccurrence);</span>
-<span class="lineNum">     324 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     325 </span><span class="lineNoCov">          0 : TestStringify('{&quot;x&quot;:5,&quot;y&quot;:6}', {x:5,y:6});</span>
-<span class="lineNum">     326 </span><span class="lineNoCov">          0 : assertEquals('{&quot;x&quot;:5}', JSON.stringify({x:5,y:6}, ['x']));</span>
-<span class="lineNum">     327 </span><span class="lineNoCov">          0 : assertEquals('{\n &quot;a&quot;: &quot;b&quot;,\n &quot;c&quot;: &quot;d&quot;\n}',</span>
-<span class="lineNum">     328 </span><span class="lineNoCov">          0 :              JSON.stringify({a:&quot;b&quot;,c:&quot;d&quot;}, null, 1));</span>
-<span class="lineNum">     329 </span><span class="lineNoCov">          0 : assertEquals('{&quot;y&quot;:6,&quot;x&quot;:5}', JSON.stringify({x:5,y:6}, ['y', 'x']));</span>
-<span class="lineNum">     330 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     331 </span><span class="lineNoCov">          0 : // toJSON get string keys.</span>
-<a name="332"><span class="lineNum">     332 </span><span class="lineNoCov">          0 : var checker = {};</span></a>
-<span class="lineNum">     333 </span><span class="lineNoCov">          0 : var array = [checker];</span>
+<span class="lineNum">     320 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     321 </span><span class="lineCov">          1 : var singleton = [];</span>
+<span class="lineNum">     322 </span><span class="lineCov">          1 : var multiOccurrence = [singleton, singleton, singleton];</span>
+<span class="lineNum">     323 </span><span class="lineCov">          1 : TestStringify(&quot;[[],[],[]]&quot;, multiOccurrence);</span>
+<span class="lineNum">     324 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     325 </span><span class="lineCov">          1 : TestStringify('{&quot;x&quot;:5,&quot;y&quot;:6}', {x:5,y:6});</span>
+<span class="lineNum">     326 </span><span class="lineCov">          1 : assertEquals('{&quot;x&quot;:5}', JSON.stringify({x:5,y:6}, ['x']));</span>
+<span class="lineNum">     327 </span><span class="lineCov">          1 : assertEquals('{\n &quot;a&quot;: &quot;b&quot;,\n &quot;c&quot;: &quot;d&quot;\n}',</span>
+<span class="lineNum">     328 </span><span class="lineCov">          1 :              JSON.stringify({a:&quot;b&quot;,c:&quot;d&quot;}, null, 1));</span>
+<span class="lineNum">     329 </span><span class="lineCov">          1 : assertEquals('{&quot;y&quot;:6,&quot;x&quot;:5}', JSON.stringify({x:5,y:6}, ['y', 'x']));</span>
+<span class="lineNum">     330 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     331 </span><span class="lineCov">          1 : // toJSON get string keys.</span>
+<a name="332"><span class="lineNum">     332 </span><span class="lineCov">          1 : var checker = {};</span></a>
+<span class="lineNum">     333 </span><span class="lineCov">          1 : var array = [checker];</span>
 <span class="lineNum">     334 </span><span class="lineCov">          4 : checker.toJSON = function(key) { return 1 + key; };</span>
-<span class="lineNum">     335 </span><span class="lineNoCov">          0 : TestStringify('[&quot;10&quot;]', array);</span>
-<span class="lineNum">     336 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     337 </span><span class="lineNoCov">          0 : // The gap is capped at ten characters if specified as string.</span>
-<span class="lineNum">     338 </span><span class="lineNoCov">          0 : assertEquals('{\n          &quot;a&quot;: &quot;b&quot;,\n          &quot;c&quot;: &quot;d&quot;\n}',</span>
-<span class="lineNum">     339 </span><span class="lineNoCov">          0 :               JSON.stringify({a:&quot;b&quot;,c:&quot;d&quot;}, null,</span>
-<span class="lineNum">     340 </span><span class="lineNoCov">          0 :                              &quot;          /*characters after 10th*/&quot;));</span>
-<span class="lineNum">     341 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     342 </span><span class="lineNoCov">          0 : //The gap is capped at ten characters if specified as number.</span>
-<span class="lineNum">     343 </span><span class="lineNoCov">          0 : assertEquals('{\n          &quot;a&quot;: &quot;b&quot;,\n          &quot;c&quot;: &quot;d&quot;\n}',</span>
-<span class="lineNum">     344 </span><span class="lineNoCov">          0 :               JSON.stringify({a:&quot;b&quot;,c:&quot;d&quot;}, null, 15));</span>
-<a name="345"><span class="lineNum">     345 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     346 </span><span class="lineNoCov">          0 : // Replaced wrapped primitives are unwrapped.</span>
+<span class="lineNum">     335 </span><span class="lineCov">          1 : TestStringify('[&quot;10&quot;]', array);</span>
+<span class="lineNum">     336 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     337 </span><span class="lineCov">          1 : // The gap is capped at ten characters if specified as string.</span>
+<span class="lineNum">     338 </span><span class="lineCov">          1 : assertEquals('{\n          &quot;a&quot;: &quot;b&quot;,\n          &quot;c&quot;: &quot;d&quot;\n}',</span>
+<span class="lineNum">     339 </span><span class="lineCov">          1 :               JSON.stringify({a:&quot;b&quot;,c:&quot;d&quot;}, null,</span>
+<span class="lineNum">     340 </span><span class="lineCov">          1 :                              &quot;          /*characters after 10th*/&quot;));</span>
+<span class="lineNum">     341 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     342 </span><span class="lineCov">          1 : //The gap is capped at ten characters if specified as number.</span>
+<span class="lineNum">     343 </span><span class="lineCov">          1 : assertEquals('{\n          &quot;a&quot;: &quot;b&quot;,\n          &quot;c&quot;: &quot;d&quot;\n}',</span>
+<span class="lineNum">     344 </span><span class="lineCov">          1 :               JSON.stringify({a:&quot;b&quot;,c:&quot;d&quot;}, null, 15));</span>
+<a name="345"><span class="lineNum">     345 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     346 </span><span class="lineCov">          1 : // Replaced wrapped primitives are unwrapped.</span>
 <span class="lineNum">     347 </span><span class="lineCov">          6 : function newx(k, v)  { return (k == &quot;x&quot;) ? new v(42) : v; }</span>
-<span class="lineNum">     348 </span><span class="lineNoCov">          0 : assertEquals('{&quot;x&quot;:&quot;42&quot;}', JSON.stringify({x: String}, newx));</span>
-<span class="lineNum">     349 </span><span class="lineNoCov">          0 : assertEquals('{&quot;x&quot;:42}', JSON.stringify({x: Number}, newx));</span>
-<span class="lineNum">     350 </span><span class="lineNoCov">          0 : assertEquals('{&quot;x&quot;:true}', JSON.stringify({x: Boolean}, newx));</span>
-<span class="lineNum">     351 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     352 </span><span class="lineNoCov">          0 : TestStringify(undefined, undefined);</span>
-<span class="lineNum">     353 </span><span class="lineNoCov">          0 : TestStringify(undefined, function () { });</span>
-<span class="lineNum">     354 </span><span class="lineNoCov">          0 : // Arrays with missing, undefined or function elements have those elements</span>
-<span class="lineNum">     355 </span><span class="lineNoCov">          0 : // replaced by null.</span>
-<span class="lineNum">     356 </span><span class="lineNoCov">          0 : TestStringify(&quot;[null,null,null]&quot;, [undefined,,function(){}]);</span>
-<span class="lineNum">     357 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     358 </span><span class="lineNoCov">          0 : // Objects with undefined or function properties (including replaced properties)</span>
-<a name="359"><span class="lineNum">     359 </span><span class="lineNoCov">          0 : // have those properties ignored.</span></a>
-<span class="lineNum">     360 </span><span class="lineNoCov">          0 : assertEquals('{}',</span>
-<span class="lineNum">     361 </span><span class="lineNoCov">          0 :              JSON.stringify({a: undefined, b: function(){}, c: 42, d: 42},</span>
+<span class="lineNum">     348 </span><span class="lineCov">          1 : assertEquals('{&quot;x&quot;:&quot;42&quot;}', JSON.stringify({x: String}, newx));</span>
+<span class="lineNum">     349 </span><span class="lineCov">          1 : assertEquals('{&quot;x&quot;:42}', JSON.stringify({x: Number}, newx));</span>
+<span class="lineNum">     350 </span><span class="lineCov">          1 : assertEquals('{&quot;x&quot;:true}', JSON.stringify({x: Boolean}, newx));</span>
+<span class="lineNum">     351 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     352 </span><span class="lineCov">          1 : TestStringify(undefined, undefined);</span>
+<span class="lineNum">     353 </span><span class="lineCov">          1 : TestStringify(undefined, function () { });</span>
+<span class="lineNum">     354 </span><span class="lineCov">          1 : // Arrays with missing, undefined or function elements have those elements</span>
+<span class="lineNum">     355 </span><span class="lineCov">          1 : // replaced by null.</span>
+<span class="lineNum">     356 </span><span class="lineCov">          1 : TestStringify(&quot;[null,null,null]&quot;, [undefined,,function(){}]);</span>
+<span class="lineNum">     357 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     358 </span><span class="lineCov">          1 : // Objects with undefined or function properties (including replaced properties)</span>
+<a name="359"><span class="lineNum">     359 </span><span class="lineCov">          1 : // have those properties ignored.</span></a>
+<span class="lineNum">     360 </span><span class="lineCov">          1 : assertEquals('{}',</span>
+<span class="lineNum">     361 </span><span class="lineCov">          1 :              JSON.stringify({a: undefined, b: function(){}, c: 42, d: 42},</span>
 <span class="lineNum">     362 </span><span class="lineCov">          5 :                             function(k, v) { if (k == &quot;c&quot;) return undefined;</span>
 <span class="lineNum">     363 </span><span class="lineCov">          5 :                                              if (k == &quot;d&quot;) return function(){};</span>
-<span class="lineNum">     364 </span><span class="lineNoCov">          0 :                                              return v; }));</span>
-<span class="lineNum">     365 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     366 </span><span class="lineNoCov">          0 : TestInvalid('1); throw &quot;foo&quot;; (1');</span>
-<span class="lineNum">     367 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     368 </span><span class="lineNoCov">          0 : var x = 0;</span>
-<span class="lineNum">     369 </span><span class="lineNoCov">          0 : eval(&quot;(1); x++; (1)&quot;);</span>
-<span class="lineNum">     370 </span><span class="lineNoCov">          0 : TestInvalid('1); x++; (1');</span>
-<span class="lineNum">     371 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     372 </span><span class="lineNoCov">          0 : // Test string conversion of argument.</span>
+<span class="lineNum">     364 </span><span class="lineCov">          5 :                                              return v; }));</span>
+<span class="lineNum">     365 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     366 </span><span class="lineCov">          1 : TestInvalid('1); throw &quot;foo&quot;; (1');</span>
+<span class="lineNum">     367 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     368 </span><span class="lineCov">          1 : var x = 0;</span>
+<span class="lineNum">     369 </span><span class="lineCov">          1 : eval(&quot;(1); x++; (1)&quot;);</span>
+<span class="lineNum">     370 </span><span class="lineCov">          1 : TestInvalid('1); x++; (1');</span>
+<span class="lineNum">     371 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     372 </span><span class="lineCov">          1 : // Test string conversion of argument.</span>
 <span class="lineNum">     373 </span><span class="lineCov">          1 : var o = { toString: function() { return &quot;42&quot;; } };</span>
-<span class="lineNum">     374 </span><span class="lineNoCov">          0 : assertEquals(42, JSON.parse(o));</span>
-<span class="lineNum">     375 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     376 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     377 </span><span class="lineNoCov">          0 : for (var i = 0; i &lt; 65536; i++) {</span>
-<span class="lineNum">     378 </span><span class="lineNoCov">          0 :   var string = String.fromCharCode(i);</span>
-<span class="lineNum">     379 </span><span class="lineNoCov">          0 :   var encoded = JSON.stringify(string);</span>
-<span class="lineNum">     380 </span><span class="lineNoCov">          0 :   var expected = &quot;uninitialized&quot;;</span>
-<span class="lineNum">     381 </span><span class="lineNoCov">          0 :   // Following the ES5 specification of the abstraction function Quote.</span>
-<span class="lineNum">     382 </span><span class="lineNoCov">          0 :   if (string == '&quot;' || string == '\\') {</span>
-<span class="lineNum">     383 </span><span class="lineNoCov">          0 :     // Step 2.a</span>
-<span class="lineNum">     384 </span><span class="lineNoCov">          0 :     expected = '\\' + string;</span>
-<span class="lineNum">     385 </span><span class="lineNoCov">          0 :   } else if (&quot;\b\t\n\r\f&quot;.indexOf(string) &gt;= 0) {</span>
-<span class="lineNum">     386 </span><span class="lineNoCov">          0 :     // Step 2.b</span>
-<span class="lineNum">     387 </span><span class="lineNoCov">          0 :     if (string == '\b') expected = '\\b';</span>
-<span class="lineNum">     388 </span><span class="lineNoCov">          0 :     else if (string == '\t') expected = '\\t';</span>
-<span class="lineNum">     389 </span><span class="lineNoCov">          0 :     else if (string == '\n') expected = '\\n';</span>
-<span class="lineNum">     390 </span><span class="lineNoCov">          0 :     else if (string == '\f') expected = '\\f';</span>
-<span class="lineNum">     391 </span><span class="lineNoCov">          0 :     else if (string == '\r') expected = '\\r';</span>
-<span class="lineNum">     392 </span><span class="lineNoCov">          0 :   } else if (i &lt; 32) {</span>
-<span class="lineNum">     393 </span><span class="lineNoCov">          0 :     // Step 2.c</span>
-<span class="lineNum">     394 </span><span class="lineNoCov">          0 :     if (i &lt; 16) {</span>
-<span class="lineNum">     395 </span><span class="lineNoCov">          0 :       expected = &quot;\\u000&quot; + i.toString(16);</span>
-<span class="lineNum">     396 </span><span class="lineNoCov">          0 :     } else {</span>
-<span class="lineNum">     397 </span><span class="lineNoCov">          0 :       expected = &quot;\\u00&quot; + i.toString(16);</span>
-<span class="lineNum">     398 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">     399 </span><span class="lineNoCov">          0 :   } else {</span>
-<span class="lineNum">     400 </span><span class="lineNoCov">          0 :     expected = string;</span>
-<span class="lineNum">     401 </span><span class="lineNoCov">          0 :   }</span>
-<span class="lineNum">     402 </span><span class="lineNoCov">          0 :   assertEquals('&quot;' + expected + '&quot;', encoded, &quot;Codepoint &quot; + i);</span>
-<span class="lineNum">     403 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">     404 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     405 </span><span class="lineNoCov">          0 : </span>
-<a name="406"><span class="lineNum">     406 </span><span class="lineNoCov">          0 : // Ensure that wrappers and callables are handled correctly.</span></a>
-<span class="lineNum">     407 </span><span class="lineNoCov">          0 : var num37 = new Number(42);</span>
+<span class="lineNum">     374 </span><span class="lineCov">          1 : assertEquals(42, JSON.parse(o));</span>
+<span class="lineNum">     375 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     376 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     377 </span><span class="lineCov">          1 : for (var i = 0; i &lt; 65536; i++) {</span>
+<span class="lineNum">     378 </span><span class="lineCov">          1 :   var string = String.fromCharCode(i);</span>
+<span class="lineNum">     379 </span><span class="lineCov">          1 :   var encoded = JSON.stringify(string);</span>
+<span class="lineNum">     380 </span><span class="lineCov">          1 :   var expected = &quot;uninitialized&quot;;</span>
+<span class="lineNum">     381 </span><span class="lineCov">          1 :   // Following the ES5 specification of the abstraction function Quote.</span>
+<span class="lineNum">     382 </span><span class="lineCov">          1 :   if (string == '&quot;' || string == '\\') {</span>
+<span class="lineNum">     383 </span><span class="lineCov">          1 :     // Step 2.a</span>
+<span class="lineNum">     384 </span><span class="lineCov">          1 :     expected = '\\' + string;</span>
+<span class="lineNum">     385 </span><span class="lineCov">          1 :   } else if (&quot;\b\t\n\r\f&quot;.indexOf(string) &gt;= 0) {</span>
+<span class="lineNum">     386 </span><span class="lineCov">          1 :     // Step 2.b</span>
+<span class="lineNum">     387 </span><span class="lineCov">          1 :     if (string == '\b') expected = '\\b';</span>
+<span class="lineNum">     388 </span><span class="lineCov">          1 :     else if (string == '\t') expected = '\\t';</span>
+<span class="lineNum">     389 </span><span class="lineCov">          1 :     else if (string == '\n') expected = '\\n';</span>
+<span class="lineNum">     390 </span><span class="lineCov">          1 :     else if (string == '\f') expected = '\\f';</span>
+<span class="lineNum">     391 </span><span class="lineCov">          1 :     else if (string == '\r') expected = '\\r';</span>
+<span class="lineNum">     392 </span><span class="lineCov">          1 :   } else if (i &lt; 32) {</span>
+<span class="lineNum">     393 </span><span class="lineCov">          1 :     // Step 2.c</span>
+<span class="lineNum">     394 </span><span class="lineCov">          1 :     if (i &lt; 16) {</span>
+<span class="lineNum">     395 </span><span class="lineCov">          1 :       expected = &quot;\\u000&quot; + i.toString(16);</span>
+<span class="lineNum">     396 </span><span class="lineCov">          1 :     } else {</span>
+<span class="lineNum">     397 </span><span class="lineCov">          1 :       expected = &quot;\\u00&quot; + i.toString(16);</span>
+<span class="lineNum">     398 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">     399 </span><span class="lineCov">          1 :   } else {</span>
+<span class="lineNum">     400 </span><span class="lineCov">          1 :     expected = string;</span>
+<span class="lineNum">     401 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     402 </span><span class="lineCov">          1 :   assertEquals('&quot;' + expected + '&quot;', encoded, &quot;Codepoint &quot; + i);</span>
+<span class="lineNum">     403 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     404 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     405 </span><span class="lineCov">          1 : </span>
+<a name="406"><span class="lineNum">     406 </span><span class="lineCov">          1 : // Ensure that wrappers and callables are handled correctly.</span></a>
+<span class="lineNum">     407 </span><span class="lineCov">          1 : var num37 = new Number(42);</span>
 <span class="lineNum">     408 </span><span class="lineCov">          4 : num37.valueOf = function() { return 37; };</span>
-<span class="lineNum">     409 </span><span class="lineNoCov">          0 : </span>
-<a name="410"><span class="lineNum">     410 </span><span class="lineNoCov">          0 : var numFoo = new Number(42);</span></a>
-<span class="lineNum">     411 </span><span class="lineNoCov">          0 : numFoo.valueOf = &quot;not callable&quot;;</span>
+<span class="lineNum">     409 </span><span class="lineCov">          1 : </span>
+<a name="410"><span class="lineNum">     410 </span><span class="lineCov">          1 : var numFoo = new Number(42);</span></a>
+<span class="lineNum">     411 </span><span class="lineCov">          1 : numFoo.valueOf = &quot;not callable&quot;;</span>
 <span class="lineNum">     412 </span><span class="lineCov">          4 : numFoo.toString = function() { return &quot;foo&quot;; };</span>
-<a name="413"><span class="lineNum">     413 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     414 </span><span class="lineNoCov">          0 : var numTrue = new Number(42);</span>
+<a name="413"><span class="lineNum">     413 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     414 </span><span class="lineCov">          1 : var numTrue = new Number(42);</span>
 <span class="lineNum">     415 </span><span class="lineCov">          4 : numTrue.valueOf = function() { return true; }</span>
-<a name="416"><span class="lineNum">     416 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     417 </span><span class="lineNoCov">          0 : var strFoo = new String(&quot;bar&quot;);</span>
+<a name="416"><span class="lineNum">     416 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     417 </span><span class="lineCov">          1 : var strFoo = new String(&quot;bar&quot;);</span>
 <span class="lineNum">     418 </span><span class="lineCov">          4 : strFoo.toString = function() { return &quot;foo&quot;; };</span>
-<span class="lineNum">     419 </span><span class="lineNoCov">          0 : </span>
-<a name="420"><span class="lineNum">     420 </span><span class="lineNoCov">          0 : var str37 = new String(&quot;bar&quot;);</span></a>
-<span class="lineNum">     421 </span><span class="lineNoCov">          0 : str37.toString = &quot;not callable&quot;;</span>
+<span class="lineNum">     419 </span><span class="lineCov">          1 : </span>
+<a name="420"><span class="lineNum">     420 </span><span class="lineCov">          1 : var str37 = new String(&quot;bar&quot;);</span></a>
+<span class="lineNum">     421 </span><span class="lineCov">          1 : str37.toString = &quot;not callable&quot;;</span>
 <span class="lineNum">     422 </span><span class="lineCov">          4 : str37.valueOf = function() { return 37; };</span>
-<a name="423"><span class="lineNum">     423 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     424 </span><span class="lineNoCov">          0 : var strTrue = new String(&quot;bar&quot;);</span>
+<a name="423"><span class="lineNum">     423 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     424 </span><span class="lineCov">          1 : var strTrue = new String(&quot;bar&quot;);</span>
 <a name="425"><span class="lineNum">     425 </span><span class="lineCov">          4 : strTrue.toString = function() { return true; }</span></a>
-<span class="lineNum">     426 </span><span class="lineNoCov">          0 : </span>
-<a name="427"><span class="lineNum">     427 </span><span class="lineNoCov">          0 : var func = function() { /* Is callable */ };</span></a>
-<a name="428"><span class="lineNum">     428 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     429 </span><span class="lineNoCov">          0 : var funcJSON = function() { /* Is callable */ };</span>
+<span class="lineNum">     426 </span><span class="lineCov">          1 : </span>
+<a name="427"><span class="lineNum">     427 </span><span class="lineCov">          1 : var func = function() { /* Is callable */ };</span></a>
+<a name="428"><span class="lineNum">     428 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     429 </span><span class="lineCov">          1 : var funcJSON = function() { /* Is callable */ };</span>
 <span class="lineNum">     430 </span><span class="lineCov">          4 : funcJSON.toJSON = function() { return &quot;has toJSON&quot;; };</span>
-<span class="lineNum">     431 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     432 </span><span class="lineNoCov">          0 : var re = /Is callable/;</span>
-<a name="433"><span class="lineNum">     433 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     434 </span><span class="lineNoCov">          0 : var reJSON = /Is callable/;</span>
+<span class="lineNum">     431 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     432 </span><span class="lineCov">          1 : var re = /Is callable/;</span>
+<a name="433"><span class="lineNum">     433 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     434 </span><span class="lineCov">          1 : var reJSON = /Is callable/;</span>
 <span class="lineNum">     435 </span><span class="lineCov">          4 : reJSON.toJSON = function() { return &quot;has toJSON&quot;; };</span>
-<span class="lineNum">     436 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     437 </span><span class="lineNoCov">          0 : TestStringify('[37,null,1,&quot;foo&quot;,&quot;37&quot;,&quot;true&quot;,null,&quot;has toJSON&quot;,{},&quot;has toJSON&quot;]',</span>
-<span class="lineNum">     438 </span><span class="lineNoCov">          0 :               [num37, numFoo, numTrue,</span>
-<span class="lineNum">     439 </span><span class="lineNoCov">          0 :                strFoo, str37, strTrue,</span>
-<span class="lineNum">     440 </span><span class="lineNoCov">          0 :                func, funcJSON, re, reJSON]);</span>
-<span class="lineNum">     441 </span><span class="lineNoCov">          0 : </span>
-<a name="442"><span class="lineNum">     442 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     443 </span><span class="lineNoCov">          0 : var oddball = Object(42);</span>
+<span class="lineNum">     436 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     437 </span><span class="lineCov">          1 : TestStringify('[37,null,1,&quot;foo&quot;,&quot;37&quot;,&quot;true&quot;,null,&quot;has toJSON&quot;,{},&quot;has toJSON&quot;]',</span>
+<span class="lineNum">     438 </span><span class="lineCov">          1 :               [num37, numFoo, numTrue,</span>
+<span class="lineNum">     439 </span><span class="lineCov">          1 :                strFoo, str37, strTrue,</span>
+<span class="lineNum">     440 </span><span class="lineCov">          1 :                func, funcJSON, re, reJSON]);</span>
+<span class="lineNum">     441 </span><span class="lineCov">          1 : </span>
+<a name="442"><span class="lineNum">     442 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     443 </span><span class="lineCov">          1 : var oddball = Object(42);</span>
 <span class="lineNum">     444 </span><span class="lineCov">          4 : oddball.__proto__ = { __proto__: null, toString: function() { return true; } };</span>
-<span class="lineNum">     445 </span><span class="lineNoCov">          0 : TestStringify('1', oddball);</span>
-<span class="lineNum">     446 </span><span class="lineNoCov">          0 : </span>
-<a name="447"><span class="lineNum">     447 </span><span class="lineNoCov">          0 : var getCount = 0;</span></a>
-<span class="lineNum">     448 </span><span class="lineNoCov">          0 : var callCount = 0;</span>
+<span class="lineNum">     445 </span><span class="lineCov">          1 : TestStringify('1', oddball);</span>
+<span class="lineNum">     446 </span><span class="lineCov">          1 : </span>
+<a name="447"><span class="lineNum">     447 </span><span class="lineCov">          1 : var getCount = 0;</span></a>
+<span class="lineNum">     448 </span><span class="lineCov">          1 : var callCount = 0;</span>
 <span class="lineNum">     449 </span><span class="lineCov">          4 : var counter = { get toJSON() { getCount++;</span>
 <span class="lineNum">     450 </span><span class="lineCov">          4 :                                return function() { callCount++;</span>
 <span class="lineNum">     451 </span><span class="lineCov">          4 :                                                    return 42; }; } };</span>
-<span class="lineNum">     452 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     453 </span><span class="lineNoCov">          0 : // RegExps are not callable, so they are stringified as objects.</span>
-<span class="lineNum">     454 </span><span class="lineNoCov">          0 : TestStringify('{}', /regexp/);</span>
-<span class="lineNum">     455 </span><span class="lineNoCov">          0 : TestStringify('42', counter);</span>
-<span class="lineNum">     456 </span><span class="lineNoCov">          0 : assertEquals(4, getCount);</span>
-<span class="lineNum">     457 </span><span class="lineNoCov">          0 : assertEquals(4, callCount);</span>
-<span class="lineNum">     458 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     459 </span><span class="lineNoCov">          0 : var oddball2 = Object(42);</span>
-<span class="lineNum">     460 </span><span class="lineNoCov">          0 : var oddball3 = Object(&quot;foo&quot;);</span>
-<a name="461"><span class="lineNum">     461 </span><span class="lineNoCov">          0 : oddball3.__proto__ = { __proto__: null,</span></a>
-<span class="lineNum">     462 </span><span class="lineNoCov">          0 :                        toString: &quot;not callable&quot;,</span>
+<span class="lineNum">     452 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     453 </span><span class="lineCov">          1 : // RegExps are not callable, so they are stringified as objects.</span>
+<span class="lineNum">     454 </span><span class="lineCov">          1 : TestStringify('{}', /regexp/);</span>
+<span class="lineNum">     455 </span><span class="lineCov">          1 : TestStringify('42', counter);</span>
+<span class="lineNum">     456 </span><span class="lineCov">          1 : assertEquals(4, getCount);</span>
+<span class="lineNum">     457 </span><span class="lineCov">          1 : assertEquals(4, callCount);</span>
+<span class="lineNum">     458 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     459 </span><span class="lineCov">          1 : var oddball2 = Object(42);</span>
+<span class="lineNum">     460 </span><span class="lineCov">          1 : var oddball3 = Object(&quot;foo&quot;);</span>
+<a name="461"><span class="lineNum">     461 </span><span class="lineCov">          1 : oddball3.__proto__ = { __proto__: null,</span></a>
+<span class="lineNum">     462 </span><span class="lineCov">          1 :                        toString: &quot;not callable&quot;,</span>
 <a name="463"><span class="lineNum">     463 </span><span class="lineCov">          4 :                        valueOf: function() { return true; } };</span></a>
-<span class="lineNum">     464 </span><span class="lineNoCov">          0 : oddball2.__proto__ = { __proto__: null,</span>
+<span class="lineNum">     464 </span><span class="lineCov">          1 : oddball2.__proto__ = { __proto__: null,</span>
 <span class="lineNum">     465 </span><span class="lineCov">          4 :                        toJSON: function () { return oddball3; } }</span>
-<span class="lineNum">     466 </span><span class="lineNoCov">          0 : TestStringify('&quot;true&quot;', oddball2);</span>
-<span class="lineNum">     467 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     468 </span><span class="lineNoCov">          0 : </span>
-<a name="469"><span class="lineNum">     469 </span><span class="lineNoCov">          0 : var falseNum = Object(&quot;37&quot;);</span></a>
-<span class="lineNum">     470 </span><span class="lineNoCov">          0 : falseNum.__proto__ = Number.prototype;</span>
+<span class="lineNum">     466 </span><span class="lineCov">          1 : TestStringify('&quot;true&quot;', oddball2);</span>
+<span class="lineNum">     467 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     468 </span><span class="lineCov">          1 : </span>
+<a name="469"><span class="lineNum">     469 </span><span class="lineCov">          1 : var falseNum = Object(&quot;37&quot;);</span></a>
+<span class="lineNum">     470 </span><span class="lineCov">          1 : falseNum.__proto__ = Number.prototype;</span>
 <span class="lineNum">     471 </span><span class="lineCov">          4 : falseNum.toString = function() { return 42; };</span>
-<span class="lineNum">     472 </span><span class="lineNoCov">          0 : TestStringify('&quot;42&quot;', falseNum);</span>
-<span class="lineNum">     473 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     474 </span><span class="lineNoCov">          0 : // Parse an object value as __proto__.</span>
-<span class="lineNum">     475 </span><span class="lineNoCov">          0 : var o1 = JSON.parse('{&quot;__proto__&quot;:[]}');</span>
-<span class="lineNum">     476 </span><span class="lineNoCov">          0 : assertEquals([], o1.__proto__);</span>
-<span class="lineNum">     477 </span><span class="lineNoCov">          0 : assertEquals([&quot;__proto__&quot;], Object.keys(o1));</span>
-<span class="lineNum">     478 </span><span class="lineNoCov">          0 : assertEquals([], Object.getOwnPropertyDescriptor(o1, &quot;__proto__&quot;).value);</span>
-<span class="lineNum">     479 </span><span class="lineNoCov">          0 : assertEquals([&quot;__proto__&quot;], Object.getOwnPropertyNames(o1));</span>
-<span class="lineNum">     480 </span><span class="lineNoCov">          0 : assertTrue(o1.hasOwnProperty(&quot;__proto__&quot;));</span>
-<span class="lineNum">     481 </span><span class="lineNoCov">          0 : assertTrue(Object.prototype.isPrototypeOf(o1));</span>
-<span class="lineNum">     482 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     483 </span><span class="lineNoCov">          0 : // Parse a non-object value as __proto__.</span>
-<span class="lineNum">     484 </span><span class="lineNoCov">          0 : var o2 = JSON.parse('{&quot;__proto__&quot;:5}');</span>
-<span class="lineNum">     485 </span><span class="lineNoCov">          0 : assertEquals(5, o2.__proto__);</span>
-<span class="lineNum">     486 </span><span class="lineNoCov">          0 : assertEquals([&quot;__proto__&quot;], Object.keys(o2));</span>
-<span class="lineNum">     487 </span><span class="lineNoCov">          0 : assertEquals(5, Object.getOwnPropertyDescriptor(o2, &quot;__proto__&quot;).value);</span>
-<span class="lineNum">     488 </span><span class="lineNoCov">          0 : assertEquals([&quot;__proto__&quot;], Object.getOwnPropertyNames(o2));</span>
-<span class="lineNum">     489 </span><span class="lineNoCov">          0 : assertTrue(o2.hasOwnProperty(&quot;__proto__&quot;));</span>
-<span class="lineNum">     490 </span><span class="lineNoCov">          0 : assertTrue(Object.prototype.isPrototypeOf(o2));</span>
-<span class="lineNum">     491 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     492 </span><span class="lineNoCov">          0 : var json = '{&quot;stuff before slash\\\\stuff after slash&quot;:&quot;whatever&quot;}';</span>
-<span class="lineNum">     493 </span><span class="lineNoCov">          0 : TestStringify(json, JSON.parse(json));</span>
-<span class="lineNum">     494 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     495 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     496 </span><span class="lineNoCov">          0 : // https://bugs.chromium.org/p/v8/issues/detail?id=3139</span>
-<span class="lineNum">     497 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     472 </span><span class="lineCov">          1 : TestStringify('&quot;42&quot;', falseNum);</span>
+<span class="lineNum">     473 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     474 </span><span class="lineCov">          1 : // Parse an object value as __proto__.</span>
+<span class="lineNum">     475 </span><span class="lineCov">          1 : var o1 = JSON.parse('{&quot;__proto__&quot;:[]}');</span>
+<span class="lineNum">     476 </span><span class="lineCov">          1 : assertEquals([], o1.__proto__);</span>
+<span class="lineNum">     477 </span><span class="lineCov">          1 : assertEquals([&quot;__proto__&quot;], Object.keys(o1));</span>
+<span class="lineNum">     478 </span><span class="lineCov">          1 : assertEquals([], Object.getOwnPropertyDescriptor(o1, &quot;__proto__&quot;).value);</span>
+<span class="lineNum">     479 </span><span class="lineCov">          1 : assertEquals([&quot;__proto__&quot;], Object.getOwnPropertyNames(o1));</span>
+<span class="lineNum">     480 </span><span class="lineCov">          1 : assertTrue(o1.hasOwnProperty(&quot;__proto__&quot;));</span>
+<span class="lineNum">     481 </span><span class="lineCov">          1 : assertTrue(Object.prototype.isPrototypeOf(o1));</span>
+<span class="lineNum">     482 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     483 </span><span class="lineCov">          1 : // Parse a non-object value as __proto__.</span>
+<span class="lineNum">     484 </span><span class="lineCov">          1 : var o2 = JSON.parse('{&quot;__proto__&quot;:5}');</span>
+<span class="lineNum">     485 </span><span class="lineCov">          1 : assertEquals(5, o2.__proto__);</span>
+<span class="lineNum">     486 </span><span class="lineCov">          1 : assertEquals([&quot;__proto__&quot;], Object.keys(o2));</span>
+<span class="lineNum">     487 </span><span class="lineCov">          1 : assertEquals(5, Object.getOwnPropertyDescriptor(o2, &quot;__proto__&quot;).value);</span>
+<span class="lineNum">     488 </span><span class="lineCov">          1 : assertEquals([&quot;__proto__&quot;], Object.getOwnPropertyNames(o2));</span>
+<span class="lineNum">     489 </span><span class="lineCov">          1 : assertTrue(o2.hasOwnProperty(&quot;__proto__&quot;));</span>
+<span class="lineNum">     490 </span><span class="lineCov">          1 : assertTrue(Object.prototype.isPrototypeOf(o2));</span>
+<span class="lineNum">     491 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     492 </span><span class="lineCov">          1 : var json = '{&quot;stuff before slash\\\\stuff after slash&quot;:&quot;whatever&quot;}';</span>
+<span class="lineNum">     493 </span><span class="lineCov">          1 : TestStringify(json, JSON.parse(json));</span>
+<span class="lineNum">     494 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     495 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     496 </span><span class="lineCov">          1 : // https://bugs.chromium.org/p/v8/issues/detail?id=3139</span>
+<span class="lineNum">     497 </span><span class="lineCov">          1 : </span>
 <a name="498"><span class="lineNum">     498 </span><span class="lineCov">          4 : reviver = function(p, v) {</span></a>
 <span class="lineNum">     499 </span><span class="lineCov">          4 :   if (p == &quot;a&quot;) {</span>
 <span class="lineNum">     500 </span><span class="lineCov">          4 :     this.b = { get x() {return null}, set x(_){throw 666} }</span>
-<span class="lineNum">     501 </span><span class="lineNoCov">          0 :   }</span>
-<span class="lineNum">     502 </span><span class="lineNoCov">          0 :   return v;</span>
-<span class="lineNum">     503 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">     504 </span><span class="lineNoCov">          0 : assertEquals({a: 0, b: {x: null}}, JSON.parse('{&quot;a&quot;:0,&quot;b&quot;:1}', reviver));</span>
-<span class="lineNum">     505 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     506 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     507 </span><span class="lineNoCov">          0 : // Make sure a failed [[Delete]] doesn't throw</span>
-<span class="lineNum">     508 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     501 </span><span class="lineCov">          4 :   }</span>
+<span class="lineNum">     502 </span><span class="lineCov">          4 :   return v;</span>
+<span class="lineNum">     503 </span><span class="lineCov">          4 : }</span>
+<span class="lineNum">     504 </span><span class="lineCov">          1 : assertEquals({a: 0, b: {x: null}}, JSON.parse('{&quot;a&quot;:0,&quot;b&quot;:1}', reviver));</span>
+<span class="lineNum">     505 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     506 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     507 </span><span class="lineCov">          1 : // Make sure a failed [[Delete]] doesn't throw</span>
+<span class="lineNum">     508 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     509 </span><span class="lineCov">          3 : reviver = function(p, v) {</span>
 <span class="lineNum">     510 </span><span class="lineCov">          3 :   Object.freeze(this);</span>
 <span class="lineNum">     511 </span><span class="lineCov">          3 :   return p === &quot;&quot; ? v : undefined;</span>
 <span class="lineNum">     512 </span><span class="lineCov">          3 : }</span>
-<span class="lineNum">     513 </span><span class="lineNoCov">          0 : assertEquals({a: 0, b: 1}, JSON.parse('{&quot;a&quot;:0,&quot;b&quot;:1}', reviver));</span>
-<span class="lineNum">     514 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     515 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     516 </span><span class="lineNoCov">          0 : // Make sure a failed [[DefineProperty]] doesn't throw</span>
-<span class="lineNum">     517 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     513 </span><span class="lineCov">          1 : assertEquals({a: 0, b: 1}, JSON.parse('{&quot;a&quot;:0,&quot;b&quot;:1}', reviver));</span>
+<span class="lineNum">     514 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     515 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     516 </span><span class="lineCov">          1 : // Make sure a failed [[DefineProperty]] doesn't throw</span>
+<span class="lineNum">     517 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     518 </span><span class="lineCov">          3 : reviver = function(p, v) {</span>
 <span class="lineNum">     519 </span><span class="lineCov">          3 :   Object.freeze(this);</span>
 <span class="lineNum">     520 </span><span class="lineCov">          3 :   return p === &quot;&quot; ? v : 42;</span>
 <span class="lineNum">     521 </span><span class="lineCov">          3 : }</span>
-<a name="522"><span class="lineNum">     522 </span><span class="lineNoCov">          0 : assertEquals({a: 0, b: 1}, JSON.parse('{&quot;a&quot;:0,&quot;b&quot;:1}', reviver));</span></a>
-<span class="lineNum">     523 </span><span class="lineNoCov">          0 : </span>
+<a name="522"><span class="lineNum">     522 </span><span class="lineCov">          1 : assertEquals({a: 0, b: 1}, JSON.parse('{&quot;a&quot;:0,&quot;b&quot;:1}', reviver));</span></a>
+<span class="lineNum">     523 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     524 </span><span class="lineCov">          2 : reviver = (k, v) =&gt; (v === Infinity) ? &quot;inf&quot; : v;</span>
-<span class="lineNum">     525 </span>            : assertEquals('{&quot;&quot;:&quot;inf&quot;}', JSON.stringify({&quot;&quot;:Infinity}, reviver));
+<span class="lineNum">     525 </span><span class="lineCov">          1 : assertEquals('{&quot;&quot;:&quot;inf&quot;}', JSON.stringify({&quot;&quot;:Infinity}, reviver));</span>
 </pre>
       </td>
     </tr>

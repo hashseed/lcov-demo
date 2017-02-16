@@ -31,18 +31,18 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">326</td>
-            <td class="headerCovTableEntry">578</td>
-            <td class="headerCovTableEntryLo">56.4 %</td>
+            <td class="headerCovTableEntry">531</td>
+            <td class="headerCovTableEntry">581</td>
+            <td class="headerCovTableEntryHi">91.4 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">26</td>
+            <td class="headerCovTableEntry">27</td>
             <td class="headerCovTableEntry">37</td>
-            <td class="headerCovTableEntryLo">70.3 %</td>
+            <td class="headerCovTableEntryLo">73.0 %</td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
         </table>
@@ -60,181 +60,181 @@
       <td>
 <pre class="sourceHeading">          Line data    Source code</pre>
 <pre class="source">
-<a name="1"><span class="lineNum">       1 </span><span class="lineCov">       3318 : // Copyright 2008 the V8 project authors. All rights reserved.</span></a>
-<span class="lineNum">       2 </span><span class="lineCov">       3318 : // Redistribution and use in source and binary forms, with or without</span>
-<span class="lineNum">       3 </span><span class="lineCov">       3318 : // modification, are permitted provided that the following conditions are</span>
-<span class="lineNum">       4 </span><span class="lineCov">       3318 : // met:</span>
-<span class="lineNum">       5 </span><span class="lineCov">       3318 : //</span>
-<span class="lineNum">       6 </span><span class="lineCov">       3318 : //     * Redistributions of source code must retain the above copyright</span>
-<span class="lineNum">       7 </span><span class="lineCov">       3318 : //       notice, this list of conditions and the following disclaimer.</span>
-<span class="lineNum">       8 </span><span class="lineCov">       3318 : //     * Redistributions in binary form must reproduce the above</span>
-<span class="lineNum">       9 </span><span class="lineCov">       3318 : //       copyright notice, this list of conditions and the following</span>
-<span class="lineNum">      10 </span><span class="lineCov">       3318 : //       disclaimer in the documentation and/or other materials provided</span>
-<span class="lineNum">      11 </span><span class="lineCov">       3318 : //       with the distribution.</span>
-<span class="lineNum">      12 </span><span class="lineCov">       3318 : //     * Neither the name of Google Inc. nor the names of its</span>
-<span class="lineNum">      13 </span><span class="lineCov">       3318 : //       contributors may be used to endorse or promote products derived</span>
-<span class="lineNum">      14 </span><span class="lineCov">       3318 : //       from this software without specific prior written permission.</span>
-<span class="lineNum">      15 </span><span class="lineCov">       3318 : //</span>
-<span class="lineNum">      16 </span><span class="lineCov">       3318 : // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
-<span class="lineNum">      17 </span><span class="lineCov">       3318 : // &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
-<span class="lineNum">      18 </span><span class="lineCov">       3318 : // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR</span>
-<span class="lineNum">      19 </span><span class="lineCov">       3318 : // A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT</span>
-<span class="lineNum">      20 </span><span class="lineCov">       3318 : // OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,</span>
-<span class="lineNum">      21 </span><span class="lineCov">       3318 : // SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT</span>
-<span class="lineNum">      22 </span><span class="lineCov">       3318 : // LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,</span>
-<span class="lineNum">      23 </span><span class="lineCov">       3318 : // DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY</span>
-<span class="lineNum">      24 </span><span class="lineCov">       3318 : // THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT</span>
-<span class="lineNum">      25 </span><span class="lineCov">       3318 : // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE</span>
-<a name="26"><span class="lineNum">      26 </span><span class="lineCov">       3318 : // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span></a>
-<span class="lineNum">      27 </span><span class="lineCov">       3318 : </span>
-<span class="lineNum">      28 </span><span class="lineCov">       3659 : function MjsUnitAssertionError(message) {</span>
-<span class="lineNum">      29 </span><span class="lineCov">        349 :   this.message = message;</span>
-<span class="lineNum">      30 </span><span class="lineCov">        349 :   // This allows fetching the stack trace using TryCatch::StackTrace.</span>
-<span class="lineNum">      31 </span><span class="lineCov">        349 :   this.stack = new Error(&quot;&quot;).stack;</span>
-<span class="lineNum">      32 </span><span class="lineCov">       3659 : }</span>
-<span class="lineNum">      33 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      34 </span><span class="lineNoCov">          0 : /*</span>
-<span class="lineNum">      35 </span><span class="lineNoCov">          0 :  * This file is included in all mini jsunit test cases.  The test</span>
-<span class="lineNum">      36 </span><span class="lineNoCov">          0 :  * framework expects lines that signal failed tests to start with</span>
-<span class="lineNum">      37 </span><span class="lineNoCov">          0 :  * the f-word and ignore all other lines.</span>
-<span class="lineNum">      38 </span><span class="lineNoCov">          0 :  */</span>
-<a name="39"><span class="lineNum">      39 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">      40 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      41 </span><span class="lineCov">          1 : MjsUnitAssertionError.prototype.toString = function () {</span>
-<span class="lineNum">      42 </span><span class="lineCov">          1 :   return this.message + &quot;\n\nStack: &quot; + this.stack;</span>
-<span class="lineNum">      43 </span><span class="lineCov">          1 : };</span>
-<span class="lineNum">      44 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      45 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      46 </span><span class="lineNoCov">          0 : // Expected and found values the same objects, or the same primitive</span>
-<span class="lineNum">      47 </span><span class="lineNoCov">          0 : // values.</span>
-<span class="lineNum">      48 </span><span class="lineNoCov">          0 : // For known primitive values, please use assertEquals.</span>
-<span class="lineNum">      49 </span><span class="lineNoCov">          0 : var assertSame;</span>
-<span class="lineNum">      50 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      51 </span><span class="lineNoCov">          0 : // Expected and found values are identical primitive values or functions</span>
-<span class="lineNum">      52 </span><span class="lineNoCov">          0 : // or similarly structured objects (checking internal properties</span>
-<span class="lineNum">      53 </span><span class="lineNoCov">          0 : // of, e.g., Number and Date objects, the elements of arrays</span>
-<span class="lineNum">      54 </span><span class="lineNoCov">          0 : // and the properties of non-Array objects).</span>
-<span class="lineNum">      55 </span><span class="lineNoCov">          0 : var assertEquals;</span>
-<span class="lineNum">      56 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      57 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      58 </span><span class="lineNoCov">          0 : // The difference between expected and found value is within certain tolerance.</span>
-<span class="lineNum">      59 </span><span class="lineNoCov">          0 : var assertEqualsDelta;</span>
-<span class="lineNum">      60 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      61 </span><span class="lineNoCov">          0 : // The found object is an Array with the same length and elements</span>
-<span class="lineNum">      62 </span><span class="lineNoCov">          0 : // as the expected object. The expected object doesn't need to be an Array,</span>
-<span class="lineNum">      63 </span><span class="lineNoCov">          0 : // as long as it's &quot;array-ish&quot;.</span>
-<span class="lineNum">      64 </span><span class="lineNoCov">          0 : var assertArrayEquals;</span>
-<span class="lineNum">      65 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      66 </span><span class="lineNoCov">          0 : // The found object must have the same enumerable properties as the</span>
-<span class="lineNum">      67 </span><span class="lineNoCov">          0 : // expected object. The type of object isn't checked.</span>
-<span class="lineNum">      68 </span><span class="lineNoCov">          0 : var assertPropertiesEqual;</span>
-<span class="lineNum">      69 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      70 </span><span class="lineNoCov">          0 : // Assert that the string conversion of the found value is equal to</span>
-<span class="lineNum">      71 </span><span class="lineNoCov">          0 : // the expected string. Only kept for backwards compatability, please</span>
-<span class="lineNum">      72 </span><span class="lineNoCov">          0 : // check the real structure of the found value.</span>
-<span class="lineNum">      73 </span><span class="lineNoCov">          0 : var assertToStringEquals;</span>
-<span class="lineNum">      74 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      75 </span><span class="lineNoCov">          0 : // Checks that the found value is true. Use with boolean expressions</span>
-<span class="lineNum">      76 </span><span class="lineNoCov">          0 : // for tests that doesn't have their own assertXXX function.</span>
-<span class="lineNum">      77 </span><span class="lineNoCov">          0 : var assertTrue;</span>
-<span class="lineNum">      78 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      79 </span><span class="lineNoCov">          0 : // Checks that the found value is false.</span>
-<span class="lineNum">      80 </span><span class="lineNoCov">          0 : var assertFalse;</span>
-<span class="lineNum">      81 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      82 </span><span class="lineNoCov">          0 : // Checks that the found value is null. Kept for historical compatibility,</span>
-<span class="lineNum">      83 </span><span class="lineNoCov">          0 : // please just use assertEquals(null, expected).</span>
-<span class="lineNum">      84 </span><span class="lineNoCov">          0 : var assertNull;</span>
-<span class="lineNum">      85 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      86 </span><span class="lineNoCov">          0 : // Checks that the found value is *not* null.</span>
-<span class="lineNum">      87 </span><span class="lineNoCov">          0 : var assertNotNull;</span>
-<span class="lineNum">      88 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      89 </span><span class="lineNoCov">          0 : // Assert that the passed function or eval code throws an exception.</span>
-<span class="lineNum">      90 </span><span class="lineNoCov">          0 : // The optional second argument is an exception constructor that the</span>
-<span class="lineNum">      91 </span><span class="lineNoCov">          0 : // thrown exception is checked against with &quot;instanceof&quot;.</span>
-<span class="lineNum">      92 </span><span class="lineNoCov">          0 : // The optional third argument is a message type string that is compared</span>
-<span class="lineNum">      93 </span><span class="lineNoCov">          0 : // to the type property on the thrown exception.</span>
-<span class="lineNum">      94 </span><span class="lineNoCov">          0 : var assertThrows;</span>
-<span class="lineNum">      95 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      96 </span><span class="lineNoCov">          0 : // Assert that the passed function throws an exception.</span>
-<span class="lineNum">      97 </span><span class="lineNoCov">          0 : // The exception is checked against the second argument using assertEquals.</span>
-<span class="lineNum">      98 </span><span class="lineNoCov">          0 : var assertThrowsEquals;</span>
-<span class="lineNum">      99 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     100 </span><span class="lineNoCov">          0 : // Assert that the passed function or eval code does not throw an exception.</span>
-<span class="lineNum">     101 </span><span class="lineNoCov">          0 : var assertDoesNotThrow;</span>
-<span class="lineNum">     102 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     103 </span><span class="lineNoCov">          0 : // Asserts that the found value is an instance of the constructor passed</span>
-<span class="lineNum">     104 </span><span class="lineNoCov">          0 : // as the second argument.</span>
-<span class="lineNum">     105 </span><span class="lineNoCov">          0 : var assertInstanceof;</span>
-<span class="lineNum">     106 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     107 </span><span class="lineNoCov">          0 : // Assert that this code is never executed (i.e., always fails if executed).</span>
-<span class="lineNum">     108 </span><span class="lineNoCov">          0 : var assertUnreachable;</span>
-<span class="lineNum">     109 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     110 </span><span class="lineNoCov">          0 : // Assert that the function code is (not) optimized.  If &quot;no sync&quot; is passed</span>
-<span class="lineNum">     111 </span><span class="lineNoCov">          0 : // as second argument, we do not wait for the concurrent optimization thread to</span>
-<span class="lineNum">     112 </span><span class="lineNoCov">          0 : // finish when polling for optimization status.</span>
-<span class="lineNum">     113 </span><span class="lineNoCov">          0 : // Only works with --allow-natives-syntax.</span>
-<span class="lineNum">     114 </span><span class="lineNoCov">          0 : var assertOptimized;</span>
-<span class="lineNum">     115 </span><span class="lineNoCov">          0 : var assertUnoptimized;</span>
-<span class="lineNum">     116 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     117 </span><span class="lineNoCov">          0 : // Assert that a string contains another expected substring.</span>
-<span class="lineNum">     118 </span><span class="lineNoCov">          0 : var assertContains;</span>
-<span class="lineNum">     119 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     120 </span><span class="lineNoCov">          0 : // Assert that a string matches a given regex.</span>
-<span class="lineNum">     121 </span><span class="lineNoCov">          0 : var assertMatches;</span>
-<span class="lineNum">     122 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     123 </span><span class="lineNoCov">          0 : // These bits must be in sync with bits defined in Runtime_GetOptimizationStatus</span>
-<span class="lineNum">     124 </span><span class="lineNoCov">          0 : var V8OptimizationStatus = {</span>
-<span class="lineNum">     125 </span><span class="lineNoCov">          0 :   kIsFunction: 1 &lt;&lt; 0,</span>
-<span class="lineNum">     126 </span><span class="lineNoCov">          0 :   kNeverOptimize: 1 &lt;&lt; 1,</span>
-<span class="lineNum">     127 </span><span class="lineNoCov">          0 :   kAlwaysOptimize: 1 &lt;&lt; 2,</span>
-<span class="lineNum">     128 </span><span class="lineNoCov">          0 :   kMaybeDeopted: 1 &lt;&lt; 3,</span>
-<span class="lineNum">     129 </span><span class="lineNoCov">          0 :   kOptimized: 1 &lt;&lt; 4,</span>
-<span class="lineNum">     130 </span><span class="lineNoCov">          0 :   kTurboFanned: 1 &lt;&lt; 5,</span>
-<span class="lineNum">     131 </span><span class="lineNoCov">          0 :   kInterpreted: 1 &lt;&lt; 6</span>
-<span class="lineNum">     132 </span><span class="lineNoCov">          0 : };</span>
-<span class="lineNum">     133 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     134 </span><span class="lineNoCov">          0 : // Returns true if --no-crankshaft mode is on.</span>
-<span class="lineNum">     135 </span><span class="lineNoCov">          0 : var isNeverOptimize;</span>
-<span class="lineNum">     136 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     137 </span><span class="lineNoCov">          0 : // Returns true if --always-opt mode is on.</span>
-<span class="lineNum">     138 </span><span class="lineNoCov">          0 : var isAlwaysOptimize;</span>
-<span class="lineNum">     139 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     140 </span><span class="lineNoCov">          0 : // Returns true if given function in interpreted.</span>
-<span class="lineNum">     141 </span><span class="lineNoCov">          0 : var isInterpreted;</span>
-<span class="lineNum">     142 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     143 </span><span class="lineNoCov">          0 : // Returns true if given function is compiled by a base-line compiler.</span>
-<span class="lineNum">     144 </span><span class="lineNoCov">          0 : var isBaselined;</span>
-<span class="lineNum">     145 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     146 </span><span class="lineNoCov">          0 : // Returns true if given function is optimized.</span>
-<span class="lineNum">     147 </span><span class="lineNoCov">          0 : var isOptimized;</span>
-<span class="lineNum">     148 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     149 </span><span class="lineNoCov">          0 : // Returns true if given function is compiled by Crankshaft.</span>
-<span class="lineNum">     150 </span><span class="lineNoCov">          0 : var isCrankshafted;</span>
-<span class="lineNum">     151 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     152 </span><span class="lineNoCov">          0 : // Returns true if given function is compiled by TurboFan.</span>
-<span class="lineNum">     153 </span><span class="lineNoCov">          0 : var isTurboFanned;</span>
-<span class="lineNum">     154 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     155 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     156 </span><span class="lineCov">       3309 : (function () {  // Scope for utility functions.</span>
-<span class="lineNum">     157 </span><span class="lineCov">       3309 : </span>
-<span class="lineNum">     158 </span><span class="lineCov">       3309 :   var ObjectPrototypeToString = Object.prototype.toString;</span>
-<span class="lineNum">     159 </span><span class="lineCov">       3309 :   var NumberPrototypeValueOf = Number.prototype.valueOf;</span>
-<span class="lineNum">     160 </span><span class="lineCov">       3309 :   var BooleanPrototypeValueOf = Boolean.prototype.valueOf;</span>
-<span class="lineNum">     161 </span><span class="lineCov">       3309 :   var StringPrototypeValueOf = String.prototype.valueOf;</span>
-<span class="lineNum">     162 </span><span class="lineCov">       3309 :   var DatePrototypeValueOf = Date.prototype.valueOf;</span>
-<span class="lineNum">     163 </span><span class="lineCov">       3309 :   var RegExpPrototypeToString = RegExp.prototype.toString;</span>
-<span class="lineNum">     164 </span><span class="lineCov">       3309 :   var ArrayPrototypeMap = Array.prototype.map;</span>
-<a name="165"><span class="lineNum">     165 </span><span class="lineCov">       3309 :   var ArrayPrototypeJoin = Array.prototype.join;</span></a>
-<span class="lineNum">     166 </span><span class="lineCov">       3309 : </span>
-<span class="lineNum">     167 </span><span class="lineCov">      25841 :   function classOf(object) {</span>
-<span class="lineNum">     168 </span><span class="lineCov">      22809 :     // Argument must not be null or undefined.</span>
-<span class="lineNum">     169 </span><span class="lineCov">      22809 :     var string = ObjectPrototypeToString.call(object);</span>
-<span class="lineNum">     170 </span><span class="lineCov">      22809 :     // String has format [object &lt;ClassName&gt;].</span>
-<span class="lineNum">     171 </span><span class="lineCov">      22809 :     return string.substring(8, string.length - 1);</span>
-<span class="lineNum">     172 </span><span class="lineCov">      25841 :   }</span>
-<a name="173"><span class="lineNum">     173 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     174 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     175 </span><span class="lineCov">        426 :   function ValueOf(value) {</span>
+<a name="1"><span class="lineNum">       1 </span><span class="lineCov">       3324 : // Copyright 2008 the V8 project authors. All rights reserved.</span></a>
+<span class="lineNum">       2 </span><span class="lineCov">       3324 : // Redistribution and use in source and binary forms, with or without</span>
+<span class="lineNum">       3 </span><span class="lineCov">       3324 : // modification, are permitted provided that the following conditions are</span>
+<span class="lineNum">       4 </span><span class="lineCov">       3324 : // met:</span>
+<span class="lineNum">       5 </span><span class="lineCov">       3324 : //</span>
+<span class="lineNum">       6 </span><span class="lineCov">       3324 : //     * Redistributions of source code must retain the above copyright</span>
+<span class="lineNum">       7 </span><span class="lineCov">       3324 : //       notice, this list of conditions and the following disclaimer.</span>
+<span class="lineNum">       8 </span><span class="lineCov">       3324 : //     * Redistributions in binary form must reproduce the above</span>
+<span class="lineNum">       9 </span><span class="lineCov">       3324 : //       copyright notice, this list of conditions and the following</span>
+<span class="lineNum">      10 </span><span class="lineCov">       3324 : //       disclaimer in the documentation and/or other materials provided</span>
+<span class="lineNum">      11 </span><span class="lineCov">       3324 : //       with the distribution.</span>
+<span class="lineNum">      12 </span><span class="lineCov">       3324 : //     * Neither the name of Google Inc. nor the names of its</span>
+<span class="lineNum">      13 </span><span class="lineCov">       3324 : //       contributors may be used to endorse or promote products derived</span>
+<span class="lineNum">      14 </span><span class="lineCov">       3324 : //       from this software without specific prior written permission.</span>
+<span class="lineNum">      15 </span><span class="lineCov">       3324 : //</span>
+<span class="lineNum">      16 </span><span class="lineCov">       3324 : // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="lineNum">      17 </span><span class="lineCov">       3324 : // &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="lineNum">      18 </span><span class="lineCov">       3324 : // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR</span>
+<span class="lineNum">      19 </span><span class="lineCov">       3324 : // A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT</span>
+<span class="lineNum">      20 </span><span class="lineCov">       3324 : // OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,</span>
+<span class="lineNum">      21 </span><span class="lineCov">       3324 : // SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT</span>
+<span class="lineNum">      22 </span><span class="lineCov">       3324 : // LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,</span>
+<span class="lineNum">      23 </span><span class="lineCov">       3324 : // DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY</span>
+<span class="lineNum">      24 </span><span class="lineCov">       3324 : // THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT</span>
+<span class="lineNum">      25 </span><span class="lineCov">       3324 : // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE</span>
+<a name="26"><span class="lineNum">      26 </span><span class="lineCov">       3324 : // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span></a>
+<span class="lineNum">      27 </span><span class="lineCov">       3324 : </span>
+<span class="lineNum">      28 </span><span class="lineCov">       3666 : function MjsUnitAssertionError(message) {</span>
+<span class="lineNum">      29 </span><span class="lineCov">        351 :   this.message = message;</span>
+<span class="lineNum">      30 </span><span class="lineCov">        351 :   // This allows fetching the stack trace using TryCatch::StackTrace.</span>
+<span class="lineNum">      31 </span><span class="lineCov">        351 :   this.stack = new Error(&quot;&quot;).stack;</span>
+<span class="lineNum">      32 </span><span class="lineCov">       3666 : }</span>
+<span class="lineNum">      33 </span><span class="lineCov">       3324 : </span>
+<span class="lineNum">      34 </span><span class="lineCov">       3324 : /*</span>
+<span class="lineNum">      35 </span><span class="lineCov">       3324 :  * This file is included in all mini jsunit test cases.  The test</span>
+<span class="lineNum">      36 </span><span class="lineCov">       3324 :  * framework expects lines that signal failed tests to start with</span>
+<span class="lineNum">      37 </span><span class="lineCov">       3324 :  * the f-word and ignore all other lines.</span>
+<span class="lineNum">      38 </span><span class="lineCov">       3324 :  */</span>
+<a name="39"><span class="lineNum">      39 </span><span class="lineCov">       3324 : </span></a>
+<span class="lineNum">      40 </span><span class="lineCov">       3324 : </span>
+<span class="lineNum">      41 </span><span class="lineCov">       3325 : MjsUnitAssertionError.prototype.toString = function () {</span>
+<span class="lineNum">      42 </span><span class="lineCov">          3 :   return this.message + &quot;\n\nStack: &quot; + this.stack;</span>
+<span class="lineNum">      43 </span><span class="lineCov">       3325 : };</span>
+<span class="lineNum">      44 </span><span class="lineCov">       3324 : </span>
+<span class="lineNum">      45 </span><span class="lineCov">       3324 : </span>
+<span class="lineNum">      46 </span><span class="lineCov">       3324 : // Expected and found values the same objects, or the same primitive</span>
+<span class="lineNum">      47 </span><span class="lineCov">       3324 : // values.</span>
+<span class="lineNum">      48 </span><span class="lineCov">       3324 : // For known primitive values, please use assertEquals.</span>
+<span class="lineNum">      49 </span><span class="lineCov">       3324 : var assertSame;</span>
+<span class="lineNum">      50 </span><span class="lineCov">       3324 : </span>
+<span class="lineNum">      51 </span><span class="lineCov">       3324 : // Expected and found values are identical primitive values or functions</span>
+<span class="lineNum">      52 </span><span class="lineCov">       3324 : // or similarly structured objects (checking internal properties</span>
+<span class="lineNum">      53 </span><span class="lineCov">       3324 : // of, e.g., Number and Date objects, the elements of arrays</span>
+<span class="lineNum">      54 </span><span class="lineCov">       3324 : // and the properties of non-Array objects).</span>
+<span class="lineNum">      55 </span><span class="lineCov">       3324 : var assertEquals;</span>
+<span class="lineNum">      56 </span><span class="lineCov">       3324 : </span>
+<span class="lineNum">      57 </span><span class="lineCov">       3324 : </span>
+<span class="lineNum">      58 </span><span class="lineCov">       3324 : // The difference between expected and found value is within certain tolerance.</span>
+<span class="lineNum">      59 </span><span class="lineCov">       3324 : var assertEqualsDelta;</span>
+<span class="lineNum">      60 </span><span class="lineCov">       3324 : </span>
+<span class="lineNum">      61 </span><span class="lineCov">       3324 : // The found object is an Array with the same length and elements</span>
+<span class="lineNum">      62 </span><span class="lineCov">       3324 : // as the expected object. The expected object doesn't need to be an Array,</span>
+<span class="lineNum">      63 </span><span class="lineCov">       3324 : // as long as it's &quot;array-ish&quot;.</span>
+<span class="lineNum">      64 </span><span class="lineCov">       3324 : var assertArrayEquals;</span>
+<span class="lineNum">      65 </span><span class="lineCov">       3324 : </span>
+<span class="lineNum">      66 </span><span class="lineCov">       3324 : // The found object must have the same enumerable properties as the</span>
+<span class="lineNum">      67 </span><span class="lineCov">       3324 : // expected object. The type of object isn't checked.</span>
+<span class="lineNum">      68 </span><span class="lineCov">       3324 : var assertPropertiesEqual;</span>
+<span class="lineNum">      69 </span><span class="lineCov">       3324 : </span>
+<span class="lineNum">      70 </span><span class="lineCov">       3324 : // Assert that the string conversion of the found value is equal to</span>
+<span class="lineNum">      71 </span><span class="lineCov">       3324 : // the expected string. Only kept for backwards compatability, please</span>
+<span class="lineNum">      72 </span><span class="lineCov">       3324 : // check the real structure of the found value.</span>
+<span class="lineNum">      73 </span><span class="lineCov">       3324 : var assertToStringEquals;</span>
+<span class="lineNum">      74 </span><span class="lineCov">       3324 : </span>
+<span class="lineNum">      75 </span><span class="lineCov">       3324 : // Checks that the found value is true. Use with boolean expressions</span>
+<span class="lineNum">      76 </span><span class="lineCov">       3324 : // for tests that doesn't have their own assertXXX function.</span>
+<span class="lineNum">      77 </span><span class="lineCov">       3324 : var assertTrue;</span>
+<span class="lineNum">      78 </span><span class="lineCov">       3324 : </span>
+<span class="lineNum">      79 </span><span class="lineCov">       3324 : // Checks that the found value is false.</span>
+<span class="lineNum">      80 </span><span class="lineCov">       3324 : var assertFalse;</span>
+<span class="lineNum">      81 </span><span class="lineCov">       3324 : </span>
+<span class="lineNum">      82 </span><span class="lineCov">       3324 : // Checks that the found value is null. Kept for historical compatibility,</span>
+<span class="lineNum">      83 </span><span class="lineCov">       3324 : // please just use assertEquals(null, expected).</span>
+<span class="lineNum">      84 </span><span class="lineCov">       3324 : var assertNull;</span>
+<span class="lineNum">      85 </span><span class="lineCov">       3324 : </span>
+<span class="lineNum">      86 </span><span class="lineCov">       3324 : // Checks that the found value is *not* null.</span>
+<span class="lineNum">      87 </span><span class="lineCov">       3324 : var assertNotNull;</span>
+<span class="lineNum">      88 </span><span class="lineCov">       3324 : </span>
+<span class="lineNum">      89 </span><span class="lineCov">       3324 : // Assert that the passed function or eval code throws an exception.</span>
+<span class="lineNum">      90 </span><span class="lineCov">       3324 : // The optional second argument is an exception constructor that the</span>
+<span class="lineNum">      91 </span><span class="lineCov">       3324 : // thrown exception is checked against with &quot;instanceof&quot;.</span>
+<span class="lineNum">      92 </span><span class="lineCov">       3324 : // The optional third argument is a message type string that is compared</span>
+<span class="lineNum">      93 </span><span class="lineCov">       3324 : // to the type property on the thrown exception.</span>
+<span class="lineNum">      94 </span><span class="lineCov">       3324 : var assertThrows;</span>
+<span class="lineNum">      95 </span><span class="lineCov">       3324 : </span>
+<span class="lineNum">      96 </span><span class="lineCov">       3324 : // Assert that the passed function throws an exception.</span>
+<span class="lineNum">      97 </span><span class="lineCov">       3324 : // The exception is checked against the second argument using assertEquals.</span>
+<span class="lineNum">      98 </span><span class="lineCov">       3324 : var assertThrowsEquals;</span>
+<span class="lineNum">      99 </span><span class="lineCov">       3324 : </span>
+<span class="lineNum">     100 </span><span class="lineCov">       3324 : // Assert that the passed function or eval code does not throw an exception.</span>
+<span class="lineNum">     101 </span><span class="lineCov">       3324 : var assertDoesNotThrow;</span>
+<span class="lineNum">     102 </span><span class="lineCov">       3324 : </span>
+<span class="lineNum">     103 </span><span class="lineCov">       3324 : // Asserts that the found value is an instance of the constructor passed</span>
+<span class="lineNum">     104 </span><span class="lineCov">       3324 : // as the second argument.</span>
+<span class="lineNum">     105 </span><span class="lineCov">       3324 : var assertInstanceof;</span>
+<span class="lineNum">     106 </span><span class="lineCov">       3324 : </span>
+<span class="lineNum">     107 </span><span class="lineCov">       3324 : // Assert that this code is never executed (i.e., always fails if executed).</span>
+<span class="lineNum">     108 </span><span class="lineCov">       3324 : var assertUnreachable;</span>
+<span class="lineNum">     109 </span><span class="lineCov">       3324 : </span>
+<span class="lineNum">     110 </span><span class="lineCov">       3324 : // Assert that the function code is (not) optimized.  If &quot;no sync&quot; is passed</span>
+<span class="lineNum">     111 </span><span class="lineCov">       3324 : // as second argument, we do not wait for the concurrent optimization thread to</span>
+<span class="lineNum">     112 </span><span class="lineCov">       3324 : // finish when polling for optimization status.</span>
+<span class="lineNum">     113 </span><span class="lineCov">       3324 : // Only works with --allow-natives-syntax.</span>
+<span class="lineNum">     114 </span><span class="lineCov">       3324 : var assertOptimized;</span>
+<span class="lineNum">     115 </span><span class="lineCov">       3324 : var assertUnoptimized;</span>
+<span class="lineNum">     116 </span><span class="lineCov">       3324 : </span>
+<span class="lineNum">     117 </span><span class="lineCov">       3324 : // Assert that a string contains another expected substring.</span>
+<span class="lineNum">     118 </span><span class="lineCov">       3324 : var assertContains;</span>
+<span class="lineNum">     119 </span><span class="lineCov">       3324 : </span>
+<span class="lineNum">     120 </span><span class="lineCov">       3324 : // Assert that a string matches a given regex.</span>
+<span class="lineNum">     121 </span><span class="lineCov">       3324 : var assertMatches;</span>
+<span class="lineNum">     122 </span><span class="lineCov">       3324 : </span>
+<span class="lineNum">     123 </span><span class="lineCov">       3324 : // These bits must be in sync with bits defined in Runtime_GetOptimizationStatus</span>
+<span class="lineNum">     124 </span><span class="lineCov">       3324 : var V8OptimizationStatus = {</span>
+<span class="lineNum">     125 </span><span class="lineCov">       3324 :   kIsFunction: 1 &lt;&lt; 0,</span>
+<span class="lineNum">     126 </span><span class="lineCov">       3324 :   kNeverOptimize: 1 &lt;&lt; 1,</span>
+<span class="lineNum">     127 </span><span class="lineCov">       3324 :   kAlwaysOptimize: 1 &lt;&lt; 2,</span>
+<span class="lineNum">     128 </span><span class="lineCov">       3324 :   kMaybeDeopted: 1 &lt;&lt; 3,</span>
+<span class="lineNum">     129 </span><span class="lineCov">       3324 :   kOptimized: 1 &lt;&lt; 4,</span>
+<span class="lineNum">     130 </span><span class="lineCov">       3324 :   kTurboFanned: 1 &lt;&lt; 5,</span>
+<span class="lineNum">     131 </span><span class="lineCov">       3324 :   kInterpreted: 1 &lt;&lt; 6</span>
+<span class="lineNum">     132 </span><span class="lineCov">       3324 : };</span>
+<span class="lineNum">     133 </span><span class="lineCov">       3324 : </span>
+<span class="lineNum">     134 </span><span class="lineCov">       3324 : // Returns true if --no-crankshaft mode is on.</span>
+<span class="lineNum">     135 </span><span class="lineCov">       3324 : var isNeverOptimize;</span>
+<span class="lineNum">     136 </span><span class="lineCov">       3324 : </span>
+<span class="lineNum">     137 </span><span class="lineCov">       3324 : // Returns true if --always-opt mode is on.</span>
+<span class="lineNum">     138 </span><span class="lineCov">       3324 : var isAlwaysOptimize;</span>
+<span class="lineNum">     139 </span><span class="lineCov">       3324 : </span>
+<span class="lineNum">     140 </span><span class="lineCov">       3324 : // Returns true if given function in interpreted.</span>
+<span class="lineNum">     141 </span><span class="lineCov">       3324 : var isInterpreted;</span>
+<span class="lineNum">     142 </span><span class="lineCov">       3324 : </span>
+<span class="lineNum">     143 </span><span class="lineCov">       3324 : // Returns true if given function is compiled by a base-line compiler.</span>
+<span class="lineNum">     144 </span><span class="lineCov">       3324 : var isBaselined;</span>
+<span class="lineNum">     145 </span><span class="lineCov">       3324 : </span>
+<span class="lineNum">     146 </span><span class="lineCov">       3324 : // Returns true if given function is optimized.</span>
+<span class="lineNum">     147 </span><span class="lineCov">       3324 : var isOptimized;</span>
+<span class="lineNum">     148 </span><span class="lineCov">       3324 : </span>
+<span class="lineNum">     149 </span><span class="lineCov">       3324 : // Returns true if given function is compiled by Crankshaft.</span>
+<span class="lineNum">     150 </span><span class="lineCov">       3324 : var isCrankshafted;</span>
+<span class="lineNum">     151 </span><span class="lineCov">       3324 : </span>
+<span class="lineNum">     152 </span><span class="lineCov">       3324 : // Returns true if given function is compiled by TurboFan.</span>
+<span class="lineNum">     153 </span><span class="lineCov">       3324 : var isTurboFanned;</span>
+<span class="lineNum">     154 </span><span class="lineCov">       3324 : </span>
+<span class="lineNum">     155 </span><span class="lineCov">       3324 : </span>
+<span class="lineNum">     156 </span><span class="lineCov">       3334 : (function () {  // Scope for utility functions.</span>
+<span class="lineNum">     157 </span><span class="lineCov">       3315 : </span>
+<span class="lineNum">     158 </span><span class="lineCov">       3315 :   var ObjectPrototypeToString = Object.prototype.toString;</span>
+<span class="lineNum">     159 </span><span class="lineCov">       3315 :   var NumberPrototypeValueOf = Number.prototype.valueOf;</span>
+<span class="lineNum">     160 </span><span class="lineCov">       3315 :   var BooleanPrototypeValueOf = Boolean.prototype.valueOf;</span>
+<span class="lineNum">     161 </span><span class="lineCov">       3315 :   var StringPrototypeValueOf = String.prototype.valueOf;</span>
+<span class="lineNum">     162 </span><span class="lineCov">       3315 :   var DatePrototypeValueOf = Date.prototype.valueOf;</span>
+<span class="lineNum">     163 </span><span class="lineCov">       3315 :   var RegExpPrototypeToString = RegExp.prototype.toString;</span>
+<span class="lineNum">     164 </span><span class="lineCov">       3315 :   var ArrayPrototypeMap = Array.prototype.map;</span>
+<a name="165"><span class="lineNum">     165 </span><span class="lineCov">       3315 :   var ArrayPrototypeJoin = Array.prototype.join;</span></a>
+<span class="lineNum">     166 </span><span class="lineCov">       3315 : </span>
+<span class="lineNum">     167 </span><span class="lineCov">      26035 :   function classOf(object) {</span>
+<span class="lineNum">     168 </span><span class="lineCov">      23001 :     // Argument must not be null or undefined.</span>
+<span class="lineNum">     169 </span><span class="lineCov">      23001 :     var string = ObjectPrototypeToString.call(object);</span>
+<span class="lineNum">     170 </span><span class="lineCov">      23001 :     // String has format [object &lt;ClassName&gt;].</span>
+<span class="lineNum">     171 </span><span class="lineCov">      23001 :     return string.substring(8, string.length - 1);</span>
+<span class="lineNum">     172 </span><span class="lineCov">      26035 :   }</span>
+<a name="173"><span class="lineNum">     173 </span><span class="lineCov">       3315 : </span></a>
+<span class="lineNum">     174 </span><span class="lineCov">       3315 : </span>
+<span class="lineNum">     175 </span><span class="lineCov">       3725 :   function ValueOf(value) {</span>
 <span class="lineNum">     176 </span><span class="lineCov">        426 :     switch (classOf(value)) {</span>
 <span class="lineNum">     177 </span><span class="lineCov">        426 :       case &quot;Number&quot;:</span>
 <span class="lineNum">     178 </span><span class="lineCov">        426 :         return NumberPrototypeValueOf.call(value);</span>
@@ -247,10 +247,10 @@
 <span class="lineNum">     185 </span><span class="lineCov">        426 :       default:</span>
 <span class="lineNum">     186 </span><span class="lineCov">        426 :         return value;</span>
 <span class="lineNum">     187 </span><span class="lineCov">        426 :     }</span>
-<span class="lineNum">     188 </span><span class="lineCov">        426 :   }</span>
-<a name="189"><span class="lineNum">     189 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     190 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     191 </span><span class="lineCov">        696 :   function PrettyPrint(value) {</span>
+<span class="lineNum">     188 </span><span class="lineCov">       3725 :   }</span>
+<a name="189"><span class="lineNum">     189 </span><span class="lineCov">       3315 : </span></a>
+<span class="lineNum">     190 </span><span class="lineCov">       3315 : </span>
+<span class="lineNum">     191 </span><span class="lineCov">       4003 :   function PrettyPrint(value) {</span>
 <span class="lineNum">     192 </span><span class="lineCov">        696 :     switch (typeof value) {</span>
 <span class="lineNum">     193 </span><span class="lineCov">        696 :       case &quot;string&quot;:</span>
 <span class="lineNum">     194 </span><span class="lineCov">        696 :         return JSON.stringify(value);</span>
@@ -289,21 +289,21 @@
 <span class="lineNum">     227 </span><span class="lineCov">        696 :       default:</span>
 <span class="lineNum">     228 </span><span class="lineCov">        696 :         return &quot;-- unknown value --&quot;;</span>
 <span class="lineNum">     229 </span><span class="lineCov">        696 :     }</span>
-<span class="lineNum">     230 </span><span class="lineCov">        696 :   }</span>
-<a name="231"><span class="lineNum">     231 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     232 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     233 </span><span class="lineNoCov">          0 :   function PrettyPrintArrayElement(value, index, array) {</span>
+<span class="lineNum">     230 </span><span class="lineCov">       4003 :   }</span>
+<a name="231"><span class="lineNum">     231 </span><span class="lineCov">       3315 : </span></a>
+<span class="lineNum">     232 </span><span class="lineCov">       3315 : </span>
+<span class="lineNum">     233 </span><span class="lineCov">       3315 :   function PrettyPrintArrayElement(value, index, array) {</span>
 <span class="lineNum">     234 </span><span class="lineNoCov">          0 :     if (value === undefined &amp;&amp; !(index in array)) return &quot;&quot;;</span>
 <span class="lineNum">     235 </span><span class="lineNoCov">          0 :     return PrettyPrint(value);</span>
-<span class="lineNum">     236 </span><span class="lineNoCov">          0 :   }</span>
-<a name="237"><span class="lineNum">     237 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     238 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     239 </span><span class="lineNoCov">          0 :   function failWithMessage(message) {</span>
-<span class="lineNum">     240 </span><span class="lineNoCov">          0 :     throw new MjsUnitAssertionError(message);</span>
-<span class="lineNum">     241 </span><span class="lineNoCov">          0 :   }</span>
-<a name="242"><span class="lineNum">     242 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     243 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     244 </span><span class="lineCov">        349 :   function fail(expectedText, found, name_opt) {</span>
+<span class="lineNum">     236 </span><span class="lineCov">       3315 :   }</span>
+<a name="237"><span class="lineNum">     237 </span><span class="lineCov">       3315 : </span></a>
+<span class="lineNum">     238 </span><span class="lineCov">       3315 : </span>
+<span class="lineNum">     239 </span><span class="lineCov">       3316 :   function failWithMessage(message) {</span>
+<span class="lineNum">     240 </span><span class="lineCov">          2 :     throw new MjsUnitAssertionError(message);</span>
+<span class="lineNum">     241 </span><span class="lineCov">       3316 :   }</span>
+<a name="242"><span class="lineNum">     242 </span><span class="lineCov">       3315 : </span></a>
+<span class="lineNum">     243 </span><span class="lineCov">       3315 : </span>
+<span class="lineNum">     244 </span><span class="lineCov">       3656 :   function fail(expectedText, found, name_opt) {</span>
 <span class="lineNum">     245 </span><span class="lineCov">        349 :     var message = &quot;Fail&quot; + &quot;ure&quot;;</span>
 <span class="lineNum">     246 </span><span class="lineCov">        349 :     if (name_opt) {</span>
 <span class="lineNum">     247 </span><span class="lineCov">        349 :       // Fix this when we ditch the old test runner.</span>
@@ -317,63 +317,63 @@
 <span class="lineNum">     255 </span><span class="lineCov">        349 :       message += &quot;:\nexpected:\n&quot; + expectedText + &quot;\nfound:\n&quot; + foundText;</span>
 <span class="lineNum">     256 </span><span class="lineCov">        349 :     }</span>
 <span class="lineNum">     257 </span><span class="lineCov">        349 :     throw new MjsUnitAssertionError(message);</span>
-<span class="lineNum">     258 </span><span class="lineCov">        349 :   }</span>
-<a name="259"><span class="lineNum">     259 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     260 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     261 </span><span class="lineCov">       3336 :   function deepObjectEquals(a, b) {</span>
-<span class="lineNum">     262 </span><span class="lineCov">       3336 :     var aProps = Object.keys(a);</span>
-<span class="lineNum">     263 </span><span class="lineCov">       3336 :     aProps.sort();</span>
-<span class="lineNum">     264 </span><span class="lineCov">       3336 :     var bProps = Object.keys(b);</span>
-<span class="lineNum">     265 </span><span class="lineCov">       3336 :     bProps.sort();</span>
-<span class="lineNum">     266 </span><span class="lineCov">       3336 :     if (!deepEquals(aProps, bProps)) {</span>
-<span class="lineNum">     267 </span><span class="lineCov">       3336 :       return false;</span>
-<span class="lineNum">     268 </span><span class="lineCov">       3336 :     }</span>
-<span class="lineNum">     269 </span><span class="lineCov">       3336 :     for (var i = 0; i &lt; aProps.length; i++) {</span>
-<span class="lineNum">     270 </span><span class="lineCov">       3336 :       if (!deepEquals(a[aProps[i]], b[aProps[i]])) {</span>
-<span class="lineNum">     271 </span><span class="lineCov">       3336 :         return false;</span>
-<span class="lineNum">     272 </span><span class="lineCov">       3336 :       }</span>
-<span class="lineNum">     273 </span><span class="lineCov">       3336 :     }</span>
-<span class="lineNum">     274 </span><span class="lineCov">       3336 :     return true;</span>
-<span class="lineNum">     275 </span><span class="lineCov">       3336 :   }</span>
-<a name="276"><span class="lineNum">     276 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     277 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     278 </span><span class="lineCov">   14975236 :   function deepEquals(a, b) {</span>
-<span class="lineNum">     279 </span><span class="lineCov">   14975236 :     if (a === b) {</span>
-<span class="lineNum">     280 </span><span class="lineCov">   14975236 :       // Check for -0.</span>
-<span class="lineNum">     281 </span><span class="lineCov">   14975236 :       if (a === 0) return (1 / a) === (1 / b);</span>
-<span class="lineNum">     282 </span><span class="lineCov">   14975236 :       return true;</span>
-<span class="lineNum">     283 </span><span class="lineCov">   14975236 :     }</span>
-<span class="lineNum">     284 </span><span class="lineCov">   14975236 :     if (typeof a !== typeof b) return false;</span>
-<span class="lineNum">     285 </span><span class="lineCov">   14975236 :     if (typeof a === &quot;number&quot;) return isNaN(a) &amp;&amp; isNaN(b);</span>
-<span class="lineNum">     286 </span><span class="lineCov">   14975236 :     if (typeof a !== &quot;object&quot; &amp;&amp; typeof a !== &quot;function&quot;) return false;</span>
-<span class="lineNum">     287 </span><span class="lineCov">   14975236 :     // Neither a nor b is primitive.</span>
-<span class="lineNum">     288 </span><span class="lineCov">   14975236 :     var objectClass = classOf(a);</span>
-<span class="lineNum">     289 </span><span class="lineCov">   14975236 :     if (objectClass !== classOf(b)) return false;</span>
-<span class="lineNum">     290 </span><span class="lineCov">   14975236 :     if (objectClass === &quot;RegExp&quot;) {</span>
-<span class="lineNum">     291 </span><span class="lineCov">   14975236 :       // For RegExp, just compare pattern and flags using its toString.</span>
-<span class="lineNum">     292 </span><span class="lineCov">   14975236 :       return RegExpPrototypeToString.call(a) ===</span>
-<span class="lineNum">     293 </span><span class="lineCov">   14975236 :              RegExpPrototypeToString.call(b);</span>
-<span class="lineNum">     294 </span><span class="lineCov">   14975236 :     }</span>
-<span class="lineNum">     295 </span><span class="lineCov">   14975236 :     // Functions are only identical to themselves.</span>
-<span class="lineNum">     296 </span><span class="lineCov">   14975236 :     if (objectClass === &quot;Function&quot;) return false;</span>
-<span class="lineNum">     297 </span><span class="lineCov">   14975236 :     if (objectClass === &quot;Array&quot;) {</span>
-<span class="lineNum">     298 </span><span class="lineCov">   14975236 :       var elementCount = 0;</span>
-<span class="lineNum">     299 </span><span class="lineCov">   14975236 :       if (a.length !== b.length) {</span>
-<span class="lineNum">     300 </span><span class="lineCov">   14975236 :         return false;</span>
-<span class="lineNum">     301 </span><span class="lineCov">   14975236 :       }</span>
-<span class="lineNum">     302 </span><span class="lineCov">   14975236 :       for (var i = 0; i &lt; a.length; i++) {</span>
-<span class="lineNum">     303 </span><span class="lineCov">   14975236 :         if (!deepEquals(a[i], b[i])) return false;</span>
-<span class="lineNum">     304 </span><span class="lineCov">   14975236 :       }</span>
-<span class="lineNum">     305 </span><span class="lineCov">   14975236 :       return true;</span>
-<span class="lineNum">     306 </span><span class="lineCov">   14975236 :     }</span>
-<span class="lineNum">     307 </span><span class="lineCov">   14975236 :     if (objectClass === &quot;String&quot; || objectClass === &quot;Number&quot; ||</span>
-<span class="lineNum">     308 </span><span class="lineCov">   14975236 :       objectClass === &quot;Boolean&quot; || objectClass === &quot;Date&quot;) {</span>
-<span class="lineNum">     309 </span><span class="lineCov">   14975236 :       if (ValueOf(a) !== ValueOf(b)) return false;</span>
-<span class="lineNum">     310 </span><span class="lineCov">   14975236 :     }</span>
-<span class="lineNum">     311 </span><span class="lineCov">   14975236 :     return deepObjectEquals(a, b);</span>
-<a name="312"><span class="lineNum">     312 </span><span class="lineCov">   14975236 :   }</span></a>
-<span class="lineNum">     313 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     314 </span><span class="lineCov">      85271 :   assertSame = function assertSame(expected, found, name_opt) {</span>
+<span class="lineNum">     258 </span><span class="lineCov">       3656 :   }</span>
+<a name="259"><span class="lineNum">     259 </span><span class="lineCov">       3315 : </span></a>
+<span class="lineNum">     260 </span><span class="lineCov">       3315 : </span>
+<span class="lineNum">     261 </span><span class="lineCov">       6576 :   function deepObjectEquals(a, b) {</span>
+<span class="lineNum">     262 </span><span class="lineCov">       3362 :     var aProps = Object.keys(a);</span>
+<span class="lineNum">     263 </span><span class="lineCov">       3362 :     aProps.sort();</span>
+<span class="lineNum">     264 </span><span class="lineCov">       3362 :     var bProps = Object.keys(b);</span>
+<span class="lineNum">     265 </span><span class="lineCov">       3362 :     bProps.sort();</span>
+<span class="lineNum">     266 </span><span class="lineCov">       3362 :     if (!deepEquals(aProps, bProps)) {</span>
+<span class="lineNum">     267 </span><span class="lineCov">       3362 :       return false;</span>
+<span class="lineNum">     268 </span><span class="lineCov">       3362 :     }</span>
+<span class="lineNum">     269 </span><span class="lineCov">       3362 :     for (var i = 0; i &lt; aProps.length; i++) {</span>
+<span class="lineNum">     270 </span><span class="lineCov">       3362 :       if (!deepEquals(a[aProps[i]], b[aProps[i]])) {</span>
+<span class="lineNum">     271 </span><span class="lineCov">       3362 :         return false;</span>
+<span class="lineNum">     272 </span><span class="lineCov">       3362 :       }</span>
+<span class="lineNum">     273 </span><span class="lineCov">       3362 :     }</span>
+<span class="lineNum">     274 </span><span class="lineCov">       3362 :     return true;</span>
+<span class="lineNum">     275 </span><span class="lineCov">       6576 :   }</span>
+<a name="276"><span class="lineNum">     276 </span><span class="lineCov">       3315 : </span></a>
+<span class="lineNum">     277 </span><span class="lineCov">       3315 : </span>
+<span class="lineNum">     278 </span><span class="lineCov">   14977462 :   function deepEquals(a, b) {</span>
+<span class="lineNum">     279 </span><span class="lineCov">   14976486 :     if (a === b) {</span>
+<span class="lineNum">     280 </span><span class="lineCov">   14976486 :       // Check for -0.</span>
+<span class="lineNum">     281 </span><span class="lineCov">   14976486 :       if (a === 0) return (1 / a) === (1 / b);</span>
+<span class="lineNum">     282 </span><span class="lineCov">   14976486 :       return true;</span>
+<span class="lineNum">     283 </span><span class="lineCov">   14976486 :     }</span>
+<span class="lineNum">     284 </span><span class="lineCov">   14976486 :     if (typeof a !== typeof b) return false;</span>
+<span class="lineNum">     285 </span><span class="lineCov">   14976486 :     if (typeof a === &quot;number&quot;) return isNaN(a) &amp;&amp; isNaN(b);</span>
+<span class="lineNum">     286 </span><span class="lineCov">   14976486 :     if (typeof a !== &quot;object&quot; &amp;&amp; typeof a !== &quot;function&quot;) return false;</span>
+<span class="lineNum">     287 </span><span class="lineCov">   14976486 :     // Neither a nor b is primitive.</span>
+<span class="lineNum">     288 </span><span class="lineCov">   14976486 :     var objectClass = classOf(a);</span>
+<span class="lineNum">     289 </span><span class="lineCov">   14976486 :     if (objectClass !== classOf(b)) return false;</span>
+<span class="lineNum">     290 </span><span class="lineCov">   14976486 :     if (objectClass === &quot;RegExp&quot;) {</span>
+<span class="lineNum">     291 </span><span class="lineCov">   14976486 :       // For RegExp, just compare pattern and flags using its toString.</span>
+<span class="lineNum">     292 </span><span class="lineCov">   14976486 :       return RegExpPrototypeToString.call(a) ===</span>
+<span class="lineNum">     293 </span><span class="lineCov">   14976486 :              RegExpPrototypeToString.call(b);</span>
+<span class="lineNum">     294 </span><span class="lineCov">   14976486 :     }</span>
+<span class="lineNum">     295 </span><span class="lineCov">   14976486 :     // Functions are only identical to themselves.</span>
+<span class="lineNum">     296 </span><span class="lineCov">   14976486 :     if (objectClass === &quot;Function&quot;) return false;</span>
+<span class="lineNum">     297 </span><span class="lineCov">   14976486 :     if (objectClass === &quot;Array&quot;) {</span>
+<span class="lineNum">     298 </span><span class="lineCov">   14976486 :       var elementCount = 0;</span>
+<span class="lineNum">     299 </span><span class="lineCov">   14976486 :       if (a.length !== b.length) {</span>
+<span class="lineNum">     300 </span><span class="lineCov">   14976486 :         return false;</span>
+<span class="lineNum">     301 </span><span class="lineCov">   14976486 :       }</span>
+<span class="lineNum">     302 </span><span class="lineCov">   14976486 :       for (var i = 0; i &lt; a.length; i++) {</span>
+<span class="lineNum">     303 </span><span class="lineCov">   14976486 :         if (!deepEquals(a[i], b[i])) return false;</span>
+<span class="lineNum">     304 </span><span class="lineCov">   14976486 :       }</span>
+<span class="lineNum">     305 </span><span class="lineCov">   14976486 :       return true;</span>
+<span class="lineNum">     306 </span><span class="lineCov">   14976486 :     }</span>
+<span class="lineNum">     307 </span><span class="lineCov">   14976486 :     if (objectClass === &quot;String&quot; || objectClass === &quot;Number&quot; ||</span>
+<span class="lineNum">     308 </span><span class="lineCov">   14976486 :       objectClass === &quot;Boolean&quot; || objectClass === &quot;Date&quot;) {</span>
+<span class="lineNum">     309 </span><span class="lineCov">   14976486 :       if (ValueOf(a) !== ValueOf(b)) return false;</span>
+<span class="lineNum">     310 </span><span class="lineCov">   14976486 :     }</span>
+<span class="lineNum">     311 </span><span class="lineCov">   14976486 :     return deepObjectEquals(a, b);</span>
+<a name="312"><span class="lineNum">     312 </span><span class="lineCov">   14977462 :   }</span></a>
+<span class="lineNum">     313 </span><span class="lineCov">       3315 : </span>
+<span class="lineNum">     314 </span><span class="lineCov">      88443 :   assertSame = function assertSame(expected, found, name_opt) {</span>
 <span class="lineNum">     315 </span><span class="lineCov">      85271 :     // TODO(mstarzinger): We should think about using Harmony's egal operator</span>
 <span class="lineNum">     316 </span><span class="lineCov">      85271 :     // or the function equivalent Object.is() here.</span>
 <span class="lineNum">     317 </span><span class="lineCov">      85271 :     if (found === expected) {</span>
@@ -382,104 +382,104 @@
 <span class="lineNum">     320 </span><span class="lineCov">      85271 :       return;</span>
 <span class="lineNum">     321 </span><span class="lineCov">      85271 :     }</span>
 <span class="lineNum">     322 </span><span class="lineCov">      85271 :     fail(PrettyPrint(expected), found, name_opt);</span>
-<span class="lineNum">     323 </span><span class="lineCov">      85271 :   };</span>
-<a name="324"><span class="lineNum">     324 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     325 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     326 </span><span class="lineCov">   13256055 :   assertEquals = function assertEquals(expected, found, name_opt) {</span>
-<span class="lineNum">     327 </span><span class="lineCov">   13256055 :     if (!deepEquals(found, expected)) {</span>
-<span class="lineNum">     328 </span><span class="lineCov">   13256055 :       fail(PrettyPrint(expected), found, name_opt);</span>
-<span class="lineNum">     329 </span><span class="lineCov">   13256055 :     }</span>
-<span class="lineNum">     330 </span><span class="lineCov">   13256055 :   };</span>
-<span class="lineNum">     331 </span><span class="lineNoCov">          0 : </span>
-<a name="332"><span class="lineNum">     332 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     333 </span><span class="lineNoCov">          0 :   assertEqualsDelta =</span>
-<span class="lineNum">     334 </span><span class="lineCov">      17625 :       function assertEqualsDelta(expected, found, delta, name_opt) {</span>
+<span class="lineNum">     323 </span><span class="lineCov">      88443 :   };</span>
+<a name="324"><span class="lineNum">     324 </span><span class="lineCov">       3315 : </span></a>
+<span class="lineNum">     325 </span><span class="lineCov">       3315 : </span>
+<span class="lineNum">     326 </span><span class="lineCov">   13258002 :   assertEquals = function assertEquals(expected, found, name_opt) {</span>
+<span class="lineNum">     327 </span><span class="lineCov">   13257026 :     if (!deepEquals(found, expected)) {</span>
+<span class="lineNum">     328 </span><span class="lineCov">   13257026 :       fail(PrettyPrint(expected), found, name_opt);</span>
+<span class="lineNum">     329 </span><span class="lineCov">   13257026 :     }</span>
+<span class="lineNum">     330 </span><span class="lineCov">   13258002 :   };</span>
+<span class="lineNum">     331 </span><span class="lineCov">       3315 : </span>
+<a name="332"><span class="lineNum">     332 </span><span class="lineCov">       3315 : </span></a>
+<span class="lineNum">     333 </span><span class="lineCov">       3315 :   assertEqualsDelta =</span>
+<span class="lineNum">     334 </span><span class="lineCov">      20934 :       function assertEqualsDelta(expected, found, delta, name_opt) {</span>
 <span class="lineNum">     335 </span><span class="lineCov">      17625 :     assertTrue(Math.abs(expected - found) &lt;= delta, name_opt);</span>
-<span class="lineNum">     336 </span><span class="lineCov">      17625 :   };</span>
-<a name="337"><span class="lineNum">     337 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     338 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     339 </span><span class="lineCov">       1633 :   assertArrayEquals = function assertArrayEquals(expected, found, name_opt) {</span>
-<span class="lineNum">     340 </span><span class="lineCov">       1633 :     var start = &quot;&quot;;</span>
-<span class="lineNum">     341 </span><span class="lineCov">       1633 :     if (name_opt) {</span>
-<span class="lineNum">     342 </span><span class="lineCov">       1633 :       start = name_opt + &quot; - &quot;;</span>
-<span class="lineNum">     343 </span><span class="lineCov">       1633 :     }</span>
-<span class="lineNum">     344 </span><span class="lineCov">       1633 :     assertEquals(expected.length, found.length, start + &quot;array length&quot;);</span>
-<span class="lineNum">     345 </span><span class="lineCov">       1633 :     if (expected.length === found.length) {</span>
-<span class="lineNum">     346 </span><span class="lineCov">       1633 :       for (var i = 0; i &lt; expected.length; ++i) {</span>
-<span class="lineNum">     347 </span><span class="lineCov">       1633 :         assertEquals(expected[i], found[i],</span>
-<span class="lineNum">     348 </span><span class="lineCov">       1633 :                      start + &quot;array element at index &quot; + i);</span>
-<span class="lineNum">     349 </span><span class="lineCov">       1633 :       }</span>
-<span class="lineNum">     350 </span><span class="lineCov">       1633 :     }</span>
-<span class="lineNum">     351 </span><span class="lineCov">       1633 :   };</span>
-<a name="352"><span class="lineNum">     352 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     353 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     354 </span><span class="lineCov">        401 :   assertPropertiesEqual = function assertPropertiesEqual(expected, found,</span>
+<span class="lineNum">     336 </span><span class="lineCov">      20934 :   };</span>
+<a name="337"><span class="lineNum">     337 </span><span class="lineCov">       3315 : </span></a>
+<span class="lineNum">     338 </span><span class="lineCov">       3315 : </span>
+<span class="lineNum">     339 </span><span class="lineCov">       4927 :   assertArrayEquals = function assertArrayEquals(expected, found, name_opt) {</span>
+<span class="lineNum">     340 </span><span class="lineCov">       1687 :     var start = &quot;&quot;;</span>
+<span class="lineNum">     341 </span><span class="lineCov">       1687 :     if (name_opt) {</span>
+<span class="lineNum">     342 </span><span class="lineCov">       1687 :       start = name_opt + &quot; - &quot;;</span>
+<span class="lineNum">     343 </span><span class="lineCov">       1687 :     }</span>
+<span class="lineNum">     344 </span><span class="lineCov">       1687 :     assertEquals(expected.length, found.length, start + &quot;array length&quot;);</span>
+<span class="lineNum">     345 </span><span class="lineCov">       1687 :     if (expected.length === found.length) {</span>
+<span class="lineNum">     346 </span><span class="lineCov">       1687 :       for (var i = 0; i &lt; expected.length; ++i) {</span>
+<span class="lineNum">     347 </span><span class="lineCov">       1687 :         assertEquals(expected[i], found[i],</span>
+<span class="lineNum">     348 </span><span class="lineCov">       1687 :                      start + &quot;array element at index &quot; + i);</span>
+<span class="lineNum">     349 </span><span class="lineCov">       1687 :       }</span>
+<span class="lineNum">     350 </span><span class="lineCov">       1687 :     }</span>
+<span class="lineNum">     351 </span><span class="lineCov">       4927 :   };</span>
+<a name="352"><span class="lineNum">     352 </span><span class="lineCov">       3315 : </span></a>
+<span class="lineNum">     353 </span><span class="lineCov">       3315 : </span>
+<span class="lineNum">     354 </span><span class="lineCov">       3707 :   assertPropertiesEqual = function assertPropertiesEqual(expected, found,</span>
 <span class="lineNum">     355 </span><span class="lineCov">        401 :                                                          name_opt) {</span>
 <span class="lineNum">     356 </span><span class="lineCov">        401 :     // Check properties only.</span>
 <span class="lineNum">     357 </span><span class="lineCov">        401 :     if (!deepObjectEquals(expected, found)) {</span>
 <span class="lineNum">     358 </span><span class="lineCov">        401 :       fail(expected, found, name_opt);</span>
 <span class="lineNum">     359 </span><span class="lineCov">        401 :     }</span>
-<span class="lineNum">     360 </span><span class="lineCov">        401 :   };</span>
-<a name="361"><span class="lineNum">     361 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     362 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     363 </span><span class="lineCov">       1834 :   assertToStringEquals = function assertToStringEquals(expected, found,</span>
+<span class="lineNum">     360 </span><span class="lineCov">       3707 :   };</span>
+<a name="361"><span class="lineNum">     361 </span><span class="lineCov">       3315 : </span></a>
+<span class="lineNum">     362 </span><span class="lineCov">       3315 : </span>
+<span class="lineNum">     363 </span><span class="lineCov">       5148 :   assertToStringEquals = function assertToStringEquals(expected, found,</span>
 <span class="lineNum">     364 </span><span class="lineCov">       1834 :                                                        name_opt) {</span>
 <span class="lineNum">     365 </span><span class="lineCov">       1834 :     if (expected !== String(found)) {</span>
 <span class="lineNum">     366 </span><span class="lineCov">       1834 :       fail(expected, found, name_opt);</span>
 <span class="lineNum">     367 </span><span class="lineCov">       1834 :     }</span>
-<span class="lineNum">     368 </span><span class="lineCov">       1834 :   };</span>
-<a name="369"><span class="lineNum">     369 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     370 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     371 </span><span class="lineCov">    1563895 :   assertTrue = function assertTrue(value, name_opt) {</span>
-<span class="lineNum">     372 </span><span class="lineCov">    1563895 :     assertEquals(true, value, name_opt);</span>
-<span class="lineNum">     373 </span><span class="lineCov">    1563895 :   };</span>
-<a name="374"><span class="lineNum">     374 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     375 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     376 </span><span class="lineCov">     324958 :   assertFalse = function assertFalse(value, name_opt) {</span>
-<span class="lineNum">     377 </span><span class="lineCov">     324958 :     assertEquals(false, value, name_opt);</span>
-<span class="lineNum">     378 </span><span class="lineCov">     324958 :   };</span>
-<a name="379"><span class="lineNum">     379 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     380 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     381 </span><span class="lineCov">     144422 :   assertNull = function assertNull(value, name_opt) {</span>
+<span class="lineNum">     368 </span><span class="lineCov">       5148 :   };</span>
+<a name="369"><span class="lineNum">     369 </span><span class="lineCov">       3315 : </span></a>
+<span class="lineNum">     370 </span><span class="lineCov">       3315 : </span>
+<span class="lineNum">     371 </span><span class="lineCov">    1566202 :   assertTrue = function assertTrue(value, name_opt) {</span>
+<span class="lineNum">     372 </span><span class="lineCov">    1563764 :     assertEquals(true, value, name_opt);</span>
+<span class="lineNum">     373 </span><span class="lineCov">    1566202 :   };</span>
+<a name="374"><span class="lineNum">     374 </span><span class="lineCov">       3315 : </span></a>
+<span class="lineNum">     375 </span><span class="lineCov">       3315 : </span>
+<span class="lineNum">     376 </span><span class="lineCov">     327937 :   assertFalse = function assertFalse(value, name_opt) {</span>
+<span class="lineNum">     377 </span><span class="lineCov">     325050 :     assertEquals(false, value, name_opt);</span>
+<span class="lineNum">     378 </span><span class="lineCov">     327937 :   };</span>
+<a name="379"><span class="lineNum">     379 </span><span class="lineCov">       3315 : </span></a>
+<span class="lineNum">     380 </span><span class="lineCov">       3315 : </span>
+<span class="lineNum">     381 </span><span class="lineCov">     147621 :   assertNull = function assertNull(value, name_opt) {</span>
 <span class="lineNum">     382 </span><span class="lineCov">     144422 :     if (value !== null) {</span>
 <span class="lineNum">     383 </span><span class="lineCov">     144422 :       fail(&quot;null&quot;, value, name_opt);</span>
 <span class="lineNum">     384 </span><span class="lineCov">     144422 :     }</span>
-<span class="lineNum">     385 </span><span class="lineCov">     144422 :   };</span>
-<a name="386"><span class="lineNum">     386 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     387 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     388 </span><span class="lineCov">        216 :   assertNotNull = function assertNotNull(value, name_opt) {</span>
+<span class="lineNum">     385 </span><span class="lineCov">     147621 :   };</span>
+<a name="386"><span class="lineNum">     386 </span><span class="lineCov">       3315 : </span></a>
+<span class="lineNum">     387 </span><span class="lineCov">       3315 : </span>
+<span class="lineNum">     388 </span><span class="lineCov">       3521 :   assertNotNull = function assertNotNull(value, name_opt) {</span>
 <span class="lineNum">     389 </span><span class="lineCov">        216 :     if (value === null) {</span>
 <span class="lineNum">     390 </span><span class="lineCov">        216 :       fail(&quot;not null&quot;, value, name_opt);</span>
 <span class="lineNum">     391 </span><span class="lineCov">        216 :     }</span>
-<span class="lineNum">     392 </span><span class="lineCov">        216 :   };</span>
-<a name="393"><span class="lineNum">     393 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     394 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     395 </span><span class="lineCov">       9519 :   assertThrows = function assertThrows(code, type_opt, cause_opt) {</span>
-<span class="lineNum">     396 </span><span class="lineCov">       9519 :     var threwException = true;</span>
-<span class="lineNum">     397 </span><span class="lineCov">       9519 :     try {</span>
-<span class="lineNum">     398 </span><span class="lineCov">       9519 :       if (typeof code === 'function') {</span>
-<span class="lineNum">     399 </span><span class="lineCov">       9519 :         code();</span>
-<span class="lineNum">     400 </span><span class="lineCov">       9519 :       } else {</span>
-<span class="lineNum">     401 </span><span class="lineCov">       9519 :         eval(code);</span>
-<span class="lineNum">     402 </span><span class="lineCov">       9519 :       }</span>
-<span class="lineNum">     403 </span><span class="lineCov">       9519 :       threwException = false;</span>
-<span class="lineNum">     404 </span><span class="lineCov">       9519 :     } catch (e) {</span>
-<span class="lineNum">     405 </span><span class="lineCov">       9519 :       if (typeof type_opt === 'function') {</span>
-<span class="lineNum">     406 </span><span class="lineCov">       9519 :         assertInstanceof(e, type_opt);</span>
-<span class="lineNum">     407 </span><span class="lineCov">       9519 :       } else if (type_opt !== void 0) {</span>
-<span class="lineNum">     408 </span><span class="lineCov">       9519 :         failWithMessage(&quot;invalid use of assertThrows, maybe you want assertThrowsEquals&quot;);</span>
-<span class="lineNum">     409 </span><span class="lineCov">       9519 :       }</span>
-<span class="lineNum">     410 </span><span class="lineCov">       9519 :       if (arguments.length &gt;= 3) {</span>
-<span class="lineNum">     411 </span><span class="lineCov">       9519 :         assertEquals(e.message, cause_opt);</span>
-<span class="lineNum">     412 </span><span class="lineCov">       9519 :       }</span>
-<span class="lineNum">     413 </span><span class="lineCov">       9519 :       // Success.</span>
-<span class="lineNum">     414 </span><span class="lineCov">       9519 :       return;</span>
-<span class="lineNum">     415 </span><span class="lineCov">       9519 :     }</span>
-<span class="lineNum">     416 </span><span class="lineCov">       9519 :     failWithMessage(&quot;Did not throw exception&quot;);</span>
-<span class="lineNum">     417 </span><span class="lineCov">       9519 :   };</span>
-<a name="418"><span class="lineNum">     418 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     419 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     420 </span><span class="lineCov">        666 :   assertThrowsEquals = function assertThrowsEquals(fun, val) {</span>
+<span class="lineNum">     392 </span><span class="lineCov">       3521 :   };</span>
+<a name="393"><span class="lineNum">     393 </span><span class="lineCov">       3315 : </span></a>
+<span class="lineNum">     394 </span><span class="lineCov">       3315 : </span>
+<span class="lineNum">     395 </span><span class="lineCov">      12372 :   assertThrows = function assertThrows(code, type_opt, cause_opt) {</span>
+<span class="lineNum">     396 </span><span class="lineCov">       9592 :     var threwException = true;</span>
+<span class="lineNum">     397 </span><span class="lineCov">       9592 :     try {</span>
+<span class="lineNum">     398 </span><span class="lineCov">       9592 :       if (typeof code === 'function') {</span>
+<span class="lineNum">     399 </span><span class="lineCov">       9592 :         code();</span>
+<span class="lineNum">     400 </span><span class="lineCov">       9592 :       } else {</span>
+<span class="lineNum">     401 </span><span class="lineCov">       9592 :         eval(code);</span>
+<span class="lineNum">     402 </span><span class="lineCov">       9592 :       }</span>
+<span class="lineNum">     403 </span><span class="lineCov">       9592 :       threwException = false;</span>
+<span class="lineNum">     404 </span><span class="lineCov">       9592 :     } catch (e) {</span>
+<span class="lineNum">     405 </span><span class="lineCov">       9592 :       if (typeof type_opt === 'function') {</span>
+<span class="lineNum">     406 </span><span class="lineCov">       9592 :         assertInstanceof(e, type_opt);</span>
+<span class="lineNum">     407 </span><span class="lineCov">       9592 :       } else if (type_opt !== void 0) {</span>
+<span class="lineNum">     408 </span><span class="lineCov">       9592 :         failWithMessage(&quot;invalid use of assertThrows, maybe you want assertThrowsEquals&quot;);</span>
+<span class="lineNum">     409 </span><span class="lineCov">       9592 :       }</span>
+<span class="lineNum">     410 </span><span class="lineCov">       9592 :       if (arguments.length &gt;= 3) {</span>
+<span class="lineNum">     411 </span><span class="lineCov">       9592 :         assertEquals(e.message, cause_opt);</span>
+<span class="lineNum">     412 </span><span class="lineCov">       9592 :       }</span>
+<span class="lineNum">     413 </span><span class="lineCov">       9592 :       // Success.</span>
+<span class="lineNum">     414 </span><span class="lineCov">       9592 :       return;</span>
+<span class="lineNum">     415 </span><span class="lineCov">       9592 :     }</span>
+<span class="lineNum">     416 </span><span class="lineCov">       9592 :     failWithMessage(&quot;Did not throw exception&quot;);</span>
+<span class="lineNum">     417 </span><span class="lineCov">      12372 :   };</span>
+<a name="418"><span class="lineNum">     418 </span><span class="lineCov">       3315 : </span></a>
+<span class="lineNum">     419 </span><span class="lineCov">       3315 : </span>
+<span class="lineNum">     420 </span><span class="lineCov">       3965 :   assertThrowsEquals = function assertThrowsEquals(fun, val) {</span>
 <span class="lineNum">     421 </span><span class="lineCov">        666 :     try {</span>
 <span class="lineNum">     422 </span><span class="lineCov">        666 :       fun();</span>
 <span class="lineNum">     423 </span><span class="lineCov">        666 :     } catch(e) {</span>
@@ -487,24 +487,24 @@
 <span class="lineNum">     425 </span><span class="lineCov">        666 :       return;</span>
 <span class="lineNum">     426 </span><span class="lineCov">        666 :     }</span>
 <span class="lineNum">     427 </span><span class="lineCov">        666 :     failWithMessage(&quot;Did not throw exception&quot;);</span>
-<span class="lineNum">     428 </span><span class="lineCov">        666 :   };</span>
-<a name="429"><span class="lineNum">     429 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     430 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     431 </span><span class="lineCov">      13444 :   assertInstanceof = function assertInstanceof(obj, type) {</span>
-<span class="lineNum">     432 </span><span class="lineCov">      13444 :     if (!(obj instanceof type)) {</span>
-<span class="lineNum">     433 </span><span class="lineCov">      13444 :       var actualTypeName = null;</span>
-<span class="lineNum">     434 </span><span class="lineCov">      13444 :       var actualConstructor = Object.getPrototypeOf(obj).constructor;</span>
-<span class="lineNum">     435 </span><span class="lineCov">      13444 :       if (typeof actualConstructor === &quot;function&quot;) {</span>
-<span class="lineNum">     436 </span><span class="lineCov">      13444 :         actualTypeName = actualConstructor.name || String(actualConstructor);</span>
-<span class="lineNum">     437 </span><span class="lineCov">      13444 :       }</span>
-<span class="lineNum">     438 </span><span class="lineCov">      13444 :       failWithMessage(&quot;Object &lt;&quot; + PrettyPrint(obj) + &quot;&gt; is not an instance of &lt;&quot; +</span>
-<span class="lineNum">     439 </span><span class="lineCov">      13444 :                (type.name || type) + &quot;&gt;&quot; +</span>
-<span class="lineNum">     440 </span><span class="lineCov">      13444 :                (actualTypeName ? &quot; but of &lt;&quot; + actualTypeName + &quot;&gt;&quot; : &quot;&quot;));</span>
-<span class="lineNum">     441 </span><span class="lineCov">      13444 :     }</span>
-<span class="lineNum">     442 </span><span class="lineCov">      13444 :   };</span>
-<a name="443"><span class="lineNum">     443 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     444 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     445 </span><span class="lineCov">       1065 :    assertDoesNotThrow = function assertDoesNotThrow(code, name_opt) {</span>
+<span class="lineNum">     428 </span><span class="lineCov">       3965 :   };</span>
+<a name="429"><span class="lineNum">     429 </span><span class="lineCov">       3315 : </span></a>
+<span class="lineNum">     430 </span><span class="lineCov">       3315 : </span>
+<span class="lineNum">     431 </span><span class="lineCov">      16451 :   assertInstanceof = function assertInstanceof(obj, type) {</span>
+<span class="lineNum">     432 </span><span class="lineCov">      13527 :     if (!(obj instanceof type)) {</span>
+<span class="lineNum">     433 </span><span class="lineCov">      13527 :       var actualTypeName = null;</span>
+<span class="lineNum">     434 </span><span class="lineCov">      13527 :       var actualConstructor = Object.getPrototypeOf(obj).constructor;</span>
+<span class="lineNum">     435 </span><span class="lineCov">      13527 :       if (typeof actualConstructor === &quot;function&quot;) {</span>
+<span class="lineNum">     436 </span><span class="lineCov">      13527 :         actualTypeName = actualConstructor.name || String(actualConstructor);</span>
+<span class="lineNum">     437 </span><span class="lineCov">      13527 :       }</span>
+<span class="lineNum">     438 </span><span class="lineCov">      13527 :       failWithMessage(&quot;Object &lt;&quot; + PrettyPrint(obj) + &quot;&gt; is not an instance of &lt;&quot; +</span>
+<span class="lineNum">     439 </span><span class="lineCov">      13527 :                (type.name || type) + &quot;&gt;&quot; +</span>
+<span class="lineNum">     440 </span><span class="lineCov">      13527 :                (actualTypeName ? &quot; but of &lt;&quot; + actualTypeName + &quot;&gt;&quot; : &quot;&quot;));</span>
+<span class="lineNum">     441 </span><span class="lineCov">      13527 :     }</span>
+<span class="lineNum">     442 </span><span class="lineCov">      16451 :   };</span>
+<a name="443"><span class="lineNum">     443 </span><span class="lineCov">       3315 : </span></a>
+<span class="lineNum">     444 </span><span class="lineCov">       3315 : </span>
+<span class="lineNum">     445 </span><span class="lineCov">       4341 :    assertDoesNotThrow = function assertDoesNotThrow(code, name_opt) {</span>
 <span class="lineNum">     446 </span><span class="lineCov">       1065 :     try {</span>
 <span class="lineNum">     447 </span><span class="lineCov">       1065 :       if (typeof code === 'function') {</span>
 <span class="lineNum">     448 </span><span class="lineCov">       1065 :         code();</span>
@@ -514,35 +514,35 @@
 <span class="lineNum">     452 </span><span class="lineCov">       1065 :     } catch (e) {</span>
 <span class="lineNum">     453 </span><span class="lineCov">       1065 :       failWithMessage(&quot;threw an exception: &quot; + (e.message || e));</span>
 <span class="lineNum">     454 </span><span class="lineCov">       1065 :     }</span>
-<a name="455"><span class="lineNum">     455 </span><span class="lineCov">       1065 :   };</span></a>
-<span class="lineNum">     456 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     457 </span><span class="lineNoCov">          0 :   assertUnreachable = function assertUnreachable(name_opt) {</span>
+<a name="455"><span class="lineNum">     455 </span><span class="lineCov">       4341 :   };</span></a>
+<span class="lineNum">     456 </span><span class="lineCov">       3315 : </span>
+<span class="lineNum">     457 </span><span class="lineCov">       3315 :   assertUnreachable = function assertUnreachable(name_opt) {</span>
 <span class="lineNum">     458 </span><span class="lineNoCov">          0 :     // Fix this when we ditch the old test runner.</span>
 <span class="lineNum">     459 </span><span class="lineNoCov">          0 :     var message = &quot;Fail&quot; + &quot;ure: unreachable&quot;;</span>
 <span class="lineNum">     460 </span><span class="lineNoCov">          0 :     if (name_opt) {</span>
 <span class="lineNum">     461 </span><span class="lineNoCov">          0 :       message += &quot; - &quot; + name_opt;</span>
 <span class="lineNum">     462 </span><span class="lineNoCov">          0 :     }</span>
 <span class="lineNum">     463 </span><span class="lineNoCov">          0 :     failWithMessage(message);</span>
-<a name="464"><span class="lineNum">     464 </span><span class="lineNoCov">          0 :   };</span></a>
-<span class="lineNum">     465 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     466 </span><span class="lineCov">         54 :   assertContains = function(sub, value, name_opt) {</span>
+<a name="464"><span class="lineNum">     464 </span><span class="lineCov">       3315 :   };</span></a>
+<span class="lineNum">     465 </span><span class="lineCov">       3315 : </span>
+<span class="lineNum">     466 </span><span class="lineCov">       3365 :   assertContains = function(sub, value, name_opt) {</span>
 <span class="lineNum">     467 </span><span class="lineCov">         54 :     if (value == null ? (sub != null) : value.indexOf(sub) == -1) {</span>
 <span class="lineNum">     468 </span><span class="lineCov">         54 :       fail(&quot;contains '&quot; + String(sub) + &quot;'&quot;, value, name_opt);</span>
 <span class="lineNum">     469 </span><span class="lineCov">         54 :     }</span>
-<a name="470"><span class="lineNum">     470 </span><span class="lineCov">         54 :   };</span></a>
-<span class="lineNum">     471 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     472 </span><span class="lineCov">         27 :   assertMatches = function(regexp, str, name_opt) {</span>
+<a name="470"><span class="lineNum">     470 </span><span class="lineCov">       3365 :   };</span></a>
+<span class="lineNum">     471 </span><span class="lineCov">       3315 : </span>
+<span class="lineNum">     472 </span><span class="lineCov">       3340 :   assertMatches = function(regexp, str, name_opt) {</span>
 <span class="lineNum">     473 </span><span class="lineCov">         27 :     if (!(regexp instanceof RegExp)) {</span>
 <span class="lineNum">     474 </span><span class="lineCov">         27 :       regexp = new RegExp(regexp);</span>
 <span class="lineNum">     475 </span><span class="lineCov">         27 :     }</span>
 <span class="lineNum">     476 </span><span class="lineCov">         27 :     if (!str.match(regexp)) {</span>
 <span class="lineNum">     477 </span><span class="lineCov">         27 :       fail(&quot;should match '&quot; + regexp + &quot;'&quot;, str, name_opt);</span>
 <span class="lineNum">     478 </span><span class="lineCov">         27 :     }</span>
-<span class="lineNum">     479 </span><span class="lineCov">         27 :   };</span>
-<span class="lineNum">     480 </span><span class="lineNoCov">          0 : </span>
-<a name="481"><span class="lineNum">     481 </span><span class="lineNoCov">          0 :   var OptimizationStatusImpl = undefined;</span></a>
-<span class="lineNum">     482 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     483 </span><span class="lineCov">         16 :   var OptimizationStatus = function(fun, sync_opt) {</span>
+<span class="lineNum">     479 </span><span class="lineCov">       3340 :   };</span>
+<span class="lineNum">     480 </span><span class="lineCov">       3315 : </span>
+<a name="481"><span class="lineNum">     481 </span><span class="lineCov">       3315 :   var OptimizationStatusImpl = undefined;</span></a>
+<span class="lineNum">     482 </span><span class="lineCov">       3315 : </span>
+<span class="lineNum">     483 </span><span class="lineCov">       3322 :   var OptimizationStatus = function(fun, sync_opt) {</span>
 <span class="lineNum">     484 </span><span class="lineCov">         16 :     if (OptimizationStatusImpl === undefined) {</span>
 <span class="lineNum">     485 </span><span class="lineCov">         16 :       try {</span>
 <span class="lineNum">     486 </span><span class="lineCov">         16 :         OptimizationStatusImpl = new Function(</span>
@@ -552,9 +552,9 @@
 <span class="lineNum">     490 </span><span class="lineCov">         16 :       }</span>
 <span class="lineNum">     491 </span><span class="lineCov">         16 :     }</span>
 <span class="lineNum">     492 </span><span class="lineCov">         16 :     return OptimizationStatusImpl(fun, sync_opt);</span>
-<a name="493"><span class="lineNum">     493 </span><span class="lineCov">         16 :   }</span></a>
-<span class="lineNum">     494 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     495 </span><span class="lineCov">         16 :   assertUnoptimized = function assertUnoptimized(fun, sync_opt, name_opt) {</span>
+<a name="493"><span class="lineNum">     493 </span><span class="lineCov">       3322 :   }</span></a>
+<span class="lineNum">     494 </span><span class="lineCov">       3315 : </span>
+<span class="lineNum">     495 </span><span class="lineCov">       3322 :   assertUnoptimized = function assertUnoptimized(fun, sync_opt, name_opt) {</span>
 <span class="lineNum">     496 </span><span class="lineCov">         16 :     if (sync_opt === undefined) sync_opt = &quot;&quot;;</span>
 <span class="lineNum">     497 </span><span class="lineCov">         16 :     var opt_status = OptimizationStatus(fun, sync_opt);</span>
 <span class="lineNum">     498 </span><span class="lineCov">         16 :     // Tests that use assertOptimized() do not make sense if --always-opt</span>
@@ -569,9 +569,9 @@
 <span class="lineNum">     507 </span><span class="lineCov">         16 :       return;</span>
 <span class="lineNum">     508 </span><span class="lineCov">         16 :     }</span>
 <span class="lineNum">     509 </span><span class="lineCov">         16 :     assertFalse((opt_status &amp; V8OptimizationStatus.kOptimized) !== 0, name_opt);</span>
-<a name="510"><span class="lineNum">     510 </span><span class="lineCov">         16 :   }</span></a>
-<span class="lineNum">     511 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     512 </span><span class="lineNoCov">          0 :   assertOptimized = function assertOptimized(fun, sync_opt, name_opt) {</span>
+<a name="510"><span class="lineNum">     510 </span><span class="lineCov">       3322 :   }</span></a>
+<span class="lineNum">     511 </span><span class="lineCov">       3315 : </span>
+<span class="lineNum">     512 </span><span class="lineCov">       3315 :   assertOptimized = function assertOptimized(fun, sync_opt, name_opt) {</span>
 <span class="lineNum">     513 </span><span class="lineNoCov">          0 :     if (sync_opt === undefined) sync_opt = &quot;&quot;;</span>
 <span class="lineNum">     514 </span><span class="lineNoCov">          0 :     var opt_status = OptimizationStatus(fun, sync_opt);</span>
 <span class="lineNum">     515 </span><span class="lineNoCov">          0 :     // Tests that use assertOptimized() do not make sense if --no-crankshaft</span>
@@ -586,60 +586,60 @@
 <span class="lineNum">     524 </span><span class="lineNoCov">          0 :       return;</span>
 <span class="lineNum">     525 </span><span class="lineNoCov">          0 :     }</span>
 <span class="lineNum">     526 </span><span class="lineNoCov">          0 :     assertTrue((opt_status &amp; V8OptimizationStatus.kOptimized) !== 0, name_opt);</span>
-<a name="527"><span class="lineNum">     527 </span><span class="lineNoCov">          0 :   }</span></a>
-<span class="lineNum">     528 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     529 </span><span class="lineNoCov">          0 :   isNeverOptimize = function isNeverOptimize() {</span>
+<a name="527"><span class="lineNum">     527 </span><span class="lineCov">       3315 :   }</span></a>
+<span class="lineNum">     528 </span><span class="lineCov">       3315 : </span>
+<span class="lineNum">     529 </span><span class="lineCov">       3315 :   isNeverOptimize = function isNeverOptimize() {</span>
 <span class="lineNum">     530 </span><span class="lineNoCov">          0 :     var opt_status = OptimizationStatus(undefined, &quot;&quot;);</span>
 <span class="lineNum">     531 </span><span class="lineNoCov">          0 :     return (opt_status &amp; V8OptimizationStatus.kNeverOptimize) !== 0;</span>
-<a name="532"><span class="lineNum">     532 </span><span class="lineNoCov">          0 :   }</span></a>
-<span class="lineNum">     533 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     534 </span><span class="lineNoCov">          0 :   isAlwaysOptimize = function isAlwaysOptimize() {</span>
+<a name="532"><span class="lineNum">     532 </span><span class="lineCov">       3315 :   }</span></a>
+<span class="lineNum">     533 </span><span class="lineCov">       3315 : </span>
+<span class="lineNum">     534 </span><span class="lineCov">       3315 :   isAlwaysOptimize = function isAlwaysOptimize() {</span>
 <span class="lineNum">     535 </span><span class="lineNoCov">          0 :     var opt_status = OptimizationStatus(undefined, &quot;&quot;);</span>
 <span class="lineNum">     536 </span><span class="lineNoCov">          0 :     return (opt_status &amp; V8OptimizationStatus.kAlwaysOptimize) !== 0;</span>
-<a name="537"><span class="lineNum">     537 </span><span class="lineNoCov">          0 :   }</span></a>
-<span class="lineNum">     538 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     539 </span><span class="lineNoCov">          0 :   isInterpreted = function isInterpreted(fun) {</span>
+<a name="537"><span class="lineNum">     537 </span><span class="lineCov">       3315 :   }</span></a>
+<span class="lineNum">     538 </span><span class="lineCov">       3315 : </span>
+<span class="lineNum">     539 </span><span class="lineCov">       3315 :   isInterpreted = function isInterpreted(fun) {</span>
 <span class="lineNum">     540 </span><span class="lineNoCov">          0 :     var opt_status = OptimizationStatus(fun, &quot;&quot;);</span>
 <span class="lineNum">     541 </span><span class="lineNoCov">          0 :     assertTrue((opt_status &amp; V8OptimizationStatus.kIsFunction) !== 0,</span>
 <span class="lineNum">     542 </span><span class="lineNoCov">          0 :                &quot;not a function&quot;);</span>
 <span class="lineNum">     543 </span><span class="lineNoCov">          0 :     return (opt_status &amp; V8OptimizationStatus.kOptimized) === 0 &amp;&amp;</span>
 <span class="lineNum">     544 </span><span class="lineNoCov">          0 :            (opt_status &amp; V8OptimizationStatus.kInterpreted) !== 0;</span>
-<span class="lineNum">     545 </span><span class="lineNoCov">          0 :   }</span>
-<span class="lineNum">     546 </span><span class="lineNoCov">          0 : </span>
-<a name="547"><span class="lineNum">     547 </span><span class="lineNoCov">          0 :   // NOTE: This predicate also returns true for functions that have never</span></a>
-<span class="lineNum">     548 </span><span class="lineNoCov">          0 :   // been compiled (i.e. that have LazyCompile stub as a code).</span>
-<span class="lineNum">     549 </span><span class="lineNoCov">          0 :   isBaselined = function isBaselined(fun) {</span>
+<span class="lineNum">     545 </span><span class="lineCov">       3315 :   }</span>
+<span class="lineNum">     546 </span><span class="lineCov">       3315 : </span>
+<a name="547"><span class="lineNum">     547 </span><span class="lineCov">       3315 :   // NOTE: This predicate also returns true for functions that have never</span></a>
+<span class="lineNum">     548 </span><span class="lineCov">       3315 :   // been compiled (i.e. that have LazyCompile stub as a code).</span>
+<span class="lineNum">     549 </span><span class="lineCov">       3315 :   isBaselined = function isBaselined(fun) {</span>
 <span class="lineNum">     550 </span><span class="lineNoCov">          0 :     var opt_status = OptimizationStatus(fun, &quot;&quot;);</span>
 <span class="lineNum">     551 </span><span class="lineNoCov">          0 :     assertTrue((opt_status &amp; V8OptimizationStatus.kIsFunction) !== 0,</span>
 <span class="lineNum">     552 </span><span class="lineNoCov">          0 :                &quot;not a function&quot;);</span>
 <span class="lineNum">     553 </span><span class="lineNoCov">          0 :     return (opt_status &amp; V8OptimizationStatus.kOptimized) === 0 &amp;&amp;</span>
 <span class="lineNum">     554 </span><span class="lineNoCov">          0 :            (opt_status &amp; V8OptimizationStatus.kInterpreted) === 0;</span>
-<a name="555"><span class="lineNum">     555 </span><span class="lineNoCov">          0 :   }</span></a>
-<span class="lineNum">     556 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     557 </span><span class="lineNoCov">          0 :   isOptimized = function isOptimized(fun) {</span>
+<a name="555"><span class="lineNum">     555 </span><span class="lineCov">       3315 :   }</span></a>
+<span class="lineNum">     556 </span><span class="lineCov">       3315 : </span>
+<span class="lineNum">     557 </span><span class="lineCov">       3315 :   isOptimized = function isOptimized(fun) {</span>
 <span class="lineNum">     558 </span><span class="lineNoCov">          0 :     var opt_status = OptimizationStatus(fun, &quot;&quot;);</span>
 <span class="lineNum">     559 </span><span class="lineNoCov">          0 :     assertTrue((opt_status &amp; V8OptimizationStatus.kIsFunction) !== 0,</span>
 <span class="lineNum">     560 </span><span class="lineNoCov">          0 :                &quot;not a function&quot;);</span>
 <span class="lineNum">     561 </span><span class="lineNoCov">          0 :     return (opt_status &amp; V8OptimizationStatus.kOptimized) !== 0;</span>
-<a name="562"><span class="lineNum">     562 </span><span class="lineNoCov">          0 :   }</span></a>
-<span class="lineNum">     563 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     564 </span><span class="lineNoCov">          0 :   isCrankshafted = function isCrankshafted(fun) {</span>
+<a name="562"><span class="lineNum">     562 </span><span class="lineCov">       3315 :   }</span></a>
+<span class="lineNum">     563 </span><span class="lineCov">       3315 : </span>
+<span class="lineNum">     564 </span><span class="lineCov">       3315 :   isCrankshafted = function isCrankshafted(fun) {</span>
 <span class="lineNum">     565 </span><span class="lineNoCov">          0 :     var opt_status = OptimizationStatus(fun, &quot;&quot;);</span>
 <span class="lineNum">     566 </span><span class="lineNoCov">          0 :     assertTrue((opt_status &amp; V8OptimizationStatus.kIsFunction) !== 0,</span>
 <span class="lineNum">     567 </span><span class="lineNoCov">          0 :                &quot;not a function&quot;);</span>
 <span class="lineNum">     568 </span><span class="lineNoCov">          0 :     return (opt_status &amp; V8OptimizationStatus.kOptimized) !== 0 &amp;&amp;</span>
 <span class="lineNum">     569 </span><span class="lineNoCov">          0 :            (opt_status &amp; V8OptimizationStatus.kTurboFanned) === 0;</span>
-<a name="570"><span class="lineNum">     570 </span><span class="lineNoCov">          0 :   }</span></a>
-<span class="lineNum">     571 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     572 </span><span class="lineNoCov">          0 :   isTurboFanned = function isTurboFanned(fun) {</span>
+<a name="570"><span class="lineNum">     570 </span><span class="lineCov">       3315 :   }</span></a>
+<span class="lineNum">     571 </span><span class="lineCov">       3315 : </span>
+<span class="lineNum">     572 </span><span class="lineCov">       3315 :   isTurboFanned = function isTurboFanned(fun) {</span>
 <span class="lineNum">     573 </span><span class="lineNoCov">          0 :     var opt_status = OptimizationStatus(fun, &quot;&quot;);</span>
 <span class="lineNum">     574 </span><span class="lineNoCov">          0 :     assertTrue((opt_status &amp; V8OptimizationStatus.kIsFunction) !== 0,</span>
 <span class="lineNum">     575 </span><span class="lineNoCov">          0 :                &quot;not a function&quot;);</span>
 <span class="lineNum">     576 </span><span class="lineNoCov">          0 :     return (opt_status &amp; V8OptimizationStatus.kOptimized) !== 0 &amp;&amp;</span>
 <span class="lineNum">     577 </span><span class="lineNoCov">          0 :            (opt_status &amp; V8OptimizationStatus.kTurboFanned) !== 0;</span>
-<span class="lineNum">     578 </span><span class="lineNoCov">          0 :   }</span>
-<span class="lineNum">     579 </span>            : 
-<span class="lineNum">     580 </span>            : })();
+<span class="lineNum">     578 </span><span class="lineCov">       3315 :   }</span>
+<span class="lineNum">     579 </span><span class="lineCov">       3315 : </span>
+<span class="lineNum">     580 </span><span class="lineCov">       3334 : })();</span>
 </pre>
       </td>
     </tr>

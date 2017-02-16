@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">42</td>
-            <td class="headerCovTableEntry">43</td>
-            <td class="headerCovTableEntryHi">97.7 %</td>
+            <td class="headerCovTableEntry">56</td>
+            <td class="headerCovTableEntry">56</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">2</td>
@@ -95,7 +95,7 @@
 <span class="lineNum">      33 </span><span class="lineCov">        200 :     delete clobberedObject.f;</span>
 <span class="lineNum">      34 </span><span class="lineCov">        200 :     clobberedObject.g = 42;</span>
 <a name="35"><span class="lineNum">      35 </span><span class="lineCov">        200 : }</span></a>
-<span class="lineNum">      36 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      36 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      37 </span><span class="lineCov">        200 : function foo(p, o_) {</span>
 <span class="lineNum">      38 </span><span class="lineCov">        200 :     var o = o_.f; // Force this block to have a SetLocal.</span>
 <span class="lineNum">      39 </span><span class="lineCov">        200 :     var x = o.f;</span>
@@ -103,18 +103,18 @@
 <span class="lineNum">      41 </span><span class="lineCov">        200 :         bar();</span>
 <span class="lineNum">      42 </span><span class="lineCov">        200 :     return x + o.f;</span>
 <span class="lineNum">      43 </span><span class="lineCov">        200 : }</span>
-<span class="lineNum">      44 </span>            : 
-<span class="lineNum">      45 </span>            : var expected = 2;
-<span class="lineNum">      46 </span>            : 
-<span class="lineNum">      47 </span>            : for (var i = 0; i &lt; 200; ++i) {
-<span class="lineNum">      48 </span>            :     var object = {f:1};
-<span class="lineNum">      49 </span>            :     var predicate = true;
-<span class="lineNum">      50 </span>            :     if (i &gt;= 150) {
-<span class="lineNum">      51 </span>            :         clobberedObject = object;
-<span class="lineNum">      52 </span>            :         expected = 0/0; // &quot;NaN&quot;
-<span class="lineNum">      53 </span>            :     }
-<span class="lineNum">      54 </span>            :     shouldBe(&quot;foo(predicate, {f:object})&quot;, &quot;&quot; + expected);
-<span class="lineNum">      55 </span>            : }
+<span class="lineNum">      44 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      45 </span><span class="lineCov">          1 : var expected = 2;</span>
+<span class="lineNum">      46 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      47 </span><span class="lineCov">          1 : for (var i = 0; i &lt; 200; ++i) {</span>
+<span class="lineNum">      48 </span><span class="lineCov">          1 :     var object = {f:1};</span>
+<span class="lineNum">      49 </span><span class="lineCov">          1 :     var predicate = true;</span>
+<span class="lineNum">      50 </span><span class="lineCov">          1 :     if (i &gt;= 150) {</span>
+<span class="lineNum">      51 </span><span class="lineCov">          1 :         clobberedObject = object;</span>
+<span class="lineNum">      52 </span><span class="lineCov">          1 :         expected = 0/0; // &quot;NaN&quot;</span>
+<span class="lineNum">      53 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">      54 </span><span class="lineCov">          1 :     shouldBe(&quot;foo(predicate, {f:object})&quot;, &quot;&quot; + expected);</span>
+<span class="lineNum">      55 </span><span class="lineCov">          1 : }</span>
 </pre>
       </td>
     </tr>

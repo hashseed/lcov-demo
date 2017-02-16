@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">26</td>
-            <td class="headerCovTableEntry">49</td>
-            <td class="headerCovTableEntryLo">53.1 %</td>
+            <td class="headerCovTableEntry">55</td>
+            <td class="headerCovTableEntry">57</td>
+            <td class="headerCovTableEntryHi">96.5 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">1</td>
@@ -86,36 +86,36 @@
 <a name="24"><span class="lineNum">      24 </span><span class="lineCov">          1 : description(&quot;This tests that the various subscript operators handle subscript string conversion exceptions correctly.&quot;);</span></a>
 <span class="lineNum">      25 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      26 </span><span class="lineCov">          3 : var toStringThrower = { toString: function() { throw &quot;Exception thrown by toString&quot;; }};</span>
-<span class="lineNum">      27 </span><span class="lineNoCov">          0 : var target = {&quot;&quot; : &quot;Did not assign to property when setter subscript threw&quot;};</span>
-<span class="lineNum">      28 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      29 </span><span class="lineNoCov">          0 : try {</span>
-<span class="lineNum">      30 </span><span class="lineNoCov">          0 :     target[toStringThrower] = &quot;Assigned to property on object when subscript threw&quot;;</span>
-<span class="lineNum">      31 </span><span class="lineNoCov">          0 : } catch(e) {</span>
-<span class="lineNum">      32 </span><span class="lineNoCov">          0 :     testPassed(&quot;PASS: Exception caught -- &quot; + e);</span>
-<span class="lineNum">      33 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">      34 </span><span class="lineNoCov">          0 : shouldBe('target[&quot;&quot;]', &quot;'Did not assign to property when setter subscript threw'&quot;);</span>
-<span class="lineNum">      35 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      36 </span><span class="lineNoCov">          0 : target[&quot;&quot;] = &quot;Did not delete property when subscript threw&quot;;</span>
-<span class="lineNum">      37 </span><span class="lineNoCov">          0 : try {</span>
-<span class="lineNum">      38 </span><span class="lineNoCov">          0 :     delete target[toStringThrower];</span>
-<span class="lineNum">      39 </span><span class="lineNoCov">          0 : } catch(e) {</span>
-<span class="lineNum">      40 </span><span class="lineNoCov">          0 :     testPassed(&quot;PASS: Exception caught -- &quot; + e);</span>
-<span class="lineNum">      41 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">      42 </span><span class="lineNoCov">          0 : shouldBe('target[&quot;&quot;]', &quot;'Did not delete property when subscript threw'&quot;);</span>
-<span class="lineNum">      43 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      44 </span><span class="lineNoCov">          0 : delete target[&quot;&quot;];</span>
-<span class="lineNum">      45 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      46 </span><span class="lineNoCov">          0 : target.__defineGetter__(&quot;&quot;, function(){</span>
+<span class="lineNum">      27 </span><span class="lineCov">          1 : var target = {&quot;&quot; : &quot;Did not assign to property when setter subscript threw&quot;};</span>
+<span class="lineNum">      28 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      29 </span><span class="lineCov">          1 : try {</span>
+<span class="lineNum">      30 </span><span class="lineCov">          1 :     target[toStringThrower] = &quot;Assigned to property on object when subscript threw&quot;;</span>
+<span class="lineNum">      31 </span><span class="lineCov">          1 : } catch(e) {</span>
+<span class="lineNum">      32 </span><span class="lineCov">          1 :     testPassed(&quot;PASS: Exception caught -- &quot; + e);</span>
+<span class="lineNum">      33 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      34 </span><span class="lineCov">          1 : shouldBe('target[&quot;&quot;]', &quot;'Did not assign to property when setter subscript threw'&quot;);</span>
+<span class="lineNum">      35 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      36 </span><span class="lineCov">          1 : target[&quot;&quot;] = &quot;Did not delete property when subscript threw&quot;;</span>
+<span class="lineNum">      37 </span><span class="lineCov">          1 : try {</span>
+<span class="lineNum">      38 </span><span class="lineCov">          1 :     delete target[toStringThrower];</span>
+<span class="lineNum">      39 </span><span class="lineCov">          1 : } catch(e) {</span>
+<span class="lineNum">      40 </span><span class="lineCov">          1 :     testPassed(&quot;PASS: Exception caught -- &quot; + e);</span>
+<span class="lineNum">      41 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      42 </span><span class="lineCov">          1 : shouldBe('target[&quot;&quot;]', &quot;'Did not delete property when subscript threw'&quot;);</span>
+<span class="lineNum">      43 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      44 </span><span class="lineCov">          1 : delete target[&quot;&quot;];</span>
+<span class="lineNum">      45 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      46 </span><span class="lineCov">          1 : target.__defineGetter__(&quot;&quot;, function(){</span>
 <span class="lineNum">      47 </span><span class="lineNoCov">          0 :                                 testFailed('FAIL: Loaded property from object when subscript threw.');</span>
 <span class="lineNum">      48 </span><span class="lineNoCov">          0 :                                 return &quot;FAIL: Assigned to result when subscript threw.&quot;;</span>
-<span class="lineNum">      49 </span><span class="lineNoCov">          0 :                             });</span>
-<span class="lineNum">      50 </span>            : var localTest = &quot;Did not assign to result when subscript threw.&quot;;
-<span class="lineNum">      51 </span>            : try {
-<span class="lineNum">      52 </span>            :     localTest = target[toStringThrower];
-<span class="lineNum">      53 </span>            : } catch(e) {
-<span class="lineNum">      54 </span>            :     testPassed(&quot;PASS: Exception caught -- &quot; + e);
-<span class="lineNum">      55 </span>            : }
-<span class="lineNum">      56 </span>            : shouldBe('localTest', &quot;'Did not assign to result when subscript threw.'&quot;);
+<span class="lineNum">      49 </span><span class="lineCov">          1 :                             });</span>
+<span class="lineNum">      50 </span><span class="lineCov">          1 : var localTest = &quot;Did not assign to result when subscript threw.&quot;;</span>
+<span class="lineNum">      51 </span><span class="lineCov">          1 : try {</span>
+<span class="lineNum">      52 </span><span class="lineCov">          1 :     localTest = target[toStringThrower];</span>
+<span class="lineNum">      53 </span><span class="lineCov">          1 : } catch(e) {</span>
+<span class="lineNum">      54 </span><span class="lineCov">          1 :     testPassed(&quot;PASS: Exception caught -- &quot; + e);</span>
+<span class="lineNum">      55 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      56 </span><span class="lineCov">          1 : shouldBe('localTest', &quot;'Did not assign to result when subscript threw.'&quot;);</span>
 </pre>
       </td>
     </tr>

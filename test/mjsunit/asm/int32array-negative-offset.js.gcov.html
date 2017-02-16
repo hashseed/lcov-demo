@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">32</td>
-            <td class="headerCovTableEntry">32</td>
+            <td class="headerCovTableEntry">43</td>
+            <td class="headerCovTableEntry">43</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">5</td>
@@ -75,7 +75,7 @@
 <span class="lineNum">      13 </span><span class="lineCov">          2 :   function load(i) {</span>
 <span class="lineNum">      14 </span><span class="lineCov">          2 :     i = i|0;</span>
 <span class="lineNum">      15 </span><span class="lineCov">          2 :     i = MEM32[i &gt;&gt; 2]|0;</span>
-<a name="16"><span class="lineNum">      16 </span><span class="lineCov">          2 :     return i;</span></a>
+<a name="16"><span class="lineNum">      16 </span><span class="lineCov">          2 :     return i | 0;</span></a>
 <span class="lineNum">      17 </span><span class="lineCov">          2 :   }</span>
 <span class="lineNum">      18 </span><span class="lineCov">          1 :   function store(i, v) {</span>
 <span class="lineNum">      19 </span><span class="lineCov">          1 :     i = i|0;</span>
@@ -85,23 +85,23 @@
 <span class="lineNum">      23 </span><span class="lineCov">          3 :   function load8(i) {</span>
 <span class="lineNum">      24 </span><span class="lineCov">          3 :     i = i|0;</span>
 <span class="lineNum">      25 </span><span class="lineCov">          3 :     i = MEM32[i + 8 &gt;&gt; 2]|0;</span>
-<a name="26"><span class="lineNum">      26 </span><span class="lineCov">          3 :     return i;</span></a>
+<a name="26"><span class="lineNum">      26 </span><span class="lineCov">          3 :     return i | 0;</span></a>
 <span class="lineNum">      27 </span><span class="lineCov">          3 :   }</span>
 <span class="lineNum">      28 </span><span class="lineCov">          1 :   function store8(i, v) {</span>
 <span class="lineNum">      29 </span><span class="lineCov">          1 :     i = i|0;</span>
 <span class="lineNum">      30 </span><span class="lineCov">          1 :     v = v|0;</span>
 <span class="lineNum">      31 </span><span class="lineCov">          1 :     MEM32[i + 8 &gt;&gt; 2] = v;</span>
 <span class="lineNum">      32 </span><span class="lineCov">          1 :   }</span>
-<span class="lineNum">      33 </span>            :   return { load: load, store: store, load8: load8, store8: store8 };
-<span class="lineNum">      34 </span>            : })(stdlib, foreign, buffer);
-<span class="lineNum">      35 </span>            : 
-<span class="lineNum">      36 </span>            : assertEquals(0, m.load(-8));
-<span class="lineNum">      37 </span>            : assertEquals(0, m.load8(-16));
-<span class="lineNum">      38 </span>            : m.store(0, 42);
-<span class="lineNum">      39 </span>            : assertEquals(42, m.load8(-8));
-<span class="lineNum">      40 </span>            : m.store8(-8, 99);
-<span class="lineNum">      41 </span>            : assertEquals(99, m.load(0));
-<span class="lineNum">      42 </span>            : assertEquals(99, m.load8(-8));
+<span class="lineNum">      33 </span><span class="lineCov">          1 :   return { load: load, store: store, load8: load8, store8: store8 };</span>
+<span class="lineNum">      34 </span><span class="lineCov">          1 : })(stdlib, foreign, buffer);</span>
+<span class="lineNum">      35 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      36 </span><span class="lineCov">          1 : assertEquals(0, m.load(-8));</span>
+<span class="lineNum">      37 </span><span class="lineCov">          1 : assertEquals(0, m.load8(-16));</span>
+<span class="lineNum">      38 </span><span class="lineCov">          1 : m.store(0, 42);</span>
+<span class="lineNum">      39 </span><span class="lineCov">          1 : assertEquals(42, m.load8(-8));</span>
+<span class="lineNum">      40 </span><span class="lineCov">          1 : m.store8(-8, 99);</span>
+<span class="lineNum">      41 </span><span class="lineCov">          1 : assertEquals(99, m.load(0));</span>
+<span class="lineNum">      42 </span><span class="lineCov">          1 : assertEquals(99, m.load8(-8));</span>
 </pre>
       </td>
     </tr>

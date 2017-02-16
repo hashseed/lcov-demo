@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">28</td>
-            <td class="headerCovTableEntry">45</td>
-            <td class="headerCovTableEntryLo">62.2 %</td>
+            <td class="headerCovTableEntry">55</td>
+            <td class="headerCovTableEntry">55</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">5</td>
@@ -81,39 +81,39 @@
 <span class="lineNum">      19 </span><span class="lineCov">         10 :   o.baz = 4;</span>
 <span class="lineNum">      20 </span><span class="lineCov">         10 :   return o;</span>
 <a name="21"><span class="lineNum">      21 </span><span class="lineCov">         10 : }</span></a>
-<span class="lineNum">      22 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      22 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      23 </span><span class="lineCov">         20 : function Load(o) {</span>
 <span class="lineNum">      24 </span><span class="lineCov">         20 :   return o.baz;</span>
 <span class="lineNum">      25 </span><span class="lineCov">         20 : }</span>
-<span class="lineNum">      26 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      27 </span><span class="lineNoCov">          0 : for (var i = 0; i &lt; 10; i++) {</span>
-<span class="lineNum">      28 </span><span class="lineNoCov">          0 :   var o1 = new SlowObject();</span>
-<span class="lineNum">      29 </span><span class="lineNoCov">          0 :   var o2 = SlowObjectWithBaz();</span>
-<span class="lineNum">      30 </span><span class="lineNoCov">          0 :   assertEquals(undefined, Load(o1));</span>
-<span class="lineNum">      31 </span><span class="lineNoCov">          0 :   assertEquals(4, Load(o2));</span>
-<span class="lineNum">      32 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">      33 </span><span class="lineNoCov">          0 : </span>
-<a name="34"><span class="lineNum">      34 </span><span class="lineNoCov">          0 : // Test objects getting optimized as fast prototypes.</span></a>
-<span class="lineNum">      35 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      26 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      27 </span><span class="lineCov">          1 : for (var i = 0; i &lt; 10; i++) {</span>
+<span class="lineNum">      28 </span><span class="lineCov">          1 :   var o1 = new SlowObject();</span>
+<span class="lineNum">      29 </span><span class="lineCov">          1 :   var o2 = SlowObjectWithBaz();</span>
+<span class="lineNum">      30 </span><span class="lineCov">          1 :   assertEquals(undefined, Load(o1));</span>
+<span class="lineNum">      31 </span><span class="lineCov">          1 :   assertEquals(4, Load(o2));</span>
+<span class="lineNum">      32 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      33 </span><span class="lineCov">          1 : </span>
+<a name="34"><span class="lineNum">      34 </span><span class="lineCov">          1 : // Test objects getting optimized as fast prototypes.</span></a>
+<span class="lineNum">      35 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      36 </span><span class="lineCov">          2 : function SlowPrototype() {</span>
 <span class="lineNum">      37 </span><span class="lineCov">          2 :   this.foo = 1;</span>
 <span class="lineNum">      38 </span><span class="lineCov">          2 : }</span>
-<span class="lineNum">      39 </span><span class="lineNoCov">          0 : SlowPrototype.prototype.bar = 2;</span>
-<span class="lineNum">      40 </span><span class="lineNoCov">          0 : SlowPrototype.prototype.baz = 3;</span>
-<span class="lineNum">      41 </span><span class="lineNoCov">          0 : delete SlowPrototype.prototype.baz;</span>
-<span class="lineNum">      42 </span><span class="lineNoCov">          0 : assertFalse(%HasFastProperties(SlowPrototype.prototype));</span>
-<a name="43"><span class="lineNum">      43 </span><span class="lineNoCov">          0 : var slow_proto = new SlowPrototype;</span></a>
-<span class="lineNum">      44 </span><span class="lineNoCov">          0 : // ICs make prototypes fast.</span>
+<span class="lineNum">      39 </span><span class="lineCov">          1 : SlowPrototype.prototype.bar = 2;</span>
+<span class="lineNum">      40 </span><span class="lineCov">          1 : SlowPrototype.prototype.baz = 3;</span>
+<span class="lineNum">      41 </span><span class="lineCov">          1 : delete SlowPrototype.prototype.baz;</span>
+<span class="lineNum">      42 </span><span class="lineCov">          1 : assertFalse(%HasFastProperties(SlowPrototype.prototype));</span>
+<a name="43"><span class="lineNum">      43 </span><span class="lineCov">          1 : var slow_proto = new SlowPrototype;</span></a>
+<span class="lineNum">      44 </span><span class="lineCov">          1 : // ICs make prototypes fast.</span>
 <span class="lineNum">      45 </span><span class="lineCov">          2 : function ic() { return slow_proto.bar; }</span>
-<span class="lineNum">      46 </span>            : ic();
-<span class="lineNum">      47 </span>            : ic();
-<span class="lineNum">      48 </span>            : assertTrue(%HasFastProperties(slow_proto.__proto__));
-<span class="lineNum">      49 </span>            : 
-<span class="lineNum">      50 </span>            : // Prototypes stay fast even after deleting properties.
-<span class="lineNum">      51 </span>            : assertTrue(%HasFastProperties(SlowPrototype.prototype));
-<span class="lineNum">      52 </span>            : var fast_proto = new SlowPrototype();
-<span class="lineNum">      53 </span>            : assertTrue(%HasFastProperties(SlowPrototype.prototype));
-<span class="lineNum">      54 </span>            : assertTrue(%HasFastProperties(fast_proto.__proto__));
+<span class="lineNum">      46 </span><span class="lineCov">          1 : ic();</span>
+<span class="lineNum">      47 </span><span class="lineCov">          1 : ic();</span>
+<span class="lineNum">      48 </span><span class="lineCov">          1 : assertTrue(%HasFastProperties(slow_proto.__proto__));</span>
+<span class="lineNum">      49 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      50 </span><span class="lineCov">          1 : // Prototypes stay fast even after deleting properties.</span>
+<span class="lineNum">      51 </span><span class="lineCov">          1 : assertTrue(%HasFastProperties(SlowPrototype.prototype));</span>
+<span class="lineNum">      52 </span><span class="lineCov">          1 : var fast_proto = new SlowPrototype();</span>
+<span class="lineNum">      53 </span><span class="lineCov">          1 : assertTrue(%HasFastProperties(SlowPrototype.prototype));</span>
+<span class="lineNum">      54 </span><span class="lineCov">          1 : assertTrue(%HasFastProperties(fast_proto.__proto__));</span>
 </pre>
       </td>
     </tr>

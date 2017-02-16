@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">189</td>
-            <td class="headerCovTableEntry">457</td>
-            <td class="headerCovTableEntryLo">41.4 %</td>
+            <td class="headerCovTableEntry">450</td>
+            <td class="headerCovTableEntry">459</td>
+            <td class="headerCovTableEntryHi">98.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">19</td>
@@ -81,22 +81,22 @@
 <span class="lineNum">      19 </span><span class="lineNoCov">          0 :   exception = null;</span>
 <span class="lineNum">      20 </span><span class="lineNoCov">          0 :   begin_test_count++;</span>
 <span class="lineNum">      21 </span><span class="lineCov">          1 : }</span>
-<a name="22"><span class="lineNum">      22 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">      23 </span><span class="lineNoCov">          0 : // Check result of a test.</span>
-<span class="lineNum">      24 </span><span class="lineNoCov">          0 : function EndTest() {</span>
+<a name="22"><span class="lineNum">      22 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      23 </span><span class="lineCov">          1 : // Check result of a test.</span>
+<span class="lineNum">      24 </span><span class="lineCov">          1 : function EndTest() {</span>
 <span class="lineNum">      25 </span><span class="lineNoCov">          0 :   assertNull(exception, test_name + &quot; / &quot; + exception);</span>
 <span class="lineNum">      26 </span><span class="lineNoCov">          0 :   end_test_count++;</span>
-<span class="lineNum">      27 </span><span class="lineNoCov">          0 : }</span>
-<a name="28"><span class="lineNum">      28 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">      29 </span><span class="lineNoCov">          0 : // Check that two scope are the same.</span>
-<span class="lineNum">      30 </span><span class="lineNoCov">          0 : function assertScopeMirrorEquals(scope1, scope2) {</span>
+<span class="lineNum">      27 </span><span class="lineCov">          1 : }</span>
+<a name="28"><span class="lineNum">      28 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      29 </span><span class="lineCov">          1 : // Check that two scope are the same.</span>
+<span class="lineNum">      30 </span><span class="lineCov">          1 : function assertScopeMirrorEquals(scope1, scope2) {</span>
 <span class="lineNum">      31 </span><span class="lineNoCov">          0 :   assertEquals(scope1.scopeType(), scope2.scopeType());</span>
 <span class="lineNum">      32 </span><span class="lineNoCov">          0 :   assertEquals(scope1.scopeIndex(), scope2.scopeIndex());</span>
 <span class="lineNum">      33 </span><span class="lineNoCov">          0 :   assertPropertiesEqual(scope1.scopeObject().value(),</span>
 <span class="lineNum">      34 </span><span class="lineNoCov">          0 :                         scope2.scopeObject().value());</span>
-<span class="lineNum">      35 </span><span class="lineNoCov">          0 : }</span>
-<a name="36"><span class="lineNum">      36 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">      37 </span><span class="lineNoCov">          0 : // Check that the scope chain contains the expected types of scopes.</span>
+<span class="lineNum">      35 </span><span class="lineCov">          1 : }</span>
+<a name="36"><span class="lineNum">      36 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      37 </span><span class="lineCov">          1 : // Check that the scope chain contains the expected types of scopes.</span>
 <span class="lineNum">      38 </span><span class="lineCov">         16 : function CheckScopeChain(scopes, gen) {</span>
 <span class="lineNum">      39 </span><span class="lineCov">         16 :   var all_scopes = Debug.generatorScopes(gen);</span>
 <span class="lineNum">      40 </span><span class="lineCov">         16 :   assertEquals(scopes.length, Debug.generatorScopeCount(gen));</span>
@@ -115,9 +115,9 @@
 <span class="lineNum">      53 </span><span class="lineCov">         16 :     }</span>
 <span class="lineNum">      54 </span><span class="lineCov">         16 :   }</span>
 <span class="lineNum">      55 </span><span class="lineCov">         16 : }</span>
-<span class="lineNum">      56 </span><span class="lineNoCov">          0 : </span>
-<a name="57"><span class="lineNum">      57 </span><span class="lineNoCov">          0 : // Check that the content of the scope is as expected. For functions just check</span></a>
-<span class="lineNum">      58 </span><span class="lineNoCov">          0 : // that there is a function.</span>
+<span class="lineNum">      56 </span><span class="lineCov">          1 : </span>
+<a name="57"><span class="lineNum">      57 </span><span class="lineCov">          1 : // Check that the content of the scope is as expected. For functions just check</span></a>
+<span class="lineNum">      58 </span><span class="lineCov">          1 : // that there is a function.</span>
 <span class="lineNum">      59 </span><span class="lineCov">         33 : function CheckScopeContent(content, number, gen) {</span>
 <span class="lineNum">      60 </span><span class="lineCov">         33 :   var scope = Debug.generatorScope(gen, number);</span>
 <span class="lineNum">      61 </span><span class="lineCov">         33 :   var count = 0;</span>
@@ -160,87 +160,87 @@
 <span class="lineNum">      98 </span><span class="lineCov">         33 :   }</span>
 <span class="lineNum">      99 </span><span class="lineCov">         33 :   assertEquals(count, scope_size);</span>
 <span class="lineNum">     100 </span><span class="lineCov">         33 : }</span>
-<span class="lineNum">     101 </span><span class="lineNoCov">          0 : </span>
-<a name="102"><span class="lineNum">     102 </span><span class="lineNoCov">          0 : // Simple empty closure scope.</span></a>
-<span class="lineNum">     103 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     101 </span><span class="lineCov">          1 : </span>
+<a name="102"><span class="lineNum">     102 </span><span class="lineCov">          1 : // Simple empty closure scope.</span></a>
+<span class="lineNum">     103 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     104 </span><span class="lineCov">          1 : function *gen1() {</span>
 <span class="lineNum">     105 </span><span class="lineCov">          1 :   yield 1;</span>
 <span class="lineNum">     106 </span><span class="lineCov">          1 :   return 2;</span>
 <span class="lineNum">     107 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">     108 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     109 </span><span class="lineNoCov">          0 : var g = gen1();</span>
-<span class="lineNum">     110 </span><span class="lineNoCov">          0 : CheckScopeChain([debug.ScopeType.Closure,</span>
-<span class="lineNum">     111 </span><span class="lineNoCov">          0 :                  debug.ScopeType.Script,</span>
-<span class="lineNum">     112 </span><span class="lineNoCov">          0 :                  debug.ScopeType.Global], g);</span>
-<span class="lineNum">     113 </span><span class="lineNoCov">          0 : CheckScopeContent({}, 0, g);</span>
-<span class="lineNum">     114 </span><span class="lineNoCov">          0 : </span>
-<a name="115"><span class="lineNum">     115 </span><span class="lineNoCov">          0 : // Closure scope with a parameter.</span></a>
-<span class="lineNum">     116 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     108 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     109 </span><span class="lineCov">          1 : var g = gen1();</span>
+<span class="lineNum">     110 </span><span class="lineCov">          1 : CheckScopeChain([debug.ScopeType.Closure,</span>
+<span class="lineNum">     111 </span><span class="lineCov">          1 :                  debug.ScopeType.Script,</span>
+<span class="lineNum">     112 </span><span class="lineCov">          1 :                  debug.ScopeType.Global], g);</span>
+<span class="lineNum">     113 </span><span class="lineCov">          1 : CheckScopeContent({}, 0, g);</span>
+<span class="lineNum">     114 </span><span class="lineCov">          1 : </span>
+<a name="115"><span class="lineNum">     115 </span><span class="lineCov">          1 : // Closure scope with a parameter.</span></a>
+<span class="lineNum">     116 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     117 </span><span class="lineCov">          1 : function *gen2(a) {</span>
 <span class="lineNum">     118 </span><span class="lineCov">          1 :   yield a;</span>
 <span class="lineNum">     119 </span><span class="lineCov">          1 :   return 2;</span>
 <span class="lineNum">     120 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">     121 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     122 </span><span class="lineNoCov">          0 : g = gen2(42);</span>
-<span class="lineNum">     123 </span><span class="lineNoCov">          0 : CheckScopeChain([debug.ScopeType.Closure,</span>
-<span class="lineNum">     124 </span><span class="lineNoCov">          0 :                  debug.ScopeType.Script,</span>
-<span class="lineNum">     125 </span><span class="lineNoCov">          0 :                  debug.ScopeType.Global], g);</span>
-<span class="lineNum">     126 </span><span class="lineNoCov">          0 : CheckScopeContent({a: 42}, 0, g);</span>
-<span class="lineNum">     127 </span><span class="lineNoCov">          0 : </span>
-<a name="128"><span class="lineNum">     128 </span><span class="lineNoCov">          0 : // Closure scope with a parameter.</span></a>
-<span class="lineNum">     129 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     121 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     122 </span><span class="lineCov">          1 : g = gen2(42);</span>
+<span class="lineNum">     123 </span><span class="lineCov">          1 : CheckScopeChain([debug.ScopeType.Closure,</span>
+<span class="lineNum">     124 </span><span class="lineCov">          1 :                  debug.ScopeType.Script,</span>
+<span class="lineNum">     125 </span><span class="lineCov">          1 :                  debug.ScopeType.Global], g);</span>
+<span class="lineNum">     126 </span><span class="lineCov">          1 : CheckScopeContent({a: 42}, 0, g);</span>
+<span class="lineNum">     127 </span><span class="lineCov">          1 : </span>
+<a name="128"><span class="lineNum">     128 </span><span class="lineCov">          1 : // Closure scope with a parameter.</span></a>
+<span class="lineNum">     129 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     130 </span><span class="lineCov">          2 : function *gen3(a) {</span>
 <span class="lineNum">     131 </span><span class="lineCov">          2 :   var b = 1</span>
 <span class="lineNum">     132 </span><span class="lineCov">          2 :   yield a;</span>
 <span class="lineNum">     133 </span><span class="lineCov">          2 :   return b;</span>
 <span class="lineNum">     134 </span><span class="lineCov">          2 : }</span>
-<span class="lineNum">     135 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     136 </span><span class="lineNoCov">          0 : g = gen3(0);</span>
-<span class="lineNum">     137 </span><span class="lineNoCov">          0 : CheckScopeChain([debug.ScopeType.Closure,</span>
-<span class="lineNum">     138 </span><span class="lineNoCov">          0 :                  debug.ScopeType.Script,</span>
-<span class="lineNum">     139 </span><span class="lineNoCov">          0 :                  debug.ScopeType.Global], g);</span>
-<span class="lineNum">     140 </span><span class="lineNoCov">          0 : CheckScopeContent({a: 0, b: undefined}, 0, g);</span>
-<span class="lineNum">     141 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     142 </span><span class="lineNoCov">          0 : g.next();  // Create b.</span>
-<span class="lineNum">     143 </span><span class="lineNoCov">          0 : CheckScopeContent({a: 0, b: 1}, 0, g);</span>
-<span class="lineNum">     144 </span><span class="lineNoCov">          0 : </span>
-<a name="145"><span class="lineNum">     145 </span><span class="lineNoCov">          0 : // Closure scope with a parameter.</span></a>
-<span class="lineNum">     146 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     135 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     136 </span><span class="lineCov">          1 : g = gen3(0);</span>
+<span class="lineNum">     137 </span><span class="lineCov">          1 : CheckScopeChain([debug.ScopeType.Closure,</span>
+<span class="lineNum">     138 </span><span class="lineCov">          1 :                  debug.ScopeType.Script,</span>
+<span class="lineNum">     139 </span><span class="lineCov">          1 :                  debug.ScopeType.Global], g);</span>
+<span class="lineNum">     140 </span><span class="lineCov">          1 : CheckScopeContent({a: 0, b: undefined}, 0, g);</span>
+<span class="lineNum">     141 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     142 </span><span class="lineCov">          1 : g.next();  // Create b.</span>
+<span class="lineNum">     143 </span><span class="lineCov">          1 : CheckScopeContent({a: 0, b: 1}, 0, g);</span>
+<span class="lineNum">     144 </span><span class="lineCov">          1 : </span>
+<a name="145"><span class="lineNum">     145 </span><span class="lineCov">          1 : // Closure scope with a parameter.</span></a>
+<span class="lineNum">     146 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     147 </span><span class="lineCov">          3 : function *gen4(a, b) {</span>
 <span class="lineNum">     148 </span><span class="lineCov">          3 :   var x = 2;</span>
 <span class="lineNum">     149 </span><span class="lineCov">          3 :   yield a;</span>
 <span class="lineNum">     150 </span><span class="lineCov">          3 :   var y = 3;</span>
 <span class="lineNum">     151 </span><span class="lineCov">          3 :   return b;</span>
 <span class="lineNum">     152 </span><span class="lineCov">          3 : }</span>
-<span class="lineNum">     153 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     154 </span><span class="lineNoCov">          0 : g = gen4(0, 1);</span>
-<span class="lineNum">     155 </span><span class="lineNoCov">          0 : CheckScopeChain([debug.ScopeType.Closure,</span>
-<span class="lineNum">     156 </span><span class="lineNoCov">          0 :                  debug.ScopeType.Script,</span>
-<span class="lineNum">     157 </span><span class="lineNoCov">          0 :                  debug.ScopeType.Global], g);</span>
-<span class="lineNum">     158 </span><span class="lineNoCov">          0 : CheckScopeContent({a: 0, b: 1, x: undefined, y: undefined}, 0, g);</span>
-<span class="lineNum">     159 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     160 </span><span class="lineNoCov">          0 : g.next();  // Create x.</span>
-<span class="lineNum">     161 </span><span class="lineNoCov">          0 : CheckScopeContent({a: 0, b: 1, x: 2, y: undefined}, 0, g);</span>
-<span class="lineNum">     162 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     163 </span><span class="lineNoCov">          0 : g.next();  // Create y.</span>
-<span class="lineNum">     164 </span><span class="lineNoCov">          0 : CheckScopeContent({a: 0, b: 1, x: 2, y: 3}, 0, g);</span>
-<span class="lineNum">     165 </span><span class="lineNoCov">          0 : </span>
-<a name="166"><span class="lineNum">     166 </span><span class="lineNoCov">          0 : // Closure introducing local variable using eval.</span></a>
-<span class="lineNum">     167 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     153 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     154 </span><span class="lineCov">          1 : g = gen4(0, 1);</span>
+<span class="lineNum">     155 </span><span class="lineCov">          1 : CheckScopeChain([debug.ScopeType.Closure,</span>
+<span class="lineNum">     156 </span><span class="lineCov">          1 :                  debug.ScopeType.Script,</span>
+<span class="lineNum">     157 </span><span class="lineCov">          1 :                  debug.ScopeType.Global], g);</span>
+<span class="lineNum">     158 </span><span class="lineCov">          1 : CheckScopeContent({a: 0, b: 1, x: undefined, y: undefined}, 0, g);</span>
+<span class="lineNum">     159 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     160 </span><span class="lineCov">          1 : g.next();  // Create x.</span>
+<span class="lineNum">     161 </span><span class="lineCov">          1 : CheckScopeContent({a: 0, b: 1, x: 2, y: undefined}, 0, g);</span>
+<span class="lineNum">     162 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     163 </span><span class="lineCov">          1 : g.next();  // Create y.</span>
+<span class="lineNum">     164 </span><span class="lineCov">          1 : CheckScopeContent({a: 0, b: 1, x: 2, y: 3}, 0, g);</span>
+<span class="lineNum">     165 </span><span class="lineCov">          1 : </span>
+<a name="166"><span class="lineNum">     166 </span><span class="lineCov">          1 : // Closure introducing local variable using eval.</span></a>
+<span class="lineNum">     167 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     168 </span><span class="lineCov">          2 : function *gen5(a) {</span>
 <span class="lineNum">     169 </span><span class="lineCov">          2 :   eval('var b = 2');</span>
 <span class="lineNum">     170 </span><span class="lineCov">          2 :   return b;</span>
 <span class="lineNum">     171 </span><span class="lineCov">          2 : }</span>
-<span class="lineNum">     172 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     173 </span><span class="lineNoCov">          0 : g = gen5(1);</span>
-<span class="lineNum">     174 </span><span class="lineNoCov">          0 : g.next();</span>
-<span class="lineNum">     175 </span><span class="lineNoCov">          0 : CheckScopeChain([debug.ScopeType.Closure,</span>
-<span class="lineNum">     176 </span><span class="lineNoCov">          0 :                  debug.ScopeType.Script,</span>
-<span class="lineNum">     177 </span><span class="lineNoCov">          0 :                  debug.ScopeType.Global], g);</span>
-<span class="lineNum">     178 </span><span class="lineNoCov">          0 : CheckScopeContent({a: 1, b: 2}, 0, g);</span>
-<span class="lineNum">     179 </span><span class="lineNoCov">          0 : </span>
-<a name="180"><span class="lineNum">     180 </span><span class="lineNoCov">          0 : // Single empty with block.</span></a>
-<span class="lineNum">     181 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     172 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     173 </span><span class="lineCov">          1 : g = gen5(1);</span>
+<span class="lineNum">     174 </span><span class="lineCov">          1 : g.next();</span>
+<span class="lineNum">     175 </span><span class="lineCov">          1 : CheckScopeChain([debug.ScopeType.Closure,</span>
+<span class="lineNum">     176 </span><span class="lineCov">          1 :                  debug.ScopeType.Script,</span>
+<span class="lineNum">     177 </span><span class="lineCov">          1 :                  debug.ScopeType.Global], g);</span>
+<span class="lineNum">     178 </span><span class="lineCov">          1 : CheckScopeContent({a: 1, b: 2}, 0, g);</span>
+<span class="lineNum">     179 </span><span class="lineCov">          1 : </span>
+<a name="180"><span class="lineNum">     180 </span><span class="lineCov">          1 : // Single empty with block.</span></a>
+<span class="lineNum">     181 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     182 </span><span class="lineCov">          3 : function *gen6() {</span>
 <span class="lineNum">     183 </span><span class="lineCov">          3 :   with({}) {</span>
 <span class="lineNum">     184 </span><span class="lineCov">          3 :     yield 1;</span>
@@ -248,22 +248,22 @@
 <span class="lineNum">     186 </span><span class="lineCov">          3 :   yield 2;</span>
 <span class="lineNum">     187 </span><span class="lineCov">          3 :   return 3;</span>
 <span class="lineNum">     188 </span><span class="lineCov">          3 : }</span>
-<span class="lineNum">     189 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     190 </span><span class="lineNoCov">          0 : g = gen6();</span>
-<span class="lineNum">     191 </span><span class="lineNoCov">          0 : g.next();</span>
-<span class="lineNum">     192 </span><span class="lineNoCov">          0 : CheckScopeChain([debug.ScopeType.With,</span>
-<span class="lineNum">     193 </span><span class="lineNoCov">          0 :                  debug.ScopeType.Closure,</span>
-<span class="lineNum">     194 </span><span class="lineNoCov">          0 :                  debug.ScopeType.Script,</span>
-<span class="lineNum">     195 </span><span class="lineNoCov">          0 :                  debug.ScopeType.Global], g);</span>
-<span class="lineNum">     196 </span><span class="lineNoCov">          0 : CheckScopeContent({}, 0, g);</span>
-<span class="lineNum">     197 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     198 </span><span class="lineNoCov">          0 : g.next();</span>
-<span class="lineNum">     199 </span><span class="lineNoCov">          0 : CheckScopeChain([debug.ScopeType.Closure,</span>
-<span class="lineNum">     200 </span><span class="lineNoCov">          0 :                  debug.ScopeType.Script,</span>
-<span class="lineNum">     201 </span><span class="lineNoCov">          0 :                  debug.ScopeType.Global], g);</span>
-<span class="lineNum">     202 </span><span class="lineNoCov">          0 : </span>
-<a name="203"><span class="lineNum">     203 </span><span class="lineNoCov">          0 : // Nested empty with blocks.</span></a>
-<span class="lineNum">     204 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     189 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     190 </span><span class="lineCov">          1 : g = gen6();</span>
+<span class="lineNum">     191 </span><span class="lineCov">          1 : g.next();</span>
+<span class="lineNum">     192 </span><span class="lineCov">          1 : CheckScopeChain([debug.ScopeType.With,</span>
+<span class="lineNum">     193 </span><span class="lineCov">          1 :                  debug.ScopeType.Closure,</span>
+<span class="lineNum">     194 </span><span class="lineCov">          1 :                  debug.ScopeType.Script,</span>
+<span class="lineNum">     195 </span><span class="lineCov">          1 :                  debug.ScopeType.Global], g);</span>
+<span class="lineNum">     196 </span><span class="lineCov">          1 : CheckScopeContent({}, 0, g);</span>
+<span class="lineNum">     197 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     198 </span><span class="lineCov">          1 : g.next();</span>
+<span class="lineNum">     199 </span><span class="lineCov">          1 : CheckScopeChain([debug.ScopeType.Closure,</span>
+<span class="lineNum">     200 </span><span class="lineCov">          1 :                  debug.ScopeType.Script,</span>
+<span class="lineNum">     201 </span><span class="lineCov">          1 :                  debug.ScopeType.Global], g);</span>
+<span class="lineNum">     202 </span><span class="lineCov">          1 : </span>
+<a name="203"><span class="lineNum">     203 </span><span class="lineCov">          1 : // Nested empty with blocks.</span></a>
+<span class="lineNum">     204 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     205 </span><span class="lineCov">          2 : function *gen7() {</span>
 <span class="lineNum">     206 </span><span class="lineCov">          2 :   with({}) {</span>
 <span class="lineNum">     207 </span><span class="lineCov">          2 :     with({}) {</span>
@@ -273,18 +273,18 @@
 <span class="lineNum">     211 </span><span class="lineCov">          2 :   }</span>
 <span class="lineNum">     212 </span><span class="lineCov">          2 :   return 3;</span>
 <span class="lineNum">     213 </span><span class="lineCov">          2 : }</span>
-<span class="lineNum">     214 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     215 </span><span class="lineNoCov">          0 : g = gen7();</span>
-<span class="lineNum">     216 </span><span class="lineNoCov">          0 : g.next();</span>
-<span class="lineNum">     217 </span><span class="lineNoCov">          0 : CheckScopeChain([debug.ScopeType.With,</span>
-<span class="lineNum">     218 </span><span class="lineNoCov">          0 :                  debug.ScopeType.With,</span>
-<span class="lineNum">     219 </span><span class="lineNoCov">          0 :                  debug.ScopeType.Closure,</span>
-<span class="lineNum">     220 </span><span class="lineNoCov">          0 :                  debug.ScopeType.Script,</span>
-<span class="lineNum">     221 </span><span class="lineNoCov">          0 :                  debug.ScopeType.Global], g);</span>
-<span class="lineNum">     222 </span><span class="lineNoCov">          0 : CheckScopeContent({}, 0, g);</span>
-<span class="lineNum">     223 </span><span class="lineNoCov">          0 : </span>
-<a name="224"><span class="lineNum">     224 </span><span class="lineNoCov">          0 : // Nested with blocks using in-place object literals.</span></a>
-<span class="lineNum">     225 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     214 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     215 </span><span class="lineCov">          1 : g = gen7();</span>
+<span class="lineNum">     216 </span><span class="lineCov">          1 : g.next();</span>
+<span class="lineNum">     217 </span><span class="lineCov">          1 : CheckScopeChain([debug.ScopeType.With,</span>
+<span class="lineNum">     218 </span><span class="lineCov">          1 :                  debug.ScopeType.With,</span>
+<span class="lineNum">     219 </span><span class="lineCov">          1 :                  debug.ScopeType.Closure,</span>
+<span class="lineNum">     220 </span><span class="lineCov">          1 :                  debug.ScopeType.Script,</span>
+<span class="lineNum">     221 </span><span class="lineCov">          1 :                  debug.ScopeType.Global], g);</span>
+<span class="lineNum">     222 </span><span class="lineCov">          1 : CheckScopeContent({}, 0, g);</span>
+<span class="lineNum">     223 </span><span class="lineCov">          1 : </span>
+<a name="224"><span class="lineNum">     224 </span><span class="lineCov">          1 : // Nested with blocks using in-place object literals.</span></a>
+<span class="lineNum">     225 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     226 </span><span class="lineCov">          3 : function *gen8() {</span>
 <span class="lineNum">     227 </span><span class="lineCov">          3 :   with({a: 1,b: 2}) {</span>
 <span class="lineNum">     228 </span><span class="lineCov">          3 :     with({a: 2,b: 1}) {</span>
@@ -294,21 +294,21 @@
 <span class="lineNum">     232 </span><span class="lineCov">          3 :   }</span>
 <span class="lineNum">     233 </span><span class="lineCov">          3 :   return 3;</span>
 <span class="lineNum">     234 </span><span class="lineCov">          3 : }</span>
-<span class="lineNum">     235 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     236 </span><span class="lineNoCov">          0 : g = gen8();</span>
-<span class="lineNum">     237 </span><span class="lineNoCov">          0 : g.next();</span>
-<span class="lineNum">     238 </span><span class="lineNoCov">          0 : CheckScopeChain([debug.ScopeType.With,</span>
-<span class="lineNum">     239 </span><span class="lineNoCov">          0 :                  debug.ScopeType.With,</span>
-<span class="lineNum">     240 </span><span class="lineNoCov">          0 :                  debug.ScopeType.Closure,</span>
-<span class="lineNum">     241 </span><span class="lineNoCov">          0 :                  debug.ScopeType.Script,</span>
-<span class="lineNum">     242 </span><span class="lineNoCov">          0 :                  debug.ScopeType.Global], g);</span>
-<span class="lineNum">     243 </span><span class="lineNoCov">          0 : CheckScopeContent({a: 2, b: 1}, 0, g);</span>
-<span class="lineNum">     244 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     245 </span><span class="lineNoCov">          0 : g.next();</span>
-<span class="lineNum">     246 </span><span class="lineNoCov">          0 : CheckScopeContent({a: 1, b: 2}, 0, g);</span>
-<span class="lineNum">     247 </span><span class="lineNoCov">          0 : </span>
-<a name="248"><span class="lineNum">     248 </span><span class="lineNoCov">          0 : // Catch block.</span></a>
-<span class="lineNum">     249 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     235 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     236 </span><span class="lineCov">          1 : g = gen8();</span>
+<span class="lineNum">     237 </span><span class="lineCov">          1 : g.next();</span>
+<span class="lineNum">     238 </span><span class="lineCov">          1 : CheckScopeChain([debug.ScopeType.With,</span>
+<span class="lineNum">     239 </span><span class="lineCov">          1 :                  debug.ScopeType.With,</span>
+<span class="lineNum">     240 </span><span class="lineCov">          1 :                  debug.ScopeType.Closure,</span>
+<span class="lineNum">     241 </span><span class="lineCov">          1 :                  debug.ScopeType.Script,</span>
+<span class="lineNum">     242 </span><span class="lineCov">          1 :                  debug.ScopeType.Global], g);</span>
+<span class="lineNum">     243 </span><span class="lineCov">          1 : CheckScopeContent({a: 2, b: 1}, 0, g);</span>
+<span class="lineNum">     244 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     245 </span><span class="lineCov">          1 : g.next();</span>
+<span class="lineNum">     246 </span><span class="lineCov">          1 : CheckScopeContent({a: 1, b: 2}, 0, g);</span>
+<span class="lineNum">     247 </span><span class="lineCov">          1 : </span>
+<a name="248"><span class="lineNum">     248 </span><span class="lineCov">          1 : // Catch block.</span></a>
+<span class="lineNum">     249 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     250 </span><span class="lineCov">          2 : function *gen9() {</span>
 <span class="lineNum">     251 </span><span class="lineCov">          2 :   try {</span>
 <span class="lineNum">     252 </span><span class="lineCov">          2 :     throw 42;</span>
@@ -317,91 +317,91 @@
 <span class="lineNum">     255 </span><span class="lineCov">          2 :   }</span>
 <span class="lineNum">     256 </span><span class="lineCov">          2 :   return 3;</span>
 <span class="lineNum">     257 </span><span class="lineCov">          2 : }</span>
-<span class="lineNum">     258 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     259 </span><span class="lineNoCov">          0 : g = gen9();</span>
-<span class="lineNum">     260 </span><span class="lineNoCov">          0 : g.next();</span>
-<span class="lineNum">     261 </span><span class="lineNoCov">          0 : CheckScopeChain([debug.ScopeType.Catch,</span>
-<span class="lineNum">     262 </span><span class="lineNoCov">          0 :                  debug.ScopeType.Closure,</span>
-<span class="lineNum">     263 </span><span class="lineNoCov">          0 :                  debug.ScopeType.Script,</span>
-<span class="lineNum">     264 </span><span class="lineNoCov">          0 :                  debug.ScopeType.Global], g);</span>
-<span class="lineNum">     265 </span><span class="lineNoCov">          0 : CheckScopeContent({e: 42}, 0, g);</span>
-<span class="lineNum">     266 </span><span class="lineNoCov">          0 : </span>
-<a name="267"><span class="lineNum">     267 </span><span class="lineNoCov">          0 : // For statement with block scope.</span></a>
-<span class="lineNum">     268 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     258 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     259 </span><span class="lineCov">          1 : g = gen9();</span>
+<span class="lineNum">     260 </span><span class="lineCov">          1 : g.next();</span>
+<span class="lineNum">     261 </span><span class="lineCov">          1 : CheckScopeChain([debug.ScopeType.Catch,</span>
+<span class="lineNum">     262 </span><span class="lineCov">          1 :                  debug.ScopeType.Closure,</span>
+<span class="lineNum">     263 </span><span class="lineCov">          1 :                  debug.ScopeType.Script,</span>
+<span class="lineNum">     264 </span><span class="lineCov">          1 :                  debug.ScopeType.Global], g);</span>
+<span class="lineNum">     265 </span><span class="lineCov">          1 : CheckScopeContent({e: 42}, 0, g);</span>
+<span class="lineNum">     266 </span><span class="lineCov">          1 : </span>
+<a name="267"><span class="lineNum">     267 </span><span class="lineCov">          1 : // For statement with block scope.</span></a>
+<span class="lineNum">     268 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     269 </span><span class="lineCov">          3 : function *gen10() {</span>
 <span class="lineNum">     270 </span><span class="lineCov">          3 :   for (let i = 0; i &lt; 42; i++) yield i;</span>
 <span class="lineNum">     271 </span><span class="lineCov">          3 :   return 3;</span>
 <span class="lineNum">     272 </span><span class="lineCov">          3 : }</span>
-<span class="lineNum">     273 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     274 </span><span class="lineNoCov">          0 : g = gen10();</span>
-<span class="lineNum">     275 </span><span class="lineNoCov">          0 : g.next();</span>
-<span class="lineNum">     276 </span><span class="lineNoCov">          0 : CheckScopeChain([debug.ScopeType.Block,</span>
-<span class="lineNum">     277 </span><span class="lineNoCov">          0 :                  debug.ScopeType.Block,</span>
-<span class="lineNum">     278 </span><span class="lineNoCov">          0 :                  debug.ScopeType.Closure,</span>
-<span class="lineNum">     279 </span><span class="lineNoCov">          0 :                  debug.ScopeType.Script,</span>
-<span class="lineNum">     280 </span><span class="lineNoCov">          0 :                  debug.ScopeType.Global], g);</span>
-<span class="lineNum">     281 </span><span class="lineNoCov">          0 : CheckScopeContent({i: 0}, 0, g);</span>
-<span class="lineNum">     282 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     283 </span><span class="lineNoCov">          0 : g.next();</span>
-<span class="lineNum">     284 </span><span class="lineNoCov">          0 : CheckScopeContent({i: 1}, 0, g);</span>
-<span class="lineNum">     285 </span><span class="lineNoCov">          0 : CheckScopeContent({i: 0}, 1, g);  // Additional block scope with i = 0;</span>
-<span class="lineNum">     286 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     287 </span><span class="lineNoCov">          0 : // Nested generators.</span>
-<a name="288"><span class="lineNum">     288 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     289 </span><span class="lineNoCov">          0 : var gen12;</span>
+<span class="lineNum">     273 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     274 </span><span class="lineCov">          1 : g = gen10();</span>
+<span class="lineNum">     275 </span><span class="lineCov">          1 : g.next();</span>
+<span class="lineNum">     276 </span><span class="lineCov">          1 : CheckScopeChain([debug.ScopeType.Block,</span>
+<span class="lineNum">     277 </span><span class="lineCov">          1 :                  debug.ScopeType.Block,</span>
+<span class="lineNum">     278 </span><span class="lineCov">          1 :                  debug.ScopeType.Closure,</span>
+<span class="lineNum">     279 </span><span class="lineCov">          1 :                  debug.ScopeType.Script,</span>
+<span class="lineNum">     280 </span><span class="lineCov">          1 :                  debug.ScopeType.Global], g);</span>
+<span class="lineNum">     281 </span><span class="lineCov">          1 : CheckScopeContent({i: 0}, 0, g);</span>
+<span class="lineNum">     282 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     283 </span><span class="lineCov">          1 : g.next();</span>
+<span class="lineNum">     284 </span><span class="lineCov">          1 : CheckScopeContent({i: 1}, 0, g);</span>
+<span class="lineNum">     285 </span><span class="lineCov">          1 : CheckScopeContent({i: 0}, 1, g);  // Additional block scope with i = 0;</span>
+<span class="lineNum">     286 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     287 </span><span class="lineCov">          1 : // Nested generators.</span>
+<a name="288"><span class="lineNum">     288 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     289 </span><span class="lineCov">          1 : var gen12;</span>
 <span class="lineNum">     290 </span><span class="lineCov">          2 : function *gen11() {</span>
 <span class="lineNum">     291 </span><span class="lineCov">          2 :   gen12 = function*() {</span>
 <span class="lineNum">     292 </span><span class="lineCov">          2 :     var a = 1;</span>
 <span class="lineNum">     293 </span><span class="lineCov">          2 :     yield 1;</span>
 <span class="lineNum">     294 </span><span class="lineCov">          2 :     return 2;</span>
 <span class="lineNum">     295 </span><span class="lineCov">          2 :   }();</span>
-<span class="lineNum">     296 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     297 </span><span class="lineNoCov">          0 :   var a = 0;</span>
-<span class="lineNum">     298 </span><span class="lineNoCov">          0 :   yield* gen12;</span>
-<span class="lineNum">     299 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">     300 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     301 </span><span class="lineNoCov">          0 : gen11().next();</span>
-<span class="lineNum">     302 </span><span class="lineNoCov">          0 : g = gen12;</span>
-<span class="lineNum">     303 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     304 </span><span class="lineNoCov">          0 : CheckScopeChain([debug.ScopeType.Closure,</span>
-<span class="lineNum">     305 </span><span class="lineNoCov">          0 :                  debug.ScopeType.Closure,</span>
-<span class="lineNum">     306 </span><span class="lineNoCov">          0 :                  debug.ScopeType.Script,</span>
-<span class="lineNum">     307 </span><span class="lineNoCov">          0 :                  debug.ScopeType.Global], g);</span>
-<span class="lineNum">     308 </span><span class="lineNoCov">          0 : CheckScopeContent({a: 1}, 0, g);</span>
-<span class="lineNum">     309 </span><span class="lineNoCov">          0 : CheckScopeContent({a: 0}, 1, g);</span>
-<span class="lineNum">     310 </span><span class="lineNoCov">          0 : </span>
-<a name="311"><span class="lineNum">     311 </span><span class="lineNoCov">          0 : // Set a variable in an empty scope.</span></a>
-<span class="lineNum">     312 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     296 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">     297 </span><span class="lineCov">          2 :   var a = 0;</span>
+<span class="lineNum">     298 </span><span class="lineCov">          2 :   yield* gen12;</span>
+<span class="lineNum">     299 </span><span class="lineCov">          2 : }</span>
+<span class="lineNum">     300 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     301 </span><span class="lineCov">          1 : gen11().next();</span>
+<span class="lineNum">     302 </span><span class="lineCov">          1 : g = gen12;</span>
+<span class="lineNum">     303 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     304 </span><span class="lineCov">          1 : CheckScopeChain([debug.ScopeType.Closure,</span>
+<span class="lineNum">     305 </span><span class="lineCov">          1 :                  debug.ScopeType.Closure,</span>
+<span class="lineNum">     306 </span><span class="lineCov">          1 :                  debug.ScopeType.Script,</span>
+<span class="lineNum">     307 </span><span class="lineCov">          1 :                  debug.ScopeType.Global], g);</span>
+<span class="lineNum">     308 </span><span class="lineCov">          1 : CheckScopeContent({a: 1}, 0, g);</span>
+<span class="lineNum">     309 </span><span class="lineCov">          1 : CheckScopeContent({a: 0}, 1, g);</span>
+<span class="lineNum">     310 </span><span class="lineCov">          1 : </span>
+<a name="311"><span class="lineNum">     311 </span><span class="lineCov">          1 : // Set a variable in an empty scope.</span></a>
+<span class="lineNum">     312 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     313 </span><span class="lineCov">          1 : function *gen13() {</span>
 <span class="lineNum">     314 </span><span class="lineCov">          1 :   yield 1;</span>
 <span class="lineNum">     315 </span><span class="lineCov">          1 :   return 2;</span>
 <span class="lineNum">     316 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">     317 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     318 </span><span class="lineNoCov">          0 : var g = gen13();</span>
+<span class="lineNum">     317 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     318 </span><span class="lineCov">          1 : var g = gen13();</span>
 <span class="lineNum">     319 </span><span class="lineCov">          1 : assertThrows(() =&gt; Debug.generatorScope(g, 0).setVariableValue(&quot;a&quot;, 42));</span>
-<span class="lineNum">     320 </span><span class="lineNoCov">          0 : CheckScopeContent({}, 0, g);</span>
-<span class="lineNum">     321 </span><span class="lineNoCov">          0 : </span>
-<a name="322"><span class="lineNum">     322 </span><span class="lineNoCov">          0 : // Set a variable in a simple scope.</span></a>
-<span class="lineNum">     323 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     320 </span><span class="lineCov">          1 : CheckScopeContent({}, 0, g);</span>
+<span class="lineNum">     321 </span><span class="lineCov">          1 : </span>
+<a name="322"><span class="lineNum">     322 </span><span class="lineCov">          1 : // Set a variable in a simple scope.</span></a>
+<span class="lineNum">     323 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     324 </span><span class="lineCov">          3 : function *gen14() {</span>
 <span class="lineNum">     325 </span><span class="lineCov">          3 :   var a = 0;</span>
 <span class="lineNum">     326 </span><span class="lineCov">          3 :   yield 1;</span>
 <span class="lineNum">     327 </span><span class="lineCov">          3 :   yield a;</span>
 <span class="lineNum">     328 </span><span class="lineCov">          3 :   return 2;</span>
 <span class="lineNum">     329 </span><span class="lineCov">          3 : }</span>
-<span class="lineNum">     330 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     331 </span><span class="lineNoCov">          0 : var g = gen14();</span>
-<span class="lineNum">     332 </span><span class="lineNoCov">          0 : assertEquals(1, g.next().value);</span>
-<span class="lineNum">     333 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     334 </span><span class="lineNoCov">          0 : CheckScopeContent({a: 0}, 0, g);</span>
-<span class="lineNum">     335 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     336 </span><span class="lineNoCov">          0 : Debug.generatorScope(g, 0).setVariableValue(&quot;a&quot;, 1);</span>
-<span class="lineNum">     337 </span><span class="lineNoCov">          0 : CheckScopeContent({a: 1}, 0, g);</span>
-<span class="lineNum">     338 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     339 </span><span class="lineNoCov">          0 : assertEquals(1, g.next().value);</span>
-<span class="lineNum">     340 </span><span class="lineNoCov">          0 : </span>
-<a name="341"><span class="lineNum">     341 </span><span class="lineNoCov">          0 : // Set a variable in nested with blocks using in-place object literals.</span></a>
-<span class="lineNum">     342 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     330 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     331 </span><span class="lineCov">          1 : var g = gen14();</span>
+<span class="lineNum">     332 </span><span class="lineCov">          1 : assertEquals(1, g.next().value);</span>
+<span class="lineNum">     333 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     334 </span><span class="lineCov">          1 : CheckScopeContent({a: 0}, 0, g);</span>
+<span class="lineNum">     335 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     336 </span><span class="lineCov">          1 : Debug.generatorScope(g, 0).setVariableValue(&quot;a&quot;, 1);</span>
+<span class="lineNum">     337 </span><span class="lineCov">          1 : CheckScopeContent({a: 1}, 0, g);</span>
+<span class="lineNum">     338 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     339 </span><span class="lineCov">          1 : assertEquals(1, g.next().value);</span>
+<span class="lineNum">     340 </span><span class="lineCov">          1 : </span>
+<a name="341"><span class="lineNum">     341 </span><span class="lineCov">          1 : // Set a variable in nested with blocks using in-place object literals.</span></a>
+<span class="lineNum">     342 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     343 </span><span class="lineCov">          4 : function *gen15() {</span>
 <span class="lineNum">     344 </span><span class="lineCov">          4 :   var c = 3;</span>
 <span class="lineNum">     345 </span><span class="lineCov">          4 :   with({a: 1,b: 2}) {</span>
@@ -412,44 +412,44 @@
 <span class="lineNum">     350 </span><span class="lineCov">          4 :   yield e;</span>
 <span class="lineNum">     351 </span><span class="lineCov">          4 :   return e;</span>
 <span class="lineNum">     352 </span><span class="lineCov">          4 : }</span>
-<span class="lineNum">     353 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     354 </span><span class="lineNoCov">          0 : var g = gen15();</span>
-<span class="lineNum">     355 </span><span class="lineNoCov">          0 : assertEquals(1, g.next().value);</span>
-<span class="lineNum">     356 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     357 </span><span class="lineNoCov">          0 : CheckScopeChain([debug.ScopeType.With,</span>
-<span class="lineNum">     358 </span><span class="lineNoCov">          0 :                  debug.ScopeType.Closure,</span>
-<span class="lineNum">     359 </span><span class="lineNoCov">          0 :                  debug.ScopeType.Script,</span>
-<span class="lineNum">     360 </span><span class="lineNoCov">          0 :                  debug.ScopeType.Global], g);</span>
-<span class="lineNum">     361 </span><span class="lineNoCov">          0 : CheckScopeContent({a: 1, b: 2}, 0, g);</span>
-<span class="lineNum">     362 </span><span class="lineNoCov">          0 : CheckScopeContent({c: 3, d: 4, e: undefined}, 1, g);</span>
-<span class="lineNum">     363 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     364 </span><span class="lineNoCov">          0 : // Variables don't exist in given scope.</span>
+<span class="lineNum">     353 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     354 </span><span class="lineCov">          1 : var g = gen15();</span>
+<span class="lineNum">     355 </span><span class="lineCov">          1 : assertEquals(1, g.next().value);</span>
+<span class="lineNum">     356 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     357 </span><span class="lineCov">          1 : CheckScopeChain([debug.ScopeType.With,</span>
+<span class="lineNum">     358 </span><span class="lineCov">          1 :                  debug.ScopeType.Closure,</span>
+<span class="lineNum">     359 </span><span class="lineCov">          1 :                  debug.ScopeType.Script,</span>
+<span class="lineNum">     360 </span><span class="lineCov">          1 :                  debug.ScopeType.Global], g);</span>
+<span class="lineNum">     361 </span><span class="lineCov">          1 : CheckScopeContent({a: 1, b: 2}, 0, g);</span>
+<span class="lineNum">     362 </span><span class="lineCov">          1 : CheckScopeContent({c: 3, d: 4, e: undefined}, 1, g);</span>
+<span class="lineNum">     363 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     364 </span><span class="lineCov">          1 : // Variables don't exist in given scope.</span>
 <span class="lineNum">     365 </span><span class="lineCov">          1 : assertThrows(() =&gt; Debug.generatorScope(g, 0).setVariableValue(&quot;c&quot;, 42));</span>
 <span class="lineNum">     366 </span><span class="lineCov">          1 : assertThrows(() =&gt; Debug.generatorScope(g, 1).setVariableValue(&quot;a&quot;, 42));</span>
-<span class="lineNum">     367 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     368 </span><span class="lineNoCov">          0 : // Variables in with scope are immutable.</span>
+<span class="lineNum">     367 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     368 </span><span class="lineCov">          1 : // Variables in with scope are immutable.</span>
 <span class="lineNum">     369 </span><span class="lineCov">          1 : assertThrows(() =&gt; Debug.generatorScope(g, 0).setVariableValue(&quot;a&quot;, 3));</span>
 <span class="lineNum">     370 </span><span class="lineCov">          1 : assertThrows(() =&gt; Debug.generatorScope(g, 0).setVariableValue(&quot;b&quot;, 3));</span>
-<span class="lineNum">     371 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     372 </span><span class="lineNoCov">          0 : Debug.generatorScope(g, 1).setVariableValue(&quot;c&quot;, 1);</span>
-<span class="lineNum">     373 </span><span class="lineNoCov">          0 : Debug.generatorScope(g, 1).setVariableValue(&quot;e&quot;, 42);</span>
-<span class="lineNum">     374 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     375 </span><span class="lineNoCov">          0 : CheckScopeContent({a: 1, b: 2}, 0, g);</span>
-<span class="lineNum">     376 </span><span class="lineNoCov">          0 : CheckScopeContent({c: 1, d: 4, e: 42}, 1, g);</span>
-<span class="lineNum">     377 </span><span class="lineNoCov">          0 : assertEquals(5, g.next().value);  // Initialized after set.</span>
-<span class="lineNum">     378 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     379 </span><span class="lineNoCov">          0 : CheckScopeChain([debug.ScopeType.Closure,</span>
-<span class="lineNum">     380 </span><span class="lineNoCov">          0 :                  debug.ScopeType.Script,</span>
-<span class="lineNum">     381 </span><span class="lineNoCov">          0 :                  debug.ScopeType.Global], g);</span>
-<span class="lineNum">     382 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     383 </span><span class="lineNoCov">          0 : Debug.generatorScope(g, 0).setVariableValue(&quot;e&quot;, 42);</span>
-<span class="lineNum">     384 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     385 </span><span class="lineNoCov">          0 : CheckScopeContent({c: 1, d: 4, e: 42}, 0, g);</span>
-<span class="lineNum">     386 </span><span class="lineNoCov">          0 : assertEquals(42, g.next().value);</span>
-<span class="lineNum">     387 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     388 </span><span class="lineNoCov">          0 : // Set a variable in nested with blocks using in-place object literals plus a</span>
-<a name="389"><span class="lineNum">     389 </span><span class="lineNoCov">          0 : // nested block scope.</span></a>
-<span class="lineNum">     390 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     371 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     372 </span><span class="lineCov">          1 : Debug.generatorScope(g, 1).setVariableValue(&quot;c&quot;, 1);</span>
+<span class="lineNum">     373 </span><span class="lineCov">          1 : Debug.generatorScope(g, 1).setVariableValue(&quot;e&quot;, 42);</span>
+<span class="lineNum">     374 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     375 </span><span class="lineCov">          1 : CheckScopeContent({a: 1, b: 2}, 0, g);</span>
+<span class="lineNum">     376 </span><span class="lineCov">          1 : CheckScopeContent({c: 1, d: 4, e: 42}, 1, g);</span>
+<span class="lineNum">     377 </span><span class="lineCov">          1 : assertEquals(5, g.next().value);  // Initialized after set.</span>
+<span class="lineNum">     378 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     379 </span><span class="lineCov">          1 : CheckScopeChain([debug.ScopeType.Closure,</span>
+<span class="lineNum">     380 </span><span class="lineCov">          1 :                  debug.ScopeType.Script,</span>
+<span class="lineNum">     381 </span><span class="lineCov">          1 :                  debug.ScopeType.Global], g);</span>
+<span class="lineNum">     382 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     383 </span><span class="lineCov">          1 : Debug.generatorScope(g, 0).setVariableValue(&quot;e&quot;, 42);</span>
+<span class="lineNum">     384 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     385 </span><span class="lineCov">          1 : CheckScopeContent({c: 1, d: 4, e: 42}, 0, g);</span>
+<span class="lineNum">     386 </span><span class="lineCov">          1 : assertEquals(42, g.next().value);</span>
+<span class="lineNum">     387 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     388 </span><span class="lineCov">          1 : // Set a variable in nested with blocks using in-place object literals plus a</span>
+<a name="389"><span class="lineNum">     389 </span><span class="lineCov">          1 : // nested block scope.</span></a>
+<span class="lineNum">     390 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     391 </span><span class="lineCov">          3 : function *gen16() {</span>
 <span class="lineNum">     392 </span><span class="lineCov">          3 :   var c = 3;</span>
 <span class="lineNum">     393 </span><span class="lineCov">          3 :   with({a: 1,b: 2}) {</span>
@@ -460,28 +460,28 @@
 <span class="lineNum">     398 </span><span class="lineCov">          3 :   }</span>
 <span class="lineNum">     399 </span><span class="lineCov">          3 :   return 3;</span>
 <span class="lineNum">     400 </span><span class="lineCov">          3 : }</span>
-<span class="lineNum">     401 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     402 </span><span class="lineNoCov">          0 : var g = gen16();</span>
-<span class="lineNum">     403 </span><span class="lineNoCov">          0 : g.next();</span>
-<span class="lineNum">     404 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     405 </span><span class="lineNoCov">          0 : CheckScopeChain([debug.ScopeType.Block,</span>
-<span class="lineNum">     406 </span><span class="lineNoCov">          0 :                  debug.ScopeType.With,</span>
-<span class="lineNum">     407 </span><span class="lineNoCov">          0 :                  debug.ScopeType.Closure,</span>
-<span class="lineNum">     408 </span><span class="lineNoCov">          0 :                  debug.ScopeType.Script,</span>
-<span class="lineNum">     409 </span><span class="lineNoCov">          0 :                  debug.ScopeType.Global], g);</span>
-<span class="lineNum">     410 </span><span class="lineNoCov">          0 : CheckScopeContent({d: 4}, 0, g);</span>
-<span class="lineNum">     411 </span><span class="lineNoCov">          0 : CheckScopeContent({a: 1, b: 2}, 1, g);</span>
-<span class="lineNum">     412 </span><span class="lineNoCov">          0 : CheckScopeContent({c: 3}, 2, g);</span>
-<span class="lineNum">     413 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     414 </span><span class="lineNoCov">          0 : Debug.generatorScope(g, 0).setVariableValue(&quot;d&quot;, 1);</span>
-<span class="lineNum">     415 </span><span class="lineNoCov">          0 : CheckScopeContent({d: 1}, 0, g);</span>
-<span class="lineNum">     416 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     417 </span><span class="lineNoCov">          0 : assertEquals(1, g.next().value);</span>
-<span class="lineNum">     418 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     419 </span><span class="lineNoCov">          0 : // Set variable in catch block.</span>
-<span class="lineNum">     420 </span><span class="lineNoCov">          0 : </span>
-<a name="421"><span class="lineNum">     421 </span><span class="lineNoCov">          0 : var yyzyzzyz = 4829;</span></a>
-<span class="lineNum">     422 </span><span class="lineNoCov">          0 : let xxxyyxxyx = 42284;</span>
+<span class="lineNum">     401 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     402 </span><span class="lineCov">          1 : var g = gen16();</span>
+<span class="lineNum">     403 </span><span class="lineCov">          1 : g.next();</span>
+<span class="lineNum">     404 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     405 </span><span class="lineCov">          1 : CheckScopeChain([debug.ScopeType.Block,</span>
+<span class="lineNum">     406 </span><span class="lineCov">          1 :                  debug.ScopeType.With,</span>
+<span class="lineNum">     407 </span><span class="lineCov">          1 :                  debug.ScopeType.Closure,</span>
+<span class="lineNum">     408 </span><span class="lineCov">          1 :                  debug.ScopeType.Script,</span>
+<span class="lineNum">     409 </span><span class="lineCov">          1 :                  debug.ScopeType.Global], g);</span>
+<span class="lineNum">     410 </span><span class="lineCov">          1 : CheckScopeContent({d: 4}, 0, g);</span>
+<span class="lineNum">     411 </span><span class="lineCov">          1 : CheckScopeContent({a: 1, b: 2}, 1, g);</span>
+<span class="lineNum">     412 </span><span class="lineCov">          1 : CheckScopeContent({c: 3}, 2, g);</span>
+<span class="lineNum">     413 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     414 </span><span class="lineCov">          1 : Debug.generatorScope(g, 0).setVariableValue(&quot;d&quot;, 1);</span>
+<span class="lineNum">     415 </span><span class="lineCov">          1 : CheckScopeContent({d: 1}, 0, g);</span>
+<span class="lineNum">     416 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     417 </span><span class="lineCov">          1 : assertEquals(1, g.next().value);</span>
+<span class="lineNum">     418 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     419 </span><span class="lineCov">          1 : // Set variable in catch block.</span>
+<span class="lineNum">     420 </span><span class="lineCov">          1 : </span>
+<a name="421"><span class="lineNum">     421 </span><span class="lineCov">          1 : var yyzyzzyz = 4829;</span></a>
+<span class="lineNum">     422 </span><span class="lineCov">          1 : let xxxyyxxyx = 42284;</span>
 <span class="lineNum">     423 </span><span class="lineCov">          3 : function *gen17() {</span>
 <span class="lineNum">     424 </span><span class="lineCov">          3 :   try {</span>
 <span class="lineNum">     425 </span><span class="lineCov">          3 :     throw 42;</span>
@@ -491,33 +491,33 @@
 <span class="lineNum">     429 </span><span class="lineCov">          3 :   }</span>
 <span class="lineNum">     430 </span><span class="lineCov">          3 :   return 3;</span>
 <span class="lineNum">     431 </span><span class="lineCov">          3 : }</span>
-<span class="lineNum">     432 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     433 </span><span class="lineNoCov">          0 : g = gen17();</span>
-<span class="lineNum">     434 </span><span class="lineNoCov">          0 : g.next();</span>
-<span class="lineNum">     435 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     436 </span><span class="lineNoCov">          0 : CheckScopeChain([debug.ScopeType.Catch,</span>
-<span class="lineNum">     437 </span><span class="lineNoCov">          0 :                  debug.ScopeType.Closure,</span>
-<span class="lineNum">     438 </span><span class="lineNoCov">          0 :                  debug.ScopeType.Script,</span>
-<span class="lineNum">     439 </span><span class="lineNoCov">          0 :                  debug.ScopeType.Global], g);</span>
-<span class="lineNum">     440 </span><span class="lineNoCov">          0 : CheckScopeContent({e: 42}, 0, g);</span>
-<span class="lineNum">     441 </span><span class="lineNoCov">          0 : CheckScopeContent({xxxyyxxyx: 42284,</span>
-<span class="lineNum">     442 </span><span class="lineNoCov">          0 :                    printProtocolMessages : printProtocolMessages,</span>
-<span class="lineNum">     443 </span><span class="lineNoCov">          0 :                    activeWrapper : activeWrapper,</span>
-<span class="lineNum">     444 </span><span class="lineNoCov">          0 :                    DebugWrapper : DebugWrapper</span>
-<span class="lineNum">     445 </span><span class="lineNoCov">          0 :                   }, 2, g);</span>
-<span class="lineNum">     446 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     447 </span><span class="lineNoCov">          0 : Debug.generatorScope(g, 0).setVariableValue(&quot;e&quot;, 1);</span>
-<span class="lineNum">     448 </span><span class="lineNoCov">          0 : CheckScopeContent({e: 1}, 0, g);</span>
-<span class="lineNum">     449 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     450 </span><span class="lineNoCov">          0 : assertEquals(1, g.next().value);</span>
-<span class="lineNum">     451 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     452 </span><span class="lineNoCov">          0 : // Script scope.</span>
-<span class="lineNum">     453 </span><span class="lineNoCov">          0 : Debug.generatorScope(g, 2).setVariableValue(&quot;xxxyyxxyx&quot;, 42);</span>
-<span class="lineNum">     454 </span><span class="lineNoCov">          0 : assertEquals(42, xxxyyxxyx);</span>
-<a name="455"><span class="lineNum">     455 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     456 </span><span class="lineNoCov">          0 : // Global scope.</span>
+<span class="lineNum">     432 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     433 </span><span class="lineCov">          1 : g = gen17();</span>
+<span class="lineNum">     434 </span><span class="lineCov">          1 : g.next();</span>
+<span class="lineNum">     435 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     436 </span><span class="lineCov">          1 : CheckScopeChain([debug.ScopeType.Catch,</span>
+<span class="lineNum">     437 </span><span class="lineCov">          1 :                  debug.ScopeType.Closure,</span>
+<span class="lineNum">     438 </span><span class="lineCov">          1 :                  debug.ScopeType.Script,</span>
+<span class="lineNum">     439 </span><span class="lineCov">          1 :                  debug.ScopeType.Global], g);</span>
+<span class="lineNum">     440 </span><span class="lineCov">          1 : CheckScopeContent({e: 42}, 0, g);</span>
+<span class="lineNum">     441 </span><span class="lineCov">          1 : CheckScopeContent({xxxyyxxyx: 42284,</span>
+<span class="lineNum">     442 </span><span class="lineCov">          1 :                    printProtocolMessages : printProtocolMessages,</span>
+<span class="lineNum">     443 </span><span class="lineCov">          1 :                    activeWrapper : activeWrapper,</span>
+<span class="lineNum">     444 </span><span class="lineCov">          1 :                    DebugWrapper : DebugWrapper</span>
+<span class="lineNum">     445 </span><span class="lineCov">          1 :                   }, 2, g);</span>
+<span class="lineNum">     446 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     447 </span><span class="lineCov">          1 : Debug.generatorScope(g, 0).setVariableValue(&quot;e&quot;, 1);</span>
+<span class="lineNum">     448 </span><span class="lineCov">          1 : CheckScopeContent({e: 1}, 0, g);</span>
+<span class="lineNum">     449 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     450 </span><span class="lineCov">          1 : assertEquals(1, g.next().value);</span>
+<span class="lineNum">     451 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     452 </span><span class="lineCov">          1 : // Script scope.</span>
+<span class="lineNum">     453 </span><span class="lineCov">          1 : Debug.generatorScope(g, 2).setVariableValue(&quot;xxxyyxxyx&quot;, 42);</span>
+<span class="lineNum">     454 </span><span class="lineCov">          1 : assertEquals(42, xxxyyxxyx);</span>
+<a name="455"><span class="lineNum">     455 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     456 </span><span class="lineCov">          1 : // Global scope.</span>
 <span class="lineNum">     457 </span><span class="lineCov">          1 : assertThrows(() =&gt; Debug.generatorScope(g, 3).setVariableValue(&quot;yyzyzzyz&quot;, 42));</span>
-<span class="lineNum">     458 </span>            : assertEquals(4829, yyzyzzyz);
+<span class="lineNum">     458 </span><span class="lineCov">          1 : assertEquals(4829, yyzyzzyz);</span>
 </pre>
       </td>
     </tr>

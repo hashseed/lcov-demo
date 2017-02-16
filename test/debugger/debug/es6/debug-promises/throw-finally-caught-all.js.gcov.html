@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">54</td>
-            <td class="headerCovTableEntry">65</td>
-            <td class="headerCovTableEntryMed">83.1 %</td>
+            <td class="headerCovTableEntry">71</td>
+            <td class="headerCovTableEntry">71</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">3</td>
@@ -79,8 +79,8 @@
 <span class="lineNum">      17 </span><span class="lineCov">          1 :   log.push(&quot;resolve&quot;);</span>
 <span class="lineNum">      18 </span><span class="lineCov">          1 :   resolve();</span>
 <span class="lineNum">      19 </span><span class="lineCov">          1 : });</span>
-<span class="lineNum">      20 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      21 </span><span class="lineNoCov">          0 : var q = p.then(</span>
+<span class="lineNum">      20 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      21 </span><span class="lineCov">          1 : var q = p.then(</span>
 <span class="lineNum">      22 </span><span class="lineCov">          1 :   function() {</span>
 <span class="lineNum">      23 </span><span class="lineCov">          1 :     log.push(&quot;throw&quot;);</span>
 <span class="lineNum">      24 </span><span class="lineCov">          1 :     try {</span>
@@ -88,12 +88,12 @@
 <span class="lineNum">      26 </span><span class="lineCov">          1 :     } finally {</span>
 <span class="lineNum">      27 </span><span class="lineCov">          1 :     }</span>
 <span class="lineNum">      28 </span><span class="lineCov">          1 :   });</span>
-<span class="lineNum">      29 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      30 </span><span class="lineNoCov">          0 : q.catch(</span>
+<span class="lineNum">      29 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      30 </span><span class="lineCov">          1 : q.catch(</span>
 <span class="lineNum">      31 </span><span class="lineCov">          1 :   function(e) {</span>
 <span class="lineNum">      32 </span><span class="lineCov">          1 :     assertEquals(&quot;caught&quot;, e.message);</span>
 <a name="33"><span class="lineNum">      33 </span><span class="lineCov">          1 :   });</span></a>
-<span class="lineNum">      34 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      34 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      35 </span><span class="lineCov">          1 : function listener(event, exec_state, event_data, data) {</span>
 <span class="lineNum">      36 </span><span class="lineCov">          1 :   try {</span>
 <span class="lineNum">      37 </span><span class="lineCov">          1 :     if (event == Debug.DebugEvent.Exception) {</span>
@@ -106,12 +106,12 @@
 <span class="lineNum">      44 </span><span class="lineCov">          1 :     %AbortJS(e + &quot;\n&quot; + e.stack);</span>
 <span class="lineNum">      45 </span><span class="lineCov">          1 :   }</span>
 <span class="lineNum">      46 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">      47 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      48 </span><span class="lineNoCov">          0 : Debug.setBreakOnException();</span>
-<span class="lineNum">      49 </span><span class="lineNoCov">          0 : Debug.setListener(listener);</span>
-<span class="lineNum">      50 </span><span class="lineNoCov">          0 : </span>
-<a name="51"><span class="lineNum">      51 </span><span class="lineNoCov">          0 : log.push(&quot;end main&quot;);</span></a>
-<a name="52"><span class="lineNum">      52 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">      47 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      48 </span><span class="lineCov">          1 : Debug.setBreakOnException();</span>
+<span class="lineNum">      49 </span><span class="lineCov">          1 : Debug.setListener(listener);</span>
+<span class="lineNum">      50 </span><span class="lineCov">          1 : </span>
+<a name="51"><span class="lineNum">      51 </span><span class="lineCov">          1 : log.push(&quot;end main&quot;);</span></a>
+<a name="52"><span class="lineNum">      52 </span><span class="lineCov">          1 : </span></a>
 <span class="lineNum">      53 </span><span class="lineCov">          1 : function testDone(iteration) {</span>
 <span class="lineNum">      54 </span><span class="lineCov">          1 :   function checkResult() {</span>
 <span class="lineNum">      55 </span><span class="lineCov">          1 :     try {</span>
@@ -125,11 +125,11 @@
 <span class="lineNum">      63 </span><span class="lineCov">          1 :       %AbortJS(e + &quot;\n&quot; + e.stack);</span>
 <span class="lineNum">      64 </span><span class="lineCov">          1 :     }</span>
 <span class="lineNum">      65 </span><span class="lineCov">          1 :   }</span>
-<span class="lineNum">      66 </span>            : 
-<span class="lineNum">      67 </span>            :   %EnqueueMicrotask(checkResult);
-<span class="lineNum">      68 </span>            : }
-<span class="lineNum">      69 </span>            : 
-<span class="lineNum">      70 </span>            : testDone(0);
+<span class="lineNum">      66 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      67 </span><span class="lineCov">          1 :   %EnqueueMicrotask(checkResult);</span>
+<span class="lineNum">      68 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      69 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      70 </span><span class="lineCov">          1 : testDone(0);</span>
 </pre>
       </td>
     </tr>

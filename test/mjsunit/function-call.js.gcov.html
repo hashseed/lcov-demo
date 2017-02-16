@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">156</td>
-            <td class="headerCovTableEntry">156</td>
+            <td class="headerCovTableEntry">356</td>
+            <td class="headerCovTableEntry">356</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">1</td>
@@ -216,205 +216,205 @@
 <span class="lineNum">     154 </span><span class="lineCov">        738 :       e.message.indexOf(&quot;invoked on undefined or null value&quot;) &gt;= 0 ||</span>
 <span class="lineNum">     155 </span><span class="lineCov">        738 :       e.message.indexOf(&quot;Cannot convert undefined or null to object&quot;) &gt;= 0);</span>
 <span class="lineNum">     156 </span><span class="lineCov">        738 : }</span>
-<span class="lineNum">     157 </span>            : 
-<span class="lineNum">     158 </span>            : // Test that all natives using the ToObject call throw the right exception.
-<span class="lineNum">     159 </span>            : for (var i = 0; i &lt; should_throw_on_null_and_undefined.length; i++) {
-<span class="lineNum">     160 </span>            :   // Sanity check that all functions are correct
-<span class="lineNum">     161 </span>            :   assertEquals(typeof(should_throw_on_null_and_undefined[i]), &quot;function&quot;);
-<span class="lineNum">     162 </span>            : 
-<span class="lineNum">     163 </span>            :   var exception = false;
-<span class="lineNum">     164 </span>            :   try {
-<span class="lineNum">     165 </span>            :     // We need to pass a dummy object argument ({}) to these functions because
-<span class="lineNum">     166 </span>            :     // of Object.prototype.isPrototypeOf's special behavior, see issue 3483
-<span class="lineNum">     167 </span>            :     // for more details.
-<span class="lineNum">     168 </span>            :     should_throw_on_null_and_undefined[i].call(null, {});
-<span class="lineNum">     169 </span>            :   } catch (e) {
-<span class="lineNum">     170 </span>            :     exception = true;
-<span class="lineNum">     171 </span>            :     checkExpectedMessage(e);
-<span class="lineNum">     172 </span>            :   }
-<span class="lineNum">     173 </span>            :   assertTrue(exception);
-<span class="lineNum">     174 </span>            : 
-<span class="lineNum">     175 </span>            :   exception = false;
-<span class="lineNum">     176 </span>            :   try {
-<span class="lineNum">     177 </span>            :     should_throw_on_null_and_undefined[i].call(undefined, {});
-<span class="lineNum">     178 </span>            :   } catch (e) {
-<span class="lineNum">     179 </span>            :     exception = true;
-<span class="lineNum">     180 </span>            :     checkExpectedMessage(e);
-<span class="lineNum">     181 </span>            :   }
-<span class="lineNum">     182 </span>            :   assertTrue(exception);
-<span class="lineNum">     183 </span>            : 
-<span class="lineNum">     184 </span>            :   exception = false;
-<span class="lineNum">     185 </span>            :   try {
-<span class="lineNum">     186 </span>            :     should_throw_on_null_and_undefined[i].apply(null, [{}]);
-<span class="lineNum">     187 </span>            :   } catch (e) {
-<span class="lineNum">     188 </span>            :     exception = true;
-<span class="lineNum">     189 </span>            :     checkExpectedMessage(e);
-<span class="lineNum">     190 </span>            :   }
-<span class="lineNum">     191 </span>            :   assertTrue(exception);
-<span class="lineNum">     192 </span>            : 
-<span class="lineNum">     193 </span>            :   exception = false;
-<span class="lineNum">     194 </span>            :   try {
-<span class="lineNum">     195 </span>            :     should_throw_on_null_and_undefined[i].apply(undefined, [{}]);
-<span class="lineNum">     196 </span>            :   } catch (e) {
-<span class="lineNum">     197 </span>            :     exception = true;
-<span class="lineNum">     198 </span>            :     checkExpectedMessage(e);
-<span class="lineNum">     199 </span>            :   }
-<span class="lineNum">     200 </span>            :   assertTrue(exception);
-<span class="lineNum">     201 </span>            : }
-<span class="lineNum">     202 </span>            : 
-<span class="lineNum">     203 </span>            : // Test that all natives that are non generic throw on null and undefined.
-<span class="lineNum">     204 </span>            : for (var i = 0; i &lt; non_generic.length; i++) {
-<span class="lineNum">     205 </span>            :   // Sanity check that all functions are correct
-<span class="lineNum">     206 </span>            :   assertEquals(typeof(non_generic[i]), &quot;function&quot;);
-<span class="lineNum">     207 </span>            : 
-<span class="lineNum">     208 </span>            :   exception = false;
-<span class="lineNum">     209 </span>            :   try {
-<span class="lineNum">     210 </span>            :     non_generic[i].call(null);
-<span class="lineNum">     211 </span>            :   } catch (e) {
-<span class="lineNum">     212 </span>            :     exception = true;
-<span class="lineNum">     213 </span>            :     assertTrue(e instanceof TypeError);
-<span class="lineNum">     214 </span>            :   }
-<span class="lineNum">     215 </span>            :   assertTrue(exception);
-<span class="lineNum">     216 </span>            : 
-<span class="lineNum">     217 </span>            :   exception = false;
-<span class="lineNum">     218 </span>            :   try {
-<span class="lineNum">     219 </span>            :     non_generic[i].call(null);
-<span class="lineNum">     220 </span>            :   } catch (e) {
-<span class="lineNum">     221 </span>            :     exception = true;
-<span class="lineNum">     222 </span>            :     assertTrue(e instanceof TypeError);
-<span class="lineNum">     223 </span>            :   }
-<span class="lineNum">     224 </span>            :   assertTrue(exception);
-<span class="lineNum">     225 </span>            : 
-<span class="lineNum">     226 </span>            :   exception = false;
-<span class="lineNum">     227 </span>            :   try {
-<span class="lineNum">     228 </span>            :     non_generic[i].apply(null);
-<span class="lineNum">     229 </span>            :   } catch (e) {
-<span class="lineNum">     230 </span>            :     exception = true;
-<span class="lineNum">     231 </span>            :     assertTrue(e instanceof TypeError);
-<span class="lineNum">     232 </span>            :   }
-<span class="lineNum">     233 </span>            :   assertTrue(exception);
-<span class="lineNum">     234 </span>            : 
-<span class="lineNum">     235 </span>            :   exception = false;
-<span class="lineNum">     236 </span>            :   try {
-<span class="lineNum">     237 </span>            :     non_generic[i].apply(null);
-<span class="lineNum">     238 </span>            :   } catch (e) {
-<span class="lineNum">     239 </span>            :     exception = true;
-<span class="lineNum">     240 </span>            :     assertTrue(e instanceof TypeError);
-<span class="lineNum">     241 </span>            :   }
-<span class="lineNum">     242 </span>            :   assertTrue(exception);
-<span class="lineNum">     243 </span>            : }
-<span class="lineNum">     244 </span>            : 
-<span class="lineNum">     245 </span>            : 
-<span class="lineNum">     246 </span>            : // Test that we still throw when calling with thisArg null or undefined
-<span class="lineNum">     247 </span>            : // through an array mapping function.
-<span class="lineNum">     248 </span>            : // We need to make sure that the elements of `array` are all object values,
-<span class="lineNum">     249 </span>            : // see issue 3483 for more details.
-<span class="lineNum">     250 </span>            : var array = [{}, [], new Number, new Map, new WeakSet];
-<span class="lineNum">     251 </span>            : for (var j = 0; j &lt; mapping_functions.length; j++) {
-<span class="lineNum">     252 </span>            :   for (var i = 0; i &lt; should_throw_on_null_and_undefined.length; i++) {
-<span class="lineNum">     253 </span>            :     exception = false;
-<span class="lineNum">     254 </span>            :     try {
-<span class="lineNum">     255 </span>            :       mapping_functions[j].call(array,
-<span class="lineNum">     256 </span>            :                                 should_throw_on_null_and_undefined[i],
-<span class="lineNum">     257 </span>            :                                 null);
-<span class="lineNum">     258 </span>            :     } catch (e) {
-<span class="lineNum">     259 </span>            :       exception = true;
-<span class="lineNum">     260 </span>            :       checkExpectedMessage(e);
-<span class="lineNum">     261 </span>            :     }
-<span class="lineNum">     262 </span>            :     assertTrue(exception);
-<span class="lineNum">     263 </span>            : 
-<span class="lineNum">     264 </span>            :     exception = false;
-<span class="lineNum">     265 </span>            :     try {
-<span class="lineNum">     266 </span>            :       mapping_functions[j].call(array,
-<span class="lineNum">     267 </span>            :                                 should_throw_on_null_and_undefined[i],
-<span class="lineNum">     268 </span>            :                                 undefined);
-<span class="lineNum">     269 </span>            :     } catch (e) {
-<span class="lineNum">     270 </span>            :       exception = true;
-<span class="lineNum">     271 </span>            :       checkExpectedMessage(e);
-<span class="lineNum">     272 </span>            :     }
-<span class="lineNum">     273 </span>            :     assertTrue(exception);
-<span class="lineNum">     274 </span>            :   }
-<span class="lineNum">     275 </span>            : }
-<span class="lineNum">     276 </span>            : 
-<span class="lineNum">     277 </span>            : for (var j = 0; j &lt; mapping_functions.length; j++) {
-<span class="lineNum">     278 </span>            :   for (var i = 0; i &lt; non_generic.length; i++) {
-<span class="lineNum">     279 </span>            :     exception = false;
-<span class="lineNum">     280 </span>            :     try {
-<span class="lineNum">     281 </span>            :       mapping_functions[j].call(array,
-<span class="lineNum">     282 </span>            :                                 non_generic[i],
-<span class="lineNum">     283 </span>            :                                 null);
-<span class="lineNum">     284 </span>            :     } catch (e) {
-<span class="lineNum">     285 </span>            :       exception = true;
-<span class="lineNum">     286 </span>            :       assertTrue(e instanceof TypeError);
-<span class="lineNum">     287 </span>            :     }
-<span class="lineNum">     288 </span>            :     assertTrue(exception);
-<span class="lineNum">     289 </span>            : 
-<span class="lineNum">     290 </span>            :     exception = false;
-<span class="lineNum">     291 </span>            :     try {
-<span class="lineNum">     292 </span>            :       mapping_functions[j].call(array,
-<span class="lineNum">     293 </span>            :                                 non_generic[i],
-<span class="lineNum">     294 </span>            :                                 undefined);
-<span class="lineNum">     295 </span>            :     } catch (e) {
-<span class="lineNum">     296 </span>            :       exception = true;
-<span class="lineNum">     297 </span>            :       assertTrue(e instanceof TypeError);
-<span class="lineNum">     298 </span>            :     }
-<span class="lineNum">     299 </span>            :     assertTrue(exception);
-<span class="lineNum">     300 </span>            :   }
-<span class="lineNum">     301 </span>            : }
-<span class="lineNum">     302 </span>            : 
-<span class="lineNum">     303 </span>            : 
-<span class="lineNum">     304 </span>            : // Reduce functions do a call with null as this argument.
-<span class="lineNum">     305 </span>            : for (var j = 0; j &lt; reducing_functions.length; j++) {
-<span class="lineNum">     306 </span>            :   for (var i = 0; i &lt; should_throw_on_null_and_undefined.length; i++) {
-<span class="lineNum">     307 </span>            :     exception = false;
-<span class="lineNum">     308 </span>            :     try {
-<span class="lineNum">     309 </span>            :       reducing_functions[j].call(array, should_throw_on_null_and_undefined[i]);
-<span class="lineNum">     310 </span>            :     } catch (e) {
-<span class="lineNum">     311 </span>            :       exception = true;
-<span class="lineNum">     312 </span>            :       checkExpectedMessage(e);
-<span class="lineNum">     313 </span>            :     }
-<span class="lineNum">     314 </span>            :     assertTrue(exception);
-<span class="lineNum">     315 </span>            : 
-<span class="lineNum">     316 </span>            :     exception = false;
-<span class="lineNum">     317 </span>            :     try {
-<span class="lineNum">     318 </span>            :       reducing_functions[j].call(array, should_throw_on_null_and_undefined[i]);
-<span class="lineNum">     319 </span>            :     } catch (e) {
-<span class="lineNum">     320 </span>            :       exception = true;
-<span class="lineNum">     321 </span>            :       checkExpectedMessage(e);
-<span class="lineNum">     322 </span>            :     }
-<span class="lineNum">     323 </span>            :     assertTrue(exception);
-<span class="lineNum">     324 </span>            :   }
-<span class="lineNum">     325 </span>            : }
-<span class="lineNum">     326 </span>            : 
-<span class="lineNum">     327 </span>            : for (var j = 0; j &lt; reducing_functions.length; j++) {
-<span class="lineNum">     328 </span>            :   for (var i = 0; i &lt; non_generic.length; i++) {
-<span class="lineNum">     329 </span>            :     exception = false;
-<span class="lineNum">     330 </span>            :     try {
-<span class="lineNum">     331 </span>            :       reducing_functions[j].call(array, non_generic[i]);
-<span class="lineNum">     332 </span>            :     } catch (e) {
-<span class="lineNum">     333 </span>            :       exception = true;
-<span class="lineNum">     334 </span>            :       assertTrue(e instanceof TypeError);
-<span class="lineNum">     335 </span>            :     }
-<span class="lineNum">     336 </span>            :     assertTrue(exception);
-<span class="lineNum">     337 </span>            : 
-<span class="lineNum">     338 </span>            :     exception = false;
-<span class="lineNum">     339 </span>            :     try {
-<span class="lineNum">     340 </span>            :       reducing_functions[j].call(array, non_generic[i]);
-<span class="lineNum">     341 </span>            :     } catch (e) {
-<span class="lineNum">     342 </span>            :       exception = true;
-<span class="lineNum">     343 </span>            :       assertTrue(e instanceof TypeError);
-<span class="lineNum">     344 </span>            :     }
-<span class="lineNum">     345 </span>            :     assertTrue(exception);
-<span class="lineNum">     346 </span>            :   }
-<span class="lineNum">     347 </span>            : }
-<span class="lineNum">     348 </span>            : 
-<span class="lineNum">     349 </span>            : 
-<span class="lineNum">     350 </span>            : // Object.prototype.toString()
-<span class="lineNum">     351 </span>            : assertEquals(Object.prototype.toString.call(null),
-<span class="lineNum">     352 </span>            :              '[object Null]')
-<span class="lineNum">     353 </span>            : 
-<span class="lineNum">     354 </span>            : assertEquals(Object.prototype.toString.call(undefined),
-<span class="lineNum">     355 </span>            :              '[object Undefined]')
+<span class="lineNum">     157 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     158 </span><span class="lineCov">          1 : // Test that all natives using the ToObject call throw the right exception.</span>
+<span class="lineNum">     159 </span><span class="lineCov">          1 : for (var i = 0; i &lt; should_throw_on_null_and_undefined.length; i++) {</span>
+<span class="lineNum">     160 </span><span class="lineCov">          1 :   // Sanity check that all functions are correct</span>
+<span class="lineNum">     161 </span><span class="lineCov">          1 :   assertEquals(typeof(should_throw_on_null_and_undefined[i]), &quot;function&quot;);</span>
+<span class="lineNum">     162 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     163 </span><span class="lineCov">          1 :   var exception = false;</span>
+<span class="lineNum">     164 </span><span class="lineCov">          1 :   try {</span>
+<span class="lineNum">     165 </span><span class="lineCov">          1 :     // We need to pass a dummy object argument ({}) to these functions because</span>
+<span class="lineNum">     166 </span><span class="lineCov">          1 :     // of Object.prototype.isPrototypeOf's special behavior, see issue 3483</span>
+<span class="lineNum">     167 </span><span class="lineCov">          1 :     // for more details.</span>
+<span class="lineNum">     168 </span><span class="lineCov">          1 :     should_throw_on_null_and_undefined[i].call(null, {});</span>
+<span class="lineNum">     169 </span><span class="lineCov">          1 :   } catch (e) {</span>
+<span class="lineNum">     170 </span><span class="lineCov">          1 :     exception = true;</span>
+<span class="lineNum">     171 </span><span class="lineCov">          1 :     checkExpectedMessage(e);</span>
+<span class="lineNum">     172 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     173 </span><span class="lineCov">          1 :   assertTrue(exception);</span>
+<span class="lineNum">     174 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     175 </span><span class="lineCov">          1 :   exception = false;</span>
+<span class="lineNum">     176 </span><span class="lineCov">          1 :   try {</span>
+<span class="lineNum">     177 </span><span class="lineCov">          1 :     should_throw_on_null_and_undefined[i].call(undefined, {});</span>
+<span class="lineNum">     178 </span><span class="lineCov">          1 :   } catch (e) {</span>
+<span class="lineNum">     179 </span><span class="lineCov">          1 :     exception = true;</span>
+<span class="lineNum">     180 </span><span class="lineCov">          1 :     checkExpectedMessage(e);</span>
+<span class="lineNum">     181 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     182 </span><span class="lineCov">          1 :   assertTrue(exception);</span>
+<span class="lineNum">     183 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     184 </span><span class="lineCov">          1 :   exception = false;</span>
+<span class="lineNum">     185 </span><span class="lineCov">          1 :   try {</span>
+<span class="lineNum">     186 </span><span class="lineCov">          1 :     should_throw_on_null_and_undefined[i].apply(null, [{}]);</span>
+<span class="lineNum">     187 </span><span class="lineCov">          1 :   } catch (e) {</span>
+<span class="lineNum">     188 </span><span class="lineCov">          1 :     exception = true;</span>
+<span class="lineNum">     189 </span><span class="lineCov">          1 :     checkExpectedMessage(e);</span>
+<span class="lineNum">     190 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     191 </span><span class="lineCov">          1 :   assertTrue(exception);</span>
+<span class="lineNum">     192 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     193 </span><span class="lineCov">          1 :   exception = false;</span>
+<span class="lineNum">     194 </span><span class="lineCov">          1 :   try {</span>
+<span class="lineNum">     195 </span><span class="lineCov">          1 :     should_throw_on_null_and_undefined[i].apply(undefined, [{}]);</span>
+<span class="lineNum">     196 </span><span class="lineCov">          1 :   } catch (e) {</span>
+<span class="lineNum">     197 </span><span class="lineCov">          1 :     exception = true;</span>
+<span class="lineNum">     198 </span><span class="lineCov">          1 :     checkExpectedMessage(e);</span>
+<span class="lineNum">     199 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     200 </span><span class="lineCov">          1 :   assertTrue(exception);</span>
+<span class="lineNum">     201 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     202 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     203 </span><span class="lineCov">          1 : // Test that all natives that are non generic throw on null and undefined.</span>
+<span class="lineNum">     204 </span><span class="lineCov">          1 : for (var i = 0; i &lt; non_generic.length; i++) {</span>
+<span class="lineNum">     205 </span><span class="lineCov">          1 :   // Sanity check that all functions are correct</span>
+<span class="lineNum">     206 </span><span class="lineCov">          1 :   assertEquals(typeof(non_generic[i]), &quot;function&quot;);</span>
+<span class="lineNum">     207 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     208 </span><span class="lineCov">          1 :   exception = false;</span>
+<span class="lineNum">     209 </span><span class="lineCov">          1 :   try {</span>
+<span class="lineNum">     210 </span><span class="lineCov">          1 :     non_generic[i].call(null);</span>
+<span class="lineNum">     211 </span><span class="lineCov">          1 :   } catch (e) {</span>
+<span class="lineNum">     212 </span><span class="lineCov">          1 :     exception = true;</span>
+<span class="lineNum">     213 </span><span class="lineCov">          1 :     assertTrue(e instanceof TypeError);</span>
+<span class="lineNum">     214 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     215 </span><span class="lineCov">          1 :   assertTrue(exception);</span>
+<span class="lineNum">     216 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     217 </span><span class="lineCov">          1 :   exception = false;</span>
+<span class="lineNum">     218 </span><span class="lineCov">          1 :   try {</span>
+<span class="lineNum">     219 </span><span class="lineCov">          1 :     non_generic[i].call(null);</span>
+<span class="lineNum">     220 </span><span class="lineCov">          1 :   } catch (e) {</span>
+<span class="lineNum">     221 </span><span class="lineCov">          1 :     exception = true;</span>
+<span class="lineNum">     222 </span><span class="lineCov">          1 :     assertTrue(e instanceof TypeError);</span>
+<span class="lineNum">     223 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     224 </span><span class="lineCov">          1 :   assertTrue(exception);</span>
+<span class="lineNum">     225 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     226 </span><span class="lineCov">          1 :   exception = false;</span>
+<span class="lineNum">     227 </span><span class="lineCov">          1 :   try {</span>
+<span class="lineNum">     228 </span><span class="lineCov">          1 :     non_generic[i].apply(null);</span>
+<span class="lineNum">     229 </span><span class="lineCov">          1 :   } catch (e) {</span>
+<span class="lineNum">     230 </span><span class="lineCov">          1 :     exception = true;</span>
+<span class="lineNum">     231 </span><span class="lineCov">          1 :     assertTrue(e instanceof TypeError);</span>
+<span class="lineNum">     232 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     233 </span><span class="lineCov">          1 :   assertTrue(exception);</span>
+<span class="lineNum">     234 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     235 </span><span class="lineCov">          1 :   exception = false;</span>
+<span class="lineNum">     236 </span><span class="lineCov">          1 :   try {</span>
+<span class="lineNum">     237 </span><span class="lineCov">          1 :     non_generic[i].apply(null);</span>
+<span class="lineNum">     238 </span><span class="lineCov">          1 :   } catch (e) {</span>
+<span class="lineNum">     239 </span><span class="lineCov">          1 :     exception = true;</span>
+<span class="lineNum">     240 </span><span class="lineCov">          1 :     assertTrue(e instanceof TypeError);</span>
+<span class="lineNum">     241 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     242 </span><span class="lineCov">          1 :   assertTrue(exception);</span>
+<span class="lineNum">     243 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     244 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     245 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     246 </span><span class="lineCov">          1 : // Test that we still throw when calling with thisArg null or undefined</span>
+<span class="lineNum">     247 </span><span class="lineCov">          1 : // through an array mapping function.</span>
+<span class="lineNum">     248 </span><span class="lineCov">          1 : // We need to make sure that the elements of `array` are all object values,</span>
+<span class="lineNum">     249 </span><span class="lineCov">          1 : // see issue 3483 for more details.</span>
+<span class="lineNum">     250 </span><span class="lineCov">          1 : var array = [{}, [], new Number, new Map, new WeakSet];</span>
+<span class="lineNum">     251 </span><span class="lineCov">          1 : for (var j = 0; j &lt; mapping_functions.length; j++) {</span>
+<span class="lineNum">     252 </span><span class="lineCov">          1 :   for (var i = 0; i &lt; should_throw_on_null_and_undefined.length; i++) {</span>
+<span class="lineNum">     253 </span><span class="lineCov">          1 :     exception = false;</span>
+<span class="lineNum">     254 </span><span class="lineCov">          1 :     try {</span>
+<span class="lineNum">     255 </span><span class="lineCov">          1 :       mapping_functions[j].call(array,</span>
+<span class="lineNum">     256 </span><span class="lineCov">          1 :                                 should_throw_on_null_and_undefined[i],</span>
+<span class="lineNum">     257 </span><span class="lineCov">          1 :                                 null);</span>
+<span class="lineNum">     258 </span><span class="lineCov">          1 :     } catch (e) {</span>
+<span class="lineNum">     259 </span><span class="lineCov">          1 :       exception = true;</span>
+<span class="lineNum">     260 </span><span class="lineCov">          1 :       checkExpectedMessage(e);</span>
+<span class="lineNum">     261 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">     262 </span><span class="lineCov">          1 :     assertTrue(exception);</span>
+<span class="lineNum">     263 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     264 </span><span class="lineCov">          1 :     exception = false;</span>
+<span class="lineNum">     265 </span><span class="lineCov">          1 :     try {</span>
+<span class="lineNum">     266 </span><span class="lineCov">          1 :       mapping_functions[j].call(array,</span>
+<span class="lineNum">     267 </span><span class="lineCov">          1 :                                 should_throw_on_null_and_undefined[i],</span>
+<span class="lineNum">     268 </span><span class="lineCov">          1 :                                 undefined);</span>
+<span class="lineNum">     269 </span><span class="lineCov">          1 :     } catch (e) {</span>
+<span class="lineNum">     270 </span><span class="lineCov">          1 :       exception = true;</span>
+<span class="lineNum">     271 </span><span class="lineCov">          1 :       checkExpectedMessage(e);</span>
+<span class="lineNum">     272 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">     273 </span><span class="lineCov">          1 :     assertTrue(exception);</span>
+<span class="lineNum">     274 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     275 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     276 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     277 </span><span class="lineCov">          1 : for (var j = 0; j &lt; mapping_functions.length; j++) {</span>
+<span class="lineNum">     278 </span><span class="lineCov">          1 :   for (var i = 0; i &lt; non_generic.length; i++) {</span>
+<span class="lineNum">     279 </span><span class="lineCov">          1 :     exception = false;</span>
+<span class="lineNum">     280 </span><span class="lineCov">          1 :     try {</span>
+<span class="lineNum">     281 </span><span class="lineCov">          1 :       mapping_functions[j].call(array,</span>
+<span class="lineNum">     282 </span><span class="lineCov">          1 :                                 non_generic[i],</span>
+<span class="lineNum">     283 </span><span class="lineCov">          1 :                                 null);</span>
+<span class="lineNum">     284 </span><span class="lineCov">          1 :     } catch (e) {</span>
+<span class="lineNum">     285 </span><span class="lineCov">          1 :       exception = true;</span>
+<span class="lineNum">     286 </span><span class="lineCov">          1 :       assertTrue(e instanceof TypeError);</span>
+<span class="lineNum">     287 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">     288 </span><span class="lineCov">          1 :     assertTrue(exception);</span>
+<span class="lineNum">     289 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     290 </span><span class="lineCov">          1 :     exception = false;</span>
+<span class="lineNum">     291 </span><span class="lineCov">          1 :     try {</span>
+<span class="lineNum">     292 </span><span class="lineCov">          1 :       mapping_functions[j].call(array,</span>
+<span class="lineNum">     293 </span><span class="lineCov">          1 :                                 non_generic[i],</span>
+<span class="lineNum">     294 </span><span class="lineCov">          1 :                                 undefined);</span>
+<span class="lineNum">     295 </span><span class="lineCov">          1 :     } catch (e) {</span>
+<span class="lineNum">     296 </span><span class="lineCov">          1 :       exception = true;</span>
+<span class="lineNum">     297 </span><span class="lineCov">          1 :       assertTrue(e instanceof TypeError);</span>
+<span class="lineNum">     298 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">     299 </span><span class="lineCov">          1 :     assertTrue(exception);</span>
+<span class="lineNum">     300 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     301 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     302 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     303 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     304 </span><span class="lineCov">          1 : // Reduce functions do a call with null as this argument.</span>
+<span class="lineNum">     305 </span><span class="lineCov">          1 : for (var j = 0; j &lt; reducing_functions.length; j++) {</span>
+<span class="lineNum">     306 </span><span class="lineCov">          1 :   for (var i = 0; i &lt; should_throw_on_null_and_undefined.length; i++) {</span>
+<span class="lineNum">     307 </span><span class="lineCov">          1 :     exception = false;</span>
+<span class="lineNum">     308 </span><span class="lineCov">          1 :     try {</span>
+<span class="lineNum">     309 </span><span class="lineCov">          1 :       reducing_functions[j].call(array, should_throw_on_null_and_undefined[i]);</span>
+<span class="lineNum">     310 </span><span class="lineCov">          1 :     } catch (e) {</span>
+<span class="lineNum">     311 </span><span class="lineCov">          1 :       exception = true;</span>
+<span class="lineNum">     312 </span><span class="lineCov">          1 :       checkExpectedMessage(e);</span>
+<span class="lineNum">     313 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">     314 </span><span class="lineCov">          1 :     assertTrue(exception);</span>
+<span class="lineNum">     315 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     316 </span><span class="lineCov">          1 :     exception = false;</span>
+<span class="lineNum">     317 </span><span class="lineCov">          1 :     try {</span>
+<span class="lineNum">     318 </span><span class="lineCov">          1 :       reducing_functions[j].call(array, should_throw_on_null_and_undefined[i]);</span>
+<span class="lineNum">     319 </span><span class="lineCov">          1 :     } catch (e) {</span>
+<span class="lineNum">     320 </span><span class="lineCov">          1 :       exception = true;</span>
+<span class="lineNum">     321 </span><span class="lineCov">          1 :       checkExpectedMessage(e);</span>
+<span class="lineNum">     322 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">     323 </span><span class="lineCov">          1 :     assertTrue(exception);</span>
+<span class="lineNum">     324 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     325 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     326 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     327 </span><span class="lineCov">          1 : for (var j = 0; j &lt; reducing_functions.length; j++) {</span>
+<span class="lineNum">     328 </span><span class="lineCov">          1 :   for (var i = 0; i &lt; non_generic.length; i++) {</span>
+<span class="lineNum">     329 </span><span class="lineCov">          1 :     exception = false;</span>
+<span class="lineNum">     330 </span><span class="lineCov">          1 :     try {</span>
+<span class="lineNum">     331 </span><span class="lineCov">          1 :       reducing_functions[j].call(array, non_generic[i]);</span>
+<span class="lineNum">     332 </span><span class="lineCov">          1 :     } catch (e) {</span>
+<span class="lineNum">     333 </span><span class="lineCov">          1 :       exception = true;</span>
+<span class="lineNum">     334 </span><span class="lineCov">          1 :       assertTrue(e instanceof TypeError);</span>
+<span class="lineNum">     335 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">     336 </span><span class="lineCov">          1 :     assertTrue(exception);</span>
+<span class="lineNum">     337 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     338 </span><span class="lineCov">          1 :     exception = false;</span>
+<span class="lineNum">     339 </span><span class="lineCov">          1 :     try {</span>
+<span class="lineNum">     340 </span><span class="lineCov">          1 :       reducing_functions[j].call(array, non_generic[i]);</span>
+<span class="lineNum">     341 </span><span class="lineCov">          1 :     } catch (e) {</span>
+<span class="lineNum">     342 </span><span class="lineCov">          1 :       exception = true;</span>
+<span class="lineNum">     343 </span><span class="lineCov">          1 :       assertTrue(e instanceof TypeError);</span>
+<span class="lineNum">     344 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">     345 </span><span class="lineCov">          1 :     assertTrue(exception);</span>
+<span class="lineNum">     346 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     347 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     348 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     349 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     350 </span><span class="lineCov">          1 : // Object.prototype.toString()</span>
+<span class="lineNum">     351 </span><span class="lineCov">          1 : assertEquals(Object.prototype.toString.call(null),</span>
+<span class="lineNum">     352 </span><span class="lineCov">          1 :              '[object Null]')</span>
+<span class="lineNum">     353 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     354 </span><span class="lineCov">          1 : assertEquals(Object.prototype.toString.call(undefined),</span>
+<span class="lineNum">     355 </span><span class="lineCov">          1 :              '[object Undefined]')</span>
 </pre>
       </td>
     </tr>

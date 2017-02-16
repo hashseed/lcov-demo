@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">58</td>
-            <td class="headerCovTableEntry">423</td>
-            <td class="headerCovTableEntryLo">13.7 %</td>
+            <td class="headerCovTableEntry">244</td>
+            <td class="headerCovTableEntry">461</td>
+            <td class="headerCovTableEntryLo">52.9 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">15</td>
@@ -71,7 +71,7 @@
 <span class="lineNum">       9 </span><span class="lineCov">          3 : function assertValidAsm(func) {</span>
 <span class="lineNum">      10 </span><span class="lineCov">          3 :   assertTrue(%IsAsmWasmCode(func));</span>
 <a name="11"><span class="lineNum">      11 </span><span class="lineCov">          3 : }</span></a>
-<span class="lineNum">      12 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      12 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      13 </span><span class="lineCov">          1 : (function TestStdlibConstants() {</span>
 <span class="lineNum">      14 </span><span class="lineCov">          1 :   function Module(stdlib) {</span>
 <span class="lineNum">      15 </span><span class="lineNoCov">          0 :     &quot;use asm&quot;;</span>
@@ -105,105 +105,105 @@
 <span class="lineNum">      43 </span><span class="lineNoCov">          0 :     }</span>
 <span class="lineNum">      44 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      45 </span><span class="lineNoCov">          0 :     return {caller:caller, nanCheck:nanCheck};</span>
-<span class="lineNum">      46 </span><span class="lineNoCov">          0 :   }</span>
-<span class="lineNum">      47 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      48 </span><span class="lineNoCov">          0 :   var m = Module(stdlib);</span>
-<span class="lineNum">      49 </span><span class="lineNoCov">          0 :   assertValidAsm(Module);</span>
-<span class="lineNum">      50 </span><span class="lineNoCov">          0 :   assertEquals(1, m.caller());</span>
-<span class="lineNum">      51 </span><span class="lineNoCov">          0 :   assertTrue(isNaN(m.nanCheck()));</span>
-<span class="lineNum">      52 </span><span class="lineNoCov">          0 : })();</span>
-<span class="lineNum">      53 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      54 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      55 </span><span class="lineNoCov">          0 : var stdlib = this;</span>
-<span class="lineNum">      56 </span><span class="lineNoCov">          0 : var stdlib_root_members = [</span>
-<span class="lineNum">      57 </span><span class="lineNoCov">          0 :   'Infinity',</span>
-<span class="lineNum">      58 </span><span class="lineNoCov">          0 :   'NaN',</span>
-<span class="lineNum">      59 </span><span class="lineNoCov">          0 : ];</span>
-<span class="lineNum">      60 </span><span class="lineNoCov">          0 : var stdlib_math_members = [</span>
-<span class="lineNum">      61 </span><span class="lineNoCov">          0 :   'E',</span>
-<span class="lineNum">      62 </span><span class="lineNoCov">          0 :   'LN10',</span>
-<span class="lineNum">      63 </span><span class="lineNoCov">          0 :   'LN2',</span>
-<span class="lineNum">      64 </span><span class="lineNoCov">          0 :   'LOG2E',</span>
-<span class="lineNum">      65 </span><span class="lineNoCov">          0 :   'LOG10E',</span>
-<span class="lineNum">      66 </span><span class="lineNoCov">          0 :   'PI',</span>
-<span class="lineNum">      67 </span><span class="lineNoCov">          0 :   'SQRT1_2',</span>
-<span class="lineNum">      68 </span><span class="lineNoCov">          0 :   'SQRT2',</span>
-<span class="lineNum">      69 </span><span class="lineNoCov">          0 :   'ceil',</span>
-<span class="lineNum">      70 </span><span class="lineNoCov">          0 :   'clz32',</span>
-<span class="lineNum">      71 </span><span class="lineNoCov">          0 :   'floor',</span>
-<span class="lineNum">      72 </span><span class="lineNoCov">          0 :   'sqrt',</span>
-<span class="lineNum">      73 </span><span class="lineNoCov">          0 :   'abs',</span>
-<span class="lineNum">      74 </span><span class="lineNoCov">          0 :   'min',</span>
-<span class="lineNum">      75 </span><span class="lineNoCov">          0 :   'max',</span>
-<span class="lineNum">      76 </span><span class="lineNoCov">          0 :   'acos',</span>
-<span class="lineNum">      77 </span><span class="lineNoCov">          0 :   'asin',</span>
-<span class="lineNum">      78 </span><span class="lineNoCov">          0 :   'atan',</span>
-<span class="lineNum">      79 </span><span class="lineNoCov">          0 :   'cos',</span>
-<span class="lineNum">      80 </span><span class="lineNoCov">          0 :   'sin',</span>
-<span class="lineNum">      81 </span><span class="lineNoCov">          0 :   'tan',</span>
-<span class="lineNum">      82 </span><span class="lineNoCov">          0 :   'exp',</span>
-<span class="lineNum">      83 </span><span class="lineNoCov">          0 :   'log',</span>
-<span class="lineNum">      84 </span><span class="lineNoCov">          0 :   'atan2',</span>
-<span class="lineNum">      85 </span><span class="lineNoCov">          0 :   'pow',</span>
-<span class="lineNum">      86 </span><span class="lineNoCov">          0 :   'imul',</span>
-<span class="lineNum">      87 </span><span class="lineNoCov">          0 :   'fround',</span>
-<span class="lineNum">      88 </span><span class="lineNoCov">          0 : ];</span>
-<a name="89"><span class="lineNum">      89 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">      90 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      46 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">      47 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      48 </span><span class="lineCov">          1 :   var m = Module(stdlib);</span>
+<span class="lineNum">      49 </span><span class="lineCov">          1 :   assertValidAsm(Module);</span>
+<span class="lineNum">      50 </span><span class="lineCov">          1 :   assertEquals(1, m.caller());</span>
+<span class="lineNum">      51 </span><span class="lineCov">          1 :   assertTrue(isNaN(m.nanCheck()));</span>
+<span class="lineNum">      52 </span><span class="lineCov">          1 : })();</span>
+<span class="lineNum">      53 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      54 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      55 </span><span class="lineCov">          1 : var stdlib = this;</span>
+<span class="lineNum">      56 </span><span class="lineCov">          1 : var stdlib_root_members = [</span>
+<span class="lineNum">      57 </span><span class="lineCov">          1 :   'Infinity',</span>
+<span class="lineNum">      58 </span><span class="lineCov">          1 :   'NaN',</span>
+<span class="lineNum">      59 </span><span class="lineCov">          1 : ];</span>
+<span class="lineNum">      60 </span><span class="lineCov">          1 : var stdlib_math_members = [</span>
+<span class="lineNum">      61 </span><span class="lineCov">          1 :   'E',</span>
+<span class="lineNum">      62 </span><span class="lineCov">          1 :   'LN10',</span>
+<span class="lineNum">      63 </span><span class="lineCov">          1 :   'LN2',</span>
+<span class="lineNum">      64 </span><span class="lineCov">          1 :   'LOG2E',</span>
+<span class="lineNum">      65 </span><span class="lineCov">          1 :   'LOG10E',</span>
+<span class="lineNum">      66 </span><span class="lineCov">          1 :   'PI',</span>
+<span class="lineNum">      67 </span><span class="lineCov">          1 :   'SQRT1_2',</span>
+<span class="lineNum">      68 </span><span class="lineCov">          1 :   'SQRT2',</span>
+<span class="lineNum">      69 </span><span class="lineCov">          1 :   'ceil',</span>
+<span class="lineNum">      70 </span><span class="lineCov">          1 :   'clz32',</span>
+<span class="lineNum">      71 </span><span class="lineCov">          1 :   'floor',</span>
+<span class="lineNum">      72 </span><span class="lineCov">          1 :   'sqrt',</span>
+<span class="lineNum">      73 </span><span class="lineCov">          1 :   'abs',</span>
+<span class="lineNum">      74 </span><span class="lineCov">          1 :   'min',</span>
+<span class="lineNum">      75 </span><span class="lineCov">          1 :   'max',</span>
+<span class="lineNum">      76 </span><span class="lineCov">          1 :   'acos',</span>
+<span class="lineNum">      77 </span><span class="lineCov">          1 :   'asin',</span>
+<span class="lineNum">      78 </span><span class="lineCov">          1 :   'atan',</span>
+<span class="lineNum">      79 </span><span class="lineCov">          1 :   'cos',</span>
+<span class="lineNum">      80 </span><span class="lineCov">          1 :   'sin',</span>
+<span class="lineNum">      81 </span><span class="lineCov">          1 :   'tan',</span>
+<span class="lineNum">      82 </span><span class="lineCov">          1 :   'exp',</span>
+<span class="lineNum">      83 </span><span class="lineCov">          1 :   'log',</span>
+<span class="lineNum">      84 </span><span class="lineCov">          1 :   'atan2',</span>
+<span class="lineNum">      85 </span><span class="lineCov">          1 :   'pow',</span>
+<span class="lineNum">      86 </span><span class="lineCov">          1 :   'imul',</span>
+<span class="lineNum">      87 </span><span class="lineCov">          1 :   'fround',</span>
+<span class="lineNum">      88 </span><span class="lineCov">          1 : ];</span>
+<a name="89"><span class="lineNum">      89 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      90 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      91 </span><span class="lineCov">          1 : (function TestBadStdlib() {</span>
 <span class="lineNum">      92 </span><span class="lineCov">          1 :   function Module(stdlib) {</span>
 <span class="lineNum">      93 </span><span class="lineNoCov">          0 :     &quot;use asm&quot;;</span>
 <span class="lineNum">      94 </span><span class="lineNoCov">          0 :     var foo = stdlib.NaN;</span>
 <span class="lineNum">      95 </span><span class="lineNoCov">          0 :     return {};</span>
 <span class="lineNum">      96 </span><span class="lineCov">          1 :   }</span>
-<span class="lineNum">      97 </span><span class="lineNoCov">          0 :   for (var i = 0; i &lt; stdlib_root_members.length; ++i) {</span>
-<span class="lineNum">      98 </span><span class="lineNoCov">          0 :     var member = stdlib_root_members[i];</span>
-<span class="lineNum">      99 </span><span class="lineNoCov">          0 :     var stdlib = {};</span>
-<span class="lineNum">     100 </span><span class="lineNoCov">          0 :     stdlib[member] = 0;</span>
-<span class="lineNum">     101 </span><span class="lineNoCov">          0 :     print(member);</span>
-<span class="lineNum">     102 </span><span class="lineNoCov">          0 :     var code = Module.toString().replace('NaN', member);</span>
-<span class="lineNum">     103 </span><span class="lineNoCov">          0 :     var decl = eval('(' + code + ')');</span>
-<span class="lineNum">     104 </span><span class="lineNoCov">          0 :     decl(stdlib);</span>
-<span class="lineNum">     105 </span><span class="lineNoCov">          0 :     assertFalse(%IsAsmWasmCode(decl));</span>
-<span class="lineNum">     106 </span><span class="lineNoCov">          0 :   }</span>
-<span class="lineNum">     107 </span><span class="lineNoCov">          0 :   for (var i = 0; i &lt; stdlib_math_members.length; ++i) {</span>
-<span class="lineNum">     108 </span><span class="lineNoCov">          0 :     var member = stdlib_math_members[i];</span>
-<span class="lineNum">     109 </span><span class="lineNoCov">          0 :     var stdlib = {Math:{}};</span>
-<span class="lineNum">     110 </span><span class="lineNoCov">          0 :     stdlib['Math'][member] = 0;</span>
-<span class="lineNum">     111 </span><span class="lineNoCov">          0 :     print(member);</span>
-<span class="lineNum">     112 </span><span class="lineNoCov">          0 :     var code = Module.toString().replace('NaN', 'Math.' + member);</span>
-<span class="lineNum">     113 </span><span class="lineNoCov">          0 :     var decl = eval('(' + code + ')');</span>
-<span class="lineNum">     114 </span><span class="lineNoCov">          0 :     decl(stdlib);</span>
-<span class="lineNum">     115 </span><span class="lineNoCov">          0 :     assertFalse(%IsAsmWasmCode(decl));</span>
-<span class="lineNum">     116 </span><span class="lineNoCov">          0 :   }</span>
-<span class="lineNum">     117 </span><span class="lineNoCov">          0 : })();</span>
-<a name="118"><span class="lineNum">     118 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     119 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      97 </span><span class="lineCov">          1 :   for (var i = 0; i &lt; stdlib_root_members.length; ++i) {</span>
+<span class="lineNum">      98 </span><span class="lineCov">          1 :     var member = stdlib_root_members[i];</span>
+<span class="lineNum">      99 </span><span class="lineCov">          1 :     var stdlib = {};</span>
+<span class="lineNum">     100 </span><span class="lineCov">          1 :     stdlib[member] = 0;</span>
+<span class="lineNum">     101 </span><span class="lineCov">          1 :     print(member);</span>
+<span class="lineNum">     102 </span><span class="lineCov">          1 :     var code = Module.toString().replace('NaN', member);</span>
+<span class="lineNum">     103 </span><span class="lineCov">          1 :     var decl = eval('(' + code + ')');</span>
+<span class="lineNum">     104 </span><span class="lineCov">          1 :     decl(stdlib);</span>
+<span class="lineNum">     105 </span><span class="lineCov">          1 :     assertFalse(%IsAsmWasmCode(decl));</span>
+<span class="lineNum">     106 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     107 </span><span class="lineCov">          1 :   for (var i = 0; i &lt; stdlib_math_members.length; ++i) {</span>
+<span class="lineNum">     108 </span><span class="lineCov">          1 :     var member = stdlib_math_members[i];</span>
+<span class="lineNum">     109 </span><span class="lineCov">          1 :     var stdlib = {Math:{}};</span>
+<span class="lineNum">     110 </span><span class="lineCov">          1 :     stdlib['Math'][member] = 0;</span>
+<span class="lineNum">     111 </span><span class="lineCov">          1 :     print(member);</span>
+<span class="lineNum">     112 </span><span class="lineCov">          1 :     var code = Module.toString().replace('NaN', 'Math.' + member);</span>
+<span class="lineNum">     113 </span><span class="lineCov">          1 :     var decl = eval('(' + code + ')');</span>
+<span class="lineNum">     114 </span><span class="lineCov">          1 :     decl(stdlib);</span>
+<span class="lineNum">     115 </span><span class="lineCov">          1 :     assertFalse(%IsAsmWasmCode(decl));</span>
+<span class="lineNum">     116 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     117 </span><span class="lineCov">          1 : })();</span>
+<a name="118"><span class="lineNum">     118 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     119 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     120 </span><span class="lineCov">          1 : (function TestMissingNaNStdlib() {</span>
 <span class="lineNum">     121 </span><span class="lineCov">          1 :   function Module(stdlib) {</span>
 <span class="lineNum">     122 </span><span class="lineNoCov">          0 :     &quot;use asm&quot;;</span>
 <span class="lineNum">     123 </span><span class="lineNoCov">          0 :     var foo = stdlib.NaN;</span>
 <span class="lineNum">     124 </span><span class="lineNoCov">          0 :     return {};</span>
 <span class="lineNum">     125 </span><span class="lineCov">          1 :   }</span>
-<span class="lineNum">     126 </span><span class="lineNoCov">          0 :   for (var i = 0; i &lt; stdlib_root_members.length; ++i) {</span>
-<span class="lineNum">     127 </span><span class="lineNoCov">          0 :     var member = stdlib_root_members[i];</span>
-<span class="lineNum">     128 </span><span class="lineNoCov">          0 :     var code = Module.toString().replace('NaN', member);</span>
-<span class="lineNum">     129 </span><span class="lineNoCov">          0 :     var decl = eval('(' + code + ')');</span>
-<span class="lineNum">     130 </span><span class="lineNoCov">          0 :     decl({});</span>
-<span class="lineNum">     131 </span><span class="lineNoCov">          0 :     assertFalse(%IsAsmWasmCode(decl));</span>
-<span class="lineNum">     132 </span><span class="lineNoCov">          0 :   }</span>
-<span class="lineNum">     133 </span><span class="lineNoCov">          0 :   for (var i = 0; i &lt; stdlib_math_members.length; ++i) {</span>
-<span class="lineNum">     134 </span><span class="lineNoCov">          0 :     var member = stdlib_math_members[i];</span>
-<span class="lineNum">     135 </span><span class="lineNoCov">          0 :     var code = Module.toString().replace('NaN', 'Math.' + member);</span>
-<span class="lineNum">     136 </span><span class="lineNoCov">          0 :     var decl = eval('(' + code + ')');</span>
+<span class="lineNum">     126 </span><span class="lineCov">          1 :   for (var i = 0; i &lt; stdlib_root_members.length; ++i) {</span>
+<span class="lineNum">     127 </span><span class="lineCov">          1 :     var member = stdlib_root_members[i];</span>
+<span class="lineNum">     128 </span><span class="lineCov">          1 :     var code = Module.toString().replace('NaN', member);</span>
+<span class="lineNum">     129 </span><span class="lineCov">          1 :     var decl = eval('(' + code + ')');</span>
+<span class="lineNum">     130 </span><span class="lineCov">          1 :     decl({});</span>
+<span class="lineNum">     131 </span><span class="lineCov">          1 :     assertFalse(%IsAsmWasmCode(decl));</span>
+<span class="lineNum">     132 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     133 </span><span class="lineCov">          1 :   for (var i = 0; i &lt; stdlib_math_members.length; ++i) {</span>
+<span class="lineNum">     134 </span><span class="lineCov">          1 :     var member = stdlib_math_members[i];</span>
+<span class="lineNum">     135 </span><span class="lineCov">          1 :     var code = Module.toString().replace('NaN', 'Math.' + member);</span>
+<span class="lineNum">     136 </span><span class="lineCov">          1 :     var decl = eval('(' + code + ')');</span>
 <span class="lineNum">     137 </span><span class="lineCov">         27 :     assertThrows(function() {</span>
 <span class="lineNum">     138 </span><span class="lineCov">         27 :       decl({});</span>
 <span class="lineNum">     139 </span><span class="lineCov">         27 :       assertFalse(%IsAsmWasmCode(decl));</span>
 <span class="lineNum">     140 </span><span class="lineCov">         27 :     });</span>
-<span class="lineNum">     141 </span><span class="lineNoCov">          0 :   }</span>
-<span class="lineNum">     142 </span><span class="lineNoCov">          0 : })();</span>
-<a name="143"><span class="lineNum">     143 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     144 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     141 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     142 </span><span class="lineCov">          1 : })();</span>
+<a name="143"><span class="lineNum">     143 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     144 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     145 </span><span class="lineCov">          1 : (function TestStdlibFunctionsInside() {</span>
 <span class="lineNum">     146 </span><span class="lineCov">          1 :   function Module(stdlib) {</span>
 <span class="lineNum">     147 </span><span class="lineNoCov">          0 :     &quot;use asm&quot;;</span>
@@ -277,14 +277,14 @@
 <span class="lineNum">     215 </span><span class="lineNoCov">          0 :     }</span>
 <span class="lineNum">     216 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     217 </span><span class="lineNoCov">          0 :     return {caller:caller};</span>
-<span class="lineNum">     218 </span><span class="lineNoCov">          0 :   }</span>
-<span class="lineNum">     219 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     220 </span><span class="lineNoCov">          0 :   var m = Module(stdlib);</span>
-<span class="lineNum">     221 </span><span class="lineNoCov">          0 :   assertValidAsm(Module);</span>
-<span class="lineNum">     222 </span><span class="lineNoCov">          0 :   assertEquals(1, m.caller());</span>
-<span class="lineNum">     223 </span><span class="lineNoCov">          0 : })();</span>
-<a name="224"><span class="lineNum">     224 </span><span class="lineNoCov">          0 : </span></a>
-<a name="225"><span class="lineNum">     225 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">     218 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     219 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     220 </span><span class="lineCov">          1 :   var m = Module(stdlib);</span>
+<span class="lineNum">     221 </span><span class="lineCov">          1 :   assertValidAsm(Module);</span>
+<span class="lineNum">     222 </span><span class="lineCov">          1 :   assertEquals(1, m.caller());</span>
+<span class="lineNum">     223 </span><span class="lineCov">          1 : })();</span>
+<a name="224"><span class="lineNum">     224 </span><span class="lineCov">          1 : </span></a>
+<a name="225"><span class="lineNum">     225 </span><span class="lineCov">          1 : </span></a>
 <span class="lineNum">     226 </span><span class="lineCov">          1 : (function TestStdlibFunctionOutside() {</span>
 <span class="lineNum">     227 </span><span class="lineCov">       1620 :   function looseEqual(x, y, delta) {</span>
 <span class="lineNum">     228 </span><span class="lineCov">       1620 :     if (delta === undefined) {</span>
@@ -305,15 +305,15 @@
 <span class="lineNum">     243 </span><span class="lineCov">       1620 :     }</span>
 <span class="lineNum">     244 </span><span class="lineCov">       1620 :     return (t &lt; delta) | 0;</span>
 <a name="245"><span class="lineNum">     245 </span><span class="lineCov">       1620 :   }</span></a>
-<span class="lineNum">     246 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     246 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     247 </span><span class="lineCov">       6072 :   function plainEqual(x, y) {</span>
 <span class="lineNum">     248 </span><span class="lineCov">       6072 :     if (isNaN(x) &amp;&amp; isNaN(y)) {</span>
 <span class="lineNum">     249 </span><span class="lineCov">       6072 :       return true;</span>
 <span class="lineNum">     250 </span><span class="lineCov">       6072 :     }</span>
 <span class="lineNum">     251 </span><span class="lineCov">       6072 :     return x === y;</span>
 <a name="252"><span class="lineNum">     252 </span><span class="lineCov">       6072 :   }</span></a>
-<span class="lineNum">     253 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     254 </span><span class="lineNoCov">          0 :   function Module(stdlib) {</span>
+<span class="lineNum">     253 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     254 </span><span class="lineCov">          1 :   function Module(stdlib) {</span>
 <span class="lineNum">     255 </span><span class="lineNoCov">          0 :     &quot;use asm&quot;;</span>
 <span class="lineNum">     256 </span><span class="lineNoCov">          0 :     var ceil = stdlib.Math.ceil;</span>
 <span class="lineNum">     257 </span><span class="lineNoCov">          0 :     var floor = stdlib.Math.floor;</span>
@@ -423,103 +423,103 @@
 <span class="lineNum">     361 </span><span class="lineNoCov">          0 :       max_f32: max_f32,</span>
 <span class="lineNum">     362 </span><span class="lineNoCov">          0 :       max_f64: max_f64,</span>
 <span class="lineNum">     363 </span><span class="lineNoCov">          0 :     };</span>
-<span class="lineNum">     364 </span><span class="lineNoCov">          0 :   }</span>
-<span class="lineNum">     365 </span><span class="lineNoCov">          0 :   var m = Module(stdlib);</span>
-<span class="lineNum">     366 </span><span class="lineNoCov">          0 :   assertValidAsm(Module);</span>
-<span class="lineNum">     367 </span><span class="lineNoCov">          0 :   var values = {</span>
-<span class="lineNum">     368 </span><span class="lineNoCov">          0 :     i32: [</span>
-<span class="lineNum">     369 </span><span class="lineNoCov">          0 :       0, 1, -1, 123, 456, -123, -456,</span>
-<span class="lineNum">     370 </span><span class="lineNoCov">          0 :       0x40000000, 0x7FFFFFFF, -0x80000000,</span>
-<span class="lineNum">     371 </span><span class="lineNoCov">          0 :     ],</span>
-<span class="lineNum">     372 </span><span class="lineNoCov">          0 :     u32: [</span>
-<span class="lineNum">     373 </span><span class="lineNoCov">          0 :       0, 1, 123, 456,</span>
-<span class="lineNum">     374 </span><span class="lineNoCov">          0 :       0x40000000, 0x7FFFFFFF, 0xFFFFFFFF, 0x80000000,</span>
-<span class="lineNum">     375 </span><span class="lineNoCov">          0 :     ],</span>
-<span class="lineNum">     376 </span><span class="lineNoCov">          0 :     f32: [</span>
-<span class="lineNum">     377 </span><span class="lineNoCov">          0 :       0, -0, 1, -1, 0.25, 0.125, 0.9, -0.9, 1.414,</span>
-<span class="lineNum">     378 </span><span class="lineNoCov">          0 :       0x7F, -0x80, -0x8000, -0x80000000,</span>
-<span class="lineNum">     379 </span><span class="lineNoCov">          0 :       0x7FFF, 0x7FFFFFFF, Infinity, -Infinity, NaN,</span>
-<span class="lineNum">     380 </span><span class="lineNoCov">          0 :     ],</span>
-<span class="lineNum">     381 </span><span class="lineNoCov">          0 :     f64: [</span>
-<span class="lineNum">     382 </span><span class="lineNoCov">          0 :       0, -0, 1, -1, 0.25, 0.125, 0.9, -0.9, 1.414,</span>
-<span class="lineNum">     383 </span><span class="lineNoCov">          0 :       0x7F, -0x80, -0x8000, -0x80000000,</span>
-<span class="lineNum">     384 </span><span class="lineNoCov">          0 :       0x7FFF, 0x7FFFFFFF, Infinity, -Infinity, NaN,</span>
-<span class="lineNum">     385 </span><span class="lineNoCov">          0 :     ],</span>
-<a name="386"><span class="lineNum">     386 </span><span class="lineNoCov">          0 :   };</span></a>
-<a name="387"><span class="lineNum">     387 </span><span class="lineNoCov">          0 :   var converts = {</span></a>
+<span class="lineNum">     364 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     365 </span><span class="lineCov">          1 :   var m = Module(stdlib);</span>
+<span class="lineNum">     366 </span><span class="lineCov">          1 :   assertValidAsm(Module);</span>
+<span class="lineNum">     367 </span><span class="lineCov">          1 :   var values = {</span>
+<span class="lineNum">     368 </span><span class="lineCov">          1 :     i32: [</span>
+<span class="lineNum">     369 </span><span class="lineCov">          1 :       0, 1, -1, 123, 456, -123, -456,</span>
+<span class="lineNum">     370 </span><span class="lineCov">          1 :       0x40000000, 0x7FFFFFFF, -0x80000000,</span>
+<span class="lineNum">     371 </span><span class="lineCov">          1 :     ],</span>
+<span class="lineNum">     372 </span><span class="lineCov">          1 :     u32: [</span>
+<span class="lineNum">     373 </span><span class="lineCov">          1 :       0, 1, 123, 456,</span>
+<span class="lineNum">     374 </span><span class="lineCov">          1 :       0x40000000, 0x7FFFFFFF, 0xFFFFFFFF, 0x80000000,</span>
+<span class="lineNum">     375 </span><span class="lineCov">          1 :     ],</span>
+<span class="lineNum">     376 </span><span class="lineCov">          1 :     f32: [</span>
+<span class="lineNum">     377 </span><span class="lineCov">          1 :       0, -0, 1, -1, 0.25, 0.125, 0.9, -0.9, 1.414,</span>
+<span class="lineNum">     378 </span><span class="lineCov">          1 :       0x7F, -0x80, -0x8000, -0x80000000,</span>
+<span class="lineNum">     379 </span><span class="lineCov">          1 :       0x7FFF, 0x7FFFFFFF, Infinity, -Infinity, NaN,</span>
+<span class="lineNum">     380 </span><span class="lineCov">          1 :     ],</span>
+<span class="lineNum">     381 </span><span class="lineCov">          1 :     f64: [</span>
+<span class="lineNum">     382 </span><span class="lineCov">          1 :       0, -0, 1, -1, 0.25, 0.125, 0.9, -0.9, 1.414,</span>
+<span class="lineNum">     383 </span><span class="lineCov">          1 :       0x7F, -0x80, -0x8000, -0x80000000,</span>
+<span class="lineNum">     384 </span><span class="lineCov">          1 :       0x7FFF, 0x7FFFFFFF, Infinity, -Infinity, NaN,</span>
+<span class="lineNum">     385 </span><span class="lineCov">          1 :     ],</span>
+<a name="386"><span class="lineNum">     386 </span><span class="lineCov">          1 :   };</span></a>
+<a name="387"><span class="lineNum">     387 </span><span class="lineCov">          1 :   var converts = {</span></a>
 <a name="388"><span class="lineNum">     388 </span><span class="lineCov">        400 :     i32: function(x) { return x | 0; },</span></a>
 <a name="389"><span class="lineNum">     389 </span><span class="lineCov">         64 :     u32: function(x) { return x &gt;&gt;&gt; 0; },</span></a>
 <span class="lineNum">     390 </span><span class="lineCov">       1944 :     f32: function(x) { return Math.fround(x); },</span>
 <span class="lineNum">     391 </span><span class="lineCov">       4536 :     f64: function(x) { return x; },</span>
-<span class="lineNum">     392 </span><span class="lineNoCov">          0 :   };</span>
-<span class="lineNum">     393 </span><span class="lineNoCov">          0 :   var two_args = {atan2: true, pow: true, imul: true,</span>
-<span class="lineNum">     394 </span><span class="lineNoCov">          0 :                   min: true, max: true};</span>
-<span class="lineNum">     395 </span><span class="lineNoCov">          0 :   var funcs = {</span>
-<span class="lineNum">     396 </span><span class="lineNoCov">          0 :     ceil: ['f32', 'f64'],</span>
-<span class="lineNum">     397 </span><span class="lineNoCov">          0 :     floor: ['f32', 'f64'],</span>
-<span class="lineNum">     398 </span><span class="lineNoCov">          0 :     sqrt: ['f32', 'f64'],</span>
-<span class="lineNum">     399 </span><span class="lineNoCov">          0 :     abs: ['i32', 'f32', 'f64'],</span>
-<span class="lineNum">     400 </span><span class="lineNoCov">          0 :     acos: ['f64'],</span>
-<span class="lineNum">     401 </span><span class="lineNoCov">          0 :     asin: ['f64'],</span>
-<span class="lineNum">     402 </span><span class="lineNoCov">          0 :     atan: ['f64'],</span>
-<span class="lineNum">     403 </span><span class="lineNoCov">          0 :     cos: ['f64'],</span>
-<span class="lineNum">     404 </span><span class="lineNoCov">          0 :     sin: ['f64'],</span>
-<span class="lineNum">     405 </span><span class="lineNoCov">          0 :     tan: ['f64'],</span>
-<span class="lineNum">     406 </span><span class="lineNoCov">          0 :     exp: ['f64'],</span>
-<span class="lineNum">     407 </span><span class="lineNoCov">          0 :     log: ['f64'],</span>
-<span class="lineNum">     408 </span><span class="lineNoCov">          0 :     imul: ['i32', 'u32'],</span>
-<span class="lineNum">     409 </span><span class="lineNoCov">          0 :     fround: ['i32', 'u32', 'f32', 'f64'],</span>
-<span class="lineNum">     410 </span><span class="lineNoCov">          0 :     min: ['i32', 'f32', 'f64'],</span>
-<span class="lineNum">     411 </span><span class="lineNoCov">          0 :     max: ['i32', 'f32', 'f64'],</span>
-<span class="lineNum">     412 </span><span class="lineNoCov">          0 :   };</span>
-<span class="lineNum">     413 </span><span class="lineNoCov">          0 :   var per_func_equals = {</span>
-<a name="414"><span class="lineNum">     414 </span><span class="lineNoCov">          0 :     // JS uses fdlib for these, so they may not match.</span></a>
-<a name="415"><span class="lineNum">     415 </span><span class="lineNoCov">          0 :     // ECMAscript does not required them to have a particular precision.</span></a>
+<span class="lineNum">     392 </span><span class="lineCov">          1 :   };</span>
+<span class="lineNum">     393 </span><span class="lineCov">          1 :   var two_args = {atan2: true, pow: true, imul: true,</span>
+<span class="lineNum">     394 </span><span class="lineCov">          1 :                   min: true, max: true};</span>
+<span class="lineNum">     395 </span><span class="lineCov">          1 :   var funcs = {</span>
+<span class="lineNum">     396 </span><span class="lineCov">          1 :     ceil: ['f32', 'f64'],</span>
+<span class="lineNum">     397 </span><span class="lineCov">          1 :     floor: ['f32', 'f64'],</span>
+<span class="lineNum">     398 </span><span class="lineCov">          1 :     sqrt: ['f32', 'f64'],</span>
+<span class="lineNum">     399 </span><span class="lineCov">          1 :     abs: ['i32', 'f32', 'f64'],</span>
+<span class="lineNum">     400 </span><span class="lineCov">          1 :     acos: ['f64'],</span>
+<span class="lineNum">     401 </span><span class="lineCov">          1 :     asin: ['f64'],</span>
+<span class="lineNum">     402 </span><span class="lineCov">          1 :     atan: ['f64'],</span>
+<span class="lineNum">     403 </span><span class="lineCov">          1 :     cos: ['f64'],</span>
+<span class="lineNum">     404 </span><span class="lineCov">          1 :     sin: ['f64'],</span>
+<span class="lineNum">     405 </span><span class="lineCov">          1 :     tan: ['f64'],</span>
+<span class="lineNum">     406 </span><span class="lineCov">          1 :     exp: ['f64'],</span>
+<span class="lineNum">     407 </span><span class="lineCov">          1 :     log: ['f64'],</span>
+<span class="lineNum">     408 </span><span class="lineCov">          1 :     imul: ['i32', 'u32'],</span>
+<span class="lineNum">     409 </span><span class="lineCov">          1 :     fround: ['i32', 'u32', 'f32', 'f64'],</span>
+<span class="lineNum">     410 </span><span class="lineCov">          1 :     min: ['i32', 'f32', 'f64'],</span>
+<span class="lineNum">     411 </span><span class="lineCov">          1 :     max: ['i32', 'f32', 'f64'],</span>
+<span class="lineNum">     412 </span><span class="lineCov">          1 :   };</span>
+<span class="lineNum">     413 </span><span class="lineCov">          1 :   var per_func_equals = {</span>
+<a name="414"><span class="lineNum">     414 </span><span class="lineCov">          1 :     // JS uses fdlib for these, so they may not match.</span></a>
+<a name="415"><span class="lineNum">     415 </span><span class="lineCov">          1 :     // ECMAscript does not required them to have a particular precision.</span></a>
 <span class="lineNum">     416 </span><span class="lineCov">        324 :     exp_f64: function(x, y) { return looseEqual(x, y, 1e55); },</span>
 <span class="lineNum">     417 </span><span class="lineCov">        324 :     sqrt_f32: function(x, y) { return looseEqual(x, y, 1e-5); },</span>
-<span class="lineNum">     418 </span><span class="lineNoCov">          0 :     cos_f64: looseEqual,</span>
-<span class="lineNum">     419 </span><span class="lineNoCov">          0 :     sin_f64: looseEqual,</span>
-<span class="lineNum">     420 </span><span class="lineNoCov">          0 :     tan_f64: looseEqual,</span>
-<a name="421"><span class="lineNum">     421 </span><span class="lineNoCov">          0 :     // TODO(bradnelson):</span></a>
-<span class="lineNum">     422 </span><span class="lineNoCov">          0 :     // Figure out why some builds (avx2, rel_ng) return a uint.</span>
+<span class="lineNum">     418 </span><span class="lineCov">          1 :     cos_f64: looseEqual,</span>
+<span class="lineNum">     419 </span><span class="lineCov">          1 :     sin_f64: looseEqual,</span>
+<span class="lineNum">     420 </span><span class="lineCov">          1 :     tan_f64: looseEqual,</span>
+<a name="421"><span class="lineNum">     421 </span><span class="lineCov">          1 :     // TODO(bradnelson):</span></a>
+<span class="lineNum">     422 </span><span class="lineCov">          1 :     // Figure out why some builds (avx2, rel_ng) return a uint.</span>
 <span class="lineNum">     423 </span><span class="lineCov">         64 :     imul_u32: function(x, y) { return (x | 0) === (y | 0); },</span>
-<span class="lineNum">     424 </span>            :   };
-<span class="lineNum">     425 </span>            :   for (var func in funcs) {
-<span class="lineNum">     426 </span>            :     var types = funcs[func];
-<span class="lineNum">     427 </span>            :     for (var i = 0; i &lt; types.length; i++) {
-<span class="lineNum">     428 </span>            :       var type = types[i];
-<span class="lineNum">     429 </span>            :       var interesting = values[type];
-<span class="lineNum">     430 </span>            :       for (var j = 0; j &lt; interesting.length; j++) {
-<span class="lineNum">     431 </span>            :         for (var k = 0; k &lt; interesting.length; k++) {
-<span class="lineNum">     432 </span>            :           var val0 = interesting[j];
-<span class="lineNum">     433 </span>            :           var val1 = interesting[k];
-<span class="lineNum">     434 </span>            :           var name = func + '_' + type;
-<span class="lineNum">     435 </span>            :           if (func === 'fround') {
-<span class="lineNum">     436 </span>            :             // fround returns f32 regardless of input.
-<span class="lineNum">     437 </span>            :             var expected = Math[func](val0);
-<span class="lineNum">     438 </span>            :             var actual = m[name](val0);
-<span class="lineNum">     439 </span>            :           } else if (two_args[func]) {
-<span class="lineNum">     440 </span>            :             var expected = converts[type](Math[func](val0, val1));
-<span class="lineNum">     441 </span>            :             var actual = m[name](val0, val1);
-<span class="lineNum">     442 </span>            :           } else {
-<span class="lineNum">     443 </span>            :             var expected = converts[type](Math[func](val0, val1));
-<span class="lineNum">     444 </span>            :             var actual = m[name](val0, val1);
-<span class="lineNum">     445 </span>            :           }
-<span class="lineNum">     446 </span>            :           var compare = per_func_equals[name];
-<span class="lineNum">     447 </span>            :           if (compare === undefined) {
-<span class="lineNum">     448 </span>            :             compare = plainEqual;
-<span class="lineNum">     449 </span>            :           }
-<span class="lineNum">     450 </span>            :           assertTrue(typeof(compare) === 'function');
-<span class="lineNum">     451 </span>            :           if (!compare(expected, actual)) {
-<span class="lineNum">     452 </span>            :             print(expected + ' !== ' + actual + ' for ' + name +
-<span class="lineNum">     453 </span>            :                   ' with input ' + val0 + ' ' + val1);
-<span class="lineNum">     454 </span>            :             assertTrue(false);
-<span class="lineNum">     455 </span>            :           }
-<span class="lineNum">     456 </span>            :         }
-<span class="lineNum">     457 </span>            :       }
-<span class="lineNum">     458 </span>            :     }
-<span class="lineNum">     459 </span>            :   }
-<span class="lineNum">     460 </span>            : })();
+<span class="lineNum">     424 </span><span class="lineCov">          1 :   };</span>
+<span class="lineNum">     425 </span><span class="lineCov">          1 :   for (var func in funcs) {</span>
+<span class="lineNum">     426 </span><span class="lineCov">          1 :     var types = funcs[func];</span>
+<span class="lineNum">     427 </span><span class="lineCov">          1 :     for (var i = 0; i &lt; types.length; i++) {</span>
+<span class="lineNum">     428 </span><span class="lineCov">          1 :       var type = types[i];</span>
+<span class="lineNum">     429 </span><span class="lineCov">          1 :       var interesting = values[type];</span>
+<span class="lineNum">     430 </span><span class="lineCov">          1 :       for (var j = 0; j &lt; interesting.length; j++) {</span>
+<span class="lineNum">     431 </span><span class="lineCov">          1 :         for (var k = 0; k &lt; interesting.length; k++) {</span>
+<span class="lineNum">     432 </span><span class="lineCov">          1 :           var val0 = interesting[j];</span>
+<span class="lineNum">     433 </span><span class="lineCov">          1 :           var val1 = interesting[k];</span>
+<span class="lineNum">     434 </span><span class="lineCov">          1 :           var name = func + '_' + type;</span>
+<span class="lineNum">     435 </span><span class="lineCov">          1 :           if (func === 'fround') {</span>
+<span class="lineNum">     436 </span><span class="lineCov">          1 :             // fround returns f32 regardless of input.</span>
+<span class="lineNum">     437 </span><span class="lineCov">          1 :             var expected = Math[func](val0);</span>
+<span class="lineNum">     438 </span><span class="lineCov">          1 :             var actual = m[name](val0);</span>
+<span class="lineNum">     439 </span><span class="lineCov">          1 :           } else if (two_args[func]) {</span>
+<span class="lineNum">     440 </span><span class="lineCov">          1 :             var expected = converts[type](Math[func](val0, val1));</span>
+<span class="lineNum">     441 </span><span class="lineCov">          1 :             var actual = m[name](val0, val1);</span>
+<span class="lineNum">     442 </span><span class="lineCov">          1 :           } else {</span>
+<span class="lineNum">     443 </span><span class="lineCov">          1 :             var expected = converts[type](Math[func](val0, val1));</span>
+<span class="lineNum">     444 </span><span class="lineCov">          1 :             var actual = m[name](val0, val1);</span>
+<span class="lineNum">     445 </span><span class="lineCov">          1 :           }</span>
+<span class="lineNum">     446 </span><span class="lineCov">          1 :           var compare = per_func_equals[name];</span>
+<span class="lineNum">     447 </span><span class="lineCov">          1 :           if (compare === undefined) {</span>
+<span class="lineNum">     448 </span><span class="lineCov">          1 :             compare = plainEqual;</span>
+<span class="lineNum">     449 </span><span class="lineCov">          1 :           }</span>
+<span class="lineNum">     450 </span><span class="lineCov">          1 :           assertTrue(typeof(compare) === 'function');</span>
+<span class="lineNum">     451 </span><span class="lineCov">          1 :           if (!compare(expected, actual)) {</span>
+<span class="lineNum">     452 </span><span class="lineCov">          1 :             print(expected + ' !== ' + actual + ' for ' + name +</span>
+<span class="lineNum">     453 </span><span class="lineCov">          1 :                   ' with input ' + val0 + ' ' + val1);</span>
+<span class="lineNum">     454 </span><span class="lineCov">          1 :             assertTrue(false);</span>
+<span class="lineNum">     455 </span><span class="lineCov">          1 :           }</span>
+<span class="lineNum">     456 </span><span class="lineCov">          1 :         }</span>
+<span class="lineNum">     457 </span><span class="lineCov">          1 :       }</span>
+<span class="lineNum">     458 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">     459 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     460 </span><span class="lineCov">          1 : })();</span>
 </pre>
       </td>
     </tr>

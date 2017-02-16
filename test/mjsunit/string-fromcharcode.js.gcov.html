@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">87</td>
-            <td class="headerCovTableEntry">109</td>
-            <td class="headerCovTableEntryMed">79.8 %</td>
+            <td class="headerCovTableEntry">112</td>
+            <td class="headerCovTableEntry">112</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">5</td>
@@ -105,21 +105,21 @@
 <span class="lineNum">      43 </span><span class="lineCov">          3 :   assertEquals(String.fromCharCode(0xFFFF), String.fromCharCode(0xFFFFFFFF));</span>
 <span class="lineNum">      44 </span><span class="lineCov">          3 :   return result;</span>
 <span class="lineNum">      45 </span><span class="lineCov">          3 : }</span>
-<span class="lineNum">      46 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      47 </span><span class="lineNoCov">          0 : assertEquals(expected, testCharCodeTruncation());</span>
-<span class="lineNum">      48 </span><span class="lineNoCov">          0 : assertEquals(expected, testCharCodeTruncation());</span>
-<span class="lineNum">      49 </span><span class="lineNoCov">          0 : %OptimizeFunctionOnNextCall(testCharCodeTruncation);</span>
-<span class="lineNum">      50 </span><span class="lineNoCov">          0 : assertEquals(expected, testCharCodeTruncation());</span>
-<span class="lineNum">      51 </span><span class="lineNoCov">          0 : </span>
-<a name="52"><span class="lineNum">      52 </span><span class="lineNoCov">          0 : // Test various receivers and arguments passed to String.fromCharCode.</span></a>
-<span class="lineNum">      53 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      46 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      47 </span><span class="lineCov">          1 : assertEquals(expected, testCharCodeTruncation());</span>
+<span class="lineNum">      48 </span><span class="lineCov">          1 : assertEquals(expected, testCharCodeTruncation());</span>
+<span class="lineNum">      49 </span><span class="lineCov">          1 : %OptimizeFunctionOnNextCall(testCharCodeTruncation);</span>
+<span class="lineNum">      50 </span><span class="lineCov">          1 : assertEquals(expected, testCharCodeTruncation());</span>
+<span class="lineNum">      51 </span><span class="lineCov">          1 : </span>
+<a name="52"><span class="lineNum">      52 </span><span class="lineCov">          1 : // Test various receivers and arguments passed to String.fromCharCode.</span></a>
+<span class="lineNum">      53 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      54 </span><span class="lineCov">         15 : Object.prototype.fromCharCode = function(x) { return this; };</span>
-<span class="lineNum">      55 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      56 </span><span class="lineNoCov">          0 : var fcc = String.fromCharCode;</span>
-<a name="57"><span class="lineNum">      57 </span><span class="lineNoCov">          0 : var fcc2 = fcc;</span></a>
-<span class="lineNum">      58 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      55 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      56 </span><span class="lineCov">          1 : var fcc = String.fromCharCode;</span>
+<a name="57"><span class="lineNum">      57 </span><span class="lineCov">          1 : var fcc2 = fcc;</span></a>
+<span class="lineNum">      58 </span><span class="lineCov">          1 : </span>
 <a name="59"><span class="lineNum">      59 </span><span class="lineCov">         15 : function constFun(x) { return function(y) { return x; }; }</span></a>
-<span class="lineNum">      60 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      60 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      61 </span><span class="lineCov">         10 : function test(num) {</span>
 <span class="lineNum">      62 </span><span class="lineCov">         10 :   assertEquals(&quot; &quot;, String.fromCharCode(0x20));</span>
 <span class="lineNum">      63 </span><span class="lineCov">         10 :   assertEquals(&quot; &quot;, String.fromCharCode(0x20 + 0x10000));</span>
@@ -159,18 +159,18 @@
 <span class="lineNum">      97 </span><span class="lineCov">         10 :   assertEquals(expected, fcc2(0x20 - 0x10000));</span>
 <span class="lineNum">      98 </span><span class="lineCov">         10 :   assertEquals(expected, fcc2(0x20 + 0.5));</span>
 <span class="lineNum">      99 </span><span class="lineCov">         10 : }</span>
-<span class="lineNum">     100 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     101 </span><span class="lineNoCov">          0 : // Use loop to test the custom IC.</span>
-<span class="lineNum">     102 </span><span class="lineNoCov">          0 : for (var i = 0; i &lt; 10; i++) {</span>
-<span class="lineNum">     103 </span><span class="lineNoCov">          0 :   test(i);</span>
-<span class="lineNum">     104 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">     105 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     106 </span><span class="lineNoCov">          0 : // Test the custom IC works correctly when the map changes.</span>
-<a name="107"><span class="lineNum">     107 </span><span class="lineNoCov">          0 : for (var i = 0; i &lt; 10; i++) {</span></a>
-<span class="lineNum">     108 </span><span class="lineNoCov">          0 :   var expected = (i &lt; 5) ? &quot; &quot; : 42;</span>
+<span class="lineNum">     100 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     101 </span><span class="lineCov">          1 : // Use loop to test the custom IC.</span>
+<span class="lineNum">     102 </span><span class="lineCov">          1 : for (var i = 0; i &lt; 10; i++) {</span>
+<span class="lineNum">     103 </span><span class="lineCov">          1 :   test(i);</span>
+<span class="lineNum">     104 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     105 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     106 </span><span class="lineCov">          1 : // Test the custom IC works correctly when the map changes.</span>
+<a name="107"><span class="lineNum">     107 </span><span class="lineCov">          1 : for (var i = 0; i &lt; 10; i++) {</span></a>
+<span class="lineNum">     108 </span><span class="lineCov">          1 :   var expected = (i &lt; 5) ? &quot; &quot; : 42;</span>
 <span class="lineNum">     109 </span><span class="lineCov">          5 :   if (i == 5) String.fromCharCode = function() { return 42; };</span>
-<span class="lineNum">     110 </span>            :   assertEquals(expected, String.fromCharCode(0x20));
-<span class="lineNum">     111 </span>            : }
+<span class="lineNum">     110 </span><span class="lineCov">          1 :   assertEquals(expected, String.fromCharCode(0x20));</span>
+<span class="lineNum">     111 </span><span class="lineCov">          1 : }</span>
 </pre>
       </td>
     </tr>

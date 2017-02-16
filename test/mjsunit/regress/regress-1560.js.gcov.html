@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">50</td>
-            <td class="headerCovTableEntry">55</td>
-            <td class="headerCovTableEntryHi">90.9 %</td>
+            <td class="headerCovTableEntry">69</td>
+            <td class="headerCovTableEntry">69</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">5</td>
@@ -94,40 +94,40 @@
 <span class="lineNum">      32 </span><span class="lineCov">          5 :   assertEquals('', a[0]);</span>
 <span class="lineNum">      33 </span><span class="lineCov">          5 :   return a;</span>
 <a name="34"><span class="lineNum">      34 </span><span class="lineCov">          5 : }</span></a>
-<span class="lineNum">      35 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      35 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      36 </span><span class="lineCov">         11 : function mkArray() {</span>
 <span class="lineNum">      37 </span><span class="lineCov">         11 :   var a = [];</span>
 <span class="lineNum">      38 </span><span class="lineCov">         11 :   a[0] = '';</span>
 <span class="lineNum">      39 </span><span class="lineCov">         11 :   return a;</span>
 <a name="40"><span class="lineNum">      40 </span><span class="lineCov">         11 : }</span></a>
-<span class="lineNum">      41 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      41 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      42 </span><span class="lineCov">          6 : function mkNumberDictionary() {</span>
 <span class="lineNum">      43 </span><span class="lineCov">          6 :   var a = new Array();</span>
 <span class="lineNum">      44 </span><span class="lineCov">          6 :   a[0] = '';</span>
 <span class="lineNum">      45 </span><span class="lineCov">          6 :   a[100000] = '';</span>
 <span class="lineNum">      46 </span><span class="lineCov">          6 :   return a;</span>
 <a name="47"><span class="lineNum">      47 </span><span class="lineCov">          6 : }</span></a>
-<span class="lineNum">      48 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      48 </span><span class="lineCov">          1 : </span>
 <a name="49"><span class="lineNum">      49 </span><span class="lineCov">         21 : function write(a, i) { a[i] = &quot;bazinga!&quot;; }</span></a>
-<span class="lineNum">      50 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      50 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      51 </span><span class="lineCov">          2 : function test(factories, w) {</span>
 <span class="lineNum">      52 </span><span class="lineCov">          5 :   factories.forEach(function(f) { w(f(), 0); });</span>
 <span class="lineNum">      53 </span><span class="lineCov">          5 :   factories.forEach(function(f) { w(f(), 0); });</span>
-<span class="lineNum">      54 </span><span class="lineNoCov">          0 :       %OptimizeFunctionOnNextCall(w);</span>
+<span class="lineNum">      54 </span><span class="lineCov">          2 :       %OptimizeFunctionOnNextCall(w);</span>
 <span class="lineNum">      55 </span><span class="lineCov">          5 :   factories.forEach(function(f) { w(f(), 0); });</span>
-<span class="lineNum">      56 </span>            : }
-<span class="lineNum">      57 </span>            : 
-<span class="lineNum">      58 </span>            : // Monomorphic case.
-<span class="lineNum">      59 </span>            : for (var i = 0; i &lt; 5; i++) write(mkArray(), 0);
-<span class="lineNum">      60 </span>            : %OptimizeFunctionOnNextCall(write);
-<span class="lineNum">      61 </span>            : write(mkCOWArray(), 0);
-<span class="lineNum">      62 </span>            : var failure = mkCOWArray();
-<span class="lineNum">      63 </span>            : 
-<span class="lineNum">      64 </span>            : // Cleanup, then polymorphic case.
-<span class="lineNum">      65 </span>            : %DeoptimizeFunction(write);
-<span class="lineNum">      66 </span>            : gc();
-<span class="lineNum">      67 </span>            : test([mkArray, mkNumberDictionary], write);
-<span class="lineNum">      68 </span>            : test([mkArray, mkNumberDictionary, mkCOWArray], write);
+<span class="lineNum">      56 </span><span class="lineCov">          2 : }</span>
+<span class="lineNum">      57 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      58 </span><span class="lineCov">          1 : // Monomorphic case.</span>
+<span class="lineNum">      59 </span><span class="lineCov">          1 : for (var i = 0; i &lt; 5; i++) write(mkArray(), 0);</span>
+<span class="lineNum">      60 </span><span class="lineCov">          1 : %OptimizeFunctionOnNextCall(write);</span>
+<span class="lineNum">      61 </span><span class="lineCov">          1 : write(mkCOWArray(), 0);</span>
+<span class="lineNum">      62 </span><span class="lineCov">          1 : var failure = mkCOWArray();</span>
+<span class="lineNum">      63 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      64 </span><span class="lineCov">          1 : // Cleanup, then polymorphic case.</span>
+<span class="lineNum">      65 </span><span class="lineCov">          1 : %DeoptimizeFunction(write);</span>
+<span class="lineNum">      66 </span><span class="lineCov">          1 : gc();</span>
+<span class="lineNum">      67 </span><span class="lineCov">          1 : test([mkArray, mkNumberDictionary], write);</span>
+<span class="lineNum">      68 </span><span class="lineCov">          1 : test([mkArray, mkNumberDictionary, mkCOWArray], write);</span>
 </pre>
       </td>
     </tr>

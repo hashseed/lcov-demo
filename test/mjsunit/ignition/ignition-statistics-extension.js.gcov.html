@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">47</td>
-            <td class="headerCovTableEntry">61</td>
-            <td class="headerCovTableEntryMed">77.0 %</td>
+            <td class="headerCovTableEntry">63</td>
+            <td class="headerCovTableEntry">63</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">1</td>
@@ -85,20 +85,20 @@
 <a name="23"><span class="lineNum">      23 </span><span class="lineCov">          1 : </span></a>
 <span class="lineNum">      24 </span><span class="lineCov">          1 : // Do something</span>
 <span class="lineNum">      25 </span><span class="lineCov">          1 : function f(x) { return x*x; }</span>
-<span class="lineNum">      26 </span><span class="lineNoCov">          0 : f(42);</span>
-<span class="lineNum">      27 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      28 </span><span class="lineNoCov">          0 : var new_dispatch_counters = getIgnitionDispatchCounters();</span>
-<span class="lineNum">      29 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      30 </span><span class="lineNoCov">          0 : var old_source_bytecodes = Object.getOwnPropertyNames(old_dispatch_counters);</span>
-<span class="lineNum">      31 </span><span class="lineNoCov">          0 : var new_source_bytecodes = Object.getOwnPropertyNames(new_dispatch_counters);</span>
+<span class="lineNum">      26 </span><span class="lineCov">          1 : f(42);</span>
+<span class="lineNum">      27 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      28 </span><span class="lineCov">          1 : var new_dispatch_counters = getIgnitionDispatchCounters();</span>
+<span class="lineNum">      29 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      30 </span><span class="lineCov">          1 : var old_source_bytecodes = Object.getOwnPropertyNames(old_dispatch_counters);</span>
+<span class="lineNum">      31 </span><span class="lineCov">          1 : var new_source_bytecodes = Object.getOwnPropertyNames(new_dispatch_counters);</span>
 <span class="lineNum">      32 </span><span class="lineCov">        146 : var common_source_bytecodes = new_source_bytecodes.filter(function (name) {</span>
 <span class="lineNum">      33 </span><span class="lineCov">        146 :   return old_source_bytecodes.indexOf(name) &gt; -1;</span>
 <span class="lineNum">      34 </span><span class="lineCov">        146 : });</span>
-<span class="lineNum">      35 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      36 </span><span class="lineNoCov">          0 : // Check that the keys on the outer objects are the same</span>
-<span class="lineNum">      37 </span><span class="lineNoCov">          0 : assertEquals(common_source_bytecodes, old_source_bytecodes);</span>
-<span class="lineNum">      38 </span><span class="lineNoCov">          0 : assertEquals(common_source_bytecodes, new_source_bytecodes);</span>
-<span class="lineNum">      39 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      35 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      36 </span><span class="lineCov">          1 : // Check that the keys on the outer objects are the same</span>
+<span class="lineNum">      37 </span><span class="lineCov">          1 : assertEquals(common_source_bytecodes, old_source_bytecodes);</span>
+<span class="lineNum">      38 </span><span class="lineCov">          1 : assertEquals(common_source_bytecodes, new_source_bytecodes);</span>
+<span class="lineNum">      39 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      40 </span><span class="lineCov">        146 : common_source_bytecodes.forEach(function (source_bytecode) {</span>
 <span class="lineNum">      41 </span><span class="lineCov">        146 :   var new_counters_row = new_dispatch_counters[source_bytecode];</span>
 <span class="lineNum">      42 </span><span class="lineCov">        146 :   var old_counters_row = old_dispatch_counters[source_bytecode];</span>
@@ -108,20 +108,20 @@
 <span class="lineNum">      46 </span><span class="lineCov">        146 : </span>
 <span class="lineNum">      47 </span><span class="lineCov">        146 :   // Check that all the keys in old_ are in new_ too</span>
 <span class="lineNum">      48 </span><span class="lineCov">        146 :   old_destination_bytecodes.forEach(function (name) {</span>
-<span class="lineNum">      49 </span><span class="lineCov">        134 :     assertTrue(new_destination_bytecodes.indexOf(name) &gt; -1);</span>
+<span class="lineNum">      49 </span><span class="lineCov">         70 :     assertTrue(new_destination_bytecodes.indexOf(name) &gt; -1);</span>
 <span class="lineNum">      50 </span><span class="lineCov">        146 :   });</span>
-<span class="lineNum">      51 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      52 </span><span class="lineNoCov">          0 :   // Check that for each source-destination pair, the counter has either</span>
-<span class="lineNum">      53 </span><span class="lineNoCov">          0 :   // appeared (was undefined before calling f()), is unchanged, or incremented.</span>
-<span class="lineNum">      54 </span><span class="lineCov">        168 :   new_destination_bytecodes.forEach(function (destination_bytecode) {</span>
-<span class="lineNum">      55 </span><span class="lineCov">        168 :     var new_counter = new_counters_row[destination_bytecode];</span>
-<span class="lineNum">      56 </span><span class="lineCov">        168 :     var old_counter = old_counters_row[destination_bytecode];</span>
-<span class="lineNum">      57 </span><span class="lineCov">        168 :     assertTrue(typeof new_counter === &quot;number&quot;);</span>
-<span class="lineNum">      58 </span><span class="lineCov">        168 :     if (typeof old_counter === &quot;number&quot;) {</span>
-<span class="lineNum">      59 </span><span class="lineCov">        168 :       assertTrue(new_counter &gt;= old_counter);</span>
-<span class="lineNum">      60 </span><span class="lineCov">        168 :     }</span>
-<span class="lineNum">      61 </span><span class="lineCov">        168 :   });</span>
-<span class="lineNum">      62 </span>            : });
+<span class="lineNum">      51 </span><span class="lineCov">        146 : </span>
+<span class="lineNum">      52 </span><span class="lineCov">        146 :   // Check that for each source-destination pair, the counter has either</span>
+<span class="lineNum">      53 </span><span class="lineCov">        146 :   // appeared (was undefined before calling f()), is unchanged, or incremented.</span>
+<span class="lineNum">      54 </span><span class="lineCov">        146 :   new_destination_bytecodes.forEach(function (destination_bytecode) {</span>
+<span class="lineNum">      55 </span><span class="lineCov">        109 :     var new_counter = new_counters_row[destination_bytecode];</span>
+<span class="lineNum">      56 </span><span class="lineCov">        109 :     var old_counter = old_counters_row[destination_bytecode];</span>
+<span class="lineNum">      57 </span><span class="lineCov">        109 :     assertTrue(typeof new_counter === &quot;number&quot;);</span>
+<span class="lineNum">      58 </span><span class="lineCov">        109 :     if (typeof old_counter === &quot;number&quot;) {</span>
+<span class="lineNum">      59 </span><span class="lineCov">        109 :       assertTrue(new_counter &gt;= old_counter);</span>
+<span class="lineNum">      60 </span><span class="lineCov">        109 :     }</span>
+<span class="lineNum">      61 </span><span class="lineCov">        146 :   });</span>
+<span class="lineNum">      62 </span><span class="lineCov">        146 : });</span>
 </pre>
       </td>
     </tr>

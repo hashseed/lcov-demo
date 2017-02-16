@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">303</td>
-            <td class="headerCovTableEntry">539</td>
-            <td class="headerCovTableEntryLo">56.2 %</td>
+            <td class="headerCovTableEntry">534</td>
+            <td class="headerCovTableEntry">540</td>
+            <td class="headerCovTableEntryHi">98.9 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">32</td>
@@ -106,499 +106,499 @@
 <span class="lineNum">      44 </span><span class="lineCov">          1 :  * The Richards benchmark simulates the task dispatcher of an</span>
 <a name="45"><span class="lineNum">      45 </span><span class="lineCov">          1 :  * operating system.</span></a>
 <span class="lineNum">      46 </span><span class="lineCov">          1 :  **/</span>
-<span class="lineNum">      47 </span><span class="lineCov">       1077 : function runRichards() {</span>
-<span class="lineNum">      48 </span><span class="lineCov">       1077 :   var scheduler = new Scheduler();</span>
-<span class="lineNum">      49 </span><span class="lineCov">       1077 :   scheduler.addIdleTask(ID_IDLE, 0, null, COUNT);</span>
-<span class="lineNum">      50 </span><span class="lineCov">       1077 : </span>
-<span class="lineNum">      51 </span><span class="lineCov">       1077 :   var queue = new Packet(null, ID_WORKER, KIND_WORK);</span>
-<span class="lineNum">      52 </span><span class="lineCov">       1077 :   queue = new Packet(queue,  ID_WORKER, KIND_WORK);</span>
-<span class="lineNum">      53 </span><span class="lineCov">       1077 :   scheduler.addWorkerTask(ID_WORKER, 1000, queue);</span>
-<span class="lineNum">      54 </span><span class="lineCov">       1077 : </span>
-<span class="lineNum">      55 </span><span class="lineCov">       1077 :   queue = new Packet(null, ID_DEVICE_A, KIND_DEVICE);</span>
-<span class="lineNum">      56 </span><span class="lineCov">       1077 :   queue = new Packet(queue,  ID_DEVICE_A, KIND_DEVICE);</span>
-<span class="lineNum">      57 </span><span class="lineCov">       1077 :   queue = new Packet(queue,  ID_DEVICE_A, KIND_DEVICE);</span>
-<span class="lineNum">      58 </span><span class="lineCov">       1077 :   scheduler.addHandlerTask(ID_HANDLER_A, 2000, queue);</span>
-<span class="lineNum">      59 </span><span class="lineCov">       1077 : </span>
-<span class="lineNum">      60 </span><span class="lineCov">       1077 :   queue = new Packet(null, ID_DEVICE_B, KIND_DEVICE);</span>
-<span class="lineNum">      61 </span><span class="lineCov">       1077 :   queue = new Packet(queue,  ID_DEVICE_B, KIND_DEVICE);</span>
-<span class="lineNum">      62 </span><span class="lineCov">       1077 :   queue = new Packet(queue,  ID_DEVICE_B, KIND_DEVICE);</span>
-<span class="lineNum">      63 </span><span class="lineCov">       1077 :   scheduler.addHandlerTask(ID_HANDLER_B, 3000, queue);</span>
-<span class="lineNum">      64 </span><span class="lineCov">       1077 : </span>
-<span class="lineNum">      65 </span><span class="lineCov">       1077 :   scheduler.addDeviceTask(ID_DEVICE_A, 4000, null);</span>
-<span class="lineNum">      66 </span><span class="lineCov">       1077 : </span>
-<span class="lineNum">      67 </span><span class="lineCov">       1077 :   scheduler.addDeviceTask(ID_DEVICE_B, 5000, null);</span>
-<span class="lineNum">      68 </span><span class="lineCov">       1077 : </span>
-<span class="lineNum">      69 </span><span class="lineCov">       1077 :   scheduler.schedule();</span>
-<span class="lineNum">      70 </span><span class="lineCov">       1077 : </span>
-<span class="lineNum">      71 </span><span class="lineCov">       1077 :   if (scheduler.queueCount != EXPECTED_QUEUE_COUNT ||</span>
-<span class="lineNum">      72 </span><span class="lineCov">       1077 :       scheduler.holdCount != EXPECTED_HOLD_COUNT) {</span>
-<span class="lineNum">      73 </span><span class="lineCov">       1077 :     var msg =</span>
-<span class="lineNum">      74 </span><span class="lineCov">       1077 :         &quot;Error during execution: queueCount = &quot; + scheduler.queueCount +</span>
-<span class="lineNum">      75 </span><span class="lineCov">       1077 :         &quot;, holdCount = &quot; + scheduler.holdCount + &quot;.&quot;;</span>
-<span class="lineNum">      76 </span><span class="lineCov">       1077 :     throw new Error(msg);</span>
-<span class="lineNum">      77 </span><span class="lineCov">       1077 :   }</span>
-<span class="lineNum">      78 </span><span class="lineCov">       1077 : }</span>
-<span class="lineNum">      79 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      80 </span><span class="lineNoCov">          0 : var COUNT = 1000;</span>
-<span class="lineNum">      81 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      82 </span><span class="lineNoCov">          0 : /**</span>
-<span class="lineNum">      83 </span><span class="lineNoCov">          0 :  * These two constants specify how many times a packet is queued and</span>
-<span class="lineNum">      84 </span><span class="lineNoCov">          0 :  * how many times a task is put on hold in a correct run of richards.</span>
-<span class="lineNum">      85 </span><span class="lineNoCov">          0 :  * They don't have any meaning a such but are characteristic of a</span>
-<span class="lineNum">      86 </span><span class="lineNoCov">          0 :  * correct run so if the actual queue or hold count is different from</span>
-<span class="lineNum">      87 </span><span class="lineNoCov">          0 :  * the expected there must be a bug in the implementation.</span>
-<span class="lineNum">      88 </span><span class="lineNoCov">          0 :  **/</span>
-<span class="lineNum">      89 </span><span class="lineNoCov">          0 : var EXPECTED_QUEUE_COUNT = 2322;</span>
-<span class="lineNum">      90 </span><span class="lineNoCov">          0 : var EXPECTED_HOLD_COUNT = 928;</span>
-<span class="lineNum">      91 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      92 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      93 </span><span class="lineNoCov">          0 : /**</span>
-<span class="lineNum">      94 </span><span class="lineNoCov">          0 :  * A scheduler can be used to schedule a set of tasks based on their relative</span>
-<span class="lineNum">      95 </span><span class="lineNoCov">          0 :  * priorities.  Scheduling is done by maintaining a list of task control blocks</span>
-<span class="lineNum">      96 </span><span class="lineNoCov">          0 :  * which holds tasks and the data queue they are processing.</span>
-<a name="97"><span class="lineNum">      97 </span><span class="lineNoCov">          0 :  * @constructor</span></a>
-<span class="lineNum">      98 </span><span class="lineNoCov">          0 :  */</span>
-<span class="lineNum">      99 </span><span class="lineCov">       1077 : function Scheduler() {</span>
-<span class="lineNum">     100 </span><span class="lineCov">       1077 :   this.queueCount = 0;</span>
-<span class="lineNum">     101 </span><span class="lineCov">       1077 :   this.holdCount = 0;</span>
-<span class="lineNum">     102 </span><span class="lineCov">       1077 :   this.blocks = new Array(NUMBER_OF_IDS);</span>
-<span class="lineNum">     103 </span><span class="lineCov">       1077 :   this.list = null;</span>
-<span class="lineNum">     104 </span><span class="lineCov">       1077 :   this.currentTcb = null;</span>
-<span class="lineNum">     105 </span><span class="lineCov">       1077 :   this.currentId = null;</span>
-<span class="lineNum">     106 </span><span class="lineCov">       1077 : }</span>
-<span class="lineNum">     107 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     108 </span><span class="lineNoCov">          0 : var ID_IDLE       = 0;</span>
-<span class="lineNum">     109 </span><span class="lineNoCov">          0 : var ID_WORKER     = 1;</span>
-<span class="lineNum">     110 </span><span class="lineNoCov">          0 : var ID_HANDLER_A  = 2;</span>
-<span class="lineNum">     111 </span><span class="lineNoCov">          0 : var ID_HANDLER_B  = 3;</span>
-<span class="lineNum">     112 </span><span class="lineNoCov">          0 : var ID_DEVICE_A   = 4;</span>
-<span class="lineNum">     113 </span><span class="lineNoCov">          0 : var ID_DEVICE_B   = 5;</span>
-<span class="lineNum">     114 </span><span class="lineNoCov">          0 : var NUMBER_OF_IDS = 6;</span>
-<span class="lineNum">     115 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     116 </span><span class="lineNoCov">          0 : var KIND_DEVICE   = 0;</span>
-<span class="lineNum">     117 </span><span class="lineNoCov">          0 : var KIND_WORK     = 1;</span>
-<span class="lineNum">     118 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     119 </span><span class="lineNoCov">          0 : /**</span>
-<span class="lineNum">     120 </span><span class="lineNoCov">          0 :  * Add an idle task to this scheduler.</span>
-<span class="lineNum">     121 </span><span class="lineNoCov">          0 :  * @param {int} id the identity of the task</span>
-<span class="lineNum">     122 </span><span class="lineNoCov">          0 :  * @param {int} priority the task's priority</span>
-<span class="lineNum">     123 </span><span class="lineNoCov">          0 :  * @param {Packet} queue the queue of work to be processed by the task</span>
-<a name="124"><span class="lineNum">     124 </span><span class="lineNoCov">          0 :  * @param {int} count the number of times to schedule the task</span></a>
-<span class="lineNum">     125 </span><span class="lineNoCov">          0 :  */</span>
-<span class="lineNum">     126 </span><span class="lineCov">       1077 : Scheduler.prototype.addIdleTask = function (id, priority, queue, count) {</span>
-<span class="lineNum">     127 </span><span class="lineCov">       1077 :   this.addRunningTask(id, priority, queue, new IdleTask(this, 1, count));</span>
-<span class="lineNum">     128 </span><span class="lineCov">       1077 : };</span>
-<span class="lineNum">     129 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     130 </span><span class="lineNoCov">          0 : /**</span>
-<span class="lineNum">     131 </span><span class="lineNoCov">          0 :  * Add a work task to this scheduler.</span>
-<span class="lineNum">     132 </span><span class="lineNoCov">          0 :  * @param {int} id the identity of the task</span>
-<span class="lineNum">     133 </span><span class="lineNoCov">          0 :  * @param {int} priority the task's priority</span>
-<a name="134"><span class="lineNum">     134 </span><span class="lineNoCov">          0 :  * @param {Packet} queue the queue of work to be processed by the task</span></a>
-<span class="lineNum">     135 </span><span class="lineNoCov">          0 :  */</span>
-<span class="lineNum">     136 </span><span class="lineCov">       1077 : Scheduler.prototype.addWorkerTask = function (id, priority, queue) {</span>
-<span class="lineNum">     137 </span><span class="lineCov">       1077 :   this.addTask(id, priority, queue, new WorkerTask(this, ID_HANDLER_A, 0));</span>
-<span class="lineNum">     138 </span><span class="lineCov">       1077 : };</span>
-<span class="lineNum">     139 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     140 </span><span class="lineNoCov">          0 : /**</span>
-<span class="lineNum">     141 </span><span class="lineNoCov">          0 :  * Add a handler task to this scheduler.</span>
-<span class="lineNum">     142 </span><span class="lineNoCov">          0 :  * @param {int} id the identity of the task</span>
-<span class="lineNum">     143 </span><span class="lineNoCov">          0 :  * @param {int} priority the task's priority</span>
-<a name="144"><span class="lineNum">     144 </span><span class="lineNoCov">          0 :  * @param {Packet} queue the queue of work to be processed by the task</span></a>
-<span class="lineNum">     145 </span><span class="lineNoCov">          0 :  */</span>
-<span class="lineNum">     146 </span><span class="lineCov">       2154 : Scheduler.prototype.addHandlerTask = function (id, priority, queue) {</span>
-<span class="lineNum">     147 </span><span class="lineCov">       2154 :   this.addTask(id, priority, queue, new HandlerTask(this));</span>
-<span class="lineNum">     148 </span><span class="lineCov">       2154 : };</span>
-<span class="lineNum">     149 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     150 </span><span class="lineNoCov">          0 : /**</span>
-<span class="lineNum">     151 </span><span class="lineNoCov">          0 :  * Add a handler task to this scheduler.</span>
-<span class="lineNum">     152 </span><span class="lineNoCov">          0 :  * @param {int} id the identity of the task</span>
-<span class="lineNum">     153 </span><span class="lineNoCov">          0 :  * @param {int} priority the task's priority</span>
-<a name="154"><span class="lineNum">     154 </span><span class="lineNoCov">          0 :  * @param {Packet} queue the queue of work to be processed by the task</span></a>
-<span class="lineNum">     155 </span><span class="lineNoCov">          0 :  */</span>
-<span class="lineNum">     156 </span><span class="lineCov">       2154 : Scheduler.prototype.addDeviceTask = function (id, priority, queue) {</span>
-<span class="lineNum">     157 </span><span class="lineCov">       2154 :   this.addTask(id, priority, queue, new DeviceTask(this))</span>
-<span class="lineNum">     158 </span><span class="lineCov">       2154 : };</span>
-<span class="lineNum">     159 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     160 </span><span class="lineNoCov">          0 : /**</span>
-<span class="lineNum">     161 </span><span class="lineNoCov">          0 :  * Add the specified task and mark it as running.</span>
-<span class="lineNum">     162 </span><span class="lineNoCov">          0 :  * @param {int} id the identity of the task</span>
-<span class="lineNum">     163 </span><span class="lineNoCov">          0 :  * @param {int} priority the task's priority</span>
-<span class="lineNum">     164 </span><span class="lineNoCov">          0 :  * @param {Packet} queue the queue of work to be processed by the task</span>
-<a name="165"><span class="lineNum">     165 </span><span class="lineNoCov">          0 :  * @param {Task} task the task to add</span></a>
-<span class="lineNum">     166 </span><span class="lineNoCov">          0 :  */</span>
-<span class="lineNum">     167 </span><span class="lineCov">       1077 : Scheduler.prototype.addRunningTask = function (id, priority, queue, task) {</span>
-<span class="lineNum">     168 </span><span class="lineCov">       1077 :   this.addTask(id, priority, queue, task);</span>
-<span class="lineNum">     169 </span><span class="lineCov">       1077 :   this.currentTcb.setRunning();</span>
-<span class="lineNum">     170 </span><span class="lineCov">       1077 : };</span>
-<span class="lineNum">     171 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     172 </span><span class="lineNoCov">          0 : /**</span>
-<span class="lineNum">     173 </span><span class="lineNoCov">          0 :  * Add the specified task to this scheduler.</span>
-<span class="lineNum">     174 </span><span class="lineNoCov">          0 :  * @param {int} id the identity of the task</span>
-<span class="lineNum">     175 </span><span class="lineNoCov">          0 :  * @param {int} priority the task's priority</span>
-<span class="lineNum">     176 </span><span class="lineNoCov">          0 :  * @param {Packet} queue the queue of work to be processed by the task</span>
-<a name="177"><span class="lineNum">     177 </span><span class="lineNoCov">          0 :  * @param {Task} task the task to add</span></a>
-<span class="lineNum">     178 </span><span class="lineNoCov">          0 :  */</span>
-<span class="lineNum">     179 </span><span class="lineCov">       6462 : Scheduler.prototype.addTask = function (id, priority, queue, task) {</span>
-<span class="lineNum">     180 </span><span class="lineCov">       6462 :   this.currentTcb = new TaskControlBlock(this.list, id, priority, queue, task);</span>
-<span class="lineNum">     181 </span><span class="lineCov">       6462 :   this.list = this.currentTcb;</span>
-<span class="lineNum">     182 </span><span class="lineCov">       6462 :   this.blocks[id] = this.currentTcb;</span>
-<span class="lineNum">     183 </span><span class="lineCov">       6462 : };</span>
-<span class="lineNum">     184 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     185 </span><span class="lineNoCov">          0 : /**</span>
-<a name="186"><span class="lineNum">     186 </span><span class="lineNoCov">          0 :  * Execute the tasks managed by this scheduler.</span></a>
-<span class="lineNum">     187 </span><span class="lineNoCov">          0 :  */</span>
-<span class="lineNum">     188 </span><span class="lineCov">       1077 : Scheduler.prototype.schedule = function () {</span>
-<span class="lineNum">     189 </span><span class="lineCov">       1077 :   this.currentTcb = this.list;</span>
-<span class="lineNum">     190 </span><span class="lineCov">       1077 :   while (this.currentTcb != null) {</span>
-<span class="lineNum">     191 </span><span class="lineCov">       1077 :     if (this.currentTcb.isHeldOrSuspended()) {</span>
-<span class="lineNum">     192 </span><span class="lineCov">       1077 :       this.currentTcb = this.currentTcb.link;</span>
-<span class="lineNum">     193 </span><span class="lineCov">       1077 :     } else {</span>
-<span class="lineNum">     194 </span><span class="lineCov">       1077 :       this.currentId = this.currentTcb.id;</span>
-<span class="lineNum">     195 </span><span class="lineCov">       1077 :       this.currentTcb = this.currentTcb.run();</span>
-<span class="lineNum">     196 </span><span class="lineCov">       1077 :     }</span>
-<span class="lineNum">     197 </span><span class="lineCov">       1077 :   }</span>
-<span class="lineNum">     198 </span><span class="lineCov">       1077 : };</span>
-<span class="lineNum">     199 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     200 </span><span class="lineNoCov">          0 : /**</span>
-<span class="lineNum">     201 </span><span class="lineNoCov">          0 :  * Release a task that is currently blocked and return the next block to run.</span>
-<a name="202"><span class="lineNum">     202 </span><span class="lineNoCov">          0 :  * @param {int} id the id of the task to suspend</span></a>
-<span class="lineNum">     203 </span><span class="lineNoCov">          0 :  */</span>
-<span class="lineNum">     204 </span><span class="lineCov">    1075923 : Scheduler.prototype.release = function (id) {</span>
-<span class="lineNum">     205 </span><span class="lineCov">    1075923 :   var tcb = this.blocks[id];</span>
-<span class="lineNum">     206 </span><span class="lineCov">    1075923 :   if (tcb == null) return tcb;</span>
-<span class="lineNum">     207 </span><span class="lineCov">    1075923 :   tcb.markAsNotHeld();</span>
-<span class="lineNum">     208 </span><span class="lineCov">    1075923 :   if (tcb.priority &gt; this.currentTcb.priority) {</span>
-<span class="lineNum">     209 </span><span class="lineCov">    1075923 :     return tcb;</span>
-<span class="lineNum">     210 </span><span class="lineCov">    1075923 :   } else {</span>
-<span class="lineNum">     211 </span><span class="lineCov">    1075923 :     return this.currentTcb;</span>
-<span class="lineNum">     212 </span><span class="lineCov">    1075923 :   }</span>
-<span class="lineNum">     213 </span><span class="lineCov">    1075923 : };</span>
-<span class="lineNum">     214 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     215 </span><span class="lineNoCov">          0 : /**</span>
-<span class="lineNum">     216 </span><span class="lineNoCov">          0 :  * Block the currently executing task and return the next task control block</span>
-<span class="lineNum">     217 </span><span class="lineNoCov">          0 :  * to run.  The blocked task will not be made runnable until it is explicitly</span>
-<a name="218"><span class="lineNum">     218 </span><span class="lineNoCov">          0 :  * released, even if new work is added to it.</span></a>
-<span class="lineNum">     219 </span><span class="lineNoCov">          0 :  */</span>
-<span class="lineNum">     220 </span><span class="lineCov">     999456 : Scheduler.prototype.holdCurrent = function () {</span>
-<span class="lineNum">     221 </span><span class="lineCov">     999456 :   this.holdCount++;</span>
-<span class="lineNum">     222 </span><span class="lineCov">     999456 :   this.currentTcb.markAsHeld();</span>
-<span class="lineNum">     223 </span><span class="lineCov">     999456 :   return this.currentTcb.link;</span>
-<span class="lineNum">     224 </span><span class="lineCov">     999456 : };</span>
-<span class="lineNum">     225 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     226 </span><span class="lineNoCov">          0 : /**</span>
-<span class="lineNum">     227 </span><span class="lineNoCov">          0 :  * Suspend the currently executing task and return the next task control block</span>
-<a name="228"><span class="lineNum">     228 </span><span class="lineNoCov">          0 :  * to run.  If new work is added to the suspended task it will be made runnable.</span></a>
-<span class="lineNum">     229 </span><span class="lineNoCov">          0 :  */</span>
-<span class="lineNum">     230 </span><span class="lineCov">    2502948 : Scheduler.prototype.suspendCurrent = function () {</span>
-<span class="lineNum">     231 </span><span class="lineCov">    2502948 :   this.currentTcb.markAsSuspended();</span>
-<span class="lineNum">     232 </span><span class="lineCov">    2502948 :   return this.currentTcb;</span>
-<span class="lineNum">     233 </span><span class="lineCov">    2502948 : };</span>
-<span class="lineNum">     234 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     235 </span><span class="lineNoCov">          0 : /**</span>
-<span class="lineNum">     236 </span><span class="lineNoCov">          0 :  * Add the specified packet to the end of the worklist used by the task</span>
-<span class="lineNum">     237 </span><span class="lineNoCov">          0 :  * associated with the packet and make the task runnable if it is currently</span>
-<span class="lineNum">     238 </span><span class="lineNoCov">          0 :  * suspended.</span>
-<a name="239"><span class="lineNum">     239 </span><span class="lineNoCov">          0 :  * @param {Packet} packet the packet to add</span></a>
-<span class="lineNum">     240 </span><span class="lineNoCov">          0 :  */</span>
-<span class="lineNum">     241 </span><span class="lineCov">    2500794 : Scheduler.prototype.queue = function (packet) {</span>
-<span class="lineNum">     242 </span><span class="lineCov">    2500794 :   var t = this.blocks[packet.id];</span>
-<span class="lineNum">     243 </span><span class="lineCov">    2500794 :   if (t == null) return t;</span>
-<span class="lineNum">     244 </span><span class="lineCov">    2500794 :   this.queueCount++;</span>
-<span class="lineNum">     245 </span><span class="lineCov">    2500794 :   packet.link = null;</span>
-<span class="lineNum">     246 </span><span class="lineCov">    2500794 :   packet.id = this.currentId;</span>
-<span class="lineNum">     247 </span><span class="lineCov">    2500794 :   return t.checkPriorityAdd(this.currentTcb, packet);</span>
-<span class="lineNum">     248 </span><span class="lineCov">    2500794 : };</span>
-<span class="lineNum">     249 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     250 </span><span class="lineNoCov">          0 : /**</span>
-<span class="lineNum">     251 </span><span class="lineNoCov">          0 :  * A task control block manages a task and the queue of work packages associated</span>
-<span class="lineNum">     252 </span><span class="lineNoCov">          0 :  * with it.</span>
-<span class="lineNum">     253 </span><span class="lineNoCov">          0 :  * @param {TaskControlBlock} link the preceding block in the linked block list</span>
-<span class="lineNum">     254 </span><span class="lineNoCov">          0 :  * @param {int} id the id of this block</span>
-<span class="lineNum">     255 </span><span class="lineNoCov">          0 :  * @param {int} priority the priority of this block</span>
-<span class="lineNum">     256 </span><span class="lineNoCov">          0 :  * @param {Packet} queue the queue of packages to be processed by the task</span>
-<span class="lineNum">     257 </span><span class="lineNoCov">          0 :  * @param {Task} task the task</span>
-<a name="258"><span class="lineNum">     258 </span><span class="lineNoCov">          0 :  * @constructor</span></a>
-<span class="lineNum">     259 </span><span class="lineNoCov">          0 :  */</span>
-<span class="lineNum">     260 </span><span class="lineCov">       6462 : function TaskControlBlock(link, id, priority, queue, task) {</span>
-<span class="lineNum">     261 </span><span class="lineCov">       6462 :   this.link = link;</span>
-<span class="lineNum">     262 </span><span class="lineCov">       6462 :   this.id = id;</span>
-<span class="lineNum">     263 </span><span class="lineCov">       6462 :   this.priority = priority;</span>
-<span class="lineNum">     264 </span><span class="lineCov">       6462 :   this.queue = queue;</span>
-<span class="lineNum">     265 </span><span class="lineCov">       6462 :   this.task = task;</span>
-<span class="lineNum">     266 </span><span class="lineCov">       6462 :   if (queue == null) {</span>
-<span class="lineNum">     267 </span><span class="lineCov">       6462 :     this.state = STATE_SUSPENDED;</span>
-<span class="lineNum">     268 </span><span class="lineCov">       6462 :   } else {</span>
-<span class="lineNum">     269 </span><span class="lineCov">       6462 :     this.state = STATE_SUSPENDED_RUNNABLE;</span>
-<span class="lineNum">     270 </span><span class="lineCov">       6462 :   }</span>
-<span class="lineNum">     271 </span><span class="lineCov">       6462 : }</span>
-<span class="lineNum">     272 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     273 </span><span class="lineNoCov">          0 : /**</span>
-<span class="lineNum">     274 </span><span class="lineNoCov">          0 :  * The task is running and is currently scheduled.</span>
-<span class="lineNum">     275 </span><span class="lineNoCov">          0 :  */</span>
-<span class="lineNum">     276 </span><span class="lineNoCov">          0 : var STATE_RUNNING = 0;</span>
-<span class="lineNum">     277 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     278 </span><span class="lineNoCov">          0 : /**</span>
-<span class="lineNum">     279 </span><span class="lineNoCov">          0 :  * The task has packets left to process.</span>
-<span class="lineNum">     280 </span><span class="lineNoCov">          0 :  */</span>
-<span class="lineNum">     281 </span><span class="lineNoCov">          0 : var STATE_RUNNABLE = 1;</span>
-<span class="lineNum">     282 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     283 </span><span class="lineNoCov">          0 : /**</span>
-<span class="lineNum">     284 </span><span class="lineNoCov">          0 :  * The task is not currently running.  The task is not blocked as such and may</span>
-<span class="lineNum">     285 </span><span class="lineNoCov">          0 : * be started by the scheduler.</span>
-<span class="lineNum">     286 </span><span class="lineNoCov">          0 :  */</span>
-<span class="lineNum">     287 </span><span class="lineNoCov">          0 : var STATE_SUSPENDED = 2;</span>
-<span class="lineNum">     288 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     289 </span><span class="lineNoCov">          0 : /**</span>
-<span class="lineNum">     290 </span><span class="lineNoCov">          0 :  * The task is blocked and cannot be run until it is explicitly released.</span>
-<span class="lineNum">     291 </span><span class="lineNoCov">          0 :  */</span>
-<span class="lineNum">     292 </span><span class="lineNoCov">          0 : var STATE_HELD = 4;</span>
-<span class="lineNum">     293 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     294 </span><span class="lineNoCov">          0 : var STATE_SUSPENDED_RUNNABLE = STATE_SUSPENDED | STATE_RUNNABLE;</span>
-<a name="295"><span class="lineNum">     295 </span><span class="lineNoCov">          0 : var STATE_NOT_HELD = ~STATE_HELD;</span></a>
-<span class="lineNum">     296 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     297 </span><span class="lineCov">       1077 : TaskControlBlock.prototype.setRunning = function () {</span>
-<span class="lineNum">     298 </span><span class="lineCov">       1077 :   this.state = STATE_RUNNING;</span>
-<a name="299"><span class="lineNum">     299 </span><span class="lineCov">       1077 : };</span></a>
-<span class="lineNum">     300 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     301 </span><span class="lineCov">    1075923 : TaskControlBlock.prototype.markAsNotHeld = function () {</span>
-<span class="lineNum">     302 </span><span class="lineCov">    1075923 :   this.state = this.state &amp; STATE_NOT_HELD;</span>
-<a name="303"><span class="lineNum">     303 </span><span class="lineCov">    1075923 : };</span></a>
-<span class="lineNum">     304 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     305 </span><span class="lineCov">     999456 : TaskControlBlock.prototype.markAsHeld = function () {</span>
-<span class="lineNum">     306 </span><span class="lineCov">     999456 :   this.state = this.state | STATE_HELD;</span>
-<a name="307"><span class="lineNum">     307 </span><span class="lineCov">     999456 : };</span></a>
-<span class="lineNum">     308 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     309 </span><span class="lineCov">   11492667 : TaskControlBlock.prototype.isHeldOrSuspended = function () {</span>
-<span class="lineNum">     310 </span><span class="lineCov">   11492667 :   return (this.state &amp; STATE_HELD) != 0 || (this.state == STATE_SUSPENDED);</span>
-<a name="311"><span class="lineNum">     311 </span><span class="lineCov">   11492667 : };</span></a>
-<span class="lineNum">     312 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     313 </span><span class="lineCov">    2502948 : TaskControlBlock.prototype.markAsSuspended = function () {</span>
-<span class="lineNum">     314 </span><span class="lineCov">    2502948 :   this.state = this.state | STATE_SUSPENDED;</span>
-<a name="315"><span class="lineNum">     315 </span><span class="lineCov">    2502948 : };</span></a>
-<span class="lineNum">     316 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     317 </span><span class="lineCov">    1592883 : TaskControlBlock.prototype.markAsRunnable = function () {</span>
-<span class="lineNum">     318 </span><span class="lineCov">    1592883 :   this.state = this.state | STATE_RUNNABLE;</span>
-<span class="lineNum">     319 </span><span class="lineCov">    1592883 : };</span>
-<span class="lineNum">     320 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     321 </span><span class="lineNoCov">          0 : /**</span>
-<a name="322"><span class="lineNum">     322 </span><span class="lineNoCov">          0 :  * Runs this task, if it is ready to be run, and returns the next task to run.</span></a>
-<span class="lineNum">     323 </span><span class="lineNoCov">          0 :  */</span>
-<span class="lineNum">     324 </span><span class="lineCov">    7079121 : TaskControlBlock.prototype.run = function () {</span>
-<span class="lineNum">     325 </span><span class="lineCov">    7079121 :   var packet;</span>
-<span class="lineNum">     326 </span><span class="lineCov">    7079121 :   if (this.state == STATE_SUSPENDED_RUNNABLE) {</span>
-<span class="lineNum">     327 </span><span class="lineCov">    7079121 :     packet = this.queue;</span>
-<span class="lineNum">     328 </span><span class="lineCov">    7079121 :     this.queue = packet.link;</span>
-<span class="lineNum">     329 </span><span class="lineCov">    7079121 :     if (this.queue == null) {</span>
-<span class="lineNum">     330 </span><span class="lineCov">    7079121 :       this.state = STATE_RUNNING;</span>
-<span class="lineNum">     331 </span><span class="lineCov">    7079121 :     } else {</span>
-<span class="lineNum">     332 </span><span class="lineCov">    7079121 :       this.state = STATE_RUNNABLE;</span>
-<span class="lineNum">     333 </span><span class="lineCov">    7079121 :     }</span>
-<span class="lineNum">     334 </span><span class="lineCov">    7079121 :   } else {</span>
-<span class="lineNum">     335 </span><span class="lineCov">    7079121 :     packet = null;</span>
-<span class="lineNum">     336 </span><span class="lineCov">    7079121 :   }</span>
-<span class="lineNum">     337 </span><span class="lineCov">    7079121 :   return this.task.run(packet);</span>
-<span class="lineNum">     338 </span><span class="lineCov">    7079121 : };</span>
-<span class="lineNum">     339 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     340 </span><span class="lineNoCov">          0 : /**</span>
-<span class="lineNum">     341 </span><span class="lineNoCov">          0 :  * Adds a packet to the worklist of this block's task, marks this as runnable if</span>
-<span class="lineNum">     342 </span><span class="lineNoCov">          0 :  * necessary, and returns the next runnable object to run (the one</span>
-<a name="343"><span class="lineNum">     343 </span><span class="lineNoCov">          0 :  * with the highest priority).</span></a>
-<span class="lineNum">     344 </span><span class="lineNoCov">          0 :  */</span>
-<span class="lineNum">     345 </span><span class="lineCov">    2500794 : TaskControlBlock.prototype.checkPriorityAdd = function (task, packet) {</span>
-<span class="lineNum">     346 </span><span class="lineCov">    2500794 :   if (this.queue == null) {</span>
-<span class="lineNum">     347 </span><span class="lineCov">    2500794 :     this.queue = packet;</span>
-<span class="lineNum">     348 </span><span class="lineCov">    2500794 :     this.markAsRunnable();</span>
-<span class="lineNum">     349 </span><span class="lineCov">    2500794 :     if (this.priority &gt; task.priority) return this;</span>
-<span class="lineNum">     350 </span><span class="lineCov">    2500794 :   } else {</span>
-<span class="lineNum">     351 </span><span class="lineCov">    2500794 :     this.queue = packet.addTo(this.queue);</span>
-<span class="lineNum">     352 </span><span class="lineCov">    2500794 :   }</span>
-<span class="lineNum">     353 </span><span class="lineCov">    2500794 :   return task;</span>
-<a name="354"><span class="lineNum">     354 </span><span class="lineCov">    2500794 : };</span></a>
-<span class="lineNum">     355 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     356 </span><span class="lineNoCov">          0 : TaskControlBlock.prototype.toString = function () {</span>
+<span class="lineNum">      47 </span><span class="lineCov">       1024 : function runRichards() {</span>
+<span class="lineNum">      48 </span><span class="lineCov">       1024 :   var scheduler = new Scheduler();</span>
+<span class="lineNum">      49 </span><span class="lineCov">       1024 :   scheduler.addIdleTask(ID_IDLE, 0, null, COUNT);</span>
+<span class="lineNum">      50 </span><span class="lineCov">       1024 : </span>
+<span class="lineNum">      51 </span><span class="lineCov">       1024 :   var queue = new Packet(null, ID_WORKER, KIND_WORK);</span>
+<span class="lineNum">      52 </span><span class="lineCov">       1024 :   queue = new Packet(queue,  ID_WORKER, KIND_WORK);</span>
+<span class="lineNum">      53 </span><span class="lineCov">       1024 :   scheduler.addWorkerTask(ID_WORKER, 1000, queue);</span>
+<span class="lineNum">      54 </span><span class="lineCov">       1024 : </span>
+<span class="lineNum">      55 </span><span class="lineCov">       1024 :   queue = new Packet(null, ID_DEVICE_A, KIND_DEVICE);</span>
+<span class="lineNum">      56 </span><span class="lineCov">       1024 :   queue = new Packet(queue,  ID_DEVICE_A, KIND_DEVICE);</span>
+<span class="lineNum">      57 </span><span class="lineCov">       1024 :   queue = new Packet(queue,  ID_DEVICE_A, KIND_DEVICE);</span>
+<span class="lineNum">      58 </span><span class="lineCov">       1024 :   scheduler.addHandlerTask(ID_HANDLER_A, 2000, queue);</span>
+<span class="lineNum">      59 </span><span class="lineCov">       1024 : </span>
+<span class="lineNum">      60 </span><span class="lineCov">       1024 :   queue = new Packet(null, ID_DEVICE_B, KIND_DEVICE);</span>
+<span class="lineNum">      61 </span><span class="lineCov">       1024 :   queue = new Packet(queue,  ID_DEVICE_B, KIND_DEVICE);</span>
+<span class="lineNum">      62 </span><span class="lineCov">       1024 :   queue = new Packet(queue,  ID_DEVICE_B, KIND_DEVICE);</span>
+<span class="lineNum">      63 </span><span class="lineCov">       1024 :   scheduler.addHandlerTask(ID_HANDLER_B, 3000, queue);</span>
+<span class="lineNum">      64 </span><span class="lineCov">       1024 : </span>
+<span class="lineNum">      65 </span><span class="lineCov">       1024 :   scheduler.addDeviceTask(ID_DEVICE_A, 4000, null);</span>
+<span class="lineNum">      66 </span><span class="lineCov">       1024 : </span>
+<span class="lineNum">      67 </span><span class="lineCov">       1024 :   scheduler.addDeviceTask(ID_DEVICE_B, 5000, null);</span>
+<span class="lineNum">      68 </span><span class="lineCov">       1024 : </span>
+<span class="lineNum">      69 </span><span class="lineCov">       1024 :   scheduler.schedule();</span>
+<span class="lineNum">      70 </span><span class="lineCov">       1024 : </span>
+<span class="lineNum">      71 </span><span class="lineCov">       1024 :   if (scheduler.queueCount != EXPECTED_QUEUE_COUNT ||</span>
+<span class="lineNum">      72 </span><span class="lineCov">       1024 :       scheduler.holdCount != EXPECTED_HOLD_COUNT) {</span>
+<span class="lineNum">      73 </span><span class="lineCov">       1024 :     var msg =</span>
+<span class="lineNum">      74 </span><span class="lineCov">       1024 :         &quot;Error during execution: queueCount = &quot; + scheduler.queueCount +</span>
+<span class="lineNum">      75 </span><span class="lineCov">       1024 :         &quot;, holdCount = &quot; + scheduler.holdCount + &quot;.&quot;;</span>
+<span class="lineNum">      76 </span><span class="lineCov">       1024 :     throw new Error(msg);</span>
+<span class="lineNum">      77 </span><span class="lineCov">       1024 :   }</span>
+<span class="lineNum">      78 </span><span class="lineCov">       1024 : }</span>
+<span class="lineNum">      79 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      80 </span><span class="lineCov">          1 : var COUNT = 1000;</span>
+<span class="lineNum">      81 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      82 </span><span class="lineCov">          1 : /**</span>
+<span class="lineNum">      83 </span><span class="lineCov">          1 :  * These two constants specify how many times a packet is queued and</span>
+<span class="lineNum">      84 </span><span class="lineCov">          1 :  * how many times a task is put on hold in a correct run of richards.</span>
+<span class="lineNum">      85 </span><span class="lineCov">          1 :  * They don't have any meaning a such but are characteristic of a</span>
+<span class="lineNum">      86 </span><span class="lineCov">          1 :  * correct run so if the actual queue or hold count is different from</span>
+<span class="lineNum">      87 </span><span class="lineCov">          1 :  * the expected there must be a bug in the implementation.</span>
+<span class="lineNum">      88 </span><span class="lineCov">          1 :  **/</span>
+<span class="lineNum">      89 </span><span class="lineCov">          1 : var EXPECTED_QUEUE_COUNT = 2322;</span>
+<span class="lineNum">      90 </span><span class="lineCov">          1 : var EXPECTED_HOLD_COUNT = 928;</span>
+<span class="lineNum">      91 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      92 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      93 </span><span class="lineCov">          1 : /**</span>
+<span class="lineNum">      94 </span><span class="lineCov">          1 :  * A scheduler can be used to schedule a set of tasks based on their relative</span>
+<span class="lineNum">      95 </span><span class="lineCov">          1 :  * priorities.  Scheduling is done by maintaining a list of task control blocks</span>
+<span class="lineNum">      96 </span><span class="lineCov">          1 :  * which holds tasks and the data queue they are processing.</span>
+<a name="97"><span class="lineNum">      97 </span><span class="lineCov">          1 :  * @constructor</span></a>
+<span class="lineNum">      98 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">      99 </span><span class="lineCov">       1024 : function Scheduler() {</span>
+<span class="lineNum">     100 </span><span class="lineCov">       1024 :   this.queueCount = 0;</span>
+<span class="lineNum">     101 </span><span class="lineCov">       1024 :   this.holdCount = 0;</span>
+<span class="lineNum">     102 </span><span class="lineCov">       1024 :   this.blocks = new Array(NUMBER_OF_IDS);</span>
+<span class="lineNum">     103 </span><span class="lineCov">       1024 :   this.list = null;</span>
+<span class="lineNum">     104 </span><span class="lineCov">       1024 :   this.currentTcb = null;</span>
+<span class="lineNum">     105 </span><span class="lineCov">       1024 :   this.currentId = null;</span>
+<span class="lineNum">     106 </span><span class="lineCov">       1024 : }</span>
+<span class="lineNum">     107 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     108 </span><span class="lineCov">          1 : var ID_IDLE       = 0;</span>
+<span class="lineNum">     109 </span><span class="lineCov">          1 : var ID_WORKER     = 1;</span>
+<span class="lineNum">     110 </span><span class="lineCov">          1 : var ID_HANDLER_A  = 2;</span>
+<span class="lineNum">     111 </span><span class="lineCov">          1 : var ID_HANDLER_B  = 3;</span>
+<span class="lineNum">     112 </span><span class="lineCov">          1 : var ID_DEVICE_A   = 4;</span>
+<span class="lineNum">     113 </span><span class="lineCov">          1 : var ID_DEVICE_B   = 5;</span>
+<span class="lineNum">     114 </span><span class="lineCov">          1 : var NUMBER_OF_IDS = 6;</span>
+<span class="lineNum">     115 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     116 </span><span class="lineCov">          1 : var KIND_DEVICE   = 0;</span>
+<span class="lineNum">     117 </span><span class="lineCov">          1 : var KIND_WORK     = 1;</span>
+<span class="lineNum">     118 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     119 </span><span class="lineCov">          1 : /**</span>
+<span class="lineNum">     120 </span><span class="lineCov">          1 :  * Add an idle task to this scheduler.</span>
+<span class="lineNum">     121 </span><span class="lineCov">          1 :  * @param {int} id the identity of the task</span>
+<span class="lineNum">     122 </span><span class="lineCov">          1 :  * @param {int} priority the task's priority</span>
+<span class="lineNum">     123 </span><span class="lineCov">          1 :  * @param {Packet} queue the queue of work to be processed by the task</span>
+<a name="124"><span class="lineNum">     124 </span><span class="lineCov">          1 :  * @param {int} count the number of times to schedule the task</span></a>
+<span class="lineNum">     125 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">     126 </span><span class="lineCov">       1024 : Scheduler.prototype.addIdleTask = function (id, priority, queue, count) {</span>
+<span class="lineNum">     127 </span><span class="lineCov">       1024 :   this.addRunningTask(id, priority, queue, new IdleTask(this, 1, count));</span>
+<span class="lineNum">     128 </span><span class="lineCov">       1024 : };</span>
+<span class="lineNum">     129 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     130 </span><span class="lineCov">          1 : /**</span>
+<span class="lineNum">     131 </span><span class="lineCov">          1 :  * Add a work task to this scheduler.</span>
+<span class="lineNum">     132 </span><span class="lineCov">          1 :  * @param {int} id the identity of the task</span>
+<span class="lineNum">     133 </span><span class="lineCov">          1 :  * @param {int} priority the task's priority</span>
+<a name="134"><span class="lineNum">     134 </span><span class="lineCov">          1 :  * @param {Packet} queue the queue of work to be processed by the task</span></a>
+<span class="lineNum">     135 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">     136 </span><span class="lineCov">       1024 : Scheduler.prototype.addWorkerTask = function (id, priority, queue) {</span>
+<span class="lineNum">     137 </span><span class="lineCov">       1024 :   this.addTask(id, priority, queue, new WorkerTask(this, ID_HANDLER_A, 0));</span>
+<span class="lineNum">     138 </span><span class="lineCov">       1024 : };</span>
+<span class="lineNum">     139 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     140 </span><span class="lineCov">          1 : /**</span>
+<span class="lineNum">     141 </span><span class="lineCov">          1 :  * Add a handler task to this scheduler.</span>
+<span class="lineNum">     142 </span><span class="lineCov">          1 :  * @param {int} id the identity of the task</span>
+<span class="lineNum">     143 </span><span class="lineCov">          1 :  * @param {int} priority the task's priority</span>
+<a name="144"><span class="lineNum">     144 </span><span class="lineCov">          1 :  * @param {Packet} queue the queue of work to be processed by the task</span></a>
+<span class="lineNum">     145 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">     146 </span><span class="lineCov">       2048 : Scheduler.prototype.addHandlerTask = function (id, priority, queue) {</span>
+<span class="lineNum">     147 </span><span class="lineCov">       2048 :   this.addTask(id, priority, queue, new HandlerTask(this));</span>
+<span class="lineNum">     148 </span><span class="lineCov">       2048 : };</span>
+<span class="lineNum">     149 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     150 </span><span class="lineCov">          1 : /**</span>
+<span class="lineNum">     151 </span><span class="lineCov">          1 :  * Add a handler task to this scheduler.</span>
+<span class="lineNum">     152 </span><span class="lineCov">          1 :  * @param {int} id the identity of the task</span>
+<span class="lineNum">     153 </span><span class="lineCov">          1 :  * @param {int} priority the task's priority</span>
+<a name="154"><span class="lineNum">     154 </span><span class="lineCov">          1 :  * @param {Packet} queue the queue of work to be processed by the task</span></a>
+<span class="lineNum">     155 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">     156 </span><span class="lineCov">       2048 : Scheduler.prototype.addDeviceTask = function (id, priority, queue) {</span>
+<span class="lineNum">     157 </span><span class="lineCov">       2048 :   this.addTask(id, priority, queue, new DeviceTask(this))</span>
+<span class="lineNum">     158 </span><span class="lineCov">       2048 : };</span>
+<span class="lineNum">     159 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     160 </span><span class="lineCov">          1 : /**</span>
+<span class="lineNum">     161 </span><span class="lineCov">          1 :  * Add the specified task and mark it as running.</span>
+<span class="lineNum">     162 </span><span class="lineCov">          1 :  * @param {int} id the identity of the task</span>
+<span class="lineNum">     163 </span><span class="lineCov">          1 :  * @param {int} priority the task's priority</span>
+<span class="lineNum">     164 </span><span class="lineCov">          1 :  * @param {Packet} queue the queue of work to be processed by the task</span>
+<a name="165"><span class="lineNum">     165 </span><span class="lineCov">          1 :  * @param {Task} task the task to add</span></a>
+<span class="lineNum">     166 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">     167 </span><span class="lineCov">       1024 : Scheduler.prototype.addRunningTask = function (id, priority, queue, task) {</span>
+<span class="lineNum">     168 </span><span class="lineCov">       1024 :   this.addTask(id, priority, queue, task);</span>
+<span class="lineNum">     169 </span><span class="lineCov">       1024 :   this.currentTcb.setRunning();</span>
+<span class="lineNum">     170 </span><span class="lineCov">       1024 : };</span>
+<span class="lineNum">     171 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     172 </span><span class="lineCov">          1 : /**</span>
+<span class="lineNum">     173 </span><span class="lineCov">          1 :  * Add the specified task to this scheduler.</span>
+<span class="lineNum">     174 </span><span class="lineCov">          1 :  * @param {int} id the identity of the task</span>
+<span class="lineNum">     175 </span><span class="lineCov">          1 :  * @param {int} priority the task's priority</span>
+<span class="lineNum">     176 </span><span class="lineCov">          1 :  * @param {Packet} queue the queue of work to be processed by the task</span>
+<a name="177"><span class="lineNum">     177 </span><span class="lineCov">          1 :  * @param {Task} task the task to add</span></a>
+<span class="lineNum">     178 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">     179 </span><span class="lineCov">       6144 : Scheduler.prototype.addTask = function (id, priority, queue, task) {</span>
+<span class="lineNum">     180 </span><span class="lineCov">       6144 :   this.currentTcb = new TaskControlBlock(this.list, id, priority, queue, task);</span>
+<span class="lineNum">     181 </span><span class="lineCov">       6144 :   this.list = this.currentTcb;</span>
+<span class="lineNum">     182 </span><span class="lineCov">       6144 :   this.blocks[id] = this.currentTcb;</span>
+<span class="lineNum">     183 </span><span class="lineCov">       6144 : };</span>
+<span class="lineNum">     184 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     185 </span><span class="lineCov">          1 : /**</span>
+<a name="186"><span class="lineNum">     186 </span><span class="lineCov">          1 :  * Execute the tasks managed by this scheduler.</span></a>
+<span class="lineNum">     187 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">     188 </span><span class="lineCov">       1024 : Scheduler.prototype.schedule = function () {</span>
+<span class="lineNum">     189 </span><span class="lineCov">       1024 :   this.currentTcb = this.list;</span>
+<span class="lineNum">     190 </span><span class="lineCov">       1024 :   while (this.currentTcb != null) {</span>
+<span class="lineNum">     191 </span><span class="lineCov">       1024 :     if (this.currentTcb.isHeldOrSuspended()) {</span>
+<span class="lineNum">     192 </span><span class="lineCov">       1024 :       this.currentTcb = this.currentTcb.link;</span>
+<span class="lineNum">     193 </span><span class="lineCov">       1024 :     } else {</span>
+<span class="lineNum">     194 </span><span class="lineCov">       1024 :       this.currentId = this.currentTcb.id;</span>
+<span class="lineNum">     195 </span><span class="lineCov">       1024 :       this.currentTcb = this.currentTcb.run();</span>
+<span class="lineNum">     196 </span><span class="lineCov">       1024 :     }</span>
+<span class="lineNum">     197 </span><span class="lineCov">       1024 :   }</span>
+<span class="lineNum">     198 </span><span class="lineCov">       1024 : };</span>
+<span class="lineNum">     199 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     200 </span><span class="lineCov">          1 : /**</span>
+<span class="lineNum">     201 </span><span class="lineCov">          1 :  * Release a task that is currently blocked and return the next block to run.</span>
+<a name="202"><span class="lineNum">     202 </span><span class="lineCov">          1 :  * @param {int} id the id of the task to suspend</span></a>
+<span class="lineNum">     203 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">     204 </span><span class="lineCov">    1022976 : Scheduler.prototype.release = function (id) {</span>
+<span class="lineNum">     205 </span><span class="lineCov">    1022976 :   var tcb = this.blocks[id];</span>
+<span class="lineNum">     206 </span><span class="lineCov">    1022976 :   if (tcb == null) return tcb;</span>
+<span class="lineNum">     207 </span><span class="lineCov">    1022976 :   tcb.markAsNotHeld();</span>
+<span class="lineNum">     208 </span><span class="lineCov">    1022976 :   if (tcb.priority &gt; this.currentTcb.priority) {</span>
+<span class="lineNum">     209 </span><span class="lineCov">    1022976 :     return tcb;</span>
+<span class="lineNum">     210 </span><span class="lineCov">    1022976 :   } else {</span>
+<span class="lineNum">     211 </span><span class="lineCov">    1022976 :     return this.currentTcb;</span>
+<span class="lineNum">     212 </span><span class="lineCov">    1022976 :   }</span>
+<span class="lineNum">     213 </span><span class="lineCov">    1022976 : };</span>
+<span class="lineNum">     214 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     215 </span><span class="lineCov">          1 : /**</span>
+<span class="lineNum">     216 </span><span class="lineCov">          1 :  * Block the currently executing task and return the next task control block</span>
+<span class="lineNum">     217 </span><span class="lineCov">          1 :  * to run.  The blocked task will not be made runnable until it is explicitly</span>
+<a name="218"><span class="lineNum">     218 </span><span class="lineCov">          1 :  * released, even if new work is added to it.</span></a>
+<span class="lineNum">     219 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">     220 </span><span class="lineCov">     950272 : Scheduler.prototype.holdCurrent = function () {</span>
+<span class="lineNum">     221 </span><span class="lineCov">     950272 :   this.holdCount++;</span>
+<span class="lineNum">     222 </span><span class="lineCov">     950272 :   this.currentTcb.markAsHeld();</span>
+<span class="lineNum">     223 </span><span class="lineCov">     950272 :   return this.currentTcb.link;</span>
+<span class="lineNum">     224 </span><span class="lineCov">     950272 : };</span>
+<span class="lineNum">     225 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     226 </span><span class="lineCov">          1 : /**</span>
+<span class="lineNum">     227 </span><span class="lineCov">          1 :  * Suspend the currently executing task and return the next task control block</span>
+<a name="228"><span class="lineNum">     228 </span><span class="lineCov">          1 :  * to run.  If new work is added to the suspended task it will be made runnable.</span></a>
+<span class="lineNum">     229 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">     230 </span><span class="lineCov">    2379776 : Scheduler.prototype.suspendCurrent = function () {</span>
+<span class="lineNum">     231 </span><span class="lineCov">    2379776 :   this.currentTcb.markAsSuspended();</span>
+<span class="lineNum">     232 </span><span class="lineCov">    2379776 :   return this.currentTcb;</span>
+<span class="lineNum">     233 </span><span class="lineCov">    2379776 : };</span>
+<span class="lineNum">     234 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     235 </span><span class="lineCov">          1 : /**</span>
+<span class="lineNum">     236 </span><span class="lineCov">          1 :  * Add the specified packet to the end of the worklist used by the task</span>
+<span class="lineNum">     237 </span><span class="lineCov">          1 :  * associated with the packet and make the task runnable if it is currently</span>
+<span class="lineNum">     238 </span><span class="lineCov">          1 :  * suspended.</span>
+<a name="239"><span class="lineNum">     239 </span><span class="lineCov">          1 :  * @param {Packet} packet the packet to add</span></a>
+<span class="lineNum">     240 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">     241 </span><span class="lineCov">    2377728 : Scheduler.prototype.queue = function (packet) {</span>
+<span class="lineNum">     242 </span><span class="lineCov">    2377728 :   var t = this.blocks[packet.id];</span>
+<span class="lineNum">     243 </span><span class="lineCov">    2377728 :   if (t == null) return t;</span>
+<span class="lineNum">     244 </span><span class="lineCov">    2377728 :   this.queueCount++;</span>
+<span class="lineNum">     245 </span><span class="lineCov">    2377728 :   packet.link = null;</span>
+<span class="lineNum">     246 </span><span class="lineCov">    2377728 :   packet.id = this.currentId;</span>
+<span class="lineNum">     247 </span><span class="lineCov">    2377728 :   return t.checkPriorityAdd(this.currentTcb, packet);</span>
+<span class="lineNum">     248 </span><span class="lineCov">    2377728 : };</span>
+<span class="lineNum">     249 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     250 </span><span class="lineCov">          1 : /**</span>
+<span class="lineNum">     251 </span><span class="lineCov">          1 :  * A task control block manages a task and the queue of work packages associated</span>
+<span class="lineNum">     252 </span><span class="lineCov">          1 :  * with it.</span>
+<span class="lineNum">     253 </span><span class="lineCov">          1 :  * @param {TaskControlBlock} link the preceding block in the linked block list</span>
+<span class="lineNum">     254 </span><span class="lineCov">          1 :  * @param {int} id the id of this block</span>
+<span class="lineNum">     255 </span><span class="lineCov">          1 :  * @param {int} priority the priority of this block</span>
+<span class="lineNum">     256 </span><span class="lineCov">          1 :  * @param {Packet} queue the queue of packages to be processed by the task</span>
+<span class="lineNum">     257 </span><span class="lineCov">          1 :  * @param {Task} task the task</span>
+<a name="258"><span class="lineNum">     258 </span><span class="lineCov">          1 :  * @constructor</span></a>
+<span class="lineNum">     259 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">     260 </span><span class="lineCov">       6144 : function TaskControlBlock(link, id, priority, queue, task) {</span>
+<span class="lineNum">     261 </span><span class="lineCov">       6144 :   this.link = link;</span>
+<span class="lineNum">     262 </span><span class="lineCov">       6144 :   this.id = id;</span>
+<span class="lineNum">     263 </span><span class="lineCov">       6144 :   this.priority = priority;</span>
+<span class="lineNum">     264 </span><span class="lineCov">       6144 :   this.queue = queue;</span>
+<span class="lineNum">     265 </span><span class="lineCov">       6144 :   this.task = task;</span>
+<span class="lineNum">     266 </span><span class="lineCov">       6144 :   if (queue == null) {</span>
+<span class="lineNum">     267 </span><span class="lineCov">       6144 :     this.state = STATE_SUSPENDED;</span>
+<span class="lineNum">     268 </span><span class="lineCov">       6144 :   } else {</span>
+<span class="lineNum">     269 </span><span class="lineCov">       6144 :     this.state = STATE_SUSPENDED_RUNNABLE;</span>
+<span class="lineNum">     270 </span><span class="lineCov">       6144 :   }</span>
+<span class="lineNum">     271 </span><span class="lineCov">       6144 : }</span>
+<span class="lineNum">     272 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     273 </span><span class="lineCov">          1 : /**</span>
+<span class="lineNum">     274 </span><span class="lineCov">          1 :  * The task is running and is currently scheduled.</span>
+<span class="lineNum">     275 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">     276 </span><span class="lineCov">          1 : var STATE_RUNNING = 0;</span>
+<span class="lineNum">     277 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     278 </span><span class="lineCov">          1 : /**</span>
+<span class="lineNum">     279 </span><span class="lineCov">          1 :  * The task has packets left to process.</span>
+<span class="lineNum">     280 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">     281 </span><span class="lineCov">          1 : var STATE_RUNNABLE = 1;</span>
+<span class="lineNum">     282 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     283 </span><span class="lineCov">          1 : /**</span>
+<span class="lineNum">     284 </span><span class="lineCov">          1 :  * The task is not currently running.  The task is not blocked as such and may</span>
+<span class="lineNum">     285 </span><span class="lineCov">          1 : * be started by the scheduler.</span>
+<span class="lineNum">     286 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">     287 </span><span class="lineCov">          1 : var STATE_SUSPENDED = 2;</span>
+<span class="lineNum">     288 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     289 </span><span class="lineCov">          1 : /**</span>
+<span class="lineNum">     290 </span><span class="lineCov">          1 :  * The task is blocked and cannot be run until it is explicitly released.</span>
+<span class="lineNum">     291 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">     292 </span><span class="lineCov">          1 : var STATE_HELD = 4;</span>
+<span class="lineNum">     293 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     294 </span><span class="lineCov">          1 : var STATE_SUSPENDED_RUNNABLE = STATE_SUSPENDED | STATE_RUNNABLE;</span>
+<a name="295"><span class="lineNum">     295 </span><span class="lineCov">          1 : var STATE_NOT_HELD = ~STATE_HELD;</span></a>
+<span class="lineNum">     296 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     297 </span><span class="lineCov">       1024 : TaskControlBlock.prototype.setRunning = function () {</span>
+<span class="lineNum">     298 </span><span class="lineCov">       1024 :   this.state = STATE_RUNNING;</span>
+<a name="299"><span class="lineNum">     299 </span><span class="lineCov">       1024 : };</span></a>
+<span class="lineNum">     300 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     301 </span><span class="lineCov">    1022976 : TaskControlBlock.prototype.markAsNotHeld = function () {</span>
+<span class="lineNum">     302 </span><span class="lineCov">    1022976 :   this.state = this.state &amp; STATE_NOT_HELD;</span>
+<a name="303"><span class="lineNum">     303 </span><span class="lineCov">    1022976 : };</span></a>
+<span class="lineNum">     304 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     305 </span><span class="lineCov">     950272 : TaskControlBlock.prototype.markAsHeld = function () {</span>
+<span class="lineNum">     306 </span><span class="lineCov">     950272 :   this.state = this.state | STATE_HELD;</span>
+<a name="307"><span class="lineNum">     307 </span><span class="lineCov">     950272 : };</span></a>
+<span class="lineNum">     308 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     309 </span><span class="lineCov">   10927104 : TaskControlBlock.prototype.isHeldOrSuspended = function () {</span>
+<span class="lineNum">     310 </span><span class="lineCov">   10927104 :   return (this.state &amp; STATE_HELD) != 0 || (this.state == STATE_SUSPENDED);</span>
+<a name="311"><span class="lineNum">     311 </span><span class="lineCov">   10927104 : };</span></a>
+<span class="lineNum">     312 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     313 </span><span class="lineCov">    2379776 : TaskControlBlock.prototype.markAsSuspended = function () {</span>
+<span class="lineNum">     314 </span><span class="lineCov">    2379776 :   this.state = this.state | STATE_SUSPENDED;</span>
+<a name="315"><span class="lineNum">     315 </span><span class="lineCov">    2379776 : };</span></a>
+<span class="lineNum">     316 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     317 </span><span class="lineCov">    1514496 : TaskControlBlock.prototype.markAsRunnable = function () {</span>
+<span class="lineNum">     318 </span><span class="lineCov">    1514496 :   this.state = this.state | STATE_RUNNABLE;</span>
+<span class="lineNum">     319 </span><span class="lineCov">    1514496 : };</span>
+<span class="lineNum">     320 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     321 </span><span class="lineCov">          1 : /**</span>
+<a name="322"><span class="lineNum">     322 </span><span class="lineCov">          1 :  * Runs this task, if it is ready to be run, and returns the next task to run.</span></a>
+<span class="lineNum">     323 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">     324 </span><span class="lineCov">    6730752 : TaskControlBlock.prototype.run = function () {</span>
+<span class="lineNum">     325 </span><span class="lineCov">    6730752 :   var packet;</span>
+<span class="lineNum">     326 </span><span class="lineCov">    6730752 :   if (this.state == STATE_SUSPENDED_RUNNABLE) {</span>
+<span class="lineNum">     327 </span><span class="lineCov">    6730752 :     packet = this.queue;</span>
+<span class="lineNum">     328 </span><span class="lineCov">    6730752 :     this.queue = packet.link;</span>
+<span class="lineNum">     329 </span><span class="lineCov">    6730752 :     if (this.queue == null) {</span>
+<span class="lineNum">     330 </span><span class="lineCov">    6730752 :       this.state = STATE_RUNNING;</span>
+<span class="lineNum">     331 </span><span class="lineCov">    6730752 :     } else {</span>
+<span class="lineNum">     332 </span><span class="lineCov">    6730752 :       this.state = STATE_RUNNABLE;</span>
+<span class="lineNum">     333 </span><span class="lineCov">    6730752 :     }</span>
+<span class="lineNum">     334 </span><span class="lineCov">    6730752 :   } else {</span>
+<span class="lineNum">     335 </span><span class="lineCov">    6730752 :     packet = null;</span>
+<span class="lineNum">     336 </span><span class="lineCov">    6730752 :   }</span>
+<span class="lineNum">     337 </span><span class="lineCov">    6730752 :   return this.task.run(packet);</span>
+<span class="lineNum">     338 </span><span class="lineCov">    6730752 : };</span>
+<span class="lineNum">     339 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     340 </span><span class="lineCov">          1 : /**</span>
+<span class="lineNum">     341 </span><span class="lineCov">          1 :  * Adds a packet to the worklist of this block's task, marks this as runnable if</span>
+<span class="lineNum">     342 </span><span class="lineCov">          1 :  * necessary, and returns the next runnable object to run (the one</span>
+<a name="343"><span class="lineNum">     343 </span><span class="lineCov">          1 :  * with the highest priority).</span></a>
+<span class="lineNum">     344 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">     345 </span><span class="lineCov">    2377728 : TaskControlBlock.prototype.checkPriorityAdd = function (task, packet) {</span>
+<span class="lineNum">     346 </span><span class="lineCov">    2377728 :   if (this.queue == null) {</span>
+<span class="lineNum">     347 </span><span class="lineCov">    2377728 :     this.queue = packet;</span>
+<span class="lineNum">     348 </span><span class="lineCov">    2377728 :     this.markAsRunnable();</span>
+<span class="lineNum">     349 </span><span class="lineCov">    2377728 :     if (this.priority &gt; task.priority) return this;</span>
+<span class="lineNum">     350 </span><span class="lineCov">    2377728 :   } else {</span>
+<span class="lineNum">     351 </span><span class="lineCov">    2377728 :     this.queue = packet.addTo(this.queue);</span>
+<span class="lineNum">     352 </span><span class="lineCov">    2377728 :   }</span>
+<span class="lineNum">     353 </span><span class="lineCov">    2377728 :   return task;</span>
+<a name="354"><span class="lineNum">     354 </span><span class="lineCov">    2377728 : };</span></a>
+<span class="lineNum">     355 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     356 </span><span class="lineCov">          1 : TaskControlBlock.prototype.toString = function () {</span>
 <span class="lineNum">     357 </span><span class="lineNoCov">          0 :   return &quot;tcb { &quot; + this.task + &quot;@&quot; + this.state + &quot; }&quot;;</span>
-<span class="lineNum">     358 </span><span class="lineNoCov">          0 : };</span>
-<span class="lineNum">     359 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     360 </span><span class="lineNoCov">          0 : /**</span>
-<span class="lineNum">     361 </span><span class="lineNoCov">          0 :  * An idle task doesn't do any work itself but cycles control between the two</span>
-<span class="lineNum">     362 </span><span class="lineNoCov">          0 :  * device tasks.</span>
-<span class="lineNum">     363 </span><span class="lineNoCov">          0 :  * @param {Scheduler} scheduler the scheduler that manages this task</span>
-<span class="lineNum">     364 </span><span class="lineNoCov">          0 :  * @param {int} v1 a seed value that controls how the device tasks are scheduled</span>
-<span class="lineNum">     365 </span><span class="lineNoCov">          0 :  * @param {int} count the number of times this task should be scheduled</span>
-<a name="366"><span class="lineNum">     366 </span><span class="lineNoCov">          0 :  * @constructor</span></a>
-<span class="lineNum">     367 </span><span class="lineNoCov">          0 :  */</span>
-<span class="lineNum">     368 </span><span class="lineCov">       1077 : function IdleTask(scheduler, v1, count) {</span>
-<span class="lineNum">     369 </span><span class="lineCov">       1077 :   this.scheduler = scheduler;</span>
-<span class="lineNum">     370 </span><span class="lineCov">       1077 :   this.v1 = v1;</span>
-<span class="lineNum">     371 </span><span class="lineCov">       1077 :   this.count = count;</span>
-<a name="372"><span class="lineNum">     372 </span><span class="lineCov">       1077 : }</span></a>
-<span class="lineNum">     373 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     374 </span><span class="lineCov">    1077000 : IdleTask.prototype.run = function (packet) {</span>
-<span class="lineNum">     375 </span><span class="lineCov">    1077000 :   this.count--;</span>
-<span class="lineNum">     376 </span><span class="lineCov">    1077000 :   if (this.count == 0) return this.scheduler.holdCurrent();</span>
-<span class="lineNum">     377 </span><span class="lineCov">    1077000 :   if ((this.v1 &amp; 1) == 0) {</span>
-<span class="lineNum">     378 </span><span class="lineCov">    1077000 :     this.v1 = this.v1 &gt;&gt; 1;</span>
-<span class="lineNum">     379 </span><span class="lineCov">    1077000 :     return this.scheduler.release(ID_DEVICE_A);</span>
-<span class="lineNum">     380 </span><span class="lineCov">    1077000 :   } else {</span>
-<span class="lineNum">     381 </span><span class="lineCov">    1077000 :     this.v1 = (this.v1 &gt;&gt; 1) ^ 0xD008;</span>
-<span class="lineNum">     382 </span><span class="lineCov">    1077000 :     return this.scheduler.release(ID_DEVICE_B);</span>
-<span class="lineNum">     383 </span><span class="lineCov">    1077000 :   }</span>
-<a name="384"><span class="lineNum">     384 </span><span class="lineCov">    1077000 : };</span></a>
-<span class="lineNum">     385 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     386 </span><span class="lineNoCov">          0 : IdleTask.prototype.toString = function () {</span>
+<span class="lineNum">     358 </span><span class="lineCov">          1 : };</span>
+<span class="lineNum">     359 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     360 </span><span class="lineCov">          1 : /**</span>
+<span class="lineNum">     361 </span><span class="lineCov">          1 :  * An idle task doesn't do any work itself but cycles control between the two</span>
+<span class="lineNum">     362 </span><span class="lineCov">          1 :  * device tasks.</span>
+<span class="lineNum">     363 </span><span class="lineCov">          1 :  * @param {Scheduler} scheduler the scheduler that manages this task</span>
+<span class="lineNum">     364 </span><span class="lineCov">          1 :  * @param {int} v1 a seed value that controls how the device tasks are scheduled</span>
+<span class="lineNum">     365 </span><span class="lineCov">          1 :  * @param {int} count the number of times this task should be scheduled</span>
+<a name="366"><span class="lineNum">     366 </span><span class="lineCov">          1 :  * @constructor</span></a>
+<span class="lineNum">     367 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">     368 </span><span class="lineCov">       1024 : function IdleTask(scheduler, v1, count) {</span>
+<span class="lineNum">     369 </span><span class="lineCov">       1024 :   this.scheduler = scheduler;</span>
+<span class="lineNum">     370 </span><span class="lineCov">       1024 :   this.v1 = v1;</span>
+<span class="lineNum">     371 </span><span class="lineCov">       1024 :   this.count = count;</span>
+<a name="372"><span class="lineNum">     372 </span><span class="lineCov">       1024 : }</span></a>
+<span class="lineNum">     373 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     374 </span><span class="lineCov">    1024000 : IdleTask.prototype.run = function (packet) {</span>
+<span class="lineNum">     375 </span><span class="lineCov">    1024000 :   this.count--;</span>
+<span class="lineNum">     376 </span><span class="lineCov">    1024000 :   if (this.count == 0) return this.scheduler.holdCurrent();</span>
+<span class="lineNum">     377 </span><span class="lineCov">    1024000 :   if ((this.v1 &amp; 1) == 0) {</span>
+<span class="lineNum">     378 </span><span class="lineCov">    1024000 :     this.v1 = this.v1 &gt;&gt; 1;</span>
+<span class="lineNum">     379 </span><span class="lineCov">    1024000 :     return this.scheduler.release(ID_DEVICE_A);</span>
+<span class="lineNum">     380 </span><span class="lineCov">    1024000 :   } else {</span>
+<span class="lineNum">     381 </span><span class="lineCov">    1024000 :     this.v1 = (this.v1 &gt;&gt; 1) ^ 0xD008;</span>
+<span class="lineNum">     382 </span><span class="lineCov">    1024000 :     return this.scheduler.release(ID_DEVICE_B);</span>
+<span class="lineNum">     383 </span><span class="lineCov">    1024000 :   }</span>
+<a name="384"><span class="lineNum">     384 </span><span class="lineCov">    1024000 : };</span></a>
+<span class="lineNum">     385 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     386 </span><span class="lineCov">          1 : IdleTask.prototype.toString = function () {</span>
 <span class="lineNum">     387 </span><span class="lineNoCov">          0 :   return &quot;IdleTask&quot;</span>
-<span class="lineNum">     388 </span><span class="lineNoCov">          0 : };</span>
-<span class="lineNum">     389 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     390 </span><span class="lineNoCov">          0 : /**</span>
-<span class="lineNum">     391 </span><span class="lineNoCov">          0 :  * A task that suspends itself after each time it has been run to simulate</span>
-<span class="lineNum">     392 </span><span class="lineNoCov">          0 :  * waiting for data from an external device.</span>
-<span class="lineNum">     393 </span><span class="lineNoCov">          0 :  * @param {Scheduler} scheduler the scheduler that manages this task</span>
-<a name="394"><span class="lineNum">     394 </span><span class="lineNoCov">          0 :  * @constructor</span></a>
-<span class="lineNum">     395 </span><span class="lineNoCov">          0 :  */</span>
-<span class="lineNum">     396 </span><span class="lineCov">       2154 : function DeviceTask(scheduler) {</span>
-<span class="lineNum">     397 </span><span class="lineCov">       2154 :   this.scheduler = scheduler;</span>
-<span class="lineNum">     398 </span><span class="lineCov">       2154 :   this.v1 = null;</span>
-<a name="399"><span class="lineNum">     399 </span><span class="lineCov">       2154 : }</span></a>
-<span class="lineNum">     400 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     401 </span><span class="lineCov">    2990829 : DeviceTask.prototype.run = function (packet) {</span>
-<span class="lineNum">     402 </span><span class="lineCov">    2990829 :   if (packet == null) {</span>
-<span class="lineNum">     403 </span><span class="lineCov">    2990829 :     if (this.v1 == null) return this.scheduler.suspendCurrent();</span>
-<span class="lineNum">     404 </span><span class="lineCov">    2990829 :     var v = this.v1;</span>
-<span class="lineNum">     405 </span><span class="lineCov">    2990829 :     this.v1 = null;</span>
-<span class="lineNum">     406 </span><span class="lineCov">    2990829 :     return this.scheduler.queue(v);</span>
-<span class="lineNum">     407 </span><span class="lineCov">    2990829 :   } else {</span>
-<span class="lineNum">     408 </span><span class="lineCov">    2990829 :     this.v1 = packet;</span>
-<span class="lineNum">     409 </span><span class="lineCov">    2990829 :     return this.scheduler.holdCurrent();</span>
-<span class="lineNum">     410 </span><span class="lineCov">    2990829 :   }</span>
-<a name="411"><span class="lineNum">     411 </span><span class="lineCov">    2990829 : };</span></a>
-<span class="lineNum">     412 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     413 </span><span class="lineNoCov">          0 : DeviceTask.prototype.toString = function () {</span>
+<span class="lineNum">     388 </span><span class="lineCov">          1 : };</span>
+<span class="lineNum">     389 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     390 </span><span class="lineCov">          1 : /**</span>
+<span class="lineNum">     391 </span><span class="lineCov">          1 :  * A task that suspends itself after each time it has been run to simulate</span>
+<span class="lineNum">     392 </span><span class="lineCov">          1 :  * waiting for data from an external device.</span>
+<span class="lineNum">     393 </span><span class="lineCov">          1 :  * @param {Scheduler} scheduler the scheduler that manages this task</span>
+<a name="394"><span class="lineNum">     394 </span><span class="lineCov">          1 :  * @constructor</span></a>
+<span class="lineNum">     395 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">     396 </span><span class="lineCov">       2048 : function DeviceTask(scheduler) {</span>
+<span class="lineNum">     397 </span><span class="lineCov">       2048 :   this.scheduler = scheduler;</span>
+<span class="lineNum">     398 </span><span class="lineCov">       2048 :   this.v1 = null;</span>
+<a name="399"><span class="lineNum">     399 </span><span class="lineCov">       2048 : }</span></a>
+<span class="lineNum">     400 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     401 </span><span class="lineCov">    2843648 : DeviceTask.prototype.run = function (packet) {</span>
+<span class="lineNum">     402 </span><span class="lineCov">    2843648 :   if (packet == null) {</span>
+<span class="lineNum">     403 </span><span class="lineCov">    2843648 :     if (this.v1 == null) return this.scheduler.suspendCurrent();</span>
+<span class="lineNum">     404 </span><span class="lineCov">    2843648 :     var v = this.v1;</span>
+<span class="lineNum">     405 </span><span class="lineCov">    2843648 :     this.v1 = null;</span>
+<span class="lineNum">     406 </span><span class="lineCov">    2843648 :     return this.scheduler.queue(v);</span>
+<span class="lineNum">     407 </span><span class="lineCov">    2843648 :   } else {</span>
+<span class="lineNum">     408 </span><span class="lineCov">    2843648 :     this.v1 = packet;</span>
+<span class="lineNum">     409 </span><span class="lineCov">    2843648 :     return this.scheduler.holdCurrent();</span>
+<span class="lineNum">     410 </span><span class="lineCov">    2843648 :   }</span>
+<a name="411"><span class="lineNum">     411 </span><span class="lineCov">    2843648 : };</span></a>
+<span class="lineNum">     412 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     413 </span><span class="lineCov">          1 : DeviceTask.prototype.toString = function () {</span>
 <span class="lineNum">     414 </span><span class="lineNoCov">          0 :   return &quot;DeviceTask&quot;;</span>
-<span class="lineNum">     415 </span><span class="lineNoCov">          0 : };</span>
-<span class="lineNum">     416 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     417 </span><span class="lineNoCov">          0 : /**</span>
-<span class="lineNum">     418 </span><span class="lineNoCov">          0 :  * A task that manipulates work packets.</span>
-<span class="lineNum">     419 </span><span class="lineNoCov">          0 :  * @param {Scheduler} scheduler the scheduler that manages this task</span>
-<span class="lineNum">     420 </span><span class="lineNoCov">          0 :  * @param {int} v1 a seed used to specify how work packets are manipulated</span>
-<span class="lineNum">     421 </span><span class="lineNoCov">          0 :  * @param {int} v2 another seed used to specify how work packets are manipulated</span>
-<a name="422"><span class="lineNum">     422 </span><span class="lineNoCov">          0 :  * @constructor</span></a>
-<span class="lineNum">     423 </span><span class="lineNoCov">          0 :  */</span>
-<span class="lineNum">     424 </span><span class="lineCov">       1077 : function WorkerTask(scheduler, v1, v2) {</span>
-<span class="lineNum">     425 </span><span class="lineCov">       1077 :   this.scheduler = scheduler;</span>
-<span class="lineNum">     426 </span><span class="lineCov">       1077 :   this.v1 = v1;</span>
-<span class="lineNum">     427 </span><span class="lineCov">       1077 :   this.v2 = v2;</span>
-<a name="428"><span class="lineNum">     428 </span><span class="lineCov">       1077 : }</span></a>
-<span class="lineNum">     429 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     430 </span><span class="lineCov">     504036 : WorkerTask.prototype.run = function (packet) {</span>
-<span class="lineNum">     431 </span><span class="lineCov">     504036 :   if (packet == null) {</span>
-<span class="lineNum">     432 </span><span class="lineCov">     504036 :     return this.scheduler.suspendCurrent();</span>
-<span class="lineNum">     433 </span><span class="lineCov">     504036 :   } else {</span>
-<span class="lineNum">     434 </span><span class="lineCov">     504036 :     if (this.v1 == ID_HANDLER_A) {</span>
-<span class="lineNum">     435 </span><span class="lineCov">     504036 :       this.v1 = ID_HANDLER_B;</span>
-<span class="lineNum">     436 </span><span class="lineCov">     504036 :     } else {</span>
-<span class="lineNum">     437 </span><span class="lineCov">     504036 :       this.v1 = ID_HANDLER_A;</span>
-<span class="lineNum">     438 </span><span class="lineCov">     504036 :     }</span>
-<span class="lineNum">     439 </span><span class="lineCov">     504036 :     packet.id = this.v1;</span>
-<span class="lineNum">     440 </span><span class="lineCov">     504036 :     packet.a1 = 0;</span>
-<span class="lineNum">     441 </span><span class="lineCov">     504036 :     for (var i = 0; i &lt; DATA_SIZE; i++) {</span>
-<span class="lineNum">     442 </span><span class="lineCov">     504036 :       this.v2++;</span>
-<span class="lineNum">     443 </span><span class="lineCov">     504036 :       if (this.v2 &gt; 26) this.v2 = 1;</span>
-<span class="lineNum">     444 </span><span class="lineCov">     504036 :       packet.a2[i] = this.v2;</span>
-<span class="lineNum">     445 </span><span class="lineCov">     504036 :     }</span>
-<span class="lineNum">     446 </span><span class="lineCov">     504036 :     return this.scheduler.queue(packet);</span>
-<span class="lineNum">     447 </span><span class="lineCov">     504036 :   }</span>
-<a name="448"><span class="lineNum">     448 </span><span class="lineCov">     504036 : };</span></a>
-<span class="lineNum">     449 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     450 </span><span class="lineNoCov">          0 : WorkerTask.prototype.toString = function () {</span>
+<span class="lineNum">     415 </span><span class="lineCov">          1 : };</span>
+<span class="lineNum">     416 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     417 </span><span class="lineCov">          1 : /**</span>
+<span class="lineNum">     418 </span><span class="lineCov">          1 :  * A task that manipulates work packets.</span>
+<span class="lineNum">     419 </span><span class="lineCov">          1 :  * @param {Scheduler} scheduler the scheduler that manages this task</span>
+<span class="lineNum">     420 </span><span class="lineCov">          1 :  * @param {int} v1 a seed used to specify how work packets are manipulated</span>
+<span class="lineNum">     421 </span><span class="lineCov">          1 :  * @param {int} v2 another seed used to specify how work packets are manipulated</span>
+<a name="422"><span class="lineNum">     422 </span><span class="lineCov">          1 :  * @constructor</span></a>
+<span class="lineNum">     423 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">     424 </span><span class="lineCov">       1024 : function WorkerTask(scheduler, v1, v2) {</span>
+<span class="lineNum">     425 </span><span class="lineCov">       1024 :   this.scheduler = scheduler;</span>
+<span class="lineNum">     426 </span><span class="lineCov">       1024 :   this.v1 = v1;</span>
+<span class="lineNum">     427 </span><span class="lineCov">       1024 :   this.v2 = v2;</span>
+<a name="428"><span class="lineNum">     428 </span><span class="lineCov">       1024 : }</span></a>
+<span class="lineNum">     429 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     430 </span><span class="lineCov">     479232 : WorkerTask.prototype.run = function (packet) {</span>
+<span class="lineNum">     431 </span><span class="lineCov">     479232 :   if (packet == null) {</span>
+<span class="lineNum">     432 </span><span class="lineCov">     479232 :     return this.scheduler.suspendCurrent();</span>
+<span class="lineNum">     433 </span><span class="lineCov">     479232 :   } else {</span>
+<span class="lineNum">     434 </span><span class="lineCov">     479232 :     if (this.v1 == ID_HANDLER_A) {</span>
+<span class="lineNum">     435 </span><span class="lineCov">     479232 :       this.v1 = ID_HANDLER_B;</span>
+<span class="lineNum">     436 </span><span class="lineCov">     479232 :     } else {</span>
+<span class="lineNum">     437 </span><span class="lineCov">     479232 :       this.v1 = ID_HANDLER_A;</span>
+<span class="lineNum">     438 </span><span class="lineCov">     479232 :     }</span>
+<span class="lineNum">     439 </span><span class="lineCov">     479232 :     packet.id = this.v1;</span>
+<span class="lineNum">     440 </span><span class="lineCov">     479232 :     packet.a1 = 0;</span>
+<span class="lineNum">     441 </span><span class="lineCov">     479232 :     for (var i = 0; i &lt; DATA_SIZE; i++) {</span>
+<span class="lineNum">     442 </span><span class="lineCov">     479232 :       this.v2++;</span>
+<span class="lineNum">     443 </span><span class="lineCov">     479232 :       if (this.v2 &gt; 26) this.v2 = 1;</span>
+<span class="lineNum">     444 </span><span class="lineCov">     479232 :       packet.a2[i] = this.v2;</span>
+<span class="lineNum">     445 </span><span class="lineCov">     479232 :     }</span>
+<span class="lineNum">     446 </span><span class="lineCov">     479232 :     return this.scheduler.queue(packet);</span>
+<span class="lineNum">     447 </span><span class="lineCov">     479232 :   }</span>
+<a name="448"><span class="lineNum">     448 </span><span class="lineCov">     479232 : };</span></a>
+<span class="lineNum">     449 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     450 </span><span class="lineCov">          1 : WorkerTask.prototype.toString = function () {</span>
 <span class="lineNum">     451 </span><span class="lineNoCov">          0 :   return &quot;WorkerTask&quot;;</span>
-<span class="lineNum">     452 </span><span class="lineNoCov">          0 : };</span>
-<span class="lineNum">     453 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     454 </span><span class="lineNoCov">          0 : /**</span>
-<span class="lineNum">     455 </span><span class="lineNoCov">          0 :  * A task that manipulates work packets and then suspends itself.</span>
-<span class="lineNum">     456 </span><span class="lineNoCov">          0 :  * @param {Scheduler} scheduler the scheduler that manages this task</span>
-<a name="457"><span class="lineNum">     457 </span><span class="lineNoCov">          0 :  * @constructor</span></a>
-<span class="lineNum">     458 </span><span class="lineNoCov">          0 :  */</span>
-<span class="lineNum">     459 </span><span class="lineCov">       2154 : function HandlerTask(scheduler) {</span>
-<span class="lineNum">     460 </span><span class="lineCov">       2154 :   this.scheduler = scheduler;</span>
-<span class="lineNum">     461 </span><span class="lineCov">       2154 :   this.v1 = null;</span>
-<span class="lineNum">     462 </span><span class="lineCov">       2154 :   this.v2 = null;</span>
-<a name="463"><span class="lineNum">     463 </span><span class="lineCov">       2154 : }</span></a>
-<span class="lineNum">     464 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     465 </span><span class="lineCov">    2507256 : HandlerTask.prototype.run = function (packet) {</span>
-<span class="lineNum">     466 </span><span class="lineCov">    2507256 :   if (packet != null) {</span>
-<span class="lineNum">     467 </span><span class="lineCov">    2507256 :     if (packet.kind == KIND_WORK) {</span>
-<span class="lineNum">     468 </span><span class="lineCov">    2507256 :       this.v1 = packet.addTo(this.v1);</span>
-<span class="lineNum">     469 </span><span class="lineCov">    2507256 :     } else {</span>
-<span class="lineNum">     470 </span><span class="lineCov">    2507256 :       this.v2 = packet.addTo(this.v2);</span>
-<span class="lineNum">     471 </span><span class="lineCov">    2507256 :     }</span>
-<span class="lineNum">     472 </span><span class="lineCov">    2507256 :   }</span>
-<span class="lineNum">     473 </span><span class="lineCov">    2507256 :   if (this.v1 != null) {</span>
-<span class="lineNum">     474 </span><span class="lineCov">    2507256 :     var count = this.v1.a1;</span>
-<span class="lineNum">     475 </span><span class="lineCov">    2507256 :     var v;</span>
-<span class="lineNum">     476 </span><span class="lineCov">    2507256 :     if (count &lt; DATA_SIZE) {</span>
-<span class="lineNum">     477 </span><span class="lineCov">    2507256 :       if (this.v2 != null) {</span>
-<span class="lineNum">     478 </span><span class="lineCov">    2507256 :         v = this.v2;</span>
-<span class="lineNum">     479 </span><span class="lineCov">    2507256 :         this.v2 = this.v2.link;</span>
-<span class="lineNum">     480 </span><span class="lineCov">    2507256 :         v.a1 = this.v1.a2[count];</span>
-<span class="lineNum">     481 </span><span class="lineCov">    2507256 :         this.v1.a1 = count + 1;</span>
-<span class="lineNum">     482 </span><span class="lineCov">    2507256 :         return this.scheduler.queue(v);</span>
-<span class="lineNum">     483 </span><span class="lineCov">    2507256 :       }</span>
-<span class="lineNum">     484 </span><span class="lineCov">    2507256 :     } else {</span>
-<span class="lineNum">     485 </span><span class="lineCov">    2507256 :       v = this.v1;</span>
-<span class="lineNum">     486 </span><span class="lineCov">    2507256 :       this.v1 = this.v1.link;</span>
-<span class="lineNum">     487 </span><span class="lineCov">    2507256 :       return this.scheduler.queue(v);</span>
-<span class="lineNum">     488 </span><span class="lineCov">    2507256 :     }</span>
-<span class="lineNum">     489 </span><span class="lineCov">    2507256 :   }</span>
-<span class="lineNum">     490 </span><span class="lineCov">    2507256 :   return this.scheduler.suspendCurrent();</span>
-<a name="491"><span class="lineNum">     491 </span><span class="lineCov">    2507256 : };</span></a>
-<span class="lineNum">     492 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     493 </span><span class="lineNoCov">          0 : HandlerTask.prototype.toString = function () {</span>
+<span class="lineNum">     452 </span><span class="lineCov">          1 : };</span>
+<span class="lineNum">     453 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     454 </span><span class="lineCov">          1 : /**</span>
+<span class="lineNum">     455 </span><span class="lineCov">          1 :  * A task that manipulates work packets and then suspends itself.</span>
+<span class="lineNum">     456 </span><span class="lineCov">          1 :  * @param {Scheduler} scheduler the scheduler that manages this task</span>
+<a name="457"><span class="lineNum">     457 </span><span class="lineCov">          1 :  * @constructor</span></a>
+<span class="lineNum">     458 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">     459 </span><span class="lineCov">       2048 : function HandlerTask(scheduler) {</span>
+<span class="lineNum">     460 </span><span class="lineCov">       2048 :   this.scheduler = scheduler;</span>
+<span class="lineNum">     461 </span><span class="lineCov">       2048 :   this.v1 = null;</span>
+<span class="lineNum">     462 </span><span class="lineCov">       2048 :   this.v2 = null;</span>
+<a name="463"><span class="lineNum">     463 </span><span class="lineCov">       2048 : }</span></a>
+<span class="lineNum">     464 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     465 </span><span class="lineCov">    2383872 : HandlerTask.prototype.run = function (packet) {</span>
+<span class="lineNum">     466 </span><span class="lineCov">    2383872 :   if (packet != null) {</span>
+<span class="lineNum">     467 </span><span class="lineCov">    2383872 :     if (packet.kind == KIND_WORK) {</span>
+<span class="lineNum">     468 </span><span class="lineCov">    2383872 :       this.v1 = packet.addTo(this.v1);</span>
+<span class="lineNum">     469 </span><span class="lineCov">    2383872 :     } else {</span>
+<span class="lineNum">     470 </span><span class="lineCov">    2383872 :       this.v2 = packet.addTo(this.v2);</span>
+<span class="lineNum">     471 </span><span class="lineCov">    2383872 :     }</span>
+<span class="lineNum">     472 </span><span class="lineCov">    2383872 :   }</span>
+<span class="lineNum">     473 </span><span class="lineCov">    2383872 :   if (this.v1 != null) {</span>
+<span class="lineNum">     474 </span><span class="lineCov">    2383872 :     var count = this.v1.a1;</span>
+<span class="lineNum">     475 </span><span class="lineCov">    2383872 :     var v;</span>
+<span class="lineNum">     476 </span><span class="lineCov">    2383872 :     if (count &lt; DATA_SIZE) {</span>
+<span class="lineNum">     477 </span><span class="lineCov">    2383872 :       if (this.v2 != null) {</span>
+<span class="lineNum">     478 </span><span class="lineCov">    2383872 :         v = this.v2;</span>
+<span class="lineNum">     479 </span><span class="lineCov">    2383872 :         this.v2 = this.v2.link;</span>
+<span class="lineNum">     480 </span><span class="lineCov">    2383872 :         v.a1 = this.v1.a2[count];</span>
+<span class="lineNum">     481 </span><span class="lineCov">    2383872 :         this.v1.a1 = count + 1;</span>
+<span class="lineNum">     482 </span><span class="lineCov">    2383872 :         return this.scheduler.queue(v);</span>
+<span class="lineNum">     483 </span><span class="lineCov">    2383872 :       }</span>
+<span class="lineNum">     484 </span><span class="lineCov">    2383872 :     } else {</span>
+<span class="lineNum">     485 </span><span class="lineCov">    2383872 :       v = this.v1;</span>
+<span class="lineNum">     486 </span><span class="lineCov">    2383872 :       this.v1 = this.v1.link;</span>
+<span class="lineNum">     487 </span><span class="lineCov">    2383872 :       return this.scheduler.queue(v);</span>
+<span class="lineNum">     488 </span><span class="lineCov">    2383872 :     }</span>
+<span class="lineNum">     489 </span><span class="lineCov">    2383872 :   }</span>
+<span class="lineNum">     490 </span><span class="lineCov">    2383872 :   return this.scheduler.suspendCurrent();</span>
+<a name="491"><span class="lineNum">     491 </span><span class="lineCov">    2383872 : };</span></a>
+<span class="lineNum">     492 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     493 </span><span class="lineCov">          1 : HandlerTask.prototype.toString = function () {</span>
 <span class="lineNum">     494 </span><span class="lineNoCov">          0 :   return &quot;HandlerTask&quot;;</span>
-<span class="lineNum">     495 </span><span class="lineNoCov">          0 : };</span>
-<span class="lineNum">     496 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     497 </span><span class="lineNoCov">          0 : /* --- *</span>
-<span class="lineNum">     498 </span><span class="lineNoCov">          0 :  * P a c k e t</span>
-<span class="lineNum">     499 </span><span class="lineNoCov">          0 :  * --- */</span>
-<span class="lineNum">     500 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     501 </span><span class="lineNoCov">          0 : var DATA_SIZE = 4;</span>
-<span class="lineNum">     502 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     503 </span><span class="lineNoCov">          0 : /**</span>
-<span class="lineNum">     504 </span><span class="lineNoCov">          0 :  * A simple package of data that is manipulated by the tasks.  The exact layout</span>
-<span class="lineNum">     505 </span><span class="lineNoCov">          0 :  * of the payload data carried by a packet is not importaint, and neither is the</span>
-<span class="lineNum">     506 </span><span class="lineNoCov">          0 :  * nature of the work performed on packets by the tasks.</span>
-<span class="lineNum">     507 </span><span class="lineNoCov">          0 :  *</span>
-<span class="lineNum">     508 </span><span class="lineNoCov">          0 :  * Besides carrying data, packets form linked lists and are hence used both as</span>
-<span class="lineNum">     509 </span><span class="lineNoCov">          0 :  * data and worklists.</span>
-<span class="lineNum">     510 </span><span class="lineNoCov">          0 :  * @param {Packet} link the tail of the linked list of packets</span>
-<span class="lineNum">     511 </span><span class="lineNoCov">          0 :  * @param {int} id an ID for this packet</span>
-<span class="lineNum">     512 </span><span class="lineNoCov">          0 :  * @param {int} kind the type of this packet</span>
-<a name="513"><span class="lineNum">     513 </span><span class="lineNoCov">          0 :  * @constructor</span></a>
-<span class="lineNum">     514 </span><span class="lineNoCov">          0 :  */</span>
-<span class="lineNum">     515 </span><span class="lineCov">       8616 : function Packet(link, id, kind) {</span>
-<span class="lineNum">     516 </span><span class="lineCov">       8616 :   this.link = link;</span>
-<span class="lineNum">     517 </span><span class="lineCov">       8616 :   this.id = id;</span>
-<span class="lineNum">     518 </span><span class="lineCov">       8616 :   this.kind = kind;</span>
-<span class="lineNum">     519 </span><span class="lineCov">       8616 :   this.a1 = 0;</span>
-<span class="lineNum">     520 </span><span class="lineCov">       8616 :   this.a2 = new Array(DATA_SIZE);</span>
-<span class="lineNum">     521 </span><span class="lineCov">       8616 : }</span>
-<span class="lineNum">     522 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     523 </span><span class="lineNoCov">          0 : /**</span>
-<span class="lineNum">     524 </span><span class="lineNoCov">          0 :  * Add this packet to the end of a worklist, and return the worklist.</span>
-<a name="525"><span class="lineNum">     525 </span><span class="lineNoCov">          0 :  * @param {Packet} queue the worklist to add this packet to</span></a>
-<span class="lineNum">     526 </span><span class="lineNoCov">          0 :  */</span>
-<span class="lineNum">     527 </span><span class="lineCov">    2162616 : Packet.prototype.addTo = function (queue) {</span>
-<span class="lineNum">     528 </span><span class="lineCov">    2162616 :   this.link = null;</span>
-<span class="lineNum">     529 </span><span class="lineCov">    2162616 :   if (queue == null) return this;</span>
-<span class="lineNum">     530 </span><span class="lineCov">    2162616 :   var peek, next = queue;</span>
-<span class="lineNum">     531 </span><span class="lineCov">    2162616 :   while ((peek = next.link) != null)</span>
-<span class="lineNum">     532 </span><span class="lineCov">    2162616 :     next = peek;</span>
-<span class="lineNum">     533 </span><span class="lineCov">    2162616 :   next.link = this;</span>
-<span class="lineNum">     534 </span><span class="lineCov">    2162616 :   return queue;</span>
-<a name="535"><span class="lineNum">     535 </span><span class="lineCov">    2162616 : };</span></a>
-<span class="lineNum">     536 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     537 </span><span class="lineNoCov">          0 : Packet.prototype.toString = function () {</span>
+<span class="lineNum">     495 </span><span class="lineCov">          1 : };</span>
+<span class="lineNum">     496 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     497 </span><span class="lineCov">          1 : /* --- *</span>
+<span class="lineNum">     498 </span><span class="lineCov">          1 :  * P a c k e t</span>
+<span class="lineNum">     499 </span><span class="lineCov">          1 :  * --- */</span>
+<span class="lineNum">     500 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     501 </span><span class="lineCov">          1 : var DATA_SIZE = 4;</span>
+<span class="lineNum">     502 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     503 </span><span class="lineCov">          1 : /**</span>
+<span class="lineNum">     504 </span><span class="lineCov">          1 :  * A simple package of data that is manipulated by the tasks.  The exact layout</span>
+<span class="lineNum">     505 </span><span class="lineCov">          1 :  * of the payload data carried by a packet is not importaint, and neither is the</span>
+<span class="lineNum">     506 </span><span class="lineCov">          1 :  * nature of the work performed on packets by the tasks.</span>
+<span class="lineNum">     507 </span><span class="lineCov">          1 :  *</span>
+<span class="lineNum">     508 </span><span class="lineCov">          1 :  * Besides carrying data, packets form linked lists and are hence used both as</span>
+<span class="lineNum">     509 </span><span class="lineCov">          1 :  * data and worklists.</span>
+<span class="lineNum">     510 </span><span class="lineCov">          1 :  * @param {Packet} link the tail of the linked list of packets</span>
+<span class="lineNum">     511 </span><span class="lineCov">          1 :  * @param {int} id an ID for this packet</span>
+<span class="lineNum">     512 </span><span class="lineCov">          1 :  * @param {int} kind the type of this packet</span>
+<a name="513"><span class="lineNum">     513 </span><span class="lineCov">          1 :  * @constructor</span></a>
+<span class="lineNum">     514 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">     515 </span><span class="lineCov">       8192 : function Packet(link, id, kind) {</span>
+<span class="lineNum">     516 </span><span class="lineCov">       8192 :   this.link = link;</span>
+<span class="lineNum">     517 </span><span class="lineCov">       8192 :   this.id = id;</span>
+<span class="lineNum">     518 </span><span class="lineCov">       8192 :   this.kind = kind;</span>
+<span class="lineNum">     519 </span><span class="lineCov">       8192 :   this.a1 = 0;</span>
+<span class="lineNum">     520 </span><span class="lineCov">       8192 :   this.a2 = new Array(DATA_SIZE);</span>
+<span class="lineNum">     521 </span><span class="lineCov">       8192 : }</span>
+<span class="lineNum">     522 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     523 </span><span class="lineCov">          1 : /**</span>
+<span class="lineNum">     524 </span><span class="lineCov">          1 :  * Add this packet to the end of a worklist, and return the worklist.</span>
+<a name="525"><span class="lineNum">     525 </span><span class="lineCov">          1 :  * @param {Packet} queue the worklist to add this packet to</span></a>
+<span class="lineNum">     526 </span><span class="lineCov">          1 :  */</span>
+<span class="lineNum">     527 </span><span class="lineCov">    2056192 : Packet.prototype.addTo = function (queue) {</span>
+<span class="lineNum">     528 </span><span class="lineCov">    2056192 :   this.link = null;</span>
+<span class="lineNum">     529 </span><span class="lineCov">    2056192 :   if (queue == null) return this;</span>
+<span class="lineNum">     530 </span><span class="lineCov">    2056192 :   var peek, next = queue;</span>
+<span class="lineNum">     531 </span><span class="lineCov">    2056192 :   while ((peek = next.link) != null)</span>
+<span class="lineNum">     532 </span><span class="lineCov">    2056192 :     next = peek;</span>
+<span class="lineNum">     533 </span><span class="lineCov">    2056192 :   next.link = this;</span>
+<span class="lineNum">     534 </span><span class="lineCov">    2056192 :   return queue;</span>
+<a name="535"><span class="lineNum">     535 </span><span class="lineCov">    2056192 : };</span></a>
+<span class="lineNum">     536 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     537 </span><span class="lineCov">          1 : Packet.prototype.toString = function () {</span>
 <span class="lineNum">     538 </span><span class="lineNoCov">          0 :   return &quot;Packet&quot;;</span>
-<span class="lineNum">     539 </span><span class="lineNoCov">          0 : };</span>
+<span class="lineNum">     539 </span><span class="lineCov">          1 : };</span>
 </pre>
       </td>
     </tr>

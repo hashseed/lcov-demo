@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">181</td>
-            <td class="headerCovTableEntry">530</td>
-            <td class="headerCovTableEntryLo">34.2 %</td>
+            <td class="headerCovTableEntry">539</td>
+            <td class="headerCovTableEntry">539</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">18</td>
@@ -103,7 +103,7 @@
 <span class="lineNum">      41 </span><span class="lineCov">     700752 :     return i + 0.5;</span>
 <span class="lineNum">      42 </span><span class="lineCov">     700752 :   }</span>
 <a name="43"><span class="lineNum">      43 </span><span class="lineCov">     700752 : }</span></a>
-<span class="lineNum">      44 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      44 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      45 </span><span class="lineCov">         10 : function force_to_fast_double_array(a) {</span>
 <span class="lineNum">      46 </span><span class="lineCov">         10 :   a[large_array_size - 2] = 1;</span>
 <span class="lineNum">      47 </span><span class="lineCov">         10 :   for (var i= 0; i &lt; approx_dict_to_elements_threshold; ++i ) {</span>
@@ -111,13 +111,13 @@
 <span class="lineNum">      49 </span><span class="lineCov">         10 :   }</span>
 <span class="lineNum">      50 </span><span class="lineCov">         10 :   assertTrue(%HasFastDoubleElements(a));</span>
 <a name="51"><span class="lineNum">      51 </span><span class="lineCov">         10 : }</span></a>
-<span class="lineNum">      52 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      52 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      53 </span><span class="lineCov">          3 : function make_object_like_array(size) {</span>
 <span class="lineNum">      54 </span><span class="lineCov">          3 :   obj = new Object();</span>
 <span class="lineNum">      55 </span><span class="lineCov">          3 :   obj.length = size;</span>
 <span class="lineNum">      56 </span><span class="lineCov">          3 :   return obj;</span>
 <a name="57"><span class="lineNum">      57 </span><span class="lineCov">          3 : }</span></a>
-<span class="lineNum">      58 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      58 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      59 </span><span class="lineCov">          2 : function testOneArrayType(allocator) {</span>
 <span class="lineNum">      60 </span><span class="lineCov">          2 :   var large_array = new allocator(large_array_size);</span>
 <span class="lineNum">      61 </span><span class="lineCov">          2 :   force_to_fast_double_array(large_array);</span>
@@ -131,9 +131,9 @@
 <span class="lineNum">      69 </span><span class="lineCov">         68 :   function computed_6() {</span>
 <span class="lineNum">      70 </span><span class="lineCov">         68 :     return six;</span>
 <span class="lineNum">      71 </span><span class="lineCov">         68 :   }</span>
-<span class="lineNum">      72 </span><span class="lineNoCov">          0 : </span>
-<a name="73"><span class="lineNum">      73 </span><span class="lineNoCov">          0 :   // Multiple versions of the test function makes sure that IC/Crankshaft state</span></a>
-<span class="lineNum">      74 </span><span class="lineNoCov">          0 :   // doesn't get reused.</span>
+<span class="lineNum">      72 </span><span class="lineCov">          2 : </span>
+<a name="73"><span class="lineNum">      73 </span><span class="lineCov">          2 :   // Multiple versions of the test function makes sure that IC/Crankshaft state</span></a>
+<span class="lineNum">      74 </span><span class="lineCov">          2 :   // doesn't get reused.</span>
 <span class="lineNum">      75 </span><span class="lineCov">          8 :   function test_various_loads(a, value_5, value_6, value_7) {</span>
 <span class="lineNum">      76 </span><span class="lineCov">          8 :     assertTrue(%HasFastDoubleElements(a));</span>
 <span class="lineNum">      77 </span><span class="lineCov">          8 :     assertEquals(value_5, a[5]);</span>
@@ -143,7 +143,7 @@
 <span class="lineNum">      81 </span><span class="lineCov">          8 :     assertEquals(large_array_size, a.length);</span>
 <span class="lineNum">      82 </span><span class="lineCov">          8 :     assertTrue(%HasFastDoubleElements(a));</span>
 <a name="83"><span class="lineNum">      83 </span><span class="lineCov">          8 :   }</span></a>
-<span class="lineNum">      84 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      84 </span><span class="lineCov">          2 : </span>
 <span class="lineNum">      85 </span><span class="lineCov">          8 :   function test_various_loads2(a, value_5, value_6, value_7) {</span>
 <span class="lineNum">      86 </span><span class="lineCov">          8 :     assertTrue(%HasFastDoubleElements(a));</span>
 <span class="lineNum">      87 </span><span class="lineCov">          8 :     assertEquals(value_5, a[5]);</span>
@@ -153,7 +153,7 @@
 <span class="lineNum">      91 </span><span class="lineCov">          8 :     assertEquals(large_array_size, a.length);</span>
 <span class="lineNum">      92 </span><span class="lineCov">          8 :     assertTrue(%HasFastDoubleElements(a));</span>
 <a name="93"><span class="lineNum">      93 </span><span class="lineCov">          8 :   }</span></a>
-<span class="lineNum">      94 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      94 </span><span class="lineCov">          2 : </span>
 <span class="lineNum">      95 </span><span class="lineCov">          8 :   function test_various_loads3(a, value_5, value_6, value_7) {</span>
 <span class="lineNum">      96 </span><span class="lineCov">          8 :     assertTrue(%HasFastDoubleElements(a));</span>
 <span class="lineNum">      97 </span><span class="lineCov">          8 :     assertEquals(value_5, a[5]);</span>
@@ -163,7 +163,7 @@
 <span class="lineNum">     101 </span><span class="lineCov">          8 :     assertEquals(large_array_size, a.length);</span>
 <span class="lineNum">     102 </span><span class="lineCov">          8 :     assertTrue(%HasFastDoubleElements(a));</span>
 <a name="103"><span class="lineNum">     103 </span><span class="lineCov">          8 :   }</span></a>
-<span class="lineNum">     104 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     104 </span><span class="lineCov">          2 : </span>
 <span class="lineNum">     105 </span><span class="lineCov">          2 :   function test_various_loads4(a, value_5, value_6, value_7) {</span>
 <span class="lineNum">     106 </span><span class="lineCov">          2 :     assertTrue(%HasFastDoubleElements(a));</span>
 <span class="lineNum">     107 </span><span class="lineCov">          2 :     assertEquals(value_5, a[5]);</span>
@@ -173,7 +173,7 @@
 <span class="lineNum">     111 </span><span class="lineCov">          2 :     assertEquals(large_array_size, a.length);</span>
 <span class="lineNum">     112 </span><span class="lineCov">          2 :     assertTrue(%HasFastDoubleElements(a));</span>
 <a name="113"><span class="lineNum">     113 </span><span class="lineCov">          2 :   }</span></a>
-<span class="lineNum">     114 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     114 </span><span class="lineCov">          2 : </span>
 <span class="lineNum">     115 </span><span class="lineCov">          8 :   function test_various_loads5(a, value_5, value_6, value_7) {</span>
 <span class="lineNum">     116 </span><span class="lineCov">          8 :     assertTrue(%HasFastDoubleElements(a));</span>
 <span class="lineNum">     117 </span><span class="lineCov">          8 :     if (value_5 != undefined) {</span>
@@ -187,7 +187,7 @@
 <span class="lineNum">     125 </span><span class="lineCov">          8 :     assertEquals(large_array_size, a.length);</span>
 <span class="lineNum">     126 </span><span class="lineCov">          8 :     assertTrue(%HasFastDoubleElements(a));</span>
 <a name="127"><span class="lineNum">     127 </span><span class="lineCov">          8 :   }</span></a>
-<span class="lineNum">     128 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     128 </span><span class="lineCov">          2 : </span>
 <span class="lineNum">     129 </span><span class="lineCov">          8 :   function test_various_loads6(a, value_5, value_6, value_7) {</span>
 <span class="lineNum">     130 </span><span class="lineCov">          8 :     assertTrue(%HasFastDoubleElements(a));</span>
 <span class="lineNum">     131 </span><span class="lineCov">          8 :     assertEquals(value_5, a[5]);</span>
@@ -197,7 +197,7 @@
 <span class="lineNum">     135 </span><span class="lineCov">          8 :     assertEquals(large_array_size, a.length);</span>
 <span class="lineNum">     136 </span><span class="lineCov">          8 :     assertTrue(%HasFastDoubleElements(a));</span>
 <a name="137"><span class="lineNum">     137 </span><span class="lineCov">          8 :   }</span></a>
-<span class="lineNum">     138 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     138 </span><span class="lineCov">          2 : </span>
 <span class="lineNum">     139 </span><span class="lineCov">         10 :   function test_various_loads7(a, value_5, value_6, value_7) {</span>
 <span class="lineNum">     140 </span><span class="lineCov">         10 :     assertTrue(%HasFastDoubleElements(a));</span>
 <span class="lineNum">     141 </span><span class="lineCov">         10 :     assertEquals(value_5, a[5]);</span>
@@ -207,7 +207,7 @@
 <span class="lineNum">     145 </span><span class="lineCov">         10 :     assertEquals(large_array_size, a.length);</span>
 <span class="lineNum">     146 </span><span class="lineCov">         10 :     assertTrue(%HasFastDoubleElements(a));</span>
 <a name="147"><span class="lineNum">     147 </span><span class="lineCov">         10 :   }</span></a>
-<span class="lineNum">     148 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     148 </span><span class="lineCov">          2 : </span>
 <span class="lineNum">     149 </span><span class="lineCov">         20 :   function test_various_stores(a, value_5, value_6, value_7) {</span>
 <span class="lineNum">     150 </span><span class="lineCov">         20 :     assertTrue(%HasFastDoubleElements(a));</span>
 <span class="lineNum">     151 </span><span class="lineCov">         20 :     a[5] = value_5;</span>
@@ -215,296 +215,296 @@
 <span class="lineNum">     153 </span><span class="lineCov">         20 :     a[7] = value_7;</span>
 <span class="lineNum">     154 </span><span class="lineCov">         20 :     assertTrue(%HasFastDoubleElements(a));</span>
 <span class="lineNum">     155 </span><span class="lineCov">         20 :   }</span>
-<span class="lineNum">     156 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     157 </span><span class="lineNoCov">          0 :   // Test double and integer values</span>
-<span class="lineNum">     158 </span><span class="lineNoCov">          0 :   test_various_loads(large_array,</span>
-<span class="lineNum">     159 </span><span class="lineNoCov">          0 :                      expected_array_value(5),</span>
-<span class="lineNum">     160 </span><span class="lineNoCov">          0 :                      expected_array_value(6),</span>
-<span class="lineNum">     161 </span><span class="lineNoCov">          0 :                      expected_array_value(7));</span>
-<span class="lineNum">     162 </span><span class="lineNoCov">          0 :   test_various_loads(large_array,</span>
-<span class="lineNum">     163 </span><span class="lineNoCov">          0 :                      expected_array_value(5),</span>
-<span class="lineNum">     164 </span><span class="lineNoCov">          0 :                      expected_array_value(6),</span>
-<span class="lineNum">     165 </span><span class="lineNoCov">          0 :                      expected_array_value(7));</span>
-<span class="lineNum">     166 </span><span class="lineNoCov">          0 :   test_various_loads(large_array,</span>
-<span class="lineNum">     167 </span><span class="lineNoCov">          0 :                      expected_array_value(5),</span>
-<span class="lineNum">     168 </span><span class="lineNoCov">          0 :                      expected_array_value(6),</span>
-<span class="lineNum">     169 </span><span class="lineNoCov">          0 :                      expected_array_value(7));</span>
-<span class="lineNum">     170 </span><span class="lineNoCov">          0 :   %OptimizeFunctionOnNextCall(test_various_loads);</span>
-<span class="lineNum">     171 </span><span class="lineNoCov">          0 :   test_various_loads(large_array,</span>
-<span class="lineNum">     172 </span><span class="lineNoCov">          0 :                      expected_array_value(5),</span>
-<span class="lineNum">     173 </span><span class="lineNoCov">          0 :                      expected_array_value(6),</span>
-<span class="lineNum">     174 </span><span class="lineNoCov">          0 :                      expected_array_value(7));</span>
-<span class="lineNum">     175 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     176 </span><span class="lineNoCov">          0 :   // Test NaN values</span>
-<span class="lineNum">     177 </span><span class="lineNoCov">          0 :   test_various_stores(large_array, NaN, -NaN, expected_array_value(7));</span>
-<span class="lineNum">     178 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     179 </span><span class="lineNoCov">          0 :   test_various_loads2(large_array,</span>
-<span class="lineNum">     180 </span><span class="lineNoCov">          0 :                       NaN,</span>
-<span class="lineNum">     181 </span><span class="lineNoCov">          0 :                       -NaN,</span>
-<span class="lineNum">     182 </span><span class="lineNoCov">          0 :                       expected_array_value(7));</span>
-<span class="lineNum">     183 </span><span class="lineNoCov">          0 :   test_various_loads2(large_array,</span>
-<span class="lineNum">     184 </span><span class="lineNoCov">          0 :                       NaN,</span>
-<span class="lineNum">     185 </span><span class="lineNoCov">          0 :                       -NaN,</span>
-<span class="lineNum">     186 </span><span class="lineNoCov">          0 :                       expected_array_value(7));</span>
-<span class="lineNum">     187 </span><span class="lineNoCov">          0 :   test_various_loads2(large_array,</span>
-<span class="lineNum">     188 </span><span class="lineNoCov">          0 :                       NaN,</span>
-<span class="lineNum">     189 </span><span class="lineNoCov">          0 :                       -NaN,</span>
-<span class="lineNum">     190 </span><span class="lineNoCov">          0 :                       expected_array_value(7));</span>
-<span class="lineNum">     191 </span><span class="lineNoCov">          0 :   %OptimizeFunctionOnNextCall(test_various_loads2);</span>
-<span class="lineNum">     192 </span><span class="lineNoCov">          0 :   test_various_loads2(large_array,</span>
-<span class="lineNum">     193 </span><span class="lineNoCov">          0 :                       NaN,</span>
-<span class="lineNum">     194 </span><span class="lineNoCov">          0 :                       -NaN,</span>
-<span class="lineNum">     195 </span><span class="lineNoCov">          0 :                       expected_array_value(7));</span>
-<span class="lineNum">     196 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     197 </span><span class="lineNoCov">          0 :   // Test Infinity values</span>
-<span class="lineNum">     198 </span><span class="lineNoCov">          0 :   test_various_stores(large_array,</span>
-<span class="lineNum">     199 </span><span class="lineNoCov">          0 :                       Infinity,</span>
-<span class="lineNum">     200 </span><span class="lineNoCov">          0 :                       -Infinity,</span>
-<span class="lineNum">     201 </span><span class="lineNoCov">          0 :                       expected_array_value(7));</span>
-<span class="lineNum">     202 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     203 </span><span class="lineNoCov">          0 :   test_various_loads3(large_array,</span>
-<span class="lineNum">     204 </span><span class="lineNoCov">          0 :                       Infinity,</span>
-<span class="lineNum">     205 </span><span class="lineNoCov">          0 :                       -Infinity,</span>
-<span class="lineNum">     206 </span><span class="lineNoCov">          0 :                       expected_array_value(7));</span>
-<span class="lineNum">     207 </span><span class="lineNoCov">          0 :   test_various_loads3(large_array,</span>
-<span class="lineNum">     208 </span><span class="lineNoCov">          0 :                       Infinity,</span>
-<span class="lineNum">     209 </span><span class="lineNoCov">          0 :                       -Infinity,</span>
-<span class="lineNum">     210 </span><span class="lineNoCov">          0 :                       expected_array_value(7));</span>
-<span class="lineNum">     211 </span><span class="lineNoCov">          0 :   test_various_loads3(large_array,</span>
-<span class="lineNum">     212 </span><span class="lineNoCov">          0 :                       Infinity,</span>
-<span class="lineNum">     213 </span><span class="lineNoCov">          0 :                       -Infinity,</span>
-<span class="lineNum">     214 </span><span class="lineNoCov">          0 :                       expected_array_value(7));</span>
-<span class="lineNum">     215 </span><span class="lineNoCov">          0 :   %OptimizeFunctionOnNextCall(test_various_loads3);</span>
-<span class="lineNum">     216 </span><span class="lineNoCov">          0 :   test_various_loads3(large_array,</span>
-<span class="lineNum">     217 </span><span class="lineNoCov">          0 :                       Infinity,</span>
-<span class="lineNum">     218 </span><span class="lineNoCov">          0 :                       -Infinity,</span>
-<span class="lineNum">     219 </span><span class="lineNoCov">          0 :                       expected_array_value(7));</span>
-<span class="lineNum">     220 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     221 </span><span class="lineNoCov">          0 :   // Test the hole for the default runtime implementation.</span>
-<span class="lineNum">     222 </span><span class="lineNoCov">          0 :   delete large_array[5];</span>
-<span class="lineNum">     223 </span><span class="lineNoCov">          0 :   delete large_array[6];</span>
-<span class="lineNum">     224 </span><span class="lineNoCov">          0 :   test_various_loads4(large_array,</span>
-<span class="lineNum">     225 </span><span class="lineNoCov">          0 :                       undefined,</span>
-<span class="lineNum">     226 </span><span class="lineNoCov">          0 :                       undefined,</span>
-<span class="lineNum">     227 </span><span class="lineNoCov">          0 :                       expected_array_value(7));</span>
-<span class="lineNum">     228 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     229 </span><span class="lineNoCov">          0 :   // Test the keyed load IC implementation when the value is the hole.</span>
-<span class="lineNum">     230 </span><span class="lineNoCov">          0 :   test_various_stores(large_array,</span>
-<span class="lineNum">     231 </span><span class="lineNoCov">          0 :                       expected_array_value(5),</span>
-<span class="lineNum">     232 </span><span class="lineNoCov">          0 :                       expected_array_value(6),</span>
-<span class="lineNum">     233 </span><span class="lineNoCov">          0 :                       expected_array_value(7));</span>
-<span class="lineNum">     234 </span><span class="lineNoCov">          0 :   test_various_loads5(large_array,</span>
-<span class="lineNum">     235 </span><span class="lineNoCov">          0 :                       expected_array_value(5),</span>
-<span class="lineNum">     236 </span><span class="lineNoCov">          0 :                       expected_array_value(6),</span>
-<span class="lineNum">     237 </span><span class="lineNoCov">          0 :                       expected_array_value(7));</span>
-<span class="lineNum">     238 </span><span class="lineNoCov">          0 :   test_various_loads5(large_array,</span>
-<span class="lineNum">     239 </span><span class="lineNoCov">          0 :                       expected_array_value(5),</span>
-<span class="lineNum">     240 </span><span class="lineNoCov">          0 :                       expected_array_value(6),</span>
-<span class="lineNum">     241 </span><span class="lineNoCov">          0 :                       expected_array_value(7));</span>
-<span class="lineNum">     242 </span><span class="lineNoCov">          0 :   delete large_array[5];</span>
-<span class="lineNum">     243 </span><span class="lineNoCov">          0 :   delete large_array[6];</span>
-<span class="lineNum">     244 </span><span class="lineNoCov">          0 :   test_various_loads5(large_array,</span>
-<span class="lineNum">     245 </span><span class="lineNoCov">          0 :                       undefined,</span>
-<span class="lineNum">     246 </span><span class="lineNoCov">          0 :                       undefined,</span>
-<span class="lineNum">     247 </span><span class="lineNoCov">          0 :                       expected_array_value(7));</span>
-<span class="lineNum">     248 </span><span class="lineNoCov">          0 :   test_various_loads5(large_array,</span>
-<span class="lineNum">     249 </span><span class="lineNoCov">          0 :                       undefined,</span>
-<span class="lineNum">     250 </span><span class="lineNoCov">          0 :                       undefined,</span>
-<span class="lineNum">     251 </span><span class="lineNoCov">          0 :                       expected_array_value(7));</span>
-<span class="lineNum">     252 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     253 </span><span class="lineNoCov">          0 :   // Make sure Crankshaft code handles the hole correctly (bailout)</span>
-<span class="lineNum">     254 </span><span class="lineNoCov">          0 :   var large_array = new allocator(large_array_size);</span>
-<span class="lineNum">     255 </span><span class="lineNoCov">          0 :   force_to_fast_double_array(large_array);</span>
-<span class="lineNum">     256 </span><span class="lineNoCov">          0 :   test_various_stores(large_array,</span>
-<span class="lineNum">     257 </span><span class="lineNoCov">          0 :                       expected_array_value(5),</span>
-<span class="lineNum">     258 </span><span class="lineNoCov">          0 :                       expected_array_value(6),</span>
-<span class="lineNum">     259 </span><span class="lineNoCov">          0 :                       expected_array_value(7));</span>
-<span class="lineNum">     260 </span><span class="lineNoCov">          0 :   test_various_loads6(large_array,</span>
-<span class="lineNum">     261 </span><span class="lineNoCov">          0 :                       expected_array_value(5),</span>
-<span class="lineNum">     262 </span><span class="lineNoCov">          0 :                       expected_array_value(6),</span>
-<span class="lineNum">     263 </span><span class="lineNoCov">          0 :                       expected_array_value(7));</span>
-<span class="lineNum">     264 </span><span class="lineNoCov">          0 :   test_various_loads6(large_array,</span>
-<span class="lineNum">     265 </span><span class="lineNoCov">          0 :                       expected_array_value(5),</span>
-<span class="lineNum">     266 </span><span class="lineNoCov">          0 :                       expected_array_value(6),</span>
-<span class="lineNum">     267 </span><span class="lineNoCov">          0 :                       expected_array_value(7));</span>
-<span class="lineNum">     268 </span><span class="lineNoCov">          0 :   %OptimizeFunctionOnNextCall(test_various_loads6);</span>
-<span class="lineNum">     269 </span><span class="lineNoCov">          0 :   test_various_loads6(large_array,</span>
-<span class="lineNum">     270 </span><span class="lineNoCov">          0 :                       expected_array_value(5),</span>
-<span class="lineNum">     271 </span><span class="lineNoCov">          0 :                       expected_array_value(6),</span>
-<span class="lineNum">     272 </span><span class="lineNoCov">          0 :                       expected_array_value(7));</span>
-<span class="lineNum">     273 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     274 </span><span class="lineNoCov">          0 :   delete large_array[5];</span>
-<span class="lineNum">     275 </span><span class="lineNoCov">          0 :   delete large_array[6];</span>
-<span class="lineNum">     276 </span><span class="lineNoCov">          0 :   test_various_loads6(large_array,</span>
-<span class="lineNum">     277 </span><span class="lineNoCov">          0 :                       undefined,</span>
-<span class="lineNum">     278 </span><span class="lineNoCov">          0 :                       undefined,</span>
-<span class="lineNum">     279 </span><span class="lineNoCov">          0 :                       expected_array_value(7));</span>
-<span class="lineNum">     280 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     281 </span><span class="lineNoCov">          0 :   %DeoptimizeFunction(test_various_loads6);</span>
-<span class="lineNum">     282 </span><span class="lineNoCov">          0 :   %ClearFunctionTypeFeedback(test_various_stores);</span>
-<span class="lineNum">     283 </span><span class="lineNoCov">          0 :   %ClearFunctionTypeFeedback(test_various_loads7);</span>
-<span class="lineNum">     284 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     285 </span><span class="lineNoCov">          0 :   // Test stores for non-NaN.</span>
-<span class="lineNum">     286 </span><span class="lineNoCov">          0 :   var large_array = new allocator(large_array_size);</span>
-<span class="lineNum">     287 </span><span class="lineNoCov">          0 :   force_to_fast_double_array(large_array);</span>
-<span class="lineNum">     288 </span><span class="lineNoCov">          0 :   %OptimizeFunctionOnNextCall(test_various_stores);</span>
-<span class="lineNum">     289 </span><span class="lineNoCov">          0 :   test_various_stores(large_array,</span>
-<span class="lineNum">     290 </span><span class="lineNoCov">          0 :                       expected_array_value(5),</span>
-<span class="lineNum">     291 </span><span class="lineNoCov">          0 :                       expected_array_value(6),</span>
-<span class="lineNum">     292 </span><span class="lineNoCov">          0 :                       expected_array_value(7));</span>
-<span class="lineNum">     293 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     294 </span><span class="lineNoCov">          0 :   test_various_stores(large_array,</span>
-<span class="lineNum">     295 </span><span class="lineNoCov">          0 :                       expected_array_value(5),</span>
-<span class="lineNum">     296 </span><span class="lineNoCov">          0 :                       expected_array_value(6),</span>
-<span class="lineNum">     297 </span><span class="lineNoCov">          0 :                       expected_array_value(7));</span>
-<span class="lineNum">     298 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     299 </span><span class="lineNoCov">          0 :   test_various_loads7(large_array,</span>
-<span class="lineNum">     300 </span><span class="lineNoCov">          0 :                       expected_array_value(5),</span>
-<span class="lineNum">     301 </span><span class="lineNoCov">          0 :                       expected_array_value(6),</span>
-<span class="lineNum">     302 </span><span class="lineNoCov">          0 :                       expected_array_value(7));</span>
-<span class="lineNum">     303 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     304 </span><span class="lineNoCov">          0 :   test_various_loads7(large_array,</span>
-<span class="lineNum">     305 </span><span class="lineNoCov">          0 :                       expected_array_value(5),</span>
-<span class="lineNum">     306 </span><span class="lineNoCov">          0 :                       expected_array_value(6),</span>
-<span class="lineNum">     307 </span><span class="lineNoCov">          0 :                       expected_array_value(7));</span>
-<span class="lineNum">     308 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     309 </span><span class="lineNoCov">          0 :   %OptimizeFunctionOnNextCall(test_various_loads7);</span>
-<span class="lineNum">     310 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     311 </span><span class="lineNoCov">          0 :   test_various_loads7(large_array,</span>
-<span class="lineNum">     312 </span><span class="lineNoCov">          0 :                       expected_array_value(5),</span>
-<span class="lineNum">     313 </span><span class="lineNoCov">          0 :                       expected_array_value(6),</span>
-<span class="lineNum">     314 </span><span class="lineNoCov">          0 :                       expected_array_value(7));</span>
-<span class="lineNum">     315 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     316 </span><span class="lineNoCov">          0 :   // Test NaN behavior for stores.</span>
-<span class="lineNum">     317 </span><span class="lineNoCov">          0 :   test_various_stores(large_array,</span>
-<span class="lineNum">     318 </span><span class="lineNoCov">          0 :                       NaN,</span>
-<span class="lineNum">     319 </span><span class="lineNoCov">          0 :                       -NaN,</span>
-<span class="lineNum">     320 </span><span class="lineNoCov">          0 :                       expected_array_value(7));</span>
-<span class="lineNum">     321 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     322 </span><span class="lineNoCov">          0 :   test_various_stores(large_array,</span>
-<span class="lineNum">     323 </span><span class="lineNoCov">          0 :                       NaN,</span>
-<span class="lineNum">     324 </span><span class="lineNoCov">          0 :                       -NaN,</span>
-<span class="lineNum">     325 </span><span class="lineNoCov">          0 :                       expected_array_value(7));</span>
-<span class="lineNum">     326 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     327 </span><span class="lineNoCov">          0 :   test_various_loads7(large_array,</span>
-<span class="lineNum">     328 </span><span class="lineNoCov">          0 :                       NaN,</span>
-<span class="lineNum">     329 </span><span class="lineNoCov">          0 :                       -NaN,</span>
-<span class="lineNum">     330 </span><span class="lineNoCov">          0 :                       expected_array_value(7));</span>
-<span class="lineNum">     331 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     332 </span><span class="lineNoCov">          0 :   // Test Infinity behavior for stores.</span>
-<span class="lineNum">     333 </span><span class="lineNoCov">          0 :   test_various_stores(large_array,</span>
-<span class="lineNum">     334 </span><span class="lineNoCov">          0 :                       Infinity,</span>
-<span class="lineNum">     335 </span><span class="lineNoCov">          0 :                       -Infinity,</span>
-<span class="lineNum">     336 </span><span class="lineNoCov">          0 :                       expected_array_value(7));</span>
-<span class="lineNum">     337 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     338 </span><span class="lineNoCov">          0 :   test_various_stores(large_array,</span>
-<span class="lineNum">     339 </span><span class="lineNoCov">          0 :                       Infinity,</span>
-<span class="lineNum">     340 </span><span class="lineNoCov">          0 :                       -Infinity,</span>
-<span class="lineNum">     341 </span><span class="lineNoCov">          0 :                       expected_array_value(7));</span>
-<span class="lineNum">     342 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     343 </span><span class="lineNoCov">          0 :   test_various_loads7(large_array,</span>
-<span class="lineNum">     344 </span><span class="lineNoCov">          0 :                       Infinity,</span>
-<span class="lineNum">     345 </span><span class="lineNoCov">          0 :                       -Infinity,</span>
-<span class="lineNum">     346 </span><span class="lineNoCov">          0 :                       expected_array_value(7));</span>
-<span class="lineNum">     347 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     348 </span><span class="lineNoCov">          0 :   // Make sure that we haven't converted from fast double.</span>
-<span class="lineNum">     349 </span><span class="lineNoCov">          0 :   assertTrue(%HasFastDoubleElements(large_array));</span>
-<span class="lineNum">     350 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">     351 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     352 </span><span class="lineNoCov">          0 : // Force gc here to start with a clean heap if we repeat this test multiple</span>
-<span class="lineNum">     353 </span><span class="lineNoCov">          0 : // times.</span>
-<span class="lineNum">     354 </span><span class="lineNoCov">          0 : gc();</span>
-<span class="lineNum">     355 </span><span class="lineNoCov">          0 : testOneArrayType(make_object_like_array);</span>
-<span class="lineNum">     356 </span><span class="lineNoCov">          0 : testOneArrayType(Array);</span>
-<span class="lineNum">     357 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     358 </span><span class="lineNoCov">          0 : var large_array = new Array(large_array_size);</span>
-<span class="lineNum">     359 </span><span class="lineNoCov">          0 : force_to_fast_double_array(large_array);</span>
-<span class="lineNum">     360 </span><span class="lineNoCov">          0 : assertTrue(%HasFastDoubleElements(large_array));</span>
-<span class="lineNum">     361 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     362 </span><span class="lineNoCov">          0 : // Cause the array to grow beyond it's JSArray length. This will double the</span>
-<span class="lineNum">     363 </span><span class="lineNoCov">          0 : // size of the capacity and force the array into &quot;slow&quot; dictionary case.</span>
-<span class="lineNum">     364 </span><span class="lineNoCov">          0 : large_array[5] = Infinity;</span>
-<span class="lineNum">     365 </span><span class="lineNoCov">          0 : large_array[large_array_size+10001] = 50;</span>
-<span class="lineNum">     366 </span><span class="lineNoCov">          0 : assertTrue(%HasDictionaryElements(large_array));</span>
-<span class="lineNum">     367 </span><span class="lineNoCov">          0 : assertEquals(50, large_array[large_array_size+10001]);</span>
-<span class="lineNum">     368 </span><span class="lineNoCov">          0 : assertEquals(large_array_size+10002, large_array.length);</span>
-<span class="lineNum">     369 </span><span class="lineNoCov">          0 : assertEquals(Infinity, large_array[5]);</span>
-<span class="lineNum">     370 </span><span class="lineNoCov">          0 : assertEquals(undefined, large_array[large_array_size-1]);</span>
-<span class="lineNum">     371 </span><span class="lineNoCov">          0 : assertEquals(undefined, large_array[-1]);</span>
-<span class="lineNum">     372 </span><span class="lineNoCov">          0 : assertEquals(large_array_size+10002, large_array.length);</span>
-<span class="lineNum">     373 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     374 </span><span class="lineNoCov">          0 : // Test dictionary -&gt; double elements -&gt; fast elements.</span>
-<span class="lineNum">     375 </span><span class="lineNoCov">          0 : var large_array2 = new Array(large_array_size);</span>
-<span class="lineNum">     376 </span><span class="lineNoCov">          0 : force_to_fast_double_array(large_array2);</span>
-<span class="lineNum">     377 </span><span class="lineNoCov">          0 : delete large_array2[5];</span>
-<span class="lineNum">     378 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     379 </span><span class="lineNoCov">          0 : // Convert back to fast elements and make sure the contents of the array are</span>
-<span class="lineNum">     380 </span><span class="lineNoCov">          0 : // unchanged.</span>
-<span class="lineNum">     381 </span><span class="lineNoCov">          0 : large_array2[25] = new Object();</span>
-<span class="lineNum">     382 </span><span class="lineNoCov">          0 : assertTrue(%HasFastObjectElements(large_array2));</span>
-<span class="lineNum">     383 </span><span class="lineNoCov">          0 : for (var i= 0; i &lt; approx_dict_to_elements_threshold; i += 500 ) {</span>
-<span class="lineNum">     384 </span><span class="lineNoCov">          0 :   if (i != 25 &amp;&amp; i != 5) {</span>
-<span class="lineNum">     385 </span><span class="lineNoCov">          0 :     assertEquals(expected_array_value(i), large_array2[i]);</span>
-<span class="lineNum">     386 </span><span class="lineNoCov">          0 :   }</span>
-<span class="lineNum">     387 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">     388 </span><span class="lineNoCov">          0 : assertEquals(undefined, large_array2[5]);</span>
-<span class="lineNum">     389 </span><span class="lineNoCov">          0 : assertEquals(undefined, large_array2[large_array_size-1]);</span>
-<span class="lineNum">     390 </span><span class="lineNoCov">          0 : assertEquals(undefined, large_array2[-1]);</span>
-<span class="lineNum">     391 </span><span class="lineNoCov">          0 : assertEquals(large_array_size, large_array2.length);</span>
-<span class="lineNum">     392 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     393 </span><span class="lineNoCov">          0 : // Make sure it's possible to change the array's length and that array is still</span>
-<span class="lineNum">     394 </span><span class="lineNoCov">          0 : // intact after the resize.</span>
-<span class="lineNum">     395 </span><span class="lineNoCov">          0 : var large_array3 = new Array(large_array_size);</span>
-<span class="lineNum">     396 </span><span class="lineNoCov">          0 : force_to_fast_double_array(large_array3);</span>
-<span class="lineNum">     397 </span><span class="lineNoCov">          0 : large_array3.length = 60000;</span>
-<span class="lineNum">     398 </span><span class="lineNoCov">          0 : assertEquals(60000, large_array3.length);</span>
-<span class="lineNum">     399 </span><span class="lineNoCov">          0 : assertEquals(undefined, large_array3[60000]);</span>
-<span class="lineNum">     400 </span><span class="lineNoCov">          0 : assertTrue(%HasFastDoubleElements(large_array3));</span>
-<span class="lineNum">     401 </span><span class="lineNoCov">          0 : assertEquals(expected_array_value(5), large_array3[5]);</span>
-<span class="lineNum">     402 </span><span class="lineNoCov">          0 : assertEquals(expected_array_value(6), large_array3[6]);</span>
-<span class="lineNum">     403 </span><span class="lineNoCov">          0 : assertEquals(expected_array_value(7), large_array3[7]);</span>
-<span class="lineNum">     404 </span><span class="lineNoCov">          0 : assertEquals(expected_array_value(large_array3.length-1),</span>
-<span class="lineNum">     405 </span><span class="lineNoCov">          0 :              large_array3[large_array3.length-1]);</span>
-<span class="lineNum">     406 </span><span class="lineNoCov">          0 : assertEquals(undefined, large_array3[large_array_size-1]);</span>
-<span class="lineNum">     407 </span><span class="lineNoCov">          0 : assertEquals(undefined, large_array3[-1]);</span>
-<span class="lineNum">     408 </span><span class="lineNoCov">          0 : gc();</span>
-<span class="lineNum">     409 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     410 </span><span class="lineNoCov">          0 : for (var i= 0; i &lt; large_array3.length; i += 501 ) {</span>
-<span class="lineNum">     411 </span><span class="lineNoCov">          0 :   assertEquals(expected_array_value(i), large_array3[i]);</span>
-<span class="lineNum">     412 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">     413 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     414 </span><span class="lineNoCov">          0 : large_array3.length = 25;</span>
-<span class="lineNum">     415 </span><span class="lineNoCov">          0 : assertEquals(25, large_array3.length);</span>
-<span class="lineNum">     416 </span><span class="lineNoCov">          0 : assertTrue(%HasFastDoubleElements(large_array3));</span>
-<span class="lineNum">     417 </span><span class="lineNoCov">          0 : assertEquals(undefined, large_array3[25]);</span>
-<span class="lineNum">     418 </span><span class="lineNoCov">          0 : assertEquals(expected_array_value(5), large_array3[5]);</span>
-<span class="lineNum">     419 </span><span class="lineNoCov">          0 : assertEquals(expected_array_value(6), large_array3[6]);</span>
-<span class="lineNum">     420 </span><span class="lineNoCov">          0 : assertEquals(expected_array_value(7), large_array3[7]);</span>
-<span class="lineNum">     421 </span><span class="lineNoCov">          0 : assertEquals(expected_array_value(large_array3.length-1),</span>
-<span class="lineNum">     422 </span><span class="lineNoCov">          0 :              large_array3[large_array3.length-1]);</span>
-<span class="lineNum">     423 </span><span class="lineNoCov">          0 : assertEquals(undefined, large_array3[large_array_size-1]);</span>
-<span class="lineNum">     424 </span><span class="lineNoCov">          0 : assertEquals(undefined, large_array3[-1]);</span>
-<span class="lineNum">     425 </span><span class="lineNoCov">          0 : gc();</span>
-<span class="lineNum">     426 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     427 </span><span class="lineNoCov">          0 : for (var i= 0; i &lt; large_array3.length; ++i) {</span>
-<span class="lineNum">     428 </span><span class="lineNoCov">          0 :   assertEquals(expected_array_value(i), large_array3[i]);</span>
-<span class="lineNum">     429 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">     430 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     431 </span><span class="lineNoCov">          0 : large_array3.length = 100;</span>
-<span class="lineNum">     432 </span><span class="lineNoCov">          0 : assertEquals(100, large_array3.length);</span>
-<span class="lineNum">     433 </span><span class="lineNoCov">          0 : large_array3[95] = 95;</span>
-<span class="lineNum">     434 </span><span class="lineNoCov">          0 : assertTrue(%HasFastDoubleElements(large_array3));</span>
-<span class="lineNum">     435 </span><span class="lineNoCov">          0 : assertEquals(undefined, large_array3[100]);</span>
-<span class="lineNum">     436 </span><span class="lineNoCov">          0 : assertEquals(95, large_array3[95]);</span>
-<span class="lineNum">     437 </span><span class="lineNoCov">          0 : assertEquals(expected_array_value(5), large_array3[5]);</span>
-<span class="lineNum">     438 </span><span class="lineNoCov">          0 : assertEquals(expected_array_value(6), large_array3[6]);</span>
-<span class="lineNum">     439 </span><span class="lineNoCov">          0 : assertEquals(expected_array_value(7), large_array3[7]);</span>
-<span class="lineNum">     440 </span><span class="lineNoCov">          0 : assertEquals(undefined, large_array3[large_array3.length-1]);</span>
-<span class="lineNum">     441 </span><span class="lineNoCov">          0 : assertEquals(undefined, large_array3[large_array_size-1]);</span>
-<span class="lineNum">     442 </span><span class="lineNoCov">          0 : assertEquals(undefined, large_array3[-1]);</span>
-<span class="lineNum">     443 </span><span class="lineNoCov">          0 : gc();</span>
-<a name="444"><span class="lineNum">     444 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     445 </span><span class="lineNoCov">          0 : // Test apply on arrays backed by double elements.</span>
+<span class="lineNum">     156 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">     157 </span><span class="lineCov">          2 :   // Test double and integer values</span>
+<span class="lineNum">     158 </span><span class="lineCov">          2 :   test_various_loads(large_array,</span>
+<span class="lineNum">     159 </span><span class="lineCov">          2 :                      expected_array_value(5),</span>
+<span class="lineNum">     160 </span><span class="lineCov">          2 :                      expected_array_value(6),</span>
+<span class="lineNum">     161 </span><span class="lineCov">          2 :                      expected_array_value(7));</span>
+<span class="lineNum">     162 </span><span class="lineCov">          2 :   test_various_loads(large_array,</span>
+<span class="lineNum">     163 </span><span class="lineCov">          2 :                      expected_array_value(5),</span>
+<span class="lineNum">     164 </span><span class="lineCov">          2 :                      expected_array_value(6),</span>
+<span class="lineNum">     165 </span><span class="lineCov">          2 :                      expected_array_value(7));</span>
+<span class="lineNum">     166 </span><span class="lineCov">          2 :   test_various_loads(large_array,</span>
+<span class="lineNum">     167 </span><span class="lineCov">          2 :                      expected_array_value(5),</span>
+<span class="lineNum">     168 </span><span class="lineCov">          2 :                      expected_array_value(6),</span>
+<span class="lineNum">     169 </span><span class="lineCov">          2 :                      expected_array_value(7));</span>
+<span class="lineNum">     170 </span><span class="lineCov">          2 :   %OptimizeFunctionOnNextCall(test_various_loads);</span>
+<span class="lineNum">     171 </span><span class="lineCov">          2 :   test_various_loads(large_array,</span>
+<span class="lineNum">     172 </span><span class="lineCov">          2 :                      expected_array_value(5),</span>
+<span class="lineNum">     173 </span><span class="lineCov">          2 :                      expected_array_value(6),</span>
+<span class="lineNum">     174 </span><span class="lineCov">          2 :                      expected_array_value(7));</span>
+<span class="lineNum">     175 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">     176 </span><span class="lineCov">          2 :   // Test NaN values</span>
+<span class="lineNum">     177 </span><span class="lineCov">          2 :   test_various_stores(large_array, NaN, -NaN, expected_array_value(7));</span>
+<span class="lineNum">     178 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">     179 </span><span class="lineCov">          2 :   test_various_loads2(large_array,</span>
+<span class="lineNum">     180 </span><span class="lineCov">          2 :                       NaN,</span>
+<span class="lineNum">     181 </span><span class="lineCov">          2 :                       -NaN,</span>
+<span class="lineNum">     182 </span><span class="lineCov">          2 :                       expected_array_value(7));</span>
+<span class="lineNum">     183 </span><span class="lineCov">          2 :   test_various_loads2(large_array,</span>
+<span class="lineNum">     184 </span><span class="lineCov">          2 :                       NaN,</span>
+<span class="lineNum">     185 </span><span class="lineCov">          2 :                       -NaN,</span>
+<span class="lineNum">     186 </span><span class="lineCov">          2 :                       expected_array_value(7));</span>
+<span class="lineNum">     187 </span><span class="lineCov">          2 :   test_various_loads2(large_array,</span>
+<span class="lineNum">     188 </span><span class="lineCov">          2 :                       NaN,</span>
+<span class="lineNum">     189 </span><span class="lineCov">          2 :                       -NaN,</span>
+<span class="lineNum">     190 </span><span class="lineCov">          2 :                       expected_array_value(7));</span>
+<span class="lineNum">     191 </span><span class="lineCov">          2 :   %OptimizeFunctionOnNextCall(test_various_loads2);</span>
+<span class="lineNum">     192 </span><span class="lineCov">          2 :   test_various_loads2(large_array,</span>
+<span class="lineNum">     193 </span><span class="lineCov">          2 :                       NaN,</span>
+<span class="lineNum">     194 </span><span class="lineCov">          2 :                       -NaN,</span>
+<span class="lineNum">     195 </span><span class="lineCov">          2 :                       expected_array_value(7));</span>
+<span class="lineNum">     196 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">     197 </span><span class="lineCov">          2 :   // Test Infinity values</span>
+<span class="lineNum">     198 </span><span class="lineCov">          2 :   test_various_stores(large_array,</span>
+<span class="lineNum">     199 </span><span class="lineCov">          2 :                       Infinity,</span>
+<span class="lineNum">     200 </span><span class="lineCov">          2 :                       -Infinity,</span>
+<span class="lineNum">     201 </span><span class="lineCov">          2 :                       expected_array_value(7));</span>
+<span class="lineNum">     202 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">     203 </span><span class="lineCov">          2 :   test_various_loads3(large_array,</span>
+<span class="lineNum">     204 </span><span class="lineCov">          2 :                       Infinity,</span>
+<span class="lineNum">     205 </span><span class="lineCov">          2 :                       -Infinity,</span>
+<span class="lineNum">     206 </span><span class="lineCov">          2 :                       expected_array_value(7));</span>
+<span class="lineNum">     207 </span><span class="lineCov">          2 :   test_various_loads3(large_array,</span>
+<span class="lineNum">     208 </span><span class="lineCov">          2 :                       Infinity,</span>
+<span class="lineNum">     209 </span><span class="lineCov">          2 :                       -Infinity,</span>
+<span class="lineNum">     210 </span><span class="lineCov">          2 :                       expected_array_value(7));</span>
+<span class="lineNum">     211 </span><span class="lineCov">          2 :   test_various_loads3(large_array,</span>
+<span class="lineNum">     212 </span><span class="lineCov">          2 :                       Infinity,</span>
+<span class="lineNum">     213 </span><span class="lineCov">          2 :                       -Infinity,</span>
+<span class="lineNum">     214 </span><span class="lineCov">          2 :                       expected_array_value(7));</span>
+<span class="lineNum">     215 </span><span class="lineCov">          2 :   %OptimizeFunctionOnNextCall(test_various_loads3);</span>
+<span class="lineNum">     216 </span><span class="lineCov">          2 :   test_various_loads3(large_array,</span>
+<span class="lineNum">     217 </span><span class="lineCov">          2 :                       Infinity,</span>
+<span class="lineNum">     218 </span><span class="lineCov">          2 :                       -Infinity,</span>
+<span class="lineNum">     219 </span><span class="lineCov">          2 :                       expected_array_value(7));</span>
+<span class="lineNum">     220 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">     221 </span><span class="lineCov">          2 :   // Test the hole for the default runtime implementation.</span>
+<span class="lineNum">     222 </span><span class="lineCov">          2 :   delete large_array[5];</span>
+<span class="lineNum">     223 </span><span class="lineCov">          2 :   delete large_array[6];</span>
+<span class="lineNum">     224 </span><span class="lineCov">          2 :   test_various_loads4(large_array,</span>
+<span class="lineNum">     225 </span><span class="lineCov">          2 :                       undefined,</span>
+<span class="lineNum">     226 </span><span class="lineCov">          2 :                       undefined,</span>
+<span class="lineNum">     227 </span><span class="lineCov">          2 :                       expected_array_value(7));</span>
+<span class="lineNum">     228 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">     229 </span><span class="lineCov">          2 :   // Test the keyed load IC implementation when the value is the hole.</span>
+<span class="lineNum">     230 </span><span class="lineCov">          2 :   test_various_stores(large_array,</span>
+<span class="lineNum">     231 </span><span class="lineCov">          2 :                       expected_array_value(5),</span>
+<span class="lineNum">     232 </span><span class="lineCov">          2 :                       expected_array_value(6),</span>
+<span class="lineNum">     233 </span><span class="lineCov">          2 :                       expected_array_value(7));</span>
+<span class="lineNum">     234 </span><span class="lineCov">          2 :   test_various_loads5(large_array,</span>
+<span class="lineNum">     235 </span><span class="lineCov">          2 :                       expected_array_value(5),</span>
+<span class="lineNum">     236 </span><span class="lineCov">          2 :                       expected_array_value(6),</span>
+<span class="lineNum">     237 </span><span class="lineCov">          2 :                       expected_array_value(7));</span>
+<span class="lineNum">     238 </span><span class="lineCov">          2 :   test_various_loads5(large_array,</span>
+<span class="lineNum">     239 </span><span class="lineCov">          2 :                       expected_array_value(5),</span>
+<span class="lineNum">     240 </span><span class="lineCov">          2 :                       expected_array_value(6),</span>
+<span class="lineNum">     241 </span><span class="lineCov">          2 :                       expected_array_value(7));</span>
+<span class="lineNum">     242 </span><span class="lineCov">          2 :   delete large_array[5];</span>
+<span class="lineNum">     243 </span><span class="lineCov">          2 :   delete large_array[6];</span>
+<span class="lineNum">     244 </span><span class="lineCov">          2 :   test_various_loads5(large_array,</span>
+<span class="lineNum">     245 </span><span class="lineCov">          2 :                       undefined,</span>
+<span class="lineNum">     246 </span><span class="lineCov">          2 :                       undefined,</span>
+<span class="lineNum">     247 </span><span class="lineCov">          2 :                       expected_array_value(7));</span>
+<span class="lineNum">     248 </span><span class="lineCov">          2 :   test_various_loads5(large_array,</span>
+<span class="lineNum">     249 </span><span class="lineCov">          2 :                       undefined,</span>
+<span class="lineNum">     250 </span><span class="lineCov">          2 :                       undefined,</span>
+<span class="lineNum">     251 </span><span class="lineCov">          2 :                       expected_array_value(7));</span>
+<span class="lineNum">     252 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">     253 </span><span class="lineCov">          2 :   // Make sure Crankshaft code handles the hole correctly (bailout)</span>
+<span class="lineNum">     254 </span><span class="lineCov">          2 :   var large_array = new allocator(large_array_size);</span>
+<span class="lineNum">     255 </span><span class="lineCov">          2 :   force_to_fast_double_array(large_array);</span>
+<span class="lineNum">     256 </span><span class="lineCov">          2 :   test_various_stores(large_array,</span>
+<span class="lineNum">     257 </span><span class="lineCov">          2 :                       expected_array_value(5),</span>
+<span class="lineNum">     258 </span><span class="lineCov">          2 :                       expected_array_value(6),</span>
+<span class="lineNum">     259 </span><span class="lineCov">          2 :                       expected_array_value(7));</span>
+<span class="lineNum">     260 </span><span class="lineCov">          2 :   test_various_loads6(large_array,</span>
+<span class="lineNum">     261 </span><span class="lineCov">          2 :                       expected_array_value(5),</span>
+<span class="lineNum">     262 </span><span class="lineCov">          2 :                       expected_array_value(6),</span>
+<span class="lineNum">     263 </span><span class="lineCov">          2 :                       expected_array_value(7));</span>
+<span class="lineNum">     264 </span><span class="lineCov">          2 :   test_various_loads6(large_array,</span>
+<span class="lineNum">     265 </span><span class="lineCov">          2 :                       expected_array_value(5),</span>
+<span class="lineNum">     266 </span><span class="lineCov">          2 :                       expected_array_value(6),</span>
+<span class="lineNum">     267 </span><span class="lineCov">          2 :                       expected_array_value(7));</span>
+<span class="lineNum">     268 </span><span class="lineCov">          2 :   %OptimizeFunctionOnNextCall(test_various_loads6);</span>
+<span class="lineNum">     269 </span><span class="lineCov">          2 :   test_various_loads6(large_array,</span>
+<span class="lineNum">     270 </span><span class="lineCov">          2 :                       expected_array_value(5),</span>
+<span class="lineNum">     271 </span><span class="lineCov">          2 :                       expected_array_value(6),</span>
+<span class="lineNum">     272 </span><span class="lineCov">          2 :                       expected_array_value(7));</span>
+<span class="lineNum">     273 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">     274 </span><span class="lineCov">          2 :   delete large_array[5];</span>
+<span class="lineNum">     275 </span><span class="lineCov">          2 :   delete large_array[6];</span>
+<span class="lineNum">     276 </span><span class="lineCov">          2 :   test_various_loads6(large_array,</span>
+<span class="lineNum">     277 </span><span class="lineCov">          2 :                       undefined,</span>
+<span class="lineNum">     278 </span><span class="lineCov">          2 :                       undefined,</span>
+<span class="lineNum">     279 </span><span class="lineCov">          2 :                       expected_array_value(7));</span>
+<span class="lineNum">     280 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">     281 </span><span class="lineCov">          2 :   %DeoptimizeFunction(test_various_loads6);</span>
+<span class="lineNum">     282 </span><span class="lineCov">          2 :   %ClearFunctionFeedback(test_various_stores);</span>
+<span class="lineNum">     283 </span><span class="lineCov">          2 :   %ClearFunctionFeedback(test_various_loads7);</span>
+<span class="lineNum">     284 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">     285 </span><span class="lineCov">          2 :   // Test stores for non-NaN.</span>
+<span class="lineNum">     286 </span><span class="lineCov">          2 :   var large_array = new allocator(large_array_size);</span>
+<span class="lineNum">     287 </span><span class="lineCov">          2 :   force_to_fast_double_array(large_array);</span>
+<span class="lineNum">     288 </span><span class="lineCov">          2 :   %OptimizeFunctionOnNextCall(test_various_stores);</span>
+<span class="lineNum">     289 </span><span class="lineCov">          2 :   test_various_stores(large_array,</span>
+<span class="lineNum">     290 </span><span class="lineCov">          2 :                       expected_array_value(5),</span>
+<span class="lineNum">     291 </span><span class="lineCov">          2 :                       expected_array_value(6),</span>
+<span class="lineNum">     292 </span><span class="lineCov">          2 :                       expected_array_value(7));</span>
+<span class="lineNum">     293 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">     294 </span><span class="lineCov">          2 :   test_various_stores(large_array,</span>
+<span class="lineNum">     295 </span><span class="lineCov">          2 :                       expected_array_value(5),</span>
+<span class="lineNum">     296 </span><span class="lineCov">          2 :                       expected_array_value(6),</span>
+<span class="lineNum">     297 </span><span class="lineCov">          2 :                       expected_array_value(7));</span>
+<span class="lineNum">     298 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">     299 </span><span class="lineCov">          2 :   test_various_loads7(large_array,</span>
+<span class="lineNum">     300 </span><span class="lineCov">          2 :                       expected_array_value(5),</span>
+<span class="lineNum">     301 </span><span class="lineCov">          2 :                       expected_array_value(6),</span>
+<span class="lineNum">     302 </span><span class="lineCov">          2 :                       expected_array_value(7));</span>
+<span class="lineNum">     303 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">     304 </span><span class="lineCov">          2 :   test_various_loads7(large_array,</span>
+<span class="lineNum">     305 </span><span class="lineCov">          2 :                       expected_array_value(5),</span>
+<span class="lineNum">     306 </span><span class="lineCov">          2 :                       expected_array_value(6),</span>
+<span class="lineNum">     307 </span><span class="lineCov">          2 :                       expected_array_value(7));</span>
+<span class="lineNum">     308 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">     309 </span><span class="lineCov">          2 :   %OptimizeFunctionOnNextCall(test_various_loads7);</span>
+<span class="lineNum">     310 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">     311 </span><span class="lineCov">          2 :   test_various_loads7(large_array,</span>
+<span class="lineNum">     312 </span><span class="lineCov">          2 :                       expected_array_value(5),</span>
+<span class="lineNum">     313 </span><span class="lineCov">          2 :                       expected_array_value(6),</span>
+<span class="lineNum">     314 </span><span class="lineCov">          2 :                       expected_array_value(7));</span>
+<span class="lineNum">     315 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">     316 </span><span class="lineCov">          2 :   // Test NaN behavior for stores.</span>
+<span class="lineNum">     317 </span><span class="lineCov">          2 :   test_various_stores(large_array,</span>
+<span class="lineNum">     318 </span><span class="lineCov">          2 :                       NaN,</span>
+<span class="lineNum">     319 </span><span class="lineCov">          2 :                       -NaN,</span>
+<span class="lineNum">     320 </span><span class="lineCov">          2 :                       expected_array_value(7));</span>
+<span class="lineNum">     321 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">     322 </span><span class="lineCov">          2 :   test_various_stores(large_array,</span>
+<span class="lineNum">     323 </span><span class="lineCov">          2 :                       NaN,</span>
+<span class="lineNum">     324 </span><span class="lineCov">          2 :                       -NaN,</span>
+<span class="lineNum">     325 </span><span class="lineCov">          2 :                       expected_array_value(7));</span>
+<span class="lineNum">     326 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">     327 </span><span class="lineCov">          2 :   test_various_loads7(large_array,</span>
+<span class="lineNum">     328 </span><span class="lineCov">          2 :                       NaN,</span>
+<span class="lineNum">     329 </span><span class="lineCov">          2 :                       -NaN,</span>
+<span class="lineNum">     330 </span><span class="lineCov">          2 :                       expected_array_value(7));</span>
+<span class="lineNum">     331 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">     332 </span><span class="lineCov">          2 :   // Test Infinity behavior for stores.</span>
+<span class="lineNum">     333 </span><span class="lineCov">          2 :   test_various_stores(large_array,</span>
+<span class="lineNum">     334 </span><span class="lineCov">          2 :                       Infinity,</span>
+<span class="lineNum">     335 </span><span class="lineCov">          2 :                       -Infinity,</span>
+<span class="lineNum">     336 </span><span class="lineCov">          2 :                       expected_array_value(7));</span>
+<span class="lineNum">     337 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">     338 </span><span class="lineCov">          2 :   test_various_stores(large_array,</span>
+<span class="lineNum">     339 </span><span class="lineCov">          2 :                       Infinity,</span>
+<span class="lineNum">     340 </span><span class="lineCov">          2 :                       -Infinity,</span>
+<span class="lineNum">     341 </span><span class="lineCov">          2 :                       expected_array_value(7));</span>
+<span class="lineNum">     342 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">     343 </span><span class="lineCov">          2 :   test_various_loads7(large_array,</span>
+<span class="lineNum">     344 </span><span class="lineCov">          2 :                       Infinity,</span>
+<span class="lineNum">     345 </span><span class="lineCov">          2 :                       -Infinity,</span>
+<span class="lineNum">     346 </span><span class="lineCov">          2 :                       expected_array_value(7));</span>
+<span class="lineNum">     347 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">     348 </span><span class="lineCov">          2 :   // Make sure that we haven't converted from fast double.</span>
+<span class="lineNum">     349 </span><span class="lineCov">          2 :   assertTrue(%HasFastDoubleElements(large_array));</span>
+<span class="lineNum">     350 </span><span class="lineCov">          2 : }</span>
+<span class="lineNum">     351 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     352 </span><span class="lineCov">          1 : // Force gc here to start with a clean heap if we repeat this test multiple</span>
+<span class="lineNum">     353 </span><span class="lineCov">          1 : // times.</span>
+<span class="lineNum">     354 </span><span class="lineCov">          1 : gc();</span>
+<span class="lineNum">     355 </span><span class="lineCov">          1 : testOneArrayType(make_object_like_array);</span>
+<span class="lineNum">     356 </span><span class="lineCov">          1 : testOneArrayType(Array);</span>
+<span class="lineNum">     357 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     358 </span><span class="lineCov">          1 : var large_array = new Array(large_array_size);</span>
+<span class="lineNum">     359 </span><span class="lineCov">          1 : force_to_fast_double_array(large_array);</span>
+<span class="lineNum">     360 </span><span class="lineCov">          1 : assertTrue(%HasFastDoubleElements(large_array));</span>
+<span class="lineNum">     361 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     362 </span><span class="lineCov">          1 : // Cause the array to grow beyond it's JSArray length. This will double the</span>
+<span class="lineNum">     363 </span><span class="lineCov">          1 : // size of the capacity and force the array into &quot;slow&quot; dictionary case.</span>
+<span class="lineNum">     364 </span><span class="lineCov">          1 : large_array[5] = Infinity;</span>
+<span class="lineNum">     365 </span><span class="lineCov">          1 : large_array[large_array_size+10001] = 50;</span>
+<span class="lineNum">     366 </span><span class="lineCov">          1 : assertTrue(%HasDictionaryElements(large_array));</span>
+<span class="lineNum">     367 </span><span class="lineCov">          1 : assertEquals(50, large_array[large_array_size+10001]);</span>
+<span class="lineNum">     368 </span><span class="lineCov">          1 : assertEquals(large_array_size+10002, large_array.length);</span>
+<span class="lineNum">     369 </span><span class="lineCov">          1 : assertEquals(Infinity, large_array[5]);</span>
+<span class="lineNum">     370 </span><span class="lineCov">          1 : assertEquals(undefined, large_array[large_array_size-1]);</span>
+<span class="lineNum">     371 </span><span class="lineCov">          1 : assertEquals(undefined, large_array[-1]);</span>
+<span class="lineNum">     372 </span><span class="lineCov">          1 : assertEquals(large_array_size+10002, large_array.length);</span>
+<span class="lineNum">     373 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     374 </span><span class="lineCov">          1 : // Test dictionary -&gt; double elements -&gt; fast elements.</span>
+<span class="lineNum">     375 </span><span class="lineCov">          1 : var large_array2 = new Array(large_array_size);</span>
+<span class="lineNum">     376 </span><span class="lineCov">          1 : force_to_fast_double_array(large_array2);</span>
+<span class="lineNum">     377 </span><span class="lineCov">          1 : delete large_array2[5];</span>
+<span class="lineNum">     378 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     379 </span><span class="lineCov">          1 : // Convert back to fast elements and make sure the contents of the array are</span>
+<span class="lineNum">     380 </span><span class="lineCov">          1 : // unchanged.</span>
+<span class="lineNum">     381 </span><span class="lineCov">          1 : large_array2[25] = new Object();</span>
+<span class="lineNum">     382 </span><span class="lineCov">          1 : assertTrue(%HasFastObjectElements(large_array2));</span>
+<span class="lineNum">     383 </span><span class="lineCov">          1 : for (var i= 0; i &lt; approx_dict_to_elements_threshold; i += 500 ) {</span>
+<span class="lineNum">     384 </span><span class="lineCov">          1 :   if (i != 25 &amp;&amp; i != 5) {</span>
+<span class="lineNum">     385 </span><span class="lineCov">          1 :     assertEquals(expected_array_value(i), large_array2[i]);</span>
+<span class="lineNum">     386 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     387 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     388 </span><span class="lineCov">          1 : assertEquals(undefined, large_array2[5]);</span>
+<span class="lineNum">     389 </span><span class="lineCov">          1 : assertEquals(undefined, large_array2[large_array_size-1]);</span>
+<span class="lineNum">     390 </span><span class="lineCov">          1 : assertEquals(undefined, large_array2[-1]);</span>
+<span class="lineNum">     391 </span><span class="lineCov">          1 : assertEquals(large_array_size, large_array2.length);</span>
+<span class="lineNum">     392 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     393 </span><span class="lineCov">          1 : // Make sure it's possible to change the array's length and that array is still</span>
+<span class="lineNum">     394 </span><span class="lineCov">          1 : // intact after the resize.</span>
+<span class="lineNum">     395 </span><span class="lineCov">          1 : var large_array3 = new Array(large_array_size);</span>
+<span class="lineNum">     396 </span><span class="lineCov">          1 : force_to_fast_double_array(large_array3);</span>
+<span class="lineNum">     397 </span><span class="lineCov">          1 : large_array3.length = 60000;</span>
+<span class="lineNum">     398 </span><span class="lineCov">          1 : assertEquals(60000, large_array3.length);</span>
+<span class="lineNum">     399 </span><span class="lineCov">          1 : assertEquals(undefined, large_array3[60000]);</span>
+<span class="lineNum">     400 </span><span class="lineCov">          1 : assertTrue(%HasFastDoubleElements(large_array3));</span>
+<span class="lineNum">     401 </span><span class="lineCov">          1 : assertEquals(expected_array_value(5), large_array3[5]);</span>
+<span class="lineNum">     402 </span><span class="lineCov">          1 : assertEquals(expected_array_value(6), large_array3[6]);</span>
+<span class="lineNum">     403 </span><span class="lineCov">          1 : assertEquals(expected_array_value(7), large_array3[7]);</span>
+<span class="lineNum">     404 </span><span class="lineCov">          1 : assertEquals(expected_array_value(large_array3.length-1),</span>
+<span class="lineNum">     405 </span><span class="lineCov">          1 :              large_array3[large_array3.length-1]);</span>
+<span class="lineNum">     406 </span><span class="lineCov">          1 : assertEquals(undefined, large_array3[large_array_size-1]);</span>
+<span class="lineNum">     407 </span><span class="lineCov">          1 : assertEquals(undefined, large_array3[-1]);</span>
+<span class="lineNum">     408 </span><span class="lineCov">          1 : gc();</span>
+<span class="lineNum">     409 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     410 </span><span class="lineCov">          1 : for (var i= 0; i &lt; large_array3.length; i += 501 ) {</span>
+<span class="lineNum">     411 </span><span class="lineCov">          1 :   assertEquals(expected_array_value(i), large_array3[i]);</span>
+<span class="lineNum">     412 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     413 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     414 </span><span class="lineCov">          1 : large_array3.length = 25;</span>
+<span class="lineNum">     415 </span><span class="lineCov">          1 : assertEquals(25, large_array3.length);</span>
+<span class="lineNum">     416 </span><span class="lineCov">          1 : assertTrue(%HasFastDoubleElements(large_array3));</span>
+<span class="lineNum">     417 </span><span class="lineCov">          1 : assertEquals(undefined, large_array3[25]);</span>
+<span class="lineNum">     418 </span><span class="lineCov">          1 : assertEquals(expected_array_value(5), large_array3[5]);</span>
+<span class="lineNum">     419 </span><span class="lineCov">          1 : assertEquals(expected_array_value(6), large_array3[6]);</span>
+<span class="lineNum">     420 </span><span class="lineCov">          1 : assertEquals(expected_array_value(7), large_array3[7]);</span>
+<span class="lineNum">     421 </span><span class="lineCov">          1 : assertEquals(expected_array_value(large_array3.length-1),</span>
+<span class="lineNum">     422 </span><span class="lineCov">          1 :              large_array3[large_array3.length-1]);</span>
+<span class="lineNum">     423 </span><span class="lineCov">          1 : assertEquals(undefined, large_array3[large_array_size-1]);</span>
+<span class="lineNum">     424 </span><span class="lineCov">          1 : assertEquals(undefined, large_array3[-1]);</span>
+<span class="lineNum">     425 </span><span class="lineCov">          1 : gc();</span>
+<span class="lineNum">     426 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     427 </span><span class="lineCov">          1 : for (var i= 0; i &lt; large_array3.length; ++i) {</span>
+<span class="lineNum">     428 </span><span class="lineCov">          1 :   assertEquals(expected_array_value(i), large_array3[i]);</span>
+<span class="lineNum">     429 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     430 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     431 </span><span class="lineCov">          1 : large_array3.length = 100;</span>
+<span class="lineNum">     432 </span><span class="lineCov">          1 : assertEquals(100, large_array3.length);</span>
+<span class="lineNum">     433 </span><span class="lineCov">          1 : large_array3[95] = 95;</span>
+<span class="lineNum">     434 </span><span class="lineCov">          1 : assertTrue(%HasFastDoubleElements(large_array3));</span>
+<span class="lineNum">     435 </span><span class="lineCov">          1 : assertEquals(undefined, large_array3[100]);</span>
+<span class="lineNum">     436 </span><span class="lineCov">          1 : assertEquals(95, large_array3[95]);</span>
+<span class="lineNum">     437 </span><span class="lineCov">          1 : assertEquals(expected_array_value(5), large_array3[5]);</span>
+<span class="lineNum">     438 </span><span class="lineCov">          1 : assertEquals(expected_array_value(6), large_array3[6]);</span>
+<span class="lineNum">     439 </span><span class="lineCov">          1 : assertEquals(expected_array_value(7), large_array3[7]);</span>
+<span class="lineNum">     440 </span><span class="lineCov">          1 : assertEquals(undefined, large_array3[large_array3.length-1]);</span>
+<span class="lineNum">     441 </span><span class="lineCov">          1 : assertEquals(undefined, large_array3[large_array_size-1]);</span>
+<span class="lineNum">     442 </span><span class="lineCov">          1 : assertEquals(undefined, large_array3[-1]);</span>
+<span class="lineNum">     443 </span><span class="lineCov">          1 : gc();</span>
+<a name="444"><span class="lineNum">     444 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     445 </span><span class="lineCov">          1 : // Test apply on arrays backed by double elements.</span>
 <span class="lineNum">     446 </span><span class="lineCov">          6 : function called_by_apply(arg0, arg1, arg2, arg3, arg4, arg5, arg6) {</span>
 <span class="lineNum">     447 </span><span class="lineCov">          6 :   assertEquals(expected_array_value(0), arg0);</span>
 <span class="lineNum">     448 </span><span class="lineCov">          6 :   assertEquals(NaN, arg1);</span>
@@ -513,24 +513,24 @@
 <span class="lineNum">     451 </span><span class="lineCov">          6 :   assertEquals(-Infinity, arg4);</span>
 <span class="lineNum">     452 </span><span class="lineCov">          6 :   assertEquals(expected_array_value(5), arg5);</span>
 <span class="lineNum">     453 </span><span class="lineCov">          6 : }</span>
-<span class="lineNum">     454 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     455 </span><span class="lineNoCov">          0 : large_array3[1] = NaN;</span>
-<span class="lineNum">     456 </span><span class="lineNoCov">          0 : large_array3[2] = -NaN;</span>
-<span class="lineNum">     457 </span><span class="lineNoCov">          0 : large_array3[3] = Infinity;</span>
-<a name="458"><span class="lineNum">     458 </span><span class="lineNoCov">          0 : large_array3[4] = -Infinity;</span></a>
-<span class="lineNum">     459 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     454 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     455 </span><span class="lineCov">          1 : large_array3[1] = NaN;</span>
+<span class="lineNum">     456 </span><span class="lineCov">          1 : large_array3[2] = -NaN;</span>
+<span class="lineNum">     457 </span><span class="lineCov">          1 : large_array3[3] = Infinity;</span>
+<a name="458"><span class="lineNum">     458 </span><span class="lineCov">          1 : large_array3[4] = -Infinity;</span></a>
+<span class="lineNum">     459 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     460 </span><span class="lineCov">          6 : function call_apply() {</span>
 <span class="lineNum">     461 </span><span class="lineCov">          6 :   called_by_apply.apply({}, large_array3);</span>
 <span class="lineNum">     462 </span><span class="lineCov">          6 : }</span>
-<span class="lineNum">     463 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     464 </span><span class="lineNoCov">          0 : call_apply();</span>
-<span class="lineNum">     465 </span><span class="lineNoCov">          0 : call_apply();</span>
-<span class="lineNum">     466 </span><span class="lineNoCov">          0 : call_apply();</span>
-<span class="lineNum">     467 </span><span class="lineNoCov">          0 : %OptimizeFunctionOnNextCall(call_apply);</span>
-<span class="lineNum">     468 </span><span class="lineNoCov">          0 : call_apply();</span>
-<span class="lineNum">     469 </span><span class="lineNoCov">          0 : call_apply();</span>
-<a name="470"><span class="lineNum">     470 </span><span class="lineNoCov">          0 : call_apply();</span></a>
-<span class="lineNum">     471 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     463 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     464 </span><span class="lineCov">          1 : call_apply();</span>
+<span class="lineNum">     465 </span><span class="lineCov">          1 : call_apply();</span>
+<span class="lineNum">     466 </span><span class="lineCov">          1 : call_apply();</span>
+<span class="lineNum">     467 </span><span class="lineCov">          1 : %OptimizeFunctionOnNextCall(call_apply);</span>
+<span class="lineNum">     468 </span><span class="lineCov">          1 : call_apply();</span>
+<span class="lineNum">     469 </span><span class="lineCov">          1 : call_apply();</span>
+<a name="470"><span class="lineNum">     470 </span><span class="lineCov">          1 : call_apply();</span></a>
+<span class="lineNum">     471 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     472 </span><span class="lineCov">          6 : function test_for_in() {</span>
 <span class="lineNum">     473 </span><span class="lineCov">          6 :   // Due to previous tests, keys 0..25 and 95 should be present.</span>
 <span class="lineNum">     474 </span><span class="lineCov">          6 :   next_expected = 0;</span>
@@ -542,47 +542,47 @@
 <span class="lineNum">     480 </span><span class="lineCov">          6 :   }</span>
 <span class="lineNum">     481 </span><span class="lineCov">          6 :   assertTrue(next_expected == 96);</span>
 <span class="lineNum">     482 </span><span class="lineCov">          6 : }</span>
-<span class="lineNum">     483 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     484 </span><span class="lineNoCov">          0 : test_for_in();</span>
-<span class="lineNum">     485 </span><span class="lineNoCov">          0 : test_for_in();</span>
-<span class="lineNum">     486 </span><span class="lineNoCov">          0 : test_for_in();</span>
-<span class="lineNum">     487 </span><span class="lineNoCov">          0 : %OptimizeFunctionOnNextCall(test_for_in);</span>
-<span class="lineNum">     488 </span><span class="lineNoCov">          0 : test_for_in();</span>
-<span class="lineNum">     489 </span><span class="lineNoCov">          0 : test_for_in();</span>
-<span class="lineNum">     490 </span><span class="lineNoCov">          0 : test_for_in();</span>
-<span class="lineNum">     491 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     492 </span><span class="lineNoCov">          0 : // Test elements getters.</span>
-<span class="lineNum">     493 </span><span class="lineNoCov">          0 : assertEquals(expected_array_value(10), large_array3[10]);</span>
-<span class="lineNum">     494 </span><span class="lineNoCov">          0 : assertEquals(expected_array_value(-NaN), large_array3[2]);</span>
+<span class="lineNum">     483 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     484 </span><span class="lineCov">          1 : test_for_in();</span>
+<span class="lineNum">     485 </span><span class="lineCov">          1 : test_for_in();</span>
+<span class="lineNum">     486 </span><span class="lineCov">          1 : test_for_in();</span>
+<span class="lineNum">     487 </span><span class="lineCov">          1 : %OptimizeFunctionOnNextCall(test_for_in);</span>
+<span class="lineNum">     488 </span><span class="lineCov">          1 : test_for_in();</span>
+<span class="lineNum">     489 </span><span class="lineCov">          1 : test_for_in();</span>
+<span class="lineNum">     490 </span><span class="lineCov">          1 : test_for_in();</span>
+<span class="lineNum">     491 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     492 </span><span class="lineCov">          1 : // Test elements getters.</span>
+<span class="lineNum">     493 </span><span class="lineCov">          1 : assertEquals(expected_array_value(10), large_array3[10]);</span>
+<span class="lineNum">     494 </span><span class="lineCov">          1 : assertEquals(expected_array_value(-NaN), large_array3[2]);</span>
 <span class="lineNum">     495 </span><span class="lineCov">          6 : large_array3.__defineGetter__(&quot;2&quot;, function(){</span>
 <span class="lineNum">     496 </span><span class="lineCov">          6 :     return expected_array_value(10);</span>
 <a name="497"><span class="lineNum">     497 </span><span class="lineCov">          6 : });</span></a>
-<span class="lineNum">     498 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     498 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     499 </span><span class="lineCov">          6 : function test_getter() {</span>
 <span class="lineNum">     500 </span><span class="lineCov">          6 :   assertEquals(expected_array_value(10), large_array3[10]);</span>
 <span class="lineNum">     501 </span><span class="lineCov">          6 :   assertEquals(expected_array_value(10), large_array3[2]);</span>
 <span class="lineNum">     502 </span><span class="lineCov">          6 : }</span>
-<span class="lineNum">     503 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     504 </span><span class="lineNoCov">          0 : test_getter();</span>
-<span class="lineNum">     505 </span><span class="lineNoCov">          0 : test_getter();</span>
-<span class="lineNum">     506 </span><span class="lineNoCov">          0 : test_getter();</span>
-<span class="lineNum">     507 </span><span class="lineNoCov">          0 : %OptimizeFunctionOnNextCall(test_getter);</span>
-<span class="lineNum">     508 </span><span class="lineNoCov">          0 : test_getter();</span>
-<span class="lineNum">     509 </span><span class="lineNoCov">          0 : test_getter();</span>
-<span class="lineNum">     510 </span><span class="lineNoCov">          0 : test_getter();</span>
-<span class="lineNum">     511 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     512 </span><span class="lineNoCov">          0 : // Test element setters.</span>
-<span class="lineNum">     513 </span><span class="lineNoCov">          0 : large_array4 = new Array(large_array_size);</span>
-<span class="lineNum">     514 </span><span class="lineNoCov">          0 : force_to_fast_double_array(large_array4);</span>
-<span class="lineNum">     515 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     516 </span><span class="lineNoCov">          0 : var setter_called = false;</span>
-<span class="lineNum">     517 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     518 </span><span class="lineNoCov">          0 : assertEquals(expected_array_value(10), large_array4[10]);</span>
-<span class="lineNum">     519 </span><span class="lineNoCov">          0 : assertEquals(expected_array_value(2), large_array4[2]);</span>
+<span class="lineNum">     503 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     504 </span><span class="lineCov">          1 : test_getter();</span>
+<span class="lineNum">     505 </span><span class="lineCov">          1 : test_getter();</span>
+<span class="lineNum">     506 </span><span class="lineCov">          1 : test_getter();</span>
+<span class="lineNum">     507 </span><span class="lineCov">          1 : %OptimizeFunctionOnNextCall(test_getter);</span>
+<span class="lineNum">     508 </span><span class="lineCov">          1 : test_getter();</span>
+<span class="lineNum">     509 </span><span class="lineCov">          1 : test_getter();</span>
+<span class="lineNum">     510 </span><span class="lineCov">          1 : test_getter();</span>
+<span class="lineNum">     511 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     512 </span><span class="lineCov">          1 : // Test element setters.</span>
+<span class="lineNum">     513 </span><span class="lineCov">          1 : large_array4 = new Array(large_array_size);</span>
+<span class="lineNum">     514 </span><span class="lineCov">          1 : force_to_fast_double_array(large_array4);</span>
+<span class="lineNum">     515 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     516 </span><span class="lineCov">          1 : var setter_called = false;</span>
+<span class="lineNum">     517 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     518 </span><span class="lineCov">          1 : assertEquals(expected_array_value(10), large_array4[10]);</span>
+<span class="lineNum">     519 </span><span class="lineCov">          1 : assertEquals(expected_array_value(2), large_array4[2]);</span>
 <span class="lineNum">     520 </span><span class="lineCov">          6 : large_array4.__defineSetter__(&quot;10&quot;, function(value){</span>
 <span class="lineNum">     521 </span><span class="lineCov">          6 :     setter_called = true;</span>
 <a name="522"><span class="lineNum">     522 </span><span class="lineCov">          6 :   });</span></a>
-<span class="lineNum">     523 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     523 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     524 </span><span class="lineCov">          6 : function test_setter() {</span>
 <span class="lineNum">     525 </span><span class="lineCov">          6 :   setter_called = false;</span>
 <span class="lineNum">     526 </span><span class="lineCov">          6 :   large_array4[10] = 119;</span>
@@ -590,14 +590,14 @@
 <span class="lineNum">     528 </span><span class="lineCov">          6 :   assertEquals(undefined, large_array4[10]);</span>
 <span class="lineNum">     529 </span><span class="lineCov">          6 :   assertEquals(expected_array_value(2), large_array4[2]);</span>
 <span class="lineNum">     530 </span><span class="lineCov">          6 : }</span>
-<span class="lineNum">     531 </span>            : 
-<span class="lineNum">     532 </span>            : test_setter();
-<span class="lineNum">     533 </span>            : test_setter();
-<span class="lineNum">     534 </span>            : test_setter();
-<span class="lineNum">     535 </span>            : %OptimizeFunctionOnNextCall(test_setter);
-<span class="lineNum">     536 </span>            : test_setter();
-<span class="lineNum">     537 </span>            : test_setter();
-<span class="lineNum">     538 </span>            : test_setter();
+<span class="lineNum">     531 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     532 </span><span class="lineCov">          1 : test_setter();</span>
+<span class="lineNum">     533 </span><span class="lineCov">          1 : test_setter();</span>
+<span class="lineNum">     534 </span><span class="lineCov">          1 : test_setter();</span>
+<span class="lineNum">     535 </span><span class="lineCov">          1 : %OptimizeFunctionOnNextCall(test_setter);</span>
+<span class="lineNum">     536 </span><span class="lineCov">          1 : test_setter();</span>
+<span class="lineNum">     537 </span><span class="lineCov">          1 : test_setter();</span>
+<span class="lineNum">     538 </span><span class="lineCov">          1 : test_setter();</span>
 </pre>
       </td>
     </tr>

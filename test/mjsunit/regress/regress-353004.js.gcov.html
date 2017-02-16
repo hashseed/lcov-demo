@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">44</td>
-            <td class="headerCovTableEntry">74</td>
-            <td class="headerCovTableEntryLo">59.5 %</td>
+            <td class="headerCovTableEntry">77</td>
+            <td class="headerCovTableEntry">77</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">1</td>
@@ -72,70 +72,70 @@
 <span class="lineNum">      10 </span><span class="lineCov">          1 :   %ArrayBufferNeuter(buffer1);</span>
 <span class="lineNum">      11 </span><span class="lineCov">          1 :   return 0;</span>
 <span class="lineNum">      12 </span><span class="lineCov">          1 : }});</span>
-<span class="lineNum">      13 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      14 </span><span class="lineNoCov">          0 : assertEquals(0, array1.length);</span>
-<span class="lineNum">      15 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      16 </span><span class="lineNoCov">          0 : var buffer2 = new ArrayBuffer(100 * 1024);</span>
-<span class="lineNum">      17 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      13 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      14 </span><span class="lineCov">          1 : assertEquals(0, array1.length);</span>
+<span class="lineNum">      15 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      16 </span><span class="lineCov">          1 : var buffer2 = new ArrayBuffer(100 * 1024);</span>
+<span class="lineNum">      17 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      18 </span><span class="lineCov">          1 : assertThrows(function() {</span>
 <span class="lineNum">      19 </span><span class="lineCov">          1 :   var array2 = new Uint8Array(buffer2, 0, {valueOf : function() {</span>
 <span class="lineNum">      20 </span><span class="lineCov">          1 :       %ArrayBufferNeuter(buffer2);</span>
 <span class="lineNum">      21 </span><span class="lineCov">          1 :       return 100 * 1024;</span>
 <span class="lineNum">      22 </span><span class="lineCov">          1 :   }});</span>
-<span class="lineNum">      23 </span><span class="lineNoCov">          0 : }, RangeError);</span>
-<span class="lineNum">      24 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      25 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      26 </span><span class="lineNoCov">          0 : var buffer3 = new ArrayBuffer(100 * 1024 * 1024);</span>
+<span class="lineNum">      23 </span><span class="lineCov">          1 : }, RangeError);</span>
+<span class="lineNum">      24 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      25 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      26 </span><span class="lineCov">          1 : var buffer3 = new ArrayBuffer(100 * 1024 * 1024);</span>
 <span class="lineNum">      27 </span><span class="lineCov">          1 : var dataView1 = new DataView(buffer3, {valueOf : function() {</span>
 <span class="lineNum">      28 </span><span class="lineCov">          1 :   %ArrayBufferNeuter(buffer3);</span>
 <span class="lineNum">      29 </span><span class="lineCov">          1 :   return 0;</span>
 <span class="lineNum">      30 </span><span class="lineCov">          1 : }});</span>
-<span class="lineNum">      31 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      32 </span><span class="lineNoCov">          0 : assertEquals(0, dataView1.byteLength);</span>
-<span class="lineNum">      33 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      34 </span><span class="lineNoCov">          0 : var buffer4 = new ArrayBuffer(100 * 1024);</span>
+<span class="lineNum">      31 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      32 </span><span class="lineCov">          1 : assertEquals(0, dataView1.byteLength);</span>
+<span class="lineNum">      33 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      34 </span><span class="lineCov">          1 : var buffer4 = new ArrayBuffer(100 * 1024);</span>
 <span class="lineNum">      35 </span><span class="lineCov">          1 : assertThrows(function() {</span>
 <span class="lineNum">      36 </span><span class="lineCov">          1 :   var dataView2 = new DataView(buffer4, 0, {valueOf : function() {</span>
 <span class="lineNum">      37 </span><span class="lineCov">          1 :     %ArrayBufferNeuter(buffer4);</span>
 <span class="lineNum">      38 </span><span class="lineCov">          1 :     return 100 * 1024 * 1024;</span>
 <span class="lineNum">      39 </span><span class="lineCov">          1 :   }});</span>
-<span class="lineNum">      40 </span><span class="lineNoCov">          0 : }, RangeError);</span>
-<span class="lineNum">      41 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      42 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      43 </span><span class="lineNoCov">          0 : var buffer5 = new ArrayBuffer(100 * 1024);</span>
+<span class="lineNum">      40 </span><span class="lineCov">          1 : }, RangeError);</span>
+<span class="lineNum">      41 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      42 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      43 </span><span class="lineCov">          1 : var buffer5 = new ArrayBuffer(100 * 1024);</span>
 <span class="lineNum">      44 </span><span class="lineCov">          1 : assertThrows(function() {</span>
 <span class="lineNum">      45 </span><span class="lineCov">          1 :   buffer5.slice({valueOf : function() {</span>
 <span class="lineNum">      46 </span><span class="lineCov">          1 :     %ArrayBufferNeuter(buffer5);</span>
 <span class="lineNum">      47 </span><span class="lineCov">          1 :     return 0;</span>
 <span class="lineNum">      48 </span><span class="lineCov">          1 :   }}, 100 * 1024 * 1024);</span>
-<span class="lineNum">      49 </span><span class="lineNoCov">          0 : }, TypeError);</span>
-<span class="lineNum">      50 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      51 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      52 </span><span class="lineNoCov">          0 : var buffer7 = new ArrayBuffer(100 * 1024 * 1024);</span>
+<span class="lineNum">      49 </span><span class="lineCov">          1 : }, TypeError);</span>
+<span class="lineNum">      50 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      51 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      52 </span><span class="lineCov">          1 : var buffer7 = new ArrayBuffer(100 * 1024 * 1024);</span>
 <span class="lineNum">      53 </span><span class="lineCov">          1 : assertThrows(function() {</span>
 <span class="lineNum">      54 </span><span class="lineCov">          1 :   buffer7.slice(0, {valueOf : function() {</span>
 <span class="lineNum">      55 </span><span class="lineCov">          1 :     %ArrayBufferNeuter(buffer7);</span>
 <span class="lineNum">      56 </span><span class="lineCov">          1 :     return 100 * 1024 * 1024;</span>
 <span class="lineNum">      57 </span><span class="lineCov">          1 :   }});</span>
-<span class="lineNum">      58 </span><span class="lineNoCov">          0 : }, TypeError);</span>
-<span class="lineNum">      59 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      60 </span><span class="lineNoCov">          0 : var buffer9 = new ArrayBuffer(1024);</span>
-<span class="lineNum">      61 </span><span class="lineNoCov">          0 : var array9 = new Uint8Array(buffer9);</span>
+<span class="lineNum">      58 </span><span class="lineCov">          1 : }, TypeError);</span>
+<span class="lineNum">      59 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      60 </span><span class="lineCov">          1 : var buffer9 = new ArrayBuffer(1024);</span>
+<span class="lineNum">      61 </span><span class="lineCov">          1 : var array9 = new Uint8Array(buffer9);</span>
 <span class="lineNum">      62 </span><span class="lineCov">          1 : var array10 = array9.subarray({valueOf : function() {</span>
 <span class="lineNum">      63 </span><span class="lineCov">          1 :     %ArrayBufferNeuter(buffer9);</span>
 <span class="lineNum">      64 </span><span class="lineCov">          1 :     return 0;</span>
 <span class="lineNum">      65 </span><span class="lineCov">          1 :   }}, 1024);</span>
-<span class="lineNum">      66 </span><span class="lineNoCov">          0 : assertEquals(0, array9.length);</span>
-<span class="lineNum">      67 </span><span class="lineNoCov">          0 : assertEquals(0, array10.length);</span>
-<span class="lineNum">      68 </span><span class="lineNoCov">          0 : </span>
-<a name="69"><span class="lineNum">      69 </span><span class="lineNoCov">          0 : var buffer11 = new ArrayBuffer(1024);</span></a>
-<span class="lineNum">      70 </span><span class="lineNoCov">          0 : var array11 = new Uint8Array(buffer11);</span>
+<span class="lineNum">      66 </span><span class="lineCov">          1 : assertEquals(0, array9.length);</span>
+<span class="lineNum">      67 </span><span class="lineCov">          1 : assertEquals(0, array10.length);</span>
+<span class="lineNum">      68 </span><span class="lineCov">          1 : </span>
+<a name="69"><span class="lineNum">      69 </span><span class="lineCov">          1 : var buffer11 = new ArrayBuffer(1024);</span></a>
+<span class="lineNum">      70 </span><span class="lineCov">          1 : var array11 = new Uint8Array(buffer11);</span>
 <span class="lineNum">      71 </span><span class="lineCov">          1 : var array12 = array11.subarray(0, {valueOf : function() {</span>
 <span class="lineNum">      72 </span><span class="lineCov">          1 :       %ArrayBufferNeuter(buffer11);</span>
 <span class="lineNum">      73 </span><span class="lineCov">          1 :       return 1024;</span>
 <span class="lineNum">      74 </span><span class="lineCov">          1 :     }});</span>
-<span class="lineNum">      75 </span>            : assertEquals(0, array11.length);
-<span class="lineNum">      76 </span>            : assertEquals(0, array12.length);
+<span class="lineNum">      75 </span><span class="lineCov">          1 : assertEquals(0, array11.length);</span>
+<span class="lineNum">      76 </span><span class="lineCov">          1 : assertEquals(0, array12.length);</span>
 </pre>
       </td>
     </tr>

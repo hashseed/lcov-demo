@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">51</td>
-            <td class="headerCovTableEntry">59</td>
-            <td class="headerCovTableEntryMed">86.4 %</td>
+            <td class="headerCovTableEntry">77</td>
+            <td class="headerCovTableEntry">77</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">5</td>
@@ -98,44 +98,44 @@
 <span class="lineNum">      36 </span><span class="lineCov">         15 :     exec_state.prepareStep(Debug.StepAction.StepIn);</span>
 <span class="lineNum">      37 </span><span class="lineCov">         15 :   }</span>
 <span class="lineNum">      38 </span><span class="lineCov">         15 : };</span>
-<span class="lineNum">      39 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      40 </span><span class="lineNoCov">          0 : // Add the debug event listener.</span>
-<span class="lineNum">      41 </span><span class="lineNoCov">          0 : Debug.setListener(listener);</span>
-<a name="42"><span class="lineNum">      42 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">      43 </span><span class="lineNoCov">          0 : // Test debug event for constructor.</span>
+<span class="lineNum">      39 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      40 </span><span class="lineCov">          1 : // Add the debug event listener.</span>
+<span class="lineNum">      41 </span><span class="lineCov">          1 : Debug.setListener(listener);</span>
+<a name="42"><span class="lineNum">      42 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      43 </span><span class="lineCov">          1 : // Test debug event for constructor.</span>
 <span class="lineNum">      44 </span><span class="lineCov">          1 : function a() {</span>
 <span class="lineNum">      45 </span><span class="lineCov">          1 :   new c();</span>
 <a name="46"><span class="lineNum">      46 </span><span class="lineCov">          1 : }</span></a>
-<span class="lineNum">      47 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      47 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      48 </span><span class="lineCov">          1 : function b() {</span>
 <span class="lineNum">      49 </span><span class="lineCov">          1 :   x = 1;</span>
 <span class="lineNum">      50 </span><span class="lineCov">          1 :   new c();</span>
 <a name="51"><span class="lineNum">      51 </span><span class="lineCov">          1 : }</span></a>
-<span class="lineNum">      52 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      52 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      53 </span><span class="lineCov">          2 : function c() {</span>
 <span class="lineNum">      54 </span><span class="lineCov">          2 :   this.x = 1;</span>
 <span class="lineNum">      55 </span><span class="lineCov">          2 :   d();</span>
 <a name="56"><span class="lineNum">      56 </span><span class="lineCov">          2 : }</span></a>
-<span class="lineNum">      57 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      57 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      58 </span><span class="lineCov">          2 : function d() {</span>
 <span class="lineNum">      59 </span><span class="lineCov">          2 : }</span>
-<span class="lineNum">      60 </span>            : 
-<span class="lineNum">      61 </span>            : // Break point stops on &quot;new c()&quot; and steps into c.
-<span class="lineNum">      62 </span>            : Debug.setBreakPoint(a, 1);
-<span class="lineNum">      63 </span>            : call_graph = &quot;&quot;;
-<span class="lineNum">      64 </span>            : a();
-<span class="lineNum">      65 </span>            : Debug.clearStepping();  // Clear stepping as the listener leaves it on.
-<span class="lineNum">      66 </span>            : assertEquals(&quot;accdca&quot;, call_graph);
-<span class="lineNum">      67 </span>            : 
-<span class="lineNum">      68 </span>            : // Break point stops on &quot;x = 1&quot; and steps to &quot;new c()&quot; and then into c.
-<span class="lineNum">      69 </span>            : Debug.setBreakPoint(b, 1);
-<span class="lineNum">      70 </span>            : call_graph = &quot;&quot;;
-<span class="lineNum">      71 </span>            : b();
-<span class="lineNum">      72 </span>            : Debug.clearStepping();  // Clear stepping as the listener leaves it on.
-<span class="lineNum">      73 </span>            : assertEquals(&quot;bbccdcb&quot;, call_graph);
-<span class="lineNum">      74 </span>            : 
-<span class="lineNum">      75 </span>            : // Get rid of the debug event listener.
-<span class="lineNum">      76 </span>            : Debug.setListener(null);
+<span class="lineNum">      60 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      61 </span><span class="lineCov">          1 : // Break point stops on &quot;new c()&quot; and steps into c.</span>
+<span class="lineNum">      62 </span><span class="lineCov">          1 : Debug.setBreakPoint(a, 1);</span>
+<span class="lineNum">      63 </span><span class="lineCov">          1 : call_graph = &quot;&quot;;</span>
+<span class="lineNum">      64 </span><span class="lineCov">          1 : a();</span>
+<span class="lineNum">      65 </span><span class="lineCov">          1 : Debug.clearStepping();  // Clear stepping as the listener leaves it on.</span>
+<span class="lineNum">      66 </span><span class="lineCov">          1 : assertEquals(&quot;accdca&quot;, call_graph);</span>
+<span class="lineNum">      67 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      68 </span><span class="lineCov">          1 : // Break point stops on &quot;x = 1&quot; and steps to &quot;new c()&quot; and then into c.</span>
+<span class="lineNum">      69 </span><span class="lineCov">          1 : Debug.setBreakPoint(b, 1);</span>
+<span class="lineNum">      70 </span><span class="lineCov">          1 : call_graph = &quot;&quot;;</span>
+<span class="lineNum">      71 </span><span class="lineCov">          1 : b();</span>
+<span class="lineNum">      72 </span><span class="lineCov">          1 : Debug.clearStepping();  // Clear stepping as the listener leaves it on.</span>
+<span class="lineNum">      73 </span><span class="lineCov">          1 : assertEquals(&quot;bbccdcb&quot;, call_graph);</span>
+<span class="lineNum">      74 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      75 </span><span class="lineCov">          1 : // Get rid of the debug event listener.</span>
+<span class="lineNum">      76 </span><span class="lineCov">          1 : Debug.setListener(null);</span>
 </pre>
       </td>
     </tr>

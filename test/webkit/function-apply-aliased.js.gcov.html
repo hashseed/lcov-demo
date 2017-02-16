@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">40</td>
-            <td class="headerCovTableEntry">47</td>
-            <td class="headerCovTableEntryMed">85.1 %</td>
+            <td class="headerCovTableEntry">72</td>
+            <td class="headerCovTableEntry">73</td>
+            <td class="headerCovTableEntryHi">98.6 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">6</td>
@@ -95,43 +95,43 @@
 <span class="lineNum">      33 </span><span class="lineCov">          2 : var myFunctionWithApply = function (arg1) {</span>
 <span class="lineNum">      34 </span><span class="lineCov">          2 :     return [this, &quot;myFunctionWithApply&quot;, arg1];</span>
 <a name="35"><span class="lineNum">      35 </span><span class="lineCov">          2 : };</span></a>
-<a name="36"><span class="lineNum">      36 </span><span class="lineNoCov">          0 : </span></a>
+<a name="36"><span class="lineNum">      36 </span><span class="lineCov">          1 : </span></a>
 <span class="lineNum">      37 </span><span class="lineCov">          4 : function forwarder(f, thisValue, args) {</span>
 <span class="lineNum">      38 </span><span class="lineCov">          4 :     function g() {</span>
 <span class="lineNum">      39 </span><span class="lineCov">          4 :         return f.apply(thisValue, arguments);</span>
 <span class="lineNum">      40 </span><span class="lineCov">          4 :     }</span>
-<a name="41"><span class="lineNum">      41 </span><span class="lineNoCov">          0 :     return g.apply(null, args);</span></a>
-<span class="lineNum">      42 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">      43 </span><span class="lineNoCov">          0 : function recurseArguments() {</span>
+<a name="41"><span class="lineNum">      41 </span><span class="lineCov">          4 :     return g.apply(null, args);</span></a>
+<span class="lineNum">      42 </span><span class="lineCov">          4 : }</span>
+<span class="lineNum">      43 </span><span class="lineCov">          1 : function recurseArguments() {</span>
 <span class="lineNum">      44 </span><span class="lineNoCov">          0 :     recurseArguments.apply(null, arguments);</span>
-<a name="45"><span class="lineNum">      45 </span><span class="lineNoCov">          0 : }</span></a>
-<span class="lineNum">      46 </span><span class="lineNoCov">          0 : </span>
+<a name="45"><span class="lineNum">      45 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">      46 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      47 </span><span class="lineCov">          3 : myFunctionWithApply.apply = function (arg1) { return [this, &quot;myFunctionWithApply.apply&quot;, arg1] };</span>
-<span class="lineNum">      48 </span>            : Function.prototype.aliasedApply = Function.prototype.apply;
-<span class="lineNum">      49 </span>            : var arg1Array = ['arg1'];
-<span class="lineNum">      50 </span>            : 
-<span class="lineNum">      51 </span>            : shouldBe(&quot;myObject.apply()&quot;, '[myObject, &quot;myObject.apply&quot;]');
-<span class="lineNum">      52 </span>            : shouldBe(&quot;forwarder(myObject)&quot;, '[myObject, &quot;myObject.apply&quot;]');
-<span class="lineNum">      53 </span>            : shouldBe(&quot;myFunction('arg1')&quot;, '[this, &quot;myFunction&quot;, &quot;arg1&quot;]');
-<span class="lineNum">      54 </span>            : shouldBe(&quot;forwarder(myFunction, null, ['arg1'])&quot;, '[this, &quot;myFunction&quot;, &quot;arg1&quot;]');
-<span class="lineNum">      55 </span>            : shouldBe(&quot;myFunction.apply(myObject, ['arg1'])&quot;, '[myObject, &quot;myFunction&quot;, &quot;arg1&quot;]');
-<span class="lineNum">      56 </span>            : shouldBe(&quot;myFunction.apply(myObject, arg1Array)&quot;, '[myObject, &quot;myFunction&quot;, &quot;arg1&quot;]');
-<span class="lineNum">      57 </span>            : shouldBe(&quot;forwarder(myFunction, myObject, arg1Array)&quot;, '[myObject, &quot;myFunction&quot;, &quot;arg1&quot;]');
-<span class="lineNum">      58 </span>            : shouldBe(&quot;myFunction.apply()&quot;, '[this, &quot;myFunction&quot;, undefined]');
-<span class="lineNum">      59 </span>            : shouldBe(&quot;myFunction.apply(null)&quot;, '[this, &quot;myFunction&quot;, undefined]');
-<span class="lineNum">      60 </span>            : shouldBe(&quot;myFunction.apply(undefined)&quot;, '[this, &quot;myFunction&quot;, undefined]');
-<span class="lineNum">      61 </span>            : shouldBe(&quot;myFunction.aliasedApply(myObject, ['arg1'])&quot;, '[myObject, &quot;myFunction&quot;, &quot;arg1&quot;]');
-<span class="lineNum">      62 </span>            : shouldBe(&quot;myFunction.aliasedApply()&quot;, '[this, &quot;myFunction&quot;, undefined]');
-<span class="lineNum">      63 </span>            : shouldBe(&quot;myFunction.aliasedApply(null)&quot;, '[this, &quot;myFunction&quot;, undefined]');
-<span class="lineNum">      64 </span>            : shouldBe(&quot;myFunction.aliasedApply(undefined)&quot;, '[this, &quot;myFunction&quot;, undefined]');
-<span class="lineNum">      65 </span>            : shouldBe(&quot;myFunctionWithApply.apply(myObject, ['arg1'])&quot;, '[myFunctionWithApply, &quot;myFunctionWithApply.apply&quot;, myObject]');
-<span class="lineNum">      66 </span>            : shouldBe(&quot;myFunctionWithApply.aliasedApply(myObject, ['arg1'])&quot;, '[myObject, &quot;myFunctionWithApply&quot;, &quot;arg1&quot;]');
-<span class="lineNum">      67 </span>            : shouldBe(&quot;myFunctionWithApply.apply(myObject, arg1Array)&quot;, '[myFunctionWithApply, &quot;myFunctionWithApply.apply&quot;, myObject]');
-<span class="lineNum">      68 </span>            : shouldBe(&quot;forwarder(myFunctionWithApply, myObject, arg1Array)&quot;, '[myFunctionWithApply, &quot;myFunctionWithApply.apply&quot;, myObject]');
-<span class="lineNum">      69 </span>            : shouldBe(&quot;myFunctionWithApply.aliasedApply(myObject, arg1Array)&quot;, '[myObject, &quot;myFunctionWithApply&quot;, &quot;arg1&quot;]');
-<span class="lineNum">      70 </span>            : 
-<span class="lineNum">      71 </span>            : // Blow the stack recursing with arguments
-<span class="lineNum">      72 </span>            : shouldThrow(&quot;recurseArguments.apply(null, new Array(50000))&quot;);
+<span class="lineNum">      48 </span><span class="lineCov">          1 : Function.prototype.aliasedApply = Function.prototype.apply;</span>
+<span class="lineNum">      49 </span><span class="lineCov">          1 : var arg1Array = ['arg1'];</span>
+<span class="lineNum">      50 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      51 </span><span class="lineCov">          1 : shouldBe(&quot;myObject.apply()&quot;, '[myObject, &quot;myObject.apply&quot;]');</span>
+<span class="lineNum">      52 </span><span class="lineCov">          1 : shouldBe(&quot;forwarder(myObject)&quot;, '[myObject, &quot;myObject.apply&quot;]');</span>
+<span class="lineNum">      53 </span><span class="lineCov">          1 : shouldBe(&quot;myFunction('arg1')&quot;, '[this, &quot;myFunction&quot;, &quot;arg1&quot;]');</span>
+<span class="lineNum">      54 </span><span class="lineCov">          1 : shouldBe(&quot;forwarder(myFunction, null, ['arg1'])&quot;, '[this, &quot;myFunction&quot;, &quot;arg1&quot;]');</span>
+<span class="lineNum">      55 </span><span class="lineCov">          1 : shouldBe(&quot;myFunction.apply(myObject, ['arg1'])&quot;, '[myObject, &quot;myFunction&quot;, &quot;arg1&quot;]');</span>
+<span class="lineNum">      56 </span><span class="lineCov">          1 : shouldBe(&quot;myFunction.apply(myObject, arg1Array)&quot;, '[myObject, &quot;myFunction&quot;, &quot;arg1&quot;]');</span>
+<span class="lineNum">      57 </span><span class="lineCov">          1 : shouldBe(&quot;forwarder(myFunction, myObject, arg1Array)&quot;, '[myObject, &quot;myFunction&quot;, &quot;arg1&quot;]');</span>
+<span class="lineNum">      58 </span><span class="lineCov">          1 : shouldBe(&quot;myFunction.apply()&quot;, '[this, &quot;myFunction&quot;, undefined]');</span>
+<span class="lineNum">      59 </span><span class="lineCov">          1 : shouldBe(&quot;myFunction.apply(null)&quot;, '[this, &quot;myFunction&quot;, undefined]');</span>
+<span class="lineNum">      60 </span><span class="lineCov">          1 : shouldBe(&quot;myFunction.apply(undefined)&quot;, '[this, &quot;myFunction&quot;, undefined]');</span>
+<span class="lineNum">      61 </span><span class="lineCov">          1 : shouldBe(&quot;myFunction.aliasedApply(myObject, ['arg1'])&quot;, '[myObject, &quot;myFunction&quot;, &quot;arg1&quot;]');</span>
+<span class="lineNum">      62 </span><span class="lineCov">          1 : shouldBe(&quot;myFunction.aliasedApply()&quot;, '[this, &quot;myFunction&quot;, undefined]');</span>
+<span class="lineNum">      63 </span><span class="lineCov">          1 : shouldBe(&quot;myFunction.aliasedApply(null)&quot;, '[this, &quot;myFunction&quot;, undefined]');</span>
+<span class="lineNum">      64 </span><span class="lineCov">          1 : shouldBe(&quot;myFunction.aliasedApply(undefined)&quot;, '[this, &quot;myFunction&quot;, undefined]');</span>
+<span class="lineNum">      65 </span><span class="lineCov">          1 : shouldBe(&quot;myFunctionWithApply.apply(myObject, ['arg1'])&quot;, '[myFunctionWithApply, &quot;myFunctionWithApply.apply&quot;, myObject]');</span>
+<span class="lineNum">      66 </span><span class="lineCov">          1 : shouldBe(&quot;myFunctionWithApply.aliasedApply(myObject, ['arg1'])&quot;, '[myObject, &quot;myFunctionWithApply&quot;, &quot;arg1&quot;]');</span>
+<span class="lineNum">      67 </span><span class="lineCov">          1 : shouldBe(&quot;myFunctionWithApply.apply(myObject, arg1Array)&quot;, '[myFunctionWithApply, &quot;myFunctionWithApply.apply&quot;, myObject]');</span>
+<span class="lineNum">      68 </span><span class="lineCov">          1 : shouldBe(&quot;forwarder(myFunctionWithApply, myObject, arg1Array)&quot;, '[myFunctionWithApply, &quot;myFunctionWithApply.apply&quot;, myObject]');</span>
+<span class="lineNum">      69 </span><span class="lineCov">          1 : shouldBe(&quot;myFunctionWithApply.aliasedApply(myObject, arg1Array)&quot;, '[myObject, &quot;myFunctionWithApply&quot;, &quot;arg1&quot;]');</span>
+<span class="lineNum">      70 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      71 </span><span class="lineCov">          1 : // Blow the stack recursing with arguments</span>
+<span class="lineNum">      72 </span><span class="lineCov">          1 : shouldThrow(&quot;recurseArguments.apply(null, new Array(50000))&quot;);</span>
 </pre>
       </td>
     </tr>

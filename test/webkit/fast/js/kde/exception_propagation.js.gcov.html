@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">90</td>
-            <td class="headerCovTableEntry">275</td>
-            <td class="headerCovTableEntryLo">32.7 %</td>
+            <td class="headerCovTableEntry">425</td>
+            <td class="headerCovTableEntry">427</td>
+            <td class="headerCovTableEntryHi">99.5 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">16</td>
@@ -90,60 +90,60 @@
 <span class="lineNum">      28 </span><span class="lineCov">         57 : function throwex() {</span>
 <span class="lineNum">      29 </span><span class="lineCov">         57 :   throw new Error(&quot;test exception&quot;);</span>
 <span class="lineNum">      30 </span><span class="lineCov">         57 : }</span>
-<span class="lineNum">      31 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      32 </span><span class="lineNoCov">          0 : //---------------------------</span>
-<span class="lineNum">      33 </span><span class="lineNoCov">          0 : var func_ret_with_ex_func = 4;</span>
-<span class="lineNum">      34 </span><span class="lineNoCov">          0 : try {</span>
-<span class="lineNum">      35 </span><span class="lineNoCov">          0 :   func_ret_with_ex_func = throwex()();</span>
-<span class="lineNum">      36 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">      37 </span><span class="lineNoCov">          0 : catch (e) {</span>
-<span class="lineNum">      38 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">      39 </span><span class="lineNoCov">          0 : shouldBe(&quot;func_ret_with_ex_func&quot;, &quot;4&quot;);</span>
-<span class="lineNum">      40 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      41 </span><span class="lineNoCov">          0 : // ---------------------------------</span>
-<span class="lineNum">      42 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      43 </span><span class="lineNoCov">          0 : var func_ret_from_ex_throw_args = 4;</span>
-<span class="lineNum">      44 </span><span class="lineNoCov">          0 : try {</span>
-<span class="lineNum">      45 </span><span class="lineNoCov">          0 :   func_ret_from_ex_throw_args = Math.abs(throwex());</span>
-<span class="lineNum">      46 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">      47 </span><span class="lineNoCov">          0 : catch (e) {</span>
-<span class="lineNum">      48 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">      49 </span><span class="lineNoCov">          0 : shouldBe(&quot;func_ret_from_ex_throw_args&quot;, &quot;4&quot;);</span>
-<span class="lineNum">      50 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      51 </span><span class="lineNoCov">          0 : // ---------------------------------</span>
-<span class="lineNum">      52 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      53 </span><span class="lineNoCov">          0 : var set_from_throw_func_args = 4;</span>
-<span class="lineNum">      54 </span><span class="lineNoCov">          0 : try {</span>
-<span class="lineNum">      55 </span><span class="lineNoCov">          0 :   throwex()(set_from_throw_func_args = 1);</span>
-<span class="lineNum">      56 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">      57 </span><span class="lineNoCov">          0 : catch (e) {</span>
-<span class="lineNum">      58 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">      59 </span><span class="lineNoCov">          0 : shouldBe(&quot;set_from_throw_func_args&quot;,&quot;4&quot;);</span>
-<span class="lineNum">      60 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      61 </span><span class="lineNoCov">          0 : // ---------------------------------</span>
-<span class="lineNum">      62 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      63 </span><span class="lineNoCov">          0 : var set_from_func_throw_args = 4;</span>
-<span class="lineNum">      64 </span><span class="lineNoCov">          0 : try {</span>
-<span class="lineNum">      65 </span><span class="lineNoCov">          0 :   myfunc(throwex(), set_from_func_throw_args = 1);</span>
-<span class="lineNum">      66 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">      67 </span><span class="lineNoCov">          0 : catch (e) {</span>
-<span class="lineNum">      68 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">      69 </span><span class="lineNoCov">          0 : shouldBe(&quot;set_from_func_throw_args&quot;,&quot;4&quot;);</span>
-<span class="lineNum">      70 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      71 </span><span class="lineNoCov">          0 : // ---------------------------------</span>
-<span class="lineNum">      72 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      73 </span><span class="lineNoCov">          0 : var set_from_before_func_throw_args = 4;</span>
-<span class="lineNum">      74 </span><span class="lineNoCov">          0 : try {</span>
-<span class="lineNum">      75 </span><span class="lineNoCov">          0 :   myfunc(set_from_before_func_throw_args = 1, throwex());</span>
-<span class="lineNum">      76 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">      77 </span><span class="lineNoCov">          0 : catch (e) {</span>
-<span class="lineNum">      78 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">      79 </span><span class="lineNoCov">          0 : shouldBe(&quot;set_from_before_func_throw_args&quot;,&quot;1&quot;);</span>
-<span class="lineNum">      80 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      81 </span><span class="lineNoCov">          0 : // ---------------------------------</span>
-<span class="lineNum">      82 </span><span class="lineNoCov">          0 : </span>
-<a name="83"><span class="lineNum">      83 </span><span class="lineNoCov">          0 : // ### move to function.js</span></a>
-<span class="lineNum">      84 </span><span class="lineNoCov">          0 : var function_param_order = &quot;&quot;;</span>
+<span class="lineNum">      31 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      32 </span><span class="lineCov">          1 : //---------------------------</span>
+<span class="lineNum">      33 </span><span class="lineCov">          1 : var func_ret_with_ex_func = 4;</span>
+<span class="lineNum">      34 </span><span class="lineCov">          1 : try {</span>
+<span class="lineNum">      35 </span><span class="lineCov">          1 :   func_ret_with_ex_func = throwex()();</span>
+<span class="lineNum">      36 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      37 </span><span class="lineCov">          1 : catch (e) {</span>
+<span class="lineNum">      38 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      39 </span><span class="lineCov">          1 : shouldBe(&quot;func_ret_with_ex_func&quot;, &quot;4&quot;);</span>
+<span class="lineNum">      40 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      41 </span><span class="lineCov">          1 : // ---------------------------------</span>
+<span class="lineNum">      42 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      43 </span><span class="lineCov">          1 : var func_ret_from_ex_throw_args = 4;</span>
+<span class="lineNum">      44 </span><span class="lineCov">          1 : try {</span>
+<span class="lineNum">      45 </span><span class="lineCov">          1 :   func_ret_from_ex_throw_args = Math.abs(throwex());</span>
+<span class="lineNum">      46 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      47 </span><span class="lineCov">          1 : catch (e) {</span>
+<span class="lineNum">      48 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      49 </span><span class="lineCov">          1 : shouldBe(&quot;func_ret_from_ex_throw_args&quot;, &quot;4&quot;);</span>
+<span class="lineNum">      50 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      51 </span><span class="lineCov">          1 : // ---------------------------------</span>
+<span class="lineNum">      52 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      53 </span><span class="lineCov">          1 : var set_from_throw_func_args = 4;</span>
+<span class="lineNum">      54 </span><span class="lineCov">          1 : try {</span>
+<span class="lineNum">      55 </span><span class="lineCov">          1 :   throwex()(set_from_throw_func_args = 1);</span>
+<span class="lineNum">      56 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      57 </span><span class="lineCov">          1 : catch (e) {</span>
+<span class="lineNum">      58 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      59 </span><span class="lineCov">          1 : shouldBe(&quot;set_from_throw_func_args&quot;,&quot;4&quot;);</span>
+<span class="lineNum">      60 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      61 </span><span class="lineCov">          1 : // ---------------------------------</span>
+<span class="lineNum">      62 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      63 </span><span class="lineCov">          1 : var set_from_func_throw_args = 4;</span>
+<span class="lineNum">      64 </span><span class="lineCov">          1 : try {</span>
+<span class="lineNum">      65 </span><span class="lineCov">          1 :   myfunc(throwex(), set_from_func_throw_args = 1);</span>
+<span class="lineNum">      66 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      67 </span><span class="lineCov">          1 : catch (e) {</span>
+<span class="lineNum">      68 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      69 </span><span class="lineCov">          1 : shouldBe(&quot;set_from_func_throw_args&quot;,&quot;4&quot;);</span>
+<span class="lineNum">      70 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      71 </span><span class="lineCov">          1 : // ---------------------------------</span>
+<span class="lineNum">      72 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      73 </span><span class="lineCov">          1 : var set_from_before_func_throw_args = 4;</span>
+<span class="lineNum">      74 </span><span class="lineCov">          1 : try {</span>
+<span class="lineNum">      75 </span><span class="lineCov">          1 :   myfunc(set_from_before_func_throw_args = 1, throwex());</span>
+<span class="lineNum">      76 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      77 </span><span class="lineCov">          1 : catch (e) {</span>
+<span class="lineNum">      78 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      79 </span><span class="lineCov">          1 : shouldBe(&quot;set_from_before_func_throw_args&quot;,&quot;1&quot;);</span>
+<span class="lineNum">      80 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      81 </span><span class="lineCov">          1 : // ---------------------------------</span>
+<span class="lineNum">      82 </span><span class="lineCov">          1 : </span>
+<a name="83"><span class="lineNum">      83 </span><span class="lineCov">          1 : // ### move to function.js</span></a>
+<span class="lineNum">      84 </span><span class="lineCov">          1 : var function_param_order = &quot;&quot;;</span>
 <span class="lineNum">      85 </span><span class="lineCov">          1 : function aparam() {</span>
 <a name="86"><span class="lineNum">      86 </span><span class="lineCov">          1 :   function_param_order += &quot;a&quot;;</span></a>
 <span class="lineNum">      87 </span><span class="lineCov">          1 : }</span>
@@ -153,12 +153,12 @@
 <span class="lineNum">      91 </span><span class="lineCov">          1 : function cparam() {</span>
 <span class="lineNum">      92 </span><span class="lineCov">          1 :   function_param_order += &quot;c&quot;;</span>
 <span class="lineNum">      93 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">      94 </span><span class="lineNoCov">          0 : myfunc(aparam(),bparam(),cparam());</span>
-<span class="lineNum">      95 </span><span class="lineNoCov">          0 : shouldBe(&quot;function_param_order&quot;,&quot;'abc'&quot;);</span>
-<span class="lineNum">      96 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      97 </span><span class="lineNoCov">          0 : // ---------------------------------</span>
-<a name="98"><span class="lineNum">      98 </span><span class="lineNoCov">          0 : // ### move to function.js</span></a>
-<span class="lineNum">      99 </span><span class="lineNoCov">          0 : var new_param_order = &quot;&quot;;</span>
+<span class="lineNum">      94 </span><span class="lineCov">          1 : myfunc(aparam(),bparam(),cparam());</span>
+<span class="lineNum">      95 </span><span class="lineCov">          1 : shouldBe(&quot;function_param_order&quot;,&quot;'abc'&quot;);</span>
+<span class="lineNum">      96 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      97 </span><span class="lineCov">          1 : // ---------------------------------</span>
+<a name="98"><span class="lineNum">      98 </span><span class="lineCov">          1 : // ### move to function.js</span></a>
+<span class="lineNum">      99 </span><span class="lineCov">          1 : var new_param_order = &quot;&quot;;</span>
 <span class="lineNum">     100 </span><span class="lineCov">          1 : function anewparam() {</span>
 <a name="101"><span class="lineNum">     101 </span><span class="lineCov">          1 :   new_param_order += &quot;a&quot;;</span></a>
 <span class="lineNum">     102 </span><span class="lineCov">          1 : }</span>
@@ -168,12 +168,12 @@
 <span class="lineNum">     106 </span><span class="lineCov">          1 : function cnewparam() {</span>
 <span class="lineNum">     107 </span><span class="lineCov">          1 :   new_param_order += &quot;c&quot;;</span>
 <span class="lineNum">     108 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">     109 </span><span class="lineNoCov">          0 : new myfunc(anewparam(),bnewparam(),cnewparam());</span>
-<span class="lineNum">     110 </span><span class="lineNoCov">          0 : shouldBe(&quot;new_param_order&quot;,&quot;'abc'&quot;);</span>
-<span class="lineNum">     111 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     112 </span><span class="lineNoCov">          0 : // ---------------------------------</span>
-<a name="113"><span class="lineNum">     113 </span><span class="lineNoCov">          0 : // ### move to function.js</span></a>
-<span class="lineNum">     114 </span><span class="lineNoCov">          0 : var elision_param_order = &quot;&quot;;</span>
+<span class="lineNum">     109 </span><span class="lineCov">          1 : new myfunc(anewparam(),bnewparam(),cnewparam());</span>
+<span class="lineNum">     110 </span><span class="lineCov">          1 : shouldBe(&quot;new_param_order&quot;,&quot;'abc'&quot;);</span>
+<span class="lineNum">     111 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     112 </span><span class="lineCov">          1 : // ---------------------------------</span>
+<a name="113"><span class="lineNum">     113 </span><span class="lineCov">          1 : // ### move to function.js</span></a>
+<span class="lineNum">     114 </span><span class="lineCov">          1 : var elision_param_order = &quot;&quot;;</span>
 <span class="lineNum">     115 </span><span class="lineCov">          1 : function aelision() {</span>
 <a name="116"><span class="lineNum">     116 </span><span class="lineCov">          1 :   elision_param_order += &quot;a&quot;;</span></a>
 <span class="lineNum">     117 </span><span class="lineCov">          1 : }</span>
@@ -183,12 +183,12 @@
 <span class="lineNum">     121 </span><span class="lineCov">          1 : function celision() {</span>
 <span class="lineNum">     122 </span><span class="lineCov">          1 :   elision_param_order += &quot;c&quot;;</span>
 <span class="lineNum">     123 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">     124 </span><span class="lineNoCov">          0 : [aelision(),belision(),celision()];</span>
-<span class="lineNum">     125 </span><span class="lineNoCov">          0 : shouldBe(&quot;elision_param_order&quot;,&quot;'abc'&quot;);</span>
-<span class="lineNum">     126 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     127 </span><span class="lineNoCov">          0 : // ---------------------------------</span>
-<a name="128"><span class="lineNum">     128 </span><span class="lineNoCov">          0 : // ### move to function.js</span></a>
-<span class="lineNum">     129 </span><span class="lineNoCov">          0 : var comma_order = &quot;&quot;;</span>
+<span class="lineNum">     124 </span><span class="lineCov">          1 : [aelision(),belision(),celision()];</span>
+<span class="lineNum">     125 </span><span class="lineCov">          1 : shouldBe(&quot;elision_param_order&quot;,&quot;'abc'&quot;);</span>
+<span class="lineNum">     126 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     127 </span><span class="lineCov">          1 : // ---------------------------------</span>
+<a name="128"><span class="lineNum">     128 </span><span class="lineCov">          1 : // ### move to function.js</span></a>
+<span class="lineNum">     129 </span><span class="lineCov">          1 : var comma_order = &quot;&quot;;</span>
 <span class="lineNum">     130 </span><span class="lineCov">          1 : function acomma() {</span>
 <a name="131"><span class="lineNum">     131 </span><span class="lineCov">          1 :   comma_order += &quot;a&quot;;</span></a>
 <span class="lineNum">     132 </span><span class="lineCov">          1 : }</span>
@@ -198,11 +198,11 @@
 <span class="lineNum">     136 </span><span class="lineCov">          1 : function ccomma() {</span>
 <span class="lineNum">     137 </span><span class="lineCov">          1 :   comma_order += &quot;c&quot;;</span>
 <span class="lineNum">     138 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">     139 </span><span class="lineNoCov">          0 : acomma(),bcomma(),ccomma();</span>
-<span class="lineNum">     140 </span><span class="lineNoCov">          0 : shouldBe(&quot;comma_order&quot;,&quot;'abc'&quot;);</span>
-<span class="lineNum">     141 </span><span class="lineNoCov">          0 : </span>
-<a name="142"><span class="lineNum">     142 </span><span class="lineNoCov">          0 : // ---------------------------------</span></a>
-<span class="lineNum">     143 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     139 </span><span class="lineCov">          1 : acomma(),bcomma(),ccomma();</span>
+<span class="lineNum">     140 </span><span class="lineCov">          1 : shouldBe(&quot;comma_order&quot;,&quot;'abc'&quot;);</span>
+<span class="lineNum">     141 </span><span class="lineCov">          1 : </span>
+<a name="142"><span class="lineNum">     142 </span><span class="lineCov">          1 : // ---------------------------------</span></a>
+<span class="lineNum">     143 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     144 </span><span class="lineCov">         17 : function checkOperator(op,name) {</span>
 <span class="lineNum">     145 </span><span class="lineCov">         17 :   var code =(</span>
 <span class="lineNum">     146 </span><span class="lineCov">         17 :     &quot;global.&quot;+name+&quot;_part1 = 4;\n&quot;+</span>
@@ -223,269 +223,269 @@
 <span class="lineNum">     161 </span><span class="lineCov">         17 : //  print(code);</span>
 <span class="lineNum">     162 </span><span class="lineCov">         17 :   eval(code);</span>
 <span class="lineNum">     163 </span><span class="lineCov">         17 : }</span>
-<span class="lineNum">     164 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     165 </span><span class="lineNoCov">          0 : checkOperator(&quot;==&quot;,&quot;OpEqEq&quot;);</span>
-<span class="lineNum">     166 </span><span class="lineNoCov">          0 : checkOperator(&quot;!=&quot;,&quot;OpNotEq&quot;);</span>
-<span class="lineNum">     167 </span><span class="lineNoCov">          0 : checkOperator(&quot;===&quot;,&quot;OpStrEq&quot;);</span>
-<span class="lineNum">     168 </span><span class="lineNoCov">          0 : checkOperator(&quot;!==&quot;,&quot;OpStrNEq&quot;);</span>
-<span class="lineNum">     169 </span><span class="lineNoCov">          0 : // ### these generate a syntax error in mozilla - kjs should do the same (?)</span>
-<span class="lineNum">     170 </span><span class="lineNoCov">          0 : //checkOperator(&quot;+=&quot;,&quot;OpPlusEq&quot;);</span>
-<span class="lineNum">     171 </span><span class="lineNoCov">          0 : //checkOperator(&quot;-=&quot;,&quot;OpMinusEq&quot;);</span>
-<span class="lineNum">     172 </span><span class="lineNoCov">          0 : //checkOperator(&quot;*=&quot;,&quot;OpMultEq&quot;);</span>
-<span class="lineNum">     173 </span><span class="lineNoCov">          0 : //checkOperator(&quot;/=&quot;,&quot;OpDivEq&quot;);</span>
-<span class="lineNum">     174 </span><span class="lineNoCov">          0 : //                  OpPlusPlus,</span>
-<span class="lineNum">     175 </span><span class="lineNoCov">          0 : //                  OpMinusMinus,</span>
-<span class="lineNum">     176 </span><span class="lineNoCov">          0 : checkOperator(&quot;&lt;&quot;,&quot;OpLess&quot;);</span>
-<span class="lineNum">     177 </span><span class="lineNoCov">          0 : checkOperator(&quot;&lt;=&quot;,&quot;OpLessEq&quot;);</span>
-<span class="lineNum">     178 </span><span class="lineNoCov">          0 : checkOperator(&quot;&gt;&quot;,&quot;OpGreater&quot;);</span>
-<span class="lineNum">     179 </span><span class="lineNoCov">          0 : checkOperator(&quot;&gt;=&quot;,&quot;OpGreaterEq&quot;);</span>
-<span class="lineNum">     180 </span><span class="lineNoCov">          0 : //checkOperator(&quot;&amp;=&quot;,&quot;OpAndEq&quot;);</span>
-<span class="lineNum">     181 </span><span class="lineNoCov">          0 : //checkOperator(&quot;^=&quot;,&quot;OpXOrEq&quot;);</span>
-<span class="lineNum">     182 </span><span class="lineNoCov">          0 : //checkOperator(&quot;|=&quot;,&quot;OpOrEq&quot;);</span>
-<span class="lineNum">     183 </span><span class="lineNoCov">          0 : //checkOperator(&quot;%=&quot;,&quot;OpModEq&quot;);</span>
-<span class="lineNum">     184 </span><span class="lineNoCov">          0 : checkOperator(&quot;&amp;&amp;&quot;,&quot;OpAnd&quot;);</span>
-<span class="lineNum">     185 </span><span class="lineNoCov">          0 : checkOperator(&quot;||&quot;,&quot;OpOr&quot;);</span>
-<span class="lineNum">     186 </span><span class="lineNoCov">          0 : checkOperator(&quot;&amp;&quot;,&quot;OpBitAnd&quot;);</span>
-<span class="lineNum">     187 </span><span class="lineNoCov">          0 : checkOperator(&quot;^&quot;,&quot;OpBitXOr&quot;);</span>
-<span class="lineNum">     188 </span><span class="lineNoCov">          0 : checkOperator(&quot;|&quot;,&quot;OpBitOr&quot;);</span>
-<span class="lineNum">     189 </span><span class="lineNoCov">          0 : checkOperator(&quot;&lt;&lt;&quot;,&quot;OpLShift&quot;);</span>
-<span class="lineNum">     190 </span><span class="lineNoCov">          0 : checkOperator(&quot;&gt;&gt;&quot;,&quot;OpRShift&quot;);</span>
-<span class="lineNum">     191 </span><span class="lineNoCov">          0 : checkOperator(&quot;&gt;&gt;&gt;&quot;,&quot;OpURShift&quot;);</span>
-<span class="lineNum">     192 </span><span class="lineNoCov">          0 : //                  OpIn,</span>
-<span class="lineNum">     193 </span><span class="lineNoCov">          0 : checkOperator(&quot;instanceof&quot;,&quot;OpInstanceOf&quot;);</span>
-<span class="lineNum">     194 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     195 </span><span class="lineNoCov">          0 : // ---------------------------------</span>
-<span class="lineNum">     196 </span><span class="lineNoCov">          0 : var set_from_if_stmt = 4;</span>
-<span class="lineNum">     197 </span><span class="lineNoCov">          0 : try {</span>
-<span class="lineNum">     198 </span><span class="lineNoCov">          0 :   if (throwex()) {</span>
-<span class="lineNum">     199 </span><span class="lineNoCov">          0 :     set_from_if_stmt = 1;</span>
-<span class="lineNum">     200 </span><span class="lineNoCov">          0 :   }</span>
-<span class="lineNum">     201 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">     202 </span><span class="lineNoCov">          0 : catch (e) {</span>
-<span class="lineNum">     203 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">     204 </span><span class="lineNoCov">          0 : shouldBe(&quot;set_from_if_stmt&quot;,&quot;4&quot;);</span>
-<span class="lineNum">     205 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     206 </span><span class="lineNoCov">          0 : // ---------------------------------</span>
-<span class="lineNum">     207 </span><span class="lineNoCov">          0 : var set_from_if_else_stmt = 4;</span>
-<span class="lineNum">     208 </span><span class="lineNoCov">          0 : try {</span>
-<span class="lineNum">     209 </span><span class="lineNoCov">          0 :   if (throwex()) {</span>
-<span class="lineNum">     210 </span><span class="lineNoCov">          0 :     set_from_if_else_stmt = 1;</span>
-<span class="lineNum">     211 </span><span class="lineNoCov">          0 :   }</span>
-<span class="lineNum">     212 </span><span class="lineNoCov">          0 :   else {</span>
-<span class="lineNum">     213 </span><span class="lineNoCov">          0 :     undefined;</span>
-<span class="lineNum">     214 </span><span class="lineNoCov">          0 :   }</span>
-<span class="lineNum">     215 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">     216 </span><span class="lineNoCov">          0 : catch (e) {</span>
-<span class="lineNum">     217 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">     218 </span><span class="lineNoCov">          0 : shouldBe(&quot;set_from_if_else_stmt&quot;,&quot;4&quot;);</span>
-<span class="lineNum">     219 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     220 </span><span class="lineNoCov">          0 : // ---------------------------------</span>
-<span class="lineNum">     221 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     222 </span><span class="lineNoCov">          0 : var set_from_else_in_if_else_stmt = 4;</span>
-<span class="lineNum">     223 </span><span class="lineNoCov">          0 : try {</span>
-<span class="lineNum">     224 </span><span class="lineNoCov">          0 :   if (throwex()) {</span>
-<span class="lineNum">     225 </span><span class="lineNoCov">          0 :     undefined;</span>
-<span class="lineNum">     226 </span><span class="lineNoCov">          0 :   }</span>
-<span class="lineNum">     227 </span><span class="lineNoCov">          0 :   else {</span>
-<span class="lineNum">     228 </span><span class="lineNoCov">          0 :     set_from_else_in_if_else_stmt = 1;</span>
-<span class="lineNum">     229 </span><span class="lineNoCov">          0 :   }</span>
-<span class="lineNum">     230 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">     231 </span><span class="lineNoCov">          0 : catch (e) {</span>
-<span class="lineNum">     232 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">     233 </span><span class="lineNoCov">          0 : shouldBe(&quot;set_from_else_in_if_else_stmt&quot;,&quot;4&quot;);</span>
-<span class="lineNum">     234 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     235 </span><span class="lineNoCov">          0 : // ---------------------------------</span>
-<span class="lineNum">     236 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     237 </span><span class="lineNoCov">          0 : var comma_left = 4;</span>
-<span class="lineNum">     238 </span><span class="lineNoCov">          0 : try {</span>
-<span class="lineNum">     239 </span><span class="lineNoCov">          0 :   comma_left = 1, throwex();</span>
-<span class="lineNum">     240 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">     241 </span><span class="lineNoCov">          0 : catch (e) {</span>
-<span class="lineNum">     242 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">     243 </span><span class="lineNoCov">          0 : shouldBe(&quot;comma_left&quot;,&quot;1&quot;);</span>
-<span class="lineNum">     244 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     245 </span><span class="lineNoCov">          0 : // ---------------------------------</span>
-<span class="lineNum">     246 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     247 </span><span class="lineNoCov">          0 : var comma_left = 4;</span>
-<span class="lineNum">     248 </span><span class="lineNoCov">          0 : try {</span>
-<span class="lineNum">     249 </span><span class="lineNoCov">          0 :    throwex(), comma_left = 1;</span>
-<span class="lineNum">     250 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">     251 </span><span class="lineNoCov">          0 : catch (e) {</span>
-<span class="lineNum">     252 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">     253 </span><span class="lineNoCov">          0 : shouldBe(&quot;comma_left&quot;,&quot;4&quot;);</span>
-<span class="lineNum">     254 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     255 </span><span class="lineNoCov">          0 : var vardecl_assign_throws = 4;</span>
-<span class="lineNum">     256 </span><span class="lineNoCov">          0 : try {</span>
-<span class="lineNum">     257 </span><span class="lineNoCov">          0 :   var vardecl_assign_throws = throwex();</span>
-<span class="lineNum">     258 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">     259 </span><span class="lineNoCov">          0 : catch (e) {</span>
-<span class="lineNum">     260 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">     261 </span><span class="lineNoCov">          0 : shouldBe(&quot;vardecl_assign_throws&quot;,&quot;4&quot;);</span>
-<span class="lineNum">     262 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     263 </span><span class="lineNoCov">          0 : // ---------------------------------</span>
-<a name="264"><span class="lineNum">     264 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     265 </span><span class="lineNoCov">          0 : var var_assign_before_throw_run = false;</span>
+<span class="lineNum">     164 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     165 </span><span class="lineCov">          1 : checkOperator(&quot;==&quot;,&quot;OpEqEq&quot;);</span>
+<span class="lineNum">     166 </span><span class="lineCov">          1 : checkOperator(&quot;!=&quot;,&quot;OpNotEq&quot;);</span>
+<span class="lineNum">     167 </span><span class="lineCov">          1 : checkOperator(&quot;===&quot;,&quot;OpStrEq&quot;);</span>
+<span class="lineNum">     168 </span><span class="lineCov">          1 : checkOperator(&quot;!==&quot;,&quot;OpStrNEq&quot;);</span>
+<span class="lineNum">     169 </span><span class="lineCov">          1 : // ### these generate a syntax error in mozilla - kjs should do the same (?)</span>
+<span class="lineNum">     170 </span><span class="lineCov">          1 : //checkOperator(&quot;+=&quot;,&quot;OpPlusEq&quot;);</span>
+<span class="lineNum">     171 </span><span class="lineCov">          1 : //checkOperator(&quot;-=&quot;,&quot;OpMinusEq&quot;);</span>
+<span class="lineNum">     172 </span><span class="lineCov">          1 : //checkOperator(&quot;*=&quot;,&quot;OpMultEq&quot;);</span>
+<span class="lineNum">     173 </span><span class="lineCov">          1 : //checkOperator(&quot;/=&quot;,&quot;OpDivEq&quot;);</span>
+<span class="lineNum">     174 </span><span class="lineCov">          1 : //                  OpPlusPlus,</span>
+<span class="lineNum">     175 </span><span class="lineCov">          1 : //                  OpMinusMinus,</span>
+<span class="lineNum">     176 </span><span class="lineCov">          1 : checkOperator(&quot;&lt;&quot;,&quot;OpLess&quot;);</span>
+<span class="lineNum">     177 </span><span class="lineCov">          1 : checkOperator(&quot;&lt;=&quot;,&quot;OpLessEq&quot;);</span>
+<span class="lineNum">     178 </span><span class="lineCov">          1 : checkOperator(&quot;&gt;&quot;,&quot;OpGreater&quot;);</span>
+<span class="lineNum">     179 </span><span class="lineCov">          1 : checkOperator(&quot;&gt;=&quot;,&quot;OpGreaterEq&quot;);</span>
+<span class="lineNum">     180 </span><span class="lineCov">          1 : //checkOperator(&quot;&amp;=&quot;,&quot;OpAndEq&quot;);</span>
+<span class="lineNum">     181 </span><span class="lineCov">          1 : //checkOperator(&quot;^=&quot;,&quot;OpXOrEq&quot;);</span>
+<span class="lineNum">     182 </span><span class="lineCov">          1 : //checkOperator(&quot;|=&quot;,&quot;OpOrEq&quot;);</span>
+<span class="lineNum">     183 </span><span class="lineCov">          1 : //checkOperator(&quot;%=&quot;,&quot;OpModEq&quot;);</span>
+<span class="lineNum">     184 </span><span class="lineCov">          1 : checkOperator(&quot;&amp;&amp;&quot;,&quot;OpAnd&quot;);</span>
+<span class="lineNum">     185 </span><span class="lineCov">          1 : checkOperator(&quot;||&quot;,&quot;OpOr&quot;);</span>
+<span class="lineNum">     186 </span><span class="lineCov">          1 : checkOperator(&quot;&amp;&quot;,&quot;OpBitAnd&quot;);</span>
+<span class="lineNum">     187 </span><span class="lineCov">          1 : checkOperator(&quot;^&quot;,&quot;OpBitXOr&quot;);</span>
+<span class="lineNum">     188 </span><span class="lineCov">          1 : checkOperator(&quot;|&quot;,&quot;OpBitOr&quot;);</span>
+<span class="lineNum">     189 </span><span class="lineCov">          1 : checkOperator(&quot;&lt;&lt;&quot;,&quot;OpLShift&quot;);</span>
+<span class="lineNum">     190 </span><span class="lineCov">          1 : checkOperator(&quot;&gt;&gt;&quot;,&quot;OpRShift&quot;);</span>
+<span class="lineNum">     191 </span><span class="lineCov">          1 : checkOperator(&quot;&gt;&gt;&gt;&quot;,&quot;OpURShift&quot;);</span>
+<span class="lineNum">     192 </span><span class="lineCov">          1 : //                  OpIn,</span>
+<span class="lineNum">     193 </span><span class="lineCov">          1 : checkOperator(&quot;instanceof&quot;,&quot;OpInstanceOf&quot;);</span>
+<span class="lineNum">     194 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     195 </span><span class="lineCov">          1 : // ---------------------------------</span>
+<span class="lineNum">     196 </span><span class="lineCov">          1 : var set_from_if_stmt = 4;</span>
+<span class="lineNum">     197 </span><span class="lineCov">          1 : try {</span>
+<span class="lineNum">     198 </span><span class="lineCov">          1 :   if (throwex()) {</span>
+<span class="lineNum">     199 </span><span class="lineCov">          1 :     set_from_if_stmt = 1;</span>
+<span class="lineNum">     200 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     201 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     202 </span><span class="lineCov">          1 : catch (e) {</span>
+<span class="lineNum">     203 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     204 </span><span class="lineCov">          1 : shouldBe(&quot;set_from_if_stmt&quot;,&quot;4&quot;);</span>
+<span class="lineNum">     205 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     206 </span><span class="lineCov">          1 : // ---------------------------------</span>
+<span class="lineNum">     207 </span><span class="lineCov">          1 : var set_from_if_else_stmt = 4;</span>
+<span class="lineNum">     208 </span><span class="lineCov">          1 : try {</span>
+<span class="lineNum">     209 </span><span class="lineCov">          1 :   if (throwex()) {</span>
+<span class="lineNum">     210 </span><span class="lineCov">          1 :     set_from_if_else_stmt = 1;</span>
+<span class="lineNum">     211 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     212 </span><span class="lineCov">          1 :   else {</span>
+<span class="lineNum">     213 </span><span class="lineCov">          1 :     undefined;</span>
+<span class="lineNum">     214 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     215 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     216 </span><span class="lineCov">          1 : catch (e) {</span>
+<span class="lineNum">     217 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     218 </span><span class="lineCov">          1 : shouldBe(&quot;set_from_if_else_stmt&quot;,&quot;4&quot;);</span>
+<span class="lineNum">     219 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     220 </span><span class="lineCov">          1 : // ---------------------------------</span>
+<span class="lineNum">     221 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     222 </span><span class="lineCov">          1 : var set_from_else_in_if_else_stmt = 4;</span>
+<span class="lineNum">     223 </span><span class="lineCov">          1 : try {</span>
+<span class="lineNum">     224 </span><span class="lineCov">          1 :   if (throwex()) {</span>
+<span class="lineNum">     225 </span><span class="lineCov">          1 :     undefined;</span>
+<span class="lineNum">     226 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     227 </span><span class="lineCov">          1 :   else {</span>
+<span class="lineNum">     228 </span><span class="lineCov">          1 :     set_from_else_in_if_else_stmt = 1;</span>
+<span class="lineNum">     229 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     230 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     231 </span><span class="lineCov">          1 : catch (e) {</span>
+<span class="lineNum">     232 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     233 </span><span class="lineCov">          1 : shouldBe(&quot;set_from_else_in_if_else_stmt&quot;,&quot;4&quot;);</span>
+<span class="lineNum">     234 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     235 </span><span class="lineCov">          1 : // ---------------------------------</span>
+<span class="lineNum">     236 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     237 </span><span class="lineCov">          1 : var comma_left = 4;</span>
+<span class="lineNum">     238 </span><span class="lineCov">          1 : try {</span>
+<span class="lineNum">     239 </span><span class="lineCov">          1 :   comma_left = 1, throwex();</span>
+<span class="lineNum">     240 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     241 </span><span class="lineCov">          1 : catch (e) {</span>
+<span class="lineNum">     242 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     243 </span><span class="lineCov">          1 : shouldBe(&quot;comma_left&quot;,&quot;1&quot;);</span>
+<span class="lineNum">     244 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     245 </span><span class="lineCov">          1 : // ---------------------------------</span>
+<span class="lineNum">     246 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     247 </span><span class="lineCov">          1 : var comma_left = 4;</span>
+<span class="lineNum">     248 </span><span class="lineCov">          1 : try {</span>
+<span class="lineNum">     249 </span><span class="lineCov">          1 :    throwex(), comma_left = 1;</span>
+<span class="lineNum">     250 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     251 </span><span class="lineCov">          1 : catch (e) {</span>
+<span class="lineNum">     252 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     253 </span><span class="lineCov">          1 : shouldBe(&quot;comma_left&quot;,&quot;4&quot;);</span>
+<span class="lineNum">     254 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     255 </span><span class="lineCov">          1 : var vardecl_assign_throws = 4;</span>
+<span class="lineNum">     256 </span><span class="lineCov">          1 : try {</span>
+<span class="lineNum">     257 </span><span class="lineCov">          1 :   var vardecl_assign_throws = throwex();</span>
+<span class="lineNum">     258 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     259 </span><span class="lineCov">          1 : catch (e) {</span>
+<span class="lineNum">     260 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     261 </span><span class="lineCov">          1 : shouldBe(&quot;vardecl_assign_throws&quot;,&quot;4&quot;);</span>
+<span class="lineNum">     262 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     263 </span><span class="lineCov">          1 : // ---------------------------------</span>
+<a name="264"><span class="lineNum">     264 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     265 </span><span class="lineCov">          1 : var var_assign_before_throw_run = false;</span>
 <span class="lineNum">     266 </span><span class="lineCov">          1 : function var_assign_before_throw() {</span>
 <span class="lineNum">     267 </span><span class="lineCov">          1 :   var_assign_before_throw_run = true;</span>
 <span class="lineNum">     268 </span><span class="lineCov">          1 :   return 1;</span>
 <span class="lineNum">     269 </span><span class="lineCov">          1 : }</span>
-<a name="270"><span class="lineNum">     270 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     271 </span><span class="lineNoCov">          0 : var var_assign_after_throw_run = false;</span>
-<span class="lineNum">     272 </span><span class="lineNoCov">          0 : function var_assign_after_throw() {</span>
+<a name="270"><span class="lineNum">     270 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     271 </span><span class="lineCov">          1 : var var_assign_after_throw_run = false;</span>
+<span class="lineNum">     272 </span><span class="lineCov">          1 : function var_assign_after_throw() {</span>
 <span class="lineNum">     273 </span><span class="lineNoCov">          0 :   var_assign_after_throw_run = true;</span>
 <span class="lineNum">     274 </span><span class="lineNoCov">          0 :   return 1;</span>
-<span class="lineNum">     275 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">     276 </span>            : 
-<span class="lineNum">     277 </span>            : try {
-<span class="lineNum">     278 </span>            :   var var_assign1 = var_assign_before_throw(),
-<span class="lineNum">     279 </span>            :       var_assign2 = throwex(),
-<span class="lineNum">     280 </span>            :       var_assign1 = var_assign_before_throw();
-<span class="lineNum">     281 </span>            : }
-<span class="lineNum">     282 </span>            : catch (e) {
-<span class="lineNum">     283 </span>            : }
-<span class="lineNum">     284 </span>            : shouldBe(&quot;var_assign_before_throw_run&quot;,&quot;true&quot;);
-<span class="lineNum">     285 </span>            : shouldBe(&quot;var_assign_after_throw_run&quot;,&quot;false&quot;);
-<span class="lineNum">     286 </span>            : 
-<span class="lineNum">     287 </span>            : // ---------------------------------
-<span class="lineNum">     288 </span>            : 
-<span class="lineNum">     289 </span>            : var do_val = 4;
-<span class="lineNum">     290 </span>            : try {
-<span class="lineNum">     291 </span>            :   do {
-<span class="lineNum">     292 </span>            :     do_val++;
-<span class="lineNum">     293 </span>            :   }
-<span class="lineNum">     294 </span>            :   while (throwex());
-<span class="lineNum">     295 </span>            : }
-<span class="lineNum">     296 </span>            : catch (e) {
-<span class="lineNum">     297 </span>            : }
-<span class="lineNum">     298 </span>            : shouldBe(&quot;do_val&quot;,&quot;5&quot;);
-<span class="lineNum">     299 </span>            : 
-<span class="lineNum">     300 </span>            : // ---------------------------------
-<span class="lineNum">     301 </span>            : var while_val = 4;
-<span class="lineNum">     302 </span>            : try {
-<span class="lineNum">     303 </span>            :   while (throwex()) {
-<span class="lineNum">     304 </span>            :     while_val++;
-<span class="lineNum">     305 </span>            :   }
-<span class="lineNum">     306 </span>            : }
-<span class="lineNum">     307 </span>            : catch (e) {
-<span class="lineNum">     308 </span>            : }
-<span class="lineNum">     309 </span>            : shouldBe(&quot;while_val&quot;,&quot;4&quot;);
-<span class="lineNum">     310 </span>            : 
-<span class="lineNum">     311 </span>            : // ---------------------------------
-<span class="lineNum">     312 </span>            : var for_val_part1_throw2 = 4;
-<span class="lineNum">     313 </span>            : try {
-<span class="lineNum">     314 </span>            :   for (for_val_part1_throw2 = 1; throwex(); ) {
-<span class="lineNum">     315 </span>            :   }
-<span class="lineNum">     316 </span>            : }
-<span class="lineNum">     317 </span>            : catch (e) {
-<span class="lineNum">     318 </span>            : }
-<span class="lineNum">     319 </span>            : shouldBe(&quot;for_val_part1_throw2&quot;,&quot;1&quot;);
-<span class="lineNum">     320 </span>            : 
-<span class="lineNum">     321 </span>            : // ---------------------------------
-<span class="lineNum">     322 </span>            : var for_val_part1_throw3 = 4;
-<span class="lineNum">     323 </span>            : try {
-<span class="lineNum">     324 </span>            :   for (for_val_part1_throw3 = 1; ; throwex()) {
-<span class="lineNum">     325 </span>            :   }
-<span class="lineNum">     326 </span>            : }
-<span class="lineNum">     327 </span>            : catch (e) {
-<span class="lineNum">     328 </span>            : }
-<span class="lineNum">     329 </span>            : shouldBe(&quot;for_val_part1_throw3&quot;,&quot;1&quot;);
-<span class="lineNum">     330 </span>            : 
-<span class="lineNum">     331 </span>            : // ---------------------------------
-<span class="lineNum">     332 </span>            : var for_val_part2_throw1 = 4;
-<span class="lineNum">     333 </span>            : try {
-<span class="lineNum">     334 </span>            :   for (throwex(); for_val_part2_throw1 = 1; ) {
-<span class="lineNum">     335 </span>            :   }
-<span class="lineNum">     336 </span>            : }
-<span class="lineNum">     337 </span>            : catch (e) {
-<span class="lineNum">     338 </span>            : }
-<span class="lineNum">     339 </span>            : shouldBe(&quot;for_val_part2_throw1&quot;,&quot;4&quot;);
-<span class="lineNum">     340 </span>            : 
-<span class="lineNum">     341 </span>            : // ---------------------------------
-<span class="lineNum">     342 </span>            : var for_val_part2_throw3 = 4;
-<span class="lineNum">     343 </span>            : try {
-<span class="lineNum">     344 </span>            :   for (; for_val_part2_throw3 = 1; throwex()) {
-<span class="lineNum">     345 </span>            :   }
-<span class="lineNum">     346 </span>            : }
-<span class="lineNum">     347 </span>            : catch (e) {
-<span class="lineNum">     348 </span>            : }
-<span class="lineNum">     349 </span>            : shouldBe(&quot;for_val_part2_throw3&quot;,&quot;1&quot;);
-<span class="lineNum">     350 </span>            : 
-<span class="lineNum">     351 </span>            : // ---------------------------------
-<span class="lineNum">     352 </span>            : var for_val_part3_throw1 = 4;
-<span class="lineNum">     353 </span>            : try {
-<span class="lineNum">     354 </span>            :   for (throwex(); ; for_val_part3_throw1 = 1) {
-<span class="lineNum">     355 </span>            :   }
-<span class="lineNum">     356 </span>            : }
-<span class="lineNum">     357 </span>            : catch (e) {
-<span class="lineNum">     358 </span>            : }
-<span class="lineNum">     359 </span>            : shouldBe(&quot;for_val_part3_throw1&quot;,&quot;4&quot;);
-<span class="lineNum">     360 </span>            : 
-<span class="lineNum">     361 </span>            : // ---------------------------------
-<span class="lineNum">     362 </span>            : var for_val_part3_throw2 = 4;
-<span class="lineNum">     363 </span>            : try {
-<span class="lineNum">     364 </span>            :   for (; throwex(); for_val_part3_throw2 = 1) {
-<span class="lineNum">     365 </span>            :   }
-<span class="lineNum">     366 </span>            : }
-<span class="lineNum">     367 </span>            : catch (e) {
-<span class="lineNum">     368 </span>            : }
-<span class="lineNum">     369 </span>            : shouldBe(&quot;for_val_part3_throw2&quot;,&quot;4&quot;);
-<span class="lineNum">     370 </span>            : 
-<span class="lineNum">     371 </span>            : // ---------------------------------
-<span class="lineNum">     372 </span>            : var for_val_part1_throwbody = 4;
-<span class="lineNum">     373 </span>            : try {
-<span class="lineNum">     374 </span>            :   for (for_val_part1_throwbody = 1; ;) {
-<span class="lineNum">     375 </span>            :     throwex();
-<span class="lineNum">     376 </span>            :   }
-<span class="lineNum">     377 </span>            : }
-<span class="lineNum">     378 </span>            : catch (e) {
-<span class="lineNum">     379 </span>            : }
-<span class="lineNum">     380 </span>            : shouldBe(&quot;for_val_part1_throwbody&quot;,&quot;1&quot;);
-<span class="lineNum">     381 </span>            : 
-<span class="lineNum">     382 </span>            : // ---------------------------------
-<span class="lineNum">     383 </span>            : var for_val_part2_throwbody = 4;
-<span class="lineNum">     384 </span>            : try {
-<span class="lineNum">     385 </span>            :   for (; for_val_part2_throwbody = 1; ) {
-<span class="lineNum">     386 </span>            :     throwex();
-<span class="lineNum">     387 </span>            :   }
-<span class="lineNum">     388 </span>            : }
-<span class="lineNum">     389 </span>            : catch (e) {
-<span class="lineNum">     390 </span>            : }
-<span class="lineNum">     391 </span>            : shouldBe(&quot;for_val_part2_throwbody&quot;,&quot;1&quot;);
-<span class="lineNum">     392 </span>            : 
-<span class="lineNum">     393 </span>            : // ---------------------------------
-<span class="lineNum">     394 </span>            : var for_val_part3_throwbody = 4;
-<span class="lineNum">     395 </span>            : try {
-<span class="lineNum">     396 </span>            :   for (; ; for_val_part3_throwbody = 1) {
-<span class="lineNum">     397 </span>            :     throwex();
-<span class="lineNum">     398 </span>            :   }
-<span class="lineNum">     399 </span>            : }
-<span class="lineNum">     400 </span>            : catch (e) {
-<span class="lineNum">     401 </span>            : }
-<span class="lineNum">     402 </span>            : shouldBe(&quot;for_val_part3_throwbody&quot;,&quot;4&quot;);
-<span class="lineNum">     403 </span>            : 
-<span class="lineNum">     404 </span>            : // ---------------------------------
-<span class="lineNum">     405 </span>            : var set_inside_with_throw = 4;
-<span class="lineNum">     406 </span>            : try {
-<span class="lineNum">     407 </span>            :   with (throwex()) {
-<span class="lineNum">     408 </span>            :     set_inside_with_throw = 1;
-<span class="lineNum">     409 </span>            :   }
-<span class="lineNum">     410 </span>            : }
-<span class="lineNum">     411 </span>            : catch (e) {
-<span class="lineNum">     412 </span>            : }
-<span class="lineNum">     413 </span>            : shouldBe(&quot;set_inside_with_throw&quot;,&quot;4&quot;);
-<span class="lineNum">     414 </span>            : 
-<span class="lineNum">     415 </span>            : // ---------------------------------
-<span class="lineNum">     416 </span>            : var set_inside_with_cantconverttoobject = 4;
-<span class="lineNum">     417 </span>            : try {
-<span class="lineNum">     418 </span>            :   with (undefined) {
-<span class="lineNum">     419 </span>            :     print(&quot;FAIL. This message should not be displayed&quot;);
-<span class="lineNum">     420 </span>            :     set_inside_with_cantconverttoobject = 1;
-<span class="lineNum">     421 </span>            :   }
-<span class="lineNum">     422 </span>            : }
-<span class="lineNum">     423 </span>            : catch (e) {
-<span class="lineNum">     424 </span>            : }
-<span class="lineNum">     425 </span>            : shouldBe(&quot;set_inside_with_cantconverttoobject&quot;,&quot;4&quot;);
-<span class="lineNum">     426 </span>            : // ### test case, sw
+<span class="lineNum">     275 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     276 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     277 </span><span class="lineCov">          1 : try {</span>
+<span class="lineNum">     278 </span><span class="lineCov">          1 :   var var_assign1 = var_assign_before_throw(),</span>
+<span class="lineNum">     279 </span><span class="lineCov">          1 :       var_assign2 = throwex(),</span>
+<span class="lineNum">     280 </span><span class="lineCov">          1 :       var_assign1 = var_assign_before_throw();</span>
+<span class="lineNum">     281 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     282 </span><span class="lineCov">          1 : catch (e) {</span>
+<span class="lineNum">     283 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     284 </span><span class="lineCov">          1 : shouldBe(&quot;var_assign_before_throw_run&quot;,&quot;true&quot;);</span>
+<span class="lineNum">     285 </span><span class="lineCov">          1 : shouldBe(&quot;var_assign_after_throw_run&quot;,&quot;false&quot;);</span>
+<span class="lineNum">     286 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     287 </span><span class="lineCov">          1 : // ---------------------------------</span>
+<span class="lineNum">     288 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     289 </span><span class="lineCov">          1 : var do_val = 4;</span>
+<span class="lineNum">     290 </span><span class="lineCov">          1 : try {</span>
+<span class="lineNum">     291 </span><span class="lineCov">          1 :   do {</span>
+<span class="lineNum">     292 </span><span class="lineCov">          1 :     do_val++;</span>
+<span class="lineNum">     293 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     294 </span><span class="lineCov">          1 :   while (throwex());</span>
+<span class="lineNum">     295 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     296 </span><span class="lineCov">          1 : catch (e) {</span>
+<span class="lineNum">     297 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     298 </span><span class="lineCov">          1 : shouldBe(&quot;do_val&quot;,&quot;5&quot;);</span>
+<span class="lineNum">     299 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     300 </span><span class="lineCov">          1 : // ---------------------------------</span>
+<span class="lineNum">     301 </span><span class="lineCov">          1 : var while_val = 4;</span>
+<span class="lineNum">     302 </span><span class="lineCov">          1 : try {</span>
+<span class="lineNum">     303 </span><span class="lineCov">          1 :   while (throwex()) {</span>
+<span class="lineNum">     304 </span><span class="lineCov">          1 :     while_val++;</span>
+<span class="lineNum">     305 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     306 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     307 </span><span class="lineCov">          1 : catch (e) {</span>
+<span class="lineNum">     308 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     309 </span><span class="lineCov">          1 : shouldBe(&quot;while_val&quot;,&quot;4&quot;);</span>
+<span class="lineNum">     310 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     311 </span><span class="lineCov">          1 : // ---------------------------------</span>
+<span class="lineNum">     312 </span><span class="lineCov">          1 : var for_val_part1_throw2 = 4;</span>
+<span class="lineNum">     313 </span><span class="lineCov">          1 : try {</span>
+<span class="lineNum">     314 </span><span class="lineCov">          1 :   for (for_val_part1_throw2 = 1; throwex(); ) {</span>
+<span class="lineNum">     315 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     316 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     317 </span><span class="lineCov">          1 : catch (e) {</span>
+<span class="lineNum">     318 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     319 </span><span class="lineCov">          1 : shouldBe(&quot;for_val_part1_throw2&quot;,&quot;1&quot;);</span>
+<span class="lineNum">     320 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     321 </span><span class="lineCov">          1 : // ---------------------------------</span>
+<span class="lineNum">     322 </span><span class="lineCov">          1 : var for_val_part1_throw3 = 4;</span>
+<span class="lineNum">     323 </span><span class="lineCov">          1 : try {</span>
+<span class="lineNum">     324 </span><span class="lineCov">          1 :   for (for_val_part1_throw3 = 1; ; throwex()) {</span>
+<span class="lineNum">     325 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     326 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     327 </span><span class="lineCov">          1 : catch (e) {</span>
+<span class="lineNum">     328 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     329 </span><span class="lineCov">          1 : shouldBe(&quot;for_val_part1_throw3&quot;,&quot;1&quot;);</span>
+<span class="lineNum">     330 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     331 </span><span class="lineCov">          1 : // ---------------------------------</span>
+<span class="lineNum">     332 </span><span class="lineCov">          1 : var for_val_part2_throw1 = 4;</span>
+<span class="lineNum">     333 </span><span class="lineCov">          1 : try {</span>
+<span class="lineNum">     334 </span><span class="lineCov">          1 :   for (throwex(); for_val_part2_throw1 = 1; ) {</span>
+<span class="lineNum">     335 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     336 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     337 </span><span class="lineCov">          1 : catch (e) {</span>
+<span class="lineNum">     338 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     339 </span><span class="lineCov">          1 : shouldBe(&quot;for_val_part2_throw1&quot;,&quot;4&quot;);</span>
+<span class="lineNum">     340 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     341 </span><span class="lineCov">          1 : // ---------------------------------</span>
+<span class="lineNum">     342 </span><span class="lineCov">          1 : var for_val_part2_throw3 = 4;</span>
+<span class="lineNum">     343 </span><span class="lineCov">          1 : try {</span>
+<span class="lineNum">     344 </span><span class="lineCov">          1 :   for (; for_val_part2_throw3 = 1; throwex()) {</span>
+<span class="lineNum">     345 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     346 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     347 </span><span class="lineCov">          1 : catch (e) {</span>
+<span class="lineNum">     348 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     349 </span><span class="lineCov">          1 : shouldBe(&quot;for_val_part2_throw3&quot;,&quot;1&quot;);</span>
+<span class="lineNum">     350 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     351 </span><span class="lineCov">          1 : // ---------------------------------</span>
+<span class="lineNum">     352 </span><span class="lineCov">          1 : var for_val_part3_throw1 = 4;</span>
+<span class="lineNum">     353 </span><span class="lineCov">          1 : try {</span>
+<span class="lineNum">     354 </span><span class="lineCov">          1 :   for (throwex(); ; for_val_part3_throw1 = 1) {</span>
+<span class="lineNum">     355 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     356 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     357 </span><span class="lineCov">          1 : catch (e) {</span>
+<span class="lineNum">     358 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     359 </span><span class="lineCov">          1 : shouldBe(&quot;for_val_part3_throw1&quot;,&quot;4&quot;);</span>
+<span class="lineNum">     360 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     361 </span><span class="lineCov">          1 : // ---------------------------------</span>
+<span class="lineNum">     362 </span><span class="lineCov">          1 : var for_val_part3_throw2 = 4;</span>
+<span class="lineNum">     363 </span><span class="lineCov">          1 : try {</span>
+<span class="lineNum">     364 </span><span class="lineCov">          1 :   for (; throwex(); for_val_part3_throw2 = 1) {</span>
+<span class="lineNum">     365 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     366 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     367 </span><span class="lineCov">          1 : catch (e) {</span>
+<span class="lineNum">     368 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     369 </span><span class="lineCov">          1 : shouldBe(&quot;for_val_part3_throw2&quot;,&quot;4&quot;);</span>
+<span class="lineNum">     370 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     371 </span><span class="lineCov">          1 : // ---------------------------------</span>
+<span class="lineNum">     372 </span><span class="lineCov">          1 : var for_val_part1_throwbody = 4;</span>
+<span class="lineNum">     373 </span><span class="lineCov">          1 : try {</span>
+<span class="lineNum">     374 </span><span class="lineCov">          1 :   for (for_val_part1_throwbody = 1; ;) {</span>
+<span class="lineNum">     375 </span><span class="lineCov">          1 :     throwex();</span>
+<span class="lineNum">     376 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     377 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     378 </span><span class="lineCov">          1 : catch (e) {</span>
+<span class="lineNum">     379 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     380 </span><span class="lineCov">          1 : shouldBe(&quot;for_val_part1_throwbody&quot;,&quot;1&quot;);</span>
+<span class="lineNum">     381 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     382 </span><span class="lineCov">          1 : // ---------------------------------</span>
+<span class="lineNum">     383 </span><span class="lineCov">          1 : var for_val_part2_throwbody = 4;</span>
+<span class="lineNum">     384 </span><span class="lineCov">          1 : try {</span>
+<span class="lineNum">     385 </span><span class="lineCov">          1 :   for (; for_val_part2_throwbody = 1; ) {</span>
+<span class="lineNum">     386 </span><span class="lineCov">          1 :     throwex();</span>
+<span class="lineNum">     387 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     388 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     389 </span><span class="lineCov">          1 : catch (e) {</span>
+<span class="lineNum">     390 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     391 </span><span class="lineCov">          1 : shouldBe(&quot;for_val_part2_throwbody&quot;,&quot;1&quot;);</span>
+<span class="lineNum">     392 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     393 </span><span class="lineCov">          1 : // ---------------------------------</span>
+<span class="lineNum">     394 </span><span class="lineCov">          1 : var for_val_part3_throwbody = 4;</span>
+<span class="lineNum">     395 </span><span class="lineCov">          1 : try {</span>
+<span class="lineNum">     396 </span><span class="lineCov">          1 :   for (; ; for_val_part3_throwbody = 1) {</span>
+<span class="lineNum">     397 </span><span class="lineCov">          1 :     throwex();</span>
+<span class="lineNum">     398 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     399 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     400 </span><span class="lineCov">          1 : catch (e) {</span>
+<span class="lineNum">     401 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     402 </span><span class="lineCov">          1 : shouldBe(&quot;for_val_part3_throwbody&quot;,&quot;4&quot;);</span>
+<span class="lineNum">     403 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     404 </span><span class="lineCov">          1 : // ---------------------------------</span>
+<span class="lineNum">     405 </span><span class="lineCov">          1 : var set_inside_with_throw = 4;</span>
+<span class="lineNum">     406 </span><span class="lineCov">          1 : try {</span>
+<span class="lineNum">     407 </span><span class="lineCov">          1 :   with (throwex()) {</span>
+<span class="lineNum">     408 </span><span class="lineCov">          1 :     set_inside_with_throw = 1;</span>
+<span class="lineNum">     409 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     410 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     411 </span><span class="lineCov">          1 : catch (e) {</span>
+<span class="lineNum">     412 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     413 </span><span class="lineCov">          1 : shouldBe(&quot;set_inside_with_throw&quot;,&quot;4&quot;);</span>
+<span class="lineNum">     414 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     415 </span><span class="lineCov">          1 : // ---------------------------------</span>
+<span class="lineNum">     416 </span><span class="lineCov">          1 : var set_inside_with_cantconverttoobject = 4;</span>
+<span class="lineNum">     417 </span><span class="lineCov">          1 : try {</span>
+<span class="lineNum">     418 </span><span class="lineCov">          1 :   with (undefined) {</span>
+<span class="lineNum">     419 </span><span class="lineCov">          1 :     print(&quot;FAIL. This message should not be displayed&quot;);</span>
+<span class="lineNum">     420 </span><span class="lineCov">          1 :     set_inside_with_cantconverttoobject = 1;</span>
+<span class="lineNum">     421 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     422 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     423 </span><span class="lineCov">          1 : catch (e) {</span>
+<span class="lineNum">     424 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     425 </span><span class="lineCov">          1 : shouldBe(&quot;set_inside_with_cantconverttoobject&quot;,&quot;4&quot;);</span>
+<span class="lineNum">     426 </span><span class="lineCov">          1 : // ### test case, sw</span>
 </pre>
       </td>
     </tr>

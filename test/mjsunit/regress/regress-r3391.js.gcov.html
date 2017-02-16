@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">43</td>
-            <td class="headerCovTableEntry">44</td>
-            <td class="headerCovTableEntryHi">97.7 %</td>
+            <td class="headerCovTableEntry">78</td>
+            <td class="headerCovTableEntry">78</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">2</td>
@@ -99,44 +99,44 @@
 <span class="lineNum">      37 </span><span class="lineCov">          3 :   evil_called++;</span>
 <span class="lineNum">      38 </span><span class="lineCov">          3 :   return this;</span>
 <a name="39"><span class="lineNum">      39 </span><span class="lineCov">          3 : }</span></a>
-<span class="lineNum">      40 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      40 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      41 </span><span class="lineCov">          1 : function evil_to_locale_string() {</span>
 <span class="lineNum">      42 </span><span class="lineCov">          1 :   evil_locale_called++;</span>
 <span class="lineNum">      43 </span><span class="lineCov">          1 :   return this;</span>
 <span class="lineNum">      44 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">      45 </span>            : 
-<span class="lineNum">      46 </span>            : var o = {toString: evil_to_string, toLocaleString: evil_to_locale_string};
-<span class="lineNum">      47 </span>            : 
-<span class="lineNum">      48 </span>            : try {
-<span class="lineNum">      49 </span>            :   [o].toLocaleString();
-<span class="lineNum">      50 </span>            : } catch(e) {
-<span class="lineNum">      51 </span>            :   exception_thrown++;
-<span class="lineNum">      52 </span>            : }
-<span class="lineNum">      53 </span>            : 
-<span class="lineNum">      54 </span>            : assertEquals(1, evil_called, &quot;evil1&quot;);
-<span class="lineNum">      55 </span>            : assertEquals(1, evil_locale_called, &quot;local1&quot;);
-<span class="lineNum">      56 </span>            : assertEquals(1, exception_thrown, &quot;exception1&quot;);
-<span class="lineNum">      57 </span>            : 
-<span class="lineNum">      58 </span>            : try {
-<span class="lineNum">      59 </span>            :   [o].toString();
-<span class="lineNum">      60 </span>            : } catch(e) {
-<span class="lineNum">      61 </span>            :   exception_thrown++;
-<span class="lineNum">      62 </span>            : }
-<span class="lineNum">      63 </span>            : 
-<span class="lineNum">      64 </span>            : assertEquals(2, evil_called, &quot;evil2&quot;);
-<span class="lineNum">      65 </span>            : assertEquals(1, evil_locale_called, &quot;local2&quot;);
-<span class="lineNum">      66 </span>            : assertEquals(2, exception_thrown, &quot;exception2&quot;);
-<span class="lineNum">      67 </span>            : 
-<span class="lineNum">      68 </span>            : try {
-<span class="lineNum">      69 </span>            :   [o].join(o);
-<span class="lineNum">      70 </span>            : } catch(e) {
-<span class="lineNum">      71 </span>            :   exception_thrown++;
-<span class="lineNum">      72 </span>            : }
-<span class="lineNum">      73 </span>            : 
-<span class="lineNum">      74 </span>            : assertEquals(3, evil_called, &quot;evil3&quot;);
-<span class="lineNum">      75 </span>            : assertEquals(1, evil_locale_called, &quot;local3&quot;);
-<span class="lineNum">      76 </span>            : assertEquals(3, exception_thrown, &quot;exception3&quot;);
-<span class="lineNum">      77 </span>            : print(&quot;ok&quot;);
+<span class="lineNum">      45 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      46 </span><span class="lineCov">          1 : var o = {toString: evil_to_string, toLocaleString: evil_to_locale_string};</span>
+<span class="lineNum">      47 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      48 </span><span class="lineCov">          1 : try {</span>
+<span class="lineNum">      49 </span><span class="lineCov">          1 :   [o].toLocaleString();</span>
+<span class="lineNum">      50 </span><span class="lineCov">          1 : } catch(e) {</span>
+<span class="lineNum">      51 </span><span class="lineCov">          1 :   exception_thrown++;</span>
+<span class="lineNum">      52 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      53 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      54 </span><span class="lineCov">          1 : assertEquals(1, evil_called, &quot;evil1&quot;);</span>
+<span class="lineNum">      55 </span><span class="lineCov">          1 : assertEquals(1, evil_locale_called, &quot;local1&quot;);</span>
+<span class="lineNum">      56 </span><span class="lineCov">          1 : assertEquals(1, exception_thrown, &quot;exception1&quot;);</span>
+<span class="lineNum">      57 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      58 </span><span class="lineCov">          1 : try {</span>
+<span class="lineNum">      59 </span><span class="lineCov">          1 :   [o].toString();</span>
+<span class="lineNum">      60 </span><span class="lineCov">          1 : } catch(e) {</span>
+<span class="lineNum">      61 </span><span class="lineCov">          1 :   exception_thrown++;</span>
+<span class="lineNum">      62 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      63 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      64 </span><span class="lineCov">          1 : assertEquals(2, evil_called, &quot;evil2&quot;);</span>
+<span class="lineNum">      65 </span><span class="lineCov">          1 : assertEquals(1, evil_locale_called, &quot;local2&quot;);</span>
+<span class="lineNum">      66 </span><span class="lineCov">          1 : assertEquals(2, exception_thrown, &quot;exception2&quot;);</span>
+<span class="lineNum">      67 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      68 </span><span class="lineCov">          1 : try {</span>
+<span class="lineNum">      69 </span><span class="lineCov">          1 :   [o].join(o);</span>
+<span class="lineNum">      70 </span><span class="lineCov">          1 : } catch(e) {</span>
+<span class="lineNum">      71 </span><span class="lineCov">          1 :   exception_thrown++;</span>
+<span class="lineNum">      72 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      73 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      74 </span><span class="lineCov">          1 : assertEquals(3, evil_called, &quot;evil3&quot;);</span>
+<span class="lineNum">      75 </span><span class="lineCov">          1 : assertEquals(1, evil_locale_called, &quot;local3&quot;);</span>
+<span class="lineNum">      76 </span><span class="lineCov">          1 : assertEquals(3, exception_thrown, &quot;exception3&quot;);</span>
+<span class="lineNum">      77 </span><span class="lineCov">          1 : print(&quot;ok&quot;);</span>
 </pre>
       </td>
     </tr>

@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">76</td>
-            <td class="headerCovTableEntry">105</td>
-            <td class="headerCovTableEntryLo">72.4 %</td>
+            <td class="headerCovTableEntry">114</td>
+            <td class="headerCovTableEntry">114</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">3</td>
@@ -103,19 +103,19 @@
 <span class="lineNum">      41 </span><span class="lineCov">          4 :     forceDeopt + 1;</span>
 <span class="lineNum">      42 </span><span class="lineCov">          4 :     return arguments[0];</span>
 <span class="lineNum">      43 </span><span class="lineCov">          4 :   }</span>
-<span class="lineNum">      44 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      45 </span><span class="lineNoCov">          0 :   assertEquals(1, inner(1));</span>
-<span class="lineNum">      46 </span><span class="lineNoCov">          0 :   assertEquals(1, inner(1));</span>
-<span class="lineNum">      47 </span><span class="lineNoCov">          0 :   %OptimizeFunctionOnNextCall(inner);</span>
-<span class="lineNum">      48 </span><span class="lineNoCov">          0 :   assertEquals(1, inner(1));</span>
-<span class="lineNum">      49 </span><span class="lineNoCov">          0 :   forceDeopt = &quot;not a number&quot;;</span>
-<span class="lineNum">      50 </span><span class="lineNoCov">          0 :   assertEquals(1, inner(1));</span>
-<span class="lineNum">      51 </span><span class="lineNoCov">          0 : })();</span>
-<span class="lineNum">      52 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      53 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      54 </span><span class="lineNoCov">          0 : // Test materialization of the arguments object when deoptimizing an</span>
-<span class="lineNum">      55 </span><span class="lineNoCov">          0 : // inlined strict mode closure after modifying an argument.</span>
-<span class="lineNum">      56 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      44 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      45 </span><span class="lineCov">          1 :   assertEquals(1, inner(1));</span>
+<span class="lineNum">      46 </span><span class="lineCov">          1 :   assertEquals(1, inner(1));</span>
+<span class="lineNum">      47 </span><span class="lineCov">          1 :   %OptimizeFunctionOnNextCall(inner);</span>
+<span class="lineNum">      48 </span><span class="lineCov">          1 :   assertEquals(1, inner(1));</span>
+<span class="lineNum">      49 </span><span class="lineCov">          1 :   forceDeopt = &quot;not a number&quot;;</span>
+<span class="lineNum">      50 </span><span class="lineCov">          1 :   assertEquals(1, inner(1));</span>
+<span class="lineNum">      51 </span><span class="lineCov">          1 : })();</span>
+<span class="lineNum">      52 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      53 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      54 </span><span class="lineCov">          1 : // Test materialization of the arguments object when deoptimizing an</span>
+<span class="lineNum">      55 </span><span class="lineCov">          1 : // inlined strict mode closure after modifying an argument.</span>
+<span class="lineNum">      56 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      57 </span><span class="lineCov">          1 : (function () {</span>
 <span class="lineNum">      58 </span><span class="lineCov">          1 :   var forceDeopt = 0;</span>
 <span class="lineNum">      59 </span><span class="lineCov">          4 :   function inner(x) {</span>
@@ -127,23 +127,23 @@
 <span class="lineNum">      65 </span><span class="lineCov">          4 :     forceDeopt + 1;</span>
 <span class="lineNum">      66 </span><span class="lineCov">          4 :     return arguments[0];</span>
 <span class="lineNum">      67 </span><span class="lineCov">          4 :   }</span>
-<span class="lineNum">      68 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      68 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      69 </span><span class="lineCov">          4 :   function outer(x) {</span>
 <span class="lineNum">      70 </span><span class="lineCov">          4 :     return inner(x);</span>
 <span class="lineNum">      71 </span><span class="lineCov">          4 :   }</span>
-<span class="lineNum">      72 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      73 </span><span class="lineNoCov">          0 :   assertEquals(1, outer(1));</span>
-<span class="lineNum">      74 </span><span class="lineNoCov">          0 :   assertEquals(1, outer(1));</span>
-<span class="lineNum">      75 </span><span class="lineNoCov">          0 :   %OptimizeFunctionOnNextCall(outer);</span>
-<span class="lineNum">      76 </span><span class="lineNoCov">          0 :   assertEquals(1, outer(1));</span>
-<span class="lineNum">      77 </span><span class="lineNoCov">          0 :   forceDeopt = &quot;not a number&quot;;</span>
-<span class="lineNum">      78 </span><span class="lineNoCov">          0 :   assertEquals(1, outer(1));</span>
-<span class="lineNum">      79 </span><span class="lineNoCov">          0 : })();</span>
-<span class="lineNum">      80 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      81 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      82 </span><span class="lineNoCov">          0 : // Test materialization of the multiple arguments objects when</span>
-<span class="lineNum">      83 </span><span class="lineNoCov">          0 : // deoptimizing several inlined closure after modifying an argument.</span>
-<span class="lineNum">      84 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      72 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      73 </span><span class="lineCov">          1 :   assertEquals(1, outer(1));</span>
+<span class="lineNum">      74 </span><span class="lineCov">          1 :   assertEquals(1, outer(1));</span>
+<span class="lineNum">      75 </span><span class="lineCov">          1 :   %OptimizeFunctionOnNextCall(outer);</span>
+<span class="lineNum">      76 </span><span class="lineCov">          1 :   assertEquals(1, outer(1));</span>
+<span class="lineNum">      77 </span><span class="lineCov">          1 :   forceDeopt = &quot;not a number&quot;;</span>
+<span class="lineNum">      78 </span><span class="lineCov">          1 :   assertEquals(1, outer(1));</span>
+<span class="lineNum">      79 </span><span class="lineCov">          1 : })();</span>
+<span class="lineNum">      80 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      81 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      82 </span><span class="lineCov">          1 : // Test materialization of the multiple arguments objects when</span>
+<span class="lineNum">      83 </span><span class="lineCov">          1 : // deoptimizing several inlined closure after modifying an argument.</span>
+<span class="lineNum">      84 </span><span class="lineCov">          1 : </span>
 <a name="85"><span class="lineNum">      85 </span><span class="lineCov">          1 : (function () {</span></a>
 <span class="lineNum">      86 </span><span class="lineCov">          1 :   var forceDeopt = 0;</span>
 <span class="lineNum">      87 </span><span class="lineCov">          4 :   function inner(x,y,z) {</span>
@@ -155,24 +155,24 @@
 <span class="lineNum">      93 </span><span class="lineCov">          4 :     forceDeopt + 1;</span>
 <span class="lineNum">      94 </span><span class="lineCov">          4 :     return arguments[0];</span>
 <a name="95"><span class="lineNum">      95 </span><span class="lineCov">          4 :   }</span></a>
-<span class="lineNum">      96 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      96 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      97 </span><span class="lineCov">          4 :   function middle(x) {</span>
 <span class="lineNum">      98 </span><span class="lineCov">          4 :     &quot;use strict&quot;;</span>
 <span class="lineNum">      99 </span><span class="lineCov">          4 :     x = 2;</span>
 <span class="lineNum">     100 </span><span class="lineCov">          4 :     return inner(10*x, 20*x, 30*x) + arguments[0];</span>
 <a name="101"><span class="lineNum">     101 </span><span class="lineCov">          4 :   }</span></a>
-<span class="lineNum">     102 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     102 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     103 </span><span class="lineCov">          4 :   function outer(x) {</span>
 <span class="lineNum">     104 </span><span class="lineCov">          4 :    return middle(x);</span>
 <span class="lineNum">     105 </span><span class="lineCov">          4 :   }</span>
-<span class="lineNum">     106 </span>            : 
-<span class="lineNum">     107 </span>            :   assertEquals(21, outer(1));
-<span class="lineNum">     108 </span>            :   assertEquals(21, outer(1));
-<span class="lineNum">     109 </span>            :   %OptimizeFunctionOnNextCall(outer);
-<span class="lineNum">     110 </span>            :   assertEquals(21, outer(1));
-<span class="lineNum">     111 </span>            :   forceDeopt = &quot;not a number&quot;;
-<span class="lineNum">     112 </span>            :   assertEquals(21, outer(1));
-<span class="lineNum">     113 </span>            : })();
+<span class="lineNum">     106 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     107 </span><span class="lineCov">          1 :   assertEquals(21, outer(1));</span>
+<span class="lineNum">     108 </span><span class="lineCov">          1 :   assertEquals(21, outer(1));</span>
+<span class="lineNum">     109 </span><span class="lineCov">          1 :   %OptimizeFunctionOnNextCall(outer);</span>
+<span class="lineNum">     110 </span><span class="lineCov">          1 :   assertEquals(21, outer(1));</span>
+<span class="lineNum">     111 </span><span class="lineCov">          1 :   forceDeopt = &quot;not a number&quot;;</span>
+<span class="lineNum">     112 </span><span class="lineCov">          1 :   assertEquals(21, outer(1));</span>
+<span class="lineNum">     113 </span><span class="lineCov">          1 : })();</span>
 </pre>
       </td>
     </tr>

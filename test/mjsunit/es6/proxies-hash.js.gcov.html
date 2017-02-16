@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">42</td>
-            <td class="headerCovTableEntry">84</td>
-            <td class="headerCovTableEntryLo">50.0 %</td>
+            <td class="headerCovTableEntry">122</td>
+            <td class="headerCovTableEntry">122</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">5</td>
@@ -92,95 +92,95 @@
 <span class="lineNum">      30 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      31 </span><span class="lineCov">          9 : function TestWithProxies(test, construct, handler) {</span>
 <span class="lineNum">      32 </span><span class="lineCov">         27 :   test(construct, handler, function(h) { return new Proxy({}, h) })</span>
-<span class="lineNum">      33 </span><span class="lineNoCov">          0 :   // TODO(cbruni): Adapt and enable once we have [[Call]] working.</span>
-<span class="lineNum">      34 </span><span class="lineNoCov">          0 :   // test(construct, handler, function(h) {</span>
-<span class="lineNum">      35 </span><span class="lineNoCov">          0 :   //  return Proxy.createFunction(h, function() {})</span>
-<span class="lineNum">      36 </span><span class="lineNoCov">          0 :   // })</span>
-<span class="lineNum">      37 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">      38 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      39 </span><span class="lineNoCov">          0 : </span>
-<a name="40"><span class="lineNum">      40 </span><span class="lineNoCov">          0 : // Sets.</span></a>
-<span class="lineNum">      41 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      33 </span><span class="lineCov">          9 :   // TODO(cbruni): Adapt and enable once we have [[Call]] working.</span>
+<span class="lineNum">      34 </span><span class="lineCov">          9 :   // test(construct, handler, function(h) {</span>
+<span class="lineNum">      35 </span><span class="lineCov">          9 :   //  return Proxy.createFunction(h, function() {})</span>
+<span class="lineNum">      36 </span><span class="lineCov">          9 :   // })</span>
+<span class="lineNum">      37 </span><span class="lineCov">          9 : }</span>
+<span class="lineNum">      38 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      39 </span><span class="lineCov">          1 : </span>
+<a name="40"><span class="lineNum">      40 </span><span class="lineCov">          1 : // Sets.</span></a>
+<span class="lineNum">      41 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      42 </span><span class="lineCov">          3 : function TestSet(construct, fix) {</span>
 <span class="lineNum">      43 </span><span class="lineCov">          3 :   TestWithProxies(TestSet2, construct, fix)</span>
 <a name="44"><span class="lineNum">      44 </span><span class="lineCov">          3 : }</span></a>
-<span class="lineNum">      45 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      45 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      46 </span><span class="lineCov">          3 : function TestSet2(construct, fix, create) {</span>
 <span class="lineNum">      47 </span><span class="lineCov">          3 :   var handler = {fix: function() { return {} }}</span>
-<span class="lineNum">      48 </span><span class="lineNoCov">          0 :   var p1 = create(handler)</span>
-<span class="lineNum">      49 </span><span class="lineNoCov">          0 :   var p2 = create(handler)</span>
-<span class="lineNum">      50 </span><span class="lineNoCov">          0 :   var p3 = create(handler)</span>
-<span class="lineNum">      51 </span><span class="lineNoCov">          0 :   fix(p3)</span>
-<span class="lineNum">      52 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      53 </span><span class="lineNoCov">          0 :   var s = new construct();</span>
-<span class="lineNum">      54 </span><span class="lineNoCov">          0 :   s.add(p1);</span>
-<span class="lineNum">      55 </span><span class="lineNoCov">          0 :   s.add(p2);</span>
-<span class="lineNum">      56 </span><span class="lineNoCov">          0 :   assertTrue(s.has(p1));</span>
-<span class="lineNum">      57 </span><span class="lineNoCov">          0 :   assertTrue(s.has(p2));</span>
-<span class="lineNum">      58 </span><span class="lineNoCov">          0 :   assertFalse(s.has(p3));</span>
-<span class="lineNum">      59 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      60 </span><span class="lineNoCov">          0 :   fix(p1)</span>
-<span class="lineNum">      61 </span><span class="lineNoCov">          0 :   fix(p2)</span>
-<span class="lineNum">      62 </span><span class="lineNoCov">          0 :   assertTrue(s.has(p1));</span>
-<span class="lineNum">      63 </span><span class="lineNoCov">          0 :   assertTrue(s.has(p2));</span>
-<span class="lineNum">      64 </span><span class="lineNoCov">          0 :   assertFalse(s.has(p3));</span>
-<span class="lineNum">      65 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      66 </span><span class="lineNoCov">          0 :   s.delete(p2);</span>
-<span class="lineNum">      67 </span><span class="lineNoCov">          0 :   assertTrue(s.has(p1));</span>
-<span class="lineNum">      68 </span><span class="lineNoCov">          0 :   assertFalse(s.has(p2));</span>
-<span class="lineNum">      69 </span><span class="lineNoCov">          0 :   assertFalse(s.has(p3));</span>
-<span class="lineNum">      70 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">      71 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      72 </span><span class="lineNoCov">          0 : TestSet(Set, Object.seal)</span>
-<span class="lineNum">      73 </span><span class="lineNoCov">          0 : TestSet(Set, Object.freeze)</span>
-<span class="lineNum">      74 </span><span class="lineNoCov">          0 : TestSet(Set, Object.preventExtensions)</span>
-<span class="lineNum">      75 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      76 </span><span class="lineNoCov">          0 : </span>
-<a name="77"><span class="lineNum">      77 </span><span class="lineNoCov">          0 : // Maps and weak maps.</span></a>
-<span class="lineNum">      78 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      48 </span><span class="lineCov">          3 :   var p1 = create(handler)</span>
+<span class="lineNum">      49 </span><span class="lineCov">          3 :   var p2 = create(handler)</span>
+<span class="lineNum">      50 </span><span class="lineCov">          3 :   var p3 = create(handler)</span>
+<span class="lineNum">      51 </span><span class="lineCov">          3 :   fix(p3)</span>
+<span class="lineNum">      52 </span><span class="lineCov">          3 : </span>
+<span class="lineNum">      53 </span><span class="lineCov">          3 :   var s = new construct();</span>
+<span class="lineNum">      54 </span><span class="lineCov">          3 :   s.add(p1);</span>
+<span class="lineNum">      55 </span><span class="lineCov">          3 :   s.add(p2);</span>
+<span class="lineNum">      56 </span><span class="lineCov">          3 :   assertTrue(s.has(p1));</span>
+<span class="lineNum">      57 </span><span class="lineCov">          3 :   assertTrue(s.has(p2));</span>
+<span class="lineNum">      58 </span><span class="lineCov">          3 :   assertFalse(s.has(p3));</span>
+<span class="lineNum">      59 </span><span class="lineCov">          3 : </span>
+<span class="lineNum">      60 </span><span class="lineCov">          3 :   fix(p1)</span>
+<span class="lineNum">      61 </span><span class="lineCov">          3 :   fix(p2)</span>
+<span class="lineNum">      62 </span><span class="lineCov">          3 :   assertTrue(s.has(p1));</span>
+<span class="lineNum">      63 </span><span class="lineCov">          3 :   assertTrue(s.has(p2));</span>
+<span class="lineNum">      64 </span><span class="lineCov">          3 :   assertFalse(s.has(p3));</span>
+<span class="lineNum">      65 </span><span class="lineCov">          3 : </span>
+<span class="lineNum">      66 </span><span class="lineCov">          3 :   s.delete(p2);</span>
+<span class="lineNum">      67 </span><span class="lineCov">          3 :   assertTrue(s.has(p1));</span>
+<span class="lineNum">      68 </span><span class="lineCov">          3 :   assertFalse(s.has(p2));</span>
+<span class="lineNum">      69 </span><span class="lineCov">          3 :   assertFalse(s.has(p3));</span>
+<span class="lineNum">      70 </span><span class="lineCov">          3 : }</span>
+<span class="lineNum">      71 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      72 </span><span class="lineCov">          1 : TestSet(Set, Object.seal)</span>
+<span class="lineNum">      73 </span><span class="lineCov">          1 : TestSet(Set, Object.freeze)</span>
+<span class="lineNum">      74 </span><span class="lineCov">          1 : TestSet(Set, Object.preventExtensions)</span>
+<span class="lineNum">      75 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      76 </span><span class="lineCov">          1 : </span>
+<a name="77"><span class="lineNum">      77 </span><span class="lineCov">          1 : // Maps and weak maps.</span></a>
+<span class="lineNum">      78 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      79 </span><span class="lineCov">          6 : function TestMap(construct, fix) {</span>
 <span class="lineNum">      80 </span><span class="lineCov">          6 :   TestWithProxies(TestMap2, construct, fix)</span>
 <a name="81"><span class="lineNum">      81 </span><span class="lineCov">          6 : }</span></a>
-<a name="82"><span class="lineNum">      82 </span><span class="lineNoCov">          0 : </span></a>
+<a name="82"><span class="lineNum">      82 </span><span class="lineCov">          1 : </span></a>
 <span class="lineNum">      83 </span><span class="lineCov">          6 : function TestMap2(construct, fix, create) {</span>
 <span class="lineNum">      84 </span><span class="lineCov">          6 :   var handler = {fix: function() { return {} }}</span>
-<span class="lineNum">      85 </span>            :   var p1 = create(handler)
-<span class="lineNum">      86 </span>            :   var p2 = create(handler)
-<span class="lineNum">      87 </span>            :   var p3 = create(handler)
-<span class="lineNum">      88 </span>            :   fix(p3)
-<span class="lineNum">      89 </span>            : 
-<span class="lineNum">      90 </span>            :   var m = new construct();
-<span class="lineNum">      91 </span>            :   m.set(p1, 123);
-<span class="lineNum">      92 </span>            :   m.set(p2, 321);
-<span class="lineNum">      93 </span>            :   assertTrue(m.has(p1));
-<span class="lineNum">      94 </span>            :   assertTrue(m.has(p2));
-<span class="lineNum">      95 </span>            :   assertFalse(m.has(p3));
-<span class="lineNum">      96 </span>            :   assertSame(123, m.get(p1));
-<span class="lineNum">      97 </span>            :   assertSame(321, m.get(p2));
-<span class="lineNum">      98 </span>            : 
-<span class="lineNum">      99 </span>            :   fix(p1)
-<span class="lineNum">     100 </span>            :   fix(p2)
-<span class="lineNum">     101 </span>            :   assertTrue(m.has(p1));
-<span class="lineNum">     102 </span>            :   assertTrue(m.has(p2));
-<span class="lineNum">     103 </span>            :   assertFalse(m.has(p3));
-<span class="lineNum">     104 </span>            :   assertSame(123, m.get(p1));
-<span class="lineNum">     105 </span>            :   assertSame(321, m.get(p2));
-<span class="lineNum">     106 </span>            : 
-<span class="lineNum">     107 </span>            :   m.delete(p2);
-<span class="lineNum">     108 </span>            :   assertTrue(m.has(p1));
-<span class="lineNum">     109 </span>            :   assertFalse(m.has(p2));
-<span class="lineNum">     110 </span>            :   assertFalse(m.has(p3));
-<span class="lineNum">     111 </span>            :   assertSame(123, m.get(p1));
-<span class="lineNum">     112 </span>            :   assertSame(undefined, m.get(p2));
-<span class="lineNum">     113 </span>            : }
-<span class="lineNum">     114 </span>            : 
-<span class="lineNum">     115 </span>            : TestMap(Map, Object.seal)
-<span class="lineNum">     116 </span>            : TestMap(Map, Object.freeze)
-<span class="lineNum">     117 </span>            : TestMap(Map, Object.preventExtensions)
-<span class="lineNum">     118 </span>            : 
-<span class="lineNum">     119 </span>            : TestMap(WeakMap, Object.seal)
-<span class="lineNum">     120 </span>            : TestMap(WeakMap, Object.freeze)
-<span class="lineNum">     121 </span>            : TestMap(WeakMap, Object.preventExtensions)
+<span class="lineNum">      85 </span><span class="lineCov">          6 :   var p1 = create(handler)</span>
+<span class="lineNum">      86 </span><span class="lineCov">          6 :   var p2 = create(handler)</span>
+<span class="lineNum">      87 </span><span class="lineCov">          6 :   var p3 = create(handler)</span>
+<span class="lineNum">      88 </span><span class="lineCov">          6 :   fix(p3)</span>
+<span class="lineNum">      89 </span><span class="lineCov">          6 : </span>
+<span class="lineNum">      90 </span><span class="lineCov">          6 :   var m = new construct();</span>
+<span class="lineNum">      91 </span><span class="lineCov">          6 :   m.set(p1, 123);</span>
+<span class="lineNum">      92 </span><span class="lineCov">          6 :   m.set(p2, 321);</span>
+<span class="lineNum">      93 </span><span class="lineCov">          6 :   assertTrue(m.has(p1));</span>
+<span class="lineNum">      94 </span><span class="lineCov">          6 :   assertTrue(m.has(p2));</span>
+<span class="lineNum">      95 </span><span class="lineCov">          6 :   assertFalse(m.has(p3));</span>
+<span class="lineNum">      96 </span><span class="lineCov">          6 :   assertSame(123, m.get(p1));</span>
+<span class="lineNum">      97 </span><span class="lineCov">          6 :   assertSame(321, m.get(p2));</span>
+<span class="lineNum">      98 </span><span class="lineCov">          6 : </span>
+<span class="lineNum">      99 </span><span class="lineCov">          6 :   fix(p1)</span>
+<span class="lineNum">     100 </span><span class="lineCov">          6 :   fix(p2)</span>
+<span class="lineNum">     101 </span><span class="lineCov">          6 :   assertTrue(m.has(p1));</span>
+<span class="lineNum">     102 </span><span class="lineCov">          6 :   assertTrue(m.has(p2));</span>
+<span class="lineNum">     103 </span><span class="lineCov">          6 :   assertFalse(m.has(p3));</span>
+<span class="lineNum">     104 </span><span class="lineCov">          6 :   assertSame(123, m.get(p1));</span>
+<span class="lineNum">     105 </span><span class="lineCov">          6 :   assertSame(321, m.get(p2));</span>
+<span class="lineNum">     106 </span><span class="lineCov">          6 : </span>
+<span class="lineNum">     107 </span><span class="lineCov">          6 :   m.delete(p2);</span>
+<span class="lineNum">     108 </span><span class="lineCov">          6 :   assertTrue(m.has(p1));</span>
+<span class="lineNum">     109 </span><span class="lineCov">          6 :   assertFalse(m.has(p2));</span>
+<span class="lineNum">     110 </span><span class="lineCov">          6 :   assertFalse(m.has(p3));</span>
+<span class="lineNum">     111 </span><span class="lineCov">          6 :   assertSame(123, m.get(p1));</span>
+<span class="lineNum">     112 </span><span class="lineCov">          6 :   assertSame(undefined, m.get(p2));</span>
+<span class="lineNum">     113 </span><span class="lineCov">          6 : }</span>
+<span class="lineNum">     114 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     115 </span><span class="lineCov">          1 : TestMap(Map, Object.seal)</span>
+<span class="lineNum">     116 </span><span class="lineCov">          1 : TestMap(Map, Object.freeze)</span>
+<span class="lineNum">     117 </span><span class="lineCov">          1 : TestMap(Map, Object.preventExtensions)</span>
+<span class="lineNum">     118 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     119 </span><span class="lineCov">          1 : TestMap(WeakMap, Object.seal)</span>
+<span class="lineNum">     120 </span><span class="lineCov">          1 : TestMap(WeakMap, Object.freeze)</span>
+<span class="lineNum">     121 </span><span class="lineCov">          1 : TestMap(WeakMap, Object.preventExtensions)</span>
 </pre>
       </td>
     </tr>

@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">38</td>
-            <td class="headerCovTableEntry">38</td>
+            <td class="headerCovTableEntry">80</td>
+            <td class="headerCovTableEntry">80</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">7</td>
@@ -98,47 +98,47 @@
 <a name="36"><span class="lineNum">      36 </span><span class="lineCov">          1 :     someInstanceMethod() { return instanceMethodValue; }</span></a>
 <span class="lineNum">      37 </span><span class="lineCov">          2 :     get someGetter() { return getterValue; }</span>
 <span class="lineNum">      38 </span><span class="lineCov">          1 :     set someSetter(value) { setterValue = value; }</span>
-<span class="lineNum">      39 </span>            : };
-<span class="lineNum">      40 </span>            : 
-<span class="lineNum">      41 </span>            : shouldBe(&quot;constructorCallCount&quot;, &quot;0&quot;);
-<span class="lineNum">      42 </span>            : shouldBe(&quot;A.someStaticMethod()&quot;, &quot;staticMethodValue&quot;);
-<span class="lineNum">      43 </span>            : shouldBe(&quot;A.someStaticGetter&quot;, &quot;getterValue&quot;);
-<span class="lineNum">      44 </span>            : shouldBe(&quot;setterValue = undefined; A.someStaticSetter = 123; setterValue&quot;, &quot;123&quot;);
-<span class="lineNum">      45 </span>            : shouldBe(&quot;(new A).someInstanceMethod()&quot;, &quot;instanceMethodValue&quot;);
-<span class="lineNum">      46 </span>            : shouldBe(&quot;constructorCallCount&quot;, &quot;1&quot;);
-<span class="lineNum">      47 </span>            : shouldBe(&quot;(new A).someGetter&quot;, &quot;getterValue&quot;);
-<span class="lineNum">      48 </span>            : shouldBe(&quot;constructorCallCount&quot;, &quot;2&quot;);
-<span class="lineNum">      49 </span>            : shouldBe(&quot;(new A).someGetter&quot;, &quot;getterValue&quot;);
-<span class="lineNum">      50 </span>            : shouldBe(&quot;setterValue = undefined; (new A).someSetter = 789; setterValue&quot;, &quot;789&quot;);
-<span class="lineNum">      51 </span>            : shouldBe(&quot;(new A).__proto__&quot;, &quot;A.prototype&quot;);
-<span class="lineNum">      52 </span>            : shouldBe(&quot;A.prototype.constructor&quot;, &quot;A&quot;);
-<span class="lineNum">      53 </span>            : 
-<span class="lineNum">      54 </span>            : shouldThrow(&quot;x = class&quot;, &quot;'SyntaxError: Unexpected end of input'&quot;);
-<span class="lineNum">      55 </span>            : shouldThrow(&quot;x = class {&quot;, &quot;'SyntaxError: Unexpected end of input'&quot;);
-<span class="lineNum">      56 </span>            : shouldThrow(&quot;x = class { ( }&quot;, &quot;'SyntaxError: Unexpected token ('&quot;);
-<span class="lineNum">      57 </span>            : shouldNotThrow(&quot;x = class {}&quot;);
-<span class="lineNum">      58 </span>            : 
-<span class="lineNum">      59 </span>            : shouldThrow(&quot;x = class { constructor() {} constructor() {} }&quot;, &quot;'SyntaxError: A class may only have one constructor'&quot;);
-<span class="lineNum">      60 </span>            : shouldThrow(&quot;x = class { get constructor() {} }&quot;, &quot;'SyntaxError: Class constructor may not be an accessor'&quot;);
-<span class="lineNum">      61 </span>            : shouldThrow(&quot;x = class { set constructor() {} }&quot;, &quot;'SyntaxError: Class constructor may not be an accessor'&quot;);
-<span class="lineNum">      62 </span>            : shouldNotThrow(&quot;x = class { constructor() {} static constructor() { return staticMethodValue; } }&quot;);
-<span class="lineNum">      63 </span>            : shouldBe(&quot;x = class { constructor() {} static constructor() { return staticMethodValue; } }; x.constructor()&quot;, &quot;staticMethodValue&quot;);
-<span class="lineNum">      64 </span>            : 
-<span class="lineNum">      65 </span>            : shouldThrow(&quot;x = class { constructor() {} static prototype() {} }&quot;, &quot;'SyntaxError: Classes may not have static property named prototype'&quot;);
-<span class="lineNum">      66 </span>            : shouldThrow(&quot;x = class { constructor() {} static get prototype() {} }&quot;, &quot;'SyntaxError: Classes may not have static property named prototype'&quot;);
-<span class="lineNum">      67 </span>            : shouldThrow(&quot;x = class { constructor() {} static set prototype() {} }&quot;, &quot;'SyntaxError: Classes may not have static property named prototype'&quot;);
-<span class="lineNum">      68 </span>            : shouldNotThrow(&quot;x = class  { constructor() {} prototype() { return instanceMethodValue; } }&quot;);
-<span class="lineNum">      69 </span>            : shouldBe(&quot;x = class { constructor() {} prototype() { return instanceMethodValue; } }; (new x).prototype()&quot;, &quot;instanceMethodValue&quot;);
-<span class="lineNum">      70 </span>            : 
-<span class="lineNum">      71 </span>            : shouldNotThrow(&quot;x = class { constructor() {} set foo(a) {} }&quot;);
-<span class="lineNum">      72 </span>            : shouldNotThrow(&quot;x = class { constructor() {} set foo({x, y}) {} }&quot;);
-<span class="lineNum">      73 </span>            : shouldThrow(&quot;x = class { constructor() {} set foo() {} }&quot;);
-<span class="lineNum">      74 </span>            : shouldThrow(&quot;x = class { constructor() {} set foo(a, b) {} }&quot;);
-<span class="lineNum">      75 </span>            : shouldNotThrow(&quot;x = class { constructor() {} get foo() {} }&quot;);
-<span class="lineNum">      76 </span>            : shouldThrow(&quot;x = class { constructor() {} get foo(x) {} }&quot;);
-<span class="lineNum">      77 </span>            : shouldThrow(&quot;x = class { constructor() {} get foo({x, y}) {} }&quot;);
-<span class="lineNum">      78 </span>            : 
-<span class="lineNum">      79 </span>            : var successfullyParsed = true;
+<span class="lineNum">      39 </span><span class="lineCov">          1 : };</span>
+<span class="lineNum">      40 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      41 </span><span class="lineCov">          1 : shouldBe(&quot;constructorCallCount&quot;, &quot;0&quot;);</span>
+<span class="lineNum">      42 </span><span class="lineCov">          1 : shouldBe(&quot;A.someStaticMethod()&quot;, &quot;staticMethodValue&quot;);</span>
+<span class="lineNum">      43 </span><span class="lineCov">          1 : shouldBe(&quot;A.someStaticGetter&quot;, &quot;getterValue&quot;);</span>
+<span class="lineNum">      44 </span><span class="lineCov">          1 : shouldBe(&quot;setterValue = undefined; A.someStaticSetter = 123; setterValue&quot;, &quot;123&quot;);</span>
+<span class="lineNum">      45 </span><span class="lineCov">          1 : shouldBe(&quot;(new A).someInstanceMethod()&quot;, &quot;instanceMethodValue&quot;);</span>
+<span class="lineNum">      46 </span><span class="lineCov">          1 : shouldBe(&quot;constructorCallCount&quot;, &quot;1&quot;);</span>
+<span class="lineNum">      47 </span><span class="lineCov">          1 : shouldBe(&quot;(new A).someGetter&quot;, &quot;getterValue&quot;);</span>
+<span class="lineNum">      48 </span><span class="lineCov">          1 : shouldBe(&quot;constructorCallCount&quot;, &quot;2&quot;);</span>
+<span class="lineNum">      49 </span><span class="lineCov">          1 : shouldBe(&quot;(new A).someGetter&quot;, &quot;getterValue&quot;);</span>
+<span class="lineNum">      50 </span><span class="lineCov">          1 : shouldBe(&quot;setterValue = undefined; (new A).someSetter = 789; setterValue&quot;, &quot;789&quot;);</span>
+<span class="lineNum">      51 </span><span class="lineCov">          1 : shouldBe(&quot;(new A).__proto__&quot;, &quot;A.prototype&quot;);</span>
+<span class="lineNum">      52 </span><span class="lineCov">          1 : shouldBe(&quot;A.prototype.constructor&quot;, &quot;A&quot;);</span>
+<span class="lineNum">      53 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      54 </span><span class="lineCov">          1 : shouldThrow(&quot;x = class&quot;, &quot;'SyntaxError: Unexpected end of input'&quot;);</span>
+<span class="lineNum">      55 </span><span class="lineCov">          1 : shouldThrow(&quot;x = class {&quot;, &quot;'SyntaxError: Unexpected end of input'&quot;);</span>
+<span class="lineNum">      56 </span><span class="lineCov">          1 : shouldThrow(&quot;x = class { ( }&quot;, &quot;'SyntaxError: Unexpected token ('&quot;);</span>
+<span class="lineNum">      57 </span><span class="lineCov">          1 : shouldNotThrow(&quot;x = class {}&quot;);</span>
+<span class="lineNum">      58 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      59 </span><span class="lineCov">          1 : shouldThrow(&quot;x = class { constructor() {} constructor() {} }&quot;, &quot;'SyntaxError: A class may only have one constructor'&quot;);</span>
+<span class="lineNum">      60 </span><span class="lineCov">          1 : shouldThrow(&quot;x = class { get constructor() {} }&quot;, &quot;'SyntaxError: Class constructor may not be an accessor'&quot;);</span>
+<span class="lineNum">      61 </span><span class="lineCov">          1 : shouldThrow(&quot;x = class { set constructor() {} }&quot;, &quot;'SyntaxError: Class constructor may not be an accessor'&quot;);</span>
+<span class="lineNum">      62 </span><span class="lineCov">          1 : shouldNotThrow(&quot;x = class { constructor() {} static constructor() { return staticMethodValue; } }&quot;);</span>
+<span class="lineNum">      63 </span><span class="lineCov">          1 : shouldBe(&quot;x = class { constructor() {} static constructor() { return staticMethodValue; } }; x.constructor()&quot;, &quot;staticMethodValue&quot;);</span>
+<span class="lineNum">      64 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      65 </span><span class="lineCov">          1 : shouldThrow(&quot;x = class { constructor() {} static prototype() {} }&quot;, &quot;'SyntaxError: Classes may not have static property named prototype'&quot;);</span>
+<span class="lineNum">      66 </span><span class="lineCov">          1 : shouldThrow(&quot;x = class { constructor() {} static get prototype() {} }&quot;, &quot;'SyntaxError: Classes may not have static property named prototype'&quot;);</span>
+<span class="lineNum">      67 </span><span class="lineCov">          1 : shouldThrow(&quot;x = class { constructor() {} static set prototype() {} }&quot;, &quot;'SyntaxError: Classes may not have static property named prototype'&quot;);</span>
+<span class="lineNum">      68 </span><span class="lineCov">          1 : shouldNotThrow(&quot;x = class  { constructor() {} prototype() { return instanceMethodValue; } }&quot;);</span>
+<span class="lineNum">      69 </span><span class="lineCov">          1 : shouldBe(&quot;x = class { constructor() {} prototype() { return instanceMethodValue; } }; (new x).prototype()&quot;, &quot;instanceMethodValue&quot;);</span>
+<span class="lineNum">      70 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      71 </span><span class="lineCov">          1 : shouldNotThrow(&quot;x = class { constructor() {} set foo(a) {} }&quot;);</span>
+<span class="lineNum">      72 </span><span class="lineCov">          1 : shouldNotThrow(&quot;x = class { constructor() {} set foo({x, y}) {} }&quot;);</span>
+<span class="lineNum">      73 </span><span class="lineCov">          1 : shouldThrow(&quot;x = class { constructor() {} set foo() {} }&quot;);</span>
+<span class="lineNum">      74 </span><span class="lineCov">          1 : shouldThrow(&quot;x = class { constructor() {} set foo(a, b) {} }&quot;);</span>
+<span class="lineNum">      75 </span><span class="lineCov">          1 : shouldNotThrow(&quot;x = class { constructor() {} get foo() {} }&quot;);</span>
+<span class="lineNum">      76 </span><span class="lineCov">          1 : shouldThrow(&quot;x = class { constructor() {} get foo(x) {} }&quot;);</span>
+<span class="lineNum">      77 </span><span class="lineCov">          1 : shouldThrow(&quot;x = class { constructor() {} get foo({x, y}) {} }&quot;);</span>
+<span class="lineNum">      78 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      79 </span><span class="lineCov">          1 : var successfullyParsed = true;</span>
 </pre>
       </td>
     </tr>

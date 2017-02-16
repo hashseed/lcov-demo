@@ -1,0 +1,154 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - test/mjsunit/wasm/jsapi-harness.js</title>
+  <link rel="stylesheet" type="text/css" href="../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../index.html">top level</a> - <a href="index.html">test/mjsunit/wasm</a> - jsapi-harness.js<span style="font-size: 80%;"> (source / <a href="jsapi-harness.js.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">70</td>
+            <td class="headerCovTableEntry">79</td>
+            <td class="headerCovTableEntryMed">88.6 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2017-02-16</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">5</td>
+            <td class="headerCovTableEntry">8</td>
+            <td class="headerCovTableEntryLo">62.5 %</td>
+          </tr>
+          <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span><span class="lineCov">          1 : // Copyright 2017 the V8 project authors. All rights reserved.</span></a>
+<span class="lineNum">       2 </span><span class="lineCov">          1 : // Use of this source code is governed by a BSD-style license that can be</span>
+<span class="lineNum">       3 </span><span class="lineCov">          1 : // found in the LICENSE file.</span>
+<span class="lineNum">       4 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">       5 </span><span class="lineCov">          1 : // TODO(eholk): Once we have stable test IDs, use those as the key instead.</span>
+<span class="lineNum">       6 </span><span class="lineCov">          1 : // See https://github.com/WebAssembly/spec/issues/415</span>
+<span class="lineNum">       7 </span><span class="lineCov">          1 : const known_failures = {</span>
+<span class="lineNum">       8 </span><span class="lineCov">          1 :   &quot;'WebAssembly.Module.customSections' method&quot;:</span>
+<span class="lineNum">       9 </span><span class="lineCov">          1 :     'https://bugs.chromium.org/p/v8/issues/detail?id=5815',</span>
+<span class="lineNum">      10 </span><span class="lineCov">          1 :   &quot;'WebAssembly.Table.prototype.get' method&quot;:</span>
+<span class="lineNum">      11 </span><span class="lineCov">          1 :     'https://bugs.chromium.org/p/v8/issues/detail?id=5507',</span>
+<span class="lineNum">      12 </span><span class="lineCov">          1 :   &quot;'WebAssembly.Table.prototype.set' method&quot;:</span>
+<span class="lineNum">      13 </span><span class="lineCov">          1 :     'https://bugs.chromium.org/p/v8/issues/detail?id=5507',</span>
+<span class="lineNum">      14 </span><span class="lineCov">          1 : };</span>
+<span class="lineNum">      15 </span><span class="lineCov">          1 : </span>
+<a name="16"><span class="lineNum">      16 </span><span class="lineCov">          1 : let failures = [];</span></a>
+<span class="lineNum">      17 </span><span class="lineCov">          1 : </span>
+<a name="18"><span class="lineNum">      18 </span><span class="lineCov">          1 : let last_promise = new Promise((resolve, reject) =&gt; { resolve(); });</span></a>
+<span class="lineNum">      19 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      20 </span><span class="lineCov">         51 : function test(func, description) {</span>
+<span class="lineNum">      21 </span><span class="lineCov">         51 :   let maybeErr;</span>
+<span class="lineNum">      22 </span><span class="lineCov">         51 :   try { func(); }</span>
+<span class="lineNum">      23 </span><span class="lineCov">         51 :   catch(e) { maybeErr = e; }</span>
+<span class="lineNum">      24 </span><span class="lineCov">         51 :   if (typeof maybeErr !== 'undefined') {</span>
+<span class="lineNum">      25 </span><span class="lineCov">         51 :     print(`${description}: FAIL. ${maybeErr}`);</span>
+<span class="lineNum">      26 </span><span class="lineCov">         51 :     failures.push(description);</span>
+<span class="lineNum">      27 </span><span class="lineCov">         51 :   } else {</span>
+<span class="lineNum">      28 </span><span class="lineCov">         51 :     print(`${description}: PASS.`);</span>
+<span class="lineNum">      29 </span><span class="lineCov">         51 :   }</span>
+<a name="30"><span class="lineNum">      30 </span><span class="lineCov">         51 : }</span></a>
+<span class="lineNum">      31 </span><span class="lineCov">          1 : </span>
+<a name="32"><span class="lineNum">      32 </span><span class="lineCov">         38 : function promise_test(func, description) {</span></a>
+<a name="33"><span class="lineNum">      33 </span><span class="lineCov">         38 :   last_promise = last_promise.then(func)</span></a>
+<span class="lineNum">      34 </span><span class="lineCov">         38 :   .then(_ =&gt; { print(`${description}: PASS.`); })</span>
+<span class="lineNum">      35 </span><span class="lineCov">         38 :   .catch(err =&gt; {</span>
+<span class="lineNum">      36 </span><span class="lineNoCov">          0 :     print(`${description}: FAIL. ${err}`);</span>
+<span class="lineNum">      37 </span><span class="lineNoCov">          0 :     failures.push(description);</span>
+<span class="lineNum">      38 </span><span class="lineCov">         38 :   });</span>
+<span class="lineNum">      39 </span><span class="lineCov">         38 : }</span>
+<span class="lineNum">      40 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      41 </span><span class="lineCov">          1 : let assert_equals = assertEquals;</span>
+<span class="lineNum">      42 </span><span class="lineCov">          1 : let assert_true = assertEquals.bind(null, true);</span>
+<a name="43"><span class="lineNum">      43 </span><span class="lineCov">          1 : let assert_false = assertEquals.bind(null, false);</span></a>
+<span class="lineNum">      44 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      45 </span><span class="lineCov">          1 : function assert_unreached(description) {</span>
+<span class="lineNum">      46 </span><span class="lineNoCov">          0 :   throw new Error(`unreachable:\n${description}`);</span>
+<a name="47"><span class="lineNum">      47 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">      48 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      49 </span><span class="lineCov">          1 : function assertErrorMessage(f, ctor, test) {</span>
+<span class="lineNum">      50 </span><span class="lineNoCov">          0 :   try { f(); }</span>
+<span class="lineNum">      51 </span><span class="lineNoCov">          0 :   catch (e) {</span>
+<span class="lineNum">      52 </span><span class="lineNoCov">          0 :     assert_true(e instanceof ctor, &quot;expected exception &quot; + ctor.name + &quot;, got &quot; + e);</span>
+<span class="lineNum">      53 </span><span class="lineNoCov">          0 :     return;</span>
+<span class="lineNum">      54 </span><span class="lineNoCov">          0 :   }</span>
+<span class="lineNum">      55 </span><span class="lineNoCov">          0 :   assert_true(false, &quot;expected exception &quot; + ctor.name + &quot;, no exception thrown&quot;);</span>
+<span class="lineNum">      56 </span><span class="lineCov">          1 : };</span>
+<span class="lineNum">      57 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      58 </span><span class="lineCov">          1 : load(&quot;test/wasm-js/test/harness/wasm-constants.js&quot;);</span>
+<span class="lineNum">      59 </span><span class="lineCov">          1 : load(&quot;test/wasm-js/test/harness/wasm-module-builder.js&quot;);</span>
+<a name="60"><span class="lineNum">      60 </span><span class="lineCov">          1 : load(&quot;test/wasm-js/test/js-api/jsapi.js&quot;);</span></a>
+<span class="lineNum">      61 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      62 </span><span class="lineCov">          1 : last_promise.then(_ =&gt; {</span>
+<span class="lineNum">      63 </span><span class="lineCov">          1 :   if (failures.length &gt; 0) {</span>
+<span class="lineNum">      64 </span><span class="lineCov">          1 :     let unexpected = false;</span>
+<span class="lineNum">      65 </span><span class="lineCov">          1 :     print(&quot;Some tests FAILED:&quot;);</span>
+<span class="lineNum">      66 </span><span class="lineCov">          1 :     for (let i in failures) {</span>
+<span class="lineNum">      67 </span><span class="lineCov">          1 :       if (known_failures[failures[i]]) {</span>
+<span class="lineNum">      68 </span><span class="lineCov">          1 :         print(`  ${failures[i]} [KNOWN: ${known_failures[failures[i]]}]`);</span>
+<span class="lineNum">      69 </span><span class="lineCov">          1 :       } else {</span>
+<span class="lineNum">      70 </span><span class="lineCov">          1 :         print(`  ${failures[i]}`);</span>
+<span class="lineNum">      71 </span><span class="lineCov">          1 :         unexpected = true;</span>
+<span class="lineNum">      72 </span><span class="lineCov">          1 :       }</span>
+<span class="lineNum">      73 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">      74 </span><span class="lineCov">          1 :     if (unexpected) {</span>
+<span class="lineNum">      75 </span><span class="lineCov">          1 :       quit(1);</span>
+<span class="lineNum">      76 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">      77 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">      78 </span><span class="lineCov">          1 : });</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

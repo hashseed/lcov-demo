@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">90</td>
-            <td class="headerCovTableEntry">147</td>
-            <td class="headerCovTableEntryLo">61.2 %</td>
+            <td class="headerCovTableEntry">148</td>
+            <td class="headerCovTableEntry">148</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -124,8 +124,8 @@
 <span class="lineNum">      62 </span><span class="lineCov">          1 :   assertEquals('ABCD'.normalize('NFKD'),</span>
 <span class="lineNum">      63 </span><span class="lineCov">          1 :     '\uff21\uff22\uff23\uff24'.normalize('NFKD')); // ＡＢＣＤ, fullwidth</span>
 <span class="lineNum">      64 </span><span class="lineCov">          1 : }();</span>
-<span class="lineNum">      65 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      66 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      65 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      66 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      67 </span><span class="lineCov">          1 : var testEdgeCases = function() {</span>
 <span class="lineNum">      68 </span><span class="lineCov">          1 :   // Make sure we throw RangeError, as the standard requires.</span>
 <span class="lineNum">      69 </span><span class="lineCov">          1 :   assertThrows('&quot;&quot;.normalize(1234)', RangeError);</span>
@@ -138,61 +138,61 @@
 <span class="lineNum">      76 </span><span class="lineCov">          1 :   assertThrows('var s = undefined; s.normalize()');</span>
 <span class="lineNum">      77 </span><span class="lineCov">          1 :   assertThrows('var s = 1234; s.normalize()'); // no normalize for non-strings</span>
 <span class="lineNum">      78 </span><span class="lineCov">          1 : }();</span>
-<span class="lineNum">      79 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      80 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      81 </span><span class="lineNoCov">          0 : // Several kinds of mappings. No need to be comprehensive, we don't test</span>
-<span class="lineNum">      82 </span><span class="lineNoCov">          0 : // the ICU functionality, we only test C - JavaScript 'glue'</span>
-<span class="lineNum">      83 </span><span class="lineNoCov">          0 : var testData = [</span>
-<span class="lineNum">      84 </span><span class="lineNoCov">          0 :   // org, default, NFC, NFD, NKFC, NKFD</span>
-<span class="lineNum">      85 </span><span class="lineNoCov">          0 :   ['\u00c7', // Ç : Combining sequence, Latin 1</span>
-<span class="lineNum">      86 </span><span class="lineNoCov">          0 :     '\u00c7', '\u0043\u0327',</span>
-<span class="lineNum">      87 </span><span class="lineNoCov">          0 :     '\u00c7', '\u0043\u0327'],</span>
-<span class="lineNum">      88 </span><span class="lineNoCov">          0 :   ['\u0218', // Ș : Combining sequence, non-Latin 1</span>
-<span class="lineNum">      89 </span><span class="lineNoCov">          0 :     '\u0218', '\u0053\u0326',</span>
-<span class="lineNum">      90 </span><span class="lineNoCov">          0 :     '\u0218', '\u0053\u0326'],</span>
-<span class="lineNum">      91 </span><span class="lineNoCov">          0 :   ['\uac00', // 가 : Hangul</span>
-<span class="lineNum">      92 </span><span class="lineNoCov">          0 :     '\uac00', '\u1100\u1161',</span>
-<span class="lineNum">      93 </span><span class="lineNoCov">          0 :     '\uac00', '\u1100\u1161'],</span>
-<span class="lineNum">      94 </span><span class="lineNoCov">          0 :   ['\uff76', // ｶ : Narrow Kana</span>
-<span class="lineNum">      95 </span><span class="lineNoCov">          0 :     '\uff76', '\uff76',</span>
-<span class="lineNum">      96 </span><span class="lineNoCov">          0 :     '\u30ab', '\u30ab'],</span>
-<span class="lineNum">      97 </span><span class="lineNoCov">          0 :   ['\u00bc', // ¼ : Fractions</span>
-<span class="lineNum">      98 </span><span class="lineNoCov">          0 :     '\u00bc', '\u00bc',</span>
-<span class="lineNum">      99 </span><span class="lineNoCov">          0 :     '\u0031\u2044\u0034', '\u0031\u2044\u0034'],</span>
-<span class="lineNum">     100 </span><span class="lineNoCov">          0 :   ['\u01c6', // ǆ  : Latin ligature</span>
-<span class="lineNum">     101 </span><span class="lineNoCov">          0 :     '\u01c6', '\u01c6',</span>
-<span class="lineNum">     102 </span><span class="lineNoCov">          0 :     '\u0064\u017e', '\u0064\u007a\u030c'],</span>
-<span class="lineNum">     103 </span><span class="lineNoCov">          0 :   ['s\u0307\u0323', // s + dot above + dot below, ordering of combining marks</span>
-<span class="lineNum">     104 </span><span class="lineNoCov">          0 :     '\u1e69', 's\u0323\u0307',</span>
-<span class="lineNum">     105 </span><span class="lineNoCov">          0 :     '\u1e69', 's\u0323\u0307'],</span>
-<span class="lineNum">     106 </span><span class="lineNoCov">          0 :   ['\u3300', // ㌀ : Squared characters</span>
-<span class="lineNum">     107 </span><span class="lineNoCov">          0 :     '\u3300', '\u3300',</span>
-<span class="lineNum">     108 </span><span class="lineNoCov">          0 :     '\u30a2\u30d1\u30fc\u30c8', // アパート</span>
-<span class="lineNum">     109 </span><span class="lineNoCov">          0 :     '\u30a2\u30cf\u309a\u30fc\u30c8'], // アパート</span>
-<span class="lineNum">     110 </span><span class="lineNoCov">          0 :   ['\ufe37', // ︷ : Vertical forms</span>
-<span class="lineNum">     111 </span><span class="lineNoCov">          0 :     '\ufe37', '\ufe37',</span>
-<span class="lineNum">     112 </span><span class="lineNoCov">          0 :     '{' , '{'],</span>
-<span class="lineNum">     113 </span><span class="lineNoCov">          0 :   ['\u2079', // ⁹ : superscript 9</span>
-<span class="lineNum">     114 </span><span class="lineNoCov">          0 :     '\u2079', '\u2079',</span>
-<span class="lineNum">     115 </span><span class="lineNoCov">          0 :     '9', '9'],</span>
-<span class="lineNum">     116 </span><span class="lineNoCov">          0 :   ['\ufee5\ufee6\ufee7\ufee8', // Arabic forms</span>
-<span class="lineNum">     117 </span><span class="lineNoCov">          0 :     '\ufee5\ufee6\ufee7\ufee8', '\ufee5\ufee6\ufee7\ufee8',</span>
-<span class="lineNum">     118 </span><span class="lineNoCov">          0 :     '\u0646\u0646\u0646\u0646', '\u0646\u0646\u0646\u0646'],</span>
-<span class="lineNum">     119 </span><span class="lineNoCov">          0 :   ['\u2460', // ① : Circled</span>
-<span class="lineNum">     120 </span><span class="lineNoCov">          0 :     '\u2460', '\u2460',</span>
-<span class="lineNum">     121 </span><span class="lineNoCov">          0 :     '1', '1'],</span>
-<span class="lineNum">     122 </span><span class="lineNoCov">          0 :   ['\u210c', // ℌ : Font variants</span>
-<span class="lineNum">     123 </span><span class="lineNoCov">          0 :     '\u210c', '\u210c',</span>
-<span class="lineNum">     124 </span><span class="lineNoCov">          0 :     'H', 'H'],</span>
-<span class="lineNum">     125 </span><span class="lineNoCov">          0 :   ['\u2126', // Ω : Singleton, OHM sign vs. Greek capital letter OMEGA</span>
-<span class="lineNum">     126 </span><span class="lineNoCov">          0 :     '\u03a9', '\u03a9',</span>
-<span class="lineNum">     127 </span><span class="lineNoCov">          0 :     '\u03a9', '\u03a9'],</span>
-<span class="lineNum">     128 </span><span class="lineNoCov">          0 :   ['\ufdfb', // Long ligature, ARABIC LIGATURE JALLAJALALOUHOU</span>
-<span class="lineNum">     129 </span><span class="lineNoCov">          0 :     '\ufdfb', '\ufdfb',</span>
-<span class="lineNum">     130 </span><span class="lineNoCov">          0 :     '\u062C\u0644\u0020\u062C\u0644\u0627\u0644\u0647',</span>
-<span class="lineNum">     131 </span><span class="lineNoCov">          0 :     '\u062C\u0644\u0020\u062C\u0644\u0627\u0644\u0647']</span>
-<span class="lineNum">     132 </span><span class="lineNoCov">          0 : ];</span>
-<span class="lineNum">     133 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      79 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      80 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      81 </span><span class="lineCov">          1 : // Several kinds of mappings. No need to be comprehensive, we don't test</span>
+<span class="lineNum">      82 </span><span class="lineCov">          1 : // the ICU functionality, we only test C - JavaScript 'glue'</span>
+<span class="lineNum">      83 </span><span class="lineCov">          1 : var testData = [</span>
+<span class="lineNum">      84 </span><span class="lineCov">          1 :   // org, default, NFC, NFD, NKFC, NKFD</span>
+<span class="lineNum">      85 </span><span class="lineCov">          1 :   ['\u00c7', // Ç : Combining sequence, Latin 1</span>
+<span class="lineNum">      86 </span><span class="lineCov">          1 :     '\u00c7', '\u0043\u0327',</span>
+<span class="lineNum">      87 </span><span class="lineCov">          1 :     '\u00c7', '\u0043\u0327'],</span>
+<span class="lineNum">      88 </span><span class="lineCov">          1 :   ['\u0218', // Ș : Combining sequence, non-Latin 1</span>
+<span class="lineNum">      89 </span><span class="lineCov">          1 :     '\u0218', '\u0053\u0326',</span>
+<span class="lineNum">      90 </span><span class="lineCov">          1 :     '\u0218', '\u0053\u0326'],</span>
+<span class="lineNum">      91 </span><span class="lineCov">          1 :   ['\uac00', // 가 : Hangul</span>
+<span class="lineNum">      92 </span><span class="lineCov">          1 :     '\uac00', '\u1100\u1161',</span>
+<span class="lineNum">      93 </span><span class="lineCov">          1 :     '\uac00', '\u1100\u1161'],</span>
+<span class="lineNum">      94 </span><span class="lineCov">          1 :   ['\uff76', // ｶ : Narrow Kana</span>
+<span class="lineNum">      95 </span><span class="lineCov">          1 :     '\uff76', '\uff76',</span>
+<span class="lineNum">      96 </span><span class="lineCov">          1 :     '\u30ab', '\u30ab'],</span>
+<span class="lineNum">      97 </span><span class="lineCov">          1 :   ['\u00bc', // ¼ : Fractions</span>
+<span class="lineNum">      98 </span><span class="lineCov">          1 :     '\u00bc', '\u00bc',</span>
+<span class="lineNum">      99 </span><span class="lineCov">          1 :     '\u0031\u2044\u0034', '\u0031\u2044\u0034'],</span>
+<span class="lineNum">     100 </span><span class="lineCov">          1 :   ['\u01c6', // ǆ  : Latin ligature</span>
+<span class="lineNum">     101 </span><span class="lineCov">          1 :     '\u01c6', '\u01c6',</span>
+<span class="lineNum">     102 </span><span class="lineCov">          1 :     '\u0064\u017e', '\u0064\u007a\u030c'],</span>
+<span class="lineNum">     103 </span><span class="lineCov">          1 :   ['s\u0307\u0323', // s + dot above + dot below, ordering of combining marks</span>
+<span class="lineNum">     104 </span><span class="lineCov">          1 :     '\u1e69', 's\u0323\u0307',</span>
+<span class="lineNum">     105 </span><span class="lineCov">          1 :     '\u1e69', 's\u0323\u0307'],</span>
+<span class="lineNum">     106 </span><span class="lineCov">          1 :   ['\u3300', // ㌀ : Squared characters</span>
+<span class="lineNum">     107 </span><span class="lineCov">          1 :     '\u3300', '\u3300',</span>
+<span class="lineNum">     108 </span><span class="lineCov">          1 :     '\u30a2\u30d1\u30fc\u30c8', // アパート</span>
+<span class="lineNum">     109 </span><span class="lineCov">          1 :     '\u30a2\u30cf\u309a\u30fc\u30c8'], // アパート</span>
+<span class="lineNum">     110 </span><span class="lineCov">          1 :   ['\ufe37', // ︷ : Vertical forms</span>
+<span class="lineNum">     111 </span><span class="lineCov">          1 :     '\ufe37', '\ufe37',</span>
+<span class="lineNum">     112 </span><span class="lineCov">          1 :     '{' , '{'],</span>
+<span class="lineNum">     113 </span><span class="lineCov">          1 :   ['\u2079', // ⁹ : superscript 9</span>
+<span class="lineNum">     114 </span><span class="lineCov">          1 :     '\u2079', '\u2079',</span>
+<span class="lineNum">     115 </span><span class="lineCov">          1 :     '9', '9'],</span>
+<span class="lineNum">     116 </span><span class="lineCov">          1 :   ['\ufee5\ufee6\ufee7\ufee8', // Arabic forms</span>
+<span class="lineNum">     117 </span><span class="lineCov">          1 :     '\ufee5\ufee6\ufee7\ufee8', '\ufee5\ufee6\ufee7\ufee8',</span>
+<span class="lineNum">     118 </span><span class="lineCov">          1 :     '\u0646\u0646\u0646\u0646', '\u0646\u0646\u0646\u0646'],</span>
+<span class="lineNum">     119 </span><span class="lineCov">          1 :   ['\u2460', // ① : Circled</span>
+<span class="lineNum">     120 </span><span class="lineCov">          1 :     '\u2460', '\u2460',</span>
+<span class="lineNum">     121 </span><span class="lineCov">          1 :     '1', '1'],</span>
+<span class="lineNum">     122 </span><span class="lineCov">          1 :   ['\u210c', // ℌ : Font variants</span>
+<span class="lineNum">     123 </span><span class="lineCov">          1 :     '\u210c', '\u210c',</span>
+<span class="lineNum">     124 </span><span class="lineCov">          1 :     'H', 'H'],</span>
+<span class="lineNum">     125 </span><span class="lineCov">          1 :   ['\u2126', // Ω : Singleton, OHM sign vs. Greek capital letter OMEGA</span>
+<span class="lineNum">     126 </span><span class="lineCov">          1 :     '\u03a9', '\u03a9',</span>
+<span class="lineNum">     127 </span><span class="lineCov">          1 :     '\u03a9', '\u03a9'],</span>
+<span class="lineNum">     128 </span><span class="lineCov">          1 :   ['\ufdfb', // Long ligature, ARABIC LIGATURE JALLAJALALOUHOU</span>
+<span class="lineNum">     129 </span><span class="lineCov">          1 :     '\ufdfb', '\ufdfb',</span>
+<span class="lineNum">     130 </span><span class="lineCov">          1 :     '\u062C\u0644\u0020\u062C\u0644\u0627\u0644\u0647',</span>
+<span class="lineNum">     131 </span><span class="lineCov">          1 :     '\u062C\u0644\u0020\u062C\u0644\u0627\u0644\u0647']</span>
+<span class="lineNum">     132 </span><span class="lineCov">          1 : ];</span>
+<span class="lineNum">     133 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     134 </span><span class="lineCov">          1 : var testArray = function() {</span>
 <span class="lineNum">     135 </span><span class="lineCov">          1 :   var kNFC = 1, kNFD = 2, kNFKC = 3, kNFKD = 4;</span>
 <span class="lineNum">     136 </span><span class="lineCov">          1 :   for (var i = 0; i &lt; testData.length; ++i) {</span>

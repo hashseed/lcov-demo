@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">45</td>
-            <td class="headerCovTableEntry">56</td>
-            <td class="headerCovTableEntryMed">80.4 %</td>
+            <td class="headerCovTableEntry">107</td>
+            <td class="headerCovTableEntry">107</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">6</td>
@@ -93,14 +93,14 @@
 <a name="31"><span class="lineNum">      31 </span><span class="lineCov">          1 : </span></a>
 <span class="lineNum">      32 </span><span class="lineCov">          1 : var o1 = { toString: function() { return 42; },</span>
 <span class="lineNum">      33 </span><span class="lineCov">          1 :            valueOf: function() { return &quot;37&quot;; } };</span>
-<span class="lineNum">      34 </span><span class="lineNoCov">          0 : var n1 = Number(o1);</span>
-<span class="lineNum">      35 </span><span class="lineNoCov">          0 : var s1 = String(o1);</span>
-<span class="lineNum">      36 </span><span class="lineNoCov">          0 : assertTrue(typeof n1 == &quot;number&quot;);</span>
-<span class="lineNum">      37 </span><span class="lineNoCov">          0 : assertTrue(typeof s1 == &quot;string&quot;);</span>
-<span class="lineNum">      38 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      39 </span><span class="lineNoCov">          0 : var trace = [];</span>
-<a name="40"><span class="lineNum">      40 </span><span class="lineNoCov">          0 : var valueOfValue = 42;</span></a>
-<span class="lineNum">      41 </span><span class="lineNoCov">          0 : var toStringValue = &quot;foo&quot;;</span>
+<span class="lineNum">      34 </span><span class="lineCov">          1 : var n1 = Number(o1);</span>
+<span class="lineNum">      35 </span><span class="lineCov">          1 : var s1 = String(o1);</span>
+<span class="lineNum">      36 </span><span class="lineCov">          1 : assertTrue(typeof n1 == &quot;number&quot;);</span>
+<span class="lineNum">      37 </span><span class="lineCov">          1 : assertTrue(typeof s1 == &quot;string&quot;);</span>
+<span class="lineNum">      38 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      39 </span><span class="lineCov">          1 : var trace = [];</span>
+<a name="40"><span class="lineNum">      40 </span><span class="lineCov">          1 : var valueOfValue = 42;</span></a>
+<span class="lineNum">      41 </span><span class="lineCov">          1 : var toStringValue = &quot;foo&quot;;</span>
 <span class="lineNum">      42 </span><span class="lineCov">          5 : function traceValueOf () {</span>
 <span class="lineNum">      43 </span><span class="lineCov">          5 :   trace.push(&quot;vo&quot;);</span>
 <a name="44"><span class="lineNum">      44 </span><span class="lineCov">          5 :   return valueOfValue;</span></a>
@@ -109,63 +109,63 @@
 <span class="lineNum">      47 </span><span class="lineCov">          5 :   trace.push(&quot;ts&quot;);</span>
 <span class="lineNum">      48 </span><span class="lineCov">          5 :   return toStringValue;</span>
 <span class="lineNum">      49 </span><span class="lineCov">          5 : };</span>
-<span class="lineNum">      50 </span><span class="lineNoCov">          0 : var valueOfFunc = traceValueOf;</span>
-<a name="51"><span class="lineNum">      51 </span><span class="lineNoCov">          0 : var toStringFunc = traceToString;</span></a>
-<span class="lineNum">      52 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      50 </span><span class="lineCov">          1 : var valueOfFunc = traceValueOf;</span>
+<a name="51"><span class="lineNum">      51 </span><span class="lineCov">          1 : var toStringFunc = traceToString;</span></a>
+<span class="lineNum">      52 </span><span class="lineCov">          1 : </span>
 <a name="53"><span class="lineNum">      53 </span><span class="lineCov">          7 : var ot = { get toString() { trace.push(&quot;gts&quot;);</span></a>
 <span class="lineNum">      54 </span><span class="lineCov">          7 :                             return toStringFunc; },</span>
 <span class="lineNum">      55 </span><span class="lineCov">          7 :            get valueOf() { trace.push(&quot;gvo&quot;);</span>
 <span class="lineNum">      56 </span><span class="lineCov">          7 :                            return valueOfFunc; }</span>
-<span class="lineNum">      57 </span>            : };
-<span class="lineNum">      58 </span>            : 
-<span class="lineNum">      59 </span>            : var nt = Number(ot);
-<span class="lineNum">      60 </span>            : assertEquals(42, nt);
-<span class="lineNum">      61 </span>            : assertEquals([&quot;gvo&quot;,&quot;vo&quot;], trace);
-<span class="lineNum">      62 </span>            : 
-<span class="lineNum">      63 </span>            : trace = [];
-<span class="lineNum">      64 </span>            : var st = String(ot);
-<span class="lineNum">      65 </span>            : assertEquals(&quot;foo&quot;, st);
-<span class="lineNum">      66 </span>            : assertEquals([&quot;gts&quot;,&quot;ts&quot;], trace);
-<span class="lineNum">      67 </span>            : 
-<span class="lineNum">      68 </span>            : trace = [];
-<span class="lineNum">      69 </span>            : valueOfValue = [&quot;not primitive&quot;];
-<span class="lineNum">      70 </span>            : var nt = Number(ot);
-<span class="lineNum">      71 </span>            : assertEquals(Number(&quot;foo&quot;), nt);
-<span class="lineNum">      72 </span>            : assertEquals([&quot;gvo&quot;, &quot;vo&quot;, &quot;gts&quot;, &quot;ts&quot;], trace);
-<span class="lineNum">      73 </span>            : 
-<span class="lineNum">      74 </span>            : trace = [];
-<span class="lineNum">      75 </span>            : valueOfValue = 42;
-<span class="lineNum">      76 </span>            : toStringValue = [&quot;not primitive&quot;];
-<span class="lineNum">      77 </span>            : var st = String(ot);
-<span class="lineNum">      78 </span>            : assertEquals(String(42), st);
-<span class="lineNum">      79 </span>            : assertEquals([&quot;gts&quot;, &quot;ts&quot;, &quot;gvo&quot;, &quot;vo&quot;], trace);
-<span class="lineNum">      80 </span>            : 
-<span class="lineNum">      81 </span>            : trace = [];
-<span class="lineNum">      82 </span>            : valueOfValue = [&quot;not primitive&quot;];
-<span class="lineNum">      83 </span>            : assertThrows(&quot;Number(ot)&quot;, TypeError);
-<span class="lineNum">      84 </span>            : assertEquals([&quot;gvo&quot;, &quot;vo&quot;, &quot;gts&quot;, &quot;ts&quot;], trace);
-<span class="lineNum">      85 </span>            : 
-<span class="lineNum">      86 </span>            : 
-<span class="lineNum">      87 </span>            : toStringFunc = &quot;not callable&quot;;
-<span class="lineNum">      88 </span>            : trace = [];
-<span class="lineNum">      89 </span>            : valueOfValue = 42;
-<span class="lineNum">      90 </span>            : var st = String(ot);
-<span class="lineNum">      91 </span>            : assertEquals(String(42), st);
-<span class="lineNum">      92 </span>            : assertEquals([&quot;gts&quot;, &quot;gvo&quot;, &quot;vo&quot;], trace);
-<span class="lineNum">      93 </span>            : 
-<span class="lineNum">      94 </span>            : valueOfFunc = &quot;not callable&quot;;
-<span class="lineNum">      95 </span>            : trace = [];
-<span class="lineNum">      96 </span>            : assertThrows(&quot;String(ot)&quot;, TypeError);
-<span class="lineNum">      97 </span>            : assertEquals([&quot;gts&quot;, &quot;gvo&quot;], trace);
-<span class="lineNum">      98 </span>            : 
-<span class="lineNum">      99 </span>            : toStringFunc = traceToString;
-<span class="lineNum">     100 </span>            : toStringValue = &quot;87&quot;;
-<span class="lineNum">     101 </span>            : trace = [];
-<span class="lineNum">     102 </span>            : var nt = Number(ot);
-<span class="lineNum">     103 </span>            : assertEquals(87, nt);
-<span class="lineNum">     104 </span>            : assertEquals([&quot;gvo&quot;, &quot;gts&quot;, &quot;ts&quot;], trace);
-<span class="lineNum">     105 </span>            : 
-<span class="lineNum">     106 </span>            : assertThrows('Number(Symbol())', TypeError);
+<span class="lineNum">      57 </span><span class="lineCov">          1 : };</span>
+<span class="lineNum">      58 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      59 </span><span class="lineCov">          1 : var nt = Number(ot);</span>
+<span class="lineNum">      60 </span><span class="lineCov">          1 : assertEquals(42, nt);</span>
+<span class="lineNum">      61 </span><span class="lineCov">          1 : assertEquals([&quot;gvo&quot;,&quot;vo&quot;], trace);</span>
+<span class="lineNum">      62 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      63 </span><span class="lineCov">          1 : trace = [];</span>
+<span class="lineNum">      64 </span><span class="lineCov">          1 : var st = String(ot);</span>
+<span class="lineNum">      65 </span><span class="lineCov">          1 : assertEquals(&quot;foo&quot;, st);</span>
+<span class="lineNum">      66 </span><span class="lineCov">          1 : assertEquals([&quot;gts&quot;,&quot;ts&quot;], trace);</span>
+<span class="lineNum">      67 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      68 </span><span class="lineCov">          1 : trace = [];</span>
+<span class="lineNum">      69 </span><span class="lineCov">          1 : valueOfValue = [&quot;not primitive&quot;];</span>
+<span class="lineNum">      70 </span><span class="lineCov">          1 : var nt = Number(ot);</span>
+<span class="lineNum">      71 </span><span class="lineCov">          1 : assertEquals(Number(&quot;foo&quot;), nt);</span>
+<span class="lineNum">      72 </span><span class="lineCov">          1 : assertEquals([&quot;gvo&quot;, &quot;vo&quot;, &quot;gts&quot;, &quot;ts&quot;], trace);</span>
+<span class="lineNum">      73 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      74 </span><span class="lineCov">          1 : trace = [];</span>
+<span class="lineNum">      75 </span><span class="lineCov">          1 : valueOfValue = 42;</span>
+<span class="lineNum">      76 </span><span class="lineCov">          1 : toStringValue = [&quot;not primitive&quot;];</span>
+<span class="lineNum">      77 </span><span class="lineCov">          1 : var st = String(ot);</span>
+<span class="lineNum">      78 </span><span class="lineCov">          1 : assertEquals(String(42), st);</span>
+<span class="lineNum">      79 </span><span class="lineCov">          1 : assertEquals([&quot;gts&quot;, &quot;ts&quot;, &quot;gvo&quot;, &quot;vo&quot;], trace);</span>
+<span class="lineNum">      80 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      81 </span><span class="lineCov">          1 : trace = [];</span>
+<span class="lineNum">      82 </span><span class="lineCov">          1 : valueOfValue = [&quot;not primitive&quot;];</span>
+<span class="lineNum">      83 </span><span class="lineCov">          1 : assertThrows(&quot;Number(ot)&quot;, TypeError);</span>
+<span class="lineNum">      84 </span><span class="lineCov">          1 : assertEquals([&quot;gvo&quot;, &quot;vo&quot;, &quot;gts&quot;, &quot;ts&quot;], trace);</span>
+<span class="lineNum">      85 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      86 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      87 </span><span class="lineCov">          1 : toStringFunc = &quot;not callable&quot;;</span>
+<span class="lineNum">      88 </span><span class="lineCov">          1 : trace = [];</span>
+<span class="lineNum">      89 </span><span class="lineCov">          1 : valueOfValue = 42;</span>
+<span class="lineNum">      90 </span><span class="lineCov">          1 : var st = String(ot);</span>
+<span class="lineNum">      91 </span><span class="lineCov">          1 : assertEquals(String(42), st);</span>
+<span class="lineNum">      92 </span><span class="lineCov">          1 : assertEquals([&quot;gts&quot;, &quot;gvo&quot;, &quot;vo&quot;], trace);</span>
+<span class="lineNum">      93 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      94 </span><span class="lineCov">          1 : valueOfFunc = &quot;not callable&quot;;</span>
+<span class="lineNum">      95 </span><span class="lineCov">          1 : trace = [];</span>
+<span class="lineNum">      96 </span><span class="lineCov">          1 : assertThrows(&quot;String(ot)&quot;, TypeError);</span>
+<span class="lineNum">      97 </span><span class="lineCov">          1 : assertEquals([&quot;gts&quot;, &quot;gvo&quot;], trace);</span>
+<span class="lineNum">      98 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      99 </span><span class="lineCov">          1 : toStringFunc = traceToString;</span>
+<span class="lineNum">     100 </span><span class="lineCov">          1 : toStringValue = &quot;87&quot;;</span>
+<span class="lineNum">     101 </span><span class="lineCov">          1 : trace = [];</span>
+<span class="lineNum">     102 </span><span class="lineCov">          1 : var nt = Number(ot);</span>
+<span class="lineNum">     103 </span><span class="lineCov">          1 : assertEquals(87, nt);</span>
+<span class="lineNum">     104 </span><span class="lineCov">          1 : assertEquals([&quot;gvo&quot;, &quot;gts&quot;, &quot;ts&quot;], trace);</span>
+<span class="lineNum">     105 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     106 </span><span class="lineCov">          1 : assertThrows('Number(Symbol())', TypeError);</span>
 </pre>
       </td>
     </tr>

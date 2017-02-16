@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">167</td>
-            <td class="headerCovTableEntry">183</td>
-            <td class="headerCovTableEntryHi">91.3 %</td>
+            <td class="headerCovTableEntry">184</td>
+            <td class="headerCovTableEntry">184</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">9</td>
@@ -94,20 +94,20 @@
 <span class="lineNum">      32 </span><span class="lineCov">         20 : function newCodeEntry(size, name) {</span>
 <span class="lineNum">      33 </span><span class="lineCov">         20 :   return new CodeMap.CodeEntry(size, name);</span>
 <span class="lineNum">      34 </span><span class="lineCov">         20 : };</span>
-<a name="35"><span class="lineNum">      35 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">      36 </span><span class="lineNoCov">          0 : </span>
+<a name="35"><span class="lineNum">      35 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      36 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      37 </span><span class="lineCov">         49 : function assertEntry(codeMap, expected_name, addr) {</span>
 <span class="lineNum">      38 </span><span class="lineCov">         49 :   var entry = codeMap.findEntry(addr);</span>
 <span class="lineNum">      39 </span><span class="lineCov">         49 :   assertNotNull(entry, 'no entry at ' + addr.toString(16));</span>
 <span class="lineNum">      40 </span><span class="lineCov">         49 :   assertEquals(expected_name, entry.name, 'at ' + addr.toString(16));</span>
 <span class="lineNum">      41 </span><span class="lineCov">         49 : };</span>
-<a name="42"><span class="lineNum">      42 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">      43 </span><span class="lineNoCov">          0 : </span>
+<a name="42"><span class="lineNum">      42 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      43 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      44 </span><span class="lineCov">         16 : function assertNoEntry(codeMap, addr) {</span>
 <span class="lineNum">      45 </span><span class="lineCov">         16 :   assertNull(codeMap.findEntry(addr), 'at ' + addr.toString(16));</span>
 <span class="lineNum">      46 </span><span class="lineCov">         16 : };</span>
-<a name="47"><span class="lineNum">      47 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">      48 </span><span class="lineNoCov">          0 : </span>
+<a name="47"><span class="lineNum">      47 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      48 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      49 </span><span class="lineCov">          1 : (function testLibrariesAndStaticCode() {</span>
 <span class="lineNum">      50 </span><span class="lineCov">          1 :   var codeMap = new CodeMap();</span>
 <span class="lineNum">      51 </span><span class="lineCov">          1 :   codeMap.addLibrary(0x1500, newCodeEntry(0x3000, 'lib1'));</span>
@@ -156,8 +156,8 @@
 <span class="lineNum">      94 </span><span class="lineCov">          1 :   assertEntry(codeMap, 'lib2', 0x15520 + 0x100);</span>
 <span class="lineNum">      95 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      96 </span><span class="lineCov">          1 : })();</span>
-<a name="97"><span class="lineNum">      97 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">      98 </span><span class="lineNoCov">          0 : </span>
+<a name="97"><span class="lineNum">      97 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      98 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      99 </span><span class="lineCov">          1 : (function testDynamicCode() {</span>
 <span class="lineNum">     100 </span><span class="lineCov">          1 :   var codeMap = new CodeMap();</span>
 <span class="lineNum">     101 </span><span class="lineCov">          1 :   codeMap.addCode(0x1500, newCodeEntry(0x200, 'code1'));</span>
@@ -182,8 +182,8 @@
 <span class="lineNum">     120 </span><span class="lineCov">          1 :   assertNoEntry(codeMap, 0x1950 + 0x10);</span>
 <span class="lineNum">     121 </span><span class="lineCov">          1 :   assertNoEntry(codeMap, 0xFFFFFFFF);</span>
 <span class="lineNum">     122 </span><span class="lineCov">          1 : })();</span>
-<a name="123"><span class="lineNum">     123 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     124 </span><span class="lineNoCov">          0 : </span>
+<a name="123"><span class="lineNum">     123 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     124 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     125 </span><span class="lineCov">          1 : (function testCodeMovesAndDeletions() {</span>
 <span class="lineNum">     126 </span><span class="lineCov">          1 :   var codeMap = new CodeMap();</span>
 <span class="lineNum">     127 </span><span class="lineCov">          1 :   codeMap.addCode(0x1500, newCodeEntry(0x200, 'code1'));</span>
@@ -198,8 +198,8 @@
 <span class="lineNum">     136 </span><span class="lineCov">          1 :   assertNoEntry(codeMap, 0x1700);</span>
 <span class="lineNum">     137 </span><span class="lineCov">          1 :   assertEntry(codeMap, 'code1', 0x1800);</span>
 <span class="lineNum">     138 </span><span class="lineCov">          1 : })();</span>
-<a name="139"><span class="lineNum">     139 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     140 </span><span class="lineNoCov">          0 : </span>
+<a name="139"><span class="lineNum">     139 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     140 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     141 </span><span class="lineCov">          1 : (function testDynamicNamesDuplicates() {</span>
 <span class="lineNum">     142 </span><span class="lineCov">          1 :   var codeMap = new CodeMap();</span>
 <span class="lineNum">     143 </span><span class="lineCov">          1 :   // Code entries with same names but different addresses.</span>
@@ -211,8 +211,8 @@
 <span class="lineNum">     149 </span><span class="lineCov">          1 :   assertEntry(codeMap, 'code', 0x1500);</span>
 <span class="lineNum">     150 </span><span class="lineCov">          1 :   assertEntry(codeMap, 'code {1}', 0x1700);</span>
 <span class="lineNum">     151 </span><span class="lineCov">          1 : })();</span>
-<a name="152"><span class="lineNum">     152 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     153 </span><span class="lineNoCov">          0 : </span>
+<a name="152"><span class="lineNum">     152 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     153 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     154 </span><span class="lineCov">          1 : (function testStaticEntriesExport() {</span>
 <span class="lineNum">     155 </span><span class="lineCov">          1 :   var codeMap = new CodeMap();</span>
 <span class="lineNum">     156 </span><span class="lineCov">          1 :   codeMap.addStaticCode(0x1500, newCodeEntry(0x3000, 'lib1'));</span>
@@ -223,8 +223,8 @@
 <span class="lineNum">     161 </span><span class="lineCov">          1 :   allStatics.sort();</span>
 <span class="lineNum">     162 </span><span class="lineCov">          1 :   assertEquals(['lib1: 3000', 'lib2: 5000', 'lib3: 10000'], allStatics);</span>
 <span class="lineNum">     163 </span><span class="lineCov">          1 : })();</span>
-<a name="164"><span class="lineNum">     164 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     165 </span><span class="lineNoCov">          0 : </span>
+<a name="164"><span class="lineNum">     164 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     165 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     166 </span><span class="lineCov">          1 : (function testDynamicEntriesExport() {</span>
 <span class="lineNum">     167 </span><span class="lineCov">          1 :   var codeMap = new CodeMap();</span>
 <span class="lineNum">     168 </span><span class="lineCov">          1 :   codeMap.addCode(0x1500, newCodeEntry(0x200, 'code1'));</span>

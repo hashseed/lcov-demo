@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">56</td>
-            <td class="headerCovTableEntry">120</td>
-            <td class="headerCovTableEntryLo">46.7 %</td>
+            <td class="headerCovTableEntry">124</td>
+            <td class="headerCovTableEntry">124</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">8</td>
@@ -80,41 +80,41 @@
 <span class="lineNum">      18 </span><span class="lineCov">          1 : assertThrows(function() { r2.multiline; }, TypeError);</span>
 <span class="lineNum">      19 </span><span class="lineCov">          1 : assertThrows(function() { r2.sticky; }, TypeError);</span>
 <span class="lineNum">      20 </span><span class="lineCov">          1 : assertThrows(function() { r2.unicode; }, TypeError);</span>
-<span class="lineNum">      21 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      22 </span><span class="lineNoCov">          0 : var r3 = /I/;</span>
-<span class="lineNum">      23 </span><span class="lineNoCov">          0 : var string = &quot;iIiIi&quot;;</span>
-<span class="lineNum">      24 </span><span class="lineNoCov">          0 : var expected = &quot;iXiIi&quot;;</span>
-<span class="lineNum">      25 </span><span class="lineNoCov">          0 : assertFalse(r3.global);</span>
-<span class="lineNum">      26 </span><span class="lineNoCov">          0 : assertFalse(r3.ignoreCase);</span>
-<span class="lineNum">      27 </span><span class="lineNoCov">          0 : assertEquals(&quot;&quot;, r3.flags);</span>
-<span class="lineNum">      28 </span><span class="lineNoCov">          0 : assertEquals(expected, string.replace(r3, &quot;X&quot;));</span>
-<span class="lineNum">      29 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      30 </span><span class="lineNoCov">          0 : var get_count = 0;</span>
-<span class="lineNum">      31 </span><span class="lineNoCov">          0 : Object.defineProperty(r3, &quot;global&quot;, {</span>
+<span class="lineNum">      21 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      22 </span><span class="lineCov">          1 : var r3 = /I/;</span>
+<span class="lineNum">      23 </span><span class="lineCov">          1 : var string = &quot;iIiIi&quot;;</span>
+<span class="lineNum">      24 </span><span class="lineCov">          1 : var expected = &quot;iXiIi&quot;;</span>
+<span class="lineNum">      25 </span><span class="lineCov">          1 : assertFalse(r3.global);</span>
+<span class="lineNum">      26 </span><span class="lineCov">          1 : assertFalse(r3.ignoreCase);</span>
+<span class="lineNum">      27 </span><span class="lineCov">          1 : assertEquals(&quot;&quot;, r3.flags);</span>
+<span class="lineNum">      28 </span><span class="lineCov">          1 : assertEquals(expected, string.replace(r3, &quot;X&quot;));</span>
+<span class="lineNum">      29 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      30 </span><span class="lineCov">          1 : var get_count = 0;</span>
+<span class="lineNum">      31 </span><span class="lineCov">          1 : Object.defineProperty(r3, &quot;global&quot;, {</span>
 <span class="lineNum">      32 </span><span class="lineCov">          2 :   get: function() { get_count++; return true; }</span>
-<a name="33"><span class="lineNum">      33 </span><span class="lineNoCov">          0 : });</span></a>
-<span class="lineNum">      34 </span><span class="lineNoCov">          0 : Object.defineProperty(r3, &quot;ignoreCase&quot;, {</span>
+<a name="33"><span class="lineNum">      33 </span><span class="lineCov">          1 : });</span></a>
+<span class="lineNum">      34 </span><span class="lineCov">          1 : Object.defineProperty(r3, &quot;ignoreCase&quot;, {</span>
 <span class="lineNum">      35 </span><span class="lineCov">          2 :   get: function() { get_count++; return true; }</span>
-<span class="lineNum">      36 </span><span class="lineNoCov">          0 : });</span>
-<span class="lineNum">      37 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      38 </span><span class="lineNoCov">          0 : assertTrue(r3.global);</span>
-<span class="lineNum">      39 </span><span class="lineNoCov">          0 : assertEquals(1, get_count);</span>
-<span class="lineNum">      40 </span><span class="lineNoCov">          0 : assertTrue(r3.ignoreCase);</span>
-<span class="lineNum">      41 </span><span class="lineNoCov">          0 : assertEquals(2, get_count);</span>
-<span class="lineNum">      42 </span><span class="lineNoCov">          0 : // Overridden flag getters affects the flags getter.</span>
-<span class="lineNum">      43 </span><span class="lineNoCov">          0 : assertEquals(&quot;gi&quot;, r3.flags);</span>
-<span class="lineNum">      44 </span><span class="lineNoCov">          0 : assertEquals(4, get_count);</span>
-<span class="lineNum">      45 </span><span class="lineNoCov">          0 : // Overridden flag getters affect string.replace</span>
-<span class="lineNum">      46 </span><span class="lineNoCov">          0 : // TODO(adamk): Add more tests here once we've switched</span>
-<span class="lineNum">      47 </span><span class="lineNoCov">          0 : // to use [[OriginalFlags]] in more cases.</span>
-<span class="lineNum">      48 </span><span class="lineNoCov">          0 : // TODO(jgruber): This exact case actually causes an infinite loop in the spec</span>
-<span class="lineNum">      49 </span><span class="lineNoCov">          0 : // (@@replace sees global = true while BuiltinExec sees global = false).</span>
-<span class="lineNum">      50 </span><span class="lineNoCov">          0 : // Comment the test for now and remove / fix once this has been resolved on</span>
-<span class="lineNum">      51 </span><span class="lineNoCov">          0 : // the spec side.</span>
-<span class="lineNum">      52 </span><span class="lineNoCov">          0 : //assertEquals(expected, string.replace(r3, &quot;X&quot;));</span>
-<span class="lineNum">      53 </span><span class="lineNoCov">          0 : //assertEquals(5, get_count);</span>
-<a name="54"><span class="lineNum">      54 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">      55 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      36 </span><span class="lineCov">          1 : });</span>
+<span class="lineNum">      37 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      38 </span><span class="lineCov">          1 : assertTrue(r3.global);</span>
+<span class="lineNum">      39 </span><span class="lineCov">          1 : assertEquals(1, get_count);</span>
+<span class="lineNum">      40 </span><span class="lineCov">          1 : assertTrue(r3.ignoreCase);</span>
+<span class="lineNum">      41 </span><span class="lineCov">          1 : assertEquals(2, get_count);</span>
+<span class="lineNum">      42 </span><span class="lineCov">          1 : // Overridden flag getters affects the flags getter.</span>
+<span class="lineNum">      43 </span><span class="lineCov">          1 : assertEquals(&quot;gi&quot;, r3.flags);</span>
+<span class="lineNum">      44 </span><span class="lineCov">          1 : assertEquals(4, get_count);</span>
+<span class="lineNum">      45 </span><span class="lineCov">          1 : // Overridden flag getters affect string.replace</span>
+<span class="lineNum">      46 </span><span class="lineCov">          1 : // TODO(adamk): Add more tests here once we've switched</span>
+<span class="lineNum">      47 </span><span class="lineCov">          1 : // to use [[OriginalFlags]] in more cases.</span>
+<span class="lineNum">      48 </span><span class="lineCov">          1 : // TODO(jgruber): This exact case actually causes an infinite loop in the spec</span>
+<span class="lineNum">      49 </span><span class="lineCov">          1 : // (@@replace sees global = true while BuiltinExec sees global = false).</span>
+<span class="lineNum">      50 </span><span class="lineCov">          1 : // Comment the test for now and remove / fix once this has been resolved on</span>
+<span class="lineNum">      51 </span><span class="lineCov">          1 : // the spec side.</span>
+<span class="lineNum">      52 </span><span class="lineCov">          1 : //assertEquals(expected, string.replace(r3, &quot;X&quot;));</span>
+<span class="lineNum">      53 </span><span class="lineCov">          1 : //assertEquals(5, get_count);</span>
+<a name="54"><span class="lineNum">      54 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      55 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      56 </span><span class="lineCov">          6 : function testName(name) {</span>
 <span class="lineNum">      57 </span><span class="lineCov">          6 :   // Test for ES2017 RegExp web compatibility semantics</span>
 <span class="lineNum">      58 </span><span class="lineCov">          6 :   // https://github.com/tc39/ecma262/pull/511</span>
@@ -124,36 +124,36 @@
 <span class="lineNum">      62 </span><span class="lineCov">          6 :       &quot;get &quot; + name,</span>
 <span class="lineNum">      63 </span><span class="lineCov">          6 :       Object.getOwnPropertyDescriptor(RegExp.prototype, name).get.name);</span>
 <span class="lineNum">      64 </span><span class="lineCov">          6 : }</span>
-<span class="lineNum">      65 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      66 </span><span class="lineNoCov">          0 : testName(&quot;global&quot;);</span>
-<span class="lineNum">      67 </span><span class="lineNoCov">          0 : testName(&quot;ignoreCase&quot;);</span>
-<span class="lineNum">      68 </span><span class="lineNoCov">          0 : testName(&quot;multiline&quot;);</span>
-<span class="lineNum">      69 </span><span class="lineNoCov">          0 : testName(&quot;source&quot;);</span>
-<span class="lineNum">      70 </span><span class="lineNoCov">          0 : testName(&quot;sticky&quot;);</span>
-<span class="lineNum">      71 </span><span class="lineNoCov">          0 : testName(&quot;unicode&quot;);</span>
-<span class="lineNum">      72 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      73 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      74 </span><span class="lineNoCov">          0 : RegExp.prototype.flags = 'setter should be undefined';</span>
-<span class="lineNum">      75 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      76 </span><span class="lineNoCov">          0 : assertEquals('', RegExp('').flags);</span>
-<span class="lineNum">      77 </span><span class="lineNoCov">          0 : assertEquals('', /./.flags);</span>
-<span class="lineNum">      78 </span><span class="lineNoCov">          0 : assertEquals('gimuy', RegExp('', 'yugmi').flags);</span>
-<span class="lineNum">      79 </span><span class="lineNoCov">          0 : assertEquals('gimuy', /foo/yumig.flags);</span>
-<span class="lineNum">      80 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      81 </span><span class="lineNoCov">          0 : var descriptor = Object.getOwnPropertyDescriptor(RegExp.prototype, 'flags');</span>
-<span class="lineNum">      82 </span><span class="lineNoCov">          0 : assertTrue(descriptor.configurable);</span>
-<span class="lineNum">      83 </span><span class="lineNoCov">          0 : assertFalse(descriptor.enumerable);</span>
-<span class="lineNum">      84 </span><span class="lineNoCov">          0 : assertInstanceof(descriptor.get, Function);</span>
-<a name="85"><span class="lineNum">      85 </span><span class="lineNoCov">          0 : assertEquals(undefined, descriptor.set);</span></a>
-<span class="lineNum">      86 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      65 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      66 </span><span class="lineCov">          1 : testName(&quot;global&quot;);</span>
+<span class="lineNum">      67 </span><span class="lineCov">          1 : testName(&quot;ignoreCase&quot;);</span>
+<span class="lineNum">      68 </span><span class="lineCov">          1 : testName(&quot;multiline&quot;);</span>
+<span class="lineNum">      69 </span><span class="lineCov">          1 : testName(&quot;source&quot;);</span>
+<span class="lineNum">      70 </span><span class="lineCov">          1 : testName(&quot;sticky&quot;);</span>
+<span class="lineNum">      71 </span><span class="lineCov">          1 : testName(&quot;unicode&quot;);</span>
+<span class="lineNum">      72 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      73 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      74 </span><span class="lineCov">          1 : RegExp.prototype.flags = 'setter should be undefined';</span>
+<span class="lineNum">      75 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      76 </span><span class="lineCov">          1 : assertEquals('', RegExp('').flags);</span>
+<span class="lineNum">      77 </span><span class="lineCov">          1 : assertEquals('', /./.flags);</span>
+<span class="lineNum">      78 </span><span class="lineCov">          1 : assertEquals('gimuy', RegExp('', 'yugmi').flags);</span>
+<span class="lineNum">      79 </span><span class="lineCov">          1 : assertEquals('gimuy', /foo/yumig.flags);</span>
+<span class="lineNum">      80 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      81 </span><span class="lineCov">          1 : var descriptor = Object.getOwnPropertyDescriptor(RegExp.prototype, 'flags');</span>
+<span class="lineNum">      82 </span><span class="lineCov">          1 : assertTrue(descriptor.configurable);</span>
+<span class="lineNum">      83 </span><span class="lineCov">          1 : assertFalse(descriptor.enumerable);</span>
+<span class="lineNum">      84 </span><span class="lineCov">          1 : assertInstanceof(descriptor.get, Function);</span>
+<a name="85"><span class="lineNum">      85 </span><span class="lineCov">          1 : assertEquals(undefined, descriptor.set);</span></a>
+<span class="lineNum">      86 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      87 </span><span class="lineCov">         12 : function testGenericFlags(object) {</span>
 <span class="lineNum">      88 </span><span class="lineCov">         12 :   return descriptor.get.call(object);</span>
 <span class="lineNum">      89 </span><span class="lineCov">         12 : }</span>
-<span class="lineNum">      90 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      91 </span><span class="lineNoCov">          0 : assertEquals('', testGenericFlags({}));</span>
-<span class="lineNum">      92 </span><span class="lineNoCov">          0 : assertEquals('i', testGenericFlags({ ignoreCase: true }));</span>
-<span class="lineNum">      93 </span><span class="lineNoCov">          0 : assertEquals('uy', testGenericFlags({ global: 0, sticky: 1, unicode: 1 }));</span>
-<span class="lineNum">      94 </span><span class="lineNoCov">          0 : assertEquals('m', testGenericFlags({ __proto__: { multiline: true } }));</span>
+<span class="lineNum">      90 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      91 </span><span class="lineCov">          1 : assertEquals('', testGenericFlags({}));</span>
+<span class="lineNum">      92 </span><span class="lineCov">          1 : assertEquals('i', testGenericFlags({ ignoreCase: true }));</span>
+<span class="lineNum">      93 </span><span class="lineCov">          1 : assertEquals('uy', testGenericFlags({ global: 0, sticky: 1, unicode: 1 }));</span>
+<span class="lineNum">      94 </span><span class="lineCov">          1 : assertEquals('m', testGenericFlags({ __proto__: { multiline: true } }));</span>
 <span class="lineNum">      95 </span><span class="lineCov">          1 : assertThrows(function() { testGenericFlags(); }, TypeError);</span>
 <span class="lineNum">      96 </span><span class="lineCov">          1 : assertThrows(function() { testGenericFlags(undefined); }, TypeError);</span>
 <span class="lineNum">      97 </span><span class="lineCov">          1 : assertThrows(function() { testGenericFlags(null); }, TypeError);</span>
@@ -161,10 +161,10 @@
 <span class="lineNum">      99 </span><span class="lineCov">          1 : assertThrows(function() { testGenericFlags(false); }, TypeError);</span>
 <span class="lineNum">     100 </span><span class="lineCov">          1 : assertThrows(function() { testGenericFlags(''); }, TypeError);</span>
 <span class="lineNum">     101 </span><span class="lineCov">          1 : assertThrows(function() { testGenericFlags(42); }, TypeError);</span>
-<span class="lineNum">     102 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     103 </span><span class="lineNoCov">          0 : var counter = 0;</span>
-<a name="104"><span class="lineNum">     104 </span><span class="lineNoCov">          0 : var map = {};</span></a>
-<span class="lineNum">     105 </span><span class="lineNoCov">          0 : var object = {</span>
+<span class="lineNum">     102 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     103 </span><span class="lineCov">          1 : var counter = 0;</span>
+<a name="104"><span class="lineNum">     104 </span><span class="lineCov">          1 : var map = {};</span></a>
+<span class="lineNum">     105 </span><span class="lineCov">          1 : var object = {</span>
 <span class="lineNum">     106 </span><span class="lineCov">          1 :   get global() {</span>
 <a name="107"><span class="lineNum">     107 </span><span class="lineCov">          1 :     map.g = counter++;</span></a>
 <span class="lineNum">     108 </span><span class="lineCov">          1 :   },</span>
@@ -180,9 +180,9 @@
 <span class="lineNum">     118 </span><span class="lineCov">          1 :   get sticky() {</span>
 <span class="lineNum">     119 </span><span class="lineCov">          1 :     map.y = counter++;</span>
 <span class="lineNum">     120 </span><span class="lineCov">          1 :   }</span>
-<span class="lineNum">     121 </span>            : };
-<span class="lineNum">     122 </span>            : testGenericFlags(object);
-<span class="lineNum">     123 </span>            : assertEquals({ g: 0, i: 1, m: 2, u: 3, y: 4 }, map);
+<span class="lineNum">     121 </span><span class="lineCov">          1 : };</span>
+<span class="lineNum">     122 </span><span class="lineCov">          1 : testGenericFlags(object);</span>
+<span class="lineNum">     123 </span><span class="lineCov">          1 : assertEquals({ g: 0, i: 1, m: 2, u: 3, y: 4 }, map);</span>
 </pre>
       </td>
     </tr>

@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">19</td>
-            <td class="headerCovTableEntry">19</td>
+            <td class="headerCovTableEntry">28</td>
+            <td class="headerCovTableEntry">28</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">1</td>
@@ -72,20 +72,21 @@
 <span class="lineNum">      10 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      11 </span><span class="lineCov">          1 : var foo = (function(stdlib, foreign, heap) {</span>
 <span class="lineNum">      12 </span><span class="lineCov">          1 :   &quot;use asm&quot;;</span>
-<a name="13"><span class="lineNum">      13 </span><span class="lineCov">          1 :   var M16 = new Int16Array(heap);</span></a>
-<span class="lineNum">      14 </span><span class="lineCov">          1 :   var M32 = new Int32Array(heap);</span>
+<a name="13"><span class="lineNum">      13 </span><span class="lineCov">          1 :   var M16 = new stdlib.Int16Array(heap);</span></a>
+<span class="lineNum">      14 </span><span class="lineCov">          1 :   var M32 = new stdlib.Int32Array(heap);</span>
 <span class="lineNum">      15 </span><span class="lineCov">          2 :   function foo() {</span>
-<span class="lineNum">      16 </span><span class="lineCov">          2 :     M32[0] = 0x12341234;</span>
-<span class="lineNum">      17 </span><span class="lineCov">          2 :     var i = M32[0];</span>
-<span class="lineNum">      18 </span><span class="lineCov">          2 :     return M16[0];</span>
-<span class="lineNum">      19 </span><span class="lineCov">          2 :   }</span>
-<span class="lineNum">      20 </span>            :   return foo;
-<span class="lineNum">      21 </span>            : })(stdlib, foreign, heap);
-<span class="lineNum">      22 </span>            : 
-<span class="lineNum">      23 </span>            : assertEquals(0x1234, foo());
-<span class="lineNum">      24 </span>            : assertEquals(0x1234, foo());
-<span class="lineNum">      25 </span>            : %OptimizeFunctionOnNextCall(foo);
-<span class="lineNum">      26 </span>            : assertEquals(0x1234, foo());
+<span class="lineNum">      16 </span><span class="lineCov">          2 :     var i = 0;</span>
+<span class="lineNum">      17 </span><span class="lineCov">          2 :     M32[0] = 0x12341234;</span>
+<span class="lineNum">      18 </span><span class="lineCov">          2 :     i = M32[0] | 0;</span>
+<span class="lineNum">      19 </span><span class="lineCov">          2 :     return M16[0] | 0;</span>
+<span class="lineNum">      20 </span><span class="lineCov">          2 :   }</span>
+<span class="lineNum">      21 </span><span class="lineCov">          1 :   return foo;</span>
+<span class="lineNum">      22 </span><span class="lineCov">          1 : })(stdlib, foreign, heap);</span>
+<span class="lineNum">      23 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      24 </span><span class="lineCov">          1 : assertEquals(0x1234, foo());</span>
+<span class="lineNum">      25 </span><span class="lineCov">          1 : assertEquals(0x1234, foo());</span>
+<span class="lineNum">      26 </span><span class="lineCov">          1 : %OptimizeFunctionOnNextCall(foo);</span>
+<span class="lineNum">      27 </span><span class="lineCov">          1 : assertEquals(0x1234, foo());</span>
 </pre>
       </td>
     </tr>

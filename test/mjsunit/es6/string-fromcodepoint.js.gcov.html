@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">40</td>
-            <td class="headerCovTableEntry">44</td>
-            <td class="headerCovTableEntryHi">90.9 %</td>
+            <td class="headerCovTableEntry">61</td>
+            <td class="headerCovTableEntry">61</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">1</td>
@@ -97,29 +97,29 @@
 <span class="lineNum">      35 </span><span class="lineCov">          1 : assertThrows(function() { String.fromCodePoint(/./); }, RangeError);</span>
 <span class="lineNum">      36 </span><span class="lineCov">          1 : assertThrows(function() { String.fromCodePoint({</span>
 <span class="lineNum">      37 </span><span class="lineCov">          1 :   valueOf: function() { throw Error(); } });</span>
-<span class="lineNum">      38 </span><span class="lineNoCov">          0 : }, Error);</span>
+<span class="lineNum">      38 </span><span class="lineCov">          1 : }, Error);</span>
 <span class="lineNum">      39 </span><span class="lineCov">          1 : assertThrows(function() { String.fromCodePoint({</span>
 <span class="lineNum">      40 </span><span class="lineCov">          1 :   valueOf: function() { throw Error(); } });</span>
-<span class="lineNum">      41 </span><span class="lineNoCov">          0 : }, Error);</span>
-<a name="42"><span class="lineNum">      42 </span><span class="lineNoCov">          0 : var tmp = 0x60;</span></a>
-<span class="lineNum">      43 </span><span class="lineNoCov">          0 : assertEquals(String.fromCodePoint({</span>
+<span class="lineNum">      41 </span><span class="lineCov">          1 : }, Error);</span>
+<a name="42"><span class="lineNum">      42 </span><span class="lineCov">          1 : var tmp = 0x60;</span></a>
+<span class="lineNum">      43 </span><span class="lineCov">          1 : assertEquals(String.fromCodePoint({</span>
 <span class="lineNum">      44 </span><span class="lineCov">          1 :   valueOf: function() { ++tmp; return tmp; }</span>
-<span class="lineNum">      45 </span>            : }), &quot;a&quot;);
-<span class="lineNum">      46 </span>            : assertEquals(tmp, 0x61);
-<span class="lineNum">      47 </span>            : 
-<span class="lineNum">      48 </span>            : var counter = Math.pow(2, 15) * 3 / 2;
-<span class="lineNum">      49 </span>            : var result = [];
-<span class="lineNum">      50 </span>            : while (--counter &gt;= 0) {
-<span class="lineNum">      51 </span>            :   result.push(0); // one code unit per symbol
-<span class="lineNum">      52 </span>            : }
-<span class="lineNum">      53 </span>            : String.fromCodePoint.apply(null, result); // must not throw
-<span class="lineNum">      54 </span>            : 
-<span class="lineNum">      55 </span>            : var counter = Math.pow(2, 15) * 3 / 2;
-<span class="lineNum">      56 </span>            : var result = [];
-<span class="lineNum">      57 </span>            : while (--counter &gt;= 0) {
-<span class="lineNum">      58 </span>            :   result.push(0xFFFF + 1); // two code units per symbol
-<span class="lineNum">      59 </span>            : }
-<span class="lineNum">      60 </span>            : String.fromCodePoint.apply(null, result); // must not throw
+<span class="lineNum">      45 </span><span class="lineCov">          1 : }), &quot;a&quot;);</span>
+<span class="lineNum">      46 </span><span class="lineCov">          1 : assertEquals(tmp, 0x61);</span>
+<span class="lineNum">      47 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      48 </span><span class="lineCov">          1 : var counter = Math.pow(2, 15) * 3 / 2;</span>
+<span class="lineNum">      49 </span><span class="lineCov">          1 : var result = [];</span>
+<span class="lineNum">      50 </span><span class="lineCov">          1 : while (--counter &gt;= 0) {</span>
+<span class="lineNum">      51 </span><span class="lineCov">          1 :   result.push(0); // one code unit per symbol</span>
+<span class="lineNum">      52 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      53 </span><span class="lineCov">          1 : String.fromCodePoint.apply(null, result); // must not throw</span>
+<span class="lineNum">      54 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      55 </span><span class="lineCov">          1 : var counter = Math.pow(2, 15) * 3 / 2;</span>
+<span class="lineNum">      56 </span><span class="lineCov">          1 : var result = [];</span>
+<span class="lineNum">      57 </span><span class="lineCov">          1 : while (--counter &gt;= 0) {</span>
+<span class="lineNum">      58 </span><span class="lineCov">          1 :   result.push(0xFFFF + 1); // two code units per symbol</span>
+<span class="lineNum">      59 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      60 </span><span class="lineCov">          1 : String.fromCodePoint.apply(null, result); // must not throw</span>
 </pre>
       </td>
     </tr>

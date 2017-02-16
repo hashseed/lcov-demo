@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">44</td>
-            <td class="headerCovTableEntry">45</td>
-            <td class="headerCovTableEntryHi">97.8 %</td>
+            <td class="headerCovTableEntry">74</td>
+            <td class="headerCovTableEntry">74</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">2</td>
@@ -95,7 +95,7 @@
 <span class="lineNum">      33 </span><span class="lineCov">          3 :   this[1] = 2;</span>
 <span class="lineNum">      34 </span><span class="lineCov">          3 :   this[2] = 3;</span>
 <a name="35"><span class="lineNum">      35 </span><span class="lineCov">          3 : }</span></a>
-<span class="lineNum">      36 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      36 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      37 </span><span class="lineCov">          4 : function bad_func(o,a) {</span>
 <span class="lineNum">      38 </span><span class="lineCov">          4 :   var s = 0;</span>
 <span class="lineNum">      39 </span><span class="lineCov">          4 :   for (var i = 0; i &lt; 1; ++i) {</span>
@@ -105,34 +105,34 @@
 <span class="lineNum">      43 </span><span class="lineCov">          4 :   }</span>
 <span class="lineNum">      44 </span><span class="lineCov">          4 :   return s;</span>
 <span class="lineNum">      45 </span><span class="lineCov">          4 : }</span>
-<span class="lineNum">      46 </span>            : 
-<span class="lineNum">      47 </span>            : o = new Object();
-<span class="lineNum">      48 </span>            : a = new TestConstructor();
-<span class="lineNum">      49 </span>            : bad_func(o, a);
-<span class="lineNum">      50 </span>            : 
-<span class="lineNum">      51 </span>            : // Make sure that we're out of pre-monomorphic state for the member add of
-<span class="lineNum">      52 </span>            : // 'newFileToChangeMap' which causes a map transition.
-<span class="lineNum">      53 </span>            : o = new Object();
-<span class="lineNum">      54 </span>            : a = new TestConstructor();
-<span class="lineNum">      55 </span>            : bad_func(o, a);
-<span class="lineNum">      56 </span>            : 
-<span class="lineNum">      57 </span>            : // Optimize, before the fix, the element load and subsequent tagged-to-i were
-<span class="lineNum">      58 </span>            : // hoisted above the map check, which can't be hoisted due to the map-changing
-<span class="lineNum">      59 </span>            : // store.
-<span class="lineNum">      60 </span>            : o = new Object();
-<span class="lineNum">      61 </span>            : a = new TestConstructor();
-<span class="lineNum">      62 </span>            : %OptimizeFunctionOnNextCall(bad_func);
-<span class="lineNum">      63 </span>            : bad_func(o, a);
-<span class="lineNum">      64 </span>            : 
-<span class="lineNum">      65 </span>            : // Pass in a array of doubles. Before the fix, the optimized load and
-<span class="lineNum">      66 </span>            : // tagged-to-i will treat part of a double value as a pointer and de-ref it
-<span class="lineNum">      67 </span>            : // before the map check was executed that should have deopt.
-<span class="lineNum">      68 </span>            : o = new Object();
-<span class="lineNum">      69 </span>            : // Pass in an elements buffer where the bit representation of the double numbers
-<span class="lineNum">      70 </span>            : // are two adjacent small 32-bit values with the lowest bit set to one, causing
-<span class="lineNum">      71 </span>            : // tagged-to-i to SIGSEGV.
-<span class="lineNum">      72 </span>            : a = [2.122e-314, 2.122e-314, 2.122e-314];
-<span class="lineNum">      73 </span>            : bad_func(o, a);
+<span class="lineNum">      46 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      47 </span><span class="lineCov">          1 : o = new Object();</span>
+<span class="lineNum">      48 </span><span class="lineCov">          1 : a = new TestConstructor();</span>
+<span class="lineNum">      49 </span><span class="lineCov">          1 : bad_func(o, a);</span>
+<span class="lineNum">      50 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      51 </span><span class="lineCov">          1 : // Make sure that we're out of pre-monomorphic state for the member add of</span>
+<span class="lineNum">      52 </span><span class="lineCov">          1 : // 'newFileToChangeMap' which causes a map transition.</span>
+<span class="lineNum">      53 </span><span class="lineCov">          1 : o = new Object();</span>
+<span class="lineNum">      54 </span><span class="lineCov">          1 : a = new TestConstructor();</span>
+<span class="lineNum">      55 </span><span class="lineCov">          1 : bad_func(o, a);</span>
+<span class="lineNum">      56 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      57 </span><span class="lineCov">          1 : // Optimize, before the fix, the element load and subsequent tagged-to-i were</span>
+<span class="lineNum">      58 </span><span class="lineCov">          1 : // hoisted above the map check, which can't be hoisted due to the map-changing</span>
+<span class="lineNum">      59 </span><span class="lineCov">          1 : // store.</span>
+<span class="lineNum">      60 </span><span class="lineCov">          1 : o = new Object();</span>
+<span class="lineNum">      61 </span><span class="lineCov">          1 : a = new TestConstructor();</span>
+<span class="lineNum">      62 </span><span class="lineCov">          1 : %OptimizeFunctionOnNextCall(bad_func);</span>
+<span class="lineNum">      63 </span><span class="lineCov">          1 : bad_func(o, a);</span>
+<span class="lineNum">      64 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      65 </span><span class="lineCov">          1 : // Pass in a array of doubles. Before the fix, the optimized load and</span>
+<span class="lineNum">      66 </span><span class="lineCov">          1 : // tagged-to-i will treat part of a double value as a pointer and de-ref it</span>
+<span class="lineNum">      67 </span><span class="lineCov">          1 : // before the map check was executed that should have deopt.</span>
+<span class="lineNum">      68 </span><span class="lineCov">          1 : o = new Object();</span>
+<span class="lineNum">      69 </span><span class="lineCov">          1 : // Pass in an elements buffer where the bit representation of the double numbers</span>
+<span class="lineNum">      70 </span><span class="lineCov">          1 : // are two adjacent small 32-bit values with the lowest bit set to one, causing</span>
+<span class="lineNum">      71 </span><span class="lineCov">          1 : // tagged-to-i to SIGSEGV.</span>
+<span class="lineNum">      72 </span><span class="lineCov">          1 : a = [2.122e-314, 2.122e-314, 2.122e-314];</span>
+<span class="lineNum">      73 </span><span class="lineCov">          1 : bad_func(o, a);</span>
 </pre>
       </td>
     </tr>

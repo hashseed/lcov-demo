@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">61</td>
-            <td class="headerCovTableEntry">61</td>
+            <td class="headerCovTableEntry">200</td>
+            <td class="headerCovTableEntry">200</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">1</td>
@@ -121,144 +121,144 @@
 <span class="lineNum">      59 </span><span class="lineCov">         91 : function Range(from, to, flags) {</span>
 <span class="lineNum">      60 </span><span class="lineCov">         91 :   return new RegExp(&quot;[&quot; + from + &quot;-&quot; + to + &quot;]&quot;, flags);</span>
 <span class="lineNum">      61 </span><span class="lineCov">         91 : }</span>
-<span class="lineNum">      62 </span>            : 
-<span class="lineNum">      63 </span>            : // Test Cyrillic and Greek separately.
-<span class="lineNum">      64 </span>            : for (var lang = 0; lang &lt; 2; lang++) {
-<span class="lineNum">      65 </span>            :   var chars = (lang == 0) ? cyrillic : greek;
-<span class="lineNum">      66 </span>            : 
-<span class="lineNum">      67 </span>            :   for (var i = 0; i &lt; 2; i++) {
-<span class="lineNum">      68 </span>            :     var lc = (i == 0);  // Lower case.
-<span class="lineNum">      69 </span>            :     var first = lc ? chars.first : chars.FIRST;
-<span class="lineNum">      70 </span>            :     var middle = lc ? chars.middle : chars.MIDDLE;
-<span class="lineNum">      71 </span>            :     var last = lc ? chars.last : chars.LAST;
-<span class="lineNum">      72 </span>            :     var first_other_case = lc ? chars.FIRST : chars.first;
-<span class="lineNum">      73 </span>            :     var middle_other_case = lc ? chars.MIDDLE : chars.middle;
-<span class="lineNum">      74 </span>            :     var last_other_case = lc ? chars.LAST : chars.last;
-<span class="lineNum">      75 </span>            : 
-<span class="lineNum">      76 </span>            :     assertTrue(Range(first, last).test(first), 1);
-<span class="lineNum">      77 </span>            :     assertTrue(Range(first, last).test(middle), 2);
-<span class="lineNum">      78 </span>            :     assertTrue(Range(first, last).test(last), 3);
-<span class="lineNum">      79 </span>            : 
-<span class="lineNum">      80 </span>            :     assertFalse(Range(first, last).test(first_other_case), 4);
-<span class="lineNum">      81 </span>            :     assertFalse(Range(first, last).test(middle_other_case), 5);
-<span class="lineNum">      82 </span>            :     assertFalse(Range(first, last).test(last_other_case), 6);
-<span class="lineNum">      83 </span>            : 
-<span class="lineNum">      84 </span>            :     assertTrue(Range(first, last, &quot;i&quot;).test(first), 7);
-<span class="lineNum">      85 </span>            :     assertTrue(Range(first, last, &quot;i&quot;).test(middle), 8);
-<span class="lineNum">      86 </span>            :     assertTrue(Range(first, last, &quot;i&quot;).test(last), 9);
-<span class="lineNum">      87 </span>            : 
-<span class="lineNum">      88 </span>            :     assertTrue(Range(first, last, &quot;i&quot;).test(first_other_case), 10);
-<span class="lineNum">      89 </span>            :     assertTrue(Range(first, last, &quot;i&quot;).test(middle_other_case), 11);
-<span class="lineNum">      90 </span>            :     assertTrue(Range(first, last, &quot;i&quot;).test(last_other_case), 12);
-<span class="lineNum">      91 </span>            : 
-<span class="lineNum">      92 </span>            :     if (chars.BetweenCases) {
-<span class="lineNum">      93 </span>            :       assertFalse(Range(first, last).test(chars.BetweenCases), 13);
-<span class="lineNum">      94 </span>            :       assertFalse(Range(first, last, &quot;i&quot;).test(chars.BetweenCases), 14);
-<span class="lineNum">      95 </span>            :     }
-<span class="lineNum">      96 </span>            :   }
-<span class="lineNum">      97 </span>            :   if (chars.BetweenCases) {
-<span class="lineNum">      98 </span>            :     assertTrue(Range(chars.FIRST, chars.last).test(chars.BetweenCases), 15);
-<span class="lineNum">      99 </span>            :     assertTrue(Range(chars.FIRST, chars.last, &quot;i&quot;).test(chars.BetweenCases), 16);
-<span class="lineNum">     100 </span>            :   }
-<span class="lineNum">     101 </span>            : }
-<span class="lineNum">     102 </span>            : 
-<span class="lineNum">     103 </span>            : // Test range that covers both greek and cyrillic characters.
-<span class="lineNum">     104 </span>            : for (key in greek) {
-<span class="lineNum">     105 </span>            :   assertTrue(Range(greek.FIRST, cyrillic.last).test(greek[key]), 17 + key);
-<span class="lineNum">     106 </span>            :   if (cyrillic[key]) {
-<span class="lineNum">     107 </span>            :     assertTrue(Range(greek.FIRST, cyrillic.last).test(cyrillic[key]), 18 + key);
-<span class="lineNum">     108 </span>            :   }
-<span class="lineNum">     109 </span>            : }
-<span class="lineNum">     110 </span>            : 
-<span class="lineNum">     111 </span>            : for (var i = 0; i &lt; 2; i++) {
-<span class="lineNum">     112 </span>            :   var ignore_case = (i == 0);
-<span class="lineNum">     113 </span>            :   var flag = ignore_case ? &quot;i&quot; : &quot;&quot;;
-<span class="lineNum">     114 </span>            :   assertTrue(Range(greek.first, cyrillic.LAST, flag).test(greek.first), 19);
-<span class="lineNum">     115 </span>            :   assertTrue(Range(greek.first, cyrillic.LAST, flag).test(greek.middle), 20);
-<span class="lineNum">     116 </span>            :   assertTrue(Range(greek.first, cyrillic.LAST, flag).test(greek.last), 21);
-<span class="lineNum">     117 </span>            : 
-<span class="lineNum">     118 </span>            :   assertTrue(Range(greek.first, cyrillic.LAST, flag).test(cyrillic.FIRST), 22);
-<span class="lineNum">     119 </span>            :   assertTrue(Range(greek.first, cyrillic.LAST, flag).test(cyrillic.MIDDLE), 23);
-<span class="lineNum">     120 </span>            :   assertTrue(Range(greek.first, cyrillic.LAST, flag).test(cyrillic.LAST), 24);
-<span class="lineNum">     121 </span>            : 
-<span class="lineNum">     122 </span>            :   // A range that covers the lower case greek letters and the upper case cyrillic
-<span class="lineNum">     123 </span>            :   // letters.
-<span class="lineNum">     124 </span>            :   assertEquals(ignore_case, Range(greek.first, cyrillic.LAST, flag).test(greek.FIRST), 25);
-<span class="lineNum">     125 </span>            :   assertEquals(ignore_case, Range(greek.first, cyrillic.LAST, flag).test(greek.MIDDLE), 26);
-<span class="lineNum">     126 </span>            :   assertEquals(ignore_case, Range(greek.first, cyrillic.LAST, flag).test(greek.LAST), 27);
-<span class="lineNum">     127 </span>            : 
-<span class="lineNum">     128 </span>            :   assertEquals(ignore_case, Range(greek.first, cyrillic.LAST, flag).test(cyrillic.first), 28);
-<span class="lineNum">     129 </span>            :   assertEquals(ignore_case, Range(greek.first, cyrillic.LAST, flag).test(cyrillic.middle), 29);
-<span class="lineNum">     130 </span>            :   assertEquals(ignore_case, Range(greek.first, cyrillic.LAST, flag).test(cyrillic.last), 30);
-<span class="lineNum">     131 </span>            : }
-<span class="lineNum">     132 </span>            : 
-<span class="lineNum">     133 </span>            : 
-<span class="lineNum">     134 </span>            : // Sigma is special because there are two lower case versions of the same upper
-<span class="lineNum">     135 </span>            : // case character.  JS requires that case independece means that you should
-<span class="lineNum">     136 </span>            : // convert everything to upper case, so the two sigma variants are equal to each
-<span class="lineNum">     137 </span>            : // other in a case independt comparison.
-<span class="lineNum">     138 </span>            : for (var i = 0; i &lt; 2; i++) {
-<span class="lineNum">     139 </span>            :   var simple = (i != 0);
-<span class="lineNum">     140 </span>            :   var name = simple ? &quot;&quot; : &quot;[]&quot;;
-<span class="lineNum">     141 </span>            :   var regex = simple ? SIGMA : &quot;[&quot; + SIGMA + &quot;]&quot;;
-<span class="lineNum">     142 </span>            : 
-<span class="lineNum">     143 </span>            :   assertFalse(new RegExp(regex).test(sigma), 31 + name);
-<span class="lineNum">     144 </span>            :   assertFalse(new RegExp(regex).test(alternative_sigma), 32 + name);
-<span class="lineNum">     145 </span>            :   assertTrue(new RegExp(regex).test(SIGMA), 33 + name);
-<span class="lineNum">     146 </span>            : 
-<span class="lineNum">     147 </span>            :   assertTrue(new RegExp(regex, &quot;i&quot;).test(sigma), 34 + name);
-<span class="lineNum">     148 </span>            :   // JSC and Tracemonkey fail this one.
-<span class="lineNum">     149 </span>            :   assertTrue(new RegExp(regex, &quot;i&quot;).test(alternative_sigma), 35 + name);
-<span class="lineNum">     150 </span>            :   assertTrue(new RegExp(regex, &quot;i&quot;).test(SIGMA), 36 + name);
-<span class="lineNum">     151 </span>            : 
-<span class="lineNum">     152 </span>            :   regex = simple ? sigma : &quot;[&quot; + sigma + &quot;]&quot;;
-<span class="lineNum">     153 </span>            : 
-<span class="lineNum">     154 </span>            :   assertTrue(new RegExp(regex).test(sigma), 41 + name);
-<span class="lineNum">     155 </span>            :   assertFalse(new RegExp(regex).test(alternative_sigma), 42 + name);
-<span class="lineNum">     156 </span>            :   assertFalse(new RegExp(regex).test(SIGMA), 43 + name);
-<span class="lineNum">     157 </span>            : 
-<span class="lineNum">     158 </span>            :   assertTrue(new RegExp(regex, &quot;i&quot;).test(sigma), 44 + name);
-<span class="lineNum">     159 </span>            :   // JSC and Tracemonkey fail this one.
-<span class="lineNum">     160 </span>            :   assertTrue(new RegExp(regex, &quot;i&quot;).test(alternative_sigma), 45 + name);
-<span class="lineNum">     161 </span>            :   assertTrue(new RegExp(regex, &quot;i&quot;).test(SIGMA), 46 + name);
-<span class="lineNum">     162 </span>            : 
-<span class="lineNum">     163 </span>            :   regex = simple ? alternative_sigma : &quot;[&quot; + alternative_sigma + &quot;]&quot;;
-<span class="lineNum">     164 </span>            : 
-<span class="lineNum">     165 </span>            :   assertFalse(new RegExp(regex).test(sigma), 51 + name);
-<span class="lineNum">     166 </span>            :   assertTrue(new RegExp(regex).test(alternative_sigma), 52 + name);
-<span class="lineNum">     167 </span>            :   assertFalse(new RegExp(regex).test(SIGMA), 53 + name);
-<span class="lineNum">     168 </span>            : 
-<span class="lineNum">     169 </span>            :   // JSC and Tracemonkey fail this one.
-<span class="lineNum">     170 </span>            :   assertTrue(new RegExp(regex, &quot;i&quot;).test(sigma), 54 + name);
-<span class="lineNum">     171 </span>            :   assertTrue(new RegExp(regex, &quot;i&quot;).test(alternative_sigma), 55 + name);
-<span class="lineNum">     172 </span>            :   // JSC and Tracemonkey fail this one.
-<span class="lineNum">     173 </span>            :   assertTrue(new RegExp(regex, &quot;i&quot;).test(SIGMA), 56 + name);
-<span class="lineNum">     174 </span>            : }
-<span class="lineNum">     175 </span>            : 
-<span class="lineNum">     176 </span>            : 
-<span class="lineNum">     177 </span>            : for (var add_non_ascii_character_to_subject = 0;
-<span class="lineNum">     178 </span>            :      add_non_ascii_character_to_subject &lt; 2;
-<span class="lineNum">     179 </span>            :      add_non_ascii_character_to_subject++) {
-<span class="lineNum">     180 </span>            :   var suffix = add_non_ascii_character_to_subject ? &quot;\ufffe&quot; : &quot;&quot;;
-<span class="lineNum">     181 </span>            :   // A range that covers both ASCII and non-ASCII.
-<span class="lineNum">     182 </span>            :   for (var i = 0; i &lt; 2; i++) {
-<span class="lineNum">     183 </span>            :     var full = (i != 0);
-<span class="lineNum">     184 </span>            :     var mixed = full ? &quot;[a-\uffff]&quot; : &quot;[a-&quot; + cyrillic.LAST + &quot;]&quot;;
-<span class="lineNum">     185 </span>            :     var f = full ? &quot;f&quot; : &quot;c&quot;;
-<span class="lineNum">     186 </span>            :     for (var j = 0; j &lt; 2; j++) {
-<span class="lineNum">     187 </span>            :       var ignore_case = (j == 0);
-<span class="lineNum">     188 </span>            :       var flag = ignore_case ? &quot;i&quot; : &quot;&quot;;
-<span class="lineNum">     189 </span>            :       var re = new RegExp(mixed, flag);
-<span class="lineNum">     190 </span>            :       var expected =
-<span class="lineNum">     191 </span>            :           ignore_case || (full &amp;&amp; !!add_non_ascii_character_to_subject);
-<span class="lineNum">     192 </span>            :       assertEquals(expected, re.test(&quot;A&quot; + suffix), 58 + flag + f);
-<span class="lineNum">     193 </span>            :       assertTrue(re.test(&quot;a&quot; + suffix), 59 + flag + f);
-<span class="lineNum">     194 </span>            :       assertTrue(re.test(&quot;~&quot; + suffix), 60 + flag + f);
-<span class="lineNum">     195 </span>            :       assertTrue(re.test(cyrillic.MIDDLE), 61 + flag + f);
-<span class="lineNum">     196 </span>            :       assertEquals(ignore_case || full, re.test(cyrillic.middle), 62 + flag + f);
-<span class="lineNum">     197 </span>            :     }
-<span class="lineNum">     198 </span>            :   }
-<span class="lineNum">     199 </span>            : }
+<span class="lineNum">      62 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      63 </span><span class="lineCov">          1 : // Test Cyrillic and Greek separately.</span>
+<span class="lineNum">      64 </span><span class="lineCov">          1 : for (var lang = 0; lang &lt; 2; lang++) {</span>
+<span class="lineNum">      65 </span><span class="lineCov">          1 :   var chars = (lang == 0) ? cyrillic : greek;</span>
+<span class="lineNum">      66 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      67 </span><span class="lineCov">          1 :   for (var i = 0; i &lt; 2; i++) {</span>
+<span class="lineNum">      68 </span><span class="lineCov">          1 :     var lc = (i == 0);  // Lower case.</span>
+<span class="lineNum">      69 </span><span class="lineCov">          1 :     var first = lc ? chars.first : chars.FIRST;</span>
+<span class="lineNum">      70 </span><span class="lineCov">          1 :     var middle = lc ? chars.middle : chars.MIDDLE;</span>
+<span class="lineNum">      71 </span><span class="lineCov">          1 :     var last = lc ? chars.last : chars.LAST;</span>
+<span class="lineNum">      72 </span><span class="lineCov">          1 :     var first_other_case = lc ? chars.FIRST : chars.first;</span>
+<span class="lineNum">      73 </span><span class="lineCov">          1 :     var middle_other_case = lc ? chars.MIDDLE : chars.middle;</span>
+<span class="lineNum">      74 </span><span class="lineCov">          1 :     var last_other_case = lc ? chars.LAST : chars.last;</span>
+<span class="lineNum">      75 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      76 </span><span class="lineCov">          1 :     assertTrue(Range(first, last).test(first), 1);</span>
+<span class="lineNum">      77 </span><span class="lineCov">          1 :     assertTrue(Range(first, last).test(middle), 2);</span>
+<span class="lineNum">      78 </span><span class="lineCov">          1 :     assertTrue(Range(first, last).test(last), 3);</span>
+<span class="lineNum">      79 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      80 </span><span class="lineCov">          1 :     assertFalse(Range(first, last).test(first_other_case), 4);</span>
+<span class="lineNum">      81 </span><span class="lineCov">          1 :     assertFalse(Range(first, last).test(middle_other_case), 5);</span>
+<span class="lineNum">      82 </span><span class="lineCov">          1 :     assertFalse(Range(first, last).test(last_other_case), 6);</span>
+<span class="lineNum">      83 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      84 </span><span class="lineCov">          1 :     assertTrue(Range(first, last, &quot;i&quot;).test(first), 7);</span>
+<span class="lineNum">      85 </span><span class="lineCov">          1 :     assertTrue(Range(first, last, &quot;i&quot;).test(middle), 8);</span>
+<span class="lineNum">      86 </span><span class="lineCov">          1 :     assertTrue(Range(first, last, &quot;i&quot;).test(last), 9);</span>
+<span class="lineNum">      87 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      88 </span><span class="lineCov">          1 :     assertTrue(Range(first, last, &quot;i&quot;).test(first_other_case), 10);</span>
+<span class="lineNum">      89 </span><span class="lineCov">          1 :     assertTrue(Range(first, last, &quot;i&quot;).test(middle_other_case), 11);</span>
+<span class="lineNum">      90 </span><span class="lineCov">          1 :     assertTrue(Range(first, last, &quot;i&quot;).test(last_other_case), 12);</span>
+<span class="lineNum">      91 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      92 </span><span class="lineCov">          1 :     if (chars.BetweenCases) {</span>
+<span class="lineNum">      93 </span><span class="lineCov">          1 :       assertFalse(Range(first, last).test(chars.BetweenCases), 13);</span>
+<span class="lineNum">      94 </span><span class="lineCov">          1 :       assertFalse(Range(first, last, &quot;i&quot;).test(chars.BetweenCases), 14);</span>
+<span class="lineNum">      95 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">      96 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">      97 </span><span class="lineCov">          1 :   if (chars.BetweenCases) {</span>
+<span class="lineNum">      98 </span><span class="lineCov">          1 :     assertTrue(Range(chars.FIRST, chars.last).test(chars.BetweenCases), 15);</span>
+<span class="lineNum">      99 </span><span class="lineCov">          1 :     assertTrue(Range(chars.FIRST, chars.last, &quot;i&quot;).test(chars.BetweenCases), 16);</span>
+<span class="lineNum">     100 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     101 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     102 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     103 </span><span class="lineCov">          1 : // Test range that covers both greek and cyrillic characters.</span>
+<span class="lineNum">     104 </span><span class="lineCov">          1 : for (key in greek) {</span>
+<span class="lineNum">     105 </span><span class="lineCov">          1 :   assertTrue(Range(greek.FIRST, cyrillic.last).test(greek[key]), 17 + key);</span>
+<span class="lineNum">     106 </span><span class="lineCov">          1 :   if (cyrillic[key]) {</span>
+<span class="lineNum">     107 </span><span class="lineCov">          1 :     assertTrue(Range(greek.FIRST, cyrillic.last).test(cyrillic[key]), 18 + key);</span>
+<span class="lineNum">     108 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     109 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     110 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     111 </span><span class="lineCov">          1 : for (var i = 0; i &lt; 2; i++) {</span>
+<span class="lineNum">     112 </span><span class="lineCov">          1 :   var ignore_case = (i == 0);</span>
+<span class="lineNum">     113 </span><span class="lineCov">          1 :   var flag = ignore_case ? &quot;i&quot; : &quot;&quot;;</span>
+<span class="lineNum">     114 </span><span class="lineCov">          1 :   assertTrue(Range(greek.first, cyrillic.LAST, flag).test(greek.first), 19);</span>
+<span class="lineNum">     115 </span><span class="lineCov">          1 :   assertTrue(Range(greek.first, cyrillic.LAST, flag).test(greek.middle), 20);</span>
+<span class="lineNum">     116 </span><span class="lineCov">          1 :   assertTrue(Range(greek.first, cyrillic.LAST, flag).test(greek.last), 21);</span>
+<span class="lineNum">     117 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     118 </span><span class="lineCov">          1 :   assertTrue(Range(greek.first, cyrillic.LAST, flag).test(cyrillic.FIRST), 22);</span>
+<span class="lineNum">     119 </span><span class="lineCov">          1 :   assertTrue(Range(greek.first, cyrillic.LAST, flag).test(cyrillic.MIDDLE), 23);</span>
+<span class="lineNum">     120 </span><span class="lineCov">          1 :   assertTrue(Range(greek.first, cyrillic.LAST, flag).test(cyrillic.LAST), 24);</span>
+<span class="lineNum">     121 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     122 </span><span class="lineCov">          1 :   // A range that covers the lower case greek letters and the upper case cyrillic</span>
+<span class="lineNum">     123 </span><span class="lineCov">          1 :   // letters.</span>
+<span class="lineNum">     124 </span><span class="lineCov">          1 :   assertEquals(ignore_case, Range(greek.first, cyrillic.LAST, flag).test(greek.FIRST), 25);</span>
+<span class="lineNum">     125 </span><span class="lineCov">          1 :   assertEquals(ignore_case, Range(greek.first, cyrillic.LAST, flag).test(greek.MIDDLE), 26);</span>
+<span class="lineNum">     126 </span><span class="lineCov">          1 :   assertEquals(ignore_case, Range(greek.first, cyrillic.LAST, flag).test(greek.LAST), 27);</span>
+<span class="lineNum">     127 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     128 </span><span class="lineCov">          1 :   assertEquals(ignore_case, Range(greek.first, cyrillic.LAST, flag).test(cyrillic.first), 28);</span>
+<span class="lineNum">     129 </span><span class="lineCov">          1 :   assertEquals(ignore_case, Range(greek.first, cyrillic.LAST, flag).test(cyrillic.middle), 29);</span>
+<span class="lineNum">     130 </span><span class="lineCov">          1 :   assertEquals(ignore_case, Range(greek.first, cyrillic.LAST, flag).test(cyrillic.last), 30);</span>
+<span class="lineNum">     131 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     132 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     133 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     134 </span><span class="lineCov">          1 : // Sigma is special because there are two lower case versions of the same upper</span>
+<span class="lineNum">     135 </span><span class="lineCov">          1 : // case character.  JS requires that case independece means that you should</span>
+<span class="lineNum">     136 </span><span class="lineCov">          1 : // convert everything to upper case, so the two sigma variants are equal to each</span>
+<span class="lineNum">     137 </span><span class="lineCov">          1 : // other in a case independt comparison.</span>
+<span class="lineNum">     138 </span><span class="lineCov">          1 : for (var i = 0; i &lt; 2; i++) {</span>
+<span class="lineNum">     139 </span><span class="lineCov">          1 :   var simple = (i != 0);</span>
+<span class="lineNum">     140 </span><span class="lineCov">          1 :   var name = simple ? &quot;&quot; : &quot;[]&quot;;</span>
+<span class="lineNum">     141 </span><span class="lineCov">          1 :   var regex = simple ? SIGMA : &quot;[&quot; + SIGMA + &quot;]&quot;;</span>
+<span class="lineNum">     142 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     143 </span><span class="lineCov">          1 :   assertFalse(new RegExp(regex).test(sigma), 31 + name);</span>
+<span class="lineNum">     144 </span><span class="lineCov">          1 :   assertFalse(new RegExp(regex).test(alternative_sigma), 32 + name);</span>
+<span class="lineNum">     145 </span><span class="lineCov">          1 :   assertTrue(new RegExp(regex).test(SIGMA), 33 + name);</span>
+<span class="lineNum">     146 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     147 </span><span class="lineCov">          1 :   assertTrue(new RegExp(regex, &quot;i&quot;).test(sigma), 34 + name);</span>
+<span class="lineNum">     148 </span><span class="lineCov">          1 :   // JSC and Tracemonkey fail this one.</span>
+<span class="lineNum">     149 </span><span class="lineCov">          1 :   assertTrue(new RegExp(regex, &quot;i&quot;).test(alternative_sigma), 35 + name);</span>
+<span class="lineNum">     150 </span><span class="lineCov">          1 :   assertTrue(new RegExp(regex, &quot;i&quot;).test(SIGMA), 36 + name);</span>
+<span class="lineNum">     151 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     152 </span><span class="lineCov">          1 :   regex = simple ? sigma : &quot;[&quot; + sigma + &quot;]&quot;;</span>
+<span class="lineNum">     153 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     154 </span><span class="lineCov">          1 :   assertTrue(new RegExp(regex).test(sigma), 41 + name);</span>
+<span class="lineNum">     155 </span><span class="lineCov">          1 :   assertFalse(new RegExp(regex).test(alternative_sigma), 42 + name);</span>
+<span class="lineNum">     156 </span><span class="lineCov">          1 :   assertFalse(new RegExp(regex).test(SIGMA), 43 + name);</span>
+<span class="lineNum">     157 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     158 </span><span class="lineCov">          1 :   assertTrue(new RegExp(regex, &quot;i&quot;).test(sigma), 44 + name);</span>
+<span class="lineNum">     159 </span><span class="lineCov">          1 :   // JSC and Tracemonkey fail this one.</span>
+<span class="lineNum">     160 </span><span class="lineCov">          1 :   assertTrue(new RegExp(regex, &quot;i&quot;).test(alternative_sigma), 45 + name);</span>
+<span class="lineNum">     161 </span><span class="lineCov">          1 :   assertTrue(new RegExp(regex, &quot;i&quot;).test(SIGMA), 46 + name);</span>
+<span class="lineNum">     162 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     163 </span><span class="lineCov">          1 :   regex = simple ? alternative_sigma : &quot;[&quot; + alternative_sigma + &quot;]&quot;;</span>
+<span class="lineNum">     164 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     165 </span><span class="lineCov">          1 :   assertFalse(new RegExp(regex).test(sigma), 51 + name);</span>
+<span class="lineNum">     166 </span><span class="lineCov">          1 :   assertTrue(new RegExp(regex).test(alternative_sigma), 52 + name);</span>
+<span class="lineNum">     167 </span><span class="lineCov">          1 :   assertFalse(new RegExp(regex).test(SIGMA), 53 + name);</span>
+<span class="lineNum">     168 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     169 </span><span class="lineCov">          1 :   // JSC and Tracemonkey fail this one.</span>
+<span class="lineNum">     170 </span><span class="lineCov">          1 :   assertTrue(new RegExp(regex, &quot;i&quot;).test(sigma), 54 + name);</span>
+<span class="lineNum">     171 </span><span class="lineCov">          1 :   assertTrue(new RegExp(regex, &quot;i&quot;).test(alternative_sigma), 55 + name);</span>
+<span class="lineNum">     172 </span><span class="lineCov">          1 :   // JSC and Tracemonkey fail this one.</span>
+<span class="lineNum">     173 </span><span class="lineCov">          1 :   assertTrue(new RegExp(regex, &quot;i&quot;).test(SIGMA), 56 + name);</span>
+<span class="lineNum">     174 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     175 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     176 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     177 </span><span class="lineCov">          1 : for (var add_non_ascii_character_to_subject = 0;</span>
+<span class="lineNum">     178 </span><span class="lineCov">          1 :      add_non_ascii_character_to_subject &lt; 2;</span>
+<span class="lineNum">     179 </span><span class="lineCov">          1 :      add_non_ascii_character_to_subject++) {</span>
+<span class="lineNum">     180 </span><span class="lineCov">          1 :   var suffix = add_non_ascii_character_to_subject ? &quot;\ufffe&quot; : &quot;&quot;;</span>
+<span class="lineNum">     181 </span><span class="lineCov">          1 :   // A range that covers both ASCII and non-ASCII.</span>
+<span class="lineNum">     182 </span><span class="lineCov">          1 :   for (var i = 0; i &lt; 2; i++) {</span>
+<span class="lineNum">     183 </span><span class="lineCov">          1 :     var full = (i != 0);</span>
+<span class="lineNum">     184 </span><span class="lineCov">          1 :     var mixed = full ? &quot;[a-\uffff]&quot; : &quot;[a-&quot; + cyrillic.LAST + &quot;]&quot;;</span>
+<span class="lineNum">     185 </span><span class="lineCov">          1 :     var f = full ? &quot;f&quot; : &quot;c&quot;;</span>
+<span class="lineNum">     186 </span><span class="lineCov">          1 :     for (var j = 0; j &lt; 2; j++) {</span>
+<span class="lineNum">     187 </span><span class="lineCov">          1 :       var ignore_case = (j == 0);</span>
+<span class="lineNum">     188 </span><span class="lineCov">          1 :       var flag = ignore_case ? &quot;i&quot; : &quot;&quot;;</span>
+<span class="lineNum">     189 </span><span class="lineCov">          1 :       var re = new RegExp(mixed, flag);</span>
+<span class="lineNum">     190 </span><span class="lineCov">          1 :       var expected =</span>
+<span class="lineNum">     191 </span><span class="lineCov">          1 :           ignore_case || (full &amp;&amp; !!add_non_ascii_character_to_subject);</span>
+<span class="lineNum">     192 </span><span class="lineCov">          1 :       assertEquals(expected, re.test(&quot;A&quot; + suffix), 58 + flag + f);</span>
+<span class="lineNum">     193 </span><span class="lineCov">          1 :       assertTrue(re.test(&quot;a&quot; + suffix), 59 + flag + f);</span>
+<span class="lineNum">     194 </span><span class="lineCov">          1 :       assertTrue(re.test(&quot;~&quot; + suffix), 60 + flag + f);</span>
+<span class="lineNum">     195 </span><span class="lineCov">          1 :       assertTrue(re.test(cyrillic.MIDDLE), 61 + flag + f);</span>
+<span class="lineNum">     196 </span><span class="lineCov">          1 :       assertEquals(ignore_case || full, re.test(cyrillic.middle), 62 + flag + f);</span>
+<span class="lineNum">     197 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">     198 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     199 </span><span class="lineCov">          1 : }</span>
 </pre>
       </td>
     </tr>

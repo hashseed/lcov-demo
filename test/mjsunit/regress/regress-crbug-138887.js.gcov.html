@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">37</td>
-            <td class="headerCovTableEntry">38</td>
-            <td class="headerCovTableEntryHi">97.4 %</td>
+            <td class="headerCovTableEntry">49</td>
+            <td class="headerCovTableEntry">49</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">2</td>
@@ -92,22 +92,22 @@
 <span class="lineNum">      30 </span><span class="lineCov">          1 : function worker1(ignored) {</span>
 <span class="lineNum">      31 </span><span class="lineCov">          1 :   return 100;</span>
 <a name="32"><span class="lineNum">      32 </span><span class="lineCov">          1 : }</span></a>
-<span class="lineNum">      33 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      33 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      34 </span><span class="lineCov">          2 : function factory(worker) {</span>
 <span class="lineNum">      35 </span><span class="lineCov">          7 :   return function(call_depth) {</span>
 <span class="lineNum">      36 </span><span class="lineCov">          7 :     if (call_depth == 0) return 10;</span>
 <span class="lineNum">      37 </span><span class="lineCov">          7 :     return 1 + worker(call_depth - 1);</span>
 <span class="lineNum">      38 </span><span class="lineCov">          7 :   }</span>
-<span class="lineNum">      39 </span>            : }
-<span class="lineNum">      40 </span>            : 
-<span class="lineNum">      41 </span>            : var f1 = factory(worker1);
-<span class="lineNum">      42 </span>            : var f2 = factory(f1);
-<span class="lineNum">      43 </span>            : assertEquals(11, f2(1));  // Result: 1 + f1(0) == 1 + 10.
-<span class="lineNum">      44 </span>            : assertEquals(11, f2(1));
-<span class="lineNum">      45 </span>            : %OptimizeFunctionOnNextCall(f1);
-<span class="lineNum">      46 </span>            : assertEquals(10, f1(0));  // Terminates immediately -&gt; returns 10.
-<span class="lineNum">      47 </span>            : %OptimizeFunctionOnNextCall(f2);
-<span class="lineNum">      48 </span>            : assertEquals(102, f2(1000));  // 1 + f1(999) == 1 + 1 + worker1(998) == 102
+<span class="lineNum">      39 </span><span class="lineCov">          2 : }</span>
+<span class="lineNum">      40 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      41 </span><span class="lineCov">          1 : var f1 = factory(worker1);</span>
+<span class="lineNum">      42 </span><span class="lineCov">          1 : var f2 = factory(f1);</span>
+<span class="lineNum">      43 </span><span class="lineCov">          1 : assertEquals(11, f2(1));  // Result: 1 + f1(0) == 1 + 10.</span>
+<span class="lineNum">      44 </span><span class="lineCov">          1 : assertEquals(11, f2(1));</span>
+<span class="lineNum">      45 </span><span class="lineCov">          1 : %OptimizeFunctionOnNextCall(f1);</span>
+<span class="lineNum">      46 </span><span class="lineCov">          1 : assertEquals(10, f1(0));  // Terminates immediately -&gt; returns 10.</span>
+<span class="lineNum">      47 </span><span class="lineCov">          1 : %OptimizeFunctionOnNextCall(f2);</span>
+<span class="lineNum">      48 </span><span class="lineCov">          1 : assertEquals(102, f2(1000));  // 1 + f1(999) == 1 + 1 + worker1(998) == 102</span>
 </pre>
       </td>
     </tr>

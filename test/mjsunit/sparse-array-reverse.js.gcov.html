@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">64</td>
-            <td class="headerCovTableEntry">64</td>
+            <td class="headerCovTableEntry">132</td>
+            <td class="headerCovTableEntry">132</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">1</td>
@@ -124,73 +124,73 @@
 <span class="lineNum">      62 </span><span class="lineCov">        735 :   seed = (69069 * seed + 1234567) % 0x100000000;</span>
 <span class="lineNum">      63 </span><span class="lineCov">        735 :   return (seed &amp; 0x100000) != 0;</span>
 <span class="lineNum">      64 </span><span class="lineCov">        735 : }</span>
-<span class="lineNum">      65 </span>            : 
-<span class="lineNum">      66 </span>            : var sizes = [140, 40000, VERYLARGE];
-<span class="lineNum">      67 </span>            : var poses = [0, 10, 50, 69];
-<span class="lineNum">      68 </span>            : 
-<span class="lineNum">      69 </span>            : 
-<span class="lineNum">      70 </span>            : // Fuzzing test of reverse on sparse array.
-<span class="lineNum">      71 </span>            : for (var iterations = 0; iterations &lt; 20; iterations++) {
-<span class="lineNum">      72 </span>            :   for (var size_pos = 0; size_pos &lt; sizes.length; size_pos++) {
-<span class="lineNum">      73 </span>            :     var size = sizes[size_pos];
-<span class="lineNum">      74 </span>            : 
-<span class="lineNum">      75 </span>            :     var to_delete = [];
-<span class="lineNum">      76 </span>            : 
-<span class="lineNum">      77 </span>            :     var a;
-<span class="lineNum">      78 </span>            :     // Make sure we test both array-backed and hash-table backed
-<span class="lineNum">      79 </span>            :     // arrays.
-<span class="lineNum">      80 </span>            :     if (size &lt; 1000) {
-<span class="lineNum">      81 </span>            :       a = new Array(size);
-<span class="lineNum">      82 </span>            :     } else {
-<span class="lineNum">      83 </span>            :       a = new Array();
-<span class="lineNum">      84 </span>            :       a.length = size;
-<span class="lineNum">      85 </span>            :     }
-<span class="lineNum">      86 </span>            : 
-<span class="lineNum">      87 </span>            :     var expected = '';
-<span class="lineNum">      88 </span>            :     var expected_reversed = '';
-<span class="lineNum">      89 </span>            : 
-<span class="lineNum">      90 </span>            :     for (var pos_pos = 0; pos_pos &lt; poses.length; pos_pos++) {
-<span class="lineNum">      91 </span>            :       var pos = poses[pos_pos];
-<span class="lineNum">      92 </span>            :       var letter = String.fromCharCode(97 + pos_pos);
-<span class="lineNum">      93 </span>            :       if (DoOrDont()) {
-<span class="lineNum">      94 </span>            :         a[pos] = letter;
-<span class="lineNum">      95 </span>            :         expected += letter;
-<span class="lineNum">      96 </span>            :         expected_reversed = letter + expected_reversed;
-<span class="lineNum">      97 </span>            :       } else if (DoOrDont()) {
-<span class="lineNum">      98 </span>            :         Array.prototype[pos] = letter;
-<span class="lineNum">      99 </span>            :         expected += letter;
-<span class="lineNum">     100 </span>            :         expected_reversed = letter + expected_reversed;
-<span class="lineNum">     101 </span>            :         to_delete.push(pos);
-<span class="lineNum">     102 </span>            :       }
-<span class="lineNum">     103 </span>            :     }
-<span class="lineNum">     104 </span>            :     var expected2 = '';
-<span class="lineNum">     105 </span>            :     var expected_reversed2 = '';
-<span class="lineNum">     106 </span>            :     for (var pos_pos = poses.length - 1; pos_pos &gt;= 0; pos_pos--) {
-<span class="lineNum">     107 </span>            :       var letter = String.fromCharCode(110 + pos_pos);
-<span class="lineNum">     108 </span>            :       var pos = size - poses[pos_pos] - 1;
-<span class="lineNum">     109 </span>            :       if (DoOrDont()) {
-<span class="lineNum">     110 </span>            :         a[pos] = letter;
-<span class="lineNum">     111 </span>            :         expected2 += letter;
-<span class="lineNum">     112 </span>            :         expected_reversed2 = letter + expected_reversed2;
-<span class="lineNum">     113 </span>            :       } else if (DoOrDont()) {
-<span class="lineNum">     114 </span>            :         Array.prototype[pos] = letter;
-<span class="lineNum">     115 </span>            :         expected2 += letter;
-<span class="lineNum">     116 </span>            :         expected_reversed2 = letter + expected_reversed2;
-<span class="lineNum">     117 </span>            :         to_delete.push(pos);
-<span class="lineNum">     118 </span>            :       }
-<span class="lineNum">     119 </span>            :     }
-<span class="lineNum">     120 </span>            : 
-<span class="lineNum">     121 </span>            :     assertEquals(expected + expected2, a.join(''), 'join' + size);
-<span class="lineNum">     122 </span>            :     a.reverse();
-<span class="lineNum">     123 </span>            : 
-<span class="lineNum">     124 </span>            :     while (to_delete.length != 0) {
-<span class="lineNum">     125 </span>            :       var pos = to_delete.pop();
-<span class="lineNum">     126 </span>            :       delete(Array.prototype[pos]);
-<span class="lineNum">     127 </span>            :     }
-<span class="lineNum">     128 </span>            : 
-<span class="lineNum">     129 </span>            :     assertEquals(expected_reversed2 + expected_reversed, a.join(''), 'reverse then join' + size);
-<span class="lineNum">     130 </span>            :   }
-<span class="lineNum">     131 </span>            : }
+<span class="lineNum">      65 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      66 </span><span class="lineCov">          1 : var sizes = [140, 40000, VERYLARGE];</span>
+<span class="lineNum">      67 </span><span class="lineCov">          1 : var poses = [0, 10, 50, 69];</span>
+<span class="lineNum">      68 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      69 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      70 </span><span class="lineCov">          1 : // Fuzzing test of reverse on sparse array.</span>
+<span class="lineNum">      71 </span><span class="lineCov">          1 : for (var iterations = 0; iterations &lt; 20; iterations++) {</span>
+<span class="lineNum">      72 </span><span class="lineCov">          1 :   for (var size_pos = 0; size_pos &lt; sizes.length; size_pos++) {</span>
+<span class="lineNum">      73 </span><span class="lineCov">          1 :     var size = sizes[size_pos];</span>
+<span class="lineNum">      74 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      75 </span><span class="lineCov">          1 :     var to_delete = [];</span>
+<span class="lineNum">      76 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      77 </span><span class="lineCov">          1 :     var a;</span>
+<span class="lineNum">      78 </span><span class="lineCov">          1 :     // Make sure we test both array-backed and hash-table backed</span>
+<span class="lineNum">      79 </span><span class="lineCov">          1 :     // arrays.</span>
+<span class="lineNum">      80 </span><span class="lineCov">          1 :     if (size &lt; 1000) {</span>
+<span class="lineNum">      81 </span><span class="lineCov">          1 :       a = new Array(size);</span>
+<span class="lineNum">      82 </span><span class="lineCov">          1 :     } else {</span>
+<span class="lineNum">      83 </span><span class="lineCov">          1 :       a = new Array();</span>
+<span class="lineNum">      84 </span><span class="lineCov">          1 :       a.length = size;</span>
+<span class="lineNum">      85 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">      86 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      87 </span><span class="lineCov">          1 :     var expected = '';</span>
+<span class="lineNum">      88 </span><span class="lineCov">          1 :     var expected_reversed = '';</span>
+<span class="lineNum">      89 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      90 </span><span class="lineCov">          1 :     for (var pos_pos = 0; pos_pos &lt; poses.length; pos_pos++) {</span>
+<span class="lineNum">      91 </span><span class="lineCov">          1 :       var pos = poses[pos_pos];</span>
+<span class="lineNum">      92 </span><span class="lineCov">          1 :       var letter = String.fromCharCode(97 + pos_pos);</span>
+<span class="lineNum">      93 </span><span class="lineCov">          1 :       if (DoOrDont()) {</span>
+<span class="lineNum">      94 </span><span class="lineCov">          1 :         a[pos] = letter;</span>
+<span class="lineNum">      95 </span><span class="lineCov">          1 :         expected += letter;</span>
+<span class="lineNum">      96 </span><span class="lineCov">          1 :         expected_reversed = letter + expected_reversed;</span>
+<span class="lineNum">      97 </span><span class="lineCov">          1 :       } else if (DoOrDont()) {</span>
+<span class="lineNum">      98 </span><span class="lineCov">          1 :         Array.prototype[pos] = letter;</span>
+<span class="lineNum">      99 </span><span class="lineCov">          1 :         expected += letter;</span>
+<span class="lineNum">     100 </span><span class="lineCov">          1 :         expected_reversed = letter + expected_reversed;</span>
+<span class="lineNum">     101 </span><span class="lineCov">          1 :         to_delete.push(pos);</span>
+<span class="lineNum">     102 </span><span class="lineCov">          1 :       }</span>
+<span class="lineNum">     103 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">     104 </span><span class="lineCov">          1 :     var expected2 = '';</span>
+<span class="lineNum">     105 </span><span class="lineCov">          1 :     var expected_reversed2 = '';</span>
+<span class="lineNum">     106 </span><span class="lineCov">          1 :     for (var pos_pos = poses.length - 1; pos_pos &gt;= 0; pos_pos--) {</span>
+<span class="lineNum">     107 </span><span class="lineCov">          1 :       var letter = String.fromCharCode(110 + pos_pos);</span>
+<span class="lineNum">     108 </span><span class="lineCov">          1 :       var pos = size - poses[pos_pos] - 1;</span>
+<span class="lineNum">     109 </span><span class="lineCov">          1 :       if (DoOrDont()) {</span>
+<span class="lineNum">     110 </span><span class="lineCov">          1 :         a[pos] = letter;</span>
+<span class="lineNum">     111 </span><span class="lineCov">          1 :         expected2 += letter;</span>
+<span class="lineNum">     112 </span><span class="lineCov">          1 :         expected_reversed2 = letter + expected_reversed2;</span>
+<span class="lineNum">     113 </span><span class="lineCov">          1 :       } else if (DoOrDont()) {</span>
+<span class="lineNum">     114 </span><span class="lineCov">          1 :         Array.prototype[pos] = letter;</span>
+<span class="lineNum">     115 </span><span class="lineCov">          1 :         expected2 += letter;</span>
+<span class="lineNum">     116 </span><span class="lineCov">          1 :         expected_reversed2 = letter + expected_reversed2;</span>
+<span class="lineNum">     117 </span><span class="lineCov">          1 :         to_delete.push(pos);</span>
+<span class="lineNum">     118 </span><span class="lineCov">          1 :       }</span>
+<span class="lineNum">     119 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">     120 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     121 </span><span class="lineCov">          1 :     assertEquals(expected + expected2, a.join(''), 'join' + size);</span>
+<span class="lineNum">     122 </span><span class="lineCov">          1 :     a.reverse();</span>
+<span class="lineNum">     123 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     124 </span><span class="lineCov">          1 :     while (to_delete.length != 0) {</span>
+<span class="lineNum">     125 </span><span class="lineCov">          1 :       var pos = to_delete.pop();</span>
+<span class="lineNum">     126 </span><span class="lineCov">          1 :       delete(Array.prototype[pos]);</span>
+<span class="lineNum">     127 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">     128 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     129 </span><span class="lineCov">          1 :     assertEquals(expected_reversed2 + expected_reversed, a.join(''), 'reverse then join' + size);</span>
+<span class="lineNum">     130 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     131 </span><span class="lineCov">          1 : }</span>
 </pre>
       </td>
     </tr>

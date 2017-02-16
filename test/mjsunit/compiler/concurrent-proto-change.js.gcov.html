@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">39</td>
-            <td class="headerCovTableEntry">50</td>
-            <td class="headerCovTableEntryMed">78.0 %</td>
+            <td class="headerCovTableEntry">60</td>
+            <td class="headerCovTableEntry">60</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">2</td>
@@ -97,28 +97,28 @@
 <a name="35"><span class="lineNum">      35 </span><span class="lineCov">          1 : }</span></a>
 <span class="lineNum">      36 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      37 </span><span class="lineCov">          4 : function f(foo) { return foo.bar(); }</span>
-<span class="lineNum">      38 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      39 </span><span class="lineNoCov">          0 : var o = {};</span>
+<span class="lineNum">      38 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      39 </span><span class="lineCov">          1 : var o = {};</span>
 <span class="lineNum">      40 </span><span class="lineCov">          3 : o.__proto__ = { __proto__: { bar: function() { return 1; } } };</span>
-<span class="lineNum">      41 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      42 </span><span class="lineNoCov">          0 : assertEquals(1, f(o));</span>
-<span class="lineNum">      43 </span><span class="lineNoCov">          0 : assertEquals(1, f(o));</span>
-<span class="lineNum">      44 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      45 </span><span class="lineNoCov">          0 : // Mark for concurrent optimization.</span>
-<span class="lineNum">      46 </span><span class="lineNoCov">          0 : %OptimizeFunctionOnNextCall(f, &quot;concurrent&quot;);</span>
-<span class="lineNum">      47 </span><span class="lineNoCov">          0 : // Kick off recompilation.</span>
-<a name="48"><span class="lineNum">      48 </span><span class="lineNoCov">          0 : assertEquals(1, f(o));</span></a>
-<span class="lineNum">      49 </span><span class="lineNoCov">          0 : // Change the prototype chain after compile graph has been created.</span>
+<span class="lineNum">      41 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      42 </span><span class="lineCov">          1 : assertEquals(1, f(o));</span>
+<span class="lineNum">      43 </span><span class="lineCov">          1 : assertEquals(1, f(o));</span>
+<span class="lineNum">      44 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      45 </span><span class="lineCov">          1 : // Mark for concurrent optimization.</span>
+<span class="lineNum">      46 </span><span class="lineCov">          1 : %OptimizeFunctionOnNextCall(f, &quot;concurrent&quot;);</span>
+<span class="lineNum">      47 </span><span class="lineCov">          1 : // Kick off recompilation.</span>
+<a name="48"><span class="lineNum">      48 </span><span class="lineCov">          1 : assertEquals(1, f(o));</span></a>
+<span class="lineNum">      49 </span><span class="lineCov">          1 : // Change the prototype chain after compile graph has been created.</span>
 <span class="lineNum">      50 </span><span class="lineCov">          1 : o.__proto__.__proto__ = { bar: function() { return 2; } };</span>
-<span class="lineNum">      51 </span>            : // At this point, concurrent recompilation thread has not yet done its job.
-<span class="lineNum">      52 </span>            : assertUnoptimized(f, &quot;no sync&quot;);
-<span class="lineNum">      53 </span>            : // Let the background thread proceed.
-<span class="lineNum">      54 </span>            : %UnblockConcurrentRecompilation();
-<span class="lineNum">      55 </span>            : // Optimization eventually bails out due to map dependency.
-<span class="lineNum">      56 </span>            : assertUnoptimized(f, &quot;sync&quot;);
-<span class="lineNum">      57 </span>            : assertEquals(2, f(o));
-<span class="lineNum">      58 </span>            : //Clear type info for stress runs.
-<span class="lineNum">      59 </span>            : %ClearFunctionTypeFeedback(f);
+<span class="lineNum">      51 </span><span class="lineCov">          1 : // At this point, concurrent recompilation thread has not yet done its job.</span>
+<span class="lineNum">      52 </span><span class="lineCov">          1 : assertUnoptimized(f, &quot;no sync&quot;);</span>
+<span class="lineNum">      53 </span><span class="lineCov">          1 : // Let the background thread proceed.</span>
+<span class="lineNum">      54 </span><span class="lineCov">          1 : %UnblockConcurrentRecompilation();</span>
+<span class="lineNum">      55 </span><span class="lineCov">          1 : // Optimization eventually bails out due to map dependency.</span>
+<span class="lineNum">      56 </span><span class="lineCov">          1 : assertUnoptimized(f, &quot;sync&quot;);</span>
+<span class="lineNum">      57 </span><span class="lineCov">          1 : assertEquals(2, f(o));</span>
+<span class="lineNum">      58 </span><span class="lineCov">          1 : //Clear type info for stress runs.</span>
+<span class="lineNum">      59 </span><span class="lineCov">          1 : %ClearFunctionFeedback(f);</span>
 </pre>
       </td>
     </tr>

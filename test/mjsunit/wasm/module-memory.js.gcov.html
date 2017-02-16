@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">134</td>
-            <td class="headerCovTableEntry">156</td>
-            <td class="headerCovTableEntryMed">85.9 %</td>
+            <td class="headerCovTableEntry">171</td>
+            <td class="headerCovTableEntry">171</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">9</td>
@@ -104,7 +104,7 @@
 <span class="lineNum">      42 </span><span class="lineCov">         10 :   if (memory != null) assertEquals(memory.buffer, module.exports.memory.buffer);</span>
 <span class="lineNum">      43 </span><span class="lineCov">         10 :   return module;</span>
 <a name="44"><span class="lineNum">      44 </span><span class="lineCov">         10 : }</span></a>
-<span class="lineNum">      45 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      45 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      46 </span><span class="lineCov">          1 : function testPokeMemory() {</span>
 <span class="lineNum">      47 </span><span class="lineCov">          1 :   print(&quot;testPokeMemory&quot;);</span>
 <span class="lineNum">      48 </span><span class="lineCov">          1 :   var module = genModule(new WebAssembly.Memory({initial: 1}));</span>
@@ -130,13 +130,13 @@
 <span class="lineNum">      68 </span><span class="lineCov">          1 :     assertEquals(0, main(kMemSize - 4));</span>
 <span class="lineNum">      69 </span><span class="lineCov">          1 :   }</span>
 <span class="lineNum">      70 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">      71 </span><span class="lineNoCov">          0 : </span>
-<a name="72"><span class="lineNum">      72 </span><span class="lineNoCov">          0 : testPokeMemory();</span></a>
-<span class="lineNum">      73 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      71 </span><span class="lineCov">          1 : </span>
+<a name="72"><span class="lineNum">      72 </span><span class="lineCov">          1 : testPokeMemory();</span></a>
+<span class="lineNum">      73 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      74 </span><span class="lineCov">          8 : function genAndGetMain(buffer) {</span>
 <span class="lineNum">      75 </span><span class="lineCov">          8 :   return genModule(buffer).exports.main;  // to prevent intermediates living</span>
 <a name="76"><span class="lineNum">      76 </span><span class="lineCov">          8 : }</span></a>
-<span class="lineNum">      77 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      77 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      78 </span><span class="lineCov">          4 : function testSurvivalAcrossGc() {</span>
 <span class="lineNum">      79 </span><span class="lineCov">          4 :   var checker = genAndGetMain(new WebAssembly.Memory({initial: 1}));</span>
 <span class="lineNum">      80 </span><span class="lineCov">          4 :   for (var i = 0; i &lt; 3; i++) {</span>
@@ -145,13 +145,13 @@
 <span class="lineNum">      83 </span><span class="lineCov">          4 :     gc();</span>
 <span class="lineNum">      84 </span><span class="lineCov">          4 :   }</span>
 <span class="lineNum">      85 </span><span class="lineCov">          4 : }</span>
-<span class="lineNum">      86 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      87 </span><span class="lineNoCov">          0 : testSurvivalAcrossGc();</span>
-<span class="lineNum">      88 </span><span class="lineNoCov">          0 : testSurvivalAcrossGc();</span>
-<span class="lineNum">      89 </span><span class="lineNoCov">          0 : testSurvivalAcrossGc();</span>
-<span class="lineNum">      90 </span><span class="lineNoCov">          0 : testSurvivalAcrossGc();</span>
-<a name="91"><span class="lineNum">      91 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">      92 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      86 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      87 </span><span class="lineCov">          1 : testSurvivalAcrossGc();</span>
+<span class="lineNum">      88 </span><span class="lineCov">          1 : testSurvivalAcrossGc();</span>
+<span class="lineNum">      89 </span><span class="lineCov">          1 : testSurvivalAcrossGc();</span>
+<span class="lineNum">      90 </span><span class="lineCov">          1 : testSurvivalAcrossGc();</span>
+<a name="91"><span class="lineNum">      91 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      92 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      93 </span><span class="lineCov">          1 : function testPokeOuterMemory() {</span>
 <span class="lineNum">      94 </span><span class="lineCov">          1 :   print(&quot;testPokeOuterMemory&quot;);</span>
 <span class="lineNum">      95 </span><span class="lineCov">          1 :   var buffer = new WebAssembly.Memory({initial: kMemSize / kPageSize});</span>
@@ -177,9 +177,9 @@
 <span class="lineNum">     115 </span><span class="lineCov">          1 :     assertEquals(0, main(kMemSize - 4));</span>
 <span class="lineNum">     116 </span><span class="lineCov">          1 :   }</span>
 <span class="lineNum">     117 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">     118 </span><span class="lineNoCov">          0 : </span>
-<a name="119"><span class="lineNum">     119 </span><span class="lineNoCov">          0 : testPokeOuterMemory();</span></a>
-<span class="lineNum">     120 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     118 </span><span class="lineCov">          1 : </span>
+<a name="119"><span class="lineNum">     119 </span><span class="lineCov">          1 : testPokeOuterMemory();</span></a>
+<span class="lineNum">     120 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     121 </span><span class="lineCov">          4 : function testOuterMemorySurvivalAcrossGc() {</span>
 <span class="lineNum">     122 </span><span class="lineCov">          4 :   var buffer = new WebAssembly.Memory({initial: kMemSize / kPageSize});</span>
 <span class="lineNum">     123 </span><span class="lineCov">          4 :   var checker = genAndGetMain(buffer);</span>
@@ -189,13 +189,13 @@
 <span class="lineNum">     127 </span><span class="lineCov">          4 :     gc();</span>
 <span class="lineNum">     128 </span><span class="lineCov">          4 :   }</span>
 <span class="lineNum">     129 </span><span class="lineCov">          4 : }</span>
-<span class="lineNum">     130 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     131 </span><span class="lineNoCov">          0 : testOuterMemorySurvivalAcrossGc();</span>
-<span class="lineNum">     132 </span><span class="lineNoCov">          0 : testOuterMemorySurvivalAcrossGc();</span>
-<span class="lineNum">     133 </span><span class="lineNoCov">          0 : testOuterMemorySurvivalAcrossGc();</span>
-<span class="lineNum">     134 </span><span class="lineNoCov">          0 : testOuterMemorySurvivalAcrossGc();</span>
-<a name="135"><span class="lineNum">     135 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     136 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     130 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     131 </span><span class="lineCov">          1 : testOuterMemorySurvivalAcrossGc();</span>
+<span class="lineNum">     132 </span><span class="lineCov">          1 : testOuterMemorySurvivalAcrossGc();</span>
+<span class="lineNum">     133 </span><span class="lineCov">          1 : testOuterMemorySurvivalAcrossGc();</span>
+<span class="lineNum">     134 </span><span class="lineCov">          1 : testOuterMemorySurvivalAcrossGc();</span>
+<a name="135"><span class="lineNum">     135 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     136 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     137 </span><span class="lineCov">          1 : function testOOBThrows() {</span>
 <span class="lineNum">     138 </span><span class="lineCov">          1 :   var builder = new WasmModuleBuilder();</span>
 <span class="lineNum">     139 </span><span class="lineCov">          1 : </span>
@@ -216,20 +216,20 @@
 <a name="154"><span class="lineNum">     154 </span><span class="lineCov">          1 : </span></a>
 <span class="lineNum">     155 </span><span class="lineCov">      66535 :   function read() { return module.exports.geti(0, offset); }</span>
 <span class="lineNum">     156 </span><span class="lineCov">      66535 :   function write() { return module.exports.geti(offset, 0); }</span>
-<span class="lineNum">     157 </span>            : 
-<span class="lineNum">     158 </span>            :   for (offset = 0; offset &lt; 65533; offset++) {
-<span class="lineNum">     159 </span>            :     assertEquals(0, read());
-<span class="lineNum">     160 </span>            :     assertEquals(0, write());
-<span class="lineNum">     161 </span>            :   }
-<span class="lineNum">     162 </span>            : 
-<span class="lineNum">     163 </span>            : 
-<span class="lineNum">     164 </span>            :   for (offset = 65534; offset &lt; 66536; offset++) {
-<span class="lineNum">     165 </span>            :     assertTraps(kTrapMemOutOfBounds, read);
-<span class="lineNum">     166 </span>            :     assertTraps(kTrapMemOutOfBounds, write);
-<span class="lineNum">     167 </span>            :   }
-<span class="lineNum">     168 </span>            : }
-<span class="lineNum">     169 </span>            : 
-<span class="lineNum">     170 </span>            : testOOBThrows();
+<span class="lineNum">     157 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     158 </span><span class="lineCov">          1 :   for (offset = 0; offset &lt; 65533; offset++) {</span>
+<span class="lineNum">     159 </span><span class="lineCov">          1 :     assertEquals(0, read());</span>
+<span class="lineNum">     160 </span><span class="lineCov">          1 :     assertEquals(0, write());</span>
+<span class="lineNum">     161 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     162 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     163 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     164 </span><span class="lineCov">          1 :   for (offset = 65534; offset &lt; 66536; offset++) {</span>
+<span class="lineNum">     165 </span><span class="lineCov">          1 :     assertTraps(kTrapMemOutOfBounds, read);</span>
+<span class="lineNum">     166 </span><span class="lineCov">          1 :     assertTraps(kTrapMemOutOfBounds, write);</span>
+<span class="lineNum">     167 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     168 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     169 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     170 </span><span class="lineCov">          1 : testOOBThrows();</span>
 </pre>
       </td>
     </tr>

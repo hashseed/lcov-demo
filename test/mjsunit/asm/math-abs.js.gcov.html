@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">22</td>
-            <td class="headerCovTableEntry">38</td>
-            <td class="headerCovTableEntryLo">57.9 %</td>
+            <td class="headerCovTableEntry">85</td>
+            <td class="headerCovTableEntry">85</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">4</td>
@@ -74,76 +74,76 @@
 <span class="lineNum">      12 </span><span class="lineCov">         22 :     a = +a;</span>
 <span class="lineNum">      13 </span><span class="lineCov">         22 :     return +abs(a);</span>
 <span class="lineNum">      14 </span><span class="lineCov">         22 :   }</span>
-<a name="15"><span class="lineNum">      15 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">      16 </span><span class="lineNoCov">          0 :   // g: unsigned -&gt; double</span>
+<a name="15"><span class="lineNum">      15 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      16 </span><span class="lineCov">          1 :   // g: unsigned -&gt; double</span>
 <span class="lineNum">      17 </span><span class="lineCov">         11 :   function g(a) {</span>
-<span class="lineNum">      18 </span><span class="lineCov">         11 :     a = a&gt;&gt;&gt;0;</span>
-<span class="lineNum">      19 </span><span class="lineCov">         11 :     return +abs(a);</span>
+<span class="lineNum">      18 </span><span class="lineCov">         11 :     a = a | 0;</span>
+<span class="lineNum">      19 </span><span class="lineCov">         11 :     return +abs(+(a &gt;&gt;&gt; 0));</span>
 <span class="lineNum">      20 </span><span class="lineCov">         11 :   }</span>
-<a name="21"><span class="lineNum">      21 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">      22 </span><span class="lineNoCov">          0 :   // h: signed -&gt; double</span>
+<a name="21"><span class="lineNum">      21 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">      22 </span><span class="lineCov">          1 :   // h: signed -&gt; double</span>
 <span class="lineNum">      23 </span><span class="lineCov">         11 :   function h(a) {</span>
 <span class="lineNum">      24 </span><span class="lineCov">         11 :     a = a|0;</span>
-<span class="lineNum">      25 </span><span class="lineCov">         11 :     return +abs(a);</span>
+<span class="lineNum">      25 </span><span class="lineCov">         11 :     return +abs(+(a | 0));</span>
 <span class="lineNum">      26 </span><span class="lineCov">         11 :   }</span>
-<span class="lineNum">      27 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      28 </span><span class="lineNoCov">          0 :   return { f: f, g: g, h: h };</span>
-<span class="lineNum">      29 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">      30 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      31 </span><span class="lineNoCov">          0 : var m = Module({ Math: Math });</span>
-<span class="lineNum">      32 </span><span class="lineNoCov">          0 : var f = m.f;</span>
-<span class="lineNum">      33 </span><span class="lineNoCov">          0 : var g = m.g;</span>
-<span class="lineNum">      34 </span><span class="lineNoCov">          0 : var h = m.h;</span>
-<span class="lineNum">      35 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      36 </span><span class="lineNoCov">          0 : assertTrue(isNaN(f(NaN)));</span>
-<span class="lineNum">      37 </span><span class="lineNoCov">          0 : assertTrue(isNaN(f(undefined)));</span>
-<span class="lineNum">      38 </span><span class="lineNoCov">          0 : assertTrue(isNaN(f(function() {})));</span>
-<span class="lineNum">      39 </span>            : 
-<span class="lineNum">      40 </span>            : assertEquals(&quot;Infinity&quot;, String(1/f(0)));
-<span class="lineNum">      41 </span>            : assertEquals(&quot;Infinity&quot;, String(1/f(-0)));
-<span class="lineNum">      42 </span>            : assertEquals(&quot;Infinity&quot;, String(f(Infinity)));
-<span class="lineNum">      43 </span>            : assertEquals(&quot;Infinity&quot;, String(f(-Infinity)));
-<span class="lineNum">      44 </span>            : 
-<span class="lineNum">      45 </span>            : assertEquals(0,   f(0));
-<span class="lineNum">      46 </span>            : assertEquals(0.1, f(0.1));
-<span class="lineNum">      47 </span>            : assertEquals(0.5, f(0.5));
-<span class="lineNum">      48 </span>            : assertEquals(0.1, f(-0.1));
-<span class="lineNum">      49 </span>            : assertEquals(0.5, f(-0.5));
-<span class="lineNum">      50 </span>            : assertEquals(1,   f(1));
-<span class="lineNum">      51 </span>            : assertEquals(1.1, f(1.1));
-<span class="lineNum">      52 </span>            : assertEquals(1.5, f(1.5));
-<span class="lineNum">      53 </span>            : assertEquals(1,   f(-1));
-<span class="lineNum">      54 </span>            : assertEquals(1.1, f(-1.1));
-<span class="lineNum">      55 </span>            : assertEquals(1.5, f(-1.5));
-<span class="lineNum">      56 </span>            : 
-<span class="lineNum">      57 </span>            : assertEquals(0,          g(0));
-<span class="lineNum">      58 </span>            : assertEquals(0,          g(0.1));
-<span class="lineNum">      59 </span>            : assertEquals(0,          g(0.5));
-<span class="lineNum">      60 </span>            : assertEquals(0,          g(-0.1));
-<span class="lineNum">      61 </span>            : assertEquals(0,          g(-0.5));
-<span class="lineNum">      62 </span>            : assertEquals(1,          g(1));
-<span class="lineNum">      63 </span>            : assertEquals(1,          g(1.1));
-<span class="lineNum">      64 </span>            : assertEquals(1,          g(1.5));
-<span class="lineNum">      65 </span>            : assertEquals(4294967295, g(-1));
-<span class="lineNum">      66 </span>            : assertEquals(4294967295, g(-1.1));
-<span class="lineNum">      67 </span>            : assertEquals(4294967295, g(-1.5));
-<span class="lineNum">      68 </span>            : 
-<span class="lineNum">      69 </span>            : assertEquals(0, h(0));
-<span class="lineNum">      70 </span>            : assertEquals(0, h(0.1));
-<span class="lineNum">      71 </span>            : assertEquals(0, h(0.5));
-<span class="lineNum">      72 </span>            : assertEquals(0, h(-0.1));
-<span class="lineNum">      73 </span>            : assertEquals(0, h(-0.5));
-<span class="lineNum">      74 </span>            : assertEquals(1, h(1));
-<span class="lineNum">      75 </span>            : assertEquals(1, h(1.1));
-<span class="lineNum">      76 </span>            : assertEquals(1, h(1.5));
-<span class="lineNum">      77 </span>            : assertEquals(1, h(-1));
-<span class="lineNum">      78 </span>            : assertEquals(1, h(-1.1));
-<span class="lineNum">      79 </span>            : assertEquals(1, h(-1.5));
-<span class="lineNum">      80 </span>            : 
-<span class="lineNum">      81 </span>            : assertEquals(Number.MIN_VALUE, f(Number.MIN_VALUE));
-<span class="lineNum">      82 </span>            : assertEquals(Number.MIN_VALUE, f(-Number.MIN_VALUE));
-<span class="lineNum">      83 </span>            : assertEquals(Number.MAX_VALUE, f(Number.MAX_VALUE));
-<span class="lineNum">      84 </span>            : assertEquals(Number.MAX_VALUE, f(-Number.MAX_VALUE));
+<span class="lineNum">      27 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      28 </span><span class="lineCov">          1 :   return { f: f, g: g, h: h };</span>
+<span class="lineNum">      29 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      30 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      31 </span><span class="lineCov">          1 : var m = Module({ Math: Math });</span>
+<span class="lineNum">      32 </span><span class="lineCov">          1 : var f = m.f;</span>
+<span class="lineNum">      33 </span><span class="lineCov">          1 : var g = m.g;</span>
+<span class="lineNum">      34 </span><span class="lineCov">          1 : var h = m.h;</span>
+<span class="lineNum">      35 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      36 </span><span class="lineCov">          1 : assertTrue(isNaN(f(NaN)));</span>
+<span class="lineNum">      37 </span><span class="lineCov">          1 : assertTrue(isNaN(f(undefined)));</span>
+<span class="lineNum">      38 </span><span class="lineCov">          1 : assertTrue(isNaN(f(function() {})));</span>
+<span class="lineNum">      39 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      40 </span><span class="lineCov">          1 : assertEquals(&quot;Infinity&quot;, String(1/f(0)));</span>
+<span class="lineNum">      41 </span><span class="lineCov">          1 : assertEquals(&quot;Infinity&quot;, String(1/f(-0)));</span>
+<span class="lineNum">      42 </span><span class="lineCov">          1 : assertEquals(&quot;Infinity&quot;, String(f(Infinity)));</span>
+<span class="lineNum">      43 </span><span class="lineCov">          1 : assertEquals(&quot;Infinity&quot;, String(f(-Infinity)));</span>
+<span class="lineNum">      44 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      45 </span><span class="lineCov">          1 : assertEquals(0,   f(0));</span>
+<span class="lineNum">      46 </span><span class="lineCov">          1 : assertEquals(0.1, f(0.1));</span>
+<span class="lineNum">      47 </span><span class="lineCov">          1 : assertEquals(0.5, f(0.5));</span>
+<span class="lineNum">      48 </span><span class="lineCov">          1 : assertEquals(0.1, f(-0.1));</span>
+<span class="lineNum">      49 </span><span class="lineCov">          1 : assertEquals(0.5, f(-0.5));</span>
+<span class="lineNum">      50 </span><span class="lineCov">          1 : assertEquals(1,   f(1));</span>
+<span class="lineNum">      51 </span><span class="lineCov">          1 : assertEquals(1.1, f(1.1));</span>
+<span class="lineNum">      52 </span><span class="lineCov">          1 : assertEquals(1.5, f(1.5));</span>
+<span class="lineNum">      53 </span><span class="lineCov">          1 : assertEquals(1,   f(-1));</span>
+<span class="lineNum">      54 </span><span class="lineCov">          1 : assertEquals(1.1, f(-1.1));</span>
+<span class="lineNum">      55 </span><span class="lineCov">          1 : assertEquals(1.5, f(-1.5));</span>
+<span class="lineNum">      56 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      57 </span><span class="lineCov">          1 : assertEquals(0,          g(0));</span>
+<span class="lineNum">      58 </span><span class="lineCov">          1 : assertEquals(0,          g(0.1));</span>
+<span class="lineNum">      59 </span><span class="lineCov">          1 : assertEquals(0,          g(0.5));</span>
+<span class="lineNum">      60 </span><span class="lineCov">          1 : assertEquals(0,          g(-0.1));</span>
+<span class="lineNum">      61 </span><span class="lineCov">          1 : assertEquals(0,          g(-0.5));</span>
+<span class="lineNum">      62 </span><span class="lineCov">          1 : assertEquals(1,          g(1));</span>
+<span class="lineNum">      63 </span><span class="lineCov">          1 : assertEquals(1,          g(1.1));</span>
+<span class="lineNum">      64 </span><span class="lineCov">          1 : assertEquals(1,          g(1.5));</span>
+<span class="lineNum">      65 </span><span class="lineCov">          1 : assertEquals(4294967295, g(-1));</span>
+<span class="lineNum">      66 </span><span class="lineCov">          1 : assertEquals(4294967295, g(-1.1));</span>
+<span class="lineNum">      67 </span><span class="lineCov">          1 : assertEquals(4294967295, g(-1.5));</span>
+<span class="lineNum">      68 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      69 </span><span class="lineCov">          1 : assertEquals(0, h(0));</span>
+<span class="lineNum">      70 </span><span class="lineCov">          1 : assertEquals(0, h(0.1));</span>
+<span class="lineNum">      71 </span><span class="lineCov">          1 : assertEquals(0, h(0.5));</span>
+<span class="lineNum">      72 </span><span class="lineCov">          1 : assertEquals(0, h(-0.1));</span>
+<span class="lineNum">      73 </span><span class="lineCov">          1 : assertEquals(0, h(-0.5));</span>
+<span class="lineNum">      74 </span><span class="lineCov">          1 : assertEquals(1, h(1));</span>
+<span class="lineNum">      75 </span><span class="lineCov">          1 : assertEquals(1, h(1.1));</span>
+<span class="lineNum">      76 </span><span class="lineCov">          1 : assertEquals(1, h(1.5));</span>
+<span class="lineNum">      77 </span><span class="lineCov">          1 : assertEquals(1, h(-1));</span>
+<span class="lineNum">      78 </span><span class="lineCov">          1 : assertEquals(1, h(-1.1));</span>
+<span class="lineNum">      79 </span><span class="lineCov">          1 : assertEquals(1, h(-1.5));</span>
+<span class="lineNum">      80 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      81 </span><span class="lineCov">          1 : assertEquals(Number.MIN_VALUE, f(Number.MIN_VALUE));</span>
+<span class="lineNum">      82 </span><span class="lineCov">          1 : assertEquals(Number.MIN_VALUE, f(-Number.MIN_VALUE));</span>
+<span class="lineNum">      83 </span><span class="lineCov">          1 : assertEquals(Number.MAX_VALUE, f(Number.MAX_VALUE));</span>
+<span class="lineNum">      84 </span><span class="lineCov">          1 : assertEquals(Number.MAX_VALUE, f(-Number.MAX_VALUE));</span>
 </pre>
       </td>
     </tr>

@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">151</td>
-            <td class="headerCovTableEntry">157</td>
-            <td class="headerCovTableEntryHi">96.2 %</td>
+            <td class="headerCovTableEntry">167</td>
+            <td class="headerCovTableEntry">167</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">3</td>
@@ -93,10 +93,10 @@
 <span class="lineNum">      31 </span><span class="lineCov">       1000 :     this.b = b;</span>
 <span class="lineNum">      32 </span><span class="lineCov">       1000 :     this.c = c;</span>
 <span class="lineNum">      33 </span><span class="lineCov">       1000 : }</span>
-<span class="lineNum">      34 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      35 </span><span class="lineNoCov">          0 : // Non-inlineable function. This relies on a size limit for inlining, but still</span>
-<a name="36"><span class="lineNum">      36 </span><span class="lineNoCov">          0 : // produces integers. It also relies on the VM not reasoning about Math.log deeply</span></a>
-<span class="lineNum">      37 </span><span class="lineNoCov">          0 : // enough to find some way of optimizing this code to be small enough to inline.</span>
+<span class="lineNum">      34 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      35 </span><span class="lineCov">          1 : // Non-inlineable function. This relies on a size limit for inlining, but still</span>
+<a name="36"><span class="lineNum">      36 </span><span class="lineCov">          1 : // produces integers. It also relies on the VM not reasoning about Math.log deeply</span></a>
+<span class="lineNum">      37 </span><span class="lineCov">          1 : // enough to find some way of optimizing this code to be small enough to inline.</span>
 <span class="lineNum">      38 </span><span class="lineCov">       4000 : function bar(a, b) {</span>
 <span class="lineNum">      39 </span><span class="lineCov">       4000 :     a += b;</span>
 <span class="lineNum">      40 </span><span class="lineCov">       4000 :     a -= b;</span>
@@ -212,20 +212,20 @@
 <span class="lineNum">     150 </span><span class="lineCov">       4000 :     a ^= b;</span>
 <span class="lineNum">     151 </span><span class="lineCov">       4000 :     return (a - b) | 0;</span>
 <span class="lineNum">     152 </span><span class="lineCov">       4000 : }</span>
-<a name="153"><span class="lineNum">     153 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     154 </span><span class="lineNoCov">          0 : // Function into which we will inline foo but not bar.</span>
+<a name="153"><span class="lineNum">     153 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     154 </span><span class="lineCov">          1 : // Function into which we will inline foo but not bar.</span>
 <span class="lineNum">     155 </span><span class="lineCov">       1000 : function baz(a, b) {</span>
 <span class="lineNum">     156 </span><span class="lineCov">       1000 :     return new foo(bar(2 * a + 1, b - 1), bar(2 * a, b - 1), a);</span>
 <span class="lineNum">     157 </span><span class="lineCov">       1000 : }</span>
-<span class="lineNum">     158 </span>            : 
-<span class="lineNum">     159 </span>            : // Do the test. It's crucial that o.a, o.b, and o.c are checked on each
-<span class="lineNum">     160 </span>            : // loop iteration.
-<span class="lineNum">     161 </span>            : for (var i = 0; i &lt; 1000; ++i) {
-<span class="lineNum">     162 </span>            :     var o = baz(i, i + 1);
-<span class="lineNum">     163 </span>            :     shouldBe(&quot;o.a&quot;, &quot;bar(2 * i + 1, i)&quot;);
-<span class="lineNum">     164 </span>            :     shouldBe(&quot;o.b&quot;, &quot;bar(2 * i, i)&quot;);
-<span class="lineNum">     165 </span>            :     shouldBe(&quot;o.c&quot;, &quot;i&quot;);
-<span class="lineNum">     166 </span>            : }
+<span class="lineNum">     158 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     159 </span><span class="lineCov">          1 : // Do the test. It's crucial that o.a, o.b, and o.c are checked on each</span>
+<span class="lineNum">     160 </span><span class="lineCov">          1 : // loop iteration.</span>
+<span class="lineNum">     161 </span><span class="lineCov">          1 : for (var i = 0; i &lt; 1000; ++i) {</span>
+<span class="lineNum">     162 </span><span class="lineCov">          1 :     var o = baz(i, i + 1);</span>
+<span class="lineNum">     163 </span><span class="lineCov">          1 :     shouldBe(&quot;o.a&quot;, &quot;bar(2 * i + 1, i)&quot;);</span>
+<span class="lineNum">     164 </span><span class="lineCov">          1 :     shouldBe(&quot;o.b&quot;, &quot;bar(2 * i, i)&quot;);</span>
+<span class="lineNum">     165 </span><span class="lineCov">          1 :     shouldBe(&quot;o.c&quot;, &quot;i&quot;);</span>
+<span class="lineNum">     166 </span><span class="lineCov">          1 : }</span>
 </pre>
       </td>
     </tr>

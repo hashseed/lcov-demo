@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">42</td>
-            <td class="headerCovTableEntry">42</td>
+            <td class="headerCovTableEntry">62</td>
+            <td class="headerCovTableEntry">62</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">1</td>
@@ -102,25 +102,25 @@
 <span class="lineNum">      40 </span><span class="lineCov">          5 :   }</span>
 <span class="lineNum">      41 </span><span class="lineCov">          5 :   return sum;</span>
 <span class="lineNum">      42 </span><span class="lineCov">          5 : }</span>
-<span class="lineNum">      43 </span>            : 
-<span class="lineNum">      44 </span>            : f(10, o3);
-<span class="lineNum">      45 </span>            : f(20, o3);
-<span class="lineNum">      46 </span>            : f(30, o3);
-<span class="lineNum">      47 </span>            : %OptimizeFunctionOnNextCall(f, &quot;concurrent&quot;);
-<span class="lineNum">      48 </span>            : f(100000, o3);
-<span class="lineNum">      49 </span>            : // At this point OSR replaces already optimized code.
-<span class="lineNum">      50 </span>            : // Check that it evicts old code from cache.
-<span class="lineNum">      51 </span>            : 
-<span class="lineNum">      52 </span>            : // This causes all code for f to be lazily deopted.
-<span class="lineNum">      53 </span>            : o2.a = 5;
-<span class="lineNum">      54 </span>            : 
-<span class="lineNum">      55 </span>            : // If OSR did not evict the old code, it will be installed in f here.
-<span class="lineNum">      56 </span>            : %OptimizeFunctionOnNextCall(f);
-<span class="lineNum">      57 </span>            : f(10, o3);
-<span class="lineNum">      58 </span>            : 
-<span class="lineNum">      59 </span>            : // The old code is already deoptimized, but f still points to it.
-<span class="lineNum">      60 </span>            : // Disassembling it will crash.
-<span class="lineNum">      61 </span>            : %DisassembleFunction(f);
+<span class="lineNum">      43 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      44 </span><span class="lineCov">          1 : f(10, o3);</span>
+<span class="lineNum">      45 </span><span class="lineCov">          1 : f(20, o3);</span>
+<span class="lineNum">      46 </span><span class="lineCov">          1 : f(30, o3);</span>
+<span class="lineNum">      47 </span><span class="lineCov">          1 : %OptimizeFunctionOnNextCall(f, &quot;concurrent&quot;);</span>
+<span class="lineNum">      48 </span><span class="lineCov">          1 : f(100000, o3);</span>
+<span class="lineNum">      49 </span><span class="lineCov">          1 : // At this point OSR replaces already optimized code.</span>
+<span class="lineNum">      50 </span><span class="lineCov">          1 : // Check that it evicts old code from cache.</span>
+<span class="lineNum">      51 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      52 </span><span class="lineCov">          1 : // This causes all code for f to be lazily deopted.</span>
+<span class="lineNum">      53 </span><span class="lineCov">          1 : o2.a = 5;</span>
+<span class="lineNum">      54 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      55 </span><span class="lineCov">          1 : // If OSR did not evict the old code, it will be installed in f here.</span>
+<span class="lineNum">      56 </span><span class="lineCov">          1 : %OptimizeFunctionOnNextCall(f);</span>
+<span class="lineNum">      57 </span><span class="lineCov">          1 : f(10, o3);</span>
+<span class="lineNum">      58 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      59 </span><span class="lineCov">          1 : // The old code is already deoptimized, but f still points to it.</span>
+<span class="lineNum">      60 </span><span class="lineCov">          1 : // Disassembling it will crash.</span>
+<span class="lineNum">      61 </span><span class="lineCov">          1 : %DisassembleFunction(f);</span>
 </pre>
       </td>
     </tr>

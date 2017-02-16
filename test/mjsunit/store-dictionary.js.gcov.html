@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">45</td>
-            <td class="headerCovTableEntry">80</td>
-            <td class="headerCovTableEntryLo">56.2 %</td>
+            <td class="headerCovTableEntry">91</td>
+            <td class="headerCovTableEntry">91</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">2</td>
@@ -93,40 +93,40 @@
 <a name="31"><span class="lineNum">      31 </span><span class="lineCov">          1 : </span></a>
 <span class="lineNum">      32 </span><span class="lineCov">          1 : // Function that stores property 'x' on an object.</span>
 <span class="lineNum">      33 </span><span class="lineCov">          7 : function store(obj) { obj.x = 42; }</span>
-<span class="lineNum">      34 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      35 </span><span class="lineNoCov">          0 : // Create object and force it to dictionary mode by deleting property.</span>
-<span class="lineNum">      36 </span><span class="lineNoCov">          0 : var o = { x: 32, y: 33 };</span>
-<span class="lineNum">      37 </span><span class="lineNoCov">          0 : delete o.y;</span>
-<span class="lineNum">      38 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      39 </span><span class="lineNoCov">          0 : // Make the store ic in the 'store' function go into dictionary store</span>
-<span class="lineNum">      40 </span><span class="lineNoCov">          0 : // case.</span>
-<span class="lineNum">      41 </span><span class="lineNoCov">          0 : for (var i = 0; i &lt; 3; i++) {</span>
-<span class="lineNum">      42 </span><span class="lineNoCov">          0 :   store(o);</span>
-<span class="lineNum">      43 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">      44 </span><span class="lineNoCov">          0 : assertEquals(42, o.x);</span>
-<span class="lineNum">      45 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      46 </span><span class="lineNoCov">          0 : // Test that READ_ONLY property attribute is respected. Make 'x'</span>
-<span class="lineNum">      47 </span><span class="lineNoCov">          0 : // READ_ONLY.</span>
-<span class="lineNum">      48 </span><span class="lineNoCov">          0 : Object.defineProperty(o, 'x', { value: 32, writable: false });</span>
-<span class="lineNum">      49 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      50 </span><span class="lineNoCov">          0 : // Attempt to store using the store ic in the 'store' function.</span>
-<span class="lineNum">      51 </span><span class="lineNoCov">          0 : store(o);</span>
-<span class="lineNum">      52 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      53 </span><span class="lineNoCov">          0 : // Check that the store did not change the value.</span>
-<span class="lineNum">      54 </span><span class="lineNoCov">          0 : assertEquals(32, o.x);</span>
-<span class="lineNum">      55 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      56 </span><span class="lineNoCov">          0 : // Check that bail-out code works.</span>
-<span class="lineNum">      57 </span><span class="lineNoCov">          0 : // Smi.</span>
-<span class="lineNum">      58 </span><span class="lineNoCov">          0 : store(1);</span>
-<span class="lineNum">      59 </span><span class="lineNoCov">          0 : // Fast case object.</span>
-<span class="lineNum">      60 </span><span class="lineNoCov">          0 : o = new Object();</span>
-<span class="lineNum">      61 </span><span class="lineNoCov">          0 : store(o);</span>
-<span class="lineNum">      62 </span><span class="lineNoCov">          0 : assertEquals(42, o.x);</span>
-<span class="lineNum">      63 </span><span class="lineNoCov">          0 : // Slow case object without x property.</span>
-<span class="lineNum">      64 </span><span class="lineNoCov">          0 : delete o.x;</span>
-<span class="lineNum">      65 </span><span class="lineNoCov">          0 : store(o);</span>
-<span class="lineNum">      66 </span><span class="lineNoCov">          0 : assertEquals(42, o.x);</span>
-<span class="lineNum">      67 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      34 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      35 </span><span class="lineCov">          1 : // Create object and force it to dictionary mode by deleting property.</span>
+<span class="lineNum">      36 </span><span class="lineCov">          1 : var o = { x: 32, y: 33 };</span>
+<span class="lineNum">      37 </span><span class="lineCov">          1 : delete o.y;</span>
+<span class="lineNum">      38 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      39 </span><span class="lineCov">          1 : // Make the store ic in the 'store' function go into dictionary store</span>
+<span class="lineNum">      40 </span><span class="lineCov">          1 : // case.</span>
+<span class="lineNum">      41 </span><span class="lineCov">          1 : for (var i = 0; i &lt; 3; i++) {</span>
+<span class="lineNum">      42 </span><span class="lineCov">          1 :   store(o);</span>
+<span class="lineNum">      43 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      44 </span><span class="lineCov">          1 : assertEquals(42, o.x);</span>
+<span class="lineNum">      45 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      46 </span><span class="lineCov">          1 : // Test that READ_ONLY property attribute is respected. Make 'x'</span>
+<span class="lineNum">      47 </span><span class="lineCov">          1 : // READ_ONLY.</span>
+<span class="lineNum">      48 </span><span class="lineCov">          1 : Object.defineProperty(o, 'x', { value: 32, writable: false });</span>
+<span class="lineNum">      49 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      50 </span><span class="lineCov">          1 : // Attempt to store using the store ic in the 'store' function.</span>
+<span class="lineNum">      51 </span><span class="lineCov">          1 : store(o);</span>
+<span class="lineNum">      52 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      53 </span><span class="lineCov">          1 : // Check that the store did not change the value.</span>
+<span class="lineNum">      54 </span><span class="lineCov">          1 : assertEquals(32, o.x);</span>
+<span class="lineNum">      55 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      56 </span><span class="lineCov">          1 : // Check that bail-out code works.</span>
+<span class="lineNum">      57 </span><span class="lineCov">          1 : // Smi.</span>
+<span class="lineNum">      58 </span><span class="lineCov">          1 : store(1);</span>
+<span class="lineNum">      59 </span><span class="lineCov">          1 : // Fast case object.</span>
+<span class="lineNum">      60 </span><span class="lineCov">          1 : o = new Object();</span>
+<span class="lineNum">      61 </span><span class="lineCov">          1 : store(o);</span>
+<span class="lineNum">      62 </span><span class="lineCov">          1 : assertEquals(42, o.x);</span>
+<span class="lineNum">      63 </span><span class="lineCov">          1 : // Slow case object without x property.</span>
+<span class="lineNum">      64 </span><span class="lineCov">          1 : delete o.x;</span>
+<span class="lineNum">      65 </span><span class="lineCov">          1 : store(o);</span>
+<span class="lineNum">      66 </span><span class="lineCov">          1 : assertEquals(42, o.x);</span>
+<span class="lineNum">      67 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      68 </span><span class="lineCov">          1 : (function() {</span>
 <span class="lineNum">      69 </span><span class="lineCov">          1 :   var o = {};</span>
 <span class="lineNum">      70 </span><span class="lineCov">          1 :   for (var i = 0; i &lt; 100; i++) {</span>
@@ -135,21 +135,21 @@
 <span class="lineNum">      73 </span><span class="lineCov">          1 :     delete o[k];</span>
 <span class="lineNum">      74 </span><span class="lineCov">          1 :   }</span>
 <span class="lineNum">      75 </span><span class="lineCov">          1 : })();</span>
-<a name="76"><span class="lineNum">      76 </span><span class="lineNoCov">          0 : </span></a>
+<a name="76"><span class="lineNum">      76 </span><span class="lineCov">          1 : </span></a>
 <span class="lineNum">      77 </span><span class="lineCov">          1 : (function() {</span>
 <span class="lineNum">      78 </span><span class="lineCov">        101 :   function f(a, i, v) {</span>
 <span class="lineNum">      79 </span><span class="lineCov">        101 :     a[i] = v;</span>
 <span class="lineNum">      80 </span><span class="lineCov">        101 :   }</span>
-<span class="lineNum">      81 </span>            : 
-<span class="lineNum">      82 </span>            :   f(&quot;make it generic&quot;, 0, 0);
-<span class="lineNum">      83 </span>            : 
-<span class="lineNum">      84 </span>            :   var o = {};
-<span class="lineNum">      85 </span>            :   for (var i = 0; i &lt; 100; i++) {
-<span class="lineNum">      86 </span>            :     var k = %InternalizeString(&quot;key&quot; + i);
-<span class="lineNum">      87 </span>            :     f(o, k, &quot;foo&quot;);
-<span class="lineNum">      88 </span>            :     delete o[k];
-<span class="lineNum">      89 </span>            :   }
-<span class="lineNum">      90 </span>            : })();
+<span class="lineNum">      81 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      82 </span><span class="lineCov">          1 :   f(&quot;make it generic&quot;, 0, 0);</span>
+<span class="lineNum">      83 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      84 </span><span class="lineCov">          1 :   var o = {};</span>
+<span class="lineNum">      85 </span><span class="lineCov">          1 :   for (var i = 0; i &lt; 100; i++) {</span>
+<span class="lineNum">      86 </span><span class="lineCov">          1 :     var k = %InternalizeString(&quot;key&quot; + i);</span>
+<span class="lineNum">      87 </span><span class="lineCov">          1 :     f(o, k, &quot;foo&quot;);</span>
+<span class="lineNum">      88 </span><span class="lineCov">          1 :     delete o[k];</span>
+<span class="lineNum">      89 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">      90 </span><span class="lineCov">          1 : })();</span>
 </pre>
       </td>
     </tr>

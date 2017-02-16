@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">124</td>
-            <td class="headerCovTableEntry">141</td>
-            <td class="headerCovTableEntryMed">87.9 %</td>
+            <td class="headerCovTableEntry">152</td>
+            <td class="headerCovTableEntry">160</td>
+            <td class="headerCovTableEntryHi">95.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">7</td>
@@ -150,23 +150,23 @@
 <span class="lineNum">      88 </span><span class="lineCov">          1 : function typeof_should_preserve_parens(x, y, z) {</span>
 <span class="lineNum">      89 </span><span class="lineCov">          1 :     return typeof (x, y);</span>
 <a name="90"><span class="lineNum">      90 </span><span class="lineCov">          1 : }</span></a>
-<span class="lineNum">      91 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      91 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      92 </span><span class="lineCov">          1 : function typeof_should_preserve_parens1(x, y, z) {</span>
 <span class="lineNum">      93 </span><span class="lineCov">          1 :     return typeof ((x, y));</span>
 <a name="94"><span class="lineNum">      94 </span><span class="lineCov">          1 : }</span></a>
-<span class="lineNum">      95 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      95 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      96 </span><span class="lineCov">          1 : function typeof_should_preserve_parens2(x, y, z) {</span>
 <span class="lineNum">      97 </span><span class="lineCov">          1 :     var z = 33;</span>
 <span class="lineNum">      98 </span><span class="lineCov">          1 :     return typeof (z, (x, y));</span>
 <a name="99"><span class="lineNum">      99 </span><span class="lineCov">          1 : }</span></a>
-<span class="lineNum">     100 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     100 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     101 </span><span class="lineCov">          1 : function typeof_should_preserve_parens_multi(x, y, z) {</span>
 <span class="lineNum">     102 </span><span class="lineCov">          1 :     var z = 33;</span>
 <span class="lineNum">     103 </span><span class="lineCov">          1 :     return typeof ((z,(((x, y)))));</span>
 <a name="104"><span class="lineNum">     104 </span><span class="lineCov">          1 : }</span></a>
-<span class="lineNum">     105 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     105 </span><span class="lineCov">          1 : </span>
 <a name="106"><span class="lineNum">     106 </span><span class="lineCov">         20 : unevalf = function(x) { return '(' + x.toString() + ')'; };</span></a>
-<span class="lineNum">     107 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     107 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     108 </span><span class="lineCov">          4 : function testToString(fn) {</span>
 <span class="lineNum">     109 </span><span class="lineCov">          4 :     // check that toString result evaluates to code that can be evaluated</span>
 <span class="lineNum">     110 </span><span class="lineCov">          4 :     // this doesn't actually reveal the bug that this test is testing</span>
@@ -178,8 +178,8 @@
 <span class="lineNum">     116 </span><span class="lineCov">          4 :     shouldBeTrue(&quot;/.*\\(+x\\)*, y\\)/.test(unevalf(&quot;+fn+&quot;))&quot;);</span>
 <span class="lineNum">     117 </span><span class="lineCov">          4 : </span>
 <a name="118"><span class="lineNum">     118 </span><span class="lineCov">          4 : }</span></a>
-<span class="lineNum">     119 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     120 </span><span class="lineNoCov">          0 : function testToStringAndRTFailure(fn)</span>
+<span class="lineNum">     119 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     120 </span><span class="lineCov">          1 : function testToStringAndRTFailure(fn)</span>
 <span class="lineNum">     121 </span><span class="lineNoCov">          0 : {</span>
 <span class="lineNum">     122 </span><span class="lineNoCov">          0 :     testToString(fn);</span>
 <span class="lineNum">     123 </span><span class="lineNoCov">          0 : </span>
@@ -188,8 +188,8 @@
 <span class="lineNum">     126 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     127 </span><span class="lineNoCov">          0 :     // check that function call produces run-time exception after eval(unevalf)</span>
 <span class="lineNum">     128 </span><span class="lineNoCov">          0 :     shouldThrow(&quot;eval(unevalf(&quot;+fn+ &quot;))(1, 2, 3);&quot;);</span>
-<a name="129"><span class="lineNum">     129 </span><span class="lineNoCov">          0 : }</span></a>
-<span class="lineNum">     130 </span><span class="lineNoCov">          0 : </span>
+<a name="129"><span class="lineNum">     129 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">     130 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     131 </span><span class="lineCov">          4 : function testToStringAndReturn(fn, p1, p2, retval)</span>
 <span class="lineNum">     132 </span><span class="lineCov">          4 : {</span>
 <span class="lineNum">     133 </span><span class="lineCov">          4 : </span>
@@ -201,24 +201,24 @@
 <span class="lineNum">     139 </span><span class="lineCov">          4 :     // check that function call produces correct result after eval(unevalf)</span>
 <span class="lineNum">     140 </span><span class="lineCov">          4 :     shouldBe(&quot;eval(unevalf(&quot;+fn+ &quot;))&quot; + &quot;(&quot; + p1 + &quot;, &quot; + p2 +&quot;);&quot;, retval);</span>
 <span class="lineNum">     141 </span><span class="lineCov">          4 : }</span>
-<span class="lineNum">     142 </span>            : 
-<span class="lineNum">     143 </span>            : 
-<span class="lineNum">     144 </span>            : /*
-<span class="lineNum">     145 </span>            : testToStringAndRTFailure(&quot;prefix_should_preserve_parens&quot;);
-<span class="lineNum">     146 </span>            : testToStringAndRTFailure(&quot;postfix_should_preserve_parens&quot;);
-<span class="lineNum">     147 </span>            : testToStringAndRTFailure(&quot;both_should_preserve_parens&quot;);
-<span class="lineNum">     148 </span>            : testToStringAndRTFailure(&quot;prefix_should_preserve_parens_multi&quot;);
-<span class="lineNum">     149 </span>            : testToStringAndRTFailure(&quot;postfix_should_preserve_parens_multi&quot;);
-<span class="lineNum">     150 </span>            : testToStringAndRTFailure(&quot;prefix_should_preserve_parens_multi1&quot;);
-<span class="lineNum">     151 </span>            : testToStringAndRTFailure(&quot;postfix_should_preserve_parens_multi1&quot;);
-<span class="lineNum">     152 </span>            : testToStringAndRTFailure(&quot;prefix_should_preserve_parens_multi2&quot;);
-<span class="lineNum">     153 </span>            : testToStringAndRTFailure(&quot;postfix_should_preserve_parens_multi2&quot;);
-<span class="lineNum">     154 </span>            : */
-<span class="lineNum">     155 </span>            : 
-<span class="lineNum">     156 </span>            : testToStringAndReturn(&quot;typeof_should_preserve_parens&quot;, &quot;'a'&quot;, 1, &quot;'number'&quot;);
-<span class="lineNum">     157 </span>            : testToStringAndReturn(&quot;typeof_should_preserve_parens1&quot;, &quot;'a'&quot;, 1, &quot;'number'&quot;);
-<span class="lineNum">     158 </span>            : testToStringAndReturn(&quot;typeof_should_preserve_parens2&quot;, &quot;'a'&quot;, 1, &quot;'number'&quot;);
-<span class="lineNum">     159 </span>            : testToStringAndReturn(&quot;typeof_should_preserve_parens_multi&quot;, &quot;'a'&quot;, 1, &quot;'number'&quot;);
+<span class="lineNum">     142 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     143 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     144 </span><span class="lineCov">          1 : /*</span>
+<span class="lineNum">     145 </span><span class="lineCov">          1 : testToStringAndRTFailure(&quot;prefix_should_preserve_parens&quot;);</span>
+<span class="lineNum">     146 </span><span class="lineCov">          1 : testToStringAndRTFailure(&quot;postfix_should_preserve_parens&quot;);</span>
+<span class="lineNum">     147 </span><span class="lineCov">          1 : testToStringAndRTFailure(&quot;both_should_preserve_parens&quot;);</span>
+<span class="lineNum">     148 </span><span class="lineCov">          1 : testToStringAndRTFailure(&quot;prefix_should_preserve_parens_multi&quot;);</span>
+<span class="lineNum">     149 </span><span class="lineCov">          1 : testToStringAndRTFailure(&quot;postfix_should_preserve_parens_multi&quot;);</span>
+<span class="lineNum">     150 </span><span class="lineCov">          1 : testToStringAndRTFailure(&quot;prefix_should_preserve_parens_multi1&quot;);</span>
+<span class="lineNum">     151 </span><span class="lineCov">          1 : testToStringAndRTFailure(&quot;postfix_should_preserve_parens_multi1&quot;);</span>
+<span class="lineNum">     152 </span><span class="lineCov">          1 : testToStringAndRTFailure(&quot;prefix_should_preserve_parens_multi2&quot;);</span>
+<span class="lineNum">     153 </span><span class="lineCov">          1 : testToStringAndRTFailure(&quot;postfix_should_preserve_parens_multi2&quot;);</span>
+<span class="lineNum">     154 </span><span class="lineCov">          1 : */</span>
+<span class="lineNum">     155 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     156 </span><span class="lineCov">          1 : testToStringAndReturn(&quot;typeof_should_preserve_parens&quot;, &quot;'a'&quot;, 1, &quot;'number'&quot;);</span>
+<span class="lineNum">     157 </span><span class="lineCov">          1 : testToStringAndReturn(&quot;typeof_should_preserve_parens1&quot;, &quot;'a'&quot;, 1, &quot;'number'&quot;);</span>
+<span class="lineNum">     158 </span><span class="lineCov">          1 : testToStringAndReturn(&quot;typeof_should_preserve_parens2&quot;, &quot;'a'&quot;, 1, &quot;'number'&quot;);</span>
+<span class="lineNum">     159 </span><span class="lineCov">          1 : testToStringAndReturn(&quot;typeof_should_preserve_parens_multi&quot;, &quot;'a'&quot;, 1, &quot;'number'&quot;);</span>
 </pre>
       </td>
     </tr>

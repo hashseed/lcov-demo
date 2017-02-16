@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">335</td>
-            <td class="headerCovTableEntry">673</td>
-            <td class="headerCovTableEntryLo">49.8 %</td>
+            <td class="headerCovTableEntry">675</td>
+            <td class="headerCovTableEntry">675</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">60</td>
@@ -92,33 +92,33 @@
 <a name="30"><span class="lineNum">      30 </span><span class="lineCov">          1 : // Test generator iteration.</span></a>
 <span class="lineNum">      31 </span><span class="lineCov">          1 : </span>
 <a name="32"><span class="lineNum">      32 </span><span class="lineCov">          1 : var GeneratorFunction = (function*(){yield 1;}).__proto__.constructor;</span></a>
-<span class="lineNum">      33 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      33 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      34 </span><span class="lineCov">       1551 : function assertIteratorResult(value, done, result) {</span>
 <span class="lineNum">      35 </span><span class="lineCov">       1551 :   assertEquals({ value: value, done: done}, result);</span>
 <a name="36"><span class="lineNum">      36 </span><span class="lineCov">       1551 : }</span></a>
-<span class="lineNum">      37 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      37 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      38 </span><span class="lineCov">        479 : function assertIteratorIsClosed(iter) {</span>
 <span class="lineNum">      39 </span><span class="lineCov">        479 :   assertIteratorResult(undefined, true, iter.next());</span>
 <span class="lineNum">      40 </span><span class="lineCov">        479 :   assertDoesNotThrow(function() { iter.next(); });</span>
-<a name="41"><span class="lineNum">      41 </span><span class="lineNoCov">          0 : }</span></a>
-<span class="lineNum">      42 </span><span class="lineNoCov">          0 : </span>
+<a name="41"><span class="lineNum">      41 </span><span class="lineCov">        479 : }</span></a>
+<span class="lineNum">      42 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      43 </span><span class="lineCov">        299 : function assertThrownIteratorIsClosed(iter) {</span>
 <span class="lineNum">      44 </span><span class="lineCov">        299 :   assertIteratorIsClosed(iter);</span>
 <a name="45"><span class="lineNum">      45 </span><span class="lineCov">        299 : }</span></a>
-<span class="lineNum">      46 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      46 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      47 </span><span class="lineCov">          1 : function TestGeneratorResultPrototype() {</span>
 <span class="lineNum">      48 </span><span class="lineCov">          2 :   function* g() { yield 1; }</span>
-<span class="lineNum">      49 </span><span class="lineNoCov">          0 :   var iter = g();</span>
-<span class="lineNum">      50 </span><span class="lineNoCov">          0 :   var result = iter.next();</span>
-<span class="lineNum">      51 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      52 </span><span class="lineNoCov">          0 :   assertSame(Object.prototype, Object.getPrototypeOf(result));</span>
-<span class="lineNum">      53 </span><span class="lineNoCov">          0 :   property_names = Object.getOwnPropertyNames(result);</span>
-<span class="lineNum">      54 </span><span class="lineNoCov">          0 :   property_names.sort();</span>
-<span class="lineNum">      55 </span><span class="lineNoCov">          0 :   assertEquals([&quot;done&quot;, &quot;value&quot;], property_names);</span>
-<span class="lineNum">      56 </span><span class="lineNoCov">          0 :   assertIteratorResult(1, false, result);</span>
-<span class="lineNum">      57 </span><span class="lineNoCov">          0 : }</span>
-<a name="58"><span class="lineNum">      58 </span><span class="lineNoCov">          0 : TestGeneratorResultPrototype()</span></a>
-<span class="lineNum">      59 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      49 </span><span class="lineCov">          1 :   var iter = g();</span>
+<span class="lineNum">      50 </span><span class="lineCov">          1 :   var result = iter.next();</span>
+<span class="lineNum">      51 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      52 </span><span class="lineCov">          1 :   assertSame(Object.prototype, Object.getPrototypeOf(result));</span>
+<span class="lineNum">      53 </span><span class="lineCov">          1 :   property_names = Object.getOwnPropertyNames(result);</span>
+<span class="lineNum">      54 </span><span class="lineCov">          1 :   property_names.sort();</span>
+<span class="lineNum">      55 </span><span class="lineCov">          1 :   assertEquals([&quot;done&quot;, &quot;value&quot;], property_names);</span>
+<span class="lineNum">      56 </span><span class="lineCov">          1 :   assertIteratorResult(1, false, result);</span>
+<span class="lineNum">      57 </span><span class="lineCov">          1 : }</span>
+<a name="58"><span class="lineNum">      58 </span><span class="lineCov">          1 : TestGeneratorResultPrototype()</span></a>
+<span class="lineNum">      59 </span><span class="lineCov">          1 : </span>
 <a name="60"><span class="lineNum">      60 </span><span class="lineCov">         31 : function TestGenerator(g, expected_values_for_next,</span></a>
 <span class="lineNum">      61 </span><span class="lineCov">         31 :                        send_val, expected_values_for_send) {</span>
 <span class="lineNum">      62 </span><span class="lineCov">         83 :   function testNext(thunk) {</span>
@@ -150,128 +150,128 @@
 <span class="lineNum">      88 </span><span class="lineCov">         83 :       }</span>
 <span class="lineNum">      89 </span><span class="lineCov">        269 :       function Sentinel() {}</span>
 <span class="lineNum">      90 </span><span class="lineCov">        269 :       assertThrows(function () { iter.throw(new Sentinel); }, Sentinel);</span>
-<span class="lineNum">      91 </span><span class="lineNoCov">          0 :       assertThrownIteratorIsClosed(iter);</span>
-<span class="lineNum">      92 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">      93 </span><span class="lineNoCov">          0 :   }</span>
-<span class="lineNum">      94 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      95 </span><span class="lineNoCov">          0 :   testNext(g);</span>
-<span class="lineNum">      96 </span><span class="lineNoCov">          0 :   testSend(g);</span>
-<span class="lineNum">      97 </span><span class="lineNoCov">          0 :   testThrow(g);</span>
-<span class="lineNum">      98 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      91 </span><span class="lineCov">         83 :       assertThrownIteratorIsClosed(iter);</span>
+<span class="lineNum">      92 </span><span class="lineCov">         83 :     }</span>
+<span class="lineNum">      93 </span><span class="lineCov">         83 :   }</span>
+<span class="lineNum">      94 </span><span class="lineCov">         31 : </span>
+<span class="lineNum">      95 </span><span class="lineCov">         31 :   testNext(g);</span>
+<span class="lineNum">      96 </span><span class="lineCov">         31 :   testSend(g);</span>
+<span class="lineNum">      97 </span><span class="lineCov">         31 :   testThrow(g);</span>
+<span class="lineNum">      98 </span><span class="lineCov">         31 : </span>
 <span class="lineNum">      99 </span><span class="lineCov">        135 :   testNext(function*() { return yield* g(); });</span>
 <span class="lineNum">     100 </span><span class="lineCov">        135 :   testSend(function*() { return yield* g(); });</span>
 <span class="lineNum">     101 </span><span class="lineCov">        367 :   testThrow(function*() { return yield* g(); });</span>
-<span class="lineNum">     102 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     103 </span><span class="lineNoCov">          0 :   if (g instanceof GeneratorFunction) {</span>
-<span class="lineNum">     104 </span><span class="lineNoCov">          0 :     testNext(g);</span>
-<span class="lineNum">     105 </span><span class="lineNoCov">          0 :     testSend(g);</span>
-<span class="lineNum">     106 </span><span class="lineNoCov">          0 :     testThrow(g);</span>
-<span class="lineNum">     107 </span><span class="lineNoCov">          0 :   }</span>
-<a name="108"><span class="lineNum">     108 </span><span class="lineNoCov">          0 : }</span></a>
-<span class="lineNum">     109 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     102 </span><span class="lineCov">         31 : </span>
+<span class="lineNum">     103 </span><span class="lineCov">         31 :   if (g instanceof GeneratorFunction) {</span>
+<span class="lineNum">     104 </span><span class="lineCov">         31 :     testNext(g);</span>
+<span class="lineNum">     105 </span><span class="lineCov">         31 :     testSend(g);</span>
+<span class="lineNum">     106 </span><span class="lineCov">         31 :     testThrow(g);</span>
+<span class="lineNum">     107 </span><span class="lineCov">         31 :   }</span>
+<a name="108"><span class="lineNum">     108 </span><span class="lineCov">         31 : }</span></a>
+<span class="lineNum">     109 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     110 </span><span class="lineCov">         16 : TestGenerator(function* g1() { },</span>
-<span class="lineNum">     111 </span><span class="lineNoCov">          0 :               [undefined],</span>
-<span class="lineNum">     112 </span><span class="lineNoCov">          0 :               &quot;foo&quot;,</span>
-<a name="113"><span class="lineNum">     113 </span><span class="lineNoCov">          0 :               [undefined]);</span></a>
-<span class="lineNum">     114 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     111 </span><span class="lineCov">          1 :               [undefined],</span>
+<span class="lineNum">     112 </span><span class="lineCov">          1 :               &quot;foo&quot;,</span>
+<a name="113"><span class="lineNum">     113 </span><span class="lineCov">          1 :               [undefined]);</span></a>
+<span class="lineNum">     114 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     115 </span><span class="lineCov">         31 : TestGenerator(function* g2() { yield 1; },</span>
-<span class="lineNum">     116 </span><span class="lineNoCov">          0 :               [1, undefined],</span>
-<span class="lineNum">     117 </span><span class="lineNoCov">          0 :               &quot;foo&quot;,</span>
-<a name="118"><span class="lineNum">     118 </span><span class="lineNoCov">          0 :               [1, undefined]);</span></a>
-<span class="lineNum">     119 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     116 </span><span class="lineCov">          1 :               [1, undefined],</span>
+<span class="lineNum">     117 </span><span class="lineCov">          1 :               &quot;foo&quot;,</span>
+<a name="118"><span class="lineNum">     118 </span><span class="lineCov">          1 :               [1, undefined]);</span></a>
+<span class="lineNum">     119 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     120 </span><span class="lineCov">         49 : TestGenerator(function* g3() { yield 1; yield 2; },</span>
-<span class="lineNum">     121 </span><span class="lineNoCov">          0 :               [1, 2, undefined],</span>
-<span class="lineNum">     122 </span><span class="lineNoCov">          0 :               &quot;foo&quot;,</span>
-<a name="123"><span class="lineNum">     123 </span><span class="lineNoCov">          0 :               [1, 2, undefined]);</span></a>
-<span class="lineNum">     124 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     121 </span><span class="lineCov">          1 :               [1, 2, undefined],</span>
+<span class="lineNum">     122 </span><span class="lineCov">          1 :               &quot;foo&quot;,</span>
+<a name="123"><span class="lineNum">     123 </span><span class="lineCov">          1 :               [1, 2, undefined]);</span></a>
+<span class="lineNum">     124 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     125 </span><span class="lineCov">         49 : TestGenerator(function* g4() { yield 1; yield 2; return 3; },</span>
-<span class="lineNum">     126 </span><span class="lineNoCov">          0 :               [1, 2, 3],</span>
-<span class="lineNum">     127 </span><span class="lineNoCov">          0 :               &quot;foo&quot;,</span>
-<a name="128"><span class="lineNum">     128 </span><span class="lineNoCov">          0 :               [1, 2, 3]);</span></a>
-<span class="lineNum">     129 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     126 </span><span class="lineCov">          1 :               [1, 2, 3],</span>
+<span class="lineNum">     127 </span><span class="lineCov">          1 :               &quot;foo&quot;,</span>
+<a name="128"><span class="lineNum">     128 </span><span class="lineCov">          1 :               [1, 2, 3]);</span></a>
+<span class="lineNum">     129 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     130 </span><span class="lineCov">         16 : TestGenerator(function* g5() { return 1; },</span>
-<span class="lineNum">     131 </span><span class="lineNoCov">          0 :               [1],</span>
-<span class="lineNum">     132 </span><span class="lineNoCov">          0 :              &quot;foo&quot;,</span>
-<a name="133"><span class="lineNum">     133 </span><span class="lineNoCov">          0 :               [1]);</span></a>
-<span class="lineNum">     134 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     131 </span><span class="lineCov">          1 :               [1],</span>
+<span class="lineNum">     132 </span><span class="lineCov">          1 :              &quot;foo&quot;,</span>
+<a name="133"><span class="lineNum">     133 </span><span class="lineCov">          1 :               [1]);</span></a>
+<span class="lineNum">     134 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     135 </span><span class="lineCov">         31 : TestGenerator(function* g6() { var x = yield 1; return x; },</span>
-<span class="lineNum">     136 </span><span class="lineNoCov">          0 :               [1, undefined],</span>
-<span class="lineNum">     137 </span><span class="lineNoCov">          0 :               &quot;foo&quot;,</span>
-<a name="138"><span class="lineNum">     138 </span><span class="lineNoCov">          0 :               [1, &quot;foo&quot;]);</span></a>
-<span class="lineNum">     139 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     136 </span><span class="lineCov">          1 :               [1, undefined],</span>
+<span class="lineNum">     137 </span><span class="lineCov">          1 :               &quot;foo&quot;,</span>
+<a name="138"><span class="lineNum">     138 </span><span class="lineCov">          1 :               [1, &quot;foo&quot;]);</span></a>
+<span class="lineNum">     139 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     140 </span><span class="lineCov">         49 : TestGenerator(function* g7() { var x = yield 1; yield 2; return x; },</span>
-<span class="lineNum">     141 </span><span class="lineNoCov">          0 :               [1, 2, undefined],</span>
-<span class="lineNum">     142 </span><span class="lineNoCov">          0 :               &quot;foo&quot;,</span>
-<a name="143"><span class="lineNum">     143 </span><span class="lineNoCov">          0 :               [1, 2, &quot;foo&quot;]);</span></a>
-<span class="lineNum">     144 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     141 </span><span class="lineCov">          1 :               [1, 2, undefined],</span>
+<span class="lineNum">     142 </span><span class="lineCov">          1 :               &quot;foo&quot;,</span>
+<a name="143"><span class="lineNum">     143 </span><span class="lineCov">          1 :               [1, 2, &quot;foo&quot;]);</span></a>
+<span class="lineNum">     144 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     145 </span><span class="lineCov">         94 : TestGenerator(function* g8() { for (var x = 0; x &lt; 4; x++) { yield x; } },</span>
-<span class="lineNum">     146 </span><span class="lineNoCov">          0 :               [0, 1, 2, 3, undefined],</span>
-<span class="lineNum">     147 </span><span class="lineNoCov">          0 :               &quot;foo&quot;,</span>
-<span class="lineNum">     148 </span><span class="lineNoCov">          0 :               [0, 1, 2, 3, undefined]);</span>
-<span class="lineNum">     149 </span><span class="lineNoCov">          0 : </span>
-<a name="150"><span class="lineNum">     150 </span><span class="lineNoCov">          0 : // Generator with arguments.</span></a>
-<span class="lineNum">     151 </span><span class="lineNoCov">          0 : TestGenerator(</span>
+<span class="lineNum">     146 </span><span class="lineCov">          1 :               [0, 1, 2, 3, undefined],</span>
+<span class="lineNum">     147 </span><span class="lineCov">          1 :               &quot;foo&quot;,</span>
+<span class="lineNum">     148 </span><span class="lineCov">          1 :               [0, 1, 2, 3, undefined]);</span>
+<span class="lineNum">     149 </span><span class="lineCov">          1 : </span>
+<a name="150"><span class="lineNum">     150 </span><span class="lineCov">          1 : // Generator with arguments.</span></a>
+<span class="lineNum">     151 </span><span class="lineCov">          1 : TestGenerator(</span>
 <span class="lineNum">     152 </span><span class="lineCov">         13 :     function g9() {</span>
 <span class="lineNum">     153 </span><span class="lineCov">         62 :       return (function*(a, b, c, d) {</span>
 <span class="lineNum">     154 </span><span class="lineCov">         62 :         yield a; yield b; yield c; yield d;</span>
 <span class="lineNum">     155 </span><span class="lineCov">         62 :       })(&quot;fee&quot;, &quot;fi&quot;, &quot;fo&quot;, &quot;fum&quot;);</span>
-<span class="lineNum">     156 </span><span class="lineNoCov">          0 :     },</span>
-<span class="lineNum">     157 </span><span class="lineNoCov">          0 :     [&quot;fee&quot;, &quot;fi&quot;, &quot;fo&quot;, &quot;fum&quot;, undefined],</span>
-<span class="lineNum">     158 </span><span class="lineNoCov">          0 :     &quot;foo&quot;,</span>
-<span class="lineNum">     159 </span><span class="lineNoCov">          0 :     [&quot;fee&quot;, &quot;fi&quot;, &quot;fo&quot;, &quot;fum&quot;, undefined]);</span>
-<span class="lineNum">     160 </span><span class="lineNoCov">          0 : </span>
-<a name="161"><span class="lineNum">     161 </span><span class="lineNoCov">          0 : // Too few arguments.</span></a>
-<span class="lineNum">     162 </span><span class="lineNoCov">          0 : TestGenerator(</span>
+<span class="lineNum">     156 </span><span class="lineCov">         13 :     },</span>
+<span class="lineNum">     157 </span><span class="lineCov">          1 :     [&quot;fee&quot;, &quot;fi&quot;, &quot;fo&quot;, &quot;fum&quot;, undefined],</span>
+<span class="lineNum">     158 </span><span class="lineCov">          1 :     &quot;foo&quot;,</span>
+<span class="lineNum">     159 </span><span class="lineCov">          1 :     [&quot;fee&quot;, &quot;fi&quot;, &quot;fo&quot;, &quot;fum&quot;, undefined]);</span>
+<span class="lineNum">     160 </span><span class="lineCov">          1 : </span>
+<a name="161"><span class="lineNum">     161 </span><span class="lineCov">          1 : // Too few arguments.</span></a>
+<span class="lineNum">     162 </span><span class="lineCov">          1 : TestGenerator(</span>
 <span class="lineNum">     163 </span><span class="lineCov">         13 :     function g10() {</span>
 <span class="lineNum">     164 </span><span class="lineCov">         62 :       return (function*(a, b, c, d) {</span>
 <span class="lineNum">     165 </span><span class="lineCov">         62 :         yield a; yield b; yield c; yield d;</span>
 <span class="lineNum">     166 </span><span class="lineCov">         62 :       })(&quot;fee&quot;, &quot;fi&quot;);</span>
-<span class="lineNum">     167 </span><span class="lineNoCov">          0 :     },</span>
-<span class="lineNum">     168 </span><span class="lineNoCov">          0 :     [&quot;fee&quot;, &quot;fi&quot;, undefined, undefined, undefined],</span>
-<span class="lineNum">     169 </span><span class="lineNoCov">          0 :     &quot;foo&quot;,</span>
-<span class="lineNum">     170 </span><span class="lineNoCov">          0 :     [&quot;fee&quot;, &quot;fi&quot;, undefined, undefined, undefined]);</span>
-<span class="lineNum">     171 </span><span class="lineNoCov">          0 : </span>
-<a name="172"><span class="lineNum">     172 </span><span class="lineNoCov">          0 : // Too many arguments.</span></a>
-<span class="lineNum">     173 </span><span class="lineNoCov">          0 : TestGenerator(</span>
+<span class="lineNum">     167 </span><span class="lineCov">         13 :     },</span>
+<span class="lineNum">     168 </span><span class="lineCov">          1 :     [&quot;fee&quot;, &quot;fi&quot;, undefined, undefined, undefined],</span>
+<span class="lineNum">     169 </span><span class="lineCov">          1 :     &quot;foo&quot;,</span>
+<span class="lineNum">     170 </span><span class="lineCov">          1 :     [&quot;fee&quot;, &quot;fi&quot;, undefined, undefined, undefined]);</span>
+<span class="lineNum">     171 </span><span class="lineCov">          1 : </span>
+<a name="172"><span class="lineNum">     172 </span><span class="lineCov">          1 : // Too many arguments.</span></a>
+<span class="lineNum">     173 </span><span class="lineCov">          1 : TestGenerator(</span>
 <span class="lineNum">     174 </span><span class="lineCov">         13 :     function g11() {</span>
 <span class="lineNum">     175 </span><span class="lineCov">         62 :       return (function*(a, b, c, d) {</span>
 <span class="lineNum">     176 </span><span class="lineCov">         62 :         yield a; yield b; yield c; yield d;</span>
 <span class="lineNum">     177 </span><span class="lineCov">         62 :       })(&quot;fee&quot;, &quot;fi&quot;, &quot;fo&quot;, &quot;fum&quot;, &quot;I smell the blood of an Englishman&quot;);</span>
-<span class="lineNum">     178 </span><span class="lineNoCov">          0 :     },</span>
-<span class="lineNum">     179 </span><span class="lineNoCov">          0 :     [&quot;fee&quot;, &quot;fi&quot;, &quot;fo&quot;, &quot;fum&quot;, undefined],</span>
-<span class="lineNum">     180 </span><span class="lineNoCov">          0 :     &quot;foo&quot;,</span>
-<span class="lineNum">     181 </span><span class="lineNoCov">          0 :     [&quot;fee&quot;, &quot;fi&quot;, &quot;fo&quot;, &quot;fum&quot;, undefined]);</span>
-<span class="lineNum">     182 </span><span class="lineNoCov">          0 : </span>
-<a name="183"><span class="lineNum">     183 </span><span class="lineNoCov">          0 : // The arguments object.</span></a>
-<span class="lineNum">     184 </span><span class="lineNoCov">          0 : TestGenerator(</span>
+<span class="lineNum">     178 </span><span class="lineCov">         13 :     },</span>
+<span class="lineNum">     179 </span><span class="lineCov">          1 :     [&quot;fee&quot;, &quot;fi&quot;, &quot;fo&quot;, &quot;fum&quot;, undefined],</span>
+<span class="lineNum">     180 </span><span class="lineCov">          1 :     &quot;foo&quot;,</span>
+<span class="lineNum">     181 </span><span class="lineCov">          1 :     [&quot;fee&quot;, &quot;fi&quot;, &quot;fo&quot;, &quot;fum&quot;, undefined]);</span>
+<span class="lineNum">     182 </span><span class="lineCov">          1 : </span>
+<a name="183"><span class="lineNum">     183 </span><span class="lineCov">          1 : // The arguments object.</span></a>
+<span class="lineNum">     184 </span><span class="lineCov">          1 : TestGenerator(</span>
 <span class="lineNum">     185 </span><span class="lineCov">         15 :     function g12() {</span>
 <span class="lineNum">     186 </span><span class="lineCov">         80 :       return (function*(a, b, c, d) {</span>
 <span class="lineNum">     187 </span><span class="lineCov">         80 :         for (var i = 0; i &lt; arguments.length; i++) {</span>
 <span class="lineNum">     188 </span><span class="lineCov">         80 :           yield arguments[i];</span>
 <span class="lineNum">     189 </span><span class="lineCov">         80 :         }</span>
 <span class="lineNum">     190 </span><span class="lineCov">         80 :       })(&quot;fee&quot;, &quot;fi&quot;, &quot;fo&quot;, &quot;fum&quot;, &quot;I smell the blood of an Englishman&quot;);</span>
-<span class="lineNum">     191 </span><span class="lineNoCov">          0 :     },</span>
-<span class="lineNum">     192 </span><span class="lineNoCov">          0 :     [&quot;fee&quot;, &quot;fi&quot;, &quot;fo&quot;, &quot;fum&quot;, &quot;I smell the blood of an Englishman&quot;,</span>
-<span class="lineNum">     193 </span><span class="lineNoCov">          0 :      undefined],</span>
-<span class="lineNum">     194 </span><span class="lineNoCov">          0 :     &quot;foo&quot;,</span>
-<span class="lineNum">     195 </span><span class="lineNoCov">          0 :     [&quot;fee&quot;, &quot;fi&quot;, &quot;fo&quot;, &quot;fum&quot;, &quot;I smell the blood of an Englishman&quot;,</span>
-<span class="lineNum">     196 </span><span class="lineNoCov">          0 :      undefined]);</span>
-<span class="lineNum">     197 </span><span class="lineNoCov">          0 : </span>
-<a name="198"><span class="lineNum">     198 </span><span class="lineNoCov">          0 : // Access to captured free variables.</span></a>
-<span class="lineNum">     199 </span><span class="lineNoCov">          0 : TestGenerator(</span>
+<span class="lineNum">     191 </span><span class="lineCov">         15 :     },</span>
+<span class="lineNum">     192 </span><span class="lineCov">          1 :     [&quot;fee&quot;, &quot;fi&quot;, &quot;fo&quot;, &quot;fum&quot;, &quot;I smell the blood of an Englishman&quot;,</span>
+<span class="lineNum">     193 </span><span class="lineCov">          1 :      undefined],</span>
+<span class="lineNum">     194 </span><span class="lineCov">          1 :     &quot;foo&quot;,</span>
+<span class="lineNum">     195 </span><span class="lineCov">          1 :     [&quot;fee&quot;, &quot;fi&quot;, &quot;fo&quot;, &quot;fum&quot;, &quot;I smell the blood of an Englishman&quot;,</span>
+<span class="lineNum">     196 </span><span class="lineCov">          1 :      undefined]);</span>
+<span class="lineNum">     197 </span><span class="lineCov">          1 : </span>
+<a name="198"><span class="lineNum">     198 </span><span class="lineCov">          1 : // Access to captured free variables.</span></a>
+<span class="lineNum">     199 </span><span class="lineCov">          1 : TestGenerator(</span>
 <span class="lineNum">     200 </span><span class="lineCov">         13 :     function g13() {</span>
 <span class="lineNum">     201 </span><span class="lineCov">         13 :       return (function(a, b, c, d) {</span>
 <span class="lineNum">     202 </span><span class="lineCov">         62 :         return (function*() {</span>
 <span class="lineNum">     203 </span><span class="lineCov">         62 :           yield a; yield b; yield c; yield d;</span>
 <span class="lineNum">     204 </span><span class="lineCov">         62 :         })();</span>
-<span class="lineNum">     205 </span><span class="lineNoCov">          0 :       })(&quot;fee&quot;, &quot;fi&quot;, &quot;fo&quot;, &quot;fum&quot;);</span>
-<span class="lineNum">     206 </span><span class="lineNoCov">          0 :     },</span>
-<span class="lineNum">     207 </span><span class="lineNoCov">          0 :     [&quot;fee&quot;, &quot;fi&quot;, &quot;fo&quot;, &quot;fum&quot;, undefined],</span>
-<span class="lineNum">     208 </span><span class="lineNoCov">          0 :     &quot;foo&quot;,</span>
-<span class="lineNum">     209 </span><span class="lineNoCov">          0 :     [&quot;fee&quot;, &quot;fi&quot;, &quot;fo&quot;, &quot;fum&quot;, undefined]);</span>
-<span class="lineNum">     210 </span><span class="lineNoCov">          0 : </span>
-<a name="211"><span class="lineNum">     211 </span><span class="lineNoCov">          0 : // Abusing the arguments object.</span></a>
-<span class="lineNum">     212 </span><span class="lineNoCov">          0 : TestGenerator(</span>
+<span class="lineNum">     205 </span><span class="lineCov">         13 :       })(&quot;fee&quot;, &quot;fi&quot;, &quot;fo&quot;, &quot;fum&quot;);</span>
+<span class="lineNum">     206 </span><span class="lineCov">         13 :     },</span>
+<span class="lineNum">     207 </span><span class="lineCov">          1 :     [&quot;fee&quot;, &quot;fi&quot;, &quot;fo&quot;, &quot;fum&quot;, undefined],</span>
+<span class="lineNum">     208 </span><span class="lineCov">          1 :     &quot;foo&quot;,</span>
+<span class="lineNum">     209 </span><span class="lineCov">          1 :     [&quot;fee&quot;, &quot;fi&quot;, &quot;fo&quot;, &quot;fum&quot;, undefined]);</span>
+<span class="lineNum">     210 </span><span class="lineCov">          1 : </span>
+<a name="211"><span class="lineNum">     211 </span><span class="lineCov">          1 : // Abusing the arguments object.</span></a>
+<span class="lineNum">     212 </span><span class="lineCov">          1 : TestGenerator(</span>
 <span class="lineNum">     213 </span><span class="lineCov">         13 :     function g14() {</span>
 <span class="lineNum">     214 </span><span class="lineCov">         62 :       return (function*(a, b, c, d) {</span>
 <span class="lineNum">     215 </span><span class="lineCov">         62 :         arguments[0] = &quot;Be he live&quot;;</span>
@@ -280,15 +280,15 @@
 <span class="lineNum">     218 </span><span class="lineCov">         62 :         arguments[3] = &quot;to make my bread&quot;;</span>
 <span class="lineNum">     219 </span><span class="lineCov">         62 :         yield a; yield b; yield c; yield d;</span>
 <span class="lineNum">     220 </span><span class="lineCov">         62 :       })(&quot;fee&quot;, &quot;fi&quot;, &quot;fo&quot;, &quot;fum&quot;);</span>
-<span class="lineNum">     221 </span><span class="lineNoCov">          0 :     },</span>
-<span class="lineNum">     222 </span><span class="lineNoCov">          0 :     [&quot;Be he live&quot;, &quot;or be he dead&quot;, &quot;I'll grind his bones&quot;, &quot;to make my bread&quot;,</span>
-<span class="lineNum">     223 </span><span class="lineNoCov">          0 :      undefined],</span>
-<span class="lineNum">     224 </span><span class="lineNoCov">          0 :     &quot;foo&quot;,</span>
-<span class="lineNum">     225 </span><span class="lineNoCov">          0 :     [&quot;Be he live&quot;, &quot;or be he dead&quot;, &quot;I'll grind his bones&quot;, &quot;to make my bread&quot;,</span>
-<span class="lineNum">     226 </span><span class="lineNoCov">          0 :      undefined]);</span>
-<span class="lineNum">     227 </span><span class="lineNoCov">          0 : </span>
-<a name="228"><span class="lineNum">     228 </span><span class="lineNoCov">          0 : // Abusing the arguments object: strict mode.</span></a>
-<span class="lineNum">     229 </span><span class="lineNoCov">          0 : TestGenerator(</span>
+<span class="lineNum">     221 </span><span class="lineCov">         13 :     },</span>
+<span class="lineNum">     222 </span><span class="lineCov">          1 :     [&quot;Be he live&quot;, &quot;or be he dead&quot;, &quot;I'll grind his bones&quot;, &quot;to make my bread&quot;,</span>
+<span class="lineNum">     223 </span><span class="lineCov">          1 :      undefined],</span>
+<span class="lineNum">     224 </span><span class="lineCov">          1 :     &quot;foo&quot;,</span>
+<span class="lineNum">     225 </span><span class="lineCov">          1 :     [&quot;Be he live&quot;, &quot;or be he dead&quot;, &quot;I'll grind his bones&quot;, &quot;to make my bread&quot;,</span>
+<span class="lineNum">     226 </span><span class="lineCov">          1 :      undefined]);</span>
+<span class="lineNum">     227 </span><span class="lineCov">          1 : </span>
+<a name="228"><span class="lineNum">     228 </span><span class="lineCov">          1 : // Abusing the arguments object: strict mode.</span></a>
+<span class="lineNum">     229 </span><span class="lineCov">          1 : TestGenerator(</span>
 <span class="lineNum">     230 </span><span class="lineCov">         13 :     function g15() {</span>
 <span class="lineNum">     231 </span><span class="lineCov">         62 :       return (function*(a, b, c, d) {</span>
 <span class="lineNum">     232 </span><span class="lineCov">         62 :         &quot;use strict&quot;;</span>
@@ -298,67 +298,67 @@
 <span class="lineNum">     236 </span><span class="lineCov">         62 :         arguments[3] = &quot;to make my bread&quot;;</span>
 <span class="lineNum">     237 </span><span class="lineCov">         62 :         yield a; yield b; yield c; yield d;</span>
 <span class="lineNum">     238 </span><span class="lineCov">         62 :       })(&quot;fee&quot;, &quot;fi&quot;, &quot;fo&quot;, &quot;fum&quot;);</span>
-<span class="lineNum">     239 </span><span class="lineNoCov">          0 :     },</span>
-<span class="lineNum">     240 </span><span class="lineNoCov">          0 :     [&quot;fee&quot;, &quot;fi&quot;, &quot;fo&quot;, &quot;fum&quot;, undefined],</span>
-<span class="lineNum">     241 </span><span class="lineNoCov">          0 :     &quot;foo&quot;,</span>
-<span class="lineNum">     242 </span><span class="lineNoCov">          0 :     [&quot;fee&quot;, &quot;fi&quot;, &quot;fo&quot;, &quot;fum&quot;, undefined]);</span>
-<a name="243"><span class="lineNum">     243 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     244 </span><span class="lineNoCov">          0 : // GC.</span>
+<span class="lineNum">     239 </span><span class="lineCov">         13 :     },</span>
+<span class="lineNum">     240 </span><span class="lineCov">          1 :     [&quot;fee&quot;, &quot;fi&quot;, &quot;fo&quot;, &quot;fum&quot;, undefined],</span>
+<span class="lineNum">     241 </span><span class="lineCov">          1 :     &quot;foo&quot;,</span>
+<span class="lineNum">     242 </span><span class="lineCov">          1 :     [&quot;fee&quot;, &quot;fi&quot;, &quot;fo&quot;, &quot;fum&quot;, undefined]);</span>
+<a name="243"><span class="lineNum">     243 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     244 </span><span class="lineCov">          1 : // GC.</span>
 <span class="lineNum">     245 </span><span class="lineCov">         49 : TestGenerator(function* g16() { yield &quot;baz&quot;; gc(); yield &quot;qux&quot;; },</span>
-<span class="lineNum">     246 </span><span class="lineNoCov">          0 :               [&quot;baz&quot;, &quot;qux&quot;, undefined],</span>
-<span class="lineNum">     247 </span><span class="lineNoCov">          0 :               &quot;foo&quot;,</span>
-<span class="lineNum">     248 </span><span class="lineNoCov">          0 :               [&quot;baz&quot;, &quot;qux&quot;, undefined]);</span>
-<span class="lineNum">     249 </span><span class="lineNoCov">          0 : </span>
-<a name="250"><span class="lineNum">     250 </span><span class="lineNoCov">          0 : // Receivers.</span></a>
-<span class="lineNum">     251 </span><span class="lineNoCov">          0 : TestGenerator(</span>
+<span class="lineNum">     246 </span><span class="lineCov">          1 :               [&quot;baz&quot;, &quot;qux&quot;, undefined],</span>
+<span class="lineNum">     247 </span><span class="lineCov">          1 :               &quot;foo&quot;,</span>
+<span class="lineNum">     248 </span><span class="lineCov">          1 :               [&quot;baz&quot;, &quot;qux&quot;, undefined]);</span>
+<span class="lineNum">     249 </span><span class="lineCov">          1 : </span>
+<a name="250"><span class="lineNum">     250 </span><span class="lineCov">          1 : // Receivers.</span></a>
+<span class="lineNum">     251 </span><span class="lineCov">          1 : TestGenerator(</span>
 <span class="lineNum">     252 </span><span class="lineCov">          9 :     function g17() {</span>
 <span class="lineNum">     253 </span><span class="lineCov">         32 :       function* g() { yield this.x; yield this.y; }</span>
-<span class="lineNum">     254 </span><span class="lineNoCov">          0 :       var o = { start: g, x: 1, y: 2 };</span>
-<span class="lineNum">     255 </span><span class="lineNoCov">          0 :       return o.start();</span>
-<span class="lineNum">     256 </span><span class="lineNoCov">          0 :     },</span>
-<span class="lineNum">     257 </span><span class="lineNoCov">          0 :     [1, 2, undefined],</span>
-<span class="lineNum">     258 </span><span class="lineNoCov">          0 :     &quot;foo&quot;,</span>
-<span class="lineNum">     259 </span><span class="lineNoCov">          0 :     [1, 2, undefined]);</span>
-<a name="260"><span class="lineNum">     260 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     261 </span><span class="lineNoCov">          0 : TestGenerator(</span>
+<span class="lineNum">     254 </span><span class="lineCov">          9 :       var o = { start: g, x: 1, y: 2 };</span>
+<span class="lineNum">     255 </span><span class="lineCov">          9 :       return o.start();</span>
+<span class="lineNum">     256 </span><span class="lineCov">          9 :     },</span>
+<span class="lineNum">     257 </span><span class="lineCov">          1 :     [1, 2, undefined],</span>
+<span class="lineNum">     258 </span><span class="lineCov">          1 :     &quot;foo&quot;,</span>
+<span class="lineNum">     259 </span><span class="lineCov">          1 :     [1, 2, undefined]);</span>
+<a name="260"><span class="lineNum">     260 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     261 </span><span class="lineCov">          1 : TestGenerator(</span>
 <span class="lineNum">     262 </span><span class="lineCov">         70 :     function* g19() {</span>
 <span class="lineNum">     263 </span><span class="lineCov">         70 :       var x = 1;</span>
 <span class="lineNum">     264 </span><span class="lineCov">         70 :       yield x;</span>
 <span class="lineNum">     265 </span><span class="lineCov">         70 :       with({x:2}) { yield x; }</span>
 <span class="lineNum">     266 </span><span class="lineCov">         70 :       yield x;</span>
 <span class="lineNum">     267 </span><span class="lineCov">         70 :     },</span>
-<span class="lineNum">     268 </span><span class="lineNoCov">          0 :     [1, 2, 1, undefined],</span>
-<span class="lineNum">     269 </span><span class="lineNoCov">          0 :     &quot;foo&quot;,</span>
-<span class="lineNum">     270 </span><span class="lineNoCov">          0 :     [1, 2, 1, undefined]);</span>
-<a name="271"><span class="lineNum">     271 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     272 </span><span class="lineNoCov">          0 : TestGenerator(</span>
+<span class="lineNum">     268 </span><span class="lineCov">          1 :     [1, 2, 1, undefined],</span>
+<span class="lineNum">     269 </span><span class="lineCov">          1 :     &quot;foo&quot;,</span>
+<span class="lineNum">     270 </span><span class="lineCov">          1 :     [1, 2, 1, undefined]);</span>
+<a name="271"><span class="lineNum">     271 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     272 </span><span class="lineCov">          1 : TestGenerator(</span>
 <span class="lineNum">     273 </span><span class="lineCov">         49 :     function* g20() { yield (1 + (yield 2) + 3); },</span>
-<span class="lineNum">     274 </span><span class="lineNoCov">          0 :     [2, NaN, undefined],</span>
-<span class="lineNum">     275 </span><span class="lineNoCov">          0 :     &quot;foo&quot;,</span>
-<span class="lineNum">     276 </span><span class="lineNoCov">          0 :     [2, &quot;1foo3&quot;, undefined]);</span>
-<a name="277"><span class="lineNum">     277 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     278 </span><span class="lineNoCov">          0 : TestGenerator(</span>
+<span class="lineNum">     274 </span><span class="lineCov">          1 :     [2, NaN, undefined],</span>
+<span class="lineNum">     275 </span><span class="lineCov">          1 :     &quot;foo&quot;,</span>
+<span class="lineNum">     276 </span><span class="lineCov">          1 :     [2, &quot;1foo3&quot;, undefined]);</span>
+<a name="277"><span class="lineNum">     277 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     278 </span><span class="lineCov">          1 : TestGenerator(</span>
 <span class="lineNum">     279 </span><span class="lineCov">         31 :     function* g21() { return (1 + (yield 2) + 3); },</span>
-<span class="lineNum">     280 </span><span class="lineNoCov">          0 :     [2, NaN],</span>
-<span class="lineNum">     281 </span><span class="lineNoCov">          0 :     &quot;foo&quot;,</span>
-<span class="lineNum">     282 </span><span class="lineNoCov">          0 :     [2, &quot;1foo3&quot;]);</span>
-<a name="283"><span class="lineNum">     283 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     284 </span><span class="lineNoCov">          0 : TestGenerator(</span>
+<span class="lineNum">     280 </span><span class="lineCov">          1 :     [2, NaN],</span>
+<span class="lineNum">     281 </span><span class="lineCov">          1 :     &quot;foo&quot;,</span>
+<span class="lineNum">     282 </span><span class="lineCov">          1 :     [2, &quot;1foo3&quot;]);</span>
+<a name="283"><span class="lineNum">     283 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     284 </span><span class="lineCov">          1 : TestGenerator(</span>
 <span class="lineNum">     285 </span><span class="lineCov">         94 :     function* g22() { yield (1 + (yield 2) + 3); yield (4 + (yield 5) + 6); },</span>
-<span class="lineNum">     286 </span><span class="lineNoCov">          0 :     [2, NaN, 5, NaN, undefined],</span>
-<span class="lineNum">     287 </span><span class="lineNoCov">          0 :     &quot;foo&quot;,</span>
-<span class="lineNum">     288 </span><span class="lineNoCov">          0 :     [2, &quot;1foo3&quot;, 5, &quot;4foo6&quot;, undefined]);</span>
-<a name="289"><span class="lineNum">     289 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     290 </span><span class="lineNoCov">          0 : TestGenerator(</span>
+<span class="lineNum">     286 </span><span class="lineCov">          1 :     [2, NaN, 5, NaN, undefined],</span>
+<span class="lineNum">     287 </span><span class="lineCov">          1 :     &quot;foo&quot;,</span>
+<span class="lineNum">     288 </span><span class="lineCov">          1 :     [2, &quot;1foo3&quot;, 5, &quot;4foo6&quot;, undefined]);</span>
+<a name="289"><span class="lineNum">     289 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     290 </span><span class="lineCov">          1 : TestGenerator(</span>
 <span class="lineNum">     291 </span><span class="lineCov">         94 :     function* g23() {</span>
 <span class="lineNum">     292 </span><span class="lineCov">         94 :       return (yield (1 + (yield 2) + 3)) + (yield (4 + (yield 5) + 6));</span>
 <span class="lineNum">     293 </span><span class="lineCov">         94 :     },</span>
-<span class="lineNum">     294 </span><span class="lineNoCov">          0 :     [2, NaN, 5, NaN, NaN],</span>
-<span class="lineNum">     295 </span><span class="lineNoCov">          0 :     &quot;foo&quot;,</span>
-<span class="lineNum">     296 </span><span class="lineNoCov">          0 :     [2, &quot;1foo3&quot;, 5, &quot;4foo6&quot;, &quot;foofoo&quot;]);</span>
-<span class="lineNum">     297 </span><span class="lineNoCov">          0 : </span>
-<a name="298"><span class="lineNum">     298 </span><span class="lineNoCov">          0 : // Rewind a try context with and without operands on the stack.</span></a>
-<span class="lineNum">     299 </span><span class="lineNoCov">          0 : TestGenerator(</span>
+<span class="lineNum">     294 </span><span class="lineCov">          1 :     [2, NaN, 5, NaN, NaN],</span>
+<span class="lineNum">     295 </span><span class="lineCov">          1 :     &quot;foo&quot;,</span>
+<span class="lineNum">     296 </span><span class="lineCov">          1 :     [2, &quot;1foo3&quot;, 5, &quot;4foo6&quot;, &quot;foofoo&quot;]);</span>
+<span class="lineNum">     297 </span><span class="lineCov">          1 : </span>
+<a name="298"><span class="lineNum">     298 </span><span class="lineCov">          1 : // Rewind a try context with and without operands on the stack.</span></a>
+<span class="lineNum">     299 </span><span class="lineCov">          1 : TestGenerator(</span>
 <span class="lineNum">     300 </span><span class="lineCov">         94 :     function* g24() {</span>
 <span class="lineNum">     301 </span><span class="lineCov">         94 :       try {</span>
 <span class="lineNum">     302 </span><span class="lineCov">         94 :         return (yield (1 + (yield 2) + 3)) + (yield (4 + (yield 5) + 6));</span>
@@ -366,12 +366,12 @@
 <span class="lineNum">     304 </span><span class="lineCov">         94 :         throw e;</span>
 <span class="lineNum">     305 </span><span class="lineCov">         94 :       }</span>
 <span class="lineNum">     306 </span><span class="lineCov">         94 :     },</span>
-<span class="lineNum">     307 </span><span class="lineNoCov">          0 :     [2, NaN, 5, NaN, NaN],</span>
-<span class="lineNum">     308 </span><span class="lineNoCov">          0 :     &quot;foo&quot;,</span>
-<span class="lineNum">     309 </span><span class="lineNoCov">          0 :     [2, &quot;1foo3&quot;, 5, &quot;4foo6&quot;, &quot;foofoo&quot;]);</span>
-<span class="lineNum">     310 </span><span class="lineNoCov">          0 : </span>
-<a name="311"><span class="lineNum">     311 </span><span class="lineNoCov">          0 : // Yielding in a catch context, with and without operands on the stack.</span></a>
-<span class="lineNum">     312 </span><span class="lineNoCov">          0 : TestGenerator(</span>
+<span class="lineNum">     307 </span><span class="lineCov">          1 :     [2, NaN, 5, NaN, NaN],</span>
+<span class="lineNum">     308 </span><span class="lineCov">          1 :     &quot;foo&quot;,</span>
+<span class="lineNum">     309 </span><span class="lineCov">          1 :     [2, &quot;1foo3&quot;, 5, &quot;4foo6&quot;, &quot;foofoo&quot;]);</span>
+<span class="lineNum">     310 </span><span class="lineCov">          1 : </span>
+<a name="311"><span class="lineNum">     311 </span><span class="lineCov">          1 : // Yielding in a catch context, with and without operands on the stack.</span></a>
+<span class="lineNum">     312 </span><span class="lineCov">          1 : TestGenerator(</span>
 <span class="lineNum">     313 </span><span class="lineCov">         94 :     function* g25() {</span>
 <span class="lineNum">     314 </span><span class="lineCov">         94 :       try {</span>
 <span class="lineNum">     315 </span><span class="lineCov">         94 :         throw (yield (1 + (yield 2) + 3))</span>
@@ -380,122 +380,122 @@
 <span class="lineNum">     318 </span><span class="lineCov">         94 :         return e + (yield (4 + (yield 5) + 6));</span>
 <span class="lineNum">     319 </span><span class="lineCov">         94 :       }</span>
 <span class="lineNum">     320 </span><span class="lineCov">         94 :     },</span>
-<span class="lineNum">     321 </span><span class="lineNoCov">          0 :     [2, NaN, 5, NaN, NaN],</span>
-<span class="lineNum">     322 </span><span class="lineNoCov">          0 :     &quot;foo&quot;,</span>
-<span class="lineNum">     323 </span><span class="lineNoCov">          0 :     [2, &quot;1foo3&quot;, 5, &quot;4foo6&quot;, &quot;foofoo&quot;]);</span>
-<span class="lineNum">     324 </span><span class="lineNoCov">          0 : </span>
-<a name="325"><span class="lineNum">     325 </span><span class="lineNoCov">          0 : // Yield with no arguments yields undefined.</span></a>
-<span class="lineNum">     326 </span><span class="lineNoCov">          0 : TestGenerator(</span>
+<span class="lineNum">     321 </span><span class="lineCov">          1 :     [2, NaN, 5, NaN, NaN],</span>
+<span class="lineNum">     322 </span><span class="lineCov">          1 :     &quot;foo&quot;,</span>
+<span class="lineNum">     323 </span><span class="lineCov">          1 :     [2, &quot;1foo3&quot;, 5, &quot;4foo6&quot;, &quot;foofoo&quot;]);</span>
+<span class="lineNum">     324 </span><span class="lineCov">          1 : </span>
+<a name="325"><span class="lineNum">     325 </span><span class="lineCov">          1 : // Yield with no arguments yields undefined.</span></a>
+<span class="lineNum">     326 </span><span class="lineCov">          1 : TestGenerator(</span>
 <span class="lineNum">     327 </span><span class="lineCov">         49 :     function* g26() { return yield yield },</span>
-<span class="lineNum">     328 </span><span class="lineNoCov">          0 :     [undefined, undefined, undefined],</span>
-<span class="lineNum">     329 </span><span class="lineNoCov">          0 :     &quot;foo&quot;,</span>
-<span class="lineNum">     330 </span><span class="lineNoCov">          0 :     [undefined, &quot;foo&quot;, &quot;foo&quot;]);</span>
-<span class="lineNum">     331 </span><span class="lineNoCov">          0 : </span>
-<a name="332"><span class="lineNum">     332 </span><span class="lineNoCov">          0 : // A newline causes the parser to stop looking for an argument to yield.</span></a>
-<span class="lineNum">     333 </span><span class="lineNoCov">          0 : TestGenerator(</span>
+<span class="lineNum">     328 </span><span class="lineCov">          1 :     [undefined, undefined, undefined],</span>
+<span class="lineNum">     329 </span><span class="lineCov">          1 :     &quot;foo&quot;,</span>
+<span class="lineNum">     330 </span><span class="lineCov">          1 :     [undefined, &quot;foo&quot;, &quot;foo&quot;]);</span>
+<span class="lineNum">     331 </span><span class="lineCov">          1 : </span>
+<a name="332"><span class="lineNum">     332 </span><span class="lineCov">          1 : // A newline causes the parser to stop looking for an argument to yield.</span></a>
+<span class="lineNum">     333 </span><span class="lineCov">          1 : TestGenerator(</span>
 <span class="lineNum">     334 </span><span class="lineCov">         31 :     function* g27() {</span>
 <span class="lineNum">     335 </span><span class="lineCov">         31 :       yield</span>
 <span class="lineNum">     336 </span><span class="lineCov">         31 :       3</span>
 <span class="lineNum">     337 </span><span class="lineCov">         31 :       return</span>
 <span class="lineNum">     338 </span><span class="lineCov">         31 :     },</span>
-<span class="lineNum">     339 </span><span class="lineNoCov">          0 :     [undefined, undefined],</span>
-<span class="lineNum">     340 </span><span class="lineNoCov">          0 :     &quot;foo&quot;,</span>
-<span class="lineNum">     341 </span><span class="lineNoCov">          0 :     [undefined, undefined]);</span>
-<span class="lineNum">     342 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     343 </span><span class="lineNoCov">          0 : // TODO(wingo): We should use TestGenerator for these, except that</span>
-<span class="lineNum">     344 </span><span class="lineNoCov">          0 : // currently yield* will unconditionally propagate a throw() to the</span>
-<span class="lineNum">     345 </span><span class="lineNoCov">          0 : // delegate iterator, which fails for these iterators that don't have</span>
-<a name="346"><span class="lineNum">     346 </span><span class="lineNoCov">          0 : // throw().  See http://code.google.com/p/v8/issues/detail?id=3484.</span></a>
+<span class="lineNum">     339 </span><span class="lineCov">          1 :     [undefined, undefined],</span>
+<span class="lineNum">     340 </span><span class="lineCov">          1 :     &quot;foo&quot;,</span>
+<span class="lineNum">     341 </span><span class="lineCov">          1 :     [undefined, undefined]);</span>
+<span class="lineNum">     342 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     343 </span><span class="lineCov">          1 : // TODO(wingo): We should use TestGenerator for these, except that</span>
+<span class="lineNum">     344 </span><span class="lineCov">          1 : // currently yield* will unconditionally propagate a throw() to the</span>
+<span class="lineNum">     345 </span><span class="lineCov">          1 : // delegate iterator, which fails for these iterators that don't have</span>
+<a name="346"><span class="lineNum">     346 </span><span class="lineCov">          1 : // throw().  See http://code.google.com/p/v8/issues/detail?id=3484.</span></a>
 <span class="lineNum">     347 </span><span class="lineCov">          1 : (function() {</span>
 <span class="lineNum">     348 </span><span class="lineCov">          5 :     function* g28() {</span>
 <span class="lineNum">     349 </span><span class="lineCov">          5 :       yield* [1, 2, 3];</span>
 <span class="lineNum">     350 </span><span class="lineCov">          5 :     }</span>
-<span class="lineNum">     351 </span><span class="lineNoCov">          0 :     var iter = g28();</span>
-<span class="lineNum">     352 </span><span class="lineNoCov">          0 :     assertIteratorResult(1, false, iter.next());</span>
-<span class="lineNum">     353 </span><span class="lineNoCov">          0 :     assertIteratorResult(2, false, iter.next());</span>
-<span class="lineNum">     354 </span><span class="lineNoCov">          0 :     assertIteratorResult(3, false, iter.next());</span>
-<span class="lineNum">     355 </span><span class="lineNoCov">          0 :     assertIteratorResult(undefined, true, iter.next());</span>
-<span class="lineNum">     356 </span><span class="lineNoCov">          0 : })();</span>
-<a name="357"><span class="lineNum">     357 </span><span class="lineNoCov">          0 : </span></a>
+<span class="lineNum">     351 </span><span class="lineCov">          1 :     var iter = g28();</span>
+<span class="lineNum">     352 </span><span class="lineCov">          1 :     assertIteratorResult(1, false, iter.next());</span>
+<span class="lineNum">     353 </span><span class="lineCov">          1 :     assertIteratorResult(2, false, iter.next());</span>
+<span class="lineNum">     354 </span><span class="lineCov">          1 :     assertIteratorResult(3, false, iter.next());</span>
+<span class="lineNum">     355 </span><span class="lineCov">          1 :     assertIteratorResult(undefined, true, iter.next());</span>
+<span class="lineNum">     356 </span><span class="lineCov">          1 : })();</span>
+<a name="357"><span class="lineNum">     357 </span><span class="lineCov">          1 : </span></a>
 <span class="lineNum">     358 </span><span class="lineCov">          1 : (function() {</span>
 <span class="lineNum">     359 </span><span class="lineCov">          5 :     function* g29() {</span>
 <span class="lineNum">     360 </span><span class="lineCov">          5 :       yield* &quot;abc&quot;;</span>
 <span class="lineNum">     361 </span><span class="lineCov">          5 :     }</span>
-<span class="lineNum">     362 </span><span class="lineNoCov">          0 :     var iter = g29();</span>
-<span class="lineNum">     363 </span><span class="lineNoCov">          0 :     assertIteratorResult(&quot;a&quot;, false, iter.next());</span>
-<span class="lineNum">     364 </span><span class="lineNoCov">          0 :     assertIteratorResult(&quot;b&quot;, false, iter.next());</span>
-<span class="lineNum">     365 </span><span class="lineNoCov">          0 :     assertIteratorResult(&quot;c&quot;, false, iter.next());</span>
-<span class="lineNum">     366 </span><span class="lineNoCov">          0 :     assertIteratorResult(undefined, true, iter.next());</span>
-<span class="lineNum">     367 </span><span class="lineNoCov">          0 : })();</span>
-<span class="lineNum">     368 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     369 </span><span class="lineNoCov">          0 : // Generator function instances.</span>
-<span class="lineNum">     370 </span><span class="lineNoCov">          0 : TestGenerator(GeneratorFunction(),</span>
-<span class="lineNum">     371 </span><span class="lineNoCov">          0 :               [undefined],</span>
-<span class="lineNum">     372 </span><span class="lineNoCov">          0 :               &quot;foo&quot;,</span>
-<span class="lineNum">     373 </span><span class="lineNoCov">          0 :               [undefined]);</span>
-<span class="lineNum">     374 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     375 </span><span class="lineNoCov">          0 : TestGenerator(new GeneratorFunction(),</span>
-<span class="lineNum">     376 </span><span class="lineNoCov">          0 :               [undefined],</span>
-<span class="lineNum">     377 </span><span class="lineNoCov">          0 :               &quot;foo&quot;,</span>
-<span class="lineNum">     378 </span><span class="lineNoCov">          0 :               [undefined]);</span>
-<span class="lineNum">     379 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     380 </span><span class="lineNoCov">          0 : TestGenerator(GeneratorFunction('yield 1;'),</span>
-<span class="lineNum">     381 </span><span class="lineNoCov">          0 :               [1, undefined],</span>
-<span class="lineNum">     382 </span><span class="lineNoCov">          0 :               &quot;foo&quot;,</span>
-<span class="lineNum">     383 </span><span class="lineNoCov">          0 :               [1, undefined]);</span>
-<span class="lineNum">     384 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     385 </span><span class="lineNoCov">          0 : TestGenerator(</span>
+<span class="lineNum">     362 </span><span class="lineCov">          1 :     var iter = g29();</span>
+<span class="lineNum">     363 </span><span class="lineCov">          1 :     assertIteratorResult(&quot;a&quot;, false, iter.next());</span>
+<span class="lineNum">     364 </span><span class="lineCov">          1 :     assertIteratorResult(&quot;b&quot;, false, iter.next());</span>
+<span class="lineNum">     365 </span><span class="lineCov">          1 :     assertIteratorResult(&quot;c&quot;, false, iter.next());</span>
+<span class="lineNum">     366 </span><span class="lineCov">          1 :     assertIteratorResult(undefined, true, iter.next());</span>
+<span class="lineNum">     367 </span><span class="lineCov">          1 : })();</span>
+<span class="lineNum">     368 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     369 </span><span class="lineCov">          1 : // Generator function instances.</span>
+<span class="lineNum">     370 </span><span class="lineCov">          1 : TestGenerator(GeneratorFunction(),</span>
+<span class="lineNum">     371 </span><span class="lineCov">          1 :               [undefined],</span>
+<span class="lineNum">     372 </span><span class="lineCov">          1 :               &quot;foo&quot;,</span>
+<span class="lineNum">     373 </span><span class="lineCov">          1 :               [undefined]);</span>
+<span class="lineNum">     374 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     375 </span><span class="lineCov">          1 : TestGenerator(new GeneratorFunction(),</span>
+<span class="lineNum">     376 </span><span class="lineCov">          1 :               [undefined],</span>
+<span class="lineNum">     377 </span><span class="lineCov">          1 :               &quot;foo&quot;,</span>
+<span class="lineNum">     378 </span><span class="lineCov">          1 :               [undefined]);</span>
+<span class="lineNum">     379 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     380 </span><span class="lineCov">          1 : TestGenerator(GeneratorFunction('yield 1;'),</span>
+<span class="lineNum">     381 </span><span class="lineCov">          1 :               [1, undefined],</span>
+<span class="lineNum">     382 </span><span class="lineCov">          1 :               &quot;foo&quot;,</span>
+<span class="lineNum">     383 </span><span class="lineCov">          1 :               [1, undefined]);</span>
+<span class="lineNum">     384 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     385 </span><span class="lineCov">          1 : TestGenerator(</span>
 <span class="lineNum">     386 </span><span class="lineCov">          7 :     function() { return GeneratorFunction('x', 'y', 'yield x + y;')(1, 2) },</span>
-<span class="lineNum">     387 </span><span class="lineNoCov">          0 :     [3, undefined],</span>
-<span class="lineNum">     388 </span><span class="lineNoCov">          0 :     &quot;foo&quot;,</span>
-<span class="lineNum">     389 </span><span class="lineNoCov">          0 :     [3, undefined]);</span>
-<span class="lineNum">     390 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     391 </span><span class="lineNoCov">          0 : // Access to this with formal arguments.</span>
-<span class="lineNum">     392 </span><span class="lineNoCov">          0 : TestGenerator(</span>
+<span class="lineNum">     387 </span><span class="lineCov">          1 :     [3, undefined],</span>
+<span class="lineNum">     388 </span><span class="lineCov">          1 :     &quot;foo&quot;,</span>
+<span class="lineNum">     389 </span><span class="lineCov">          1 :     [3, undefined]);</span>
+<span class="lineNum">     390 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     391 </span><span class="lineCov">          1 : // Access to this with formal arguments.</span>
+<span class="lineNum">     392 </span><span class="lineCov">          1 : TestGenerator(</span>
 <span class="lineNum">     393 </span><span class="lineCov">          7 :     function () {</span>
 <span class="lineNum">     394 </span><span class="lineCov">         20 :       return ({ x: 42, g: function* (a) { yield this.x } }).g(0);</span>
-<span class="lineNum">     395 </span><span class="lineNoCov">          0 :     },</span>
-<span class="lineNum">     396 </span><span class="lineNoCov">          0 :     [42, undefined],</span>
-<span class="lineNum">     397 </span><span class="lineNoCov">          0 :     &quot;foo&quot;,</span>
-<span class="lineNum">     398 </span><span class="lineNoCov">          0 :     [42, undefined]);</span>
-<a name="399"><span class="lineNum">     399 </span><span class="lineNoCov">          0 : </span></a>
-<a name="400"><span class="lineNum">     400 </span><span class="lineNoCov">          0 : // Test that yield* validates iterator results.</span></a>
+<span class="lineNum">     395 </span><span class="lineCov">          7 :     },</span>
+<span class="lineNum">     396 </span><span class="lineCov">          1 :     [42, undefined],</span>
+<span class="lineNum">     397 </span><span class="lineCov">          1 :     &quot;foo&quot;,</span>
+<span class="lineNum">     398 </span><span class="lineCov">          1 :     [42, undefined]);</span>
+<a name="399"><span class="lineNum">     399 </span><span class="lineCov">          1 : </span></a>
+<a name="400"><span class="lineNum">     400 </span><span class="lineCov">          1 : // Test that yield* validates iterator results.</span></a>
 <a name="401"><span class="lineNum">     401 </span><span class="lineCov">          4 : function TestDelegatingYield(junk) {</span></a>
 <span class="lineNum">     402 </span><span class="lineCov">          4 :   var iterator = {next: () =&gt; junk};</span>
 <a name="403"><span class="lineNum">     403 </span><span class="lineCov">          4 :   var iterable = {[Symbol.iterator]: () =&gt; iterator};</span></a>
 <span class="lineNum">     404 </span><span class="lineCov">          8 :   function* g() { return yield* iterable };</span>
 <span class="lineNum">     405 </span><span class="lineCov">          4 :   assertThrows(() =&gt; g().next(), TypeError);</span>
-<span class="lineNum">     406 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">     407 </span><span class="lineNoCov">          0 : TestDelegatingYield();</span>
-<span class="lineNum">     408 </span><span class="lineNoCov">          0 : TestDelegatingYield(null);</span>
-<span class="lineNum">     409 </span><span class="lineNoCov">          0 : TestDelegatingYield(42);</span>
-<a name="410"><span class="lineNum">     410 </span><span class="lineNoCov">          0 : TestDelegatingYield(true);</span></a>
-<span class="lineNum">     411 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     406 </span><span class="lineCov">          4 : }</span>
+<span class="lineNum">     407 </span><span class="lineCov">          1 : TestDelegatingYield();</span>
+<span class="lineNum">     408 </span><span class="lineCov">          1 : TestDelegatingYield(null);</span>
+<span class="lineNum">     409 </span><span class="lineCov">          1 : TestDelegatingYield(42);</span>
+<a name="410"><span class="lineNum">     410 </span><span class="lineCov">          1 : TestDelegatingYield(true);</span></a>
+<span class="lineNum">     411 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     412 </span><span class="lineCov">          2 : function TestTryCatch(instantiate) {</span>
 <span class="lineNum">     413 </span><span class="lineCov">         62 :   function* g() { yield 1; try { yield 2; } catch (e) { yield e; } yield 3; }</span>
 <span class="lineNum">     414 </span><span class="lineCov">         14 :   function Sentinel() {}</span>
-<span class="lineNum">     415 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     415 </span><span class="lineCov">          2 : </span>
 <span class="lineNum">     416 </span><span class="lineCov">          2 :   function Test1(iter) {</span>
 <span class="lineNum">     417 </span><span class="lineCov">          2 :     assertIteratorResult(1, false, iter.next());</span>
 <span class="lineNum">     418 </span><span class="lineCov">          2 :     assertIteratorResult(2, false, iter.next());</span>
 <span class="lineNum">     419 </span><span class="lineCov">          2 :     assertIteratorResult(3, false, iter.next());</span>
 <span class="lineNum">     420 </span><span class="lineCov">          2 :     assertIteratorIsClosed(iter);</span>
 <span class="lineNum">     421 </span><span class="lineCov">          2 :   }</span>
-<span class="lineNum">     422 </span><span class="lineNoCov">          0 :   Test1(instantiate(g));</span>
-<span class="lineNum">     423 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     422 </span><span class="lineCov">          2 :   Test1(instantiate(g));</span>
+<span class="lineNum">     423 </span><span class="lineCov">          2 : </span>
 <span class="lineNum">     424 </span><span class="lineCov">          2 :   function Test2(iter) {</span>
 <span class="lineNum">     425 </span><span class="lineCov">          2 :     assertThrows(function() { iter.throw(new Sentinel); }, Sentinel);</span>
-<span class="lineNum">     426 </span><span class="lineNoCov">          0 :     assertThrownIteratorIsClosed(iter);</span>
-<span class="lineNum">     427 </span><span class="lineNoCov">          0 :   }</span>
-<span class="lineNum">     428 </span><span class="lineNoCov">          0 :   Test2(instantiate(g));</span>
-<span class="lineNum">     429 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     426 </span><span class="lineCov">          2 :     assertThrownIteratorIsClosed(iter);</span>
+<span class="lineNum">     427 </span><span class="lineCov">          2 :   }</span>
+<span class="lineNum">     428 </span><span class="lineCov">          2 :   Test2(instantiate(g));</span>
+<span class="lineNum">     429 </span><span class="lineCov">          2 : </span>
 <span class="lineNum">     430 </span><span class="lineCov">          2 :   function Test3(iter) {</span>
 <span class="lineNum">     431 </span><span class="lineCov">          2 :     assertIteratorResult(1, false, iter.next());</span>
 <span class="lineNum">     432 </span><span class="lineCov">          2 :     assertThrows(function() { iter.throw(new Sentinel); }, Sentinel);</span>
-<span class="lineNum">     433 </span><span class="lineNoCov">          0 :     assertThrownIteratorIsClosed(iter);</span>
-<span class="lineNum">     434 </span><span class="lineNoCov">          0 :   }</span>
-<span class="lineNum">     435 </span><span class="lineNoCov">          0 :   Test3(instantiate(g));</span>
-<span class="lineNum">     436 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     433 </span><span class="lineCov">          2 :     assertThrownIteratorIsClosed(iter);</span>
+<span class="lineNum">     434 </span><span class="lineCov">          2 :   }</span>
+<span class="lineNum">     435 </span><span class="lineCov">          2 :   Test3(instantiate(g));</span>
+<span class="lineNum">     436 </span><span class="lineCov">          2 : </span>
 <span class="lineNum">     437 </span><span class="lineCov">          2 :   function Test4(iter) {</span>
 <span class="lineNum">     438 </span><span class="lineCov">          2 :     assertIteratorResult(1, false, iter.next());</span>
 <span class="lineNum">     439 </span><span class="lineCov">          2 :     assertIteratorResult(2, false, iter.next());</span>
@@ -504,8 +504,8 @@
 <span class="lineNum">     442 </span><span class="lineCov">          2 :     assertIteratorResult(3, false, iter.next());</span>
 <span class="lineNum">     443 </span><span class="lineCov">          2 :     assertIteratorIsClosed(iter);</span>
 <span class="lineNum">     444 </span><span class="lineCov">          2 :   }</span>
-<span class="lineNum">     445 </span><span class="lineNoCov">          0 :   Test4(instantiate(g));</span>
-<span class="lineNum">     446 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     445 </span><span class="lineCov">          2 :   Test4(instantiate(g));</span>
+<span class="lineNum">     446 </span><span class="lineCov">          2 : </span>
 <span class="lineNum">     447 </span><span class="lineCov">          2 :   function Test5(iter) {</span>
 <span class="lineNum">     448 </span><span class="lineCov">          2 :     assertIteratorResult(1, false, iter.next());</span>
 <span class="lineNum">     449 </span><span class="lineCov">          2 :     assertIteratorResult(2, false, iter.next());</span>
@@ -513,36 +513,36 @@
 <span class="lineNum">     451 </span><span class="lineCov">          2 :     assertIteratorResult(exn, false, iter.throw(exn));</span>
 <span class="lineNum">     452 </span><span class="lineCov">          2 :     assertIteratorResult(3, false, iter.next());</span>
 <span class="lineNum">     453 </span><span class="lineCov">          2 :     assertThrows(function() { iter.throw(new Sentinel); }, Sentinel);</span>
-<span class="lineNum">     454 </span><span class="lineNoCov">          0 :     assertThrownIteratorIsClosed(iter);</span>
-<span class="lineNum">     455 </span><span class="lineNoCov">          0 :   }</span>
-<span class="lineNum">     456 </span><span class="lineNoCov">          0 :   Test5(instantiate(g));</span>
-<span class="lineNum">     457 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     454 </span><span class="lineCov">          2 :     assertThrownIteratorIsClosed(iter);</span>
+<span class="lineNum">     455 </span><span class="lineCov">          2 :   }</span>
+<span class="lineNum">     456 </span><span class="lineCov">          2 :   Test5(instantiate(g));</span>
+<span class="lineNum">     457 </span><span class="lineCov">          2 : </span>
 <span class="lineNum">     458 </span><span class="lineCov">          2 :   function Test6(iter) {</span>
 <span class="lineNum">     459 </span><span class="lineCov">          2 :     assertIteratorResult(1, false, iter.next());</span>
 <span class="lineNum">     460 </span><span class="lineCov">          2 :     assertIteratorResult(2, false, iter.next());</span>
 <span class="lineNum">     461 </span><span class="lineCov">          2 :     var exn = new Sentinel;</span>
 <span class="lineNum">     462 </span><span class="lineCov">          2 :     assertIteratorResult(exn, false, iter.throw(exn));</span>
 <span class="lineNum">     463 </span><span class="lineCov">          2 :     assertThrows(function() { iter.throw(new Sentinel); }, Sentinel);</span>
-<span class="lineNum">     464 </span><span class="lineNoCov">          0 :     assertThrownIteratorIsClosed(iter);</span>
-<span class="lineNum">     465 </span><span class="lineNoCov">          0 :   }</span>
-<span class="lineNum">     466 </span><span class="lineNoCov">          0 :   Test6(instantiate(g));</span>
-<span class="lineNum">     467 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     464 </span><span class="lineCov">          2 :     assertThrownIteratorIsClosed(iter);</span>
+<span class="lineNum">     465 </span><span class="lineCov">          2 :   }</span>
+<span class="lineNum">     466 </span><span class="lineCov">          2 :   Test6(instantiate(g));</span>
+<span class="lineNum">     467 </span><span class="lineCov">          2 : </span>
 <span class="lineNum">     468 </span><span class="lineCov">          2 :   function Test7(iter) {</span>
 <span class="lineNum">     469 </span><span class="lineCov">          2 :     assertIteratorResult(1, false, iter.next());</span>
 <span class="lineNum">     470 </span><span class="lineCov">          2 :     assertIteratorResult(2, false, iter.next());</span>
 <span class="lineNum">     471 </span><span class="lineCov">          2 :     assertIteratorResult(3, false, iter.next());</span>
 <span class="lineNum">     472 </span><span class="lineCov">          2 :     assertIteratorIsClosed(iter);</span>
 <span class="lineNum">     473 </span><span class="lineCov">          2 :   }</span>
-<span class="lineNum">     474 </span><span class="lineNoCov">          0 :   Test7(instantiate(g));</span>
-<span class="lineNum">     475 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     474 </span><span class="lineCov">          2 :   Test7(instantiate(g));</span>
+<span class="lineNum">     475 </span><span class="lineCov">          2 : }</span>
 <span class="lineNum">     476 </span><span class="lineCov">          7 : TestTryCatch(function (g) { return g(); });</span>
 <a name="477"><span class="lineNum">     477 </span><span class="lineCov">         32 : TestTryCatch(function* (g) { return yield* g(); });</span></a>
-<span class="lineNum">     478 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     478 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     479 </span><span class="lineCov">          2 : function TestTryFinally(instantiate) {</span>
 <span class="lineNum">     480 </span><span class="lineCov">         74 :   function* g() { yield 1; try { yield 2; } finally { yield 3; } yield 4; }</span>
 <span class="lineNum">     481 </span><span class="lineCov">         12 :   function Sentinel() {}</span>
 <span class="lineNum">     482 </span><span class="lineCov">          2 :   function Sentinel2() {}</span>
-<span class="lineNum">     483 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     483 </span><span class="lineCov">          2 : </span>
 <span class="lineNum">     484 </span><span class="lineCov">          2 :   function Test1(iter) {</span>
 <span class="lineNum">     485 </span><span class="lineCov">          2 :     assertIteratorResult(1, false, iter.next());</span>
 <span class="lineNum">     486 </span><span class="lineCov">          2 :     assertIteratorResult(2, false, iter.next());</span>
@@ -550,58 +550,58 @@
 <span class="lineNum">     488 </span><span class="lineCov">          2 :     assertIteratorResult(4, false, iter.next());</span>
 <span class="lineNum">     489 </span><span class="lineCov">          2 :     assertIteratorIsClosed(iter);</span>
 <span class="lineNum">     490 </span><span class="lineCov">          2 :   }</span>
-<span class="lineNum">     491 </span><span class="lineNoCov">          0 :   Test1(instantiate(g));</span>
-<span class="lineNum">     492 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     491 </span><span class="lineCov">          2 :   Test1(instantiate(g));</span>
+<span class="lineNum">     492 </span><span class="lineCov">          2 : </span>
 <span class="lineNum">     493 </span><span class="lineCov">          2 :   function Test2(iter) {</span>
 <span class="lineNum">     494 </span><span class="lineCov">          2 :     assertThrows(function() { iter.throw(new Sentinel); }, Sentinel);</span>
-<span class="lineNum">     495 </span><span class="lineNoCov">          0 :     assertThrownIteratorIsClosed(iter);</span>
-<span class="lineNum">     496 </span><span class="lineNoCov">          0 :   }</span>
-<span class="lineNum">     497 </span><span class="lineNoCov">          0 :   Test2(instantiate(g));</span>
-<span class="lineNum">     498 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     495 </span><span class="lineCov">          2 :     assertThrownIteratorIsClosed(iter);</span>
+<span class="lineNum">     496 </span><span class="lineCov">          2 :   }</span>
+<span class="lineNum">     497 </span><span class="lineCov">          2 :   Test2(instantiate(g));</span>
+<span class="lineNum">     498 </span><span class="lineCov">          2 : </span>
 <span class="lineNum">     499 </span><span class="lineCov">          2 :   function Test3(iter) {</span>
 <span class="lineNum">     500 </span><span class="lineCov">          2 :     assertIteratorResult(1, false, iter.next());</span>
 <span class="lineNum">     501 </span><span class="lineCov">          2 :     assertThrows(function() { iter.throw(new Sentinel); }, Sentinel);</span>
-<span class="lineNum">     502 </span><span class="lineNoCov">          0 :     assertThrownIteratorIsClosed(iter);</span>
-<span class="lineNum">     503 </span><span class="lineNoCov">          0 :   }</span>
-<span class="lineNum">     504 </span><span class="lineNoCov">          0 :   Test3(instantiate(g));</span>
-<span class="lineNum">     505 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     502 </span><span class="lineCov">          2 :     assertThrownIteratorIsClosed(iter);</span>
+<span class="lineNum">     503 </span><span class="lineCov">          2 :   }</span>
+<span class="lineNum">     504 </span><span class="lineCov">          2 :   Test3(instantiate(g));</span>
+<span class="lineNum">     505 </span><span class="lineCov">          2 : </span>
 <span class="lineNum">     506 </span><span class="lineCov">          2 :   function Test4(iter) {</span>
 <span class="lineNum">     507 </span><span class="lineCov">          2 :     assertIteratorResult(1, false, iter.next());</span>
 <span class="lineNum">     508 </span><span class="lineCov">          2 :     assertIteratorResult(2, false, iter.next());</span>
 <span class="lineNum">     509 </span><span class="lineCov">          2 :     assertIteratorResult(3, false, iter.throw(new Sentinel));</span>
 <span class="lineNum">     510 </span><span class="lineCov">          2 :     assertThrows(function() { iter.next(); }, Sentinel);</span>
-<span class="lineNum">     511 </span><span class="lineNoCov">          0 :     assertThrownIteratorIsClosed(iter);</span>
-<span class="lineNum">     512 </span><span class="lineNoCov">          0 :   }</span>
-<span class="lineNum">     513 </span><span class="lineNoCov">          0 :   Test4(instantiate(g));</span>
-<span class="lineNum">     514 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     511 </span><span class="lineCov">          2 :     assertThrownIteratorIsClosed(iter);</span>
+<span class="lineNum">     512 </span><span class="lineCov">          2 :   }</span>
+<span class="lineNum">     513 </span><span class="lineCov">          2 :   Test4(instantiate(g));</span>
+<span class="lineNum">     514 </span><span class="lineCov">          2 : </span>
 <span class="lineNum">     515 </span><span class="lineCov">          2 :   function Test5(iter) {</span>
 <span class="lineNum">     516 </span><span class="lineCov">          2 :     assertIteratorResult(1, false, iter.next());</span>
 <span class="lineNum">     517 </span><span class="lineCov">          2 :     assertIteratorResult(2, false, iter.next());</span>
 <span class="lineNum">     518 </span><span class="lineCov">          2 :     assertIteratorResult(3, false, iter.throw(new Sentinel));</span>
 <span class="lineNum">     519 </span><span class="lineCov">          2 :     assertThrows(function() { iter.throw(new Sentinel2); }, Sentinel2);</span>
-<span class="lineNum">     520 </span><span class="lineNoCov">          0 :     assertThrownIteratorIsClosed(iter);</span>
-<span class="lineNum">     521 </span><span class="lineNoCov">          0 :   }</span>
-<span class="lineNum">     522 </span><span class="lineNoCov">          0 :   Test5(instantiate(g));</span>
-<span class="lineNum">     523 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     520 </span><span class="lineCov">          2 :     assertThrownIteratorIsClosed(iter);</span>
+<span class="lineNum">     521 </span><span class="lineCov">          2 :   }</span>
+<span class="lineNum">     522 </span><span class="lineCov">          2 :   Test5(instantiate(g));</span>
+<span class="lineNum">     523 </span><span class="lineCov">          2 : </span>
 <span class="lineNum">     524 </span><span class="lineCov">          2 :   function Test6(iter) {</span>
 <span class="lineNum">     525 </span><span class="lineCov">          2 :     assertIteratorResult(1, false, iter.next());</span>
 <span class="lineNum">     526 </span><span class="lineCov">          2 :     assertIteratorResult(2, false, iter.next());</span>
 <span class="lineNum">     527 </span><span class="lineCov">          2 :     assertIteratorResult(3, false, iter.next());</span>
 <span class="lineNum">     528 </span><span class="lineCov">          2 :     assertThrows(function() { iter.throw(new Sentinel); }, Sentinel);</span>
-<span class="lineNum">     529 </span><span class="lineNoCov">          0 :     assertThrownIteratorIsClosed(iter);</span>
-<span class="lineNum">     530 </span><span class="lineNoCov">          0 :   }</span>
-<span class="lineNum">     531 </span><span class="lineNoCov">          0 :   Test6(instantiate(g));</span>
-<span class="lineNum">     532 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     529 </span><span class="lineCov">          2 :     assertThrownIteratorIsClosed(iter);</span>
+<span class="lineNum">     530 </span><span class="lineCov">          2 :   }</span>
+<span class="lineNum">     531 </span><span class="lineCov">          2 :   Test6(instantiate(g));</span>
+<span class="lineNum">     532 </span><span class="lineCov">          2 : </span>
 <span class="lineNum">     533 </span><span class="lineCov">          2 :   function Test7(iter) {</span>
 <span class="lineNum">     534 </span><span class="lineCov">          2 :     assertIteratorResult(1, false, iter.next());</span>
 <span class="lineNum">     535 </span><span class="lineCov">          2 :     assertIteratorResult(2, false, iter.next());</span>
 <span class="lineNum">     536 </span><span class="lineCov">          2 :     assertIteratorResult(3, false, iter.next());</span>
 <span class="lineNum">     537 </span><span class="lineCov">          2 :     assertIteratorResult(4, false, iter.next());</span>
 <span class="lineNum">     538 </span><span class="lineCov">          2 :     assertThrows(function() { iter.throw(new Sentinel); }, Sentinel);</span>
-<span class="lineNum">     539 </span><span class="lineNoCov">          0 :     assertThrownIteratorIsClosed(iter);</span>
-<span class="lineNum">     540 </span><span class="lineNoCov">          0 :   }</span>
-<a name="541"><span class="lineNum">     541 </span><span class="lineNoCov">          0 :   Test7(instantiate(g));</span></a>
-<span class="lineNum">     542 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     539 </span><span class="lineCov">          2 :     assertThrownIteratorIsClosed(iter);</span>
+<span class="lineNum">     540 </span><span class="lineCov">          2 :   }</span>
+<a name="541"><span class="lineNum">     541 </span><span class="lineCov">          2 :   Test7(instantiate(g));</span></a>
+<span class="lineNum">     542 </span><span class="lineCov">          2 : </span>
 <span class="lineNum">     543 </span><span class="lineCov">          2 :   function Test8(iter) {</span>
 <span class="lineNum">     544 </span><span class="lineCov">          2 :     assertIteratorResult(1, false, iter.next());</span>
 <span class="lineNum">     545 </span><span class="lineCov">          2 :     assertIteratorResult(2, false, iter.next());</span>
@@ -609,11 +609,11 @@
 <span class="lineNum">     547 </span><span class="lineCov">          2 :     assertIteratorResult(4, false, iter.next());</span>
 <span class="lineNum">     548 </span><span class="lineCov">          2 :     assertIteratorIsClosed(iter);</span>
 <span class="lineNum">     549 </span><span class="lineCov">          2 :   }</span>
-<span class="lineNum">     550 </span><span class="lineNoCov">          0 :   Test8(instantiate(g));</span>
-<span class="lineNum">     551 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     550 </span><span class="lineCov">          2 :   Test8(instantiate(g));</span>
+<span class="lineNum">     551 </span><span class="lineCov">          2 : }</span>
 <span class="lineNum">     552 </span><span class="lineCov">          8 : TestTryFinally(function (g) { return g(); });</span>
 <a name="553"><span class="lineNum">     553 </span><span class="lineCov">         38 : TestTryFinally(function* (g) { return yield* g(); });</span></a>
-<span class="lineNum">     554 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     554 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     555 </span><span class="lineCov">          2 : function TestNestedTry(instantiate) {</span>
 <span class="lineNum">     556 </span><span class="lineCov">         74 :   function* g() {</span>
 <span class="lineNum">     557 </span><span class="lineCov">         74 :     try {</span>
@@ -627,7 +627,7 @@
 <a name="565"><span class="lineNum">     565 </span><span class="lineCov">         74 :   }</span></a>
 <span class="lineNum">     566 </span><span class="lineCov">         12 :   function Sentinel() {}</span>
 <a name="567"><span class="lineNum">     567 </span><span class="lineCov">          6 :   function Sentinel2() {}</span></a>
-<span class="lineNum">     568 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     568 </span><span class="lineCov">          2 : </span>
 <span class="lineNum">     569 </span><span class="lineCov">          2 :   function Test1(iter) {</span>
 <span class="lineNum">     570 </span><span class="lineCov">          2 :     assertIteratorResult(1, false, iter.next());</span>
 <span class="lineNum">     571 </span><span class="lineCov">          2 :     assertIteratorResult(2, false, iter.next());</span>
@@ -636,30 +636,30 @@
 <span class="lineNum">     574 </span><span class="lineCov">          2 :     assertIteratorResult(5, false, iter.next());</span>
 <span class="lineNum">     575 </span><span class="lineCov">          2 :     assertIteratorIsClosed(iter);</span>
 <span class="lineNum">     576 </span><span class="lineCov">          2 :   }</span>
-<a name="577"><span class="lineNum">     577 </span><span class="lineNoCov">          0 :   Test1(instantiate(g));</span></a>
-<span class="lineNum">     578 </span><span class="lineNoCov">          0 : </span>
+<a name="577"><span class="lineNum">     577 </span><span class="lineCov">          2 :   Test1(instantiate(g));</span></a>
+<span class="lineNum">     578 </span><span class="lineCov">          2 : </span>
 <span class="lineNum">     579 </span><span class="lineCov">          2 :   function Test2(iter) {</span>
 <span class="lineNum">     580 </span><span class="lineCov">          2 :     assertThrows(function() { iter.throw(new Sentinel); }, Sentinel);</span>
-<span class="lineNum">     581 </span><span class="lineNoCov">          0 :     assertThrownIteratorIsClosed(iter);</span>
-<span class="lineNum">     582 </span><span class="lineNoCov">          0 :   }</span>
-<a name="583"><span class="lineNum">     583 </span><span class="lineNoCov">          0 :   Test2(instantiate(g));</span></a>
-<span class="lineNum">     584 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     581 </span><span class="lineCov">          2 :     assertThrownIteratorIsClosed(iter);</span>
+<span class="lineNum">     582 </span><span class="lineCov">          2 :   }</span>
+<a name="583"><span class="lineNum">     583 </span><span class="lineCov">          2 :   Test2(instantiate(g));</span></a>
+<span class="lineNum">     584 </span><span class="lineCov">          2 : </span>
 <span class="lineNum">     585 </span><span class="lineCov">          2 :   function Test3(iter) {</span>
 <span class="lineNum">     586 </span><span class="lineCov">          2 :     assertIteratorResult(1, false, iter.next());</span>
 <span class="lineNum">     587 </span><span class="lineCov">          2 :     assertIteratorResult(4, false, iter.throw(new Sentinel));</span>
 <span class="lineNum">     588 </span><span class="lineCov">          2 :     assertThrows(function() { iter.next(); }, Sentinel);</span>
-<span class="lineNum">     589 </span><span class="lineNoCov">          0 :     assertThrownIteratorIsClosed(iter);</span>
-<span class="lineNum">     590 </span><span class="lineNoCov">          0 :   }</span>
-<a name="591"><span class="lineNum">     591 </span><span class="lineNoCov">          0 :   Test3(instantiate(g));</span></a>
-<span class="lineNum">     592 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     589 </span><span class="lineCov">          2 :     assertThrownIteratorIsClosed(iter);</span>
+<span class="lineNum">     590 </span><span class="lineCov">          2 :   }</span>
+<a name="591"><span class="lineNum">     591 </span><span class="lineCov">          2 :   Test3(instantiate(g));</span></a>
+<span class="lineNum">     592 </span><span class="lineCov">          2 : </span>
 <span class="lineNum">     593 </span><span class="lineCov">          2 :   function Test4(iter) {</span>
 <span class="lineNum">     594 </span><span class="lineCov">          2 :     assertIteratorResult(1, false, iter.next());</span>
 <span class="lineNum">     595 </span><span class="lineCov">          2 :     assertIteratorResult(4, false, iter.throw(new Sentinel));</span>
 <span class="lineNum">     596 </span><span class="lineCov">          2 :     assertThrows(function() { iter.throw(new Sentinel2); }, Sentinel2);</span>
-<span class="lineNum">     597 </span><span class="lineNoCov">          0 :     assertThrownIteratorIsClosed(iter);</span>
-<span class="lineNum">     598 </span><span class="lineNoCov">          0 :   }</span>
-<a name="599"><span class="lineNum">     599 </span><span class="lineNoCov">          0 :   Test4(instantiate(g));</span></a>
-<span class="lineNum">     600 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     597 </span><span class="lineCov">          2 :     assertThrownIteratorIsClosed(iter);</span>
+<span class="lineNum">     598 </span><span class="lineCov">          2 :   }</span>
+<a name="599"><span class="lineNum">     599 </span><span class="lineCov">          2 :   Test4(instantiate(g));</span></a>
+<span class="lineNum">     600 </span><span class="lineCov">          2 : </span>
 <span class="lineNum">     601 </span><span class="lineCov">          2 :   function Test5(iter) {</span>
 <span class="lineNum">     602 </span><span class="lineCov">          2 :     assertIteratorResult(1, false, iter.next());</span>
 <span class="lineNum">     603 </span><span class="lineCov">          2 :     assertIteratorResult(2, false, iter.next());</span>
@@ -670,8 +670,8 @@
 <span class="lineNum">     608 </span><span class="lineCov">          2 :     assertIteratorResult(5, false, iter.next());</span>
 <span class="lineNum">     609 </span><span class="lineCov">          2 :     assertIteratorIsClosed(iter);</span>
 <span class="lineNum">     610 </span><span class="lineCov">          2 :   }</span>
-<a name="611"><span class="lineNum">     611 </span><span class="lineNoCov">          0 :   Test5(instantiate(g));</span></a>
-<span class="lineNum">     612 </span><span class="lineNoCov">          0 : </span>
+<a name="611"><span class="lineNum">     611 </span><span class="lineCov">          2 :   Test5(instantiate(g));</span></a>
+<span class="lineNum">     612 </span><span class="lineCov">          2 : </span>
 <span class="lineNum">     613 </span><span class="lineCov">          2 :   function Test6(iter) {</span>
 <span class="lineNum">     614 </span><span class="lineCov">          2 :     assertIteratorResult(1, false, iter.next());</span>
 <span class="lineNum">     615 </span><span class="lineCov">          2 :     assertIteratorResult(2, false, iter.next());</span>
@@ -679,10 +679,10 @@
 <span class="lineNum">     617 </span><span class="lineCov">          2 :     assertIteratorResult(exn, false, iter.throw(exn));</span>
 <span class="lineNum">     618 </span><span class="lineCov">          2 :     assertIteratorResult(4, false, iter.throw(new Sentinel2));</span>
 <span class="lineNum">     619 </span><span class="lineCov">          2 :     assertThrows(function() { iter.next(); }, Sentinel2);</span>
-<span class="lineNum">     620 </span><span class="lineNoCov">          0 :     assertThrownIteratorIsClosed(iter);</span>
-<span class="lineNum">     621 </span><span class="lineNoCov">          0 :   }</span>
-<a name="622"><span class="lineNum">     622 </span><span class="lineNoCov">          0 :   Test6(instantiate(g));</span></a>
-<span class="lineNum">     623 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     620 </span><span class="lineCov">          2 :     assertThrownIteratorIsClosed(iter);</span>
+<span class="lineNum">     621 </span><span class="lineCov">          2 :   }</span>
+<a name="622"><span class="lineNum">     622 </span><span class="lineCov">          2 :   Test6(instantiate(g));</span></a>
+<span class="lineNum">     623 </span><span class="lineCov">          2 : </span>
 <span class="lineNum">     624 </span><span class="lineCov">          2 :   function Test7(iter) {</span>
 <span class="lineNum">     625 </span><span class="lineCov">          2 :     assertIteratorResult(1, false, iter.next());</span>
 <span class="lineNum">     626 </span><span class="lineCov">          2 :     assertIteratorResult(2, false, iter.next());</span>
@@ -691,49 +691,49 @@
 <span class="lineNum">     629 </span><span class="lineCov">          2 :     assertIteratorResult(3, false, iter.next());</span>
 <span class="lineNum">     630 </span><span class="lineCov">          2 :     assertIteratorResult(4, false, iter.throw(new Sentinel2));</span>
 <span class="lineNum">     631 </span><span class="lineCov">          2 :     assertThrows(function() { iter.next(); }, Sentinel2);</span>
-<span class="lineNum">     632 </span><span class="lineNoCov">          0 :     assertThrownIteratorIsClosed(iter);</span>
-<span class="lineNum">     633 </span><span class="lineNoCov">          0 :   }</span>
-<span class="lineNum">     634 </span><span class="lineNoCov">          0 :   Test7(instantiate(g));</span>
-<span class="lineNum">     635 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     636 </span><span class="lineNoCov">          0 :   // That's probably enough.</span>
-<span class="lineNum">     637 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     632 </span><span class="lineCov">          2 :     assertThrownIteratorIsClosed(iter);</span>
+<span class="lineNum">     633 </span><span class="lineCov">          2 :   }</span>
+<span class="lineNum">     634 </span><span class="lineCov">          2 :   Test7(instantiate(g));</span>
+<span class="lineNum">     635 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">     636 </span><span class="lineCov">          2 :   // That's probably enough.</span>
+<span class="lineNum">     637 </span><span class="lineCov">          2 : }</span>
 <span class="lineNum">     638 </span><span class="lineCov">          7 : TestNestedTry(function (g) { return g(); });</span>
 <a name="639"><span class="lineNum">     639 </span><span class="lineCov">         38 : TestNestedTry(function* (g) { return yield* g(); });</span></a>
-<a name="640"><span class="lineNum">     640 </span><span class="lineNoCov">          0 : </span></a>
+<a name="640"><span class="lineNum">     640 </span><span class="lineCov">          1 : </span></a>
 <span class="lineNum">     641 </span><span class="lineCov">          1 : function TestRecursion() {</span>
 <span class="lineNum">     642 </span><span class="lineCov">          1 :   function TestNextRecursion() {</span>
 <span class="lineNum">     643 </span><span class="lineCov">          2 :     function* g() { yield iter.next(); }</span>
-<span class="lineNum">     644 </span><span class="lineNoCov">          0 :     var iter = g();</span>
-<a name="645"><span class="lineNum">     645 </span><span class="lineNoCov">          0 :     return iter.next();</span></a>
-<span class="lineNum">     646 </span><span class="lineNoCov">          0 :   }</span>
+<span class="lineNum">     644 </span><span class="lineCov">          1 :     var iter = g();</span>
+<a name="645"><span class="lineNum">     645 </span><span class="lineCov">          1 :     return iter.next();</span></a>
+<span class="lineNum">     646 </span><span class="lineCov">          1 :   }</span>
 <span class="lineNum">     647 </span><span class="lineCov">          1 :   function TestSendRecursion() {</span>
 <span class="lineNum">     648 </span><span class="lineCov">          2 :     function* g() { yield iter.next(42); }</span>
-<span class="lineNum">     649 </span><span class="lineNoCov">          0 :     var iter = g();</span>
-<a name="650"><span class="lineNum">     650 </span><span class="lineNoCov">          0 :     return iter.next();</span></a>
-<span class="lineNum">     651 </span><span class="lineNoCov">          0 :   }</span>
+<span class="lineNum">     649 </span><span class="lineCov">          1 :     var iter = g();</span>
+<a name="650"><span class="lineNum">     650 </span><span class="lineCov">          1 :     return iter.next();</span></a>
+<span class="lineNum">     651 </span><span class="lineCov">          1 :   }</span>
 <span class="lineNum">     652 </span><span class="lineCov">          1 :   function TestThrowRecursion() {</span>
 <span class="lineNum">     653 </span><span class="lineCov">          2 :     function* g() { yield iter.throw(1); }</span>
-<span class="lineNum">     654 </span><span class="lineNoCov">          0 :     var iter = g();</span>
-<span class="lineNum">     655 </span><span class="lineNoCov">          0 :     return iter.next();</span>
-<span class="lineNum">     656 </span><span class="lineNoCov">          0 :   }</span>
-<span class="lineNum">     657 </span><span class="lineNoCov">          0 :   assertThrows(TestNextRecursion, Error);</span>
-<span class="lineNum">     658 </span><span class="lineNoCov">          0 :   assertThrows(TestSendRecursion, Error);</span>
-<span class="lineNum">     659 </span><span class="lineNoCov">          0 :   assertThrows(TestThrowRecursion, Error);</span>
-<span class="lineNum">     660 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">     661 </span><span class="lineNoCov">          0 : TestRecursion();</span>
-<span class="lineNum">     662 </span><span class="lineNoCov">          0 : </span>
-<a name="663"><span class="lineNum">     663 </span><span class="lineNoCov">          0 : </span></a>
-<span class="lineNum">     664 </span><span class="lineNoCov">          0 : // Test yield* on non-iterable objects.</span>
+<span class="lineNum">     654 </span><span class="lineCov">          1 :     var iter = g();</span>
+<span class="lineNum">     655 </span><span class="lineCov">          1 :     return iter.next();</span>
+<span class="lineNum">     656 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">     657 </span><span class="lineCov">          1 :   assertThrows(TestNextRecursion, Error);</span>
+<span class="lineNum">     658 </span><span class="lineCov">          1 :   assertThrows(TestSendRecursion, Error);</span>
+<span class="lineNum">     659 </span><span class="lineCov">          1 :   assertThrows(TestThrowRecursion, Error);</span>
+<span class="lineNum">     660 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     661 </span><span class="lineCov">          1 : TestRecursion();</span>
+<span class="lineNum">     662 </span><span class="lineCov">          1 : </span>
+<a name="663"><span class="lineNum">     663 </span><span class="lineCov">          1 : </span></a>
+<span class="lineNum">     664 </span><span class="lineCov">          1 : // Test yield* on non-iterable objects.</span>
 <span class="lineNum">     665 </span><span class="lineCov">          8 : function* g(junk) { return yield* junk }</span>
-<span class="lineNum">     666 </span><span class="lineNoCov">          0 : var non_iterables = [</span>
-<span class="lineNum">     667 </span><span class="lineNoCov">          0 :   42,</span>
-<a name="668"><span class="lineNum">     668 </span><span class="lineNoCov">          0 :   {[Symbol.iterator]: 42},</span></a>
+<span class="lineNum">     666 </span><span class="lineCov">          1 : var non_iterables = [</span>
+<span class="lineNum">     667 </span><span class="lineCov">          1 :   42,</span>
+<a name="668"><span class="lineNum">     668 </span><span class="lineCov">          1 :   {[Symbol.iterator]: 42},</span></a>
 <span class="lineNum">     669 </span><span class="lineCov">          1 :   {[Symbol.iterator]: () =&gt; 42},</span>
 <span class="lineNum">     670 </span><span class="lineCov">          1 :   {[Symbol.iterator]: () =&gt; ({next: 42})},</span>
-<a name="671"><span class="lineNum">     671 </span><span class="lineNoCov">          0 : ];</span></a>
-<span class="lineNum">     672 </span><span class="lineNoCov">          0 : for (let junk of non_iterables) {</span>
+<a name="671"><span class="lineNum">     671 </span><span class="lineCov">          1 : ];</span></a>
+<span class="lineNum">     672 </span><span class="lineCov">          1 : for (let junk of non_iterables) {</span>
 <span class="lineNum">     673 </span><span class="lineCov">          4 :   assertThrows(() =&gt; g(junk).next(), TypeError);</span>
-<span class="lineNum">     674 </span>            : }
+<span class="lineNum">     674 </span><span class="lineCov">          1 : }</span>
 </pre>
       </td>
     </tr>

@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">12</td>
-            <td class="headerCovTableEntry">12</td>
+            <td class="headerCovTableEntry">33</td>
+            <td class="headerCovTableEntry">33</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2017-02-15</td>
+            <td class="headerValue">2017-02-16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">1</td>
@@ -72,26 +72,26 @@
 <span class="lineNum">      10 </span><span class="lineCov">          5 :     var literal = c ? [1, double_var] : [double_var, 3.5];</span>
 <span class="lineNum">      11 </span><span class="lineCov">          5 :     return literal[0];</span>
 <span class="lineNum">      12 </span><span class="lineCov">          5 :   };</span>
-<span class="lineNum">      13 </span>            : }
-<span class="lineNum">      14 </span>            : 
-<span class="lineNum">      15 </span>            : var f1 = foo();
-<span class="lineNum">      16 </span>            : var f2 = foo();
-<span class="lineNum">      17 </span>            : 
-<span class="lineNum">      18 </span>            : // Both closures point to full code.
-<span class="lineNum">      19 </span>            : f1(false);
-<span class="lineNum">      20 </span>            : f2(false);
-<span class="lineNum">      21 </span>            : 
-<span class="lineNum">      22 </span>            : // Optimize f1, but don't initialize the [1, double_var] literal.
-<span class="lineNum">      23 </span>            : %OptimizeFunctionOnNextCall(f1);
-<span class="lineNum">      24 </span>            : f1(false);
-<span class="lineNum">      25 </span>            : 
-<span class="lineNum">      26 </span>            : // Initialize the [1, double_var] literal, and transition the boilerplate to
-<span class="lineNum">      27 </span>            : // double.
-<span class="lineNum">      28 </span>            : f2(true);
-<span class="lineNum">      29 </span>            : 
-<span class="lineNum">      30 </span>            : // Trick crankshaft into writing double_var at the wrong position.
-<span class="lineNum">      31 </span>            : var l = f1(true);
-<span class="lineNum">      32 </span>            : assertEquals(1, l);
+<span class="lineNum">      13 </span><span class="lineCov">          2 : }</span>
+<span class="lineNum">      14 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      15 </span><span class="lineCov">          1 : var f1 = foo();</span>
+<span class="lineNum">      16 </span><span class="lineCov">          1 : var f2 = foo();</span>
+<span class="lineNum">      17 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      18 </span><span class="lineCov">          1 : // Both closures point to full code.</span>
+<span class="lineNum">      19 </span><span class="lineCov">          1 : f1(false);</span>
+<span class="lineNum">      20 </span><span class="lineCov">          1 : f2(false);</span>
+<span class="lineNum">      21 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      22 </span><span class="lineCov">          1 : // Optimize f1, but don't initialize the [1, double_var] literal.</span>
+<span class="lineNum">      23 </span><span class="lineCov">          1 : %OptimizeFunctionOnNextCall(f1);</span>
+<span class="lineNum">      24 </span><span class="lineCov">          1 : f1(false);</span>
+<span class="lineNum">      25 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      26 </span><span class="lineCov">          1 : // Initialize the [1, double_var] literal, and transition the boilerplate to</span>
+<span class="lineNum">      27 </span><span class="lineCov">          1 : // double.</span>
+<span class="lineNum">      28 </span><span class="lineCov">          1 : f2(true);</span>
+<span class="lineNum">      29 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      30 </span><span class="lineCov">          1 : // Trick crankshaft into writing double_var at the wrong position.</span>
+<span class="lineNum">      31 </span><span class="lineCov">          1 : var l = f1(true);</span>
+<span class="lineNum">      32 </span><span class="lineCov">          1 : assertEquals(1, l);</span>
 </pre>
       </td>
     </tr>
